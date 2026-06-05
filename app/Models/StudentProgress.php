@@ -12,6 +12,7 @@ class StudentProgress extends Model
         'module_id',
         'status',
         'score',
+        'previous_score',
     ];
 
     public function student(): BelongsTo

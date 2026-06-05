@@ -12,6 +12,13 @@ class SyllabusModule extends Model
         'topic',
         'sea_section',
         'sequence_order',
+        'pacing_week',
+        'description',
+        'resources',
+    ];
+
+    protected $casts = [
+        'resources' => 'array',
     ];
 
     public function studentProgress(): HasMany

@@ -431,6 +431,12 @@
         </div>
 
         {{-- WEEKLY TARGET --}}
+        <div style="margin-bottom:1.25rem;">
+            <a href="{{ route('exam-agent') }}" class="fmn-btn fmn-btn-primary">
+                🤖 View Exam Agent Report
+            </a>
+        </div>
+        
         <p class="fmn-section-title">🎯 This Week's Target</p>
         @if($weeklyTarget)
             <div class="fmn-card">
