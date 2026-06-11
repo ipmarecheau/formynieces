@@ -9,6 +9,8 @@ use Carbon\Carbon;
 
 class ExamAgentService
 {
+
+    public function __construct(private GroqService $groq) {}
     /*
     |------------------------------------------------------------------
     | SEA EXAM CONFIGURATION
@@ -33,6 +35,79 @@ class ExamAgentService
         ['2026-03-28', '2026-03-29'], // Easter break
     ];
 
+    public function generateSummary(array $analysis, string $audience = 'student'): string
+    {
+        $behind  = $analysis['total_behind'];
+        $status  = $analysis['overall_status'];
+        $week    = $analysis['current_week'];
+        $weeks   = $analysis['weeks_to_exam'];
+
+        $subjects = collect($analysis['subject_analysis'])
+            ->map(fn($s) => "{$s['subject']}: {$s['status']}, {$s['behind_count']} modules behind")
+            ->implode('. ');
+
+        if ($audience === 'guardian') {
+            $system = <<<PROMPT
+    You are a clear, warm, and direct assistant writing weekly progress briefings for guardians
+    of primary school students preparing for the SEA exam in Trinidad and Tobago.
+    Write in plain English a parent or guardian can understand easily.
+    Never use jargon. Be specific. Be encouraging but honest.
+    Always end with exactly 3 numbered actions the guardian can take this week.
+    Maximum 150 words.
+    PROMPT;
+
+            $user = "Student is in week {$week} of 30. SEA is in {$weeks} weeks. "
+                . "Overall status: {$status}. {$subjects}. "
+                . "Total weeks behind: {$behind}. "
+                . "Write the weekly guardian briefing.";
+        } else {
+            $system = <<<PROMPT
+    You are a warm, encouraging study coach writing directly to a 10-11 year old girl
+    preparing for the SEA exam in Trinidad and Tobago.
+    Use simple, friendly language. Be specific about what to do next.
+    Never be alarming. Focus on what she CAN do.
+    Always end with exactly 3 numbered actions she can take today.
+    Maximum 120 words.
+    PROMPT;
+
+            $user = "Student is in week {$week} of 30. SEA is in {$weeks} weeks. "
+                . "Overall status: {$status}. {$subjects}. "
+                . "Total weeks behind: {$behind}. "
+                . "Write the student summary.";
+        }
+
+        return $this->groq->complete($system, $user, 512);
+    }
+
+    public function generateWritingFeedback(string $submission, string $prompt, string $type): array
+    {
+        $system = <<<PROMPT
+    You are an experienced primary school English teacher in Trinidad and Tobago
+    marking SEA writing practice. Score each dimension out of 10 and give one specific,
+    actionable improvement tip per dimension.
+    You must respond with valid JSON only. No preamble, no markdown, no backticks.
+    Return exactly this structure:
+    {
+    "content": {"score": 7, "feedback": "..."},
+    "language": {"score": 7, "feedback": "..."},
+    "grammar": {"score": 8, "feedback": "..."},
+    "organisation": {"score": 6, "feedback": "..."},
+    "overall": "One sentence overall comment."
+    }
+    PROMPT;
+
+        $user = "Writing type: {$type}.\nPrompt given: {$prompt}.\nStudent submission:\n{$submission}";
+
+        $result = $this->groq->completeJson($system, $user, 800);
+
+        return empty($result) ? [
+            'content'      => ['score' => 0, 'feedback' => 'Unable to generate feedback.'],
+            'language'     => ['score' => 0, 'feedback' => 'Unable to generate feedback.'],
+            'grammar'      => ['score' => 0, 'feedback' => 'Unable to generate feedback.'],
+            'organisation' => ['score' => 0, 'feedback' => 'Unable to generate feedback.'],
+            'overall'      => 'Feedback unavailable. Please try again.',
+        ] : $result;
+    }
     public function analyse(User $student): array
     {
         $currentWeek    = $this->getCurrentTeachingWeek();
