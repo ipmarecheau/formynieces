@@ -17,13 +17,6 @@ docker rm formynieces 2>/dev/null || true
 
 echo "Starting new container..."
 touch /opt/formynieces-data/database/database.sqlite
-docker run -d \
-  --name formynieces \
-  --restart unless-stopped \
-  -p 8080:8080 \
-  -v /opt/formynieces-data/database/database.sqlite:/var/www/html/database/database.sqlite \
-  -v /opt/formynieces-data/storage:/var/www/html/storage \
-  formynieces:latest
 
 echo "Running migrations..."
 docker exec formynieces php artisan migrate --force
