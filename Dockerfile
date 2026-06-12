@@ -7,11 +7,13 @@ RUN apk add --no-cache \
     supervisor \
     sqlite \
     sqlite-dev \
+    icu-dev \
+    libzip-dev \
     git \
     curl \
     zip \
     unzip \
-    && docker-php-ext-install pdo pdo_sqlite bcmath \
+    && docker-php-ext-install pdo pdo_sqlite bcmath intl zip \
     && docker-php-ext-enable pdo_sqlite
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
