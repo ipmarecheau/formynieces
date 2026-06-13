@@ -1,31 +1,162 @@
-<x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
-        {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Your Email — ForMyNieces</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --purple: #9333ea;
+            --pink:   #db2777;
+            --bg:     #0f0720;
+            --card:   #1a0d30;
+            --border: rgba(147,51,234,0.35);
+            --text:   #f3e8ff;
+            --muted:  #c4b5fd;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--bg);
+            font-family: 'Nunito', sans-serif;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+            padding: 24px 0;
+        }
+
+        .stars { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+        .star {
+            position: absolute; background: white; border-radius: 50%;
+            animation: twinkle var(--d, 3s) ease-in-out infinite var(--delay, 0s);
+        }
+        @keyframes twinkle {
+            0%,100% { opacity: 0.15; transform: scale(1); }
+            50%      { opacity: 0.9;  transform: scale(1.4); }
+        }
+        .orb { position: fixed; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: 0; }
+        .orb-1 { width: 400px; height: 400px; background: rgba(147,51,234,0.25); top: -100px; left: -100px; }
+        .orb-2 { width: 300px; height: 300px; background: rgba(219,39,119,0.2);  bottom: -80px; right: -80px; }
+
+        .card {
+            position: relative; z-index: 1;
+            background: var(--card);
+            border: 1.5px solid var(--border);
+            border-radius: 24px;
+            padding: 44px 40px;
+            width: 100%; max-width: 440px;
+            margin: 20px;
+            animation: fadeUp 0.5s ease both;
+            text-align: center;
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .brand { margin-bottom: 24px; }
+        .brand-icon {
+            width: 64px; height: 64px;
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+            border-radius: 18px;
+            display: inline-flex; align-items: center; justify-content: center;
+            font-size: 30px; margin-bottom: 14px;
+            box-shadow: 0 0 30px rgba(147,51,234,0.5);
+        }
+        .brand h1 {
+            font-family: 'Fredoka One', cursive; font-size: 24px;
+            background: linear-gradient(135deg, #c084fc, #f472b6);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+
+        .intro { color: var(--muted); font-size: 15px; line-height: 1.6; margin-bottom: 24px; }
+
+        .status {
+            background: rgba(34,197,94,0.12);
+            border: 1.5px solid rgba(34,197,94,0.35);
+            border-radius: 12px; padding: 12px 16px; margin-bottom: 20px;
+            font-size: 13px; color: #86efac;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+            border: none; border-radius: 999px; padding: 14px;
+            color: white; font-family: 'Fredoka One', cursive; font-size: 16px;
+            cursor: pointer; letter-spacing: 0.03em;
+            transition: opacity 0.2s, transform 0.1s;
+        }
+        .btn-submit:hover  { opacity: 0.9; }
+        .btn-submit:active { transform: scale(0.98); }
+
+        .logout-form { margin-top: 18px; }
+        .logout-btn {
+            background: none; border: none; cursor: pointer;
+            font-family: 'Nunito', sans-serif; font-size: 14px;
+            color: var(--muted); text-decoration: underline;
+            transition: color 0.2s;
+        }
+        .logout-btn:hover { color: #f472b6; }
+    </style>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<div class="card">
+    <div class="brand">
+        <div class="brand-icon">📬</div>
+        <h1>Check Your Email</h1>
     </div>
 
+    <p class="intro">
+        Thanks for signing up! Before getting started, could you verify your email
+        address by clicking the link we just emailed to you? If you didn't receive
+        the email, we'll gladly send you another.
+    </p>
+
     @if (session('status') == 'verification-link-sent')
-        <div class="mb-4 font-medium text-sm text-green-600 dark:text-green-400">
-            {{ __('A new verification link has been sent to the email address you provided during registration.') }}
+        <div class="status">
+            A new verification link has been sent to the email address you provided
+            during registration.
         </div>
     @endif
 
-    <div class="mt-4 flex items-center justify-between">
-        <form method="POST" action="{{ route('verification.send') }}">
-            @csrf
+    <form method="POST" action="{{ route('verification.send') }}">
+        @csrf
+        <button type="submit" class="btn-submit">Resend Verification Email 🌟</button>
+    </form>
 
-            <div>
-                <x-primary-button>
-                    {{ __('Resend Verification Email') }}
-                </x-primary-button>
-            </div>
-        </form>
+    <form method="POST" action="{{ route('logout') }}" class="logout-form">
+        @csrf
+        <button type="submit" class="logout-btn">Log Out</button>
+    </form>
+</div>
 
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
-
-            <button type="submit" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">
-                {{ __('Log Out') }}
-            </button>
-        </form>
-    </div>
-</x-guest-layout>
+<script>
+    const container = document.getElementById('stars');
+    for (let i = 0; i < 120; i++) {
+        const s = document.createElement('div');
+        s.className = 'star';
+        const size = Math.random() * 2.5 + 1;
+        s.style.cssText = `
+            width:${size}px; height:${size}px;
+            top:${Math.random()*100}%;
+            left:${Math.random()*100}%;
+            --d:${(Math.random()*4+2).toFixed(1)}s;
+            --delay:-${(Math.random()*5).toFixed(1)}s;
+        `;
+        container.appendChild(s);
+    }
+</script>
+</body>
+</html>

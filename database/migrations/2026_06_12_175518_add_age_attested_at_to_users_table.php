@@ -6,23 +6,20 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    /**
+     * Run the migrations.
+     */
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->enum('role', ['guardian', 'parent', 'student'])->default('student')->after('email');
-            $table->foreignId('parent_id')
-                  ->nullable()
-                  ->after('role')
-                  ->constrained('users')
-                  ->nullOnDelete();
+            $table->timestamp('age_attested_at')->nullable()->after('onboarding_completed_at');
         });
     }
 
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign(['parent_id']);
-            $table->dropColumn(['role', 'parent_id']);
+            $table->dropColumn('age_attested_at');
         });
     }
 };

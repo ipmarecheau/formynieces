@@ -1014,7 +1014,13 @@ class SyllabusModuleSeeder extends Seeder
             ],
         ];
 
+        // Normalize legacy subject vocabulary to the final ('Math','ELA') CHECK set.
+        // 'English Editing' and 'English Comprehension' both collapse to 'ELA';
+        // the Editing/Comprehension/strand distinctions are preserved in sea_section.
         foreach ($modules as $module) {
+            if (in_array($module['subject'], ['English Editing', 'English Comprehension'], true)) {
+                $module['subject'] = 'ELA';
+            }
             SyllabusModule::create($module);
         }
     }

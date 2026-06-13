@@ -1,4 +1,5 @@
 *.log
+ tests/Browser/Screenshots
 .DS_Store
 .env
 .env.backup

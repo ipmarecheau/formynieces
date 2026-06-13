@@ -99,33 +99,16 @@
         }
         input::placeholder { color: rgba(196,181,253,0.4); }
 
-        /* Role selector */
-        .role-group {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
-            margin-bottom: 18px;
+        /* 18+ attestation checkbox */
+        .attestation { margin-bottom: 18px; }
+        .attestation-label {
+            display: flex; align-items: flex-start; gap: 10px;
+            text-transform: none; letter-spacing: 0; font-weight: 500;
+            font-size: 13px; color: var(--muted); cursor: pointer; margin-bottom: 0;
         }
-        .role-option { display: none; }
-        .role-label {
-            display: flex; flex-direction: column; align-items: center;
-            gap: 6px; padding: 14px 10px;
-            background: rgba(255,255,255,0.04);
-            border: 1.5px solid rgba(147,51,234,0.25);
-            border-radius: 14px; cursor: pointer;
-            transition: all 0.2s; text-transform: none;
-            letter-spacing: 0; font-size: 14px; font-weight: 600;
-            color: var(--muted);
-        }
-        .role-label .icon { font-size: 24px; }
-        .role-option:checked + .role-label {
-            border-color: var(--purple);
-            background: rgba(147,51,234,0.15);
-            color: #e9d5ff;
-            box-shadow: 0 0 0 3px rgba(147,51,234,0.2);
-        }
-        .role-section-label {
-            font-size: 13px; font-weight: 700; color: var(--muted);
-            letter-spacing: 0.04em; text-transform: uppercase;
-            margin-bottom: 10px; display: block;
+        .attestation-label input[type="checkbox"] {
+            width: 18px; height: 18px; margin-top: 1px; flex-shrink: 0;
+            accent-color: var(--purple); cursor: pointer;
         }
 
         .btn-submit {
@@ -209,24 +192,15 @@
                    required autocomplete="new-password">
         </div>
 
-        <span class="role-section-label">I am a…</span>
-        <div class="role-group">
-            <input type="radio" name="role" id="role-student" value="student" class="role-option"
-                   {{ old('role', 'student') === 'student' ? 'checked' : '' }}>
-            <label for="role-student" class="role-label">
-                <span class="icon">🎒</span>
-                Student
-            </label>
-
-            <input type="radio" name="role" id="role-parent" value="parent" class="role-option"
-                   {{ old('role') === 'parent' ? 'checked' : '' }}>
-            <label for="role-parent" class="role-label">
-                <span class="icon">👩‍👧</span>
-                Parent
+        <div class="field attestation">
+            <label class="attestation-label" for="age_attestation">
+                <input type="checkbox" id="age_attestation" name="age_attestation" value="1"
+                       {{ old('age_attestation') ? 'checked' : '' }}>
+                <span>I confirm that I am 18 years of age or older and am the parent or legal guardian setting up this account.</span>
             </label>
         </div>
 
-        <button type="submit" class="btn-submit">Create Account 🌟</button>
+        <button type="submit" id="submit" class="btn-submit">Create Account 🌟</button>
     </form>
 
     <p class="foot">
