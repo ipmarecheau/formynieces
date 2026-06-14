@@ -19,4 +19,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->name('child.store');
 });
 
+Route::middleware('auth')->group(function () {
+    Route::get('/diagnostic', function () {
+        return view('student.diagnostic-intro');
+    })->name('diagnostic.intro');
+});
+
 require __DIR__.'/auth.php';

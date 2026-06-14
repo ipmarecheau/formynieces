@@ -36,6 +36,11 @@ class AuthenticatedSessionController extends Controller
      */
     private function redirectTo($user): string
     {
+        // A student who hasn't finished onboarding goes to the diagnostic.
+        if ($user->isStudent() && ! $user->hasCompletedOnboarding()) {
+            return route('diagnostic.intro');
+        }
+
         // A guardian with no linked students goes to child setup.
         if ($user->isGuardian() && $user->students()->doesntExist()) {
             return route('child.setup');
