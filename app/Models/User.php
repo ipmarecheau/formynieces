@@ -22,6 +22,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'parent_id',
         'onboarding_completed_at', // Slice 1
         'age_attested_at',
+        'target_sea_year',
+        'known_weak_areas',
     ];
 
     protected $hidden = [
@@ -36,6 +38,7 @@ class User extends Authenticatable implements MustVerifyEmail
             'password' => 'hashed',
             'onboarding_completed_at' => 'datetime', // Slice 1
             'age_attested_at' => 'datetime',
+            'known_weak_areas' => 'array',
         ];
     }
 

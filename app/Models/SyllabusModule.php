@@ -64,4 +64,24 @@ class SyllabusModule extends Model
             'anchor_question_id',
         )->withTimestamps();
     }
+
+    /**
+     * Distinct guardian-facing strands derived from the "Strand: Topic" naming,
+     * grouped by subject. Used for the child-setup weak-area checkboxes.
+     */
+    public static function strandsBySubject(): array
+    {
+        return static::query()
+            ->whereRaw("instr(topic, ':') > 0")
+            ->get()
+            ->groupBy('subject')
+            ->map(fn ($modules) => $modules
+                ->map(fn ($m) => trim(strstr($m->topic, ':', true)))
+                ->unique()
+                ->sort()
+                ->values()
+                ->all()
+            )
+            ->all();
+    }
 }

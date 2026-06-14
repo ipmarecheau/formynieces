@@ -13,9 +13,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->name('dashboard');
     Route::get('/exam-agent', [ExamAgentController::class, 'index'])
         ->name('exam-agent');
-    Route::get('/child-setup', function () {
-        return view('guardian.child-setup');
-    })->name('child.setup');
+    Route::get('/child-setup', [\App\Http\Controllers\ChildSetupController::class, 'create'])
+        ->name('child.setup');
+    Route::post('/child-setup', [\App\Http\Controllers\ChildSetupController::class, 'store'])
+        ->name('child.store');
 });
 
 require __DIR__.'/auth.php';
