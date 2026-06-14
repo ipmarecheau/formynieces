@@ -9,6 +9,20 @@ echo "Copying production env..."
 cp .env.production .env
 
 echo "Building Docker image..."
+
+# Ensure an APP_KEY exists (generate once if missing; never overwrite)
+if ! grep -q '^APP_KEY=base64:' .env.production; then
+  echo "No APP_KEY found — generating one..."
+  KEY="base64:$(head -c 32 /dev/urandom | base64)"
+  # remove any empty APP_KEY= line, then append the real key
+  sed -i '/^APP_KEY=$/d' .env.production
+  echo "APP_KEY=${KEY}" >> .env.production
+  cp .env.production .env
+  echo "APP_KEY generated and saved to .env.production"
+else
+  echo "APP_KEY present — skipping generation."
+fi
+
 docker build -t formynieces:latest .
 
 echo "Stopping old container if running..."

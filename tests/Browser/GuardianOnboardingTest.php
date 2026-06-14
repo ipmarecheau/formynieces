@@ -14,7 +14,7 @@ it('registers a guardian with an 18+ attestation', function () {
 
     // Allow the POST + redirect to settle, then assert the destination.
     $page->assertPathContains('verify-email');
-    
+
     $this->assertAuthenticated();
 
     $user = User::where('email', 'guardian@example.test')->first();
@@ -23,4 +23,17 @@ it('registers a guardian with an 18+ attestation', function () {
         ->and($user->role)->toBe('guardian')
         ->and($user->age_attested_at)->not->toBeNull()
         ->and($user->hasVerifiedEmail())->toBeFalse();
+});
+
+it('redirects an unverified guardian away from child setup', function () {
+    $guardian = User::factory()->create([
+        'role' => 'guardian',
+        'age_attested_at' => now(),
+        'email_verified_at' => null, // unverified
+    ]);
+
+    $page = visit('/child-setup')->actingAs($guardian);
+
+    $page->navigate('/child-setup')
+         ->assertPathContains('verify-email');
 });

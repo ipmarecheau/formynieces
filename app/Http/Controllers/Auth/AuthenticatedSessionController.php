@@ -28,9 +28,21 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        return redirect()->intended($this->redirectTo($request->user()));
     }
 
+        /**
+     * Decide where a user goes after logging in.
+     */
+    private function redirectTo($user): string
+    {
+        // A guardian with no linked students goes to child setup.
+        if ($user->isGuardian() && $user->students()->doesntExist()) {
+            return route('child.setup');
+        }
+
+        return route('dashboard');
+    }
     /**
      * Destroy an authenticated session.
      */
