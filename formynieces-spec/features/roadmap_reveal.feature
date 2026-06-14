@@ -11,6 +11,34 @@ Feature: Reveal and roadmap seeding
     And inferred-mastered modules have status "diagnostic_passed"
     And all remaining modules have status "not_started"
 
+Rule: The diagnostic result is reconciled against the guardian's stated weak areas
+
+    Scenario: The diagnostic confirms the guardian's weak areas exactly
+      Given a guardian stated known weak areas at child setup
+      And the completed diagnostic identifies the same weak strands
+      When her roadmap is generated
+      Then the roadmap proceeds from the diagnostic result without a guardian decision
+
+    Scenario: The diagnostic finds additional weak areas beyond the guardian's list
+      Given a guardian stated known weak areas at child setup
+      And the completed diagnostic identifies those strands and further weak strands
+      When her roadmap is generated
+      Then the roadmap proceeds from the diagnostic result without a guardian decision
+
+    Scenario: The diagnostic finds fewer weak areas than the guardian stated
+      Given a guardian stated known weak areas at child setup
+      And the completed diagnostic clears one or more of those strands
+      When her roadmap is generated
+      Then the guardian is shown where the diagnostic and her input differ
+      And she is offered to proceed with the diagnostic result or keep her stated weak areas
+      And the reveal does not complete onboarding until she chooses
+
+    Scenario: The guardian keeps her stated weak areas over the diagnostic
+      Given the guardian has been shown a diagnostic that cleared a strand she flagged
+      When she chooses to keep her stated weak area
+      Then that strand's modules are treated as not-started in the roadmap
+      And the remaining diagnostic results are applied unchanged
+      
   Scenario: Completion computes the starting week and first target
     Given a student's diagnostic session has completed
     When her roadmap is generated

@@ -17,7 +17,7 @@ Legend: ✅ exists today · 🔧 exists, needs change · 🆕 new
 |---|---|---|
 | name, target SEA year 🆕, login | log in, take diagnostic, view map, open module, take quiz, submit writing, view streak | belongs to Guardian; has many ProgressRecords, WeeklyTargets, DiagnosticSessions, WritingSubmissions |
 
-🆕 needed: `target_sea_year` (or on a student_profile), pause state for S6 (`@v1.1`).
+🆕 needed: `target_sea_year` (or on a student_profile); `known_weak_areas` 🆕 (nullable JSON, guardian-supplied at child setup) — consumed by the reveal's reconciliation against diagnostic findings (see roadmap_reveal.feature), not just stored; pause state for S6 (`@v1.1`).
 
 ### Guardian 🧑 ✅
 *Backed by:* `users` (role=guardian/parent)
@@ -98,3 +98,4 @@ Guardian 1──* Student 1──* ProgressRecord *──1 SyllabusModule 1─�
 | pause/resume fields (paused_at, resumed weeks offset) | `@v1.1` (S6) |
 | second-guardian link table (read-only role) | `@roadmap` (S8) |
 | notifications/digest log | `@v1.1` (S7) |
+| student `known_weak_areas` (nullable JSON, guardian hint, reconciled at reveal) | `@mvp` |
