@@ -1,4 +1,39 @@
 @mvp @student @system
+
+# ─────────────────────────────────────────────────────────────────────────
+# SEA SCORING MODEL — canonical reference (MoE Assessment Framework 2025–2028
+# + SEA 2023 Information Booklet). Governs item allocation and ExamAgentInsight.
+#
+# Three papers, weighted 100:60:40 (Math:ELA:Writing) = 50/30/20 normalised.
+# Pipeline: raw → scale Math/ELA to 100 → per-paper standard score (z against
+# the year's national mean/SD) → weight → sum = Composite Standard Score.
+#
+# CRITICAL: the composite is NOT computable from public data. Per-paper national
+# mean and SD are released per cohort, never published in advance, so the real
+# composite (e.g. the sample report's 234.567) cannot be reproduced from a
+# child's three scores. Therefore this platform produces an ESTIMATE OF
+# PREPAREDNESS over the 50/30/20 weighting — never a predicted composite or
+# school placement. (A four-coefficient linear fit could in theory recover the
+# pipeline, but needs many real score→composite pairs we cannot obtain, so it
+# is not an actionable path.)
+#
+# Two distinct senses of "subject impact" — both true, do not conflate:
+#   • Total weight:   Math > ELA > Writing  → drives overall study PRIORITY.
+#   • Per-raw-mark:   Writing is high-leverage (20-pt scale → each mark large);
+#                     exact ranking depends on the unknown per-paper SD, so
+#                     treat as "do not neglect Writing", NOT as a hard rule.
+#
+# Only MoE-defined anchor available: composite ≤ 30% triggers a mandatory
+# re-sit ("not yet mastered basic numeracy/literacy"). Use as the honest floor
+# for guardian messaging, never as a predicted score.
+#
+# Paper structure (for anchor-bank sizing, Slice 2):
+#   Math    75 marks / 40 items — Number heaviest (19 items).
+#   ELA     64 marks / 36 items — Section I 18 items; Section II (reading
+#           comprehension) 18 items — an EVEN split.
+#   Writing  1 sample / 20 marks — parallel track, 1 diagnostic sample only.
+# ─────────────────────────────────────────────────────────────────────────
+
 Feature: Adaptive diagnostic
   To start every girl at the right place on her adventure map, the system runs
   a warm adaptive multiple-choice diagnostic that infers mastery across all 90
@@ -46,8 +81,7 @@ Feature: Adaptive diagnostic
     Given a student whose onboarding is not completed
     When a diagnostic session is started for her
     Then the item plan allocates approximately 15 Math anchors across the four strands with Number weighted heaviest
-    And approximately 9 ELA Section I anchors covering spelling, punctuation and grammar
-    And a small number of reading comprehension anchors
+    And a roughly even split of ELA anchors between Section I (spelling, punctuation, grammar) and Section II (reading comprehension)
     And exactly one writing sample task
 
   Scenario: An encouraging interstitial appears every eighth item
