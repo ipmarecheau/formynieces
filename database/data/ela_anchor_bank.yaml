@@ -1,0 +1,590 @@
+# ============================================================================
+# ELA Anchor Question Bank — ForMyNieces SEA diagnostic (Slice 2c)
+# ============================================================================
+# 43 authored MCQ anchors covering the 35 ELA modules (Section I mechanics
+# 52-68, Section II comprehension/poetry/graphic 73-90) at >=3x coverage
+# (direct + indirect), with an even split: 21 Section I, 22 Section II.
+# Propagation does NOT flow through Writing nodes (69-72) — those are a
+# SEPARATE bank (writing_anchor_bank.yaml).
+#
+# PROVENANCE: every item original, authored for this platform, SEA Standard-5
+# (T&T) curriculum-aligned, copied from no past paper. license CC-BY-NC-4.0.
+#
+# Difficulty words map to ints in DB: easy=1, medium=2, hard=3.
+# ============================================================================
+
+provenance_default: &prov
+  source: "Original — authored for ForMyNieces, SEA Standard-5 (T&T) curriculum-aligned"
+  license: "CC-BY-NC-4.0"
+
+questions:
+
+  # ======================= SECTION I — MECHANICS =========================
+
+  # ---- Spelling (52-57) ----
+  - module: 54
+    sea_section: "Section I"
+    strand: "Spelling"
+    difficulty: easy
+    prompt: "Which word is spelled correctly when we add -ing to 'hope'?"
+    options: ["hoping", "hopeing", "hopping", "hopinng"]
+    correct_index: 0
+    distractors:
+      1: "keeps the silent -e before adding -ing"
+      2: "doubles the consonant as if the e were short"
+      3: "doubles the wrong consonant"
+    <<: *prov
+
+  - module: 55
+    sea_section: "Section I"
+    strand: "Spelling"
+    difficulty: medium
+    prompt: "Which word is spelled correctly?"
+    options: ["receive", "recieve", "receeve", "receve"]
+    correct_index: 0
+    distractors:
+      1: "applies 'i before e' without the 'after c' exception"
+      2: "doubles the e incorrectly"
+      3: "drops a needed vowel"
+    <<: *prov
+
+  - module: 56
+    sea_section: "Section I"
+    strand: "Spelling"
+    difficulty: medium
+    prompt: "What does the prefix 'un-' mean in the word 'unhappy'?"
+    options: ["not", "very", "again", "before"]
+    correct_index: 0
+    distractors:
+      1: "confuses the prefix with an intensifier"
+      2: "confuses 'un-' with 're-'"
+      3: "confuses 'un-' with 'pre-'"
+    <<: *prov
+
+  - module: 57
+    sea_section: "Section I"
+    strand: "Spelling"
+    difficulty: easy
+    prompt: "Which word is a synonym for 'happy'?"
+    options: ["joyful", "sad", "tired", "angry"]
+    correct_index: 0
+    distractors:
+      1: "chooses an antonym instead of a synonym"
+      2: "chooses an unrelated feeling"
+      3: "chooses an unrelated feeling"
+    <<: *prov
+
+  - module: 57
+    sea_section: "Section I"
+    strand: "Spelling"
+    difficulty: medium
+    prompt: "Which pair are antonyms?"
+    options: ["ancient — modern", "big — large", "happy — glad", "fast — quick"]
+    correct_index: 0
+    distractors:
+      1: "chooses synonyms instead of antonyms"
+      2: "chooses synonyms instead of antonyms"
+      3: "chooses synonyms instead of antonyms"
+    <<: *prov
+
+  - module: 57
+    sea_section: "Section I"
+    strand: "Spelling"
+    difficulty: hard
+    prompt: "In 'The wind blew the leaves away,' the word 'blew' is a homophone of:"
+    options: ["blue", "below", "blow", "blue-green"]
+    correct_index: 0
+    distractors:
+      1: "confuses a homophone with a similar-looking word"
+      2: "chooses the base verb, not the homophone"
+      3: "adds an unrelated colour word"
+    <<: *prov
+
+  # ---- Punctuation (58-60) ----
+  - module: 60
+    sea_section: "Section I"
+    strand: "Punctuation"
+    difficulty: medium
+    prompt: "Which sentence uses quotation marks correctly?"
+    options: ["\"Come here,\" said Mum.", "Come here, said Mum.", "\"Come here said Mum.\"", "Come \"here,\" said Mum."]
+    correct_index: 0
+    distractors:
+      1: "omits the quotation marks around speech"
+      2: "puts the whole sentence in quotes, not just the speech"
+      3: "places quotes around the wrong words"
+    <<: *prov
+
+  # ---- Capitalisation (61) ----
+  - module: 61
+    sea_section: "Section I"
+    strand: "Capitalisation"
+    difficulty: easy
+    prompt: "Which sentence is capitalised correctly?"
+    options: ["We visited Port of Spain in August.", "we visited Port of Spain in August.", "We visited port of spain in august.", "We Visited Port Of Spain In August."]
+    correct_index: 0
+    distractors:
+      1: "fails to capitalise the first word"
+      2: "fails to capitalise proper nouns and the month"
+      3: "capitalises every word"
+    <<: *prov
+
+  - module: 61
+    sea_section: "Section I"
+    strand: "Capitalisation"
+    difficulty: medium
+    prompt: "Which word should be capitalised in: 'my friend speaks french and spanish'?"
+    options: ["French and Spanish", "friend", "speaks", "my (only)"]
+    correct_index: 0
+    distractors:
+      1: "capitalises a common noun"
+      2: "capitalises a verb"
+      3: "capitalises only the first word"
+    <<: *prov
+
+  - module: 61
+    sea_section: "Section I"
+    strand: "Capitalisation"
+    difficulty: hard
+    prompt: "Which title is capitalised correctly?"
+    options: ["The Lion and the Mouse", "the lion and the mouse", "The Lion And The Mouse", "the Lion and the Mouse"]
+    correct_index: 0
+    distractors:
+      1: "capitalises nothing"
+      2: "capitalises small joining words too"
+      3: "fails to capitalise the first word"
+    <<: *prov
+
+  # ---- Grammar (62-68) ----
+  - module: 62
+    sea_section: "Section I"
+    strand: "Grammar"
+    difficulty: easy
+    prompt: "In the sentence 'The dog barked loudly,' which word is the verb?"
+    options: ["barked", "dog", "loudly", "the"]
+    correct_index: 0
+    distractors:
+      1: "chooses the noun"
+      2: "chooses the adverb"
+      3: "chooses the article"
+    <<: *prov
+
+  - module: 64
+    sea_section: "Section I"
+    strand: "Grammar"
+    difficulty: medium
+    prompt: "Which sentence has correct subject-verb agreement?"
+    options: ["The children play outside.", "The children plays outside.", "The child play outside.", "The children playing outside."]
+    correct_index: 0
+    distractors:
+      1: "adds -s to the verb with a plural subject"
+      2: "uses a plural verb with a singular subject"
+      3: "uses a participle without a helping verb"
+    <<: *prov
+
+  - module: 66
+    sea_section: "Section I"
+    strand: "Grammar"
+    difficulty: medium
+    prompt: "Which is a complete complex sentence?"
+    options: ["Because it rained, we stayed inside.", "Because it rained.", "It rained we stayed inside.", "Rained inside we."]
+    correct_index: 0
+    distractors:
+      1: "is only a dependent clause (a fragment)"
+      2: "is a run-on with no joining word"
+      3: "has no proper structure"
+    <<: *prov
+
+  - module: 66
+    sea_section: "Section I"
+    strand: "Grammar"
+    difficulty: hard
+    prompt: "Which word joins the two ideas best: 'I wanted to play ___ it was raining.'?"
+    options: ["but", "and", "so", "or"]
+    correct_index: 0
+    distractors:
+      1: "joins with addition, not contrast"
+      2: "joins as a result, reversing the meaning"
+      3: "offers a choice, which does not fit"
+    <<: *prov
+
+  - module: 66
+    sea_section: "Section I"
+    strand: "Grammar"
+    difficulty: easy
+    prompt: "Which sentence is a compound sentence?"
+    options: ["I read a book and she watched TV.", "I read a book.", "The big red book.", "Reading a book quietly."]
+    correct_index: 0
+    distractors:
+      1: "is a simple sentence"
+      2: "is a phrase, not a sentence"
+      3: "is a phrase, not a sentence"
+    <<: *prov
+
+  - module: 67
+    sea_section: "Section I"
+    strand: "Grammar"
+    difficulty: medium
+    prompt: "Which modal verb shows something is allowed: 'You ___ go out to play.'?"
+    options: ["may", "must", "should", "would"]
+    correct_index: 0
+    distractors:
+      1: "shows obligation, not permission"
+      2: "shows advice, not permission"
+      3: "shows a conditional, not permission"
+    <<: *prov
+
+  - module: 67
+    sea_section: "Section I"
+    strand: "Grammar"
+    difficulty: hard
+    prompt: "Which sentence uses a modal to show possibility?"
+    options: ["It might rain later.", "It rains every day.", "It rained yesterday.", "It is raining now."]
+    correct_index: 0
+    distractors:
+      1: "states a fact, not a possibility"
+      2: "states a past fact"
+      3: "states a present fact"
+    <<: *prov
+
+  - module: 67
+    sea_section: "Section I"
+    strand: "Grammar"
+    difficulty: easy
+    prompt: "Which word is a modal verb?"
+    options: ["can", "run", "happy", "quickly"]
+    correct_index: 0
+    distractors:
+      1: "chooses a main verb"
+      2: "chooses an adjective"
+      3: "chooses an adverb"
+    <<: *prov
+
+  - module: 68
+    sea_section: "Section I"
+    strand: "Grammar"
+    difficulty: medium
+    prompt: "What is the comparative form of 'big'?"
+    options: ["bigger", "biggest", "more big", "big"]
+    correct_index: 0
+    distractors:
+      1: "uses the superlative instead of the comparative"
+      2: "uses 'more' with a short adjective"
+      3: "gives the base form"
+    <<: *prov
+
+  - module: 68
+    sea_section: "Section I"
+    strand: "Grammar"
+    difficulty: hard
+    prompt: "Which sentence uses the superlative correctly?"
+    options: ["She is the tallest girl in the class.", "She is the taller girl in the class.", "She is the most tallest girl.", "She is more tall than all."]
+    correct_index: 0
+    distractors:
+      1: "uses the comparative where superlative is needed"
+      2: "doubles the superlative"
+      3: "uses a wrong comparative structure"
+    <<: *prov
+
+  - module: 68
+    sea_section: "Section I"
+    strand: "Grammar"
+    difficulty: easy
+    prompt: "Complete: 'A cat is ___ than a mouse.'"
+    options: ["bigger", "biggest", "big", "more bigger"]
+    correct_index: 0
+    distractors:
+      1: "uses the superlative for a two-item comparison"
+      2: "uses the base form"
+      3: "doubles the comparative"
+    <<: *prov
+
+  # ======================= SECTION II — COMPREHENSION ====================
+
+  # ---- Reading comprehension (73-79) ----
+  - module: 73
+    sea_section: "Section II"
+    strand: "Comprehension"
+    difficulty: easy
+    prompt: "A paragraph describes how bees collect nectar, make honey, and store it. What is the main idea?"
+    options: ["How bees make honey", "Bees can sting", "Flowers are colourful", "Honey is sweet"]
+    correct_index: 0
+    distractors:
+      1: "picks an unrelated fact about bees"
+      2: "picks a detail not central to the passage"
+      3: "picks a minor detail as the main idea"
+    <<: *prov
+
+  - module: 74
+    sea_section: "Section II"
+    strand: "Comprehension"
+    difficulty: medium
+    prompt: "Main idea: 'Exercise keeps you healthy.' Which sentence is a SUPPORTING detail?"
+    options: ["Running strengthens your heart.", "Exercise is important.", "Health matters to everyone.", "People should be healthy."]
+    correct_index: 0
+    distractors:
+      1: "restates the main idea, not a detail"
+      2: "is a general statement, not a specific detail"
+      3: "is a general statement, not a specific detail"
+    <<: *prov
+
+  - module: 75
+    sea_section: "Section II"
+    strand: "Comprehension"
+    difficulty: medium
+    prompt: "In 'The weary traveller rested,' the word 'weary' most likely means:"
+    options: ["tired", "happy", "fast", "young"]
+    correct_index: 0
+    distractors:
+      1: "ignores the context clue 'rested'"
+      2: "chooses an unrelated meaning"
+      3: "chooses an unrelated meaning"
+    <<: *prov
+
+  - module: 76
+    sea_section: "Section II"
+    strand: "Comprehension"
+    difficulty: medium
+    prompt: "'The ground was wet because it rained.' What is the CAUSE?"
+    options: ["It rained", "The ground was wet", "The ground was dry", "It was sunny"]
+    correct_index: 0
+    distractors:
+      1: "names the effect instead of the cause"
+      2: "states the opposite"
+      3: "states an unrelated condition"
+    <<: *prov
+
+  - module: 77
+    sea_section: "Section II"
+    strand: "Comprehension"
+    difficulty: hard
+    prompt: "'Maria packed her umbrella and rain boots before leaving.' What can you INFER?"
+    options: ["She expected rain", "She was going to the beach", "It was very hot", "She was late"]
+    correct_index: 0
+    distractors:
+      1: "ignores the clues (umbrella, boots)"
+      2: "contradicts the clues"
+      3: "adds an unsupported idea"
+    <<: *prov
+
+  - module: 78
+    sea_section: "Section II"
+    strand: "Comprehension"
+    difficulty: hard
+    prompt: "An author writes a passage full of facts about recycling steps. What is the author's PURPOSE?"
+    options: ["To inform", "To entertain", "To frighten", "To sell something"]
+    correct_index: 0
+    distractors:
+      1: "confuses a factual purpose with storytelling"
+      2: "misreads neutral facts as fear"
+      3: "assumes persuasion without evidence"
+    <<: *prov
+
+  - module: 79
+    sea_section: "Section II"
+    strand: "Comprehension"
+    difficulty: hard
+    prompt: "After reading two articles on the same topic, the better way to judge which is more reliable is to check:"
+    options: ["Whether facts are supported by evidence", "Which is longer", "Which uses bigger words", "Which was written first"]
+    correct_index: 0
+    distractors:
+      1: "judges by length, not quality"
+      2: "judges by vocabulary, not evidence"
+      3: "judges by date alone"
+    <<: *prov
+
+  # ---- Poetry (80-86) ----
+  - module: 80
+    sea_section: "Section II"
+    strand: "Poetry"
+    difficulty: easy
+    prompt: "In a poem, the line says 'The cat sat on the mat.' What is explicitly stated?"
+    options: ["A cat is on a mat", "The cat is happy", "The mat is old", "The cat is hungry"]
+    correct_index: 0
+    distractors:
+      1: "infers a feeling not stated"
+      2: "adds a detail not in the line"
+      3: "infers a state not stated"
+    <<: *prov
+
+  - module: 81
+    sea_section: "Section II"
+    strand: "Poetry"
+    difficulty: medium
+    prompt: "'Her smile was as bright as the sun.' This is an example of:"
+    options: ["a simile", "a metaphor", "personification", "alliteration"]
+    correct_index: 0
+    distractors:
+      1: "confuses simile (uses 'as') with metaphor"
+      2: "confuses comparison with giving human traits"
+      3: "confuses comparison with repeated sounds"
+    <<: *prov
+
+  - module: 82
+    sea_section: "Section II"
+    strand: "Poetry"
+    difficulty: medium
+    prompt: "Which phrase appeals to the sense of SMELL?"
+    options: ["the scent of fresh bread", "the loud thunder", "the bright light", "the soft pillow"]
+    correct_index: 0
+    distractors:
+      1: "appeals to hearing"
+      2: "appeals to sight"
+      3: "appeals to touch"
+    <<: *prov
+
+  - module: 83
+    sea_section: "Section II"
+    strand: "Poetry"
+    difficulty: hard
+    prompt: "A poem uses dark, slow words and talks of empty streets. What is the MOOD?"
+    options: ["gloomy", "cheerful", "excited", "playful"]
+    correct_index: 0
+    distractors:
+      1: "chooses the opposite mood"
+      2: "ignores the dark word choices"
+      3: "ignores the slow, empty imagery"
+    <<: *prov
+
+  - module: 84
+    sea_section: "Section II"
+    strand: "Poetry"
+    difficulty: hard
+    prompt: "A character shares her lunch with a hungry classmate. We can CONCLUDE she is:"
+    options: ["kind", "selfish", "angry", "lazy"]
+    correct_index: 0
+    distractors:
+      1: "concludes the opposite of the action"
+      2: "ignores the helpful action"
+      3: "draws an unrelated trait"
+    <<: *prov
+
+  - module: 85
+    sea_section: "Section II"
+    strand: "Poetry"
+    difficulty: medium
+    prompt: "A poem about helping others connects to real life by reminding us to:"
+    options: ["care for those around us", "ignore our neighbours", "only help ourselves", "stay indoors"]
+    correct_index: 0
+    distractors:
+      1: "states the opposite message"
+      2: "states the opposite message"
+      3: "draws an unrelated lesson"
+    <<: *prov
+
+  - module: 86
+    sea_section: "Section II"
+    strand: "Poetry"
+    difficulty: hard
+    prompt: "A poem describes a polluted river sadly. A good way to APPRECIATE and respond is to:"
+    options: ["Discuss how it makes us want to protect nature", "Count the number of lines", "Note only that it rhymes", "Say it is too long"]
+    correct_index: 0
+    distractors:
+      1: "responds to form, not meaning"
+      2: "notices a surface feature only"
+      3: "dismisses without engaging"
+    <<: *prov
+
+  - module: 86
+    sea_section: "Section II"
+    strand: "Poetry"
+    difficulty: medium
+    prompt: "Which response best EVALUATES a poem's message?"
+    options: ["The poem teaches us courage, shown through the hero's choices", "The poem has four verses", "The poem uses the word 'brave'", "The poem is on page ten"]
+    correct_index: 0
+    distractors:
+      1: "describes structure, not message"
+      2: "notes a single word, not the message"
+      3: "gives an irrelevant fact"
+    <<: *prov
+
+  - module: 86
+    sea_section: "Section II"
+    strand: "Poetry"
+    difficulty: hard
+    prompt: "A poem ends with a question to the reader. The poet most likely wants to:"
+    options: ["make the reader think", "confuse the reader", "end quickly", "fill space"]
+    correct_index: 0
+    distractors:
+      1: "assumes a negative intent"
+      2: "assumes carelessness"
+      3: "assumes carelessness"
+    <<: *prov
+
+  # ---- Graphic Text / Media (87-90) ----
+  - module: 87
+    sea_section: "Section II"
+    strand: "Media"
+    difficulty: easy
+    prompt: "A poster shows a big apple and the words 'Eat Healthy.' What is the OVERT message?"
+    options: ["Eat healthy food", "Apples are expensive", "Fruit is red", "Shops are open"]
+    correct_index: 0
+    distractors:
+      1: "adds an idea not shown"
+      2: "notes a colour, not the message"
+      3: "adds an unrelated idea"
+    <<: *prov
+
+  - module: 88
+    sea_section: "Section II"
+    strand: "Media"
+    difficulty: medium
+    prompt: "An advert shows a smiling family using a product. What is IMPLIED?"
+    options: ["The product brings happiness", "The family is tired", "The product is broken", "The advert is in black and white"]
+    correct_index: 0
+    distractors:
+      1: "contradicts the smiling image"
+      2: "contradicts the positive scene"
+      3: "notes a false visual detail"
+    <<: *prov
+
+  - module: 89
+    sea_section: "Section II"
+    strand: "Media"
+    difficulty: hard
+    prompt: "A road-safety poster uses bright red and bold letters. Who is the likely AUDIENCE and purpose?"
+    options: ["Drivers, to warn them to be careful", "Babies, to amuse them", "Chefs, to sell food", "Teachers, to grade work"]
+    correct_index: 0
+    distractors:
+      1: "ignores the road-safety context"
+      2: "ignores the warning context"
+      3: "ignores the warning context"
+    <<: *prov
+
+  - module: 90
+    sea_section: "Section II"
+    strand: "Media"
+    difficulty: hard
+    prompt: "Which best EVALUATES whether an advert is effective?"
+    options: ["It clearly persuades its audience to act", "It uses many colours", "It is large", "It has a picture"]
+    correct_index: 0
+    distractors:
+      1: "judges by colour, not effect"
+      2: "judges by size, not effect"
+      3: "notes a feature, not effectiveness"
+    <<: *prov
+
+  - module: 90
+    sea_section: "Section II"
+    strand: "Media"
+    difficulty: medium
+    prompt: "A media campaign uses a famous athlete. Why is this technique effective?"
+    options: ["People trust and admire the athlete", "The athlete is tall", "Sport is fun", "The advert is short"]
+    correct_index: 0
+    distractors:
+      1: "names an irrelevant trait"
+      2: "gives an unrelated reason"
+      3: "gives an unrelated reason"
+    <<: *prov
+
+  - module: 90
+    sea_section: "Section II"
+    strand: "Media"
+    difficulty: easy
+    prompt: "Which technique is used when an advert repeats a slogan many times?"
+    options: ["Repetition to make it memorable", "Subtraction", "Measurement", "Rhyming only"]
+    correct_index: 0
+    distractors:
+      1: "names an unrelated idea"
+      2: "names an unrelated idea"
+      3: "names a minor feature, not the main technique"
+    <<: *prov

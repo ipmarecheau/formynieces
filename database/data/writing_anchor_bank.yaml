@@ -1,0 +1,182 @@
+# ============================================================================
+# Writing Anchor Question Bank — ForMyNieces SEA diagnostic (Slice 2c)
+# ============================================================================
+# 12 authored MCQ anchors testing KNOWLEDGE ABOUT WRITING — modules 69-72 —
+# at 3x each. This is a SEPARATE bank from ELA. These are not a written sample;
+# they are multiple-choice questions about writing concepts (essay types,
+# topic sentences, figurative language, organisation), which ARE diagnosable
+# by MCQ. Mastery is set directly on the Writing module; per the diagnostic
+# rules it does NOT propagate into the ELA reading modules these reference.
+#
+# Modules: 69 Narrative, 70 Expository, 71 Figurative Language, 72 Organisation.
+#
+# PROVENANCE: original, authored for this platform, SEA Standard-5 (T&T)
+# curriculum-aligned. license CC-BY-NC-4.0.
+# Difficulty words map to ints in DB: easy=1, medium=2, hard=3.
+# ============================================================================
+
+provenance_default: &prov
+  source: "Original — authored for ForMyNieces, SEA Standard-5 (T&T) curriculum-aligned"
+  license: "CC-BY-NC-4.0"
+
+questions:
+
+  # ---- 69 Narrative Writing ----
+  - module: 69
+    sea_section: "Section I"
+    strand: "Writing"
+    difficulty: easy
+    prompt: "Which type of essay tells a story about events?"
+    options: ["Narrative", "Expository", "Persuasive", "Report"]
+    correct_index: 0
+    distractors:
+      1: "confuses storytelling with explaining"
+      2: "confuses storytelling with arguing"
+      3: "confuses a story with a factual report"
+    <<: *prov
+
+  - module: 69
+    sea_section: "Section I"
+    strand: "Writing"
+    difficulty: medium
+    prompt: "A narrative usually includes a beginning, a middle, and:"
+    options: ["an ending", "a graph", "a price list", "a recipe"]
+    correct_index: 0
+    distractors:
+      1: "names a feature of data, not a story"
+      2: "names an unrelated feature"
+      3: "names an unrelated feature"
+    <<: *prov
+
+  - module: 69
+    sea_section: "Section I"
+    strand: "Writing"
+    difficulty: hard
+    prompt: "Which sentence is the best OPENING for a narrative story?"
+    options: ["The morning the storm came, I woke to a strange silence.", "There are three types of weather.", "In conclusion, storms are dangerous.", "First, gather your materials."]
+    correct_index: 0
+    distractors:
+      1: "opens like an expository text"
+      2: "uses a concluding phrase, not an opening"
+      3: "opens like a set of instructions"
+    <<: *prov
+
+  # ---- 70 Expository Writing ----
+  - module: 70
+    sea_section: "Section I"
+    strand: "Writing"
+    difficulty: easy
+    prompt: "Which type of writing explains or gives information about a topic?"
+    options: ["Expository", "Narrative", "Poem", "Diary"]
+    correct_index: 0
+    distractors:
+      1: "confuses explaining with storytelling"
+      2: "confuses a report with a poem"
+      3: "confuses a report with a personal diary"
+    <<: *prov
+
+  - module: 70
+    sea_section: "Section I"
+    strand: "Writing"
+    difficulty: medium
+    prompt: "Which is the best TOPIC SENTENCE for a paragraph about keeping fit?"
+    options: ["Staying fit has many important benefits.", "I like pizza.", "The sky was blue.", "Once upon a time."]
+    correct_index: 0
+    distractors:
+      1: "is off-topic"
+      2: "is unrelated to the topic"
+      3: "is a story opener, not a topic sentence"
+    <<: *prov
+
+  - module: 70
+    sea_section: "Section I"
+    strand: "Writing"
+    difficulty: hard
+    prompt: "In an expository paragraph, supporting sentences should:"
+    options: ["give facts and details about the topic", "tell a personal story", "rhyme with each other", "ask many questions"]
+    correct_index: 0
+    distractors:
+      1: "describes narrative, not expository support"
+      2: "describes poetry features"
+      3: "describes a questioning style, not support"
+    <<: *prov
+
+  # ---- 71 Figurative Language (in writing) ----
+  - module: 71
+    sea_section: "Section I"
+    strand: "Writing"
+    difficulty: easy
+    prompt: "Which sentence uses a METAPHOR?"
+    options: ["The classroom was a zoo.", "The classroom was as loud as a zoo.", "The classroom was noisy.", "The classroom had many desks."]
+    correct_index: 0
+    distractors:
+      1: "uses a simile ('as ... as'), not a metaphor"
+      2: "is literal, not figurative"
+      3: "is a plain factual statement"
+    <<: *prov
+
+  - module: 71
+    sea_section: "Section I"
+    strand: "Writing"
+    difficulty: medium
+    prompt: "Which sentence uses PERSONIFICATION?"
+    options: ["The wind whispered through the trees.", "The wind was strong.", "The wind blew the kite.", "The wind was cold today."]
+    correct_index: 0
+    distractors:
+      1: "is a plain description"
+      2: "states an action without human traits"
+      3: "is a factual statement"
+    <<: *prov
+
+  - module: 71
+    sea_section: "Section I"
+    strand: "Writing"
+    difficulty: hard
+    prompt: "A writer wants to make her writing more vivid. The best choice is to:"
+    options: ["use figurative language like similes and metaphors", "write only short facts", "use as few words as possible", "repeat the same word often"]
+    correct_index: 0
+    distractors:
+      1: "removes the vividness she wants"
+      2: "limits expression"
+      3: "weakens writing through repetition"
+    <<: *prov
+
+  # ---- 72 Organisation / Coherence / Sentence Variety ----
+  - module: 72
+    sea_section: "Section I"
+    strand: "Writing"
+    difficulty: easy
+    prompt: "Which word best links ideas to show time order in a story?"
+    options: ["Next", "Banana", "Loudly", "Green"]
+    correct_index: 0
+    distractors:
+      1: "is an unrelated noun"
+      2: "is an adverb, not a linking word for time"
+      3: "is an unrelated adjective"
+    <<: *prov
+
+  - module: 72
+    sea_section: "Section I"
+    strand: "Writing"
+    difficulty: medium
+    prompt: "A well-organised paragraph keeps all its sentences:"
+    options: ["focused on one main idea", "about many different topics", "in a random order", "as long as possible"]
+    correct_index: 0
+    distractors:
+      1: "describes an unfocused paragraph"
+      2: "describes poor organisation"
+      3: "confuses length with organisation"
+    <<: *prov
+
+  - module: 72
+    sea_section: "Section I"
+    strand: "Writing"
+    difficulty: hard
+    prompt: "Which sentence does NOT belong in a paragraph about caring for a pet dog?"
+    options: ["My favourite colour is purple.", "Feed your dog twice a day.", "Take your dog for walks.", "Give your dog fresh water."]
+    correct_index: 0
+    distractors:
+      1: "this one DOES belong (about feeding)"
+      2: "this one DOES belong (about exercise)"
+      3: "this one DOES belong (about water)"
+    <<: *prov

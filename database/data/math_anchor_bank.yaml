@@ -1,0 +1,883 @@
+# ============================================================================
+# Math Anchor Question Bank — ForMyNieces SEA diagnostic (Slice 2b)
+# ============================================================================
+# 63 authored multiple-choice anchors covering all 51 Math modules at >=3x
+# (direct + indirect via the prerequisite graph). The adaptive walk shows only
+# ~15 per child; this is the BANK it draws from.
+#
+# PROVENANCE: every item is ORIGINAL, authored fresh for this platform,
+# inspired by the SEA Standard-5 curriculum (Trinidad & Tobago) but copied from
+# no past paper. license: CC-BY-NC-4.0 (platform-owned). This uniform
+# provenance is recorded per-item below and carried into the seeder.
+#
+# FIELD GUIDE
+#   module:        syllabus_modules.id this anchor is attached to (one each)
+#   sea_section:   inherited from the module (Section I / II / III)
+#   strand:        adaptive-ladder strand label
+#   difficulty:    1 easy / 2 medium / 3 hard  (drives climb-descend)
+#   prompt:        the question text shown to the student
+#   options:       four answer choices, in display order
+#   correct_index: 0-based index of the correct option
+#   distractors:   misconception encoded by each WRONG option (by index)
+#   source/license: provenance
+#
+# Difficulty words map to integers in the DB: easy=1, medium=2, hard=3.
+# ============================================================================
+
+provenance_default: &prov
+  source: "Original — authored for ForMyNieces, SEA Standard-5 (T&T) curriculum-aligned"
+  license: "CC-BY-NC-4.0"
+
+questions:
+
+  # ---- NUMBER CONCEPTS (modules 2,3,5) -------------------------------------
+  - module: 5
+    sea_section: "Section I"
+    strand: "Number"
+    difficulty: easy
+    prompt: "Which list shows the numbers in order from smallest to largest?"
+    options: ["4 092, 4 290, 4 029, 4 920", "4 029, 4 092, 4 290, 4 920", "4 920, 4 290, 4 092, 4 029", "4 029, 4 290, 4 092, 4 920"]
+    correct_index: 1
+    distractors:
+      0: "compares left-to-right digit by digit without aligning place value"
+      2: "orders largest-to-smallest, ignores 'smallest first'"
+      3: "correct start then stops checking middle values"
+    <<: *prov
+
+  - module: 3
+    sea_section: "Section I"
+    strand: "Number"
+    difficulty: easy
+    prompt: "A stadium holds 6 748 people. Rounded to the nearest hundred, that is:"
+    options: ["6 700", "6 800", "6 750", "7 000"]
+    correct_index: 0
+    distractors:
+      1: "rounds up on the tens digit (4) as if it were 5 or more"
+      2: "rounds to the nearest fifty"
+      3: "rounds to the nearest thousand instead of hundred"
+    <<: *prov
+
+  - module: 8
+    sea_section: "Section I"
+    strand: "Number"
+    difficulty: medium
+    prompt: "A teacher shares 156 stickers equally among 12 students. How many does each get?"
+    options: ["13", "12", "14", "11"]
+    correct_index: 0
+    distractors:
+      1: "confuses the divisor with the answer"
+      2: "rounds the quotient up after a remainder error"
+      3: "under-divides, leaves a large remainder unhandled"
+    <<: *prov
+
+  - module: 11
+    sea_section: "Section II"
+    strand: "Number"
+    difficulty: hard
+    prompt: "In the number sentence ▢ × 7 = 91, what is the value of ▢?"
+    options: ["13", "14", "12", "637"]
+    correct_index: 0
+    distractors:
+      1: "divides incorrectly (off by one in the 7-times table)"
+      2: "estimates without checking 12 × 7 = 84 which is not 91"
+      3: "multiplies 91 × 7 instead of dividing"
+    <<: *prov
+
+  - module: 13
+    sea_section: "Section I"
+    strand: "Fractions"
+    difficulty: medium
+    prompt: "What is 1/2 + 1/4?"
+    options: ["3/4", "2/6", "1/6", "2/4"]
+    correct_index: 0
+    distractors:
+      1: "adds numerators and denominators straight across"
+      2: "adds tops, multiplies bottoms"
+      3: "finds common denominator but forgets to convert 1/2 to 2/4 first"
+    <<: *prov
+
+  - module: 15
+    sea_section: "Section I"
+    strand: "Fractions"
+    difficulty: medium
+    prompt: "A class has 30 children. 2/5 of them walk to school. How many walk?"
+    options: ["12", "6", "15", "75"]
+    correct_index: 0
+    distractors:
+      1: "divides by 5 but forgets to multiply by 2"
+      2: "takes half instead of two-fifths"
+      3: "multiplies 30 by 5 then by 2, ignoring the fraction meaning"
+    <<: *prov
+
+  - module: 16
+    sea_section: "Section II"
+    strand: "Fractions"
+    difficulty: hard
+    prompt: "Maria had 3/4 of a metre of ribbon. She used 1/3 of a metre. How much ribbon is left?"
+    options: ["5/12", "2/1", "2/12", "1/2"]
+    correct_index: 0
+    distractors:
+      1: "subtracts numerators and denominators straight across"
+      2: "finds common denominator (12) but subtracts the numerators wrongly"
+      3: "estimates to a 'nice' fraction without computing"
+    <<: *prov
+
+  - module: 18
+    sea_section: "Section I"
+    strand: "Decimals"
+    difficulty: medium
+    prompt: "Which decimal is the largest?"
+    options: ["0.7", "0.07", "0.077", "0.0700"]
+    correct_index: 0
+    distractors:
+      1: "reads more digits as a larger value"
+      2: "longest string of digits seen as biggest"
+      3: "trailing zeros read as greater magnitude"
+    <<: *prov
+
+  - module: 20
+    sea_section: "Section I"
+    strand: "Decimals"
+    difficulty: hard
+    prompt: "A pen costs $2.50. How much do 6 pens cost?"
+    options: ["$15.00", "$12.50", "$1.50", "$150.00"]
+    correct_index: 0
+    distractors:
+      1: "adds 6 + 2.50 instead of multiplying, then mis-records"
+      2: "divides instead of multiplying"
+      3: "ignores the decimal point in the product"
+    <<: *prov
+
+  - module: 24
+    sea_section: "Section II"
+    strand: "Percent"
+    difficulty: hard
+    prompt: "A shirt costs $80. It is on sale at 25% off. What is the sale price?"
+    options: ["$60", "$20", "$55", "$100"]
+    correct_index: 0
+    distractors:
+      1: "finds the discount amount but reports it as the price"
+      2: "subtracts 25 dollars instead of 25 percent"
+      3: "adds the percent instead of subtracting"
+    <<: *prov
+
+  - module: 25
+    sea_section: "Section II"
+    strand: "Problem Solving"
+    difficulty: hard
+    prompt: "A trader buys a bag for $120 and sells it for $150. What is the profit?"
+    options: ["$30", "$270", "$25", "$120"]
+    correct_index: 0
+    distractors:
+      1: "adds cost and selling price"
+      2: "computes profit as a percent by mistake"
+      3: "reports the cost price as profit"
+    <<: *prov
+
+  - module: 27
+    sea_section: "Section III"
+    strand: "Problem Solving"
+    difficulty: hard
+    prompt: "A boy buys 3 books at $24 each. He pays with a $100 note. How much change does he get?"
+    options: ["$28", "$76", "$72", "$24"]
+    correct_index: 0
+    distractors:
+      1: "subtracts only one book's cost from $100"
+      2: "computes the total spent but forgets the change step"
+      3: "divides instead of completing the multi-step"
+    <<: *prov
+
+  # ---- NUMBER CONCEPTS top-ups (module 2 expanded notation) ----------------
+  - module: 2
+    sea_section: "Section I"
+    strand: "Number"
+    difficulty: easy
+    prompt: "Which is 5 308 written in expanded form?"
+    options: ["5 000 + 300 + 8", "5 000 + 30 + 8", "500 + 30 + 8", "5 000 + 300 + 80"]
+    correct_index: 0
+    distractors:
+      1: "misreads the 3 as tens not hundreds"
+      2: "drops a place value from the thousands"
+      3: "places the 8 in tens instead of ones"
+    <<: *prov
+
+  - module: 2
+    sea_section: "Section I"
+    strand: "Number"
+    difficulty: medium
+    prompt: "The number 7 040 in expanded form is:"
+    options: ["7 000 + 40", "7 000 + 400", "7 000 + 4", "700 + 40"]
+    correct_index: 0
+    distractors:
+      1: "reads the 4 as hundreds"
+      2: "reads the 4 as ones, ignoring the zero placeholder"
+      3: "shifts thousands down to hundreds"
+    <<: *prov
+
+  - module: 2
+    sea_section: "Section I"
+    strand: "Number"
+    difficulty: hard
+    prompt: "Which number equals 60 000 + 200 + 9?"
+    options: ["60 209", "60 029", "6 209", "62 009"]
+    correct_index: 0
+    distractors:
+      1: "swaps tens and hundreds positions"
+      2: "loses a zero in the ten-thousands"
+      3: "places the 2 in thousands not hundreds"
+    <<: *prov
+
+  - module: 5
+    sea_section: "Section I"
+    strand: "Number"
+    difficulty: easy
+    prompt: "Which symbol makes this true: 3 405 ▢ 3 450?"
+    options: ["<", ">", "=", "greater than or equal to"]
+    correct_index: 0
+    distractors:
+      1: "compares only the first two digits, calls them equal then guesses"
+      2: "sees the same digits in a different order as equal"
+      3: "unfamiliar with strict comparison"
+    <<: *prov
+
+  - module: 5
+    sea_section: "Section I"
+    strand: "Number"
+    difficulty: hard
+    prompt: "Four children scored: Amy 8 906, Ben 8 690, Cara 8 960, Dan 8 609. Who scored highest?"
+    options: ["Cara", "Amy", "Ben", "Dan"]
+    correct_index: 0
+    distractors:
+      1: "compares the hundreds digit only (9 vs 9) then stops"
+      2: "misreads 690 as 960"
+      3: "reads from the wrong end"
+    <<: *prov
+
+  # ---- NUMBER PATTERNS (modules 10, 32) ------------------------------------
+  - module: 10
+    sea_section: "Section II"
+    strand: "Number"
+    difficulty: easy
+    prompt: "What is the next number? 4, 8, 12, 16, ▢"
+    options: ["20", "24", "18", "32"]
+    correct_index: 0
+    distractors:
+      1: "adds 8 instead of 4"
+      2: "adds 2"
+      3: "doubles the last term"
+    <<: *prov
+
+  - module: 10
+    sea_section: "Section II"
+    strand: "Number"
+    difficulty: medium
+    prompt: "A pattern starts at 100 and the rule is 'subtract 7.' What is the third number?"
+    options: ["86", "93", "79", "91"]
+    correct_index: 0
+    distractors:
+      1: "gives the second term, stops one step early"
+      2: "subtracts one step too many"
+      3: "subtracts 9 instead of 7"
+    <<: *prov
+
+  - module: 10
+    sea_section: "Section II"
+    strand: "Number"
+    difficulty: hard
+    prompt: "In the pattern 3, 6, 12, 24, ▢, what is the rule and the next number?"
+    options: ["Multiply by 2 → 48", "Add 12 → 36", "Multiply by 2 → 36", "Add the previous → 42"]
+    correct_index: 0
+    distractors:
+      1: "sees the last gap (+12) as a constant add rule"
+      2: "correct rule but an arithmetic slip"
+      3: "applies a Fibonacci-style rule"
+    <<: *prov
+
+  - module: 32
+    sea_section: "Section I"
+    strand: "Geometry"
+    difficulty: easy
+    prompt: "A pattern of shapes goes: triangle, circle, triangle, circle, triangle, ▢. What comes next?"
+    options: ["circle", "triangle", "square", "two circles"]
+    correct_index: 0
+    distractors:
+      1: "repeats the last shape seen"
+      2: "introduces a new shape"
+      3: "doubles instead of continuing the unit"
+    <<: *prov
+
+  - module: 32
+    sea_section: "Section I"
+    strand: "Geometry"
+    difficulty: medium
+    prompt: "Squares are made with matchsticks: 1 square uses 4, 2 squares use 7, 3 squares use 10. How many for 4 squares?"
+    options: ["13", "14", "16", "12"]
+    correct_index: 0
+    distractors:
+      1: "adds 4 each time instead of 3"
+      2: "multiplies 4 squares × 4 sticks"
+      3: "adds 2 each time"
+    <<: *prov
+
+  - module: 32
+    sea_section: "Section I"
+    strand: "Geometry"
+    difficulty: hard
+    prompt: "A growing pattern of dots: 1, 3, 6, 10, … (triangular numbers). What is the 6th number?"
+    options: ["21", "15", "18", "28"]
+    correct_index: 0
+    distractors:
+      1: "gives the 5th term, stops early"
+      2: "adds a constant 3 each step"
+      3: "jumps to the 7th term"
+    <<: *prov
+
+  # ---- GEOMETRY (modules 29,30,33,34,35) -----------------------------------
+  - module: 29
+    sea_section: "Section I"
+    strand: "Geometry"
+    difficulty: medium
+    prompt: "A triangle has all three sides equal. It is called:"
+    options: ["Equilateral", "Isosceles", "Scalene", "Right-angled"]
+    correct_index: 0
+    distractors:
+      1: "confuses 'two equal' with 'all equal'"
+      2: "reverses the definition"
+      3: "confuses a side property with an angle property"
+    <<: *prov
+
+  - module: 30
+    sea_section: "Section I"
+    strand: "Geometry"
+    difficulty: easy
+    prompt: "How many lines of symmetry does a square have?"
+    options: ["4", "2", "1", "8"]
+    correct_index: 0
+    distractors:
+      1: "counts only horizontal and vertical, misses the diagonals"
+      2: "thinks one is enough"
+      3: "confuses symmetry lines with sides plus diagonals"
+    <<: *prov
+
+  - module: 30
+    sea_section: "Section I"
+    strand: "Geometry"
+    difficulty: medium
+    prompt: "Which letter has exactly one line of symmetry?"
+    options: ["A", "H", "S", "Z"]
+    correct_index: 0
+    distractors:
+      1: "H has two; counts only one"
+      2: "S has rotational, not line, symmetry"
+      3: "Z has rotational symmetry, mistaken for line"
+    <<: *prov
+
+  - module: 33
+    sea_section: "Section II"
+    strand: "Geometry"
+    difficulty: hard
+    prompt: "A shape is made of a rectangle with a triangle on top (like a house). The rectangle is 6 cm wide. The triangle's base must be:"
+    options: ["6 cm", "3 cm", "12 cm", "any length"]
+    correct_index: 0
+    distractors:
+      1: "halves the width"
+      2: "doubles the width"
+      3: "misses that the base must match for the shapes to join"
+    <<: *prov
+
+  - module: 34
+    sea_section: "Section II"
+    strand: "Geometry"
+    difficulty: medium
+    prompt: "A rectangular garden is twice as long as it is wide. If the width is 5 m, the length is:"
+    options: ["10 m", "7 m", "2.5 m", "5 m"]
+    correct_index: 0
+    distractors:
+      1: "adds 2 instead of multiplying by 2"
+      2: "halves instead of doubling"
+      3: "treats it as a square"
+    <<: *prov
+
+  - module: 34
+    sea_section: "Section II"
+    strand: "Geometry"
+    difficulty: hard
+    prompt: "A square tile has a side of 8 cm. Four tiles are placed in a row. How long is the row?"
+    options: ["32 cm", "16 cm", "64 cm", "12 cm"]
+    correct_index: 0
+    distractors:
+      1: "multiplies by 2 not 4"
+      2: "computes area (8 × 8) instead of length"
+      3: "adds 8 + 4"
+    <<: *prov
+
+  - module: 35
+    sea_section: "Section III"
+    strand: "Geometry"
+    difficulty: hard
+    prompt: "A rectangle is 9 cm long and 4 cm wide. A square has the same perimeter. What is the side of the square?"
+    options: ["6.5 cm", "13 cm", "36 cm", "26 cm"]
+    correct_index: 0
+    distractors:
+      1: "adds length + width, forgets to use full perimeter ÷ 4"
+      2: "computes the rectangle's area"
+      3: "gives the perimeter as the side"
+    <<: *prov
+
+  - module: 35
+    sea_section: "Section III"
+    strand: "Geometry"
+    difficulty: hard
+    prompt: "A path 1 m wide runs around the inside edge of a 10 m × 8 m field. Which operation finds the inner rectangle's dimensions?"
+    options: ["Subtract 2 from each dimension → 8 m × 6 m", "Subtract 1 from each → 9 m × 7 m", "Subtract 2 from one side only → 8 m × 8 m", "Add 2 to each → 12 m × 10 m"]
+    correct_index: 0
+    distractors:
+      1: "subtracts the width once, not from both sides"
+      2: "applies the path to one dimension only"
+      3: "adds the border instead of subtracting"
+    <<: *prov
+
+  - module: 35
+    sea_section: "Section III"
+    strand: "Geometry"
+    difficulty: medium
+    prompt: "A triangle has a base of 10 cm and a height of 6 cm. Its area is:"
+    options: ["30 cm²", "60 cm²", "16 cm²", "32 cm²"]
+    correct_index: 0
+    distractors:
+      1: "forgets to halve (base × height only)"
+      2: "adds base + height"
+      3: "computes a perimeter-like sum"
+    <<: *prov
+
+  # ---- MEASUREMENT (modules 39,40,41,42,43,44,45) --------------------------
+  - module: 39
+    sea_section: "Section II"
+    strand: "Measurement"
+    difficulty: medium
+    prompt: "An L-shaped figure has sides 4, 3, 2, 1, 2, 4 cm. What is its perimeter?"
+    options: ["16 cm", "14 cm", "48 cm", "10 cm"]
+    correct_index: 0
+    distractors:
+      1: "misses one side when adding"
+      2: "multiplies the sides"
+      3: "adds only the longest four"
+    <<: *prov
+
+  - module: 40
+    sea_section: "Section II"
+    strand: "Measurement"
+    difficulty: hard
+    prompt: "A shape is two rectangles: one 4 × 3 cm and one 2 × 2 cm. The total area is:"
+    options: ["16 cm²", "11 cm²", "24 cm²", "12 cm²"]
+    correct_index: 0
+    distractors:
+      1: "adds dimensions not areas"
+      2: "multiplies the two areas"
+      3: "computes only the larger rectangle"
+    <<: *prov
+
+  - module: 40
+    sea_section: "Section II"
+    strand: "Measurement"
+    difficulty: medium
+    prompt: "A 5 × 5 cm square has a 1 × 1 cm corner cut out. The remaining area is:"
+    options: ["24 cm²", "25 cm²", "23 cm²", "20 cm²"]
+    correct_index: 0
+    distractors:
+      1: "forgets to subtract the cut"
+      2: "subtracts perimeter not area"
+      3: "subtracts 5 instead of 1"
+    <<: *prov
+
+  - module: 41
+    sea_section: "Section I"
+    strand: "Measurement"
+    difficulty: hard
+    prompt: "A box is 3 cm × 4 cm × 5 cm. Its volume is:"
+    options: ["60 cm³", "12 cm³", "47 cm³", "27 cm³"]
+    correct_index: 0
+    distractors:
+      1: "multiplies only two dimensions"
+      2: "adds two products"
+      3: "adds the three dimensions"
+    <<: *prov
+
+  - module: 42
+    sea_section: "Section I"
+    strand: "Measurement"
+    difficulty: easy
+    prompt: "How many grams are in 2.5 kilograms?"
+    options: ["2 500 g", "250 g", "25 g", "25 000 g"]
+    correct_index: 0
+    distractors:
+      1: "multiplies by 100 not 1000"
+      2: "multiplies by 10"
+      3: "multiplies by 10 000"
+    <<: *prov
+
+  - module: 42
+    sea_section: "Section I"
+    strand: "Measurement"
+    difficulty: medium
+    prompt: "A recipe needs 750 g of flour. How many kilograms is that?"
+    options: ["0.75 kg", "7.5 kg", "75 kg", "0.075 kg"]
+    correct_index: 0
+    distractors:
+      1: "divides by 100"
+      2: "divides by 10"
+      3: "divides by 10 000"
+    <<: *prov
+
+  - module: 43
+    sea_section: "Section I"
+    strand: "Measurement"
+    difficulty: easy
+    prompt: "How many minutes are in 2.5 hours?"
+    options: ["150 min", "250 min", "120 min", "145 min"]
+    correct_index: 0
+    distractors:
+      1: "treats 2.5 as 250"
+      2: "counts only the 2 whole hours"
+      3: "adds 25 min for the half instead of 30"
+    <<: *prov
+
+  - module: 43
+    sea_section: "Section I"
+    strand: "Measurement"
+    difficulty: medium
+    prompt: "A film starts at 6:45 p.m. and lasts 1 hour 40 minutes. When does it end?"
+    options: ["8:25 p.m.", "7:85 p.m.", "8:15 p.m.", "8:05 p.m."]
+    correct_index: 0
+    distractors:
+      1: "writes 85 minutes without converting past 60"
+      2: "adds only 1 h 30"
+      3: "miscarries the hour at the 60-min mark"
+    <<: *prov
+
+  - module: 44
+    sea_section: "Section II"
+    strand: "Measurement"
+    difficulty: hard
+    prompt: "A tank holds 12 litres. A jug holds 750 ml. How many full jugs fill the tank?"
+    options: ["16", "9", "160", "12"]
+    correct_index: 0
+    distractors:
+      1: "divides 12 by 1.5 by mistake"
+      2: "forgets the ml→l conversion (off by ten)"
+      3: "reads tank litres as the answer"
+    <<: *prov
+
+  - module: 44
+    sea_section: "Section II"
+    strand: "Measurement"
+    difficulty: medium
+    prompt: "A bag of rice weighs 2 kg. A shop has 15 bags. The total mass in kilograms is:"
+    options: ["30 kg", "17 kg", "7.5 kg", "300 kg"]
+    correct_index: 0
+    distractors:
+      1: "adds 15 + 2"
+      2: "divides instead of multiplying"
+      3: "multiplies by an extra ten"
+    <<: *prov
+
+  - module: 45
+    sea_section: "Section III"
+    strand: "Measurement"
+    difficulty: hard
+    prompt: "A room floor is 5 m × 4 m. Tiles are 1 m squares costing $20 each. What is the total tiling cost?"
+    options: ["$400", "$20", "$180", "$40"]
+    correct_index: 0
+    distractors:
+      1: "costs one tile only"
+      2: "uses perimeter (18) × 10"
+      3: "adds dimensions × cost"
+    <<: *prov
+
+  - module: 45
+    sea_section: "Section III"
+    strand: "Measurement"
+    difficulty: hard
+    prompt: "A path is 2 m wide around a 6 m × 6 m pool. The outer square measures:"
+    options: ["10 m × 10 m", "8 m × 8 m", "12 m × 12 m", "6 m × 6 m"]
+    correct_index: 0
+    distractors:
+      1: "adds the path width once, not on both sides"
+      2: "adds 6 to each side"
+      3: "forgets the path entirely"
+    <<: *prov
+
+  - module: 45
+    sea_section: "Section III"
+    strand: "Measurement"
+    difficulty: medium
+    prompt: "A box 2 m × 2 m × 2 m is filled with 1 m cube blocks. How many blocks fit?"
+    options: ["8", "6", "4", "12"]
+    correct_index: 0
+    distractors:
+      1: "counts faces of the cube"
+      2: "computes one face area"
+      3: "multiplies edges by 2"
+    <<: *prov
+
+  # ---- STATISTICS (modules 47,49,50,51) ------------------------------------
+  - module: 47
+    sea_section: "Section I"
+    strand: "Statistics"
+    difficulty: easy
+    prompt: "On a pictograph, one apple symbol = 5 apples. A row shows 4 apple symbols. How many apples?"
+    options: ["20", "4", "9", "45"]
+    correct_index: 0
+    distractors:
+      1: "counts symbols not their value"
+      2: "adds 5 + 4"
+      3: "concatenates the digits"
+    <<: *prov
+
+  - module: 47
+    sea_section: "Section I"
+    strand: "Statistics"
+    difficulty: medium
+    prompt: "A block graph shows Mon = 3, Tue = 5, Wed = 2 books read. How many books over the three days?"
+    options: ["10", "7", "5", "30"]
+    correct_index: 0
+    distractors:
+      1: "adds only two columns"
+      2: "reads the tallest column as the total"
+      3: "multiplies 3 days by something"
+    <<: *prov
+
+  - module: 49
+    sea_section: "Section II"
+    strand: "Statistics"
+    difficulty: medium
+    prompt: "The mean of 4, 6, and 8 is:"
+    options: ["6", "18", "9", "4"]
+    correct_index: 0
+    distractors:
+      1: "gives the sum, forgets to divide"
+      2: "divides by 2 not 3"
+      3: "gives the smallest value"
+    <<: *prov
+
+  - module: 49
+    sea_section: "Section II"
+    strand: "Statistics"
+    difficulty: hard
+    prompt: "Four children have a mean height of 120 cm. What is their total height?"
+    options: ["480 cm", "124 cm", "30 cm", "120 cm"]
+    correct_index: 0
+    distractors:
+      1: "adds 4 to the mean"
+      2: "divides the mean by 4"
+      3: "reads the mean as the total"
+    <<: *prov
+
+  - module: 50
+    sea_section: "Section II"
+    strand: "Statistics"
+    difficulty: hard
+    prompt: "A graph shows sales rose every month except one. The best conclusion is:"
+    options: ["Sales generally increased over the period", "Sales fell every month", "Sales stayed the same", "No pattern can be seen"]
+    correct_index: 0
+    distractors:
+      1: "fixates on the single dip"
+      2: "ignores the trend"
+      3: "fails to read an overall direction"
+    <<: *prov
+
+  - module: 50
+    sea_section: "Section II"
+    strand: "Statistics"
+    difficulty: medium
+    prompt: "A pictograph shows Class A read far more books than Class B. A fair conclusion is:"
+    options: ["Class A read more books than Class B", "Class A has more students", "Class B cannot read", "Both classes read equally"]
+    correct_index: 0
+    distractors:
+      1: "infers an unstated cause"
+      2: "draws an unfair judgement"
+      3: "ignores the visible difference"
+    <<: *prov
+
+  - module: 51
+    sea_section: "Section III"
+    strand: "Statistics"
+    difficulty: hard
+    prompt: "Five test scores are 60, 70, 80, 90, 100. What is the mean, and is any score below it?"
+    options: ["Mean 80; yes, two scores (60, 70) are below", "Mean 80; no scores below", "Mean 400; two below", "Mean 90; one below"]
+    correct_index: 0
+    distractors:
+      1: "computes the mean correctly but misreads 'below'"
+      2: "forgets to divide the sum"
+      3: "uses a middle-ish value as the mean"
+    <<: *prov
+
+  - module: 51
+    sea_section: "Section III"
+    strand: "Statistics"
+    difficulty: hard
+    prompt: "A shop sold 10, 20, and 30 items on three days. What was the mean, and the total?"
+    options: ["Mean 20, total 60", "Mean 60, total 20", "Mean 20, total 50", "Mean 30, total 60"]
+    correct_index: 0
+    distractors:
+      1: "swaps mean and total"
+      2: "adds two days only"
+      3: "uses the largest as the mean"
+    <<: *prov
+
+  - module: 51
+    sea_section: "Section III"
+    strand: "Statistics"
+    difficulty: medium
+    prompt: "The mean of four numbers is 10. Three of them are 8, 12, and 10. What is the fourth?"
+    options: ["10", "30", "40", "6"]
+    correct_index: 0
+    distractors:
+      1: "gives the remaining sum, not the number"
+      2: "gives the total of all four"
+      3: "subtracts wrongly from the mean"
+    <<: *prov
+
+  # ---- COVERAGE TOP-UPS (close 3x gaps on apex/leaf modules) ---------------
+  - module: 3
+    sea_section: "Section I"
+    strand: "Number"
+    difficulty: medium
+    prompt: "A school has 3 472 books. Rounded to the nearest thousand, that is:"
+    options: ["3 000", "4 000", "3 500", "3 400"]
+    correct_index: 0
+    distractors:
+      1: "rounds up on the hundreds digit (4) as if it were 5 or more"
+      2: "rounds to the nearest five hundred"
+      3: "rounds to the nearest hundred instead of thousand"
+    <<: *prov
+
+  - module: 11
+    sea_section: "Section II"
+    strand: "Number"
+    difficulty: medium
+    prompt: "If ▢ + 15 = 40, what is ▢?"
+    options: ["25", "55", "65", "15"]
+    correct_index: 0
+    distractors:
+      1: "adds instead of subtracting"
+      2: "adds both numbers then adds more"
+      3: "repeats the known value"
+    <<: *prov
+
+  - module: 11
+    sea_section: "Section II"
+    strand: "Number"
+    difficulty: hard
+    prompt: "If 5 × ▢ − 3 = 22, what is ▢?"
+    options: ["5", "3.8", "19", "25"]
+    correct_index: 0
+    distractors:
+      1: "forgets to add 3 back before dividing"
+      2: "solves only the subtraction step"
+      3: "ignores the multiply-by-5"
+    <<: *prov
+
+  - module: 13
+    sea_section: "Section I"
+    strand: "Fractions"
+    difficulty: hard
+    prompt: "What is 5/6 − 1/3?"
+    options: ["1/2", "4/3", "4/6", "1/3"]
+    correct_index: 0
+    distractors:
+      1: "subtracts straight across"
+      2: "forgets to convert 1/3 to sixths"
+      3: "guesses a simple fraction"
+    <<: *prov
+
+  - module: 16
+    sea_section: "Section II"
+    strand: "Fractions"
+    difficulty: medium
+    prompt: "A jug holds 3/4 litre. Half of it is poured out. How much remains?"
+    options: ["3/8 L", "1/2 L", "3/2 L", "1/4 L"]
+    correct_index: 0
+    distractors:
+      1: "subtracts a half-litre"
+      2: "multiplies wrongly"
+      3: "subtracts 1/4 instead of halving"
+    <<: *prov
+
+  - module: 16
+    sea_section: "Section II"
+    strand: "Fractions"
+    difficulty: hard
+    prompt: "Of 24 sweets, 1/3 are red and 1/4 are blue. How many are neither red nor blue?"
+    options: ["10", "14", "7", "17"]
+    correct_index: 0
+    distractors:
+      1: "counts only red plus blue"
+      2: "subtracts one fraction only"
+      3: "miscounts the blue group"
+    <<: *prov
+
+  - module: 18
+    sea_section: "Section I"
+    strand: "Decimals"
+    difficulty: easy
+    prompt: "Which decimal is the smallest: 0.5, 0.45, 0.54, 0.05?"
+    options: ["0.05", "0.45", "0.5", "0.54"]
+    correct_index: 0
+    distractors:
+      1: "most digits read as smallest"
+      2: "single digit read as smallest"
+      3: "rightmost-looking value chosen"
+    <<: *prov
+
+  - module: 18
+    sea_section: "Section I"
+    strand: "Decimals"
+    difficulty: hard
+    prompt: "Round 7.86 to the nearest tenth."
+    options: ["7.9", "7.8", "8.0", "7.86"]
+    correct_index: 0
+    distractors:
+      1: "rounds down, ignoring the 6"
+      2: "rounds to the nearest whole number"
+      3: "applies no rounding"
+    <<: *prov
+
+  - module: 25
+    sea_section: "Section II"
+    strand: "Problem Solving"
+    difficulty: medium
+    prompt: "A toy marked $50 has 10% off. The discount in dollars is:"
+    options: ["$5", "$10", "$45", "$0.50"]
+    correct_index: 0
+    distractors:
+      1: "uses 10 dollars instead of 10 percent"
+      2: "gives the sale price, not the discount"
+      3: "misplaces the decimal point"
+    <<: *prov
+
+  - module: 27
+    sea_section: "Section III"
+    strand: "Problem Solving"
+    difficulty: medium
+    prompt: "Mom buys 2 kg of rice at $8 per kg and 3 tins at $5 each. What is the total cost?"
+    options: ["$31", "$26", "$21", "$40"]
+    correct_index: 0
+    distractors:
+      1: "forgets one item group"
+      2: "adds quantities not costs"
+      3: "multiplies the two group totals"
+    <<: *prov
+
+  - module: 27
+    sea_section: "Section III"
+    strand: "Problem Solving"
+    difficulty: hard
+    prompt: "A taxi charges $10 to start plus $2 per km. A 7 km trip costs:"
+    options: ["$24", "$14", "$84", "$19"]
+    correct_index: 0
+    distractors:
+      1: "forgets the start fee"
+      2: "multiplies everything together"
+      3: "uses 6 km instead of 7"
+    <<: *prov

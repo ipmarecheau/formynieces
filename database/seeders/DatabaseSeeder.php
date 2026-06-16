@@ -10,6 +10,10 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             SyllabusModuleSeeder::class,
+            ModulePrerequisiteSeeder::class,
+            MathAnchorQuestionSeeder::class,
+            ElaAnchorQuestionSeeder::class,
+            WritingAnchorQuestionSeeder::class,
         ]);
     }
 }
