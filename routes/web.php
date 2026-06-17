@@ -20,9 +20,27 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
+    // Intro screen (Set sail lives here)
     Route::get('/diagnostic', function () {
         return view('student.diagnostic-intro');
     })->name('diagnostic.intro');
+
+    // Set sail: start or resume, then send to the walk
+    Route::get('/diagnostic/start', function () {
+        try {
+            app(\App\Services\Diagnostic\SessionLifecycle::class)
+                ->startOrResume(auth()->id());
+        } catch (\DomainException $e) {
+            // Onboarding not complete — send back to intro rather than 500.
+            return redirect()->route('diagnostic.intro');
+        }
+
+        return redirect()->route('diagnostic.walk');
+    })->name('diagnostic.start');
+
+    // The walk itself — full-page Livewire component
+    Route::get('/diagnostic/walk', \App\Livewire\DiagnosticWalk::class)
+        ->name('diagnostic.walk');
 });
 
 require __DIR__.'/auth.php';

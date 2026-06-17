@@ -148,9 +148,10 @@
     <h1>Ready to explore, {{ explode(' ', auth()->user()->name)[0] }}? 🌊</h1>
 
     <p class="lead">
-        You're about to set sail across three islands of discovery. As you visit
-        each one, your map fills in — showing the places you already know well
-        and the spots we'll explore together.
+        This isn't a test to pass or fail — it's how we find out everything you
+        already know. Some questions will feel easy, and some will really make
+        you think. The tricky ones mean you're doing brilliantly, and we're
+        seeing how far you can go. 🌟
     </p>
 
     <div class="islands">
@@ -159,12 +160,14 @@
         <span class="island island-3">📖 Story Cove</span>
     </div>
 
+
+
     <p class="reassure">
-        There's no finish line to race to and nothing to get right or wrong —
-        just questions that help your map appear. Take all the time you like. 🌟
+        Just pick the answer you think is best. The questions climb as you go —
+        that's exactly what's meant to happen. Take all the time you like. 🌊
     </p>
 
-    <a href="{{ route('diagnostic.intro') }}" class="btn-sail">Set sail ⛵</a>
+    <a href="{{ route('diagnostic.start') }}" class="btn-sail">Set sail ⛵</a>
 </div>
 
 <script>

@@ -4,6 +4,7 @@
 use App\Livewire\DiagnosticWalk;
 use App\Models\User;
 use App\Services\Diagnostic\ItemWalk;
+use App\Services\Diagnostic\SessionLifecycle;
 use App\Services\Diagnostic\SessionPlanner;
 use Database\Seeders\ElaAnchorQuestionSeeder;
 use Database\Seeders\MathAnchorQuestionSeeder;
@@ -25,17 +26,11 @@ beforeEach(function () {
         'email' => 'aaliyah-' . uniqid() . '@students.formynieces.com',
         'password' => bcrypt('secret'),
         'role' => 'student',
+        'onboarding_completed_at' => now(),
     ]);
 
-    $this->sessionId = DB::table('diagnostic_sessions')->insertGetId([
-        'student_id' => $this->student->id,
-        'status' => 'in_progress',
-        'current_item' => 0,
-        'created_at' => now(),
-        'updated_at' => now(),
-    ]);
-
-    (new SessionPlanner)->planForSession($this->sessionId);
+    // The component resolves its own session; create it the same way it will.
+    $this->sessionId = app(SessionLifecycle::class)->startOrResume($this->student->id);
 });
 
 it('renders the current question prompt and its four options', function () {
@@ -44,7 +39,7 @@ it('renders the current question prompt and its four options', function () {
     $options = json_decode($anchor->options, true);
 
     Livewire::actingAs($this->student)
-        ->test(DiagnosticWalk::class, ['sessionId' => $this->sessionId])
+        ->test(DiagnosticWalk::class)
         ->assertSee($anchor->prompt)
         ->assertSee($options[0])
         ->assertSee($options[1])
@@ -56,8 +51,8 @@ it('advances to the next anchor after an answer is chosen', function () {
     $walk = new ItemWalk(new SessionPlanner);
     $first = $walk->currentQuestion($this->sessionId);
 
-    $component = Livewire::actingAs($this->student)
-        ->test(DiagnosticWalk::class, ['sessionId' => $this->sessionId])
+    Livewire::actingAs($this->student)
+        ->test(DiagnosticWalk::class)
         ->call('choose', 0);
 
     $next = $walk->currentQuestion($this->sessionId);
@@ -67,11 +62,10 @@ it('advances to the next anchor after an answer is chosen', function () {
 });
 
 it('never shows the child whether an answer was right or wrong', function () {
-    $component = Livewire::actingAs($this->student)
-        ->test(DiagnosticWalk::class, ['sessionId' => $this->sessionId])
-        ->call('choose', 0);
-
-    $component->assertDontSee('correct', false)
+    Livewire::actingAs($this->student)
+        ->test(DiagnosticWalk::class)
+        ->call('choose', 0)
+        ->assertDontSee('correct', false)
         ->assertDontSee('incorrect', false)
         ->assertDontSee('wrong', false);
 });

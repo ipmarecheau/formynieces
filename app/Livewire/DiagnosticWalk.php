@@ -1,24 +1,27 @@
 <?php
-// app/Livewire/DiagnosticWalk.php
 
 namespace App\Livewire;
 
 use App\Services\Diagnostic\ItemWalk;
+use App\Services\Diagnostic\SessionLifecycle;
 use App\Services\Diagnostic\SessionPlanner;
 use Illuminate\Support\Facades\DB;
+use Livewire\Attributes\Layout;
 use Livewire\Component;
 
+#[Layout('components.layouts.diagnostic')]
 class DiagnosticWalk extends Component
 {
     public int $sessionId;
-
     public ?array $question = null;
     public string $prompt = '';
     public array $options = [];
+    public bool $showInterstitial = false;
 
-    public function mount(int $sessionId): void
+    public function mount(): void
     {
-        $this->sessionId = $sessionId;
+        // Resolve the authenticated student's own session. No id from the URL.
+        $this->sessionId = app(SessionLifecycle::class)->startOrResume(auth()->id());
         $this->loadCurrent();
     }
 
@@ -29,6 +32,8 @@ class DiagnosticWalk extends Component
 
     protected function loadCurrent(): void
     {
+        $this->showInterstitial = $this->walk()->interstitialDue($this->sessionId);
+
         $this->question = $this->walk()->currentQuestion($this->sessionId);
 
         if ($this->question === null) {
@@ -48,8 +53,6 @@ class DiagnosticWalk extends Component
             return;
         }
 
-        // Engine records + adapts. We deliberately ignore the returned
-        // is_correct / misconception — the child never sees them.
         $this->walk()->submitAnswer(
             $this->sessionId,
             $this->question['anchor_id'],
@@ -57,6 +60,11 @@ class DiagnosticWalk extends Component
         );
 
         $this->loadCurrent();
+    }
+
+    public function continueFromInterstitial(): void
+    {
+        $this->showInterstitial = false;
     }
 
     public function render()

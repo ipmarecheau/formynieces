@@ -48,9 +48,17 @@
 </style>
 
 <div class="dw-wrap">
-    @if ($question === null)
+    @if ($showInterstitial && $question !== null)
         <div class="dw-card">
-            <p class="dw-done">You've explored every island! 🗺️✨</p>
+            <p class="dw-prompt">You're doing brilliantly — keep going! 🌟</p>
+            <div class="dw-options">
+                <button type="button" class="dw-option"
+                    wire:click="continueFromInterstitial">Next question →</button>
+            </div>
+        </div>
+    @elseif ($question === null)
+        <div class="dw-card">
+            <p class="dw-done">You've completed the diagnostic! 🎉</p>
         </div>
     @else
         <div class="dw-dots">
