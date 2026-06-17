@@ -417,16 +417,16 @@
                 <div class="fmn-stat-lbl">Mastered</div>
             </div>
             <div class="fmn-stat">
-                <div class="fmn-stat-num">{{ $progress->where('status','diagnostic_passed')->count() }}</div>
-                <div class="fmn-stat-lbl">In Review</div>
+                <div class="fmn-stat-num">{{ $progress->where('status','inferred_mastered')->count() }}</div>
+                <div class="fmn-stat-lbl">Likely Known</div>
+            </div>
+            <div class="fmn-stat">
+                <div class="fmn-stat-num">{{ $progress->where('status','needs_work')->count() }}</div>
+                <div class="fmn-stat-lbl">Needs Work</div>
             </div>
             <div class="fmn-stat">
                 <div class="fmn-stat-num">{{ $progress->where('status','not_started')->count() }}</div>
                 <div class="fmn-stat-lbl">Upcoming</div>
-            </div>
-            <div class="fmn-stat">
-                <div class="fmn-stat-num">{{ $progress->count() }}</div>
-                <div class="fmn-stat-lbl">Total Topics</div>
             </div>
         </div>
 
@@ -436,7 +436,7 @@
                 🤖 View Exam Agent Report
             </a>
         </div>
-        
+
         <p class="fmn-section-title">🎯 This Week's Target</p>
         @if($weeklyTarget)
             <div class="fmn-card">
@@ -489,50 +489,40 @@
                         :data-active="tab === 'math'"
                         @click="tab = 'math'">🔢 Math</button>
                     <button class="fmn-tab fmn-tab-edit"
-                        :data-active="tab === 'editing'"
-                        @click="tab = 'editing'">✏️ English Editing</button>
-                    <button class="fmn-tab fmn-tab-comp"
-                        :data-active="tab === 'comp'"
-                        @click="tab = 'comp'">📖 Comprehension</button>
-                </div>
+                        :data-active="tab === 'ela'"
+                        @click="tab = 'ela'">📖 ELA</button>
+                    </div>
 
                 {{-- ROADMAP --}}
                 <div class="fmn-roadmap">
                     <div class="fmn-roadmap-line"></div>
                     @foreach($progress as $item)
-                        @php
-                            $subj = $item->module->subject;
-                            $alpineKey = match($subj) {
-                                'Math' => 'math',
-                                'English Editing' => 'editing',
-                                default => 'comp',
-                            };
-                            $dotSubjClass = match($subj) {
-                                'Math' => 'dot-math',
-                                'English Editing' => 'dot-editing',
-                                default => 'dot-comprehension',
-                            };
-                            $dotStatusClass = match($item->status) {
-                                'mastered' => 'dot-mastered',
-                                'diagnostic_passed' => 'dot-diagnostic',
-                                default => 'dot-notstarted',
-                            };
-                            $nodeClass = match($item->status) {
-                                'mastered' => 'node-mastered',
-                                'diagnostic_passed' => 'node-diagnostic',
-                                default => 'node-notstarted',
-                            };
-                            $sdotClass = match($item->status) {
-                                'mastered' => 'sdot-mastered',
-                                'diagnostic_passed' => 'sdot-diagnostic',
-                                default => 'sdot-notstarted',
-                            };
-                            $icon = match($item->status) {
-                                'mastered' => '🌟',
-                                'diagnostic_passed' => '📖',
-                                default => '○',
-                            };
-                        @endphp
+                    @php
+                        $subj = $item->module->subject;
+                        $alpineKey = $subj === 'Math' ? 'math' : 'ela';
+                        $dotSubjClass = $subj === 'Math' ? 'dot-math' : 'dot-comprehension';
+                        $dotStatusClass = match($item->status) {
+                            'mastered' => 'dot-mastered',
+                            'inferred_mastered' => 'dot-diagnostic',
+                            default => 'dot-notstarted',
+                        };
+                        $nodeClass = match($item->status) {
+                            'mastered' => 'node-mastered',
+                            'inferred_mastered' => 'node-diagnostic',
+                            default => 'node-notstarted',
+                        };
+                        $sdotClass = match($item->status) {
+                            'mastered' => 'sdot-mastered',
+                            'inferred_mastered' => 'sdot-diagnostic',
+                            default => 'sdot-notstarted',
+                        };
+                        $icon = match($item->status) {
+                            'mastered' => '🌟',
+                            'inferred_mastered' => '✨',
+                            'needs_work' => '📘',
+                            default => '○',
+                        };
+                    @endphp
                         <div class="fmn-roadmap-item"
                              x-show="tab === 'all' || tab === '{{ $alpineKey }}'">
                             <div class="fmn-node-dot {{ $dotSubjClass }} {{ $dotStatusClass }}">
