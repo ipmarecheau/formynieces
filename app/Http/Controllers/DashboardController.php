@@ -29,21 +29,77 @@ class DashboardController extends Controller
 
         $progress = StudentProgress::with('module')
             ->where('student_id', $user->id)
-            ->orderBy('module_id')
             ->get();
 
         $masteredCount = $progress->where('status', 'mastered')->count();
-        $totalCount = $progress->count();
+        $likelyCount   = $progress->where('status', 'inferred_mastered')->count();
+        $needsCount    = $progress->where('status', 'needs_work')->count();
+        $totalCount    = $progress->count();
         $completionPercent = $totalCount > 0
             ? round(($masteredCount / $totalCount) * 100)
             : 0;
+
+        // Build Subject → topic-prefix → modules hierarchy with per-group tallies.
+        $roadmap = $this->buildRoadmap($progress);
 
         return view('dashboard', compact(
             'user',
             'weeklyTarget',
             'progress',
+            'roadmap',
+            'masteredCount',
+            'likelyCount',
+            'needsCount',
             'completionPercent'
         ));
+    }
+
+    /**
+     * Group progress rows into Subject => [ prefix => ['items' => [...], 'tally' => [...]] ].
+     * Prefix is the part of the topic before the first colon; the leaf is the rest.
+     */
+    private function buildRoadmap($progress): array
+    {
+        $roadmap = [];
+
+        foreach ($progress as $item) {
+            $subject = $item->module->subject;
+            $topic = $item->module->topic;
+
+            [$prefix, $leaf] = $this->splitTopic($topic);
+
+            $roadmap[$subject] ??= [];
+            $roadmap[$subject][$prefix] ??= [
+                'items' => [],
+                'tally' => ['mastered' => 0, 'inferred_mastered' => 0, 'needs_work' => 0],
+            ];
+
+            $roadmap[$subject][$prefix]['items'][] = [
+                'leaf'    => $leaf,
+                'status'  => $item->status,
+                'section' => $item->module->sea_section,
+            ];
+
+            if (isset($roadmap[$subject][$prefix]['tally'][$item->status])) {
+                $roadmap[$subject][$prefix]['tally'][$item->status]++;
+            }
+        }
+
+        return $roadmap;
+    }
+
+    /** "Fractions: Addition and Subtraction" => ['Fractions', 'Addition and Subtraction']. */
+    private function splitTopic(string $topic): array
+    {
+        $pos = strpos($topic, ':');
+        if ($pos === false) {
+            return [$topic, $topic]; // no colon — prefix and leaf are the same
+        }
+
+        return [
+            trim(substr($topic, 0, $pos)),
+            trim(substr($topic, $pos + 1)),
+        ];
     }
 
     private function parentDashboard($user): View

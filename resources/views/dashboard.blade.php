@@ -16,6 +16,49 @@
             min-height: 100vh;
         }
 
+        .fmn-group {
+            background: white; border: 1.5px solid #f3e8ff;
+            border-radius: 14px; margin-bottom: 10px; overflow: hidden;
+        }
+        .fmn-group-header {
+            width: 100%; background: none; border: none; cursor: pointer;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 14px 18px; font-family: 'Nunito', sans-serif; text-align: left;
+        }
+        .fmn-group-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+            align-items: start;
+            margin-bottom: 12px;
+        }
+        .fmn-group-grid .fmn-group { margin-bottom: 0; }
+        @media (max-width: 640px) {
+            .fmn-group-grid { grid-template-columns: 1fr; }
+        }
+        .fmn-group-titles { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+        .fmn-group-name { font-size: 0.95rem; font-weight: 800; color: #1f2937; }
+        .fmn-group-summary { font-size: 0.72rem; color: #9ca3af; font-weight: 700; }
+        .fmn-group-chevron { color: #a78bfa; font-size: 1rem; transition: transform 0.2s; }
+        .fmn-group-chevron.open { transform: rotate(180deg); }
+        .fmn-group-body { padding: 0 18px 10px; }
+        .fmn-leaf {
+            display: flex; align-items: center; gap: 10px;
+            padding: 8px 0; border-top: 1px solid #f9f5ff;
+        }
+        .fmn-leaf-icon { font-size: 1rem; flex-shrink: 0; }
+        .fmn-leaf-name { font-size: 0.85rem; color: #374151; font-weight: 600; flex: 1; min-width: 0; }
+        .sdot-needswork { background: #f59e0b; }
+        .fmn-hearts { display: inline-flex; gap: 1px; flex-shrink: 0; letter-spacing: -1px; }
+        .fmn-heart { font-size: 0.8rem; }
+        .fmn-leaf .fmn-leaf-name { flex: 1; }
+        .fmn-legend {
+            display: flex; flex-wrap: wrap; gap: 14px;
+            padding: 10px 14px; margin-bottom: 14px;
+            background: #fdf4ff; border: 1.5px solid #f3e8ff; border-radius: 12px;
+            font-size: 0.72rem; font-weight: 700; color: #7c3aed;
+        }
+        .fmn-legend-item { display: inline-flex; align-items: center; gap: 6px; }
         /* ── NAVBAR ── */
         .fmn-nav {
             background: rgba(255,255,255,0.92);
@@ -410,33 +453,30 @@
             </div>
         </div>
 
-        {{-- STATS --}}
-        <div class="fmn-stats">
+        {{-- STATS (three real buckets) --}}
+        <div class="fmn-stats" style="grid-template-columns: repeat(3, minmax(0,1fr));">
             <div class="fmn-stat">
-                <div class="fmn-stat-num">{{ $progress->where('status','mastered')->count() }}</div>
+                <div class="fmn-stat-num">{{ $masteredCount }}</div>
                 <div class="fmn-stat-lbl">Mastered</div>
             </div>
             <div class="fmn-stat">
-                <div class="fmn-stat-num">{{ $progress->where('status','inferred_mastered')->count() }}</div>
+                <div class="fmn-stat-num">{{ $likelyCount }}</div>
                 <div class="fmn-stat-lbl">Likely Known</div>
             </div>
             <div class="fmn-stat">
-                <div class="fmn-stat-num">{{ $progress->where('status','needs_work')->count() }}</div>
+                <div class="fmn-stat-num">{{ $needsCount }}</div>
                 <div class="fmn-stat-lbl">Needs Work</div>
-            </div>
-            <div class="fmn-stat">
-                <div class="fmn-stat-num">{{ $progress->where('status','not_started')->count() }}</div>
-                <div class="fmn-stat-lbl">Upcoming</div>
             </div>
         </div>
 
-        {{-- WEEKLY TARGET --}}
+        {{-- EXAM AGENT --}}
         <div style="margin-bottom:1.25rem;">
             <a href="{{ route('exam-agent') }}" class="fmn-btn fmn-btn-primary">
                 🤖 View Exam Agent Report
             </a>
         </div>
 
+        {{-- WEEKLY TARGET --}}
         <p class="fmn-section-title">🎯 This Week's Target</p>
         @if($weeklyTarget)
             <div class="fmn-card">
@@ -444,7 +484,7 @@
                     <div style="min-width:0; flex:1;">
                         @php
                             $subj = $weeklyTarget->module->subject;
-                            $bc = match($subj) { 'Math'=>'badge-math','English Editing'=>'badge-editing',default=>'badge-comprehension' };
+                            $bc = match($subj) { 'Math'=>'badge-math','ELA'=>'badge-comprehension',default=>'badge-comprehension' };
                         @endphp
                         <span class="fmn-badge {{ $bc }}">{{ $subj }}</span>
                         <p style="font-weight:800; font-size:0.95rem; color:#1f2937; margin:0 0 4px;">
@@ -462,11 +502,6 @@
                         @endif
                     </div>
                 </div>
-                @if(!$weeklyTarget->is_completed)
-                    <div style="margin-top:1rem;">
-                        <button class="fmn-btn fmn-btn-primary">🚀 Start Diagnostic</button>
-                    </div>
-                @endif
             </div>
         @else
             <div class="fmn-alert" style="margin-bottom:1.25rem;">
@@ -474,77 +509,76 @@
             </div>
         @endif
 
-        {{-- ROADMAP WITH TABS --}}
+        {{-- ROADMAP — collapsible Subject → prefix groups --}}
         <p class="fmn-section-title">🗺️ Your Learning Journey</p>
 
-        @if($progress->count() > 0)
+        @if(!empty($roadmap))
             <div x-data="{ tab: 'all' }">
 
                 {{-- TABS --}}
                 <div class="fmn-tabs">
-                    <button class="fmn-tab"
-                        :data-active="tab === 'all'"
-                        @click="tab = 'all'">✨ All</button>
-                    <button class="fmn-tab fmn-tab-math"
-                        :data-active="tab === 'math'"
-                        @click="tab = 'math'">🔢 Math</button>
-                    <button class="fmn-tab fmn-tab-edit"
-                        :data-active="tab === 'ela'"
-                        @click="tab = 'ela'">📖 ELA</button>
-                    </div>
-
-                {{-- ROADMAP --}}
-                <div class="fmn-roadmap">
-                    <div class="fmn-roadmap-line"></div>
-                    @foreach($progress as $item)
-                    @php
-                        $subj = $item->module->subject;
-                        $alpineKey = $subj === 'Math' ? 'math' : 'ela';
-                        $dotSubjClass = $subj === 'Math' ? 'dot-math' : 'dot-comprehension';
-                        $dotStatusClass = match($item->status) {
-                            'mastered' => 'dot-mastered',
-                            'inferred_mastered' => 'dot-diagnostic',
-                            default => 'dot-notstarted',
-                        };
-                        $nodeClass = match($item->status) {
-                            'mastered' => 'node-mastered',
-                            'inferred_mastered' => 'node-diagnostic',
-                            default => 'node-notstarted',
-                        };
-                        $sdotClass = match($item->status) {
-                            'mastered' => 'sdot-mastered',
-                            'inferred_mastered' => 'sdot-diagnostic',
-                            default => 'sdot-notstarted',
-                        };
-                        $icon = match($item->status) {
-                            'mastered' => '🌟',
-                            'inferred_mastered' => '✨',
-                            'needs_work' => '📘',
-                            default => '○',
-                        };
-                    @endphp
-                        <div class="fmn-roadmap-item"
-                             x-show="tab === 'all' || tab === '{{ $alpineKey }}'">
-                            <div class="fmn-node-dot {{ $dotSubjClass }} {{ $dotStatusClass }}">
-                                {{ $icon }}
-                            </div>
-                            <div class="fmn-node-content {{ $nodeClass }}">
-                                <div style="min-width:0; flex:1;">
-                                    <p class="fmn-node-topic">{{ $item->module->topic }}</p>
-                                    <p class="fmn-node-meta">
-                                        {{ $subj }} · {{ $item->module->sea_section }}
-                                    </p>
-                                </div>
-                                <div style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
-                                    @if($item->score !== null)
-                                        <span class="fmn-node-score">{{ $item->score }}%</span>
-                                    @endif
-                                    <span class="fmn-status-dot {{ $sdotClass }}"></span>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
+                    <button class="fmn-tab" :data-active="tab === 'all'" @click="tab = 'all'">✨ All</button>
+                    <button class="fmn-tab fmn-tab-math" :data-active="tab === 'math'" @click="tab = 'math'">🔢 Math</button>
+                    <button class="fmn-tab fmn-tab-comp" :data-active="tab === 'ela'" @click="tab = 'ela'">📖 ELA</button>
                 </div>
+
+                {{-- Legend --}}
+                <div class="fmn-legend">
+                    <span class="fmn-legend-item"><span class="fmn-hearts">❤️❤️❤️</span> Mastered</span>
+                    <span class="fmn-legend-item"><span class="fmn-hearts">❤️❤️🤍</span> Likely known</span>
+                    <span class="fmn-legend-item"><span class="fmn-hearts">❤️🤍🤍</span> Needs work</span>
+                </div>
+
+                @foreach($roadmap as $subject => $groups)
+                    @php $subjKey = $subject === 'Math' ? 'math' : 'ela'; @endphp
+                    <div class="fmn-group-grid" x-show="tab === 'all' || tab === '{{ $subjKey }}'">
+                        @foreach($groups as $prefix => $group)
+                            @php
+                                $t = $group['tally'];
+                                $summary = [];
+                                if ($t['mastered'] > 0)          $summary[] = $t['mastered'].' mastered';
+                                if ($t['inferred_mastered'] > 0) $summary[] = $t['inferred_mastered'].' likely';
+                                if ($t['needs_work'] > 0)        $summary[] = $t['needs_work'].' needs work';
+                                $summaryText = implode(' · ', $summary);
+                            @endphp
+                            <div class="fmn-group" x-data="{ open: false }">
+                                <button type="button" class="fmn-group-header" @click="open = !open">
+                                    <div class="fmn-group-titles">
+                                        <span class="fmn-group-name">{{ $prefix }}</span>
+                                        <span class="fmn-group-summary">{{ $summaryText }}</span>
+                                    </div>
+                                    <span class="fmn-group-chevron" :class="{ 'open': open }">▾</span>
+                                </button>
+                                <div class="fmn-group-body" x-show="open" x-collapse>
+                                     @foreach($group['items'] as $item)
+                                        @php
+                                            $filled = match($item['status']) {
+                                                'mastered' => 3,
+                                                'inferred_mastered' => 2,
+                                                'needs_work' => 1,
+                                                default => 0,
+                                            };
+                                            $label = match($item['status']) {
+                                                'mastered' => 'Mastered',
+                                                'inferred_mastered' => 'Likely known',
+                                                'needs_work' => 'Needs work',
+                                                default => 'Not started',
+                                            };
+                                        @endphp
+                                        <div class="fmn-leaf">
+                                            <span class="fmn-leaf-name">{{ $item['leaf'] }}</span>
+                                            <span class="fmn-hearts" title="{{ $label }}" aria-label="{{ $label }}">
+                                                @for ($h = 1; $h <= 3; $h++)
+                                                    <span class="fmn-heart">{{ $h <= $filled ? '❤️' : '🤍' }}</span>
+                                                @endfor
+                                            </span>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @endforeach
 
             </div>
         @else
