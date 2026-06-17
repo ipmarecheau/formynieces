@@ -1,0 +1,297 @@
+# Practice question bank for the learning loop.
+# difficulty: easy=rung 1, medium=rung 2, hard=rung 3.
+# Each module needs >=3 per rung for the climb to be masterable.
+# PROVENANCE: original, authored for this platform, SEA Standard 5 (T&T) aligned.
+questions:
+
+  # ── Module 1: Number Concepts: Place Value up to One Million ──
+  - module: 1
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "In the number 5,308, what is the value of the digit 3?"
+    options: ["3", "30", "300", "3,000"]
+    correct_index: 2
+    explanation: "The 3 is in the hundreds place, so its value is 300."
+
+  - module: 1
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "In 6,245, which place is the digit 2 in?"
+    options: ["ones", "tens", "hundreds", "thousands"]
+    correct_index: 2
+    explanation: "Reading from the right: 5 ones, 4 tens, 2 hundreds."
+
+  - module: 1
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "What is the value of the 9 in 93,000?"
+    options: ["9,000", "90,000", "900", "9"]
+    correct_index: 1
+    explanation: "The 9 sits in the ten-thousands place, so it means 90,000."
+
+  - module: 1
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "What number is 3,000 more than 24,500?"
+    options: ["24,800", "27,500", "54,500", "24,530"]
+    correct_index: 1
+    explanation: "Adding 3,000 changes the thousands digit: 24,500 becomes 27,500."
+
+  - module: 1
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "Which number has 6 in the ten-thousands place?"
+    options: ["16,402", "62,015", "4,628", "206,400"]
+    correct_index: 1
+    explanation: "Ten-thousands is the 5th place from the right; only 62,015 has 6 there."
+
+  - module: 1
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "Write 'four hundred thousand and twenty' in digits."
+    options: ["400,020", "420,000", "40,020", "400,200"]
+    correct_index: 0
+    explanation: "Four hundred thousand is 400,000, plus twenty is 400,020."
+
+  - module: 1
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "Which number rounds to 80,000 to the nearest ten-thousand AND has a 4 in the hundreds place?"
+    options: ["76,450", "84,400", "80,040", "75,400"]
+    correct_index: 1
+    explanation: "84,400 rounds to 80,000 and has 4 in the hundreds place. Check both conditions."
+
+  - module: 1
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "What is the difference in value between the two 7s in 707,200?"
+    options: ["700", "70,000", "699,300", "7,070"]
+    correct_index: 2
+    explanation: "The first 7 is worth 700,000 and the second is worth 700. 700,000 minus 700 is 699,300."
+
+  - module: 1
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "I am a 6-digit number. My tens digit is 4, my hundred-thousands digit is double that, and the rest are zeros. What am I?"
+    options: ["840,000", "800,040", "408,000", "80,040"]
+    correct_index: 1
+    explanation: "Tens digit 4, hundred-thousands digit 8 (double 4), rest zero: 800,040."
+
+  # ── Module 3: Number Concepts: Rounding to the Nearest Thousand ──
+  - module: 3
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "Round 4,200 to the nearest thousand."
+    options: ["4,000", "4,200", "5,000", "4,300"]
+    correct_index: 0
+    explanation: "200 is less than 500, so we round down to 4,000."
+
+  - module: 3
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "Round 6,800 to the nearest thousand."
+    options: ["6,000", "7,000", "6,800", "8,000"]
+    correct_index: 1
+    explanation: "800 is 500 or more, so we round up to 7,000."
+
+  - module: 3
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "Round 2,500 to the nearest thousand."
+    options: ["2,000", "3,000", "2,500", "3,500"]
+    correct_index: 1
+    explanation: "When the hundreds digit is exactly 5, we round up, so 2,500 becomes 3,000."
+
+  - module: 3
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "Round 12,499 to the nearest thousand."
+    options: ["12,000", "13,000", "12,500", "11,000"]
+    correct_index: 0
+    explanation: "499 is less than 500, so we round down to 12,000."
+
+  - module: 3
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "A stadium holds 8,650 people. Rounded to the nearest thousand, about how many is that?"
+    options: ["8,000", "9,000", "8,500", "10,000"]
+    correct_index: 1
+    explanation: "650 is 500 or more, so round up to 9,000."
+
+  - module: 3
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "Which number rounds to 5,000 when rounded to the nearest thousand?"
+    options: ["4,400", "4,500", "5,600", "5,500"]
+    correct_index: 1
+    explanation: "4,500 rounds up to 5,000. The others round to 4,000 or 6,000."
+
+  - module: 3
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "Which of these does NOT round to 7,000 to the nearest thousand?"
+    options: ["6,500", "7,499", "7,500", "6,899"]
+    correct_index: 2
+    explanation: "7,500 rounds up to 8,000. The others all round to 7,000."
+
+  - module: 3
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "A number rounds to 23,000 to the nearest thousand. What is the largest whole number it could be?"
+    options: ["22,999", "23,000", "23,499", "23,500"]
+    correct_index: 2
+    explanation: "The range is 22,500 to 23,499, so the largest whole number is 23,499."
+
+  - module: 3
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "Rounded to the nearest thousand, 45,_ _ _ becomes 46,000. Which digit could go in the hundreds place?"
+    options: ["2", "4", "5", "0"]
+    correct_index: 2
+    explanation: "45,500 to 45,999 rounds to 46,000, so the hundreds digit must be 5 or more."
+
+  # ── Module 52: Spelling: Plural Forms — y to i, f to v, and -es endings ──
+  - module: 52
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "What is the plural of 'baby'?"
+    options: ["babys", "babies", "babyes", "babi"]
+    correct_index: 1
+    explanation: "A consonant before y means we change y to i and add -es: babies."
+
+  - module: 52
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "What is the plural of 'leaf'?"
+    options: ["leafs", "leaves", "leafes", "leeves"]
+    correct_index: 1
+    explanation: "Words ending in -f often change f to v and add -es: leaves."
+
+  - module: 52
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "What is the plural of 'box'?"
+    options: ["boxs", "boxies", "boxes", "box"]
+    correct_index: 2
+    explanation: "Words ending in -x add -es: boxes."
+
+  - module: 52
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "Choose the correct sentence."
+    options: ["The two ladys sang.", "The two ladies sang.", "The two ladyes sang.", "The two laidies sang."]
+    correct_index: 1
+    explanation: "Consonant plus y: change y to i and add -es, giving ladies."
+
+  - module: 52
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "What is the plural of 'knife'?"
+    options: ["knifs", "knifes", "knives", "knive"]
+    correct_index: 2
+    explanation: "Words ending in -fe change to -ves: knives."
+
+  - module: 52
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "Which word follows the SAME rule as 'babies'?"
+    options: ["boxes", "cities", "leaves", "wishes"]
+    correct_index: 1
+    explanation: "cities = consonant plus y changed to -ies, the same rule as babies."
+
+  - module: 52
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "Which plural is irregular and does NOT follow the y, f, or -es rules?"
+    options: ["boxes", "berries", "wolves", "children"]
+    correct_index: 3
+    explanation: "children is an irregular plural; the others follow regular rules."
+
+  - module: 52
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "What is the plural of 'roof'?"
+    options: ["rooves", "roofs", "roofes", "roovs"]
+    correct_index: 1
+    explanation: "roof is an exception: it simply adds -s (roofs), it does not change f to v."
+
+  - module: 52
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "Which sentence has NO plural error?"
+    options: ["The chefs cut the loafs.", "The babies played with knifes.", "The thieves hid the boxes.", "The citys had many storys."]
+    correct_index: 2
+    explanation: "thieves (f to v) and boxes (-es) are both correct; the other sentences contain errors."
+
+  # ── Module 73: Reading Comprehension: Identifying Main Idea in Non-fiction Text ──
+  - module: 73
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "The main idea of a passage is —"
+    options: ["one small detail", "what the whole passage is mostly about", "the first word", "the longest sentence"]
+    correct_index: 1
+    explanation: "The main idea is the central point the whole text is mostly about."
+
+  - module: 73
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "Read: 'Bees are important. They help flowers grow. They make honey. They give us beeswax.' What is this passage mostly about?"
+    options: ["honey only", "flowers only", "why bees are important", "beeswax only"]
+    correct_index: 2
+    explanation: "Every sentence supports one point: bees are important."
+
+  - module: 73
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "Where do you often find the main idea in a paragraph?"
+    options: ["only at the very end", "hidden and never stated", "often in the first sentence", "in the title only"]
+    correct_index: 2
+    explanation: "The main idea often appears in the opening (topic) sentence."
+
+  - module: 73
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "Read: 'The library is open late on Fridays. It has thousands of books. You can borrow up to ten at a time. There is a quiet room for studying.' The main idea is —"
+    options: ["the quiet room", "what the library offers", "borrowing ten books", "Friday hours"]
+    correct_index: 1
+    explanation: "Each detail describes a feature; together they tell what the library offers."
+
+  - module: 73
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "A good title for a passage captures the —"
+    options: ["smallest detail", "main idea", "last sentence", "hardest word"]
+    correct_index: 1
+    explanation: "A title sums up the central point, which is the main idea."
+
+  - module: 73
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "Read: 'Sea turtles travel thousands of miles. They always return to the same beach to lay eggs. Scientists are amazed by their memory.' What is the best main idea?"
+    options: ["turtles lay eggs", "sea turtles have an amazing sense of direction", "scientists study animals", "beaches are far"]
+    correct_index: 1
+    explanation: "The details all point to the turtles' remarkable navigation and memory."
+
+  - module: 73
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "Read: 'Many city parks are shrinking. Builders want the land for houses. But parks give children space to play and clean the air. Some cities now protect their parks by law.' The main idea is —"
+    options: ["builders want land", "children like to play", "city parks are valuable and worth protecting", "parks clean the air"]
+    correct_index: 2
+    explanation: "The passage argues parks matter and should be protected, which is the implied central point rather than any single detail."
+
+  - module: 73
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "Which sentence would best be the topic sentence for a paragraph about why exercise is healthy?"
+    options: ["Some people run in the mornings.", "Exercise keeps your body and mind healthy in many ways.", "Swimming is fun in summer.", "My friend plays football."]
+    correct_index: 1
+    explanation: "The topic sentence states the broad main idea that the rest of the paragraph would support."
+
+  - module: 73
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "If every sentence in a passage gives an example but the main point is never stated outright, to find the main idea you should —"
+    options: ["copy the first sentence", "pick the longest sentence", "work out what all the examples have in common", "choose the last word"]
+    correct_index: 2
+    explanation: "When the main idea is implied, you infer it from what the details share."
