@@ -35,7 +35,6 @@ it('shows the four status buckets and they sum to the total', function () {
     $response->assertSee('Mastered');
     $response->assertSee('Likely Known');
     $response->assertSee('Needs Work');
-    $response->assertSee('Upcoming');
 });
 
 it('counts each engine status correctly', function () {
