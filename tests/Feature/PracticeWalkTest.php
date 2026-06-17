@@ -80,3 +80,30 @@ it('frames a wrong answer as not-yet, never failure, and resets the streak', fun
         ->assertDontSee('Incorrect')
         ->assertSet('currentStreak', 0);  // stayed/reset at 0
 });
+
+it('serves a different question after answering, not the same one again', function () {
+    $student = User::factory()->create();
+    $module  = SyllabusModule::factory()->create();
+
+    $q1 = PracticeQuestion::factory()->create([
+        'module_id' => $module->id, 'difficulty' => 1,
+        'prompt' => 'First question', 'options' => ['A','B','C','D'], 'correct_index' => 1,
+        'explanation' => 'x',
+    ]);
+    $q2 = PracticeQuestion::factory()->create([
+        'module_id' => $module->id, 'difficulty' => 1,
+        'prompt' => 'Second question', 'options' => ['A','B','C','D'], 'correct_index' => 1,
+        'explanation' => 'y',
+    ]);
+
+    $component = Livewire::actingAs($student)
+        ->test(PracticeWalk::class, ['module' => $module]);
+
+    // Whichever question is shown first, answer it correctly, then Next.
+    $firstId = $component->get('question')['id'];
+    $component->call('choose', 1)->call('next');
+
+    // The next question must be a DIFFERENT id (not the one just answered in this streak).
+    $secondId = $component->get('question')['id'];
+    expect($secondId)->not->toBe($firstId);
+});

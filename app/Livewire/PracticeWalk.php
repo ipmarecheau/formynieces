@@ -42,7 +42,22 @@ class PracticeWalk extends Component
     private function loadQuestion(): void
     {
         $questions = app(PracticeQuestions::class)->forModule($this->moduleId);
-        $atRung = $questions->firstWhere('difficulty', $this->currentRung);
+
+        // Question ids already used in the current live streak — skip them so the
+        // child doesn't see the same item twice while building a streak.
+        $usedInStreak = StudentProgress::query()
+            ->where('student_id', auth()->id())
+            ->where('module_id', $this->moduleId)
+            ->value('streak_question_ids') ?? [];
+
+        // streak_question_ids is JSON; value() returns the raw string on some drivers.
+        if (is_string($usedInStreak)) {
+            $usedInStreak = json_decode($usedInStreak, true) ?: [];
+        }
+
+        $atRung = $questions
+            ->where('difficulty', $this->currentRung)
+            ->first(fn ($q) => ! in_array($q->id, $usedInStreak, true));
 
         $this->question = $atRung === null ? null : [
             'id'            => $atRung->id,
