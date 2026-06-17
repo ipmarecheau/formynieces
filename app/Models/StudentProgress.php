@@ -13,6 +13,17 @@ class StudentProgress extends Model
         'status',
         'score',
         'previous_score',
+        'current_rung',
+        'current_streak',
+        'streak_question_ids',
+    ];
+
+    protected $casts = [
+        'score'               => 'integer',
+        'previous_score'      => 'integer',
+        'current_rung'        => 'integer',
+        'current_streak'      => 'integer',
+        'streak_question_ids' => 'array',
     ];
 
     public function student(): BelongsTo
