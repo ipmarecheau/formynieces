@@ -46,6 +46,13 @@
             display: flex; align-items: center; gap: 10px;
             padding: 8px 0; border-top: 1px solid #f9f5ff;
         }
+        .fmn-practice-link {
+            font-size: 0.74rem; font-weight: 800; color: #db2777;
+            text-decoration: none; padding: 3px 10px; border-radius: 999px;
+            background: #fce7f3; border: 1.5px solid #fbcfe8; white-space: nowrap;
+            transition: background 0.15s, transform 0.1s;
+        }
+        .fmn-practice-link:hover { background: #fbcfe8; transform: translateY(-1px); }
         .fmn-leaf-icon { font-size: 1rem; flex-shrink: 0; }
         .fmn-leaf-name { font-size: 0.85rem; color: #374151; font-weight: 600; flex: 1; min-width: 0; }
         .sdot-needswork { background: #f59e0b; }
@@ -565,14 +572,18 @@
                                                 default => 'Not started',
                                             };
                                         @endphp
-                                        <div class="fmn-leaf">
-                                            <span class="fmn-leaf-name">{{ $item['leaf'] }}</span>
-                                            <span class="fmn-hearts" title="{{ $label }}" aria-label="{{ $label }}">
-                                                @for ($h = 1; $h <= 3; $h++)
-                                                    <span class="fmn-heart">{{ $h <= $filled ? '❤️' : '🤍' }}</span>
-                                                @endfor
-                                            </span>
-                                        </div>
+                                            <div class="fmn-leaf">
+                                                <span class="fmn-leaf-name">{{ $item['leaf'] }}</span>
+                                                @if ($item['status'] === 'needs_work')
+                                                    <a href="{{ route('practice.walk', $item['id']) }}"
+                                                    class="fmn-practice-link">Practice →</a>
+                                                @endif
+                                                <span class="fmn-hearts" title="{{ $label }}" aria-label="{{ $label }}">
+                                                    @for ($h = 1; $h <= 3; $h++)
+                                                        <span class="fmn-heart">{{ $h <= $filled ? '❤️' : '🤍' }}</span>
+                                                    @endfor
+                                                </span>
+                                            </div>
                                     @endforeach
                                 </div>
                             </div>

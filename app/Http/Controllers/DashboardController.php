@@ -75,6 +75,7 @@ class DashboardController extends Controller
             ];
 
             $roadmap[$subject][$prefix]['items'][] = [
+                'id'      => $item->module->id,
                 'leaf'    => $leaf,
                 'status'  => $item->status,
                 'section' => $item->module->sea_section,
