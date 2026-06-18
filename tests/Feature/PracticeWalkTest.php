@@ -107,3 +107,27 @@ it('serves a different question after answering, not the same one again', functi
     $secondId = $component->get('question')['id'];
     expect($secondId)->not->toBe($firstId);
 });
+
+it('shows a mastery celebration, not coming-soon, once the module is mastered', function () {
+    $student = User::factory()->create();
+    $module  = SyllabusModule::factory()->create();
+
+    // Pre-set the student to mastered on this module.
+    \App\Models\StudentProgress::create([
+        'student_id'    => $student->id,
+        'module_id'     => $module->id,
+        'status'        => 'mastered',
+        'score'         => 100,
+        'current_rung'  => 3,
+        'current_streak'=> 3,
+    ]);
+
+    // Some questions exist, but mastery should short-circuit before serving them.
+    PracticeQuestion::factory()->create(['module_id' => $module->id, 'difficulty' => 3]);
+
+    Livewire::actingAs($student)
+        ->test(PracticeWalk::class, ['module' => $module])
+        ->assertSet('isMastered', true)
+        ->assertSee('mastered')
+        ->assertDontSee('coming soon');
+});

@@ -16,12 +16,10 @@ class PracticeWalk extends Component
     public string $topic;
     public int $currentRung = 1;
     public int $currentStreak = 0;
+    public bool $isMastered = false;
 
-    /** Current question: id, prompt, options, correct_index, explanation. Null if rung empty. */
     public ?array $question = null;
-
-    /** Feedback state: null while answering; set after an answer until "Next". */
-    public ?array $feedback = null;   // ['correct'=>bool, 'explanation'=>string]
+    public ?array $feedback = null;
 
     public function mount(SyllabusModule $module): void
     {
@@ -35,22 +33,24 @@ class PracticeWalk extends Component
 
         $this->currentRung   = $progress->current_rung ?? 1;
         $this->currentStreak = $progress->current_streak ?? 0;
+        $this->isMastered    = ($progress->status ?? null) === 'mastered';
 
         $this->loadQuestion();
     }
 
     private function loadQuestion(): void
     {
+        if ($this->isMastered) {
+            $this->question = null;   // mastered: nothing to serve, celebration shows
+            return;
+        }
+
         $questions = app(PracticeQuestions::class)->forModule($this->moduleId);
 
-        // Question ids already used in the current live streak — skip them so the
-        // child doesn't see the same item twice while building a streak.
         $usedInStreak = StudentProgress::query()
             ->where('student_id', auth()->id())
             ->where('module_id', $this->moduleId)
             ->value('streak_question_ids') ?? [];
-
-        // streak_question_ids is JSON; value() returns the raw string on some drivers.
         if (is_string($usedInStreak)) {
             $usedInStreak = json_decode($usedInStreak, true) ?: [];
         }
@@ -68,11 +68,10 @@ class PracticeWalk extends Component
         ];
     }
 
-    /** Student taps an option: record it, compute feedback, update the climb. */
     public function choose(int $chosenIndex): void
     {
         if ($this->question === null || $this->feedback !== null) {
-            return; // ignore taps when not in answering state
+            return;
         }
 
         $wasCorrect = $chosenIndex === $this->question['correct_index'];
@@ -80,17 +79,17 @@ class PracticeWalk extends Component
         $progress = app(RecordPracticeAttempt::class)
             ->handle(auth()->id(), $this->question['id'], $chosenIndex);
 
-        // Refresh the climb from the updated projection.
         $this->currentRung   = $progress->current_rung;
         $this->currentStreak = $progress->current_streak;
+        $this->isMastered    = $progress->status === 'mastered';
 
         $this->feedback = [
             'correct'     => $wasCorrect,
             'explanation' => $this->question['explanation'] ?? '',
+            'mastered'    => $this->isMastered,   // so the feedback screen can announce it
         ];
     }
 
-    /** "Next" tap: clear feedback, load the next question at the (possibly new) rung. */
     public function next(): void
     {
         $this->feedback = null;
