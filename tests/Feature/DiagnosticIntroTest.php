@@ -10,7 +10,9 @@ test('the diagnostic intro frames the start as an expedition with a single begin
     ]);
 
     $response = $this->actingAs($student)->get(route('diagnostic.intro'));
-
+    $html = $response->getContent();
+    $pos = stripos($html, 'timer');
+    dump(substr($html, max(0, $pos - 150), 300));
     $response->assertOk();
 
     // Expedition framing is present and personalised

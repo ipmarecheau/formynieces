@@ -14,6 +14,8 @@ class DatabaseSeeder extends Seeder
             MathAnchorQuestionSeeder::class,
             ElaAnchorQuestionSeeder::class,
             WritingAnchorQuestionSeeder::class,
+            PracticeQuestionSeeder::class,   // 36 practice Qs across modules 1, 3, 52, 73
+            TestAccountSeeder::class,        // guardian + onboarded student + needs_work row
         ]);
     }
 }

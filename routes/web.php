@@ -24,6 +24,9 @@ Route::middleware('auth')->group(function () {
         return view('student.diagnostic-intro');
     })->name('diagnostic.intro');
 
+    Route::get('/practice/{module}', \App\Livewire\PracticeWalk::class)
+        ->name('practice.walk');
+
     Route::get('/diagnostic/start', function () {
         try {
             app(\App\Services\Diagnostic\SessionLifecycle::class)
@@ -40,6 +43,12 @@ Route::middleware('auth')->group(function () {
     // Student's own roadmap — auth-only, never verified (synthetic emails).
     Route::get('/my-map', [\App\Http\Controllers\DashboardController::class, 'index'])
         ->name('student.map');
+
+        Route::get('/practice/{module}/lesson', \App\Livewire\LessonWalk::class)
+        ->name('practice.lesson');
+
+    Route::get('/practice/{module}', \App\Livewire\PracticeWalk::class)
+        ->name('practice.walk');
 });
 
 require __DIR__.'/auth.php';

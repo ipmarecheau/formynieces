@@ -17,6 +17,7 @@ class DiagnosticWalk extends Component
     public string $prompt = '';
     public array $options = [];
     public bool $showInterstitial = false;
+    public bool $isComplete = false;
 
     public string $strand = '';
     public string $islandName = '';
@@ -36,6 +37,11 @@ class DiagnosticWalk extends Component
         return new ItemWalk(new SessionPlanner);
     }
 
+    protected function lifecycle(): SessionLifecycle
+    {
+        return app(SessionLifecycle::class);
+    }
+
     protected function resolvePlanTotal(): int
     {
         $session = DB::table('diagnostic_sessions')->find($this->sessionId);
@@ -50,6 +56,14 @@ class DiagnosticWalk extends Component
         $this->question = $this->walk()->currentQuestion($this->sessionId);
 
         if ($this->question === null) {
+            // Plan walked — derive + persist the mastery map, mark completed.
+            // complete() is idempotent; the status guard avoids redundant calls.
+            $session = DB::table('diagnostic_sessions')->find($this->sessionId);
+            if ($session !== null && $session->status !== 'completed') {
+                $this->lifecycle()->complete($this->sessionId);
+            }
+
+            $this->isComplete = true;
             $this->prompt = '';
             $this->options = [];
             $this->strand = '';
@@ -67,11 +81,6 @@ class DiagnosticWalk extends Component
         [$this->islandName, $this->islandIcon] = $this->islandFor($this->strand, $anchor->subject ?? '');
     }
 
-    /**
-     * Map an engine strand to a playful island name + icon.
-     * Math strands → Number Isle; ELA reading strands → Story Cove;
-     * ELA editing strands → Word Harbour; Writing → Writer's Bay.
-     */
     protected function islandFor(string $strand, string $subject): array
     {
         $storyCove = ['Comprehension', 'Poetry', 'Media'];
@@ -87,7 +96,6 @@ class DiagnosticWalk extends Component
             return ['Word Harbour', '✏️'];
         }
 
-        // All Math strands (Number, Fractions, Decimals, Percent, Geometry, …)
         return ['Number Isle', '🔢'];
     }
 
