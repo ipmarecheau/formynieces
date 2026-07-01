@@ -12,6 +12,18 @@ class TestAccountSeeder extends Seeder
 {
     public function run(): void
     {
+
+        // Admin — Filament panel access only
+        User::updateOrCreate(
+            ['email' => 'admin@formynieces.com'],
+            [
+                'name' => 'Admin',
+                'password' => Hash::make('password'),
+                'role' => 'admin',
+                'email_verified_at' => now(),
+            ]
+        );
+
         // Guardian — real email, verified, 18+ attested
         $guardian = User::updateOrCreate(
             ['email' => 'mummy1@test.com'],

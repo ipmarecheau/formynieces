@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Filament\Panel;
 
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -24,6 +25,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'age_attested_at',
         'target_sea_year',
         'known_weak_areas',
+        'weekly_module_cap_override', // Weekly targets: per-student cap override
     ];
 
     protected $hidden = [
@@ -39,6 +41,7 @@ class User extends Authenticatable implements MustVerifyEmail
             'onboarding_completed_at' => 'datetime', // Slice 1
             'age_attested_at' => 'datetime',
             'known_weak_areas' => 'array',
+            'weekly_module_cap_override' => 'integer',
         ];
     }
 
@@ -79,6 +82,16 @@ class User extends Authenticatable implements MustVerifyEmail
     public function isStudent(): bool
     {
         return $this->role === 'student';
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
+    }
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return $this->isAdmin();
     }
 
     /**

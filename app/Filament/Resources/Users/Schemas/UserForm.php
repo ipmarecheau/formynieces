@@ -22,12 +22,21 @@ class UserForm
                 DateTimePicker::make('email_verified_at'),
                 TextInput::make('password')
                     ->password()
-                    ->required(),
+                    ->required(fn (string $operation): bool => $operation === 'create')
+                    ->dehydrated(fn ($state): bool => filled($state))
+                    ->maxLength(255),
                 TextInput::make('role')
                     ->required()
                     ->default('student'),
                 Select::make('parent_id')
                     ->relationship('parent', 'name'),
+                TextInput::make('weekly_module_cap_override')
+                    ->label('Weekly module cap override')
+                    ->helperText('Leave blank to use the global cap. Set a number to override this student\'s weekly module cap.')
+                    ->numeric()
+                    ->minValue(1)
+                    ->maxValue(20)
+                    ->nullable(),
             ]);
     }
 }
