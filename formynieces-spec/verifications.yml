@@ -1,0 +1,8 @@
+# Manual verification ledger for ForMyNieces.
+# Written by `php artisan specs:verify`. Safe to edit by hand.
+
+- scenario: AC-02
+  verified_at: 2026-07-07
+  commit: f742f30
+  spec_hash: 61fff216d466
+  note: "Admin cap override saves in Filament UserForm"
