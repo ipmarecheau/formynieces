@@ -7,7 +7,62 @@
   spec_hash: 61fff216d466
   note: "Admin cap override saves in Filament UserForm"
 - scenario: GO-02
-  verified_at: 2026-07-07
-  commit: 45934ca
+  verified_at: 1783382400
+  commit: 409bc14
   spec_hash: b9ec143edfd1
   note: "Unverified guardian redirected to verification notice"
+- scenario: GO-03
+  verified_at: 1783382400
+  commit: 409bc14
+  spec_hash: e0e6391eb9d1
+  note: "Verified guardian with no child routed to child setup"
+- scenario: GO-04
+  verified_at: 1783382400
+  commit: 409bc14
+  spec_hash: 25691043bb6b
+  note: "Child profile created and credentials shown once"
+- scenario: GO-05
+  verified_at: 1783382400
+  commit: 409bc14
+  spec_hash: 2a4df6d514fd
+  note: "New student routed to diagnostic intro on first login"
+- scenario: LL-01
+  verified_at: 1783382400
+  commit: 409bc14
+  spec_hash: 85d50413961c
+  note: "Lesson page shows description and resources"
+- scenario: LL-02
+  verified_at: 1783382400
+  commit: 409bc14
+  spec_hash: 42f6f64ece2e
+  note: "needs_work module links to practice from map"
+- scenario: LL-03
+  verified_at: 1783382400
+  commit: 409bc14
+  spec_hash: 7f7fccba9972
+  note: "Practice climbs difficulty rungs on 3-in-a-row"
+- scenario: LL-04
+  verified_at: 1783382400
+  commit: 409bc14
+  spec_hash: 4b718186d14f
+  note: "Wrong answer resets streak, keeps rung, shows not-yet"
+- scenario: LL-05
+  verified_at: 1783382400
+  commit: 409bc14
+  spec_hash: eaf653900a38
+  note: "Repeated question does not pad streak"
+- scenario: LL-06
+  verified_at: 1783382400
+  commit: 409bc14
+  spec_hash: 9f8eed3423d7
+  note: "Three correct at rung 3 shows mastery celebration"
+- scenario: DG-01
+  verified_at: 1783382400
+  commit: 409bc14
+  spec_hash: eb3253e2bc31
+  note: "Intro uses expedition framing, no score or timer"
+- scenario: DG-02
+  verified_at: 2026-07-07
+  commit: 409bc14
+  spec_hash: 14086ce5c37e
+  note: "Question screen shows prompt and options only, no correctness"
