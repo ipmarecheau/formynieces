@@ -21,4 +21,4 @@ it('routes a student with incomplete onboarding to the diagnostic intro', functi
     ]);
 
     $response->assertRedirect(route('diagnostic.intro'));
-});
+})->group('scenario:GO-05');

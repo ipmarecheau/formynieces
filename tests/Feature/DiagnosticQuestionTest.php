@@ -45,7 +45,7 @@ it('renders the current question prompt and its four options', function () {
         ->assertSee($options[1])
         ->assertSee($options[2])
         ->assertSee($options[3]);
-});
+})->group('scenario:DG-02');
 
 it('advances to the next anchor after an answer is chosen', function () {
     $walk = new ItemWalk(new SessionPlanner);
@@ -59,7 +59,7 @@ it('advances to the next anchor after an answer is chosen', function () {
 
     expect($next['anchor_id'])->not->toBe($first['anchor_id']);
     expect($next['item_number'])->toBe(2);
-});
+})->group('scenario:DG-03');
 
 it('never shows the child whether an answer was right or wrong', function () {
     Livewire::actingAs($this->student)
@@ -68,4 +68,4 @@ it('never shows the child whether an answer was right or wrong', function () {
         ->assertDontSee('correct', false)
         ->assertDontSee('incorrect', false)
         ->assertDontSee('wrong', false);
-});
+})->group('scenario:DG-02');

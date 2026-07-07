@@ -68,7 +68,7 @@ it('presents the first question at medium difficulty', function () {
     expect($q)->not->toBeNull();
     expect($q['item_number'])->toBe(1);
     expect($q['difficulty'])->toBe(SessionPlanner::DIFFICULTY_MEDIUM);
-});
+})->group('scenario:DG-03');
 
 it('records a correct answer with no misconception', function () {
     $q = $this->walk->currentQuestion($this->sessionId);
@@ -81,7 +81,7 @@ it('records a correct answer with no misconception', function () {
 
     $row = DB::table('diagnostic_responses')->where('diagnostic_session_id', $this->sessionId)->first();
     expect((bool) $row->is_correct)->toBeTrue();
-});
+})->group('scenario:DG-03');
 
 it('records a wrong answer with the chosen distractor misconception', function () {
     $q = $this->walk->currentQuestion($this->sessionId);
@@ -95,7 +95,7 @@ it('records a wrong answer with the chosen distractor misconception', function (
 
     $expected = json_decode($anchor->distractor_notes, true)['misconceptions'][(string) $wrongIndex];
     expect($result['misconception'])->toBe($expected);
-});
+})->group('scenario:DG-04');
 
 it('climbs to harder within a strand after a correct answer', function () {
     // Answer the first item (medium) correctly; the next item in the SAME strand
@@ -121,7 +121,7 @@ it('climbs to harder within a strand after a correct answer', function () {
     // If the strand never recurs (only one slot), the climb still registered in
     // the derived level — assert that instead.
     expect(true)->toBeTrue();
-});
+})->group('scenario:DG-03');
 
 it('descends to easier within a strand after a wrong answer', function () {
     $first = $this->walk->currentQuestion($this->sessionId);
@@ -142,7 +142,7 @@ it('descends to easier within a strand after a wrong answer', function () {
     }
 
     expect(true)->toBeTrue();
-});
+})->group('scenario:DG-04');
 
 it('advances the cursor and never repeats an anchor', function () {
     $seen = [];
@@ -157,7 +157,7 @@ it('advances the cursor and never repeats an anchor', function () {
     }
 
     expect(count($seen))->toBeGreaterThan(0);
-});
+})->group('scenario:DG-02');
 
 it('resumes mid-session at the next unanswered item', function () {
     // Answer three, then re-read: the cursor should be at item 4, responses kept.
@@ -169,7 +169,7 @@ it('resumes mid-session at the next unanswered item', function () {
 
     expect($resumed['item_number'])->toBe(4);
     expect(DB::table('diagnostic_responses')->where('diagnostic_session_id', $this->sessionId)->count())->toBe(3);
-});
+})->group('scenario:DG-15');
 
 it('fires an encouragement interstitial every eighth answered item', function () {
     for ($n = 1; $n <= 8; $n++) {
@@ -179,7 +179,7 @@ it('fires an encouragement interstitial every eighth answered item', function ()
         }
     }
     expect($this->walk->interstitialDue($this->sessionId))->toBeTrue();
-});
+})->group('scenario:DG-14');
 
 it('returns null when the plan is exhausted', function () {
     for ($i = 0; $i < 40; $i++) {
@@ -191,7 +191,7 @@ it('returns null when the plan is exhausted', function () {
     }
 
     expect($this->walk->currentQuestion($this->sessionId))->toBeNull();
-});
+})->group('scenario:RR-01');
 
 it('feeds responses that MasteryInference can consume', function () {
     // End-to-end: walk a few items, then build the mastery map from the recorded
@@ -210,4 +210,4 @@ it('feeds responses that MasteryInference can consume', function () {
         expect($r->module_id)->toBeGreaterThan(0);
         expect($r->difficulty)->toBeGreaterThanOrEqual(1);
     }
-});
+})->group('scenario:RR-01');

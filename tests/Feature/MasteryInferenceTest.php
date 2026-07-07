@@ -39,7 +39,7 @@ it('infers the direct prerequisites of a correct medium anchor', function () {
     expect($map[23])->toBe(MasteryInference::STATUS_MASTERED)
         ->and($map[22])->toBe(MasteryInference::STATUS_INFERRED)
         ->and($map[15])->toBe(MasteryInference::STATUS_INFERRED);
-});
+})->group('scenario:DG-05');
 
 it('infers transitively along a prerequisite chain', function () {
     // diagnostic.feature: "Inference is transitive along a prerequisite chain"
@@ -49,7 +49,7 @@ it('infers transitively along a prerequisite chain', function () {
     foreach ([25, 21, 26, 49, 23, 22, 12] as $m) {
         expect($map[$m])->toBe(MasteryInference::STATUS_INFERRED);
     }
-});
+})->group('scenario:DG-06');
 
 it('does not propagate from an easy correct answer', function () {
     // diagnostic.feature: "Inference requires unambiguous evidence" (D3)
@@ -57,7 +57,7 @@ it('does not propagate from an easy correct answer', function () {
 
     expect($map[23])->toBe(MasteryInference::STATUS_MASTERED)
         ->and($map)->not->toHaveKey(22);
-});
+})->group('scenario:DG-07');
 
 it('walks back inferred mastery when a harder item in the chain is failed', function () {
     // diagnostic.feature: "A failed harder item un-marks a previously inferred module"
@@ -70,7 +70,7 @@ it('walks back inferred mastery when a harder item in the chain is failed', func
     // The directly-earned fact stands; the inference is removed.
     expect($map[13])->toBe(MasteryInference::STATUS_MASTERED);
     expect($map['12'] ?? null)->not->toBe(MasteryInference::STATUS_INFERRED);
-});
+})->group('scenario:DG-08');
 
 it('keeps walk-back bounded to the contradicted chain', function () {
     // diagnostic.feature: "Walk-back is bounded to the contradicted chain"
@@ -83,7 +83,7 @@ it('keeps walk-back bounded to the contradicted chain', function () {
 
     expect($map[33])->toBe(MasteryInference::STATUS_INFERRED) // Geometry untouched
         ->and($map['12'] ?? null)->not->toBe(MasteryInference::STATUS_INFERRED);
-});
+})->group('scenario:DG-09');
 
 it('does not infer a writing node from a poetry module above it', function () {
     // diagnostic.feature: "A writing node is not inferred from a poetry module above it"
@@ -92,7 +92,7 @@ it('does not infer a writing node from a poetry module above it', function () {
 
     expect($map[86])->toBe(MasteryInference::STATUS_MASTERED)
         ->and($map)->not->toHaveKey(71);
-});
+})->group('scenario:DG-11');
 
 it('does not flow mastery through a writing node to its prerequisites', function () {
     // diagnostic.feature: "Mastery does not flow through a writing node"
@@ -102,13 +102,13 @@ it('does not flow mastery through a writing node to its prerequisites', function
     expect($map[71])->toBe(MasteryInference::STATUS_MASTERED)
         ->and($map)->not->toHaveKey(81)
         ->and($map)->not->toHaveKey(82);
-});
+})->group('scenario:DG-12');
 
 it('marks a directly failed module as needs_work', function () {
     $map = $this->inference->deriveMap(responses([[5, 2, false]]));
 
     expect($map[5])->toBe(MasteryInference::STATUS_NEEDS_WORK);
-});
+})->group('scenario:DG-08');
 
 it('lets a correct result override an earlier wrong on the same module', function () {
     // Re-tested module: the hardest correct evidence wins.
@@ -118,7 +118,7 @@ it('lets a correct result override an earlier wrong on the same module', functio
     ]));
 
     expect($map[8])->toBe(MasteryInference::STATUS_MASTERED);
-});
+})->group('scenario:DG-07');
 
 it('recomputes identically regardless of response order', function () {
     // Determinism: order must not change the final map.
@@ -130,4 +130,4 @@ it('recomputes identically regardless of response order', function () {
     ksort($a);
     ksort($b);
     expect($a)->toBe($b);
-});
+})->group('scenario:DG-07');

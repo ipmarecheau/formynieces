@@ -71,6 +71,7 @@ Feature: Adaptive diagnostic
 
   Rule: The diagnostic is framed as an adventure, never as a test
 
+    @scenario:DG-01
     Scenario: The intro uses adventure framing
       Given a student whose onboarding is not completed
       When she opens the diagnostic intro
@@ -78,6 +79,7 @@ Feature: Adaptive diagnostic
       And no timer element is rendered
       And no score element is rendered
 
+    @scenario:DG-02
     Scenario: A question screen hides scoring
       Given a student is partway through a diagnostic session
       When a question is presented
@@ -86,11 +88,13 @@ Feature: Adaptive diagnostic
 
   Rule: The item walk adapts to performance per strand
 
+    @scenario:DG-03
     Scenario: A correct answer climbs the difficulty ladder
       Given a student is presented a medium-difficulty Math Number anchor
       When she answers it correctly
       Then the next Math Number anchor presented is harder
 
+    @scenario:DG-04
     Scenario: A wrong answer descends the difficulty ladder
       Given a student is presented a medium-difficulty Math Number anchor
       When she answers it incorrectly
@@ -102,18 +106,21 @@ Feature: Adaptive diagnostic
     # Ids below are real edges in module_prerequisites (Slice 2a). They pin the
     # walk to the seeded graph: a regression in propagation fails these.
 
+    @scenario:DG-05
     Scenario: A correct anchor infers its direct prerequisites
       Given a student is presented an anchor for Math module 23 "Percent of a Quantity"
       When she answers it correctly
       Then module 22 "Convert F/D/Percent" is marked inferred mastered
       And module 15 "Fractions of a Collection" is marked inferred mastered
 
+    @scenario:DG-06
     Scenario: Inference is transitive along a prerequisite chain
       Given a student is presented an anchor for Math module 27 "Multi-step Money"
       When she answers it correctly
       Then its direct prerequisites 25, 21, 26 and 49 are marked inferred mastered
       And the chain beneath them — modules 23, 22 and 12 — is also marked inferred mastered
 
+    @scenario:DG-07
     Scenario: Inference requires unambiguous evidence, not a lucky guess
       Given a student is presented a Math Number anchor
       When she answers it correctly with low confidence flagged by a fast random-looking response
@@ -121,6 +128,7 @@ Feature: Adaptive diagnostic
 
   Rule: A contradicting harder item walks back earlier inference
 
+    @scenario:DG-08
     Scenario: A failed harder item un-marks a previously inferred module
       Given a student answered Math module 13 "Add/Subtract Fractions" correctly
       And module 12 "Equivalent Fractions" was inferred mastered as a result
@@ -128,6 +136,7 @@ Feature: Adaptive diagnostic
       Then module 12 is no longer marked inferred mastered
       And module 13 is no longer marked inferred mastered
 
+    @scenario:DG-09
     Scenario: Walk-back is bounded to the contradicted chain
       Given a student has inferred mastery across the Fractions chain and the Geometry chain
       When she answers a harder Fractions anchor incorrectly
@@ -141,24 +150,28 @@ Feature: Adaptive diagnostic
     # flowing THROUGH a writing node along the prerequisite graph — in either
     # direction — into the ELA reading modules it shares edges with.
 
+    @scenario:DG-10
     Scenario: A correct Writing anchor masters its module directly
       Given a student is presented a Writing anchor for module 71 "Figurative Language"
       When she answers it correctly
       Then writing module 71 is marked mastered
       And no ELA reading module is marked inferred mastered as a side effect
 
+    @scenario:DG-11
     Scenario: A writing node is not inferred from a poetry module above it
       Given the graph contains an edge from poetry module 86 to writing module 71
       And a student answered an anchor for module 86 correctly
       When prerequisite inference runs
       Then writing module 71 is not marked inferred mastered by that propagation
 
+    @scenario:DG-12
     Scenario: Mastery does not flow through a writing node to its prerequisites
       Given writing module 71 references poetry modules 81 and 82 in the graph
       And a student answered a Writing anchor for module 71 correctly
       When prerequisite inference runs
       Then poetry modules 81 and 82 are not marked inferred mastered through module 71
 
+  @scenario:DG-13
   Scenario: A new session plans items per the 50/30/20 paper weighting
     Given a student whose onboarding is not completed
     When a diagnostic session is started for her
@@ -166,24 +179,27 @@ Feature: Adaptive diagnostic
     And a roughly even split of ELA anchors between Section I (spelling, punctuation, grammar) and Section II (reading comprehension)
     And a small set of Writing anchors covering narrative, expository, figurative language, and organisation
 
+  @scenario:DG-14
   Scenario: An encouraging interstitial appears every eighth item
     Given a student has answered 7 items in her session
     When she answers the 8th item
     Then a brief interstitial praising effort is shown before the next item
 
+  @scenario:DG-15
   Scenario: An interrupted session resumes
     Given a student closed the browser midway through a diagnostic session
     When she logs in again
     Then she is offered to continue the open session
     And her previous responses are preserved
 
+  @scenario:DG-16
   Scenario: Writing is diagnosed by multiple-choice anchors, scoped to its own modules
     Given a student has reached the Writing anchors in her session
     When she answers them
     Then only Writing modules 69 to 72 change mastery as a result
     And no Math or ELA reading module's mastery status changes from the Writing answers
 
-  @v1.1
+  @v1.1 @scenario:DG-17
   Scenario: A guardian initiates a diagnostic retake
     Given a student who completed her diagnostic more than 8 weeks ago
     When her guardian requests a retake

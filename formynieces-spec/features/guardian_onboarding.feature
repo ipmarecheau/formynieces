@@ -4,22 +4,26 @@ Feature: Guardian account and child setup
   a guardian creates a verified account and sets up her student profile.
   All students must be linked to a verified guardian aged 18 or over.
 
+  @scenario:GO-01
   Scenario: A guardian registers with an 18+ attestation
     Given a visitor is on the registration screen
     When she registers with her name, email, password, and confirms she is 18 or older
     Then a guardian account is created with role "guardian"
     And she is redirected to the email verification notice
 
+  @scenario:GO-02
   Scenario: An unverified guardian cannot reach child setup
     Given a guardian who has registered but not verified her email
     When she attempts to open the child setup screen
     Then she is redirected to the email verification notice
 
+  @scenario:GO-03
   Scenario: A verified guardian without a child is routed to child setup
     Given a verified guardian with no linked student
     When she logs in
     Then she is taken to the child setup screen
 
+  @scenario:GO-04
   Scenario: A guardian creates a child profile
     Given a verified guardian is on the child setup screen
     When she submits the child's name, target SEA year, and optional known weak areas
@@ -27,24 +31,28 @@ Feature: Guardian account and child setup
     And the student's onboarding is not yet completed
     And the child's login details are shown to her once
 
+  @scenario:GO-05
   Scenario: A new student is routed to the diagnostic at first login
     Given a student whose onboarding is not completed
     When the student logs in
     Then she is taken to the diagnostic intro instead of the dashboard
 
-  @v1.1
+  @v1.1 @scenario:GO-06
   Scenario: A guardian verifies a phone number
     Given a verified guardian on the phone verification screen
     When she submits her phone number and the confirmation code sent to it
     Then her account is marked phone-verified
 
-  @roadmap @scenario-S8
+  @roadmap
   Rule: A second guardian has read-only visibility
+
+    @scenario:GO-07
     Scenario: The primary guardian invites a second guardian
       Given a primary guardian of a student
       When she sends a second-guardian invitation by email
       Then a read-only guardian invitation is created for that student
 
+    @scenario:GO-08
     Scenario: A second guardian views but cannot change anything
       Given a second guardian who accepted an invitation and verified her account
       When she opens the student's guardian dashboard

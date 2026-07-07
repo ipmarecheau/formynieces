@@ -21,7 +21,7 @@ beforeEach(function () {
 it('seeds exactly the expected number of edges', function () {
     expect(DB::table('module_prerequisites')->count())
         ->toBe(ModulePrerequisiteSeeder::EXPECTED_EDGE_COUNT);
-});
+})->group('scenario:DG-05');
 
 it('references only real module ids on both ends of every edge', function () {
     $moduleIds = DB::table('syllabus_modules')->pluck('id')->all();
@@ -34,7 +34,7 @@ it('references only real module ids on both ends of every edge', function () {
         expect($moduleIds)->toContain($edge->module_id);
         expect($moduleIds)->toContain($edge->prerequisite_module_id);
     }
-});
+})->group('scenario:DG-05');
 
 it('contains no self-loops', function () {
     $selfLoops = DB::table('module_prerequisites')
@@ -42,7 +42,7 @@ it('contains no self-loops', function () {
         ->count();
 
     expect($selfLoops)->toBe(0);
-});
+})->group('scenario:DG-05');
 
 it('contains no duplicate edges', function () {
     $total = DB::table('module_prerequisites')->count();
@@ -52,7 +52,7 @@ it('contains no duplicate edges', function () {
         ->count(DB::raw('module_id || "-" || prerequisite_module_id'));
 
     expect($distinct)->toBe($total);
-});
+})->group('scenario:DG-05');
 
 it('forms an acyclic graph', function () {
     // Build adjacency: module_id (B) -> prerequisite_module_id (A), i.e. B depends on A.
@@ -112,7 +112,7 @@ it('forms an acyclic graph', function () {
             );
         }
     }
-});
+})->group('scenario:DG-05');
 
 it('seeds the expected Math/ELA split', function () {
     // Math modules are ids 1..51, ELA 52..90. Every edge's "from" node (module_id)
@@ -124,4 +124,4 @@ it('seeds the expected Math/ELA split', function () {
     expect($mathFrom)->toBe(86)
         ->and($elaFrom)->toBe(64)
         ->and($mathFrom + $elaFrom)->toBe(ModulePrerequisiteSeeder::EXPECTED_EDGE_COUNT);
-});
+})->group('scenario:DG-05');

@@ -12,4 +12,4 @@ it('redirects an unverified guardian away from child setup', function () {
     actingAs($guardian)
         ->get('/child-setup')
         ->assertRedirect(route('verification.notice'));
-});
+})->group('scenario:GO-02');

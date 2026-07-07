@@ -35,17 +35,17 @@ it('starts a session and routes the student to the walk when they set sail', fun
         'student_id' => $this->student->id,
         'status' => 'in_progress',
     ]);
-});
+})->group('scenario:DG-15');
 
 it('resumes the same session instead of creating a second on a repeat start', function () {
     $this->actingAs($this->student)->get(route('diagnostic.start'));
     $this->actingAs($this->student)->get(route('diagnostic.start'));
 
     expect(DB::table('diagnostic_sessions')->where('student_id', $this->student->id)->count())->toBe(1);
-});
+})->group('scenario:DG-15');
 
 it('renders the walk page for a student with an active session', function () {
     $this->actingAs($this->student)->get(route('diagnostic.start'));
 
     $this->actingAs($this->student)->get(route('diagnostic.walk'))->assertOk();
-});
+})->group('scenario:DG-02');

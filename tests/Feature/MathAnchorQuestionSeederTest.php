@@ -21,7 +21,7 @@ beforeEach(function () {
 
 it('seeds the full Math anchor bank', function () {
     expect(DB::table('anchor_questions')->where('subject', 'Math')->count())->toBe(65);
-});
+})->group('scenario:DG-13');
 
 it('gives every Math anchor exactly four options and a valid correct index', function () {
     $anchors = DB::table('anchor_questions')->where('subject', 'Math')->get();
@@ -31,7 +31,7 @@ it('gives every Math anchor exactly four options and a valid correct index', fun
         expect($options)->toBeArray()->toHaveCount(4);
         expect($a->correct_index)->toBeGreaterThanOrEqual(0)->toBeLessThanOrEqual(3);
     }
-});
+})->group('scenario:DG-13');
 
 it('records a misconception for each distractor', function () {
     $anchors = DB::table('anchor_questions')->where('subject', 'Math')->get();
@@ -45,7 +45,7 @@ it('records a misconception for each distractor', function () {
         expect(collect(array_keys($misconceptions))->map(fn ($k) => (int) $k)->sort()->values()->all())
             ->toBe($expectedKeys->sort()->values()->all());
     }
-});
+})->group('scenario:DG-04');
 
 it('carries provenance on every anchor', function () {
     $anchors = DB::table('anchor_questions')->where('subject', 'Math')->get();
@@ -55,7 +55,7 @@ it('carries provenance on every anchor', function () {
         expect($meta['source'] ?? null)->not->toBeNull();
         expect($meta['license'] ?? null)->not->toBeNull();
     }
-});
+})->group('scenario:DG-13');
 
 it('links every anchor to a real module', function () {
     $moduleIds = DB::table('syllabus_modules')->pluck('id')->all();
@@ -69,7 +69,7 @@ it('links every anchor to a real module', function () {
     foreach ($links as $mid) {
         expect($moduleIds)->toContain($mid);
     }
-});
+})->group('scenario:DG-13');
 
 it('covers every Math module at least three times, direct plus indirect', function () {
     // Direct: an anchor attached to module m covers m.
@@ -116,4 +116,4 @@ it('covers every Math module at least three times, direct plus indirect', functi
 
     $under = collect($coverage)->filter(fn ($c) => $c < 3)->keys()->all();
     expect($under)->toBe([], 'Modules under 3x coverage: ' . implode(', ', $under));
-});
+})->group('scenario:DG-13');

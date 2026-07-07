@@ -28,7 +28,7 @@ it('records a practice attempt with its rung and correctness', function () {
     expect($attempt->fresh()->is_correct)->toBeTrue()
         ->and($attempt->fresh()->difficulty)->toBe(3)
         ->and($attempt->question->id)->toBe($question->id);
-});
+})->group('scenario:LL-03');
 
 it('defaults a new student_progress row to rung 1, streak 0', function () {
     $student = User::factory()->create();
@@ -42,4 +42,4 @@ it('defaults a new student_progress row to rung 1, streak 0', function () {
 
     expect($progress->fresh()->current_rung)->toBe(1)
         ->and($progress->fresh()->current_streak)->toBe(0);
-});
+})->group('scenario:LL-03');

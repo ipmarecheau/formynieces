@@ -38,7 +38,7 @@ it('allocates roughly 15 Math anchors with Number weighted heaviest', function (
     $otherMax = $byStrand->forget('Number')->max();
 
     expect($numberCount)->toBeGreaterThan($otherMax);
-});
+})->group('scenario:DG-13');
 
 it('splits ELA evenly between Section I and Section II', function () {
     $plan = collect($this->planner->buildPlan());
@@ -51,24 +51,24 @@ it('splits ELA evenly between Section I and Section II', function () {
     $countII = $ela->whereIn('strand', $sectionII)->count();
 
     expect($countI)->toBe($countII);
-});
+})->group('scenario:DG-13');
 
 it('includes a Writing slot for each of the four writing concepts', function () {
     $plan = collect($this->planner->buildPlan());
     expect($plan->where('subject', 'Writing'))->toHaveCount(4);
-});
+})->group('scenario:DG-13');
 
 it('produces roughly thirty slots in total', function () {
     $plan = $this->planner->buildPlan();
     expect(count($plan))->toBeGreaterThanOrEqual(28)->toBeLessThanOrEqual(34);
-});
+})->group('scenario:DG-13');
 
 it('starts every slot at medium difficulty', function () {
     $plan = $this->planner->buildPlan();
     foreach ($plan as $slot) {
         expect($slot['difficulty'])->toBe(SessionPlanner::DIFFICULTY_MEDIUM);
     }
-});
+})->group('scenario:DG-13');
 
 it('interleaves strands rather than front-loading one, as far as allocation allows', function () {
     // Round-robin spreads strands out; the heaviest strand (Number) unavoidably
@@ -80,7 +80,7 @@ it('interleaves strands rather than front-loading one, as far as allocation allo
     $firstPass = $math->take(8)->pluck('strand')->unique();
     // All 8 Math strands should appear within the first 8 slots (one full round).
     expect($firstPass->count())->toBe(8);
-});
+})->group('scenario:DG-13');
 
 it('resolves every slot to a real anchor, including thin strands', function () {
     $plan = $this->planner->buildPlan();
@@ -99,7 +99,7 @@ it('resolves every slot to a real anchor, including thin strands', function () {
 
     // No anchor used twice across the whole plan.
     expect(count($used))->toBe(count(array_unique($used)));
-});
+})->group('scenario:DG-13');
 
 it('resolves Percent to its hard anchor via nearest-difficulty', function () {
     // Percent has only a difficulty-3 anchor; a medium slot must still resolve.
@@ -110,7 +110,7 @@ it('resolves Percent to its hard anchor via nearest-difficulty', function () {
     $anchor = DB::table('anchor_questions')->find($anchorId);
     expect($anchor->strand)->toBe('Percent');
     expect($anchor->difficulty)->toBe(SessionPlanner::DIFFICULTY_HARD); // nearest available
-});
+})->group('scenario:DG-13');
 
 it('persists the plan onto the session row', function () {
     $studentId = DB::table('users')->insertGetId([
@@ -135,7 +135,7 @@ it('persists the plan onto the session row', function () {
     $row = DB::table('diagnostic_sessions')->find($sessionId);
     expect(json_decode($row->item_plan, true))->toBe($plan);
     expect($row->current_item)->toBe(0);
-});
+})->group('scenario:DG-13');
 
 it('avoids reusing an anchor already used in the session', function () {
     $slot = ['subject' => 'Math', 'strand' => 'Number', 'difficulty' => SessionPlanner::DIFFICULTY_MEDIUM];
@@ -144,4 +144,4 @@ it('avoids reusing an anchor already used in the session', function () {
     $second = $this->planner->resolveSlot($slot, [$first]);
 
     expect($second)->not->toBeNull()->not->toBe($first);
-});
+})->group('scenario:DG-13');

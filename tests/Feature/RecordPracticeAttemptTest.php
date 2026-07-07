@@ -38,7 +38,7 @@ it('advances the streak on distinct correct answers and clears rung 1 at three',
 
     expect($p->current_rung)->toBe(2)
         ->and($p->current_streak)->toBe(0);
-});
+})->group('scenario:LL-03');
 
 it('does NOT count a repeated question toward the live streak', function () {
     $student = User::factory()->create();
@@ -51,7 +51,7 @@ it('does NOT count a repeated question toward the live streak', function () {
 
     expect($p->current_streak)->toBe(1)
         ->and($p->current_rung)->toBe(1);
-});
+})->group('scenario:LL-05');
 
 it('resets the streak on a wrong answer but keeps the rung', function () {
     $student = User::factory()->create();
@@ -65,7 +65,7 @@ it('resets the streak on a wrong answer but keeps the rung', function () {
 
     expect($p->current_streak)->toBe(0)
         ->and($p->current_rung)->toBe(1);
-});
+})->group('scenario:LL-04');
 
 it('marks the module mastered after three distinct correct at rung 3', function () {
     $student = User::factory()->create();
@@ -81,4 +81,4 @@ it('marks the module mastered after three distinct correct at rung 3', function 
 
     expect($p->status)->toBe('mastered')
         ->and($p->score)->toBe(100);
-});
+})->group('scenario:LL-06');

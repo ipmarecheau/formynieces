@@ -27,4 +27,4 @@ it('lets an admin set a student\'s weekly module cap override', function () {
         ->assertHasNoFormErrors();
 
     expect($student->refresh()->weekly_module_cap_override)->toBe(9);
-});
+})->group('scenario:AC-02');

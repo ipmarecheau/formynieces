@@ -35,7 +35,7 @@ it('shows the four status buckets and they sum to the total', function () {
     $response->assertSee('Mastered');
     $response->assertSee('Likely Known');
     $response->assertSee('Needs Work');
-});
+})->group('scenario:RR-01');
 
 it('counts each engine status correctly', function () {
     $progress = StudentProgress::where('student_id', $this->student->id)->get();
@@ -51,4 +51,4 @@ it('counts each engine status correctly', function () {
     expect($likely)->toBe(1);
     expect($needs)->toBe(1);
     expect($upcoming)->toBe(1);
-});
+})->group('scenario:RR-01');

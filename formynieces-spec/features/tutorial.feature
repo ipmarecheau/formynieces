@@ -11,29 +11,33 @@ Feature: Module tutorial — guided worked examples
     And her map shows a module with status "needs_work"
     And the module has human-vetted worked examples
 
+  @scenario:TU-01
   Scenario: The tutorial sits between the lesson and practice
     When she finishes reading the module's lesson
     Then she can start the worked examples from the lesson
     And from the worked examples she can move on to practice
 
+  @scenario:TU-02
   Scenario: A worked example reveals the method one step at a time
     Given she is viewing a worked example
     When she advances through it
     Then each step of the solution is revealed in order
     And the final answer is shown at the end
 
+  @scenario:TU-03
   Scenario: The tutorial is never scored
     Given she is working through the module's worked examples
     When she completes them
     Then her module progress is unchanged
     And her mastery status is unchanged
 
+  @scenario:TU-04
   Scenario: The tutorial can be revisited freely
     Given she has already been through the module's worked examples
     When she returns to them later
     Then she can work through them again with no penalty and no limit
 
-  @v1.1
+  @v1.1 @scenario:TU-05
   Scenario: An interactive worked example asks her to drive the method
     Given a worked example has interactive steps
     When she is asked to choose the next step

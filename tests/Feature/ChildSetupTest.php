@@ -29,4 +29,4 @@ it('lets a verified guardian create a linked student profile', function () {
 
     // Credentials shown once: the controller flashes them to the session.
     $response->assertSessionHas('student_credentials');
-});
+})->group('scenario:GO-04');

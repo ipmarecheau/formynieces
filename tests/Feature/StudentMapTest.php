@@ -14,7 +14,7 @@ it('lets an unverified student reach their own map', function () {
     ]);
 
     $this->actingAs($student)->get(route('student.map'))->assertOk();
-});
+})->group('scenario:AM-01');
 
 it('keeps the guardian dashboard behind verification', function () {
     $guardian = User::create([
@@ -27,7 +27,7 @@ it('keeps the guardian dashboard behind verification', function () {
 
     // The verified-gated dashboard should NOT be reachable unverified.
     $this->actingAs($guardian)->get(route('dashboard'))->assertRedirect();
-});
+})->group('scenario:GO-02');
 
 it('links a needs_work module to its practice page on the map', function () {
     $student = \App\Models\User::factory()->create([
@@ -48,4 +48,4 @@ it('links a needs_work module to its practice page on the map', function () {
         ->assertOk()
         ->assertSee(route('practice.walk', $module->id), false); // false = don't escape the URL
 
-});
+})->group('scenario:LL-02');

@@ -4,13 +4,14 @@ Feature: Weekly targets and pacing
   child: targets are generated each Sunday, misses roll forward under a cap,
   and significant lag is re-paced honestly in the guardian layer only.
 
+  @scenario:WT-01
   Scenario: Sunday rollover generates the next target
     Given a student with an active roadmap and a fully completed weekly target
     When the Sunday rollover job runs
     Then the completed target is archived
     And a new weekly target is generated from the next pacing week's modules
 
-  @scenario-S2
+  @scenario:WT-02
   Scenario: Unfinished modules roll forward under the weekly cap
     Given a student left 3 target modules unfinished last week
     When the Sunday rollover job runs
@@ -18,7 +19,7 @@ Feature: Weekly targets and pacing
     And the new target does not exceed the weekly module cap
     And overflow modules shift downstream pacing weeks instead of inflating the target
 
-  @scenario-S3
+  @scenario:WT-03
   Scenario: Significant lag triggers an honest re-pace in the agent layer
     Given a student is 4 or more weeks behind the pacing calendar
     When the Sunday rollover job runs
@@ -26,15 +27,17 @@ Feature: Weekly targets and pacing
     And the re-paced plan with its explanation is published to the guardian dashboard
     And the student's map state contains no deficit language
 
-  @v1.1 @scenario-S6
+  @v1.1
   Rule: A guardian can pause and resume the journey without shame
 
+    @scenario:WT-04
     Scenario: Pausing stops target generation
       Given a guardian whose family is experiencing a disruption
       When she pauses her student
       Then no weekly targets are generated while paused
       And the student's streak is frozen
 
+    @scenario:WT-05
     Scenario: Resuming re-paces from the resume date
       Given a student who has been paused for 2 weeks
       When her guardian resumes her

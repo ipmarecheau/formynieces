@@ -62,7 +62,7 @@ it('refuses to start before onboarding is complete', function () {
 
     expect(fn () => $this->lifecycle->startOrResume($studentId))
         ->toThrow(DomainException::class);
-});
+})->group('scenario:GO-05');
 
 it('starts a planned session when onboarding is complete', function () {
     $studentId = makeStudent();
@@ -72,7 +72,7 @@ it('starts a planned session when onboarding is complete', function () {
     $session = DB::table('diagnostic_sessions')->find($sessionId);
     expect($session->status)->toBe('in_progress');
     expect(json_decode($session->item_plan, true))->not->toBeEmpty();
-});
+})->group('scenario:DG-13');
 
 it('resumes the same session instead of creating a second', function () {
     $studentId = makeStudent();
@@ -82,7 +82,7 @@ it('resumes the same session instead of creating a second', function () {
 
     expect($second)->toBe($first);
     expect(DB::table('diagnostic_sessions')->where('student_id', $studentId)->count())->toBe(1);
-});
+})->group('scenario:DG-15');
 
 it('reports ready to complete only once the plan is walked', function () {
     $studentId = makeStudent();
@@ -93,7 +93,7 @@ it('reports ready to complete only once the plan is walked', function () {
     walkToEnd($this->walk, $sessionId);
 
     expect($this->lifecycle->isReadyToComplete($sessionId))->toBeTrue();
-});
+})->group('scenario:RR-01');
 
 it('writes the mastery map into student_progress on completion', function () {
     $studentId = makeStudent();
@@ -115,7 +115,7 @@ it('writes the mastery map into student_progress on completion', function () {
             MasteryInference::STATUS_NEEDS_WORK,
         ]);
     }
-});
+})->group('scenario:RR-01');
 
 it('marks the session completed with a timestamp', function () {
     $studentId = makeStudent();
@@ -127,7 +127,7 @@ it('marks the session completed with a timestamp', function () {
     $session = DB::table('diagnostic_sessions')->find($sessionId);
     expect($session->status)->toBe('completed');
     expect($session->completed_at)->not->toBeNull();
-});
+})->group('scenario:RR-01');
 
 it('records a difficulty score for directly-mastered modules', function () {
     $studentId = makeStudent();
@@ -144,7 +144,7 @@ it('records a difficulty score for directly-mastered modules', function () {
 
     expect($scored)->not->toBeNull();
     expect($scored->score)->toBeGreaterThanOrEqual(1)->toBeLessThanOrEqual(3);
-});
+})->group('scenario:RR-01');
 
 it('inferred modules carry no direct score', function () {
     $studentId = makeStudent();
@@ -160,7 +160,7 @@ it('inferred modules carry no direct score', function () {
     foreach ($inferred as $row) {
         expect($row->score)->toBeNull();
     }
-});
+})->group('scenario:RR-01');
 
 it('preserves the prior score as previous_score on a retake', function () {
     $studentId = makeStudent();
@@ -187,7 +187,7 @@ it('preserves the prior score as previous_score on a retake', function () {
         ->first();
 
     expect($after->previous_score)->toBe($before->score);
-});
+})->group('scenario:DG-17');
 
 it('completion is idempotent', function () {
     $studentId = makeStudent();
@@ -204,4 +204,4 @@ it('completion is idempotent', function () {
     // No duplicate progress rows from the second completion.
     $studentRows = DB::table('student_progress')->where('student_id', $studentId)->count();
     expect($studentRows)->toBe(count($first));
-});
+})->group('scenario:RR-01');

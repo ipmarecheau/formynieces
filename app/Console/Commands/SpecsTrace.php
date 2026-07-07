@@ -2,150 +2,326 @@
 
 namespace App\Console\Commands;
 
-use Behat\Gherkin\Keywords\ArrayKeywords;
-use Behat\Gherkin\Lexer;
-use Behat\Gherkin\Parser;
 use Illuminate\Console\Command;
 use Symfony\Component\Process\Process;
 
 /**
- * specs:trace — reconciles Gherkin scenarios with Pest tests.
+ * specs:trace — the coverage matrix.
  *
- * Source of truth, two sides:
- *   - Scenarios in formynieces-spec/features, each carrying a @scenario:<id> tag.
- *   - Pest tests tagged ->group('scenario:<id>').
+ * For every scenario tagged @scenario:<id> in formynieces-spec/features, it
+ * lines up three facts and prints one row:
  *
- * Reports three deltas:
- *   1. Scenarios with NO matching Pest group  → your build queue.
- *   2. Pest groups with NO matching scenario  → orphan tests (renamed/deleted scenario).
- *   3. Scenarios tagged @pending that DO have a Pest group → flip the tag, it's built.
+ *   1. Automated  — is there a Pest test tagged ->group('scenario:<id>')?
+ *   2. Manual     — is there an entry in verifications.yml?
+ *   3. Fresh?     — has the scenario changed since you last verified it?
  *
- * It does NOT verify the test asserts what the scenario says — only structural linkage.
+ * The "Fresh?" column is the whole point. A scenario is flagged STALE when BOTH:
+ *   (a) the scenario's current text no longer matches the fingerprint you saved
+ *       when you verified it, AND
+ *   (b) some snapshot AFTER your verified snapshot actually touched the spec
+ *       file — i.e. the change is newer than your approval, not older.
+ *
+ * It does NOT and cannot confirm the test asserts what the scenario says.
+ * It only guarantees you never silently miss that a rule moved.
  */
 class SpecsTrace extends Command
 {
-    protected $signature = 'specs:trace';
-    protected $description = 'Reconcile Gherkin scenarios with Pest test groups and report deltas.';
+    protected $signature = 'specs:trace {--only-problems : Show only rows that need attention}';
+
+    protected $description = 'Reconcile Gherkin scenarios with Pest tests and manual verifications.';
+
+    private string $featuresPath;
+    private string $ledgerPath;
 
     public function handle(): int
     {
-        $featuresDir = base_path('formynieces-spec/features');
+        $this->featuresPath = base_path('formynieces-spec/features');
+        $this->ledgerPath   = base_path('formynieces-spec/verifications.yml');
 
-        if (! is_dir($featuresDir)) {
-            $this->error("Features directory not found: {$featuresDir}");
-            return self::FAILURE;
+        // 1. Every scenario id + its current text, from the .feature files.
+        $scenarios = $this->collectScenarios();          // [id => text]
+        if ($scenarios === []) {
+            $this->warn("No @scenario:<id> tags found in {$this->featuresPath}.");
+            return self::SUCCESS;
         }
 
-        $scenarios = $this->parseScenarios($featuresDir);   // [id => ['name'=>, 'pending'=>bool, 'feature'=>]]
-        $pestGroups = $this->pestScenarioGroups();          // [id, id, ...]
+        // 2. Which scenario ids have a Pest group, and how many tests.
+        $groups = $this->collectPestGroups();            // [id => testCount]
 
-        $scenarioIds = array_keys($scenarios);
+        // 3. The verification ledger, keyed by scenario id.
+        $verifications = $this->collectVerifications();  // [id => row]
 
-        $missingTests = array_values(array_filter(
-            $scenarioIds,
-            fn ($id) => ! in_array($id, $pestGroups, true)
-        ));
+        // Build and print the rows.
+        $rows = [];
+        foreach ($scenarios as $id => $text) {
+            $rows[] = $this->buildRow($id, $text, $groups, $verifications);
+        }
 
-        $orphanTests = array_values(array_filter(
-            $pestGroups,
-            fn ($id) => ! in_array($id, $scenarioIds, true)
-        ));
-
-        $mistaggedPending = array_values(array_filter(
-            $scenarioIds,
-            fn ($id) => $scenarios[$id]['pending'] && in_array($id, $pestGroups, true)
-        ));
-
-        $this->section('Scenarios with NO test (build queue)', $missingTests, $scenarios);
-        $this->section('Orphan tests (group has no scenario)', $orphanTests, $scenarios, isOrphan: true);
-        $this->section('Built but still tagged @pending (flip the tag)', $mistaggedPending, $scenarios);
-
-        $clean = ! $missingTests && ! $orphanTests && ! $mistaggedPending;
-        $this->newLine();
-        $this->line($clean
-            ? '<info>✓ Specs and tests are in sync.</info>'
-            : '<comment>Deltas found — reconcile feature files or tests above.</comment>');
-
-        // Non-zero exit on deltas so this can gate CI later.
-        return $clean ? self::SUCCESS : self::FAILURE;
-    }
-
-    /** Parse every .feature file, extracting @scenario:<id> tags and @pending state. */
-    private function parseScenarios(string $dir): array
-    {
-        $keywords = new ArrayKeywords([
-            'en' => [
-                'feature' => 'Feature', 'background' => 'Background',
-                'scenario' => 'Scenario', 'scenario_outline' => 'Scenario Outline|Scenario Template',
-                'examples' => 'Examples|Scenarios',
-                'given' => 'Given', 'when' => 'When', 'then' => 'Then',
-                'and' => 'And', 'but' => 'But',
-            ],
-        ]);
-        $parser = new Parser(new Lexer($keywords));
-
-        $out = [];
-        foreach (glob("{$dir}/*.feature") as $file) {
-            $feature = $parser->parse(file_get_contents($file));
-            if ($feature === null) {
-                continue;
-            }
-            foreach ($feature->getScenarios() as $scenario) {
-                $tags = $scenario->getTags();
-                $id = null;
-                foreach ($tags as $tag) {
-                    if (str_starts_with($tag, 'scenario:')) {
-                        $id = substr($tag, strlen('scenario:'));
-                        break;
-                    }
-                }
-                if ($id === null) {
-                    // Scenario without a @scenario:<id> tag — surface it as untracked.
-                    $id = '(untagged) ' . $scenario->getTitle();
-                }
-                $out[$id] = [
-                    'name'    => $scenario->getTitle(),
-                    'pending' => in_array('pending', $tags, true),
-                    'feature' => basename($file),
+        // Orphan Pest groups: a test tagged for a scenario that no longer exists.
+        foreach ($groups as $id => $count) {
+            if (! isset($scenarios[$id])) {
+                $rows[] = [
+                    'scenario' => $id,
+                    'auto'     => "{$count} test(s)",
+                    'manual'   => '—',
+                    'status'   => '! orphan test (no such scenario)',
+                    'ok'       => false,
                 ];
             }
         }
-        return $out;
+
+        if ($this->option('only-problems')) {
+            $rows = array_values(array_filter($rows, fn ($r) => ! $r['ok']));
+            if ($rows === []) {
+                $this->info('Everything is linked, verified, and fresh. Nothing to do.');
+                return self::SUCCESS;
+            }
+        }
+
+        $this->table(
+            ['Scenario', 'Automated', 'Manual verified', 'Status'],
+            array_map(fn ($r) => [$r['scenario'], $r['auto'], $r['manual'], $r['status']], $rows)
+        );
+
+        return self::SUCCESS;
     }
 
-    /** Ask Pest for all group names, keep the scenario:<id> ones, return the ids. */
-    private function pestScenarioGroups(): array
+    /**
+     * Decide the status for one scenario by combining the three facts.
+     *
+     * @param array<string,int>   $groups
+     * @param array<string,array> $verifications
+     * @return array{scenario:string,auto:string,manual:string,status:string,ok:bool}
+     */
+    private function buildRow(string $id, string $text, array $groups, array $verifications): array
     {
-        $process = new Process(['php', 'vendor/bin/pest', '--list-groups'], base_path());
+        $hasTest = isset($groups[$id]);
+        $auto    = $hasTest ? "{$groups[$id]} test(s)" : 'no tests';
+
+        $v = $verifications[$id] ?? null;
+
+        if ($v === null) {
+            return [
+                'scenario' => $id,
+                'auto'     => $auto,
+                'manual'   => '—',
+                'status'   => $hasTest ? '~ never verified' : 'x untested + unverified',
+                'ok'       => false,
+            ];
+        }
+
+        $manual = ($v['verified_at'] ?? '?') . ' @ ' . ($v['commit'] ?? '?');
+
+        // The two staleness checks.
+        $fingerprintChanged = $this->fingerprint($text) !== ($v['spec_hash'] ?? '');
+        $specTouchedAfter   = $this->specChangedSince($v['commit'] ?? '');
+
+        if ($fingerprintChanged && $specTouchedAfter) {
+            return [
+                'scenario' => $id,
+                'auto'     => $auto,
+                'manual'   => $manual,
+                'status'   => '! STALE — spec changed since you verified',
+                'ok'       => false,
+            ];
+        }
+
+        if (! $hasTest) {
+            return [
+                'scenario' => $id,
+                'auto'     => $auto,
+                'manual'   => $manual,
+                'status'   => '~ verified but no automated test',
+                'ok'       => false,
+            ];
+        }
+
+        return [
+            'scenario' => $id,
+            'auto'     => $auto,
+            'manual'   => $manual,
+            'status'   => 'ok current',
+            'ok'       => true,
+        ];
+    }
+
+    /**
+     * Did any snapshot AFTER $commit change a spec .feature file?
+     *
+     * "git log <commit>..HEAD -- <path>" lists only the snapshots between your
+     * bookmark and now that touched <path>. Non-empty output = the spec moved
+     * forward since your approval. Empty = your approval still covers current specs.
+     *
+     * We scope to the whole features folder (coarse but safe): any spec edit
+     * flags every verification whose fingerprint also changed. The fingerprint
+     * check is what keeps it precise — a change to a *different* scenario leaves
+     * this scenario's hash intact, so it won't be flagged.
+     */
+    private function specChangedSince(string $commit): bool
+    {
+        if ($commit === '') {
+            return true; // no bookmark recorded — treat as needing a look
+        }
+
+        $out = $this->git([
+            'log', "{$commit}..HEAD", '--oneline', '--', 'formynieces-spec/features',
+        ]);
+
+        // null (git error) → be conservative and flag it.
+        return $out === null ? true : trim($out) !== '';
+    }
+
+    /** @return array<string,string> [scenarioId => scenario text] */
+    private function collectScenarios(): array
+    {
+        $scenarios = [];
+
+        foreach ($this->featureFiles() as $file) {
+            $lines = preg_split('/\R/', (string) file_get_contents($file));
+            $count = count($lines);
+
+            for ($i = 0; $i < $count; $i++) {
+                if (preg_match('/@scenario:([A-Za-z0-9\-]+)\b/i', $lines[$i], $m)) {
+                    $id = strtoupper($m[1]);
+
+                    // Walk to the Scenario: line, then collect the body.
+                    $start = $i;
+                    while ($start < $count && ! preg_match('/^\s*Scenario\b/i', $lines[$start])) {
+                        $start++;
+                    }
+                    $body = [];
+                    for ($j = $start; $j < $count; $j++) {
+                        if ($j > $start && preg_match('/^\s*(@|Scenario\b)/i', $lines[$j])) {
+                            break;
+                        }
+                        if ($j < $count) {
+                            $body[] = $lines[$j];
+                        }
+                    }
+                    $scenarios[$id] = implode("\n", $body);
+                }
+            }
+        }
+
+        return $scenarios;
+    }
+
+    /**
+     * Ask Pest which scenario:* groups exist and how many tests each has.
+     *
+     * "pest --list-groups" prints lines like "- scenario:WT-03 (3 tests)".
+     * We only keep groups whose name starts with "scenario:".
+     *
+     * @return array<string,int> [scenarioId => testCount]
+     */
+    private function collectPestGroups(): array
+    {
+        $process = new Process(['./vendor/bin/pest', '--list-groups'], base_path());
         $process->run();
-        $output = $process->getOutput() . $process->getErrorOutput();
 
-        $ids = [];
-        foreach (preg_split('/\r?\n/', $output) as $line) {
-            // --list-groups prints group names, often as "#group" or "- group".
-            if (preg_match('/scenario:([A-Za-z0-9\-_]+)/', $line, $m)) {
-                $ids[] = $m[1];
+        // Fall back to artisan test runner name on Windows if needed.
+        if (! $process->isSuccessful()) {
+            $process = new Process(['vendor\\bin\\pest', '--list-groups'], base_path());
+            $process->run();
+        }
+
+        $groups = [];
+        foreach (preg_split('/\R/', $process->getOutput()) as $line) {
+            if (preg_match('/^\s*-\s*scenario:([A-Za-z0-9\-]+)\s*\((\d+)\s+tests?\)/i', $line, $m)) {
+                $groups[strtoupper($m[1])] = (int) $m[2];
             }
         }
-        return array_values(array_unique($ids));
+
+        return $groups;
     }
 
-    private function section(string $heading, array $ids, array $scenarios, bool $isOrphan = false): void
+    /** @return array<string,array> [scenarioId => ledger row] */
+    private function collectVerifications(): array
     {
-        $this->newLine();
-        $this->line("<options=bold>{$heading}</> (" . count($ids) . ')');
-        if (! $ids) {
-            $this->line('  — none');
-            return;
+        if (! is_file($this->ledgerPath)) {
+            return [];
         }
-        foreach ($ids as $id) {
-            if ($isOrphan) {
-                $this->line("  • scenario:{$id}  (no matching scenario in features)");
-            } else {
-                $s = $scenarios[$id];
-                $tag = $s['pending'] ? ' [@pending]' : '';
-                $this->line("  • {$id}{$tag}  —  {$s['name']}  ({$s['feature']})");
+
+        $raw = (string) file_get_contents($this->ledgerPath);
+
+        if (class_exists(\Symfony\Component\Yaml\Yaml::class)) {
+            $parsed = \Symfony\Component\Yaml\Yaml::parse($raw);
+            $rows = is_array($parsed) ? $parsed : [];
+        } else {
+            $rows = $this->parseLedgerFallback($raw);
+        }
+
+        $keyed = [];
+        foreach ($rows as $row) {
+            if (isset($row['scenario'])) {
+                $keyed[strtoupper($row['scenario'])] = $row;
             }
         }
+
+        return $keyed;
+    }
+
+    private function parseLedgerFallback(string $raw): array
+    {
+        $entries = [];
+        $current = null;
+        foreach (preg_split('/\R/', $raw) as $line) {
+            if (preg_match('/^\s*-\s+(\w+):\s*(.*)$/', $line, $m)) {
+                if ($current !== null) {
+                    $entries[] = $current;
+                }
+                $current = [$m[1] => $this->stripQuotes($m[2])];
+            } elseif (preg_match('/^\s+(\w+):\s*(.*)$/', $line, $m) && $current !== null) {
+                $current[$m[1]] = $this->stripQuotes($m[2]);
+            }
+        }
+        if ($current !== null) {
+            $entries[] = $current;
+        }
+
+        return $entries;
+    }
+
+    private function fingerprint(string $text): string
+    {
+        return substr(sha1(preg_replace('/\s+/', ' ', trim($text)) ?? $text), 0, 12);
+    }
+
+    /** @return array<int,string> */
+    private function featureFiles(): array
+    {
+        if (! is_dir($this->featuresPath)) {
+            return [];
+        }
+
+        $found = [];
+        $it = new \RecursiveIteratorIterator(
+            new \RecursiveDirectoryIterator($this->featuresPath, \FilesystemIterator::SKIP_DOTS)
+        );
+        foreach ($it as $entry) {
+            if ($entry->isFile() && str_ends_with($entry->getFilename(), '.feature')) {
+                $found[] = $entry->getPathname();
+            }
+        }
+
+        return $found;
+    }
+
+    private function stripQuotes(string $v): string
+    {
+        $v = trim($v);
+        if (strlen($v) >= 2 && ($v[0] === '"' || $v[0] === "'") && $v[strlen($v) - 1] === $v[0]) {
+            return substr($v, 1, -1);
+        }
+        return $v;
+    }
+
+    /** @param array<int,string> $args */
+    private function git(array $args): ?string
+    {
+        $process = new Process(array_merge(['git'], $args), base_path());
+        $process->run();
+
+        return $process->isSuccessful() ? $process->getOutput() : null;
     }
 }

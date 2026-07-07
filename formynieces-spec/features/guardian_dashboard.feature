@@ -5,6 +5,7 @@ Feature: Guardian dashboard — the honest layer
   and what did her writing feedback say. The honest layer never borrows the
   student's motivational styling.
 
+  @scenario:GD-01
   Scenario: The dashboard answers the four Sunday questions
     Given a guardian whose student has an active roadmap
     When she opens the guardian dashboard
@@ -13,19 +14,20 @@ Feature: Guardian dashboard — the honest layer
     And she sees the exam agent's single concrete recommendation for next week
     And she sees a pointer to the latest writing feedback
 
+  @scenario:GD-02
   Scenario: The drill-down groups modules into honest buckets
     Given a guardian whose student has an active roadmap
     When she opens the progress drill-down
     Then modules are grouped as mastered, in review, and upcoming per subject
 
-  @scenario-S1
+  @scenario:GD-03
   Scenario: An on-track week reads as calm affirmation
     Given a student who completed her target and is on pace
     When her guardian opens the guardian dashboard
     Then the dashboard leads with affirmation
     And no action items are presented
 
-  @scenario-S3
+  @scenario:GD-04
   Scenario: A significantly-behind student gets triage, not panic
     Given a student who is 4 or more weeks behind the pacing calendar
     When her guardian opens the guardian dashboard
@@ -34,12 +36,13 @@ Feature: Guardian dashboard — the honest layer
 
   Rule: Motivational styling never substitutes for data
 
+    @scenario:GD-05
     Scenario: Pace and readiness sections exclude the motivational layer
       Given a guardian whose student has an active streak
       When she opens the guardian dashboard
       Then the pace and readiness sections contain no streak counters or celebration styling
 
-  @v1.1 @scenario-S7
+  @v1.1 @scenario:GD-06
   Scenario: A disengaged guardian receives the digest inline
     Given a guardian who has not opened the dashboard for 2 consecutive weeks
     When the weekly digest job runs

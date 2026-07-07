@@ -23,4 +23,4 @@ it('frames the diagnostic as finding the edge of what she knows', function () {
     // Still no pass/fail, score, or timer language on the intro
     $response->assertDontSee('score', false);
     $response->assertDontSee('timer', false);
-});
+})->group('scenario:DG-01');

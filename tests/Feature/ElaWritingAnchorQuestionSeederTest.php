@@ -24,11 +24,11 @@ beforeEach(function () {
 
 it('seeds the full ELA bank', function () {
     expect(DB::table('anchor_questions')->where('subject', 'ELA')->count())->toBe(43);
-});
+})->group('scenario:DG-13');
 
 it('seeds the full Writing bank', function () {
     expect(DB::table('anchor_questions')->where('subject', 'Writing')->count())->toBe(12);
-});
+})->group('scenario:DG-16');
 
 it('splits ELA evenly between Section I and Section II', function () {
     $secI = DB::table('anchor_questions')->where('subject', 'ELA')->where('sea_section', 'Section I')->count();
@@ -37,7 +37,7 @@ it('splits ELA evenly between Section I and Section II', function () {
     // "Roughly even" — allow a small imbalance but no more than a few items apart.
     expect(abs($secI - $secII))->toBeLessThanOrEqual(3);
     expect($secI + $secII)->toBe(43);
-});
+})->group('scenario:DG-13');
 
 it('covers each Writing module exactly three times', function () {
     $counts = DB::table('anchor_question_module')
@@ -50,7 +50,7 @@ it('covers each Writing module exactly three times', function () {
     foreach ([69, 70, 71, 72] as $m) {
         expect($counts[$m] ?? 0)->toBe(3);
     }
-});
+})->group('scenario:DG-16');
 
 it('gives every ELA and Writing anchor four options, valid index, and provenance', function () {
     $anchors = DB::table('anchor_questions')->whereIn('subject', ['ELA', 'Writing'])->get();
@@ -65,7 +65,7 @@ it('gives every ELA and Writing anchor four options, valid index, and provenance
         expect($meta['source'] ?? null)->not->toBeNull();
         expect($meta['license'] ?? null)->not->toBeNull();
     }
-});
+})->group('scenario:DG-13');
 
 it('covers every ELA module at least three times without propagating through Writing', function () {
     // Exclude edges that point INTO a writing node (69-72): mastery must not
@@ -117,4 +117,4 @@ it('covers every ELA module at least three times without propagating through Wri
 
     $under = collect($coverage)->filter(fn ($c) => $c < 3)->keys()->all();
     expect($under)->toBe([], 'ELA modules under 3x coverage: ' . implode(', ', $under));
-});
+})->group('scenario:DG-13');

@@ -41,7 +41,7 @@ it('groups modules under their topic prefix', function () {
     // The full "Fractions: Addition" should NOT appear as one string —
     // the prefix is hoisted out, leaf shown short.
     $response->assertDontSee('Fractions: Addition');
-});
+})->group('scenario:AM-01');
 
 it('does not render the difficulty rung on the map', function () {
     $response = $this->actingAs($this->student)->get(route('student.map'));
@@ -51,4 +51,4 @@ it('does not render the difficulty rung on the map', function () {
     // 50%, "3%" / "2%" can only come from a rendered rung, not the hero bar.
     $response->assertDontSee('3%');
     $response->assertDontSee('2%');
-});
+})->group('scenario:AM-02');

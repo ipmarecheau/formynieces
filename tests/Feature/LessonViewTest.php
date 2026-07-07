@@ -32,7 +32,7 @@ it('shows the module description and human-vetted resources on the lesson page',
         ->assertOk()
         ->assertSeeText('Understand the value of each digit in a whole number.')
         ->assertSeeText('Place Value Video');
-});
+})->group('scenario:LL-01');
 
 it('offers a way to start practising from the lesson', function () {
     $student = User::factory()->create(['onboarding_completed_at' => now()]);
@@ -57,4 +57,4 @@ it('offers a way to start practising from the lesson', function () {
         ->get("/practice/{$module->id}/lesson")
         ->assertOk()
         ->assertSee(route('practice.walk', $module));
-});
+})->group('scenario:LL-01');

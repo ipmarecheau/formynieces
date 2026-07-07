@@ -26,4 +26,4 @@ it('returns a module\'s active questions easiest-first and excludes inactive one
         ->toBe([$easy->id, $medium->id, $hard->id]);
 
     expect((new PracticeQuestions())->countForModule($module->id))->toBe(3);
-});
+})->group('scenario:LL-03');

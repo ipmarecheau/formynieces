@@ -26,4 +26,4 @@ test('the diagnostic intro frames the start as an expedition with a single begin
 
     // Exactly one way forward
     $response->assertSee('Set sail');
-});
+})->group('scenario:DG-01');

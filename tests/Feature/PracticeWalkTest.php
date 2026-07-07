@@ -33,7 +33,7 @@ it('shows the first rung-1 question when a student opens a module to practise', 
         ->assertSee('Level 1 of 3')
         ->assertSee('What is one half plus one half?')
         ->assertDontSee('A rung-3 question');
-});
+})->group('scenario:LL-03');
 
 it('shows the explanation and advances after a correct answer', function () {
     $student = User::factory()->create();
@@ -56,7 +56,7 @@ it('shows the explanation and advances after a correct answer', function () {
         ->assertSet('currentStreak', 1);  // streak advanced
 
     $component->call('next')->assertSet('feedback', null);  // back to answering
-});
+})->group('scenario:LL-03');
 
 it('frames a wrong answer as not-yet, never failure, and resets the streak', function () {
     $student = User::factory()->create();
@@ -79,7 +79,7 @@ it('frames a wrong answer as not-yet, never failure, and resets the streak', fun
         ->assertDontSee('Wrong')
         ->assertDontSee('Incorrect')
         ->assertSet('currentStreak', 0);  // stayed/reset at 0
-});
+})->group('scenario:LL-04');
 
 it('serves a different question after answering, not the same one again', function () {
     $student = User::factory()->create();
@@ -106,7 +106,7 @@ it('serves a different question after answering, not the same one again', functi
     // The next question must be a DIFFERENT id (not the one just answered in this streak).
     $secondId = $component->get('question')['id'];
     expect($secondId)->not->toBe($firstId);
-});
+})->group('scenario:LL-05');
 
 it('shows a mastery celebration, not coming-soon, once the module is mastered', function () {
     $student = User::factory()->create();
@@ -130,4 +130,4 @@ it('shows a mastery celebration, not coming-soon, once the module is mastered', 
         ->assertSet('isMastered', true)
         ->assertSee('mastered')
         ->assertDontSee('coming soon');
-});
+})->group('scenario:LL-06');

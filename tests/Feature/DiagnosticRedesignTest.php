@@ -37,7 +37,7 @@ it('shows the island banner for the current strand', function () {
     Livewire::actingAs($this->student)
         ->test(DiagnosticWalk::class)
         ->assertSee('Number Isle');
-});
+})->group('scenario:DG-02');
 
 it('shows the true plan total for the voyage trail, not a hardcoded number', function () {
     $total = count(json_decode(
@@ -48,7 +48,7 @@ it('shows the true plan total for the voyage trail, not a hardcoded number', fun
     Livewire::actingAs($this->student)
         ->test(DiagnosticWalk::class)
         ->assertSet('planTotal', $total);
-});
+})->group('scenario:DG-13');
 
 it('still never reveals correctness on the redesigned screen', function () {
     Livewire::actingAs($this->student)
@@ -57,4 +57,4 @@ it('still never reveals correctness on the redesigned screen', function () {
         ->assertDontSee('correct', false)
         ->assertDontSee('incorrect', false)
         ->assertDontSee('wrong', false);
-});
+})->group('scenario:DG-02');

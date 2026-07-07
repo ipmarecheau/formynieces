@@ -9,21 +9,25 @@ Feature: Module learning loop
     Given a student has completed her diagnostic
     And her map shows a module with status "needs_work"
 
+  @scenario:LL-01
   Scenario: Opening a module shows its human-vetted lesson
     When she opens the module from her map
     Then she sees the module's description and its human-vetted resources
     And she can start practising from the lesson
 
+  @scenario:LL-02
   Scenario: She can reach practice for a needs_work module from her map
     When she views her map
     Then the needs_work module offers a way to start practising
 
+  @scenario:LL-03
   Scenario: Practice climbs three difficulty rungs
     Given she is practising a module starting at the easiest rung
     When she answers three distinct questions correctly in a row at her current rung
     Then she advances to the next rung
     And her progress increases
 
+  @scenario:LL-04
   Scenario: A wrong answer resets the current streak but keeps the rung
     Given she has answered two questions correctly in a row at her current rung
     When she answers the next question incorrectly
@@ -31,11 +35,13 @@ Feature: Module learning loop
     And she remains on the same rung
     And she sees the question's explanation framed as not-yet, with no failure language
 
+  @scenario:LL-05
   Scenario: A repeated question does not pad the streak
     Given she has correctly answered a question that is part of her current streak
     When she answers that same question correctly again
     Then her streak does not increase
 
+  @scenario:LL-06
   Scenario: Mastery is earned by three in a row at the hardest rung
     Given she is practising at the hardest rung
     When she answers three distinct questions correctly in a row
@@ -44,7 +50,7 @@ Feature: Module learning loop
     And her prior score is preserved as the previous score
     And a celebration is shown
 
-  @v1.1
+  @v1.1 @scenario:LL-07
   Scenario: Stale mastery in a weak strand decays into review
     Given a module was mastered more than 6 weeks ago in a strand the exam agent flags as weak
     When the weekly agent review runs

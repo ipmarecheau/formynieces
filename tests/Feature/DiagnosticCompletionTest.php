@@ -55,7 +55,7 @@ it('marks the session completed when the walk ends', function () {
     $session = DB::table('diagnostic_sessions')->find($this->sessionId);
     expect($session->status)->toBe('completed');
     expect($session->completed_at)->not->toBeNull();
-});
+})->group('scenario:RR-01');
 
 it('writes a mastery map into student_progress on completion', function () {
     walkSessionToEnd($this->sessionId);
@@ -64,7 +64,7 @@ it('writes a mastery map into student_progress on completion', function () {
 
     expect(DB::table('student_progress')->where('student_id', $this->student->id)->count())
         ->toBeGreaterThan(0);
-});
+})->group('scenario:RR-01');
 
 it('lets the student start a fresh session after completing one', function () {
     walkSessionToEnd($this->sessionId);
@@ -74,7 +74,7 @@ it('lets the student start a fresh session after completing one', function () {
     $newId = app(SessionLifecycle::class)->startOrResume($this->student->id);
 
     expect($newId)->not->toBe($this->sessionId);
-});
+})->group('scenario:DG-15');
 
 it('shows a way forward on the completion screen', function () {
     walkSessionToEnd($this->sessionId);
@@ -82,4 +82,4 @@ it('shows a way forward on the completion screen', function () {
     Livewire::actingAs($this->student)
         ->test(DiagnosticWalk::class)
         ->assertSee('See your map');
-});
+})->group('scenario:RR-08');

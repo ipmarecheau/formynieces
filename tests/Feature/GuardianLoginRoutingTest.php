@@ -14,4 +14,4 @@ it('routes a verified guardian with no student to child setup', function () {
     ]);
 
     $response->assertRedirect(route('child.setup'));
-});
+})->group('scenario:GO-03');
