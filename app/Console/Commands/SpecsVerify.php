@@ -45,17 +45,25 @@ class SpecsVerify extends Command
 
         // --- Guard 1: working tree must be clean ---------------------------
         // "git status --porcelain" prints one line per changed/untracked file.
-        // Empty output means: your files exactly match the newest snapshot.
+        // We allow verifications.yml to be modified or untracked — it is the
+        // one file this command itself writes, so blocking on it would prevent
+        // running verify commands in sequence without committing between each.
+        // Everything else must be clean.
         $status = $this->git(['status', '--porcelain']);
         if ($status === null) {
             $this->error('Could not run git. Is this a git repository?');
             return self::FAILURE;
         }
-        if (trim($status) !== '') {
+        $dirtyLines = collect(preg_split('/\R/', trim($status)))
+            ->filter(fn (string $line) => $line !== '')
+            ->reject(fn (string $line) => str_contains($line, 'verifications.yml'))
+            ->values();
+
+        if ($dirtyLines->isNotEmpty()) {
             $this->error('You have uncommitted changes. Commit first, then verify —');
             $this->error('otherwise the recorded snapshot would not match what you looked at.');
             $this->newLine();
-            $this->line(trim($status));
+            $this->line($dirtyLines->implode("\n"));
             return self::FAILURE;
         }
 
