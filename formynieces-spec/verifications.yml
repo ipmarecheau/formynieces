@@ -76,3 +76,13 @@
   commit: c090765
   spec_hash: 613896acb656
   note: "Filament Pacing Settings page saves global cap to 8; CapResolver returns 8 for student with no override, 3 when override set. Browser-confirmed nav + save notification."
+- scenario: WT-01
+  verified_at: 2026-07-09
+  commit: 9c7a5ac
+  spec_hash: 6a6b10b0b793
+  note: ""
+- scenario: WT-02
+  verified_at: 2026-07-09
+  commit: f4ce870
+  spec_hash: b9c3c70414cc
+  note: "tinker: 7 carried took priority, 90 modules placed across 12 weeks, every week at or under cap 8"
