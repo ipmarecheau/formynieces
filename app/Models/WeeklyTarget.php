@@ -15,8 +15,8 @@ class WeeklyTarget extends Model
     ];
 
     protected $casts = [
-        'week_start_date' => 'date',
-        'is_completed' => 'boolean',
+    'week_start_date' => 'date:Y-m-d',
+    'is_completed' => 'boolean',
     ];
 
     public function student(): BelongsTo
