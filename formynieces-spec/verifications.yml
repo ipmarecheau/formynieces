@@ -71,3 +71,8 @@
   commit: 4dcdcdd
   spec_hash: 611ea91945c4
   note: ""
+- scenario: AC-01
+  verified_at: 2026-07-09
+  commit: c090765
+  spec_hash: 613896acb656
+  note: "Filament Pacing Settings page saves global cap to 8; CapResolver returns 8 for student with no override, 3 when override set. Browser-confirmed nav + save notification."
