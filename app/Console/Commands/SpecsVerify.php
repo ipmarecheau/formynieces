@@ -233,7 +233,7 @@ class SpecsVerify extends Command
 
         foreach ($entries as $e) {
             $out .= '- scenario: '    . ($e['scenario'] ?? '') . "\n";
-            $out .= '  verified_at: '  . ($e['verified_at'] ?? '') . "\n";
+            $out .= '  verified_at: '  . $this->normaliseDate($e['verified_at'] ?? '') . "\n";
             $out .= '  commit: '       . ($e['commit'] ?? '') . "\n";
             $out .= '  spec_hash: '    . ($e['spec_hash'] ?? '') . "\n";
             $out .= '  note: "'        . str_replace('"', "'", (string) ($e['note'] ?? '')) . "\"\n";
@@ -242,6 +242,19 @@ class SpecsVerify extends Command
         file_put_contents($this->ledgerPath, $out);
     }
 
+    /**
+     * Symfony's YAML parser coerces unquoted ISO dates (2026-07-07) to Unix
+     * timestamps on read. Reformat any integer timestamp back to Y-m-d on write
+     * so existing entries don't silently mutate when the ledger round-trips.
+     */
+    private function normaliseDate($v): string
+    {
+        if (is_int($v) || (is_string($v) && ctype_digit($v))) {
+            return date('Y-m-d', (int) $v);
+        }
+        return (string) $v;
+    }
+    
     private function stripQuotes(string $v): string
     {
         $v = trim($v);
