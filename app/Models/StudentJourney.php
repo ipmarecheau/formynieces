@@ -14,8 +14,8 @@ class StudentJourney extends Model
     ];
 
     protected $casts = [
-        'journey_start' => 'date',
-        'exam_date' => 'date',
+    'journey_start' => 'date:Y-m-d',
+    'exam_date' => 'date:Y-m-d',
     ];
 
     public function student(): BelongsTo
