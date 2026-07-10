@@ -73,6 +73,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(WeeklyTarget::class, 'student_id');
     }
 
+    public function studentJourney(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(StudentJourney::class, 'student_id');
+    }
+
     // Slice 1: a student has many diagnostic sessions.
     public function diagnosticSessions(): HasMany
     {
