@@ -17,7 +17,7 @@ class GuardianDashboard extends Component
 
     private const PAPER_WEIGHTS = ['Math' => 50, 'ELA' => 30, 'Writing' => 20];
 
-    #[Layout('layouts.app')]
+    #[Layout('layouts.guardian')]
     public function render(ExamAgentService $examAgent)
     {
         $guardian = auth()->user();
