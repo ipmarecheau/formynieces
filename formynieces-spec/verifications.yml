@@ -86,3 +86,8 @@
   commit: f4ce870
   spec_hash: b9c3c70414cc
   note: "tinker: 7 carried took priority, 90 modules placed across 12 weeks, every week at or under cap 8"
+- scenario: WT-03
+  verified_at: 2026-07-10
+  commit: 00d4767
+  spec_hash: c49a374e9ece
+  note: "Tinker on clean 90-module DB: 78 modules placed across 10 weeks, max 8/week (auto-raised from base 5), pace_status=warning, weeks_behind=5, guardian notified. Full suite 145 green."
