@@ -91,3 +91,8 @@
   commit: 00d4767
   spec_hash: c49a374e9ece
   note: "Tinker on clean 90-module DB: 78 modules placed across 10 weeks, max 8/week (auto-raised from base 5), pace_status=warning, weeks_behind=5, guardian notified. Full suite 145 green."
+- scenario: GD-01
+  verified_at: 2026-07-10
+  commit: 7a1a24e
+  spec_hash: e47183f0fe2b
+  note: "Browser-verified at /guardian/dashboard as verified guardian mummy1@test.com: all four sections render (target status, pace weighted 50/30/20 with Writing as not-yet-assessed, exam-agent recommendation, writing-feedback empty-state pointer); no motivational styling in the honest layer"
