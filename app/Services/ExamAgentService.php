@@ -130,7 +130,7 @@ class ExamAgentService
 
         // Analyse each subject separately
         $subjectAnalysis = [];
-        foreach (['Math', 'English Editing', 'English Comprehension'] as $subject) {
+        foreach (['Math', 'ELA'] as $subject) {
 
             $expected = $expectedModules->where('subject', $subject);
             $total    = $allModules->where('subject', $subject)->count();
@@ -243,10 +243,9 @@ class ExamAgentService
     private function modulesPerWeek(string $subject): float
     {
         return match($subject) {
-            'Math'                   => 3.0,
-            'English Editing'        => 1.0,
-            'English Comprehension'  => 1.0,
-            default                  => 1.0,
+            'Math'  => 3.0,
+            'ELA'   => 2.0,
+            default => 1.0,
         };
     }
 
