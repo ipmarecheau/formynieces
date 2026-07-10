@@ -216,14 +216,12 @@ class SpecsTrace extends Command
      */
     private function collectPestGroups(): array
     {
-        $process = new Process(['./vendor/bin/pest', '--list-groups'], base_path());
+        // Invoke Pest through the PHP binary directly. On Windows the ./vendor/bin/pest
+        // shim (and the .bat wrapper) return empty output under Symfony Process; calling
+        // the PHP entrypoint is reliable cross-platform.
+        $pestBin = base_path('vendor/pestphp/pest/bin/pest');
+        $process = new Process([PHP_BINARY, $pestBin, '--list-groups'], base_path());
         $process->run();
-
-        // Fall back to artisan test runner name on Windows if needed.
-        if (! $process->isSuccessful()) {
-            $process = new Process(['vendor\\bin\\pest', '--list-groups'], base_path());
-            $process->run();
-        }
 
         $groups = [];
         foreach (preg_split('/\R/', $process->getOutput()) as $line) {
