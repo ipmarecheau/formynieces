@@ -11,11 +11,14 @@ class StudentJourney extends Model
         'student_id',
         'journey_start',
         'exam_date',
+        'pace_status',
+        'weeks_behind',
     ];
 
     protected $casts = [
-    'journey_start' => 'date:Y-m-d',
-    'exam_date' => 'date:Y-m-d',
+        'journey_start' => 'date:Y-m-d',
+        'exam_date'     => 'date:Y-m-d',
+        'weeks_behind'  => 'integer',
     ];
 
     public function student(): BelongsTo

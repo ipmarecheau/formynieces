@@ -2,15 +2,20 @@
 
 namespace App\Services\Pacing;
 
+use App\Models\StudentJourney;
 use App\Models\StudentProgress;
 use App\Models\SyllabusModule;
 use App\Models\User;
 use App\Models\WeeklyTarget;
+use App\Notifications\PaceWarningNotification;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 
 class WeeklyRollover
 {
+    private const REQUIRED_PACE = 3;   // Std-5 yardstick: modules/week, global
+    private const LAG_TRIGGER   = 4;   // weeks behind that trips a warning
+
     public function __construct(
         private readonly CapResolver $capResolver,
         private readonly PacingClock $pacingClock,
@@ -21,22 +26,18 @@ class WeeklyRollover
     {
         $now = $now ?? Carbon::today();
         $weekStart = $now->copy()->startOfWeek();
-        $cap = $this->capResolver->resolve($student);
+        $baseCap = $this->capResolver->resolve($student);
 
         $masteredModuleIds = StudentProgress::where('student_id', $student->id)
             ->where('status', 'mastered')
             ->pluck('module_id');
 
-        // Modules already placed in this week or any future week — these keep
-        // their slot and their placement, and are excluded from re-selection.
         $alreadyPlaced = WeeklyTarget::where('student_id', $student->id)
             ->where('week_start_date', '>=', $weekStart->toDateString())
             ->pluck('module_id');
 
         $excludeIds = $masteredModuleIds->merge($alreadyPlaced)->unique();
 
-        // Priority queue: carried (unmastered, from weeks before this one,
-        // oldest first) then frontier (lowest pacing_week). Carry always wins.
         $carriedIds = WeeklyTarget::where('student_id', $student->id)
             ->where('week_start_date', '<', $weekStart->toDateString())
             ->whereNotIn('module_id', $excludeIds)
@@ -53,11 +54,70 @@ class WeeklyRollover
                 ->pluck('id')
         );
 
-        $this->placeAcrossWeeks($student, $queue, $weekStart, $cap, $now);
+        // --- WT-03: honest re-pace (guardian layer only) ------------------
+        $effectiveCap = $this->rePace($student, $queue, $masteredModuleIds->count(), $baseCap, $now);
+
+        $this->placeAcrossWeeks($student, $queue, $weekStart, $effectiveCap, $now);
 
         return WeeklyTarget::where('student_id', $student->id)
             ->where('week_start_date', $weekStart->toDateString())
             ->get();
+    }
+
+    /**
+     * Compute the lag, and — if the student is significantly behind — flip the
+     * journey to a warning, auto-raise the cap to fit the remaining work, and
+     * notify the guardian. If the student is on pace and a stale warning exists,
+     * clear it once the remainder fits within base cap again. Returns the
+     * effective cap to place with. Never surfaces anything to the student.
+     */
+    private function rePace(
+        User $student,
+        Collection $queue,
+        int $masteredCount,
+        int $baseCap,
+        Carbon $now,
+    ): int {
+        $journey = StudentJourney::where('student_id', $student->id)->first();
+
+        if ($journey === null) {
+            return $baseCap;
+        }
+
+        $currentWeek = $this->pacingClock->currentPacingWeek($student, $now);
+        $weeksToExam = max(1, $this->pacingClock->weeksToExam($student, $now));
+
+        $expectedMastered = ($currentWeek - 1) * self::REQUIRED_PACE;
+        $deficit          = max(0, $expectedMastered - $masteredCount);
+        $weeksBehind      = intdiv($deficit, self::REQUIRED_PACE);
+
+        $remaining = $queue->count();
+
+        if ($weeksBehind >= self::LAG_TRIGGER) {
+            $neededCap    = (int) ceil($remaining / $weeksToExam);
+            $effectiveCap = max($baseCap, $neededCap);
+
+            $journey->pace_status  = 'warning';
+            $journey->weeks_behind = $weeksBehind;
+            $journey->save();
+
+            if ($student->parent_id !== null) {
+                $guardian = User::find($student->parent_id);
+                $guardian?->notify(new PaceWarningNotification($student, $weeksBehind));
+            }
+
+            return $effectiveCap;
+        }
+
+        // On pace: unwind a stale warning once the remainder fits at base cap.
+        if ($journey->pace_status === 'warning'
+            && $remaining <= $weeksToExam * $baseCap) {
+            $journey->pace_status  = null;
+            $journey->weeks_behind = null;
+            $journey->save();
+        }
+
+        return $baseCap;
     }
 
     /**
@@ -78,8 +138,6 @@ class WeeklyRollover
 
         $weeksToExam = max(1, $this->pacingClock->weeksToExam($student, $now));
 
-        // Seed per-week occupancy from what's already on the books.
-        $week = $weekStart->copy();
         $counts = [];
 
         foreach ($queue as $moduleId) {
@@ -110,8 +168,6 @@ class WeeklyRollover
                 }
             }
 
-            // If every week to the exam is full, the module simply isn't placed
-            // this run — it re-surfaces as carry next Sunday.
             if (! $placed) {
                 break;
             }
