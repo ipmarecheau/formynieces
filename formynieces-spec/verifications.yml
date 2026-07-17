@@ -96,3 +96,8 @@
   commit: 7a1a24e
   spec_hash: e47183f0fe2b
   note: "Browser-verified at /guardian/dashboard as verified guardian mummy1@test.com: all four sections render (target status, pace weighted 50/30/20 with Writing as not-yet-assessed, exam-agent recommendation, writing-feedback empty-state pointer); no motivational styling in the honest layer"
+- scenario: GD-02
+  verified_at: 2026-07-17
+  commit: 205b451
+  spec_hash: 7fe6e161650e
+  note: "Browser-verified at /guardian/progress: Math card shows four buckets; Place Value in Mastered, Expanded Notation in In review (inferred, not mastered), Rounding in Working on, remaining 48 in Upcoming; Writing awaiting-assessment card renders; behind auth+verified guardian route."
