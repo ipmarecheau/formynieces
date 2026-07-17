@@ -18,7 +18,9 @@ Feature: Guardian dashboard — the honest layer
   Scenario: The drill-down groups modules into honest buckets
     Given a guardian whose student has an active roadmap
     When she opens the progress drill-down
-    Then modules are grouped as mastered, in review, and upcoming per subject
+    Then modules are grouped per subject as mastered, in review, working on, and upcoming
+    And modules credited by inference are shown as in review, never as mastered
+    And Writing is shown as a paper awaiting its own assessment track
 
   @scenario:GD-03
   Scenario: An on-track week reads as calm affirmation

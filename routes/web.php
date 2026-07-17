@@ -13,6 +13,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->name('dashboard');
     Route::get('/guardian/dashboard', \App\Livewire\GuardianDashboard::class)
         ->name('guardian.dashboard');
+    Route::get('/guardian/dashboard', \App\Livewire\GuardianDashboard::class)
+        ->name('guardian.dashboard');
+    Route::get('/guardian/progress', \App\Livewire\GuardianProgress::class)
+        ->name('guardian.progress');
     Route::get('/exam-agent', [ExamAgentController::class, 'index'])
         ->name('exam-agent');
     Route::get('/child-setup', [\App\Http\Controllers\ChildSetupController::class, 'create'])
