@@ -101,3 +101,8 @@
   commit: 205b451
   spec_hash: 7fe6e161650e
   note: "Browser-verified at /guardian/progress: Math card shows four buckets; Place Value in Mastered, Expanded Notation in In review (inferred, not mastered), Rounding in Working on, remaining 48 in Upcoming; Writing awaiting-assessment card renders; behind auth+verified guardian route."
+- scenario: GD-03
+  verified_at: 2026-07-17
+  commit: b52843e
+  spec_hash: e22fab44fa75
+  note: "Browser-verified: on-track guardian dashboard leads with green 'Target met and on pace' affirmation above the four cards; affirmation disappears when target incomplete"
