@@ -42,12 +42,26 @@
         }
         .gd-fill { background: #a78bfa; height: 100%; border-radius: 999px; }
         .gd-unassessed { font-size: 0.78rem; color: #9ca3af; font-weight: 600; font-style: italic; }
+        .gd-affirm {
+            background: #f0fdf4; border: 1.5px solid #bbf7d0;
+            border-radius: 18px; padding: 1.1rem 1.25rem; margin-bottom: 1rem;
+        }
+        .gd-affirm-lead { font-size: 1rem; font-weight: 800; color: #166534; margin: 0 0 0.3rem; }
+        .gd-affirm-sub { font-size: 0.85rem; color: #15803d; margin: 0; font-weight: 600; }
     </style>
 
     <div class="gd-header">
         <h1 class="gd-title">Weekly guardian summary</h1>
         <p class="gd-subtitle">The four questions, answered honestly.</p>
     </div>
+
+    @if ($onTrack)
+        <div class="gd-affirm">
+            <p class="gd-eyebrow">This week</p>
+            <p class="gd-affirm-lead">Target met and on pace</p>
+            <p class="gd-affirm-sub">Nothing to carry into next week</p>
+        </div>
+    @endif
 
     {{-- Q1 — target completion --}}
     <div class="gd-card">

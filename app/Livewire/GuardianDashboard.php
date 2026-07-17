@@ -14,6 +14,7 @@ class GuardianDashboard extends Component
     public bool $targetCompleted = false;
     public ?string $paceStatus = null;
     public int $weeksBehind = 0;
+    public bool $onTrack = false;
 
     private const PAPER_WEIGHTS = ['Math' => 50, 'ELA' => 30, 'Writing' => 20];
 
@@ -28,6 +29,10 @@ class GuardianDashboard extends Component
         $journey = $student?->studentJourney;
         $this->paceStatus  = $journey?->pace_status;
         $this->weeksBehind = (int) ($journey?->weeks_behind ?? 0);
+
+        $this->onTrack = $this->targetCompleted
+            && $this->weeksBehind === 0
+            && $this->paceStatus === null;
 
         $analysis = $student
             ? $examAgent->analyse($student)
