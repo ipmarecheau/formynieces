@@ -1,0 +1,9 @@
+{
+  "name": "formynieces",
+  "image": "mcr.microsoft.com/devcontainers/php:8.4-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": { "version": "22" }
+  },
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y libicu-dev libzip-dev && sudo docker-php-ext-install intl zip sockets && composer install && npm install && cp -n .env.example .env && php artisan key:generate && touch database/database.sqlite && php artisan migrate --seed",
+  "forwardPorts": [8000, 5173]
+}
