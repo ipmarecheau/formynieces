@@ -10,7 +10,7 @@
         "filament/filament": "^4.0",
         "laravel/framework": "^13.8",
         "laravel/tinker": "^3.0",
-        "symfony/yaml": "*"
+        "symfony/yaml": "^7.0"
     },
     "require-dev": {
         "behat/gherkin": "^4.17",

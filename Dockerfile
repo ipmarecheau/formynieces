@@ -26,7 +26,6 @@ RUN composer install --no-dev --optimize-autoloader \
     && npm install \
     && npm run build \
     && mkdir -p database \
-    && touch database/database.sqlite \
     && chown -R www-data:www-data storage bootstrap/cache database \
     && chmod -R 775 storage bootstrap/cache database
 
