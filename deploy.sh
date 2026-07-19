@@ -34,7 +34,7 @@ docker run -d \
   --name formynieces \
   --restart unless-stopped \
   -p 8080:8080 \
-  -v /opt/formynieces-data/database:/var/www/html/database \
+  -v /opt/formynieces-data/db:/var/www/html/db \
   -v /opt/formynieces-data/storage:/var/www/html/storage \
   formynieces:latest
 
