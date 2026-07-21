@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Process\Process;
+use Symfony\Component\Yaml\Yaml;
 
 /**
  * specs:trace — the coverage matrix.
@@ -26,22 +27,32 @@ use Symfony\Component\Process\Process;
  */
 class SpecsTrace extends Command
 {
-    protected $signature = 'specs:trace {--only-problems : Show only rows that need attention}';
+    protected $signature = 'specs:trace {--only-problems : Show only rows that need attention} {--mvp : Show only MVP scenarios (hide @v1.x, @roadmap, @pending)}';
 
     protected $description = 'Reconcile Gherkin scenarios with Pest tests and manual verifications.';
 
     private string $featuresPath;
+
     private string $ledgerPath;
+
+    /**
+     * Effective tags per scenario id (scenario-level ∪ inherited Feature-level),
+     * lower-cased and without the leading @. Populated by collectScenarios().
+     *
+     * @var array<string,array<int,string>>
+     */
+    private array $scenarioTags = [];
 
     public function handle(): int
     {
         $this->featuresPath = base_path('formynieces-spec/features');
-        $this->ledgerPath   = base_path('formynieces-spec/verifications.yml');
+        $this->ledgerPath = base_path('formynieces-spec/verifications.yml');
 
         // 1. Every scenario id + its current text, from the .feature files.
         $scenarios = $this->collectScenarios();          // [id => text]
         if ($scenarios === []) {
             $this->warn("No @scenario:<id> tags found in {$this->featuresPath}.");
+
             return self::SUCCESS;
         }
 
@@ -62,18 +73,26 @@ class SpecsTrace extends Command
             if (! isset($scenarios[$id])) {
                 $rows[] = [
                     'scenario' => $id,
-                    'auto'     => "{$count} test(s)",
-                    'manual'   => '—',
-                    'status'   => '! orphan test (no such scenario)',
-                    'ok'       => false,
+                    'auto' => "{$count} test(s)",
+                    'manual' => '—',
+                    'status' => '! orphan test (no such scenario)',
+                    'ok' => false,
                 ];
             }
+        }
+
+        if ($this->option('mvp')) {
+            $rows = array_values(array_filter(
+                $rows,
+                fn ($r) => ! $this->isDeferred($this->scenarioTags[$r['scenario']] ?? [])
+            ));
         }
 
         if ($this->option('only-problems')) {
             $rows = array_values(array_filter($rows, fn ($r) => ! $r['ok']));
             if ($rows === []) {
                 $this->info('Everything is linked, verified, and fresh. Nothing to do.');
+
                 return self::SUCCESS;
             }
         }
@@ -89,59 +108,59 @@ class SpecsTrace extends Command
     /**
      * Decide the status for one scenario by combining the three facts.
      *
-     * @param array<string,int>   $groups
-     * @param array<string,array> $verifications
+     * @param  array<string,int>  $groups
+     * @param  array<string,array>  $verifications
      * @return array{scenario:string,auto:string,manual:string,status:string,ok:bool}
      */
     private function buildRow(string $id, string $text, array $groups, array $verifications): array
     {
         $hasTest = isset($groups[$id]);
-        $auto    = $hasTest ? "{$groups[$id]} test(s)" : 'no tests';
+        $auto = $hasTest ? "{$groups[$id]} test(s)" : 'no tests';
 
         $v = $verifications[$id] ?? null;
 
         if ($v === null) {
             return [
                 'scenario' => $id,
-                'auto'     => $auto,
-                'manual'   => '—',
-                'status'   => $hasTest ? '~ never verified' : 'x untested + unverified',
-                'ok'       => false,
+                'auto' => $auto,
+                'manual' => '—',
+                'status' => $hasTest ? '~ never verified' : 'x untested + unverified',
+                'ok' => false,
             ];
         }
 
-        $manual = ($v['verified_at'] ?? '?') . ' @ ' . ($v['commit'] ?? '?');
+        $manual = ($v['verified_at'] ?? '?').' @ '.($v['commit'] ?? '?');
 
         // The two staleness checks.
         $fingerprintChanged = $this->fingerprint($text) !== ($v['spec_hash'] ?? '');
-        $specTouchedAfter   = $this->specChangedSince($v['commit'] ?? '');
+        $specTouchedAfter = $this->specChangedSince($v['commit'] ?? '');
 
         if ($fingerprintChanged && $specTouchedAfter) {
             return [
                 'scenario' => $id,
-                'auto'     => $auto,
-                'manual'   => $manual,
-                'status'   => '! STALE — spec changed since you verified',
-                'ok'       => false,
+                'auto' => $auto,
+                'manual' => $manual,
+                'status' => '! STALE — spec changed since you verified',
+                'ok' => false,
             ];
         }
 
         if (! $hasTest) {
             return [
                 'scenario' => $id,
-                'auto'     => $auto,
-                'manual'   => $manual,
-                'status'   => '~ verified but no automated test',
-                'ok'       => false,
+                'auto' => $auto,
+                'manual' => $manual,
+                'status' => '~ verified but no automated test',
+                'ok' => false,
             ];
         }
 
         return [
             'scenario' => $id,
-            'auto'     => $auto,
-            'manual'   => $manual,
-            'status'   => 'ok current',
-            'ok'       => true,
+            'auto' => $auto,
+            'manual' => $manual,
+            'status' => 'ok current',
+            'ok' => true,
         ];
     }
 
@@ -175,14 +194,25 @@ class SpecsTrace extends Command
     private function collectScenarios(): array
     {
         $scenarios = [];
+        $this->scenarioTags = [];
 
         foreach ($this->featureFiles() as $file) {
             $lines = preg_split('/\R/', (string) file_get_contents($file));
             $count = count($lines);
 
+            $featureTags = $this->featureTags($lines);
+
             for ($i = 0; $i < $count; $i++) {
                 if (preg_match('/@scenario:([A-Za-z0-9\-]+)\b/i', $lines[$i], $m)) {
                     $id = strtoupper($m[1]);
+
+                    // Effective tags: this tag line + any contiguous tag lines above,
+                    // unioned with the inherited Feature-level tags.
+                    $tags = $this->tagsFromLine($lines[$i]);
+                    for ($k = $i - 1; $k >= 0 && preg_match('/^\s*@/', $lines[$k]); $k--) {
+                        $tags = array_merge($this->tagsFromLine($lines[$k]), $tags);
+                    }
+                    $this->scenarioTags[$id] = array_values(array_unique(array_merge($featureTags, $tags)));
 
                     // Walk to the Scenario: line, then collect the body.
                     $start = $i;
@@ -242,8 +272,8 @@ class SpecsTrace extends Command
 
         $raw = (string) file_get_contents($this->ledgerPath);
 
-        if (class_exists(\Symfony\Component\Yaml\Yaml::class)) {
-            $parsed = \Symfony\Component\Yaml\Yaml::parse($raw);
+        if (class_exists(Yaml::class)) {
+            $parsed = Yaml::parse($raw);
             $rows = is_array($parsed) ? $parsed : [];
         } else {
             $rows = $this->parseLedgerFallback($raw);
@@ -280,6 +310,71 @@ class SpecsTrace extends Command
         return $entries;
     }
 
+    /**
+     * Extract tag names (lower-cased, without @) from one line, skipping the
+     *
+     * @scenario:<id> marker itself.
+     *
+     * @return array<int,string>
+     */
+    private function tagsFromLine(string $line): array
+    {
+        preg_match_all('/@([A-Za-z0-9._-]+)/', $line, $m);
+
+        $tags = [];
+        foreach ($m[1] as $tag) {
+            if (strtolower($tag) === 'scenario') {
+                continue; // the @scenario:<id> marker, not a phase tag
+            }
+            $tags[] = strtolower($tag);
+        }
+
+        return $tags;
+    }
+
+    /**
+     * Tags on the contiguous @-lines directly above the Feature: line — inherited
+     * by every scenario in the file.
+     *
+     * @param  array<int,string>  $lines
+     * @return array<int,string>
+     */
+    private function featureTags(array $lines): array
+    {
+        foreach ($lines as $idx => $line) {
+            if (preg_match('/^\s*Feature\b/i', $line)) {
+                $tags = [];
+                for ($k = $idx - 1; $k >= 0 && preg_match('/^\s*@/', $lines[$k]); $k--) {
+                    $tags = array_merge($this->tagsFromLine($lines[$k]), $tags);
+                }
+
+                return array_values(array_unique($tags));
+            }
+        }
+
+        return [];
+    }
+
+    /**
+     * A scenario is deferred (not MVP) if any effective tag is a version tag
+     * (@v1.1, @v2.0, …), @roadmap, or @pending.
+     *
+     * @param  array<int,string>  $tags
+     */
+    private function isDeferred(array $tags): bool
+    {
+        foreach ($tags as $tag) {
+            if ($tag === 'roadmap' || $tag === 'pending') {
+                return true;
+            }
+            if (preg_match('/^v\d+(\.\d+)*$/', $tag)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     private function fingerprint(string $text): string
     {
         return substr(sha1(preg_replace('/\s+/', ' ', trim($text)) ?? $text), 0, 12);
@@ -311,6 +406,7 @@ class SpecsTrace extends Command
         if (strlen($v) >= 2 && ($v[0] === '"' || $v[0] === "'") && $v[strlen($v) - 1] === $v[0]) {
             return substr($v, 1, -1);
         }
+
         return $v;
     }
 
