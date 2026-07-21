@@ -48,12 +48,27 @@
         }
         .gd-affirm-lead { font-size: 1rem; font-weight: 800; color: #166534; margin: 0 0 0.3rem; }
         .gd-affirm-sub { font-size: 0.85rem; color: #15803d; margin: 0; font-weight: 600; }
+        .gd-triage-step { font-size: 0.9rem; color: #1f2937; margin: 0 0 0.4rem; line-height: 1.5; }
+        .gd-triage-step:last-child { margin-bottom: 0; }
     </style>
 
     <div class="gd-header">
         <h1 class="gd-title">Weekly guardian summary</h1>
         <p class="gd-subtitle">The four questions, answered honestly.</p>
     </div>
+
+    @if ($triage)
+        {{-- Calm triage for a significantly-behind student: feasible weekly steps, not a deficit total. --}}
+        <div class="gd-card gd-warn">
+            <p class="gd-eyebrow">Catch-up plan</p>
+            <p class="gd-warn-line">{{ $triage['priority'] }}</p>
+            @foreach ($triage['subjects'] as $subject)
+                <p class="gd-triage-step">
+                    <strong>{{ $subject['name'] }}:</strong> {{ $subject['weekly_step'] }}
+                </p>
+            @endforeach
+        </div>
+    @endif
 
     @if ($onTrack)
         <div class="gd-affirm">
