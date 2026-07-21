@@ -106,3 +106,8 @@
   commit: b52843e
   spec_hash: e22fab44fa75
   note: "Browser-verified: on-track guardian dashboard leads with green 'Target met and on pace' affirmation above the four cards; affirmation disappears when target incomplete"
+- scenario: GD-04
+  verified_at: 2026-07-21
+  commit: c22d386
+  spec_hash: 15143f0bb347
+  note: "Dev-site browser check (port 8000): guardian dashboard leads with a calm Math-first 'Catch-up plan' card showing weekly steps (About N modules per week) when the student is 4+ weeks behind; card absent when journey flipped to on-pace. Both positive and negative checks confirmed."
