@@ -38,7 +38,7 @@ Feature: Guardian dashboard — the honest layer
 
   Rule: Motivational styling never substitutes for data
 
-    @scenario:GD-05
+    @v1.1 @scenario:GD-05
     Scenario: Pace and readiness sections exclude the motivational layer
       Given a guardian whose student has an active streak
       When she opens the guardian dashboard
