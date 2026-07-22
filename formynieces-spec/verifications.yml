@@ -231,3 +231,8 @@
   commit: e5a1767
   spec_hash: 4e89a3cddeac
   note: "Tinker: completion seeds the derived mastery map (27 of 90 modules = assessed+inferred, not all 90), engine statuses mastered/needs_work, session marked completed with completed_at set. Matches reworded Gherkin; 12 RR-01 tests green (bucket sums, no orphans)."
+- scenario: RR-09
+  verified_at: 2026-07-22
+  commit: 17f720a
+  spec_hash: 668e9780b660
+  note: "Browser: onboarded student (Aaliyah) logged in -> ML-07 welcome-back splash celebrating her streaks -> populated /my-map dashboard (28 modules bucketed), not the diagnostic. Confirmed by Isaac."
