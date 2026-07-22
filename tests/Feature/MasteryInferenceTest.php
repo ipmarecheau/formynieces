@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\DB;
  * the REAL seeded prerequisite graph, so a regression in the graph or the walk
  * fails here. Each `it()` maps to a named scenario.
  */
-
 beforeEach(function () {
     $this->seed(SyllabusModuleSeeder::class);
     $this->seed(ModulePrerequisiteSeeder::class);
@@ -26,7 +25,7 @@ beforeEach(function () {
 function responses(array $rows): Collection
 {
     return collect($rows)->map(fn ($r) => (object) [
-        'module_id'  => $r[0],
+        'module_id' => $r[0],
         'difficulty' => $r[1],
         'is_correct' => $r[2],
     ]);
@@ -103,6 +102,15 @@ it('does not flow mastery through a writing node to its prerequisites', function
         ->and($map)->not->toHaveKey(81)
         ->and($map)->not->toHaveKey(82);
 })->group('scenario:DG-12');
+
+it('masters a writing module directly from its own correct anchor with no reading side effect', function () {
+    // diagnostic.feature DG-10: a correct Writing anchor for module 71 masters 71
+    // directly, and NO ELA reading module is inferred as a side effect (firewall).
+    $map = $this->inference->deriveMap(responses([[71, 3, true]]));
+
+    expect($map[71])->toBe(MasteryInference::STATUS_MASTERED)
+        ->and(collect($map)->contains(MasteryInference::STATUS_INFERRED))->toBeFalse();
+})->group('scenario:DG-10');
 
 it('marks a directly failed module as needs_work', function () {
     $map = $this->inference->deriveMap(responses([[5, 2, false]]));
