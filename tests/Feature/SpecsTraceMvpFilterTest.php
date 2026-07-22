@@ -31,7 +31,7 @@ it('composes --mvp with --only-problems', function () {
     Artisan::call('specs:trace', ['--mvp' => true, '--only-problems' => true]);
     $out = Artisan::output();
 
-    // AC-03 is an MVP problem (untested) → shown; GD-06 is deferred → hidden.
-    expect($out)->toContain('AC-03');
+    // ML-01 is an MVP problem (untested) → shown; GD-06 is deferred → hidden.
+    expect($out)->toContain('ML-01');
     expect($out)->not->toContain('GD-06');
 });
