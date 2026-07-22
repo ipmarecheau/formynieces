@@ -136,3 +136,8 @@
   commit: 82bd5c5
   spec_hash: 4e90e0607c39
   note: "Logging in advances a students 'login' streak (Isaac confirmed 3->4 on re-login). Dashboard shows distinct chips: 'N day practice streak' and 'N day login streak' — labels clarified per Isaac. No migration (reused type-aware student_streaks)."
+- scenario: ML-05
+  verified_at: 2026-07-22
+  commit: b9d8558
+  spec_hash: ca43d77c62c0
+  note: "Student dashboard shows a distinct mastery streak chip alongside practice and login; Isaac confirmed all three chips render. Mastery streak advances only on the mastery transition (guarded)."
