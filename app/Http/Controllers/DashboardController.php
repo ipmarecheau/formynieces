@@ -53,6 +53,11 @@ class DashboardController extends Controller
             ->where('type', 'login')
             ->value('count') ?? 0;
 
+        // Mastery day-streak (0 if the student has not mastered a module yet).
+        $masteryStreak = StudentStreak::where('student_id', $user->id)
+            ->where('type', 'mastery')
+            ->value('count') ?? 0;
+
         // A kind "welcome back" shows only on the calendar day a broken practice
         // streak was restarted (recordActivity marked restarted_at = today).
         $streakRestarted = StudentStreak::where('student_id', $user->id)
@@ -71,6 +76,7 @@ class DashboardController extends Controller
             'completionPercent',
             'dayStreak',
             'loginStreak',
+            'masteryStreak',
             'streakRestarted'
         ));
     }

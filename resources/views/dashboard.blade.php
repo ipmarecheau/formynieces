@@ -493,6 +493,7 @@
         <div style="margin-bottom:1.25rem;">
             <span class="fmn-streak-chip">🔥 {{ $dayStreak }} day practice streak</span>
             <span class="fmn-streak-chip" style="margin-left:8px;">🔑 {{ $loginStreak }} day login streak</span>
+            <span class="fmn-streak-chip" style="margin-left:8px;">🏆 {{ $masteryStreak }} day mastery streak</span>
             @if($streakRestarted)
                 <span class="fmn-streak-return">🌱 Back at it — let's build a fresh streak today!</span>
             @endif

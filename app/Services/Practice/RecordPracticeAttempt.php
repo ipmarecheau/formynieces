@@ -44,7 +44,7 @@ class RecordPracticeAttempt
         $question = PracticeQuestion::findOrFail($questionId);
         $isCorrect = $chosenIndex === $question->correct_index;
 
-        $progress = DB::transaction(function () use ($studentId, $question, $isCorrect) {
+        [$progress, $wasMasteredBefore] = DB::transaction(function () use ($studentId, $question, $isCorrect) {
             // 1. Diary: always record the raw attempt.
             PracticeAttempt::create([
                 'student_id' => $studentId,
@@ -63,6 +63,10 @@ class RecordPracticeAttempt
             $progress->current_rung ??= 1;
             $progress->current_streak ??= 0;
             $streakIds = $progress->streak_question_ids ?? [];
+
+            // Capture prior mastery state BEFORE the climb runs, so the mastery
+            // streak advances only on a genuine transition to mastered.
+            $wasMasteredBefore = ($progress->status === 'mastered');
 
             $priorScore = $progress->score;
 
@@ -102,11 +106,18 @@ class RecordPracticeAttempt
 
             $progress->save();
 
-            return $progress->fresh();
+            return [$progress->fresh(), $wasMasteredBefore];
         });
 
         // Practice day-streak: every recorded attempt (correct or wrong) advances it.
         $this->streaks->recordActivity($studentId, 'practice');
+
+        // Mastery day-streak: advances exactly once, the first time a module
+        // reaches mastered in this call. Re-answering an already-mastered module
+        // must not double-count.
+        if ($progress->status === 'mastered' && ! $wasMasteredBefore) {
+            $this->streaks->recordActivity($studentId, 'mastery');
+        }
 
         return $progress;
     }
