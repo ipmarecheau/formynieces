@@ -141,3 +141,8 @@
   commit: b9d8558
   spec_hash: ca43d77c62c0
   note: "Student dashboard shows a distinct mastery streak chip alongside practice and login; Isaac confirmed all three chips render. Mastery streak advances only on the mastery transition (guarded)."
+- scenario: ML-06
+  verified_at: 2026-07-22
+  commit: 3798d82
+  spec_hash: 55e2991a2cf4
+  note: "Student dashboard shows a kind 'N week on-pace streak' chip (weeks). Rollover advances it when last week's target was fully met, resets on a miss — pure addition to WeeklyRollover. Never in the guardian layer. Isaac confirmed."
