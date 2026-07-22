@@ -1,3 +1,6 @@
+@auth
+    @php($homeUrl = auth()->user()->isStudent() ? route('student.map') : route('dashboard'))
+@endauth
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -87,6 +90,8 @@
             font-size: 17px;
         }
         .nav-links { display: flex; align-items: center; gap: 8px; }
+        .nav-user { color: var(--text); font-size: 14px; font-weight: 700; margin-right: 4px; }
+        .nav-logout { display: inline; margin: 0; }
         .btn-nav-ghost {
             padding: 8px 16px; border-radius: 999px;
             background: transparent;
@@ -392,7 +397,12 @@
             </a>
             <div class="nav-links">
                 @auth
-                    <a class="btn-nav-ghost" href="{{ route('dashboard') }}">Dashboard</a>
+                    <span class="nav-user">Hi, {{ \Illuminate\Support\Str::of(auth()->user()->name)->before(' ') }} 👋</span>
+                    <a class="btn-nav-ghost" href="{{ $homeUrl }}">My Dashboard</a>
+                    <form method="POST" action="{{ route('logout') }}" class="nav-logout">
+                        @csrf
+                        <button type="submit" class="btn-nav-primary">Log out</button>
+                    </form>
                 @else
                     <a class="btn-nav-ghost" href="{{ route('login') }}">Sign In</a>
                     <a class="btn-nav-primary" href="{{ route('register') }}">Get Started</a>
@@ -414,8 +424,12 @@
             </p>
 
             <div class="hero-cta">
-                <a class="btn-primary" href="{{ route('register') }}">Start Learning Free ✨</a>
-                <a class="btn-ghost" href="{{ route('login') }}">Sign In</a>
+                @auth
+                    <a class="btn-primary" href="{{ $homeUrl }}">Go to your dashboard →</a>
+                @else
+                    <a class="btn-primary" href="{{ route('register') }}">Start Learning Free ✨</a>
+                    <a class="btn-ghost" href="{{ route('login') }}">Sign In</a>
+                @endauth
             </div>
 
             <div class="hero-visual">
@@ -580,12 +594,18 @@
     <section>
         <div class="container">
             <div class="cta-banner">
-                <h2>Ready to Start Preparing? 🌟</h2>
-                <p>
-                    Join ForMyNieces today and give your daughter the structured,
-                    AI-guided preparation she deserves for SEA 2026.
-                </p>
-                <a class="btn-primary" href="{{ route('register') }}">Create a Free Account</a>
+                @auth
+                    <h2>Welcome back! 🌟</h2>
+                    <p>Pick up right where you left off — your dashboard is ready.</p>
+                    <a class="btn-primary" href="{{ $homeUrl }}">Go to your dashboard →</a>
+                @else
+                    <h2>Ready to Start Preparing? 🌟</h2>
+                    <p>
+                        Join ForMyNieces today and give your daughter the structured,
+                        AI-guided preparation she deserves for SEA 2026.
+                    </p>
+                    <a class="btn-primary" href="{{ route('register') }}">Create a Free Account</a>
+                @endauth
             </div>
         </div>
     </section>
@@ -595,7 +615,11 @@
         <p>
             © {{ date('Y') }} ForMyNieces &nbsp;·&nbsp;
             Built with ❤️ in Trinidad &amp; Tobago &nbsp;·&nbsp;
-            <a href="{{ route('login') }}">Sign In</a>
+            @auth
+                <a href="{{ $homeUrl }}">My Dashboard</a>
+            @else
+                <a href="{{ route('login') }}">Sign In</a>
+            @endauth
         </p>
     </footer>
 
