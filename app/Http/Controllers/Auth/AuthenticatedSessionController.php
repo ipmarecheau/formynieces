@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Services\Motivation\StreakService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,6 +12,8 @@ use Illuminate\View\View;
 
 class AuthenticatedSessionController extends Controller
 {
+    public function __construct(private StreakService $streaks) {}
+
     /**
      * Display the login view.
      */
@@ -28,10 +31,15 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        // Students build a login streak: each day they sign in extends it.
+        if ($request->user()->isStudent()) {
+            $this->streaks->recordActivity($request->user()->id, 'login');
+        }
+
         return redirect()->intended($this->redirectTo($request->user()));
     }
 
-        /**
+    /**
      * Decide where a user goes after logging in.
      */
     private function redirectTo($user): string
@@ -48,6 +56,7 @@ class AuthenticatedSessionController extends Controller
 
         return route('dashboard');
     }
+
     /**
      * Destroy an authenticated session.
      */

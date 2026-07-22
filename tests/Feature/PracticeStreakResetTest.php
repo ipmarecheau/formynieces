@@ -47,7 +47,7 @@ it('greets a returning student kindly, without referencing the broken streak', f
         ->get('/my-map')
         ->assertOk()
         ->assertSeeText('fresh streak')     // kind return message (distinct from the hero greeting)
-        ->assertSeeText('1 day streak')     // fresh streak, not the old 9
+        ->assertSeeText('1 day practice streak')     // fresh streak, not the old 9
         ->assertDontSeeText('lost');        // no shaming language
 })->group('scenario:ML-02');
 

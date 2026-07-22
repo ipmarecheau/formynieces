@@ -48,6 +48,11 @@ class DashboardController extends Controller
             ->where('type', 'practice')
             ->value('count') ?? 0;
 
+        // Login day-streak (0 if the student has never signed in before).
+        $loginStreak = StudentStreak::where('student_id', $user->id)
+            ->where('type', 'login')
+            ->value('count') ?? 0;
+
         // A kind "welcome back" shows only on the calendar day a broken practice
         // streak was restarted (recordActivity marked restarted_at = today).
         $streakRestarted = StudentStreak::where('student_id', $user->id)
@@ -65,6 +70,7 @@ class DashboardController extends Controller
             'needsCount',
             'completionPercent',
             'dayStreak',
+            'loginStreak',
             'streakRestarted'
         ));
     }

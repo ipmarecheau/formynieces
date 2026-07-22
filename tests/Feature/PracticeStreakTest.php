@@ -75,5 +75,5 @@ it('shows the practice day streak on the student dashboard', function () {
     $this->actingAs($student)
         ->get('/my-map')
         ->assertOk()
-        ->assertSeeText('5 day streak');
+        ->assertSeeText('5 day practice streak');
 })->group('scenario:ML-01');
