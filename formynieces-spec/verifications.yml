@@ -146,3 +146,8 @@
   commit: 3798d82
   spec_hash: 55e2991a2cf4
   note: "Student dashboard shows a kind 'N week on-pace streak' chip (weeks). Rollover advances it when last week's target was fully met, resets on a miss — pure addition to WeeklyRollover. Never in the guardian layer. Isaac confirmed."
+- scenario: ML-07
+  verified_at: 2026-07-22
+  commit: edfb4e4
+  spec_hash: ed050ed4787b
+  note: "After login an onboarded student lands on a splash (/welcome-back) celebrating her four streaks, with a Continue button to /my-map (Isaac confirmed). Students no longer route through the verified-gated /dashboard."
