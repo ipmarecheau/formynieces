@@ -156,3 +156,68 @@
   commit: feee589
   spec_hash: 99f7822c1085
   note: "Browser: happy path - registered a guardian with the 18+ attestation on the dev site; account created role=guardian with age_attested_at set, redirected to email-verification notice (DB-confirmed, user id 9). Negative - submitting with the 18+ box unchecked was rejected, no account created."
+- scenario: DG-03
+  verified_at: 2026-07-22
+  commit: 43fe565
+  spec_hash: 2edf21c98288
+  note: "Tinker: ItemWalk climbs the Number strand medium(2)->hard(3) after a correct answer."
+- scenario: DG-04
+  verified_at: 2026-07-22
+  commit: 43fe565
+  spec_hash: 8bb707b91732
+  note: "Tinker: ItemWalk records is_correct=false plus a non-null misconception on a wrong answer."
+- scenario: DG-05
+  verified_at: 2026-07-22
+  commit: 43fe565
+  spec_hash: c2691246e685
+  note: "Tinker: MasteryInference infers direct prereqs (23=mastered, 22/15=inferred)."
+- scenario: DG-06
+  verified_at: 2026-07-22
+  commit: 43fe565
+  spec_hash: 9aba572f3122
+  note: "Tinker: transitive inference along the chain (27=mastered; 25/21/26/49/23/22/12=inferred)."
+- scenario: DG-07
+  verified_at: 2026-07-22
+  commit: 43fe565
+  spec_hash: a088a0b97b6e
+  note: "Tinker: easy-correct does not propagate (23=mastered, no key 22)."
+- scenario: DG-08
+  verified_at: 2026-07-22
+  commit: 43fe565
+  spec_hash: 5114d64dce9a
+  note: "Tinker: failed harder item un-marks inferred 12 (13=mastered, 16=needs_work, 12 gone)."
+- scenario: DG-09
+  verified_at: 2026-07-22
+  commit: 43fe565
+  spec_hash: a432d7344ba8
+  note: "Tinker: walk-back bounded to the contradicted chain (Geometry 33 intact, Fractions 12 removed)."
+- scenario: DG-11
+  verified_at: 2026-07-22
+  commit: 43fe565
+  spec_hash: 7439e24c7c42
+  note: "Tinker: writing firewall - 86=mastered, no writing node 69-72 inferred."
+- scenario: DG-12
+  verified_at: 2026-07-22
+  commit: 43fe565
+  spec_hash: a82b729fc427
+  note: "Tinker: no mastery flow through writing node 71 (no 81/82)."
+- scenario: DG-13
+  verified_at: 2026-07-22
+  commit: 43fe565
+  spec_hash: b9f6f293d833
+  note: "Tinker: item plan total=31 math=15 ela=12 writing=4, Number strand heaviest (5) - 50/30/20."
+- scenario: DG-14
+  verified_at: 2026-07-22
+  commit: 43fe565
+  spec_hash: d0e241dd759e
+  note: "Browser: cheer card plus Next question button appears on the 8th answered item, not before."
+- scenario: DG-15
+  verified_at: 2026-07-22
+  commit: 43fe565
+  spec_hash: 4faeef96e1a3
+  note: "Browser: reopening /diagnostic/start resumes at item 4 with prior answers preserved, single session row."
+- scenario: DG-16
+  verified_at: 2026-07-22
+  commit: 43fe565
+  spec_hash: 5b00b0dc5822
+  note: "Tinker: writing bank scoped to modules 69-72, 12 anchors, 3 each."
