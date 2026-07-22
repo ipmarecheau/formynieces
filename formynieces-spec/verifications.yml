@@ -131,3 +131,8 @@
   commit: 2deaf53
   spec_hash: 9c0a7206950f
   note: "Student dashboard (/my-map) shows a kind return message ('Back at it — lets build a fresh streak today!') when a broken streak restarts; chip shows '1 day streak', no shaming/no reference to the lost streak (Isaac confirmed tone). Reset detection via restarted_at in StreakService."
+- scenario: ML-04
+  verified_at: 2026-07-22
+  commit: 82bd5c5
+  spec_hash: 4e90e0607c39
+  note: "Logging in advances a students 'login' streak (Isaac confirmed 3->4 on re-login). Dashboard shows distinct chips: 'N day practice streak' and 'N day login streak' — labels clarified per Isaac. No migration (reused type-aware student_streaks)."
