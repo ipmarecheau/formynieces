@@ -151,3 +151,8 @@
   commit: edfb4e4
   spec_hash: ed050ed4787b
   note: "After login an onboarded student lands on a splash (/welcome-back) celebrating her four streaks, with a Continue button to /my-map (Isaac confirmed). Students no longer route through the verified-gated /dashboard."
+- scenario: GO-01
+  verified_at: 2026-07-22
+  commit: feee589
+  spec_hash: 99f7822c1085
+  note: "Browser: happy path - registered a guardian with the 18+ attestation on the dev site; account created role=guardian with age_attested_at set, redirected to email-verification notice (DB-confirmed, user id 9). Negative - submitting with the 18+ box unchecked was rejected, no account created."
