@@ -126,3 +126,8 @@
   commit: d93f6b9
   spec_hash: 1e5a34a06ddf
   note: "Student dashboard (/my-map) shows a practice day-streak chip ('5 day streak'); Isaac confirmed it renders and looks right. Streak advances on any practice attempt, +1 on consecutive days, resets on a gap. Type-aware student_streaks table (type='practice')."
+- scenario: ML-02
+  verified_at: 2026-07-22
+  commit: 2deaf53
+  spec_hash: 9c0a7206950f
+  note: "Student dashboard (/my-map) shows a kind return message ('Back at it — lets build a fresh streak today!') when a broken streak restarts; chip shows '1 day streak', no shaming/no reference to the lost streak (Isaac confirmed tone). Reset detection via restarted_at in StreakService."
