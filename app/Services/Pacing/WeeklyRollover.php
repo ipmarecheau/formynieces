@@ -14,13 +14,13 @@ use Illuminate\Support\Collection;
 class WeeklyRollover
 {
     private const REQUIRED_PACE = 3;   // Std-5 yardstick: modules/week, global
-    private const LAG_TRIGGER   = 4;   // weeks behind that trips a warning
+
+    private const LAG_TRIGGER = 4;   // weeks behind that trips a warning
 
     public function __construct(
         private readonly CapResolver $capResolver,
         private readonly PacingClock $pacingClock,
-    ) {
-    }
+    ) {}
 
     public function runFor(User $student, ?Carbon $now = null): Collection
     {
@@ -88,16 +88,21 @@ class WeeklyRollover
         $weeksToExam = max(1, $this->pacingClock->weeksToExam($student, $now));
 
         $expectedMastered = ($currentWeek - 1) * self::REQUIRED_PACE;
-        $deficit          = max(0, $expectedMastered - $masteredCount);
-        $weeksBehind      = intdiv($deficit, self::REQUIRED_PACE);
+        $deficit = max(0, $expectedMastered - $masteredCount);
+        $weeksBehind = intdiv($deficit, self::REQUIRED_PACE);
 
         $remaining = $queue->count();
 
+        // --- AC-04: flag for admin cap review when feasible pace > cap ----
+        $neededCap = (int) ceil($remaining / $weeksToExam);
+        $journey->cap_review_required = $neededCap > $baseCap;
+        $journey->required_pace = $neededCap > $baseCap ? $neededCap : null;
+
         if ($weeksBehind >= self::LAG_TRIGGER) {
-            $neededCap    = (int) ceil($remaining / $weeksToExam);
+            $neededCap = (int) ceil($remaining / $weeksToExam);
             $effectiveCap = max($baseCap, $neededCap);
 
-            $journey->pace_status  = 'warning';
+            $journey->pace_status = 'warning';
             $journey->weeks_behind = $weeksBehind;
             $journey->save();
 
@@ -112,10 +117,13 @@ class WeeklyRollover
         // On pace: unwind a stale warning once the remainder fits at base cap.
         if ($journey->pace_status === 'warning'
             && $remaining <= $weeksToExam * $baseCap) {
-            $journey->pace_status  = null;
+            $journey->pace_status = null;
             $journey->weeks_behind = null;
-            $journey->save();
         }
+
+        // AC-04: persist the cap-review flag whenever a journey exists, including
+        // the on-pace path that previously skipped save() entirely.
+        $journey->save();
 
         return $baseCap;
     }

@@ -13,12 +13,16 @@ class StudentJourney extends Model
         'exam_date',
         'pace_status',
         'weeks_behind',
+        'cap_review_required',
+        'required_pace',
     ];
 
     protected $casts = [
         'journey_start' => 'date:Y-m-d',
-        'exam_date'     => 'date:Y-m-d',
-        'weeks_behind'  => 'integer',
+        'exam_date' => 'date:Y-m-d',
+        'weeks_behind' => 'integer',
+        'cap_review_required' => 'boolean',
+        'required_pace' => 'integer',
     ];
 
     public function student(): BelongsTo
