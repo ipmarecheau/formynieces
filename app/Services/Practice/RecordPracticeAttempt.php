@@ -5,6 +5,7 @@ namespace App\Services\Practice;
 use App\Models\PracticeAttempt;
 use App\Models\PracticeQuestion;
 use App\Models\StudentProgress;
+use App\Services\Motivation\StreakService;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -28,8 +29,12 @@ use Illuminate\Support\Facades\DB;
 class RecordPracticeAttempt
 {
     private const STREAK_TO_CLEAR = 3;
-    private const MASTERY_RUNG    = 3;
-    private const TOTAL_STEPS     = 9; // 3 rungs * 3 streak each
+
+    private const MASTERY_RUNG = 3;
+
+    private const TOTAL_STEPS = 9; // 3 rungs * 3 streak each
+
+    public function __construct(private StreakService $streaks) {}
 
     /**
      * Process one submission. Returns the fresh StudentProgress projection.
@@ -39,24 +44,24 @@ class RecordPracticeAttempt
         $question = PracticeQuestion::findOrFail($questionId);
         $isCorrect = $chosenIndex === $question->correct_index;
 
-        return DB::transaction(function () use ($studentId, $question, $isCorrect) {
+        $progress = DB::transaction(function () use ($studentId, $question, $isCorrect) {
             // 1. Diary: always record the raw attempt.
             PracticeAttempt::create([
-                'student_id'           => $studentId,
+                'student_id' => $studentId,
                 'practice_question_id' => $question->id,
-                'module_id'            => $question->module_id,
-                'difficulty'           => $question->difficulty,
-                'is_correct'           => $isCorrect,
+                'module_id' => $question->module_id,
+                'difficulty' => $question->difficulty,
+                'is_correct' => $isCorrect,
             ]);
 
             // 2. Load (or start) the projection row.
             $progress = StudentProgress::firstOrNew([
                 'student_id' => $studentId,
-                'module_id'  => $question->module_id,
+                'module_id' => $question->module_id,
             ]);
-            $progress->status            ??= 'needs_work';
-            $progress->current_rung      ??= 1;
-            $progress->current_streak    ??= 0;
+            $progress->status ??= 'needs_work';
+            $progress->current_rung ??= 1;
+            $progress->current_streak ??= 0;
             $streakIds = $progress->streak_question_ids ?? [];
 
             $priorScore = $progress->score;
@@ -73,7 +78,7 @@ class RecordPracticeAttempt
 
                     if ($progress->current_streak >= self::STREAK_TO_CLEAR) {
                         if ($progress->current_rung >= self::MASTERY_RUNG) {
-                            $progress->status         = 'mastered';
+                            $progress->status = 'mastered';
                             $progress->current_streak = self::STREAK_TO_CLEAR; // cap
                         } else {
                             $progress->current_rung++;
@@ -99,6 +104,11 @@ class RecordPracticeAttempt
 
             return $progress->fresh();
         });
+
+        // Practice day-streak: every recorded attempt (correct or wrong) advances it.
+        $this->streaks->recordActivity($studentId, 'practice');
+
+        return $progress;
     }
 
     /**

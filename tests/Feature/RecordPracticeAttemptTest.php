@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\PracticeQuestion;
-use App\Models\StudentProgress;
 use App\Models\SyllabusModule;
 use App\Models\User;
 use App\Services\Practice\RecordPracticeAttempt;
@@ -10,27 +9,29 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 uses(RefreshDatabase::class);
 
 /** Helper: make N distinct questions at a given rung for a module. */
-function rungQuestions(int $moduleId, int $rung, int $n = 3): array {
+function rungQuestions(int $moduleId, int $rung, int $n = 3): array
+{
     $qs = [];
     for ($i = 0; $i < $n; $i++) {
         $qs[] = PracticeQuestion::factory()->create([
-            'module_id'    => $moduleId,
-            'difficulty'   => $rung,
-            'options'      => ['A', 'B', 'C', 'D'],
-            'correct_index'=> 1,           // 'B' is always correct in these tests
+            'module_id' => $moduleId,
+            'difficulty' => $rung,
+            'options' => ['A', 'B', 'C', 'D'],
+            'correct_index' => 1,           // 'B' is always correct in these tests
         ]);
     }
+
     return $qs;
 }
 
 const CORRECT = 1;   // matches correct_index above
-const WRONG   = 0;
+const WRONG = 0;
 
 it('advances the streak on distinct correct answers and clears rung 1 at three', function () {
     $student = User::factory()->create();
-    $module  = SyllabusModule::factory()->create();
+    $module = SyllabusModule::factory()->create();
     [$q1, $q2, $q3] = rungQuestions($module->id, 1);
-    $svc = new RecordPracticeAttempt();
+    $svc = app(RecordPracticeAttempt::class);
 
     $svc->handle($student->id, $q1->id, CORRECT);
     $svc->handle($student->id, $q2->id, CORRECT);
@@ -42,9 +43,9 @@ it('advances the streak on distinct correct answers and clears rung 1 at three',
 
 it('does NOT count a repeated question toward the live streak', function () {
     $student = User::factory()->create();
-    $module  = SyllabusModule::factory()->create();
+    $module = SyllabusModule::factory()->create();
     [$q1, $q2] = rungQuestions($module->id, 1, 2);
-    $svc = new RecordPracticeAttempt();
+    $svc = app(RecordPracticeAttempt::class);
 
     $svc->handle($student->id, $q1->id, CORRECT);   // streak 1
     $p = $svc->handle($student->id, $q1->id, CORRECT);   // same question again → must NOT advance
@@ -55,9 +56,9 @@ it('does NOT count a repeated question toward the live streak', function () {
 
 it('resets the streak on a wrong answer but keeps the rung', function () {
     $student = User::factory()->create();
-    $module  = SyllabusModule::factory()->create();
+    $module = SyllabusModule::factory()->create();
     [$q1, $q2, $q3] = rungQuestions($module->id, 1);
-    $svc = new RecordPracticeAttempt();
+    $svc = app(RecordPracticeAttempt::class);
 
     $svc->handle($student->id, $q1->id, CORRECT);  // streak 1
     $svc->handle($student->id, $q2->id, CORRECT);  // streak 2
@@ -69,11 +70,11 @@ it('resets the streak on a wrong answer but keeps the rung', function () {
 
 it('marks the module mastered after three distinct correct at rung 3', function () {
     $student = User::factory()->create();
-    $module  = SyllabusModule::factory()->create();
+    $module = SyllabusModule::factory()->create();
     // Climb rungs 1 and 2 first, then rung 3.
     foreach ([1, 2, 3] as $rung) {
         [$a, $b, $c] = rungQuestions($module->id, $rung);
-        $svc = new RecordPracticeAttempt();
+        $svc = app(RecordPracticeAttempt::class);
         $svc->handle($student->id, $a->id, CORRECT);
         $svc->handle($student->id, $b->id, CORRECT);
         $p = $svc->handle($student->id, $c->id, CORRECT);

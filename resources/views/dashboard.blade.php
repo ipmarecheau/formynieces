@@ -283,6 +283,21 @@
         .pill-progress { background: #fff7ed; color: #c2410c; border: 1.5px solid #fed7aa; }
         .pill-done     { background: #f0fdf4; color: #166534; border: 1.5px solid #bbf7d0; }
 
+        /* ── STREAK CHIP ── */
+        .fmn-streak-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            font-size: 0.82rem;
+            background: #fff7ed;
+            color: #c2410c;
+            border: 1.5px solid #fed7aa;
+        }
+
         /* ── TAB BAR ── */
         .fmn-tabs {
             display: flex;
@@ -460,6 +475,11 @@
                 <span>Syllabus Completion</span>
                 <span>{{ $completionPercent }}% mastered ⭐</span>
             </div>
+        </div>
+
+        {{-- PRACTICE STREAK --}}
+        <div style="margin-bottom:1.25rem;">
+            <span class="fmn-streak-chip">🔥 {{ $dayStreak }} day streak</span>
         </div>
 
         {{-- STATS (three real buckets) --}}

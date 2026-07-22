@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\StudentProgress;
+use App\Models\StudentStreak;
 use App\Models\WeeklyTarget;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -32,15 +33,20 @@ class DashboardController extends Controller
             ->get();
 
         $masteredCount = $progress->where('status', 'mastered')->count();
-        $likelyCount   = $progress->where('status', 'inferred_mastered')->count();
-        $needsCount    = $progress->where('status', 'needs_work')->count();
-        $totalCount    = $progress->count();
+        $likelyCount = $progress->where('status', 'inferred_mastered')->count();
+        $needsCount = $progress->where('status', 'needs_work')->count();
+        $totalCount = $progress->count();
         $completionPercent = $totalCount > 0
             ? round(($masteredCount / $totalCount) * 100)
             : 0;
 
         // Build Subject → topic-prefix → modules hierarchy with per-group tallies.
         $roadmap = $this->buildRoadmap($progress);
+
+        // Practice day-streak (0 if the student has no practice activity yet).
+        $dayStreak = StudentStreak::where('student_id', $user->id)
+            ->where('type', 'practice')
+            ->value('count') ?? 0;
 
         return view('dashboard', compact(
             'user',
@@ -50,7 +56,8 @@ class DashboardController extends Controller
             'masteredCount',
             'likelyCount',
             'needsCount',
-            'completionPercent'
+            'completionPercent',
+            'dayStreak'
         ));
     }
 
@@ -75,9 +82,9 @@ class DashboardController extends Controller
             ];
 
             $roadmap[$subject][$prefix]['items'][] = [
-                'id'      => $item->module->id,
-                'leaf'    => $leaf,
-                'status'  => $item->status,
+                'id' => $item->module->id,
+                'leaf' => $leaf,
+                'status' => $item->status,
                 'section' => $item->module->sea_section,
             ];
 
@@ -107,8 +114,8 @@ class DashboardController extends Controller
     {
         $students = $user->students()->with([
             'progress.module',
-            'weeklyTargets' => fn($q) => $q->where('week_start_date', now()->startOfWeek())
-                                           ->with('module'),
+            'weeklyTargets' => fn ($q) => $q->where('week_start_date', now()->startOfWeek())
+                ->with('module'),
         ])->get();
 
         $studentSummaries = $students->map(function ($student) {
@@ -122,11 +129,11 @@ class DashboardController extends Controller
             $currentTarget = $student->weeklyTargets->first();
 
             return [
-                'student'           => $student,
+                'student' => $student,
                 'completionPercent' => $completionPercent,
-                'masteredCount'     => $masteredCount,
-                'totalCount'        => $totalCount,
-                'currentTarget'     => $currentTarget,
+                'masteredCount' => $masteredCount,
+                'totalCount' => $totalCount,
+                'currentTarget' => $currentTarget,
             ];
         });
 
