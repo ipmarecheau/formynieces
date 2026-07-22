@@ -1,16 +1,17 @@
 @mvp @student @system
 Feature: Reveal and roadmap seeding
-  When the diagnostic completes, its results seed progress for all 90 modules,
-  compute the student's starting week, set her first weekly target, and present
-  the result as an animated reveal so the map feels made for her.
+  When the diagnostic completes, its results seed the student's progress map
+  from the diagnostic, compute the student's starting week, set her first weekly
+  target, and present the result as an animated reveal so the map feels made for her.
 
   @scenario:RR-01
-  Scenario: Completion seeds a progress record for every module
+  Scenario: Completion seeds the student's progress map
     Given a student has answered the final diagnostic item
     When the diagnostic session completes
-    Then a progress record exists for each of the 90 syllabus modules
-    And inferred-mastered modules have status "diagnostic_passed"
-    And all remaining modules have status "not_started"
+    Then a progress record is written for every module the diagnostic assessed or inferred
+    And each record carries an engine status of "mastered", "inferred_mastered", or "needs_work"
+    And every progress record is accounted for on the roadmap with no orphaned modules
+    And modules the diagnostic did not reach appear as upcoming by absence of a record
 
   Rule: The diagnostic result is reconciled against the guardian's stated weak areas
 
