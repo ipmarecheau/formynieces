@@ -226,3 +226,8 @@
   commit: 6521cd6
   spec_hash: b230f2892eb0
   note: "Tinker/test: deriveMap for a correct module-71 Writing anchor marks 71 mastered with no inferred_mastered side effect (writing firewall). Proven live in the DG sweep; encoded in MasteryInferenceTest group scenario:DG-10."
+- scenario: RR-01
+  verified_at: 2026-07-22
+  commit: e5a1767
+  spec_hash: 4e89a3cddeac
+  note: "Tinker: completion seeds the derived mastery map (27 of 90 modules = assessed+inferred, not all 90), engine statuses mastered/needs_work, session marked completed with completed_at set. Matches reworded Gherkin; 12 RR-01 tests green (bucket sums, no orphans)."
