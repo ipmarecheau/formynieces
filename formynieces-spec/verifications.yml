@@ -116,3 +116,8 @@
   commit: f907b88
   spec_hash: dc4d79936638
   note: "Filament admin: student weekly_module_cap_override set to 3 persists (Isaac confirmed). WeeklyRollover then caps the current-week target at 3, below the global fallback of 5. CapResolver+rollover already honored the override; test-only loop."
+- scenario: AC-04
+  verified_at: 2026-07-22
+  commit: 80e24e0
+  spec_hash: 71c110caf379
+  note: "Filament admin Cap Review list: flagged (cap-outpacing) students appear with their required pace; on-pace students are not flagged/shown (Isaac confirmed). Rollover sets cap_review_required + required_pace when ceil(remaining/weeksToExam) exceeds the cap."
