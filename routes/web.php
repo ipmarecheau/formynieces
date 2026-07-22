@@ -1,7 +1,14 @@
 <?php
 
+use App\Http\Controllers\ChildSetupController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExamAgentController;
+use App\Livewire\DiagnosticWalk;
+use App\Livewire\GuardianDashboard;
+use App\Livewire\GuardianProgress;
+use App\Livewire\LessonWalk;
+use App\Livewire\PracticeWalk;
+use App\Services\Diagnostic\SessionLifecycle;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -11,17 +18,17 @@ Route::get('/', function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])
         ->name('dashboard');
-    Route::get('/guardian/dashboard', \App\Livewire\GuardianDashboard::class)
+    Route::get('/guardian/dashboard', GuardianDashboard::class)
         ->name('guardian.dashboard');
-    Route::get('/guardian/dashboard', \App\Livewire\GuardianDashboard::class)
+    Route::get('/guardian/dashboard', GuardianDashboard::class)
         ->name('guardian.dashboard');
-    Route::get('/guardian/progress', \App\Livewire\GuardianProgress::class)
+    Route::get('/guardian/progress', GuardianProgress::class)
         ->name('guardian.progress');
     Route::get('/exam-agent', [ExamAgentController::class, 'index'])
         ->name('exam-agent');
-    Route::get('/child-setup', [\App\Http\Controllers\ChildSetupController::class, 'create'])
+    Route::get('/child-setup', [ChildSetupController::class, 'create'])
         ->name('child.setup');
-    Route::post('/child-setup', [\App\Http\Controllers\ChildSetupController::class, 'store'])
+    Route::post('/child-setup', [ChildSetupController::class, 'store'])
         ->name('child.store');
 });
 
@@ -30,30 +37,35 @@ Route::middleware('auth')->group(function () {
         return view('student.diagnostic-intro');
     })->name('diagnostic.intro');
 
-    Route::get('/practice/{module}', \App\Livewire\PracticeWalk::class)
+    Route::get('/practice/{module}', PracticeWalk::class)
         ->name('practice.walk');
 
     Route::get('/diagnostic/start', function () {
         try {
-            app(\App\Services\Diagnostic\SessionLifecycle::class)
+            app(SessionLifecycle::class)
                 ->startOrResume(auth()->id());
-        } catch (\DomainException $e) {
+        } catch (DomainException $e) {
             return redirect()->route('diagnostic.intro');
         }
+
         return redirect()->route('diagnostic.walk');
     })->name('diagnostic.start');
 
-    Route::get('/diagnostic/walk', \App\Livewire\DiagnosticWalk::class)
+    Route::get('/diagnostic/walk', DiagnosticWalk::class)
         ->name('diagnostic.walk');
 
     // Student's own roadmap — auth-only, never verified (synthetic emails).
-    Route::get('/my-map', [\App\Http\Controllers\DashboardController::class, 'index'])
+    Route::get('/my-map', [DashboardController::class, 'index'])
         ->name('student.map');
 
-        Route::get('/practice/{module}/lesson', \App\Livewire\LessonWalk::class)
+    // Streak-celebration splash shown after login to students with active streaks.
+    Route::get('/welcome-back', [DashboardController::class, 'studentSplash'])
+        ->name('student.splash');
+
+    Route::get('/practice/{module}/lesson', LessonWalk::class)
         ->name('practice.lesson');
 
-    Route::get('/practice/{module}', \App\Livewire\PracticeWalk::class)
+    Route::get('/practice/{module}', PracticeWalk::class)
         ->name('practice.walk');
 });
 

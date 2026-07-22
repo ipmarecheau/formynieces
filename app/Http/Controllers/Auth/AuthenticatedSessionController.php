@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\StudentStreak;
 use App\Services\Motivation\StreakService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -52,6 +53,18 @@ class AuthenticatedSessionController extends Controller
         // A guardian with no linked students goes to child setup.
         if ($user->isGuardian() && $user->students()->doesntExist()) {
             return route('child.setup');
+        }
+
+        // An onboarded student lands on a streak-celebration splash when she has
+        // at least one active streak, otherwise she goes straight to her map.
+        if ($user->isStudent()) {
+            $hasActiveStreak = StudentStreak::where('student_id', $user->id)
+                ->where('count', '>', 0)
+                ->exists();
+
+            return $hasActiveStreak
+                ? route('student.splash')
+                : route('student.map');
         }
 
         return route('dashboard');

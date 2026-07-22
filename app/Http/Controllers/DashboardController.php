@@ -21,6 +21,35 @@ class DashboardController extends Controller
         return $this->studentDashboard($user);
     }
 
+    /**
+     * Celebrate a returning student's active streaks before she continues to her map.
+     */
+    public function studentSplash(Request $request): View
+    {
+        $user = $request->user();
+
+        $practiceStreak = StudentStreak::where('student_id', $user->id)
+            ->where('type', 'practice')
+            ->value('count') ?? 0;
+        $loginStreak = StudentStreak::where('student_id', $user->id)
+            ->where('type', 'login')
+            ->value('count') ?? 0;
+        $masteryStreak = StudentStreak::where('student_id', $user->id)
+            ->where('type', 'mastery')
+            ->value('count') ?? 0;
+        $paceStreak = StudentStreak::where('student_id', $user->id)
+            ->where('type', 'pace_weeks')
+            ->value('count') ?? 0;
+
+        return view('student-splash', compact(
+            'user',
+            'practiceStreak',
+            'loginStreak',
+            'masteryStreak',
+            'paceStreak',
+        ));
+    }
+
     private function studentDashboard($user): View
     {
         $weeklyTarget = WeeklyTarget::with('module')
