@@ -221,3 +221,8 @@
   commit: 43fe565
   spec_hash: 5b00b0dc5822
   note: "Tinker: writing bank scoped to modules 69-72, 12 anchors, 3 each."
+- scenario: DG-10
+  verified_at: 2026-07-22
+  commit: 6521cd6
+  spec_hash: b230f2892eb0
+  note: "Tinker/test: deriveMap for a correct module-71 Writing anchor marks 71 mastered with no inferred_mastered side effect (writing firewall). Proven live in the DG sweep; encoded in MasteryInferenceTest group scenario:DG-10."
