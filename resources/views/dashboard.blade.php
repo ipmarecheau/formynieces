@@ -297,6 +297,11 @@
             color: #c2410c;
             border: 1.5px solid #fed7aa;
         }
+        .fmn-streak-chip-pace {
+            background: #f0fdf4;
+            color: #166534;
+            border: 1.5px solid #bbf7d0;
+        }
         .fmn-streak-return {
             display: inline-block;
             margin-top: 8px;
@@ -494,6 +499,7 @@
             <span class="fmn-streak-chip">🔥 {{ $dayStreak }} day practice streak</span>
             <span class="fmn-streak-chip" style="margin-left:8px;">🔑 {{ $loginStreak }} day login streak</span>
             <span class="fmn-streak-chip" style="margin-left:8px;">🏆 {{ $masteryStreak }} day mastery streak</span>
+            <span class="fmn-streak-chip fmn-streak-chip-pace" style="margin-left:8px;">🌷 {{ $paceStreak }} week on-pace streak</span>
             @if($streakRestarted)
                 <span class="fmn-streak-return">🌱 Back at it — let's build a fresh streak today!</span>
             @endif

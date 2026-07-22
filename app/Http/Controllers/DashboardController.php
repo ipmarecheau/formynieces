@@ -58,6 +58,12 @@ class DashboardController extends Controller
             ->where('type', 'mastery')
             ->value('count') ?? 0;
 
+        // On-pace week-streak (0 if the student has not had an on-pace week yet).
+        // A kind, student-facing celebration of staying on track across weeks.
+        $paceStreak = StudentStreak::where('student_id', $user->id)
+            ->where('type', 'pace_weeks')
+            ->value('count') ?? 0;
+
         // A kind "welcome back" shows only on the calendar day a broken practice
         // streak was restarted (recordActivity marked restarted_at = today).
         $streakRestarted = StudentStreak::where('student_id', $user->id)
@@ -77,6 +83,7 @@ class DashboardController extends Controller
             'dayStreak',
             'loginStreak',
             'masteryStreak',
+            'paceStreak',
             'streakRestarted'
         ));
     }

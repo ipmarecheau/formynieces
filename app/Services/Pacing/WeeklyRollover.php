@@ -8,6 +8,7 @@ use App\Models\SyllabusModule;
 use App\Models\User;
 use App\Models\WeeklyTarget;
 use App\Notifications\PaceWarningNotification;
+use App\Services\Motivation\StreakService;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 
@@ -20,12 +21,29 @@ class WeeklyRollover
     public function __construct(
         private readonly CapResolver $capResolver,
         private readonly PacingClock $pacingClock,
+        private readonly StreakService $streaks,
     ) {}
 
     public function runFor(User $student, ?Carbon $now = null): Collection
     {
         $now = $now ?? Carbon::today();
         $weekStart = $now->copy()->startOfWeek();
+
+        // --- ML-06: advance or break the on-pace (weekly) streak --------------
+        // Evaluate the just-completed week: if every target landed in it was
+        // met, extend the pace streak by one; otherwise the streak resets to 0.
+        // This is a gentle, student-facing celebration — never surfaced to the
+        // guardian as a judgement metric.
+        $priorWeekStart = $weekStart->copy()->subWeek();
+        $priorTargets = WeeklyTarget::where('student_id', $student->id)
+            ->where('week_start_date', $priorWeekStart->toDateString())->get();
+        $onPace = $priorTargets->isNotEmpty() && $priorTargets->every(fn ($t) => (bool) $t->is_completed);
+        if ($onPace) {
+            $this->streaks->recordWeeklyActivity($student->id, 'pace_weeks', $priorWeekStart);
+        } else {
+            $this->streaks->resetStreak($student->id, 'pace_weeks');
+        }
+
         $baseCap = $this->capResolver->resolve($student);
 
         $masteredModuleIds = StudentProgress::where('student_id', $student->id)
