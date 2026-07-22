@@ -28,10 +28,15 @@ it('shows deferred scenarios by default but hides them under --mvp', function ()
 });
 
 it('composes --mvp with --only-problems', function () {
-    Artisan::call('specs:trace', ['--mvp' => true, '--only-problems' => true]);
-    $out = Artisan::output();
+    Artisan::call('specs:trace', ['--only-problems' => true]);
+    $problems = Artisan::output();
 
-    // ML-01 is an MVP problem (untested) → shown; GD-06 is deferred → hidden.
-    expect($out)->toContain('ML-01');
-    expect($out)->not->toContain('GD-06');
+    Artisan::call('specs:trace', ['--mvp' => true, '--only-problems' => true]);
+    $mvpProblems = Artisan::output();
+
+    // GD-06 is a deferred (@v1.1) problem: it appears under --only-problems but is
+    // filtered out by --mvp. Asserting the in/out semantics keeps this test stable
+    // as MVP scenarios get built and verified (unlike naming a specific MVP row).
+    expect($problems)->toContain('GD-06');
+    expect($mvpProblems)->not->toContain('GD-06');
 });
