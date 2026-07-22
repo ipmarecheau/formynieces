@@ -111,3 +111,8 @@
   commit: c22d386
   spec_hash: 15143f0bb347
   note: "Dev-site browser check (port 8000): guardian dashboard leads with a calm Math-first 'Catch-up plan' card showing weekly steps (About N modules per week) when the student is 4+ weeks behind; card absent when journey flipped to on-pace. Both positive and negative checks confirmed."
+- scenario: AC-03
+  verified_at: 2026-07-22
+  commit: f907b88
+  spec_hash: dc4d79936638
+  note: "Filament admin: student weekly_module_cap_override set to 3 persists (Isaac confirmed). WeeklyRollover then caps the current-week target at 3, below the global fallback of 5. CapResolver+rollover already honored the override; test-only loop."
