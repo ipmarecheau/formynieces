@@ -12,11 +12,13 @@ class StudentStreak extends Model
         'type',
         'count',
         'last_activity_date',
+        'restarted_at',
     ];
 
     protected $casts = [
         'count' => 'integer',
         'last_activity_date' => 'date:Y-m-d',
+        'restarted_at' => 'date:Y-m-d',
     ];
 
     public function student(): BelongsTo

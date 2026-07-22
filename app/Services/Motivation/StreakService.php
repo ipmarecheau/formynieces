@@ -28,6 +28,8 @@ class StreakService
 
         $last = $streak->last_activity_date;
 
+        $restartOccurred = false;
+
         if ($last !== null && $last->isSameDay($on)) {
             // Already counted today — idempotent.
         } elseif ($last !== null && $last->isSameDay($on->copy()->subDay())) {
@@ -36,9 +38,13 @@ class StreakService
         } else {
             // A gap, or first ever activity — start a fresh streak.
             $streak->count = 1;
+            // A genuine return after a break only when there was prior activity;
+            // a first-ever day is not a "welcome back".
+            $restartOccurred = $last !== null;
         }
 
         $streak->last_activity_date = $on;
+        $streak->restarted_at = $restartOccurred ? $on : null;
         $streak->save();
 
         return $streak->fresh();

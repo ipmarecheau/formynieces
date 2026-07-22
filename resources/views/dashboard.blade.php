@@ -297,6 +297,18 @@
             color: #c2410c;
             border: 1.5px solid #fed7aa;
         }
+        .fmn-streak-return {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 5px 14px;
+            border-radius: 999px;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            font-size: 0.8rem;
+            color: #166534;
+            background: #f0fdf4;
+            border: 1.5px solid #bbf7d0;
+        }
 
         /* ── TAB BAR ── */
         .fmn-tabs {
@@ -480,6 +492,9 @@
         {{-- PRACTICE STREAK --}}
         <div style="margin-bottom:1.25rem;">
             <span class="fmn-streak-chip">🔥 {{ $dayStreak }} day streak</span>
+            @if($streakRestarted)
+                <span class="fmn-streak-return">🌱 Back at it — let's build a fresh streak today!</span>
+            @endif
         </div>
 
         {{-- STATS (three real buckets) --}}

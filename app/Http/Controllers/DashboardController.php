@@ -48,6 +48,13 @@ class DashboardController extends Controller
             ->where('type', 'practice')
             ->value('count') ?? 0;
 
+        // A kind "welcome back" shows only on the calendar day a broken practice
+        // streak was restarted (recordActivity marked restarted_at = today).
+        $streakRestarted = StudentStreak::where('student_id', $user->id)
+            ->where('type', 'practice')
+            ->whereDate('restarted_at', today())
+            ->exists();
+
         return view('dashboard', compact(
             'user',
             'weeklyTarget',
@@ -57,7 +64,8 @@ class DashboardController extends Controller
             'likelyCount',
             'needsCount',
             'completionPercent',
-            'dayStreak'
+            'dayStreak',
+            'streakRestarted'
         ));
     }
 
