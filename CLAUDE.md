@@ -442,6 +442,15 @@ confirmation costs seconds; an unwanted action costs trust.
 a similar action, or a yes given for a different scenario do NOT carry forward.
 One approval covers one action.
 
+**Pre-approval semantics (standing rule).** When Isaac pre-approves a scenario ("I am
+preapproving all tasks to build and test XX-NN"), it authorizes every operation for that
+scenario autonomously — writing tests, delegating to GLM, running the suite, committing,
+pushing — EXCEPT the final **browser verification** and the `specs:verify` record that
+depends on it. Under a pre-approval, proceed through G2/G3/G4/G6 without stopping, but STOP
+before `specs:verify`: prep a browser check and wait for Isaac's explicit "verified." Never
+run `specs:verify` off self-generated (test/tinker) evidence alone — G5 must reflect HIS
+confirmation. (Learned when RR-06 was self-verified; corrected.)
+
 ### Conversation style
 
 - Default to **discussion, not action.** If Isaac raises a design question, answer
@@ -527,6 +536,15 @@ Confirmed failure + fix in the AC-04 loop.
   Gherkin lines, the failing test path, and the assertion it must satisfy.
 - State "minimum code only — no speculative features."
 - For model/service edits, instruct full-file output, not fragments.
+- **Delegate NEW files, not EDITS to existing files.** GLM is reliable at "create this new
+  file from scratch" but flaky at "here is an existing file, change it" — on an edit
+  instruction (even one embedding the full current file + the change) it tends to re-read
+  CLAUDE.md, decide the message is "delegation content to relay," and print a G2-style gate
+  instead of editing (git stays clean). Confirmed twice in the RR-06 loop, and the hardened
+  preamble did NOT fix it. So: give GLM greenfield service/class creation; make edits to
+  existing files yourself (attribution `GLM-5.2, Claude` if GLM wrote the original). If a
+  delegated edit comes back as an orchestrator role-play (git clean + printed gate), that
+  counts as attempt 1 — do the edit directly rather than burning a second GLM launch.
 - **Filament 4 work is NOT delegated.** The orchestrator implements it directly,
   after Laravel Boost `search-docs`, per existing convention.
 - GLM never commits, never pushes, never touches git config, never runs migrations
