@@ -143,6 +143,40 @@ it('shows a holding reveal instead of the map link when a guardian decision is p
         ->assertRedirect(route('student.awaiting-guardian'));
 })->group('scenario:RR-04');
 
+it('redirects to the waiting page when the final answer completes a diagnostic needing a decision', function () {
+    $flaggedStrand = collect(SyllabusModule::strandsBySubject())->flatten()->first();
+
+    $student = User::create([
+        'name' => 'Aaliyah',
+        'email' => 'rr04-choose-'.uniqid().'@students.formynieces.com',
+        'password' => bcrypt('secret'),
+        'role' => 'student',
+        'target_sea_year' => 2027,
+        'onboarding_completed_at' => null,
+        'known_weak_areas' => [$flaggedStrand],
+    ]);
+
+    app(SessionLifecycle::class)->startOrResume($student->id);
+
+    // Walk the whole diagnostic through the component itself, answering every
+    // item correctly, so the final choose() is what triggers completion.
+    $component = Livewire::actingAs($student)->test(DiagnosticWalk::class);
+
+    for ($i = 0; $i < 100; $i++) {
+        if ($component->get('showInterstitial')) {
+            $component->call('continueFromInterstitial');
+        }
+        $question = $component->get('question');
+        if ($question === null) {
+            break;
+        }
+        $anchor = DB::table('anchor_questions')->find($question['anchor_id']);
+        $component->call('choose', $anchor->correct_index);
+    }
+
+    $component->assertRedirect(route('student.awaiting-guardian'));
+})->group('scenario:RR-04');
+
 it('generates the roadmap (journey + first weekly target) when an onboarded student completes', function () {
     $student = User::create([
         'name' => 'Aaliyah',

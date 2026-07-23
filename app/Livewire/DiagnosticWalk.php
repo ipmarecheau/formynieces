@@ -44,9 +44,17 @@ class DiagnosticWalk extends Component
         $this->sessionId = app(SessionLifecycle::class)->startOrResume(auth()->id());
         $this->planTotal = $this->resolvePlanTotal();
         $this->loadCurrent();
+        $this->redirectIfAwaitingGuardian();
+    }
 
-        // A completed diagnostic whose result awaits the guardian's decision
-        // sends her to the waiting page rather than the map link. [RR-11]
+    /**
+     * A completed diagnostic whose result awaits the guardian's decision sends
+     * her to the waiting page rather than the map link. Called after every
+     * loadCurrent() — completion can happen on mount (already-walked session) or
+     * on the final answer via choose(). [RR-11]
+     */
+    protected function redirectIfAwaitingGuardian(): void
+    {
         if ($this->awaitingGuardian) {
             $this->redirect(route('student.awaiting-guardian'), navigate: true);
         }
@@ -151,6 +159,7 @@ class DiagnosticWalk extends Component
         );
 
         $this->loadCurrent();
+        $this->redirectIfAwaitingGuardian();
     }
 
     public function continueFromInterstitial(): void
