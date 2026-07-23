@@ -44,6 +44,12 @@ class DiagnosticWalk extends Component
         $this->sessionId = app(SessionLifecycle::class)->startOrResume(auth()->id());
         $this->planTotal = $this->resolvePlanTotal();
         $this->loadCurrent();
+
+        // A completed diagnostic whose result awaits the guardian's decision
+        // sends her to the waiting page rather than the map link. [RR-11]
+        if ($this->awaitingGuardian) {
+            $this->redirect(route('student.awaiting-guardian'), navigate: true);
+        }
     }
 
     protected function walk(): ItemWalk

@@ -17,7 +17,7 @@ final class AutoProceedReconciliation extends Command
 
     public function handle(DiagnosticReconciliation $reconciliation, ReconciliationResolver $resolver): int
     {
-        $cutoff = now()->subDays(3);
+        $cutoff = now()->subDays(DiagnosticReconciliation::HOLD_DAYS);
 
         $candidates = User::where('role', 'student')
             ->whereNull('onboarding_completed_at')

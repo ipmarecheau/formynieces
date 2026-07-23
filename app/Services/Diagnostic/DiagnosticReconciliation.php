@@ -6,6 +6,7 @@ namespace App\Services\Diagnostic;
 
 use App\Models\StudentProgress;
 use App\Models\User;
+use Illuminate\Support\Carbon;
 
 /**
  * Reconciles a completed diagnostic against the guardian's stated weak areas.
@@ -23,6 +24,11 @@ use App\Models\User;
  */
 final class DiagnosticReconciliation
 {
+    /**
+     * Days a guardian decision may sit unanswered before it auto-proceeds.
+     */
+    public const HOLD_DAYS = 3;
+
     /**
      * The guardian-flagged strands the diagnostic did NOT confirm weak.
      *
@@ -58,6 +64,35 @@ final class DiagnosticReconciliation
     {
         return $student->guardian_reconciled_at === null
             && $this->requiresGuardianDecision($student);
+    }
+
+    /**
+     * When the hold began — the student's most recent completed diagnostic.
+     * Null when she has no completed diagnostic session.
+     */
+    public function holdStartedAt(User $student): ?Carbon
+    {
+        $completedAt = $student->diagnosticSessions()
+            ->where('status', 'completed')
+            ->max('completed_at');
+
+        return $completedAt !== null ? Carbon::parse($completedAt) : null;
+    }
+
+    /**
+     * True when a decision is still pending and the hold has run for at least
+     * HOLD_DAYS — i.e. it may now auto-proceed rather than keep waiting.
+     */
+    public function hasTimedOut(User $student): bool
+    {
+        if (! $this->isPending($student)) {
+            return false;
+        }
+
+        $startedAt = $this->holdStartedAt($student);
+
+        return $startedAt !== null
+            && $startedAt->lte(now()->subDays(self::HOLD_DAYS));
     }
 
     /**

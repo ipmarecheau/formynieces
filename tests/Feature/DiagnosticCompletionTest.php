@@ -140,8 +140,7 @@ it('shows a holding reveal instead of the map link when a guardian decision is p
 
     Livewire::actingAs($student)
         ->test(DiagnosticWalk::class)
-        ->assertSee('grown-up')
-        ->assertDontSee('See your map');
+        ->assertRedirect(route('student.awaiting-guardian'));
 })->group('scenario:RR-04');
 
 it('generates the roadmap (journey + first weekly target) when an onboarded student completes', function () {
