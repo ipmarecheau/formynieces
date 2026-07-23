@@ -54,7 +54,7 @@ class DashboardController extends Controller
     {
         $weeklyTarget = WeeklyTarget::with('module')
             ->where('student_id', $user->id)
-            ->where('week_start_date', now()->startOfWeek())
+            ->where('week_start_date', now()->startOfWeek()->toDateString())
             ->first();
 
         $progress = StudentProgress::with('module')
@@ -170,7 +170,7 @@ class DashboardController extends Controller
     {
         $students = $user->students()->with([
             'progress.module',
-            'weeklyTargets' => fn ($q) => $q->where('week_start_date', now()->startOfWeek())
+            'weeklyTargets' => fn ($q) => $q->where('week_start_date', now()->startOfWeek()->toDateString())
                 ->with('module'),
         ])->get();
 

@@ -282,6 +282,7 @@
         }
         .pill-progress { background: #fff7ed; color: #c2410c; border: 1.5px solid #fed7aa; }
         .pill-done     { background: #f0fdf4; color: #166534; border: 1.5px solid #bbf7d0; }
+        .pill-todo     { background: #f3f4f6; color: #4b5563; border: 1.5px solid #e5e7eb; }
 
         /* ── STREAK CHIP ── */
         .fmn-streak-chip {
@@ -547,10 +548,13 @@
                         </p>
                     </div>
                     <div style="flex-shrink:0;">
-                        @if($weeklyTarget->is_completed)
+                        @php $targetState = $weeklyTarget->state(); @endphp
+                        @if($targetState === 'completed')
                             <span class="fmn-pill pill-done">✅ Done!</span>
-                        @else
+                        @elseif($targetState === 'in_progress')
                             <span class="fmn-pill pill-progress">⏳ In Progress</span>
+                        @else
+                            <span class="fmn-pill pill-todo">⚪ Not Started</span>
                         @endif
                     </div>
                 </div>
