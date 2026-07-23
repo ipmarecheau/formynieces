@@ -45,6 +45,14 @@ Feature: Reveal and roadmap seeding
       Then that strand's modules are treated as not-started in the roadmap
       And the remaining diagnostic results are applied unchanged
 
+    @scenario:RR-10
+    Scenario: An unanswered reconciliation auto-proceeds after three days
+      Given the guardian has been shown a diagnostic that cleared a strand she flagged
+      And three days pass without the guardian choosing
+      When the reconciliation is resolved automatically
+      Then the roadmap proceeds from the diagnostic result
+      And the student's onboarding completes so her progress is not halted
+
   @scenario:RR-06
   Scenario: Completion computes the starting week and first target
     Given a student's diagnostic session has completed
