@@ -236,3 +236,8 @@
   commit: 17f720a
   spec_hash: 668e9780b660
   note: "Browser: onboarded student (Aaliyah) logged in -> ML-07 welcome-back splash celebrating her streaks -> populated /my-map dashboard (28 modules bucketed), not the diagnostic. Confirmed by Isaac."
+- scenario: RR-06
+  verified_at: 2026-07-23
+  commit: fac110c
+  spec_hash: 69747ad283b7
+  note: "End-to-end: DiagnosticWalk completion now calls RoadmapGenerator, which firstOrCreates the StudentJourney (journey_start=completion date, exam_date from target year via ExamDateResolver) then computes the starting week + first weekly target. Proven by an integration test through the real DiagnosticWalk path and a dev-DB tinker run (startWeek=1, exam_date=2027-04-01, 5 current-week targets)."
