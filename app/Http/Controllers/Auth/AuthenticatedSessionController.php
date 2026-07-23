@@ -39,7 +39,16 @@ class AuthenticatedSessionController extends Controller
             $this->streaks->recordActivity($request->user()->id, 'login');
         }
 
-        return redirect()->intended($this->redirectTo($request->user()));
+        $target = $this->redirectTo($request->user());
+
+        // Onboarding gates (the diagnostic and the reconciliation waiting page)
+        // must never be bypassed by a stale "intended" URL left in the session
+        // from earlier navigation — force those destinations. [RR-11]
+        if (in_array($target, [route('diagnostic.intro'), route('student.awaiting-guardian')], true)) {
+            return redirect()->to($target);
+        }
+
+        return redirect()->intended($target);
     }
 
     /**

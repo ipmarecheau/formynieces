@@ -89,6 +89,41 @@ it('sends a freshly flagged student into the diagnostic, not the waiting page', 
         ->assertRedirect(route('diagnostic.intro'));
 })->group('scenario:RR-11');
 
+it('gates a fresh student to the diagnostic even with a stale intended url', function () {
+    $guardian = User::create([
+        'name' => 'Guardian',
+        'email' => 'rr11-stale-guard-'.uniqid().'@formynieces.com',
+        'password' => bcrypt('secret'),
+        'role' => 'guardian',
+        'email_verified_at' => now(),
+    ]);
+
+    $student = User::create([
+        'name' => 'Aaliyah',
+        'email' => 'rr11-stale-'.uniqid().'@students.formynieces.com',
+        'password' => bcrypt('secret'),
+        'role' => 'student',
+        'parent_id' => $guardian->id,
+        'target_sea_year' => 2027,
+        'onboarding_completed_at' => null,
+        'known_weak_areas' => ['Fractions'],
+        'email_verified_at' => now(),
+    ]);
+
+    // A leftover intended URL from earlier navigation must not bypass the gate.
+    $this->withSession(['url.intended' => url('/my-map')])
+        ->post('/login', ['email' => $student->email, 'password' => 'secret'])
+        ->assertRedirect(route('diagnostic.intro'));
+})->group('scenario:RR-11');
+
+it('holds a pending student on the waiting page even with a stale intended url', function () {
+    [, $student] = seedLoginPendingStudent(1);
+
+    $this->withSession(['url.intended' => url('/my-map')])
+        ->post('/login', ['email' => $student->email, 'password' => 'secret'])
+        ->assertRedirect(route('student.awaiting-guardian'));
+})->group('scenario:RR-11');
+
 it('shows the guardian login and support details on the waiting page', function () {
     [$guardian, $student] = seedLoginPendingStudent(1);
 
