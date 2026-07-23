@@ -67,3 +67,24 @@ it('creates a weekly target for the current week from the not-started frontier',
         ->and($targets->pluck('module_id')->all())
         ->each->toBeIn(SyllabusModule::pluck('id')->all());
 })->group('scenario:RR-06');
+
+it('creates the student journey from her target year when none exists yet', function () {
+    $student = User::create([
+        'name' => 'Aaliyah',
+        'email' => 'rr06-nojourney-'.uniqid().'@students.formynieces.com',
+        'password' => bcrypt('secret'),
+        'role' => 'student',
+        'target_sea_year' => 2027,
+        'onboarding_completed_at' => now(),
+    ]);
+    SyllabusModule::create(['subject' => 'Math', 'topic' => 'A: One', 'sea_section' => 'Section I', 'sequence_order' => 1, 'pacing_week' => 1]);
+
+    expect(StudentJourney::where('student_id', $student->id)->exists())->toBeFalse();
+
+    app(RoadmapGenerator::class)->generate($student);
+
+    $journey = StudentJourney::where('student_id', $student->id)->first();
+    expect($journey)->not->toBeNull()
+        ->and($journey->journey_start->format('Y-m-d'))->toBe(today()->format('Y-m-d'))
+        ->and($journey->exam_date->format('Y-m-d'))->toBe('2027-04-01'); // derived default from target year
+})->group('scenario:RR-06');

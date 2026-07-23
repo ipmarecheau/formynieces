@@ -2,9 +2,11 @@
 
 namespace App\Livewire;
 
+use App\Models\User;
 use App\Services\Diagnostic\ItemWalk;
 use App\Services\Diagnostic\SessionLifecycle;
 use App\Services\Diagnostic\SessionPlanner;
+use App\Services\Pacing\RoadmapGenerator;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -13,16 +15,25 @@ use Livewire\Component;
 class DiagnosticWalk extends Component
 {
     public int $sessionId;
+
     public ?array $question = null;
+
     public string $prompt = '';
+
     public array $options = [];
+
     public bool $showInterstitial = false;
+
     public bool $isComplete = false;
 
     public string $strand = '';
+
     public string $islandName = '';
+
     public string $islandIcon = '';
+
     public int $itemNumber = 0;
+
     public int $planTotal = 0;
 
     public function mount(): void
@@ -61,6 +72,14 @@ class DiagnosticWalk extends Component
             $session = DB::table('diagnostic_sessions')->find($this->sessionId);
             if ($session !== null && $session->status !== 'completed') {
                 $this->lifecycle()->complete($this->sessionId);
+
+                // Generate her roadmap (journey + first weekly target) from the
+                // completed diagnostic. Kept OUTSIDE complete() so the guardian
+                // reconciliation step (RR-04/05) can later slot in between.
+                $student = User::find($session->student_id);
+                if ($student !== null && $student->target_sea_year !== null) {
+                    app(RoadmapGenerator::class)->generate($student);
+                }
             }
 
             $this->isComplete = true;
@@ -69,6 +88,7 @@ class DiagnosticWalk extends Component
             $this->strand = '';
             $this->islandName = '';
             $this->islandIcon = '';
+
             return;
         }
 

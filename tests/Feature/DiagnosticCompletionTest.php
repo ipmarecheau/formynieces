@@ -1,8 +1,11 @@
 <?php
+
 // tests/Feature/DiagnosticCompletionTest.php
 
 use App\Livewire\DiagnosticWalk;
+use App\Models\StudentJourney;
 use App\Models\User;
+use App\Models\WeeklyTarget;
 use App\Services\Diagnostic\ItemWalk;
 use App\Services\Diagnostic\SessionLifecycle;
 use App\Services\Diagnostic\SessionPlanner;
@@ -23,7 +26,7 @@ beforeEach(function () {
 
     $this->student = User::create([
         'name' => 'Aaliyah',
-        'email' => 'aaliyah-' . uniqid() . '@students.formynieces.com',
+        'email' => 'aaliyah-'.uniqid().'@students.formynieces.com',
         'password' => bcrypt('secret'),
         'role' => 'student',
         'onboarding_completed_at' => now(),
@@ -83,3 +86,31 @@ it('shows a way forward on the completion screen', function () {
         ->test(DiagnosticWalk::class)
         ->assertSee('See your map');
 })->group('scenario:RR-08');
+
+it('generates the roadmap (journey + first weekly target) when an onboarded student completes', function () {
+    $student = User::create([
+        'name' => 'Aaliyah',
+        'email' => 'rr06-e2e-'.uniqid().'@students.formynieces.com',
+        'password' => bcrypt('secret'),
+        'role' => 'student',
+        'target_sea_year' => 2027,
+        'onboarding_completed_at' => now(),
+    ]);
+
+    $sessionId = app(SessionLifecycle::class)->startOrResume($student->id);
+    walkSessionToEnd($sessionId);
+
+    // Mounting the walked session triggers completion + roadmap generation.
+    Livewire::actingAs($student)->test(DiagnosticWalk::class);
+
+    // Her journey is created from her target year.
+    $journey = StudentJourney::where('student_id', $student->id)->first();
+    expect($journey)->not->toBeNull()
+        ->and($journey->exam_date->format('Y-m-d'))->toBe('2027-04-01');
+
+    // A weekly target for the current week now exists.
+    $targets = WeeklyTarget::where('student_id', $student->id)
+        ->where('week_start_date', now()->startOfWeek()->toDateString())
+        ->get();
+    expect($targets)->not->toBeEmpty();
+})->group('scenario:RR-06');

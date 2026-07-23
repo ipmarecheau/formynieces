@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services\Pacing;
 
+use App\Models\StudentJourney;
 use App\Models\StudentProgress;
 use App\Models\SyllabusModule;
 use App\Models\User;
@@ -11,16 +12,21 @@ use App\Models\User;
 /**
  * Generates a student's pacing roadmap.
  *
- * Resolves the student's starting week from the earliest pacing week that still
- * holds a not-yet-mastered module, then materialises the current week's target
- * via the weekly rollover.
+ * Ensures the student has a StudentJourney (creating one from her target SEA
+ * year if absent), resolves the starting week from the earliest pacing week
+ * that still holds a not-yet-mastered module, then materialises the current
+ * week's target via the weekly rollover.
  */
 final class RoadmapGenerator
 {
-    public function __construct(private WeeklyRollover $rollover) {}
+    public function __construct(
+        private WeeklyRollover $rollover,
+        private ExamDateResolver $examDateResolver,
+    ) {}
 
     /**
-     * Resolve the starting pacing week and seed the current week's target.
+     * Ensure the journey exists, resolve the starting pacing week, and seed the
+     * current week's target.
      *
      * The starting week is the minimum `pacing_week` among syllabus modules the
      * student has not yet mastered, where "mastered" follows WeeklyRollover's
@@ -33,6 +39,14 @@ final class RoadmapGenerator
      */
     public function generate(User $student): int
     {
+        StudentJourney::firstOrCreate(
+            ['student_id' => $student->id],
+            [
+                'journey_start' => today(),
+                'exam_date' => $this->examDateResolver->resolve((int) $student->target_sea_year),
+            ],
+        );
+
         $masteredModuleIds = StudentProgress::where('student_id', $student->id)
             ->where('status', 'mastered')
             ->pluck('module_id');
