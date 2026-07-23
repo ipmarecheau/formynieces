@@ -24,6 +24,7 @@ function makePendingReconciliation(): array
         'password' => bcrypt('secret'),
         'role' => 'guardian',
     ]);
+    $guardian->forceFill(['email_verified_at' => now()])->save();
 
     $student = User::create([
         'name' => 'Aaliyah',
@@ -57,6 +58,50 @@ function makePendingReconciliation(): array
 
     return [$guardian, $student];
 }
+
+it('shows the reconciliation prompt on the parent portal for a pending child', function () {
+    [$guardian] = makePendingReconciliation();
+
+    $this->actingAs($guardian)
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertSee('Fractions')
+        ->assertSee('Use the diagnostic result')
+        ->assertSee('Keep my');
+})->group('scenario:RR-04');
+
+it('proceeds with the diagnostic from the parent portal', function () {
+    [$guardian, $student] = makePendingReconciliation();
+
+    $this->actingAs($guardian)
+        ->post(route('guardian.reconciliation.proceed', $student))
+        ->assertRedirect();
+
+    $student->refresh();
+
+    expect($student->guardian_reconciled_at)->not->toBeNull()
+        ->and($student->onboarding_completed_at)->not->toBeNull()
+        ->and(StudentJourney::where('student_id', $student->id)->exists())->toBeTrue()
+        ->and(app(DiagnosticReconciliation::class)->isPending($student))->toBeFalse();
+})->group('scenario:RR-04');
+
+it('forbids proceeding on a child that is not the guardian’s own', function () {
+    [, $student] = makePendingReconciliation();
+
+    $outsider = User::create([
+        'name' => 'Outsider',
+        'email' => 'outsider-'.uniqid().'@formynieces.com',
+        'password' => bcrypt('secret'),
+        'role' => 'guardian',
+    ]);
+    $outsider->forceFill(['email_verified_at' => now()])->save();
+
+    $this->actingAs($outsider)
+        ->post(route('guardian.reconciliation.proceed', $student))
+        ->assertForbidden();
+
+    expect($student->refresh()->guardian_reconciled_at)->toBeNull();
+})->group('scenario:RR-04');
 
 it('shows the guardian where the diagnostic differs from her stated weak areas', function () {
     [$guardian] = makePendingReconciliation();

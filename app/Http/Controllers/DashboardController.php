@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\StudentProgress;
 use App\Models\StudentStreak;
 use App\Models\WeeklyTarget;
+use App\Services\Diagnostic\DiagnosticReconciliation;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -174,7 +175,9 @@ class DashboardController extends Controller
                 ->with('module'),
         ])->get();
 
-        $studentSummaries = $students->map(function ($student) {
+        $reconciliation = app(DiagnosticReconciliation::class);
+
+        $studentSummaries = $students->map(function ($student) use ($reconciliation) {
             $progress = $student->progress;
             $masteredCount = $progress->where('status', 'mastered')->count();
             $totalCount = $progress->count();
@@ -184,12 +187,16 @@ class DashboardController extends Controller
 
             $currentTarget = $student->weeklyTargets->first();
 
+            $isPending = $reconciliation->isPending($student);
+
             return [
                 'student' => $student,
                 'completionPercent' => $completionPercent,
                 'masteredCount' => $masteredCount,
                 'totalCount' => $totalCount,
                 'currentTarget' => $currentTarget,
+                'isPending' => $isPending,
+                'clearedStrands' => $isPending ? $reconciliation->clearedStrands($student) : [],
             ];
         });
 

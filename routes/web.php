@@ -3,6 +3,7 @@
 use App\Http\Controllers\ChildSetupController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExamAgentController;
+use App\Http\Controllers\GuardianReconciliationController;
 use App\Livewire\DiagnosticWalk;
 use App\Livewire\GuardianDashboard;
 use App\Livewire\GuardianProgress;
@@ -31,6 +32,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->name('child.setup');
     Route::post('/child-setup', [ChildSetupController::class, 'store'])
         ->name('child.store');
+
+    // RR-04: a guardian resolves a pending reconciliation from the Parent Portal.
+    Route::post('/guardian/reconciliation/{student}/proceed', [GuardianReconciliationController::class, 'proceed'])
+        ->name('guardian.reconciliation.proceed');
+    Route::post('/guardian/reconciliation/{student}/keep', [GuardianReconciliationController::class, 'keep'])
+        ->name('guardian.reconciliation.keep');
 });
 
 Route::middleware('auth')->group(function () {

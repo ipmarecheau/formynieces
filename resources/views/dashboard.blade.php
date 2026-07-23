@@ -674,6 +674,31 @@
                         </div>
                     </div>
 
+                    @if($summary['isPending'])
+                        {{-- RR-04: the diagnostic cleared a strand the guardian flagged.
+                             Her child's map waits until the guardian chooses. --}}
+                        <div style="background:#fffbf5; border:1.5px solid #fed7aa; border-radius:14px; padding:14px 16px; margin-bottom:1rem;">
+                            <p style="font-weight:800; color:#c2410c; margin:0 0 6px;">A quick check before we finish</p>
+                            <p style="font-size:0.88rem; color:#1f2937; margin:0 0 10px; line-height:1.5;">
+                                You told us {{ $summary['student']->name }} struggles with
+                                <strong>{{ implode(', ', $summary['clearedStrands']) }}</strong>, but the
+                                diagnostic found she's already got a good handle on
+                                {{ count($summary['clearedStrands']) === 1 ? 'it' : 'them' }}. Her map won't
+                                start until you choose.
+                            </p>
+                            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                                <form method="POST" action="{{ route('guardian.reconciliation.proceed', $summary['student']) }}">
+                                    @csrf
+                                    <button type="submit" style="background:#7c3aed; color:white; border:none; border-radius:10px; padding:9px 15px; font-weight:800; cursor:pointer;">Use the diagnostic result</button>
+                                </form>
+                                <form method="POST" action="{{ route('guardian.reconciliation.keep', $summary['student']) }}">
+                                    @csrf
+                                    <button type="submit" style="background:white; color:#7c3aed; border:1.5px solid #ddd6fe; border-radius:10px; padding:9px 15px; font-weight:800; cursor:pointer;">Keep my weak areas</button>
+                                </form>
+                            </div>
+                        </div>
+                    @endif
+
                     <div class="fmn-stats" style="margin-bottom:1rem;">
                         <div class="fmn-stat">
                             <div class="fmn-stat-num">{{ $summary['masteredCount'] }}</div>
