@@ -7,6 +7,7 @@ use App\Models\SyllabusModule;
 use App\Models\User;
 use App\Models\WeeklyTarget;
 use App\Services\Diagnostic\DiagnosticReconciliation;
+use Illuminate\Support\Facades\DB;
 use Livewire\Livewire;
 
 /**
@@ -42,6 +43,17 @@ function makePendingReconciliation(): array
 
     // A not-started module so the generated roadmap has a frontier + weekly target.
     SyllabusModule::create(['subject' => 'Math', 'topic' => 'Geometry: Angles', 'sea_section' => 'Section I', 'sequence_order' => 2, 'pacing_week' => 1]);
+
+    // A completed diagnostic — a reconciliation is only pending once one exists.
+    DB::table('diagnostic_sessions')->insert([
+        'student_id' => $student->id,
+        'status' => 'completed',
+        'item_plan' => '[]',
+        'current_item' => 0,
+        'completed_at' => now(),
+        'created_at' => now(),
+        'updated_at' => now(),
+    ]);
 
     return [$guardian, $student];
 }

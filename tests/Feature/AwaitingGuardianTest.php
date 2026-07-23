@@ -61,6 +61,34 @@ it('routes a pending student to the waiting page on login, not back into the dia
         ->assertRedirect(route('student.awaiting-guardian'));
 })->group('scenario:RR-11');
 
+it('sends a freshly flagged student into the diagnostic, not the waiting page', function () {
+    // The guardian flagged weak areas at setup, but the student has NOT taken
+    // the diagnostic yet — there is nothing to reconcile, so she takes it.
+    $guardian = User::create([
+        'name' => 'Guardian',
+        'email' => 'rr11-fresh-guard-'.uniqid().'@formynieces.com',
+        'password' => bcrypt('secret'),
+        'role' => 'guardian',
+        'email_verified_at' => now(),
+    ]);
+
+    $student = User::create([
+        'name' => 'Aaliyah',
+        'email' => 'rr11-fresh-'.uniqid().'@students.formynieces.com',
+        'password' => bcrypt('secret'),
+        'role' => 'student',
+        'parent_id' => $guardian->id,
+        'target_sea_year' => 2027,
+        'onboarding_completed_at' => null,
+        'guardian_reconciled_at' => null,
+        'known_weak_areas' => ['Fractions'],
+        'email_verified_at' => now(),
+    ]);
+
+    $this->post('/login', ['email' => $student->email, 'password' => 'secret'])
+        ->assertRedirect(route('diagnostic.intro'));
+})->group('scenario:RR-11');
+
 it('shows the guardian login and support details on the waiting page', function () {
     [$guardian, $student] = seedLoginPendingStudent(1);
 

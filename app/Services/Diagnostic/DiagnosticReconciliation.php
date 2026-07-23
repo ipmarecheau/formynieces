@@ -59,10 +59,16 @@ final class DiagnosticReconciliation
     /**
      * True when a guardian decision is required and she has not yet made one.
      * While pending, the student's onboarding and roadmap wait on her choice.
+     *
+     * Requires a completed diagnostic: there is nothing to reconcile until the
+     * diagnostic has actually run. Without this guard a freshly flagged student
+     * (guardian named weak areas at setup, diagnostic not yet taken) would count
+     * as pending and be held before she could take the diagnostic at all.
      */
     public function isPending(User $student): bool
     {
         return $student->guardian_reconciled_at === null
+            && $this->holdStartedAt($student) !== null
             && $this->requiresGuardianDecision($student);
     }
 
