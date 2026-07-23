@@ -53,6 +53,16 @@ Feature: Reveal and roadmap seeding
       Then the roadmap proceeds from the diagnostic result
       And the student's onboarding completes so her progress is not halted
 
+    @scenario:RR-11
+    Scenario: A pending student is held on a waiting page across logins
+      Given a student's diagnostic cleared a strand her guardian flagged
+      And her guardian has not yet decided
+      When the student logs in again
+      Then she is shown a waiting page naming her guardian's login
+      And she can log out from it
+      And she is not sent back into the diagnostic while the hold is unresolved
+      And once the hold times out her next login proceeds her to the map
+
   @scenario:RR-06
   Scenario: Completion computes the starting week and first target
     Given a student's diagnostic session has completed
