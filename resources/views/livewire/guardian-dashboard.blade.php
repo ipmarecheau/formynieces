@@ -57,6 +57,34 @@
         <p class="gd-subtitle">The four questions, answered honestly.</p>
     </div>
 
+    @if ($reconciliationPending)
+        {{-- RR-04: the diagnostic cleared a strand the guardian flagged. She must
+             choose before {{ $studentName }}'s onboarding completes. --}}
+        <div class="gd-card gd-warn">
+            <p class="gd-eyebrow">A quick check before we finish</p>
+            <p class="gd-warn-line">{{ $studentName }}'s diagnostic sees things differently</p>
+            <p class="gd-answer" style="margin-bottom:0.4rem;">
+                You told us {{ $studentName }} struggles with
+                <strong>{{ implode(', ', $clearedStrands) }}</strong>, but the diagnostic
+                found she's already got a good handle on
+                {{ count($clearedStrands) === 1 ? 'it' : 'them' }}.
+            </p>
+            <p class="gd-answer" style="margin-bottom:0.9rem;">
+                Her map won't start until you choose.
+            </p>
+            <div style="display:flex; gap:0.6rem; flex-wrap:wrap;">
+                <button type="button" wire:click="proceedWithDiagnostic"
+                        style="flex:1 1 auto; background:#7c3aed; color:white; border:none; border-radius:12px; padding:0.7rem 1rem; font-weight:800; cursor:pointer;">
+                    Use the diagnostic result
+                </button>
+                <button type="button" wire:click="keepWeakAreas"
+                        style="flex:1 1 auto; background:white; color:#7c3aed; border:1.5px solid #ddd6fe; border-radius:12px; padding:0.7rem 1rem; font-weight:800; cursor:pointer;">
+                    Keep my weak areas
+                </button>
+            </div>
+        </div>
+    @endif
+
     @if ($triage)
         {{-- Calm triage for a significantly-behind student: feasible weekly steps, not a deficit total. --}}
         <div class="gd-card gd-warn">

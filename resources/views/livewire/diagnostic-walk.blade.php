@@ -118,6 +118,15 @@
                 wire:click="continueFromInterstitial">Next question →</button>
         </div>
 
+    @elseif ($question === null && $awaitingGuardian)
+    <div class="dw-card">
+        <p class="dw-done">All done! 🎉</p>
+        <p style="text-align:center; color:rgba(196,181,253,0.8); font-size:15px; line-height:1.6; margin:14px 0 24px;">
+            Amazing work exploring every island. Ask your grown-up to finish
+            setting up your map — they've got one quick thing to check.
+        </p>
+    </div>
+
     @elseif ($question === null)
     <div class="dw-card">
         <p class="dw-done">You've completed the diagnostic! 🎉</p>

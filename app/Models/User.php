@@ -2,14 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use Filament\Panel;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Filament\Panel;
-
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -22,6 +22,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'role',
         'parent_id',
         'onboarding_completed_at', // Slice 1
+        'guardian_reconciled_at', // RR-04 reconciliation decision
         'age_attested_at',
         'target_sea_year',
         'known_weak_areas',
@@ -39,6 +40,7 @@ class User extends Authenticatable implements MustVerifyEmail
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'onboarding_completed_at' => 'datetime', // Slice 1
+            'guardian_reconciled_at' => 'datetime', // RR-04 reconciliation decision
             'age_attested_at' => 'datetime',
             'known_weak_areas' => 'array',
             'weekly_module_cap_override' => 'integer',
@@ -73,7 +75,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(WeeklyTarget::class, 'student_id');
     }
 
-    public function studentJourney(): \Illuminate\Database\Eloquent\Relations\HasOne
+    public function studentJourney(): HasOne
     {
         return $this->hasOne(StudentJourney::class, 'student_id');
     }

@@ -51,6 +51,16 @@ final class DiagnosticReconciliation
     }
 
     /**
+     * True when a guardian decision is required and she has not yet made one.
+     * While pending, the student's onboarding and roadmap wait on her choice.
+     */
+    public function isPending(User $student): bool
+    {
+        return $student->guardian_reconciled_at === null
+            && $this->requiresGuardianDecision($student);
+    }
+
+    /**
      * Strand names the guardian flagged, normalized to a unique list.
      *
      * @return array<int, string>

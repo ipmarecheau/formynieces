@@ -4,6 +4,8 @@ namespace App\Livewire;
 
 use App\Models\User;
 use App\Models\WeeklyTarget;
+use App\Services\Diagnostic\DiagnosticReconciliation;
+use App\Services\Diagnostic\ReconciliationResolver;
 use App\Services\ExamAgentService;
 use Illuminate\Support\Carbon;
 use Livewire\Attributes\Layout;
@@ -41,12 +43,42 @@ class GuardianDashboard extends Component
             ? $examAgent->analyse($student)
             : ['subject_analysis' => [], 'recommendation' => ''];
 
+        $reconciliation = app(DiagnosticReconciliation::class);
+        $reconciliationPending = $student !== null && $reconciliation->isPending($student);
+
         return view('livewire.guardian-dashboard', [
             'pace' => $this->buildPace($analysis['subject_analysis'] ?? []),
             'recommendation' => $analysis['recommendation'] ?? '',
             'writingFeedback' => $this->latestWritingFeedback($student),
             'triage' => $this->buildTriage($analysis['subject_analysis'] ?? []),
+            'reconciliationPending' => $reconciliationPending,
+            'clearedStrands' => $reconciliationPending ? $reconciliation->clearedStrands($student) : [],
+            'studentName' => $student?->name,
         ]);
+    }
+
+    /**
+     * The guardian accepts the diagnostic result over her stated weak areas,
+     * unblocking the student's onboarding and roadmap. [RR-04]
+     */
+    public function proceedWithDiagnostic(ReconciliationResolver $resolver): void
+    {
+        $student = auth()->user()->students()->first();
+        if ($student !== null) {
+            $resolver->proceedWithDiagnostic($student);
+        }
+    }
+
+    /**
+     * The guardian keeps her stated weak areas over the diagnostic. [RR-04;
+     * the strand remapping itself is RR-05.]
+     */
+    public function keepWeakAreas(ReconciliationResolver $resolver): void
+    {
+        $student = auth()->user()->students()->first();
+        if ($student !== null) {
+            $resolver->keepStatedWeakAreas($student);
+        }
     }
 
     private function resolveTargetCompleted(?User $student): bool

@@ -122,6 +122,28 @@ it('holds onboarding and defers the roadmap when the diagnostic clears a strand 
         ->and(WeeklyTarget::where('student_id', $student->id)->exists())->toBeFalse();
 })->group('scenario:RR-04');
 
+it('shows a holding reveal instead of the map link when a guardian decision is pending', function () {
+    $flaggedStrand = collect(SyllabusModule::strandsBySubject())->flatten()->first();
+
+    $student = User::create([
+        'name' => 'Aaliyah',
+        'email' => 'rr04-reveal-'.uniqid().'@students.formynieces.com',
+        'password' => bcrypt('secret'),
+        'role' => 'student',
+        'target_sea_year' => 2027,
+        'onboarding_completed_at' => null,
+        'known_weak_areas' => [$flaggedStrand],
+    ]);
+
+    $sessionId = app(SessionLifecycle::class)->startOrResume($student->id);
+    walkSessionToEnd($sessionId);
+
+    Livewire::actingAs($student)
+        ->test(DiagnosticWalk::class)
+        ->assertSee('grown-up')
+        ->assertDontSee('See your map');
+})->group('scenario:RR-04');
+
 it('generates the roadmap (journey + first weekly target) when an onboarded student completes', function () {
     $student = User::create([
         'name' => 'Aaliyah',

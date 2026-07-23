@@ -27,6 +27,8 @@ class DiagnosticWalk extends Component
 
     public bool $isComplete = false;
 
+    public bool $awaitingGuardian = false;
+
     public string $strand = '';
 
     public string $islandName = '';
@@ -87,6 +89,13 @@ class DiagnosticWalk extends Component
             }
 
             $this->isComplete = true;
+
+            // Hold the reveal when the diagnostic cleared a strand the guardian
+            // flagged: her map waits on the guardian's decision. [RR-04]
+            $revealStudent = $session !== null ? User::find($session->student_id) : null;
+            $this->awaitingGuardian = $revealStudent !== null
+                && app(DiagnosticReconciliation::class)->isPending($revealStudent);
+
             $this->prompt = '';
             $this->options = [];
             $this->strand = '';
