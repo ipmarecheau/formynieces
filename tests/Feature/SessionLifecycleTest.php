@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\DB;
  * Covers the start/resume/complete scenarios from diagnostic.feature and the
  * write-out of the mastery map into student_progress.
  */
-
 beforeEach(function () {
     $this->seed(SyllabusModuleSeeder::class);
     $this->seed(ModulePrerequisiteSeeder::class);
@@ -34,13 +33,13 @@ beforeEach(function () {
 function makeStudent(bool $onboarded = true): int
 {
     return DB::table('users')->insertGetId([
-        'name'                    => 'Life Student',
-        'email'                   => 'life-' . uniqid() . '@example.com',
-        'password'                => bcrypt('secret'),
-        'role'                    => 'student',
+        'name' => 'Life Student',
+        'email' => 'life-'.uniqid().'@example.com',
+        'password' => bcrypt('secret'),
+        'role' => 'student',
         'onboarding_completed_at' => $onboarded ? now() : null,
-        'created_at'              => now(),
-        'updated_at'              => now(),
+        'created_at' => now(),
+        'updated_at' => now(),
     ]);
 }
 
@@ -57,11 +56,25 @@ function walkToEnd(ItemWalk $walk, int $sessionId): void
     }
 }
 
-it('refuses to start before onboarding is complete', function () {
+it('lets a not-yet-onboarded student start the diagnostic', function () {
+    // Onboarding is completed BY doing the diagnostic, so a not-yet-onboarded
+    // student must be able to start it (the prior guard wrongly blocked this).
     $studentId = makeStudent(onboarded: false);
 
-    expect(fn () => $this->lifecycle->startOrResume($studentId))
-        ->toThrow(DomainException::class);
+    $sessionId = $this->lifecycle->startOrResume($studentId);
+
+    $session = DB::table('diagnostic_sessions')->find($sessionId);
+    expect($session->status)->toBe('in_progress');
+})->group('scenario:GO-05');
+
+it('marks the student onboarded when the diagnostic completes', function () {
+    $studentId = makeStudent(onboarded: false);
+    $sessionId = $this->lifecycle->startOrResume($studentId);
+    walkToEnd($this->walk, $sessionId);
+
+    $this->lifecycle->complete($sessionId);
+
+    expect(DB::table('users')->find($studentId)->onboarding_completed_at)->not->toBeNull();
 })->group('scenario:GO-05');
 
 it('starts a planned session when onboarding is complete', function () {

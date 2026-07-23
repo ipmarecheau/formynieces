@@ -2,15 +2,15 @@
 
 namespace App\Services\Diagnostic;
 
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
 /**
  * SessionLifecycle — step 2e of the diagnostic engine.
  *
- * Owns the session's lifecycle: START (gated on completed onboarding), RESUME
- * (return the open session), and COMPLETE (derive the mastery map from all
- * recorded responses via MasteryInference and persist it into student_progress).
+ * Owns the session's lifecycle: START (any valid student — onboarding is
+ * completed BY the diagnostic), RESUME (return the open session), and COMPLETE
+ * (derive the mastery map via MasteryInference, persist it into student_progress,
+ * and mark the student's onboarding complete).
  *
  * This is the step that closes the loop: it turns a finished walk into the
  * mastery map the adventure screen reads from.
@@ -32,16 +32,14 @@ class SessionLifecycle
 
     /**
      * Start a new diagnostic for a student, or resume an existing open one.
-     * Returns the session id. Throws if onboarding is not complete.
+     * Returns the session id. Onboarding is completed BY finishing the diagnostic,
+     * so a not-yet-onboarded student may (and must be able to) start one.
      */
     public function startOrResume(int $studentId): int
     {
         $student = DB::table('users')->find($studentId);
         if ($student === null) {
             throw new \RuntimeException("Student {$studentId} not found.");
-        }
-        if ($student->onboarding_completed_at === null) {
-            throw new \DomainException('Cannot start a diagnostic before onboarding is complete.');
         }
 
         // Resume an in-progress session if one exists.
@@ -57,11 +55,11 @@ class SessionLifecycle
 
         // Otherwise create a fresh session and plan it.
         $sessionId = DB::table('diagnostic_sessions')->insertGetId([
-            'student_id'   => $studentId,
-            'status'       => 'in_progress',
+            'student_id' => $studentId,
+            'status' => 'in_progress',
             'current_item' => 0,
-            'created_at'   => now(),
-            'updated_at'   => now(),
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
 
         $this->planner->planForSession($sessionId);
@@ -74,7 +72,7 @@ class SessionLifecycle
      * and write it into student_progress, then mark the session completed.
      * Idempotent — completing an already-completed session re-derives and is safe.
      *
-     * @return array<int,string>  the module_id => status map that was written
+     * @return array<int,string> the module_id => status map that was written
      */
     public function complete(int $sessionId): array
     {
@@ -134,29 +132,37 @@ class SessionLifecycle
                             // Preserve previous_score on a re-completion of the same
                             // session; only a genuine new attempt rolls it forward.
                             'previous_score' => $isRecompletion ? $existing->previous_score : $existing->score,
-                            'status'         => $status,
-                            'score'          => $score,
-                            'updated_at'     => $now,
+                            'status' => $status,
+                            'score' => $score,
+                            'updated_at' => $now,
                         ]);
                 } else {
                     DB::table('student_progress')->insert([
-                        'student_id'     => $studentId,
-                        'module_id'      => $moduleId,
-                        'status'         => $status,
-                        'score'          => $score,
+                        'student_id' => $studentId,
+                        'module_id' => $moduleId,
+                        'status' => $status,
+                        'score' => $score,
                         'previous_score' => null,
-                        'created_at'     => $now,
-                        'updated_at'     => $now,
+                        'created_at' => $now,
+                        'updated_at' => $now,
                     ]);
                 }
             }
         });
 
         DB::table('diagnostic_sessions')->where('id', $sessionId)->update([
-            'status'       => 'completed',
+            'status' => 'completed',
             'completed_at' => $now,
-            'updated_at'   => $now,
+            'updated_at' => $now,
         ]);
+
+        // Completing the diagnostic marks the student's onboarding as done, so
+        // future logins route her to her map rather than back to the diagnostic.
+        // Only the first completion sets it (idempotent re-completes leave it).
+        DB::table('users')
+            ->where('id', $studentId)
+            ->whereNull('onboarding_completed_at')
+            ->update(['onboarding_completed_at' => $now, 'updated_at' => $now]);
 
         return $map;
     }
