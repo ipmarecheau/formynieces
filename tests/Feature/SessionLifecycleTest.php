@@ -26,7 +26,7 @@ beforeEach(function () {
 
     $this->planner = new SessionPlanner;
     $this->walk = new ItemWalk($this->planner);
-    $this->lifecycle = new SessionLifecycle($this->planner);
+    $this->lifecycle = app(SessionLifecycle::class);
 });
 
 /** Create a student; onboarding complete unless $onboarded is false. */

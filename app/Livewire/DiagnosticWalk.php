@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\User;
+use App\Services\Diagnostic\DiagnosticReconciliation;
 use App\Services\Diagnostic\ItemWalk;
 use App\Services\Diagnostic\SessionLifecycle;
 use App\Services\Diagnostic\SessionPlanner;
@@ -75,9 +76,12 @@ class DiagnosticWalk extends Component
 
                 // Generate her roadmap (journey + first weekly target) from the
                 // completed diagnostic. Kept OUTSIDE complete() so the guardian
-                // reconciliation step (RR-04/05) can later slot in between.
+                // reconciliation step slots in between: when the diagnostic
+                // cleared a strand the guardian flagged, generation waits until
+                // she reconciles (or the 3-day auto-proceed resolves it). [RR-04]
                 $student = User::find($session->student_id);
-                if ($student !== null && $student->target_sea_year !== null) {
+                if ($student !== null && $student->target_sea_year !== null
+                    && ! app(DiagnosticReconciliation::class)->requiresGuardianDecision($student)) {
                     app(RoadmapGenerator::class)->generate($student);
                 }
             }

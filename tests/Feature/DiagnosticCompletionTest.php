@@ -4,8 +4,10 @@
 
 use App\Livewire\DiagnosticWalk;
 use App\Models\StudentJourney;
+use App\Models\SyllabusModule;
 use App\Models\User;
 use App\Models\WeeklyTarget;
+use App\Services\Diagnostic\DiagnosticReconciliation;
 use App\Services\Diagnostic\ItemWalk;
 use App\Services\Diagnostic\SessionLifecycle;
 use App\Services\Diagnostic\SessionPlanner;
@@ -86,6 +88,39 @@ it('shows a way forward on the completion screen', function () {
         ->test(DiagnosticWalk::class)
         ->assertSee('See your map');
 })->group('scenario:RR-08');
+
+it('holds onboarding and defers the roadmap when the diagnostic clears a strand the guardian flagged', function () {
+    // The guardian flagged a real strand the diagnostic assesses. Answering the
+    // whole walk correctly masters that strand, so the diagnostic CLEARS it —
+    // disagreeing with the guardian and requiring her decision (RR-04).
+    $flaggedStrand = collect(SyllabusModule::strandsBySubject())->flatten()->first();
+
+    $student = User::create([
+        'name' => 'Aaliyah',
+        'email' => 'rr04-gate-'.uniqid().'@students.formynieces.com',
+        'password' => bcrypt('secret'),
+        'role' => 'student',
+        'target_sea_year' => 2027,
+        'onboarding_completed_at' => null,
+        'known_weak_areas' => [$flaggedStrand],
+    ]);
+
+    $sessionId = app(SessionLifecycle::class)->startOrResume($student->id);
+    walkSessionToEnd($sessionId);
+
+    // Mounting the walked session triggers completion.
+    Livewire::actingAs($student)->test(DiagnosticWalk::class);
+
+    $student->refresh();
+
+    // Precondition: the flagged strand really was cleared, so a decision is due.
+    expect(app(DiagnosticReconciliation::class)->requiresGuardianDecision($student))->toBeTrue();
+
+    // The gate: onboarding stays pending and no roadmap is generated until she chooses.
+    expect($student->onboarding_completed_at)->toBeNull()
+        ->and(StudentJourney::where('student_id', $student->id)->exists())->toBeFalse()
+        ->and(WeeklyTarget::where('student_id', $student->id)->exists())->toBeFalse();
+})->group('scenario:RR-04');
 
 it('generates the roadmap (journey + first weekly target) when an onboarded student completes', function () {
     $student = User::create([
