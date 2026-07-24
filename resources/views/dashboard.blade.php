@@ -565,82 +565,77 @@
             </div>
         @endif
 
-        {{-- ADVENTURE MAP — week-based voyage trail (AM). One stop per pacing
-             week; state is position-only (completed/current/upcoming/locked),
-             never pace-vs-expected — always kind, always moving forward. --}}
+        {{-- ADVENTURE MAP — the syllabus world (AM). Islands are strand-worlds;
+             each holds a chain of levels (modules) that unlock by MASTERY,
+             never by the calendar. Locked levels stay visible as silhouettes.
+             Tap a level to play it. Never a pace/percentage view — that lives
+             only for guardians, never here. --}}
         <style>[x-cloak]{ display:none !important; }</style>
         <p class="fmn-section-title">🗺️ Your Voyage</p>
 
         @if(!empty($adventureMap))
-            @php $currentStop = collect($adventureMap)->firstWhere('state', 'current'); @endphp
-            <div x-data="{ open: {{ $currentStop['week'] ?? 'null' }} }" style="margin-bottom:1.25rem;">
+            <div style="margin-bottom:1.5rem;">
+                @foreach($adventureMap as $islandName => $island)
+                    <div x-data="{ openLevel: null }" style="background:linear-gradient(180deg,#faf5ff,#fdf4ff); border:1.5px solid #f3e8ff; border-radius:18px; padding:1rem 1.1rem; margin-bottom:14px;">
+                        <p style="font-family:'Fredoka One',cursive; font-size:1.05rem; color:#7c3aed; margin:0 0 12px; display:flex; align-items:center; gap:8px;">
+                            <span style="font-size:1.3rem;">{{ $island['icon'] }}</span> {{ $islandName }}
+                        </p>
 
-                {{-- the trail --}}
-                <div style="display:flex; gap:14px; overflow-x:auto; padding:16px 4px 20px; background:linear-gradient(180deg,#faf5ff,#fdf4ff); border-radius:16px;">
-                    @foreach($adventureMap as $stop)
-                        @php
-                            $icon = match($stop['state']) {
-                                'completed' => '✓',
-                                'current'   => '⛵',
-                                'upcoming'  => $stop['week'],
-                                default     => '🔒',
-                            };
-                            $bg = match($stop['state']) {
-                                'completed' => '#c084fc',
-                                'current'   => 'linear-gradient(135deg,#9333ea,#db2777)',
-                                'upcoming'  => '#f3e8ff',
-                                default     => '#ede9fe',
-                            };
-                            $fg = in_array($stop['state'], ['completed','current'], true) ? '#ffffff' : '#a78bfa';
-                            $ring = $stop['state'] === 'current' ? '#f472b6' : '#e9d5ff';
-                            $clickable = $stop['state'] !== 'locked';
-                        @endphp
-                        <div style="flex:0 0 auto; text-align:center;">
-                            <button type="button"
-                                    data-stop-week="{{ $stop['week'] }}"
-                                    data-stop-state="{{ $stop['state'] }}"
-                                    @if($clickable) @click="open = (open === {{ $stop['week'] }} ? null : {{ $stop['week'] }})" @else disabled aria-disabled="true" @endif
-                                    :style="open === {{ $stop['week'] }} ? 'transform:scale(1.12)' : ''"
-                                    style="width:52px; height:52px; border-radius:50%; border:2px solid #fff; box-shadow:0 0 0 2px {{ $ring }}; background:{{ $bg }}; color:{{ $fg }}; font-family:'Fredoka One',cursive; font-size:{{ $stop['state']==='current' ? '1.4rem' : '1rem' }}; cursor:{{ $clickable ? 'pointer' : 'default' }}; transition:transform 0.15s; {{ $stop['state']==='locked' ? 'opacity:0.55;' : '' }}">
-                                {{ $icon }}
-                            </button>
-                            <div style="font-size:0.62rem; font-weight:800; color:#c4b5fd; margin-top:5px; text-transform:uppercase; letter-spacing:0.04em;">Wk {{ $stop['week'] }}</div>
-                        </div>
-                    @endforeach
-                </div>
-
-                {{-- detail panel for the tapped stop (locked stops have none) --}}
-                @foreach($adventureMap as $stop)
-                    @if($stop['state'] !== 'locked')
-                        <div x-show="open === {{ $stop['week'] }}" x-cloak
-                             style="background:white; border:1.5px solid #f3e8ff; border-radius:16px; padding:1rem 1.25rem; margin-top:12px;">
-                            <p style="font-family:'Fredoka One',cursive; color:#7c3aed; margin:0 0 0.7rem;">
-                                @if($stop['state']==='current') ⛵ This week — Week {{ $stop['week'] }}
-                                @elseif($stop['state']==='completed') ✓ Week {{ $stop['week'] }} — visited
-                                @else 🔭 Week {{ $stop['week'] }} — a peek ahead
-                                @endif
-                            </p>
-                            @forelse($stop['modules'] as $m)
+                        {{-- the level chain --}}
+                        <div style="display:flex; flex-wrap:wrap; gap:14px;">
+                            @foreach($island['levels'] as $level)
                                 @php
-                                    $filled = match($m['status']) { 'mastered'=>3, 'inferred_mastered'=>2, 'needs_work'=>1, default=>0 };
-                                    $label = match($m['status']) { 'mastered'=>'Mastered', 'inferred_mastered'=>'Likely known', 'needs_work'=>'Needs work', default=>'Not started' };
+                                    $state = $level['state'];
+                                    $bg = match($state) {
+                                        'mastered' => 'linear-gradient(135deg,#9333ea,#db2777)',
+                                        'playable' => 'white',
+                                        default => '#ede9fe',
+                                    };
+                                    $fg = match($state) {
+                                        'mastered' => '#ffffff',
+                                        'playable' => '#7c3aed',
+                                        default => '#c4b5fd',
+                                    };
+                                    $ring = match($state) {
+                                        'mastered' => '#f472b6',
+                                        'playable' => '#c084fc',
+                                        default => '#e9d5ff',
+                                    };
+                                    $icon = match($state) { 'mastered' => '✓', 'locked' => '🔒', default => '▶' };
+                                    $clickable = $state !== 'locked';
                                 @endphp
-                                <div class="fmn-leaf">
-                                    <span class="fmn-leaf-name">{{ $m['topic'] }}</span>
-                                    <div class="fmn-leaf-actions">
-                                        @if($m['status']==='needs_work' && $stop['state']==='current')
-                                            <a href="{{ route('practice.lesson', $m['id']) }}" class="fmn-practice-link">Take Lesson →</a>
-                                        @endif
-                                        <span class="fmn-hearts" title="{{ $label }}" aria-label="{{ $label }}">
-                                            @for($h=1;$h<=3;$h++)<span class="fmn-heart">{{ $h <= $filled ? '❤️' : '🤍' }}</span>@endfor
-                                        </span>
-                                    </div>
+                                <div style="text-align:center; position:relative;">
+                                    @if($level['suggested'] && $state !== 'locked')
+                                        <span style="position:absolute; top:-6px; right:-4px; font-size:0.9rem; z-index:1;" title="Suggested this week">⭐</span>
+                                    @endif
+                                    <button type="button"
+                                            data-level-id="{{ $level['id'] }}"
+                                            data-level-state="{{ $state }}"
+                                            @if($clickable) @click="openLevel = (openLevel === {{ $level['id'] }} ? null : {{ $level['id'] }})" @else disabled aria-disabled="true" @endif
+                                            :style="openLevel === {{ $level['id'] }} ? 'transform:scale(1.12)' : ''"
+                                            style="width:44px; height:44px; border-radius:50%; border:2px solid #fff; box-shadow:0 0 0 2px {{ $ring }}; background:{{ $bg }}; color:{{ $fg }}; font-size:1rem; cursor:{{ $clickable ? 'pointer' : 'default' }}; transition:transform 0.15s; {{ $state === 'locked' ? 'opacity:0.5;' : '' }}">
+                                        {{ $icon }}
+                                    </button>
                                 </div>
-                            @empty
-                                <p style="font-size:0.85rem; color:#9ca3af;">Modules for this week are on the way.</p>
-                            @endforelse
+                            @endforeach
                         </div>
-                    @endif
+
+                        {{-- detail panel for the tapped level (locked levels have none) --}}
+                        @foreach($island['levels'] as $level)
+                            @if($level['state'] !== 'locked')
+                                <div x-show="openLevel === {{ $level['id'] }}" x-cloak
+                                     style="background:white; border:1.5px solid #f3e8ff; border-radius:14px; padding:0.9rem 1.1rem; margin-top:12px;">
+                                    <p style="font-weight:800; color:#1f2937; font-size:0.9rem; margin:0 0 8px;">
+                                        {{ $level['state'] === 'mastered' ? '✓' : '▶' }} {{ $level['topic'] }}
+                                        @if($level['suggested'])<span style="color:#f59e0b;"> ⭐ suggested this week</span>@endif
+                                    </p>
+                                    <a href="{{ route('practice.walk', $level['id']) }}" class="fmn-practice-link">
+                                        {{ $level['state'] === 'mastered' ? 'Play again →' : 'Play →' }}
+                                    </a>
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
                 @endforeach
             </div>
         @else

@@ -8,6 +8,7 @@ use App\Services\Diagnostic\ItemWalk;
 use App\Services\Diagnostic\SessionLifecycle;
 use App\Services\Diagnostic\SessionPlanner;
 use App\Services\Pacing\RoadmapGenerator;
+use App\Support\IslandTaxonomy;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -133,20 +134,7 @@ class DiagnosticWalk extends Component
 
     protected function islandFor(string $strand, string $subject): array
     {
-        $storyCove = ['Comprehension', 'Poetry', 'Media'];
-        $wordHarbour = ['Spelling', 'Punctuation', 'Capitalisation', 'Grammar'];
-
-        if ($subject === 'Writing' || $strand === 'Writing') {
-            return ["Writer's Bay", '🪶'];
-        }
-        if (in_array($strand, $storyCove, true)) {
-            return ['Story Cove', '📖'];
-        }
-        if (in_array($strand, $wordHarbour, true)) {
-            return ['Word Harbour', '✏️'];
-        }
-
-        return ['Number Isle', '🔢'];
+        return IslandTaxonomy::resolve($strand, $subject);
     }
 
     public function choose(int $index): void
