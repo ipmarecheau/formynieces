@@ -470,6 +470,9 @@
         <span class="fmn-nav-brand">✨ ForMyNieces</span>
         <div class="fmn-nav-right">
             <span class="fmn-nav-greeting">Hi, {{ $user->name }} 👋</span>
+            @if($user->isStudent())
+                <a href="{{ route('student.voyage') }}" class="fmn-btn fmn-btn-ghost fmn-btn-sm">🗺️ Voyage</a>
+            @endif
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <button class="fmn-btn fmn-btn-ghost fmn-btn-sm">Log out</button>

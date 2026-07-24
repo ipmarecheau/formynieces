@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExamAgentController;
 use App\Http\Controllers\GuardianPauseController;
 use App\Http\Controllers\GuardianReconciliationController;
+use App\Http\Controllers\VoyageController;
 use App\Livewire\DiagnosticWalk;
 use App\Livewire\GuardianDashboard;
 use App\Livewire\GuardianProgress;
@@ -86,6 +87,10 @@ Route::middleware('auth')->group(function () {
     // Student's own roadmap — auth-only, never verified (synthetic emails).
     Route::get('/my-map', [DashboardController::class, 'index'])
         ->name('student.map');
+
+    // The Voyage — gamified standalone alternative to the dashboard. [AM]
+    Route::get('/voyage', [VoyageController::class, 'overworld'])
+        ->name('student.voyage');
 
     // Streak-celebration splash shown after login to students with active streaks.
     Route::get('/welcome-back', [DashboardController::class, 'studentSplash'])
