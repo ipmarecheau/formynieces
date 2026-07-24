@@ -764,6 +764,22 @@
                             </form>
                         @endif
                     </div>
+
+                    @if($summary['pauseHistory']->isNotEmpty())
+                        <div style="margin-top:0.75rem;">
+                            <p style="font-size:0.7rem; font-weight:800; color:#c4b5fd; text-transform:uppercase; letter-spacing:0.06em; margin:0 0 6px;">Pause history</p>
+                            @foreach($summary['pauseHistory'] as $pause)
+                                @php
+                                    $endLabel = $pause->resumed_at ? $pause->resumed_at->format('M j, Y') : 'ongoing';
+                                    $days = (int) $pause->paused_at->copy()->startOfDay()->diffInDays(($pause->resumed_at ?? now())->copy()->startOfDay());
+                                @endphp
+                                <p style="font-size:0.8rem; color:#6b7280; margin:0 0 3px;">
+                                    {{ $pause->paused_at->format('M j, Y') }} → {{ $endLabel }}
+                                    <span style="color:#9ca3af;">({{ $days }} {{ \Illuminate\Support\Str::plural('day', $days) }})</span>
+                                </p>
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
             @endforeach
         @else

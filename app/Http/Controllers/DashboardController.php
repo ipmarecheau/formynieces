@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\StudentPause;
 use App\Models\StudentProgress;
 use App\Models\StudentStreak;
 use App\Models\WeeklyTarget;
@@ -197,6 +198,9 @@ class DashboardController extends Controller
                 'currentTarget' => $currentTarget,
                 'isPending' => $isPending,
                 'clearedStrands' => $isPending ? $reconciliation->clearedStrands($student) : [],
+                'isPaused' => $student->isPaused(),
+                'pauseHistory' => StudentPause::where('student_id', $student->id)
+                    ->orderByDesc('paused_at')->get(),
             ];
         });
 

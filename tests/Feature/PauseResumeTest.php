@@ -1,11 +1,13 @@
 <?php
 
 use App\Models\StudentJourney;
+use App\Models\StudentPause;
 use App\Models\StudentStreak;
 use App\Models\SyllabusModule;
 use App\Models\User;
 use App\Models\WeeklyTarget;
 use App\Services\Motivation\StreakService;
+use App\Services\Pacing\PacingClock;
 use App\Services\Pacing\PauseService;
 use App\Services\Pacing\WeeklyRollover;
 
@@ -80,19 +82,39 @@ it('generates no weekly targets and does not reset the streak while paused', fun
         ->and(StudentStreak::where('student_id', $student->id)->where('type', 'pace_weeks')->first()->count)->toBe(3);
 })->group('scenario:WT-04');
 
-it('re-paces from the resume date by shifting the journey forward by the pause duration', function () {
-    $originalStart = today()->subWeeks(6);
+it('re-paces by excluding paused time from the clock, leaving journey_start intact', function () {
+    $originalStart = today()->subWeeks(6); // week 7 with no pauses
     $student = makePausableStudent($originalStart);
+    $clock = app(PacingClock::class);
 
-    // Paused two weeks ago, resumed today.
-    $student->forceFill(['paused_at' => now()->subWeeks(2)->startOfDay()])->save();
+    // A two-week pause, currently open, opened two weeks ago.
+    $pausedAt = now()->subWeeks(2)->startOfDay();
+    StudentPause::create(['student_id' => $student->id, 'paused_at' => $pausedAt, 'resumed_at' => null]);
+    $student->forceFill(['paused_at' => $pausedAt])->save();
+
+    // While paused the clock is frozen at week 5 (6 elapsed − 2 paused).
+    expect($clock->currentPacingWeek($student))->toBe(5);
 
     app(PauseService::class)->resume($student->refresh());
 
     $journey = StudentJourney::where('student_id', $student->id)->first();
 
-    expect($journey->journey_start->toDateString())->toBe($originalStart->copy()->addDays(14)->toDateString())
-        ->and($student->refresh()->paused_at)->toBeNull();
+    // journey_start is never rewritten, and she resumes at week 5 — no catch-up.
+    expect($journey->journey_start->toDateString())->toBe($originalStart->toDateString())
+        ->and($clock->currentPacingWeek($student->refresh()))->toBe(5)
+        ->and($student->paused_at)->toBeNull();
+})->group('scenario:WT-05');
+
+it('records a pause span in the audit log and closes it on resume', function () {
+    $student = makePausableStudent();
+
+    app(PauseService::class)->pause($student);
+    $span = StudentPause::where('student_id', $student->id)->latest('id')->first();
+    expect($span)->not->toBeNull()
+        ->and($span->resumed_at)->toBeNull();
+
+    app(PauseService::class)->resume($student->refresh());
+    expect($span->refresh()->resumed_at)->not->toBeNull();
 })->group('scenario:WT-05');
 
 it('lets a guardian pause and resume her own student from the Parent Portal', function () {
@@ -126,4 +148,19 @@ it('forbids pausing a child that is not the guardian’s own', function () {
 
     $this->actingAs($outsider)->post(route('guardian.pause', $student))->assertForbidden();
     expect($student->refresh()->isPaused())->toBeFalse();
+})->group('scenario:WT-04');
+
+it('shows a pause history on the parent portal', function () {
+    $guardian = User::create([
+        'name' => 'Guardian', 'email' => 'pause-hist-'.uniqid().'@formynieces.com',
+        'password' => bcrypt('secret'), 'role' => 'guardian',
+    ]);
+    $guardian->forceFill(['email_verified_at' => now()])->save();
+
+    $student = makePausableStudent();
+    $student->forceFill(['parent_id' => $guardian->id])->save();
+
+    StudentPause::create(['student_id' => $student->id, 'paused_at' => now()->subDays(13), 'resumed_at' => now()->subDays(3)]);
+
+    $this->actingAs($guardian)->get(route('dashboard'))->assertOk()->assertSee('Pause history');
 })->group('scenario:WT-04');

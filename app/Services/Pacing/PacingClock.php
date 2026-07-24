@@ -3,6 +3,7 @@
 namespace App\Services\Pacing;
 
 use App\Models\StudentJourney;
+use App\Models\StudentPause;
 use App\Models\User;
 use Illuminate\Support\Carbon;
 
@@ -24,9 +25,23 @@ class PacingClock
         $now = $now ?? Carbon::today();
         $start = $this->journey($student)->journey_start->copy()->startOfDay();
 
-        $weeksElapsed = (int) $start->diffInWeeks($now);
+        // Paused time is excluded so a pause never counts against the student:
+        // journey_start stays a historical fact; the clock discounts the gap.
+        $elapsedDays = (int) $start->diffInDays($now);
+        $activeDays = max(0, $elapsedDays - $this->pausedDays($student, $now));
 
-        return $weeksElapsed + 1;
+        return intdiv($activeDays, 7) + 1;
+    }
+
+    /**
+     * Total days this student has spent paused, from the pause audit log. An
+     * still-open pause counts up to $now, so the clock freezes while paused.
+     */
+    private function pausedDays(User $student, Carbon $now): int
+    {
+        return (int) StudentPause::where('student_id', $student->id)->get()
+            ->sum(fn (StudentPause $pause): int => (int) $pause->paused_at->copy()->startOfDay()
+                ->diffInDays(($pause->resumed_at ?? $now)->copy()->startOfDay()));
     }
 
     public function weeksToExam(User $student, ?Carbon $now = null): int

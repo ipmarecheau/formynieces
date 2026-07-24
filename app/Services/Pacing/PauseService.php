@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services\Pacing;
 
-use App\Models\StudentJourney;
+use App\Models\StudentPause;
 use App\Models\StudentStreak;
 use App\Models\User;
 use Illuminate\Support\Carbon;
@@ -12,10 +12,12 @@ use Illuminate\Support\Carbon;
 /**
  * PauseService — a guardian pauses or resumes a student.
  *
- * While paused (`users.paused_at` set), WeeklyRollover generates no targets and
- * leaves streaks untouched. Resuming re-paces the journey forward by the paused
- * duration so no weeks are "missed" (WT-05), and bridges frozen day-streaks so
- * the next activity extends them rather than resetting (ML-03).
+ * Each pause is recorded as a span in student_pauses (the audit log), and the
+ * fast `users.paused_at` flag marks "paused right now". While paused,
+ * WeeklyRollover generates no targets and leaves streaks untouched. The pacing
+ * clock excludes total paused time, so journey_start is never rewritten and a
+ * pause never counts against the student (WT-05). On resume, frozen day-streaks
+ * are bridged so the next activity extends them (ML-03).
  */
 final class PauseService
 {
@@ -24,27 +26,31 @@ final class PauseService
 
     public function pause(User $student): void
     {
-        $student->forceFill(['paused_at' => Carbon::now()])->save();
+        if ($student->isPaused()) {
+            return;
+        }
+
+        $now = Carbon::now();
+
+        StudentPause::create([
+            'student_id' => $student->id,
+            'paused_at' => $now,
+            'resumed_at' => null,
+        ]);
+
+        $student->forceFill(['paused_at' => $now])->save();
     }
 
     public function resume(User $student): void
     {
-        if ($student->paused_at === null) {
+        if (! $student->isPaused()) {
             return;
         }
 
-        $pausedDays = $student->paused_at->copy()->startOfDay()
-            ->diffInDays(Carbon::now()->startOfDay());
-
-        // WT-05: shift the journey forward by the paused span so the current
-        // pacing week lands where it was at pause — no missed weeks.
-        if ($pausedDays > 0) {
-            $journey = StudentJourney::where('student_id', $student->id)->first();
-            if ($journey !== null) {
-                $journey->journey_start = $journey->journey_start->copy()->addDays($pausedDays);
-                $journey->save();
-            }
-        }
+        // Close the open pause span in the audit log.
+        StudentPause::where('student_id', $student->id)
+            ->whereNull('resumed_at')
+            ->update(['resumed_at' => Carbon::now()]);
 
         // ML-03: bridge each frozen day-streak to yesterday so the next activity
         // extends it instead of counting the pause as a gap.
