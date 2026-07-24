@@ -241,3 +241,28 @@
   commit: fac110c
   spec_hash: 69747ad283b7
   note: "End-to-end: DiagnosticWalk completion now calls RoadmapGenerator, which firstOrCreates the StudentJourney (journey_start=completion date, exam_date from target year via ExamDateResolver) then computes the starting week + first weekly target. Proven by an integration test through the real DiagnosticWalk path and a dev-DB tinker run (startWeek=1, exam_date=2027-04-01, 5 current-week targets)."
+- scenario: RR-02
+  verified_at: 2026-07-24
+  commit: 03224f8
+  spec_hash: bef262ea4f45
+  note: "Parent Portal: diagnostic confirms flagged strand -> no reconciliation prompt; student lands straight on her map (Isaac confirmed)"
+- scenario: RR-03
+  verified_at: 2026-07-24
+  commit: 03224f8
+  spec_hash: eb4802c00a11
+  note: "Same as RR-02: diagnostic confirms flagged strand plus more -> no prompt, no hold (Isaac confirmed)"
+- scenario: RR-04
+  verified_at: 2026-07-24
+  commit: 03224f8
+  spec_hash: 2fa41a7f539e
+  note: "Amara walk: cleared strand -> child held; guardian shown Parent Portal prompt, chose Use-diagnostic-result -> hold lifted, student reached map (Isaac confirmed)"
+- scenario: RR-10
+  verified_at: 2026-07-24
+  commit: 03224f8
+  spec_hash: e59822e6a5a2
+  note: "Live: reconciliation:auto-proceed resolved a 4-day pending child (onboarded+roadmap), left the 1-day child held (Isaac observed)"
+- scenario: RR-11
+  verified_at: 2026-07-24
+  commit: 03224f8
+  spec_hash: 645a7aa99c92
+  note: "Amara walk: fresh -> diagnostic; completion (cleared strand) -> waiting page naming guardian; hold persisted across logout/login (Isaac confirmed)"
