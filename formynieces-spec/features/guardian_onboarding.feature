@@ -46,13 +46,13 @@ Feature: Guardian account and child setup
   @roadmap
   Rule: A second guardian has read-only visibility
 
-    @scenario:GO-07
+    @roadmap @scenario:GO-07
     Scenario: The primary guardian invites a second guardian
       Given a primary guardian of a student
       When she sends a second-guardian invitation by email
       Then a read-only guardian invitation is created for that student
 
-    @scenario:GO-08
+    @roadmap @scenario:GO-08
     Scenario: A second guardian views but cannot change anything
       Given a second guardian who accepted an invitation and verified her account
       When she opens the student's guardian dashboard

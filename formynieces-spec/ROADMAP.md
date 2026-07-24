@@ -31,6 +31,7 @@
 *Everything tagged `@v1.1`. Theme: durability of engagement.*
 
 - [ ] **Author Writing modules** (currently zero) so the writing track has curriculum behind it.
+- [ ] **Student inbox + parent surprise notes** — students receive messages in an inbox that *celebrates* a new arrival (glow/confetti, not an admin notice); a weekly nudge (guardian email + on-login Portal prompt) encourages every linked guardian to leave a short note of encouragement. Goal: child buy-in **and** the parent habit of logging in to see progress. Pairs with second-guardian (S8) so an aunt/other parent can send too. *Open design: nudge channel (email / prompt / both), whether milestone/system messages share the inbox, send-now vs schedule-ahead.*
 - [ ] Weekly guardian email digest + gentle disengagement nudges (S7).
 - [ ] Pause/resume with streak freeze and shame-free re-pacing (S6).
 - [ ] Diagnostic retake (guardian-initiated).
