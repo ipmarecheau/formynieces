@@ -565,10 +565,91 @@
             </div>
         @endif
 
-        {{-- ROADMAP — collapsible Subject → prefix groups --}}
-        <p class="fmn-section-title">🗺️ Your Learning Journey</p>
+        {{-- ADVENTURE MAP — week-based voyage trail (AM). One stop per pacing
+             week; state is position-only (completed/current/upcoming/locked),
+             never pace-vs-expected — always kind, always moving forward. --}}
+        <style>[x-cloak]{ display:none !important; }</style>
+        <p class="fmn-section-title">🗺️ Your Voyage</p>
 
+        @if(!empty($adventureMap))
+            @php $currentStop = collect($adventureMap)->firstWhere('state', 'current'); @endphp
+            <div x-data="{ open: {{ $currentStop['week'] ?? 'null' }} }" style="margin-bottom:1.25rem;">
+
+                {{-- the trail --}}
+                <div style="display:flex; gap:14px; overflow-x:auto; padding:16px 4px 20px; background:linear-gradient(180deg,#faf5ff,#fdf4ff); border-radius:16px;">
+                    @foreach($adventureMap as $stop)
+                        @php
+                            $icon = match($stop['state']) {
+                                'completed' => '✓',
+                                'current'   => '⛵',
+                                'upcoming'  => $stop['week'],
+                                default     => '🔒',
+                            };
+                            $bg = match($stop['state']) {
+                                'completed' => '#c084fc',
+                                'current'   => 'linear-gradient(135deg,#9333ea,#db2777)',
+                                'upcoming'  => '#f3e8ff',
+                                default     => '#ede9fe',
+                            };
+                            $fg = in_array($stop['state'], ['completed','current'], true) ? '#ffffff' : '#a78bfa';
+                            $ring = $stop['state'] === 'current' ? '#f472b6' : '#e9d5ff';
+                            $clickable = $stop['state'] !== 'locked';
+                        @endphp
+                        <div style="flex:0 0 auto; text-align:center;">
+                            <button type="button"
+                                    data-stop-week="{{ $stop['week'] }}"
+                                    data-stop-state="{{ $stop['state'] }}"
+                                    @if($clickable) @click="open = (open === {{ $stop['week'] }} ? null : {{ $stop['week'] }})" @else disabled aria-disabled="true" @endif
+                                    :style="open === {{ $stop['week'] }} ? 'transform:scale(1.12)' : ''"
+                                    style="width:52px; height:52px; border-radius:50%; border:2px solid #fff; box-shadow:0 0 0 2px {{ $ring }}; background:{{ $bg }}; color:{{ $fg }}; font-family:'Fredoka One',cursive; font-size:{{ $stop['state']==='current' ? '1.4rem' : '1rem' }}; cursor:{{ $clickable ? 'pointer' : 'default' }}; transition:transform 0.15s; {{ $stop['state']==='locked' ? 'opacity:0.55;' : '' }}">
+                                {{ $icon }}
+                            </button>
+                            <div style="font-size:0.62rem; font-weight:800; color:#c4b5fd; margin-top:5px; text-transform:uppercase; letter-spacing:0.04em;">Wk {{ $stop['week'] }}</div>
+                        </div>
+                    @endforeach
+                </div>
+
+                {{-- detail panel for the tapped stop (locked stops have none) --}}
+                @foreach($adventureMap as $stop)
+                    @if($stop['state'] !== 'locked')
+                        <div x-show="open === {{ $stop['week'] }}" x-cloak
+                             style="background:white; border:1.5px solid #f3e8ff; border-radius:16px; padding:1rem 1.25rem; margin-top:12px;">
+                            <p style="font-family:'Fredoka One',cursive; color:#7c3aed; margin:0 0 0.7rem;">
+                                @if($stop['state']==='current') ⛵ This week — Week {{ $stop['week'] }}
+                                @elseif($stop['state']==='completed') ✓ Week {{ $stop['week'] }} — visited
+                                @else 🔭 Week {{ $stop['week'] }} — a peek ahead
+                                @endif
+                            </p>
+                            @forelse($stop['modules'] as $m)
+                                @php
+                                    $filled = match($m['status']) { 'mastered'=>3, 'inferred_mastered'=>2, 'needs_work'=>1, default=>0 };
+                                    $label = match($m['status']) { 'mastered'=>'Mastered', 'inferred_mastered'=>'Likely known', 'needs_work'=>'Needs work', default=>'Not started' };
+                                @endphp
+                                <div class="fmn-leaf">
+                                    <span class="fmn-leaf-name">{{ $m['topic'] }}</span>
+                                    <div class="fmn-leaf-actions">
+                                        @if($m['status']==='needs_work' && $stop['state']==='current')
+                                            <a href="{{ route('practice.lesson', $m['id']) }}" class="fmn-practice-link">Take Lesson →</a>
+                                        @endif
+                                        <span class="fmn-hearts" title="{{ $label }}" aria-label="{{ $label }}">
+                                            @for($h=1;$h<=3;$h++)<span class="fmn-heart">{{ $h <= $filled ? '❤️' : '🤍' }}</span>@endfor
+                                        </span>
+                                    </div>
+                                </div>
+                            @empty
+                                <p style="font-size:0.85rem; color:#9ca3af;">Modules for this week are on the way.</p>
+                            @endforelse
+                        </div>
+                    @endif
+                @endforeach
+            </div>
+        @else
+            <div class="fmn-alert">📚 Your map is being prepared — check back soon!</div>
+        @endif
+
+        {{-- Full syllabus explorer, kept below the map for browsing by subject --}}
         @if(!empty($roadmap))
+            <p class="fmn-section-title" style="margin-top:1.5rem;">📚 Explore by subject</p>
             <div x-data="{ tab: 'all' }">
 
                 {{-- TABS --}}
