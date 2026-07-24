@@ -565,86 +565,10 @@
             </div>
         @endif
 
-        {{-- ADVENTURE MAP — the syllabus world (AM). Islands are strand-worlds;
-             each holds a chain of levels (modules) that unlock by MASTERY,
-             never by the calendar. Locked levels stay visible as silhouettes.
-             Tap a level to play it. Never a pace/percentage view — that lives
-             only for guardians, never here. --}}
-        <style>[x-cloak]{ display:none !important; }</style>
-        <p class="fmn-section-title">🗺️ Your Voyage</p>
+        {{-- ROADMAP — collapsible Subject → prefix groups --}}
+        <p class="fmn-section-title">🗺️ Your Learning Journey</p>
 
-        @if(!empty($adventureMap))
-            <div style="margin-bottom:1.5rem;">
-                @foreach($adventureMap as $islandName => $island)
-                    <div x-data="{ openLevel: null }" style="background:linear-gradient(180deg,#faf5ff,#fdf4ff); border:1.5px solid #f3e8ff; border-radius:18px; padding:1rem 1.1rem; margin-bottom:14px;">
-                        <p style="font-family:'Fredoka One',cursive; font-size:1.05rem; color:#7c3aed; margin:0 0 12px; display:flex; align-items:center; gap:8px;">
-                            <span style="font-size:1.3rem;">{{ $island['icon'] }}</span> {{ $islandName }}
-                        </p>
-
-                        {{-- the level chain --}}
-                        <div style="display:flex; flex-wrap:wrap; gap:14px;">
-                            @foreach($island['levels'] as $level)
-                                @php
-                                    $state = $level['state'];
-                                    $bg = match($state) {
-                                        'mastered' => 'linear-gradient(135deg,#9333ea,#db2777)',
-                                        'playable' => 'white',
-                                        default => '#ede9fe',
-                                    };
-                                    $fg = match($state) {
-                                        'mastered' => '#ffffff',
-                                        'playable' => '#7c3aed',
-                                        default => '#c4b5fd',
-                                    };
-                                    $ring = match($state) {
-                                        'mastered' => '#f472b6',
-                                        'playable' => '#c084fc',
-                                        default => '#e9d5ff',
-                                    };
-                                    $icon = match($state) { 'mastered' => '✓', 'locked' => '🔒', default => '▶' };
-                                    $clickable = $state !== 'locked';
-                                @endphp
-                                <div style="text-align:center; position:relative;">
-                                    @if($level['suggested'] && $state !== 'locked')
-                                        <span style="position:absolute; top:-6px; right:-4px; font-size:0.9rem; z-index:1;" title="Suggested this week">⭐</span>
-                                    @endif
-                                    <button type="button"
-                                            data-level-id="{{ $level['id'] }}"
-                                            data-level-state="{{ $state }}"
-                                            @if($clickable) @click="openLevel = (openLevel === {{ $level['id'] }} ? null : {{ $level['id'] }})" @else disabled aria-disabled="true" @endif
-                                            :style="openLevel === {{ $level['id'] }} ? 'transform:scale(1.12)' : ''"
-                                            style="width:44px; height:44px; border-radius:50%; border:2px solid #fff; box-shadow:0 0 0 2px {{ $ring }}; background:{{ $bg }}; color:{{ $fg }}; font-size:1rem; cursor:{{ $clickable ? 'pointer' : 'default' }}; transition:transform 0.15s; {{ $state === 'locked' ? 'opacity:0.5;' : '' }}">
-                                        {{ $icon }}
-                                    </button>
-                                </div>
-                            @endforeach
-                        </div>
-
-                        {{-- detail panel for the tapped level (locked levels have none) --}}
-                        @foreach($island['levels'] as $level)
-                            @if($level['state'] !== 'locked')
-                                <div x-show="openLevel === {{ $level['id'] }}" x-cloak
-                                     style="background:white; border:1.5px solid #f3e8ff; border-radius:14px; padding:0.9rem 1.1rem; margin-top:12px;">
-                                    <p style="font-weight:800; color:#1f2937; font-size:0.9rem; margin:0 0 8px;">
-                                        {{ $level['state'] === 'mastered' ? '✓' : '▶' }} {{ $level['topic'] }}
-                                        @if($level['suggested'])<span style="color:#f59e0b;"> ⭐ suggested this week</span>@endif
-                                    </p>
-                                    <a href="{{ route('practice.walk', $level['id']) }}" class="fmn-practice-link">
-                                        {{ $level['state'] === 'mastered' ? 'Play again →' : 'Play →' }}
-                                    </a>
-                                </div>
-                            @endif
-                        @endforeach
-                    </div>
-                @endforeach
-            </div>
-        @else
-            <div class="fmn-alert">📚 Your map is being prepared — check back soon!</div>
-        @endif
-
-        {{-- Full syllabus explorer, kept below the map for browsing by subject --}}
         @if(!empty($roadmap))
-            <p class="fmn-section-title" style="margin-top:1.5rem;">📚 Explore by subject</p>
             <div x-data="{ tab: 'all' }">
 
                 {{-- TABS --}}

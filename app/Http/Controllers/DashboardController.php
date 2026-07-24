@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\StudentJourney;
 use App\Models\StudentPause;
 use App\Models\StudentProgress;
 use App\Models\StudentStreak;
 use App\Models\WeeklyTarget;
 use App\Services\Diagnostic\DiagnosticReconciliation;
-use App\Services\Pacing\AdventureMapBuilder;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -76,12 +74,6 @@ class DashboardController extends Controller
         // Build Subject → topic-prefix → modules hierarchy with per-group tallies.
         $roadmap = $this->buildRoadmap($progress);
 
-        // AM: the week-based adventure map. Only once she has a journey (pacing
-        // clock needs it); before that the map shows its "being prepared" state.
-        $adventureMap = StudentJourney::where('student_id', $user->id)->exists()
-            ? app(AdventureMapBuilder::class)->build($user)
-            : [];
-
         // Practice day-streak (0 if the student has no practice activity yet).
         $dayStreak = StudentStreak::where('student_id', $user->id)
             ->where('type', 'practice')
@@ -115,7 +107,6 @@ class DashboardController extends Controller
             'weeklyTarget',
             'progress',
             'roadmap',
-            'adventureMap',
             'masteredCount',
             'likelyCount',
             'needsCount',
