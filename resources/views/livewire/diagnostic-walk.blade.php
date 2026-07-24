@@ -118,6 +118,21 @@
                 wire:click="continueFromInterstitial">Next question →</button>
         </div>
 
+    @elseif ($question === null && $awaitingGuardian)
+    {{-- Completion while a guardian decision is pending. The component issues a
+         hard redirect to the waiting page; this renders only as a fallback if
+         that redirect did not fire, and links there manually. [RR-11] --}}
+    <div class="dw-card">
+        <p class="dw-done">All done! 🎉</p>
+        <p style="text-align:center; color:rgba(196,181,253,0.8); font-size:15px; line-height:1.6; margin:14px 0 24px;">
+            Amazing work exploring every island. Ask your grown-up to finish
+            setting up your map — they've got one quick thing to check.
+        </p>
+        <a href="{{ route('student.awaiting-guardian') }}" class="dw-continue" style="text-decoration:none; text-align:center;">
+            Continue →
+        </a>
+    </div>
+
     @elseif ($question === null)
     <div class="dw-card">
         <p class="dw-done">You've completed the diagnostic! 🎉</p>

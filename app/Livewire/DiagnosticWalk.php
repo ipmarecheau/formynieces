@@ -56,7 +56,10 @@ class DiagnosticWalk extends Component
     protected function redirectIfAwaitingGuardian(): void
     {
         if ($this->awaitingGuardian) {
-            $this->redirect(route('student.awaiting-guardian'), navigate: true);
+            // A hard redirect (NOT wire:navigate): the waiting page is a
+            // standalone non-Livewire document, and an SPA navigate to it
+            // silently no-ops, leaving the student on the completion card. [RR-11]
+            $this->redirect(route('student.awaiting-guardian'));
         }
     }
 
