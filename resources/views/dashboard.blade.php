@@ -746,6 +746,24 @@
                     @else
                         <p style="font-size:0.85rem; color:#9ca3af;">No target assigned this week.</p>
                     @endif
+
+                    {{-- Pause / resume control. [WT-04 / WT-05 / ML-03] --}}
+                    <div style="margin-top:1rem; padding-top:1rem; border-top:1px solid #f3e8ff; display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;">
+                        @if($summary['isPaused'])
+                            <span style="font-size:0.82rem; font-weight:800; color:#c2410c;">⏸ Paused — targets and streaks are on hold</span>
+                            <form method="POST" action="{{ route('guardian.resume', $summary['student']) }}">
+                                @csrf
+                                <button type="submit" style="background:#7c3aed; color:white; border:none; border-radius:10px; padding:8px 14px; font-weight:800; cursor:pointer;">Resume</button>
+                            </form>
+                        @else
+                            <span style="font-size:0.82rem; color:#9ca3af;">Need a break? You can pause {{ $summary['student']->name }} anytime.</span>
+                            <form method="POST" action="{{ route('guardian.pause', $summary['student']) }}"
+                                  onsubmit="return confirm('Pause {{ $summary['student']->name }}? Weekly targets stop and her streak is frozen until you resume.')">
+                                @csrf
+                                <button type="submit" style="background:white; color:#7c3aed; border:1.5px solid #ddd6fe; border-radius:10px; padding:8px 14px; font-weight:800; cursor:pointer;">Pause</button>
+                            </form>
+                        @endif
+                    </div>
                 </div>
             @endforeach
         @else

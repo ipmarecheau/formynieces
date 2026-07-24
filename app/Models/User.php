@@ -23,6 +23,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'parent_id',
         'onboarding_completed_at', // Slice 1
         'guardian_reconciled_at', // RR-04 reconciliation decision
+        'paused_at', // Pause/resume: null = active
         'age_attested_at',
         'target_sea_year',
         'known_weak_areas',
@@ -41,6 +42,7 @@ class User extends Authenticatable implements MustVerifyEmail
             'password' => 'hashed',
             'onboarding_completed_at' => 'datetime', // Slice 1
             'guardian_reconciled_at' => 'datetime', // RR-04 reconciliation decision
+            'paused_at' => 'datetime', // Pause/resume
             'age_attested_at' => 'datetime',
             'known_weak_areas' => 'array',
             'weekly_module_cap_override' => 'integer',
@@ -121,5 +123,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function hasCompletedOnboarding(): bool
     {
         return $this->onboarding_completed_at !== null;
+    }
+
+    /** Whether this student is currently paused by her guardian. */
+    public function isPaused(): bool
+    {
+        return $this->paused_at !== null;
     }
 }

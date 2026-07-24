@@ -26,6 +26,12 @@ class WeeklyRollover
 
     public function runFor(User $student, ?Carbon $now = null): Collection
     {
+        // WT-04: a paused student gets no new targets, and her streaks are left
+        // frozen (no pace-streak reset). Nothing rolls over until she resumes.
+        if ($student->isPaused()) {
+            return collect();
+        }
+
         $now = $now ?? Carbon::today();
         $weekStart = $now->copy()->startOfWeek();
 

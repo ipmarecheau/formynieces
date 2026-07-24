@@ -3,6 +3,7 @@
 use App\Http\Controllers\ChildSetupController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExamAgentController;
+use App\Http\Controllers\GuardianPauseController;
 use App\Http\Controllers\GuardianReconciliationController;
 use App\Livewire\DiagnosticWalk;
 use App\Livewire\GuardianDashboard;
@@ -38,6 +39,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->name('guardian.reconciliation.proceed');
     Route::post('/guardian/reconciliation/{student}/keep', [GuardianReconciliationController::class, 'keep'])
         ->name('guardian.reconciliation.keep');
+
+    // Pause / resume a student from the Parent Portal. [WT-04 / WT-05 / ML-03]
+    Route::post('/guardian/students/{student}/pause', [GuardianPauseController::class, 'pause'])
+        ->name('guardian.pause');
+    Route::post('/guardian/students/{student}/resume', [GuardianPauseController::class, 'resume'])
+        ->name('guardian.resume');
 });
 
 Route::middleware('auth')->group(function () {
