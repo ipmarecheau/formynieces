@@ -67,7 +67,8 @@ it('shows the reconciliation prompt on the parent portal for a pending child', f
         ->assertOk()
         ->assertSee('Fractions')
         ->assertSee('Use the diagnostic result')
-        ->assertSee('Keep my');
+        ->assertSee('Keep my')
+        ->assertSee('This decision cannot be undone');
 })->group('scenario:RR-04');
 
 it('proceeds with the diagnostic from the parent portal', function () {

@@ -687,11 +687,13 @@
                                 start until you choose.
                             </p>
                             <div style="display:flex; gap:8px; flex-wrap:wrap;">
-                                <form method="POST" action="{{ route('guardian.reconciliation.proceed', $summary['student']) }}">
+                                <form method="POST" action="{{ route('guardian.reconciliation.proceed', $summary['student']) }}"
+                                      onsubmit="return confirm('Use the diagnostic result and start {{ $summary['student']->name }}\'s map now? This decision cannot be undone.')">
                                     @csrf
                                     <button type="submit" style="background:#7c3aed; color:white; border:none; border-radius:10px; padding:9px 15px; font-weight:800; cursor:pointer;">Use the diagnostic result</button>
                                 </form>
-                                <form method="POST" action="{{ route('guardian.reconciliation.keep', $summary['student']) }}">
+                                <form method="POST" action="{{ route('guardian.reconciliation.keep', $summary['student']) }}"
+                                      onsubmit="return confirm('Keep your stated weak areas and start {{ $summary['student']->name }}\'s map now? This decision cannot be undone.')">
                                     @csrf
                                     <button type="submit" style="background:white; color:#7c3aed; border:1.5px solid #ddd6fe; border-radius:10px; padding:9px 15px; font-weight:800; cursor:pointer;">Keep my weak areas</button>
                                 </form>
