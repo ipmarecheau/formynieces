@@ -17,15 +17,16 @@
             font-family: 'Nunito', sans-serif;
             min-height: 100vh;
             color: #f3e8ff;
-            /* Placeholder RPG sea. Swap for Nano Banana art by setting
-               background-image to url('/images/voyage/overworld.png'). */
+            /* The Nano Banana RPG sea map. A gradient sits behind it as a
+               fallback while the image loads. */
             background:
-                radial-gradient(circle at 20% 15%, rgba(129,140,248,0.35), transparent 45%),
-                radial-gradient(circle at 80% 10%, rgba(236,72,153,0.25), transparent 40%),
                 linear-gradient(180deg, #1b2a6b 0%, #223a8c 30%, #1f5fa8 70%, #1a7fb0 100%);
+        }
+        .vy-sea {
+            position: fixed; inset: 0; z-index: -1;
+            background-image: url('/images/voyage/overworld.png');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
         }
 
         .vy-nav {
@@ -81,6 +82,7 @@
     </style>
 </head>
 <body>
+    <div class="vy-sea"></div>
     <nav class="vy-nav">
         <span class="vy-brand">⛵ Your Voyage</span>
         <div class="vy-nav-right">
