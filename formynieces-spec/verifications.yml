@@ -266,3 +266,18 @@
   commit: e52bcd9
   spec_hash: 611ea91945c4
   note: "Both scenarios (derived current week + early-starter capped at week 1) covered by passing PacingClockTest; pure pacing math, no UI surface (Isaac confirmed)"
+- scenario: ML-03
+  verified_at: 2026-07-24
+  commit: 4284a13
+  spec_hash: 8345e94c530f
+  note: "Pause freezes the day-streak; resume bridges it so the next activity extends (6->7). Unit-tested + resume verified live on Maya (Isaac confirmed)"
+- scenario: WT-04
+  verified_at: 2026-07-24
+  commit: 4284a13
+  spec_hash: 7990d0d2ab1d
+  note: "Live: while paused, WeeklyRollover generated 0 targets and left the streak frozen at 5; guardian pause/resume toggle works on the Parent Portal (Isaac confirmed)"
+- scenario: WT-05
+  verified_at: 2026-07-24
+  commit: 4284a13
+  spec_hash: d48a481b634d
+  note: "Live: on resume journey_start unchanged (2026-06-12), current_pacing_week stayed 5 (10 paused days excluded, not jumped to 7), pause span logged 07-14->07-24 (Isaac confirmed)"
