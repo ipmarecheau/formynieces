@@ -24,7 +24,7 @@ class PacingClock
         $now = $now ?? Carbon::today();
         $start = $this->journey($student)->journey_start->copy()->startOfDay();
 
-        $weeksElapsed = $start->diffInWeeks($now);
+        $weeksElapsed = (int) $start->diffInWeeks($now);
 
         return $weeksElapsed + 1;
     }
@@ -34,7 +34,7 @@ class PacingClock
         $now = $now ?? Carbon::today();
         $exam = $this->journey($student)->exam_date->copy()->startOfDay();
 
-        return $now->diffInWeeks($exam);
+        return (int) $now->diffInWeeks($exam);
     }
 
     private function journey(User $student): StudentJourney
