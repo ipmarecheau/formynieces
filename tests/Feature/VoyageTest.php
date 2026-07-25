@@ -3,6 +3,7 @@
 use App\Models\StudentProgress;
 use App\Models\SyllabusModule;
 use App\Models\User;
+use App\Services\Pacing\AdventureMapBuilder;
 use Database\Seeders\ModulePrerequisiteSeeder;
 use Database\Seeders\SyllabusModuleSeeder;
 
@@ -23,14 +24,15 @@ function makeVoyageStudent(): User
     ]);
 }
 
-it('shows the overworld with an island hub and per-island conquered counts', function () {
+it('shows the overworld with the 13 painted islands and per-island conquered counts', function () {
     $this->seed(SyllabusModuleSeeder::class);
     $this->seed(ModulePrerequisiteSeeder::class);
 
     $student = makeVoyageStudent();
 
-    // Conquer two Number Isle modules so its count is non-zero.
-    SyllabusModule::where('subject', 'Math')->take(2)->get()
+    // Conquer the first two modules (sequence order) so the opening island's
+    // count is non-zero.
+    SyllabusModule::orderBy('sequence_order')->take(2)->get()
         ->each(fn ($m) => StudentProgress::create([
             'student_id' => $student->id, 'module_id' => $m->id, 'status' => 'mastered', 'score' => 3,
         ]));
@@ -38,11 +40,49 @@ it('shows the overworld with an island hub and per-island conquered counts', fun
     $response = $this->actingAs($student)->get(route('student.voyage'));
 
     $response->assertOk()
-        ->assertSee('Number Isle')
-        ->assertSee('Story Cove')
-        ->assertSee('Word Harbour')
-        ->assertSee('conquered')          // the count label
-        ->assertSee('2 / ', false);       // 2 conquered on Number Isle
+        ->assertSee('Feather Isle')   // first painted island
+        ->assertSee('Crystal Peak')   // last painted island
+        ->assertSee('2 / ', false);   // 2 conquered on the opening island
+})->group('scenario:AM-01');
+
+it('balance-chunks the whole syllabus across the 13 islands and gates them sequentially', function () {
+    $this->seed(SyllabusModuleSeeder::class);
+    $this->seed(ModulePrerequisiteSeeder::class);
+
+    $student = makeVoyageStudent();
+    $islands = app(AdventureMapBuilder::class)->buildVoyage($student);
+
+    expect($islands)->toHaveCount(13);
+    // Every module lands on exactly one island; chunks are balanced (differ by <= 1).
+    $totals = array_column($islands, 'total');
+    expect(array_sum($totals))->toBe(SyllabusModule::count());
+    expect(max($totals) - min($totals))->toBeLessThanOrEqual(1);
+
+    // Nothing conquered yet: island 0 is playable, the rest are locked.
+    expect($islands[0]['state'])->toBe('playable');
+    expect($islands[1]['state'])->toBe('locked');
+    expect($islands[0]['current'])->toBeTrue();
+})->group('scenario:AM-01');
+
+it('unlocks the next island once the current one is fully conquered', function () {
+    $this->seed(SyllabusModuleSeeder::class);
+    $this->seed(ModulePrerequisiteSeeder::class);
+
+    $student = makeVoyageStudent();
+    $builder = app(AdventureMapBuilder::class);
+
+    // Master every module on the opening island.
+    $first = $builder->buildVoyage($student)[0];
+    foreach ($first['levels'] as $level) {
+        StudentProgress::create([
+            'student_id' => $student->id, 'module_id' => $level['id'], 'status' => 'mastered', 'score' => 3,
+        ]);
+    }
+
+    $islands = $builder->buildVoyage($student);
+    expect($islands[0]['state'])->toBe('mastered');
+    expect($islands[1]['state'])->toBe('playable');
+    expect($islands[1]['current'])->toBeTrue();
 })->group('scenario:AM-01');
 
 it('offers a switch back to the classic dashboard from the voyage', function () {

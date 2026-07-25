@@ -6,7 +6,6 @@ namespace App\Http\Controllers;
 
 use App\Services\Pacing\AdventureMapBuilder;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 /**
@@ -25,23 +24,9 @@ final class VoyageController extends Controller
 
     public function overworld(Request $request): View
     {
-        $islands = $this->map->build($request->user());
-
-        $hubs = [];
-        foreach ($islands as $name => $island) {
-            $levels = collect($island['levels']);
-            $hubs[] = [
-                'name' => $name,
-                'slug' => Str::slug($name),
-                'icon' => $island['icon'],
-                'conquered' => $levels->where('state', 'mastered')->count(),
-                'total' => $levels->count(),
-            ];
-        }
-
         return view('voyage.overworld', [
             'user' => $request->user(),
-            'hubs' => $hubs,
+            'islands' => $this->map->buildVoyage($request->user()),
         ]);
     }
 }

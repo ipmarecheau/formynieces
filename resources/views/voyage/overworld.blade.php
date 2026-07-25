@@ -1,7 +1,29 @@
 {{-- resources/views/voyage/overworld.blade.php --}}
-{{-- The Voyage overworld (tier 1): a hub of island-worlds. Standalone, gamified
-     alternative to the dashboard. Mastery-gated, always kind — islands show a
+{{-- The Voyage overworld (tier 1): the 13 painted islands of the sea map, each a
+     stop on the dashed trail. Curriculum is chunked across the islands in order;
+     markers and the trail live in the map image's own coordinate space, so they
+     scale together at any size. Mastery-gated, always kind — islands show a
      conquered COUNT, never a pace percentage. [AM] --}}
+@php
+    $mapW = 2752;
+    $mapH = 1536;
+
+    // Island centres in the map's pixel space (for the SVG trail).
+    $points = array_map(fn ($i) => [
+        'x' => round($i['x'] / 100 * $mapW, 1),
+        'y' => round($i['y'] / 100 * $mapH, 1),
+    ], $islands);
+
+    // The bright trail runs from the start up to the current island; the rest
+    // stays faded and dashed ahead of the boat.
+    $currentIndex = collect($islands)->search(fn ($i) => $i['current']);
+    $currentIndex = $currentIndex === false ? 0 : $currentIndex;
+
+    $travelled = collect($points)->take($currentIndex + 1)
+        ->map(fn ($p) => "{$p['x']},{$p['y']}")->implode(' ');
+    $ahead = collect($points)->slice($currentIndex)
+        ->map(fn ($p) => "{$p['x']},{$p['y']}")->implode(' ');
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,16 +39,7 @@
             font-family: 'Nunito', sans-serif;
             min-height: 100vh;
             color: #f3e8ff;
-            /* The Nano Banana RPG sea map. A gradient sits behind it as a
-               fallback while the image loads. */
-            background:
-                linear-gradient(180deg, #1b2a6b 0%, #223a8c 30%, #1f5fa8 70%, #1a7fb0 100%);
-        }
-        .vy-sea {
-            position: fixed; inset: 0; z-index: -1;
-            background-image: url('/images/voyage/overworld.png');
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(180deg, #1b2a6b 0%, #223a8c 30%, #1f5fa8 70%, #1a7fb0 100%);
         }
 
         .vy-nav {
@@ -47,42 +60,89 @@
         .vy-switch:hover, .vy-logout:hover { background: rgba(255,255,255,0.18); }
         .vy-logout { border: none; }
 
-        .vy-wrap { max-width: 900px; margin: 0 auto; padding: 32px 20px 56px; }
+        .vy-wrap { max-width: 1200px; margin: 0 auto; padding: 24px 16px 48px; }
         .vy-title {
             font-family: 'Fredoka One', cursive; font-size: 1.9rem; text-align: center;
             margin-bottom: 6px; text-shadow: 0 2px 12px rgba(0,0,0,0.35);
         }
-        .vy-sub { text-align: center; color: rgba(243,232,255,0.8); font-size: 0.95rem; margin-bottom: 32px; }
+        .vy-sub { text-align: center; color: rgba(243,232,255,0.85); font-size: 0.95rem; margin-bottom: 22px; }
 
-        .vy-islands {
-            display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px;
+        /* The map: a fixed-aspect stage. The image, the SVG trail, and every
+           island marker share this box, so they scale as one. */
+        .vy-map {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 2752 / 1536;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 18px 50px rgba(0,0,0,0.45);
+            background:
+                url('/images/voyage/overworld.png') center / cover no-repeat,
+                linear-gradient(180deg, #1b2a6b, #1a7fb0);
         }
-        @media (max-width: 560px) { .vy-islands { grid-template-columns: 1fr; } }
+
+        .vy-trail { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+        .vy-trail-ahead {
+            fill: none; stroke: rgba(255,255,255,0.5);
+            stroke-width: 7; stroke-linecap: round; stroke-dasharray: 3 26;
+        }
+        .vy-trail-done {
+            fill: none; stroke: #fde68a;
+            stroke-width: 10; stroke-linecap: round; stroke-linejoin: round;
+            filter: drop-shadow(0 0 6px rgba(253,230,138,0.7));
+        }
 
         .vy-island {
-            display: block; text-decoration: none; color: inherit;
-            background: rgba(20, 30, 66, 0.55);
-            border: 1.5px solid rgba(147, 197, 253, 0.35);
-            border-radius: 22px; padding: 26px 22px; text-align: center;
-            transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
+            position: absolute; transform: translate(-50%, -50%);
+            display: flex; flex-direction: column; align-items: center; gap: 4px;
+            text-decoration: none; color: inherit; cursor: pointer;
+            transition: transform 0.16s;
         }
-        .vy-island:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.4);
-            border-color: rgba(244,114,182,0.7);
+        .vy-island:hover { transform: translate(-50%, -50%) scale(1.08); }
+        .vy-island.is-locked { cursor: not-allowed; }
+
+        .vy-badge {
+            width: clamp(38px, 5.2vw, 64px); height: clamp(38px, 5.2vw, 64px);
+            display: grid; place-items: center;
+            font-size: clamp(1.1rem, 2.6vw, 1.9rem); line-height: 1;
+            border-radius: 50%;
+            background: rgba(20, 30, 66, 0.72);
+            border: 2.5px solid rgba(147, 197, 253, 0.6);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
         }
-        .vy-island-icon { font-size: 3rem; line-height: 1; margin-bottom: 10px; filter: drop-shadow(0 3px 8px rgba(0,0,0,0.35)); }
-        .vy-island-name { font-family: 'Fredoka One', cursive; font-size: 1.25rem; margin-bottom: 10px; }
+        .is-mastered .vy-badge { border-color: #34d399; box-shadow: 0 0 16px rgba(52,211,153,0.7); }
+        .is-current .vy-badge { border-color: #fde68a; box-shadow: 0 0 20px rgba(253,230,138,0.9); animation: vy-pulse 1.8s ease-in-out infinite; }
+        .is-locked .vy-badge { filter: grayscale(0.7) brightness(0.7); border-color: rgba(255,255,255,0.25); }
+
+        @keyframes vy-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .vy-label {
+            font-family: 'Fredoka One', cursive;
+            font-size: clamp(0.55rem, 1.15vw, 0.85rem);
+            text-shadow: 0 1px 5px rgba(0,0,0,0.8);
+            white-space: nowrap;
+        }
         .vy-count {
-            display: inline-block; font-weight: 800; font-size: 0.82rem;
-            padding: 5px 14px; border-radius: 999px;
-            background: rgba(255,255,255,0.12); color: #e0f2fe;
+            font-weight: 800; font-size: clamp(0.5rem, 1vw, 0.72rem);
+            padding: 1px 8px; border-radius: 999px;
+            background: rgba(0,0,0,0.5); color: #e0f2fe;
         }
-        .vy-count-done { background: rgba(52, 211, 153, 0.25); color: #bbf7d0; }
+        .vy-count-done { background: rgba(52, 211, 153, 0.35); color: #bbf7d0; }
+        .is-locked .vy-label, .is-locked .vy-count { opacity: 0.6; }
+
+        .vy-boat {
+            position: absolute; transform: translate(-50%, -140%);
+            font-size: clamp(1rem, 2.4vw, 1.8rem);
+            filter: drop-shadow(0 3px 6px rgba(0,0,0,0.5));
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
-    <div class="vy-sea"></div>
     <nav class="vy-nav">
         <span class="vy-brand">⛵ Your Voyage</span>
         <div class="vy-nav-right">
@@ -95,20 +155,33 @@
     </nav>
 
     <div class="vy-wrap">
-        <h1 class="vy-title">Choose your island, {{ $user->name }}! 🗺️</h1>
-        <p class="vy-sub">Sail to an island and conquer its levels to unlock what lies ahead.</p>
+        <h1 class="vy-title">Chart your course, {{ $user->name }}! 🗺️</h1>
+        <p class="vy-sub">Sail the trail island by island — conquer every level on a stop to unlock the next.</p>
 
-        <div class="vy-islands">
-            @foreach($hubs as $hub)
-                {{-- Tier 2 (island interior) route arrives in the next loop; card is a hub placeholder for now. --}}
-                <a href="#" class="vy-island" data-island-slug="{{ $hub['slug'] }}">
-                    <div class="vy-island-icon">{{ $hub['icon'] }}</div>
-                    <div class="vy-island-name">{{ $hub['name'] }}</div>
-                    <span class="vy-count {{ $hub['conquered'] === $hub['total'] && $hub['total'] > 0 ? 'vy-count-done' : '' }}">
-                        {{ $hub['conquered'] }} / {{ $hub['total'] }} conquered
-                    </span>
+        <div class="vy-map">
+            <svg class="vy-trail" viewBox="0 0 {{ $mapW }} {{ $mapH }}" preserveAspectRatio="none" aria-hidden="true">
+                <polyline class="vy-trail-ahead" points="{{ $ahead }}" />
+                <polyline class="vy-trail-done" points="{{ $travelled }}" />
+            </svg>
+
+            @foreach($islands as $island)
+                @php
+                    $done = $island['total'] > 0 && $island['conquered'] === $island['total'];
+                @endphp
+                <a href="#"
+                   class="vy-island is-{{ $island['state'] }} {{ $island['current'] ? 'is-current' : '' }}"
+                   style="left: {{ $island['x'] }}%; top: {{ $island['y'] }}%;"
+                   data-island-slug="{{ $island['slug'] }}"
+                   title="{{ $island['name'] }}">
+                    <span class="vy-badge">{{ $island['state'] === 'locked' ? '🔒' : $island['icon'] }}</span>
+                    <span class="vy-label">{{ $island['name'] }}</span>
+                    <span class="vy-count {{ $done ? 'vy-count-done' : '' }}">{{ $island['conquered'] }} / {{ $island['total'] }}</span>
                 </a>
             @endforeach
+
+            @if(isset($points[$currentIndex]))
+                <span class="vy-boat" style="left: {{ $islands[$currentIndex]['x'] }}%; top: {{ $islands[$currentIndex]['y'] }}%;">⛵</span>
+            @endif
         </div>
     </div>
 </body>
