@@ -48,6 +48,23 @@ final class VoyageInteriors
             ['x' => 78.2, 'y' => 43.5],
             ['x' => 77.4, 'y' => 33.5],
         ],
+        // Lantern Rock's upper rim: dock, up the left stairs, across the top
+        // stones, down the right flat stones, then the staircase to the
+        // lighthouse door. Stays high — no dip into the tide-pool basin.
+        'lantern-rock' => [
+            ['x' => 14.0, 'y' => 80.0],
+            ['x' => 28.0, 'y' => 74.5],
+            ['x' => 30.0, 'y' => 62.0],
+            ['x' => 25.0, 'y' => 55.0],
+            ['x' => 32.0, 'y' => 46.0],
+            ['x' => 38.5, 'y' => 41.0],
+            ['x' => 46.0, 'y' => 37.5],
+            ['x' => 53.5, 'y' => 35.0],
+            ['x' => 60.5, 'y' => 35.5],
+            ['x' => 66.5, 'y' => 39.5],
+            ['x' => 73.0, 'y' => 40.5],
+            ['x' => 79.0, 'y' => 31.0],
+        ],
     ];
 
     /**

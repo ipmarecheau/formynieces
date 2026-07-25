@@ -111,8 +111,18 @@ it('falls back to a generated path for an island without tuned waypoints', funct
 it('serves bespoke interior art when the file exists', function () {
     expect(VoyageInteriors::backgroundFor('feather-isle'))
         ->toBe('/images/voyage/interiors/feather-isle.png');
+    expect(VoyageInteriors::backgroundFor('lantern-rock'))
+        ->toBe('/images/voyage/interiors/lantern-rock.png');
     expect(VoyageInteriors::backgroundFor('no-such-island'))
         ->toBeNull();
+})->group('scenario:AM-01');
+
+it('spans Lantern Rock\'s tuned trail from the dock to the lighthouse', function () {
+    $stops = VoyageInteriors::stopsFor('lantern-rock', 7);
+
+    expect($stops)->toHaveCount(7);
+    expect($stops[0])->toBe(['x' => 14.0, 'y' => 80.0]);   // the dock
+    expect($stops[6])->toBe(['x' => 79.0, 'y' => 31.0]);   // the lighthouse
 })->group('scenario:AM-01');
 
 it('404s on an island slug that does not exist', function () {
