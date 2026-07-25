@@ -64,6 +64,40 @@ it('balance-chunks the whole syllabus across the 13 islands and gates them seque
     expect($islands[0]['current'])->toBeTrue();
 })->group('scenario:AM-01');
 
+it('opens an unlocked island as a mini-voyage listing its own levels', function () {
+    $this->seed(SyllabusModuleSeeder::class);
+    $this->seed(ModulePrerequisiteSeeder::class);
+
+    $student = makeVoyageStudent();
+    $first = app(AdventureMapBuilder::class)->buildVoyage($student)[0];
+
+    $response = $this->actingAs($student)->get(route('student.voyage.island', $first['slug']));
+
+    $response->assertOk()
+        ->assertSee($first['name'])
+        ->assertSee($first['levels'][0]['topic'])          // a level stop on the interior
+        ->assertSee('Back to the sea');
+})->group('scenario:AM-01');
+
+it('sails a student back to the overworld when an island is still locked', function () {
+    $this->seed(SyllabusModuleSeeder::class);
+    $this->seed(ModulePrerequisiteSeeder::class);
+
+    $student = makeVoyageStudent();
+    $islands = app(AdventureMapBuilder::class)->buildVoyage($student);
+    $locked = collect($islands)->firstWhere('state', 'locked');
+
+    $this->actingAs($student)->get(route('student.voyage.island', $locked['slug']))
+        ->assertRedirect(route('student.voyage'));
+})->group('scenario:AM-01');
+
+it('404s on an island slug that does not exist', function () {
+    $student = makeVoyageStudent();
+
+    $this->actingAs($student)->get(route('student.voyage.island', 'no-such-island'))
+        ->assertNotFound();
+})->group('scenario:AM-01');
+
 it('unlocks the next island once the current one is fully conquered', function () {
     $this->seed(SyllabusModuleSeeder::class);
     $this->seed(ModulePrerequisiteSeeder::class);

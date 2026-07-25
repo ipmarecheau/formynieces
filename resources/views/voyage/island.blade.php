@@ -1,27 +1,23 @@
-{{-- resources/views/voyage/overworld.blade.php --}}
-{{-- The Voyage overworld (tier 1): the 13 painted islands of the sea map, each a
-     stop on the dashed trail. Curriculum is chunked across the islands in order;
-     markers and the trail live in the map image's own coordinate space, so they
-     scale together at any size. Mastery-gated, always kind — islands show a
-     conquered COUNT, never a pace percentage. [AM] --}}
+{{-- resources/views/voyage/island.blade.php --}}
+{{-- The Voyage tier 2: an island's own mini-voyage. Its ~7 levels are stops on
+     a walkable interior path (a town, a building, a cavern…), gated in sequence
+     and always kind. Bespoke art per island; a themed gradient stands in until
+     an island's artwork lands. Reuses the overworld's aspect-ratio stage so the
+     background, SVG trail, and pinned level-stops scale as one. [AM] --}}
 @php
     $mapW = 2752;
     $mapH = 1536;
 
-    // Island centres in the map's pixel space (for the SVG trail).
-    $points = array_map(fn ($i) => [
-        'x' => round($i['x'] / 100 * $mapW, 1),
-        'y' => round($i['y'] / 100 * $mapH, 1),
-    ], $islands);
+    // Pair each level with its stop coordinate (same index order).
+    $levels = $island['levels'];
+    $points = array_map(fn ($s) => [
+        'x' => round($s['x'] / 100 * $mapW, 1),
+        'y' => round($s['y'] / 100 * $mapH, 1),
+    ], $stops);
 
-    // The bright trail runs from the start up to the current island; the rest
-    // stays faded and dashed ahead of the boat.
-    $currentIndex = collect($islands)->search(fn ($i) => $i['current']);
-    $currentIndex = $currentIndex === false ? 0 : $currentIndex;
-
-    $travelled = collect($points)->take($currentIndex + 1)
+    $travelled = collect($points)->take($currentStop + 1)
         ->map(fn ($p) => "{$p['x']},{$p['y']}")->implode(' ');
-    $ahead = collect($points)->slice($currentIndex)
+    $ahead = collect($points)->slice($currentStop)
         ->map(fn ($p) => "{$p['x']},{$p['y']}")->implode(' ');
 @endphp
 <!DOCTYPE html>
@@ -29,7 +25,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Voyage — ForMyNieces</title>
+    <title>{{ $island['name'] }} — Your Voyage</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -50,15 +46,13 @@
             position: sticky; top: 0; z-index: 10;
         }
         .vy-brand { font-family: 'Fredoka One', cursive; font-size: 1.3rem; color: #f3e8ff; }
-        .vy-nav-right { display: flex; align-items: center; gap: 10px; }
-        .vy-switch, .vy-logout {
+        .vy-back {
             font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.82rem;
-            padding: 8px 16px; border-radius: 999px; cursor: pointer; text-decoration: none;
+            padding: 8px 16px; border-radius: 999px; text-decoration: none;
             border: 1.5px solid rgba(255,255,255,0.35); color: #f3e8ff;
             background: rgba(255,255,255,0.08);
         }
-        .vy-switch:hover, .vy-logout:hover { background: rgba(255,255,255,0.18); }
-        .vy-logout { border: none; }
+        .vy-back:hover { background: rgba(255,255,255,0.18); }
 
         .vy-wrap { max-width: 1200px; margin: 0 auto; padding: 24px 16px 48px; }
         .vy-title {
@@ -67,8 +61,6 @@
         }
         .vy-sub { text-align: center; color: rgba(243,232,255,0.85); font-size: 0.95rem; margin-bottom: 22px; }
 
-        /* The map: a fixed-aspect stage. The image, the SVG trail, and every
-           island marker share this box, so they scale as one. */
         .vy-map {
             position: relative;
             width: 100%;
@@ -77,9 +69,13 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 18px 50px rgba(0,0,0,0.45);
-            background:
-                url('/images/voyage/overworld.png') center / cover no-repeat,
-                linear-gradient(180deg, #1b2a6b, #1a7fb0);
+            @if($background)
+                background: url('{{ $background }}') center / cover no-repeat;
+            @else
+                background:
+                    radial-gradient(120% 100% at 50% 0%, rgba(253,230,138,0.18), transparent 60%),
+                    linear-gradient(180deg, #24306b 0%, #2b4a86 55%, #1f6f9c 100%);
+            @endif
         }
 
         .vy-trail { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
@@ -93,19 +89,19 @@
             filter: drop-shadow(0 0 6px rgba(253,230,138,0.7));
         }
 
-        .vy-island {
+        .vy-stop {
             position: absolute; transform: translate(-50%, -50%);
             display: flex; flex-direction: column; align-items: center; gap: 4px;
             text-decoration: none; color: inherit; cursor: pointer;
             transition: transform 0.16s;
         }
-        .vy-island:hover { transform: translate(-50%, -50%) scale(1.08); }
-        .vy-island.is-locked { cursor: not-allowed; }
+        .vy-stop:hover { transform: translate(-50%, -50%) scale(1.08); }
+        .vy-stop.is-locked { cursor: not-allowed; }
 
         .vy-badge {
-            width: clamp(38px, 5.2vw, 64px); height: clamp(38px, 5.2vw, 64px);
+            width: clamp(38px, 5.2vw, 62px); height: clamp(38px, 5.2vw, 62px);
             display: grid; place-items: center;
-            font-size: clamp(1.1rem, 2.6vw, 1.9rem); line-height: 1;
+            font-size: clamp(1rem, 2.4vw, 1.7rem); line-height: 1;
             border-radius: 50%;
             background: rgba(20, 30, 66, 0.72);
             border: 2.5px solid rgba(147, 197, 253, 0.6);
@@ -122,17 +118,12 @@
 
         .vy-label {
             font-family: 'Fredoka One', cursive;
-            font-size: clamp(0.55rem, 1.15vw, 0.85rem);
-            text-shadow: 0 1px 5px rgba(0,0,0,0.8);
-            white-space: nowrap;
+            font-size: clamp(0.5rem, 1.05vw, 0.78rem);
+            text-shadow: 0 1px 5px rgba(0,0,0,0.85);
+            max-width: clamp(90px, 14vw, 180px);
+            text-align: center; line-height: 1.15;
         }
-        .vy-count {
-            font-weight: 800; font-size: clamp(0.5rem, 1vw, 0.72rem);
-            padding: 1px 8px; border-radius: 999px;
-            background: rgba(0,0,0,0.5); color: #e0f2fe;
-        }
-        .vy-count-done { background: rgba(52, 211, 153, 0.35); color: #bbf7d0; }
-        .is-locked .vy-label, .is-locked .vy-count { opacity: 0.6; }
+        .is-locked .vy-label { opacity: 0.6; }
 
         .vy-boat {
             position: absolute; transform: translate(-50%, -140%);
@@ -144,19 +135,13 @@
 </head>
 <body>
     <nav class="vy-nav">
-        <span class="vy-brand">⛵ Your Voyage</span>
-        <div class="vy-nav-right">
-            <a href="{{ route('student.map') }}" class="vy-switch">📊 Dashboard</a>
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-                <button type="submit" class="vy-logout">Log out</button>
-            </form>
-        </div>
+        <span class="vy-brand">{{ $island['icon'] }} {{ $island['name'] }}</span>
+        <a href="{{ route('student.voyage') }}" class="vy-back">← Back to the sea</a>
     </nav>
 
     <div class="vy-wrap">
-        <h1 class="vy-title">Chart your course, {{ $user->name }}! 🗺️</h1>
-        <p class="vy-sub">Sail the trail island by island — conquer every level on a stop to unlock the next.</p>
+        <h1 class="vy-title">{{ $island['name'] }}</h1>
+        <p class="vy-sub">{{ $island['conquered'] }} of {{ $island['total'] }} levels conquered — clear them in order to master this island.</p>
 
         <div class="vy-map">
             <svg class="vy-trail" viewBox="0 0 {{ $mapW }} {{ $mapH }}" preserveAspectRatio="none" aria-hidden="true">
@@ -164,23 +149,33 @@
                 <polyline class="vy-trail-done" points="{{ $travelled }}" />
             </svg>
 
-            @foreach($islands as $island)
+            @foreach($levels as $index => $level)
                 @php
-                    $done = $island['total'] > 0 && $island['conquered'] === $island['total'];
+                    if ($level['mastered']) {
+                        $state = 'mastered';
+                    } elseif ($index === $currentStop) {
+                        $state = 'current';
+                    } else {
+                        $state = 'locked';
+                    }
+                    $stop = $stops[$index] ?? ['x' => 50, 'y' => 50];
+                    $badge = match ($state) {
+                        'mastered' => '⭐',
+                        'current' => '▶',
+                        default => '🔒',
+                    };
                 @endphp
-                <a href="{{ $island['state'] === 'locked' ? '#' : route('student.voyage.island', $island['slug']) }}"
-                   class="vy-island is-{{ $island['state'] }} {{ $island['current'] ? 'is-current' : '' }}"
-                   style="left: {{ $island['x'] }}%; top: {{ $island['y'] }}%;"
-                   data-island-slug="{{ $island['slug'] }}"
-                   title="{{ $island['name'] }}">
-                    <span class="vy-badge">{{ $island['state'] === 'locked' ? '🔒' : $island['icon'] }}</span>
-                    <span class="vy-label">{{ $island['name'] }}</span>
-                    <span class="vy-count {{ $done ? 'vy-count-done' : '' }}">{{ $island['conquered'] }} / {{ $island['total'] }}</span>
+                <a href="{{ $state === 'locked' ? '#' : route('practice.lesson', $level['id']) }}"
+                   class="vy-stop is-{{ $state }}"
+                   style="left: {{ $stop['x'] }}%; top: {{ $stop['y'] }}%;"
+                   title="{{ $level['topic'] }}">
+                    <span class="vy-badge">{{ $badge }}</span>
+                    <span class="vy-label">{{ $level['topic'] }}</span>
                 </a>
             @endforeach
 
-            @if(isset($points[$currentIndex]))
-                <span class="vy-boat" style="left: {{ $islands[$currentIndex]['x'] }}%; top: {{ $islands[$currentIndex]['y'] }}%;">⛵</span>
+            @if(isset($stops[$currentStop]))
+                <span class="vy-boat" style="left: {{ $stops[$currentStop]['x'] }}%; top: {{ $stops[$currentStop]['y'] }}%;">⛵</span>
             @endif
         </div>
     </div>

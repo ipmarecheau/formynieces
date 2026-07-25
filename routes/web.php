@@ -92,6 +92,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/voyage', [VoyageController::class, 'overworld'])
         ->name('student.voyage');
 
+    // Tier 2 — an island's own mini-voyage: a walkable interior path of levels.
+    Route::get('/voyage/{island}', [VoyageController::class, 'island'])
+        ->name('student.voyage.island');
+
     // Streak-celebration splash shown after login to students with active streaks.
     Route::get('/welcome-back', [DashboardController::class, 'studentSplash'])
         ->name('student.splash');
