@@ -4,6 +4,7 @@ use App\Models\StudentProgress;
 use App\Models\SyllabusModule;
 use App\Models\User;
 use App\Services\Pacing\AdventureMapBuilder;
+use App\Support\VoyageInteriors;
 use Database\Seeders\ModulePrerequisiteSeeder;
 use Database\Seeders\SyllabusModuleSeeder;
 
@@ -89,6 +90,29 @@ it('sails a student back to the overworld when an island is still locked', funct
 
     $this->actingAs($student)->get(route('student.voyage.island', $locked['slug']))
         ->assertRedirect(route('student.voyage'));
+})->group('scenario:AM-01');
+
+it('samples an island\'s level stops evenly across its tuned waypoints', function () {
+    $stops = VoyageInteriors::stopsFor('feather-isle', 7);
+
+    expect($stops)->toHaveCount(7);
+    // The trail still spans end to end: first and last tuned waypoints are kept.
+    expect($stops[0])->toBe(['x' => 19.5, 'y' => 66.8]);
+    expect($stops[6])->toBe(['x' => 77.4, 'y' => 33.5]);
+})->group('scenario:AM-01');
+
+it('falls back to a generated path for an island without tuned waypoints', function () {
+    $stops = VoyageInteriors::stopsFor('crystal-peak', 6);
+
+    expect($stops)->toHaveCount(6);
+    expect($stops[0])->toHaveKeys(['x', 'y']);
+})->group('scenario:AM-01');
+
+it('serves bespoke interior art when the file exists', function () {
+    expect(VoyageInteriors::backgroundFor('feather-isle'))
+        ->toBe('/images/voyage/interiors/feather-isle.png');
+    expect(VoyageInteriors::backgroundFor('no-such-island'))
+        ->toBeNull();
 })->group('scenario:AM-01');
 
 it('404s on an island slug that does not exist', function () {

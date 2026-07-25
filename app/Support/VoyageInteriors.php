@@ -30,7 +30,24 @@ final class VoyageInteriors
      * @var array<string, array<int, array{x:float, y:float}>>
      */
     private const STOPS = [
-        // 'feather-isle' => [['x' => 12.0, 'y' => 80.0], ...],
+        // 12 waypoints along Feather Isle's stone path (bottom-left start,
+        // sweeping right, up the right edge, to the top-right stone). More
+        // points than levels for layout flexibility — levels are sampled evenly
+        // across them so the stops span the whole trail.
+        'feather-isle' => [
+            ['x' => 19.5, 'y' => 66.8],
+            ['x' => 25.5, 'y' => 63.0],
+            ['x' => 31.5, 'y' => 61.3],
+            ['x' => 40.0, 'y' => 60.8],
+            ['x' => 47.5, 'y' => 64.5],
+            ['x' => 55.0, 'y' => 69.5],
+            ['x' => 62.5, 'y' => 71.2],
+            ['x' => 73.0, 'y' => 67.5],
+            ['x' => 76.0, 'y' => 59.0],
+            ['x' => 73.8, 'y' => 52.0],
+            ['x' => 78.2, 'y' => 43.5],
+            ['x' => 77.4, 'y' => 33.5],
+        ],
     ];
 
     /**
@@ -54,11 +71,36 @@ final class VoyageInteriors
     public static function stopsFor(string $slug, int $count): array
     {
         $tuned = self::STOPS[$slug] ?? [];
-        if (count($tuned) >= $count) {
-            return array_slice($tuned, 0, $count);
+        if (count($tuned) >= $count && $count > 0) {
+            return self::sampleEvenly($tuned, $count);
         }
 
         return self::defaultPath($count);
+    }
+
+    /**
+     * Pick $count waypoints spread evenly across $waypoints, always keeping the
+     * first and last so the stops span the whole path (7 levels across 12
+     * waypoints -> the trail still runs end to end).
+     *
+     * @param  array<int, array{x:float, y:float}>  $waypoints
+     * @return array<int, array{x:float, y:float}>
+     */
+    private static function sampleEvenly(array $waypoints, int $count): array
+    {
+        $waypoints = array_values($waypoints);
+        $last = count($waypoints) - 1;
+
+        if ($count === 1) {
+            return [$waypoints[intdiv($last, 2)]];
+        }
+
+        $picked = [];
+        for ($i = 0; $i < $count; $i++) {
+            $picked[] = $waypoints[(int) round($i * $last / ($count - 1))];
+        }
+
+        return $picked;
     }
 
     /**
