@@ -151,6 +151,26 @@ final class VoyageInteriors
             ['x' => 75.4, 'y' => 23.6],
             ['x' => 90.0, 'y' => 14.5],
         ],
+        // Library Isle's book-and-stone trail: beach start disc (lower-left), up
+        // past the coral tome, over the mossy mound, down to the sleeping-cat
+        // boardwalk, along the bottom stepping stones, then up the right-hand
+        // stones and books to the top-right disc. 12 waypoints snapped to the
+        // flat book-tops and round stones (5x5-grid trace; leaning shelf books
+        // are scenery, kept off the path).
+        'library-isle' => [
+            ['x' => 16.0, 'y' => 84.0],
+            ['x' => 24.0, 'y' => 70.0],
+            ['x' => 21.0, 'y' => 53.0],
+            ['x' => 31.0, 'y' => 44.0],
+            ['x' => 45.0, 'y' => 51.0],
+            ['x' => 58.0, 'y' => 67.0],
+            ['x' => 67.0, 'y' => 80.0],
+            ['x' => 79.0, 'y' => 78.0],
+            ['x' => 85.0, 'y' => 64.0],
+            ['x' => 79.0, 'y' => 45.0],
+            ['x' => 75.0, 'y' => 28.0],
+            ['x' => 84.0, 'y' => 14.0],
+        ],
     ];
 
     /**
