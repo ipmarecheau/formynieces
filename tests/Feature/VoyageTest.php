@@ -115,8 +115,18 @@ it('serves bespoke interior art when the file exists', function () {
         ->toBe('/images/voyage/interiors/lantern-rock.png');
     expect(VoyageInteriors::backgroundFor('palm-point'))
         ->toBe('/images/voyage/interiors/palm-point.png');
+    expect(VoyageInteriors::backgroundFor('coral-reef'))
+        ->toBe('/images/voyage/interiors/coral-reef.png');
     expect(VoyageInteriors::backgroundFor('no-such-island'))
         ->toBeNull();
+})->group('scenario:AM-01');
+
+it('spans Coral Reef\'s tuned disc path from the corner disc to the top-right', function () {
+    $stops = VoyageInteriors::stopsFor('coral-reef', 7);
+
+    expect($stops)->toHaveCount(7);
+    expect($stops[0])->toBe(['x' => 14.4, 'y' => 82.0]);   // bottom-left start disc
+    expect($stops[6])->toBe(['x' => 79.0, 'y' => 34.5]);   // top-right disc
 })->group('scenario:AM-01');
 
 it('spans Palm Point\'s tuned boardwalk from the start disc to the sunset', function () {

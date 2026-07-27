@@ -82,6 +82,23 @@ final class VoyageInteriors
             ['x' => 70.3, 'y' => 32.1],
             ['x' => 79.0, 'y' => 25.0],
         ],
+        // Coral Reef's disc serpentine: bottom-left start, across the bottom,
+        // up the right turn, diagonally up the middle, across the top row, to
+        // the top-right disc. 12 arc-length-equidistant points (5x5-grid trace).
+        'coral-reef' => [
+            ['x' => 14.4, 'y' => 82.0],
+            ['x' => 23.1, 'y' => 71.3],
+            ['x' => 37.1, 'y' => 69.0],
+            ['x' => 51.5, 'y' => 79.8],
+            ['x' => 64.5, 'y' => 80.3],
+            ['x' => 68.0, 'y' => 61.3],
+            ['x' => 56.7, 'y' => 53.6],
+            ['x' => 43.7, 'y' => 47.9],
+            ['x' => 41.9, 'y' => 35.3],
+            ['x' => 52.3, 'y' => 26.9],
+            ['x' => 66.1, 'y' => 28.7],
+            ['x' => 79.0, 'y' => 34.5],
+        ],
     ];
 
     /**
