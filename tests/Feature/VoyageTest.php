@@ -121,8 +121,18 @@ it('serves bespoke interior art when the file exists', function () {
         ->toBe('/images/voyage/interiors/twin-palms.png');
     expect(VoyageInteriors::backgroundFor('flag-bay'))
         ->toBe('/images/voyage/interiors/flag-bay.png');
+    expect(VoyageInteriors::backgroundFor('lagoon-isle'))
+        ->toBe('/images/voyage/interiors/lagoon-isle.png');
     expect(VoyageInteriors::backgroundFor('no-such-island'))
         ->toBeNull();
+})->group('scenario:AM-01');
+
+it('spans Lagoon Isle\'s tuned trail from the left bank to the top-right cave', function () {
+    $stops = VoyageInteriors::stopsFor('lagoon-isle', 7);
+
+    expect($stops)->toHaveCount(7);
+    expect($stops[0])->toBe(['x' => 15.0, 'y' => 84.0]);   // left-bank start
+    expect($stops[6])->toBe(['x' => 90.0, 'y' => 14.5]);   // top-right cave
 })->group('scenario:AM-01');
 
 it('spans Flag Bay\'s tuned pier from the start disc to the top-right', function () {

@@ -133,6 +133,24 @@ final class VoyageInteriors
             ['x' => 78.1, 'y' => 30.6],
             ['x' => 87.8, 'y' => 22.4],
         ],
+        // Lagoon Isle's winding trail: left-bank discs, up to the rope bridge
+        // (entrance -> dip -> far side), the plank bridge, around the bamboo dip
+        // on the right bank, then up the stone discs to the top-right cave.
+        // 12 waypoints (5x5-grid trace, bridge decks tuned by hand).
+        'lagoon-isle' => [
+            ['x' => 15.0, 'y' => 84.0],
+            ['x' => 24.0, 'y' => 73.1],
+            ['x' => 20.0, 'y' => 57.0],
+            ['x' => 33.0, 'y' => 45.0],
+            ['x' => 42.0, 'y' => 50.0],
+            ['x' => 60.5, 'y' => 66.5],
+            ['x' => 72.0, 'y' => 83.0],
+            ['x' => 84.0, 'y' => 72.5],
+            ['x' => 85.4, 'y' => 56.1],
+            ['x' => 76.9, 'y' => 40.5],
+            ['x' => 75.4, 'y' => 23.6],
+            ['x' => 90.0, 'y' => 14.5],
+        ],
     ];
 
     /**
