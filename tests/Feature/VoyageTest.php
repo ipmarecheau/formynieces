@@ -117,8 +117,18 @@ it('serves bespoke interior art when the file exists', function () {
         ->toBe('/images/voyage/interiors/palm-point.png');
     expect(VoyageInteriors::backgroundFor('coral-reef'))
         ->toBe('/images/voyage/interiors/coral-reef.png');
+    expect(VoyageInteriors::backgroundFor('twin-palms'))
+        ->toBe('/images/voyage/interiors/twin-palms.png');
     expect(VoyageInteriors::backgroundFor('no-such-island'))
         ->toBeNull();
+})->group('scenario:AM-01');
+
+it('spans Twin Palms\' tuned boardwalk from the ramp to the sunset dock', function () {
+    $stops = VoyageInteriors::stopsFor('twin-palms', 7);
+
+    expect($stops)->toHaveCount(7);
+    expect($stops[0])->toBe(['x' => 18.0, 'y' => 72.0]);   // ramp start
+    expect($stops[6])->toBe(['x' => 90.0, 'y' => 27.5]);   // sunset dock
 })->group('scenario:AM-01');
 
 it('spans Coral Reef\'s tuned disc path from the corner disc to the top-right', function () {

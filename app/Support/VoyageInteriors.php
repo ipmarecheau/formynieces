@@ -99,6 +99,23 @@ final class VoyageInteriors
             ['x' => 66.1, 'y' => 28.7],
             ['x' => 79.0, 'y' => 34.5],
         ],
+        // Twin Palms' boardwalk: ramp start (bottom-left), across the bottom,
+        // around the horseshoe wrapping the central oval, up the bridge to the
+        // sunset dock. 12 arc-length-equidistant points (5x5-grid trace).
+        'twin-palms' => [
+            ['x' => 18.0, 'y' => 72.0],
+            ['x' => 27.0, 'y' => 69.4],
+            ['x' => 36.5, 'y' => 68.7],
+            ['x' => 42.9, 'y' => 61.9],
+            ['x' => 50.1, 'y' => 56.0],
+            ['x' => 58.4, 'y' => 60.6],
+            ['x' => 67.1, 'y' => 63.9],
+            ['x' => 74.2, 'y' => 58.7],
+            ['x' => 72.7, 'y' => 49.4],
+            ['x' => 78.2, 'y' => 42.2],
+            ['x' => 84.2, 'y' => 35.0],
+            ['x' => 90.0, 'y' => 27.5],
+        ],
     ];
 
     /**
