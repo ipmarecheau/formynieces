@@ -116,6 +116,23 @@ final class VoyageInteriors
             ['x' => 84.2, 'y' => 35.0],
             ['x' => 90.0, 'y' => 27.5],
         ],
+        // Flag Bay's pier S: start disc (bottom-left), across the bottom, around
+        // the corner disc, up the middle curve, across the top pier to the
+        // top-right disc. 12 disc-snapped points (5x5-grid trace).
+        'flag-bay' => [
+            ['x' => 10.2, 'y' => 88.2],
+            ['x' => 18.9, 'y' => 80.7],
+            ['x' => 28.5, 'y' => 74.6],
+            ['x' => 39.4, 'y' => 79.6],
+            ['x' => 50.8, 'y' => 75.2],
+            ['x' => 59.0, 'y' => 66.0],
+            ['x' => 57.1, 'y' => 57.4],
+            ['x' => 42.9, 'y' => 43.1],
+            ['x' => 51.8, 'y' => 30.2],
+            ['x' => 69.4, 'y' => 31.7],
+            ['x' => 78.1, 'y' => 30.6],
+            ['x' => 87.8, 'y' => 22.4],
+        ],
     ];
 
     /**
