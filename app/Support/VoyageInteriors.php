@@ -191,6 +191,25 @@ final class VoyageInteriors
             ['x' => 83.0, 'y' => 18.0],
             ['x' => 89.0, 'y' => 12.0],
         ],
+        // Harbour Town's cobblestone-disc street: start disc (lower-left), a
+        // diagonal up the left of the market square, across the middle row of
+        // paving discs past the stalls and well, then up the right-hand discs
+        // to the top-right corner by the harbour shops. 12 waypoints centred on
+        // the round cobble discs (per-point high-zoom audit).
+        'harbour-town' => [
+            ['x' => 10.0, 'y' => 88.0],
+            ['x' => 14.0, 'y' => 83.0],
+            ['x' => 23.0, 'y' => 73.0],
+            ['x' => 31.0, 'y' => 67.0],
+            ['x' => 40.0, 'y' => 51.0],
+            ['x' => 45.0, 'y' => 47.0],
+            ['x' => 56.0, 'y' => 48.0],
+            ['x' => 66.0, 'y' => 49.0],
+            ['x' => 73.0, 'y' => 49.0],
+            ['x' => 80.0, 'y' => 41.0],
+            ['x' => 85.0, 'y' => 22.0],
+            ['x' => 90.0, 'y' => 10.0],
+        ],
     ];
 
     /**
