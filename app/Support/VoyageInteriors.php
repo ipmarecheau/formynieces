@@ -171,6 +171,26 @@ final class VoyageInteriors
             ['x' => 75.0, 'y' => 28.0],
             ['x' => 84.0, 'y' => 14.0],
         ],
+        // Beacon Shoal's plank-and-disc trail: beach start disc (lower-left),
+        // up the first plank bridge, around the left arch bridge (hugging the
+        // planks past the tide-pool), across the central bridge below the
+        // lighthouse, then up the right-hand discs and the right arch to the
+        // top-right disc. 12 waypoints snapped to disc tops and
+        // plank surfaces (per-point high-zoom audit; arches ride the planks).
+        'beacon-shoal' => [
+            ['x' => 9.0, 'y' => 86.0],
+            ['x' => 22.0, 'y' => 71.0],
+            ['x' => 23.0, 'y' => 52.0],
+            ['x' => 27.0, 'y' => 44.0],
+            ['x' => 31.0, 'y' => 44.0],
+            ['x' => 45.0, 'y' => 52.0],
+            ['x' => 55.0, 'y' => 66.0],
+            ['x' => 68.0, 'y' => 72.0],
+            ['x' => 70.0, 'y' => 43.0],
+            ['x' => 70.0, 'y' => 29.0],
+            ['x' => 83.0, 'y' => 18.0],
+            ['x' => 89.0, 'y' => 12.0],
+        ],
     ];
 
     /**

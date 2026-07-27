@@ -125,6 +125,8 @@ it('serves bespoke interior art when the file exists', function () {
         ->toBe('/images/voyage/interiors/lagoon-isle.png');
     expect(VoyageInteriors::backgroundFor('library-isle'))
         ->toBe('/images/voyage/interiors/library-isle.png');
+    expect(VoyageInteriors::backgroundFor('beacon-shoal'))
+        ->toBe('/images/voyage/interiors/beacon-shoal.png');
     expect(VoyageInteriors::backgroundFor('no-such-island'))
         ->toBeNull();
 })->group('scenario:AM-01');
@@ -167,6 +169,14 @@ it('spans Palm Point\'s tuned boardwalk from the start disc to the sunset', func
     expect($stops)->toHaveCount(7);
     expect($stops[0])->toBe(['x' => 68.0, 'y' => 65.6]);   // start disc
     expect($stops[6])->toBe(['x' => 79.0, 'y' => 25.0]);   // sunset stone
+})->group('scenario:AM-01');
+
+it('spans Beacon Shoal\'s tuned trail from the beach disc to the top-right disc', function () {
+    $stops = VoyageInteriors::stopsFor('beacon-shoal', 7);
+
+    expect($stops)->toHaveCount(7);
+    expect($stops[0])->toBe(['x' => 9.0, 'y' => 86.0]);    // beach start disc
+    expect($stops[6])->toBe(['x' => 89.0, 'y' => 12.0]);   // top-right disc
 })->group('scenario:AM-01');
 
 it('spans Library Isle\'s tuned trail from the beach disc to the top-right stone', function () {
