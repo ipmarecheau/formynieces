@@ -65,6 +65,23 @@ final class VoyageInteriors
             ['x' => 73.0, 'y' => 40.5],
             ['x' => 79.0, 'y' => 31.0],
         ],
+        // Palm Point's single boardwalk: start disc (lower arm), around the
+        // treasure-chest U-turn, across the top past the bonfire, up the S to
+        // the sunset stone. 12 arc-length-equidistant points (5x5-grid trace).
+        'palm-point' => [
+            ['x' => 68.0, 'y' => 65.6],
+            ['x' => 57.3, 'y' => 63.2],
+            ['x' => 46.8, 'y' => 68.0],
+            ['x' => 36.0, 'y' => 67.1],
+            ['x' => 29.6, 'y' => 58.2],
+            ['x' => 32.8, 'y' => 47.7],
+            ['x' => 43.7, 'y' => 45.0],
+            ['x' => 55.0, 'y' => 47.4],
+            ['x' => 66.2, 'y' => 49.5],
+            ['x' => 74.2, 'y' => 42.4],
+            ['x' => 70.3, 'y' => 32.1],
+            ['x' => 79.0, 'y' => 25.0],
+        ],
     ];
 
     /**

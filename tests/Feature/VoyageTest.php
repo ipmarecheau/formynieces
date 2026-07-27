@@ -113,8 +113,18 @@ it('serves bespoke interior art when the file exists', function () {
         ->toBe('/images/voyage/interiors/feather-isle.png');
     expect(VoyageInteriors::backgroundFor('lantern-rock'))
         ->toBe('/images/voyage/interiors/lantern-rock.png');
+    expect(VoyageInteriors::backgroundFor('palm-point'))
+        ->toBe('/images/voyage/interiors/palm-point.png');
     expect(VoyageInteriors::backgroundFor('no-such-island'))
         ->toBeNull();
+})->group('scenario:AM-01');
+
+it('spans Palm Point\'s tuned boardwalk from the start disc to the sunset', function () {
+    $stops = VoyageInteriors::stopsFor('palm-point', 7);
+
+    expect($stops)->toHaveCount(7);
+    expect($stops[0])->toBe(['x' => 68.0, 'y' => 65.6]);   // start disc
+    expect($stops[6])->toBe(['x' => 79.0, 'y' => 25.0]);   // sunset stone
 })->group('scenario:AM-01');
 
 it('spans Lantern Rock\'s tuned trail from the dock to the lighthouse', function () {
