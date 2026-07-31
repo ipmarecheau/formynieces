@@ -18,6 +18,7 @@ final class ReconciliationResolver
 {
     public function __construct(
         private RoadmapGenerator $generator,
+        private DiagnosticReconciliation $reconciliation,
     ) {}
 
     /**
@@ -33,12 +34,19 @@ final class ReconciliationResolver
     /**
      * The guardian keeps her stated weak areas.
      *
-     * RR-05 will additionally mark the kept strands' modules not_started before generation.
+     * Before finalizing, every module in a strand the diagnostic cleared but the
+     * guardian flagged is reverted to not_started, so the roadmap re-teaches it
+     * (RR-05). Other diagnostic results are applied unchanged.
      *
      * @param  User  $student  The student whose guardian has reconciled.
      */
     public function keepStatedWeakAreas(User $student): void
     {
+        if ($student->guardian_reconciled_at !== null) {
+            return;
+        }
+
+        $this->reconciliation->keepClearedStrandsAsNotStarted($student);
         $this->finalize($student);
     }
 

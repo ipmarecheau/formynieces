@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services\Diagnostic;
 
 use App\Models\StudentProgress;
+use App\Models\SyllabusModule;
 use App\Models\User;
 use Illuminate\Support\Carbon;
 
@@ -99,6 +100,38 @@ final class DiagnosticReconciliation
 
         return $startedAt !== null
             && $startedAt->lte(now()->subDays(self::HOLD_DAYS));
+    }
+
+    /**
+     * Revert every module in the guardian's cleared strands to not_started, so
+     * the roadmap treats her kept weak areas as unlearned (RR-05). Modules
+     * outside the cleared strands keep their diagnostic status unchanged.
+     */
+    public function keepClearedStrandsAsNotStarted(User $student): void
+    {
+        $cleared = $this->clearedStrands($student);
+
+        if ($cleared === []) {
+            return;
+        }
+
+        $moduleIds = SyllabusModule::query()
+            ->get(['id', 'topic'])
+            ->filter(fn (SyllabusModule $module): bool => in_array(
+                $this->strandFromTopic($module->topic),
+                $cleared,
+                true,
+            ))
+            ->pluck('id');
+
+        if ($moduleIds->isEmpty()) {
+            return;
+        }
+
+        StudentProgress::query()
+            ->where('student_id', $student->id)
+            ->whereIn('module_id', $moduleIds)
+            ->update(['status' => 'not_started']);
     }
 
     /**
