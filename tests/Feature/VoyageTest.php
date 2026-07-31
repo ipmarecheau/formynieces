@@ -129,6 +129,8 @@ it('serves bespoke interior art when the file exists', function () {
         ->toBe('/images/voyage/interiors/beacon-shoal.png');
     expect(VoyageInteriors::backgroundFor('harbour-town'))
         ->toBe('/images/voyage/interiors/harbour-town.png');
+    expect(VoyageInteriors::backgroundFor('sandbar'))
+        ->toBe('/images/voyage/interiors/sandbar.png');
     expect(VoyageInteriors::backgroundFor('no-such-island'))
         ->toBeNull();
 })->group('scenario:AM-01');
@@ -171,6 +173,14 @@ it('spans Palm Point\'s tuned boardwalk from the start disc to the sunset', func
     expect($stops)->toHaveCount(7);
     expect($stops[0])->toBe(['x' => 68.0, 'y' => 65.6]);   // start disc
     expect($stops[6])->toBe(['x' => 79.0, 'y' => 25.0]);   // sunset stone
+})->group('scenario:AM-01');
+
+it('spans Sandbar\'s tuned stepping-stone arc from the lower-left to the top-right corner', function () {
+    $stops = VoyageInteriors::stopsFor('sandbar', 7);
+
+    expect($stops)->toHaveCount(7);
+    expect($stops[0])->toBe(['x' => 13.0, 'y' => 81.0]);   // lower-left start stone
+    expect($stops[6])->toBe(['x' => 87.0, 'y' => 20.0]);   // top-right corner stone
 })->group('scenario:AM-01');
 
 it('spans Harbour Town\'s tuned street from the lower-left disc to the top-right corner', function () {

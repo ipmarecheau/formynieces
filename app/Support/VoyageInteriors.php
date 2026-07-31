@@ -210,6 +210,25 @@ final class VoyageInteriors
             ['x' => 85.0, 'y' => 22.0],
             ['x' => 90.0, 'y' => 10.0],
         ],
+        // Sandbar's stepping-stone arc: a single unbroken line of 12 sea-worn
+        // stones, from the lower-left corner up across the open middle of the bar
+        // and up the right edge to the top-right corner. Deliberately simple art
+        // (regenerated to drop the stray stones/branches); 12 waypoints centred
+        // on the stones (per-point high-zoom audit).
+        'sandbar' => [
+            ['x' => 13.0, 'y' => 81.0],
+            ['x' => 22.0, 'y' => 63.0],
+            ['x' => 28.0, 'y' => 51.0],
+            ['x' => 37.0, 'y' => 45.0],
+            ['x' => 46.0, 'y' => 44.0],
+            ['x' => 52.0, 'y' => 48.0],
+            ['x' => 60.0, 'y' => 52.0],
+            ['x' => 68.0, 'y' => 52.0],
+            ['x' => 75.0, 'y' => 43.0],
+            ['x' => 80.0, 'y' => 35.0],
+            ['x' => 84.0, 'y' => 27.0],
+            ['x' => 87.0, 'y' => 20.0],
+        ],
     ];
 
     /**
