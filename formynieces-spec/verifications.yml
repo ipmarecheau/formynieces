@@ -291,3 +291,28 @@
   commit: e4b2c9b
   spec_hash: 10c421aa3105
   note: "Tinker verification on dev DB (Isaac confirmed): late joiner, 15-week runway, 12 mastered; all 78 remaining modules scheduled (complete), earliest stop = this week (no past/overdue), latest stop before exam week, pace compressed from base cap 5 to 6"
+- scenario: AM-01
+  verified_at: 2026-07-31
+  commit: 7d87e04
+  spec_hash: 4bbb53c77219
+  note: "Browser /voyage: 13 painted islands along the trail; Feather Isle shows conquered count 7/7 (a count, not a percentage)"
+- scenario: AM-02
+  verified_at: 2026-07-31
+  commit: 7d87e04
+  spec_hash: 3033a3892636
+  note: "Browser /voyage: Lantern Rock open/playable (boat there) because Feather Isle fully conquered"
+- scenario: AM-03
+  verified_at: 2026-07-31
+  commit: 7d87e04
+  spec_hash: 5b20e052cd8c
+  note: "Browser /voyage: islands past Lantern Rock locked/dimmed but visible ahead; entering a locked island sails back to overworld"
+- scenario: AM-04
+  verified_at: 2026-07-31
+  commit: 7d87e04
+  spec_hash: 1d01478401e4
+  note: "Browser /voyage: tapping a playable level on an open island lands on the module lesson page (/practice/{id}/lesson)"
+- scenario: AM-06
+  verified_at: 2026-07-31
+  commit: 7d87e04
+  spec_hash: a4da725d4b84
+  note: "Browser /voyage: no percentage, pace, behind, or warning styling anywhere; only mastery states + conquered counts"
