@@ -286,3 +286,8 @@
   commit: 2364225
   spec_hash: 95d757d0efad
   note: "Guardian logged in, saw the Number Concepts reconciliation prompt, clicked Keep my stated weak areas; DB confirmed modules 1-5 reverted to not_started, control module stayed mastered, onboarding finalized and roadmap regenerated (89 targets)"
+- scenario: RR-07
+  verified_at: 2026-07-31
+  commit: e4b2c9b
+  spec_hash: 10c421aa3105
+  note: "Tinker verification on dev DB (Isaac confirmed): late joiner, 15-week runway, 12 mastered; all 78 remaining modules scheduled (complete), earliest stop = this week (no past/overdue), latest stop before exam week, pace compressed from base cap 5 to 6"
