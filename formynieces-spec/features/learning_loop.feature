@@ -56,3 +56,41 @@ Feature: Module learning loop
     When the weekly agent review runs
     Then the module's status becomes "in_review"
     And the module becomes eligible for a future weekly target
+
+  Rule: The module loop is an explicit, visible sequence of stages
+
+    Every module follows the same loop — lesson, tutorial, practice with
+    correction, and a competency check — and the student can always see where she
+    is in it. The stages are made visible and the correction is targeted to her
+    actual mistake; the mastery mechanic underneath is unchanged.
+
+    @roadmap @scenario:LL-08
+    Scenario: A loop stepper shows her current stage for every module
+      Given she has opened a module
+      When she views the module
+      Then she sees a stepper of the loop stages: lesson, tutorial, practice, check
+      And her current stage is highlighted
+      And the stepper has the same layout for every module
+
+    @roadmap @scenario:LL-09
+    Scenario: A wrong answer offers a correction targeted to her mistake
+      Given she answers a practice question incorrectly
+      When the correction is shown
+      Then it names the specific misconception behind the option she chose
+      And it shows a worked example addressing that misconception
+      And it is framed as not-yet, with no failure language
+
+    @roadmap @scenario:LL-10
+    Scenario: Failing the check offers another tutorial before she retries
+      Given she has not yet mastered the module
+      And she has just answered incorrectly at the check stage
+      When she is returned to the loop
+      Then she is offered the module's tutorial again before her next attempt
+      And taking it is optional and never scored
+
+    @roadmap @scenario:LL-11
+    Scenario: The competency check is the mastery climb, shown as its own stage
+      Given she is at the check stage of the loop
+      When she answers three distinct questions correctly in a row at the hardest rung
+      Then the module's status becomes "mastered"
+      And the check stage is marked complete on the stepper
