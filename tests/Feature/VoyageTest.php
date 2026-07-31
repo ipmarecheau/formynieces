@@ -131,6 +131,8 @@ it('serves bespoke interior art when the file exists', function () {
         ->toBe('/images/voyage/interiors/harbour-town.png');
     expect(VoyageInteriors::backgroundFor('sandbar'))
         ->toBe('/images/voyage/interiors/sandbar.png');
+    expect(VoyageInteriors::backgroundFor('sunset-palms'))
+        ->toBe('/images/voyage/interiors/sunset-palms.png');
     expect(VoyageInteriors::backgroundFor('no-such-island'))
         ->toBeNull();
 })->group('scenario:AM-01');
@@ -213,6 +215,14 @@ it('spans Lantern Rock\'s tuned trail from the dock to the lighthouse', function
     expect($stops)->toHaveCount(7);
     expect($stops[0])->toBe(['x' => 14.0, 'y' => 80.0]);   // the dock
     expect($stops[6])->toBe(['x' => 79.0, 'y' => 31.0]);   // the lighthouse
+})->group('scenario:AM-01');
+
+it('spans Sunset Palms\' tuned stepping-stone trail from the lower-left to the top-right sunset stone', function () {
+    $stops = VoyageInteriors::stopsFor('sunset-palms', 7);
+
+    expect($stops)->toHaveCount(7);
+    expect($stops[0])->toBe(['x' => 17.5, 'y' => 77.5]);   // lower-left start stone
+    expect($stops[6])->toBe(['x' => 86.0, 'y' => 27.0]);   // top-right sunset stone
 })->group('scenario:AM-01');
 
 it('404s on an island slug that does not exist', function () {

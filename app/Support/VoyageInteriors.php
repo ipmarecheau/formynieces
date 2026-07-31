@@ -229,6 +229,26 @@ final class VoyageInteriors
             ['x' => 84.0, 'y' => 27.0],
             ['x' => 87.0, 'y' => 20.0],
         ],
+        // Sunset Palms' stepping-stone serpentine: start stone (lower-left) by
+        // the hammock, across the bottom, up the left stones past the umbrella,
+        // over the top, then a scallop right along the bottom row (below the
+        // sleeping cat) and up the right-hand stones to the top-right sunset
+        // stone. 12 waypoints centred on the stones (the art paints extra
+        // decorative stones — the path threads a single line through them).
+        'sunset-palms' => [
+            ['x' => 17.5, 'y' => 77.5],
+            ['x' => 32.0, 'y' => 74.0],
+            ['x' => 42.0, 'y' => 62.0],
+            ['x' => 47.5, 'y' => 42.0],
+            ['x' => 57.5, 'y' => 50.0],
+            ['x' => 58.0, 'y' => 62.5],
+            ['x' => 65.0, 'y' => 66.0],
+            ['x' => 71.0, 'y' => 64.0],
+            ['x' => 77.5, 'y' => 60.0],
+            ['x' => 80.0, 'y' => 52.5],
+            ['x' => 77.5, 'y' => 37.5],
+            ['x' => 86.0, 'y' => 27.0],
+        ],
     ];
 
     /**
