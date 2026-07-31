@@ -281,3 +281,8 @@
   commit: 4284a13
   spec_hash: d48a481b634d
   note: "Live: on resume journey_start unchanged (2026-06-12), current_pacing_week stayed 5 (10 paused days excluded, not jumped to 7), pause span logged 07-14->07-24 (Isaac confirmed)"
+- scenario: RR-05
+  verified_at: 2026-07-31
+  commit: 2364225
+  spec_hash: 95d757d0efad
+  note: "Guardian logged in, saw the Number Concepts reconciliation prompt, clicked Keep my stated weak areas; DB confirmed modules 1-5 reverted to not_started, control module stayed mastered, onboarding finalized and roadmap regenerated (89 targets)"
