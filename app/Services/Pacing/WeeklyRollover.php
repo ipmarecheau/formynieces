@@ -149,7 +149,12 @@ class WeeklyRollover
         // the on-pace path that previously skipped save() entirely.
         $journey->save();
 
-        return $baseCap;
+        // RR-07: even when on pace, a late joiner's short runway can leave the
+        // base cap unable to fit the remaining syllabus before the exam. Compress
+        // the pace to the smallest cap that still places everything, so her
+        // journey stays complete (no stop is dropped). No warning — she is not
+        // behind, only working against a shorter calendar.
+        return max($baseCap, $neededCap);
     }
 
     /**
