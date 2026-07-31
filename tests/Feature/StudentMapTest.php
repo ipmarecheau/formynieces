@@ -1,12 +1,15 @@
 <?php
+
 // tests/Feature/StudentMapTest.php
 
+use App\Models\StudentProgress;
+use App\Models\SyllabusModule;
 use App\Models\User;
 
 it('lets an unverified student reach their own map', function () {
     $student = User::create([
         'name' => 'Aaliyah',
-        'email' => 'aaliyah-' . uniqid() . '@students.formynieces.com',
+        'email' => 'aaliyah-'.uniqid().'@students.formynieces.com',
         'password' => bcrypt('secret'),
         'role' => 'student',
         'onboarding_completed_at' => now(),
@@ -14,12 +17,12 @@ it('lets an unverified student reach their own map', function () {
     ]);
 
     $this->actingAs($student)->get(route('student.map'))->assertOk();
-})->group('scenario:AM-01');
+}); // classic /my-map access — not the voyage (AM); left untagged
 
 it('keeps the guardian dashboard behind verification', function () {
     $guardian = User::create([
         'name' => 'Parent',
-        'email' => 'parent-' . uniqid() . '@example.com',
+        'email' => 'parent-'.uniqid().'@example.com',
         'password' => bcrypt('secret'),
         'role' => 'parent',
         // unverified guardian
@@ -30,17 +33,17 @@ it('keeps the guardian dashboard behind verification', function () {
 })->group('scenario:GO-02');
 
 it('links a needs_work module to its practice page on the map', function () {
-    $student = \App\Models\User::factory()->create([
+    $student = User::factory()->create([
         'role' => 'student',
         'onboarding_completed_at' => now(),
     ]);
-    $module = \App\Models\SyllabusModule::factory()->create([
+    $module = SyllabusModule::factory()->create([
         'topic' => 'Fractions: Adding Like Denominators',
     ]);
-    \App\Models\StudentProgress::create([
+    StudentProgress::create([
         'student_id' => $student->id,
-        'module_id'  => $module->id,
-        'status'     => 'needs_work',
+        'module_id' => $module->id,
+        'status' => 'needs_work',
     ]);
 
     $this->actingAs($student)

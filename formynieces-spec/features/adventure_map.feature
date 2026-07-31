@@ -1,43 +1,44 @@
 @mvp @student
-Feature: Syllabus adventure map
-  The student's map is a playful, game-like alternative to a data dashboard —
-  never a chart of percentages and pace. It is a world of islands, one per
-  strand-family (Number Isle, Story Cove, Word Harbour, Writer's Bay), each
-  holding a chain of levels — one per syllabus module, in prerequisite order.
-  A level unlocks the moment its prerequisites are mastered, never by a
-  calendar date, so what she sees is always real, earned progress. The map is
+Feature: Syllabus adventure map — the Voyage
+  The student's map is a playful sea voyage, never a chart of percentages and
+  pace. It is a world of painted islands along a trail, each island a stretch of
+  the syllabus in curriculum order, holding a chain of levels — one per module.
+  Islands are conquered in order: an island opens once the one before it is fully
+  mastered, so what she sees is always real, earned progress. The map is
   interactive: she taps a level to play it.
 
   @scenario:AM-01
-  Scenario: The map is a world of islands, each holding a chain of levels
+  Scenario: The voyage is a trail of painted islands, each holding a chain of levels
     Given a student with a generated roadmap
-    When she opens her map
-    Then she sees one island per strand-world
-    And each island shows a chain of levels, one per module in that island,
-      ordered by the syllabus's prerequisite chain
+    When she opens her voyage
+    Then she sees the painted islands along the sea trail
+    And each island holds a chain of levels, one per module in that island,
+      in curriculum order
+    And each island shows how many of its levels she has conquered, never a percentage
 
-  Rule: A level unlocks by mastery, never by the calendar
+  Rule: An island is conquered in order, never by the calendar
 
     @scenario:AM-02
-    Scenario: A level unlocks once its prerequisites are mastered
-      Given a module whose prerequisite modules are all mastered
-      When she opens her map
-      Then that module's level is shown playable
+    Scenario: An island opens once the island before it is fully conquered
+      Given every level on the previous island is mastered
+      When she opens her voyage
+      Then the next island is shown open and playable
 
     @scenario:AM-03
-    Scenario: A level stays locked while its prerequisites are unmet
-      Given a module with an unmastered prerequisite
-      When she opens her map
-      Then that module's level is shown locked, as a silhouette
-      And she can still see it sitting on the island ahead of her
+    Scenario: An island stays locked while the one before it is unfinished
+      Given a level on the previous island is not yet mastered
+      When she opens her voyage
+      Then the next island is shown locked
+      And she can still see it further along the trail ahead of her
+      And trying to enter it sails her back to the overworld
 
   @scenario:AM-04
   Scenario: Tapping a level plays it
-    Given a playable or already-mastered level
+    Given a playable or already-mastered level on an open island
     When she taps it
     Then she is taken to play that module
 
-  @scenario:AM-05
+  @roadmap @scenario:AM-05
   Scenario: This week's suggested levels carry a star, without blocking the rest
     Given a weekly target naming specific modules
     When she opens her map
@@ -48,11 +49,11 @@ Feature: Syllabus adventure map
 
     @scenario:AM-06
     Scenario: A behind-pace student sees the same kind map
-      Given a student who is 3 weeks behind the pacing calendar
-      When she opens her map
+      Given a student who is behind the pacing calendar
+      When she opens her voyage
       Then no island or level is rendered in warning or failure styling
       And no placement weights, percentages, or pace deficits are displayed
-      And every level's state reflects only her mastery, never her pace
+      And every island's state reflects only her mastery, never her pace
 
   @roadmap @scenario:AM-07
   Scenario: The buffer switches the map to revision mode

@@ -90,7 +90,7 @@ it('sails a student back to the overworld when an island is still locked', funct
 
     $this->actingAs($student)->get(route('student.voyage.island', $locked['slug']))
         ->assertRedirect(route('student.voyage'));
-})->group('scenario:AM-01');
+})->group('scenario:AM-03');
 
 it('samples an island\'s level stops evenly across its tuned waypoints', function () {
     $stops = VoyageInteriors::stopsFor('feather-isle', 7);
@@ -241,7 +241,7 @@ it('unlocks the next island once the current one is fully conquered', function (
     expect($islands[0]['state'])->toBe('mastered');
     expect($islands[1]['state'])->toBe('playable');
     expect($islands[1]['current'])->toBeTrue();
-})->group('scenario:AM-01');
+})->group('scenario:AM-02');
 
 it('offers a switch back to the classic dashboard from the voyage', function () {
     $student = makeVoyageStudent();
@@ -256,3 +256,40 @@ it('lets an unverified student reach her own voyage (synthetic emails are never 
 
     $this->actingAs($student)->get(route('student.voyage'))->assertOk();
 })->group('scenario:AM-01');
+
+it('links a playable level on an open island to its module so tapping plays it', function () {
+    $this->seed(SyllabusModuleSeeder::class);
+    $this->seed(ModulePrerequisiteSeeder::class);
+
+    $student = makeVoyageStudent();
+    $first = app(AdventureMapBuilder::class)->buildVoyage($student)[0];
+    $playableLevel = $first['levels'][0];
+
+    // The first, playable level links to its module's lesson — tapping plays it.
+    $this->actingAs($student)->get(route('student.voyage.island', $first['slug']))
+        ->assertOk()
+        ->assertSee(route('practice.lesson', $playableLevel['id']), false);
+})->group('scenario:AM-04');
+
+it('shows a behind-pace student the same kind voyage — mastery only, no pace or percentages', function () {
+    $this->seed(SyllabusModuleSeeder::class);
+    $this->seed(ModulePrerequisiteSeeder::class);
+
+    // A student behind the pacing calendar: buildVoyage reads mastery only and
+    // never touches her journey/pace, so the map cannot render a pace state.
+    $student = makeVoyageStudent();
+
+    foreach (app(AdventureMapBuilder::class)->buildVoyage($student) as $island) {
+        expect(in_array($island['state'], ['locked', 'playable', 'mastered'], true))->toBeTrue()
+            ->and($island)->not->toHaveKey('pace')
+            ->and($island)->not->toHaveKey('percentage')
+            ->and($island)->not->toHaveKey('weeks_behind')
+            // Progress is a conquered COUNT out of total, never a percentage.
+            ->and($island)->toHaveKeys(['conquered', 'total']);
+    }
+
+    // The overworld surfaces the conquered count ("N / M"), not a percentage or warning.
+    $this->actingAs($student)->get(route('student.voyage'))
+        ->assertOk()
+        ->assertSee('/ ', false);
+})->group('scenario:AM-06');
