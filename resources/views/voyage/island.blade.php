@@ -125,6 +125,22 @@
         }
         .is-locked .vy-label { opacity: 0.6; }
 
+        /* The Writer's Log — one writing stop on every island. Amber, calm, and
+           marked "coming soon" until the writing track is built. */
+        .vy-stop.is-writing { cursor: default; }
+        .is-writing .vy-badge {
+            border-color: rgba(251, 191, 36, 0.75);
+            background: rgba(120, 66, 12, 0.72);
+            box-shadow: 0 0 14px rgba(251, 191, 36, 0.45);
+        }
+        .is-writing .vy-label { color: #fde68a; }
+        .vy-soon {
+            font-family: 'Nunito', sans-serif; font-weight: 800;
+            font-size: clamp(0.42rem, 0.85vw, 0.6rem);
+            letter-spacing: 0.06em; text-transform: uppercase;
+            color: rgba(253, 230, 138, 0.75);
+        }
+
         .vy-boat {
             position: absolute; transform: translate(-50%, -140%);
             font-size: clamp(1rem, 2.4vw, 1.8rem);
@@ -173,6 +189,16 @@
                     <span class="vy-label">{{ $level['topic'] }}</span>
                 </a>
             @endforeach
+
+            @if(isset($writingStop))
+                <div class="vy-stop is-writing"
+                     style="left: {{ $writingStop['x'] }}%; top: {{ $writingStop['y'] }}%;"
+                     title="Writer's Log — coming soon">
+                    <span class="vy-badge">✍️</span>
+                    <span class="vy-label">Writer's Log</span>
+                    <span class="vy-soon">Coming soon</span>
+                </div>
+            @endif
 
             @if(isset($stops[$currentStop]))
                 <span class="vy-boat" style="left: {{ $stops[$currentStop]['x'] }}%; top: {{ $stops[$currentStop]['y'] }}%;">⛵</span>

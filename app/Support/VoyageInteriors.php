@@ -243,6 +243,14 @@ final class VoyageInteriors
     }
 
     /**
+     * The number of stop slots reserved on every island — more than the levels
+     * in play, so future content (a writing challenge, a boss level, a revision
+     * stop) drops into an already-placed, evenly-spread slot without shuffling
+     * the levels a student already sees.
+     */
+    public const RESERVED_SLOTS = 12;
+
+    /**
      * Ordered stop coordinates for an island's $count levels: the tuned bespoke
      * layout if defined, otherwise a generated default S-curve of $count points
      * so the mini-voyage is walkable before its art is tuned.
@@ -253,35 +261,71 @@ final class VoyageInteriors
     {
         $tuned = self::STOPS[$slug] ?? [];
         if (count($tuned) >= $count && $count > 0) {
-            return self::sampleEvenly($tuned, $count);
+            return array_map(
+                fn (int $i): array => $tuned[$i],
+                self::evenIndices(count($tuned), $count),
+            );
         }
 
         return self::defaultPath($count);
     }
 
     /**
-     * Pick $count waypoints spread evenly across $waypoints, always keeping the
-     * first and last so the stops span the whole path (7 levels across 12
-     * waypoints -> the trail still runs end to end).
+     * The reserved waypoint an island's Writing stop occupies: the most central
+     * slot the $levelCount level stops leave free, so the Writer's Log sits in a
+     * gap on the trail rather than on top of a level. Every island has one — the
+     * writing strand straddles the whole voyage — even before the writing track
+     * is built (the stop renders as a calm "coming soon" marker until then).
      *
-     * @param  array<int, array{x:float, y:float}>  $waypoints
-     * @return array<int, array{x:float, y:float}>
+     * @return array{x:float, y:float}
      */
-    private static function sampleEvenly(array $waypoints, int $count): array
+    public static function writingStopFor(string $slug, int $levelCount): array
     {
-        $waypoints = array_values($waypoints);
-        $last = count($waypoints) - 1;
+        $waypoints = array_values(self::STOPS[$slug] ?? self::defaultPath(self::RESERVED_SLOTS));
+        $count = count($waypoints);
+
+        $used = self::evenIndices($count, $levelCount);
+        $reserved = array_values(array_diff(range(0, $count - 1), $used));
+
+        if ($reserved === []) {
+            return $waypoints[intdiv($count - 1, 2)];
+        }
+
+        // The reserved slot nearest the path centre — evenly placed, never
+        // clustered against the start or the end.
+        $centre = ($count - 1) / 2;
+        usort($reserved, fn (int $a, int $b): int => abs($a - $centre) <=> abs($b - $centre));
+
+        return $waypoints[$reserved[0]];
+    }
+
+    /**
+     * The waypoint indices an evenly-spread selection of $count stops occupies
+     * across $waypointCount points — always keeping the first and last so the
+     * trail spans end to end (7 levels across 12 waypoints -> the trail still
+     * runs end to end). Shared by the level sampler and the reserved-slot
+     * placement so "used" and "reserved" are always computed the same way.
+     *
+     * @return array<int, int>
+     */
+    private static function evenIndices(int $waypointCount, int $count): array
+    {
+        if ($count <= 0) {
+            return [];
+        }
+
+        $last = $waypointCount - 1;
 
         if ($count === 1) {
-            return [$waypoints[intdiv($last, 2)]];
+            return [intdiv($last, 2)];
         }
 
-        $picked = [];
+        $indices = [];
         for ($i = 0; $i < $count; $i++) {
-            $picked[] = $waypoints[(int) round($i * $last / ($count - 1))];
+            $indices[] = (int) round($i * $last / ($count - 1));
         }
 
-        return $picked;
+        return $indices;
     }
 
     /**

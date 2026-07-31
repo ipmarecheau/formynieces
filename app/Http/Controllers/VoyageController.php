@@ -61,6 +61,7 @@ final class VoyageController extends Controller
             'stops' => $stops,
             'currentStop' => $currentStop,
             'background' => VoyageInteriors::backgroundFor($current['slug']),
+            'writingStop' => VoyageInteriors::writingStopFor($current['slug'], count($current['levels'])),
         ]);
     }
 }
