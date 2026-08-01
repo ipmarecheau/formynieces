@@ -263,13 +263,26 @@ it('unlocks the next island once the current one is fully conquered', function (
     expect($islands[1]['current'])->toBeTrue();
 })->group('scenario:AM-02');
 
-it('offers a switch back to the classic dashboard from the voyage', function () {
+it('makes the island level the one door into practice, with no competing roadmap link', function () {
+    $this->seed(SyllabusModuleSeeder::class);
+    $this->seed(ModulePrerequisiteSeeder::class);
+
     $student = makeVoyageStudent();
 
+    // SH-03: the Voyage no longer surfaces the percentage roadmap as a competing
+    // way in — the switcher link is gone.
     $this->actingAs($student)->get(route('student.voyage'))
         ->assertOk()
-        ->assertSee(route('student.map'), false); // the "Dashboard" switcher link
-})->group('scenario:AM-01');
+        ->assertDontSee(route('student.map'), false);
+
+    // The one door into practice is tapping a level on the opening (playable) island.
+    $firstIsland = app(AdventureMapBuilder::class)->buildVoyage($student)[0];
+    $firstLevelId = $firstIsland['levels'][0]['id'];
+
+    $this->actingAs($student)->get(route('student.voyage.island', $firstIsland['slug']))
+        ->assertOk()
+        ->assertSee(route('practice.lesson', $firstLevelId), false);
+})->group('scenario:SH-03');
 
 it('lets an unverified student reach her own voyage (synthetic emails are never verified)', function () {
     $student = makeVoyageStudent(); // deliberately unverified

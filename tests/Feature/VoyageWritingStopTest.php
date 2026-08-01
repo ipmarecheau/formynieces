@@ -53,8 +53,9 @@ it('renders the Writer\'s Log marker on an unlocked island interior', function (
     $this->actingAs($student)->get(route('student.voyage.island', $first['slug']))
         ->assertOk()
         ->assertSee("Writer's Log", false) // static Blade text — literal apostrophe
-        ->assertSee('Coming soon')
-        ->assertSee('✍️');
+        ->assertSee('✍️')
+        ->assertSee(route('student.writing'), false) // links to the prompt (SH-05)
+        ->assertDontSee('Coming soon');              // no longer a placeholder
 });
 
 it('spreads used stops across the whole trail rather than clustering them', function () {

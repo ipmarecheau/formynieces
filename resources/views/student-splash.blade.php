@@ -174,8 +174,8 @@
             @endif
         </div>
 
-        <a href="{{ route('student.map') }}" class="fmn-splash-continue">
-            Continue to my map →
+        <a href="{{ route('student.voyage') }}" class="fmn-splash-continue">
+            Continue to my voyage →
         </a>
         <span class="fmn-splash-hint">Keep the streak alive today! 🌟</span>
 

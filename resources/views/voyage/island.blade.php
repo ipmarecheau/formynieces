@@ -125,15 +125,23 @@
         }
         .is-locked .vy-label { opacity: 0.6; }
 
-        /* The Writer's Log — one writing stop on every island. Amber, calm, and
-           marked "coming soon" until the writing track is built. */
-        .vy-stop.is-writing { cursor: default; }
+        /* The Writer's Log — one writing stop on every island. Amber and calm;
+           links to this week's writing prompt (WR-01/SH-05). */
+        .vy-stop.is-writing { cursor: pointer; }
         .is-writing .vy-badge {
             border-color: rgba(251, 191, 36, 0.75);
             background: rgba(120, 66, 12, 0.72);
             box-shadow: 0 0 14px rgba(251, 191, 36, 0.45);
         }
         .is-writing .vy-label { color: #fde68a; }
+        /* SH-02: this week's levels shimmer with a gold ring + banner. */
+        .vy-stop.is-thisweek .vy-badge { box-shadow: 0 0 0 4px rgba(253,224,71,0.9), 0 0 22px rgba(253,224,71,0.75); }
+        .vy-stop.is-thisweek .vy-thisweek {
+            position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+            font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.62rem; white-space: nowrap;
+            background: #fde047; color: #78350f; padding: 2px 9px; border-radius: 999px;
+            box-shadow: 0 2px 8px rgba(120,53,15,0.35);
+        }
         .vy-soon {
             font-family: 'Nunito', sans-serif; font-weight: 800;
             font-size: clamp(0.42rem, 0.85vw, 0.6rem);
@@ -181,23 +189,25 @@
                         default => '🔒',
                     };
                 @endphp
+                @php $isThisWeek = in_array($level['id'], $thisWeekModuleIds ?? [], true); @endphp
                 <a href="{{ $state === 'locked' ? '#' : route('practice.lesson', $level['id']) }}"
-                   class="vy-stop is-{{ $state }}"
+                   class="vy-stop is-{{ $state }} {{ $isThisWeek ? 'is-thisweek' : '' }}"
                    style="left: {{ $stop['x'] }}%; top: {{ $stop['y'] }}%;"
-                   title="{{ $level['topic'] }}">
+                   title="{{ $level['topic'] }}{{ $isThisWeek ? ' — this week' : '' }}">
                     <span class="vy-badge">{{ $badge }}</span>
                     <span class="vy-label">{{ $level['topic'] }}</span>
+                    @if($isThisWeek)<span class="vy-thisweek">This week</span>@endif
                 </a>
             @endforeach
 
             @if(isset($writingStop))
-                <div class="vy-stop is-writing"
-                     style="left: {{ $writingStop['x'] }}%; top: {{ $writingStop['y'] }}%;"
-                     title="Writer's Log — coming soon">
+                <a href="{{ route('student.writing') }}"
+                   class="vy-stop is-writing"
+                   style="left: {{ $writingStop['x'] }}%; top: {{ $writingStop['y'] }}%;"
+                   title="Writer's Log — this week's writing prompt">
                     <span class="vy-badge">✍️</span>
                     <span class="vy-label">Writer's Log</span>
-                    <span class="vy-soon">Coming soon</span>
-                </div>
+                </a>
             @endif
 
             @if(isset($stops[$currentStop]))

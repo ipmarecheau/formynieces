@@ -35,8 +35,8 @@ it('shows the streak splash celebrating streaks with a continue link to the map'
     $this->actingAs($student)
         ->get(route('student.splash'))
         ->assertOk()
-        ->assertSeeText('5 day practice streak')  // celebrates her current streaks
-        ->assertSee(route('student.map'));         // can continue to her learning map
+        ->assertSeeText('5 day practice streak')   // celebrates her current streaks
+        ->assertSee(route('student.voyage'));      // continues on to her Voyage (SH-06)
 })->group('scenario:ML-07');
 
 // Note: every login creates a 'login' streak (ML-04 hook fires during authentication),

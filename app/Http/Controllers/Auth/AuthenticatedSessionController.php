@@ -82,7 +82,8 @@ class AuthenticatedSessionController extends Controller
         }
 
         // An onboarded student lands on a streak-celebration splash when she has
-        // at least one active streak, otherwise she goes straight to her map.
+        // at least one active streak, otherwise she goes straight to her Voyage —
+        // her one home (SH-01). The splash then flows on to the Voyage too (SH-06).
         if ($user->isStudent()) {
             $hasActiveStreak = StudentStreak::where('student_id', $user->id)
                 ->where('count', '>', 0)
@@ -90,7 +91,7 @@ class AuthenticatedSessionController extends Controller
 
             return $hasActiveStreak
                 ? route('student.splash')
-                : route('student.map');
+                : route('student.voyage');
         }
 
         return route('dashboard');

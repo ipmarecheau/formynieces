@@ -59,6 +59,20 @@
         }
         .vy-switch:hover, .vy-logout:hover { background: rgba(255,255,255,0.18); }
         .vy-logout { border: none; }
+        .vy-streak {
+            font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.82rem;
+            padding: 8px 16px; border-radius: 999px; color: #fff7ed;
+            background: linear-gradient(135deg, rgba(249,115,22,0.85), rgba(219,39,119,0.85));
+            box-shadow: 0 4px 12px rgba(219,39,119,0.35);
+        }
+        /* SH-02: this week's islands shimmer with a gold ring + banner. */
+        .vy-island.is-thisweek .vy-badge { box-shadow: 0 0 0 4px rgba(253,224,71,0.9), 0 0 22px rgba(253,224,71,0.75); }
+        .vy-thisweek {
+            position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+            font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.66rem; white-space: nowrap;
+            background: #fde047; color: #78350f; padding: 2px 10px; border-radius: 999px;
+            box-shadow: 0 2px 8px rgba(120,53,15,0.35);
+        }
 
         .vy-wrap { max-width: 1200px; margin: 0 auto; padding: 24px 16px 48px; }
         .vy-title {
@@ -146,7 +160,12 @@
     <nav class="vy-nav">
         <span class="vy-brand">⛵ Your Voyage</span>
         <div class="vy-nav-right">
-            <a href="{{ route('student.map') }}" class="vy-switch">📊 Dashboard</a>
+            {{-- SH-04: her streak rides along the top of her home. --}}
+            @if(($streaks['practice'] ?? 0) > 0)
+                <span class="vy-streak" title="Practice day streak">🔥 {{ $streaks['practice'] }} day streak</span>
+            @elseif(($streaks['login'] ?? 0) > 0)
+                <span class="vy-streak" title="Login day streak">🔥 {{ $streaks['login'] }} day streak</span>
+            @endif
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <button type="submit" class="vy-logout">Log out</button>
@@ -169,13 +188,16 @@
                     $done = $island['total'] > 0 && $island['conquered'] === $island['total'];
                 @endphp
                 <a href="{{ $island['state'] === 'locked' ? '#' : route('student.voyage.island', $island['slug']) }}"
-                   class="vy-island is-{{ $island['state'] }} {{ $island['current'] ? 'is-current' : '' }}"
+                   class="vy-island is-{{ $island['state'] }} {{ $island['current'] ? 'is-current' : '' }} {{ ($island['this_week'] ?? false) ? 'is-thisweek' : '' }}"
                    style="left: {{ $island['x'] }}%; top: {{ $island['y'] }}%;"
                    data-island-slug="{{ $island['slug'] }}"
                    title="{{ $island['name'] }}">
                     <span class="vy-badge">{{ $island['state'] === 'locked' ? '🔒' : $island['icon'] }}</span>
                     <span class="vy-label">{{ $island['name'] }}</span>
                     <span class="vy-count {{ $done ? 'vy-count-done' : '' }}">{{ $island['conquered'] }} / {{ $island['total'] }}</span>
+                    @if($island['this_week'] ?? false)
+                        <span class="vy-thisweek">This week</span>
+                    @endif
                 </a>
             @endforeach
 
