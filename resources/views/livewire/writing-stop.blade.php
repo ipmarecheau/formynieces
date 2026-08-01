@@ -92,9 +92,9 @@
                 <textarea id="wl-body" class="wl-textarea" wire:model="body"
                           placeholder="Start writing your response here…"></textarea>
                 @error('body') <div class="wl-error">{{ $message }}</div> @enderror
-                <button type="button" class="wl-btn" wire:click="submit" wire:loading.attr="disabled">
+                <button type="button" class="wl-btn" wire:click="submit" wire:target="submit" wire:loading.attr="disabled">
                     <span wire:loading.remove wire:target="submit">Send it in</span>
-                    <span wire:loading wire:target="submit">Reading your writing…</span>
+                    <span wire:loading wire:target="submit" style="display: none;">Reading your writing…</span>
                 </button>
             </div>
         @endif
