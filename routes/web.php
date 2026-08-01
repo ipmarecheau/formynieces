@@ -11,6 +11,7 @@ use App\Livewire\GuardianDashboard;
 use App\Livewire\GuardianProgress;
 use App\Livewire\LessonWalk;
 use App\Livewire\PracticeWalk;
+use App\Livewire\WritingStop;
 use App\Services\Diagnostic\DiagnosticReconciliation;
 use App\Services\Diagnostic\SessionLifecycle;
 use Illuminate\Support\Facades\Route;
@@ -95,6 +96,11 @@ Route::middleware('auth')->group(function () {
     // Tier 2 — an island's own mini-voyage: a walkable interior path of levels.
     Route::get('/voyage/{island}', [VoyageController::class, 'island'])
         ->name('student.voyage.island');
+
+    // The Writer's Log — the parallel writing track's home, reached from the
+    // Writer's Log stop on any island. [WR-01/02/03]
+    Route::get('/writing', WritingStop::class)
+        ->name('student.writing');
 
     // Streak-celebration splash shown after login to students with active streaks.
     Route::get('/welcome-back', [DashboardController::class, 'studentSplash'])
