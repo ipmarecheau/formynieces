@@ -249,6 +249,26 @@ final class VoyageInteriors
             ['x' => 77.5, 'y' => 37.5],
             ['x' => 86.0, 'y' => 27.0],
         ],
+        // Crystal Peak's gem-disc horseshoe (the FINAL island, 6 levels): start
+        // disc (lower-left) by the amethyst geodes, up and across the bottom of
+        // the cavern, up the right wall, then back left across the top row of
+        // discs toward the sea opening. 12 waypoints centred on the polished
+        // crystal discs (the cavern paints extra discs + a sleeping dragon and
+        // geodes — all scenery; the path threads one line through the discs).
+        'crystal-peak' => [
+            ['x' => 10.0, 'y' => 90.0],
+            ['x' => 18.0, 'y' => 66.0],
+            ['x' => 35.0, 'y' => 55.0],
+            ['x' => 48.0, 'y' => 70.0],
+            ['x' => 57.5, 'y' => 80.0],
+            ['x' => 67.5, 'y' => 84.0],
+            ['x' => 77.5, 'y' => 79.0],
+            ['x' => 82.5, 'y' => 67.5],
+            ['x' => 82.5, 'y' => 47.5],
+            ['x' => 78.0, 'y' => 38.0],
+            ['x' => 61.0, 'y' => 33.5],
+            ['x' => 53.0, 'y' => 27.5],
+        ],
     ];
 
     /**

@@ -133,6 +133,8 @@ it('serves bespoke interior art when the file exists', function () {
         ->toBe('/images/voyage/interiors/sandbar.png');
     expect(VoyageInteriors::backgroundFor('sunset-palms'))
         ->toBe('/images/voyage/interiors/sunset-palms.png');
+    expect(VoyageInteriors::backgroundFor('crystal-peak'))
+        ->toBe('/images/voyage/interiors/crystal-peak.png');
     expect(VoyageInteriors::backgroundFor('no-such-island'))
         ->toBeNull();
 })->group('scenario:AM-01');
@@ -223,6 +225,14 @@ it('spans Sunset Palms\' tuned stepping-stone trail from the lower-left to the t
     expect($stops)->toHaveCount(7);
     expect($stops[0])->toBe(['x' => 17.5, 'y' => 77.5]);   // lower-left start stone
     expect($stops[6])->toBe(['x' => 86.0, 'y' => 27.0]);   // top-right sunset stone
+})->group('scenario:AM-01');
+
+it('spans Crystal Peak\'s tuned gem-disc horseshoe from the lower-left to the top sea opening', function () {
+    $stops = VoyageInteriors::stopsFor('crystal-peak', 6);
+
+    expect($stops)->toHaveCount(6);
+    expect($stops[0])->toBe(['x' => 10.0, 'y' => 90.0]);   // lower-left start disc
+    expect($stops[5])->toBe(['x' => 53.0, 'y' => 27.5]);   // top disc by the sea opening
 })->group('scenario:AM-01');
 
 it('404s on an island slug that does not exist', function () {
