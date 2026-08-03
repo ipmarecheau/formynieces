@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ $title ?? 'Your Expedition — ForMyNieces' }}</title>
+    <title>{{ $title ?? 'Your Expedition — SmoothSeas' }}</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -16,13 +16,13 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
-            --purple: #9333ea;
-            --pink:   #db2777;
-            --bg:     #0f0720;
-            --card:   #1a0d30;
-            --border: rgba(147,51,234,0.35);
-            --text:   #f3e8ff;
-            --muted:  #c4b5fd;
+            --purple: #0e7490;
+            --pink:   #f6b71e;
+            --bg:     #06182e;
+            --card:   #0c2440;
+            --border: rgba(34,211,238,0.35);
+            --text:   #e6f2fb;
+            --muted:  #93b2cc;
             --teal:   #0d9488;
         }
 
@@ -35,7 +35,7 @@
             position: relative;
         }
 
-        .dx-stars { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+        .dx-stars { display: none; position: fixed; inset: 0; pointer-events: none; z-index: 0; }
         .dx-star {
             position: absolute; background: white; border-radius: 50%;
             animation: dx-twinkle var(--d, 3s) ease-in-out infinite var(--delay, 0s);
@@ -45,8 +45,8 @@
             50%      { opacity: 0.9;  transform: scale(1.4); }
         }
         .dx-orb { position: fixed; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: 0; }
-        .dx-orb-1 { width: 400px; height: 400px; background: rgba(147,51,234,0.22); top: -100px; left: -100px; }
-        .dx-orb-2 { width: 300px; height: 300px; background: rgba(219,39,119,0.18);  bottom: -80px; right: -80px; }
+        .dx-orb-1 { width: 400px; height: 400px; background: rgba(34,211,238,0.22); top: -100px; left: -100px; }
+        .dx-orb-2 { width: 300px; height: 300px; background: rgba(246,183,30,0.18);  bottom: -80px; right: -80px; }
         .dx-orb-3 { width: 280px; height: 280px; background: rgba(13,148,136,0.14); top: 45%; left: 60%; }
 
         .dx-content { position: relative; z-index: 1; }

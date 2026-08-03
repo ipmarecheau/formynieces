@@ -29,7 +29,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Voyage — ForMyNieces</title>
+    <title>Your Voyage — SmoothSeas</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -38,7 +38,7 @@
         body {
             font-family: 'Nunito', sans-serif;
             min-height: 100vh;
-            color: #f3e8ff;
+            color: #e6f2fb;
             background: linear-gradient(180deg, #1b2a6b 0%, #223a8c 30%, #1f5fa8 70%, #1a7fb0 100%);
         }
 
@@ -49,12 +49,12 @@
             backdrop-filter: blur(8px);
             position: sticky; top: 0; z-index: 10;
         }
-        .vy-brand { font-family: 'Fredoka One', cursive; font-size: 1.3rem; color: #f3e8ff; }
+        .vy-brand { font-family: 'Fredoka One', cursive; font-size: 1.3rem; color: #e6f2fb; }
         .vy-nav-right { display: flex; align-items: center; gap: 10px; }
         .vy-switch, .vy-logout {
             font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.82rem;
             padding: 8px 16px; border-radius: 999px; cursor: pointer; text-decoration: none;
-            border: 1.5px solid rgba(255,255,255,0.35); color: #f3e8ff;
+            border: 1.5px solid rgba(255,255,255,0.35); color: #e6f2fb;
             background: rgba(255,255,255,0.08);
         }
         .vy-switch:hover, .vy-logout:hover { background: rgba(255,255,255,0.18); }
@@ -62,8 +62,8 @@
         .vy-streak {
             font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.82rem;
             padding: 8px 16px; border-radius: 999px; color: #fff7ed;
-            background: linear-gradient(135deg, rgba(249,115,22,0.85), rgba(219,39,119,0.85));
-            box-shadow: 0 4px 12px rgba(219,39,119,0.35);
+            background: linear-gradient(135deg, rgba(249,115,22,0.85), rgba(246,183,30,0.85));
+            box-shadow: 0 4px 12px rgba(246,183,30,0.35);
         }
         /* SH-02: this week's islands shimmer with a gold ring + banner. */
         .vy-island.is-thisweek .vy-badge { box-shadow: 0 0 0 4px rgba(253,224,71,0.9), 0 0 22px rgba(253,224,71,0.75); }

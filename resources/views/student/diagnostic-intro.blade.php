@@ -4,20 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Expedition Awaits — ForMyNieces</title>
+    <title>Your Expedition Awaits — SmoothSeas</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
-            --purple: #9333ea;
-            --pink:   #db2777;
-            --bg:     #0f0720;
-            --card:   #1a0d30;
-            --border: rgba(147,51,234,0.35);
-            --text:   #f3e8ff;
-            --muted:  #c4b5fd;
+            --purple: #0e7490;
+            --pink:   #f6b71e;
+            --bg:     #06182e;
+            --card:   #0c2440;
+            --border: rgba(34,211,238,0.35);
+            --text:   #e6f2fb;
+            --muted:  #93b2cc;
             --teal:   #0d9488;
         }
 
@@ -34,7 +34,7 @@
             padding: 24px 0;
         }
 
-        .stars { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+        .stars { display: none; position: fixed; inset: 0; pointer-events: none; z-index: 0; }
         .star {
             position: absolute; background: white; border-radius: 50%;
             animation: twinkle var(--d, 3s) ease-in-out infinite var(--delay, 0s);
@@ -44,8 +44,8 @@
             50%      { opacity: 0.9;  transform: scale(1.4); }
         }
         .orb { position: fixed; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: 0; }
-        .orb-1 { width: 400px; height: 400px; background: rgba(147,51,234,0.25); top: -100px; left: -100px; }
-        .orb-2 { width: 300px; height: 300px; background: rgba(219,39,119,0.2);  bottom: -80px; right: -80px; }
+        .orb-1 { width: 400px; height: 400px; background: rgba(34,211,238,0.25); top: -100px; left: -100px; }
+        .orb-2 { width: 300px; height: 300px; background: rgba(246,183,30,0.2);  bottom: -80px; right: -80px; }
         .orb-3 { width: 280px; height: 280px; background: rgba(13,148,136,0.16); top: 45%; left: 60%; }
 
         .card {
@@ -70,7 +70,7 @@
             border-radius: 22px;
             display: inline-flex; align-items: center; justify-content: center;
             font-size: 36px; margin-bottom: 20px;
-            box-shadow: 0 0 36px rgba(147,51,234,0.5);
+            box-shadow: 0 0 36px rgba(34,211,238,0.5);
             animation: bob 4s ease-in-out infinite;
         }
         @keyframes bob {
@@ -88,7 +88,7 @@
             font-family: 'Fredoka One', cursive;
             font-size: clamp(28px, 7vw, 40px);
             line-height: 1.15;
-            background: linear-gradient(135deg, #e9d5ff 0%, #f472b6 60%, #fde68a 100%);
+            background: linear-gradient(135deg, #cbe4f0 0%, #fcd34d 60%, #fde68a 100%);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 18px;
@@ -110,8 +110,8 @@
             font-size: 13px; font-weight: 700;
         }
         .island-1 { background: rgba(13,148,136,.18);  border: 1.5px solid rgba(13,148,136,.45); color: #5eead4; }
-        .island-2 { background: rgba(219,39,119,.16);  border: 1.5px solid rgba(219,39,119,.45); color: #f472b6; }
-        .island-3 { background: rgba(147,51,234,.18);  border: 1.5px solid rgba(147,51,234,.45); color: #c084fc; }
+        .island-2 { background: rgba(246,183,30,.16);  border: 1.5px solid rgba(246,183,30,.45); color: #fcd34d; }
+        .island-3 { background: rgba(34,211,238,.18);  border: 1.5px solid rgba(34,211,238,.45); color: #67e8f9; }
 
         .reassure {
             font-size: 14px; line-height: 1.65;
@@ -126,7 +126,7 @@
             padding: 16px 40px;
             color: white; font-family: 'Fredoka One', cursive; font-size: 18px;
             cursor: pointer; letter-spacing: 0.03em; text-decoration: none;
-            box-shadow: 0 0 32px rgba(147,51,234,0.45);
+            box-shadow: 0 0 32px rgba(34,211,238,0.45);
             transition: opacity 0.2s, transform 0.1s;
         }
         .btn-sail:hover  { opacity: 0.92; }

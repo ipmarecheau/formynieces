@@ -3,25 +3,25 @@
         .gd-header { margin-bottom: 1.5rem; }
         .gd-title {
             font-family: 'Fredoka One', cursive;
-            font-size: 1.5rem; color: #7c3aed; margin: 0 0 0.25rem;
+            font-size: 1.5rem; color: #0e7490; margin: 0 0 0.25rem;
         }
         .gd-subtitle { font-size: 0.9rem; color: #9ca3af; margin: 0; font-weight: 700; }
         .gd-card {
-            background: white; border: 1.5px solid #f3e8ff;
+            background: white; border: 1.5px solid #e6f2fb;
             border-radius: 18px; padding: 1.1rem 1.25rem; margin-bottom: 1rem;
         }
         .gd-eyebrow {
-            font-size: 0.68rem; font-weight: 800; color: #c4b5fd;
+            font-size: 0.68rem; font-weight: 800; color: #93b2cc;
             text-transform: uppercase; letter-spacing: 0.07em; margin: 0 0 0.6rem;
         }
-        .gd-subject { font-family: 'Fredoka One', cursive; font-size: 1.1rem; color: #7c3aed; margin: 0 0 0.9rem; }
+        .gd-subject { font-family: 'Fredoka One', cursive; font-size: 1.1rem; color: #0e7490; margin: 0 0 0.9rem; }
         .gd-bucket { margin-bottom: 0.9rem; }
         .gd-bucket:last-child { margin-bottom: 0; }
         .gd-bucket-name {
             font-size: 0.8rem; font-weight: 800; color: #374151;
             margin: 0 0 0.35rem; display: flex; align-items: baseline; gap: 8px;
         }
-        .gd-bucket-count { font-size: 0.72rem; font-weight: 700; color: #c4b5fd; }
+        .gd-bucket-count { font-size: 0.72rem; font-weight: 700; color: #93b2cc; }
         .gd-mod-list { list-style: none; margin: 0; padding: 0; }
         .gd-mod {
             font-size: 0.82rem; color: #4b5563; padding: 3px 0;

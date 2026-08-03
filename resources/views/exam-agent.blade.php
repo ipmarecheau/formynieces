@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Exam Agent ✨ — ForMyNieces</title>
+    <title>Exam Agent ✨ — SmoothSeas</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fredoka+One&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
@@ -11,24 +11,24 @@
 
     <style>
         *, *::before, *::after { box-sizing: border-box; }
-        body { font-family: 'Nunito', sans-serif; background: #fdf4ff; margin: 0; min-height: 100vh; }
+        body { font-family: 'Nunito', sans-serif; background: #eff6ff; margin: 0; min-height: 100vh; }
 
         /* NAV */
-        .fmn-nav { background: rgba(255,255,255,0.92); backdrop-filter: blur(10px); border-bottom: 1.5px solid #f3e8ff; padding: 0 1rem; height: 58px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
-        .fmn-nav-brand { font-family: 'Fredoka One', cursive; font-size: 1.4rem; color: #9333ea; text-decoration: none; }
+        .fmn-nav { background: rgba(255,255,255,0.92); backdrop-filter: blur(10px); border-bottom: 1.5px solid #e6f2fb; padding: 0 1rem; height: 58px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+        .fmn-nav-brand { font-family: 'Fredoka One', cursive; font-size: 1.4rem; color: #0e7490; text-decoration: none; }
         .fmn-nav-right { display: flex; align-items: center; gap: 10px; }
         @media (max-width: 480px) { .fmn-nav-greeting { display: none; } }
-        .fmn-nav-greeting { font-size: 0.85rem; font-weight: 700; color: #a78bfa; }
+        .fmn-nav-greeting { font-size: 0.85rem; font-weight: 700; color: #93b2cc; }
 
         /* PAGE */
         .fmn-page { max-width: 860px; margin: 0 auto; padding: 1.25rem 1rem 3rem; }
 
         /* BUTTONS */
         .fmn-btn { display: inline-flex; align-items: center; gap: 6px; padding: 9px 20px; border-radius: 999px; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.85rem; cursor: pointer; border: none; transition: transform 0.15s, box-shadow 0.15s; text-decoration: none; }
-        .fmn-btn-primary { background: linear-gradient(135deg, #a855f7, #ec4899); color: white; }
-        .fmn-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(168,85,247,0.35); }
-        .fmn-btn-ghost { background: white; color: #9333ea; border: 1.5px solid #e9d5ff; }
-        .fmn-btn-ghost:hover { background: #fdf4ff; }
+        .fmn-btn-primary { background: linear-gradient(135deg, #22d3ee, #f59e0b); color: white; }
+        .fmn-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(34,211,238,0.35); }
+        .fmn-btn-ghost { background: white; color: #0e7490; border: 1.5px solid #cbe4f0; }
+        .fmn-btn-ghost:hover { background: #eff6ff; }
         .fmn-btn-sm { padding: 7px 16px; font-size: 0.8rem; }
         .fmn-btn-success { background: linear-gradient(135deg, #059669, #34d399); color: white; }
 
@@ -38,32 +38,32 @@
         .hero-on-track { background: linear-gradient(135deg, #059669, #34d399); }
         .hero-slight { background: linear-gradient(135deg, #d97706, #fbbf24); }
         .hero-at-risk { background: linear-gradient(135deg, #dc2626, #f87171); }
-        .hero-revision { background: linear-gradient(135deg, #7c3aed, #a78bfa); }
+        .hero-revision { background: linear-gradient(135deg, #0e7490, #93b2cc); }
         .fmn-hero-title { font-family: 'Fredoka One', cursive; font-size: 1.6rem; margin: 0 0 0.25rem; }
         .fmn-hero-sub { font-size: 0.88rem; opacity: 0.92; margin: 0 0 1rem; line-height: 1.5; }
         .fmn-chips { display: flex; gap: 10px; flex-wrap: wrap; }
         .fmn-chip { background: rgba(255,255,255,0.22); border: 1.5px solid rgba(255,255,255,0.35); border-radius: 999px; padding: 5px 14px; font-size: 0.8rem; font-weight: 800; color: white; }
 
         /* SECTION TITLE */
-        .fmn-section-title { font-family: 'Fredoka One', cursive; font-size: 1.15rem; color: #7c3aed; display: flex; align-items: center; gap: 7px; margin: 1.5rem 0 0.85rem; }
+        .fmn-section-title { font-family: 'Fredoka One', cursive; font-size: 1.15rem; color: #0e7490; display: flex; align-items: center; gap: 7px; margin: 1.5rem 0 0.85rem; }
 
         /* CARDS */
-        .fmn-card { background: white; border: 1.5px solid #f3e8ff; border-radius: 18px; padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
+        .fmn-card { background: white; border: 1.5px solid #e6f2fb; border-radius: 18px; padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
 
         /* CHART SECTION */
-        .fmn-chart-card { background: white; border: 1.5px solid #f3e8ff; border-radius: 18px; padding: 1.25rem; margin-bottom: 1rem; }
+        .fmn-chart-card { background: white; border: 1.5px solid #e6f2fb; border-radius: 18px; padding: 1.25rem; margin-bottom: 1rem; }
         .fmn-chart-tabs { display: flex; gap: 8px; margin-bottom: 1rem; flex-wrap: wrap; }
-        .fmn-chart-tab { padding: 6px 16px; border-radius: 999px; font-size: 0.8rem; font-weight: 800; cursor: pointer; border: 1.5px solid #e9d5ff; background: white; color: #7c3aed; transition: all 0.18s; }
-        .fmn-chart-tab.active { background: linear-gradient(135deg, #9333ea, #db2777); color: white; border-color: transparent; }
+        .fmn-chart-tab { padding: 6px 16px; border-radius: 999px; font-size: 0.8rem; font-weight: 800; cursor: pointer; border: 1.5px solid #cbe4f0; background: white; color: #0e7490; transition: all 0.18s; }
+        .fmn-chart-tab.active { background: linear-gradient(135deg, #0e7490, #f6b71e); color: white; border-color: transparent; }
         .fmn-chart-tab.active-math { background: linear-gradient(135deg, #059669, #34d399); color: white; border-color: transparent; }
-        .fmn-chart-tab.active-editing { background: linear-gradient(135deg, #db2777, #f472b6); color: white; border-color: transparent; }
-        .fmn-chart-tab.active-comp { background: linear-gradient(135deg, #7c3aed, #a78bfa); color: white; border-color: transparent; }
+        .fmn-chart-tab.active-editing { background: linear-gradient(135deg, #f6b71e, #fcd34d); color: white; border-color: transparent; }
+        .fmn-chart-tab.active-comp { background: linear-gradient(135deg, #0e7490, #93b2cc); color: white; border-color: transparent; }
         .fmn-chart-wrap { position: relative; height: 260px; }
 
         /* THERMOMETERS */
         .fmn-thermo-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 1rem; }
         @media (max-width: 480px) { .fmn-thermo-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-        .fmn-thermo-card { background: white; border: 1.5px solid #f3e8ff; border-radius: 16px; padding: 1rem 0.75rem; text-align: center; }
+        .fmn-thermo-card { background: white; border: 1.5px solid #e6f2fb; border-radius: 16px; padding: 1rem 0.75rem; text-align: center; }
         .fmn-thermo-label { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: #9ca3af; margin-bottom: 10px; }
         .fmn-thermo-wrap { display: flex; flex-direction: column; align-items: center; gap: 8px; }
         .fmn-thermo-svg { width: 36px; }
@@ -78,51 +78,51 @@
 
         /* AI SUMMARY TABS */
         .fmn-summary-tabs { display: flex; gap: 8px; margin-bottom: 1rem; }
-        .fmn-summary-tab { padding: 7px 18px; border-radius: 999px; font-size: 0.82rem; font-weight: 800; cursor: pointer; border: 1.5px solid #e9d5ff; background: white; color: #7c3aed; transition: all 0.18s; }
-        .fmn-summary-tab.active { background: linear-gradient(135deg, #9333ea, #db2777); color: white; border-color: transparent; }
+        .fmn-summary-tab { padding: 7px 18px; border-radius: 999px; font-size: 0.82rem; font-weight: 800; cursor: pointer; border: 1.5px solid #cbe4f0; background: white; color: #0e7490; transition: all 0.18s; }
+        .fmn-summary-tab.active { background: linear-gradient(135deg, #0e7490, #f6b71e); color: white; border-color: transparent; }
         .fmn-summary-content { display: none; }
         .fmn-summary-content.active { display: block; }
         .fmn-summary-text { font-size: 0.9rem; line-height: 1.75; color: #374151; }
-        .fmn-summary-loading { display: flex; align-items: center; gap: 10px; color: #a78bfa; font-weight: 700; font-size: 0.88rem; padding: 1rem 0; }
-        .fmn-spinner { width: 20px; height: 20px; border: 2.5px solid #e9d5ff; border-top-color: #9333ea; border-radius: 50%; animation: spin 0.8s linear infinite; }
+        .fmn-summary-loading { display: flex; align-items: center; gap: 10px; color: #93b2cc; font-weight: 700; font-size: 0.88rem; padding: 1rem 0; }
+        .fmn-spinner { width: 20px; height: 20px; border: 2.5px solid #cbe4f0; border-top-color: #0e7490; border-radius: 50%; animation: spin 0.8s linear infinite; }
         @keyframes spin { to { transform: rotate(360deg); } }
 
         /* TIMETABLE */
         .fmn-timetable { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; margin-bottom: 1rem; }
         @media (max-width: 600px) { .fmn-timetable { grid-template-columns: 1fr; } }
-        .fmn-tt-day { background: white; border: 1.5px solid #f3e8ff; border-radius: 14px; padding: 0.85rem 0.75rem; }
-        .fmn-tt-day-name { font-family: 'Fredoka One', cursive; font-size: 0.9rem; color: #9333ea; margin-bottom: 8px; }
+        .fmn-tt-day { background: white; border: 1.5px solid #e6f2fb; border-radius: 14px; padding: 0.85rem 0.75rem; }
+        .fmn-tt-day-name { font-family: 'Fredoka One', cursive; font-size: 0.9rem; color: #0e7490; margin-bottom: 8px; }
         .fmn-tt-item { font-size: 0.72rem; font-weight: 700; padding: 4px 8px; border-radius: 8px; margin-bottom: 5px; line-height: 1.3; }
         .tt-math { background: #d1fae5; color: #065f46; }
         .tt-editing { background: #fce7f3; color: #9d174d; }
-        .tt-comp { background: #ede9fe; color: #4c1d95; }
+        .tt-comp { background: #dbeafe; color: #4c1d95; }
         .tt-revision { background: #fef3c7; color: #92400e; }
 
         /* TOPIC GRID */
         .fmn-topic-filters { display: flex; gap: 8px; margin-bottom: 1rem; flex-wrap: wrap; }
-        .fmn-filter-btn { padding: 6px 14px; border-radius: 999px; font-size: 0.78rem; font-weight: 800; cursor: pointer; border: 1.5px solid #e9d5ff; background: white; color: #7c3aed; transition: all 0.18s; }
-        .fmn-filter-btn.active { background: linear-gradient(135deg, #9333ea, #db2777); color: white; border-color: transparent; }
+        .fmn-filter-btn { padding: 6px 14px; border-radius: 999px; font-size: 0.78rem; font-weight: 800; cursor: pointer; border: 1.5px solid #cbe4f0; background: white; color: #0e7490; transition: all 0.18s; }
+        .fmn-filter-btn.active { background: linear-gradient(135deg, #0e7490, #f6b71e); color: white; border-color: transparent; }
 
         .fmn-topic-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
         @media (min-width: 640px) { .fmn-topic-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
         @media (min-width: 860px) { .fmn-topic-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 
-        .fmn-topic-tile { background: white; border: 1.5px solid #f3e8ff; border-radius: 12px; padding: 0.75rem; cursor: pointer; transition: all 0.15s; position: relative; }
-        .fmn-topic-tile:hover { border-color: #c4b5fd; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(147,51,234,0.12); }
+        .fmn-topic-tile { background: white; border: 1.5px solid #e6f2fb; border-radius: 12px; padding: 0.75rem; cursor: pointer; transition: all 0.15s; position: relative; }
+        .fmn-topic-tile:hover { border-color: #93b2cc; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(34,211,238,0.12); }
         .fmn-topic-tile.mastered { border-color: #a7f3d0; }
         .fmn-topic-tile.diagnostic { border-color: #ddd6fe; }
         .fmn-topic-tile.not-started { opacity: 0.7; }
         .fmn-tile-subject { font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
         .tile-math { color: #059669; }
-        .tile-editing { color: #db2777; }
-        .tile-comp { color: #7c3aed; }
+        .tile-editing { color: #f6b71e; }
+        .tile-comp { color: #0e7490; }
         .fmn-tile-topic { font-size: 0.75rem; font-weight: 700; color: #1f2937; line-height: 1.3; margin-bottom: 6px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
         .fmn-tile-score { font-size: 0.7rem; font-weight: 800; }
         .score-good { color: #059669; }
         .score-mid { color: #d97706; }
         .score-low { color: #dc2626; }
         .score-none { color: #9ca3af; }
-        .fmn-tile-week { position: absolute; top: 6px; right: 8px; font-size: 0.6rem; font-weight: 800; color: #c4b5fd; }
+        .fmn-tile-week { position: absolute; top: 6px; right: 8px; font-size: 0.6rem; font-weight: 800; color: #93b2cc; }
 
         /* MODAL OVERLAY */
         .fmn-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 200; align-items: flex-end; justify-content: center; }
@@ -132,18 +132,18 @@
         @media (min-width: 640px) { .fmn-modal { border-radius: 24px; } }
         .fmn-modal-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 1rem; }
         .fmn-modal-title { font-family: 'Fredoka One', cursive; font-size: 1.1rem; color: #1f2937; margin: 0; line-height: 1.3; }
-        .fmn-modal-close { background: #f3e8ff; border: none; border-radius: 50%; width: 32px; height: 32px; cursor: pointer; font-size: 1rem; color: #7c3aed; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+        .fmn-modal-close { background: #e6f2fb; border: none; border-radius: 50%; width: 32px; height: 32px; cursor: pointer; font-size: 1rem; color: #0e7490; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
         .fmn-modal-section { margin-bottom: 1rem; }
-        .fmn-modal-label { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: #c4b5fd; margin-bottom: 6px; }
+        .fmn-modal-label { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: #93b2cc; margin-bottom: 6px; }
         .fmn-modal-text { font-size: 0.85rem; color: #374151; line-height: 1.65; }
         .fmn-score-row { display: flex; gap: 10px; flex-wrap: wrap; }
-        .fmn-score-chip { background: #fdf4ff; border: 1.5px solid #e9d5ff; border-radius: 12px; padding: 8px 14px; text-align: center; }
-        .fmn-score-chip-num { font-family: 'Fredoka One', cursive; font-size: 1.4rem; color: #9333ea; }
-        .fmn-score-chip-lbl { font-size: 0.65rem; font-weight: 800; color: #c4b5fd; text-transform: uppercase; }
+        .fmn-score-chip { background: #eff6ff; border: 1.5px solid #cbe4f0; border-radius: 12px; padding: 8px 14px; text-align: center; }
+        .fmn-score-chip-num { font-family: 'Fredoka One', cursive; font-size: 1.4rem; color: #0e7490; }
+        .fmn-score-chip-lbl { font-size: 0.65rem; font-weight: 800; color: #93b2cc; text-transform: uppercase; }
         .fmn-resource-list { list-style: none; padding: 0; margin: 0; }
-        .fmn-resource-list li { padding: 7px 0; border-bottom: 1px solid #f3e8ff; font-size: 0.83rem; }
+        .fmn-resource-list li { padding: 7px 0; border-bottom: 1px solid #e6f2fb; font-size: 0.83rem; }
         .fmn-resource-list li:last-child { border-bottom: none; }
-        .fmn-resource-list a { color: #7c3aed; font-weight: 700; text-decoration: none; }
+        .fmn-resource-list a { color: #0e7490; font-weight: 700; text-decoration: none; }
         .fmn-resource-list a:hover { text-decoration: underline; }
         .fmn-resource-no-url { color: #9ca3af; }
     </style>
@@ -152,7 +152,7 @@
 
 {{-- NAVBAR --}}
 <nav class="fmn-nav">
-    <span class="fmn-nav-brand">✨ ForMyNieces</span>
+    <span class="fmn-nav-brand">✨ SmoothSeas</span>
     <div class="fmn-nav-right">
         <span class="fmn-nav-greeting">Hi, {{ $user->name }} 👋</span>
         <a href="{{ route('dashboard') }}" class="fmn-btn fmn-btn-ghost fmn-btn-sm">← Dashboard</a>
@@ -383,7 +383,7 @@
             <div class="fmn-thermo-wrap">
                 <svg class="fmn-thermo-svg" viewBox="0 0 36 100" xmlns="http://www.w3.org/2000/svg">
                     <!-- Tube background -->
-                    <rect x="13" y="5" width="10" height="72" rx="5" fill="#f3e8ff"/>
+                    <rect x="13" y="5" width="10" height="72" rx="5" fill="#e6f2fb"/>
                     <!-- Fill -->
                     @php $fillY = 5 + (72 - $fillH); $fillColor = $t['status'] === 'hot' ? '#10b981' : ($t['status'] === 'warm' ? '#f59e0b' : '#ef4444'); @endphp
                     <rect x="13" y="{{ $fillY }}" width="10" height="{{ $fillH }}" rx="3" fill="{{ $fillColor }}"/>
@@ -413,7 +413,7 @@
         <canvas id="progressChart"></canvas>
     </div>
     <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:12px; font-size:0.73rem; font-weight:700; color:#374151;">
-        <span style="display:flex;align-items:center;gap:5px;"><span style="width:22px;height:3px;background:#9333ea;border-radius:2px;display:inline-block;"></span> Required Pace</span>
+        <span style="display:flex;align-items:center;gap:5px;"><span style="width:22px;height:3px;background:#0e7490;border-radius:2px;display:inline-block;"></span> Required Pace</span>
         <span style="display:flex;align-items:center;gap:5px;"><span style="width:22px;height:3px;background:#10b981;border-radius:2px;display:inline-block;"></span> Actual Progress</span>
         <span style="display:flex;align-items:center;gap:5px;"><span style="width:22px;height:3px;border-top:2.5px dashed #6b7280;display:inline-block;"></span> Current Trajectory</span>
         <span style="display:flex;align-items:center;gap:5px;"><span style="width:22px;height:3px;border-top:2.5px dashed #10b981;display:inline-block;"></span> Corrected Pace</span>
@@ -456,26 +456,26 @@
 <p class="fmn-section-title">📅 Next Week Study Plan</p>
 
 {{-- Summary bar --}}
-<div style="background:white; border:1.5px solid #f3e8ff; border-radius:14px; padding:0.85rem 1.25rem; margin-bottom:1rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;">
+<div style="background:white; border:1.5px solid #e6f2fb; border-radius:14px; padding:0.85rem 1.25rem; margin-bottom:1rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;">
     <div style="font-size:0.85rem; font-weight:700; color:#1f2937;">
         📆 {{ count($studyDays) }} study days · ⏱️ {{ $dailyMins }} mins/day · 🧮 {{ $dailyMins * count($studyDays) }} mins total this week
     </div>
     <div style="display:flex; gap:8px; flex-wrap:wrap;">
         <span style="background:#d1fae5; color:#065f46; padding:3px 10px; border-radius:999px; font-size:0.72rem; font-weight:800;">Math: {{ $mathMins }}m/day</span>
         <span style="background:#fce7f3; color:#9d174d; padding:3px 10px; border-radius:999px; font-size:0.72rem; font-weight:800;">ELA: {{ $editMins }}m/day</span>
-        <span style="background:#ede9fe; color:#4c1d95; padding:3px 10px; border-radius:999px; font-size:0.72rem; font-weight:800;">Comp: {{ $compMins }}m/day</span>
+        <span style="background:#dbeafe; color:#4c1d95; padding:3px 10px; border-radius:999px; font-size:0.72rem; font-weight:800;">Comp: {{ $compMins }}m/day</span>
     </div>
 </div>
 
 {{-- Timetable: rows = subjects, columns = days --}}
-<div style="background:white; border:1.5px solid #f3e8ff; border-radius:18px; overflow:hidden; margin-bottom:1rem;">
+<div style="background:white; border:1.5px solid #e6f2fb; border-radius:18px; overflow:hidden; margin-bottom:1rem;">
     <table style="width:100%; border-collapse:collapse; font-size:0.78rem;">
         {{-- Header row --}}
         <thead>
-            <tr style="background:#fdf4ff;">
-                <th style="padding:10px 12px; text-align:left; font-weight:800; color:#7c3aed; border-bottom:1.5px solid #f3e8ff; width:100px;">Subject</th>
+            <tr style="background:#eff6ff;">
+                <th style="padding:10px 12px; text-align:left; font-weight:800; color:#0e7490; border-bottom:1.5px solid #e6f2fb; width:100px;">Subject</th>
                 @foreach($studyDays as $day)
-                    <th style="padding:10px 8px; text-align:center; font-weight:800; color:#7c3aed; border-bottom:1.5px solid #f3e8ff; @if($day === 'Saturday') background:#fffbeb; color:#d97706; @endif">
+                    <th style="padding:10px 8px; text-align:center; font-weight:800; color:#0e7490; border-bottom:1.5px solid #e6f2fb; @if($day === 'Saturday') background:#fffbeb; color:#d97706; @endif">
                         {{ substr($day, 0, 3) }}
                         @if($day === 'Saturday')<br><span style="font-size:0.6rem; font-weight:700;">catch-up</span>@endif
                     </th>
@@ -485,7 +485,7 @@
         <tbody>
             {{-- MATH ROW --}}
             <tr>
-            <td style="padding:10px 12px; font-weight:800; color:#065f46; background:#f0fdf4; border-bottom:1.5px solid #f3e8ff; vertical-align:top;">
+            <td style="padding:10px 12px; font-weight:800; color:#065f46; background:#f0fdf4; border-bottom:1.5px solid #e6f2fb; vertical-align:top;">
                 🔢 Math
             </td>
                 @foreach($studyDays as $day)
@@ -495,7 +495,7 @@
                         if ($d['primary']['subject'] === 'Math') $module = $d['primary']['module'];
                         elseif ($d['secondary']['subject'] === 'Math') $module = $d['secondary']['module'];
                     @endphp
-                    <td style="padding:8px; border-bottom:1.5px solid #f3e8ff; border-left:1px solid #f3e8ff; vertical-align:top; @if($day === 'Saturday') background:#fffbeb; @endif">
+                    <td style="padding:8px; border-bottom:1.5px solid #e6f2fb; border-left:1px solid #e6f2fb; vertical-align:top; @if($day === 'Saturday') background:#fffbeb; @endif">
                         @if($module)
                         <div style="background:#d1fae5; color:#065f46; padding:5px 7px; border-radius:8px; font-size:0.72rem; font-weight:700; line-height:1.3;">
                             {{ Str::limit($module->topic, 40) }}
@@ -510,7 +510,7 @@
 
             {{-- ELA EDITING ROW --}}
             <tr>
-            <td style="padding:10px 12px; font-weight:800; color:#9d174d; background:#fdf2f8; border-bottom:1.5px solid #f3e8ff; vertical-align:top;">
+            <td style="padding:10px 12px; font-weight:800; color:#9d174d; background:#fdf2f8; border-bottom:1.5px solid #e6f2fb; vertical-align:top;">
                 ✏️ ELA Editing
             </td>
                 @foreach($studyDays as $day)
@@ -520,7 +520,7 @@
                         if ($d['primary']['subject'] === 'English Editing') $module = $d['primary']['module'];
                         elseif ($d['secondary']['subject'] === 'English Editing') $module = $d['secondary']['module'];
                     @endphp
-                    <td style="padding:8px; border-bottom:1.5px solid #f3e8ff; border-left:1px solid #f3e8ff; vertical-align:top; @if($day === 'Saturday') background:#fffbeb; @endif">
+                    <td style="padding:8px; border-bottom:1.5px solid #e6f2fb; border-left:1px solid #e6f2fb; vertical-align:top; @if($day === 'Saturday') background:#fffbeb; @endif">
                         @if($module)
                         <div style="background:#fce7f3; color:#9d174d; padding:5px 7px; border-radius:8px; font-size:0.72rem; font-weight:700; line-height:1.3;">
                             {{ Str::limit($module->topic, 40) }}
@@ -535,7 +535,7 @@
 
             {{-- COMPREHENSION ROW --}}
             <tr>
-            <td style="padding:10px 12px; font-weight:800; color:#9d174d; background:#fdf2f8; border-bottom:1.5px solid #f3e8ff; vertical-align:top;">
+            <td style="padding:10px 12px; font-weight:800; color:#9d174d; background:#fdf2f8; border-bottom:1.5px solid #e6f2fb; vertical-align:top;">
                 ✏️ ELA Editing
             </td>
                 @foreach($studyDays as $day)
@@ -545,9 +545,9 @@
                         if ($d['primary']['subject'] === 'English Comprehension') $module = $d['primary']['module'];
                         elseif ($d['secondary']['subject'] === 'English Comprehension') $module = $d['secondary']['module'];
                     @endphp
-                    <td style="padding:8px; border-left:1px solid #f3e8ff; vertical-align:top; @if($day === 'Saturday') background:#fffbeb; @endif">
+                    <td style="padding:8px; border-left:1px solid #e6f2fb; vertical-align:top; @if($day === 'Saturday') background:#fffbeb; @endif">
                         @if($module)
-                        <div style="background:#ede9fe; color:#4c1d95; padding:5px 7px; border-radius:8px; font-size:0.72rem; font-weight:700; line-height:1.3;">
+                        <div style="background:#dbeafe; color:#4c1d95; padding:5px 7px; border-radius:8px; font-size:0.72rem; font-weight:700; line-height:1.3;">
                             {{ Str::limit($module->topic, 40) }}
                             <div style="font-size:0.65rem; margin-top:3px; opacity:0.8;">⏱ {{ $compMins }} mins</div>
                         </div>
@@ -784,7 +784,7 @@ function buildDatasets(key) {
         { label: '_zone_amber_bot', data: zones.worryLow, borderWidth: 0, pointRadius: 0, backgroundColor: 'rgba(245,158,11,0.13)', fill: false, tension: 0 },
         { label: '_zone_red_top',   data: zones.worryLow, borderWidth: 0, pointRadius: 0, backgroundColor: 'rgba(239,68,68,0.12)',  fill: '+1', tension: 0 },
         { label: '_zone_red_bot',   data: zones.suppLow,  borderWidth: 0, pointRadius: 0, backgroundColor: 'rgba(239,68,68,0.12)',  fill: false, tension: 0 },
-        { label: 'Required Pace',      data: required,  borderColor: '#9333ea', borderWidth: 2.5, pointRadius: 0, tension: 0.2, fill: false, backgroundColor: 'transparent' },
+        { label: 'Required Pace',      data: required,  borderColor: '#0e7490', borderWidth: 2.5, pointRadius: 0, tension: 0.2, fill: false, backgroundColor: 'transparent' },
         { label: 'Actual Progress',    data: actual,    borderColor: '#10b981', borderWidth: 3,   pointRadius: (ctx) => ctx.dataIndex === currentWeek - 1 ? 6 : 2, pointBackgroundColor: '#10b981', tension: 0.3, fill: false, backgroundColor: 'transparent' },
         { label: 'Current Trajectory', data: traj,      borderColor: '#6b7280', borderWidth: 2,   borderDash: [6,4], pointRadius: 0, tension: 0.2, fill: false, backgroundColor: 'transparent' },
         { label: 'Corrected Pace',     data: corrected, borderColor: '#10b981', borderWidth: 2,   borderDash: [5,3], pointRadius: 0, tension: 0.2, fill: false, backgroundColor: 'transparent' },
@@ -808,7 +808,7 @@ function initChart() {
             ctx.moveTo(x, chartArea.top);
             ctx.lineTo(x, chartArea.bottom);
             ctx.stroke();
-            ctx.fillStyle = '#db2777';
+            ctx.fillStyle = '#f6b71e';
             ctx.font = 'bold 11px Nunito, sans-serif';
             ctx.fillText('Now', x + 4, chartArea.top + 14);
             ctx.restore();
@@ -844,9 +844,9 @@ function initChart() {
             const x30 = scales.x.getPixelForValue(TEACHING_WEEKS - 1);
             const x36 = scales.x.getPixelForValue(EXAM_WEEK - 1);
             ctx.save();
-            ctx.fillStyle = 'rgba(147,51,234,0.05)';
+            ctx.fillStyle = 'rgba(34,211,238,0.05)';
             ctx.fillRect(x30, chartArea.top, x36 - x30, chartArea.bottom - chartArea.top);
-            ctx.fillStyle = 'rgba(147,51,234,0.5)';
+            ctx.fillStyle = 'rgba(34,211,238,0.5)';
             ctx.font = 'bold 10px Nunito, sans-serif';
             ctx.fillText('REVISION', x30 + 4, chartArea.top + 14);
             ctx.restore();
@@ -869,12 +869,12 @@ function initChart() {
             },
             scales: {
                 x: {
-                    grid: { color: 'rgba(147,51,234,0.06)' },
+                    grid: { color: 'rgba(34,211,238,0.06)' },
                     ticks: { font: { family: 'Nunito', size: 11 }, color: '#9ca3af', maxTicksLimit: 12,
                         callback: (val, idx) => (idx + 1) % 5 === 0 || idx === 0 ? 'W'+(idx+1) : '' }
                 },
                 y: {
-                    grid: { color: 'rgba(147,51,234,0.06)' },
+                    grid: { color: 'rgba(34,211,238,0.06)' },
                     ticks: { font: { family: 'Nunito', size: 11 }, color: '#9ca3af' },
                     beginAtZero: true, max: 95,
                     title: { display: true, text: 'Topics Completed', font: { family: 'Nunito', size: 11, weight: 'bold' }, color: '#9ca3af' }

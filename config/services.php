@@ -21,7 +21,7 @@ return [
         'model' => env('LLM_MODEL', 'qwen/qwen-2.5-72b-instruct'),
         'base_url' => env('LLM_BASE_URL', 'https://openrouter.ai/api/v1'),
         'referer' => env('LLM_REFERER'), // optional OpenRouter attribution
-        'title' => env('LLM_TITLE', 'ForMyNieces'),
+        'title' => env('LLM_TITLE', 'SmoothSeas'),
     ],
 
     'postmark' => [

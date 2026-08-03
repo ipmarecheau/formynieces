@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Set Up Your Niece — ForMyNieces</title>
+    <title>Set Up Your Niece — SmoothSeas</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
-            --purple: #9333ea;
-            --pink:   #db2777;
-            --bg:     #0f0720;
-            --card:   #1a0d30;
-            --border: rgba(147,51,234,0.35);
-            --text:   #f3e8ff;
-            --muted:  #c4b5fd;
+            --purple: #0e7490;
+            --pink:   #f6b71e;
+            --bg:     #06182e;
+            --card:   #0c2440;
+            --border: rgba(34,211,238,0.35);
+            --text:   #e6f2fb;
+            --muted:  #93b2cc;
         }
 
         body {
@@ -32,7 +32,7 @@
             padding: 24px 0;
         }
 
-        .stars { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+        .stars { display: none; position: fixed; inset: 0; pointer-events: none; z-index: 0; }
         .star {
             position: absolute; background: white; border-radius: 50%;
             animation: twinkle var(--d, 3s) ease-in-out infinite var(--delay, 0s);
@@ -42,8 +42,8 @@
             50%      { opacity: 0.9;  transform: scale(1.4); }
         }
         .orb { position: fixed; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: 0; }
-        .orb-1 { width: 400px; height: 400px; background: rgba(147,51,234,0.25); top: -100px; left: -100px; }
-        .orb-2 { width: 300px; height: 300px; background: rgba(219,39,119,0.2);  bottom: -80px; right: -80px; }
+        .orb-1 { width: 400px; height: 400px; background: rgba(34,211,238,0.25); top: -100px; left: -100px; }
+        .orb-2 { width: 300px; height: 300px; background: rgba(246,183,30,0.2);  bottom: -80px; right: -80px; }
 
         .card {
             position: relative; z-index: 1;
@@ -67,11 +67,11 @@
             border-radius: 18px;
             display: inline-flex; align-items: center; justify-content: center;
             font-size: 30px; margin-bottom: 14px;
-            box-shadow: 0 0 30px rgba(147,51,234,0.5);
+            box-shadow: 0 0 30px rgba(34,211,238,0.5);
         }
         .brand h1 {
             font-family: 'Fredoka One', cursive; font-size: 24px;
-            background: linear-gradient(135deg, #c084fc, #f472b6);
+            background: linear-gradient(135deg, #67e8f9, #fcd34d);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
         .brand p { color: var(--muted); font-size: 14px; margin-top: 4px; }
@@ -87,7 +87,7 @@
         input[type="number"] {
             width: 100%;
             background: rgba(255,255,255,0.06);
-            border: 1.5px solid rgba(147,51,234,0.3);
+            border: 1.5px solid rgba(34,211,238,0.3);
             border-radius: 12px;
             padding: 12px 16px;
             color: var(--text); font-family: 'Nunito', sans-serif; font-size: 15px;
@@ -95,7 +95,7 @@
         }
         input:focus {
             border-color: var(--purple);
-            box-shadow: 0 0 0 3px rgba(147,51,234,0.2);
+            box-shadow: 0 0 0 3px rgba(34,211,238,0.2);
         }
         input::placeholder { color: rgba(196,181,253,0.4); }
         .hint { font-size: 12px; color: rgba(196,181,253,0.7); margin-top: 5px; }
@@ -103,8 +103,8 @@
         .username-row { display: flex; align-items: center; gap: 0; }
         .username-row input { border-radius: 12px 0 0 12px; }
         .username-suffix {
-            background: rgba(147,51,234,0.18);
-            border: 1.5px solid rgba(147,51,234,0.3); border-left: none;
+            background: rgba(34,211,238,0.18);
+            border: 1.5px solid rgba(34,211,238,0.3); border-left: none;
             border-radius: 0 12px 12px 0;
             padding: 12px 14px; font-size: 13px; color: var(--muted); white-space: nowrap;
         }
@@ -112,19 +112,19 @@
         .strands { margin-bottom: 18px; }
         .strand-group { margin-bottom: 14px; }
         .strand-group h3 {
-            font-family: 'Fredoka One', cursive; font-size: 14px; color: #e9d5ff;
+            font-family: 'Fredoka One', cursive; font-size: 14px; color: #cbe4f0;
             margin-bottom: 8px;
         }
         .strand-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
         .strand-check {
             display: flex; align-items: center; gap: 8px;
             background: rgba(255,255,255,0.04);
-            border: 1.5px solid rgba(147,51,234,0.2);
+            border: 1.5px solid rgba(34,211,238,0.2);
             border-radius: 10px; padding: 9px 12px;
             font-size: 13px; color: var(--muted); cursor: pointer;
             transition: all 0.15s;
         }
-        .strand-check:hover { border-color: rgba(147,51,234,0.5); }
+        .strand-check:hover { border-color: rgba(34,211,238,0.5); }
         .strand-check input { accent-color: var(--purple); width: 16px; height: 16px; cursor: pointer; }
 
         .btn-submit {
@@ -163,9 +163,9 @@
         .cred-row .v { color: var(--text); font-weight: 700; font-family: monospace; }
         .creds a {
             display: inline-block; margin-top: 12px;
-            color: #c084fc; font-weight: 700; text-decoration: none; font-size: 14px;
+            color: #67e8f9; font-weight: 700; text-decoration: none; font-size: 14px;
         }
-        .creds a:hover { color: #f472b6; }
+        .creds a:hover { color: #fcd34d; }
     </style>
 </head>
 <body>

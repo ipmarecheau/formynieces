@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All done — ForMyNieces</title>
+    <title>All done — SmoothSeas</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -17,13 +17,13 @@
             font-family: 'Nunito', sans-serif;
             min-height: 100vh;
             background: radial-gradient(circle at 30% 10%, #2a1250 0%, #150a2e 55%, #0d0620 100%);
-            color: #f3e8ff;
+            color: #e6f2fb;
             display: flex; align-items: center; justify-content: center;
             padding: 32px 20px;
         }
 
         .ag-card {
-            background: #1a0d30;
+            background: #0c2440;
             border: 1.5px solid rgba(147, 51, 234, 0.35);
             border-radius: 24px;
             padding: 40px 34px;
@@ -33,7 +33,7 @@
 
         .ag-title {
             font-family: 'Fredoka One', cursive;
-            font-size: 26px; color: #c084fc;
+            font-size: 26px; color: #67e8f9;
             margin-bottom: 14px;
         }
 
@@ -58,7 +58,7 @@
         }
 
         .ag-guardian-email {
-            font-size: 18px; font-weight: 700; color: #f3e8ff;
+            font-size: 18px; font-weight: 700; color: #e6f2fb;
             word-break: break-all;
         }
 
@@ -75,7 +75,7 @@
             border: 2px solid rgba(147, 51, 234, 0.4);
             border-radius: 999px;
             padding: 12px 30px;
-            color: #f3e8ff;
+            color: #e6f2fb;
             font-family: 'Fredoka One', cursive; font-size: 15px;
             cursor: pointer;
         }

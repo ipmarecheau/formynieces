@@ -3,16 +3,16 @@
         .gd-header { margin-bottom: 1.5rem; }
         .gd-title {
             font-family: 'Fredoka One', cursive;
-            font-size: 1.5rem; color: #7c3aed; margin: 0 0 0.25rem;
+            font-size: 1.5rem; color: #0e7490; margin: 0 0 0.25rem;
         }
         .gd-subtitle { font-size: 0.9rem; color: #9ca3af; margin: 0; font-weight: 700; }
         .gd-card {
-            background: white; border: 1.5px solid #f3e8ff;
+            background: white; border: 1.5px solid #e6f2fb;
             border-radius: 18px; padding: 1.1rem 1.25rem; margin-bottom: 1rem;
         }
         .gd-card.gd-warn { border-color: #fed7aa; background: #fffbf5; }
         .gd-eyebrow {
-            font-size: 0.68rem; font-weight: 800; color: #c4b5fd;
+            font-size: 0.68rem; font-weight: 800; color: #93b2cc;
             text-transform: uppercase; letter-spacing: 0.07em; margin: 0 0 0.6rem;
         }
         .gd-answer { font-size: 0.95rem; color: #1f2937; margin: 0; line-height: 1.5; }
@@ -34,13 +34,13 @@
             margin-bottom: 4px;
         }
         .gd-paper-name { font-size: 0.85rem; font-weight: 800; color: #374151; }
-        .gd-paper-weight { font-size: 0.72rem; font-weight: 700; color: #c4b5fd; }
+        .gd-paper-weight { font-size: 0.72rem; font-weight: 700; color: #93b2cc; }
         .gd-paper-stat { font-size: 0.78rem; color: #6b7280; font-weight: 600; }
         .gd-track {
-            background: #f3e8ff; border-radius: 999px; height: 8px;
+            background: #e6f2fb; border-radius: 999px; height: 8px;
             overflow: hidden; margin-top: 5px;
         }
-        .gd-fill { background: #a78bfa; height: 100%; border-radius: 999px; }
+        .gd-fill { background: #93b2cc; height: 100%; border-radius: 999px; }
         .gd-unassessed { font-size: 0.78rem; color: #9ca3af; font-weight: 600; font-style: italic; }
         .gd-affirm {
             background: #f0fdf4; border: 1.5px solid #bbf7d0;
@@ -74,11 +74,11 @@
             </p>
             <div style="display:flex; gap:0.6rem; flex-wrap:wrap;">
                 <button type="button" wire:click="proceedWithDiagnostic"
-                        style="flex:1 1 auto; background:#7c3aed; color:white; border:none; border-radius:12px; padding:0.7rem 1rem; font-weight:800; cursor:pointer;">
+                        style="flex:1 1 auto; background:#0e7490; color:white; border:none; border-radius:12px; padding:0.7rem 1rem; font-weight:800; cursor:pointer;">
                     Use the diagnostic result
                 </button>
                 <button type="button" wire:click="keepWeakAreas"
-                        style="flex:1 1 auto; background:white; color:#7c3aed; border:1.5px solid #ddd6fe; border-radius:12px; padding:0.7rem 1rem; font-weight:800; cursor:pointer;">
+                        style="flex:1 1 auto; background:white; color:#0e7490; border:1.5px solid #ddd6fe; border-radius:12px; padding:0.7rem 1rem; font-weight:800; cursor:pointer;">
                     Keep my weak areas
                 </button>
             </div>

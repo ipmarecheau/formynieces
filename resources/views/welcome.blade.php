@@ -1,30 +1,33 @@
 @auth
-    @php($homeUrl = auth()->user()->isStudent() ? route('student.map') : route('dashboard'))
+    @php($homeUrl = auth()->user()->isStudent() ? route('student.voyage') : route('dashboard'))
 @endauth
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ForMyNieces — SEA Exam Prep for T&T Girls</title>
+    <title>SmoothSeas — SEA Exam Prep for T&T Girls</title>
     <meta name="description" content="A magical study companion for SEA exam preparation. Built for primary school girls in Trinidad and Tobago.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+        /* SmoothSeas ocean palette — the legacy --purple/--pink names are kept as
+           token slots but repointed to teal/cyan (sea) and gold (treasure), so the
+           whole page shifts gender-neutral without rewriting every rule. */
         :root {
-            --purple: #9333ea;
-            --purple-light: #c084fc;
-            --pink: #db2777;
-            --pink-light: #f472b6;
-            --bg: #0f0720;
-            --card: #1a0d30;
-            --card2: #140a28;
-            --border: rgba(147,51,234,0.3);
-            --text: #f3e8ff;
-            --muted: #c4b5fd;
-            --dim: rgba(196,181,253,0.6);
+            --purple: #0e7490;        /* teal (was purple)  */
+            --purple-light: #67e8f9;  /* aqua               */
+            --pink: #f6b71e;          /* gold (was pink)    */
+            --pink-light: #fcd34d;    /* light gold         */
+            --bg: linear-gradient(180deg, #06182e 0%, #0b2a4a 38%, #0e4d6e 72%, #0e7490 100%);
+            --card: #0c2440;
+            --card2: #081c33;
+            --border: rgba(103,232,249,0.28);
+            --text: #e6f2fb;
+            --muted: #93b2cc;
+            --dim: rgba(147,178,204,0.6);
             --teal: #0d9488;
             --green: #16a34a;
         }
@@ -33,6 +36,7 @@
 
         body {
             background: var(--bg);
+            background-attachment: fixed;
             font-family: 'Nunito', sans-serif;
             color: var(--text);
             overflow-x: hidden;
@@ -54,8 +58,8 @@
             position: fixed; border-radius: 50%;
             filter: blur(100px); pointer-events: none; z-index: 0;
         }
-        .orb-1 { width: 500px; height: 500px; background: rgba(147,51,234,.18); top: -150px; left: -150px; }
-        .orb-2 { width: 400px; height: 400px; background: rgba(219,39,119,.14); bottom: -100px; right: -100px; }
+        .orb-1 { width: 500px; height: 500px; background: rgba(34,211,238,.18); top: -150px; left: -150px; }
+        .orb-2 { width: 400px; height: 400px; background: rgba(246,183,30,.14); bottom: -100px; right: -100px; }
         .orb-3 { width: 300px; height: 300px; background: rgba(13,148,136,.1);  top: 40%;    left: 60%; }
 
         /* ── LAYOUT ── */
@@ -66,7 +70,7 @@
         nav {
             position: sticky; top: 0; z-index: 100;
             backdrop-filter: blur(16px);
-            background: rgba(15,7,32,.7);
+            background: rgba(20,30,66,.72);
             border-bottom: 1px solid var(--border);
             padding: 0 24px;
         }
@@ -101,7 +105,7 @@
             cursor: pointer; text-decoration: none;
             transition: background .2s, color .2s;
         }
-        .btn-nav-ghost:hover { background: rgba(147,51,234,.15); color: var(--text); }
+        .btn-nav-ghost:hover { background: rgba(34,211,238,.15); color: var(--text); }
         .btn-nav-primary {
             padding: 8px 18px; border-radius: 999px;
             background: linear-gradient(135deg, var(--purple), var(--pink));
@@ -120,8 +124,8 @@
         }
         .hero-badge {
             display: inline-flex; align-items: center; gap: 7px;
-            background: rgba(147,51,234,.18);
-            border: 1.5px solid rgba(147,51,234,.4);
+            background: rgba(34,211,238,.18);
+            border: 1.5px solid rgba(34,211,238,.4);
             border-radius: 999px;
             padding: 6px 16px;
             font-size: 13px; font-weight: 700;
@@ -133,7 +137,7 @@
             font-family: 'Fredoka One', cursive;
             font-size: clamp(36px, 8vw, 62px);
             line-height: 1.1;
-            background: linear-gradient(135deg, #e9d5ff 0%, var(--pink-light) 60%, #fde68a 100%);
+            background: linear-gradient(135deg, #ecfeff 0%, var(--purple-light) 45%, #fcd34d 100%);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 22px;
@@ -155,7 +159,7 @@
             font-size: 17px; text-decoration: none;
             border: none; cursor: pointer;
             transition: opacity .2s, transform .1s;
-            box-shadow: 0 0 28px rgba(147,51,234,.4);
+            box-shadow: 0 0 28px rgba(34,211,238,.4);
         }
         .btn-primary:hover  { opacity: .9; }
         .btn-primary:active { transform: scale(.98); }
@@ -163,12 +167,12 @@
             display: inline-block;
             padding: 14px 28px; border-radius: 999px;
             background: transparent;
-            border: 1.5px solid rgba(147,51,234,.5);
+            border: 1.5px solid rgba(34,211,238,.5);
             color: var(--muted); font-family: 'Nunito', sans-serif;
             font-size: 16px; font-weight: 700; text-decoration: none;
             transition: background .2s, color .2s;
         }
-        .btn-ghost:hover { background: rgba(147,51,234,.15); color: var(--text); }
+        .btn-ghost:hover { background: rgba(34,211,238,.15); color: var(--text); }
 
         /* hero visual */
         .hero-visual {
@@ -187,8 +191,8 @@
             50%      { transform: translateY(-8px); }
         }
         .pill-math        { background: rgba(13,148,136,.2); border: 1.5px solid rgba(13,148,136,.5); color: #5eead4; --fp:4.2s; }
-        .pill-editing     { background: rgba(219,39,119,.18); border: 1.5px solid rgba(219,39,119,.45); color: #f472b6; --fp:3.8s; --fpd:-.6s; }
-        .pill-comprehension { background: rgba(147,51,234,.2); border: 1.5px solid rgba(147,51,234,.5); color: #c084fc; --fp:4.5s; --fpd:-1.2s; }
+        .pill-editing     { background: rgba(246,183,30,.18); border: 1.5px solid rgba(246,183,30,.45); color: #fcd34d; --fp:3.8s; --fpd:-.6s; }
+        .pill-comprehension { background: rgba(34,211,238,.2); border: 1.5px solid rgba(34,211,238,.5); color: #67e8f9; --fp:4.5s; --fpd:-1.2s; }
 
         .exam-countdown {
             margin: 28px auto 0;
@@ -241,7 +245,7 @@
             transition: border-color .25s, transform .25s;
         }
         .feature-card:hover {
-            border-color: rgba(147,51,234,.6);
+            border-color: rgba(34,211,238,.6);
             transform: translateY(-4px);
         }
         .feature-icon {
@@ -270,12 +274,12 @@
             border-color: rgba(13,148,136,.35);
         }
         .subject-card.editing {
-            background: rgba(219,39,119,.1);
-            border-color: rgba(219,39,119,.35);
+            background: rgba(246,183,30,.1);
+            border-color: rgba(246,183,30,.35);
         }
         .subject-card.comprehension {
-            background: rgba(147,51,234,.1);
-            border-color: rgba(147,51,234,.35);
+            background: rgba(34,211,238,.1);
+            border-color: rgba(34,211,238,.35);
         }
         .subject-card .s-icon { font-size: 32px; margin-bottom: 12px; display: block; }
         .subject-card h3 {
@@ -283,8 +287,8 @@
             margin-bottom: 6px;
         }
         .subject-card.math         h3 { color: #5eead4; }
-        .subject-card.editing       h3 { color: #f472b6; }
-        .subject-card.comprehension h3 { color: #c084fc; }
+        .subject-card.editing       h3 { color: #fcd34d; }
+        .subject-card.comprehension h3 { color: #67e8f9; }
         .subject-card p { font-size: 13px; line-height: 1.6; color: var(--dim); margin-bottom: 14px; }
         .subject-tag {
             display: inline-block;
@@ -292,8 +296,8 @@
             font-size: 12px; font-weight: 700;
         }
         .math .subject-tag        { background: rgba(13,148,136,.25); color: #5eead4; }
-        .editing .subject-tag     { background: rgba(219,39,119,.25); color: #f472b6; }
-        .comprehension .subject-tag { background: rgba(147,51,234,.25); color: #c084fc; }
+        .editing .subject-tag     { background: rgba(246,183,30,.25); color: #fcd34d; }
+        .comprehension .subject-tag { background: rgba(34,211,238,.25); color: #67e8f9; }
 
         /* ── HOW IT WORKS ── */
         .steps { display: flex; flex-direction: column; gap: 20px; }
@@ -303,7 +307,7 @@
             border-radius: 18px; padding: 22px 24px;
             transition: border-color .25s;
         }
-        .step:hover { border-color: rgba(147,51,234,.55); }
+        .step:hover { border-color: rgba(34,211,238,.55); }
         .step-num {
             width: 40px; height: 40px; flex-shrink: 0;
             background: linear-gradient(135deg, var(--purple), var(--pink));
@@ -341,8 +345,8 @@
 
         /* ── CTA BANNER ── */
         .cta-banner {
-            background: linear-gradient(135deg, rgba(147,51,234,.25), rgba(219,39,119,.2));
-            border: 1.5px solid rgba(147,51,234,.4);
+            background: linear-gradient(135deg, rgba(34,211,238,.25), rgba(246,183,30,.2));
+            border: 1.5px solid rgba(34,211,238,.4);
             border-radius: 24px; padding: 52px 36px;
             text-align: center;
         }
@@ -350,7 +354,7 @@
             font-family: 'Fredoka One', cursive;
             font-size: clamp(24px, 5vw, 34px);
             margin-bottom: 14px;
-            background: linear-gradient(135deg, #e9d5ff, var(--pink-light));
+            background: linear-gradient(135deg, #ecfeff, var(--purple-light));
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             background-clip: text;
         }
@@ -381,7 +385,6 @@
     </style>
 </head>
 <body>
-<div id="stars"></div>
 <div class="orb orb-1"></div>
 <div class="orb orb-2"></div>
 <div class="orb orb-3"></div>
@@ -392,8 +395,8 @@
     <nav>
         <div class="nav-inner">
             <a class="nav-brand" href="/">
-                <span class="nav-brand-icon">✨</span>
-                ForMyNieces
+                <span class="nav-brand-icon">⛵</span>
+                SmoothSeas
             </a>
             <div class="nav-links">
                 @auth
@@ -427,7 +430,7 @@
                 @auth
                     <a class="btn-primary" href="{{ $homeUrl }}">Go to your dashboard →</a>
                 @else
-                    <a class="btn-primary" href="{{ route('register') }}">Start Learning Free ✨</a>
+                    <a class="btn-primary" href="{{ route('register') }}">Start the voyage ⛵</a>
                     <a class="btn-ghost" href="{{ route('login') }}">Sign In</a>
                 @endauth
             </div>
@@ -601,7 +604,7 @@
                 @else
                     <h2>Ready to Start Preparing? 🌟</h2>
                     <p>
-                        Join ForMyNieces today and give your daughter the structured,
+                        Join SmoothSeas today and give your daughter the structured,
                         AI-guided preparation she deserves for SEA 2026.
                     </p>
                     <a class="btn-primary" href="{{ route('register') }}">Create a Free Account</a>
@@ -613,7 +616,7 @@
     <!-- FOOTER -->
     <footer>
         <p>
-            © {{ date('Y') }} ForMyNieces &nbsp;·&nbsp;
+            © {{ date("Y") }} SmoothSeas &nbsp;·&nbsp;
             Built with ❤️ in Trinidad &amp; Tobago &nbsp;·&nbsp;
             @auth
                 <a href="{{ $homeUrl }}">My Dashboard</a>
@@ -626,16 +629,6 @@
 </div>
 
 <script>
-    // Stars
-    const sc = document.getElementById('stars');
-    for (let i = 0; i < 130; i++) {
-        const s = document.createElement('div');
-        s.className = 'star';
-        const sz = Math.random() * 2.2 + .8;
-        s.style.cssText = `width:${sz}px;height:${sz}px;top:${Math.random()*100}%;left:${Math.random()*100}%;--d:${(Math.random()*4+2).toFixed(1)}s;--dl:-${(Math.random()*6).toFixed(1)}s`;
-        sc.appendChild(s);
-    }
-
     // Countdown to SEA
     const exam = new Date('2026-05-21');
     const today = new Date();

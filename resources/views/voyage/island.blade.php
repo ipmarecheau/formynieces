@@ -34,7 +34,7 @@
         body {
             font-family: 'Nunito', sans-serif;
             min-height: 100vh;
-            color: #f3e8ff;
+            color: #e6f2fb;
             background: linear-gradient(180deg, #1b2a6b 0%, #223a8c 30%, #1f5fa8 70%, #1a7fb0 100%);
         }
 
@@ -45,11 +45,11 @@
             backdrop-filter: blur(8px);
             position: sticky; top: 0; z-index: 10;
         }
-        .vy-brand { font-family: 'Fredoka One', cursive; font-size: 1.3rem; color: #f3e8ff; }
+        .vy-brand { font-family: 'Fredoka One', cursive; font-size: 1.3rem; color: #e6f2fb; }
         .vy-back {
             font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.82rem;
             padding: 8px 16px; border-radius: 999px; text-decoration: none;
-            border: 1.5px solid rgba(255,255,255,0.35); color: #f3e8ff;
+            border: 1.5px solid rgba(255,255,255,0.35); color: #e6f2fb;
             background: rgba(255,255,255,0.08);
         }
         .vy-back:hover { background: rgba(255,255,255,0.18); }

@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Guardian Summary · ForMyNieces</title>
+    <title>Guardian Summary · SmoothSeas</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fredoka+One&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { box-sizing: border-box; }
         body {
             font-family: 'Nunito', sans-serif;
-            background: #fdf4ff;
+            background: #eff6ff;
             margin: 0;
             min-height: 100vh;
             color: #1f2937;
@@ -18,17 +18,17 @@
         .fmn-nav {
             background: rgba(255,255,255,0.92);
             backdrop-filter: blur(10px);
-            border-bottom: 1.5px solid #f3e8ff;
+            border-bottom: 1.5px solid #e6f2fb;
             padding: 0 1rem; height: 58px;
             display: flex; align-items: center; justify-content: space-between;
             position: sticky; top: 0; z-index: 100;
         }
         .fmn-nav-brand {
             font-family: 'Fredoka One', cursive;
-            font-size: 1.4rem; color: #9333ea; text-decoration: none;
+            font-size: 1.4rem; color: #0e7490; text-decoration: none;
         }
         .fmn-nav-right { display: flex; align-items: center; gap: 12px; }
-        .fmn-nav-greeting { font-size: 0.85rem; font-weight: 700; color: #a78bfa; }
+        .fmn-nav-greeting { font-size: 0.85rem; font-weight: 700; color: #93b2cc; }
         @media (max-width: 480px) { .fmn-nav-greeting { display: none; } }
         .fmn-btn {
             display: inline-flex; align-items: center; gap: 6px;
@@ -37,14 +37,14 @@
             cursor: pointer; border: none; text-decoration: none;
             transition: background 0.15s;
         }
-        .fmn-btn-ghost { background: white; color: #9333ea; border: 1.5px solid #e9d5ff; }
-        .fmn-btn-ghost:hover { background: #fdf4ff; }
+        .fmn-btn-ghost { background: white; color: #0e7490; border: 1.5px solid #cbe4f0; }
+        .fmn-btn-ghost:hover { background: #eff6ff; }
         .fmn-page { max-width: 720px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
     </style>
 </head>
 <body>
     <nav class="fmn-nav">
-        <span class="fmn-nav-brand">✨ ForMyNieces</span>
+        <span class="fmn-nav-brand">✨ SmoothSeas</span>
         <div class="fmn-nav-right">
             <span class="fmn-nav-greeting">Guardian view</span>
             <form method="POST" action="{{ route('logout') }}">

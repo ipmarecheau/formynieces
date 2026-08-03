@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ForMyNieces ✨</title>
+    <title>SmoothSeas ✨</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fredoka+One&display=swap" rel="stylesheet">
     <style>
@@ -11,13 +11,13 @@
 
         body {
             font-family: 'Nunito', sans-serif;
-            background: #fdf4ff;
+            background: #eff6ff;
             margin: 0;
             min-height: 100vh;
         }
 
         .fmn-group {
-            background: white; border: 1.5px solid #f3e8ff;
+            background: white; border: 1.5px solid #e6f2fb;
             border-radius: 14px; margin-bottom: 10px; overflow: hidden;
         }
         .fmn-group-header {
@@ -39,7 +39,7 @@
         .fmn-group-titles { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
         .fmn-group-name { font-size: 0.95rem; font-weight: 800; color: #1f2937; }
         .fmn-group-summary { font-size: 0.72rem; color: #9ca3af; font-weight: 700; }
-        .fmn-group-chevron { color: #a78bfa; font-size: 1rem; transition: transform 0.2s; }
+        .fmn-group-chevron { color: #93b2cc; font-size: 1rem; transition: transform 0.2s; }
         .fmn-group-chevron.open { transform: rotate(180deg); }
         .fmn-group-body { padding: 0 18px 10px; }
         .fmn-leaf {
@@ -51,7 +51,7 @@
             width: 100%;
         }
         .fmn-practice-link {
-            font-size: 0.74rem; font-weight: 800; color: #db2777;
+            font-size: 0.74rem; font-weight: 800; color: #f6b71e;
             text-decoration: none; padding: 3px 10px; border-radius: 999px;
             background: #fce7f3; border: 1.5px solid #fbcfe8; white-space: nowrap;
             transition: background 0.15s, transform 0.1s;
@@ -64,15 +64,15 @@
         .fmn-legend {
             display: flex; flex-wrap: wrap; gap: 14px;
             padding: 10px 14px; margin-bottom: 14px;
-            background: #fdf4ff; border: 1.5px solid #f3e8ff; border-radius: 12px;
-            font-size: 0.72rem; font-weight: 700; color: #7c3aed;
+            background: #eff6ff; border: 1.5px solid #e6f2fb; border-radius: 12px;
+            font-size: 0.72rem; font-weight: 700; color: #0e7490;
         }
         .fmn-legend-item { display: inline-flex; align-items: center; gap: 6px; }
         /* ── NAVBAR ── */
         .fmn-nav {
             background: rgba(255,255,255,0.92);
             backdrop-filter: blur(10px);
-            border-bottom: 1.5px solid #f3e8ff;
+            border-bottom: 1.5px solid #e6f2fb;
             padding: 0 1rem;
             height: 58px;
             display: flex;
@@ -85,7 +85,7 @@
         .fmn-nav-brand {
             font-family: 'Fredoka One', cursive;
             font-size: 1.4rem;
-            color: #9333ea;
+            color: #0e7490;
             text-decoration: none;
         }
         .fmn-nav-right {
@@ -96,7 +96,7 @@
         .fmn-nav-greeting {
             font-size: 0.85rem;
             font-weight: 700;
-            color: #a78bfa;
+            color: #93b2cc;
         }
         @media (max-width: 480px) {
             .fmn-nav-greeting { display: none; }
@@ -125,12 +125,12 @@
             text-decoration: none;
         }
         .fmn-btn-primary {
-            background: linear-gradient(135deg, #a855f7, #ec4899);
+            background: linear-gradient(135deg, #22d3ee, #f59e0b);
             color: white;
         }
         .fmn-btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(168,85,247,0.35);
+            box-shadow: 0 6px 18px rgba(34,211,238,0.35);
         }
         .fmn-btn-sm {
             padding: 7px 16px;
@@ -138,16 +138,16 @@
         }
         .fmn-btn-ghost {
             background: white;
-            color: #9333ea;
-            border: 1.5px solid #e9d5ff;
+            color: #0e7490;
+            border: 1.5px solid #cbe4f0;
         }
         .fmn-btn-ghost:hover {
-            background: #fdf4ff;
+            background: #eff6ff;
         }
 
         /* ── HERO CARD ── */
         .fmn-hero {
-            background: linear-gradient(135deg, #9333ea 0%, #db2777 100%);
+            background: linear-gradient(135deg, #0e7490 0%, #f6b71e 100%);
             border-radius: 20px;
             padding: 1.5rem;
             color: white;
@@ -208,7 +208,7 @@
         }
         .fmn-stat {
             background: white;
-            border: 1.5px solid #f3e8ff;
+            border: 1.5px solid #e6f2fb;
             border-radius: 16px;
             padding: 0.9rem 0.5rem;
             text-align: center;
@@ -216,13 +216,13 @@
         .fmn-stat-num {
             font-family: 'Fredoka One', cursive;
             font-size: 1.9rem;
-            color: #9333ea;
+            color: #0e7490;
             line-height: 1;
         }
         .fmn-stat-lbl {
             font-size: 0.68rem;
             font-weight: 800;
-            color: #c4b5fd;
+            color: #93b2cc;
             text-transform: uppercase;
             letter-spacing: 0.06em;
             margin-top: 4px;
@@ -232,7 +232,7 @@
         .fmn-section-title {
             font-family: 'Fredoka One', cursive;
             font-size: 1.15rem;
-            color: #7c3aed;
+            color: #0e7490;
             display: flex;
             align-items: center;
             gap: 7px;
@@ -242,7 +242,7 @@
         /* ── TARGET CARD ── */
         .fmn-card {
             background: white;
-            border: 1.5px solid #f3e8ff;
+            border: 1.5px solid #e6f2fb;
             border-radius: 18px;
             padding: 1.1rem 1.25rem;
             margin-bottom: 1.25rem;
@@ -268,7 +268,7 @@
         }
         .badge-math         { background: #d1fae5; color: #065f46; }
         .badge-editing      { background: #fce7f3; color: #9d174d; }
-        .badge-comprehension{ background: #ede9fe; color: #4c1d95; }
+        .badge-comprehension{ background: #dbeafe; color: #4c1d95; }
 
         .fmn-pill {
             display: inline-flex;
@@ -334,19 +334,19 @@
             font-size: 0.82rem;
             font-weight: 800;
             cursor: pointer;
-            border: 1.5px solid #e9d5ff;
+            border: 1.5px solid #cbe4f0;
             background: white;
-            color: #7c3aed;
+            color: #0e7490;
             transition: all 0.18s;
         }
         .fmn-tab[data-active="true"] {
-            background: linear-gradient(135deg, #9333ea, #db2777);
+            background: linear-gradient(135deg, #0e7490, #f6b71e);
             color: white;
             border-color: transparent;
         }
         .fmn-tab-math[data-active="true"]    { background: linear-gradient(135deg, #059669, #34d399); border-color: transparent; }
-        .fmn-tab-edit[data-active="true"]    { background: linear-gradient(135deg, #db2777, #f472b6); border-color: transparent; }
-        .fmn-tab-comp[data-active="true"]    { background: linear-gradient(135deg, #7c3aed, #a78bfa); border-color: transparent; }
+        .fmn-tab-edit[data-active="true"]    { background: linear-gradient(135deg, #f6b71e, #fcd34d); border-color: transparent; }
+        .fmn-tab-comp[data-active="true"]    { background: linear-gradient(135deg, #0e7490, #93b2cc); border-color: transparent; }
 
         /* ── ROADMAP ── */
         .fmn-roadmap { position: relative; }
@@ -357,7 +357,7 @@
             top: 0;
             bottom: 0;
             width: 2px;
-            background: linear-gradient(to bottom, #e9d5ff, #fce7f3);
+            background: linear-gradient(to bottom, #cbe4f0, #fce7f3);
             z-index: 0;
         }
 
@@ -380,18 +380,18 @@
             font-size: 1.1rem;
             flex-shrink: 0;
             border: 2px solid white;
-            box-shadow: 0 0 0 2px #e9d5ff;
+            box-shadow: 0 0 0 2px #cbe4f0;
         }
         .dot-math         { background: #d1fae5; }
         .dot-editing      { background: #fce7f3; }
-        .dot-comprehension{ background: #ede9fe; }
+        .dot-comprehension{ background: #dbeafe; }
         .dot-mastered     { box-shadow: 0 0 0 2px #6ee7b7; }
-        .dot-diagnostic   { box-shadow: 0 0 0 2px #c4b5fd; }
+        .dot-diagnostic   { box-shadow: 0 0 0 2px #93b2cc; }
         .dot-notstarted   { opacity: 0.6; }
 
         .fmn-node-content {
             background: white;
-            border: 1.5px solid #f3e8ff;
+            border: 1.5px solid #e6f2fb;
             border-radius: 14px;
             padding: 10px 14px;
             flex: 1;
@@ -423,7 +423,7 @@
         .fmn-node-score {
             font-size: 0.75rem;
             font-weight: 800;
-            color: #7c3aed;
+            color: #0e7490;
             white-space: nowrap;
             flex-shrink: 0;
         }
@@ -435,7 +435,7 @@
             flex-shrink: 0;
         }
         .sdot-mastered   { background: #10b981; }
-        .sdot-diagnostic { background: #8b5cf6; }
+        .sdot-diagnostic { background: #22d3ee; }
         .sdot-notstarted { background: #d1d5db; }
 
         /* ── PARENT CARDS ── */
@@ -443,7 +443,7 @@
             width: 46px;
             height: 46px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #a855f7, #ec4899);
+            background: linear-gradient(135deg, #22d3ee, #f59e0b);
             color: white;
             display: flex;
             align-items: center;
@@ -453,11 +453,11 @@
             flex-shrink: 0;
         }
         .fmn-alert {
-            background: #fdf4ff;
-            border: 1.5px solid #e9d5ff;
+            background: #eff6ff;
+            border: 1.5px solid #cbe4f0;
             border-radius: 14px;
             padding: 1rem 1.25rem;
-            color: #7c3aed;
+            color: #0e7490;
             font-weight: 700;
             font-size: 0.88rem;
         }
@@ -467,7 +467,7 @@
 
     {{-- NAVBAR --}}
     <nav class="fmn-nav">
-        <span class="fmn-nav-brand">✨ ForMyNieces</span>
+        <span class="fmn-nav-brand">✨ SmoothSeas</span>
         <div class="fmn-nav-right">
             <span class="fmn-nav-greeting">Hi, {{ $user->name }} 👋</span>
             @if($user->isStudent())
@@ -693,12 +693,12 @@
                                 <form method="POST" action="{{ route('guardian.reconciliation.proceed', $summary['student']) }}"
                                       onsubmit="return confirm('Use the diagnostic result and start {{ $summary['student']->name }}\'s map now? This decision cannot be undone.')">
                                     @csrf
-                                    <button type="submit" style="background:#7c3aed; color:white; border:none; border-radius:10px; padding:9px 15px; font-weight:800; cursor:pointer;">Use the diagnostic result</button>
+                                    <button type="submit" style="background:#0e7490; color:white; border:none; border-radius:10px; padding:9px 15px; font-weight:800; cursor:pointer;">Use the diagnostic result</button>
                                 </form>
                                 <form method="POST" action="{{ route('guardian.reconciliation.keep', $summary['student']) }}"
                                       onsubmit="return confirm('Keep your stated weak areas and start {{ $summary['student']->name }}\'s map now? This decision cannot be undone.')">
                                     @csrf
-                                    <button type="submit" style="background:white; color:#7c3aed; border:1.5px solid #ddd6fe; border-radius:10px; padding:9px 15px; font-weight:800; cursor:pointer;">Keep my weak areas</button>
+                                    <button type="submit" style="background:white; color:#0e7490; border:1.5px solid #ddd6fe; border-radius:10px; padding:9px 15px; font-weight:800; cursor:pointer;">Keep my weak areas</button>
                                 </form>
                             </div>
                         </div>
@@ -716,16 +716,16 @@
                     </div>
 
                     <div style="margin-bottom:1rem;">
-                        <div style="display:flex; justify-content:space-between; font-size:0.8rem; font-weight:700; color:#7c3aed; margin-bottom:5px;">
+                        <div style="display:flex; justify-content:space-between; font-size:0.8rem; font-weight:700; color:#0e7490; margin-bottom:5px;">
                             <span>Completion</span>
                             <span>{{ $summary['completionPercent'] }}%</span>
                         </div>
-                        <div style="background:#f3e8ff; border-radius:999px; height:10px; overflow:hidden;">
-                            <div style="width:{{ $summary['completionPercent'] }}%; background:linear-gradient(90deg,#9333ea,#db2777); height:100%; border-radius:999px;"></div>
+                        <div style="background:#e6f2fb; border-radius:999px; height:10px; overflow:hidden;">
+                            <div style="width:{{ $summary['completionPercent'] }}%; background:linear-gradient(90deg,#0e7490,#f6b71e); height:100%; border-radius:999px;"></div>
                         </div>
                     </div>
 
-                    <p style="font-size:0.72rem; font-weight:800; color:#c4b5fd; text-transform:uppercase; letter-spacing:0.06em; margin:0 0 8px;">
+                    <p style="font-size:0.72rem; font-weight:800; color:#93b2cc; text-transform:uppercase; letter-spacing:0.06em; margin:0 0 8px;">
                         This Week's Target
                     </p>
                     @if($summary['currentTarget'])
@@ -733,7 +733,7 @@
                             $subj = $summary['currentTarget']->module->subject;
                             $bc = match($subj) { 'Math'=>'badge-math','English Editing'=>'badge-editing',default=>'badge-comprehension' };
                         @endphp
-                        <div style="background:#fdf4ff; border-radius:12px; padding:10px 14px; display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;">
+                        <div style="background:#eff6ff; border-radius:12px; padding:10px 14px; display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;">
                             <div>
                                 <span class="fmn-badge {{ $bc }}">{{ $subj }}</span>
                                 <p style="font-weight:700; font-size:0.85rem; color:#1f2937; margin:4px 0 0;">
@@ -751,26 +751,26 @@
                     @endif
 
                     {{-- Pause / resume control. [WT-04 / WT-05 / ML-03] --}}
-                    <div style="margin-top:1rem; padding-top:1rem; border-top:1px solid #f3e8ff; display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;">
+                    <div style="margin-top:1rem; padding-top:1rem; border-top:1px solid #e6f2fb; display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;">
                         @if($summary['isPaused'])
                             <span style="font-size:0.82rem; font-weight:800; color:#c2410c;">⏸ Paused — targets and streaks are on hold</span>
                             <form method="POST" action="{{ route('guardian.resume', $summary['student']) }}">
                                 @csrf
-                                <button type="submit" style="background:#7c3aed; color:white; border:none; border-radius:10px; padding:8px 14px; font-weight:800; cursor:pointer;">Resume</button>
+                                <button type="submit" style="background:#0e7490; color:white; border:none; border-radius:10px; padding:8px 14px; font-weight:800; cursor:pointer;">Resume</button>
                             </form>
                         @else
                             <span style="font-size:0.82rem; color:#9ca3af;">Need a break? You can pause {{ $summary['student']->name }} anytime.</span>
                             <form method="POST" action="{{ route('guardian.pause', $summary['student']) }}"
                                   onsubmit="return confirm('Pause {{ $summary['student']->name }}? Weekly targets stop and her streak is frozen until you resume.')">
                                 @csrf
-                                <button type="submit" style="background:white; color:#7c3aed; border:1.5px solid #ddd6fe; border-radius:10px; padding:8px 14px; font-weight:800; cursor:pointer;">Pause</button>
+                                <button type="submit" style="background:white; color:#0e7490; border:1.5px solid #ddd6fe; border-radius:10px; padding:8px 14px; font-weight:800; cursor:pointer;">Pause</button>
                             </form>
                         @endif
                     </div>
 
                     @if($summary['pauseHistory']->isNotEmpty())
                         <div style="margin-top:0.75rem;">
-                            <p style="font-size:0.7rem; font-weight:800; color:#c4b5fd; text-transform:uppercase; letter-spacing:0.06em; margin:0 0 6px;">Pause history</p>
+                            <p style="font-size:0.7rem; font-weight:800; color:#93b2cc; text-transform:uppercase; letter-spacing:0.06em; margin:0 0 6px;">Pause history</p>
                             @foreach($summary['pauseHistory'] as $pause)
                                 @php
                                     $endLabel = $pause->resumed_at ? $pause->resumed_at->format('M j, Y') : 'ongoing';

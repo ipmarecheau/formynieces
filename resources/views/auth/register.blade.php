@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Account — ForMyNieces</title>
+    <title>Create Account — SmoothSeas</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
-            --purple: #9333ea;
-            --pink:   #db2777;
-            --bg:     #0f0720;
-            --card:   #1a0d30;
-            --border: rgba(147,51,234,0.35);
-            --text:   #f3e8ff;
-            --muted:  #c4b5fd;
+            --purple: #0e7490;
+            --pink:   #f6b71e;
+            --bg:     #06182e;
+            --card:   #0c2440;
+            --border: rgba(34,211,238,0.35);
+            --text:   #e6f2fb;
+            --muted:  #93b2cc;
         }
 
         body {
@@ -32,7 +32,7 @@
             padding: 24px 0;
         }
 
-        .stars { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+        .stars { display: none; position: fixed; inset: 0; pointer-events: none; z-index: 0; }
         .star {
             position: absolute; background: white; border-radius: 50%;
             animation: twinkle var(--d, 3s) ease-in-out infinite var(--delay, 0s);
@@ -42,8 +42,8 @@
             50%      { opacity: 0.9;  transform: scale(1.4); }
         }
         .orb { position: fixed; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: 0; }
-        .orb-1 { width: 400px; height: 400px; background: rgba(147,51,234,0.25); top: -100px; left: -100px; }
-        .orb-2 { width: 300px; height: 300px; background: rgba(219,39,119,0.2);  bottom: -80px; right: -80px; }
+        .orb-1 { width: 400px; height: 400px; background: rgba(34,211,238,0.25); top: -100px; left: -100px; }
+        .orb-2 { width: 300px; height: 300px; background: rgba(246,183,30,0.2);  bottom: -80px; right: -80px; }
 
         .card {
             position: relative; z-index: 1;
@@ -67,11 +67,11 @@
             border-radius: 18px;
             display: inline-flex; align-items: center; justify-content: center;
             font-size: 30px; margin-bottom: 14px;
-            box-shadow: 0 0 30px rgba(147,51,234,0.5);
+            box-shadow: 0 0 30px rgba(34,211,238,0.5);
         }
         .brand h1 {
             font-family: 'Fredoka One', cursive; font-size: 26px;
-            background: linear-gradient(135deg, #c084fc, #f472b6);
+            background: linear-gradient(135deg, #67e8f9, #fcd34d);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
         .brand p { color: var(--muted); font-size: 14px; margin-top: 4px; }
@@ -87,7 +87,7 @@
         input[type="text"] {
             width: 100%;
             background: rgba(255,255,255,0.06);
-            border: 1.5px solid rgba(147,51,234,0.3);
+            border: 1.5px solid rgba(34,211,238,0.3);
             border-radius: 12px;
             padding: 12px 16px;
             color: var(--text); font-family: 'Nunito', sans-serif; font-size: 15px;
@@ -95,7 +95,7 @@
         }
         input:focus {
             border-color: var(--purple);
-            box-shadow: 0 0 0 3px rgba(147,51,234,0.2);
+            box-shadow: 0 0 0 3px rgba(34,211,238,0.2);
         }
         input::placeholder { color: rgba(196,181,253,0.4); }
 
@@ -124,8 +124,8 @@
         .btn-submit:active { transform: scale(0.98); }
 
         .foot { text-align: center; margin-top: 24px; font-size: 14px; color: var(--muted); }
-        .foot a { color: #c084fc; font-weight: 700; text-decoration: none; }
-        .foot a:hover { color: #f472b6; }
+        .foot a { color: #67e8f9; font-weight: 700; text-decoration: none; }
+        .foot a:hover { color: #fcd34d; }
 
         .errors {
             background: rgba(239,68,68,0.12);
@@ -145,7 +145,7 @@
 <div class="card">
     <div class="brand">
         <div class="brand-icon">🌟</div>
-        <h1>ForMyNieces</h1>
+        <h1>SmoothSeas</h1>
         <p>Join your SEA journey today</p>
     </div>
 

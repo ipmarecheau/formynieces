@@ -14,7 +14,7 @@
     .dw-island-name {
         font-family: 'Fredoka One', cursive; font-size: 20px;
         display: inline-flex; align-items: center; gap: 8px;
-        color: #f3e8ff;
+        color: #e6f2fb;
     }
     .dw-island-strand {
         font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
@@ -31,14 +31,14 @@
         transform: translateY(-50%);
         background: repeating-linear-gradient(
             to right,
-            rgba(147,51,234,0.4) 0, rgba(147,51,234,0.4) 6px,
+            rgba(34,211,238,0.4) 0, rgba(34,211,238,0.4) 6px,
             transparent 6px, transparent 12px
         );
     }
     .dw-trail-fill {
         position: absolute; top: 50%; left: 0; height: 3px;
         transform: translateY(-50%);
-        background: linear-gradient(90deg, #c084fc, #f472b6);
+        background: linear-gradient(90deg, #67e8f9, #fcd34d);
         border-radius: 999px;
         transition: width 0.5s ease;
     }
@@ -51,7 +51,7 @@
 
     /* ── QUESTION CARD ── */
     .dw-card {
-        background: #1a0d30; border: 1.5px solid rgba(147,51,234,0.35);
+        background: #0c2440; border: 1.5px solid rgba(34,211,238,0.35);
         border-radius: 24px; padding: 36px 30px;
         width: 100%; max-width: 600px;
         animation: dwFade 0.4s ease both;
@@ -63,43 +63,43 @@
     .dw-prompt {
         font-family: 'Fredoka One', cursive; font-size: 23px;
         line-height: 1.45; margin-bottom: 26px; text-align: center;
-        color: #f3e8ff;
+        color: #e6f2fb;
     }
     .dw-options { display: flex; flex-direction: column; gap: 14px; }
     .dw-option {
         background: rgba(255,255,255,0.05);
-        border: 2px solid rgba(147,51,234,0.3);
+        border: 2px solid rgba(34,211,238,0.3);
         border-radius: 16px; padding: 18px 22px;
-        font-size: 17px; font-weight: 600; color: #f3e8ff;
+        font-size: 17px; font-weight: 600; color: #e6f2fb;
         cursor: pointer; text-align: left; width: 100%;
         font-family: 'Nunito', sans-serif;
         transition: border-color 0.15s, background 0.15s, transform 0.1s, box-shadow 0.15s;
     }
     .dw-option:hover {
         border-color: rgba(192,132,252,0.8);
-        background: rgba(147,51,234,0.14);
+        background: rgba(34,211,238,0.14);
     }
     .dw-option:active {
         transform: scale(0.985);
         box-shadow: 0 0 20px rgba(244,114,182,0.4);
-        border-color: #f472b6;
+        border-color: #fcd34d;
     }
     .dw-option:focus-visible {
-        outline: 3px solid #c084fc; outline-offset: 2px;
+        outline: 3px solid #67e8f9; outline-offset: 2px;
     }
 
     /* ── INTERSTITIAL + COMPLETION ── */
     .dw-cheer {
         font-family: 'Fredoka One', cursive; font-size: 22px;
-        text-align: center; color: #f3e8ff; margin-bottom: 24px;
+        text-align: center; color: #e6f2fb; margin-bottom: 24px;
     }
     .dw-done {
         font-family: 'Fredoka One', cursive; font-size: 24px;
-        text-align: center; color: #c084fc;
+        text-align: center; color: #67e8f9;
     }
     .dw-continue {
         display: block; margin: 0 auto;
-        background: linear-gradient(135deg, #9333ea, #db2777);
+        background: linear-gradient(135deg, #0e7490, #f6b71e);
         border: none; border-radius: 999px; padding: 14px 34px;
         color: white; font-family: 'Fredoka One', cursive; font-size: 16px;
         cursor: pointer;

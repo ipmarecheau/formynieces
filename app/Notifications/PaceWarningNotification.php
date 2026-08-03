@@ -14,8 +14,7 @@ class PaceWarningNotification extends Notification
     public function __construct(
         public readonly User $student,
         public readonly int $weeksBehind,
-    ) {
-    }
+    ) {}
 
     public function via(object $notifiable): array
     {
@@ -32,6 +31,6 @@ class PaceWarningNotification extends Notification
             ->line("We've adjusted {$name}'s weekly plan to keep the exam goal comfortably in reach.")
             ->line("Right now {$name} is about {$this->weeksBehind} week(s) behind an on-track schedule, so we've reshaped the coming weeks to catch up gradually — no cramming.")
             ->line('You can see the updated plan on your dashboard.')
-            ->salutation('Warmly, ForMyNieces');
+            ->salutation('Warmly, SmoothSeas');
     }
 }
