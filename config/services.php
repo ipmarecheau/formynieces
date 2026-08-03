@@ -14,9 +14,14 @@ return [
     |
     */
 
-    'groq' => [
-    'key'   => env('GROQ_API_KEY'),
-    'model' => env('GROQ_MODEL', 'llama-3.3-70b-versatile'),
+    // Provider-agnostic LLM client (see App\Services\LlmService). Any
+    // OpenAI-compatible chat API — default is OpenRouter serving a Qwen model.
+    'llm' => [
+        'key' => env('LLM_API_KEY'),
+        'model' => env('LLM_MODEL', 'qwen/qwen-2.5-72b-instruct'),
+        'base_url' => env('LLM_BASE_URL', 'https://openrouter.ai/api/v1'),
+        'referer' => env('LLM_REFERER'), // optional OpenRouter attribution
+        'title' => env('LLM_TITLE', 'ForMyNieces'),
     ],
 
     'postmark' => [

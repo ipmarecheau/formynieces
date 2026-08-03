@@ -31,8 +31,8 @@ function wrCurrentPrompt(): WritingPrompt
     ]);
 }
 
-/** A valid Groq chat-completion whose message content is the rubric JSON. */
-function wrGroqRubric(array $rubric): array
+/** A valid OpenAI-compatible chat completion whose message content is the rubric JSON. */
+function wrLlmRubric(array $rubric): array
 {
     return ['choices' => [['message' => ['content' => json_encode($rubric)]]]];
 }
@@ -51,7 +51,7 @@ it('returns a four-criterion rubric with two strengths and one next step, no gra
     $student = wrStudent();
     wrCurrentPrompt();
 
-    Http::fake(['api.groq.com/*' => Http::response(wrGroqRubric([
+    Http::fake(['openrouter.ai/*' => Http::response(wrLlmRubric([
         'content_score' => 7,
         'language_score' => 7,
         'grammar_score' => 8,
@@ -95,8 +95,8 @@ it('saves and queues the submission when the AI scorer is unavailable', function
     $student = wrStudent();
     wrCurrentPrompt();
 
-    // Provider rate-limited: Groq returns a 429, so no usable rubric comes back.
-    Http::fake(['api.groq.com/*' => Http::response('rate limited', 429)]);
+    // Provider rate-limited: the LLM returns a 429, so no usable rubric comes back.
+    Http::fake(['openrouter.ai/*' => Http::response('rate limited', 429)]);
 
     Livewire::actingAs($student)
         ->test(WritingStop::class)

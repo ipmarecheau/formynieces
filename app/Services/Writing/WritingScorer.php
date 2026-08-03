@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Services\Writing;
 
 use App\Models\WritingSubmission;
-use App\Services\GroqService;
+use App\Services\LlmService;
 
 /**
  * Scores a writing submission against the four SEA criteria and returns warm,
@@ -17,7 +17,7 @@ use App\Services\GroqService;
  */
 final class WritingScorer
 {
-    public function __construct(private GroqService $groq) {}
+    public function __construct(private LlmService $llm) {}
 
     /**
      * @return array{content_score:int, language_score:int, grammar_score:int, organisation_score:int, did_well:array<int, string>, try_next:string}
@@ -47,7 +47,7 @@ final class WritingScorer
 
         $user = "Writing type: {$prompt->type}.\nPrompt: {$prompt->prompt}.\nHer writing:\n{$submission->body}";
 
-        $result = $this->groq->completeJson($system, $user, 700);
+        $result = $this->llm->completeJson($system, $user, 700);
 
         if (! $this->isComplete($result)) {
             throw new WritingScoringUnavailable('The writing scorer returned no usable rubric.');
@@ -65,7 +65,7 @@ final class WritingScorer
 
     /**
      * A response is only usable when every rubric key is present and the two
-     * did-well notes came through — an empty array (Groq outage) or a partial
+     * did-well notes came through — an empty array (provider outage) or a partial
      * object counts as unavailable.
      *
      * @param  array<string, mixed>  $result
