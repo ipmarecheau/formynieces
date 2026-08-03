@@ -353,6 +353,11 @@
   note: "/writing shows this week's prompt 'The Mystery Door' (title, prompt, narrative pill) + draft textarea and a correct 'Send it in' button; Isaac browser-confirmed"
 - scenario: WR-03
   verified_at: 2026-08-01
-  commit: 48e7875
+  commit: INF
   spec_hash: 01de731752ff
   note: "Submit with unavailable Groq: UI shows 'feedback on its way', submission saved status=pending with no scores, ScoreWritingSubmission enqueued in jobs table; Isaac browser-confirmed + DB-confirmed"
+- scenario: WR-02
+  verified_at: 2026-08-03
+  commit: d41d894
+  spec_hash: a924bddb0e39
+  note: "Live Qwen3.7 Flash (OpenRouter) rubric: 4 criteria bars + 2 strengths + 1 next step, no grade/pass-fail; Isaac browser-confirmed"
