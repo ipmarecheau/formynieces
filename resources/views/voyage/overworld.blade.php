@@ -92,7 +92,7 @@
             overflow: hidden;
             box-shadow: 0 18px 50px rgba(0,0,0,0.45);
             background:
-                url('/images/voyage/overworld.png') center / cover no-repeat,
+                url('/images/voyage/overworld.webp') center / cover no-repeat,
                 linear-gradient(180deg, #1b2a6b, #1a7fb0);
         }
 
@@ -137,8 +137,12 @@
         .vy-label {
             font-family: 'Fredoka One', cursive;
             font-size: clamp(0.55rem, 1.15vw, 0.85rem);
-            text-shadow: 0 1px 5px rgba(0,0,0,0.8);
             white-space: nowrap;
+            color: #f8fafc;
+            padding: 2px 9px; border-radius: 999px;
+            background: rgba(9, 14, 34, 0.72);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.45);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.9);
         }
         .vy-count {
             font-weight: 800; font-size: clamp(0.5rem, 1vw, 0.72rem);

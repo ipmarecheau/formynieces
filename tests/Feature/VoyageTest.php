@@ -110,31 +110,31 @@ it('falls back to a generated path for an island without tuned waypoints', funct
 
 it('serves bespoke interior art when the file exists', function () {
     expect(VoyageInteriors::backgroundFor('feather-isle'))
-        ->toBe('/images/voyage/interiors/feather-isle.png');
+        ->toBe('/images/voyage/interiors/feather-isle.webp');
     expect(VoyageInteriors::backgroundFor('lantern-rock'))
-        ->toBe('/images/voyage/interiors/lantern-rock.png');
+        ->toBe('/images/voyage/interiors/lantern-rock.webp');
     expect(VoyageInteriors::backgroundFor('palm-point'))
-        ->toBe('/images/voyage/interiors/palm-point.png');
+        ->toBe('/images/voyage/interiors/palm-point.webp');
     expect(VoyageInteriors::backgroundFor('coral-reef'))
-        ->toBe('/images/voyage/interiors/coral-reef.png');
+        ->toBe('/images/voyage/interiors/coral-reef.webp');
     expect(VoyageInteriors::backgroundFor('twin-palms'))
-        ->toBe('/images/voyage/interiors/twin-palms.png');
+        ->toBe('/images/voyage/interiors/twin-palms.webp');
     expect(VoyageInteriors::backgroundFor('flag-bay'))
-        ->toBe('/images/voyage/interiors/flag-bay.png');
+        ->toBe('/images/voyage/interiors/flag-bay.webp');
     expect(VoyageInteriors::backgroundFor('lagoon-isle'))
-        ->toBe('/images/voyage/interiors/lagoon-isle.png');
+        ->toBe('/images/voyage/interiors/lagoon-isle.webp');
     expect(VoyageInteriors::backgroundFor('library-isle'))
-        ->toBe('/images/voyage/interiors/library-isle.png');
+        ->toBe('/images/voyage/interiors/library-isle.webp');
     expect(VoyageInteriors::backgroundFor('beacon-shoal'))
-        ->toBe('/images/voyage/interiors/beacon-shoal.png');
+        ->toBe('/images/voyage/interiors/beacon-shoal.webp');
     expect(VoyageInteriors::backgroundFor('harbour-town'))
-        ->toBe('/images/voyage/interiors/harbour-town.png');
+        ->toBe('/images/voyage/interiors/harbour-town.webp');
     expect(VoyageInteriors::backgroundFor('sandbar'))
-        ->toBe('/images/voyage/interiors/sandbar.png');
+        ->toBe('/images/voyage/interiors/sandbar.webp');
     expect(VoyageInteriors::backgroundFor('sunset-palms'))
-        ->toBe('/images/voyage/interiors/sunset-palms.png');
+        ->toBe('/images/voyage/interiors/sunset-palms.webp');
     expect(VoyageInteriors::backgroundFor('crystal-peak'))
-        ->toBe('/images/voyage/interiors/crystal-peak.png');
+        ->toBe('/images/voyage/interiors/crystal-peak.webp');
     expect(VoyageInteriors::backgroundFor('no-such-island'))
         ->toBeNull();
 })->group('scenario:AM-01');

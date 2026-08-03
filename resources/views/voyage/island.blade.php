@@ -119,9 +119,13 @@
         .vy-label {
             font-family: 'Fredoka One', cursive;
             font-size: clamp(0.5rem, 1.05vw, 0.78rem);
-            text-shadow: 0 1px 5px rgba(0,0,0,0.85);
+            color: #f8fafc;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.9);
             max-width: clamp(90px, 14vw, 180px);
             text-align: center; line-height: 1.15;
+            padding: 2px 9px; border-radius: 12px;
+            background: rgba(9, 14, 34, 0.72);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.45);
         }
         .is-locked .vy-label { opacity: 0.6; }
 

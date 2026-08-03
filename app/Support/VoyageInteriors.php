@@ -9,8 +9,9 @@ use App\Http\Controllers\VoyageController;
 /**
  * Tier-2 interior art + level-stop layout for each Voyage island.
  *
- * Bespoke artwork lives at public/images/voyage/interiors/{slug}.png (same
- * 2752 x 1536 canvas as the overworld). Until an island's art exists, the
+ * Bespoke artwork lives at public/images/voyage/interiors/{slug}.webp (a
+ * 2048-wide WebP downscaled from the 2752 x 1536 source PNG, for fast loading).
+ * Until an island's art exists, the
  * interior view falls back to a themed gradient — the mini-voyage still works.
  *
  * Level stops are positioned as PERCENTAGES of the canvas, so they scale with
@@ -277,7 +278,7 @@ final class VoyageInteriors
      */
     public static function backgroundFor(string $slug): ?string
     {
-        $relative = "images/voyage/interiors/{$slug}.png";
+        $relative = "images/voyage/interiors/{$slug}.webp";
 
         return is_file(public_path($relative)) ? "/{$relative}" : null;
     }
