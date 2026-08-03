@@ -316,3 +316,43 @@
   commit: 7d87e04
   spec_hash: a4da725d4b84
   note: "Browser /voyage: no percentage, pace, behind, or warning styling anywhere; only mastery states + conquered counts"
+- scenario: SH-01
+  verified_at: 2026-08-01
+  commit: 8cb17e1
+  spec_hash: eba3d0ced964
+  note: "Onboarded student login lands on splash then Voyage, not /my-map; Isaac browser-confirmed"
+- scenario: SH-06
+  verified_at: 2026-08-01
+  commit: 8cb17e1
+  spec_hash: 08d40476ebf9
+  note: "Welcome-back splash button reads 'Continue to my voyage' and lands on /voyage, not /my-map; Isaac browser-confirmed"
+- scenario: SH-04
+  verified_at: 2026-08-01
+  commit: 8cb17e1
+  spec_hash: 4e8cf0bd94b3
+  note: "Streak chip (practice day streak) shown top-right on the Voyage overworld; Isaac browser-confirmed"
+- scenario: SH-02
+  verified_at: 2026-08-01
+  commit: 8cb17e1
+  spec_hash: 918bf42178a0
+  note: "This-week gold banner+ring on Feather Isle overworld and on module 1's level inside; only counts shown, no percentages; Isaac browser-confirmed"
+- scenario: SH-03
+  verified_at: 2026-08-01
+  commit: 8cb17e1
+  spec_hash: b21a3291ef08
+  note: "No Dashboard switcher on the Voyage; tapping a playable Feather Isle level opens /practice/1/lesson; Isaac browser-confirmed"
+- scenario: SH-05
+  verified_at: 2026-08-01
+  commit: 8cb17e1
+  spec_hash: ccedded24559
+  note: "Feather Isle Writer's Log stop is a link (no 'coming soon'); opens /writing; Isaac browser-confirmed"
+- scenario: WR-01
+  verified_at: 2026-08-01
+  commit: INF
+  spec_hash: ab03450da35c
+  note: "/writing shows this week's prompt 'The Mystery Door' (title, prompt, narrative pill) + draft textarea and a correct 'Send it in' button; Isaac browser-confirmed"
+- scenario: WR-03
+  verified_at: 2026-08-01
+  commit: 48e7875
+  spec_hash: 01de731752ff
+  note: "Submit with unavailable Groq: UI shows 'feedback on its way', submission saved status=pending with no scores, ScoreWritingSubmission enqueued in jobs table; Isaac browser-confirmed + DB-confirmed"
