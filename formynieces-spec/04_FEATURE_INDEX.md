@@ -9,6 +9,7 @@
 | `roadmap_reveal.feature` | @mvp | — | student, system |
 | `adventure_map.feature` | @mvp | revision mode @roadmap | student |
 | `student_home.feature` | @mvp | — | student |
+| `voyage_companion.feature` | @v1.1 | AI voice @roadmap | student |
 | `learning_loop.feature` | @mvp | mastery decay @v1.1 | student |
 | `weekly_targets.feature` | @mvp | pause/resume @v1.1 | system |
 | `writing_track.feature` | @mvp | trend view, guardian view @v1.1 | student, system |

@@ -38,6 +38,15 @@ Feature: Syllabus adventure map — the Voyage
     When she taps it
     Then she is taken to play that module
 
+  @scenario:AM-08
+  Scenario: An island's stops are numbered on the map and named in a legend
+    Given a student on an open island with several level stops
+    When she opens the island
+    Then each stop shows its position number on the map
+    And a legend beside the map names every stop in order with its status,
+      whether conquered, current, locked, or the Writer's Log
+    And the legend shows no percentage, target count, or pace position
+
   @roadmap @scenario:AM-05
   Scenario: This week's suggested levels carry a star, without blocking the rest
     Given a weekly target naming specific modules

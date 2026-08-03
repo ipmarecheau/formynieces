@@ -1,11 +1,13 @@
 <?php
 
-use App\Models\User;
 use App\Models\StudentJourney;
+use App\Models\User;
 use App\Services\Pacing\PacingClock;
 
 /**
  * @scenario:WT-00 — the pacing clock derives the current week and weeks to exam.
+ *
+ * @scenario:WT-06 — an early starter is never pushed past week one before time passes.
  *
  * Two clocks, both per student, both anchored at onboarding:
  *   current_pacing_week = weeks_since(journey_start) + 1   (child-facing)
@@ -48,4 +50,4 @@ it('keeps a same-day starter on pacing week one', function () {
     $clock = app(PacingClock::class);
 
     expect($clock->currentPacingWeek($student))->toBe(1);
-})->group('scenario:WT-00');
+})->group('scenario:WT-06');

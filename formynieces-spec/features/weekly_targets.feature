@@ -28,7 +28,7 @@ Feature: Weekly targets and pacing
     Then the student's current pacing week is 5
     And the student's weeks to exam is 26
 
-  @scenario:WT-00
+  @scenario:WT-06
   Scenario: An early starter is never pushed past week one before time passes
     Given a student whose journey starts today
     When the pacing clock is read for that student

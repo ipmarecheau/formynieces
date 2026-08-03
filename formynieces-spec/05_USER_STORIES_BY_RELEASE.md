@@ -57,7 +57,7 @@ truth for the grown-up.
 > one to try — never a grade.
 
 *Covers:* `roadmap_reveal` (RR-01…), `diagnostic` (DG), `adventure_map`
-(AM-01…04, 06), `learning_loop` (LL), `tutorial` (TU-01…04), `motivation_layer`
+(AM-01…04, 06, 08), `learning_loop` (LL), `tutorial` (TU-01…04), `motivation_layer`
 (ML), `writing_track` (WR-01…03), plus `student_home` (SH-01…06).
 
 ### 🧭 Maya's aunt — guardian
@@ -70,7 +70,7 @@ truth for the grown-up.
 > do. Behind pace reads as **triage, not panic**. I can **pause and resume** her
 > without guilt. I never see her streaks as a scoreboard.
 
-*Covers:* `guardian_onboarding` (GO-01…05), `guardian_dashboard` (GD-01…04),
+*Covers:* `guardian_onboarding` (GO-01…05), `guardian_dashboard` (GD-01…05),
 `roadmap_reveal` reconciliation (RR-02…11), `weekly_targets` pause/resume.
 
 ### ⚙️ Admin — me
@@ -91,13 +91,14 @@ Same shape, more honest and more human once the core is lived-in.
 > My worked examples get **interactive** — instead of just watching, I **drive the
 > method** step by step (TU-05). And the platform is honest with itself: if I
 > mastered something weak long ago and haven't touched it, it quietly **slips back
-> into "review"** so I refresh it rather than pretending I still own it (LL-07).
+> into "review"** so I refresh it rather than pretending I still own it (LL-07). A
+> **companion** greets me on my Voyage now — welcomes me by name, cheers my streak,
+> and tells me the plan for this week in my own words, never a number (VC-01…03).
 
 ### 🧭 Maya's aunt — guardian
 > I can **read Maya's latest writing feedback myself** (WR-05) and see her **rubric
 > growth over time** (WR-04). If I've gone quiet, the weekly **digest comes to me
-> inline** rather than waiting for me to log in (GD-06). The pace and readiness
-> sections are **hardened to never leak her motivational layer** (GD-05). If her
+> inline** rather than waiting for me to log in (GD-06). If her
 > diagnostic looks stale, I can **initiate a retake** (DG-17), and I can **verify a
 > phone number** for reminders (GO-06).
 
@@ -123,7 +124,9 @@ never outruns learning.
 > nothing; reading is never timed (FT-01…05). When exam season nears, my map suggests
 > **starred levels** (AM-05) and in the final buffer switches to a calmer **revision
 > mode** (AM-07) — **Math practice becomes fill-in**, and I sit **timed mocks** shaped
-> like the real papers, with **exam week kept quiet and warm** (ER-01…03).
+> like the real papers, with **exam week kept quiet and warm** (ER-01…03). My
+> companion's voice gets **richer with AI** — but only ever from what's true on my
+> map, and never keeping me waiting for my sea (VC-04, VC-05).
 
 ### 🧭 Maya's aunt — guardian
 > The **league is my opt-in** — nothing social turns on without me (XP-09). Mock
@@ -156,3 +159,17 @@ scenario in `features/student_home.feature` (prefix `SH`), ready for the build l
   Its honest completion data belongs to the guardian layer, not the child.
 - `WR-01`'s "writing card on her dashboard" entry point → moves to the Writer's Log
   stop on the Voyage (`SH-05`).
+
+---
+
+## 5. Newly identified MVP gaps (persona coherence review)
+
+Surfaced by walking each persona's story against the scenario bodies. These are
+`@mvp`-banded and outstanding — ready for the build loop. (The Voyage companion,
+`VC-01…05`, came out of the same review but is banded `@v1.1`/`@roadmap`, so it
+sits in `voyage_companion.feature`, not this MVP list.)
+
+| Gap | Scenario | What it closes |
+|---|---|---|
+| Island stops overlap unreadably | `AM-08` | Numbered stops on the map + a legend naming every stop and its status, leaking no pace — the fix for the live overlapping-labels bug |
+| No-scoreboard invariant untested | `GD-05` | The guardian's pace/readiness sections must never show the child's streaks or celebration styling — promised at MVP, but the enforcing scenario was mis-banded `@v1.1` and never built |

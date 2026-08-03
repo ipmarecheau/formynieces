@@ -265,7 +265,12 @@
   verified_at: 2026-07-24
   commit: e52bcd9
   spec_hash: 611ea91945c4
-  note: "Both scenarios (derived current week + early-starter capped at week 1) covered by passing PacingClockTest; pure pacing math, no UI surface (Isaac confirmed)"
+  note: "Derived current week (start+4 -> week 5, 26 weeks to exam) covered by passing PacingClockTest; pure pacing math, no UI surface (Isaac confirmed). Was previously a shared WT-00 with the early-starter scenario, since split out to WT-06."
+- scenario: WT-06
+  verified_at: 2026-07-24
+  commit: e52bcd9
+  spec_hash: f0ed6d7f6380
+  note: "Early starter capped at week 1 (journey starts today -> week 1) covered by passing PacingClockTest; pure pacing math, no UI surface (Isaac confirmed 2026-07-24 alongside WT-00). Split from the former shared WT-00 id."
 - scenario: ML-03
   verified_at: 2026-07-24
   commit: 4284a13
