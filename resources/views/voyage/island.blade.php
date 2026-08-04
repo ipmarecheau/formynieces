@@ -19,6 +19,26 @@
         ->map(fn ($p) => "{$p['x']},{$p['y']}")->implode(' ');
     $ahead = collect($points)->slice($currentStop)
         ->map(fn ($p) => "{$p['x']},{$p['y']}")->implode(' ');
+
+    // AM-08: one shared row per stop drives both the numbered map marker and the
+    // named legend beside it, so status stays in lockstep. Long topic names live
+    // in the legend now, not as floating labels that overlap on a busy path.
+    $stopRows = [];
+    foreach ($levels as $index => $level) {
+        $state = $level['mastered'] ? 'mastered' : ($index === $currentStop ? 'current' : 'locked');
+        $stopCoord = $stops[$index] ?? ['x' => 50, 'y' => 50];
+        $stopRows[] = [
+            'number' => $index + 1,
+            'topic' => $level['topic'],
+            'state' => $state,
+            'badge' => match ($state) { 'mastered' => '⭐', 'current' => '▶', default => '🔒' },
+            'status' => match ($state) { 'mastered' => 'Conquered', 'current' => 'Current', default => 'Locked' },
+            'thisWeek' => in_array($level['id'], $thisWeekModuleIds ?? [], true),
+            'href' => $state === 'locked' ? '#' : route('practice.lesson', $level['id']),
+            'x' => $stopCoord['x'],
+            'y' => $stopCoord['y'],
+        ];
+    }
 @endphp
 <!DOCTYPE html>
 <html lang="en">
@@ -159,6 +179,58 @@
             filter: drop-shadow(0 3px 6px rgba(0,0,0,0.5));
             pointer-events: none;
         }
+
+        /* AM-08: the map holds a compact number per stop; the legend beside it
+           carries the full names + status, so long labels never overlap again. */
+        .vy-stage { display: flex; flex-direction: column; gap: 16px; }
+        @media (min-width: 860px) {
+            .vy-stage { flex-direction: row; align-items: flex-start; }
+            .vy-map { flex: 1 1 auto; min-width: 0; }
+            .vy-legend { flex: 0 0 268px; }
+        }
+
+        .vy-num {
+            font-family: 'Fredoka One', cursive;
+            font-size: clamp(0.6rem, 1.15vw, 0.85rem); line-height: 1;
+            color: #f8fafc; min-width: 20px; text-align: center;
+            padding: 2px 7px; border-radius: 999px;
+            background: rgba(9, 14, 34, 0.82);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+        }
+        .is-locked .vy-num { opacity: 0.65; }
+
+        .vy-legend {
+            background: rgba(12, 20, 50, 0.55);
+            backdrop-filter: blur(8px);
+            border: 1.5px solid rgba(147, 197, 253, 0.28);
+            border-radius: 18px; padding: 14px 16px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+        }
+        .vy-legend-head {
+            font-family: 'Fredoka One', cursive; font-size: 0.9rem;
+            color: #cfe6fb; margin-bottom: 10px;
+        }
+        .vy-legend-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+        .vy-legend-row {
+            display: grid; grid-template-columns: 24px 1fr auto; align-items: center; gap: 9px;
+            padding: 6px 8px; border-radius: 12px;
+            background: rgba(255,255,255,0.04);
+        }
+        .vy-legend-num {
+            font-family: 'Fredoka One', cursive; font-size: 0.8rem;
+            text-align: center; color: #e6f2fb;
+        }
+        .vy-legend-name { font-size: 0.82rem; font-weight: 700; color: #e6f2fb; line-height: 1.2; }
+        .vy-legend-status {
+            font-size: 0.66rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em;
+            padding: 2px 8px; border-radius: 999px; white-space: nowrap;
+            background: rgba(148,163,184,0.25); color: #cbd5e1;
+        }
+        .vy-legend-row.is-mastered .vy-legend-status { background: rgba(52,211,153,0.22); color: #6ee7b7; }
+        .vy-legend-row.is-current .vy-legend-status { background: rgba(253,230,138,0.24); color: #fde68a; }
+        .vy-legend-row.is-writing .vy-legend-status { background: rgba(251,191,36,0.2); color: #fcd34d; }
+        .vy-legend-row.is-thisweek { outline: 2px solid rgba(253,224,71,0.8); }
+        .vy-legend-row.is-thisweek .vy-legend-status { background: #fde047; color: #78350f; }
     </style>
 </head>
 <body>
@@ -171,36 +243,21 @@
         <h1 class="vy-title">{{ $island['name'] }}</h1>
         <p class="vy-sub">{{ $island['conquered'] }} of {{ $island['total'] }} levels conquered — clear them in order to master this island.</p>
 
+        <div class="vy-stage">
         <div class="vy-map">
             <svg class="vy-trail" viewBox="0 0 {{ $mapW }} {{ $mapH }}" preserveAspectRatio="none" aria-hidden="true">
                 <polyline class="vy-trail-ahead" points="{{ $ahead }}" />
                 <polyline class="vy-trail-done" points="{{ $travelled }}" />
             </svg>
 
-            @foreach($levels as $index => $level)
-                @php
-                    if ($level['mastered']) {
-                        $state = 'mastered';
-                    } elseif ($index === $currentStop) {
-                        $state = 'current';
-                    } else {
-                        $state = 'locked';
-                    }
-                    $stop = $stops[$index] ?? ['x' => 50, 'y' => 50];
-                    $badge = match ($state) {
-                        'mastered' => '⭐',
-                        'current' => '▶',
-                        default => '🔒',
-                    };
-                @endphp
-                @php $isThisWeek = in_array($level['id'], $thisWeekModuleIds ?? [], true); @endphp
-                <a href="{{ $state === 'locked' ? '#' : route('practice.lesson', $level['id']) }}"
-                   class="vy-stop is-{{ $state }} {{ $isThisWeek ? 'is-thisweek' : '' }}"
-                   style="left: {{ $stop['x'] }}%; top: {{ $stop['y'] }}%;"
-                   title="{{ $level['topic'] }}{{ $isThisWeek ? ' — this week' : '' }}">
-                    <span class="vy-badge">{{ $badge }}</span>
-                    <span class="vy-label">{{ $level['topic'] }}</span>
-                    @if($isThisWeek)<span class="vy-thisweek">This week</span>@endif
+            @foreach($stopRows as $row)
+                <a href="{{ $row['href'] }}"
+                   class="vy-stop is-{{ $row['state'] }} {{ $row['thisWeek'] ? 'is-thisweek' : '' }}"
+                   style="left: {{ $row['x'] }}%; top: {{ $row['y'] }}%;"
+                   title="{{ $row['number'] }}. {{ $row['topic'] }}{{ $row['thisWeek'] ? ' — this week' : '' }}">
+                    <span class="vy-badge">{{ $row['badge'] }}</span>
+                    <span class="vy-num">{{ $row['number'] }}</span>
+                    @if($row['thisWeek'])<span class="vy-thisweek">This week</span>@endif
                 </a>
             @endforeach
 
@@ -217,6 +274,27 @@
             @if(isset($stops[$currentStop]))
                 <span class="vy-boat" style="left: {{ $stops[$currentStop]['x'] }}%; top: {{ $stops[$currentStop]['y'] }}%;">⛵</span>
             @endif
+        </div>
+
+        <aside class="vy-legend" aria-label="Stops on this island">
+            <p class="vy-legend-head">Stops on this island</p>
+            <ol class="vy-legend-list">
+                @foreach($stopRows as $row)
+                    <li class="vy-legend-row is-{{ $row['state'] }} {{ $row['thisWeek'] ? 'is-thisweek' : '' }}">
+                        <span class="vy-legend-num">{{ $row['number'] }}</span>
+                        <span class="vy-legend-name">{{ $row['topic'] }}</span>
+                        <span class="vy-legend-status">{{ $row['thisWeek'] ? 'This week' : $row['status'] }}</span>
+                    </li>
+                @endforeach
+                @if(isset($writingStop))
+                    <li class="vy-legend-row is-writing">
+                        <span class="vy-legend-num">✍️</span>
+                        <span class="vy-legend-name">Writer's Log</span>
+                        <span class="vy-legend-status">Writing</span>
+                    </li>
+                @endif
+            </ol>
+        </aside>
         </div>
     </div>
 </body>

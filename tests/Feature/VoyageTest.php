@@ -80,6 +80,27 @@ it('opens an unlocked island as a mini-voyage listing its own levels', function 
         ->assertSee('Back to the sea');
 })->group('scenario:AM-01');
 
+it('numbers each island stop on the map and names them all in a legend, leaking no pace', function () {
+    $this->seed(SyllabusModuleSeeder::class);
+    $this->seed(ModulePrerequisiteSeeder::class);
+
+    $student = makeVoyageStudent();
+    $first = app(AdventureMapBuilder::class)->buildVoyage($student)[0];
+
+    $response = $this->actingAs($student)->get(route('student.voyage.island', $first['slug']));
+
+    $response->assertOk()
+        // Each stop carries a compact position number on the map (no more overlapping labels).
+        ->assertSee('vy-num')
+        // A legend beside the map names every stop in order with its status.
+        ->assertSee('vy-legend')
+        ->assertSee($first['levels'][0]['topic'])
+        ->assertSee($first['levels'][array_key_last($first['levels'])]['topic'])
+        ->assertSee('Current')                 // the boat's stop, named in the legend
+        ->assertSee('Locked')                  // stops ahead of her, named in the legend
+        ->assertSee("Writer's Log", false);    // the writing stop rides in the legend too
+})->group('scenario:AM-08');
+
 it('sails a student back to the overworld when an island is still locked', function () {
     $this->seed(SyllabusModuleSeeder::class);
     $this->seed(ModulePrerequisiteSeeder::class);
