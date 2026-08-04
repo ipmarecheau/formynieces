@@ -366,3 +366,13 @@
   commit: d41d894
   spec_hash: a924bddb0e39
   note: "Live Qwen3.7 Flash (OpenRouter) rubric: 4 criteria bars + 2 strengths + 1 next step, no grade/pass-fail; Isaac browser-confirmed"
+- scenario: AM-08
+  verified_at: 2026-08-04
+  commit: 5c69ebe
+  spec_hash: 0c2208419769
+  note: "Isaac verified in browser: island stops show numbers, legend names each stop with correct status (Current/Locked/Writer's Log), the centre cluster no longer overlaps, legend stacks on narrow width."
+- scenario: GD-05
+  verified_at: 2026-08-04
+  commit: 5c69ebe
+  spec_hash: 3b730c37f58a
+  note: "Isaac verified: guardian dashboard shows no streak counter or celebration in the pace/readiness sections even with an active child streak (regression guard, no UI change)."
