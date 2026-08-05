@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Models\StudentStreak;
 use App\Models\WeeklyTarget;
 use App\Services\Pacing\AdventureMapBuilder;
+use App\Support\VoyageCompanion;
 use App\Support\VoyageInteriors;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -45,10 +46,24 @@ final class VoyageController extends Controller
         }
         unset($island);
 
+        // VC-01..03: this week's topics, pulled from the already-loaded island
+        // levels (no extra query), for the companion's plan line.
+        $thisWeekTopics = collect($islands)
+            ->flatMap(fn ($island) => $island['levels'])
+            ->whereIn('id', $thisWeekModuleIds)
+            ->pluck('topic')
+            ->values()
+            ->all();
+
+        $streaks = $this->streaksFor($user->id);
+        $companion = VoyageCompanion::for($user->name, $streaks, $thisWeekTopics);
+        $companion['avatarUrl'] = $this->companionAvatarUrl($companion['avatar']);
+
         return view('voyage.overworld', [
             'user' => $user,
             'islands' => $islands,
-            'streaks' => $this->streaksFor($user->id),
+            'streaks' => $streaks,
+            'companion' => $companion,
         ]);
     }
 
@@ -86,6 +101,26 @@ final class VoyageController extends Controller
             // SH-02: the levels named in this week's target, highlighted on the island.
             'thisWeekModuleIds' => $this->thisWeekModuleIds($user->id),
         ]);
+    }
+
+    /**
+     * Resolve a companion pose to Smooth's artwork, gracefully falling back to the
+     * waving hero until a given pose has been drawn (the chart pose lands later).
+     */
+    private function companionAvatarUrl(string $pose): string
+    {
+        $files = [
+            'wave' => 'smooth.webp',
+            'cheer' => 'smooth-cheer.webp',
+            'chart' => 'smooth-chart.webp',
+        ];
+
+        $file = $files[$pose] ?? $files['wave'];
+        if (! is_file(public_path("images/voyage/companion/{$file}"))) {
+            $file = $files['wave'];
+        }
+
+        return asset("images/voyage/companion/{$file}");
     }
 
     /**

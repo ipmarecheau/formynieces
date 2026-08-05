@@ -81,6 +81,31 @@
         }
         .vy-sub { text-align: center; color: rgba(243,232,255,0.85); font-size: 0.95rem; margin-bottom: 22px; }
 
+        /* VC-01..03: the companion panel — a warm greeting over honest data. */
+        .vy-companion {
+            display: flex; align-items: center; gap: 14px;
+            max-width: 720px; margin: 0 auto 22px;
+            padding: 16px 20px; border-radius: 20px;
+            background: rgba(12, 20, 50, 0.55);
+            backdrop-filter: blur(8px);
+            border: 1.5px solid rgba(147, 197, 253, 0.28);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+        }
+        .vy-companion-avatar {
+            flex: 0 0 auto;
+            height: clamp(78px, 17vw, 116px); width: auto;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.45));
+        }
+        .vy-companion-body { min-width: 0; }
+        .vy-companion-greeting {
+            font-family: 'Fredoka One', cursive;
+            font-size: clamp(1.1rem, 3vw, 1.5rem); color: #f8fafc;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.35);
+        }
+        .vy-companion-line { font-size: 0.92rem; font-weight: 700; margin-top: 4px; line-height: 1.35; }
+        .vy-companion-streak { color: #fde68a; }
+        .vy-companion-plan { color: #bfe6ff; }
+
         /* The map: a fixed-aspect stage. The image, the SVG trail, and every
            island marker share this box, so they scale as one. */
         .vy-map {
@@ -178,8 +203,22 @@
     </nav>
 
     <div class="vy-wrap">
-        <h1 class="vy-title">Chart your course, {{ $user->name }}! 🗺️</h1>
-        <p class="vy-sub">Sail the trail island by island — conquer every level on a stop to unlock the next.</p>
+        {{-- VC-01..03: the companion — a warm voice over honest data. Greets by
+             name; the streak and plan lines appear only when they are real. --}}
+        <div class="vy-companion">
+            <img class="vy-companion-avatar" src="{{ $companion['avatarUrl'] }}"
+                 alt="Smooth the turtle, your guide">
+
+            <div class="vy-companion-body">
+                <p class="vy-companion-greeting">{{ $companion['greeting'] }}</p>
+                @if($companion['streak'])
+                    <p class="vy-companion-line vy-companion-streak">{{ $companion['streak'] }}</p>
+                @endif
+                @if($companion['plan'])
+                    <p class="vy-companion-line vy-companion-plan">🗺️ {{ $companion['plan'] }}</p>
+                @endif
+            </div>
+        </div>
 
         <div class="vy-map">
             <svg class="vy-trail" viewBox="0 0 {{ $mapW }} {{ $mapH }}" preserveAspectRatio="none" aria-hidden="true">
