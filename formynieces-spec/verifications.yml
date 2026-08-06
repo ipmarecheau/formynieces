@@ -376,3 +376,28 @@
   commit: 5c69ebe
   spec_hash: 3b730c37f58a
   note: "Isaac verified: guardian dashboard shows no streak counter or celebration in the pace/readiness sections even with an active child streak (regression guard, no UI change)."
+- scenario: QB-06
+  verified_at: 2026-08-06
+  commit: 0dc5f13
+  spec_hash: a0a79a70a780
+  note: "Isaac verified in browser: authored a new practice question via the Question Bank resource (module, rung, prompt, 4 options + correct answer) and it saved."
+- scenario: QB-07
+  verified_at: 2026-08-06
+  commit: 0dc5f13
+  spec_hash: dfdbda45c60f
+  note: "Isaac verified: edited an existing question and the change persisted."
+- scenario: QB-08
+  verified_at: 2026-08-06
+  commit: 0dc5f13
+  spec_hash: c8b7ef7022eb
+  note: "Isaac verified: a question without four options / without one correct answer is rejected with a validation error."
+- scenario: QB-09
+  verified_at: 2026-08-06
+  commit: 0dc5f13
+  spec_hash: a55eb9da0490
+  note: "Isaac verified: Export to Moodle XML downloads a valid grouped XML with one fully-correct answer per question."
+- scenario: QB-10
+  verified_at: 2026-08-06
+  commit: 0dc5f13
+  spec_hash: 19bd2aa8df3c
+  note: "Isaac verified: an exported question re-imports intact (round-trip)."
