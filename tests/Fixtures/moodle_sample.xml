@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="category"><category><text>$course$/top/SEA Practice/Q01 Addition</text></category></question>
+
+<question type="multichoice"><name><text>Q01 · D1 · v1 — Addition</text></name>
+<questiontext format="html"><text><![CDATA[<p>ADD: 2 + 3</p>]]></text></questiontext>
+<generalfeedback format="html"><text><![CDATA[<p><strong>Answer:</strong> 5</p>]]></text></generalfeedback>
+<single>true</single>
+<answer fraction="100"><text><![CDATA[5]]></text></answer>
+<answer fraction="0"><text><![CDATA[4]]></text></answer>
+<answer fraction="0"><text><![CDATA[6]]></text></answer>
+<answer fraction="0"><text><![CDATA[7]]></text></answer>
+</question>
+
+<question type="multichoice"><name><text>Q01 · D5 · v1 — Addition</text></name>
+<questiontext format="html"><text><![CDATA[<p>ADD: 1234 + 5678</p>]]></text></questiontext>
+<answer fraction="100"><text><![CDATA[6912]]></text></answer>
+<answer fraction="0"><text><![CDATA[6812]]></text></answer>
+<answer fraction="0"><text><![CDATA[7912]]></text></answer>
+<answer fraction="0"><text><![CDATA[6902]]></text></answer>
+</question>
+
+<question type="category"><category><text>$course$/top/SEA Practice/Q04 Fraction shaded</text></category></question>
+
+<question type="multichoice"><name><text>Q04 · D3 · v1 — Fraction shaded</text></name>
+<questiontext format="html"><text><![CDATA[<p>What fraction is shaded?</p><p><img src="@@PLUGINFILE@@/fig.png" alt="figure"/></p>]]></text>
+<file name="fig.png" path="/" encoding="base64">iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==</file>
+</questiontext>
+<answer fraction="100"><text><![CDATA[1/2]]></text></answer>
+<answer fraction="0"><text><![CDATA[1/4]]></text></answer>
+<answer fraction="0"><text><![CDATA[3/4]]></text></answer>
+<answer fraction="0"><text><![CDATA[2/4]]></text></answer>
+</question>
+
+<question type="category"><category><text>$course$/top/SEA Practice/Q99 Mystery skill</text></category></question>
+
+<question type="multichoice"><name><text>Q99 · D1 · v1 — Mystery skill</text></name>
+<questiontext format="html"><text><![CDATA[<p>Unmapped skill question</p>]]></text></questiontext>
+<answer fraction="100"><text><![CDATA[a]]></text></answer>
+<answer fraction="0"><text><![CDATA[b]]></text></answer>
+<answer fraction="0"><text><![CDATA[c]]></text></answer>
+<answer fraction="0"><text><![CDATA[d]]></text></answer>
+</question>
+
+<question type="truefalse"><name><text>Q01 · D1 · v2 — Addition TF</text></name>
+<questiontext format="html"><text><![CDATA[<p>2 + 3 = 5?</p>]]></text></questiontext>
+<answer fraction="100"><text>true</text></answer>
+<answer fraction="0"><text>false</text></answer>
+</question>
+</quiz>

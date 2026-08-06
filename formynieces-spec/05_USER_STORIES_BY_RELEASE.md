@@ -105,7 +105,10 @@ Same shape, more honest and more human once the core is lived-in.
 ### ⚙️ Admin — me
 > The **pacing clock gets precise** — it derives the current week and weeks-to-exam
 > correctly, and an **early starter is never pushed past week one** before real time
-> passes (WT-00).
+> passes (WT-00). I also **curate the question bank**: whole banks arrive as **Moodle
+> XML** and import safely with a dry-run preview and no duplicates (QB-01…05), I
+> **author and edit** questions by hand (QB-06…08), and I **export** the bank back to
+> Moodle XML so it stays portable (QB-09/10).
 
 ---
 

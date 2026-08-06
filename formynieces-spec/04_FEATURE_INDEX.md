@@ -17,6 +17,7 @@
 | `motivation_layer.feature` | @mvp | — | student |
 | `exam_readiness.feature` | @roadmap | — | student |
 | `admin_content.feature` | mixed | modules @mvp · anchors, monitor @v1.1 | admin |
+| `question_bank.feature` | @v1.1 | — | admin |
 
 **Run the MVP suite:** `--tags @mvp` (Behat) or filter by group `mvp` (Pest).
 

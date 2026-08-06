@@ -13,6 +13,11 @@
     .pw-card { background: #0c2440; border: 1.5px solid rgba(34,211,238,0.35); border-radius: 24px; padding: 36px 30px; width: 100%; max-width: 600px; animation: pwFade 0.4s ease both; }
     @keyframes pwFade { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
     .pw-prompt { font-family: 'Fredoka One', cursive; font-size: 23px; line-height: 1.45; margin-bottom: 26px; text-align: center; color: #e6f2fb; }
+    .pw-prompt p { margin: 0 0 10px; }
+    /* Imported questions carry figures + worked-solution HTML. */
+    .pw-prompt img, .pw-explanation img { max-width: 100%; height: auto; display: block; margin: 12px auto; border-radius: 12px; background: #fff; padding: 6px; }
+    .pw-explanation ol, .pw-explanation ul { text-align: left; display: inline-block; margin: 8px auto; padding-left: 22px; }
+    .pw-explanation p { margin: 0 0 8px; }
     .pw-options { display: flex; flex-direction: column; gap: 14px; }
     .pw-option { background: rgba(255,255,255,0.05); border: 2px solid rgba(34,211,238,0.3); border-radius: 16px; padding: 18px 22px; font-size: 17px; font-weight: 600; color: #e6f2fb; cursor: pointer; text-align: left; width: 100%; font-family: 'Nunito', sans-serif; transition: border-color 0.15s, background 0.15s, transform 0.1s, box-shadow 0.15s; }
     .pw-option:hover { border-color: rgba(192,132,252,0.8); background: rgba(34,211,238,0.14); }
@@ -64,13 +69,13 @@
             @else
                 <p class="pw-feedback-head notyet">Not yet — here's the idea 🌱</p>
             @endif
-            <p class="pw-explanation">{{ $feedback['explanation'] }}</p>
+            <div class="pw-explanation">{!! $feedback['explanation'] !!}</div>
             <button type="button" class="pw-next" wire:click="next">Next →</button>
         </div>
 
     @else
         <div class="pw-card" wire:key="q-{{ $question['id'] }}">
-            <p class="pw-prompt">{{ $question['prompt'] }}</p>
+            <div class="pw-prompt">{!! $question['prompt'] !!}</div>
             <div class="pw-options">
                 @foreach ($question['options'] as $index => $optionText)
                     <button type="button" class="pw-option" wire:click="choose({{ $index }})" wire:loading.attr="disabled">{{ $optionText }}</button>

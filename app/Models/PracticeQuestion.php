@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class PracticeQuestion extends Model
@@ -23,14 +23,15 @@ class PracticeQuestion extends Model
         'hint',
         'explanation',
         'is_active',
+        'source_ref',
     ];
 
     protected $casts = [
-        'options'        => 'array',   // JSON text <-> PHP array, like the diagnostic reads anchors
-        'difficulty'     => 'integer',
+        'options' => 'array',   // JSON text <-> PHP array, like the diagnostic reads anchors
+        'difficulty' => 'integer',
         'sequence_order' => 'integer',
-        'correct_index'  => 'integer',
-        'is_active'      => 'boolean',
+        'correct_index' => 'integer',
+        'is_active' => 'boolean',
     ];
 
     public function module(): BelongsTo
