@@ -18,9 +18,17 @@ GOAL (why the product exists)
               └── OBJECT MODEL (nouns, attributes, verbs)                → 02_OBJECT_MODEL.md
                     └── SCREENS + NAVIGATION (derived from objects
                         and interaction frequency)                       → 03_SCREENS_AND_NAVIGATION.md
-                          └── GHERKIN FEATURES (executable behaviour)    → features/*.feature
-                                └── ROADMAP (sequenced delivery)         → ROADMAP.md
+                          └── USER STORIES (persona-voiced, by release)  → 05_USER_STORIES_BY_RELEASE.md
+                                └── GHERKIN FEATURES (executable spec)   → features/*.feature
+                                      └── PEST TESTS (TDD, 1:1 by tag)   → tests/**
+                                            └── VERIFICATION (ledger)    → verifications.yml
+                                                  └── ROADMAP (delivery) → ROADMAP.md
 ```
+
+**How a feature is built (document-first → BDD → TDD → verify):** the chain above is not
+just how the product is *described*, it is the order in which each feature is *built* —
+story, then written-down behaviour, then a failing test, then code, then human
+verification. That workflow is specified in `06_DEVELOPMENT_WORKFLOW.md`.
 
 **Consistency rules:**
 1. Every Gherkin `When` must be reachable from a screen in 03.
@@ -80,6 +88,9 @@ Secondary tags: `@student`, `@guardian`, `@admin`, `@system` (actor), and `@scen
 | `03_SCREENS_AND_NAVIGATION.md` | Screen inventory with priorities and navigation map. |
 | `features/*.feature` | Executable Gherkin specs, tagged by priority and actor. |
 | `04_FEATURE_INDEX.md` | Feature ↔ priority ↔ scenario coverage matrix. |
+| `05_USER_STORIES_BY_RELEASE.md` | Persona-voiced narrative of the whole experience, banded by release. |
+| `06_DEVELOPMENT_WORKFLOW.md` | The build process: document-first → BDD → TDD → verification. |
+| `verifications.yml` | Manual verification ledger (written by `specs:verify`, read by `specs:trace`). |
 | `ROADMAP.md` | Phased delivery plan against the SEA 2027 calendar. |
 
 ---
