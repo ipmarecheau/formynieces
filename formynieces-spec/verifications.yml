@@ -401,3 +401,43 @@
   commit: 0dc5f13
   spec_hash: 19bd2aa8df3c
   note: "Isaac verified: an exported question re-imports intact (round-trip)."
+- scenario: QB-01
+  verified_at: 2026-08-06
+  commit: 960f233
+  spec_hash: 0cc42c2e0e00
+  note: "Isaac ran the dry-run preview in the Import Questions page (690 parsed, 0 skipped, 315 images) — confirmed nothing is written (verify-all 2026-08-06)."
+- scenario: QB-02
+  verified_at: 2026-08-06
+  commit: 960f233
+  spec_hash: 38840f7f455d
+  note: "Isaac confirmed a real import stores questions against their mapped module and rung (verify-all)."
+- scenario: QB-03
+  verified_at: 2026-08-06
+  commit: 960f233
+  spec_hash: 1c5545adbdf5
+  note: "Isaac confirmed re-importing the same file updates rather than duplicates (verify-all)."
+- scenario: QB-04
+  verified_at: 2026-08-06
+  commit: 960f233
+  spec_hash: 9c0b14e6bfd7
+  note: "Isaac confirmed embedded figures are extracted/served and @@PLUGINFILE@@ placeholders rewritten (verify-all)."
+- scenario: QB-05
+  verified_at: 2026-08-06
+  commit: 960f233
+  spec_hash: 62a246137d3e
+  note: "Isaac confirmed unmapped skills / unsupported types are skipped and listed with reasons (verify-all)."
+- scenario: VC-01
+  verified_at: 2026-08-06
+  commit: 960f233
+  spec_hash: b5c2acdd240d
+  note: "Isaac confirmed the companion greets by name with her live streak on the Voyage (verify-all)."
+- scenario: VC-02
+  verified_at: 2026-08-06
+  commit: 960f233
+  spec_hash: 0316879c0747
+  note: "Isaac confirmed the companion names this week's plan by topic, no pace/percentage (verify-all)."
+- scenario: VC-03
+  verified_at: 2026-08-06
+  commit: 960f233
+  spec_hash: a10bb2bcb69e
+  note: "Isaac confirmed nothing is invented when there is no streak or target (verify-all)."
