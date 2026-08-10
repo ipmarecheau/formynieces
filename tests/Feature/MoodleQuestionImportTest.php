@@ -74,6 +74,37 @@ it('skips unmapped skills and unsupported question types with reasons', function
     expect($reasons->pluck('reason')->implode(' '))->toContain("Unsupported question type 'truefalse'");
 })->group('scenario:QB-05');
 
+it('imports a 3-band bank, mapping Easier/Same/Harder to the three rungs', function () {
+    $band = <<<'XML'
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="category"><category><text>$course$/top/SEA Combined/B - 3-band set/Number/01 Add whole numbers</text></category></question>
+<question type="multichoice"><name><text>B01 Add whole numbers - Easier - v1</text></name>
+<questiontext format="html"><text><![CDATA[<p>2 + 3</p>]]></text></questiontext>
+<answer fraction="100"><text><![CDATA[5]]></text></answer><answer fraction="0"><text><![CDATA[4]]></text></answer><answer fraction="0"><text><![CDATA[6]]></text></answer><answer fraction="0"><text><![CDATA[7]]></text></answer>
+</question>
+<question type="multichoice"><name><text>B01 Add whole numbers - Same as SEA - v1</text></name>
+<questiontext format="html"><text><![CDATA[<p>20 + 30</p>]]></text></questiontext>
+<answer fraction="100"><text><![CDATA[50]]></text></answer><answer fraction="0"><text><![CDATA[40]]></text></answer><answer fraction="0"><text><![CDATA[60]]></text></answer><answer fraction="0"><text><![CDATA[70]]></text></answer>
+</question>
+<question type="multichoice"><name><text>B01 Add whole numbers - Much harder - v1</text></name>
+<questiontext format="html"><text><![CDATA[<p>200 + 300</p>]]></text></questiontext>
+<answer fraction="100"><text><![CDATA[500]]></text></answer><answer fraction="0"><text><![CDATA[400]]></text></answer><answer fraction="0"><text><![CDATA[600]]></text></answer><answer fraction="0"><text><![CDATA[700]]></text></answer>
+</question>
+</quiz>
+XML;
+
+    app(MoodleQuestionImporter::class)->import($band, dryRun: false);
+
+    expect(PracticeQuestion::count())->toBe(3);
+
+    $easier = PracticeQuestion::where('source_ref', 'B01 Add whole numbers - Easier - v1')->firstOrFail();
+    expect($easier->module_id)->toBe(6)      // B01 -> Whole Number Operations: Add/Subtract
+        ->and($easier->difficulty)->toBe(1); // Easier -> easy rung
+    expect(PracticeQuestion::where('source_ref', 'B01 Add whole numbers - Same as SEA - v1')->value('difficulty'))->toBe(2);
+    expect(PracticeQuestion::where('source_ref', 'B01 Add whole numbers - Much harder - v1')->value('difficulty'))->toBe(3);
+})->group('scenario:QB-15');
+
 it('is idempotent — re-importing the same file updates rather than duplicates', function () {
     $importer = app(MoodleQuestionImporter::class);
     $importer->import(sampleMoodleXml(), dryRun: false);

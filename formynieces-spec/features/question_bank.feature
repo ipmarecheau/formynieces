@@ -44,6 +44,14 @@ Feature: Question bank — import, authoring, and export
       Then those questions are skipped and listed with the reason each was skipped
       And the questions that can be placed are still reported as importable
 
+    @scenario:QB-15
+    Scenario: Banks may code difficulty as three bands or as numeric levels
+      Given a Moodle export whose skill code leads each question name and whose
+        difficulty is written as a band — Easier, Same, or Harder — rather than a level
+      When the admin imports it
+      Then each question lands on its mapped module
+      And its rung matches the band: Easier is easy, Same is medium, Harder is hard
+
   Rule: An admin authors and edits questions by hand
 
     @scenario:QB-06

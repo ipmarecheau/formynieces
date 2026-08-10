@@ -94,7 +94,9 @@ class MoodleQuestionImporter
     {
         $report->parsed++;
 
-        $skill = $currentSkill ?? $this->skillCodeFromName($name);
+        // The skill code leads the question name (e.g. B01, S01, Q01, M6). Fall
+        // back to the current category if a name somehow omits it.
+        $skill = $this->skillCodeFromName($name) ?? $currentSkill;
         $moduleId = $this->resolveModuleId($skill);
 
         if ($moduleId === null || ! isset($this->modules[$moduleId])) {
@@ -103,15 +105,9 @@ class MoodleQuestionImporter
             return;
         }
 
-        $level = $this->difficultyFromName($name);
-        if ($level === null) {
-            $report->skip($name, 'No difficulty (D1–D5) found in the question name.');
-
-            return;
-        }
-        $rung = $this->difficultyMap[$level] ?? null;
+        $rung = $this->difficultyRungFromName($name);
         if ($rung === null) {
-            $report->skip($name, "Difficulty level D{$level} has no rung mapping.");
+            $report->skip($name, 'No difficulty (a 3-band word or a level number) found in the question name.');
 
             return;
         }
@@ -253,17 +249,46 @@ class MoodleQuestionImporter
     {
         $last = trim((string) Str::afterLast($category, '/'));
 
-        return preg_match('/^([QM]\d+)/i', $last, $m) ? strtoupper($m[1]) : null;
+        return preg_match('/^([A-Za-z]+\d+)/', $last, $m) ? strtoupper($m[1]) : null;
     }
 
+    /**
+     * The skill code leads the question name — a letter prefix + number, covering
+     * every bank dialect: Q01 (original), A01/B01 (combined sets), S/P/G/V/F/C
+     * (ELA), and M6 (this app's own exports).
+     */
     private function skillCodeFromName(string $name): ?string
     {
-        return preg_match('/^([QM]\d+)/i', trim($name), $m) ? strtoupper($m[1]) : null;
+        return preg_match('/^([A-Za-z]+\d+)/', trim($name), $m) ? strtoupper($m[1]) : null;
     }
 
-    private function difficultyFromName(string $name): ?int
+    /**
+     * The practice rung (1 easy, 2 medium, 3 hard) from whichever difficulty
+     * scheme the bank uses:
+     *   - 3-band words: "Easier" / "Same (as SEA)" / "Harder"/"Much harder"
+     *   - numeric levels: "Level 1–5" or "D1–5" (collapsed via difficulty_map)
+     */
+    private function difficultyRungFromName(string $name): ?int
     {
-        return preg_match('/\bD([1-5])\b/', $name, $m) ? (int) $m[1] : null;
+        // Numeric levels first (also how this app's own exports encode difficulty),
+        // so a module topic in the name can never be mistaken for a band word.
+        if (preg_match('/\b(?:level|d)\s*([1-5])\b/i', $name, $m)) {
+            return $this->difficultyMap[(int) $m[1]] ?? null;
+        }
+
+        $lower = strtolower($name);
+
+        if (str_contains($lower, 'easier')) {
+            return 1;
+        }
+        if (str_contains($lower, 'harder')) { // covers "much harder"
+            return 3;
+        }
+        if (str_contains($lower, 'same')) {
+            return 2;
+        }
+
+        return null;
     }
 
     private function questionTextNode(DOMElement $q): ?DOMElement
