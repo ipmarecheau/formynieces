@@ -108,7 +108,9 @@ Same shape, more honest and more human once the core is lived-in.
 > passes (WT-00). I also **curate the question bank**: whole banks arrive as **Moodle
 > XML** and import safely with a dry-run preview and no duplicates (QB-01…05), I
 > **author and edit** questions by hand (QB-06…08), and I **export** the bank back to
-> Moodle XML so it stays portable (QB-09/10).
+> Moodle XML so it stays portable (QB-09/10). The bank is **backed up daily and kept for
+> a month**, so I can **delete everything to start fresh** or **restore to any recent day**
+> without fear — a bad import is never permanent (QB-11…14).
 
 ---
 
