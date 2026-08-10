@@ -80,3 +80,31 @@ Feature: Question bank — import, authoring, and export
       Given a practice question exported to Moodle XML
       When that XML is imported again
       Then the question is present in the bank with its prompt, options, and correct answer
+
+  Rule: The bank is backed up daily and can be restored to any date in the last month
+
+    @scenario:QB-11
+    Scenario: Emptying the bank takes a safety backup first
+      Given practice questions exist in the bank
+      When the admin deletes all questions
+      Then a backup of the bank is taken before it is emptied
+      And the bank is then empty
+
+    @scenario:QB-12
+    Scenario: A daily backup snapshots the whole bank
+      Given practice questions exist in the bank
+      When the daily backup runs
+      Then a dated backup capturing every question is stored
+
+    @scenario:QB-13
+    Scenario: Backups older than a month are pruned
+      Given a backup older than 30 days and a backup from this week
+      When the daily backup runs
+      Then the backup older than 30 days is removed
+      And the recent backup is kept
+
+    @scenario:QB-14
+    Scenario: The admin restores the bank to a chosen backup
+      Given a backup taken earlier and a bank that has changed since
+      When the admin restores that backup
+      Then the bank matches exactly the questions captured in that backup
