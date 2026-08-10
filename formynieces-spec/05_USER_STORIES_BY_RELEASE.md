@@ -127,7 +127,9 @@ never outruns learning.
 > nothing; reading is never timed (FT-01…05). When exam season nears, my map suggests
 > **starred levels** (AM-05) and in the final buffer switches to a calmer **revision
 > mode** (AM-07) — **Math practice becomes fill-in**, and I sit **timed mocks** shaped
-> like the real papers, with **exam week kept quiet and warm** (ER-01…03). My
+> like the real papers, with **exam week kept quiet and warm** (ER-01…03). My first-run
+> **reveal becomes an animation** — I watch my map paint itself and my flag plant at my
+> starting stop (RR-12). My
 > companion's voice gets **richer with AI** — but only ever from what's true on my
 > map, and never keeping me waiting for my sea (VC-04, VC-05).
 

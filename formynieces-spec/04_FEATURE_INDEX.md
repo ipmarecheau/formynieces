@@ -6,7 +6,7 @@
 |---|---|---|---|
 | `guardian_onboarding.feature` | @mvp | phone verify @v1.1 · second guardian @roadmap | guardian |
 | `diagnostic.feature` | @mvp | retake @v1.1 | student, system |
-| `roadmap_reveal.feature` | @mvp | — | student, system |
+| `roadmap_reveal.feature` | @mvp | reveal animation @roadmap | student, system |
 | `adventure_map.feature` | @mvp | revision mode @roadmap | student |
 | `student_home.feature` | @mvp | — | student |
 | `voyage_companion.feature` | @v1.1 | AI voice @roadmap | student |

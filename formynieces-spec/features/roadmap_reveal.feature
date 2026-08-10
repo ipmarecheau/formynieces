@@ -78,12 +78,20 @@ Feature: Reveal and roadmap seeding
     And no stop is labelled missed or overdue
 
   @scenario:RR-08
-  Scenario: The reveal plays and unlocks the dashboard
+  Scenario: Completion marks onboarding done and hands her forward to her map
+    Given a student's roadmap has been generated
+    When the diagnostic completion screen loads
+    Then her onboarding is marked completed
+    And she is offered a way forward to her map
+
+  # The celebratory ANIMATION of the reveal (map populating, flag planting) is
+  # motivational polish, not part of the honest MVP loop — deferred to RR-12.
+  @roadmap @scenario:RR-12
+  Scenario: The reveal animates the map populating and her flag planting
     Given a student's roadmap has been generated
     When the reveal screen loads
     Then she watches the map populate and her flag plant at her starting stop
     And what she already knows is described in celebratory terms
-    And her onboarding is marked completed
 
   @scenario:RR-09
   Scenario: An onboarded student logs in to the dashboard
