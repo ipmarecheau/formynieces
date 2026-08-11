@@ -240,6 +240,7 @@
     </nav>
 
     <div class="vy-wrap">
+        <livewire:smooth-guide guide="island" wire:key="guide-island" />
         <h1 class="vy-title">{{ $island['name'] }}</h1>
         <p class="vy-sub">{{ $island['conquered'] }} of {{ $island['total'] }} levels conquered — clear them in order to master this island.</p>
 

@@ -59,7 +59,11 @@ truth for the grown-up.
 > chat** talks me through the idea before I try again. Mastering set off a celebration —
 > and I keep a competency by touching it again (**3 × D5 every two weeks**) or it
 > quietly slips to **"review."** Wrong answers say **"not yet,"** never "wrong." My
-> **streak** grows when I keep coming back and
+> The first time I open any screen, **Smooth shows me how it works** — the levels,
+> the two tries, how the map unlocks — and I can tap her to hear it again anytime, but
+> she never nags. And **every win throws a party**: a big animated moment when I clear a
+> level, master a stop, or finish my week — excitement at every milestone, then straight
+> back to sailing. My **streak** grows when I keep coming back and
 > **freezes**, not shatters, if my aunt pauses me. Every island has a **Writer's
 > Log** stop where I get a weekly prompt and warm feedback — two things I did well,
 > one to try — never a grade.

@@ -28,6 +28,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'target_sea_year',
         'known_weak_areas',
         'weekly_module_cap_override', // Weekly targets: per-student cap override
+        'seen_guides', // Smooth's guide: dismissed how-to screens (SG-01/02)
     ];
 
     protected $hidden = [
@@ -46,7 +47,25 @@ class User extends Authenticatable implements MustVerifyEmail
             'age_attested_at' => 'datetime',
             'known_weak_areas' => 'array',
             'weekly_module_cap_override' => 'integer',
+            'seen_guides' => 'array',
         ];
+    }
+
+    /** Has this student already dismissed the named Smooth guide? (SG-02) */
+    public function hasSeenGuide(string $key): bool
+    {
+        return in_array($key, $this->seen_guides ?? [], true);
+    }
+
+    /** Remember that this student has dismissed the named Smooth guide. (SG-01/02) */
+    public function markGuideSeen(string $key): void
+    {
+        $seen = $this->seen_guides ?? [];
+        if (! in_array($key, $seen, true)) {
+            $seen[] = $key;
+            $this->seen_guides = $seen;
+            $this->save();
+        }
     }
 
     // A student belongs to a guardian (column stays parent_id for now).

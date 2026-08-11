@@ -203,6 +203,7 @@
     </nav>
 
     <div class="vy-wrap">
+        <livewire:smooth-guide guide="voyage" wire:key="guide-voyage" />
         {{-- VC-01..03: the companion — a warm voice over honest data. Greets by
              name; the streak and plan lines appear only when they are real. --}}
         <div class="vy-companion">
