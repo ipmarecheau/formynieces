@@ -4,17 +4,21 @@
             <x-slot name="heading">How it works</x-slot>
 
             <div class="prose dark:prose-invert max-w-none text-sm">
-                <p>Upload a <strong>Moodle XML</strong> export to add SEA practice questions to the bank.
-                   Use <em>Preview (dry run)</em> first to see exactly what will happen, then run it for real.</p>
+                <p>Upload a <strong>Moodle XML</strong> export to grow the SEA banks. Each question is routed
+                   by type: <code>multichoice</code> questions load into the <strong>practice bank</strong>, and
+                   <code>essay</code> questions load into the <strong>writing-prompt bank</strong>. A single file
+                   may contain both. Use <em>Preview (dry run)</em> first to see exactly what will happen, then
+                   run it for real.</p>
                 <ul>
-                    <li>Questions are grouped under Moodle categories named <code>Qnn &lt;label&gt;</code>
-                        (e.g. <code>Q04 Fraction shaded</code>); the <code>Qnn</code> code selects the syllabus module.</li>
+                    <li>The syllabus module is chosen by the code leading each question's name or category —
+                        a skill code (e.g. <code>Q04</code>) or a direct <code>M&lt;id&gt;</code> module code.
+                        Essay prompts route by genre instead: <em>Narrative</em> and <em>Report</em>.</li>
                     <li>Difficulty is read from the question name (<code>… · D1 · …</code> to <code>D5</code>)
                         and mapped to the three practice rungs.</li>
-                    <li>Only single-answer, 4-option <code>multichoice</code> questions import; anything else is
-                        skipped and listed below.</li>
+                    <li>Practice questions must be single-answer, 4-option <code>multichoice</code>; essay prompts
+                        carry their marking rubric. Anything else is skipped and listed below.</li>
                     <li>Embedded figures are extracted automatically. Re-uploading a file updates existing
-                        questions instead of duplicating them.</li>
+                        entries instead of duplicating them.</li>
                 </ul>
             </div>
         </x-filament::section>

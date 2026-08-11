@@ -2,7 +2,7 @@
 
 namespace App\Filament\Pages;
 
-use App\Services\QuestionBank\MoodleQuestionImporter;
+use App\Services\QuestionBank\QuestionImportCoordinator;
 use BackedEnum;
 use Filament\Actions\Action;
 use Filament\Forms\Components\FileUpload;
@@ -47,6 +47,7 @@ class ImportQuestions extends Page
                 ->schema([
                     FileUpload::make('xml')
                         ->label('Moodle XML file')
+                        ->helperText('Multiple-choice questions load into the practice bank; essay questions load into the writing-prompt bank. A file may contain both.')
                         ->disk('local')
                         ->directory('question-import-tmp')
                         ->acceptedFileTypes(['application/xml', 'text/xml', 'text/plain'])
@@ -61,7 +62,7 @@ class ImportQuestions extends Page
                     $xml = Storage::disk('local')->get($path);
                     $dryRun = (bool) ($data['dry_run'] ?? true);
 
-                    $result = app(MoodleQuestionImporter::class)->import((string) $xml, $dryRun);
+                    $result = app(QuestionImportCoordinator::class)->import((string) $xml, $dryRun);
 
                     Storage::disk('local')->delete($path);
 
