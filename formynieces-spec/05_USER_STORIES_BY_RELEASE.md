@@ -28,14 +28,14 @@ another's clothes:
   the honest data (`@admin`, `admin_content`) — behind the curtain, touching neither
   the child's joy nor the guardian's calm room.
 
-> **The core incoherence this document exists to fix:** today an onboarded student
-> *lands* on `/my-map` — a percentages-and-tallies roadmap — which is the exact
-> surface the Voyage spec forbids showing a child ("never a chart of percentages and
-> pace"). The Voyage is treated as a "standalone alternative to the dashboard." It
-> should *be* the dashboard. The six MVP seams in §4 (and `student_home.feature`,
-> `SH-01…SH-06`) close that gap: the Voyage becomes her one front door, and the
-> daily threads — this week's focus, her streak, her writing, her practice — all hang
-> off it. Personas below are written as if those seams are already closed.
+> **The core incoherence this document existed to fix — now RESOLVED (SH-01…06 built
+> and verified).** An onboarded student once *landed* on `/my-map` — a
+> percentages-and-tallies roadmap — the exact surface the Voyage spec forbids showing a
+> child ("never a chart of percentages and pace"). The Voyage was treated as a
+> "standalone alternative to the dashboard." It is now *the* dashboard: the six MVP
+> seams in §4 (`student_home.feature`, `SH-01…SH-06`) closed the gap — the Voyage is
+> her one front door, and the daily threads (this week's focus, her streak, her
+> writing, her practice) all hang off it. Personas below match the shipped experience.
 
 ---
 
@@ -110,7 +110,12 @@ Same shape, more honest and more human once the core is lived-in.
 > **author and edit** questions by hand (QB-06…08), and I **export** the bank back to
 > Moodle XML so it stays portable (QB-09/10). The bank is **backed up daily and kept for
 > a month**, so I can **delete everything to start fresh** or **restore to any recent day**
-> without fear — a bad import is never permanent (QB-11…14).
+> without fear — a bad import is never permanent (QB-11…14). The same importer grows a
+> separate **writing-prompt bank**: a Moodle **essay** export loads into a genre-keyed
+> bank (Narrative → module 69, Report → module 70), carrying each prompt's **marking
+> rubric**, and a single upload routes multichoice and essay to their right banks
+> automatically (WB-01/02). *How* those prompts reach students — weekly, on-demand, or
+> both — is a deliberately deferred decision (WB-03/04).
 
 ---
 
@@ -147,10 +152,11 @@ never outruns learning.
 
 ---
 
-## 4. The six MVP seams (the coherence backlog)
+## 4. The six MVP seams (coherence backlog — ✅ COMPLETE)
 
-These are the concrete gaps between the MVP story above and the code today. Each is a
-scenario in `features/student_home.feature` (prefix `SH`), ready for the build loop.
+These were the concrete gaps between the MVP story and the code. Each is a scenario in
+`features/student_home.feature` (prefix `SH`). **All six are now built and verified
+(`SH-01…06` = `ok current`)** — the Voyage is the student's single front door.
 
 | Seam | Scenario | What it closes |
 |---|---|---|
@@ -169,14 +175,33 @@ scenario in `features/student_home.feature` (prefix `SH`), ready for the build l
 
 ---
 
-## 5. Newly identified MVP gaps (persona coherence review)
+## 5. Newly identified MVP gaps (persona coherence review — ✅ RESOLVED)
 
-Surfaced by walking each persona's story against the scenario bodies. These are
-`@mvp`-banded and outstanding — ready for the build loop. (The Voyage companion,
-`VC-01…05`, came out of the same review but is banded `@v1.1`/`@roadmap`, so it
-sits in `voyage_companion.feature`, not this MVP list.)
+Surfaced by walking each persona's story against the scenario bodies. **Both are now
+built and verified (`ok current`).** (The Voyage companion, `VC-01…05`, came out of the
+same review but is banded `@v1.1`/`@roadmap`, so it sits in `voyage_companion.feature`,
+not this MVP list — `VC-01…03` are built.)
 
-| Gap | Scenario | What it closes |
-|---|---|---|
-| Island stops overlap unreadably | `AM-08` | Numbered stops on the map + a legend naming every stop and its status, leaking no pace — the fix for the live overlapping-labels bug |
-| No-scoreboard invariant untested | `GD-05` | The guardian's pace/readiness sections must never show the child's streaks or celebration styling — promised at MVP, but the enforcing scenario was mis-banded `@v1.1` and never built |
+| Gap | Scenario | Status | What it closes |
+|---|---|---|---|
+| Island stops overlap unreadably | `AM-08` | ✅ built | Numbered stops on the map + a legend naming every stop and its status, leaking no pace — the fix for the live overlapping-labels bug |
+| No-scoreboard invariant untested | `GD-05` | ✅ built | The guardian's pace/readiness sections must never show the child's streaks or celebration styling — promised at MVP, enforcing scenario now built |
+
+---
+
+## 6. Still outstanding (as of this review)
+
+Reconciled against `specs:trace`. The stories above are the *intended* whole; these are
+the parts not yet delivered, by band.
+
+- **MVP — one real hole:** the **Tutorial** (`TU-01…04`, `tutorial.feature`, `@pending`)
+  is banded `@mvp` and promised in Maya's story ("walked through a worked example") but
+  **not built**. Everything else MVP is `ok current`.
+- **V1 (`@v1.1`) unbuilt:** diagnostic retake (`DG-17`, test exists/unverified), writing
+  history + guardian writing view (`WR-04/05`), guardian inline digest (`GD-06`), phone
+  verify (`GO-06`), stale-mastery decay (`LL-07`).
+- **V2 (`@roadmap`) unbuilt (expected):** XP/leagues (`XP-01…09`), focus timer
+  (`FT-01…05`), exam readiness (`ER-01…03`), starred/revision map (`AM-05/07`), richer
+  loop (`LL-08…11`), AI companion voice (`VC-04/05`), reveal animation (`RR-12`).
+- **Writing bank serving/grading** (`WB-03/04`) — deferred pending a decision on how
+  prompts reach students; the bank itself is populated (see the admin story, §2).

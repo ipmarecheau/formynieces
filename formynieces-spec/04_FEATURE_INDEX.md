@@ -18,6 +18,9 @@
 | `exam_readiness.feature` | @roadmap | — | student |
 | `admin_content.feature` | mixed | modules @mvp · anchors, monitor @v1.1 | admin |
 | `question_bank.feature` | @v1.1 | — | admin |
+| `writing_bank.feature` | @v1.1 | import/populate @v1.1 (WB-01/02 built) · serving, grading deferred (WB-03/04) | admin, student |
+| `progression.feature` | @roadmap | XP, multipliers, weekly leagues | student |
+| `focus_timer.feature` | @roadmap | optional Pomodoro blocks | student |
 
 **Run the MVP suite:** `--tags @mvp` (Behat) or filter by group `mvp` (Pest).
 
