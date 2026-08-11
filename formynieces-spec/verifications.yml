@@ -501,3 +501,13 @@
   commit: ddb0e0d
   spec_hash: 6f7be9c612c9
   note: "Browser-verified on dev: level-up confetti on clearing a level, headline mastery celebration -> Voyage, reduced-motion fallback; suite 299 green"
+- scenario: AM-09
+  verified_at: 2026-08-11
+  commit: 5fa97a7
+  spec_hash: ca611ec1f517
+  note: "Browser-verified on dev: zoom in/out (min=width-fit, max=2x), drag-pan with edge bounce, Find me recenter, vertical centering; map fills ~half the viewport with legend + messaging beside it, stacking on mobile; both overworld and island"
+- scenario: AM-10
+  verified_at: 2026-08-11
+  commit: 5fa97a7
+  spec_hash: 62f817d3d60e
+  note: "Browser-verified on dev: zoom in/out (min=width-fit, max=2x), drag-pan with edge bounce, Find me recenter, vertical centering; map fills ~half the viewport with legend + messaging beside it, stacking on mobile; both overworld and island"
