@@ -65,6 +65,13 @@ Feature: Module learning loop
     And her prior score is preserved as the previous score
     And a celebration is shown
 
+  @scenario:LL-18
+  Scenario: A question is never repeated for a student across the loop
+    Given a student has already been shown a question anywhere in the loop
+    When she is served her next question
+    Then it is a question she has not seen before
+    And every question shown to her is recorded so it is never repeated
+
   @scenario:LL-13
   Scenario: A retry never earns mastery
     Given she is practising at the hardest rung, difficulty 5

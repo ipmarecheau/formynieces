@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\StudentProgress;
 use App\Models\SyllabusModule;
 use App\Services\Practice\PracticeQuestions;
+use App\Services\Practice\QuestionExposure;
 use App\Services\Practice\RecordPracticeAttempt;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -74,9 +75,19 @@ class PracticeWalk extends Component
             $usedInStreak = json_decode($usedInStreak, true) ?: [];
         }
 
+        // Global no-repeat: never serve a question this student has already seen
+        // anywhere in the loop (LL-18), on top of the within-streak distinctness.
+        $exposure = app(QuestionExposure::class);
+        $seenHashes = $exposure->seenHashes(auth()->id());
+
         $atRung = $questions
             ->where('difficulty', $this->currentRung)
-            ->first(fn ($q) => ! in_array($q->id, $usedInStreak, true));
+            ->first(fn ($q) => ! in_array($q->id, $usedInStreak, true)
+                && ! in_array($q->content_hash, $seenHashes, true));
+
+        if ($atRung !== null) {
+            $exposure->record(auth()->id(), $atRung->content_hash, 'practice');
+        }
 
         $this->question = $atRung === null ? null : [
             'id' => $atRung->id,

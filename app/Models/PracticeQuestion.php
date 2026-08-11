@@ -24,7 +24,31 @@ class PracticeQuestion extends Model
         'explanation',
         'is_active',
         'source_ref',
+        'content_hash',
     ];
+
+    protected static function booted(): void
+    {
+        // Keep the content hash in step with the question's identity (prompt +
+        // its option set), so the exposure ledger dedupes the same question even
+        // across banks and regardless of option order (QB-16 shuffling).
+        static::saving(function (PracticeQuestion $q): void {
+            $q->content_hash = self::hashFor((string) $q->prompt, $q->options ?? []);
+        });
+    }
+
+    /**
+     * A stable content hash identifying a question by its prompt and option SET
+     * (order-independent). Used by the no-repeat exposure ledger.
+     *
+     * @param  array<int, string>  $options
+     */
+    public static function hashFor(string $prompt, array $options): string
+    {
+        $normalisedOptions = collect($options)->map(fn ($o) => trim((string) $o))->sort()->values()->all();
+
+        return sha1(trim($prompt).'|'.implode('␟', $normalisedOptions));
+    }
 
     protected $casts = [
         'options' => 'array',   // JSON text <-> PHP array, like the diagnostic reads anchors
