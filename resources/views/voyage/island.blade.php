@@ -74,7 +74,11 @@
         }
         .vy-back:hover { background: rgba(255,255,255,0.18); }
 
-        .vy-wrap { max-width: 1200px; margin: 0 auto; padding: 24px 16px 48px; }
+        .vy-wrap {
+            max-width: 1500px; margin: 0 auto; padding: 14px 16px 18px;
+            min-height: calc(100vh - 58px);
+            display: flex; flex-direction: column;
+        }
         .vy-title {
             font-family: 'Fredoka One', cursive; font-size: 1.9rem; text-align: center;
             margin-bottom: 6px; text-shadow: 0 2px 12px rgba(0,0,0,0.35);
@@ -119,9 +123,9 @@
         .vy-stop.is-locked { cursor: not-allowed; }
 
         .vy-badge {
-            width: clamp(38px, 5.2vw, 62px); height: clamp(38px, 5.2vw, 62px);
+            width: 9cqw; height: 9cqw;
             display: grid; place-items: center;
-            font-size: clamp(1rem, 2.4vw, 1.7rem); line-height: 1;
+            font-size: 5cqw; line-height: 1;
             border-radius: 50%;
             background: rgba(20, 30, 66, 0.72);
             border: 2.5px solid rgba(147, 197, 253, 0.6);
@@ -138,12 +142,12 @@
 
         .vy-label {
             font-family: 'Fredoka One', cursive;
-            font-size: clamp(0.5rem, 1.05vw, 0.78rem);
+            font-size: 2.6cqw;
             color: #f8fafc;
             text-shadow: 0 1px 2px rgba(0,0,0,0.9);
-            max-width: clamp(90px, 14vw, 180px);
+            max-width: 24cqw;
             text-align: center; line-height: 1.15;
-            padding: 2px 9px; border-radius: 12px;
+            padding: 0.4cqw 1.4cqw; border-radius: 12px;
             background: rgba(9, 14, 34, 0.72);
             box-shadow: 0 2px 8px rgba(0,0,0,0.45);
         }
@@ -162,8 +166,8 @@
         .vy-stop.is-thisweek .vy-badge { box-shadow: 0 0 0 4px rgba(253,224,71,0.9), 0 0 22px rgba(253,224,71,0.75); }
         .vy-stop.is-thisweek .vy-thisweek {
             position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
-            font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.62rem; white-space: nowrap;
-            background: #fde047; color: #78350f; padding: 2px 9px; border-radius: 999px;
+            font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 2cqw; white-space: nowrap;
+            background: #fde047; color: #78350f; padding: 0.4cqw 1.4cqw; border-radius: 999px;
             box-shadow: 0 2px 8px rgba(120,53,15,0.35);
         }
         .vy-soon {
@@ -175,25 +179,33 @@
 
         .vy-boat {
             position: absolute; transform: translate(-50%, -140%);
-            font-size: clamp(1rem, 2.4vw, 1.8rem);
+            font-size: 5.5cqw;
             filter: drop-shadow(0 3px 6px rgba(0,0,0,0.5));
             pointer-events: none;
         }
 
         /* AM-08: the map holds a compact number per stop; the legend beside it
            carries the full names + status, so long labels never overlap again. */
-        .vy-stage { display: flex; flex-direction: column; gap: 16px; }
-        @media (min-width: 860px) {
-            .vy-stage { flex-direction: row; align-items: flex-start; }
-            .vy-map { flex: 1 1 auto; min-width: 0; }
-            .vy-legend { flex: 0 0 268px; }
+        .vy-stage { display: flex; flex-direction: column; gap: 16px; flex: 1 1 auto; min-height: 0; }
+        .vy-map-col { height: 56vh; }
+        .vy-legend { display: flex; flex-direction: column; min-height: 0; }
+        .vy-legend-head { flex: 0 0 auto; }
+        .vy-legend-list { overflow-y: auto; min-height: 0; max-height: 45vh; }
+        @media (min-width: 900px) {
+            /* Definite height (not min-height) so the flex-grow + height:100% chain
+               below resolves and the map window fills the column. */
+            .vy-wrap { height: calc(100vh - 58px); }
+            .vy-stage { flex-direction: row; align-items: stretch; }
+            .vy-map-col { flex: 1 1 52%; min-width: 0; height: 100%; }
+            .vy-legend { flex: 1 1 48%; min-width: 0; height: 100%; }
+            .vy-legend-list { max-height: none; }
         }
 
         .vy-num {
             font-family: 'Fredoka One', cursive;
-            font-size: clamp(0.6rem, 1.15vw, 0.85rem); line-height: 1;
-            color: #f8fafc; min-width: 20px; text-align: center;
-            padding: 2px 7px; border-radius: 999px;
+            font-size: 3cqw; line-height: 1;
+            color: #f8fafc; min-width: 3cqw; text-align: center;
+            padding: 0.3cqw 1cqw; border-radius: 999px;
             background: rgba(9, 14, 34, 0.82);
             box-shadow: 0 2px 8px rgba(0,0,0,0.5);
         }
@@ -245,6 +257,8 @@
         <p class="vy-sub">{{ $island['conquered'] }} of {{ $island['total'] }} levels conquered — clear them in order to master this island.</p>
 
         <div class="vy-stage">
+        <div class="vy-map-col">
+        <x-map-viewport :fx="$stops[$currentStop]['x'] ?? 50" :fy="$stops[$currentStop]['y'] ?? 50">
         <div class="vy-map">
             <svg class="vy-trail" viewBox="0 0 {{ $mapW }} {{ $mapH }}" preserveAspectRatio="none" aria-hidden="true">
                 <polyline class="vy-trail-ahead" points="{{ $ahead }}" />
@@ -275,6 +289,8 @@
             @if(isset($stops[$currentStop]))
                 <span class="vy-boat" style="left: {{ $stops[$currentStop]['x'] }}%; top: {{ $stops[$currentStop]['y'] }}%;">⛵</span>
             @endif
+        </div>
+        </x-map-viewport>
         </div>
 
         <aside class="vy-legend" aria-label="Stops on this island">

@@ -70,3 +70,21 @@ Feature: Syllabus adventure map — the Voyage
     When a student opens the map
     Then revision levels resurfacing her weakest mastered modules are shown
     And no new-content levels are shown
+
+  Rule: The map is navigable and shares the page with a legend
+
+    @scenario:AM-09
+    Scenario: The map can be zoomed, panned and recentred on her progress
+      Given a student opens the overworld or an island map
+      When she views it
+      Then the map sits in a bounded window with zoom-in, zoom-out and a "find me" control
+      And she can pan the map and zoom to her current position
+      And the map content itself is unchanged — only how she views it
+
+    @scenario:AM-10
+    Scenario: The map takes half the page, the legend and messaging the other half
+      Given a student opens the overworld or an island map on a wide screen
+      When she views it
+      Then the map window occupies about half the width
+      And the other half holds the legend and her companion messaging
+      And on a narrow screen the panel stacks below the map and scrolls

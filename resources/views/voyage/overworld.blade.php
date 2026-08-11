@@ -74,7 +74,11 @@
             box-shadow: 0 2px 8px rgba(120,53,15,0.35);
         }
 
-        .vy-wrap { max-width: 1200px; margin: 0 auto; padding: 24px 16px 48px; }
+        .vy-wrap {
+            max-width: 1500px; margin: 0 auto; padding: 14px 16px 18px;
+            min-height: calc(100vh - 58px);   /* fill below the sticky nav */
+            display: flex; flex-direction: column;
+        }
         .vy-title {
             font-family: 'Fredoka One', cursive; font-size: 1.9rem; text-align: center;
             margin-bottom: 6px; text-shadow: 0 2px 12px rgba(0,0,0,0.35);
@@ -142,9 +146,9 @@
         .vy-island.is-locked { cursor: not-allowed; }
 
         .vy-badge {
-            width: clamp(38px, 5.2vw, 64px); height: clamp(38px, 5.2vw, 64px);
+            width: 6.5cqw; height: 6.5cqw;
             display: grid; place-items: center;
-            font-size: clamp(1.1rem, 2.6vw, 1.9rem); line-height: 1;
+            font-size: 3.6cqw; line-height: 1;
             border-radius: 50%;
             background: rgba(20, 30, 66, 0.72);
             border: 2.5px solid rgba(147, 197, 253, 0.6);
@@ -159,30 +163,76 @@
             50% { transform: scale(1.1); }
         }
 
-        .vy-label {
+        /* AM-08: a compact number chip under each island badge, keyed to the legend. */
+        .vy-num {
             font-family: 'Fredoka One', cursive;
-            font-size: clamp(0.55rem, 1.15vw, 0.85rem);
-            white-space: nowrap;
-            color: #f8fafc;
-            padding: 2px 9px; border-radius: 999px;
-            background: rgba(9, 14, 34, 0.72);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.45);
-            text-shadow: 0 1px 2px rgba(0,0,0,0.9);
+            font-size: 2.6cqw; line-height: 1; color: #f8fafc;
+            padding: 0.4cqw 1.4cqw; border-radius: 999px;
+            background: rgba(9, 14, 34, 0.82);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.5);
         }
-        .vy-count {
-            font-weight: 800; font-size: clamp(0.5rem, 1vw, 0.72rem);
-            padding: 1px 8px; border-radius: 999px;
-            background: rgba(0,0,0,0.5); color: #e0f2fe;
-        }
+        .is-locked .vy-num { opacity: 0.6; }
         .vy-count-done { background: rgba(52, 211, 153, 0.35); color: #bbf7d0; }
         .is-locked .vy-label, .is-locked .vy-count { opacity: 0.6; }
 
         .vy-boat {
             position: absolute; transform: translate(-50%, -140%);
-            font-size: clamp(1rem, 2.4vw, 1.8rem);
+            font-size: 5cqw;
             filter: drop-shadow(0 3px 6px rgba(0,0,0,0.5));
             pointer-events: none;
         }
+        /* SH-02 this-week banner scales with the map too. */
+        .vy-thisweek { font-size: 2cqw; }
+
+        /* AM-10: map on one side, messaging + legend on the other. Fills the
+           viewport height; only the legend list scrolls (the greeting stays put).
+           Stacks on narrow screens (map on top, panel below). */
+        .vy-stage { display: flex; flex-direction: column; gap: 16px; flex: 1 1 auto; min-height: 0; }
+        .vy-map-col { height: 56vh; }
+        .vy-panel { display: flex; flex-direction: column; gap: 14px; min-height: 0; }
+        .vy-panel .vy-companion { max-width: none; margin: 0; flex: 0 0 auto; }
+        .vy-panel .vy-legend { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; }
+        .vy-legend-head { flex: 0 0 auto; }
+        .vy-legend-list { overflow-y: auto; min-height: 0; max-height: 45vh; }
+        @media (min-width: 900px) {
+            /* Definite height (not min-height) so the flex-grow + height:100% chain
+               below resolves and the map window fills the column. */
+            .vy-wrap { height: calc(100vh - 58px); }
+            .vy-stage { flex-direction: row; align-items: stretch; }
+            .vy-map-col { flex: 1 1 52%; min-width: 0; height: 100%; }
+            .vy-panel { flex: 1 1 48%; min-width: 0; height: 100%; }
+            .vy-legend-list { max-height: none; }
+        }
+
+        .vy-legend {
+            background: rgba(12, 20, 50, 0.55);
+            backdrop-filter: blur(8px);
+            border: 1.5px solid rgba(147, 197, 253, 0.28);
+            border-radius: 18px; padding: 14px 16px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+        }
+        .vy-legend-head { font-family: 'Fredoka One', cursive; font-size: 0.9rem; color: #cfe6fb; margin-bottom: 10px; }
+        .vy-legend-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+        .vy-legend-row {
+            display: grid; grid-template-columns: 26px 1fr auto auto; align-items: center; gap: 9px;
+            padding: 6px 8px; border-radius: 12px; background: rgba(255,255,255,0.04);
+        }
+        .vy-legend-num {
+            font-family: 'Fredoka One', cursive; font-size: 0.82rem; text-align: center; color: #e6f2fb;
+            background: rgba(9,14,34,0.7); border-radius: 999px; padding: 2px 0;
+        }
+        .vy-legend-name { font-size: 0.82rem; font-weight: 700; color: #e6f2fb; line-height: 1.2; }
+        .vy-legend-count { font-size: 0.75rem; font-weight: 800; color: #bfe6ff; white-space: nowrap; }
+        .vy-legend-status {
+            font-size: 0.66rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em;
+            padding: 2px 8px; border-radius: 999px; white-space: nowrap;
+            background: rgba(148,163,184,0.25); color: #cbd5e1;
+        }
+        .vy-legend-row.is-mastered .vy-legend-status { background: rgba(52,211,153,0.22); color: #6ee7b7; }
+        .vy-legend-row.is-current .vy-legend-status { background: rgba(253,230,138,0.24); color: #fde68a; }
+        .vy-legend-row.is-thisweek { outline: 2px solid rgba(253,224,71,0.8); }
+        .vy-legend-row.is-thisweek .vy-legend-status { background: #fde047; color: #78350f; }
+        .vy-legend-row.is-locked { opacity: 0.6; }
     </style>
 </head>
 <body>
@@ -204,50 +254,76 @@
 
     <div class="vy-wrap">
         <livewire:smooth-guide guide="voyage" wire:key="guide-voyage" />
-        {{-- VC-01..03: the companion — a warm voice over honest data. Greets by
-             name; the streak and plan lines appear only when they are real. --}}
-        <div class="vy-companion">
-            <img class="vy-companion-avatar" src="{{ $companion['avatarUrl'] }}"
-                 alt="Smooth the turtle, your guide">
 
-            <div class="vy-companion-body">
-                <p class="vy-companion-greeting">{{ $companion['greeting'] }}</p>
-                @if($companion['streak'])
-                    <p class="vy-companion-line vy-companion-streak">{{ $companion['streak'] }}</p>
-                @endif
-                @if($companion['plan'])
-                    <p class="vy-companion-line vy-companion-plan">🗺️ {{ $companion['plan'] }}</p>
-                @endif
+        <div class="vy-stage">
+            <div class="vy-map-col">
+                <x-map-viewport :fx="$islands[$currentIndex]['x'] ?? 50" :fy="$islands[$currentIndex]['y'] ?? 50">
+                    <div class="vy-map">
+                        <svg class="vy-trail" viewBox="0 0 {{ $mapW }} {{ $mapH }}" preserveAspectRatio="none" aria-hidden="true">
+                            <polyline class="vy-trail-ahead" points="{{ $ahead }}" />
+                            <polyline class="vy-trail-done" points="{{ $travelled }}" />
+                        </svg>
+
+                        @foreach($islands as $island)
+                            {{-- AM-08 pattern: a numbered marker on the map; the name + status
+                                 live in the legend beside it, so labels never overlap. --}}
+                            <a href="{{ $island['state'] === 'locked' ? '#' : route('student.voyage.island', $island['slug']) }}"
+                               class="vy-island is-{{ $island['state'] }} {{ $island['current'] ? 'is-current' : '' }} {{ ($island['this_week'] ?? false) ? 'is-thisweek' : '' }}"
+                               style="left: {{ $island['x'] }}%; top: {{ $island['y'] }}%;"
+                               data-island-slug="{{ $island['slug'] }}"
+                               title="{{ $loop->iteration }}. {{ $island['name'] }}">
+                                <span class="vy-badge">{{ $island['state'] === 'locked' ? '🔒' : $island['icon'] }}</span>
+                                <span class="vy-num">{{ $loop->iteration }}</span>
+                                @if($island['this_week'] ?? false)
+                                    <span class="vy-thisweek">This week</span>
+                                @endif
+                            </a>
+                        @endforeach
+
+                        @if(isset($points[$currentIndex]))
+                            <span class="vy-boat" style="left: {{ $islands[$currentIndex]['x'] }}%; top: {{ $islands[$currentIndex]['y'] }}%;">⛵</span>
+                        @endif
+                    </div>
+                </x-map-viewport>
             </div>
-        </div>
 
-        <div class="vy-map">
-            <svg class="vy-trail" viewBox="0 0 {{ $mapW }} {{ $mapH }}" preserveAspectRatio="none" aria-hidden="true">
-                <polyline class="vy-trail-ahead" points="{{ $ahead }}" />
-                <polyline class="vy-trail-done" points="{{ $travelled }}" />
-            </svg>
+            <aside class="vy-panel">
+                {{-- VC-01..03: the companion — a warm voice over honest data. --}}
+                <div class="vy-companion">
+                    <img class="vy-companion-avatar" src="{{ $companion['avatarUrl'] }}"
+                         alt="Smooth the turtle, your guide">
+                    <div class="vy-companion-body">
+                        <p class="vy-companion-greeting">{{ $companion['greeting'] }}</p>
+                        @if($companion['streak'])
+                            <p class="vy-companion-line vy-companion-streak">{{ $companion['streak'] }}</p>
+                        @endif
+                        @if($companion['plan'])
+                            <p class="vy-companion-line vy-companion-plan">🗺️ {{ $companion['plan'] }}</p>
+                        @endif
+                    </div>
+                </div>
 
-            @foreach($islands as $island)
-                @php
-                    $done = $island['total'] > 0 && $island['conquered'] === $island['total'];
-                @endphp
-                <a href="{{ $island['state'] === 'locked' ? '#' : route('student.voyage.island', $island['slug']) }}"
-                   class="vy-island is-{{ $island['state'] }} {{ $island['current'] ? 'is-current' : '' }} {{ ($island['this_week'] ?? false) ? 'is-thisweek' : '' }}"
-                   style="left: {{ $island['x'] }}%; top: {{ $island['y'] }}%;"
-                   data-island-slug="{{ $island['slug'] }}"
-                   title="{{ $island['name'] }}">
-                    <span class="vy-badge">{{ $island['state'] === 'locked' ? '🔒' : $island['icon'] }}</span>
-                    <span class="vy-label">{{ $island['name'] }}</span>
-                    <span class="vy-count {{ $done ? 'vy-count-done' : '' }}">{{ $island['conquered'] }} / {{ $island['total'] }}</span>
-                    @if($island['this_week'] ?? false)
-                        <span class="vy-thisweek">This week</span>
-                    @endif
-                </a>
-            @endforeach
-
-            @if(isset($points[$currentIndex]))
-                <span class="vy-boat" style="left: {{ $islands[$currentIndex]['x'] }}%; top: {{ $islands[$currentIndex]['y'] }}%;">⛵</span>
-            @endif
+                {{-- AM-10: the legend — every island by name + status, beside the map. --}}
+                <div class="vy-legend" aria-label="Islands on your Voyage">
+                    <p class="vy-legend-head">Islands</p>
+                    <ol class="vy-legend-list">
+                        @foreach($islands as $island)
+                            <li class="vy-legend-row is-{{ $island['state'] }} {{ $island['current'] ? 'is-current' : '' }} {{ ($island['this_week'] ?? false) ? 'is-thisweek' : '' }}">
+                                <span class="vy-legend-num">{{ $loop->iteration }}</span>
+                                <span class="vy-legend-name">{{ $island['state'] === 'locked' ? '🔒' : $island['icon'] }} {{ $island['name'] }}</span>
+                                <span class="vy-legend-count">{{ $island['conquered'] }} / {{ $island['total'] }}</span>
+                                <span class="vy-legend-status">
+                                    @if($island['this_week'] ?? false) This week
+                                    @elseif($island['current']) Sailing here
+                                    @elseif($island['state'] === 'mastered') Mastered
+                                    @elseif($island['state'] === 'locked') Locked
+                                    @else Ready @endif
+                                </span>
+                            </li>
+                        @endforeach
+                    </ol>
+                </div>
+            </aside>
         </div>
     </div>
 </body>
