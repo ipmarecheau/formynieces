@@ -6,6 +6,7 @@ namespace App\Services\QuestionBank;
 
 use App\Models\PracticeQuestion;
 use App\Models\SyllabusModule;
+use App\Support\OptionShuffler;
 use DOMDocument;
 use DOMElement;
 use Illuminate\Support\Facades\Storage;
@@ -140,6 +141,10 @@ class MoodleQuestionImporter
 
         $module = $this->modules[$moduleId];
 
+        // QB-16: randomise the correct answer's position (banks author it first).
+        // Seeded by the question name so re-imports stay stable.
+        $shuffled = OptionShuffler::shuffle($options, $correctIndex, seed: $name);
+
         $attributes = [
             'module_id' => $moduleId,
             'subject' => $module->subject,
@@ -147,8 +152,8 @@ class MoodleQuestionImporter
             'strand' => $module->strand,
             'difficulty' => $rung,
             'prompt' => $prompt,
-            'options' => $options,
-            'correct_index' => $correctIndex,
+            'options' => $shuffled['options'],
+            'correct_index' => $shuffled['correct_index'],
             'explanation' => $explanation !== '' ? $explanation : null,
             'is_active' => true,
         ];

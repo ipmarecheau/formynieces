@@ -39,8 +39,8 @@ it('imports valid questions with the right module, rung, options and correct ind
     expect($d1->module_id)->toBe(6)                 // Q01 -> Whole Number Operations: Addition
         ->and($d1->subject)->toBe('Math')
         ->and($d1->difficulty)->toBe(1)             // D1 -> rung 1
-        ->and($d1->options)->toBe(['5', '4', '6', '7'])
-        ->and($d1->correct_index)->toBe(0)
+        ->and(collect($d1->options)->sort()->values()->all())->toBe(['4', '5', '6', '7'])
+        ->and($d1->options[$d1->correct_index])->toBe('5')  // QB-16: shuffled, but correct answer preserved
         ->and($d1->is_active)->toBeTrue()
         ->and($d1->explanation)->toContain('5');
 

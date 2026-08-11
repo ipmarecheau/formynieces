@@ -116,3 +116,11 @@ Feature: Question bank — import, authoring, and export
       Given a backup taken earlier and a bank that has changed since
       When the admin restores that backup
       Then the bank matches exactly the questions captured in that backup
+
+  @scenario:QB-16
+  Scenario: Imported answers are randomised so the correct one is not always first
+    Given a Moodle export whose correct answer is always the first option
+    When the bank is imported
+    Then each question's options are shuffled and its correct index updated to match
+      And the correct option still holds the right answer
+      And the correct answers are spread across positions, not all the first

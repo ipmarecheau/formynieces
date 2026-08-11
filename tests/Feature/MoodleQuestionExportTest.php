@@ -58,7 +58,7 @@ it('round-trips: an exported question re-imports with its prompt, options and co
     $restored = PracticeQuestion::firstOrFail();
     expect($restored->module_id)->toBe($module->id)
         ->and($restored->difficulty)->toBe(3)          // level survived the D-level round-trip
-        ->and($restored->options)->toBe(['3', '2', '4', '6'])
-        ->and($restored->correct_index)->toBe(0)
+        ->and(collect($restored->options)->sort()->values()->all())->toBe(['2', '3', '4', '6'])
+        ->and($restored->options[$restored->correct_index])->toBe('3')  // QB-16: shuffled, correct answer preserved
         ->and($restored->prompt)->toContain('12 ÷ 4');
 })->group('scenario:QB-10');
