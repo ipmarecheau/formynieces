@@ -53,7 +53,16 @@
         </div>
     @endif
 
-    @if ($isMastered)
+    @if ($celebration)
+        <x-celebration :title="$celebration['title']" :sub="$celebration['sub']">
+            @if ($celebration['type'] === 'mastery')
+                <a href="{{ route('student.voyage') }}">Back to my voyage →</a>
+            @else
+                <button type="button" wire:click="continueAfterCelebration">Keep climbing! →</button>
+            @endif
+        </x-celebration>
+
+    @elseif ($isMastered)
         <div class="pw-card">
             <p class="pw-master-head">You mastered this! 🎉</p>
             <p class="pw-master-sub">You climbed all three levels of {{ $topic }}. Brilliant work, explorer!</p>

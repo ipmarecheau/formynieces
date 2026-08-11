@@ -35,6 +35,9 @@ class PracticeWalk extends Component
 
     public ?array $feedback = null;
 
+    /** A milestone celebration to play over the flow: ['type'=>'levelup'|'mastery', ...]. */
+    public ?array $celebration = null;
+
     public function mount(SyllabusModule $module): void
     {
         $this->moduleId = $module->id;
@@ -92,6 +95,8 @@ class PracticeWalk extends Component
 
         $this->attemptsUsed++;
         $wasCorrect = $chosenIndex === $this->question['correct_index'];
+        $priorRung = $this->currentRung;
+        $wasMastered = $this->isMastered;
 
         $progress = app(RecordPracticeAttempt::class)
             ->handle(auth()->id(), $this->question['id'], $chosenIndex, $this->attemptsUsed);
@@ -110,11 +115,40 @@ class PracticeWalk extends Component
         }
 
         $this->awaitingRetry = false;
+
+        // CE-02/03: a milestone this answer just crossed plays a big celebration
+        // instead of the plain feedback screen.
+        if ($this->isMastered && ! $wasMastered) {
+            $this->celebration = [
+                'type' => 'mastery',
+                'title' => 'You mastered it! 🎉',
+                'sub' => "You climbed all three levels of {$this->topic}. Brilliant work, explorer!",
+            ];
+
+            return;
+        }
+        if ($this->currentRung > $priorRung) {
+            $this->celebration = [
+                'type' => 'levelup',
+                'title' => 'Level up! ⭐',
+                'sub' => 'You cleared Level '.($this->rungOrdinal - 1)." — on to Level {$this->rungOrdinal}!",
+            ];
+
+            return;
+        }
+
         $this->feedback = [
             'correct' => $wasCorrect,
             'explanation' => $this->question['explanation'] ?? '',
             'mastered' => $this->isMastered,   // so the feedback screen can announce it
         ];
+    }
+
+    /** Dismiss a level-up celebration and continue to the next question (CE-02). */
+    public function continueAfterCelebration(): void
+    {
+        $this->celebration = null;
+        $this->next();
     }
 
     public function next(): void
