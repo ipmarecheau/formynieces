@@ -486,3 +486,18 @@
   commit: 3924598
   spec_hash: 94245e709d79
   note: "Browser-verified on dev: Smooth's guide auto-opens first visit, persists dismissal, reopens via '?' control; explains 3 levels/2 attempts/first-try on practice and progression on the overworld + island maps; child-layer only; suite 296 green"
+- scenario: CE-02
+  verified_at: 2026-08-11
+  commit: ddb0e0d
+  spec_hash: 94d36336cf5e
+  note: "Browser-verified on dev: level-up confetti on clearing a level, headline mastery celebration -> Voyage, reduced-motion fallback; suite 299 green"
+- scenario: CE-03
+  verified_at: 2026-08-11
+  commit: ddb0e0d
+  spec_hash: 209be948591f
+  note: "Browser-verified on dev: level-up confetti on clearing a level, headline mastery celebration -> Voyage, reduced-motion fallback; suite 299 green"
+- scenario: CE-06
+  verified_at: 2026-08-11
+  commit: ddb0e0d
+  spec_hash: 6f7be9c612c9
+  note: "Browser-verified on dev: level-up confetti on clearing a level, headline mastery celebration -> Voyage, reduced-motion fallback; suite 299 green"
