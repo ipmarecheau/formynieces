@@ -1,30 +1,31 @@
 <?php
 
+use App\Livewire\PracticeWalk;
 use App\Models\PracticeQuestion;
+use App\Models\StudentProgress;
 use App\Models\SyllabusModule;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
-use App\Livewire\PracticeWalk;
 
 uses(RefreshDatabase::class);
 
 it('shows the first rung-1 question when a student opens a module to practise', function () {
     $student = User::factory()->create();
-    $module  = SyllabusModule::factory()->create(['topic' => 'Fractions: Adding Like Denominators']);
+    $module = SyllabusModule::factory()->create(['topic' => 'Fractions: Adding Like Denominators']);
 
     PracticeQuestion::factory()->create([
-        'module_id'   => $module->id,
-        'difficulty'  => 1,
-        'prompt'      => 'What is one half plus one half?',
-        'options'     => ['One quarter', 'One whole', 'Two halves stay', 'Three quarters'],
+        'module_id' => $module->id,
+        'difficulty' => 1,
+        'prompt' => 'What is one half plus one half?',
+        'options' => ['One quarter', 'One whole', 'Two halves stay', 'Three quarters'],
         'correct_index' => 1,
     ]);
     // A harder question that should NOT be the one shown first.
     PracticeQuestion::factory()->create([
-        'module_id'  => $module->id,
+        'module_id' => $module->id,
         'difficulty' => 3,
-        'prompt'     => 'A rung-3 question',
+        'prompt' => 'A rung-3 question',
     ]);
 
     Livewire::actingAs($student)
@@ -37,15 +38,15 @@ it('shows the first rung-1 question when a student opens a module to practise', 
 
 it('shows the explanation and advances after a correct answer', function () {
     $student = User::factory()->create();
-    $module  = SyllabusModule::factory()->create();
+    $module = SyllabusModule::factory()->create();
 
     PracticeQuestion::factory()->create([
-        'module_id'    => $module->id,
-        'difficulty'   => 1,
-        'prompt'       => 'Pick B',
-        'options'      => ['A', 'B', 'C', 'D'],
-        'correct_index'=> 1,
-        'explanation'  => 'B is right because it is the second option.',
+        'module_id' => $module->id,
+        'difficulty' => 1,
+        'prompt' => 'Pick B',
+        'options' => ['A', 'B', 'C', 'D'],
+        'correct_index' => 1,
+        'explanation' => 'B is right because it is the second option.',
     ]);
 
     $component = Livewire::actingAs($student)
@@ -60,39 +61,43 @@ it('shows the explanation and advances after a correct answer', function () {
 
 it('frames a wrong answer as not-yet, never failure, and resets the streak', function () {
     $student = User::factory()->create();
-    $module  = SyllabusModule::factory()->create();
+    $module = SyllabusModule::factory()->create();
 
     PracticeQuestion::factory()->create([
-        'module_id'    => $module->id,
-        'difficulty'   => 1,
-        'prompt'       => 'Pick B',
-        'options'      => ['A', 'B', 'C', 'D'],
-        'correct_index'=> 1,
-        'explanation'  => 'The answer is B.',
+        'module_id' => $module->id,
+        'difficulty' => 1,
+        'prompt' => 'Pick B',
+        'options' => ['A', 'B', 'C', 'D'],
+        'correct_index' => 1,
+        'explanation' => 'The answer is B.',
     ]);
 
     Livewire::actingAs($student)
         ->test(PracticeWalk::class, ['module' => $module])
-        ->call('choose', 0)               // wrong
+        ->call('choose', 0)               // first-try miss → offered a second attempt
+        ->assertSee('Not yet')
+        ->assertSet('awaitingRetry', true)
+        ->assertDontSee('The answer is B.')  // explanation withheld until the retry is used
+        ->call('choose', 0)               // second-try miss → explanation, streak stays 0
         ->assertSee('Not yet')
         ->assertSee('The answer is B.')
         ->assertDontSee('Wrong')
         ->assertDontSee('Incorrect')
-        ->assertSet('currentStreak', 0);  // stayed/reset at 0
+        ->assertSet('currentStreak', 0);
 })->group('scenario:LL-04');
 
 it('serves a different question after answering, not the same one again', function () {
     $student = User::factory()->create();
-    $module  = SyllabusModule::factory()->create();
+    $module = SyllabusModule::factory()->create();
 
     $q1 = PracticeQuestion::factory()->create([
         'module_id' => $module->id, 'difficulty' => 1,
-        'prompt' => 'First question', 'options' => ['A','B','C','D'], 'correct_index' => 1,
+        'prompt' => 'First question', 'options' => ['A', 'B', 'C', 'D'], 'correct_index' => 1,
         'explanation' => 'x',
     ]);
     $q2 = PracticeQuestion::factory()->create([
         'module_id' => $module->id, 'difficulty' => 1,
-        'prompt' => 'Second question', 'options' => ['A','B','C','D'], 'correct_index' => 1,
+        'prompt' => 'Second question', 'options' => ['A', 'B', 'C', 'D'], 'correct_index' => 1,
         'explanation' => 'y',
     ]);
 
@@ -110,16 +115,16 @@ it('serves a different question after answering, not the same one again', functi
 
 it('shows a mastery celebration, not coming-soon, once the module is mastered', function () {
     $student = User::factory()->create();
-    $module  = SyllabusModule::factory()->create();
+    $module = SyllabusModule::factory()->create();
 
     // Pre-set the student to mastered on this module.
-    \App\Models\StudentProgress::create([
-        'student_id'    => $student->id,
-        'module_id'     => $module->id,
-        'status'        => 'mastered',
-        'score'         => 100,
-        'current_rung'  => 3,
-        'current_streak'=> 3,
+    StudentProgress::create([
+        'student_id' => $student->id,
+        'module_id' => $module->id,
+        'status' => 'mastered',
+        'score' => 100,
+        'current_rung' => 3,
+        'current_streak' => 3,
     ]);
 
     // Some questions exist, but mastery should short-circuit before serving them.

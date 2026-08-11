@@ -36,11 +36,11 @@
 
 <div class="pw-wrap">
     <p class="pw-topic">{{ $topic }}</p>
-    <p class="pw-rung">{{ $isMastered ? 'Mastered!' : 'Level ' . $currentRung . ' of 3' }}</p>
+    <p class="pw-rung">{{ $isMastered ? 'Mastered!' : 'Level ' . $rungOrdinal . ' of 3' }}</p>
 
-    <div class="pw-ladder" aria-label="{{ $isMastered ? 'Mastered' : 'Level ' . $currentRung . ' of 3' }}">
+    <div class="pw-ladder" aria-label="{{ $isMastered ? 'Mastered' : 'Level ' . $rungOrdinal . ' of 3' }}">
         @for ($r = 1; $r <= 3; $r++)
-            <div class="pw-rung-pip {{ ($isMastered || $r < $currentRung) ? 'done' : ($r === $currentRung ? 'active' : '') }}"></div>
+            <div class="pw-rung-pip {{ ($isMastered || $r < $rungOrdinal) ? 'done' : ($r === $rungOrdinal ? 'active' : '') }}"></div>
         @endfor
     </div>
 
@@ -56,7 +56,7 @@
         <div class="pw-card">
             <p class="pw-master-head">You mastered this! 🎉</p>
             <p class="pw-master-sub">You climbed all three levels of {{ $topic }}. Brilliant work, explorer!</p>
-            <a href="{{ route('student.map') }}" class="pw-next">Back to my map →</a>
+            <a href="{{ route('student.voyage') }}" class="pw-next">Back to my voyage →</a>
         </div>
 
     @elseif ($question === null)
@@ -76,6 +76,9 @@
     @else
         <div class="pw-card" wire:key="q-{{ $question['id'] }}">
             <div class="pw-prompt">{!! $question['prompt'] !!}</div>
+            @if ($awaitingRetry)
+                <p class="pw-feedback-head notyet">Not yet — have another go! 🌱</p>
+            @endif
             <div class="pw-options">
                 @foreach ($question['options'] as $index => $optionText)
                     <button type="button" class="pw-option" wire:click="choose({{ $index }})" wire:loading.attr="disabled">{{ $optionText }}</button>

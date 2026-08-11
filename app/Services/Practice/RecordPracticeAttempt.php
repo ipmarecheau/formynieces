@@ -15,13 +15,19 @@ use Illuminate\Support\Facades\DB;
  * then recomputes the student's climb on that module and projects it onto the
  * student_progress read-model (rung, streak, score%, status).
  *
- * THE RULE (locked):
- *  - Climb three rungs (difficulty 1 → 2 → 3), bottom-up.
- *  - Clear a rung by getting 3 CONSECUTIVE correct at that rung, on 3 DISTINCT
- *    questions. A repeat of a question already in the live streak does NOT count
- *    (and does not break it). A WRONG answer resets the streak to 0 but keeps
- *    the rung. Clearing a rung advances to the next; clearing rung 3 = mastered.
- *  - score = derived progress %: ((rung-1)*3 + streak) / 9 * 100, integer.
+ * THE RULE (redesigned 2026-08-11):
+ *  - Climb three rungs at the bank's real difficulty levels: 1 -> 3 -> 5, bottom-up.
+ *  - Every question allows a SECOND attempt (the caller passes the attempt number).
+ *  - Below the hardest rung: clear a rung by 3 CONSECUTIVE correct on 3 DISTINCT
+ *    questions, where a question answered correctly WITHIN TWO tries counts. A
+ *    question failed on the second attempt resets the streak; a first-try miss that
+ *    is then recovered does not.
+ *  - At the hardest rung (difficulty 5): mastery is reserved for FIRST-TRY success —
+ *    3 consecutive first-try-correct on distinct questions. A first-try miss resets
+ *    the mastery streak; a second-attempt answer never advances it.
+ *  - A repeat of a question already in the live streak does NOT count (and does not
+ *    break it). A wrong answer keeps the rung.
+ *  - score = derived progress %: (rungIndex*3 + streak) / 9 * 100, integer.
  *
  * student_progress is the projection the heart-gauge UI reads; practice_attempts
  * is the source of truth. previous_score holds the score from before this answer.
@@ -30,21 +36,27 @@ class RecordPracticeAttempt
 {
     private const STREAK_TO_CLEAR = 3;
 
-    private const MASTERY_RUNG = 3;
+    /** The ordered climb rungs — the bank's real difficulty levels. */
+    private const RUNGS = [1, 3, 5];
+
+    /** Mastery is earned at the hardest rung. */
+    private const MASTERY_DIFFICULTY = 5;
 
     private const TOTAL_STEPS = 9; // 3 rungs * 3 streak each
 
     public function __construct(private StreakService $streaks) {}
 
     /**
-     * Process one submission. Returns the fresh StudentProgress projection.
+     * Process one submission. $attempt is 1 for a first try, 2 for the retry a
+     * student gets after a first-try miss. Returns the fresh StudentProgress.
      */
-    public function handle(int $studentId, int $questionId, int $chosenIndex): StudentProgress
+    public function handle(int $studentId, int $questionId, int $chosenIndex, int $attempt = 1): StudentProgress
     {
         $question = PracticeQuestion::findOrFail($questionId);
         $isCorrect = $chosenIndex === $question->correct_index;
+        $isFirstTry = $attempt <= 1;
 
-        [$progress, $wasMasteredBefore] = DB::transaction(function () use ($studentId, $question, $isCorrect) {
+        [$progress, $wasMasteredBefore] = DB::transaction(function () use ($studentId, $question, $isCorrect, $isFirstTry) {
             // 1. Diary: always record the raw attempt.
             PracticeAttempt::create([
                 'student_id' => $studentId,
@@ -64,34 +76,47 @@ class RecordPracticeAttempt
             $progress->current_streak ??= 0;
             $streakIds = $progress->streak_question_ids ?? [];
 
-            // Capture prior mastery state BEFORE the climb runs, so the mastery
-            // streak advances only on a genuine transition to mastered.
             $wasMasteredBefore = ($progress->status === 'mastered');
-
             $priorScore = $progress->score;
 
             // 3. Only answers AT the current rung affect the climb.
             if ($question->difficulty === $progress->current_rung) {
-                if (! $isCorrect) {
-                    $progress->current_streak = 0;
-                    $streakIds = [];
-                } elseif (! in_array($question->id, $streakIds, true)) {
-                    // Distinct-within-streak: count only new questions.
-                    $streakIds[] = $question->id;
-                    $progress->current_streak++;
+                $isMasteryRung = ($progress->current_rung === self::MASTERY_DIFFICULTY);
+                $isNewQuestion = ! in_array($question->id, $streakIds, true);
 
-                    if ($progress->current_streak >= self::STREAK_TO_CLEAR) {
-                        if ($progress->current_rung >= self::MASTERY_RUNG) {
-                            $progress->status = 'mastered';
-                            $progress->current_streak = self::STREAK_TO_CLEAR; // cap
-                        } else {
-                            $progress->current_rung++;
-                            $progress->current_streak = 0;
-                            $streakIds = [];   // fresh streak at the new rung
-                        }
+                if ($isMasteryRung) {
+                    // Mastery counts first-try success only.
+                    if ($isFirstTry && $isCorrect && $isNewQuestion) {
+                        $streakIds[] = $question->id;
+                        $progress->current_streak++;
+                    } elseif ($isFirstTry && ! $isCorrect) {
+                        $progress->current_streak = 0;
+                        $streakIds = [];
+                    }
+                    // A second attempt never touches the mastery streak.
+                } else {
+                    // Lower rungs: a correct answer within two tries advances; only a
+                    // failed second attempt resets.
+                    if ($isCorrect && $isNewQuestion) {
+                        $streakIds[] = $question->id;
+                        $progress->current_streak++;
+                    } elseif (! $isCorrect && ! $isFirstTry) {
+                        $progress->current_streak = 0;
+                        $streakIds = [];
+                    }
+                    // A first-try miss (pending its retry) leaves the streak untouched.
+                }
+
+                if ($progress->current_streak >= self::STREAK_TO_CLEAR) {
+                    if ($isMasteryRung) {
+                        $progress->status = 'mastered';
+                        $progress->current_streak = self::STREAK_TO_CLEAR; // cap
+                    } else {
+                        $progress->current_rung = $this->nextRung($progress->current_rung);
+                        $progress->current_streak = 0;
+                        $streakIds = [];   // fresh streak at the new rung
                     }
                 }
-                // A correct repeat of a question already in the streak: no change.
             }
 
             $progress->streak_question_ids = $streakIds;
@@ -112,9 +137,8 @@ class RecordPracticeAttempt
         // Practice day-streak: every recorded attempt (correct or wrong) advances it.
         $this->streaks->recordActivity($studentId, 'practice');
 
-        // Mastery day-streak: advances exactly once, the first time a module
-        // reaches mastered in this call. Re-answering an already-mastered module
-        // must not double-count.
+        // Mastery day-streak: advances exactly once, the first time a module reaches
+        // mastered in this call.
         if ($progress->status === 'mastered' && ! $wasMasteredBefore) {
             $this->streaks->recordActivity($studentId, 'mastery');
         }
@@ -122,39 +146,15 @@ class RecordPracticeAttempt
         return $progress;
     }
 
-    /**
-     * Is this question already part of the student's LIVE streak on its rung?
-     * The live streak = the trailing run of correct answers at the current rung
-     * since the last wrong answer (or since the rung began). We look back over
-     * recent attempts at this rung and collect question ids until we hit a wrong
-     * one; if this question is among them, it's a repeat that must not re-count.
-     */
-    private function questionAlreadyInLiveStreak(int $studentId, PracticeQuestion $question): bool
+    /** The next difficulty rung up from $rung (unchanged if already the top). */
+    private function nextRung(int $rung): int
     {
-        $recent = PracticeAttempt::query()
-            ->where('student_id', $studentId)
-            ->where('module_id', $question->module_id)
-            ->where('difficulty', $question->difficulty)
-            ->orderByDesc('id')
-            ->get(['practice_question_id', 'is_correct']);
-
-        $streakQuestionIds = [];
-        foreach ($recent as $attempt) {
-            // The just-recorded attempt for THIS question is the first row;
-            // skip it so we examine the streak that preceded it.
-            if ($attempt->practice_question_id === $question->id
-                && $attempt->is_correct
-                && ! in_array($question->id, $streakQuestionIds, true)
-                && $streakQuestionIds === []) {
-                continue;
-            }
-            if (! $attempt->is_correct) {
-                break;
-            }
-            $streakQuestionIds[] = $attempt->practice_question_id;
+        $index = array_search($rung, self::RUNGS, true);
+        if ($index === false || $index + 1 >= count(self::RUNGS)) {
+            return $rung;
         }
 
-        return in_array($question->id, $streakQuestionIds, true);
+        return self::RUNGS[$index + 1];
     }
 
     private function scorePercent(int $rung, int $streak, bool $mastered): int
@@ -162,7 +162,9 @@ class RecordPracticeAttempt
         if ($mastered) {
             return 100;
         }
-        $steps = ($rung - 1) * self::STREAK_TO_CLEAR + $streak;
+        $index = array_search($rung, self::RUNGS, true);
+        $index = $index === false ? 0 : $index;
+        $steps = $index * self::STREAK_TO_CLEAR + $streak;
 
         return (int) floor($steps / self::TOTAL_STEPS * 100);
     }

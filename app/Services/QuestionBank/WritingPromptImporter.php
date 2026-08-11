@@ -34,13 +34,14 @@ class WritingPromptImporter
         WritingBankPrompt::GENRE_REPORT => 70,
     ];
 
-    /** @var array<int, int> D-level => rung */
-    private array $difficultyMap;
-
-    public function __construct()
-    {
-        $this->difficultyMap = config('question_import.difficulty_map', [1 => 1, 2 => 1, 3 => 2, 4 => 3, 5 => 3]);
-    }
+    /**
+     * D-level => writing rung. Writing keeps its own 3-band scale (1 easy, 2 medium,
+     * 3 hard) — it is NOT the mastery climb, so it does not use the practice bank's
+     * D1/D3/D5 remap.
+     *
+     * @var array<int, int>
+     */
+    private const DIFFICULTY_MAP = [1 => 1, 2 => 1, 3 => 2, 4 => 3, 5 => 3];
 
     public function import(string $xml, bool $dryRun = true): ImportReport
     {
@@ -149,7 +150,7 @@ class WritingPromptImporter
     private function difficultyRungFromName(string $name): ?int
     {
         if (preg_match('/\b(?:level|d)\s*([1-5])\b/i', $name, $m)) {
-            return $this->difficultyMap[(int) $m[1]] ?? null;
+            return self::DIFFICULTY_MAP[(int) $m[1]] ?? null;
         }
 
         return null;

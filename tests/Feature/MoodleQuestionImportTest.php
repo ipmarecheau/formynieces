@@ -44,12 +44,12 @@ it('imports valid questions with the right module, rung, options and correct ind
         ->and($d1->is_active)->toBeTrue()
         ->and($d1->explanation)->toContain('5');
 
-    // D5 collapses to the hard rung.
-    expect(PracticeQuestion::where('source_ref', 'Q01 · D5 · v1 — Addition')->value('difficulty'))->toBe(3);
+    // D5 is the hard rung — stored as its real level.
+    expect(PracticeQuestion::where('source_ref', 'Q01 · D5 · v1 — Addition')->value('difficulty'))->toBe(5);
 
     // D3 (SEA standard) is the medium rung and maps to the Fractions module.
     $frac = PracticeQuestion::where('source_ref', 'Q04 · D3 · v1 — Fraction shaded')->firstOrFail();
-    expect($frac->difficulty)->toBe(2)->and($frac->module_id)->toBe(12);
+    expect($frac->difficulty)->toBe(3)->and($frac->module_id)->toBe(12);
 })->group('scenario:QB-02');
 
 it('extracts an embedded figure and rewrites the @@PLUGINFILE@@ reference to a real URL', function () {

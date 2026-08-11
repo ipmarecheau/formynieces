@@ -22,7 +22,7 @@ function ml05Student(): User
 function masterModule(int $studentId, int $moduleId): void
 {
     $svc = app(RecordPracticeAttempt::class);
-    foreach ([1, 2, 3] as $rung) {
+    foreach ([1, 3, 5] as $rung) {
         collect(range(1, 3))->each(function () use ($svc, $studentId, $moduleId, $rung) {
             $q = PracticeQuestion::factory()->create([
                 'module_id' => $moduleId,

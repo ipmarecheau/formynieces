@@ -145,13 +145,15 @@ return [
         'C01' => 73,                // Reading comprehension -> Reading Comprehension: Main Idea [REVIEW]
     ],
 
-    // Source difficulty level (D1…D5) => practice rung (1 easy, 2 medium, 3 hard).
+    // Source difficulty level (D1…D5) => practice climb rung. The climb uses the
+    // bank's real levels as its three rungs: D1 -> 1, D3 -> 3, D5 -> 5 (with D2
+    // folding down to 1 and D4 up to 5). Mastery is earned at difficulty 5.
     'difficulty_map' => [
         1 => 1,
         2 => 1,
-        3 => 2,
-        4 => 3,
-        5 => 3,
+        3 => 3,
+        4 => 5,
+        5 => 5,
     ],
 
     // Where extracted question images are stored (on the 'public' disk).

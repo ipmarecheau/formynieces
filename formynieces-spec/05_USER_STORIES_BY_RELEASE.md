@@ -48,17 +48,26 @@ truth for the grown-up.
 > My aunt hands me a login. My first time in, I sail a short **first voyage** (the
 > diagnostic) and then my whole map is **revealed**, painted just for me. After that
 > I **land on my Voyage every time** — my sea, my islands, never a page of numbers.
-> This week's islands shimmer to show me where to sail. I tap a level → read the
-> **lesson** → get walked through a **worked example** → then **practise a climb**
-> from easy to hard. Mastering the top set off a celebration. Wrong answers say
-> **"not yet,"** never "wrong." My **streak** grows when I keep coming back and
+> This week's islands shimmer to show me where to sail. Every level is one **loop**:
+> *mastery check → lesson → tutorials → practice → mastery check*. The practice climb
+> **is** the check — if I'm already good I can go straight in and test out; the
+> **lesson** (an interactive page) and the **tutorials** (walked through by **Smooth**)
+> are there only if I need them. I climb three real rungs — **D1 → D3 → D5** — and
+> every question gives me a **second try** so I can learn and move on. But to truly
+> **master**, I have to get **three of the hardest (D5) right on the first try in a
+> row**. If I miss twice at D3, Smooth pulls me **back to a tutorial**, then a **teacher
+> chat** talks me through the idea before I try again. Mastering set off a celebration —
+> and I keep a competency by touching it again (**3 × D5 every two weeks**) or it
+> quietly slips to **"review."** Wrong answers say **"not yet,"** never "wrong." My
+> **streak** grows when I keep coming back and
 > **freezes**, not shatters, if my aunt pauses me. Every island has a **Writer's
 > Log** stop where I get a weekly prompt and warm feedback — two things I did well,
 > one to try — never a grade.
 
 *Covers:* `roadmap_reveal` (RR-01…), `diagnostic` (DG), `adventure_map`
-(AM-01…04, 06, 08), `learning_loop` (LL), `tutorial` (TU-01…04), `motivation_layer`
-(ML), `writing_track` (WR-01…03), plus `student_home` (SH-01…06).
+(AM-01…04, 06, 08), `learning_loop` (LL-01…17 — now the umbrella feature; the tutorial
+`TU-01…04` folds in as the Tutorials stage, LL-08…11 pulled up from `@roadmap`),
+`motivation_layer` (ML), `writing_track` (WR-01…03), plus `student_home` (SH-01…06).
 
 ### 🧭 Maya's aunt — guardian
 > I **register (18+), verify my email, and set Maya up** — I see her login once. My
@@ -194,9 +203,15 @@ not this MVP list — `VC-01…03` are built.)
 Reconciled against `specs:trace`. The stories above are the *intended* whole; these are
 the parts not yet delivered, by band.
 
-- **MVP — one real hole:** the **Tutorial** (`TU-01…04`, `tutorial.feature`, `@pending`)
-  is banded `@mvp` and promised in Maya's story ("walked through a worked example") but
-  **not built**. Everything else MVP is `ok current`.
+- **MVP — the learning-loop redesign (in progress).** The loop was reworked (2026-08-11)
+  into *mastery check → lesson → tutorials → practice → mastery check*, with D1/D3/D5
+  rungs, first-try-only mastery (3-in-a-row at D5), a two-attempt-per-question rule,
+  pushed remediation, an LLM teacher chat, and a 2-week maintenance rule. Build order:
+  the **core mechanic** (`LL-03/04/06/12/13`, remapped climb + first-try mastery) first;
+  then the folded **tutorial stage** (`TU-01…04`) and **stepper** (`LL-08…11`, pulled up
+  from `@roadmap`); then **remediation + LLM guided practice** (`LL-14…16`, needs a new
+  `LlmService` surface) and **maintenance decay** (`LL-17`, needs a scheduler). The old
+  3-rung `1/2/3` mastery rule is retired.
 - **V1 (`@v1.1`) unbuilt:** diagnostic retake (`DG-17`, test exists/unverified), writing
   history + guardian writing view (`WR-04/05`), guardian inline digest (`GD-06`), phone
   verify (`GO-06`), stale-mastery decay (`LL-07`).

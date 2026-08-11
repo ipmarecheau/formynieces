@@ -15,15 +15,16 @@ use Illuminate\Support\Facades\Storage;
  *
  * Questions are grouped under one category per syllabus module, coded "M<id>" so
  * a re-import addresses the module directly. The practice rung is written back as
- * a difficulty level (1→D1, 2→D3, 3→D5) that the importer collapses to the same
+ * a difficulty level (1→D1, 3→D3, 5→D5) that the importer maps back to the same
  * rung. Embedded figures are re-encoded as base64 <file> elements with
  *
  * @@PLUGINFILE@@ references, exactly as Moodle exports them.
  */
 class MoodleQuestionExporter
 {
-    /** rung => Moodle D-level (inverse of the importer's collapse). */
-    private array $rungToLevel = [1 => 1, 2 => 3, 3 => 5];
+    /** climb rung => Moodle D-level. The bank now stores the real levels (1/3/5),
+     *  so this is the identity — kept explicit for round-trip clarity. */
+    private array $rungToLevel = [1 => 1, 3 => 3, 5 => 5];
 
     /**
      * @param  iterable<PracticeQuestion>|null  $questions  defaults to the whole active bank
@@ -63,7 +64,7 @@ class MoodleQuestionExporter
     private function questionNode(DOMDocument $doc, PracticeQuestion $q): DOMElement
     {
         $topic = $q->module?->topic ?? ('Module '.$q->module_id);
-        $level = $this->rungToLevel[$q->difficulty] ?? 3;
+        $level = $this->rungToLevel[$q->difficulty] ?? $q->difficulty;
 
         $question = $doc->createElement('question');
         $question->setAttribute('type', 'multichoice');
