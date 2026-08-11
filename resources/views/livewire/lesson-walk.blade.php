@@ -1,4 +1,5 @@
 <div>
+<livewire:smooth-guide guide="lesson" wire:key="guide-lesson" />
 <style>
     .lw-wrap { min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 32px 20px 48px; }
     .lw-subject { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(196,181,253,0.7); margin-bottom: 8px; }

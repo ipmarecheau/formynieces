@@ -39,4 +39,24 @@ return [
         ],
     ],
 
+    'lesson' => [
+        'title' => 'Your lesson',
+        'pose' => 'wave',
+        'lines' => [
+            'Read the lesson to learn the idea before you practise.',
+            'The links are extra help you can explore if you want them.',
+            'When you’re ready, tap “Start practising” to give it a go! 📖',
+        ],
+    ],
+
+    'writing' => [
+        'title' => 'Your Writer’s Log',
+        'pose' => 'wave',
+        'lines' => [
+            'This is your weekly writing challenge — take your time and do your best.',
+            'When you send it, you’ll get warm feedback from Smooth’s crew.',
+            'You’ll hear two things you did well and one to try next — never a grade. ✍️',
+        ],
+    ],
+
 ];

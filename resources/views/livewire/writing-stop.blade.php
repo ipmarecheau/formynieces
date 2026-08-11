@@ -1,4 +1,5 @@
 <div class="wl-wrap">
+    <livewire:smooth-guide guide="writing" wire:key="guide-writing" />
     <style>
         .wl-wrap { max-width: 760px; margin: 0 auto; padding: 1.5rem 1rem 4rem; font-family: 'Nunito', sans-serif; }
         .wl-crumb { display: inline-flex; align-items: center; gap: .4rem; color: #b45309; text-decoration: none; font-weight: 700; font-size: .95rem; }
