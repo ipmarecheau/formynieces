@@ -461,3 +461,28 @@
   commit: d98f615
   spec_hash: 2774f2e5b702
   note: "Browser-verified on dev: climb D1->D3->D5, two-attempt retry ('Not yet — have another go!'), first-try-only mastery at D5, mastery -> Voyage with next stage unlocked; suite 290 green"
+- scenario: SG-01
+  verified_at: 2026-08-11
+  commit: 3924598
+  spec_hash: 6f7417ead692
+  note: "Browser-verified on dev: Smooth's guide auto-opens first visit, persists dismissal, reopens via '?' control; explains 3 levels/2 attempts/first-try on practice and progression on the overworld + island maps; child-layer only; suite 296 green"
+- scenario: SG-02
+  verified_at: 2026-08-11
+  commit: 3924598
+  spec_hash: c37100e557dc
+  note: "Browser-verified on dev: Smooth's guide auto-opens first visit, persists dismissal, reopens via '?' control; explains 3 levels/2 attempts/first-try on practice and progression on the overworld + island maps; child-layer only; suite 296 green"
+- scenario: SG-03
+  verified_at: 2026-08-11
+  commit: 3924598
+  spec_hash: cc9e2e5ccfcc
+  note: "Browser-verified on dev: Smooth's guide auto-opens first visit, persists dismissal, reopens via '?' control; explains 3 levels/2 attempts/first-try on practice and progression on the overworld + island maps; child-layer only; suite 296 green"
+- scenario: SG-04
+  verified_at: 2026-08-11
+  commit: 3924598
+  spec_hash: adc29db5ef05
+  note: "Browser-verified on dev: Smooth's guide auto-opens first visit, persists dismissal, reopens via '?' control; explains 3 levels/2 attempts/first-try on practice and progression on the overworld + island maps; child-layer only; suite 296 green"
+- scenario: SG-05
+  verified_at: 2026-08-11
+  commit: 3924598
+  spec_hash: 94245e709d79
+  note: "Browser-verified on dev: Smooth's guide auto-opens first visit, persists dismissal, reopens via '?' control; explains 3 levels/2 attempts/first-try on practice and progression on the overworld + island maps; child-layer only; suite 296 green"
