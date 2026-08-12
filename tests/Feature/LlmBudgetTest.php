@@ -56,3 +56,56 @@ it('does not count a previous month against this month', function () {
 
     expect(app(LlmBudget::class)->spentUsd($student->id))->toBe(0.0);
 })->group('scenario:AG-01');
+
+/** Seed a student already at $spent this month, and fake a cheap LLM response. */
+function agStudentAtSpend(string $suffix, float $spent): User
+{
+    $student = agStudent($suffix);
+    config(['services.llm.key' => 'test-key']);
+    StudentLlmUsage::create([
+        'student_id' => $student->id,
+        'period' => now()->format('Y-m'),
+        'input_tokens' => 0,
+        'output_tokens' => 0,
+        'cost_usd' => $spent,
+    ]);
+    Http::fake([
+        '*/chat/completions' => Http::response([
+            'choices' => [['message' => ['content' => 'ok']]],
+            'usage' => ['prompt_tokens' => 1, 'completion_tokens' => 1],
+        ], 200),
+    ]);
+
+    return $student;
+}
+
+it('stops discretionary AI at the soft cap but keeps essential AI running', function () {
+    $student = agStudentAtSpend('02', 1.00);
+    $svc = app(LlmService::class);
+
+    $svc->complete('s', 'u', 64, $student->id, essential: false);
+    Http::assertSentCount(0);   // discretionary: no call at the soft cap
+
+    $svc->complete('s', 'u', 64, $student->id, essential: true);
+    Http::assertSentCount(1);   // essential still runs
+})->group('scenario:AG-02');
+
+it('stops all AI at the hard ceiling', function () {
+    $student = agStudentAtSpend('03', 1.50);
+    $svc = app(LlmService::class);
+
+    $svc->complete('s', 'u', 64, $student->id, essential: false);
+    $svc->complete('s', 'u', 64, $student->id, essential: true);
+
+    Http::assertSentCount(0);   // neither discretionary nor essential is called
+})->group('scenario:AG-03');
+
+it('checks the budget before the call, so no request is sent and nothing is billed', function () {
+    $student = agStudentAtSpend('04', 1.50);
+    $before = app(LlmBudget::class)->spentUsd($student->id);
+
+    app(LlmService::class)->complete('s', 'u', 64, $student->id, essential: true);
+
+    Http::assertNothingSent();
+    expect(app(LlmBudget::class)->spentUsd($student->id))->toBe($before);
+})->group('scenario:AG-04');

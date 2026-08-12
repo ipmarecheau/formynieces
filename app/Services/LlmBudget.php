@@ -34,6 +34,20 @@ class LlmBudget
         $row->save();
     }
 
+    /**
+     * Whether a call may be made for this student right now. Discretionary features
+     * (clarify chat, re-teach, worked examples) are held to the soft cap; essential
+     * ones (essay grading, guardian summaries) run to the hard ceiling.
+     */
+    public function canSpend(int $studentId, bool $essential = false): bool
+    {
+        $cap = $essential
+            ? (float) config('services.llm.monthly_cap_usd')
+            : (float) config('services.llm.monthly_soft_cap_usd');
+
+        return $this->spentUsd($studentId) < $cap;
+    }
+
     /** Her spend so far THIS month, in USD. */
     public function spentUsd(int $studentId): float
     {

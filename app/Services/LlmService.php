@@ -41,12 +41,12 @@ class LlmService
      * A single-turn completion. When $studentId is given, the call's real token usage
      * is metered to her monthly budget ledger (AG-01).
      */
-    public function complete(string $systemPrompt, string $userPrompt, int $maxTokens = 1024, ?int $studentId = null): string
+    public function complete(string $systemPrompt, string $userPrompt, int $maxTokens = 1024, ?int $studentId = null, bool $essential = false): string
     {
         return $this->chat([
             ['role' => 'system', 'content' => $systemPrompt],
             ['role' => 'user', 'content' => $userPrompt],
-        ], $maxTokens, $studentId);
+        ], $maxTokens, $studentId, $essential);
     }
 
     /**
@@ -55,8 +55,13 @@ class LlmService
      *
      * @param  array<int, array{role:string, content:string}>  $messages
      */
-    public function chat(array $messages, int $maxTokens = 512, ?int $studentId = null): string
+    public function chat(array $messages, int $maxTokens = 512, ?int $studentId = null, bool $essential = false): string
     {
+        // Budget is checked BEFORE any request, so spend never overshoots (AG-02..04).
+        if ($studentId !== null && ! $this->budget->canSpend($studentId, $essential)) {
+            return $this->fallback();
+        }
+
         try {
             $response = Http::withToken($this->apiKey)
                 ->withHeaders($this->extraHeaders)
