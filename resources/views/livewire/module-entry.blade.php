@@ -12,6 +12,9 @@
     .me-dot { flex: 0 0 auto; width: 26px; height: 26px; border-radius: 999px; background: rgba(34,211,238,0.18); border: 1.5px solid rgba(34,211,238,0.5); color: #67e8f9; font-weight: 700; font-size: 14px; display: flex; align-items: center; justify-content: center; }
     .me-start { display: block; margin: 0 auto; background: linear-gradient(135deg, #0e7490, #f6b71e); border: none; border-radius: 999px; padding: 16px 38px; color: white; font-family: 'Fredoka One', cursive; font-size: 17px; cursor: pointer; text-align: center; max-width: 300px; text-decoration: none; }
     .me-count { font-family: 'Nunito', sans-serif; font-size: 13px; font-weight: 700; color: rgba(196,181,253,0.7); }
+    .me-prompt { font-size: 18px; line-height: 1.55; color: rgba(243,232,255,0.95); margin-bottom: 20px; }
+    .me-prompt p { margin: 0 0 10px; }
+    .me-prompt img { max-width: 100%; height: auto; display: block; margin: 12px auto; border-radius: 12px; background: #fff; padding: 6px; }
     .me-options { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
     .me-option { text-align: left; background: rgba(255,255,255,0.05); border: 1.5px solid rgba(34,211,238,0.3); border-radius: 14px; padding: 14px 18px; color: #e6f2fb; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.15s, border-color 0.15s; }
     .me-option:hover { background: rgba(34,211,238,0.12); border-color: rgba(34,211,238,0.6); }
@@ -40,7 +43,7 @@
             @php $current = $checkQuestions[$checkIndex] ?? null; @endphp
             <p class="me-head">Quick check <span class="me-count">{{ $checkIndex + 1 }} of {{ count($checkQuestions) }}</span></p>
             @if ($current)
-                <p class="me-lead">{{ $current['prompt'] }}</p>
+                <div class="me-prompt">{!! $current['prompt'] !!}</div>
                 <div class="me-options">
                     @foreach ($current['options'] as $i => $option)
                         <button type="button" class="me-option" wire:click="answerCheck({{ $i }})" wire:key="opt-{{ $checkIndex }}-{{ $i }}">{{ $option }}</button>
