@@ -76,6 +76,7 @@ Weekly objects: writing prompt, writing submission, writing feedback, rubric pro
 - The guardian must never get a feel-good map view *instead of* the honest view.
 - Missing a week must never produce a hole the child can see forever — recovery is always visible and bounded.
 - The diagnostic must never be re-framable as a test by the UI (no timer visible to the child, no score shown during).
+- The child must never be cut off from *progressing*: when the daily guided-time pool (2 hrs, AI-tailored lessons/tutorials) or the monthly AI budget is spent, **practice stays open**. Guardrails throttle the AI, never the learning. (AG.)
 
 ---
 

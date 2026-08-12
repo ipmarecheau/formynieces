@@ -42,6 +42,23 @@ Legend: ✅ exists today · 🔧 exists, needs change · 🆕 new
 |---|---|---|
 | module_id, ordered content blocks (explanation, media, interactive steps — H5P-grade in `LE-05`); MVP ships a placeholder page | open, walk through (unscored), ask **clarify chat** (LLM tutor — explains only, never authors, never scores) | belongs to one SyllabusModule; leads into 3 Tutorials then Practice (`LE-03`) |
 
+### StudentLlmUsage 🪙 🆕 (the per-student monthly LLM budget ledger — AG-01..04)
+*Backed by (proposed):* `student_llm_usage` (student_id, period `YYYY-MM`, input_tokens, output_tokens, cost_usd; unique per student+period).
+
+| Attributes | Verbs (system) | Notes |
+|---|---|---|
+| month-to-date input/output tokens + accumulated cost_usd | check budget BEFORE a call, record real usage AFTER | Two thresholds: **USD 1.00** discretionary stop (clarify chat, re-teach, worked examples) · **USD 1.50** hard ceiling (essential too: essay grading, guardian summaries). Cost from the provider's returned usage (OpenRouter `usage.cost`, else tokens × config price). Feeds the admin AI-usage panel. |
+
+### GuidedTime ⏳ 🆕 (the 2-hour daily active-time pool — AG-05..07)
+*Backed by (proposed):* `student_guided_time` (student_id, day, active_seconds; unique per student+day).
+
+| Attributes | Verbs (system) | Notes |
+|---|---|---|
+| active seconds spent today on guided, LLM-tailored activities | accrue on active engagement, reset daily | Counts lessons, tutorials, clarify chat, re-teach — never practice (the MC climb is unlimited, no LLM). At 2h, guided activities lock kindly for the day; practice stays open. |
+
+### LearningProfile 🧭 🆕 (compact per-student tailoring signal — AG-08)
+*Backed by (proposed):* a small `learning_profile` JSON on the student (derived tags — weak strands, misconceptions, style), never chat transcripts, never PII. Injected into AI tutor prompts so guidance stays personal across ephemeral sessions.
+
 ### ProgressRecord 📈 ✅
 *Backed by:* `student_progress` (status, score, previous_score)
 

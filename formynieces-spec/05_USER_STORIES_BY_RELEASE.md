@@ -232,6 +232,18 @@ the parts not yet delivered, by band.
   **interactive lesson + clarify chat** (`LE-01…04`, needs the `LlmService` surface) →
   **trigger-based re-teach** (`LL-14/15/16/22`) → **maintenance decay** (`LL-17`, needs a
   scheduler). The old 3-rung `1/2/3` mastery rule is retired.
+- **MVP — AI governance (`ai_governance.feature`, new 2026-08-12).** Guardrails around every
+  LLM the platform uses. **Cost:** a per-student monthly budget metered from real token usage —
+  discretionary AI (clarify chat, re-teach, worked examples) stops at **USD 1.00**, essential AI
+  (essay grading, guardian summaries) runs to a **USD 1.50** hard ceiling; budget is checked
+  *before* each call so spend never overshoots (`AG-01…04`). **Time:** guided, LLM-tailored
+  learning (lessons/tutorials/chat/re-teach) draws from a **2-hour daily active-time pool** (the
+  Alpha "2-hour learning" model); practice is unlimited and never counts; at the cap guided locks
+  kindly, practice stays open (`AG-05…07`). **Tailoring:** a compact derived-tag `learning_profile`
+  (no transcripts, no PII) personalises the tutor prompts (`AG-08`). **Reporting:** a Filament
+  AI-usage panel shows per-student tokens/spend against the caps + guided-time used, with a
+  roll-up total (`AG-09/10`). Build order: cost governor + ledger + `LlmService::chat` → admin
+  panel → (feeds `LE-01…04` and `LL-14…16`) → guided-time cap → learning profile.
 - **V1 (`@v1.1`) unbuilt:** diagnostic retake (`DG-17`, test exists/unverified), writing
   history + guardian writing view (`WR-04/05`), guardian inline digest (`GD-06`), phone
   verify (`GO-06`), stale-mastery decay (`LL-07`).
