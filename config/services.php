@@ -36,8 +36,9 @@ return [
         // AG-05..07: daily ACTIVE guided-learning cap (lessons/tutorials/chat/re-teach).
         // Practice is unlimited and never counts. Default 2 hours (the Alpha model).
         'guided_daily_seconds' => (int) env('LLM_GUIDED_DAILY_SECONDS', 7200),
-        // AG-11: warn her when this little guided time is left, so the lock isn't abrupt.
-        'guided_warn_seconds' => (int) env('LLM_GUIDED_WARN_SECONDS', 600),
+        // AG-11: the final-countdown banner appears when this little guided time is left
+        // (default 60s — "less than a minute", with a live timer that reddens at 5s).
+        'guided_warn_seconds' => (int) env('LLM_GUIDED_WARN_SECONDS', 60),
     ],
 
     'postmark' => [

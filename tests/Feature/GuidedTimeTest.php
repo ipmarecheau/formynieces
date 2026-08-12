@@ -77,12 +77,12 @@ it('locks guided pages once the daily pool is spent, but leaves practice open', 
         ->assertDontSeeText('Practice is always open');
 })->group('scenario:AG-06');
 
-it('warns her with a live banner when guided time is running low', function () {
+it('warns her with a live countdown banner in the final minute', function () {
     $student = gtStudent('11');
     $module = gtModule();
-    // 5 minutes left — within the 10-minute warn window.
+    // 45 seconds left — inside the 60-second final-countdown window.
     StudentGuidedTime::create([
-        'student_id' => $student->id, 'day' => now()->toDateString(), 'active_seconds' => 7200 - 300,
+        'student_id' => $student->id, 'day' => now()->toDateString(), 'active_seconds' => 7200 - 45,
     ]);
 
     expect(app(GuidedTime::class)->isRunningLow($student->id))->toBeTrue();
@@ -90,14 +90,18 @@ it('warns her with a live banner when guided time is running low', function () {
     actingAs($student)
         ->get(route('practice.lesson', $module))
         ->assertOk()
-        ->assertSee('guided-warn-banner', false)   // the warning banner is wired in
-        ->assertSee('updateBanner(300)', false);   // seeded live with the current remaining
+        ->assertSee('guided-warn-banner', false)     // the countdown banner is wired in
+        ->assertSee('guided-warn-timer', false)      // ...with its live timer
+        ->assertSee('var remaining = 45', false);    // seeded from the server's current remaining
 })->group('scenario:AG-11');
 
-it('does not warn when plenty of guided time remains', function () {
+it('does not warn when more than the final minute of guided time remains', function () {
     $student = gtStudent('11b');
+    StudentGuidedTime::create([
+        'student_id' => $student->id, 'day' => now()->toDateString(), 'active_seconds' => 7200 - 300,
+    ]);
 
-    expect(app(GuidedTime::class)->isRunningLow($student->id))->toBeFalse();   // fresh = full pool
+    expect(app(GuidedTime::class)->isRunningLow($student->id))->toBeFalse();   // 5 min left = no banner yet
 })->group('scenario:AG-11');
 
 it('gates the heartbeat on visibility and recent activity, so idle time does not count', function () {
