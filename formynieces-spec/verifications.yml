@@ -601,3 +601,8 @@
   commit: f6ddb65
   spec_hash: 5e8a3991471d
   note: "Browser-verified: in the final minute a pill banner slides in playfully with a live m:ss countdown timer that turns red in the last 5s, then locks at zero."
+- scenario: AG-10
+  verified_at: 2026-08-12
+  commit: 8d5fd5c
+  spec_hash: d7a2790164b3
+  note: "Browser-verified: the admin AI-usage panel shows a 'Guided today' column with each student's active guided minutes used vs the 2-hour cap (e.g. 60 / 120 min)."
