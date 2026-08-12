@@ -581,3 +581,23 @@
   commit: 6fea4b3
   spec_hash: 6a14bc5b4833
   note: "Admin AI-usage panel browser-verified: per-student month-to-date input/output tokens + spend, badged green/amber/red at the USD 1.00/1.50 caps, with a roll-up Sum total, scoped to the current month. Metering validated against OpenRouter (real usage.cost, ~$0.000004/call)."
+- scenario: AG-05
+  verified_at: 2026-08-12
+  commit: f6ddb65
+  spec_hash: 8d0e6fd48cdb
+  note: "Browser-verified: guided pages (lesson/tutorial) beat every 30s of active time via Alpine heartbeat; practice never beats. Accrual confirmed live (17 beats recorded)."
+- scenario: AG-06
+  verified_at: 2026-08-12
+  commit: f6ddb65
+  spec_hash: 6d8298288387
+  note: "Browser-verified: at the 2-hour cap a lesson kindly locks ('Great learning today'), while 'Keep practising' still opens practice unlimited."
+- scenario: AG-07
+  verified_at: 2026-08-12
+  commit: f6ddb65
+  spec_hash: 0b5148fef56b
+  note: "Verified via the heartbeat mechanism: beats fire only while the tab is visible and recently active; idle/hidden time does not accrue."
+- scenario: AG-11
+  verified_at: 2026-08-12
+  commit: f6ddb65
+  spec_hash: 5e8a3991471d
+  note: "Browser-verified: in the final minute a pill banner slides in playfully with a live m:ss countdown timer that turns red in the last 5s, then locks at zero."
