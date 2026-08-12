@@ -205,3 +205,13 @@ Feature: Adaptive diagnostic
     When her guardian requests a retake
     Then a new diagnostic session is created for the student
     And progress earned through the learning loop is unchanged
+
+  @scenario:DG-18
+  Scenario: The diagnostic uses hardest bank questions and the graph to ask the minimum
+    Given the diagnostic draws the hardest (D5) question per competency from the bank
+    When a student answers the hardest question for a competency correctly
+    Then that competency and its whole prerequisite chain are inferred mastered
+      And none of those prerequisite competencies are asked again
+    When she answers a competency's hardest question incorrectly
+    Then the diagnostic descends to probe that competency's prerequisites
+      And it asks only the minimum questions needed to place every competency
