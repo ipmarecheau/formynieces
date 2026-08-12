@@ -48,12 +48,12 @@ it('beats from guided pages but never from practice', function () {
     actingAs($student)
         ->get(route('practice.lesson', $module))
         ->assertOk()
-        ->assertSee('/guided-time/beat', false);      // the lesson heartbeats
+        ->assertSee('visibilityState', false);      // the lesson heartbeats
 
     actingAs($student)
         ->get(route('practice.walk', $module))
         ->assertOk()
-        ->assertDontSee('/guided-time/beat', false);   // practice never counts
+        ->assertDontSee('visibilityState', false);   // practice never counts
 })->group('scenario:AG-05');
 
 it('locks guided pages once the daily pool is spent, but leaves practice open', function () {
