@@ -77,6 +77,29 @@ it('locks guided pages once the daily pool is spent, but leaves practice open', 
         ->assertDontSeeText('Practice is always open');
 })->group('scenario:AG-06');
 
+it('warns her with a live banner when guided time is running low', function () {
+    $student = gtStudent('11');
+    $module = gtModule();
+    // 5 minutes left — within the 10-minute warn window.
+    StudentGuidedTime::create([
+        'student_id' => $student->id, 'day' => now()->toDateString(), 'active_seconds' => 7200 - 300,
+    ]);
+
+    expect(app(GuidedTime::class)->isRunningLow($student->id))->toBeTrue();
+
+    actingAs($student)
+        ->get(route('practice.lesson', $module))
+        ->assertOk()
+        ->assertSee('guided-warn-banner', false)   // the warning banner is wired in
+        ->assertSee('updateBanner(300)', false);   // seeded live with the current remaining
+})->group('scenario:AG-11');
+
+it('does not warn when plenty of guided time remains', function () {
+    $student = gtStudent('11b');
+
+    expect(app(GuidedTime::class)->isRunningLow($student->id))->toBeFalse();   // fresh = full pool
+})->group('scenario:AG-11');
+
 it('gates the heartbeat on visibility and recent activity, so idle time does not count', function () {
     $student = gtStudent('07');
     $module = gtModule();

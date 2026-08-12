@@ -51,6 +51,20 @@ class GuidedTime
         return $this->remainingSecondsToday($studentId) <= 0;
     }
 
+    /** True when guided time is running low (some left, but at/under the warn threshold) — AG-11. */
+    public function isRunningLow(int $studentId): bool
+    {
+        $remaining = $this->remainingSecondsToday($studentId);
+
+        return $remaining > 0 && $remaining <= $this->warnSeconds();
+    }
+
+    /** The remaining-time threshold at which we warn her (default 10 minutes). */
+    public function warnSeconds(): int
+    {
+        return (int) config('services.llm.guided_warn_seconds', 600);
+    }
+
     /** The daily guided-time cap in seconds (default 2 hours). */
     public function capSeconds(): int
     {

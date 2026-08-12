@@ -73,6 +73,13 @@ Feature: AI governance — cost, time and tailoring guardrails
     When she is not actively engaged
     Then idle time does not draw down her guided-time pool
 
+  @student @scenario:AG-11
+  Scenario: A low-guided-time warning precedes the lock
+    Given her remaining guided time today is at or below the warning threshold
+    When she is on a lesson or tutorial
+    Then a banner tells her roughly how many minutes of guided learning are left
+    And the warning appears while she still has time, before the pool is spent
+
   # ----------------------------------------------------------------- tailoring
 
   @system @scenario:AG-08
