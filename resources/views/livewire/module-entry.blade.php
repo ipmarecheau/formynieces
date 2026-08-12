@@ -41,6 +41,12 @@
             <p class="me-lead">You've got <b>{{ $topic }}</b> locked in. Come back in <b>{{ $daysToDue }}</b> {{ $daysToDue === 1 ? 'day' : 'days' }} to keep it sharp — no need to do anything until then.</p>
             <a href="{{ route('student.voyage') }}" class="me-start">Back to my voyage →</a>
 
+        @elseif ($phase === 'maintenance_due')
+            <img class="me-smooth" src="{{ asset('images/voyage/companion/smooth-cheer.webp') }}" alt="Smooth the turtle">
+            <p class="me-head">Time to keep it sharp! ✨</p>
+            <p class="me-lead">You mastered <b>{{ $topic }}</b> a while back. Answer three tricky ones first try to prove you've still got it — and keep your star.</p>
+            <button type="button" class="me-start" wire:click="beginCheck">Start the re-check →</button>
+
         @elseif ($phase === 'explainer')
             <p class="me-head">How this level works</p>
             <p class="me-lead">
@@ -57,7 +63,7 @@
 
         @elseif ($phase === 'check')
             @php $current = $checkQuestions[$checkIndex] ?? null; @endphp
-            <p class="me-head">Quick check <span class="me-count">{{ $checkIndex + 1 }} of {{ count($checkQuestions) }}</span></p>
+            <p class="me-head">{{ $isMaintenance ? 'Re-check' : 'Quick check' }} <span class="me-count">{{ $checkIndex + 1 }} of {{ count($checkQuestions) }}</span></p>
             @if ($current)
                 <div class="me-prompt">{!! $current['prompt'] !!}</div>
                 <div class="me-options">
@@ -94,8 +100,10 @@
 
     @if ($phase === 'outcome' && $mastered)
         <x-celebration
-            title="You tested out! 🎉"
-            :sub="'You aced the easy, medium and tricky one first try — '.$topic.' is mastered. No lesson needed!'">
+            :title="$isMaintenance ? 'Still sharp! ⭐' : 'You tested out! 🎉'"
+            :sub="$isMaintenance
+                ? 'Three tricky ones, first try — you\'ve still got '.$topic.'. Your star is safe for another two weeks!'
+                : 'You aced the easy, medium and tricky one first try — '.$topic.' is mastered. No lesson needed!'">
             <a href="{{ route('student.voyage') }}">Back to my voyage →</a>
         </x-celebration>
     @endif

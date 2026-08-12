@@ -30,11 +30,14 @@ class ModuleEntry extends Component
 
     public string $topic;
 
-    /** maintained | explainer | check | outcome */
+    /** maintained | maintenance_due | explainer | check | outcome */
     public string $phase = 'explainer';
 
     /** Days until the mastered level's re-mastery comes due (maintained phase only). */
     public int $daysToDue = 0;
+
+    /** True when the check being run is a maintenance re-check (3× D5), not a test-out. */
+    public bool $isMaintenance = false;
 
     /**
      * The served check questions, display-safe (no correct_index leaks to the client).
@@ -71,14 +74,21 @@ class ModuleEntry extends Component
             if (now()->lt($due)) {
                 $this->phase = 'maintained';
                 $this->daysToDue = max(1, (int) ceil(now()->diffInDays($due)));
+            } else {
+                // Due day reached: the re-mastery check unlocks (LL-24).
+                $this->phase = 'maintenance_due';
+                $this->isMaintenance = true;
             }
         }
     }
 
-    /** Leave the explainer and serve the D1/D3/D5 competency check. */
+    /** Serve the check — the D1/D3/D5 test-out, or the 3×D5 maintenance re-check. */
     public function beginCheck(): void
     {
-        $served = app(CompetencyCheck::class)->serve(auth()->id(), $this->moduleId);
+        $service = app(CompetencyCheck::class);
+        $served = $this->isMaintenance
+            ? $service->serveMaintenance(auth()->id(), $this->moduleId)
+            : $service->serve(auth()->id(), $this->moduleId);
 
         $this->checkQuestions = $served->map(fn (PracticeQuestion $q): array => [
             'id' => $q->id,
@@ -113,9 +123,11 @@ class ModuleEntry extends Component
     private function finishCheck(): void
     {
         $served = PracticeQuestion::whereIn('id', array_column($this->checkQuestions, 'id'))->get();
+        $service = app(CompetencyCheck::class);
 
-        $this->mastered = app(CompetencyCheck::class)
-            ->grade(auth()->id(), $this->moduleId, $served, $this->checkAnswers);
+        $this->mastered = $this->isMaintenance
+            ? $service->gradeMaintenance(auth()->id(), $this->moduleId, $served, $this->checkAnswers)
+            : $service->grade(auth()->id(), $this->moduleId, $served, $this->checkAnswers);
 
         $this->phase = 'outcome';
     }

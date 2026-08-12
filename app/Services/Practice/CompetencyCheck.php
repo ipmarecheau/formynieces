@@ -26,6 +26,12 @@ class CompetencyCheck
     /** One question at each real difficulty, easy → tricky. */
     public const DIFFICULTIES = [1, 3, 5];
 
+    /** The hardest rung — the maintenance re-check draws only these. */
+    public const MASTERY_DIFFICULTY = 5;
+
+    /** How many D5 questions the maintenance re-check asks (LL-24). */
+    public const MAINTENANCE_QUESTIONS = 3;
+
     public function __construct(
         private PracticeQuestions $questions,
         private QuestionExposure $exposure,
@@ -67,6 +73,52 @@ class CompetencyCheck
     public function grade(int $studentId, int $moduleId, Collection $served, array $answers): bool
     {
         $passed = $served->count() === count(self::DIFFICULTIES)
+            && $served->every(fn (PracticeQuestion $q): bool => ($answers[$q->id] ?? null) === $q->correct_index);
+
+        if ($passed) {
+            $this->master($studentId, $moduleId);
+        }
+
+        return $passed;
+    }
+
+    /**
+     * The maintenance re-check: three unseen D5 questions to keep a mastered level sharp
+     * (LL-24). Recycles the least-recently-seen D5 when the pool is exhausted, so a
+     * long-mastered level can always be re-checked.
+     *
+     * @return Collection<int,PracticeQuestion>
+     */
+    public function serveMaintenance(int $studentId, int $moduleId): Collection
+    {
+        $pool = $this->questions->forModule($moduleId)->where('difficulty', self::MASTERY_DIFFICULTY)->values();
+        $served = collect();
+
+        for ($i = 0; $i < self::MAINTENANCE_QUESTIONS; $i++) {
+            $question = $this->exposure->pickUnseen($studentId, $pool, allowRecycle: true);
+            if ($question === null) {
+                break;
+            }
+
+            $this->exposure->record($studentId, $question->content_hash, 'maintenance');
+            $served->push($question);
+            $pool = $pool->reject(fn (PracticeQuestion $q): bool => $q->id === $question->id)->values();
+        }
+
+        return $served;
+    }
+
+    /**
+     * Grade the maintenance re-check. Three D5 first-try-correct re-masters the module and
+     * resets its two-week window; anything less leaves the window as it was (LL-17 decay
+     * still governs the grace).
+     *
+     * @param  Collection<int,PracticeQuestion>  $served
+     * @param  array<int,int>  $answers
+     */
+    public function gradeMaintenance(int $studentId, int $moduleId, Collection $served, array $answers): bool
+    {
+        $passed = $served->count() === self::MAINTENANCE_QUESTIONS
             && $served->every(fn (PracticeQuestion $q): bool => ($answers[$q->id] ?? null) === $q->correct_index);
 
         if ($passed) {
