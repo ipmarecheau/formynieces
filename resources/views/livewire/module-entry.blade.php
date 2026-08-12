@@ -35,7 +35,13 @@
     <p class="me-topic">{{ $topic }}</p>
 
     <div class="me-card">
-        @if ($phase === 'explainer')
+        @if ($phase === 'maintained')
+            <img class="me-smooth" src="{{ asset('images/voyage/companion/smooth-cheer.webp') }}" alt="Smooth the turtle">
+            <p class="me-head">You've mastered this! ⭐</p>
+            <p class="me-lead">You've got <b>{{ $topic }}</b> locked in. Come back in <b>{{ $daysToDue }}</b> {{ $daysToDue === 1 ? 'day' : 'days' }} to keep it sharp — no need to do anything until then.</p>
+            <a href="{{ route('student.voyage') }}" class="me-start">Back to my voyage →</a>
+
+        @elseif ($phase === 'explainer')
             <p class="me-head">How this level works</p>
             <p class="me-lead">
                 Every level is the same little adventure. Here's the plan, so you always

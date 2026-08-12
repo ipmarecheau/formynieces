@@ -11,6 +11,7 @@ class StudentProgress extends Model
         'student_id',
         'module_id',
         'status',
+        'mastered_at',
         'score',
         'previous_score',
         'current_rung',
@@ -19,11 +20,12 @@ class StudentProgress extends Model
     ];
 
     protected $casts = [
-        'score'               => 'integer',
-        'previous_score'      => 'integer',
-        'current_rung'        => 'integer',
-        'current_streak'      => 'integer',
+        'score' => 'integer',
+        'previous_score' => 'integer',
+        'current_rung' => 'integer',
+        'current_streak' => 'integer',
         'streak_question_ids' => 'array',
+        'mastered_at' => 'datetime',
     ];
 
     public function student(): BelongsTo

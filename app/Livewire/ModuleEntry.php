@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\PracticeQuestion;
+use App\Models\StudentProgress;
 use App\Models\SyllabusModule;
 use App\Services\Practice\CompetencyCheck;
 use Livewire\Attributes\Layout;
@@ -22,12 +23,18 @@ use Livewire\Component;
 #[Layout('components.layouts.diagnostic')]
 class ModuleEntry extends Component
 {
+    /** The maintenance window: a mastered level is locked this many days before re-mastery. */
+    public const MAINTENANCE_DAYS = 14;
+
     public int $moduleId;
 
     public string $topic;
 
-    /** explainer | check | outcome */
+    /** maintained | explainer | check | outcome */
     public string $phase = 'explainer';
+
+    /** Days until the mastered level's re-mastery comes due (maintained phase only). */
+    public int $daysToDue = 0;
 
     /**
      * The served check questions, display-safe (no correct_index leaks to the client).
@@ -49,6 +56,23 @@ class ModuleEntry extends Component
     {
         $this->moduleId = $module->id;
         $this->topic = $module->topic;
+
+        // A mastered level is LOCKED for its two-week window: greet her with a
+        // "come back in N days" confirmation instead of the loop (LL-23). On or
+        // after the due day the re-mastery check unlocks (LL-24).
+        $progress = StudentProgress::query()
+            ->where('student_id', auth()->id())
+            ->where('module_id', $module->id)
+            ->first();
+
+        if ($progress?->status === 'mastered' && $progress->mastered_at !== null) {
+            $due = $progress->mastered_at->copy()->addDays(self::MAINTENANCE_DAYS);
+
+            if (now()->lt($due)) {
+                $this->phase = 'maintained';
+                $this->daysToDue = max(1, (int) ceil(now()->diffInDays($due)));
+            }
+        }
     }
 
     /** Leave the explainer and serve the D1/D3/D5 competency check. */

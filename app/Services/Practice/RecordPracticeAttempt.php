@@ -110,6 +110,7 @@ class RecordPracticeAttempt
                 if ($progress->current_streak >= self::STREAK_TO_CLEAR) {
                     if ($isMasteryRung) {
                         $progress->status = 'mastered';
+                        $progress->mastered_at = now();   // anchors the maintenance window (LL-23/24)
                         $progress->current_streak = self::STREAK_TO_CLEAR; // cap
                     } else {
                         $progress->current_rung = $this->nextRung($progress->current_rung);

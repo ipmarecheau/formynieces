@@ -88,6 +88,7 @@ class CompetencyCheck
 
         $progress->previous_score = $progress->score;
         $progress->status = 'mastered';
+        $progress->mastered_at = now();   // anchors the maintenance window (LL-23/24)
         $progress->current_rung = 5;
         $progress->current_streak = 3;
         $progress->score = 100;
