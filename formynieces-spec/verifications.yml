@@ -531,3 +531,8 @@
   commit: ea4be87
   spec_hash: 059ae82c40e8
   note: "Browser-verified: /practice/{module}/enter shows the student-language 'How this level works' explainer with the 4-step plan; 'Start the quick check' advances to the check phase; Voyage island + /my-map front door now land on the explainer instead of the old lesson page."
+- scenario: LL-20
+  verified_at: 2026-08-12
+  commit: ef2ce8c
+  spec_hash: 615762c4895e
+  note: "Browser-verified on module 55: the check serves one D1/D3/D5 question in order; all three first-try-correct masters the module (test-out), any first-try miss does not; only unseen questions served. Prompt HTML-render bug fixed in follow-up."
