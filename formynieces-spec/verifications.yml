@@ -511,3 +511,18 @@
   commit: 5fa97a7
   spec_hash: 62f817d3d60e
   note: "Browser-verified on dev: zoom in/out (min=width-fit, max=2x), drag-pan with edge bounce, Find me recenter, vertical centering; map fills ~half the viewport with legend + messaging beside it, stacking on mobile; both overworld and island"
+- scenario: QB-16
+  verified_at: 2026-08-12
+  commit: ed96f3e
+  spec_hash: 9abaf0784a1d
+  note: "Verified on dev: correct_index spread across A/B/C/D (was all index 0); import shuffles, migration redistributed 3029 questions"
+- scenario: LL-18
+  verified_at: 2026-08-12
+  commit: ed96f3e
+  spec_hash: 1908cdeb1ccd
+  note: "Verified on dev as demo student: practice never repeated a prompt; student_question_exposures grows per question shown"
+- scenario: DG-18
+  verified_at: 2026-08-12
+  commit: ed96f3e
+  spec_hash: 719cdaacfb27
+  note: "Verified via GraphDiagnostic: asks the chain-top (module 3) first; a correct hardest answer infers the whole prerequisite chain (2 & 1 inferred_mastered) in one question; algorithm only, live cutover pending"
