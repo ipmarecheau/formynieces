@@ -611,3 +611,33 @@
   commit: 0c4b14a
   spec_hash: 74a644008b61
   note: "Confirmed via tinker + tests: a compact learning_profile (short derived tags, no transcripts/PII) builds a promptContext line ('She finds these tricky: … What helps her: …') injected into the worked-example tutor prompt; remember() de-dupes and size-caps."
+- scenario: LE-01
+  verified_at: 2026-08-12
+  commit: ab5952b
+  spec_hash: 9a39a30b0692
+  note: "Browser-verified: interactive lesson served from authored blocks (heading/text/key/example/check/visual), revealed one at a time with a progress bar; inline checks gate progress; completion celebration unlocks practice; reusable LessonTemplate scaffold."
+- scenario: LE-04
+  verified_at: 2026-08-12
+  commit: ab5952b
+  spec_hash: 9787a9e49070
+  note: "Browser-verified: Socratic clarify chat beside the lesson (real LLM), grounded + scope-locked (redirects off-topic), never dumps answers; starter chips + 'ask for more examples' from the lesson; ephemeral history."
+- scenario: AG-12
+  verified_at: 2026-08-12
+  commit: ab5952b
+  spec_hash: cabd7def7f92
+  note: "Child input screened by Llama Guard before reaching the tutor; unsafe never forwarded (tested + live moderation on the chat)."
+- scenario: AG-13
+  verified_at: 2026-08-12
+  commit: ab5952b
+  spec_hash: fab28ec48744
+  note: "Tutor reply screened before display; unsafe withheld with a safe fallback (tested)."
+- scenario: AG-14
+  verified_at: 2026-08-12
+  commit: ab5952b
+  spec_hash: 8d44d350efc8
+  note: "Moderation fails closed: classifier unavailable -> content withheld, safe fallback (tested)."
+- scenario: AG-15
+  verified_at: 2026-08-12
+  commit: ab5952b
+  spec_hash: 946e4b8d3e4c
+  note: "Concerning categories (self-harm/abuse/exploitation) record a SafetyFlag for guardian+admin follow-up, not just a block (tested)."
