@@ -42,6 +42,8 @@ Legend: ✅ exists today · 🔧 exists, needs change · 🆕 new
 |---|---|---|
 | module_id, ordered content blocks (explanation, media, interactive steps — H5P-grade in `LE-05`); MVP ships a placeholder page | open, walk through (unscored), ask **clarify chat** (LLM tutor — explains only, never authors, never scores) | belongs to one SyllabusModule; leads into 3 Tutorials then Practice (`LE-03`) |
 
+**Lesson block format (reusable template):** a lesson is `title` + an ordered `blocks` array. Block types: `heading` · `text` · `key` (Remember-this rule) · `example` (worked, with `steps`) · `check` (inline self-check: `question`/`options`/`answer`/`explain`) · `visual` (on-platform image). `App\Support\LessonTemplate::scaffold($title, $topic)` returns the canonical pedagogical skeleton (hook → rule → worked example → check → extend → check → wrap) to fill in for any ELA/Math topic — the format is the same everywhere so lessons author consistently.
+
 ### StudentLlmUsage 🪙 🆕 (the per-student monthly LLM budget ledger — AG-01..04)
 *Backed by (proposed):* `student_llm_usage` (student_id, period `YYYY-MM`, input_tokens, output_tokens, cost_usd; unique per student+period).
 
