@@ -23,7 +23,7 @@ class LlmService
     /** Optional attribution headers some providers (e.g. OpenRouter) surface. */
     private array $extraHeaders;
 
-    public function __construct()
+    public function __construct(private LlmBudget $budget)
     {
         // Cast through '' so a missing key never fatals construction — a failed
         // call degrades gracefully via fallback() instead.
@@ -37,7 +37,25 @@ class LlmService
         ]);
     }
 
-    public function complete(string $systemPrompt, string $userPrompt, int $maxTokens = 1024): string
+    /**
+     * A single-turn completion. When $studentId is given, the call's real token usage
+     * is metered to her monthly budget ledger (AG-01).
+     */
+    public function complete(string $systemPrompt, string $userPrompt, int $maxTokens = 1024, ?int $studentId = null): string
+    {
+        return $this->chat([
+            ['role' => 'system', 'content' => $systemPrompt],
+            ['role' => 'user', 'content' => $userPrompt],
+        ], $maxTokens, $studentId);
+    }
+
+    /**
+     * A multi-turn chat completion — the surface the clarify chat and re-teach use.
+     * $messages is an OpenAI-style role/content list. Usage is metered to $studentId.
+     *
+     * @param  array<int, array{role:string, content:string}>  $messages
+     */
+    public function chat(array $messages, int $maxTokens = 512, ?int $studentId = null): string
     {
         try {
             $response = Http::withToken($this->apiKey)
@@ -46,10 +64,7 @@ class LlmService
                 ->post("{$this->baseUrl}/chat/completions", [
                     'model' => $this->model,
                     'max_tokens' => $maxTokens,
-                    'messages' => [
-                        ['role' => 'system', 'content' => $systemPrompt],
-                        ['role' => 'user', 'content' => $userPrompt],
-                    ],
+                    'messages' => $messages,
                 ]);
 
             if ($response->failed()) {
@@ -58,6 +73,8 @@ class LlmService
                 return $this->fallback();
             }
 
+            $this->meter($studentId, $response->json('usage'));
+
             return $response->json('choices.0.message.content') ?? $this->fallback();
 
         } catch (\Exception $e) {
@@ -65,6 +82,26 @@ class LlmService
 
             return $this->fallback();
         }
+    }
+
+    /**
+     * Record one call's real usage against a student's monthly budget. Uses the
+     * provider's usage.cost when present (OpenRouter), else estimates from tokens.
+     *
+     * @param  array<string, mixed>|null  $usage
+     */
+    private function meter(?int $studentId, ?array $usage): void
+    {
+        if ($studentId === null || $usage === null) {
+            return;
+        }
+
+        $this->budget->record(
+            $studentId,
+            (int) ($usage['prompt_tokens'] ?? 0),
+            (int) ($usage['completion_tokens'] ?? 0),
+            isset($usage['cost']) ? (float) $usage['cost'] : null,
+        );
     }
 
     public function completeJson(string $systemPrompt, string $userPrompt, int $maxTokens = 1024): array
