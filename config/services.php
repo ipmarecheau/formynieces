@@ -28,9 +28,10 @@ return [
         // cap; essential AI (essay grading, guardian summaries) runs to the hard cap.
         'monthly_cap_usd' => (float) env('LLM_MONTHLY_CAP_USD', 1.50),
         'monthly_soft_cap_usd' => (float) env('LLM_MONTHLY_SOFT_CAP_USD', 1.00),
-        // Cost fallback when the provider does not return usage.cost — USD per 1M tokens.
-        'price_input_per_mtok' => (float) env('LLM_PRICE_INPUT_PER_MTOK', 0.30),
-        'price_output_per_mtok' => (float) env('LLM_PRICE_OUTPUT_PER_MTOK', 0.90),
+        // Cost fallback ONLY when the provider omits usage.cost — the real charged cost
+        // (OpenRouter usage.cost) is preferred. Defaults are Qwen3.7 Flash's real rates.
+        'price_input_per_mtok' => (float) env('LLM_PRICE_INPUT_PER_MTOK', 0.03),
+        'price_output_per_mtok' => (float) env('LLM_PRICE_OUTPUT_PER_MTOK', 0.13),
     ],
 
     'postmark' => [
