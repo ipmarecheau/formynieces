@@ -188,10 +188,40 @@ Feature: Module learning loop
 
   # ------------------------------------------------------------------ maintenance
 
+  # Once mastered, a level is LOCKED for a two-week maintenance window: opening it shows a
+  # "come back in N days" confirmation, never the loop. On the due day (mastered + 2 weeks)
+  # the re-mastery check unlocks for a FIVE-DAY grace, and the level glows on her map. Re-
+  # master in the grace and the window resets; let the grace expire and it decays to review.
+
+  @scenario:LL-23
+  Scenario: A mastered level greets her with a maintenance confirmation, not the loop
+    Given she has mastered a module
+    And its two-week maintenance window has not yet come due
+    When she opens that level
+    Then she sees a confirmation that she has mastered it
+    And she is told to come back in N days to keep it
+    And she is shown neither the loop explainer nor the competency check
+
+  @scenario:LL-24
+  Scenario: Re-mastery unlocks only on the due day, for a five-day grace
+    Given she mastered a module two weeks ago
+    When she opens that level on or after its due day
+    Then the re-mastery check is available
+    And re-mastering it (three difficulty-5 questions first-try-correct) resets the two-week window
+    And the check could not have been started before the due day
+
+  @scenario:LL-25
+  Scenario: A level due for review glows on her map during its grace period
+    Given a mastered module has reached its due day
+    And its five-day grace period has not expired
+    When she views her map
+    Then that level glows with a pulsing red outline to show it needs review
+
   @scenario:LL-17
   Scenario: A mastered competency must be maintained or it slips to review
     Given a module was mastered
-    When more than two weeks pass without three difficulty-5 questions answered for it
+    When its two-week maintenance window comes due
+    And its five-day grace passes without three difficulty-5 questions answered first-try-correct
     Then its status becomes "mastered_review"
     And it becomes eligible for a future weekly target
     And answering three difficulty-5 questions first-try-correct restores it to "mastered"
