@@ -7,7 +7,7 @@
         .cc-head small { display: block; font-size: 11.5px; color: rgba(196,181,253,0.7); }
         .cc-log { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 10px; }
         .cc-empty { margin: auto; text-align: center; color: rgba(196,181,253,0.7); font-size: 14px; line-height: 1.5; padding: 0 10px; }
-        .cc-msg { max-width: 86%; padding: 10px 13px; border-radius: 14px; font-size: 14px; line-height: 1.5; }
+        .cc-msg { max-width: 86%; padding: 11px 14px; border-radius: 14px; font-size: 15.5px; line-height: 1.6; }
         .cc-msg.user { align-self: flex-end; background: linear-gradient(135deg,#0e7490,#f6b71e); color: #fff; border-bottom-right-radius: 4px; }
         .cc-msg.assistant { align-self: flex-start; background: rgba(255,255,255,0.06); color: #e6f2fb; border: 1px solid rgba(34,211,238,0.25); border-bottom-left-radius: 4px; }
         .cc-form { display: flex; gap: 8px; padding: 12px; border-top: 1.5px solid rgba(34,211,238,0.2); }

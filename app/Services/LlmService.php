@@ -70,6 +70,10 @@ class LlmService
                     'model' => $model ?? $this->model,
                     'max_tokens' => $maxTokens,
                     'messages' => $messages,
+                    // Disable hidden reasoning: Qwen3-Flash (and other reasoning models)
+                    // otherwise spend the whole token budget "thinking" and return EMPTY
+                    // content. We want the answer, not the chain-of-thought — and it's cheaper.
+                    'reasoning' => ['enabled' => false],
                     // Ask the provider (OpenRouter) to return the call's real charged
                     // cost in usage.cost, so budget metering is exact, not estimated.
                     'usage' => ['include' => true],
