@@ -1,30 +1,23 @@
-{{-- AG-05/07: credits active guided-learning time to the daily 2-hour pool. Beats only
-     while the tab is visible AND she has been active recently, so idle never counts. When
-     the pool is spent, the page reloads so the guided lock (AG-06) takes over. Wrapped in
-     Livewire's @script so it actually runs inside the component. --}}
-@script
-<script>
+{{-- AG-05/07: credits active guided-learning time to the daily 2-hour pool. Driven by
+     Alpine (x-init) so it reliably runs inside the Livewire component; wire:ignore keeps
+     Livewire from morphing it away. Beats only while the tab is visible AND recently
+     active, so idle never counts. On a spent pool the page reloads into the lock (AG-06). --}}
+<div wire:ignore x-data x-init="
     (function () {
-        var BEAT_MS = {{ \App\Services\GuidedTime::BEAT_SECONDS }} * 1000;
-        var BEAT_URL = {!! json_encode(route('guided-time.beat', absolute: false), JSON_UNESCAPED_SLASHES) !!};
-        var CSRF = {!! json_encode(csrf_token()) !!};
         var lastActive = Date.now();
-
         ['mousemove', 'keydown', 'pointerdown', 'scroll', 'touchstart'].forEach(function (evt) {
             window.addEventListener(evt, function () { lastActive = Date.now(); }, { passive: true });
         });
-
         setInterval(function () {
-            if (document.visibilityState !== 'visible') return;   // not looking → no count
-            if (Date.now() - lastActive > 60000) return;          // idle > 60s → no count
-            fetch(BEAT_URL, {
+            if (document.visibilityState !== 'visible') return;
+            if (Date.now() - lastActive > 60000) return;
+            fetch('{{ route('guided-time.beat', absolute: false) }}', {
                 method: 'POST',
-                headers: { 'X-CSRF-TOKEN': CSRF, 'Accept': 'application/json' },
+                headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}', 'Accept': 'application/json' },
             })
                 .then(function (r) { return r.ok ? r.json() : null; })
                 .then(function (d) { if (d && !(d.remaining > 0)) window.location.reload(); })
                 .catch(function () {});
-        }, BEAT_MS);
+        }, {{ \App\Services\GuidedTime::BEAT_SECONDS }} * 1000);
     })();
-</script>
-@endscript
+"></div>
