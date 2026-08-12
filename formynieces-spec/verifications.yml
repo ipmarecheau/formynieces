@@ -576,3 +576,8 @@
   commit: 516a59b
   spec_hash: 06c4b7134463
   note: "Confirmed via tinker + end-to-end tests: attributed LLM calls meter real tokens/cost to the monthly ledger; discretionary AI stops at USD 1.00, essential runs to the USD 1.50 ceiling; budget checked before the request so nothing is sent/billed once over."
+- scenario: AG-09
+  verified_at: 2026-08-12
+  commit: 6fea4b3
+  spec_hash: 6a14bc5b4833
+  note: "Admin AI-usage panel browser-verified: per-student month-to-date input/output tokens + spend, badged green/amber/red at the USD 1.00/1.50 caps, with a roll-up Sum total, scoped to the current month. Metering validated against OpenRouter (real usage.cost, ~$0.000004/call)."
