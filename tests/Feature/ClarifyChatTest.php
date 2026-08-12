@@ -101,3 +101,19 @@ it('withholds an unsafe tutor reply', function () {
         ->assertDontSee('a reply the guard will flag')
         ->assertSee('let me put that a better way');
 })->group('scenario:AG-13');
+
+/** LE-04 — the lesson's "ask Smooth for more examples" button reaches the chat. */
+it('answers when the lesson asks Smooth for more examples', function () {
+    $student = ccStudent();
+    $module = ccModule();
+    fakeModerator(SafetyResult::safe());
+
+    $llm = Mockery::mock(LlmService::class);
+    $llm->shouldReceive('chat')->once()->andReturn('Sure — here is another worked example for you. 🐢');
+    $this->instance(LlmService::class, $llm);
+
+    Livewire::actingAs($student)
+        ->test(ClarifyChat::class, ['moduleId' => $module->id])
+        ->call('askSmooth', 'Show me another worked example')
+        ->assertSee('here is another worked example');
+})->group('scenario:LE-04');

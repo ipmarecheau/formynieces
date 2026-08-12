@@ -8,6 +8,7 @@ use App\Services\LearningProfile;
 use App\Services\LlmBudget;
 use App\Services\LlmService;
 use App\Services\Safety\ChildSafetyModerator;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 /**
@@ -56,6 +57,13 @@ class ClarifyChat extends Component
     {
         $this->draft = $prompt;
         $this->send();
+    }
+
+    /** Triggered from the lesson (e.g. "ask for more worked examples") via a Livewire event. */
+    #[On('ask-smooth')]
+    public function askSmooth(string $prompt): void
+    {
+        $this->ask($prompt);
     }
 
     public function send(): void
