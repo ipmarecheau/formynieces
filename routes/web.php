@@ -10,6 +10,7 @@ use App\Livewire\DiagnosticWalk;
 use App\Livewire\GuardianDashboard;
 use App\Livewire\GuardianProgress;
 use App\Livewire\LessonWalk;
+use App\Livewire\ModuleEntry;
 use App\Livewire\PracticeWalk;
 use App\Livewire\TutorialWalk;
 use App\Livewire\WritingStop;
@@ -106,6 +107,10 @@ Route::middleware('auth')->group(function () {
     // Streak-celebration splash shown after login to students with active streaks.
     Route::get('/welcome-back', [DashboardController::class, 'studentSplash'])
         ->name('student.splash');
+
+    // The front door to a module's loop: explainer -> competency check -> outcome. [LL-19/20/21]
+    Route::get('/practice/{module}/enter', ModuleEntry::class)
+        ->name('practice.enter');
 
     Route::get('/practice/{module}/lesson', LessonWalk::class)
         ->name('practice.lesson');

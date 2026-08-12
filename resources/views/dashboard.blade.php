@@ -628,8 +628,8 @@
                                                 <span class="fmn-leaf-name">{{ $item['leaf'] }}</span>
                                                 <div class="fmn-leaf-actions">
                                                     @if ($item['status'] === 'needs_work')
-                                                        <a href="{{ route('practice.lesson', $item['id']) }}"
-                                                        class="fmn-practice-link">Take Lesson →</a>
+                                                        <a href="{{ route('practice.enter', $item['id']) }}"
+                                                        class="fmn-practice-link">Start level →</a>
                                                     @endif
                                                     <span class="fmn-hearts" title="{{ $label }}" aria-label="{{ $label }}">
                                                         @for ($h = 1; $h <= 3; $h++)

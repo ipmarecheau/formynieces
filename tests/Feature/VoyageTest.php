@@ -302,7 +302,7 @@ it('makes the island level the one door into practice, with no competing roadmap
 
     $this->actingAs($student)->get(route('student.voyage.island', $firstIsland['slug']))
         ->assertOk()
-        ->assertSee(route('practice.lesson', $firstLevelId), false);
+        ->assertSee(route('practice.enter', $firstLevelId), false);
 })->group('scenario:SH-03');
 
 it('lets an unverified student reach her own voyage (synthetic emails are never verified)', function () {
@@ -322,7 +322,7 @@ it('links a playable level on an open island to its module so tapping plays it',
     // The first, playable level links to its module's lesson — tapping plays it.
     $this->actingAs($student)->get(route('student.voyage.island', $first['slug']))
         ->assertOk()
-        ->assertSee(route('practice.lesson', $playableLevel['id']), false);
+        ->assertSee(route('practice.enter', $playableLevel['id']), false);
 })->group('scenario:AM-04');
 
 it('shows a behind-pace student the same kind voyage — mastery only, no pace or percentages', function () {

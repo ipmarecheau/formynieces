@@ -34,7 +34,7 @@
             'badge' => match ($state) { 'mastered' => '⭐', 'current' => '▶', default => '🔒' },
             'status' => match ($state) { 'mastered' => 'Conquered', 'current' => 'Current', default => 'Locked' },
             'thisWeek' => in_array($level['id'], $thisWeekModuleIds ?? [], true),
-            'href' => $state === 'locked' ? '#' : route('practice.lesson', $level['id']),
+            'href' => $state === 'locked' ? '#' : route('practice.enter', $level['id']),
             'x' => $stopCoord['x'],
             'y' => $stopCoord['y'],
         ];
