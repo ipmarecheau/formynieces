@@ -99,6 +99,27 @@ it('does not master the module if any of the three is missed on the first try', 
     )->not->toBe('mastered');
 })->group('scenario:LL-20');
 
+it('offers a choice of lesson, tutorial or practice when she does not test out', function () {
+    $student = ll20Student('ll21');
+    $module = ll20Module();
+    ll20Question($module->id, 1, 0, 'D1 place value');
+    ll20Question($module->id, 3, 1, 'D3 place value');
+    ll20Question($module->id, 5, 2, 'D5 place value');
+
+    Livewire::actingAs($student)
+        ->test(ModuleEntry::class, ['module' => $module])
+        ->call('beginCheck')
+        ->call('answerCheck', 0)   // D1 correct
+        ->call('answerCheck', 3)   // D3 WRONG — no test-out
+        ->call('answerCheck', 2)   // D5 correct
+        ->assertSet('phase', 'outcome')
+        ->assertSet('mastered', false)
+        ->assertSee(route('practice.lesson', $module->id), false)
+        ->assertSee(route('practice.tutorial', $module->id), false)
+        ->assertSee(route('practice.walk', $module->id), false)
+        ->assertSeeText('learn it together');
+})->group('scenario:LL-21');
+
 it('only serves questions she has not seen before', function () {
     $student = ll20Student('ll20c');
     $module = ll20Module();

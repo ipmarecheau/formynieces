@@ -18,6 +18,16 @@
     .me-options { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
     .me-option { text-align: left; background: rgba(255,255,255,0.05); border: 1.5px solid rgba(34,211,238,0.3); border-radius: 14px; padding: 14px 18px; color: #e6f2fb; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.15s, border-color 0.15s; }
     .me-option:hover { background: rgba(34,211,238,0.12); border-color: rgba(34,211,238,0.6); }
+    .me-smooth { display: block; width: 96px; height: 96px; object-fit: contain; margin: 0 auto 10px; filter: drop-shadow(0 8px 18px rgba(0,0,0,0.4)); animation: meBob 2.4s ease-in-out infinite; }
+    @keyframes meBob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    .me-choices { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+    .me-choice { display: flex; align-items: center; gap: 14px; background: rgba(255,255,255,0.05); border: 1.5px solid rgba(34,211,238,0.3); border-radius: 16px; padding: 16px 18px; text-decoration: none; transition: background 0.15s, border-color 0.15s, transform 0.1s; }
+    .me-choice:hover { background: rgba(34,211,238,0.12); border-color: rgba(34,211,238,0.6); transform: translateY(-2px); }
+    .me-choice-emoji { font-size: 28px; flex: 0 0 auto; }
+    .me-choice-text { display: flex; flex-direction: column; }
+    .me-choice-text b { font-family: 'Fredoka One', cursive; font-size: 17px; color: #e6f2fb; }
+    .me-choice-text small { font-size: 13px; color: rgba(196,181,253,0.75); margin-top: 2px; }
+    @media (prefers-reduced-motion: reduce) { .me-smooth { animation: none; } }
     @media (prefers-reduced-motion: reduce) { .me-card { animation: none; } }
 </style>
 
@@ -54,15 +64,34 @@
             @endif
 
         @else
-            @if ($mastered)
-                <p class="me-head">You tested out! 🎉</p>
-                <p class="me-lead">You nailed the easy, medium and tricky one first try — this level is <b>mastered</b>. No lesson needed.</p>
-                <a href="{{ route('student.voyage') }}" class="me-start">Back to my voyage →</a>
-            @else
-                <p class="me-head">Good try — let's learn it together</p>
-                <p class="me-lead">Not quite a test-out this time, and that's completely fine. Pick how you'd like to learn it. <em>(Choosing comes next — LL-21.)</em></p>
+            @if (! $mastered)
+                <img class="me-smooth" src="{{ asset('images/voyage/companion/smooth.webp') }}" alt="Smooth the turtle">
+                <p class="me-head">That's okay — let's learn it together!</p>
+                <p class="me-lead">Every explorer needs a map sometimes. Pick how you'd like to learn <b>{{ $topic }}</b> — there's no wrong way in:</p>
+                <div class="me-choices">
+                    <a href="{{ route('practice.lesson', $moduleId) }}" class="me-choice">
+                        <span class="me-choice-emoji">📖</span>
+                        <span class="me-choice-text"><b>Lesson</b><small>Learn it step by step</small></span>
+                    </a>
+                    <a href="{{ route('practice.tutorial', $moduleId) }}" class="me-choice">
+                        <span class="me-choice-emoji">🧭</span>
+                        <span class="me-choice-text"><b>Worked examples</b><small>Watch it done, then try</small></span>
+                    </a>
+                    <a href="{{ route('practice.walk', $moduleId) }}" class="me-choice">
+                        <span class="me-choice-emoji">⚡</span>
+                        <span class="me-choice-text"><b>Practice</b><small>Jump straight in</small></span>
+                    </a>
+                </div>
             @endif
         @endif
     </div>
+
+    @if ($phase === 'outcome' && $mastered)
+        <x-celebration
+            title="You tested out! 🎉"
+            :sub="'You aced the easy, medium and tricky one first try — '.$topic.' is mastered. No lesson needed!'">
+            <a href="{{ route('student.voyage') }}">Back to my voyage →</a>
+        </x-celebration>
+    @endif
 </div>
 </div>
