@@ -556,3 +556,23 @@
   commit: 353a886
   spec_hash: 2f82d298acde
   note: "Browser-verified on Feather Isle: a mastered level in its grace window glows with a pulsing red outline on the map and is highlighted in the legend as 'Needs review'; a Smooth alert popup fires with numbered re-check steps; tapping the stop opens the re-check, which completed green."
+- scenario: AG-01
+  verified_at: 2026-08-12
+  commit: 516a59b
+  spec_hash: 349df1d71232
+  note: "Confirmed via tinker + end-to-end tests: attributed LLM calls meter real tokens/cost to the monthly ledger; discretionary AI stops at USD 1.00, essential runs to the USD 1.50 ceiling; budget checked before the request so nothing is sent/billed once over."
+- scenario: AG-02
+  verified_at: 2026-08-12
+  commit: 516a59b
+  spec_hash: d6efe22d2c95
+  note: "Confirmed via tinker + end-to-end tests: attributed LLM calls meter real tokens/cost to the monthly ledger; discretionary AI stops at USD 1.00, essential runs to the USD 1.50 ceiling; budget checked before the request so nothing is sent/billed once over."
+- scenario: AG-03
+  verified_at: 2026-08-12
+  commit: 516a59b
+  spec_hash: 07b2cd4a943f
+  note: "Confirmed via tinker + end-to-end tests: attributed LLM calls meter real tokens/cost to the monthly ledger; discretionary AI stops at USD 1.00, essential runs to the USD 1.50 ceiling; budget checked before the request so nothing is sent/billed once over."
+- scenario: AG-04
+  verified_at: 2026-08-12
+  commit: 516a59b
+  spec_hash: 06c4b7134463
+  note: "Confirmed via tinker + end-to-end tests: attributed LLM calls meter real tokens/cost to the monthly ledger; discretionary AI stops at USD 1.00, essential runs to the USD 1.50 ceiling; budget checked before the request so nothing is sent/billed once over."
