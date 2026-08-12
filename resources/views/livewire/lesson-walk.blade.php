@@ -28,6 +28,19 @@
     <p class="lw-topic">{{ $topic }}</p>
 
     <div class="lw-card">
+        @if ($lessonTitle)
+            <p class="lw-section-head">{{ $lessonTitle }}</p>
+            <div class="lw-lesson">
+                @foreach ($lessonBlocks as $block)
+                    @if (($block['type'] ?? '') === 'text')
+                        <p class="lw-description">{{ $block['content'] ?? '' }}</p>
+                    @endif
+                @endforeach
+            </div>
+        @else
+            <p class="lw-no-lesson">✨ An interactive lesson for this skill is coming soon. For now, here's what to know — and some help below.</p>
+        @endif
+
         @if ($description)
             <p class="lw-section-head">About this skill</p>
             <p class="lw-description">{{ $description }}</p>
