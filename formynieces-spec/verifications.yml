@@ -551,3 +551,8 @@
   commit: f47f025
   spec_hash: 23a7255a3694
   note: "Browser-verified on module 60 (set 1 day past due): opening shows 'Time to keep it sharp' re-check, not the locked come-back state; the re-check serves three D5 questions; three first-try-correct shows 'Still sharp!' and resets the window to a fresh 14 days. Module 64 (inside window) stays locked, confirming the check can't start before the due day."
+- scenario: LL-25
+  verified_at: 2026-08-12
+  commit: 353a886
+  spec_hash: 2f82d298acde
+  note: "Browser-verified on Feather Isle: a mastered level in its grace window glows with a pulsing red outline on the map and is highlighted in the legend as 'Needs review'; a Smooth alert popup fires with numbered re-check steps; tapping the stop opens the re-check, which completed green."
