@@ -47,7 +47,8 @@ final class WritingScorer
 
         $user = "Writing type: {$prompt->type}.\nPrompt: {$prompt->prompt}.\nHer writing:\n{$submission->body}";
 
-        $result = $this->llm->completeJson($system, $user, 700);
+        // Essay grading is ESSENTIAL — runs to the hard ceiling (AG-02).
+        $result = $this->llm->completeJson($system, $user, 700, $submission->student_id, essential: true);
 
         if (! $this->isComplete($result)) {
             throw new WritingScoringUnavailable('The writing scorer returned no usable rubric.');

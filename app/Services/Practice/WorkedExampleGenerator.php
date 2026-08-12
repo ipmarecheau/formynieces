@@ -57,7 +57,8 @@ class WorkedExampleGenerator
             $user = "Question: {$prompt}\nAnswer: {$answer}".
                 ($weak !== '' ? "\nThe student finds these tricky: {$weak}." : '');
 
-            $raw = $this->llm->complete($system, $user, 400);
+            // Worked-example generation is DISCRETIONARY — held to the soft cap (AG-02).
+            $raw = $this->llm->complete($system, $user, 400, $student?->id, essential: false);
             $steps = $this->toSteps($raw);
             if ($steps !== [] && ! $this->looksLikeFallback($raw)) {
                 return [$steps, 'llm'];

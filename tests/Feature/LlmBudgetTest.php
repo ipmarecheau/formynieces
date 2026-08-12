@@ -1,10 +1,27 @@
 <?php
 
+use App\Models\PracticeQuestion;
 use App\Models\StudentLlmUsage;
+use App\Models\SyllabusModule;
 use App\Models\User;
 use App\Services\LlmBudget;
 use App\Services\LlmService;
+use App\Services\Practice\WorkedExampleGenerator;
 use Illuminate\Support\Facades\Http;
+
+function agWorkedQuestion(): PracticeQuestion
+{
+    $module = SyllabusModule::create([
+        'subject' => 'Math', 'topic' => 'Number: Place Value', 'sea_section' => 'A',
+        'sequence_order' => 1, 'pacing_week' => 1, 'description' => 'x', 'resources' => [],
+    ]);
+
+    return PracticeQuestion::create([
+        'module_id' => $module->id, 'subject' => 'Math', 'sea_section' => 'A',
+        'difficulty' => 1, 'prompt' => 'What is 2 + 2?', 'options' => ['3', '4', '5', '6'],
+        'correct_index' => 1, 'explanation' => 'Add the numbers. The answer is four.', 'is_active' => true,
+    ]);
+}
 
 function agStudent(string $suffix): User
 {
@@ -109,3 +126,30 @@ it('checks the budget before the call, so no request is sent and nothing is bill
     Http::assertNothingSent();
     expect(app(LlmBudget::class)->spentUsd($student->id))->toBe($before);
 })->group('scenario:AG-04');
+
+it('meters worked-example generation as discretionary usage for the student', function () {
+    $student = agStudent('wire-we');
+    $question = agWorkedQuestion();
+    config(['services.llm.key' => 'test-key']);
+    Http::fake([
+        '*/chat/completions' => Http::response([
+            'choices' => [['message' => ['content' => "First, add.\nThen count.\nThe answer is 4."]]],
+            'usage' => ['prompt_tokens' => 50, 'completion_tokens' => 20],
+        ], 200),
+    ]);
+
+    $example = app(WorkedExampleGenerator::class)->forQuestion($question, $student);
+
+    expect($example->source)->toBe('llm')
+        ->and(app(LlmBudget::class)->spentUsd($student->id))->toBeGreaterThan(0.0);
+})->group('scenario:AG-02');
+
+it('skips discretionary worked examples over the soft cap and uses the bank explanation', function () {
+    $student = agStudentAtSpend('wire-we2', 1.00);
+    $question = agWorkedQuestion();
+
+    $example = app(WorkedExampleGenerator::class)->forQuestion($question, $student);
+
+    Http::assertNothingSent();
+    expect($example->source)->toBe('explanation');
+})->group('scenario:AG-02');

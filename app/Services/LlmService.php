@@ -70,6 +70,9 @@ class LlmService
                     'model' => $this->model,
                     'max_tokens' => $maxTokens,
                     'messages' => $messages,
+                    // Ask the provider (OpenRouter) to return the call's real charged
+                    // cost in usage.cost, so budget metering is exact, not estimated.
+                    'usage' => ['include' => true],
                 ]);
 
             if ($response->failed()) {
@@ -109,11 +112,11 @@ class LlmService
         );
     }
 
-    public function completeJson(string $systemPrompt, string $userPrompt, int $maxTokens = 1024): array
+    public function completeJson(string $systemPrompt, string $userPrompt, int $maxTokens = 1024, ?int $studentId = null, bool $essential = false): array
     {
         $system = $systemPrompt."\n\nYou must respond with valid JSON only. No preamble, no markdown, no backticks.";
 
-        $raw = $this->complete($system, $userPrompt, $maxTokens);
+        $raw = $this->complete($system, $userPrompt, $maxTokens, $studentId, $essential);
 
         try {
             return json_decode($raw, true, 512, JSON_THROW_ON_ERROR);
