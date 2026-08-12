@@ -103,3 +103,38 @@ Feature: AI governance — cost, time and tailoring guardrails
     Given students have spent guided time today
     When an admin opens the AI usage panel
     Then each student's guided minutes used against the 2-hour daily pool are shown
+
+  # ------------------------------------------------------------------ child safety
+
+  # Any LLM a child talks to (the clarify chat, the re-teach) is screened both ways by a
+  # moderation classifier (Llama Guard). Unsafe input is never sent; unsafe output is never
+  # shown; if moderation is unavailable the chat fails CLOSED (safe). Genuinely concerning
+  # messages (self-harm, abuse, distress) are flagged for a trusted adult — never just blocked.
+
+  @system @scenario:AG-12
+  Scenario: A child's message is screened before it reaches the tutor
+    Given a child sends a message to an AI tutor
+    When the moderation classifier flags it as unsafe
+    Then the message is never sent to the tutor LLM
+    And she sees a gentle, safe reply instead
+
+  @system @scenario:AG-13
+  Scenario: The tutor's reply is screened before it is shown
+    Given the tutor LLM has produced a reply
+    When the moderation classifier flags the reply as unsafe
+    Then the reply is not shown
+    And a safe fallback message is shown instead
+
+  @system @scenario:AG-14
+  Scenario: Moderation fails closed
+    Given the moderation classifier is unavailable
+    When a child sends a message to an AI tutor
+    Then the tutor does not answer unmoderated
+    And she sees a safe fallback message
+
+  @system @scenario:AG-15
+  Scenario: A concerning message is escalated to a trusted adult
+    Given a child's message is flagged for a concerning category (self-harm, abuse, distress)
+    When it is screened
+    Then a safety flag is recorded for her guardian and an admin to follow up
+    And she is met with care, not just a block

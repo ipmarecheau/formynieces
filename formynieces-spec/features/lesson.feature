@@ -17,9 +17,11 @@ Feature: Interactive module lesson
     And she has chosen the lesson after not testing out of the competency check
 
   @scenario:LE-01
-  Scenario: A module's lesson is an interactive page authored in advance
+  Scenario: A module's lesson teaches the whole idea on-platform, authored in advance
     When she opens the module's lesson
-    Then she sees an interactive lesson page authored for that module
+    Then she sees a self-contained, textbook-style lesson authored for that module
+    And it teaches the idea in ordered blocks (explanation, worked examples, key points, self-checks)
+    And she never has to leave the platform to understand it
     And the page is served from stored lesson content, not generated in real time
 
   @scenario:LE-02
@@ -36,12 +38,13 @@ Feature: Interactive module lesson
     And after the tutorials she arrives at practice
 
   @scenario:LE-04
-  Scenario: A clarify chat helps her understand the lesson without generating or scoring it
+  Scenario: A clarify chat sits beside the lesson and pushes her understanding
     Given she is working through the module's lesson
     When she asks the clarify chat a question about the lesson
-    Then the LLM tutor explains the point she asked about
-    And the chat never authors the lesson content
-    And using the chat leaves her progress and mastery unchanged
+    Then the LLM tutor answers Socratically — a hint or guiding question first, then confirmation
+    And it stays scoped to this lesson, gently redirecting anything unrelated
+    And it never gives away practice answers, never authors the lesson content
+    And it is tailored by her learning profile and leaves her progress and mastery unchanged
 
   @scenario:LE-05
   Scenario: Lessons are authored with rich, H5P-grade interactions
