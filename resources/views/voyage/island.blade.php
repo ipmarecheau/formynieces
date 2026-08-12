@@ -25,14 +25,16 @@
     // in the legend now, not as floating labels that overlap on a busy path.
     $stopRows = [];
     foreach ($levels as $index => $level) {
-        $state = $level['mastered'] ? 'mastered' : ($index === $currentStop ? 'current' : 'locked');
+        $state = ($level['review'] ?? false)
+            ? 'review'
+            : ($level['mastered'] ? 'mastered' : ($index === $currentStop ? 'current' : 'locked'));
         $stopCoord = $stops[$index] ?? ['x' => 50, 'y' => 50];
         $stopRows[] = [
             'number' => $index + 1,
             'topic' => $level['topic'],
             'state' => $state,
-            'badge' => match ($state) { 'mastered' => '⭐', 'current' => '▶', default => '🔒' },
-            'status' => match ($state) { 'mastered' => 'Conquered', 'current' => 'Current', default => 'Locked' },
+            'badge' => match ($state) { 'mastered' => '⭐', 'review' => '⭐', 'current' => '▶', default => '🔒' },
+            'status' => match ($state) { 'mastered' => 'Conquered', 'review' => 'Needs review', 'current' => 'Current', default => 'Locked' },
             'thisWeek' => in_array($level['id'], $thisWeekModuleIds ?? [], true),
             'href' => $state === 'locked' ? '#' : route('practice.enter', $level['id']),
             'x' => $stopCoord['x'],
@@ -134,11 +136,19 @@
         .is-mastered .vy-badge { border-color: #34d399; box-shadow: 0 0 16px rgba(52,211,153,0.7); }
         .is-current .vy-badge { border-color: #fde68a; box-shadow: 0 0 20px rgba(253,230,138,0.9); animation: vy-pulse 1.8s ease-in-out infinite; }
         .is-locked .vy-badge { filter: grayscale(0.7) brightness(0.7); border-color: rgba(255,255,255,0.25); }
+        /* LL-25: a mastered level due for review glows and pulses with a red outline. */
+        .is-review .vy-badge { border-color: #f87171; animation: vy-review-pulse 1.4s ease-in-out infinite; }
+        .is-review .vy-label { color: #fecaca; }
 
         @keyframes vy-pulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.1); }
         }
+        @keyframes vy-review-pulse {
+            0%, 100% { box-shadow: 0 0 0 3px rgba(248,113,113,0.45), 0 0 16px rgba(248,113,113,0.7); }
+            50% { box-shadow: 0 0 0 6px rgba(248,113,113,0.8), 0 0 26px rgba(248,113,113,1); }
+        }
+        @media (prefers-reduced-motion: reduce) { .is-review .vy-badge { animation: none; box-shadow: 0 0 0 4px rgba(248,113,113,0.7); } }
 
         .vy-label {
             font-family: 'Fredoka One', cursive;

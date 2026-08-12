@@ -32,13 +32,13 @@ final class AdventureMapBuilder
      * @return array<int, array{
      *     slug:string, name:string, icon:string, x:float, y:float,
      *     conquered:int, total:int, state:string, current:bool,
-     *     levels: array<int, array{id:int, topic:string, subject:string, mastered:bool}>
+     *     levels: array<int, array{id:int, topic:string, subject:string, mastered:bool, review:bool}>
      * }>
      */
     public function buildVoyage(User $student): array
     {
         $modules = SyllabusModule::orderBy('sequence_order')->get(['id', 'subject', 'topic']);
-        $statusByModule = StudentProgress::where('student_id', $student->id)->pluck('status', 'module_id');
+        $progressByModule = StudentProgress::where('student_id', $student->id)->get()->keyBy('module_id');
 
         $chunks = $this->balanceChunk($modules->all(), VoyageIslands::COUNT);
         $definitions = VoyageIslands::all();
@@ -53,13 +53,15 @@ final class AdventureMapBuilder
             $levels = [];
             $conquered = 0;
             foreach ($chunk as $module) {
-                $mastered = ($statusByModule[$module->id] ?? null) === 'mastered';
+                $progress = $progressByModule[$module->id] ?? null;
+                $mastered = ($progress?->status) === 'mastered';
                 $conquered += $mastered ? 1 : 0;
                 $levels[] = [
                     'id' => $module->id,
                     'topic' => $module->topic,
                     'subject' => $module->subject,
                     'mastered' => $mastered,
+                    'review' => $progress?->isDueForReview() ?? false,
                 ];
             }
 

@@ -7,6 +7,7 @@ use App\Services\Pacing\AdventureMapBuilder;
 use App\Support\VoyageInteriors;
 use Database\Seeders\ModulePrerequisiteSeeder;
 use Database\Seeders\SyllabusModuleSeeder;
+use Illuminate\Support\Carbon;
 
 /**
  * The Voyage — the gamified, standalone alternative to the student dashboard.
@@ -64,6 +65,33 @@ it('balance-chunks the whole syllabus across the 13 islands and gates them seque
     expect($islands[1]['state'])->toBe('locked');
     expect($islands[0]['current'])->toBeTrue();
 })->group('scenario:AM-01');
+
+it('glows a mastered level red on the map while it is due for review', function () {
+    Carbon::setTestNow('2026-08-12 10:00:00');
+    $this->seed(SyllabusModuleSeeder::class);
+    $this->seed(ModulePrerequisiteSeeder::class);
+
+    $student = makeVoyageStudent();
+    $module = SyllabusModule::orderBy('sequence_order')->first();
+
+    // Past the due day (mastered_at + 14) but inside the 5-day grace → needs review.
+    StudentProgress::create([
+        'student_id' => $student->id,
+        'module_id' => $module->id,
+        'status' => 'mastered',
+        'mastered_at' => now()->subDays(15),
+        'score' => 100,
+    ]);
+
+    $first = app(AdventureMapBuilder::class)->buildVoyage($student)[0];
+
+    $this->actingAs($student)->get(route('student.voyage.island', $first['slug']))
+        ->assertOk()
+        ->assertSee('is-review', false)
+        ->assertSee('Needs review', false);
+
+    Carbon::setTestNow();
+})->group('scenario:LL-25');
 
 it('opens an unlocked island as a mini-voyage listing its own levels', function () {
     $this->seed(SyllabusModuleSeeder::class);
