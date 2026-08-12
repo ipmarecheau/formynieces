@@ -11,6 +11,7 @@ use App\Livewire\GuardianDashboard;
 use App\Livewire\GuardianProgress;
 use App\Livewire\LessonWalk;
 use App\Livewire\PracticeWalk;
+use App\Livewire\TutorialWalk;
 use App\Livewire\WritingStop;
 use App\Services\Diagnostic\DiagnosticReconciliation;
 use App\Services\Diagnostic\SessionLifecycle;
@@ -108,6 +109,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/practice/{module}/lesson', LessonWalk::class)
         ->name('practice.lesson');
+
+    Route::get('/practice/{module}/tutorial', TutorialWalk::class)
+        ->name('practice.tutorial');
 
     Route::get('/practice/{module}', PracticeWalk::class)
         ->name('practice.walk');

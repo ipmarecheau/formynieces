@@ -14,6 +14,8 @@
     .lw-resource a:hover { color: #f0abfc; text-decoration: underline; }
     .lw-no-resources { font-size: 15px; color: rgba(196,181,253,0.6); margin-bottom: 30px; }
     .lw-start { display: block; margin: 0 auto; background: linear-gradient(135deg, #0e7490, #f6b71e); border: none; border-radius: 999px; padding: 16px 38px; color: white; font-family: 'Fredoka One', cursive; font-size: 17px; cursor: pointer; text-decoration: none; text-align: center; max-width: 280px; }
+    .lw-cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .lw-secondary { background: rgba(255,255,255,0.08); border: 2px solid rgba(34,211,238,0.4); color: #e6f2fb; }
     @media (prefers-reduced-motion: reduce) { .lw-card { transition: none; animation: none; } }
 </style>
 
@@ -48,7 +50,10 @@
             <p class="lw-no-resources">No extra resources for this one yet — you're ready to practise! 🌱</p>
         @endif
 
-        <a href="{{ route('practice.walk', $moduleId) }}" class="lw-start">Start practising →</a>
+        <div class="lw-cta-row">
+            <a href="{{ route('practice.tutorial', $moduleId) }}" class="lw-start lw-secondary">See a worked example →</a>
+            <a href="{{ route('practice.walk', $moduleId) }}" class="lw-start">Start practising →</a>
+        </div>
     </div>
 </div>
 </div>
