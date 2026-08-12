@@ -69,7 +69,8 @@ Cross-check: every Gherkin `When/Then` in `features/` must land on a screen here
 | E1 | SyllabusModuleResource | @mvp ✅ exists | vetted-resources repeater built |
 | E2 | AnchorQuestionResource | @v1.1 | MVP seeds via seeder; UI later |
 | E3 | Student overview / diagnostics monitor | @v1.1 | |
-| E4 | AI usage panel (per-student month-to-date tokens + spend vs USD 1.00/1.50 caps, guided-time used today, roll-up total) | @mvp | AG-09/10 — reads `student_llm_usage` + `student_guided_time` |
+| E4 | AI usage panel (per-student month-to-date tokens + spend vs USD 1.00/1.50 caps, guided-time used today, roll-up total) | @mvp ✅ | AG-09/10 — reads `student_llm_usage` + `student_guided_time` |
+| E5 | Child-safety flags (concerning AI-tutor messages flagged for follow-up; guardian + admin) | @mvp | AG-15 — reads `safety_flags`; data captured, view not yet built |
 
 **Count:** MVP = 18 screens/states (A:3, B:7, C:7 incl. states, D:3 minus states… effectively ~16 distinct routes). Close to the 21-screen sitemap from the 09 June session — the deltas are the additions B7 (resume) and C8 (history, deferred) and the deferral of D4–D7.
 

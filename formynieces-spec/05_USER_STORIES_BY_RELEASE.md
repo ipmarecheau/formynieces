@@ -88,18 +88,25 @@ authoring engine), `motivation_layer` (ML), `writing_track` (WR-01…03), plus
 > the **diagnostic disagrees** with the weak spots I named, I get to **decide**
 > (proceed on the diagnostic, or keep my knowledge) — and Maya waits kindly until I
 > do. Behind pace reads as **triage, not panic**. I can **pause and resume** her
-> without guilt. I never see her streaks as a scoreboard.
+> without guilt. I never see her streaks as a scoreboard. And if she ever says
+> something worrying to the AI tutor, the **child-safety net flags it for me** so I
+> can check in — care, never just a silent block.
 
 *Covers:* `guardian_onboarding` (GO-01…05), `guardian_dashboard` (GD-01…05),
-`roadmap_reveal` reconciliation (RR-02…11), `weekly_targets` pause/resume.
+`roadmap_reveal` reconciliation (RR-02…11), `weekly_targets` pause/resume,
+`ai_governance` child-safety escalation (`AG-15`).
 
 ### ⚙️ Admin — me
 > In Filament I hold the **90 modules**, the **global weekly cap**, and
 > **per-student overrides** (lift a fast learner, ease a struggling one), plus cap
-> reviews and the honest progress data. I tune the engine; I never touch her joy
-> layer or the guardian's calm room.
+> reviews and the honest progress data. I also watch the **AI-usage panel** — every
+> child's month-to-date tokens and spend against the **$1.00 / $1.50** caps, and their
+> **guided-time used** today — so cost and screen time stay bounded. And when the
+> **child-safety** net flags a concerning chat message, I'm alerted so a trusted adult
+> can follow up. I tune the engine; I never touch her joy layer or the guardian's calm room.
 
-*Covers:* `admin_content` (AC), `weekly_targets` pacing engine (WT).
+*Covers:* `admin_content` (AC), `weekly_targets` pacing engine (WT), `ai_governance` (AG —
+cost/time/tailoring caps, the AI-usage panel, and child-safety moderation + escalation).
 
 ---
 
@@ -242,8 +249,18 @@ the parts not yet delivered, by band.
   kindly, practice stays open (`AG-05…07`). **Tailoring:** a compact derived-tag `learning_profile`
   (no transcripts, no PII) personalises the tutor prompts (`AG-08`). **Reporting:** a Filament
   AI-usage panel shows per-student tokens/spend against the caps + guided-time used, with a
-  roll-up total (`AG-09/10`). Build order: cost governor + ledger + `LlmService::chat` → admin
-  panel → (feeds `LE-01…04` and `LL-14…16`) → guided-time cap → learning profile.
+  roll-up total (`AG-09/10`). **Safety:** every message a child exchanges with an AI tutor is
+  screened both ways by **Llama Guard** — unsafe input is never forwarded, unsafe output never
+  shown, moderation **fails closed**, and concerning messages (self-harm/abuse) are **escalated**
+  as a `SafetyFlag` for guardian + admin follow-up (`AG-12…15`). **Status (2026-08-12): AG-01…15
+  BUILT + verified.** Remaining governance piece: the **guardian/admin view** that surfaces the
+  recorded safety flags (the data is captured; the screen isn't built yet).
+- **MVP — interactive lesson + Socratic chat (BUILT 2026-08-12).** `LE-01` self-contained,
+  textbook-style lesson revealed block-by-block with inline **checks that gate practice** (retrieval
+  practice) and a completion celebration; a reusable `LessonTemplate` scaffolds any ELA/Math topic.
+  `LE-04` the **clarify chat** beside it — Socratic, grounded, scope-locked, profile-tailored,
+  budget/guided-time/safety-governed. Remaining: `LE-02` (unscored test), `LE-03` (→ 3 tutorials →
+  practice), then the `LL-14…16` re-teach and the `LE-05` authoring engine.
 - **V1 (`@v1.1`) unbuilt:** diagnostic retake (`DG-17`, test exists/unverified), writing
   history + guardian writing view (`WR-04/05`), guardian inline digest (`GD-06`), phone
   verify (`GO-06`), stale-mastery decay (`LL-07`).
