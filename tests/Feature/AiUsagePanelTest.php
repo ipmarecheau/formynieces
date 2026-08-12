@@ -1,6 +1,7 @@
 <?php
 
 use App\Filament\Resources\AiUsage\Pages\ListAiUsage;
+use App\Models\StudentGuidedTime;
 use App\Models\StudentLlmUsage;
 use App\Models\User;
 use Livewire\Livewire;
@@ -61,3 +62,21 @@ it('scopes the panel to the current month', function () {
         ->assertCanSeeTableRecords([$thisMonth])
         ->assertCanNotSeeTableRecords([$lastMonth]);
 })->group('scenario:AG-09');
+
+/**
+ * AG-10 — the admin panel also reports each student's guided-time used today, against
+ * the 2-hour daily pool.
+ */
+it('shows each student guided-time used today against the 2-hour pool', function () {
+    $student = aiPanelStudent('Maya', 'ag10');
+    StudentLlmUsage::create([
+        'student_id' => $student->id, 'period' => now()->format('Y-m'),
+        'input_tokens' => 100, 'output_tokens' => 100, 'cost_usd' => 0.30,
+    ]);
+    StudentGuidedTime::create([
+        'student_id' => $student->id, 'day' => now()->toDateString(), 'active_seconds' => 3600, // 60 min
+    ]);
+
+    Livewire::actingAs(aiPanelAdmin())->test(ListAiUsage::class)
+        ->assertSee('60 / 120 min');   // guided minutes used today vs the daily cap
+})->group('scenario:AG-10');

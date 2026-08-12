@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\AiUsage\Tables;
 
+use App\Models\StudentLlmUsage;
+use App\Services\GuidedTime;
 use Filament\Tables\Columns\Summarizers\Sum;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -15,6 +17,15 @@ class AiUsageTable
                 TextColumn::make('student.name')
                     ->label('Student')
                     ->searchable(),
+                TextColumn::make('guided_today')
+                    ->label('Guided today')
+                    ->state(function (StudentLlmUsage $record): string {
+                        $guided = app(GuidedTime::class);
+                        $used = (int) floor($guided->usedSecondsToday($record->student_id) / 60);
+                        $cap = (int) floor($guided->capSeconds() / 60);
+
+                        return "{$used} / {$cap} min";
+                    }),
                 TextColumn::make('input_tokens')
                     ->label('Input tokens')
                     ->numeric()
