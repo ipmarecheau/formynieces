@@ -27,6 +27,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'age_attested_at',
         'target_sea_year',
         'known_weak_areas',
+        'learning_profile', // AG-08: compact derived tags for AI tutor tailoring
         'weekly_module_cap_override', // Weekly targets: per-student cap override
         'seen_guides', // Smooth's guide: dismissed how-to screens (SG-01/02)
     ];
@@ -46,6 +47,7 @@ class User extends Authenticatable implements MustVerifyEmail
             'paused_at' => 'datetime', // Pause/resume
             'age_attested_at' => 'datetime',
             'known_weak_areas' => 'array',
+            'learning_profile' => 'array',
             'weekly_module_cap_override' => 'integer',
             'seen_guides' => 'array',
         ];

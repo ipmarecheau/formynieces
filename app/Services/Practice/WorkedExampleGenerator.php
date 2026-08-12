@@ -7,6 +7,7 @@ namespace App\Services\Practice;
 use App\Models\PracticeQuestion;
 use App\Models\User;
 use App\Models\WorkedExample;
+use App\Services\LearningProfile;
 use App\Services\LlmService;
 use Illuminate\Support\Str;
 
@@ -49,13 +50,14 @@ class WorkedExampleGenerator
 
         // No LLM key configured → skip the call and use the bank explanation.
         if ((string) config('services.llm.key') !== '') {
-            $weak = $this->weakAreas($student);
             $system = 'You are Smooth, a warm sea-turtle tutor for an 11-year-old preparing for the '
                 .'Trinidad & Tobago SEA exam. Write a SHORT step-by-step worked solution a child can '
                 .'follow: 3 to 6 steps, one per line, simple encouraging language, ending with the answer. '
                 .'No preamble, no numbering, no markdown.';
+            // AG-08: personalise with her compact learning profile (no transcripts/PII).
+            $context = $student !== null ? app(LearningProfile::class)->promptContext($student) : '';
             $user = "Question: {$prompt}\nAnswer: {$answer}".
-                ($weak !== '' ? "\nThe student finds these tricky: {$weak}." : '');
+                ($context !== '' ? "\n{$context}" : '');
 
             // Worked-example generation is DISCRETIONARY — held to the soft cap (AG-02).
             $raw = $this->llm->complete($system, $user, 400, $student?->id, essential: false);
@@ -98,13 +100,6 @@ class WorkedExampleGenerator
         }
 
         return $sentences;
-    }
-
-    private function weakAreas(?User $student): string
-    {
-        $areas = $student?->known_weak_areas;
-
-        return is_array($areas) ? implode(', ', array_slice($areas, 0, 3)) : '';
     }
 
     private function plain(string $html): string
