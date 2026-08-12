@@ -55,7 +55,7 @@ class LlmService
      *
      * @param  array<int, array{role:string, content:string}>  $messages
      */
-    public function chat(array $messages, int $maxTokens = 512, ?int $studentId = null, bool $essential = false): string
+    public function chat(array $messages, int $maxTokens = 512, ?int $studentId = null, bool $essential = false, ?string $model = null): string
     {
         // Budget is checked BEFORE any request, so spend never overshoots (AG-02..04).
         if ($studentId !== null && ! $this->budget->canSpend($studentId, $essential)) {
@@ -67,7 +67,7 @@ class LlmService
                 ->withHeaders($this->extraHeaders)
                 ->timeout(30)
                 ->post("{$this->baseUrl}/chat/completions", [
-                    'model' => $this->model,
+                    'model' => $model ?? $this->model,
                     'max_tokens' => $maxTokens,
                     'messages' => $messages,
                     // Ask the provider (OpenRouter) to return the call's real charged

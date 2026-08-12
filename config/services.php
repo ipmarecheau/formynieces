@@ -39,6 +39,9 @@ return [
         // AG-11: the final-countdown banner appears when this little guided time is left
         // (default 60s — "less than a minute", with a live timer that reddens at 5s).
         'guided_warn_seconds' => (int) env('LLM_GUIDED_WARN_SECONDS', 60),
+
+        // AG-12..15: child-safety moderation classifier (screens tutor input + output).
+        'guard_model' => env('LLM_GUARD_MODEL', 'meta-llama/llama-guard-4-12b'),
     ],
 
     'postmark' => [
