@@ -541,3 +541,8 @@
   commit: 63e672e
   spec_hash: ec0cba0d5a8c
   note: "Browser-verified both paths: a missed test-out shows an encouraging splash (Smooth, no failure language) with three working choice cards — lesson, tutorial, practice; a clean test-out shows the celebration splash (confetti, Smooth cheering, mastered)."
+- scenario: LL-23
+  verified_at: 2026-08-12
+  commit: f4c01f1
+  spec_hash: a0782b5ba014
+  note: "Browser-verified end-to-end on module 64: testing out sets mastered_at; re-entering the mastered level shows the 'You've mastered this — come back in 14 days' confirmation (Smooth), not the explainer or check."
