@@ -606,3 +606,8 @@
   commit: 8d5fd5c
   spec_hash: d7a2790164b3
   note: "Browser-verified: the admin AI-usage panel shows a 'Guided today' column with each student's active guided minutes used vs the 2-hour cap (e.g. 60 / 120 min)."
+- scenario: AG-08
+  verified_at: 2026-08-12
+  commit: 0c4b14a
+  spec_hash: 74a644008b61
+  note: "Confirmed via tinker + tests: a compact learning_profile (short derived tags, no transcripts/PII) builds a promptContext line ('She finds these tricky: … What helps her: …') injected into the worked-example tutor prompt; remember() de-dupes and size-caps."
