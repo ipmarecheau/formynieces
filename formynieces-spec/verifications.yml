@@ -641,3 +641,8 @@
   commit: ab5952b
   spec_hash: 946e4b8d3e4c
   note: "Concerning categories (self-harm/abuse/exploitation) record a SafetyFlag for guardian+admin follow-up, not just a block (tested)."
+- scenario: LE-02
+  verified_at: 2026-08-12
+  commit: 63f059c
+  spec_hash: 6fb473d662fb
+  note: "Isaac walked the module-55 lesson (Spelling: ie/ei) to completion in the browser as student Aaliyah — stepped through all blocks and answered the inline check; the student_progress row stayed identical (needs_work / score 33 / rung 2 / streak 1), confirming the lesson never scores."
