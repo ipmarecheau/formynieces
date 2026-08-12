@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\PracticeQuestion;
 use App\Models\StudentProgress;
 use App\Models\SyllabusModule;
+use App\Services\Pacing\AdventureMapBuilder;
 use App\Services\Practice\CompetencyCheck;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -39,6 +40,9 @@ class ModuleEntry extends Component
     /** True when the check being run is a maintenance re-check (3× D5), not a test-out. */
     public bool $isMaintenance = false;
 
+    /** The island this level lives on, so outcomes send her back to that map, not the overworld. */
+    public ?string $islandSlug = null;
+
     /**
      * The served check questions, display-safe (no correct_index leaks to the client).
      *
@@ -59,6 +63,7 @@ class ModuleEntry extends Component
     {
         $this->moduleId = $module->id;
         $this->topic = $module->topic;
+        $this->islandSlug = app(AdventureMapBuilder::class)->islandSlugForModule(auth()->user(), $module->id);
 
         // A mastered level is LOCKED for its two-week window: greet her with a
         // "come back in N days" confirmation instead of the loop (LL-23). On or

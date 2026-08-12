@@ -31,6 +31,9 @@
     @media (prefers-reduced-motion: reduce) { .me-card { animation: none; } }
 </style>
 
+@php
+    $backHref = $islandSlug ? route('student.voyage.island', $islandSlug) : route('student.voyage');
+@endphp
 <div class="me-wrap">
     <p class="me-topic">{{ $topic }}</p>
 
@@ -39,7 +42,7 @@
             <img class="me-smooth" src="{{ asset('images/voyage/companion/smooth-cheer.webp') }}" alt="Smooth the turtle">
             <p class="me-head">You've mastered this! ⭐</p>
             <p class="me-lead">You've got <b>{{ $topic }}</b> locked in. Come back in <b>{{ $daysToDue }}</b> {{ $daysToDue === 1 ? 'day' : 'days' }} to keep it sharp — no need to do anything until then.</p>
-            <a href="{{ route('student.voyage') }}" class="me-start">Back to my voyage →</a>
+            <a href="{{ $backHref }}" class="me-start">Back to the island →</a>
 
         @elseif ($phase === 'maintenance_due')
             <img class="me-smooth" src="{{ asset('images/voyage/companion/smooth-cheer.webp') }}" alt="Smooth the turtle">
@@ -104,7 +107,7 @@
             :sub="$isMaintenance
                 ? 'Three tricky ones, first try — you\'ve still got '.$topic.'. Your star is safe for another two weeks!'
                 : 'You aced the easy, medium and tricky one first try — '.$topic.' is mastered. No lesson needed!'">
-            <a href="{{ route('student.voyage') }}">Back to my voyage →</a>
+            <a href="{{ $backHref }}">Back to the island →</a>
         </x-celebration>
     @endif
 </div>

@@ -5,6 +5,7 @@ use App\Models\PracticeQuestion;
 use App\Models\StudentProgress;
 use App\Models\SyllabusModule;
 use App\Models\User;
+use App\Services\Pacing\AdventureMapBuilder;
 use Illuminate\Support\Carbon;
 use Livewire\Livewire;
 
@@ -100,7 +101,9 @@ it('unlocks the re-mastery check on the due day, and re-mastering resets the win
         ->call('answerCheck', 1)
         ->call('answerCheck', 2)
         ->assertSet('phase', 'outcome')
-        ->assertSet('mastered', true);
+        ->assertSet('mastered', true)
+        // The outcome sends her back to the island she was on, not the overworld.
+        ->assertSee(route('student.voyage.island', app(AdventureMapBuilder::class)->islandSlugForModule($student, $module->id)), false);
 
     $progress = StudentProgress::where('student_id', $student->id)
         ->where('module_id', $module->id)->first();

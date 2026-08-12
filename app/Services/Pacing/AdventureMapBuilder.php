@@ -105,6 +105,24 @@ final class AdventureMapBuilder
     }
 
     /**
+     * The slug of the island a given module lives on, so a level can send her back
+     * to the island map she came from rather than the overworld. Null if the module
+     * isn't placed (defensive).
+     */
+    public function islandSlugForModule(User $student, int $moduleId): ?string
+    {
+        foreach ($this->buildVoyage($student) as $island) {
+            foreach ($island['levels'] as $level) {
+                if ($level['id'] === $moduleId) {
+                    return $island['slug'];
+                }
+            }
+        }
+
+        return null;
+    }
+
+    /**
      * Split a list into $groups contiguous chunks as evenly as possible, the
      * larger chunks first (90 across 13 -> twelve 7s then one 6).
      *
