@@ -6,7 +6,10 @@
         .cc-head b { font-family: 'Fredoka One', cursive; font-size: 15px; color: #67e8f9; }
         .cc-head small { display: block; font-size: 11.5px; color: rgba(196,181,253,0.7); }
         .cc-log { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 10px; }
-        .cc-empty { margin: auto; text-align: center; color: rgba(196,181,253,0.7); font-size: 14px; line-height: 1.5; padding: 0 10px; }
+        .cc-empty { margin: auto; text-align: center; color: rgba(196,181,253,0.75); font-size: 14.5px; line-height: 1.55; padding: 0 6px; }
+        .cc-chips { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
+        .cc-chip { background: rgba(34,211,238,0.1); border: 1.5px solid rgba(34,211,238,0.4); border-radius: 999px; padding: 9px 14px; color: #67e8f9; font-size: 14px; font-weight: 700; cursor: pointer; transition: background 0.15s; }
+        .cc-chip:hover { background: rgba(34,211,238,0.2); }
         .cc-msg { max-width: 86%; padding: 11px 14px; border-radius: 14px; font-size: 15.5px; line-height: 1.6; }
         .cc-msg.user { align-self: flex-end; background: linear-gradient(135deg,#0e7490,#f6b71e); color: #fff; border-bottom-right-radius: 4px; }
         .cc-msg.assistant { align-self: flex-start; background: rgba(255,255,255,0.06); color: #e6f2fb; border: 1px solid rgba(34,211,238,0.25); border-bottom-left-radius: 4px; }
@@ -27,7 +30,14 @@
         @forelse ($messages as $i => $message)
             <div class="cc-msg {{ $message['role'] }}" wire:key="cc-msg-{{ $i }}">{{ $message['content'] }}</div>
         @empty
-            <p class="cc-empty">Stuck on something? Ask me about this lesson and I'll help you figure it out — one step at a time. 🐢</p>
+            <div class="cc-empty">
+                <p>Stuck on something? Ask me about this lesson and I'll help you figure it out — one step at a time. 🐢</p>
+                <div class="cc-chips">
+                    @foreach (\App\Livewire\ClarifyChat::STARTERS as $starter)
+                        <button type="button" class="cc-chip" wire:click="ask(@js($starter))">{{ $starter }}</button>
+                    @endforeach
+                </div>
+            </div>
         @endforelse
 
         <div wire:loading.flex wire:target="send" class="cc-thinking" style="display: none;">Smooth is thinking…</div>

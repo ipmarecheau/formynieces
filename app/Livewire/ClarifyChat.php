@@ -41,11 +41,21 @@ class ClarifyChat extends Component
 
     private const OVER_BUDGET_REPLY = "Smooth's chat is taking a little rest for now — keep going with the lesson and practice, you've got this! 🌊";
 
+    /** Tappable starter prompts shown before she's asked anything. */
+    public const STARTERS = ['Explain this simply', 'Give me an example', 'Quiz me on this'];
+
     public function mount(int $moduleId): void
     {
         $module = SyllabusModule::findOrFail($moduleId);
         $this->moduleId = $module->id;
         $this->topic = $module->topic;
+    }
+
+    /** A tapped starter chip — fill the draft and send it. */
+    public function ask(string $prompt): void
+    {
+        $this->draft = $prompt;
+        $this->send();
     }
 
     public function send(): void
