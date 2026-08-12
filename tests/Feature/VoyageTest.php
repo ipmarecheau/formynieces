@@ -87,8 +87,10 @@ it('glows a mastered level red on the map while it is due for review', function 
 
     $this->actingAs($student)->get(route('student.voyage.island', $first['slug']))
         ->assertOk()
-        ->assertSee('is-review', false)
-        ->assertSee('Needs review', false);
+        ->assertSee('is-review', false)               // red-glow class on the stop + legend row
+        ->assertSee('Needs review', false)            // legend status text
+        ->assertSee('A level needs a quick review', false)   // Smooth alert popup...
+        ->assertSee('three tricky questions', false); // ...with the steps
 
     Carbon::setTestNow();
 })->group('scenario:LL-25');

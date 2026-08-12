@@ -19,17 +19,22 @@ class SmoothGuide extends Component
 
     public bool $open = false;
 
+    /** An alert guide (e.g. a due review) opens proactively, regardless of prior dismissal. */
+    public bool $alert = false;
+
     private const POSE_FILES = [
         'wave' => 'smooth.webp',
         'cheer' => 'smooth-cheer.webp',
         'chart' => 'smooth-chart.webp',
     ];
 
-    public function mount(string $guide): void
+    public function mount(string $guide, bool $alert = false): void
     {
         $this->guide = $guide;
-        // First visit auto-opens; a previously dismissed guide stays closed (SG-01/02).
-        $this->open = ! (auth()->user()?->hasSeenGuide($guide) ?? true);
+        $this->alert = $alert;
+        // An alert (a due review) always opens; otherwise first visit auto-opens and a
+        // previously dismissed guide stays closed (SG-01/02).
+        $this->open = $alert || ! (auth()->user()?->hasSeenGuide($guide) ?? true);
     }
 
     /** Dismiss and remember, so it never nags again (SG-02). */

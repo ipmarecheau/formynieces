@@ -59,4 +59,15 @@ return [
         ],
     ],
 
+    // Shown as an ALERT when a mastered level has fallen due for review (LL-25).
+    'review' => [
+        'title' => 'A level needs a quick review! ⭐',
+        'pose' => 'chart',
+        'lines' => [
+            'One of your mastered levels is glowing red on the map — keep it sharp before your star slips.',
+            'Tap the red, pulsing stop to open its quick re-check.',
+            'Answer three tricky questions right on the first try, and your star is safe for another two weeks!',
+        ],
+    ],
+
 ];

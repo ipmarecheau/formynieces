@@ -41,6 +41,7 @@
             'y' => $stopCoord['y'],
         ];
     }
+    $hasReview = collect($stopRows)->contains(fn ($r) => $r['state'] === 'review');
 @endphp
 <!DOCTYPE html>
 <html lang="en">
@@ -250,6 +251,8 @@
         }
         .vy-legend-row.is-mastered .vy-legend-status { background: rgba(52,211,153,0.22); color: #6ee7b7; }
         .vy-legend-row.is-current .vy-legend-status { background: rgba(253,230,138,0.24); color: #fde68a; }
+        .vy-legend-row.is-review { outline: 2px solid rgba(248,113,113,0.85); background: rgba(248,113,113,0.12); }
+        .vy-legend-row.is-review .vy-legend-status { background: rgba(248,113,113,0.28); color: #fecaca; }
         .vy-legend-row.is-writing .vy-legend-status { background: rgba(251,191,36,0.2); color: #fcd34d; }
         .vy-legend-row.is-thisweek { outline: 2px solid rgba(253,224,71,0.8); }
         .vy-legend-row.is-thisweek .vy-legend-status { background: #fde047; color: #78350f; }
@@ -263,6 +266,9 @@
 
     <div class="vy-wrap">
         <livewire:smooth-guide guide="island" wire:key="guide-island" />
+        @if ($hasReview)
+            <livewire:smooth-guide guide="review" :alert="true" wire:key="guide-review" />
+        @endif
         <h1 class="vy-title">{{ $island['name'] }}</h1>
         <p class="vy-sub">{{ $island['conquered'] }} of {{ $island['total'] }} levels conquered — clear them in order to master this island.</p>
 
