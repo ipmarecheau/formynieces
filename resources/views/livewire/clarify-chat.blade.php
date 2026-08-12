@@ -30,7 +30,7 @@
             <p class="cc-empty">Stuck on something? Ask me about this lesson and I'll help you figure it out — one step at a time. 🐢</p>
         @endforelse
 
-        <div wire:loading wire:target="send" class="cc-thinking">Smooth is thinking…</div>
+        <div wire:loading.flex wire:target="send" class="cc-thinking" style="display: none;">Smooth is thinking…</div>
     </div>
 
     <form class="cc-form" wire:submit="send">
