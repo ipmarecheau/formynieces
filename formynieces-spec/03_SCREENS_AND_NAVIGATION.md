@@ -44,6 +44,8 @@ Cross-check: every Gherkin `When/Then` in `features/` must land on a screen here
 | C3b | Tutorial (worked examples walked through by Smooth, ×3 after the lesson) | `/practice/{module}/tutorial` | @mvp | daily |
 | C4 | Practice (D1→D3→D5 climb; AI-assisted re-teach on the miss triggers) | (state of C3) | @mvp | daily |
 | C5 | Mastery celebration | (state of C4) | @mvp | daily |
+| C5a | Morning reading — passage + comprehension check (resumable, warm feedback, no grade, streak) | `/morning/reading` | @mvp | daily — from Voyage home |
+| C5b | Daily vocabulary — words drawn from the passage, use-in-sentence, spaced review | `/morning/vocabulary` | @mvp | daily — follows reading, completes the ~15-min ritual |
 | C6 | Writing prompt + editor | `/writing` | @mvp | weekly — one tap from dashboard card |
 | C7 | Writing feedback view | `/writing/{id}` | @mvp | weekly |
 | C8 | Writing history + rubric profile | `/writing/history` | @v1.1 | occasional |
@@ -71,8 +73,9 @@ Cross-check: every Gherkin `When/Then` in `features/` must land on a screen here
 | E3 | Student overview / diagnostics monitor | @v1.1 | |
 | E4 | AI usage panel (per-student month-to-date tokens + spend vs USD 1.00/1.50 caps, guided-time used today, roll-up total) | @mvp ✅ | AG-09/10 — reads `student_llm_usage` + `student_guided_time` |
 | E5 | Child-safety flags (concerning AI-tutor messages flagged for follow-up; guardian + admin) | @mvp | AG-15 — reads `safety_flags`; data captured, view not yet built |
+| E6 | Reading pool authoring/import (passages + comprehension questions + marked vocabulary, keyed by reading level) | @mvp | DR-06 — stocks `reading_passages` / `vocabulary_words` in advance |
 
-**Count:** MVP = 18 screens/states (A:3, B:7, C:7 incl. states, D:3 minus states… effectively ~16 distinct routes). Close to the 21-screen sitemap from the 09 June session — the deltas are the additions B7 (resume) and C8 (history, deferred) and the deferral of D4–D7.
+**Count:** MVP = 18 screens/states (A:3, B:7, C:7 incl. states, D:3 minus states… effectively ~16 distinct routes), plus the daily morning ritual (C5a reading, C5b vocabulary) and its admin authoring screen (E6). Close to the 21-screen sitemap from the 09 June session — the deltas are the additions B7 (resume) and C8 (history, deferred), the daily-reading/vocabulary ritual (C5a/C5b/E6), and the deferral of D4–D7.
 
 ---
 
@@ -101,6 +104,7 @@ flowchart TD
     C5 --> C1
     C2 -->|tap current stop module| C3
     C1 -->|writing card, Saturdays| C6[C6 Writing Editor] --> C7[C7 Feedback] --> C1
+    C1 -->|morning ritual, ~15 min| C5a[C5a Morning Reading + Comprehension] --> C5b[C5b Daily Vocabulary] --> C1
 
     D1 --> D2[D2 Exam Agent Detail]
     D1 --> D3[D3 Progress Drill-down]

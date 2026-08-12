@@ -70,15 +70,22 @@ truth for the grown-up.
 > back to sailing. My **streak** grows when I keep coming back and
 > **freezes**, not shatters, if my aunt pauses me. Every island has a **Writer's
 > Log** stop where I get a weekly prompt and warm feedback — two things I did well,
-> one to try — never a grade.
+> one to try — never a grade. And every morning on the way to school I do a quick
+> **15-minute ritual** on the phone: a short **reading** picked for my level with a
+> few **comprehension** questions (one where I write my own answer), then a handful of
+> **vocabulary** words pulled from that same reading to use in my own sentences — with
+> older words coming back now and then so they stick. It grows my reading, my
+> understanding, and my words, keeps my **streak** alive, and is never a test — no
+> grade, nothing that changes my map.
 
 *Covers:* `roadmap_reveal` (RR-01…), `diagnostic` (DG), `adventure_map`
 (AM-01…04, 06, 08), `learning_loop` (LL-01…22 — now the umbrella feature; the tutorial
 `TU-01…04` folds in as the Tutorials stage, LL-08…11 pulled up from `@roadmap`, LL-19…22
 add the explainer, the D1/D3/D5 test-out check, the choice-of-way-in, and the AI-assisted
 re-teach), `lesson` (LE-01…05 — the interactive lesson + clarify chat, plus the H5P-grade
-authoring engine), `motivation_layer` (ML), `writing_track` (WR-01…03), plus
-`student_home` (SH-01…06).
+authoring engine), `motivation_layer` (ML), `writing_track` (WR-01…03), `daily_reading` (DR-01…06) +
+`daily_vocabulary` (DV-01…05 — the ~15-min morning reading/comprehension/vocabulary
+ritual), plus `student_home` (SH-01…06).
 
 ### 🧭 Maya's aunt — guardian
 > I **register (18+), verify my email, and set Maya up** — I see her login once. My
@@ -103,10 +110,14 @@ authoring engine), `motivation_layer` (ML), `writing_track` (WR-01…03), plus
 > child's month-to-date tokens and spend against the **$1.00 / $1.50** caps, and their
 > **guided-time used** today — so cost and screen time stay bounded. And when the
 > **child-safety** net flags a concerning chat message, I'm alerted so a trusted adult
-> can follow up. I tune the engine; I never touch her joy layer or the guardian's calm room.
+> can follow up. I also **stock the morning-reading pool** — authoring or importing short
+passages with their comprehension questions and marked vocabulary, keyed by reading level,
+so each child is served an unseen, level-appropriate passage every morning. I tune the
+engine; I never touch her joy layer or the guardian's calm room.
 
 *Covers:* `admin_content` (AC), `weekly_targets` pacing engine (WT), `ai_governance` (AG —
-cost/time/tailoring caps, the AI-usage panel, and child-safety moderation + escalation).
+cost/time/tailoring caps, the AI-usage panel, and child-safety moderation + escalation),
+`daily_reading` pool authoring (DR-06).
 
 ---
 
@@ -261,6 +272,21 @@ the parts not yet delivered, by band.
   `LE-04` the **clarify chat** beside it — Socratic, grounded, scope-locked, profile-tailored,
   budget/guided-time/safety-governed. Remaining: `LE-02` (unscored test), `LE-03` (→ 3 tutorials →
   practice), then the `LL-14…16` re-teach and the `LE-05` authoring engine.
+- **MVP — daily reading + vocabulary (`daily_reading.feature` + `daily_vocabulary.feature`,
+  new 2026-08-12).** A ~15-minute morning ritual, doable on a phone on the way to school, to
+  strengthen reading, comprehension, vocabulary — and, through short written answers, writing.
+  **Reading (`DR-01…06`):** each morning one unseen passage matched to her **reading level** is
+  served from an authored/imported, level-keyed pool (never generated live); a short
+  comprehension check mixes recall, inference, and one written response; it is **formative** —
+  warm feedback, no grade, no module mastery; difficulty adapts over time; the session is
+  mobile-first, resumable, and advances a daily **streak** on the Voyage home; an admin stocks
+  the pool in advance. **Vocabulary (`DV-01…05`):** the day's words are drawn from that morning's
+  passage and shown in context, used in her own sentences (writing practice), with prior words
+  resurfacing on a **spaced-repetition** schedule; also formative; it completes the ~15-min
+  ritual. All `@mvp`. **Status: authored, not yet built** — build order: `reading_passages` +
+  `daily_reading_assignments` tables and the admin pool authoring (`DR-06`) → morning reading +
+  comprehension serving (`DR-01…05`) → `vocabulary_words` + `vocabulary_reviews` and the daily
+  vocabulary set + spaced repetition (`DV-01…05`).
 - **V1 (`@v1.1`) unbuilt:** diagnostic retake (`DG-17`, test exists/unverified), writing
   history + guardian writing view (`WR-04/05`), guardian inline digest (`GD-06`), phone
   verify (`GO-06`), stale-mastery decay (`LL-07`).

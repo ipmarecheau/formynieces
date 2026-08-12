@@ -14,6 +14,8 @@
 | `celebrations.feature` | @mvp | maintenance ack @v1.1 | student |
 | `learning_loop.feature` | @mvp | mastery decay @v1.1 | student |
 | `lesson.feature` | @mvp | — (LE-05 authoring engine is @mvp, second build) | student |
+| `daily_reading.feature` | @mvp | — | student, admin, system |
+| `daily_vocabulary.feature` | @mvp | — | student, system |
 | `ai_governance.feature` | @mvp | — | system, student, admin |
 | `weekly_targets.feature` | @mvp | pause/resume @v1.1 | system |
 | `writing_track.feature` | @mvp | trend view, guardian view @v1.1 | student, system |

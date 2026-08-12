@@ -91,11 +91,35 @@ prompt, options(json), correct_index, difficulty, strand, distractor_notes. Admi
 |---|---|
 | submit, view feedback, view history/profile | Scored by Groq via ExamAgentService. **Never** produces mastered/not — parallel track. Diagnostic writing sample currently lives on diagnostic_sessions (json); steady-state submissions need this table (`@mvp`). |
 
+### ReadingPassage 📰 🆕 (the authored daily-reading atom — DR)
+*Backed by (proposed):* `reading_passages` (title, body, reading_level, comprehension questions json) — authored or imported in advance, keyed by reading level, never generated in real time. Comprehension questions mix literal recall, inference, and one short written-response prompt.
+
+| Attributes | Verbs | Relationships |
+|---|---|---|
+| title, body, reading_level, comprehension questions, marked vocabulary words | admin: author/import, retire · system: serve one unseen passage matched to level | has many VocabularyWords; serves into DailyReadingAssignment |
+
+### DailyReadingAssignment 📖 🆕 (the per-student per-morning served passage — DR)
+*Backed by (proposed):* `daily_reading_assignments` (student_id, passage_id, date, answers json, resume/position state, completed_at) — one per student per day; resumable mid-commute; formative (never a grade, never module mastery).
+
+| Attributes | Verbs (student/system) | Notes |
+|---|---|---|
+| date, chosen passage, her comprehension answers, resume position, completed_at | serve (system, matched to level), answer, resume, complete | Difficulty tracks her reading level and nudges up as she comprehends well / eases if she struggles. Completion advances the daily **Streak**. Never serves a passage she has already seen. |
+
+### VocabularyWord 🔤 🆕 (a word drawn from a passage — DV)
+*Backed by (proposed):* `vocabulary_words` (passage_id, word, definition, context_sentence). Today's words come from that morning's passage; each is shown in the sentence it appeared in.
+
+| Attributes | Verbs (student) | Relationships |
+|---|---|---|
+| word, definition, context sentence | confirm meaning in context, use in her own sentence (writing practice, unscored) | belongs to a ReadingPassage; has one VocabularyReview per student |
+
+### VocabularyReview 🔁 🆕 (per-student spaced-repetition state — DV)
+*Backed by (proposed):* `vocabulary_reviews` (student_id, word_id, ease/interval, due_at, last_seen_at) — one per student×word. Words she keeps getting right return less often; words she keeps missing return sooner. Formative only.
+
 ### ExamAgentInsight 🤖 (computed, optionally cached)
 Honest layer: pace vs 30-week calendar, weighted readiness (50/30/20), next-week recommendation, weak strands. Groq `generateSummary()`. Cache per student×week to respect free-tier limits (30 req/min, 14.4k/day).
 
 ### Streak 🔥 (derived or small table)
-current_days, best. Motivational layer only — never shown to guardian as a judgement metric.
+current_days, best. Motivational layer only — never shown to guardian as a judgement metric. Advanced by returning to the loop **and** by completing the daily morning reading/vocabulary ritual (DR/DV); surfaced on the Voyage home.
 
 ### Digest 📬 🆕 `@v1.1`
 Weekly guardian email. Needs: notifications table or mail log + scheduled job.
@@ -118,6 +142,8 @@ Guardian 1──* Student 1──* ProgressRecord *──1 SyllabusModule 1─�
 | Change | Priority |
 |---|---|
 | `writing_submissions` table | `@mvp` |
+| `reading_passages` + `daily_reading_assignments` tables (daily reading, DR) | `@mvp` |
+| `vocabulary_words` + `vocabulary_reviews` tables (daily vocabulary + spaced repetition, DV) | `@mvp` |
 | `student_progress.status` add `in_review` (or equivalent) | `@mvp` (decision needed) |
 | student `target_sea_year` | `@mvp` |
 | guardian phone + verification fields | `@v1.1` |

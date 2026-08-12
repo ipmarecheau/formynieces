@@ -18,7 +18,7 @@ DISCOVER → ONBOARD → REVEAL → WEEKLY RHYTHM (×~24) → REVISION BUFFER (�
 | Discover | Guardian shows her the platform. She doesn't sign up — her guardian does. | Curiosity, zero pressure |
 | Onboard (diagnostic) | "A quick adventure to find your starting point" — ~30 adaptive MC items + one short writing piece. Never called a test. | Safety; effort is praised, not correctness |
 | Reveal | Her **adventure map** appears: 30 stops, her flag planted at her computed starting **week**, first **weekly target** set. | "This was made for me" |
-| Weekly rhythm | Each week: work through the target **modules**, take **quizzes**, submit one **writing piece**, watch the flag advance. | Momentum, visible progress |
+| Weekly rhythm | Each week: work through the target **modules**, take **quizzes**, submit one **writing piece**, watch the flag advance. Each morning, a ~15-min **reading passage** + **comprehension** + **vocabulary** ritual (doable on the commute). | Momentum, visible progress |
 | Revision buffer | Final 6 weeks: map switches to revision mode — weak **modules** resurface, past-paper style practice (fill-in answers return). | Sharpening, not learning new things |
 | Exam week | Platform goes quiet and warm. No targets. A single good-luck state. | Calm |
 | After | Celebration state; guardian closes the loop. | Pride |
@@ -44,27 +44,33 @@ SIGN UP → VERIFY → SET UP CHILD → WATCH REVEAL → WEEKLY CHECK-IN (×30) 
 
 These narratives are the source of truth for screens and Gherkin. Names are illustrative.
 
-### 2.1 Student — a school-day evening (Tuesday, ~25 min)
+### 2.1 Student — a school-morning commute (~15 min)
+
+> On the maxi-taxi to school, Amara opens the site on her guardian's phone. Her **morning reading** is waiting: one short **reading passage** chosen for her **reading level** from the authored pool — never one she's seen before, sized to read in a few minutes on a phone. She reads it, then answers a short **comprehension** check — a couple of quick recall questions and one that makes her infer, plus one where she writes a sentence or two in her own words. Nothing is graded; she gets warm feedback ("you caught the main idea — next time watch what the character *wanted*") and her **streak** ticks over. Straight after, **daily vocabulary**: five or so **vocabulary words** pulled from the very passage she just read, each shown in the sentence it came from, and she's asked to use each in a sentence of her own. A few words she met on earlier days resurface for review (spaced repetition) so they stick. The whole ritual — read, comprehend, vocabulary — is done before she reaches the school gate, about fifteen minutes. If the ride ends early, she can pick up exactly where she left off. Nothing here touches her map mastery; it is a daily habit that quietly strengthens her reading, comprehension, vocabulary, and — through the little written answers — her writing.
+
+Daily objects: reading passage, comprehension, vocabulary word, streak. (Formative only — never a grade, never module mastery.)
+
+### 2.2 Student — a school-day evening (Tuesday, ~25 min)
 
 > Amara opens the site on her guardian's phone after homework. The **dashboard** greets her by name and shows this week's stop on the **adventure map**: *Week 9 — Fractions Forest*. Two of four target modules are done (✅✅⬜⬜). She taps the third — *Improper fractions to mixed numbers*. A short **explainer** reminds her, in her own words, how the level works, then the **competency check** hands her one question at each real difficulty — **D1, then D3, then D5**. She clears the first two but misses the D5 one, so she doesn't test out. The level offers her a **choice**: the interactive **lesson**, the **tutorials**, or straight to **practice**. She opens the **lesson** — an interactive page that teaches the idea, with a **clarify chat** she can ask when a step confuses her — then walks through **three tutorials** and drops into **practice**, climbing D1 → D3 → D5. Every question gives her a **second try**. When she strings **three D5 firsts in a row**, the module flips to *mastered*, confetti, her **streak** ticks to 5 days. (Had she stumbled badly — two misses in a row at D3/D5, or five of her last seven — Smooth would have pulled her into an **AI-assisted re-teach** and, once she showed she'd got it, dropped her back into practice at **D3**.) The map's flag nudges forward. Total: ~25 minutes. She does **not** see anything alarming — honesty lives in the agent panel, not in her face.
 
 Daily objects: dashboard, adventure map (current stop only), module, competency check, lesson, tutorial, practice, clarify chat, streak.
 
-### 2.2 Student — Saturday (writing day, ~40 min)
+### 2.3 Student — Saturday (writing day, ~40 min)
 
 > Saturday is the **writing track** day. The dashboard's writing card shows this week's prompt (adapted from past CW papers). Amara types a short piece. On submit, Groq scores it against the four-criterion rubric (Content / Language Use / Grammar & Mechanics / Organisation) and returns warm, specific **writing feedback** — two things she did well, one thing to try next time. Her **rubric profile** (a small radar/bars view) updates. No grade letter, no pass/fail.
 
 Weekly objects: writing prompt, writing submission, writing feedback, rubric profile.
 
-### 2.3 Student — Sunday (week rollover)
+### 2.4 Student — Sunday (week rollover)
 
 > Sunday evening the **pacing engine** closes the week: completed targets are archived, missed modules roll into next week's target (capped so the week never becomes a wall), the next stop on the map unlocks, and a one-line encouragement is generated. If she finished early, the map offers — never forces — a peek at next week.
 
-### 2.4 Guardian — Sunday check-in (~5 min)
+### 2.5 Guardian — Sunday check-in (~5 min)
 
 > Marsha opens the **guardian dashboard** Sunday night. One screen answers four questions: **(1)** Did Amara complete this week's target? **(2)** Where is she against the 30-week pace (the honest line, weighted 50/30/20 by paper)? **(3)** What does the **exam agent** recommend for next week? **(4)** What did her writing feedback say? If something needs action ("Measurement is consistently weak — consider 20 extra minutes Wednesdays"), it's phrased as one concrete suggestion, never a wall of charts.
 
-### 2.5 Guardian — mid-week glance (~30 sec, optional)
+### 2.6 Guardian — mid-week glance (~30 sec, optional)
 
 > Wednesday lunchtime, Marsha checks the app: a single status line — "On track. 2 of 4 modules done, streak alive." Nothing else demands attention. (Push/email digest is `@v1.1`; MVP is pull-only.)
 
