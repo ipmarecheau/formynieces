@@ -526,3 +526,8 @@
   commit: ed96f3e
   spec_hash: 719cdaacfb27
   note: "Verified via GraphDiagnostic: asks the chain-top (module 3) first; a correct hardest answer infers the whole prerequisite chain (2 & 1 inferred_mastered) in one question; algorithm only, live cutover pending"
+- scenario: LL-19
+  verified_at: 2026-08-12
+  commit: ea4be87
+  spec_hash: 059ae82c40e8
+  note: "Browser-verified: /practice/{module}/enter shows the student-language 'How this level works' explainer with the 4-step plan; 'Start the quick check' advances to the check phase; Voyage island + /my-map front door now land on the explainer instead of the old lesson page."
