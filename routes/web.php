@@ -16,6 +16,7 @@ use App\Livewire\TutorialWalk;
 use App\Livewire\WritingStop;
 use App\Services\Diagnostic\DiagnosticReconciliation;
 use App\Services\Diagnostic\SessionLifecycle;
+use App\Services\GuidedTime;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -111,6 +112,14 @@ Route::middleware('auth')->group(function () {
     // The front door to a module's loop: explainer -> competency check -> outcome. [LL-19/20/21]
     Route::get('/practice/{module}/enter', ModuleEntry::class)
         ->name('practice.enter');
+
+    // AG-05: guided pages heartbeat here while she is actively engaged; each beat credits
+    // a fixed active interval to today's 2-hour pool (practice never beats).
+    Route::post('/guided-time/beat', function (GuidedTime $guidedTime) {
+        $guidedTime->beat(auth()->id());
+
+        return response()->json(['remaining' => $guidedTime->remainingSecondsToday(auth()->id())]);
+    })->name('guided-time.beat');
 
     Route::get('/practice/{module}/lesson', LessonWalk::class)
         ->name('practice.lesson');

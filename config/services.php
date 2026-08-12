@@ -32,6 +32,10 @@ return [
         // (OpenRouter usage.cost) is preferred. Defaults are Qwen3.7 Flash's real rates.
         'price_input_per_mtok' => (float) env('LLM_PRICE_INPUT_PER_MTOK', 0.03),
         'price_output_per_mtok' => (float) env('LLM_PRICE_OUTPUT_PER_MTOK', 0.13),
+
+        // AG-05..07: daily ACTIVE guided-learning cap (lessons/tutorials/chat/re-teach).
+        // Practice is unlimited and never counts. Default 2 hours (the Alpha model).
+        'guided_daily_seconds' => (int) env('LLM_GUIDED_DAILY_SECONDS', 7200),
     ],
 
     'postmark' => [

@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\SyllabusModule;
+use App\Services\GuidedTime;
 use App\Services\Practice\PracticeQuestions;
 use App\Services\Practice\QuestionExposure;
 use App\Services\Practice\WorkedExampleGenerator;
@@ -31,10 +32,19 @@ class TutorialWalk extends Component
 
     public int $revealed = 1;
 
+    /** True once her 2-hour daily guided pool is spent — the tutorial locks for the day (AG-06). */
+    public bool $guidedLocked = false;
+
     public function mount(SyllabusModule $module): void
     {
         $this->moduleId = $module->id;
         $this->topic = $module->topic;
+
+        // Lock before any worked-example generation, so a spent pool costs nothing.
+        $this->guidedLocked = app(GuidedTime::class)->isExhausted(auth()->id());
+        if ($this->guidedLocked) {
+            return;
+        }
 
         $d1 = app(PracticeQuestions::class)->forModule($module->id)
             ->where('difficulty', 1)->values();

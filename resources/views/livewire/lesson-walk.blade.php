@@ -1,4 +1,8 @@
 <div>
+@if ($guidedLocked)
+    @include('partials.guided-locked', ['moduleId' => $moduleId])
+@else
+@include('partials.guided-heartbeat')
 <livewire:smooth-guide guide="lesson" wire:key="guide-lesson" />
 <style>
     .lw-wrap { min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 32px 20px 48px; }
@@ -56,4 +60,5 @@
         </div>
     </div>
 </div>
+@endif
 </div>
