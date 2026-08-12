@@ -39,9 +39,11 @@ Cross-check: every Gherkin `When/Then` in `features/` must land on a screen here
 |---|---|---|---|---|
 | C1 | Student dashboard (greeting, this week's stop, target checklist, streak, writing card) | `/dashboard` | @mvp | daily — home |
 | C2 | Adventure map (30 stops, flag, states) | `/map` | @mvp | daily — persistent nav |
-| C3 | Module lesson (description + vetted resources) | `/modules/{id}` | @mvp | daily |
-| C4 | Module quiz | `/modules/{id}/quiz` | @mvp | daily |
-| C5 | Quiz result / mastery celebration | (state of C4) | @mvp | daily |
+| C3 | Level entry: loop explainer + competency check (D1/D3/D5 test-out), then choice of lesson/tutorial/practice | `/practice/{module}` | @mvp | daily |
+| C3a | Interactive module lesson (authored page + LLM clarify chat) | `/practice/{module}/lesson` | @mvp | daily — when she doesn't test out |
+| C3b | Tutorial (worked examples walked through by Smooth, ×3 after the lesson) | `/practice/{module}/tutorial` | @mvp | daily |
+| C4 | Practice (D1→D3→D5 climb; AI-assisted re-teach on the miss triggers) | (state of C3) | @mvp | daily |
+| C5 | Mastery celebration | (state of C4) | @mvp | daily |
 | C6 | Writing prompt + editor | `/writing` | @mvp | weekly — one tap from dashboard card |
 | C7 | Writing feedback view | `/writing/{id}` | @mvp | weekly |
 | C8 | Writing history + rubric profile | `/writing/history` | @v1.1 | occasional |
@@ -86,7 +88,15 @@ flowchart TD
     subgraph StudentNav [Student persistent nav: Home · Map]
       C1 <--> C2[C2 Adventure Map]
     end
-    C1 -->|tap target module| C3[C3 Lesson] --> C4[C4 Quiz] --> C5[C5 Mastery] --> C1
+    C1 -->|tap target module| C3[C3 Explainer + Competency Check]
+    C3 -->|test out: 3× first-try D1/D3/D5| C5[C5 Mastery]
+    C3 -->|didn't test out: choose| C3a[C3a Interactive Lesson + clarify chat]
+    C3 -->|choose| C3b[C3b Tutorials ×3]
+    C3 -->|choose| C4[C4 Practice D1→D3→D5]
+    C3a --> C3b --> C4
+    C4 -->|2-in-a-row or 5-of-7 missed| C3a
+    C4 -->|3× first-try D5| C5
+    C5 --> C1
     C2 -->|tap current stop module| C3
     C1 -->|writing card, Saturdays| C6[C6 Writing Editor] --> C7[C7 Feedback] --> C1
 

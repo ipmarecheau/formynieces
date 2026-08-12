@@ -49,14 +49,18 @@ truth for the grown-up.
 > diagnostic) and then my whole map is **revealed**, painted just for me. After that
 > I **land on my Voyage every time** — my sea, my islands, never a page of numbers.
 > This week's islands shimmer to show me where to sail. Every level is one **loop**:
-> *mastery check → lesson → tutorials → practice → mastery check*. The practice climb
-> **is** the check — if I'm already good I can go straight in and test out; the
-> **lesson** (an interactive page) and the **tutorials** (walked through by **Smooth**)
-> are there only if I need them. I climb three real rungs — **D1 → D3 → D5** — and
-> every question gives me a **second try** so I can learn and move on. But to truly
-> **master**, I have to get **three of the hardest (D5) right on the first try in a
-> row**. If I miss twice at D3, Smooth pulls me **back to a tutorial**, then a **teacher
-> chat** talks me through the idea before I try again. Mastering set off a celebration —
+> *explainer → competency check → (lesson → tutorials → practice) → competency check*.
+> When I tap a level it first **explains itself in my words**, then the **competency
+> check** gives me one question at each real difficulty — **D1, D3, D5**. Get all three
+> right first try and I've **tested out** — mastered, no lesson needed. If I don't, I
+> **choose my way in**: the interactive **lesson** (with a **clarify chat** I can ask),
+> the **tutorials** (walked through by **Smooth**), or straight to **practice**. I climb
+> three real rungs — **D1 → D3 → D5** — and every question gives me a **second try** so I
+> can learn and move on. But to truly **master**, I have to get **three of the hardest
+> (D5) right on the first try in a row**. If I stumble — **two in a row wrong at D3 or
+> D5, or five of my last seven** — Smooth pulls me into an **AI-assisted re-teach**
+> (lesson and/or tutorial) that keeps working with me until I get it, then drops me back
+> into practice at **D3**, never at the bottom. Mastering set off a celebration —
 > and I keep a competency by touching it again (**3 × D5 every two weeks**) or it
 > quietly slips to **"review."** Wrong answers say **"not yet,"** never "wrong." My
 > The first time I open any screen, **Smooth shows me how it works** — the levels,
@@ -69,9 +73,12 @@ truth for the grown-up.
 > one to try — never a grade.
 
 *Covers:* `roadmap_reveal` (RR-01…), `diagnostic` (DG), `adventure_map`
-(AM-01…04, 06, 08), `learning_loop` (LL-01…17 — now the umbrella feature; the tutorial
-`TU-01…04` folds in as the Tutorials stage, LL-08…11 pulled up from `@roadmap`),
-`motivation_layer` (ML), `writing_track` (WR-01…03), plus `student_home` (SH-01…06).
+(AM-01…04, 06, 08), `learning_loop` (LL-01…22 — now the umbrella feature; the tutorial
+`TU-01…04` folds in as the Tutorials stage, LL-08…11 pulled up from `@roadmap`, LL-19…22
+add the explainer, the D1/D3/D5 test-out check, the choice-of-way-in, and the AI-assisted
+re-teach), `lesson` (LE-01…05 — the interactive lesson + clarify chat, plus the H5P-grade
+authoring engine), `motivation_layer` (ML), `writing_track` (WR-01…03), plus
+`student_home` (SH-01…06).
 
 ### 🧭 Maya's aunt — guardian
 > I **register (18+), verify my email, and set Maya up** — I see her login once. My
@@ -207,15 +214,24 @@ not this MVP list — `VC-01…03` are built.)
 Reconciled against `specs:trace`. The stories above are the *intended* whole; these are
 the parts not yet delivered, by band.
 
-- **MVP — the learning-loop redesign (in progress).** The loop was reworked (2026-08-11)
-  into *mastery check → lesson → tutorials → practice → mastery check*, with D1/D3/D5
-  rungs, first-try-only mastery (3-in-a-row at D5), a two-attempt-per-question rule,
-  pushed remediation, an LLM teacher chat, and a 2-week maintenance rule. Build order:
-  the **core mechanic** (`LL-03/04/06/12/13`, remapped climb + first-try mastery) first;
-  then the folded **tutorial stage** (`TU-01…04`) and **stepper** (`LL-08…11`, pulled up
-  from `@roadmap`); then **remediation + LLM guided practice** (`LL-14…16`, needs a new
-  `LlmService` surface) and **maintenance decay** (`LL-17`, needs a scheduler). The old
-  3-rung `1/2/3` mastery rule is retired.
+- **MVP — the learning-loop redesign (in progress).** The loop was reworked (2026-08-11,
+  extended 2026-08-12) into *explainer → competency check → (lesson → tutorials → practice)
+  → competency check*. Opening a level explains itself (`LL-19`), then a fast **test-out
+  competency check** serves one D1 + one D3 + one D5 question — clear all three first-try
+  and the module is mastered (`LL-20`); miss and she **chooses** lesson, tutorial or
+  practice (`LL-21`). Practice keeps the D1/D3/D5 climb, first-try-only mastery (3-in-a-row
+  at D5), and the two-attempt rule. Remediation is now trigger-based: **two missed in a row
+  at D3/D5, or five of the last seven** (`LL-14`, `LL-22`) pulls her into an **AI-assisted
+  re-teach** (lesson and/or tutorial) that pushes until she understands (`LL-15`), then
+  returns her to practice at **D3** (`LL-16`). The **interactive lesson** is its own feature
+  (`lesson.feature`, `LE-01…04`) — an authored-in-advance page plus an LLM **clarify chat**;
+  the seam ships as a placeholder first, then the H5P-grade authoring engine (`LE-05`) as
+  the same feature's larger second build (all `@mvp`). Build
+  order: **core mechanic** (`LL-03/04/06/12/13`) → **entry: explainer + test-out check +
+  choice** (`LL-19/20/21`) → **tutorial stage** (`TU-01…04`) + **stepper** (`LL-08…11`) →
+  **interactive lesson + clarify chat** (`LE-01…04`, needs the `LlmService` surface) →
+  **trigger-based re-teach** (`LL-14/15/16/22`) → **maintenance decay** (`LL-17`, needs a
+  scheduler). The old 3-rung `1/2/3` mastery rule is retired.
 - **V1 (`@v1.1`) unbuilt:** diagnostic retake (`DG-17`, test exists/unverified), writing
   history + guardian writing view (`WR-04/05`), guardian inline digest (`GD-06`), phone
   verify (`GO-06`), stale-mastery decay (`LL-07`).

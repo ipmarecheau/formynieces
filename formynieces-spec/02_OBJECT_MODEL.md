@@ -35,6 +35,13 @@ Legend: ✅ exists today · 🔧 exists, needs change · 🆕 new
 
 🔧 Writing subject has **no modules yet** — must be authored before the writing diagnostic path is meaningful (tracked in ROADMAP Phase 2).
 
+### Lesson 📖 🆕 (the interactive teaching page — one per module)
+*Backed by (proposed):* `lessons` (module_id, authored content blocks) — authored in advance, never generated in real time.
+
+| Attributes | Verbs | Relationships |
+|---|---|---|
+| module_id, ordered content blocks (explanation, media, interactive steps — H5P-grade in `LE-05`); MVP ships a placeholder page | open, walk through (unscored), ask **clarify chat** (LLM tutor — explains only, never authors, never scores) | belongs to one SyllabusModule; leads into 3 Tutorials then Practice (`LE-03`) |
+
 ### ProgressRecord 📈 ✅
 *Backed by:* `student_progress` (status, score, previous_score)
 

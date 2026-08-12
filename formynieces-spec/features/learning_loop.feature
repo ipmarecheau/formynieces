@@ -1,25 +1,60 @@
 @mvp @student
 Feature: Module learning loop
   A student earns a competency one module at a time through a repeating loop —
-  Mastery Check → Lesson → Tutorials → Practice → Mastery Check. The practice climb
-  IS the mastery check: a confident student can test out by clearing the hardest
-  questions, so the lesson and tutorials are OPTIONAL scaffolding she pulls in only
-  when she needs them. Every wrong answer is framed as not-yet, and remediation is
-  offered — never forced as failure. This feature encapsulates the tutorial stage.
+  Explainer → Competency Check → (Lesson → Tutorials → Practice) → Competency Check.
+  Opening a level first explains the loop in her own language, then offers a fast
+  COMPETENCY CHECK: one question at each real difficulty — D1, D3, D5. Clear all three
+  on the first try and she has tested out — the module is mastered without ever touching
+  the lesson. If she does not test out, she CHOOSES her way in: the interactive LESSON,
+  the worked-example TUTORIALS (walked through by Smooth), or straight to PRACTICE. The
+  lesson and tutorials are OPTIONAL scaffolding she pulls in only when she needs them.
+  Every wrong answer is framed as not-yet, and remediation is offered — never forced as
+  failure. This feature encapsulates the tutorial stage; the interactive lesson itself is
+  specified in lesson.feature.
 
-  The climb uses the question bank's real difficulty levels D1 → D3 → D5 as its three
-  rungs. Every question allows a SECOND attempt so she can learn and move on, but
-  mastery is reserved for FIRST-TRY success — you cannot master on retries.
+  Practice climbs the question bank's real difficulty levels D1 → D3 → D5 as three rungs;
+  advancing a rung takes three distinct first-try-correct in a row, and true mastery is
+  three first-try-correct in a row at D5. Every question allows a SECOND attempt so she can
+  learn and move on, but mastery is reserved for FIRST-TRY success — you cannot master on
+  retries. When practice shows she is struggling — two questions missed on both attempts in
+  a row at D3 or D5, or five of her last seven missed — she is pulled back into an
+  AI-assisted re-teach (lesson and/or tutorial) that pushes her until she understands. Once
+  she proves it, she re-enters practice at D3, never punished back to the bottom.
 
   Background:
     Given a student has completed her diagnostic
     And her map shows a module with status "needs_work"
 
+  # ------------------------------------------- opening a level: explainer + check
+
+  @scenario:LL-19
+  Scenario: Opening a level explains the loop in her own language
+    When she opens a module from her map
+    Then she is greeted with a short student-language explanation of how the loop works
+    And the explanation leads her into the competency check
+
+  @scenario:LL-20
+  Scenario: The competency check is a fast test-out at D1, D3 and D5
+    Given she has read the loop explanation for a needs_work module
+    When she is given one question at each difficulty — D1, then D3, then D5
+    And she answers all three correctly on the first try
+    Then the module's status becomes "mastered"
+    And she never had to open the lesson or the tutorial
+    And the check only ever serves her questions she has not seen before
+
+  @scenario:LL-21
+  Scenario: Failing the competency check offers a choice of lesson, tutorial or practice
+    Given she has taken the competency check for a module
+    When she does not clear all three questions on the first try
+    Then the module is not mastered
+    And she is offered a choice of the lesson, the tutorial, or practice
+    And nothing about the miss is framed as failure
+
   # ------------------------------------------------------------------ the climb
 
   @scenario:LL-01
-  Scenario: Opening a module shows its human-vetted lesson
-    When she opens the module from her map
+  Scenario: The module lesson shows its human-vetted description and resources
+    When she opens the module's lesson
     Then she sees the module's description and its human-vetted resources
     And she can start the tutorial or practice from the lesson
 
@@ -120,10 +155,19 @@ Feature: Module learning loop
   # --------------------------------------------------------- pushed remediation
 
   @scenario:LL-14
-  Scenario: Two first-try misses at difficulty 3 send her back to the tutorial
-    Given she is practising at difficulty 3
-    When she answers two questions in a row incorrectly on the first try
-    Then she is returned to the tutorial stage for the module
+  Scenario: Two missed questions in a row at D3 or D5 trigger an AI-assisted re-teach
+    Given she is practising at difficulty 3 or difficulty 5
+    When she misses two questions in a row on both attempts
+    Then she is pulled back into an AI-assisted re-teach for the module
+    And she may redo the lesson and/or the tutorial with AI assistance
+    And it is framed as a re-teach, not a failure
+
+  @scenario:LL-22
+  Scenario: Five misses in her last seven questions also trigger the re-teach
+    Given she is practising a module
+    When five of her seven most recent questions were missed on both attempts
+    Then she is pulled back into an AI-assisted re-teach for the module
+    And she may redo the lesson and/or the tutorial with AI assistance
     And it is framed as a re-teach, not a failure
 
   @scenario:LL-15
@@ -135,11 +179,12 @@ Feature: Module learning loop
     Then she is notified and returned to the tutorial with that AI guidance
 
   @scenario:LL-16
-  Scenario: Guided practice hands her back to solo practice after three correct
-    Given she is in guided practice with the teacher chat
-    When she answers three questions correctly
-    Then the teacher chat steps back
-    And she continues solo toward the difficulty-5 mastery check
+  Scenario: Proving understanding returns her to practice at difficulty 3
+    Given she is in an AI-assisted re-teach after struggling in practice
+    When she proves she understands by answering three questions correctly
+    Then the AI assistance steps back
+    And she resumes solo practice at difficulty 3
+    And she is never sent back to the easiest rung as a punishment
 
   # ------------------------------------------------------------------ maintenance
 
