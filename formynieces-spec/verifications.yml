@@ -686,3 +686,18 @@
   commit: f421538
   spec_hash: c2c04e8bbcfb
   note: "Isaac browser-verified: uploading a JSON bundle in the Lessons resource imports/upserts by module code; preview-only validates without saving; re-import updates rather than duplicates; a bad module code is skipped and reported."
+- scenario: LB-02
+  verified_at: 2026-08-13
+  commit: INF
+  spec_hash: d2391b1171b6
+  note: "Isaac browser-verified: Export all downloads a JSON bundle, and each Lessons row now has a labelled Export link that downloads that single lesson (re-importable)."
+- scenario: LB-03
+  verified_at: 2026-08-13
+  commit: INF
+  spec_hash: ac248748515e
+  note: "Isaac directed the demonstration: db:seed --class=LessonSeeder run twice on the dev DB upserts MATH-003's lesson (5 blocks) to exactly one row — idempotent."
+- scenario: LB-04
+  verified_at: 2026-08-13
+  commit: 74e1702
+  spec_hash: 8c121a8d4257
+  note: "Isaac browser-verified: the rebuilt import guide is navigable (jump-to menu) and exhaustive — a card per block type with description, required/optional fields, gating note, and a JSON example; plus the downloadable template."
