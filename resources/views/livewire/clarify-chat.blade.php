@@ -1,37 +1,43 @@
-<div class="cc-panel">
+<div class="cc-panel" x-data="{ glow: false }" :class="{ 'is-glowing': glow }"
+    @smooth-spoke.window="glow = true; setTimeout(() => glow = false, 2800); $nextTick(() => { if ($refs.log) $refs.log.scrollTop = $refs.log.scrollHeight })">
     <style>
-        .cc-panel { display: flex; flex-direction: column; height: 100%; min-height: 420px; background: #0a1f38; border: 1.5px solid rgba(34,211,238,0.3); border-radius: 20px; overflow: hidden; }
+        .cc-panel { display: flex; flex-direction: column; height: 100%; min-height: 420px; background: #0a1f38; border: 2px solid rgba(34,211,238,0.3); border-radius: 20px; overflow: hidden; transition: border-color 0.2s; }
+        .cc-panel.is-glowing { border-color: #67e8f9; animation: ccGlow 1.15s ease-in-out 2; }
+        @keyframes ccGlow { 0%,100% { box-shadow: 0 0 0 rgba(103,232,249,0); } 50% { box-shadow: 0 0 30px 5px rgba(103,232,249,0.55); } }
         .cc-head { display: flex; align-items: center; gap: 10px; padding: 14px 16px; background: rgba(34,211,238,0.08); border-bottom: 1.5px solid rgba(34,211,238,0.2); }
-        .cc-head img { width: 34px; height: 34px; object-fit: contain; }
-        .cc-head b { font-family: 'Fredoka One', cursive; font-size: 15px; color: #67e8f9; }
-        .cc-head small { display: block; font-size: 11.5px; color: rgba(196,181,253,0.7); }
-        .cc-log { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 10px; }
-        .cc-empty { margin: auto; text-align: center; color: rgba(196,181,253,0.75); font-size: 14.5px; line-height: 1.55; padding: 0 6px; }
-        .cc-chips { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
-        .cc-chip { background: rgba(34,211,238,0.1); border: 1.5px solid rgba(34,211,238,0.4); border-radius: 999px; padding: 9px 14px; color: #67e8f9; font-size: 14px; font-weight: 700; cursor: pointer; transition: background 0.15s; }
-        .cc-chip:hover { background: rgba(34,211,238,0.2); }
-        .cc-msg { max-width: 86%; padding: 11px 14px; border-radius: 14px; font-size: 15.5px; line-height: 1.6; }
-        .cc-msg.user { align-self: flex-end; background: linear-gradient(135deg,#0e7490,#f6b71e); color: #fff; border-bottom-right-radius: 4px; }
-        .cc-msg.assistant { align-self: flex-start; background: rgba(255,255,255,0.06); color: #e6f2fb; border: 1px solid rgba(34,211,238,0.25); border-bottom-left-radius: 4px; }
+        .cc-head img { width: 40px; height: 40px; object-fit: contain; }
+        .cc-head b { font-family: 'Fredoka One', cursive; font-size: 17px; color: #67e8f9; }
+        .cc-head small { display: block; font-size: 12px; color: rgba(196,181,253,0.7); }
+        .cc-log { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; scroll-behavior: smooth; }
+        .cc-empty { margin: auto; text-align: center; color: rgba(230,242,251,0.9); font-size: 17px; line-height: 1.6; padding: 0 6px; }
+        .cc-chips { display: flex; flex-direction: column; gap: 10px; margin-top: 18px; }
+        .cc-chip { background: rgba(34,211,238,0.12); border: 2px solid rgba(34,211,238,0.4); border-radius: 999px; padding: 12px 16px; color: #67e8f9; font-size: 16px; font-weight: 700; cursor: pointer; transition: background 0.15s, transform 0.1s; }
+        .cc-chip:hover { background: rgba(34,211,238,0.22); transform: translateY(-1px); }
+        .cc-msg { max-width: 88%; padding: 13px 16px; border-radius: 16px; font-size: 17.5px; line-height: 1.6; animation: ccFade 0.32s ease both; }
+        @keyframes ccFade { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: none; } }
+        .cc-msg.user { align-self: flex-end; background: linear-gradient(135deg,#0e7490,#f6b71e); color: #fff; border-bottom-right-radius: 5px; }
+        .cc-msg.assistant { align-self: flex-start; background: rgba(103,232,249,0.12); color: #eaf9ff; border: 1.5px solid rgba(34,211,238,0.4); border-bottom-left-radius: 5px; font-weight: 500; }
         .cc-form { display: flex; gap: 8px; padding: 12px; border-top: 1.5px solid rgba(34,211,238,0.2); }
-        .cc-input { flex: 1; background: rgba(255,255,255,0.06); border: 1.5px solid rgba(34,211,238,0.3); border-radius: 999px; padding: 10px 16px; color: #e6f2fb; font-size: 14px; }
+        .cc-input { flex: 1; background: rgba(255,255,255,0.06); border: 2px solid rgba(34,211,238,0.3); border-radius: 999px; padding: 12px 18px; color: #e6f2fb; font-size: 16px; transition: border-color 0.2s, box-shadow 0.2s; }
         .cc-input:focus { outline: none; border-color: #67e8f9; }
-        .cc-send { flex: 0 0 auto; background: linear-gradient(135deg,#0e7490,#f6b71e); border: none; border-radius: 999px; width: 42px; height: 42px; color: #fff; font-size: 18px; cursor: pointer; }
+        .cc-panel.is-glowing .cc-input { animation: ccInput 1.15s ease-in-out 2; }
+        @keyframes ccInput { 0%,100% { box-shadow: 0 0 0 rgba(103,232,249,0); } 50% { box-shadow: 0 0 12px rgba(103,232,249,0.6); border-color: #67e8f9; } }
+        .cc-send { flex: 0 0 auto; background: linear-gradient(135deg,#0e7490,#f6b71e); border: none; border-radius: 999px; width: 46px; height: 46px; color: #fff; font-size: 20px; cursor: pointer; }
         .cc-send:disabled { opacity: 0.5; cursor: default; }
-        .cc-thinking { align-self: flex-start; color: rgba(196,181,253,0.8); font-size: 13px; font-style: italic; }
+        .cc-thinking { align-self: flex-start; color: #7dd3fc; font-size: 15px; font-weight: 600; }
     </style>
 
     <div class="cc-head">
         <img src="{{ asset('images/voyage/companion/smooth-chart.webp') }}" alt="Smooth">
-        <span><b>Ask Smooth</b><small>about this lesson</small></span>
+        <span><b>Ask Smooth</b><small>your lesson buddy 🐢</small></span>
     </div>
 
-    <div class="cc-log" wire:key="cc-log">
+    <div class="cc-log" wire:key="cc-log" x-ref="log">
         @forelse ($messages as $i => $message)
             <div class="cc-msg {{ $message['role'] }}" wire:key="cc-msg-{{ $i }}">{{ $message['content'] }}</div>
         @empty
             <div class="cc-empty">
-                <p>Stuck on something? Ask me about this lesson and I'll help you figure it out — one step at a time. 🐢</p>
+                <p>Hi! I'm Smooth 🐢<br>Tap a button, or type to me!</p>
                 <div class="cc-chips">
                     @foreach (\App\Livewire\ClarifyChat::STARTERS as $starter)
                         <button type="button" class="cc-chip" wire:click="ask(@js($starter))">{{ $starter }}</button>
@@ -40,11 +46,11 @@
             </div>
         @endforelse
 
-        <div wire:loading.flex wire:target="send" class="cc-thinking" style="display: none;">Smooth is thinking…</div>
+        <div wire:loading.flex wire:target="send,reinforce" class="cc-thinking" style="display: none;">Smooth is thinking… 🐢</div>
     </div>
 
     <form class="cc-form" wire:submit="send">
-        <input class="cc-input" type="text" wire:model="draft" placeholder="Ask about this lesson…" maxlength="300" autocomplete="off">
+        <input class="cc-input" type="text" wire:model="draft" placeholder="Type to Smooth…" maxlength="300" autocomplete="off">
         <button class="cc-send" type="submit" wire:loading.attr="disabled" wire:target="send" aria-label="Send">➤</button>
     </form>
 </div>

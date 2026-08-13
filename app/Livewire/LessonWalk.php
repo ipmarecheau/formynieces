@@ -88,12 +88,12 @@ class LessonWalk extends Component
         if ($this->revealed < count($this->lessonBlocks)) {
             $this->revealed++;
 
-            // In a re-teach, Smooth reinforces the block she just finished by asking her a quick
-            // question about it as the next one opens (LL-15, soft — never blocks her advancing).
+            // In a re-teach, Smooth reinforces the block she just finished by popping in with a
+            // short question about it as the next one opens (LL-15, soft — never blocks advancing).
             if ($this->reteach) {
                 $justFinished = $this->lessonBlocks[$this->revealed - 2] ?? null;
                 if ($justFinished !== null) {
-                    $this->dispatch('ask-smooth', prompt: $this->reinforcePrompt($justFinished));
+                    $this->dispatch('smooth-reinforce', context: $this->blockSnippet($justFinished));
                 }
             }
         }
@@ -101,8 +101,8 @@ class LessonWalk extends Component
         $this->refreshCompletion();
     }
 
-    /** A directive that has Smooth pose one quick reinforcing question about the block just finished. */
-    private function reinforcePrompt(array $block): string
+    /** A short plain-text snippet of a block, for Smooth's per-block reinforcement in a re-teach. */
+    private function blockSnippet(array $block): string
     {
         $snippet = $block['content']
             ?? $block['question']
@@ -110,8 +110,7 @@ class LessonWalk extends Component
             ?? $block['instruction']
             ?? $this->topic;
 
-        return 'Ask me one quick question to check I understood this part of the lesson, then wait for my answer: "'
-            .Str::limit(strip_tags((string) $snippet), 160).'"';
+        return Str::limit(strip_tags((string) $snippet), 160);
     }
 
     /** Answer an inline check block (unscored — pure retrieval practice). */

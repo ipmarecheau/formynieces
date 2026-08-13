@@ -8,6 +8,7 @@ use App\Services\LearningProfile;
 use App\Services\LlmBudget;
 use App\Services\LlmService;
 use App\Services\Safety\ChildSafetyModerator;
+use Illuminate\Support\Str;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
@@ -66,6 +67,38 @@ class ClarifyChat extends Component
         $this->ask($prompt);
     }
 
+    /**
+     * In a re-teach, as she moves to a new block, Smooth pops in with ONE short question about the
+     * block she just finished (LL-15). The directive is hidden — only Smooth's question is shown —
+     * so the chat stays short and child-friendly.
+     */
+    #[On('smooth-reinforce')]
+    public function reinforce(string $context): void
+    {
+        $studentId = auth()->id();
+
+        // If the AI budget is spent, stay quiet in the background — the lesson still works.
+        if (! app(LlmBudget::class)->canSpend($studentId, false)) {
+            return;
+        }
+
+        $directive = 'The child just finished this part of the lesson: "'
+            .Str::limit(strip_tags($context), 160)
+            .'". Ask her ONE very short, friendly question (one sentence, simple words, an emoji) to '
+            .'check she understood it. Do not give the answer.';
+
+        $conversation = $this->conversation($directive);
+        $conversation[] = ['role' => 'user', 'content' => $directive];
+
+        $answer = app(LlmService::class)->chat($conversation, maxTokens: 120, studentId: $studentId, essential: false);
+
+        if (! app(ChildSafetyModerator::class)->moderate($answer, $studentId)->safe) {
+            return;
+        }
+
+        $this->reply($answer);
+    }
+
     public function send(): void
     {
         $question = trim($this->draft);
@@ -113,6 +146,9 @@ class ClarifyChat extends Component
     private function reply(string $content): void
     {
         $this->messages[] = ['role' => 'assistant', 'content' => $content];
+
+        // Nudge the UI to glow so she notices Smooth spoke and replies.
+        $this->dispatch('smooth-spoke');
     }
 
     /**
@@ -134,9 +170,9 @@ class ClarifyChat extends Component
             ."Trinidad & Tobago SEA exam. You are helping ONLY with this lesson:\n"
             ."Topic: {$this->topic}\nLesson:\n{$lessonText}\n\n"
             .'Teach Socratically: give a small hint or a guiding question first to make her think, '
-            .'then confirm once she is close. Keep replies short, warm and simple. NEVER give away '
-            .'the answer to a practice question. If she asks about anything outside this lesson, '
-            .'gently steer back to it. '
+            .'then confirm once she is close. Keep every reply to 1–2 SHORT sentences, very simple '
+            .'words a 10-year-old knows, warm, with one emoji. NEVER give away the answer to a '
+            .'practice question. If she asks about anything outside this lesson, gently steer back to it. '
             .($profile !== '' ? "About her: {$profile}" : '');
 
         $history = [['role' => 'system', 'content' => $system]];

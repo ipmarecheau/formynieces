@@ -57,7 +57,7 @@ it('re-walks the real lesson in re-teach mode, reinforcing blocks and leading to
     Livewire::actingAs($student)->test(LessonWalk::class, ['module' => $module])
         ->assertSet('reteach', true)
         ->call('next')                          // reveal block 2 -> Smooth asks about block 1
-        ->assertDispatched('ask-smooth')
+        ->assertDispatched('smooth-reinforce')
         ->assertSet('lessonComplete', true)
         ->assertSee(route('practice.reteach', $module->id));   // completion leads to the D1 proof
 })->group('scenario:LL-15');

@@ -117,3 +117,24 @@ it('answers when the lesson asks Smooth for more examples', function () {
         ->call('askSmooth', 'Show me another worked example')
         ->assertSee('here is another worked example');
 })->group('scenario:LE-04');
+
+it('reinforces a block with only Smooths short question — no directive bubble, and it glows (LL-15)', function () {
+    $student = ccStudent();
+    $module = ccModule();
+    fakeModerator(SafetyResult::safe());
+
+    $llm = Mockery::mock(LlmService::class);
+    $llm->shouldReceive('chat')->once()->andReturn('Which letter do we change the y to? 🐢');
+    $this->instance(LlmService::class, $llm);
+
+    $component = Livewire::actingAs($student)
+        ->test(ClarifyChat::class, ['moduleId' => $module->id])
+        ->call('reinforce', 'If a word ends in a consonant + y, change the y to i and add es.')
+        ->assertDispatched('smooth-spoke')
+        ->assertSee('Which letter do we change')
+        ->assertDontSee('The child just finished');   // the hidden directive is never shown
+
+    $messages = $component->get('messages');
+    expect($messages)->toHaveCount(1);                 // only Smooth's turn, no verbose user bubble
+    expect($messages[0]['role'])->toBe('assistant');
+})->group('scenario:LL-15');
