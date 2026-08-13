@@ -1,9 +1,14 @@
-<div class="cc-panel" x-data="{ glow: false }" :class="{ 'is-glowing': glow }"
-    @smooth-spoke.window="glow = true; setTimeout(() => glow = false, 2800); $nextTick(() => { if ($refs.log) $refs.log.scrollTop = $refs.log.scrollHeight })">
+<div class="cc-panel" x-data="{ glow: false, shake: false }" :class="{ 'is-glowing': glow, 'is-shaking': shake }"
+    @smooth-spoke.window="glow = true; shake = true; setTimeout(() => shake = false, 600); $nextTick(() => { if ($refs.log) $refs.log.scrollTop = $refs.log.scrollHeight })"
+    @focusin="glow = false">
     <style>
         .cc-panel { display: flex; flex-direction: column; height: 100%; min-height: 420px; background: #0a1f38; border: 2px solid rgba(34,211,238,0.3); border-radius: 20px; overflow: hidden; transition: border-color 0.2s; }
-        .cc-panel.is-glowing { border-color: #67e8f9; animation: ccGlow 1.15s ease-in-out 2; }
-        @keyframes ccGlow { 0%,100% { box-shadow: 0 0 0 rgba(103,232,249,0); } 50% { box-shadow: 0 0 30px 5px rgba(103,232,249,0.55); } }
+        .cc-panel.is-glowing { border-color: #f87171; animation: ccRedGlow 1.3s ease-in-out infinite; }
+        .cc-panel.is-shaking { animation: ccShake 0.6s ease-in-out; }
+        .cc-panel.is-shaking.is-glowing { animation: ccShake 0.6s ease-in-out, ccRedGlow 1.3s ease-in-out infinite; }
+        @keyframes ccRedGlow { 0%,100% { box-shadow: 0 0 14px 2px rgba(248,113,113,0.5); } 50% { box-shadow: 0 0 34px 7px rgba(248,113,113,0.9); } }
+        @keyframes ccShake { 0%,100% { transform: translateX(0); } 12% { transform: translateX(-8px); } 26% { transform: translateX(7px); } 40% { transform: translateX(-6px); } 55% { transform: translateX(5px); } 70% { transform: translateX(-3px); } 85% { transform: translateX(2px); } }
+        @media (prefers-reduced-motion: reduce) { .cc-panel.is-shaking, .cc-panel.is-shaking.is-glowing { animation: ccRedGlow 1.3s ease-in-out infinite; } }
         .cc-head { display: flex; align-items: center; gap: 10px; padding: 14px 16px; background: rgba(34,211,238,0.08); border-bottom: 1.5px solid rgba(34,211,238,0.2); }
         .cc-head img { width: 40px; height: 40px; object-fit: contain; }
         .cc-head b { font-family: 'Fredoka One', cursive; font-size: 17px; color: #67e8f9; }
@@ -20,8 +25,8 @@
         .cc-form { display: flex; gap: 8px; padding: 12px; border-top: 1.5px solid rgba(34,211,238,0.2); }
         .cc-input { flex: 1; background: rgba(255,255,255,0.06); border: 2px solid rgba(34,211,238,0.3); border-radius: 999px; padding: 12px 18px; color: #e6f2fb; font-size: 16px; transition: border-color 0.2s, box-shadow 0.2s; }
         .cc-input:focus { outline: none; border-color: #67e8f9; }
-        .cc-panel.is-glowing .cc-input { animation: ccInput 1.15s ease-in-out 2; }
-        @keyframes ccInput { 0%,100% { box-shadow: 0 0 0 rgba(103,232,249,0); } 50% { box-shadow: 0 0 12px rgba(103,232,249,0.6); border-color: #67e8f9; } }
+        .cc-panel.is-glowing .cc-input { border-color: #f87171; animation: ccInputRed 1.3s ease-in-out infinite; }
+        @keyframes ccInputRed { 0%,100% { box-shadow: 0 0 0 rgba(248,113,113,0); } 50% { box-shadow: 0 0 12px rgba(248,113,113,0.7); } }
         .cc-send { flex: 0 0 auto; background: linear-gradient(135deg,#0e7490,#f6b71e); border: none; border-radius: 999px; width: 46px; height: 46px; color: #fff; font-size: 20px; cursor: pointer; }
         .cc-send:disabled { opacity: 0.5; cursor: default; }
         .cc-thinking { align-self: flex-start; color: #7dd3fc; font-size: 15px; font-weight: 600; }
