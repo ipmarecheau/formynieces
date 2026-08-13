@@ -7,6 +7,7 @@ use App\Models\StudentProgress;
 use App\Models\SyllabusModule;
 use App\Services\Pacing\AdventureMapBuilder;
 use App\Services\Practice\CompetencyCheck;
+use App\Services\Practice\LearningGate;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -59,11 +60,32 @@ class ModuleEntry extends Component
     /** Whether the completed check tested her out. */
     public bool $mastered = false;
 
+    /** Sequence-gate lock states (LE-03): worked examples / practice greyed until earlier stages are done. */
+    public bool $workedExamplesLocked = false;
+
+    public bool $practiceLocked = false;
+
+    /** Child-friendly copy for the popup shown when she taps a locked stage (LE-06). */
+    public string $workedExamplesLockMessage = '';
+
+    public string $practiceLockMessage = '';
+
+    /** A kind message carried back from a locked stage she tried to open by link (LE-06). */
+    public ?string $lockMessage = null;
+
     public function mount(SyllabusModule $module): void
     {
         $this->moduleId = $module->id;
         $this->topic = $module->topic;
         $this->islandSlug = app(AdventureMapBuilder::class)->islandSlugForModule(auth()->user(), $module->id);
+
+        // Sequence-gate state for the outcome choices (LE-03/LE-06).
+        $gate = app(LearningGate::class);
+        $this->workedExamplesLocked = ! $gate->workedExamplesUnlocked(auth()->id(), $module->id);
+        $this->practiceLocked = ! $gate->practiceUnlocked(auth()->id(), $module->id);
+        $this->workedExamplesLockMessage = $gate->lockMessage('tutorial');
+        $this->practiceLockMessage = $gate->lockMessage('practice');
+        $this->lockMessage = session('lockMessage');
 
         // A mastered level is LOCKED for its two-week window: greet her with a
         // "come back in N days" confirmation instead of the loop (LL-23). On or

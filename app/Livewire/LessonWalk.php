@@ -3,8 +3,10 @@
 namespace App\Livewire;
 
 use App\Models\Lesson;
+use App\Models\ModuleStageCompletion;
 use App\Models\SyllabusModule;
 use App\Services\GuidedTime;
+use App\Services\Practice\LearningGate;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -46,6 +48,9 @@ class LessonWalk extends Component
     /** True once she's worked through the whole lesson (or there's no authored lesson). */
     public bool $lessonComplete = false;
 
+    /** True when this module runs the gated sequence — the lesson leads to worked examples next (LE-03). */
+    public bool $gatedSequence = false;
+
     public function mount(SyllabusModule $module): void
     {
         $this->moduleId = $module->id;
@@ -54,6 +59,7 @@ class LessonWalk extends Component
         $this->description = $module->description;
         $this->resources = $module->resources ?? [];
         $this->guidedLocked = app(GuidedTime::class)->isExhausted(auth()->id());
+        $this->gatedSequence = app(LearningGate::class)->gated($module->id);
 
         $lesson = Lesson::where('module_id', $module->id)->where('is_published', true)->first();
         $this->lessonTitle = $lesson?->title;
@@ -117,6 +123,17 @@ class LessonWalk extends Component
         }
 
         $this->lessonComplete = $atEnd;
+
+        // Finishing an authored lesson records the 'lesson' stage — the first gate in the
+        // lesson -> worked examples -> practice sequence (LE-03). Placeholder (no authored
+        // blocks) never records: an ungated module has nothing to unlock.
+        if ($this->lessonComplete && $this->lessonBlocks !== []) {
+            app(LearningGate::class)->markCompleted(
+                auth()->id(),
+                $this->moduleId,
+                ModuleStageCompletion::STAGE_LESSON,
+            );
+        }
     }
 
     public function render()

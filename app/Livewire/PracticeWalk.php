@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\StudentProgress;
 use App\Models\SyllabusModule;
+use App\Services\Practice\LearningGate;
 use App\Services\Practice\PracticeQuestions;
 use App\Services\Practice\QuestionExposure;
 use App\Services\Practice\RecordPracticeAttempt;
@@ -43,6 +44,16 @@ class PracticeWalk extends Component
     {
         $this->moduleId = $module->id;
         $this->topic = $module->topic;
+
+        // Sequence gate (LE-03): practice stays locked until she has finished the worked examples.
+        // Send her back to the module entry with a kind message (LE-06) rather than in.
+        $gate = app(LearningGate::class);
+        if (! $gate->practiceUnlocked(auth()->id(), $module->id)) {
+            session()->flash('lockMessage', $gate->lockMessage('practice'));
+            $this->redirectRoute('practice.enter', ['module' => $module->id]);
+
+            return;
+        }
 
         $progress = StudentProgress::query()
             ->where('student_id', auth()->id())

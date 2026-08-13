@@ -27,6 +27,14 @@
     .me-choice-text { display: flex; flex-direction: column; }
     .me-choice-text b { font-family: 'Fredoka One', cursive; font-size: 17px; color: #e6f2fb; }
     .me-choice-text small { font-size: 13px; color: rgba(196,181,253,0.75); margin-top: 2px; }
+    button.me-choice { width: 100%; text-align: left; font: inherit; cursor: pointer; }
+    .me-choice.is-locked { background: rgba(255,255,255,0.03); border-color: rgba(148,163,184,0.25); border-style: dashed; opacity: 0.6; }
+    .me-choice.is-locked:hover { background: rgba(255,255,255,0.05); border-color: rgba(148,163,184,0.4); transform: none; }
+    .me-lock-note { background: rgba(251,191,36,0.12); border: 1.5px solid rgba(251,191,36,0.45); color: #fde68a; border-radius: 14px; padding: 12px 16px; margin: 8px 0 4px; font-size: 15px; }
+    .me-lock-popup { background: rgba(15,23,42,0.96); border: 1.5px solid rgba(34,211,238,0.5); border-radius: 16px; padding: 18px; margin-top: 6px; text-align: center; }
+    .me-lock-popup p { color: #e6f2fb; font-size: 16px; margin: 0 0 12px; }
+    .me-lock-ok { background: linear-gradient(135deg, #22d3ee, #a855f7); color: #fff; border: none; border-radius: 12px; padding: 10px 22px; font-family: 'Fredoka One', cursive; font-size: 15px; cursor: pointer; }
+    [x-cloak] { display: none !important; }
     @media (prefers-reduced-motion: reduce) { .me-smooth { animation: none; } }
     @media (prefers-reduced-motion: reduce) { .me-card { animation: none; } }
 </style>
@@ -82,20 +90,50 @@
             @if (! $mastered)
                 <img class="me-smooth" src="{{ asset('images/voyage/companion/smooth.webp') }}" alt="Smooth the turtle">
                 <p class="me-head">That's okay — let's learn it together!</p>
-                <p class="me-lead">Every explorer needs a map sometimes. Pick how you'd like to learn <b>{{ $topic }}</b> — there's no wrong way in:</p>
-                <div class="me-choices">
+                @if ($workedExamplesLocked || $practiceLocked)
+                    <p class="me-lead">Let's learn <b>{{ $topic }}</b> step by step: start with the <b>lesson</b>, then the <b>worked examples</b>, then <b>practice</b> — each one opens up the next!</p>
+                @else
+                    <p class="me-lead">Every explorer needs a map sometimes. Pick how you'd like to learn <b>{{ $topic }}</b> — there's no wrong way in:</p>
+                @endif
+
+                @if ($lockMessage)
+                    <div class="me-lock-note">{{ $lockMessage }}</div>
+                @endif
+
+                <div class="me-choices" x-data="{ lockNote: null }">
                     <a href="{{ route('practice.lesson', $moduleId) }}" class="me-choice">
                         <span class="me-choice-emoji">📖</span>
                         <span class="me-choice-text"><b>Lesson</b><small>Learn it step by step</small></span>
                     </a>
-                    <a href="{{ route('practice.tutorial', $moduleId) }}" class="me-choice">
-                        <span class="me-choice-emoji">🧭</span>
-                        <span class="me-choice-text"><b>Worked examples</b><small>Watch it done, then try</small></span>
-                    </a>
-                    <a href="{{ route('practice.walk', $moduleId) }}" class="me-choice">
-                        <span class="me-choice-emoji">⚡</span>
-                        <span class="me-choice-text"><b>Practice</b><small>Jump straight in</small></span>
-                    </a>
+
+                    @if ($workedExamplesLocked)
+                        <button type="button" class="me-choice is-locked" @click="lockNote = @js($workedExamplesLockMessage)">
+                            <span class="me-choice-emoji">🔒</span>
+                            <span class="me-choice-text"><b>Worked examples</b><small>Finish the lesson first</small></span>
+                        </button>
+                    @else
+                        <a href="{{ route('practice.tutorial', $moduleId) }}" class="me-choice">
+                            <span class="me-choice-emoji">🧭</span>
+                            <span class="me-choice-text"><b>Worked examples</b><small>Watch it done, then try</small></span>
+                        </a>
+                    @endif
+
+                    @if ($practiceLocked)
+                        <button type="button" class="me-choice is-locked" @click="lockNote = @js($practiceLockMessage)">
+                            <span class="me-choice-emoji">🔒</span>
+                            <span class="me-choice-text"><b>Practice</b><small>Finish the worked examples first</small></span>
+                        </button>
+                    @else
+                        <a href="{{ route('practice.walk', $moduleId) }}" class="me-choice">
+                            <span class="me-choice-emoji">⚡</span>
+                            <span class="me-choice-text"><b>Practice</b><small>Jump straight in</small></span>
+                        </a>
+                    @endif
+
+                    <div class="me-lock-popup" x-show="lockNote" x-cloak @click.outside="lockNote = null" style="display:none;">
+                        <p x-text="lockNote"></p>
+                        <button type="button" class="me-lock-ok" @click="lockNote = null">Got it! 🐢</button>
+                    </div>
                 </div>
             @endif
         @endif

@@ -110,7 +110,11 @@
                         <p>You worked through the whole thing — now let's practise it.</p>
                         <div class="lw-cta-row">
                             <button type="button" class="lw-start lw-secondary" wire:click="$dispatch('ask-smooth', { prompt: 'Can you show me another worked example for this?' })">Ask Smooth for more examples 🐢</button>
-                            <a href="{{ route('practice.walk', $moduleId) }}" class="lw-start">Start practising →</a>
+                            @if ($gatedSequence)
+                                <a href="{{ route('practice.tutorial', $moduleId) }}" class="lw-start">See worked examples →</a>
+                            @else
+                                <a href="{{ route('practice.walk', $moduleId) }}" class="lw-start">Start practising →</a>
+                            @endif
                         </div>
                     </div>
                 @elseif ($revealed < $total && $this->canAdvance())

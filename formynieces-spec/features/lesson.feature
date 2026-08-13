@@ -6,8 +6,9 @@ Feature: Interactive module lesson
   ADVANCE, one per module; they are never generated in real time. As she walks through a
   lesson she can open a clarify chat — an LLM tutor that explains and answers her questions
   but never generates the lesson and never scores her. The lesson is scaffolding: it changes
-  nothing about her progress until she reaches practice. After the lesson she is walked
-  through three tutorials, then arrives at practice. The seam ships first as an interactive
+  nothing about her progress until she reaches practice. The ways in are stepped: she works the
+  lesson, then the worked examples, then practice — each stage unlocking the next, for a module
+  that has both a lesson and worked examples. The seam ships first as an interactive
   placeholder with the clarify chat wired up, so the loop can be proven end to end; the
   rich authoring/interaction engine (LE-05) is the same MVP feature's larger second build.
 
@@ -32,10 +33,13 @@ Feature: Interactive module lesson
     And her mastery status is unchanged
 
   @scenario:LE-03
-  Scenario: The lesson leads into three tutorials and then practice
-    When she finishes the module's lesson
-    Then she is walked through three tutorials for the module
-    And after the tutorials she arrives at practice
+  Scenario: Completing the lesson unlocks worked examples, which unlock practice
+    Given a module that has both a lesson and worked examples
+    When she does not test out and enters the module
+    Then the worked examples stay locked until she completes the lesson once
+    And practice stays locked until she completes the worked examples once
+    And once unlocked, a stage stays open for that module
+    And a module missing either the lesson or the worked examples is never gated
 
   @scenario:LE-04
   Scenario: A clarify chat sits beside the lesson and pushes her understanding
@@ -52,3 +56,10 @@ Feature: Interactive module lesson
     When they compose the lesson from the supported interaction types
     Then the lesson can mix explanation, media and interactive steps like H5P content
     And the finished lesson is stored for that module and served to every student who opens it
+
+  @scenario:LE-06
+  Scenario: Tapping a locked stage kindly points her to finish the earlier part
+    Given practice is locked because she has not finished the lesson and worked examples
+    When she taps practice, or opens its link directly
+    Then she is not taken into practice
+    And a friendly, child-language message asks her to finish the lesson and worked examples first
