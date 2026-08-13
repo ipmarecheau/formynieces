@@ -8,6 +8,7 @@ use App\Models\StudentStreak;
 use App\Services\Diagnostic\DiagnosticReconciliation;
 use App\Services\Diagnostic\ReconciliationResolver;
 use App\Services\Motivation\StreakService;
+use Filament\Facades\Filament;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -92,6 +93,11 @@ class AuthenticatedSessionController extends Controller
             return $hasActiveStreak
                 ? route('student.splash')
                 : route('student.voyage');
+        }
+
+        // An admin belongs in the Filament panel, not the student/guardian app dashboard.
+        if ($user->isAdmin()) {
+            return Filament::getPanel('admin')->getUrl();
         }
 
         return route('dashboard');
