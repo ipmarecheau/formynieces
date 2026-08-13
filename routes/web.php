@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExamAgentController;
 use App\Http\Controllers\GuardianPauseController;
 use App\Http\Controllers\GuardianReconciliationController;
+use App\Http\Controllers\LessonExportController;
 use App\Http\Controllers\VoyageController;
 use App\Livewire\DiagnosticWalk;
 use App\Livewire\GuardianDashboard;
@@ -56,6 +57,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/diagnostic', function () {
         return view('student.diagnostic-intro');
     })->name('diagnostic.intro');
+
+    // Admin: download a single lesson as a JSON bundle (LB-02). Authorised in the controller.
+    Route::get('/lesson-bank/export/{lesson}', LessonExportController::class)->name('lessons.export');
 
     Route::get('/practice/{module}', PracticeWalk::class)
         ->name('practice.walk');

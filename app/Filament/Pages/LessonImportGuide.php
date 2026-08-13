@@ -34,6 +34,16 @@ class LessonImportGuide extends Page
         return LessonBlockSchema::REQUIRED;
     }
 
+    /**
+     * Full per-block-type documentation for the guide body.
+     *
+     * @return array<int, array<string, mixed>>
+     */
+    public function blockGuide(): array
+    {
+        return LessonBlockSchema::guide();
+    }
+
     /** Pretty-printed sample bundle shown inline and offered as the template download. */
     public function sampleJson(): string
     {

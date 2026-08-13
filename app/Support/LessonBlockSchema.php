@@ -32,10 +32,68 @@ class LessonBlockSchema
         'ordersteps' => ['instruction', 'items'],
     ];
 
+    /**
+     * type => list of OPTIONAL field names (allowed extras beyond the required ones).
+     *
+     * @var array<string, array<int, string>>
+     */
+    public const OPTIONAL = [
+        'heading' => [],
+        'text' => [],
+        'key' => [],
+        'example' => ['steps'],
+        'visual' => [],
+        'check' => ['explain'],
+        'fillblank' => ['options', 'explain'],
+        'markwords' => ['explain'],
+        'matchpairs' => [],
+        'ordersteps' => [],
+    ];
+
     /** @return array<int, string> the known block type names. */
     public static function types(): array
     {
         return array_keys(self::REQUIRED);
+    }
+
+    /**
+     * Full authoring documentation, one entry per block type — the single source the import guide
+     * renders from, so the docs can never drift from what the importer accepts.
+     *
+     * @return array<int, array{type:string, label:string, description:string, required:array<int,string>, optional:array<int,string>, behavior:string, example:string}>
+     */
+    public static function guide(): array
+    {
+        $examples = collect(self::sampleBlocks())->keyBy('type');
+
+        $meta = [
+            'heading' => ['Heading', 'A short section title that breaks the lesson into parts.', 'Rendered as a bold sub-heading. Not interactive.'],
+            'text' => ['Explanation', 'A paragraph of plain, kid-friendly explanation.', 'Rendered as body text. Not interactive.'],
+            'key' => ['Remember-this rule', 'One rule or idea to remember, called out from the flow.', 'Rendered as a highlighted callout. Not interactive.'],
+            'example' => ['Worked example', 'A worked example: a set-up plus optional step-by-step lines.', 'Shows the set-up, then each step in "steps". "steps" is an optional list of strings. Not interactive.'],
+            'visual' => ['Image', 'An on-platform image, given by URL.', 'Renders the image at "content". Use a full https URL. Not interactive.'],
+            'check' => ['Inline check', 'A multiple-choice question she answers inline.', 'GATES the lesson: she cannot move on until she picks the right option. "options" is the list of choices; "answer" is the 0-based index of the correct one (0 = first). Optional "explain" shows after a correct answer.'],
+            'fillblank' => ['Fill in the blank', 'A sentence with a blank she completes.', 'GATES until correct. Put ___ in "prompt" where the blank goes. If "options" (a word bank) is given she taps a word; if omitted she types the answer. Matching is case-insensitive and trims spaces. Optional "explain" shows after a correct answer.'],
+            'markwords' => ['Mark the words', 'She taps the target word(s) inside a sentence.', 'GATES until correct. In "text", wrap each target word in *asterisks* (e.g. The dog *runs* home). She must tap exactly the marked words — no more, no fewer. Optional "explain" shows after a correct answer.'],
+            'matchpairs' => ['Match pairs', 'She matches each left-hand item to its right-hand partner.', 'GATES until every pair is matched. "pairs" is a list of {left, right} objects (at least 2). Students see the right column shuffled and tap a left, then its right.'],
+            'ordersteps' => ['Order the steps', 'She arranges shuffled items into the right sequence.', 'GATES until the order is right. List "items" in the CORRECT order (at least 2); students see them shuffled and reorder with up/down arrows.'],
+        ];
+
+        $out = [];
+        foreach (self::REQUIRED as $type => $required) {
+            [$label, $description, $behavior] = $meta[$type];
+            $out[] = [
+                'type' => $type,
+                'label' => $label,
+                'description' => $description,
+                'required' => $required,
+                'optional' => self::OPTIONAL[$type] ?? [],
+                'behavior' => $behavior,
+                'example' => (string) json_encode($examples[$type] ?? [], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES),
+            ];
+        }
+
+        return $out;
     }
 
     /**

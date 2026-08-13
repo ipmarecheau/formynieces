@@ -100,6 +100,19 @@ it('exports lessons in the importer format and re-imports identically', function
     expect($lesson->blocks[0]['content'])->toBe('Add s');
 })->group('scenario:LB-02');
 
+it('downloads a single lesson via the export route, admins only', function () {
+    $module = SyllabusModule::factory()->create(['code' => 'MATH-005']);
+    $lesson = Lesson::create(['module_id' => $module->id, 'title' => 'One', 'is_published' => true, 'blocks' => [['type' => 'text', 'content' => 'hi']]]);
+
+    $admin = User::create(['name' => 'A', 'email' => 'a-export@test.com', 'password' => bcrypt('x'), 'role' => 'admin']);
+    $response = $this->actingAs($admin)->get(route('lessons.export', $lesson));
+    $response->assertOk();
+    expect($response->streamedContent())->toContain('MATH-005')->toContain('"title": "One"');
+
+    $student = User::create(['name' => 'S', 'email' => 's-export@test.com', 'password' => bcrypt('x'), 'role' => 'student']);
+    $this->actingAs($student)->get(route('lessons.export', $lesson))->assertForbidden();
+})->group('scenario:LB-02');
+
 /** LB-03 — seed the version-controlled bundles idempotently. */
 it('seeds repository lessons and is idempotent', function () {
     SyllabusModule::factory()->create(['code' => 'MATH-003']);   // the shipped example binds to MATH-003
