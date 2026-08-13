@@ -52,9 +52,12 @@ truth for the grown-up.
 > *explainer → competency check → (lesson → tutorials → practice) → competency check*.
 > When I tap a level it first **explains itself in my words**, then the **competency
 > check** gives me one question at each real difficulty — **D1, D3, D5**. Get all three
-> right first try and I've **tested out** — mastered, no lesson needed. If I don't, I
-> **choose my way in**: the interactive **lesson** (with a **clarify chat** I can ask),
-> the **tutorials** (walked through by **Smooth**), or straight to **practice**. I climb
+> right first try and I've **tested out** — mastered, no lesson needed. If I don't, the
+> ways in open **in order**: first the interactive **lesson** (with a **clarify chat** I can
+> ask, and tap-along bits — fill the blank, tap the words, match pairs, put steps in order),
+> then the **worked examples** (walked through by **Smooth**), then **practice** — each one
+> unlocks the next, and if I tap ahead too soon Smooth kindly tells me to finish the earlier
+> part first. I climb
 > three real rungs — **D1 → D3 → D5** — and every question gives me a **second try** so I
 > can learn and move on. But to truly **master**, I have to get **three of the hardest
 > (D5) right on the first try in a row**. If I stumble — **two in a row wrong at D3 or
@@ -82,8 +85,9 @@ truth for the grown-up.
 (AM-01…04, 06, 08), `learning_loop` (LL-01…22 — now the umbrella feature; the tutorial
 `TU-01…04` folds in as the Tutorials stage, LL-08…11 pulled up from `@roadmap`, LL-19…22
 add the explainer, the D1/D3/D5 test-out check, the choice-of-way-in, and the AI-assisted
-re-teach), `lesson` (LE-01…05 — the interactive lesson + clarify chat, plus the H5P-grade
-authoring engine), `motivation_layer` (ML), `writing_track` (WR-01…03), `daily_reading` (DR-01…06) +
+re-teach), `lesson` (LE-01…10 — the interactive lesson + clarify chat, the gated sequence
+lesson→worked-examples→practice, the H5P-grade authoring engine, and four tap interaction types),
+`motivation_layer` (ML), `writing_track` (WR-01…03), `daily_reading` (DR-01…06) +
 `daily_vocabulary` (DV-01…05 — the ~15-min morning reading/comprehension/vocabulary
 ritual), plus `student_home` (SH-01…06).
 
@@ -112,10 +116,15 @@ ritual), plus `student_home` (SH-01…06).
 > **child-safety** net flags a concerning chat message, I'm alerted so a trusted adult
 > can follow up. I also **stock the morning-reading pool** — authoring or importing short
 passages with their comprehension questions and marked vocabulary, keyed by reading level,
-so each child is served an unseen, level-appropriate passage every morning. I tune the
-engine; I never touch her joy layer or the guardian's calm room.
+so each child is served an unseen, level-appropriate passage every morning. And I **author
+lessons** — composing each from typed interaction blocks (explanation, worked example, inline
+check, fill-the-blank, mark-the-words, match-pairs, order-the-steps) — or manage them **in
+bulk**: import a JSON lesson bundle keyed by module code (with a dry-run preview and safe
+re-import), export them back, and lean on a built-in **import guide + template** so anyone can
+do it months from now. I tune the engine; I never touch her joy layer or the guardian's calm room.
 
-*Covers:* `admin_content` (AC), `weekly_targets` pacing engine (WT), `ai_governance` (AG —
+*Covers:* `admin_content` (AC), `weekly_targets` pacing engine (WT), `lesson` authoring (LE-05) +
+`lesson_bank` import/export/seed/guide (LB-01…04), `ai_governance` (AG —
 cost/time/tailoring caps, the AI-usage panel, and child-safety moderation + escalation),
 `daily_reading` pool authoring (DR-06).
 
@@ -266,12 +275,22 @@ the parts not yet delivered, by band.
   as a `SafetyFlag` for guardian + admin follow-up (`AG-12…15`). **Status (2026-08-12): AG-01…15
   BUILT + verified.** Remaining governance piece: the **guardian/admin view** that surfaces the
   recorded safety flags (the data is captured; the screen isn't built yet).
-- **MVP — interactive lesson + Socratic chat (BUILT 2026-08-12).** `LE-01` self-contained,
-  textbook-style lesson revealed block-by-block with inline **checks that gate practice** (retrieval
-  practice) and a completion celebration; a reusable `LessonTemplate` scaffolds any ELA/Math topic.
-  `LE-04` the **clarify chat** beside it — Socratic, grounded, scope-locked, profile-tailored,
-  budget/guided-time/safety-governed. Remaining: `LE-02` (unscored test), `LE-03` (→ 3 tutorials →
-  practice), then the `LL-14…16` re-teach and the `LE-05` authoring engine.
+- **MVP — interactive lesson, gated sequence + authoring (`lesson.feature` LE-01…10, COMPLETE +
+  verified 2026-08-13).** `LE-01` self-contained lesson revealed block-by-block with inline checks;
+  `LE-02` never-scored (characterization); `LE-04` the Socratic **clarify chat**. `LE-03`/`LE-06` the
+  **gated sequence** — lesson → worked examples → practice, each stage unlocking the next (permanent),
+  gate applying only when the module has both a lesson and D1 questions; tapping a locked stage (or its
+  link) sends her back with a child-friendly message (`LearningGate` + `module_stage_completions`).
+  `LE-05` the **Filament authoring engine** (a Builder over typed blocks). Four tap interaction types:
+  `LE-07` fill-in-the-blank, `LE-08` mark-the-words, `LE-09` match-pairs, `LE-10` order-the-steps —
+  each authored as a block and gating the lesson. (The `LL-14…16` re-teach remains, tracked with LL.)
+- **MVP — lesson bank (`lesson_bank.feature` LB-01…04, COMPLETE + verified 2026-08-13).** Lessons are
+  managed in bulk via a JSON bundle keyed by a stable **module code** (`MATH-001`/`ELA-001`, backfilled
+  for all 90). `LB-01` import upserts by code with a dry-run preview, per-block validation, and
+  skip-and-report (`LessonImporter`); `LB-02` export round-trips the same shape (all + per-row);
+  `LB-03` a version-controlled `LessonSeeder` over `database/data/lessons/*.json`; `LB-04` a navigable,
+  exhaustive **import guide** + downloadable **template**, generated from `LessonBlockSchema` so they
+  never drift.
 - **MVP — daily reading + vocabulary (`daily_reading.feature` + `daily_vocabulary.feature`,
   new 2026-08-12).** A ~15-minute morning ritual, doable on a phone on the way to school, to
   strengthen reading, comprehension, vocabulary — and, through short written answers, writing.

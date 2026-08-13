@@ -39,9 +39,9 @@ Cross-check: every Gherkin `When/Then` in `features/` must land on a screen here
 |---|---|---|---|---|
 | C1 | Student dashboard (greeting, this week's stop, target checklist, streak, writing card) | `/dashboard` | @mvp | daily — home |
 | C2 | Adventure map (30 stops, flag, states) | `/map` | @mvp | daily — persistent nav |
-| C3 | Level entry: loop explainer + competency check (D1/D3/D5 test-out), then choice of lesson/tutorial/practice | `/practice/{module}` | @mvp | daily |
-| C3a | Interactive module lesson (authored page + LLM clarify chat) | `/practice/{module}/lesson` | @mvp | daily — when she doesn't test out |
-| C3b | Tutorial (worked examples walked through by Smooth, ×3 after the lesson) | `/practice/{module}/tutorial` | @mvp | daily |
+| C3 | Level entry: loop explainer + competency check (D1/D3/D5 test-out), then the ways in — lesson/worked-examples/practice, **gated in sequence** when the module has both a lesson and worked examples (later stages greyed with a child-friendly popup; LE-03/LE-06) | `/practice/{module}/enter` | @mvp ✅ | daily |
+| C3a | Interactive module lesson (authored page + LLM clarify chat; 4 interaction types LE-07…10) | `/practice/{module}/lesson` | @mvp ✅ | daily — when she doesn't test out |
+| C3b | Worked examples / tutorial (guarded behind the lesson when gated) | `/practice/{module}/tutorial` | @mvp ✅ | daily |
 | C4 | Practice (D1→D3→D5 climb; AI-assisted re-teach on the miss triggers) | (state of C3) | @mvp | daily |
 | C5 | Mastery celebration | (state of C4) | @mvp | daily |
 | C5a | Morning reading — passage + comprehension check (resumable, warm feedback, no grade, streak) | `/morning/reading` | @mvp | daily — from Voyage home |
@@ -74,8 +74,10 @@ Cross-check: every Gherkin `When/Then` in `features/` must land on a screen here
 | E4 | AI usage panel (per-student month-to-date tokens + spend vs USD 1.00/1.50 caps, guided-time used today, roll-up total) | @mvp ✅ | AG-09/10 — reads `student_llm_usage` + `student_guided_time` |
 | E5 | Child-safety flags (concerning AI-tutor messages flagged for follow-up; guardian + admin) | @mvp | AG-15 — reads `safety_flags`; data captured, view not yet built |
 | E6 | Reading pool authoring/import (passages + comprehension questions + marked vocabulary, keyed by reading level) | @mvp | DR-06 — stocks `reading_passages` / `vocabulary_words` in advance |
+| E7 | LessonResource — author a lesson from typed interaction blocks (Builder), + bulk JSON import (upsert by module code, preview), export (all + per-row), and version-controlled seeding | @mvp ✅ | LE-05 + LB-01/02/03 |
+| E8 | Lesson Import Guide — navigable, exhaustive reference (per block type) + downloadable template | @mvp ✅ | LB-04 — generated from `LessonBlockSchema` |
 
-**Count:** MVP = 18 screens/states (A:3, B:7, C:7 incl. states, D:3 minus states… effectively ~16 distinct routes), plus the daily morning ritual (C5a reading, C5b vocabulary) and its admin authoring screen (E6). Close to the 21-screen sitemap from the 09 June session — the deltas are the additions B7 (resume) and C8 (history, deferred), the daily-reading/vocabulary ritual (C5a/C5b/E6), and the deferral of D4–D7.
+**Count:** MVP = 18 screens/states (A:3, B:7, C:7 incl. states, D:3 minus states… effectively ~16 distinct routes), plus the daily morning ritual (C5a reading, C5b vocabulary) and its admin authoring screen (E6), and the lesson authoring + bulk-import screens (E7 LessonResource, E8 Import Guide). Close to the 21-screen sitemap from the 09 June session — the deltas are the additions B7 (resume) and C8 (history, deferred), the daily-reading/vocabulary ritual (C5a/C5b/E6), the lesson authoring/import (E7/E8), and the deferral of D4–D7.
 
 ---
 

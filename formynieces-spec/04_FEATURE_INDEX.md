@@ -13,7 +13,8 @@
 | `smooth_guide.feature` | @mvp | — | student |
 | `celebrations.feature` | @mvp | maintenance ack @v1.1 | student |
 | `learning_loop.feature` | @mvp | mastery decay @v1.1 | student |
-| `lesson.feature` | @mvp | — (LE-05 authoring engine is @mvp, second build) | student |
+| `lesson.feature` | @mvp | — (LE-01…10 all built: interactive lesson, gated sequence, authoring engine, 4 interaction types) | student, admin |
+| `lesson_bank.feature` | @mvp | — (LB-01…04 all built: bulk JSON import/export, seeder, guide + template) | admin, system |
 | `daily_reading.feature` | @mvp | — | student, admin, system |
 | `daily_vocabulary.feature` | @mvp | — | student, system |
 | `ai_governance.feature` | @mvp | — | system, student, admin |

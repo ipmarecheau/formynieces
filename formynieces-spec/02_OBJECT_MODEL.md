@@ -27,22 +27,27 @@ Legend: ✅ exists today · 🔧 exists, needs change · 🆕 new
 | name, email, email_verified_at ✅, phone 🆕(`@v1.1`), is 18+ attestation 🆕 | register, verify, create child, view child dashboard, pause/resume child (`@v1.1`), invite second guardian (`@roadmap`) | has many Students; has one weekly Digest (`@v1.1`) |
 
 ### SyllabusModule 📚 ✅ (the atom of the curriculum — 90 exist)
-*Backed by:* `syllabus_modules` (subject, topic, sea_section, sequence_order, pacing_week, description, resources)
+*Backed by:* `syllabus_modules` (`code` 🆕, subject, topic, sea_section, sequence_order, pacing_week, description, resources)
 
 | Attributes | Verbs | Relationships |
 |---|---|---|
-| subject (Math / ELA), section, strand, pacing week, description, vetted resources | open lesson, start quiz | has many Prerequisites 🆕 (Slice 1), AnchorQuestions 🆕, ProgressRecords |
+| **code** (stable short id — MATH-001…051, ELA-001…039), subject (Math / ELA), section, strand, pacing week, description, vetted resources | open lesson, start quiz | has many Prerequisites 🆕 (Slice 1), AnchorQuestions 🆕, ProgressRecords, one Lesson |
+
+🆕 `code` — a stable, human-readable module key (per subject, in sequence order), the identifier **lesson imports bind to** (survives topic renames). Backfilled by migration + assigned by the seeder.
 
 🔧 Writing subject has **no modules yet** — must be authored before the writing diagnostic path is meaningful (tracked in ROADMAP Phase 2).
 
-### Lesson 📖 🆕 (the interactive teaching page — one per module)
-*Backed by (proposed):* `lessons` (module_id, authored content blocks) — authored in advance, never generated in real time.
+### Lesson 📖 ✅ (the interactive teaching page — one per module; LE-01…10 BUILT)
+*Backed by:* `lessons` (module_id, title, `blocks` JSON, is_published) — authored in advance, never generated in real time. Authored in Filament via the **LessonResource** Builder (LE-05).
 
 | Attributes | Verbs | Relationships |
 |---|---|---|
-| module_id, ordered content blocks (explanation, media, interactive steps — H5P-grade in `LE-05`); MVP ships a placeholder page | open, walk through (unscored), ask **clarify chat** (LLM tutor — explains only, never authors, never scores) | belongs to one SyllabusModule; leads into 3 Tutorials then Practice (`LE-03`) |
+| module_id, title, ordered `blocks`, is_published | author (admin, Builder), open, walk through (unscored), ask **clarify chat** (LLM tutor — explains only, never scores) | belongs to one SyllabusModule; part of the **gated sequence** lesson → worked examples → practice (`LE-03`/`LE-06`, see ModuleStageCompletion) |
 
-**Lesson block format (reusable template):** a lesson is `title` + an ordered `blocks` array. Block types: `heading` · `text` · `key` (Remember-this rule) · `example` (worked, with `steps`) · `check` (inline self-check: `question`/`options`/`answer`/`explain`) · `visual` (on-platform image). `App\Support\LessonTemplate::scaffold($title, $topic)` returns the canonical pedagogical skeleton (hook → rule → worked example → check → extend → check → wrap) to fill in for any ELA/Math topic — the format is the same everywhere so lessons author consistently.
+**Lesson block format (single authority `App\Support\LessonBlockSchema`):** a lesson is `title` + an ordered `blocks` array; each block is FLAT `{type, …fields}`. Explanation/media types: `heading` · `text` · `key` · `example` (worked, with `steps`) · `visual` (image). Interactive (gating) types — she must answer correctly to advance: `check` (MC), `fillblank` (LE-07), `markwords` (tap targets, LE-08), `matchpairs` (LE-09), `ordersteps` (LE-10). `LessonBlockSchema` defines each type's required/optional fields + validation; the importer, the authoring Builder, and the renderer (`LessonWalk`) all share it. `App\Support\LessonTemplate::scaffold()` still gives a starter skeleton.
+
+### ModuleStageCompletion 🔒 ✅ (the learning gate — LE-03/LE-06)
+*Backed by:* `module_stage_completions` (student_id, module_id, `stage` ∈ {lesson, tutorial}, completed_at; unique per student×module×stage). Permanent "done once" markers. `App\Services\Practice\LearningGate` reads them: the sequence **lesson → worked examples → practice** locks each stage until the prior is done, and only applies to a module that has BOTH a published lesson AND ≥1 D1 practice question. A locked stage tapped (or its link opened) sends her back to the module entry with a child-friendly message; unlock is permanent.
 
 ### StudentLlmUsage 🪙 🆕 (the per-student monthly LLM budget ledger — AG-01..04)
 *Backed by (proposed):* `student_llm_usage` (student_id, period `YYYY-MM`, input_tokens, output_tokens, cost_usd; unique per student+period).
@@ -141,6 +146,9 @@ Guardian 1──* Student 1──* ProgressRecord *──1 SyllabusModule 1─�
 
 | Change | Priority |
 |---|---|
+| `lessons` table (module_id, title, blocks JSON, is_published) | `@mvp` ✅ built |
+| `module_stage_completions` table (the learning gate, LE-03/06) | `@mvp` ✅ built |
+| `syllabus_modules.code` (stable module code for lesson imports) | `@mvp` ✅ built |
 | `writing_submissions` table | `@mvp` |
 | `reading_passages` + `daily_reading_assignments` tables (daily reading, DR) | `@mvp` |
 | `vocabulary_words` + `vocabulary_reviews` tables (daily vocabulary + spaced repetition, DV) | `@mvp` |
