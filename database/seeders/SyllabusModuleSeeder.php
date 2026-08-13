@@ -1017,10 +1017,18 @@ class SyllabusModuleSeeder extends Seeder
         // Normalize legacy subject vocabulary to the final ('Math','ELA') CHECK set.
         // 'English Editing' and 'English Comprehension' both collapse to 'ELA';
         // the Editing/Comprehension/strand distinctions are preserved in sea_section.
+        $counters = [];
         foreach ($modules as $module) {
             if (in_array($module['subject'], ['English Editing', 'English Comprehension'], true)) {
                 $module['subject'] = 'ELA';
             }
+
+            // Stable short module code (e.g. MATH-001), numbered per subject in syllabus order —
+            // the key lesson imports bind to. Kept in step with the backfill migration.
+            $prefix = $module['subject'] === 'Math' ? 'MATH' : 'ELA';
+            $counters[$prefix] = ($counters[$prefix] ?? 0) + 1;
+            $module['code'] = sprintf('%s-%03d', $prefix, $counters[$prefix]);
+
             SyllabusModule::create($module);
         }
     }

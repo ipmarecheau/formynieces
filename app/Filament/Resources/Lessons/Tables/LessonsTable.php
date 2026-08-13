@@ -2,12 +2,17 @@
 
 namespace App\Filament\Resources\Lessons\Tables;
 
+use App\Models\Lesson;
+use App\Services\Lessons\LessonExporter;
+use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class LessonsTable
 {
@@ -33,6 +38,14 @@ class LessonsTable
             ])
             ->recordActions([
                 EditAction::make(),
+                Action::make('export')
+                    ->icon(Heroicon::ArrowDownTray)
+                    ->color('gray')
+                    ->action(fn (Lesson $record): StreamedResponse => response()->streamDownload(
+                        fn () => print (app(LessonExporter::class)->exportLesson($record)),
+                        'lesson-'.($record->module?->code ?? $record->id).'.json',
+                        ['Content-Type' => 'application/json'],
+                    )),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

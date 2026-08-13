@@ -1,0 +1,14 @@
+[
+    {
+        "module": "MATH-003",
+        "title": "Rounding to the nearest thousand",
+        "is_published": true,
+        "blocks": [
+            { "type": "text", "content": "Rounding helps us give a number that is close enough, but easier to use." },
+            { "type": "key", "content": "Look at the hundreds digit: 5 or more rounds up, 4 or less rounds down." },
+            { "type": "example", "content": "Round 6,432 to the nearest thousand.", "steps": ["The hundreds digit is 4.", "4 is less than 5, so we round down.", "6,432 rounds to 6,000."] },
+            { "type": "fillblank", "prompt": "4,700 rounds to ___ .", "answer": "5000", "options": ["4000", "5000"], "explain": "The hundreds digit is 7, so we round up." },
+            { "type": "check", "question": "Round 8,512 to the nearest thousand.", "options": ["8,000", "9,000"], "answer": 1, "explain": "The hundreds digit is 5, so round up to 9,000." }
+        ]
+    }
+]
