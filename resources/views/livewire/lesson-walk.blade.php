@@ -6,6 +6,7 @@
 <livewire:smooth-guide guide="lesson" wire:key="guide-lesson" />
 <style>
     .lw-wrap { min-height: 100vh; padding: 28px 20px 48px; max-width: 1120px; margin: 0 auto; }
+    .lw-reteach-banner { background: rgba(246,183,30,0.14); border: 1.5px solid rgba(246,183,30,0.4); color: #fde68a; border-radius: 14px; padding: 12px 18px; margin-bottom: 16px; font-size: 15px; font-weight: 600; }
     .lw-subject { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(196,181,253,0.7); margin-bottom: 6px; }
     .lw-topic { font-family: 'Fredoka One', cursive; font-size: 26px; color: #e6f2fb; margin-bottom: 22px; }
     .lw-layout { display: grid; grid-template-columns: 1.55fr 1fr; gap: 24px; align-items: start; }
@@ -78,6 +79,9 @@
 </style>
 
 <div class="lw-wrap">
+    @if ($reteach)
+        <div class="lw-reteach-banner">Let's revisit this together 🐢 — a re-teach, not a test. Smooth will check in as you go.</div>
+    @endif
     <p class="lw-subject">{{ $subject }}</p>
     <p class="lw-topic">{{ $topic }}</p>
 
@@ -223,7 +227,9 @@
                         <p>You worked through the whole thing — now let's practise it.</p>
                         <div class="lw-cta-row">
                             <button type="button" class="lw-start lw-secondary" wire:click="$dispatch('ask-smooth', { prompt: 'Can you show me another worked example for this?' })">Ask Smooth for more examples 🐢</button>
-                            @if ($gatedSequence)
+                            @if ($reteach)
+                                <a href="{{ route('practice.reteach', $moduleId) }}" class="lw-start">I'm ready to try it →</a>
+                            @elseif ($gatedSequence)
                                 <a href="{{ route('practice.tutorial', $moduleId) }}" class="lw-start">See worked examples →</a>
                             @else
                                 <a href="{{ route('practice.walk', $moduleId) }}" class="lw-start">Start practising →</a>

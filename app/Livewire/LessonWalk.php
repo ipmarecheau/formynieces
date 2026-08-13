@@ -7,6 +7,8 @@ use App\Models\ModuleStageCompletion;
 use App\Models\SyllabusModule;
 use App\Services\GuidedTime;
 use App\Services\Practice\LearningGate;
+use App\Services\Practice\Remediation;
+use Illuminate\Support\Str;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -54,6 +56,9 @@ class LessonWalk extends Component
     /** True when this module runs the gated sequence — the lesson leads to worked examples next (LE-03). */
     public bool $gatedSequence = false;
 
+    /** True when this lesson is being re-walked as the relearn stage of an AI-assisted re-teach (LL-14/15). */
+    public bool $reteach = false;
+
     public function mount(SyllabusModule $module): void
     {
         $this->moduleId = $module->id;
@@ -63,6 +68,7 @@ class LessonWalk extends Component
         $this->resources = $module->resources ?? [];
         $this->guidedLocked = app(GuidedTime::class)->isExhausted(auth()->id());
         $this->gatedSequence = app(LearningGate::class)->gated($module->id);
+        $this->reteach = app(Remediation::class)->activeSession(auth()->id(), $module->id) !== null;
 
         $lesson = Lesson::where('module_id', $module->id)->where('is_published', true)->first();
         $this->lessonTitle = $lesson?->title;
@@ -81,9 +87,31 @@ class LessonWalk extends Component
 
         if ($this->revealed < count($this->lessonBlocks)) {
             $this->revealed++;
+
+            // In a re-teach, Smooth reinforces the block she just finished by asking her a quick
+            // question about it as the next one opens (LL-15, soft — never blocks her advancing).
+            if ($this->reteach) {
+                $justFinished = $this->lessonBlocks[$this->revealed - 2] ?? null;
+                if ($justFinished !== null) {
+                    $this->dispatch('ask-smooth', prompt: $this->reinforcePrompt($justFinished));
+                }
+            }
         }
 
         $this->refreshCompletion();
+    }
+
+    /** A directive that has Smooth pose one quick reinforcing question about the block just finished. */
+    private function reinforcePrompt(array $block): string
+    {
+        $snippet = $block['content']
+            ?? $block['question']
+            ?? $block['prompt']
+            ?? $block['instruction']
+            ?? $this->topic;
+
+        return 'Ask me one quick question to check I understood this part of the lesson, then wait for my answer: "'
+            .Str::limit(strip_tags((string) $snippet), 160).'"';
     }
 
     /** Answer an inline check block (unscored — pure retrieval practice). */

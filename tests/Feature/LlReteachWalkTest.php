@@ -1,7 +1,9 @@
 <?php
 
+use App\Livewire\LessonWalk;
 use App\Livewire\PracticeWalk;
 use App\Livewire\ReteachWalk;
+use App\Models\Lesson;
 use App\Models\PracticeAttempt;
 use App\Models\PracticeQuestion;
 use App\Models\ReteachSession;
@@ -37,10 +39,28 @@ it('pulls her into the re-teach from practice on a triggering hard miss', functi
     Livewire::actingAs($student)->test(PracticeWalk::class, ['module' => $module])
         ->call('choose', 0)   // first-try miss -> retry
         ->call('choose', 0)   // second miss -> hard miss -> two in a row at D5 -> re-teach
-        ->assertRedirect(route('practice.reteach', $module->id));
+        ->assertRedirect(route('practice.lesson', $module->id));   // re-teach begins by re-walking the lesson
 
     expect(app(Remediation::class)->activeSession($student->id, $module->id))->not->toBeNull();
 })->group('scenario:LL-14');
+
+/** LL-15 (relearn) — the lesson re-walks in re-teach mode: Smooth reinforces each block, and the completion leads to the proof. */
+it('re-walks the real lesson in re-teach mode, reinforcing blocks and leading to the proof', function () {
+    $student = rwStudent('relearn');
+    $module = SyllabusModule::factory()->create();
+    Lesson::create(['module_id' => $module->id, 'is_published' => true, 'title' => 'Lesson', 'blocks' => [
+        ['type' => 'text', 'content' => 'First idea.'],
+        ['type' => 'text', 'content' => 'Second idea.'],
+    ]]);
+    app(Remediation::class)->start($student->id, $module->id, ReteachSession::TRIGGER_STREAK);
+
+    Livewire::actingAs($student)->test(LessonWalk::class, ['module' => $module])
+        ->assertSet('reteach', true)
+        ->call('next')                          // reveal block 2 -> Smooth asks about block 1
+        ->assertDispatched('ask-smooth')
+        ->assertSet('lessonComplete', true)
+        ->assertSee(route('practice.reteach', $module->id));   // completion leads to the D1 proof
+})->group('scenario:LL-15');
 
 /** LL-16 — three correct D1 proofs in the re-teach complete it and resume solo practice at D3. */
 it('completes the re-teach after three D1 proofs and redirects to practice at D3', function () {
@@ -52,9 +72,6 @@ it('completes the re-teach after three D1 proofs and redirects to practice at D3
     app(Remediation::class)->start($student->id, $module->id, ReteachSession::TRIGGER_STREAK);
 
     Livewire::actingAs($student)->test(ReteachWalk::class, ['module' => $module])
-        ->assertSet('phase', 'relearn')
-        ->call('startProving')
-        ->assertSet('phase', 'prove')
         ->call('choose', 1)->call('nextQuestion')   // proof 1
         ->call('choose', 1)->call('nextQuestion')   // proof 2
         ->call('choose', 1)                          // proof 3 -> complete
@@ -74,7 +91,6 @@ it('offers the teacher chat on a missed proof and keeps a route back to the tuto
     app(Remediation::class)->start($student->id, $module->id, ReteachSession::TRIGGER_WINDOW);
 
     Livewire::actingAs($student)->test(ReteachWalk::class, ['module' => $module])
-        ->call('startProving')
         ->call('choose', 0)                          // wrong
         ->assertSet('teacherOffered', true)
         ->assertSee('worked examples');              // the return-to-tutorial escape (LL-15 budget fallback)

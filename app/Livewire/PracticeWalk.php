@@ -145,7 +145,9 @@ class PracticeWalk extends Component
             $remediation = app(Remediation::class);
             if ($trigger = $remediation->triggerFor(auth()->id(), $this->moduleId)) {
                 $remediation->start(auth()->id(), $this->moduleId, $trigger);
-                $this->redirectRoute('practice.reteach', ['module' => $this->moduleId]);
+                // The re-teach begins by re-walking the real interactive lesson (LessonWalk sees the
+                // open session and leads on to the D1 proof afterwards).
+                $this->redirectRoute('practice.lesson', ['module' => $this->moduleId]);
 
                 return;
             }
