@@ -656,3 +656,28 @@
   commit: dfff501
   spec_hash: e37cc1dc3d58
   note: "Isaac browser-confirmed: tapping a locked stage shows a friendly child-language popup without entering; opening a locked stage's link directly bounces back to the module entry with the kind message banner."
+- scenario: LE-05
+  verified_at: 2026-08-13
+  commit: 383575f
+  spec_hash: c1de0111f40f
+  note: "Isaac browser-verified: the Filament Lessons resource composes a lesson from typed blocks (explanation, remember-this, worked example, image, inline check, and the four new interaction types), reorders/publishes per module, and reloads intact on edit."
+- scenario: LE-07
+  verified_at: 2026-08-13
+  commit: 383575f
+  spec_hash: 1db5db763031
+  note: "Isaac browser-verified on the module-52 demo lesson: fill-in-the-blank blocks the lesson on a wrong word and advances on the right word."
+- scenario: LE-08
+  verified_at: 2026-08-13
+  commit: 383575f
+  spec_hash: 577227ce481f
+  note: "Isaac browser-verified: mark-the-words blocks on a wrong tap and advances when the target word (runs) is tapped."
+- scenario: LE-09
+  verified_at: 2026-08-13
+  commit: 383575f
+  spec_hash: acd566d7026c
+  note: "Isaac browser-verified: match-pairs blocks until every left is matched to its right (big/large, fast/quick, happy/glad)."
+- scenario: LE-10
+  verified_at: 2026-08-13
+  commit: 383575f
+  spec_hash: b5181ccc0f34
+  note: "Isaac browser-verified: order-the-steps blocks on a wrong order and advances on the correct addition sequence."
