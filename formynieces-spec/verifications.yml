@@ -646,3 +646,13 @@
   commit: 63f059c
   spec_hash: 6fb473d662fb
   note: "Isaac walked the module-55 lesson (Spelling: ie/ei) to completion in the browser as student Aaliyah — stepped through all blocks and answered the inline check; the student_progress row stayed identical (needs_work / score 33 / rung 2 / streak 1), confirming the lesson never scores."
+- scenario: LE-03
+  verified_at: 2026-08-13
+  commit: dfff501
+  spec_hash: b093d28c507a
+  note: "Isaac browser-confirmed on module 55 (Aaliyah): after missing the competency check, Worked examples and Practice show greyed/locked; completing the lesson unlocked worked examples (lesson CTA became 'See worked examples'), completing worked examples unlocked practice; unlock is permanent."
+- scenario: LE-06
+  verified_at: 2026-08-13
+  commit: dfff501
+  spec_hash: e37cc1dc3d58
+  note: "Isaac browser-confirmed: tapping a locked stage shows a friendly child-language popup without entering; opening a locked stage's link directly bounces back to the module entry with the kind message banner."
