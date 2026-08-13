@@ -13,6 +13,7 @@ use App\Livewire\GuardianProgress;
 use App\Livewire\LessonWalk;
 use App\Livewire\ModuleEntry;
 use App\Livewire\PracticeWalk;
+use App\Livewire\ReteachWalk;
 use App\Livewire\TutorialWalk;
 use App\Livewire\WritingStop;
 use App\Services\Diagnostic\DiagnosticReconciliation;
@@ -130,6 +131,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/practice/{module}/tutorial', TutorialWalk::class)
         ->name('practice.tutorial');
+
+    // The AI-assisted re-teach, entered when practice goes badly (LL-14…16, LL-22).
+    Route::get('/practice/{module}/reteach', ReteachWalk::class)
+        ->name('practice.reteach');
 
     Route::get('/practice/{module}', PracticeWalk::class)
         ->name('practice.walk');

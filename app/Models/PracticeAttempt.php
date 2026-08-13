@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class PracticeAttempt extends Model
@@ -15,11 +15,13 @@ class PracticeAttempt extends Model
         'practice_question_id',
         'module_id',
         'difficulty',
+        'attempt',
         'is_correct',
     ];
 
     protected $casts = [
         'difficulty' => 'integer',
+        'attempt' => 'integer',
         'is_correct' => 'boolean',
     ];
 

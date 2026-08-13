@@ -8,6 +8,7 @@ use App\Services\Practice\LearningGate;
 use App\Services\Practice\PracticeQuestions;
 use App\Services\Practice\QuestionExposure;
 use App\Services\Practice\RecordPracticeAttempt;
+use App\Services\Practice\Remediation;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -137,6 +138,18 @@ class PracticeWalk extends Component
         }
 
         $this->awaitingRetry = false;
+
+        // A bad-enough run (two hard misses in a row at D3/D5, or five of the last seven) pulls her
+        // into an AI-assisted re-teach — kindly, never framed as failure (LL-14/LL-22).
+        if (! $wasCorrect) {
+            $remediation = app(Remediation::class);
+            if ($trigger = $remediation->triggerFor(auth()->id(), $this->moduleId)) {
+                $remediation->start(auth()->id(), $this->moduleId, $trigger);
+                $this->redirectRoute('practice.reteach', ['module' => $this->moduleId]);
+
+                return;
+            }
+        }
 
         // CE-02/03: a milestone this answer just crossed plays a big celebration
         // instead of the plain feedback screen.

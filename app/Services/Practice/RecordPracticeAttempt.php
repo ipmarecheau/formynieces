@@ -56,13 +56,14 @@ class RecordPracticeAttempt
         $isCorrect = $chosenIndex === $question->correct_index;
         $isFirstTry = $attempt <= 1;
 
-        [$progress, $wasMasteredBefore] = DB::transaction(function () use ($studentId, $question, $isCorrect, $isFirstTry) {
-            // 1. Diary: always record the raw attempt.
+        [$progress, $wasMasteredBefore] = DB::transaction(function () use ($studentId, $question, $isCorrect, $isFirstTry, $attempt) {
+            // 1. Diary: always record the raw attempt (with which try it was — hard-miss detection).
             PracticeAttempt::create([
                 'student_id' => $studentId,
                 'practice_question_id' => $question->id,
                 'module_id' => $question->module_id,
                 'difficulty' => $question->difficulty,
+                'attempt' => max(1, $attempt),
                 'is_correct' => $isCorrect,
             ]);
 
