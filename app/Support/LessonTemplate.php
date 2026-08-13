@@ -17,6 +17,14 @@ namespace App\Support;
  *   check:   ['type' => 'check', 'question' => string, 'options' => string[],
  *             'answer' => int, 'explain' => string]                      an inline self-check
  *   visual:  ['type' => 'visual', 'content' => string(url)]              an on-platform image
+ *   fillblank:  ['type' => 'fillblank', 'prompt' => string(with ___), 'answer' => string,
+ *                'options' => string[]?, 'explain' => string?]           fill in the blank (LE-07)
+ *   markwords:  ['type' => 'markwords', 'instruction' => string,
+ *                'text' => string(with *targets*), 'explain' => string?] tap the target words (LE-08)
+ *   matchpairs: ['type' => 'matchpairs', 'instruction' => string,
+ *                'pairs' => [['left'=>string,'right'=>string], ...]]     tap-to-match pairs (LE-09)
+ *   ordersteps: ['type' => 'ordersteps', 'instruction' => string,
+ *                'items' => string[] (in correct order)]                 order the steps (LE-10)
  *
  * Pedagogy baked into scaffold(): gradual release — hook → rule → worked example → check →
  * extend → check → wrap — so every topic teaches the same reliable way.
@@ -24,7 +32,7 @@ namespace App\Support;
 class LessonTemplate
 {
     /** The block types the lesson renderer understands. */
-    public const BLOCK_TYPES = ['heading', 'text', 'key', 'example', 'check', 'visual'];
+    public const BLOCK_TYPES = ['heading', 'text', 'key', 'example', 'check', 'visual', 'fillblank', 'markwords', 'matchpairs', 'ordersteps'];
 
     /**
      * A ready-to-fill skeleton for a new lesson. Copy it, replace every [bracketed]

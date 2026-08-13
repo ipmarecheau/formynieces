@@ -63,3 +63,31 @@ Feature: Interactive module lesson
     When she taps practice, or opens its link directly
     Then she is not taken into practice
     And a friendly, child-language message asks her to finish the lesson and worked examples first
+
+  @scenario:LE-07
+  Scenario: A fill-in-the-blank interaction gates on the right word
+    Given a lesson block asks her to fill in a blank
+    When she gives the wrong word
+    Then the lesson does not advance past the block
+    And when she gives the right word (any case, trimmed) the block is satisfied and she can go on
+
+  @scenario:LE-08
+  Scenario: A mark-the-words interaction gates on tapping the target words
+    Given a lesson block asks her to tap the target words in a sentence
+    When she taps the wrong set of words
+    Then the block is not satisfied
+    And when she taps exactly the target words the block is satisfied and she can go on
+
+  @scenario:LE-09
+  Scenario: A match-pairs interaction gates on matching every pair
+    Given a lesson block asks her to match pairs
+    When any pair is mismatched
+    Then the block is not satisfied
+    And when every left is matched to its right the block is satisfied and she can go on
+
+  @scenario:LE-10
+  Scenario: An order-the-steps interaction gates on the correct sequence
+    Given a lesson block asks her to put steps in order
+    When her order is wrong
+    Then the block is not satisfied
+    And when her order matches the intended sequence the block is satisfied and she can go on

@@ -36,6 +36,27 @@
     .lw-feedback { margin: 14px 0 0; font-size: 17px; font-weight: 700; }
     .lw-feedback.ok { color: #86efac; }
     .lw-feedback.no { color: #fca5a5; }
+    .lw-inter { background: rgba(103,232,249,0.06); border: 1.5px solid rgba(103,232,249,0.3); border-radius: 16px; padding: 18px 20px; margin: 0 0 18px; }
+    .lw-inter-tag { color: #67e8f9; display: block; }
+    .lw-inter-text { font-size: 19px; line-height: 1.8; color: #eaf3ff; margin: 0 0 14px; font-weight: 700; }
+    .lw-tokens, .lw-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .lw-token { background: rgba(255,255,255,0.06); border: 2px solid rgba(103,232,249,0.3); border-radius: 10px; padding: 8px 12px; color: #eaf3ff; font-size: 17px; cursor: pointer; }
+    .lw-token.is-picked { background: rgba(103,232,249,0.25); border-color: #67e8f9; color: #cffafe; }
+    .lw-chip { background: rgba(255,255,255,0.06); border: 2px solid rgba(103,232,249,0.35); border-radius: 999px; padding: 9px 16px; color: #eaf3ff; font-size: 16px; cursor: pointer; }
+    .lw-chip.is-picked { background: rgba(103,232,249,0.25); border-color: #67e8f9; }
+    .lw-blank { display: inline-block; min-width: 70px; border-bottom: 2px dashed #67e8f9; color: #cffafe; padding: 0 6px; font-weight: 700; text-align: center; }
+    .lw-input { background: rgba(255,255,255,0.06); border: 2px solid rgba(103,232,249,0.35); border-radius: 10px; padding: 10px 14px; color: #eaf3ff; font-size: 17px; width: 200px; }
+    .lw-pairs { display: flex; gap: 14px; margin-bottom: 12px; }
+    .lw-col { display: flex; flex-direction: column; gap: 8px; flex: 1; }
+    .lw-match { text-align: left; background: rgba(255,255,255,0.06); border: 2px solid rgba(103,232,249,0.3); border-radius: 10px; padding: 11px 14px; color: #eaf3ff; font-size: 16px; cursor: pointer; }
+    .lw-match.is-sel { border-color: #f6b71e; background: rgba(246,183,30,0.15); }
+    .lw-match.is-done { border-color: #34d399; background: rgba(52,211,153,0.18); color: #d1fae5; cursor: default; }
+    .lw-order { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+    .lw-order-row { display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.06); border: 2px solid rgba(103,232,249,0.3); border-radius: 10px; padding: 10px 14px; color: #eaf3ff; font-size: 16px; }
+    .lw-order-row span { flex: 1; }
+    .lw-arrow { background: rgba(255,255,255,0.1); border: none; border-radius: 8px; width: 34px; height: 34px; color: #eaf3ff; font-size: 15px; cursor: pointer; }
+    .lw-verify { margin-top: 4px; background: linear-gradient(135deg,#0e7490,#67e8f9); border: none; border-radius: 999px; padding: 11px 24px; color: #06263a; font-family: 'Fredoka One', cursive; font-size: 15px; cursor: pointer; }
+    .lw-verify:disabled { opacity: 0.45; cursor: default; }
     .lw-next { display: inline-flex; align-items: center; gap: 8px; margin-top: 6px; background: linear-gradient(135deg,#0e7490,#f6b71e); border: none; border-radius: 999px; padding: 14px 32px; color: #fff; font-family: 'Fredoka One', cursive; font-size: 17px; cursor: pointer; }
     .lw-complete { text-align: center; padding: 8px 0 4px; animation: lwFade 0.4s ease both; }
     .lw-complete img { width: 96px; height: 96px; object-fit: contain; margin: 0 auto 8px; display: block; animation: lwBob 2.2s ease-in-out infinite; }
@@ -98,6 +119,98 @@
                                     @endif
                                 </div>
                                 @break
+                            @case('fillblank')
+                                @php $answered = array_key_exists($i, $checkResults); $correct = $checkResults[$i] ?? false;
+                                     $parts = explode('___', $block['prompt'] ?? ''); $hasBank = ! empty($block['options']); @endphp
+                                <div class="lw-inter" x-data="{ val: '' }" wire:key="fb-{{ $i }}">
+                                    <span class="lw-inter-tag lw-check-tag">Fill in the blank</span>
+                                    <p class="lw-inter-text">{{ $parts[0] ?? '' }}<span class="lw-blank" x-text="val || '____'"></span>{{ $parts[1] ?? '' }}</p>
+                                    @if ($hasBank)
+                                        <div class="lw-chips">
+                                            @foreach ($block['options'] as $opt)
+                                                <button type="button" class="lw-chip" :class="{ 'is-picked': val === @js($opt) }" @click="val = @js($opt); $wire.answerFillBlank({{ $i }}, @js($opt))" @disabled($correct)>{{ $opt }}</button>
+                                            @endforeach
+                                        </div>
+                                    @else
+                                        <div style="display:flex; gap:10px; margin-bottom:12px; flex-wrap:wrap;">
+                                            <input type="text" class="lw-input" x-model="val" @disabled($correct)>
+                                            <button type="button" class="lw-verify" @click="$wire.answerFillBlank({{ $i }}, val)" x-bind:disabled="! val.trim()">Check</button>
+                                        </div>
+                                    @endif
+                                    @if ($answered && $correct)<p class="lw-feedback ok">Yes! 🎉 {{ $block['explain'] ?? '' }}</p>
+                                    @elseif ($answered)<p class="lw-feedback no">Not quite — try again. 🐢</p>@endif
+                                </div>
+                                @break
+
+                            @case('markwords')
+                                @php $answered = array_key_exists($i, $checkResults); $correct = $checkResults[$i] ?? false;
+                                     $tokens = preg_split('/\s+/', trim($block['text'] ?? '')) ?: []; @endphp
+                                <div class="lw-inter" x-data="{ picked: [] }" wire:key="mw-{{ $i }}">
+                                    <span class="lw-inter-tag lw-check-tag">{{ $block['instruction'] ?? 'Tap the words' }}</span>
+                                    <div class="lw-tokens">
+                                        @foreach ($tokens as $ti => $tok)
+                                            <button type="button" class="lw-token" :class="{ 'is-picked': picked.includes({{ $ti }}) }" @click="picked.includes({{ $ti }}) ? picked = picked.filter(x => x !== {{ $ti }}) : picked.push({{ $ti }})" @disabled($correct)>{{ trim($tok, '*') }}</button>
+                                        @endforeach
+                                    </div>
+                                    <button type="button" class="lw-verify" @click="$wire.answerMarkWords({{ $i }}, picked)" x-bind:disabled="picked.length === 0">Check</button>
+                                    @if ($answered && $correct)<p class="lw-feedback ok">Yes! 🎉 {{ $block['explain'] ?? '' }}</p>
+                                    @elseif ($answered)<p class="lw-feedback no">Not quite — look again and re-tap. 🐢</p>@endif
+                                </div>
+                                @break
+
+                            @case('matchpairs')
+                                @php $answered = array_key_exists($i, $checkResults); $correct = $checkResults[$i] ?? false;
+                                     $pairs = array_values($block['pairs'] ?? []);
+                                     $lefts = array_map(fn ($p) => $p['left'] ?? '', $pairs);
+                                     $rights = array_map(fn ($p) => $p['right'] ?? '', $pairs); @endphp
+                                <div class="lw-inter" wire:key="mp-{{ $i }}"
+                                    x-data="{ selLeft: null, matched: {},
+                                        order: [...Array({{ count($rights) }}).keys()].sort(() => Math.random() - 0.5),
+                                        used(v) { return Object.values(this.matched).includes(v); },
+                                        pickRight(v) { if (this.selLeft === null || this.used(v)) return; this.matched[this.selLeft] = v; this.selLeft = null;
+                                            if (Object.keys(this.matched).length === {{ count($pairs) }}) $wire.answerMatchPairs({{ $i }}, this.matched); } }">
+                                    <span class="lw-inter-tag lw-check-tag">{{ $block['instruction'] ?? 'Match the pairs' }}</span>
+                                    <div class="lw-pairs">
+                                        <div class="lw-col">
+                                            @foreach ($lefts as $li => $left)
+                                                <button type="button" class="lw-match" :class="{ 'is-sel': selLeft === {{ $li }}, 'is-done': matched[{{ $li }}] !== undefined }" @click="matched[{{ $li }}] === undefined && (selLeft = {{ $li }})" @disabled($correct)>{{ $left }}</button>
+                                            @endforeach
+                                        </div>
+                                        <div class="lw-col">
+                                            <template x-for="ri in order" :key="ri">
+                                                <button type="button" class="lw-match" :class="{ 'is-done': used(@js($rights)[ri]) }" @click="pickRight(@js($rights)[ri])" x-text="@js($rights)[ri]"></button>
+                                            </template>
+                                        </div>
+                                    </div>
+                                    @if ($answered && $correct)<p class="lw-feedback ok">Yes! 🎉 All matched.</p>
+                                    @elseif ($answered)<p class="lw-feedback no">Not quite — tap “start over” and try again. 🐢</p>
+                                        <button type="button" class="lw-verify" @click="matched = {}; selLeft = null">Start over</button>@endif
+                                </div>
+                                @break
+
+                            @case('ordersteps')
+                                @php $answered = array_key_exists($i, $checkResults); $correct = $checkResults[$i] ?? false;
+                                     $items = array_values($block['items'] ?? []); @endphp
+                                <div class="lw-inter" wire:key="os-{{ $i }}"
+                                    x-data="{ order: @js($items).slice().sort(() => Math.random() - 0.5),
+                                        up(k) { if (k > 0) { [this.order[k-1], this.order[k]] = [this.order[k], this.order[k-1]]; } },
+                                        down(k) { if (k < this.order.length - 1) { [this.order[k+1], this.order[k]] = [this.order[k], this.order[k+1]]; } } }">
+                                    <span class="lw-inter-tag lw-check-tag">{{ $block['instruction'] ?? 'Put them in order' }}</span>
+                                    <div class="lw-order">
+                                        <template x-for="(it, k) in order" :key="it">
+                                            <div class="lw-order-row">
+                                                <span x-text="it"></span>
+                                                <button type="button" class="lw-arrow" @click="up(k)" @disabled($correct)>▲</button>
+                                                <button type="button" class="lw-arrow" @click="down(k)" @disabled($correct)>▼</button>
+                                            </div>
+                                        </template>
+                                    </div>
+                                    <button type="button" class="lw-verify" @click="$wire.answerOrderSteps({{ $i }}, order)" @disabled($correct)>Check</button>
+                                    @if ($answered && $correct)<p class="lw-feedback ok">Yes! 🎉 That's the right order.</p>
+                                    @elseif ($answered)<p class="lw-feedback no">Not yet — try a different order. 🐢</p>@endif
+                                </div>
+                                @break
+
                             @default <p class="lw-para">{{ $content }}</p>
                         @endswitch
                     </div>

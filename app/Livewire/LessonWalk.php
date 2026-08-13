@@ -21,6 +21,9 @@ use Livewire\Component;
 #[Layout('components.layouts.diagnostic')]
 class LessonWalk extends Component
 {
+    /** Block types she must answer correctly before "next" reveals the following block (gating). */
+    public const INTERACTIVE_TYPES = ['check', 'fillblank', 'markwords', 'matchpairs', 'ordersteps'];
+
     public int $moduleId;
 
     public string $topic;
@@ -95,27 +98,110 @@ class LessonWalk extends Component
         $this->refreshCompletion();
     }
 
-    /** Whether "next" is allowed: the current block is not an unanswered/failed check. */
+    /** Whether "next" is allowed: the current block is not an unanswered/failed interaction. */
     public function canAdvance(): bool
     {
         $current = $this->lessonBlocks[$this->revealed - 1] ?? null;
-        if ($current !== null && ($current['type'] ?? '') === 'check') {
+        if ($current !== null && in_array($current['type'] ?? '', self::INTERACTIVE_TYPES, true)) {
             return ($this->checkResults[$this->revealed - 1] ?? false) === true;
         }
 
         return true;
     }
 
+    /** Answer a fill-in-the-blank block — correct on a trimmed, case-insensitive match (LE-07). */
+    public function answerFillBlank(int $index, string $value): void
+    {
+        $block = $this->lessonBlocks[$index] ?? null;
+        if ($block === null || ($block['type'] ?? '') !== 'fillblank') {
+            return;
+        }
+
+        $expected = mb_strtolower(trim((string) ($block['answer'] ?? '')));
+        $given = mb_strtolower(trim($value));
+        $this->checkResults[$index] = ($given !== '' && $given === $expected);
+        $this->refreshCompletion();
+    }
+
+    /** Answer a mark-the-words block — correct when the tapped tokens are exactly the targets (LE-08). */
+    public function answerMarkWords(int $index, array $selected): void
+    {
+        $block = $this->lessonBlocks[$index] ?? null;
+        if ($block === null || ($block['type'] ?? '') !== 'markwords') {
+            return;
+        }
+
+        $targets = self::markWordTargets((string) ($block['text'] ?? ''));
+        $chosen = array_map('intval', array_values($selected));
+        sort($chosen);
+        sort($targets);
+        $this->checkResults[$index] = ($targets !== [] && $chosen === $targets);
+        $this->refreshCompletion();
+    }
+
+    /** Answer a match-pairs block — correct when every left maps to its authored right value (LE-09). */
+    public function answerMatchPairs(int $index, array $mapping): void
+    {
+        $block = $this->lessonBlocks[$index] ?? null;
+        if ($block === null || ($block['type'] ?? '') !== 'matchpairs') {
+            return;
+        }
+
+        $pairs = array_values($block['pairs'] ?? []);
+        $ok = $pairs !== [];
+        foreach ($pairs as $i => $pair) {
+            if (($mapping[$i] ?? null) !== ($pair['right'] ?? null)) {
+                $ok = false;
+                break;
+            }
+        }
+        $this->checkResults[$index] = $ok;
+        $this->refreshCompletion();
+    }
+
+    /** Answer an order-the-steps block — correct when her sequence matches the authored order (LE-10). */
+    public function answerOrderSteps(int $index, array $order): void
+    {
+        $block = $this->lessonBlocks[$index] ?? null;
+        if ($block === null || ($block['type'] ?? '') !== 'ordersteps') {
+            return;
+        }
+
+        $items = array_values($block['items'] ?? []);
+        $this->checkResults[$index] = ($items !== [] && array_values($order) === $items);
+        $this->refreshCompletion();
+    }
+
+    /**
+     * The token indices (in a whitespace split) of the *asterisk-marked* target words in a
+     * mark-the-words block. The renderer strips the asterisks for display but keeps the same split,
+     * so tapped indices line up with these targets.
+     *
+     * @return array<int, int>
+     */
+    public static function markWordTargets(string $text): array
+    {
+        $tokens = preg_split('/\s+/', trim($text)) ?: [];
+        $targets = [];
+        foreach ($tokens as $i => $token) {
+            if (str_contains($token, '*')) {
+                $targets[] = $i;
+            }
+        }
+
+        return $targets;
+    }
+
     private function refreshCompletion(): void
     {
         $atEnd = $this->revealed >= count($this->lessonBlocks);
 
-        // Every revealed check must be correct.
+        // Every revealed interactive block must be answered correctly.
         foreach ($this->lessonBlocks as $index => $block) {
             if ($index >= $this->revealed) {
                 break;
             }
-            if (($block['type'] ?? '') === 'check' && ($this->checkResults[$index] ?? false) !== true) {
+            if (in_array($block['type'] ?? '', self::INTERACTIVE_TYPES, true) && ($this->checkResults[$index] ?? false) !== true) {
                 $this->lessonComplete = false;
 
                 return;
