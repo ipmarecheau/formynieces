@@ -43,12 +43,20 @@ class LessonBlockSchema
         'key' => [],
         'example' => ['steps'],
         'visual' => [],
-        'check' => ['explain'],
-        'fillblank' => ['options', 'explain'],
-        'markwords' => ['explain'],
-        'matchpairs' => [],
-        'ordersteps' => [],
+        'check' => ['explain', 'rule', 'practiceItems'],
+        'fillblank' => ['options', 'explain', 'rule', 'practiceItems'],
+        'markwords' => ['explain', 'rule', 'practiceItems'],
+        'matchpairs' => ['rule', 'practiceItems'],
+        'ordersteps' => ['rule', 'practiceItems'],
     ];
+
+    /**
+     * Interactive block types that carry re-teach content (`rule` + `practiceItems`) so Smooth can
+     * remediate the EXACT rule the block teaches (LL-24). See the lesson authoring guide §3.1.
+     *
+     * @var array<int, string>
+     */
+    public const INTERACTIVE = ['check', 'fillblank', 'markwords', 'matchpairs', 'ordersteps'];
 
     /** @return array<int, string> the known block type names. */
     public static function types(): array

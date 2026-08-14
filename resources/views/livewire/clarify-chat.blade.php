@@ -1,8 +1,18 @@
-<div class="cc-panel" x-data="{ glow: false, shake: false }" :class="{ 'is-glowing': glow, 'is-shaking': shake }"
-    @smooth-spoke.window="glow = true; shake = true; setTimeout(() => shake = false, 600); $nextTick(() => { if ($refs.log) $refs.log.scrollTop = $refs.log.scrollHeight })"
-    @focusin="glow = false">
+<div x-data="{ open: false, glow: false, shake: false }"
+    @smooth-spoke.window="glow = true; shake = true; setTimeout(() => shake = false, 600); $nextTick(() => { if ($refs.log) $refs.log.scrollTop = $refs.log.scrollHeight; if ($refs.ccInput) $refs.ccInput.value = '' })">
+    @php $locked = in_array($reteachMode, ['remediation', 'final'], true); @endphp
     <style>
-        .cc-panel { display: flex; flex-direction: column; height: 100%; min-height: 420px; background: #0a1f38; border: 2px solid rgba(34,211,238,0.3); border-radius: 20px; overflow: hidden; transition: border-color 0.2s; }
+        [x-cloak] { display: none !important; }
+        .cc-fab { position: fixed; z-index: 80; right: 20px; bottom: 20px; width: 66px; height: 66px; border-radius: 50%; border: 3px solid #67e8f9; background: #0c2440; padding: 4px; cursor: pointer; box-shadow: 0 8px 22px rgba(0,0,0,0.4); transition: transform 0.15s; }
+        .cc-fab:hover { transform: scale(1.06); }
+        .cc-fab img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
+        .cc-fab-badge { position: absolute; top: -3px; right: -3px; background: #f0abfc; border-radius: 50%; min-width: 22px; height: 22px; font-size: 12px; display: flex; align-items: center; justify-content: center; }
+        .cc-backdrop { position: fixed; inset: 0; z-index: 79; background: rgba(4,14,30,0.62); }
+        .cc-widget { position: fixed; z-index: 80; right: 20px; bottom: 20px; width: 400px; max-width: calc(100vw - 40px); height: 70vh; max-height: 640px; }
+        @media (max-width: 560px) { .cc-widget { right: 0; left: 0; bottom: 0; top: 0; width: 100%; height: 100%; max-height: none; } }
+        .cc-min { margin-left: auto; background: rgba(255,255,255,0.08); border: none; color: #e6f2fb; width: 32px; height: 32px; border-radius: 50%; font-size: 22px; line-height: 1; cursor: pointer; }
+        .cc-min:hover { background: rgba(255,255,255,0.16); }
+        .cc-panel { display: flex; flex-direction: column; height: 100%; background: #0a1f38; border: 2px solid rgba(34,211,238,0.3); border-radius: 20px; overflow: hidden; transition: border-color 0.2s; box-shadow: 0 12px 40px rgba(0,0,0,0.45); }
         .cc-panel.is-glowing { border-color: #f87171; animation: ccRedGlow 1.3s ease-in-out infinite; }
         .cc-panel.is-shaking { animation: ccShake 0.6s ease-in-out; }
         .cc-panel.is-shaking.is-glowing { animation: ccShake 0.6s ease-in-out, ccRedGlow 1.3s ease-in-out infinite; }
@@ -30,32 +40,82 @@
         .cc-send { flex: 0 0 auto; background: linear-gradient(135deg,#0e7490,#f6b71e); border: none; border-radius: 999px; width: 46px; height: 46px; color: #fff; font-size: 20px; cursor: pointer; }
         .cc-send:disabled { opacity: 0.5; cursor: default; }
         .cc-thinking { align-self: flex-start; color: #7dd3fc; font-size: 15px; font-weight: 600; }
+        .cc-warmup { align-self: stretch; background: rgba(246,183,30,0.10); border: 1.5px solid rgba(246,183,30,0.4); border-radius: 16px; padding: 14px 16px; animation: ccFade 0.32s ease both; }
+        .cc-warmup-tag { font-family: 'Fredoka One', cursive; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: #f6b71e; margin: 0 0 8px; }
+        .cc-warmup-q { font-size: 16.5px; font-weight: 700; color: #eaf9ff; line-height: 1.5; margin: 0 0 12px; }
+        .cc-warmup-opts { display: flex; flex-direction: column; gap: 8px; }
+        .cc-warmup-opt { text-align: left; background: rgba(255,255,255,0.06); border: 2px solid rgba(246,183,30,0.35); border-radius: 12px; padding: 11px 14px; color: #eaf9ff; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.15s, transform 0.1s; }
+        .cc-warmup-opt:hover { background: rgba(246,183,30,0.16); transform: translateY(-1px); }
+        .cc-warmup-opt:disabled { opacity: 0.6; cursor: default; }
+        .cc-worked { font-size: 15.5px; line-height: 1.6; color: #eaf9ff; background: rgba(255,255,255,0.05); border-left: 3px solid #67e8f9; border-radius: 8px; padding: 10px 12px; margin: 0 0 12px; }
     </style>
 
-    <div class="cc-head">
-        <img src="{{ asset('images/voyage/companion/smooth-chart.webp') }}" alt="Smooth">
-        <span><b>Ask Smooth</b><small>your lesson buddy 🐢</small></span>
-    </div>
+    {{-- Collapsed bubble + its dim-on-open backdrop — only when Smooth isn't mid-required-step. --}}
+    @if (! $locked)
+        <button type="button" class="cc-fab" x-show="!open" @click="open = true" aria-label="Chat with Smooth">
+            <img src="{{ asset('images/voyage/companion/smooth-chart.webp') }}" alt="Smooth">
+            @if (count($messages) > 0)<span class="cc-fab-badge">💬</span>@endif
+        </button>
+        <div class="cc-backdrop" x-show="open" x-cloak style="display:none"></div>
+    @else
+        {{-- Required step: dim the lesson and keep the panel locked open. --}}
+        <div class="cc-backdrop"></div>
+    @endif
 
-    <div class="cc-log" wire:key="cc-log" x-ref="log">
-        @forelse ($messages as $i => $message)
-            <div class="cc-msg {{ $message['role'] }}" wire:key="cc-msg-{{ $i }}">{{ $message['content'] }}</div>
-        @empty
-            <div class="cc-empty">
-                <p>Hi! I'm Smooth 🐢<br>Tap a button, or type to me!</p>
-                <div class="cc-chips">
-                    @foreach (\App\Livewire\ClarifyChat::STARTERS as $starter)
-                        <button type="button" class="cc-chip" wire:click="ask(@js($starter))">{{ $starter }}</button>
-                    @endforeach
-                </div>
+    <div class="cc-widget" @if (! $locked) x-show="open" x-cloak style="display:none" @endif>
+        <div class="cc-panel" :class="{ 'is-glowing': glow, 'is-shaking': shake }" @focusin="glow = false">
+            <div class="cc-head">
+                <img src="{{ asset('images/voyage/companion/smooth-chart.webp') }}" alt="Smooth">
+                <span><b>Ask Smooth</b><small>your lesson buddy 🐢</small></span>
+                @if (! $locked)
+                    <button type="button" class="cc-min" @click="open = false" aria-label="Minimize chat">–</button>
+                @endif
             </div>
-        @endforelse
 
-        <div wire:loading.flex wire:target="send,reinforce" class="cc-thinking" style="display: none;">Smooth is thinking… 🐢</div>
+            <div class="cc-log" wire:key="cc-log" x-ref="log">
+                @forelse ($messages as $i => $message)
+                    <div class="cc-msg {{ $message['role'] }}" wire:key="cc-msg-{{ $i }}">{{ $message['content'] }}</div>
+                @empty
+                    <div class="cc-empty">
+                        @if ($reteach)
+                            <p>I'm right here with you 🐢<br>Work through the lesson — I'll pop in if something's tricky!</p>
+                        @else
+                            <p>Hi! I'm Smooth 🐢<br>Tap a button, or type to me!</p>
+                            <div class="cc-chips">
+                                @foreach (\App\Livewire\ClarifyChat::STARTERS as $starter)
+                                    <button type="button" class="cc-chip" wire:click="ask(@js($starter))">{{ $starter }}</button>
+                                @endforeach
+                            </div>
+                        @endif
+                    </div>
+                @endforelse
+
+                @if ($reteachMode === 'remediation')
+                    <div class="cc-warmup" wire:key="rem-{{ $remStep }}">
+                        @if ($remStep === 'check')
+                            <p class="cc-warmup-tag">Your turn ✏️</p>
+                            <p class="cc-warmup-q">Type {{ $remItem['prompt'] ?? 'your answer' }}</p>
+                        @else
+                            <p class="cc-warmup-tag">Say it back ✏️</p>
+                            <p class="cc-warmup-q">In your own words — what's the rule?</p>
+                        @endif
+                        <p class="cc-worked">Type your answer below and tap ➤</p>
+                    </div>
+                @elseif ($reteachMode === 'final' && isset($finalItems[$finalAt]))
+                    <div class="cc-warmup" wire:key="final-{{ $finalAt }}">
+                        <p class="cc-warmup-tag">Review {{ $finalAt + 1 }} of {{ count($finalItems) }} ✏️</p>
+                        <p class="cc-warmup-q">Type {{ $finalItems[$finalAt]['prompt'] }}</p>
+                        <p class="cc-worked">Type your answer below and tap ➤</p>
+                    </div>
+                @endif
+
+                <div wire:loading.flex wire:target="send" class="cc-thinking" style="display: none;">Smooth is thinking… 🐢</div>
+            </div>
+
+            <form class="cc-form" wire:submit="send">
+                <input class="cc-input" type="text" wire:model="draft" x-ref="ccInput" placeholder="Type to Smooth…" maxlength="300" autocomplete="off">
+                <button class="cc-send" type="submit" wire:loading.attr="disabled" wire:target="send" aria-label="Send">➤</button>
+            </form>
+        </div>
     </div>
-
-    <form class="cc-form" wire:submit="send">
-        <input class="cc-input" type="text" wire:model="draft" placeholder="Type to Smooth…" maxlength="300" autocomplete="off">
-        <button class="cc-send" type="submit" wire:loading.attr="disabled" wire:target="send" aria-label="Send">➤</button>
-    </form>
 </div>

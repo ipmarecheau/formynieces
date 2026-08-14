@@ -2,6 +2,7 @@
 
 use App\Livewire\ClarifyChat;
 use App\Models\Lesson;
+use App\Models\ReteachSession;
 use App\Models\StudentProgress;
 use App\Models\SyllabusModule;
 use App\Models\User;
@@ -9,6 +10,17 @@ use App\Services\LlmService;
 use App\Services\Safety\ChildSafetyModerator;
 use App\Services\Safety\SafetyResult;
 use Livewire\Livewire;
+
+/** Put the student into an active re-teach on this module, so the chat mounts in re-teach mode. */
+function ccStartReteach(User $student, SyllabusModule $module): void
+{
+    ReteachSession::create([
+        'student_id' => $student->id,
+        'module_id' => $module->id,
+        'trigger' => ReteachSession::TRIGGER_STREAK,
+        'started_at' => now(),
+    ]);
+}
 
 function ccStudent(): User
 {
@@ -118,23 +130,82 @@ it('answers when the lesson asks Smooth for more examples', function () {
         ->assertSee('here is another worked example');
 })->group('scenario:LE-04');
 
-it('reinforces a block with only Smooths short question — no directive bubble, and it glows (LL-15)', function () {
+/** LL-15/24/25 — remediation tests only the block's rule: type the word; a miss explains the rule and asks her to say it back. */
+it('remediates the block rule with type-the-word + say-it-back, then returns (LL-15)', function () {
     $student = ccStudent();
     $module = ccModule();
+    ccStartReteach($student, $module);
     fakeModerator(SafetyResult::safe());
 
     $llm = Mockery::mock(LlmService::class);
-    $llm->shouldReceive('chat')->once()->andReturn('Which letter do we change the y to? 🐢');
+    $llm->shouldReceive('completeJson')->once()->andReturn(['match' => true]);   // say-it-back close enough
     $this->instance(LlmService::class, $llm);
 
-    $component = Livewire::actingAs($student)
+    Livewire::actingAs($student)
         ->test(ClarifyChat::class, ['moduleId' => $module->id])
-        ->call('reinforce', 'If a word ends in a consonant + y, change the y to i and add es.')
-        ->assertDispatched('smooth-spoke')
-        ->assertSee('Which letter do we change')
-        ->assertDontSee('The child just finished');   // the hidden directive is never shown
+        ->assertSet('reteach', true)
+        ->call('startRemediation', 'consonant then y: change y to i and add es', ['prompt' => "the plural of 'baby'", 'answer' => 'babies'])
+        ->assertSet('reteachMode', 'remediation')
+        ->assertSet('remStep', 'check')
+        ->assertSee('the plural of')                              // the same-rule word to type
+        ->set('draft', 'babys')->call('send')                    // wrong -> explain the rule + ask to say it back
+        ->assertSet('remStep', 'sayback')
+        ->assertSee('change y to i')                             // the block's own rule was explained
+        ->set('draft', 'you swap the y for i and add es')->call('send')   // close enough -> return
+        ->assertSet('reteachMode', 'dormant')
+        ->assertDispatched('remediation-return');
+})->group('scenario:LL-15', 'scenario:LL-25');
 
-    $messages = $component->get('messages');
-    expect($messages)->toHaveCount(1);                 // only Smooth's turn, no verbose user bubble
-    expect($messages[0]['role'])->toBe('assistant');
+/** LL-24 — a correct typed same-rule answer returns to the lesson without the say-it-back. */
+it('returns to the lesson when she types the right same-rule answer (LL-24)', function () {
+    $student = ccStudent();
+    $module = ccModule();
+    ccStartReteach($student, $module);
+
+    Livewire::actingAs($student)
+        ->test(ClarifyChat::class, ['moduleId' => $module->id])
+        ->call('startRemediation', 'rule', ['prompt' => "the plural of 'lady'", 'answer' => 'ladies'])
+        ->set('draft', ' Ladies ')->call('send')                // case/space-insensitive match
+        ->assertSet('reteachMode', 'dormant')
+        ->assertDispatched('remediation-return');
+})->group('scenario:LL-24');
+
+/** LL-15 — typing when nothing is active nudges her back to the lesson, never a tutor turn. */
+it('nudges typing back to the lesson when nothing is active (LL-15)', function () {
+    $student = ccStudent();
+    $module = ccModule();
+    ccStartReteach($student, $module);
+
+    $llm = Mockery::mock(LlmService::class);
+    $llm->shouldReceive('chat')->never();   // no tutor turn in a re-teach
+    $this->instance(LlmService::class, $llm);
+
+    Livewire::actingAs($student)
+        ->test(ClarifyChat::class, ['moduleId' => $module->id])
+        ->set('draft', 'just tell me the answer')->call('send')
+        ->assertSee('continue the lesson');
+})->group('scenario:LL-15');
+
+/** LL-15/24 — the end-of-lesson review uses the LESSON'S OWN practice items, guides on a miss, never gives the answer up front. */
+it('reviews the lessons own practice items as guided type-the-answer (LL-15)', function () {
+    $student = ccStudent();
+    $module = ccModule();
+    Lesson::where('module_id', $module->id)->update(['blocks' => [
+        ['type' => 'check', 'question' => 'q', 'options' => ['a', 'b'], 'answer' => 1,
+            'rule' => 'just add s', 'practiceItems' => [['prompt' => "the plural of 'cat'", 'answer' => 'cats']]],
+    ]]);
+    ccStartReteach($student, $module);
+
+    Livewire::actingAs($student)
+        ->test(ClarifyChat::class, ['moduleId' => $module->id])
+        ->call('startFinal')
+        ->assertSet('reteachMode', 'final')
+        ->assertSee('Type the plural of')            // guided: she types, no answer shown
+        ->assertDontSee('boxes')                     // never off-lesson bank content
+        ->set('draft', 'catz')->call('send')         // wrong -> a RULE hint, not the answer
+        ->assertSee('just add s')
+        ->assertSet('reteachMode', 'final')
+        ->set('draft', 'cats')->call('send')         // correct -> done
+        ->assertSet('reteachMode', 'dormant')
+        ->assertDispatched('final-done');
 })->group('scenario:LL-15');

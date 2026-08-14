@@ -110,6 +110,41 @@ correctly before she advances, so their answer must be unambiguous.
 Don't reach for an interaction that doesn't fit the skill just for variety — a mismatched
 interaction is incoherent.
 
+### 3.1 Re-teach content on interactive blocks (`rule` + `practiceItems`)
+
+When a child misses an interactive block **twice** during an AI-assisted re-teach, Smooth pauses the
+lesson and remediates **that exact block's rule** — never a different rule from elsewhere in the
+module (the coherence rule, enforced structurally). To do that, each interactive block (`check`,
+`fillblank`, `markwords`, `matchpairs`, `ordersteps`) SHOULD carry two extra fields:
+
+| Field | Purpose | Shape |
+|---|---|---|
+| `rule` | The one-sentence rule this block tests, in kid words (Smooth explains + asks her to say it back) | string |
+| `practiceItems` | A few same-rule words to remediate with (Smooth tests these, one per cycle) | array of `{ "prompt": "…", "answer": "…" }` |
+
+```json
+{
+  "type": "check",
+  "question": "What is the plural of 'city'?",
+  "options": ["citys", "cities", "cityes"],
+  "answer": 1,
+  "explain": "t is a consonant, so change y to i and add es: cities.",
+  "rule": "If a word ends in a consonant then y, change the y to i and add es.",
+  "practiceItems": [
+    { "prompt": "the plural of 'baby'", "answer": "babies" },
+    { "prompt": "the plural of 'lady'", "answer": "ladies" },
+    { "prompt": "the plural of 'penny'", "answer": "pennies" }
+  ]
+}
+```
+
+- Every `practiceItems` entry MUST follow the **same rule** as the block — this is what keeps the
+  remediation on the exact skill she just missed.
+- `answer` is matched case-insensitively (trimmed) when she types it. Give at least 3 items so a
+  3-cycle remediation never repeats a word.
+- A block with no `rule`/`practiceItems` still works, but its remediation falls back to the block's
+  own item only (no fresh same-rule words) — always author these for interactive blocks.
+
 ---
 
 ## 4. Writing for the learner
@@ -126,17 +161,28 @@ The reader is a girl in Standard 4/5 in Trinidad & Tobago, ~10–12, often on a 
 
 ---
 
-## 5. How Smooth (the AI) uses the lesson — why coherence keeps it smart
+## 5. How Smooth (the AI) uses the lesson
 
-Smooth appears beside the lesson (the **clarify chat**) and, during an **AI-assisted re-teach**,
-asks the child a quick reinforcing question about **each block as she finishes it**. Smooth's context
-is built from **the module topic + the lesson's block text**. So:
+Smooth is a floating **chat widget** (bottom-right bubble → panel) beside the lesson. Outside a
+re-teach it's the free **clarify chat** (LE-04): ask about the lesson, grounded on the module topic +
+the lesson text, never gives practice answers.
 
-- **Coherent lesson** → Smooth's questions and answers stay exactly on the block and the skill.
-- **Incoherent lesson** (title says X, blocks are about Y) → Smooth blends the two and asks
-  confusing, off-topic questions.
+**Inside an AI-assisted re-teach**, Smooth is *structured and responsive*, not chatty. She stays quiet
+while the child is on track. The flow (LL-15/24/25/26/27):
 
-Coherence isn't a nicety here — it's what makes the AI tutor usable.
+1. The child gets **two tries** at each interactive block. A second miss pauses the lesson (a gentle
+   hand-off splash), and Smooth's chat **locks open** and takes over.
+2. Smooth remediates **only that block's rule** (its `rule` + `practiceItems` — §3.1): she tests a
+   same-rule word; on a miss she **explains the rule**, then asks the child to **say the rule back**
+   (an LLM judges "close enough"; after a few unclear tries Smooth accepts it so the child is never
+   stuck).
+3. The lesson resumes and **re-asks the missed step**. If it's still wrong, the **correct answer is
+   shown** and Smooth tries **another same-rule word**.
+4. After **three cycles**, the lesson is left **"in progress"** — the child may move on, and it
+   returns each day until done. *(Phase 2: parent notified with action items + a worksheet printout.)*
+
+The LLM is used only to judge the "say it back" step; everything a child is tested on comes from the
+authored block (§3.1) — so **coherence is enforced structurally**, not left to the AI to get right.
 
 ---
 
@@ -151,6 +197,8 @@ Coherence isn't a nicety here — it's what makes the AI tutor usable.
 - [ ] Each `markwords` `text` wraps **only** the correct target word(s) in `*asterisks*`.
 - [ ] Each `matchpairs` has ≥2 correct `{left,right}` pairs; each `ordersteps` lists `items` in the
       **correct** order (≥2).
+- [ ] **Each interactive block has a `rule`** (one kid-friendly sentence) **and ≥3 same-rule
+      `practiceItems`** (`{prompt, answer}`) for the re-teach — every item follows that block's rule.
 - [ ] Language is short, kind, and age-appropriate; examples are correct.
 - [ ] `module` is the right code; `is_published` is set as intended.
 - [ ] 6–10 blocks, at least two interactive.
@@ -172,7 +220,7 @@ making plurals of words ending in *y*, and nothing else:
       { "type": "text", "content": "Lots of words end in the letter y. Let's learn the trick for making them mean 'more than one'." },
       { "type": "key", "content": "If a word ends in a consonant + y, change the y to i and add es." },
       { "type": "example", "content": "Make 'baby' mean more than one.", "steps": ["'baby' ends in b (a consonant) + y.", "Change the y to i: 'babi'.", "Add es: 'babies'."] },
-      { "type": "check", "question": "What is the plural of 'city'?", "options": ["citys", "cities", "cityes"], "answer": 1, "explain": "t is a consonant, so change y to i and add es: cities." },
+      { "type": "check", "question": "What is the plural of 'city'?", "options": ["citys", "cities", "cityes"], "answer": 1, "explain": "t is a consonant, so change y to i and add es: cities.", "rule": "If a word ends in a consonant then y, change the y to i and add es.", "practiceItems": [ {"prompt": "the plural of 'baby'", "answer": "babies"}, {"prompt": "the plural of 'lady'", "answer": "ladies"}, {"prompt": "the plural of 'penny'", "answer": "pennies"} ] },
       { "type": "fillblank", "prompt": "One puppy, two ___ .", "answer": "puppies", "options": ["puppys", "puppies"], "explain": "Consonant + y, so y becomes i and we add es." },
       { "type": "text", "content": "But watch out! If a vowel (a, e, i, o, u) comes before the y, just add s — no change." },
       { "type": "markwords", "instruction": "Tap the word that is spelled correctly", "text": "The two *boys* played. The two boies played.", "explain": "'boy' has a vowel (o) before y, so we just add s: boys." },

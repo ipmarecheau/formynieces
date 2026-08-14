@@ -170,13 +170,48 @@ Feature: Module learning loop
     And she may redo the lesson and/or the tutorial with AI assistance
     And it is framed as a re-teach, not a failure
 
+  # The re-teach re-walks the REAL interactive lesson. Smooth stays quiet while she is on track and
+  # only engages when she stumbles — one driver at a time (the lesson, or Smooth's chat), handing the
+  # baton back and forth. All remediation content is drawn from the LESSON BLOCK she missed (its
+  # authored rule + same-rule practice items), never from elsewhere in the module.
+
   @scenario:LL-15
-  Scenario: Guided practice offers a live teacher that expands the solution
-    Given she has returned to practice after a re-teach
-    When she is still stuck on a question
-    Then a teacher chat opens and expands the solution toward the underlying principle
-    And if its explanation runs past its token budget without landing
-    Then she is notified and returned to the tutorial with that AI guidance
+  Scenario: A missed lesson step in the re-teach opens Smooth's same-rule remediation
+    Given she is re-walking the lesson in an AI-assisted re-teach
+    And she answers an interactive step wrong on both of her two tries
+    Then the lesson pauses and Smooth's chat takes over, framed as help, not failure
+    And Smooth checks and explains ONLY the rule that step teaches
+    And when the remediation is complete the lesson resumes and re-asks that same step
+
+  @scenario:LL-24
+  Scenario: The re-teach chat only ever tests what the lesson block teaches
+    Given a lesson block teaches one rule and carries its own same-rule practice items
+    When Smooth remediates that block in a re-teach
+    Then every word Smooth tests uses that block's rule and its practice items
+    And Smooth never tests a different rule from elsewhere in the module
+
+  @scenario:LL-25
+  Scenario: Smooth explains the rule, then the child says it back in her own words
+    Given she answered Smooth's same-rule check wrong
+    Then Smooth explains the rule in plain words
+    And asks her to say the rule back in her own words
+    And when her answer is close enough the lesson quiz returns
+    And after a few unclear tries Smooth accepts it and moves on, never leaving her stuck
+
+  @scenario:LL-26
+  Scenario: A wrong re-asked quiz shows the answer and tries another same-rule word
+    Given the lesson quiz returned to her after remediation
+    When she answers it wrong
+    Then the correct answer is shown to her, kindly
+    And Smooth tests another word that uses the SAME rule
+
+  @scenario:LL-27
+  Scenario: After three remediation cycles the lesson is left "in progress"
+    Given she has been through three remediation cycles on the same block
+    Then she may finish or leave the lesson and move on to other lessons
+    And this lesson is marked "in progress" for her
+    And it returns for her each day until she completes it
+    # Phase 2 (roadmap): her parent is notified with action items and given a worksheet printout.
 
   @scenario:LL-16
   Scenario: Proving understanding returns her to practice at difficulty 3

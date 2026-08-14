@@ -24,12 +24,16 @@ class ReteachSession extends Model
         'module_id',
         'trigger',
         'correct_count',
+        'remediation_cycles',
+        'left_in_progress_at',
         'started_at',
         'completed_at',
     ];
 
     protected $casts = [
         'correct_count' => 'integer',
+        'remediation_cycles' => 'integer',
+        'left_in_progress_at' => 'datetime',
         'started_at' => 'datetime',
         'completed_at' => 'datetime',
     ];

@@ -33,6 +33,7 @@
 
 - [ ] **Author Writing modules** (currently zero) so the writing track has curriculum behind it.
 - [ ] **Student inbox + parent surprise notes** — students receive messages in an inbox that *celebrates* a new arrival (glow/confetti, not an admin notice); a weekly nudge (guardian email + on-login Portal prompt) encourages every linked guardian to leave a short note of encouragement. Goal: child buy-in **and** the parent habit of logging in to see progress. Pairs with second-guardian (S8) so an aunt/other parent can send too. *Open design: nudge channel (email / prompt / both), whether milestone/system messages share the inbox, send-now vs schedule-ahead.*
+- [ ] **Re-teach escalation (Phase 2 of the same-rule re-teach)** — when a lesson block survives **three** remediation cycles (LL-27), the lesson is already left *"in progress"* (Phase 1). Add: (a) **daily resurfacing** of in-progress lessons on her voyage/home until done; (b) **parent notification with action items** for that rule; (c) a **worksheet printout** (printable PDF of the rule + practice words) for the parent to work through with the child. *Open design: notify channel (reuse the guardian email digest / inbox), worksheet generator (PDF template per rule).*
 - [ ] Weekly guardian email digest + gentle disengagement nudges (S7).
 - [ ] Pause/resume with streak freeze and shame-free re-pacing (S6).
 - [ ] Diagnostic retake (guardian-initiated).

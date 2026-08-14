@@ -3,13 +3,27 @@
     @include('partials.guided-locked', ['moduleId' => $moduleId])
 @else
 @include('partials.guided-heartbeat')
-<livewire:smooth-guide guide="lesson" wire:key="guide-lesson" />
+{{-- No how-to guide FAB here: on lesson pages the chat widget (clarify-chat) owns the bottom-right. --}}
 <style>
     .lw-wrap { min-height: 100vh; padding: 28px 20px 48px; max-width: 1120px; margin: 0 auto; }
-    .lw-reteach-banner { background: rgba(246,183,30,0.14); border: 1.5px solid rgba(246,183,30,0.4); color: #fde68a; border-radius: 14px; padding: 12px 18px; margin-bottom: 16px; font-size: 15px; font-weight: 600; }
+    .lw-hero { display: flex; gap: 20px; align-items: center; background: linear-gradient(135deg, rgba(246,183,30,0.18), rgba(192,132,252,0.12)); border: 1.5px solid rgba(246,183,30,0.42); border-radius: 22px; padding: 20px 24px; margin-bottom: 24px; }
+    .lw-hero-img { width: 96px; height: 96px; object-fit: contain; flex-shrink: 0; animation: lwBob 2.4s ease-in-out infinite; }
+    .lw-hero-tag { font-family: 'Fredoka One', cursive; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: #f6b71e; margin: 0 0 6px; }
+    .lw-hero-head { font-family: 'Fredoka One', cursive; font-size: 23px; line-height: 1.3; color: #fde68a; margin: 0 0 8px; }
+    .lw-hero-sub { font-size: 15.5px; line-height: 1.6; color: rgba(243,232,255,0.92); margin: 0; }
+    .lw-hero-sub strong { color: #67e8f9; }
+    .lw-modal-backdrop { position: fixed; inset: 0; z-index: 90; background: rgba(4,14,30,0.72); display: flex; align-items: center; justify-content: center; padding: 20px; }
+    .lw-modal { background: #0c2440; border: 2px solid rgba(246,183,30,0.5); border-radius: 24px; padding: 32px 28px; max-width: 440px; text-align: center; animation: lwFade 0.35s ease both; box-shadow: 0 16px 50px rgba(0,0,0,0.5); }
+    .lw-modal-img { width: 112px; height: 112px; object-fit: contain; margin: 0 auto 14px; display: block; }
+    .lw-modal-head { font-family: 'Fredoka One', cursive; font-size: 26px; color: #fcd34d; margin: 0 0 12px; }
+    .lw-modal-sub { font-size: 16.5px; line-height: 1.6; color: rgba(243,232,255,0.92); margin: 0 0 24px; }
+    .lw-handoff { text-align: center; padding: 12px 0; animation: lwFade 0.35s ease both; }
+    .lw-handoff-img { width: 108px; height: 108px; object-fit: contain; margin: 0 auto 14px; display: block; animation: lwBob 2.2s ease-in-out infinite; }
+    .lw-handoff-head { font-family: 'Fredoka One', cursive; font-size: 23px; color: #f0abfc; margin: 0 0 12px; line-height: 1.25; }
+    .lw-handoff-sub { font-size: 16.5px; line-height: 1.65; color: rgba(243,232,255,0.92); margin: 0 auto 24px; max-width: 42ch; }
+    @media (max-width: 560px) { .lw-hero { flex-direction: column; text-align: center; padding: 22px 18px; } }
     .lw-subject { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(196,181,253,0.7); margin-bottom: 6px; }
     .lw-topic { font-family: 'Fredoka One', cursive; font-size: 26px; color: #e6f2fb; margin-bottom: 22px; }
-    .lw-layout { display: grid; grid-template-columns: 1.55fr 1fr; gap: 24px; align-items: start; }
     .lw-card { background: #0c2440; border: 1.5px solid rgba(34,211,238,0.35); border-radius: 24px; padding: 30px; animation: lwFade 0.4s ease both; }
     @keyframes lwFade { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
     .lw-progress { height: 8px; border-radius: 999px; background: rgba(255,255,255,0.08); overflow: hidden; margin-bottom: 22px; }
@@ -73,21 +87,45 @@
     .lw-cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
     .lw-start { flex: 1; min-width: 200px; background: linear-gradient(135deg, #0e7490, #f6b71e); border: none; border-radius: 999px; padding: 15px 30px; color: white; font-family: 'Fredoka One', cursive; font-size: 16px; cursor: pointer; text-decoration: none; text-align: center; }
     .lw-secondary { background: rgba(255,255,255,0.08); border: 2px solid rgba(34,211,238,0.4); color: #e6f2fb; }
-    .lw-chat { position: sticky; top: 20px; height: calc(100vh - 40px); max-height: 640px; }
-    @media (max-width: 860px) { .lw-layout { grid-template-columns: 1fr; } .lw-chat { position: static; height: 460px; } }
     @media (prefers-reduced-motion: reduce) { .lw-card, .lw-block, .lw-complete, .lw-complete img { animation: none; } }
 </style>
 
 <div class="lw-wrap">
+    {{-- Isolated, empty Alpine scope for scroll-on-handoff — must NOT wrap any wire:click content,
+         or (with this app's multiple-Alpine quirk) it swallows Livewire clicks inside it. --}}
+    <div x-data
+        @reteach-splash.window="setTimeout(() => { const el = document.getElementById('lw-lesson'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 80)"
+        @lesson-resumed.window="setTimeout(() => { const el = document.getElementById('lw-lesson'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 80)"
+        style="display:none"></div>
     @if ($reteach)
-        <div class="lw-reteach-banner">Let's revisit this together 🐢 — a re-teach, not a test. Smooth will check in as you go.</div>
+        <div class="lw-hero">
+            <img src="{{ asset('images/voyage/companion/smooth-chart.webp') }}" alt="Smooth the turtle" class="lw-hero-img">
+            <div class="lw-hero-text">
+                <p class="lw-hero-tag">Revisiting together 🐢</p>
+                <h1 class="lw-hero-head">Let's relearn this one — no worries, it's not a test!</h1>
+                <p class="lw-hero-sub">We'll walk through the lesson again, one step at a time. Whenever something feels fuzzy, tap <strong>Ask Smooth</strong> — she's right here to help you understand every part.</p>
+            </div>
+        </div>
     @endif
     <p class="lw-subject">{{ $subject }}</p>
     <p class="lw-topic">{{ $topic }}</p>
 
-    <div class="lw-layout">
-        <div class="lw-card">
-            @if ($lessonTitle)
+    <div class="lw-card" id="lw-lesson">
+            @if ($lessonInProgress)
+                <div class="lw-handoff">
+                    <img src="{{ asset('images/voyage/companion/smooth.webp') }}" alt="Smooth the turtle" class="lw-handoff-img">
+                    <h3 class="lw-handoff-head">Great effort today! 🐢</h3>
+                    <p class="lw-handoff-sub">This one's a bit tricky — and that's okay. @if ($inProgressAnswer !== '')The answer was <strong>{{ $inProgressAnswer }}</strong>. @endif We'll keep this lesson open and come back to it together another day. You can carry on with your other lessons now!</p>
+                    <a href="{{ route('student.voyage') }}" class="lw-start">Back to my voyage →</a>
+                </div>
+            @elseif ($handoffSplash)
+                <div class="lw-handoff">
+                    <img src="{{ asset('images/voyage/companion/smooth.webp') }}" alt="Smooth the turtle" class="lw-handoff-img">
+                    <h3 class="lw-handoff-head">Not quite — let's figure it out together!</h3>
+                    <p class="lw-handoff-sub">No worries at all 🐢 Smooth is going to help you understand this one, step by step. Ready?</p>
+                    <button type="button" class="lw-start" wire:click="enterRemediation">Let's do it with Smooth →</button>
+                </div>
+            @elseif ($lessonTitle)
                 <h2 class="lw-title">{{ $lessonTitle }}</h2>
                 @php $total = count($lessonBlocks); @endphp
                 <div class="lw-progress"><span style="width: {{ $total ? round($revealed / $total * 100) : 100 }}%"></span></div>
@@ -113,7 +151,7 @@
                                     <p class="lw-checkq-text">{{ $block['question'] ?? '' }}</p>
                                     <div class="lw-opts">
                                         @foreach ($block['options'] ?? [] as $oi => $opt)
-                                            <button type="button" class="lw-opt {{ $correct && $oi === (int) ($block['answer'] ?? -1) ? 'is-right' : '' }}" wire:click="answerCheck({{ $i }}, {{ $oi }})" @disabled($correct)>{{ $opt }}</button>
+                                            <button type="button" class="lw-opt {{ $correct && $oi === (int) ($block['answer'] ?? -1) ? 'is-right' : '' }}" wire:click="answerCheck({{ $i }}, {{ $oi }})" @disabled($correct || $paused)>{{ $opt }}</button>
                                         @endforeach
                                     </div>
                                     @if ($answered && $correct)
@@ -132,12 +170,12 @@
                                     @if ($hasBank)
                                         <div class="lw-chips">
                                             @foreach ($block['options'] as $opt)
-                                                <button type="button" class="lw-chip" :class="{ 'is-picked': val === @js($opt) }" @click="val = @js($opt); $wire.answerFillBlank({{ $i }}, @js($opt))" @disabled($correct)>{{ $opt }}</button>
+                                                <button type="button" class="lw-chip" :class="{ 'is-picked': val === @js($opt) }" @click="val = @js($opt); $wire.answerFillBlank({{ $i }}, @js($opt))" @disabled($correct || $paused)>{{ $opt }}</button>
                                             @endforeach
                                         </div>
                                     @else
                                         <div style="display:flex; gap:10px; margin-bottom:12px; flex-wrap:wrap;">
-                                            <input type="text" class="lw-input" x-model="val" @disabled($correct)>
+                                            <input type="text" class="lw-input" x-model="val" @disabled($correct || $paused)>
                                             <button type="button" class="lw-verify" @click="$wire.answerFillBlank({{ $i }}, val)" x-bind:disabled="! val.trim()">Check</button>
                                         </div>
                                     @endif
@@ -153,7 +191,7 @@
                                     <span class="lw-inter-tag lw-check-tag">{{ $block['instruction'] ?? 'Tap the words' }}</span>
                                     <div class="lw-tokens">
                                         @foreach ($tokens as $ti => $tok)
-                                            <button type="button" class="lw-token" :class="{ 'is-picked': picked.includes({{ $ti }}) }" @click="picked.includes({{ $ti }}) ? picked = picked.filter(x => x !== {{ $ti }}) : picked.push({{ $ti }})" @disabled($correct)>{{ trim($tok, '*') }}</button>
+                                            <button type="button" class="lw-token" :class="{ 'is-picked': picked.includes({{ $ti }}) }" @click="picked.includes({{ $ti }}) ? picked = picked.filter(x => x !== {{ $ti }}) : picked.push({{ $ti }})" @disabled($correct || $paused)>{{ trim($tok, '*') }}</button>
                                         @endforeach
                                     </div>
                                     <button type="button" class="lw-verify" @click="$wire.answerMarkWords({{ $i }}, picked)" x-bind:disabled="picked.length === 0">Check</button>
@@ -177,7 +215,7 @@
                                     <div class="lw-pairs">
                                         <div class="lw-col">
                                             @foreach ($lefts as $li => $left)
-                                                <button type="button" class="lw-match" :class="{ 'is-sel': selLeft === {{ $li }}, 'is-done': matched[{{ $li }}] !== undefined }" @click="matched[{{ $li }}] === undefined && (selLeft = {{ $li }})" @disabled($correct)>{{ $left }}</button>
+                                                <button type="button" class="lw-match" :class="{ 'is-sel': selLeft === {{ $li }}, 'is-done': matched[{{ $li }}] !== undefined }" @click="matched[{{ $li }}] === undefined && (selLeft = {{ $li }})" @disabled($correct || $paused)>{{ $left }}</button>
                                             @endforeach
                                         </div>
                                         <div class="lw-col">
@@ -204,12 +242,12 @@
                                         <template x-for="(it, k) in order" :key="it">
                                             <div class="lw-order-row">
                                                 <span x-text="it"></span>
-                                                <button type="button" class="lw-arrow" @click="up(k)" @disabled($correct)>▲</button>
-                                                <button type="button" class="lw-arrow" @click="down(k)" @disabled($correct)>▼</button>
+                                                <button type="button" class="lw-arrow" @click="up(k)" @disabled($correct || $paused)>▲</button>
+                                                <button type="button" class="lw-arrow" @click="down(k)" @disabled($correct || $paused)>▼</button>
                                             </div>
                                         </template>
                                     </div>
-                                    <button type="button" class="lw-verify" @click="$wire.answerOrderSteps({{ $i }}, order)" @disabled($correct)>Check</button>
+                                    <button type="button" class="lw-verify" @click="$wire.answerOrderSteps({{ $i }}, order)" @disabled($correct || $paused)>Check</button>
                                     @if ($answered && $correct)<p class="lw-feedback ok">Yes! 🎉 That's the right order.</p>
                                     @elseif ($answered)<p class="lw-feedback no">Not yet — try a different order. 🐢</p>@endif
                                 </div>
@@ -224,11 +262,23 @@
                     <div class="lw-complete">
                         <img src="{{ asset('images/voyage/companion/smooth-cheer.webp') }}" alt="Smooth cheering">
                         <h3>Lesson complete! 🎉</h3>
-                        <p>You worked through the whole thing — now let's practise it.</p>
+                        @if ($reteach && ! $finalDone)
+                            <p>Great work getting through it! 🐢 Finish the 3 examples with Smooth in the chat, then you can prove it.</p>
+                        @elseif ($reteach)
+                            <p>Brilliant — you're all warmed up. Let's prove it!</p>
+                        @else
+                            <p>You worked through the whole thing — now let's practise it.</p>
+                        @endif
                         <div class="lw-cta-row">
-                            <button type="button" class="lw-start lw-secondary" wire:click="$dispatch('ask-smooth', { prompt: 'Can you show me another worked example for this?' })">Ask Smooth for more examples 🐢</button>
+                            @unless ($reteach)
+                                <button type="button" class="lw-start lw-secondary" wire:click="$dispatch('ask-smooth', { prompt: 'Can you show me another worked example for this?' })">Ask Smooth for more examples 🐢</button>
+                            @endunless
                             @if ($reteach)
-                                <a href="{{ route('practice.reteach', $moduleId) }}" class="lw-start">I'm ready to try it →</a>
+                                @if ($finalDone)
+                                    <a href="{{ route('practice.reteach', $moduleId) }}" class="lw-start">I'm ready to try it →</a>
+                                @else
+                                    <span class="lw-start lw-secondary" style="opacity:.6;cursor:default;">Smooth has 3 examples for you 🐢</span>
+                                @endif
                             @elseif ($gatedSequence)
                                 <a href="{{ route('practice.tutorial', $moduleId) }}" class="lw-start">See worked examples →</a>
                             @else
@@ -261,10 +311,21 @@
             @endif
         </div>
 
-        <aside class="lw-chat">
-            <livewire:clarify-chat :module-id="$moduleId" wire:key="clarify-{{ $moduleId }}" />
-        </aside>
-    </div>
+
+    {{-- Re-teach done: a completion popup takes over (no scroll) and sends her back to practice (LL-15). --}}
+    @if ($reteach && $finalDone)
+        <div class="lw-modal-backdrop">
+            <div class="lw-modal">
+                <img src="{{ asset('images/voyage/companion/smooth-cheer.webp') }}" alt="Smooth cheering" class="lw-modal-img">
+                <h3 class="lw-modal-head">Lesson complete! 🎉</h3>
+                <p class="lw-modal-sub">Awesome work relearning this one. Now let's head back into practice to lock it in!</p>
+                <a href="{{ route('practice.reteach', $moduleId) }}" class="lw-start">Let's practise it →</a>
+            </div>
+        </div>
+    @endif
+
+    {{-- The tutor/re-teach chat is a floating widget (bubble → panel), fixed bottom-right. --}}
+    <livewire:clarify-chat :module-id="$moduleId" wire:key="clarify-{{ $moduleId }}" />
 </div>
 @endif
 </div>

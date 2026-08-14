@@ -32,7 +32,14 @@
     .pw-empty { font-family: 'Fredoka One', cursive; font-size: 20px; color: #67e8f9; text-align: center; }
     .pw-master-head { font-family: 'Fredoka One', cursive; font-size: 28px; color: #fcd34d; text-align: center; margin-bottom: 10px; }
     .pw-master-sub { font-size: 16px; line-height: 1.6; color: rgba(243,232,255,0.9); text-align: center; margin-bottom: 26px; }
-    @media (prefers-reduced-motion: reduce) { .pw-card { transition: none; animation: none; } }
+    .pw-tries { font-size: 13px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(196,181,253,0.7); text-align: center; margin: -12px 0 20px; }
+    .pw-retry-hint { font-size: 14px; line-height: 1.55; color: rgba(253,230,138,0.92); text-align: center; margin: 8px auto 20px; max-width: 40ch; }
+    .pw-splash { text-align: center; }
+    .pw-splash-img { width: 116px; height: 116px; object-fit: contain; margin: 0 auto 16px; display: block; animation: pwBob 2.2s ease-in-out infinite; }
+    @keyframes pwBob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+    .pw-splash-head { font-family: 'Fredoka One', cursive; font-size: 25px; color: #fcd34d; margin-bottom: 14px; line-height: 1.25; }
+    .pw-splash-body { font-size: 16px; line-height: 1.7; color: rgba(243,232,255,0.92); margin: 0 auto 26px; max-width: 42ch; }
+    @media (prefers-reduced-motion: reduce) { .pw-card { transition: none; animation: none; } .pw-splash-img { animation: none; } }
 </style>
 
 <div class="pw-wrap">
@@ -53,7 +60,15 @@
         </div>
     @endif
 
-    @if ($celebration)
+    @if ($reteachSplash)
+        <div class="pw-card pw-splash">
+            <img src="{{ asset('images/voyage/companion/smooth.webp') }}" alt="Smooth the turtle" class="pw-splash-img">
+            <p class="pw-splash-head">Let's take a little detour together!</p>
+            <p class="pw-splash-body">A couple of these were tricky — no worries at all. We'll revisit the lesson together, with Smooth right beside you, so it really clicks. This isn't a test. 🐢</p>
+            <button type="button" class="pw-next" wire:click="enterReteach">Let's revisit it →</button>
+        </div>
+
+    @elseif ($celebration)
         <x-celebration :title="$celebration['title']" :sub="$celebration['sub']">
             @if ($celebration['type'] === 'mastery')
                 <a href="{{ route('student.voyage') }}">Back to my voyage →</a>
@@ -87,7 +102,10 @@
         <div class="pw-card" wire:key="q-{{ $question['id'] }}">
             <div class="pw-prompt">{!! $question['prompt'] !!}</div>
             @if ($awaitingRetry)
-                <p class="pw-feedback-head notyet">Not yet — have another go! 🌱</p>
+                <p class="pw-feedback-head notyet">Not yet — one more go! 🌱</p>
+                <p class="pw-retry-hint">Try 2 of 2 · if this one stays tricky, Smooth will pop in to help you relearn it 🐢</p>
+            @else
+                <p class="pw-tries">Try 1 of 2</p>
             @endif
             <div class="pw-options">
                 @foreach ($question['options'] as $index => $optionText)

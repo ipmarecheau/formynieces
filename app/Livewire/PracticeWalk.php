@@ -34,6 +34,9 @@ class PracticeWalk extends Component
     /** True after a first-try miss, while she takes her second attempt. */
     public bool $awaitingRetry = false;
 
+    /** After a re-teach trigger: show the warm hand-off splash before routing to the lesson (LL-14). */
+    public bool $reteachSplash = false;
+
     public ?array $question = null;
 
     public ?array $feedback = null;
@@ -145,9 +148,11 @@ class PracticeWalk extends Component
             $remediation = app(Remediation::class);
             if ($trigger = $remediation->triggerFor(auth()->id(), $this->moduleId)) {
                 $remediation->start(auth()->id(), $this->moduleId, $trigger);
-                // The re-teach begins by re-walking the real interactive lesson (LessonWalk sees the
-                // open session and leads on to the D1 proof afterwards).
-                $this->redirectRoute('practice.lesson', ['module' => $this->moduleId]);
+                // Don't snap straight into the lesson — show a warm hand-off splash first so the
+                // switch never feels abrupt (LL-14). She taps through when she's ready, and the
+                // re-teach then re-walks the real interactive lesson (LessonWalk sees the open
+                // session and leads on to the D1 proof afterwards).
+                $this->reteachSplash = true;
 
                 return;
             }
@@ -194,6 +199,12 @@ class PracticeWalk extends Component
         $this->awaitingRetry = false;
         $this->attemptsUsed = 0;
         $this->loadQuestion();
+    }
+
+    /** Leave the re-teach hand-off splash and begin re-walking the real interactive lesson (LL-14). */
+    public function enterReteach(): void
+    {
+        $this->redirectRoute('practice.lesson', ['module' => $this->moduleId]);
     }
 
     /** Map a difficulty rung (1/3/5) to its display ordinal (1/2/3). */
