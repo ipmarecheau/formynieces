@@ -546,16 +546,6 @@
   commit: f4c01f1
   spec_hash: a0782b5ba014
   note: "Browser-verified end-to-end on module 64: testing out sets mastered_at; re-entering the mastered level shows the 'You've mastered this — come back in 14 days' confirmation (Smooth), not the explainer or check."
-- scenario: LL-24
-  verified_at: 2026-08-12
-  commit: f47f025
-  spec_hash: 23a7255a3694
-  note: "Browser-verified on module 60 (set 1 day past due): opening shows 'Time to keep it sharp' re-check, not the locked come-back state; the re-check serves three D5 questions; three first-try-correct shows 'Still sharp!' and resets the window to a fresh 14 days. Module 64 (inside window) stays locked, confirming the check can't start before the due day."
-- scenario: LL-25
-  verified_at: 2026-08-12
-  commit: 353a886
-  spec_hash: 2f82d298acde
-  note: "Browser-verified on Feather Isle: a mastered level in its grace window glows with a pulsing red outline on the map and is highlighted in the legend as 'Needs review'; a Smooth alert popup fires with numbered re-check steps; tapping the stop opens the re-check, which completed green."
 - scenario: AG-01
   verified_at: 2026-08-12
   commit: 516a59b
@@ -698,6 +688,46 @@
   note: "Isaac directed the demonstration: db:seed --class=LessonSeeder run twice on the dev DB upserts MATH-003's lesson (5 blocks) to exactly one row — idempotent."
 - scenario: LB-04
   verified_at: 2026-08-13
-  commit: 74e1702
+  commit: INF
   spec_hash: 8c121a8d4257
   note: "Isaac browser-verified: the rebuilt import guide is navigable (jump-to menu) and exhaustive — a card per block type with description, required/optional fields, gating note, and a JSON example; plus the downloadable template."
+- scenario: LL-14
+  verified_at: 2026-08-14
+  commit: 0587674
+  spec_hash: 04d5f37ff5aa
+  note: ""
+- scenario: LL-15
+  verified_at: 2026-08-14
+  commit: 0587674
+  spec_hash: d64261be99aa
+  note: ""
+- scenario: LL-16
+  verified_at: 2026-08-14
+  commit: 0587674
+  spec_hash: 2e6a1498242f
+  note: ""
+- scenario: LL-22
+  verified_at: 2026-08-14
+  commit: 0587674
+  spec_hash: 930c54cbc24b
+  note: ""
+- scenario: LL-24
+  verified_at: 2026-08-14
+  commit: 0587674
+  spec_hash: 93938c8c80d2
+  note: ""
+- scenario: LL-25
+  verified_at: 2026-08-14
+  commit: 0587674
+  spec_hash: 5d709cf7a3c6
+  note: ""
+- scenario: LL-26
+  verified_at: 2026-08-14
+  commit: 0587674
+  spec_hash: 86ffed347807
+  note: ""
+- scenario: LL-27
+  verified_at: 2026-08-14
+  commit: 0587674
+  spec_hash: 23277b90b60d
+  note: ""
