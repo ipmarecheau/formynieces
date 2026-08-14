@@ -43,6 +43,26 @@ it('adds configured model fallbacks and provider order to the request', function
     });
 });
 
+it('caps the models array at 3 items — OpenRouter rejects more', function () {
+    config([
+        'services.llm.key' => 'test-key',
+        'services.llm.model' => 'primary/model',
+        // Three fallbacks + the primary would be 4 items; OpenRouter 400s on >3.
+        'services.llm.fallback_models' => ['back/one', 'back/two', 'back/three'],
+        'services.llm.provider_order' => [],
+    ]);
+    Http::fake(['*/chat/completions' => Http::response(['choices' => [['message' => ['content' => 'ok']]]], 200)]);
+
+    app(LlmService::class)->complete('s', 'u', 64);
+
+    Http::assertSent(function ($request) {
+        $body = $request->data();
+
+        return ($body['models'] ?? null) === ['primary/model', 'back/one', 'back/two']
+            && count($body['models']) === 3;
+    });
+});
+
 it('extracts JSON even when a fallback model wraps it in a code fence or adds prose', function () {
     config(['services.llm.key' => 'test-key']);
     Http::fake(['*/chat/completions' => Http::response([

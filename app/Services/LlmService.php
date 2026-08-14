@@ -124,8 +124,15 @@ class LlmService
 
         // Model-level fallbacks: if the primary model's providers ALL error (e.g. the shared-pool
         // 429), OpenRouter tries these other models next, in order.
+        // OpenRouter rejects a `models` array with MORE than 3 items (400 "'models' array must have
+        // 3 items or fewer"), which would fail EVERY call. Cap to primary + first 2 fallbacks so a
+        // longer configured chain degrades gracefully instead of erroring the whole request.
         if ($this->fallbackModels !== []) {
-            $payload['models'] = array_values(array_unique(array_merge([$primary], $this->fallbackModels)));
+            $payload['models'] = array_slice(
+                array_values(array_unique(array_merge([$primary], $this->fallbackModels))),
+                0,
+                3,
+            );
         }
 
         return $payload;
