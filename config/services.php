@@ -23,6 +23,13 @@ return [
         'referer' => env('LLM_REFERER'), // optional OpenRouter attribution
         'title' => env('LLM_TITLE', 'SmoothSeas'),
 
+        // Fallback routing (OpenRouter). When the primary model's provider is rate-limited or down
+        // (e.g. the qwen shared-pool 429), OpenRouter tries these OTHER models in order instead of
+        // erroring. Comma-separated model ids, e.g. "qwen/qwen-2.5-72b-instruct,meta-llama/llama-3.1-70b-instruct".
+        'fallback_models' => array_values(array_filter(array_map('trim', explode(',', (string) env('LLM_FALLBACK_MODELS', ''))))),
+        // Optional preferred provider order for the primary model (comma-separated), e.g. "Alibaba,DeepInfra".
+        'provider_order' => array_values(array_filter(array_map('trim', explode(',', (string) env('LLM_PROVIDER_ORDER', ''))))),
+
         // AI governance budget (AG-01..04). Per-student, per-month, in USD.
         // Discretionary AI (clarify chat, re-teach, worked examples) stops at the soft
         // cap; essential AI (essay grading, guardian summaries) runs to the hard cap.

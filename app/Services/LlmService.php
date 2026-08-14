@@ -23,6 +23,12 @@ class LlmService
     /** Optional attribution headers some providers (e.g. OpenRouter) surface. */
     private array $extraHeaders;
 
+    /** @var array<int, string> Other models OpenRouter falls back to if the primary provider errors. */
+    private array $fallbackModels;
+
+    /** @var array<int, string> Preferred provider order for the primary model. */
+    private array $providerOrder;
+
     public function __construct(private LlmBudget $budget)
     {
         // Cast through '' so a missing key never fatals construction — a failed
@@ -30,6 +36,8 @@ class LlmService
         $this->apiKey = (string) config('services.llm.key');
         $this->model = (string) config('services.llm.model');
         $this->baseUrl = rtrim((string) config('services.llm.base_url'), '/');
+        $this->fallbackModels = (array) config('services.llm.fallback_models', []);
+        $this->providerOrder = (array) config('services.llm.provider_order', []);
 
         $this->extraHeaders = array_filter([
             'HTTP-Referer' => config('services.llm.referer'),
@@ -66,18 +74,7 @@ class LlmService
             $response = Http::withToken($this->apiKey)
                 ->withHeaders($this->extraHeaders)
                 ->timeout(30)
-                ->post("{$this->baseUrl}/chat/completions", [
-                    'model' => $model ?? $this->model,
-                    'max_tokens' => $maxTokens,
-                    'messages' => $messages,
-                    // Disable hidden reasoning: Qwen3-Flash (and other reasoning models)
-                    // otherwise spend the whole token budget "thinking" and return EMPTY
-                    // content. We want the answer, not the chain-of-thought — and it's cheaper.
-                    'reasoning' => ['enabled' => false],
-                    // Ask the provider (OpenRouter) to return the call's real charged
-                    // cost in usage.cost, so budget metering is exact, not estimated.
-                    'usage' => ['include' => true],
-                ]);
+                ->post("{$this->baseUrl}/chat/completions", $this->payload($messages, $maxTokens, $model));
 
             if ($response->failed()) {
                 Log::error('LLM API error', ['status' => $response->status(), 'body' => $response->body()]);
@@ -94,6 +91,44 @@ class LlmService
 
             return $this->fallback();
         }
+    }
+
+    /**
+     * The request body, with OpenRouter provider routing + model fallbacks so a rate-limited or
+     * down primary provider falls through to another provider (or model) instead of erroring —
+     * the fix for the qwen shared-pool 429.
+     *
+     * @param  array<int, array{role:string, content:string}>  $messages
+     * @return array<string, mixed>
+     */
+    private function payload(array $messages, int $maxTokens, ?string $model): array
+    {
+        $primary = $model ?? $this->model;
+
+        $payload = [
+            'model' => $primary,
+            'max_tokens' => $maxTokens,
+            'messages' => $messages,
+            // Disable hidden reasoning: Qwen3-Flash otherwise spends the whole token budget
+            // "thinking" and returns EMPTY content. We want the answer, not the chain-of-thought.
+            'reasoning' => ['enabled' => false],
+            // Ask OpenRouter to return the call's real charged cost in usage.cost (exact metering).
+            'usage' => ['include' => true],
+            // Let OpenRouter try another provider for this model if the first errors/rate-limits.
+            'provider' => ['allow_fallbacks' => true],
+        ];
+
+        if ($this->providerOrder !== []) {
+            $payload['provider']['order'] = $this->providerOrder;
+        }
+
+        // Model-level fallbacks: if the primary model's providers ALL error (e.g. the shared-pool
+        // 429), OpenRouter tries these other models next, in order.
+        if ($this->fallbackModels !== []) {
+            $payload['models'] = array_values(array_unique(array_merge([$primary], $this->fallbackModels)));
+        }
+
+        return $payload;
     }
 
     /**
@@ -123,12 +158,34 @@ class LlmService
         $raw = $this->complete($system, $userPrompt, $maxTokens, $studentId, $essential);
 
         try {
-            return json_decode($raw, true, 512, JSON_THROW_ON_ERROR);
+            return json_decode($this->extractJson($raw), true, 512, JSON_THROW_ON_ERROR);
         } catch (\JsonException $e) {
             Log::error('LLM JSON parse error', ['raw' => $raw]);
 
             return [];
         }
+    }
+
+    /**
+     * Pull the JSON object out of a model reply — some models (Mistral, Gemma, GLM) wrap it in a
+     * ```json fence or add a stray sentence around it, which breaks a strict json_decode. Strips a
+     * code fence, then falls back to the outermost {...} so a fallback model never breaks grading.
+     */
+    private function extractJson(string $raw): string
+    {
+        $text = trim($raw);
+
+        if (str_starts_with($text, '```')) {
+            $text = trim((string) preg_replace(['/^```[a-zA-Z]*\s*/', '/\s*```$/'], '', $text));
+        }
+
+        $start = strpos($text, '{');
+        $end = strrpos($text, '}');
+        if ($start !== false && $end !== false && $end > $start) {
+            return substr($text, $start, $end - $start + 1);
+        }
+
+        return $text;
     }
 
     private function fallback(): string
