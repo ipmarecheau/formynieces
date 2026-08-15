@@ -801,3 +801,88 @@
   commit: 5c62f8d
   spec_hash: f296afd79cd4
   note: "Isaac browser-verified: hero/jumbotron/pillars/pricing/guarantees/funnel"
+- scenario: AB-01
+  verified_at: 2026-08-15
+  commit: 62df1a3
+  spec_hash: 6ac82a2d2a2b
+  note: "Isaac browser-verified the about page"
+- scenario: AB-02
+  verified_at: 2026-08-15
+  commit: 62df1a3
+  spec_hash: c474ed8d562e
+  note: "Isaac browser-verified the about page"
+- scenario: AB-03
+  verified_at: 2026-08-15
+  commit: 62df1a3
+  spec_hash: 2648deca8eb9
+  note: "Isaac browser-verified the about page"
+- scenario: AB-04
+  verified_at: 2026-08-15
+  commit: 62df1a3
+  spec_hash: 3bc69bfd4733
+  note: "Isaac browser-verified the about page"
+- scenario: FQ-01
+  verified_at: 2026-08-15
+  commit: 62df1a3
+  spec_hash: 4f6af8d4bd96
+  note: "Isaac browser-verified the FAQ accordions"
+- scenario: FQ-02
+  verified_at: 2026-08-15
+  commit: 62df1a3
+  spec_hash: b5a22c9833da
+  note: "Isaac browser-verified the FAQ accordions"
+- scenario: FQ-03
+  verified_at: 2026-08-15
+  commit: 62df1a3
+  spec_hash: cba764dcf227
+  note: "Isaac browser-verified the FAQ accordions"
+- scenario: FQ-04
+  verified_at: 2026-08-15
+  commit: 62df1a3
+  spec_hash: 14a97989963c
+  note: "Isaac browser-verified the FAQ accordions"
+- scenario: FQ-05
+  verified_at: 2026-08-15
+  commit: 62df1a3
+  spec_hash: e69003443fe9
+  note: "Isaac browser-verified the FAQ accordions"
+- scenario: CU-01
+  verified_at: 2026-08-15
+  commit: 62df1a3
+  spec_hash: 6fbaac65279e
+  note: "Isaac browser-verified contact form + admin inbox"
+- scenario: CU-02
+  verified_at: 2026-08-15
+  commit: 62df1a3
+  spec_hash: 4f8acbf0b6d0
+  note: "Isaac browser-verified contact form + admin inbox"
+- scenario: CU-03
+  verified_at: 2026-08-15
+  commit: 62df1a3
+  spec_hash: b86b0c3ee3db
+  note: "Isaac browser-verified contact form + admin inbox"
+- scenario: OC-01
+  verified_at: 2026-08-15
+  commit: 62df1a3
+  spec_hash: 684c7b9a98b3
+  note: "Isaac browser-verified booking windows, confirmation, double-book guard, admin calendar"
+- scenario: OC-02
+  verified_at: 2026-08-15
+  commit: 62df1a3
+  spec_hash: f0666a68b4e8
+  note: "Isaac browser-verified booking windows, confirmation, double-book guard, admin calendar"
+- scenario: OC-03
+  verified_at: 2026-08-15
+  commit: 62df1a3
+  spec_hash: bf453f9d52a9
+  note: "Isaac browser-verified booking windows, confirmation, double-book guard, admin calendar"
+- scenario: OC-04
+  verified_at: 2026-08-15
+  commit: 62df1a3
+  spec_hash: 55edfc34a359
+  note: "Isaac browser-verified booking windows, confirmation, double-book guard, admin calendar"
+- scenario: OC-05
+  verified_at: 2026-08-15
+  commit: 62df1a3
+  spec_hash: 601372799f4f
+  note: "Isaac browser-verified booking windows, confirmation, double-book guard, admin calendar"
