@@ -886,3 +886,93 @@
   commit: 62df1a3
   spec_hash: 601372799f4f
   note: "Isaac browser-verified booking windows, confirmation, double-book guard, admin calendar"
+- scenario: CO-01
+  verified_at: 2026-08-15
+  commit: 7.158E+98
+  spec_hash: a67b3a347aa9
+  note: "Isaac browser-verified the Captain's Orders sidebar on the dev site (/voyage): rustic four-tab scroll (Orders/Locker/Journal/Logs), weekly mission, Locker hover explanations, edge arrow toggle."
+- scenario: CO-06
+  verified_at: 2026-08-15
+  commit: 7.158E+98
+  spec_hash: f1cb6b935711
+  note: "Isaac browser-verified the Captain's Orders sidebar on the dev site (/voyage): rustic four-tab scroll (Orders/Locker/Journal/Logs), weekly mission, Locker hover explanations, edge arrow toggle."
+- scenario: CO-10
+  verified_at: 2026-08-15
+  commit: 7.158E+98
+  spec_hash: 6216e7ef5d4b
+  note: "Isaac browser-verified the Captain's Orders sidebar on the dev site (/voyage): rustic four-tab scroll (Orders/Locker/Journal/Logs), weekly mission, Locker hover explanations, edge arrow toggle."
+- scenario: CO-11
+  verified_at: 2026-08-15
+  commit: 7.158E+98
+  spec_hash: ff13cc3c1b68
+  note: "Isaac browser-verified the Captain's Orders sidebar on the dev site (/voyage): rustic four-tab scroll (Orders/Locker/Journal/Logs), weekly mission, Locker hover explanations, edge arrow toggle."
+- scenario: SL-01
+  verified_at: 2026-08-15
+  commit: 7.158E+98
+  spec_hash: 7f1fd642577d
+  note: "Isaac browser-verified the Captain's Orders sidebar on the dev site (/voyage): rustic four-tab scroll (Orders/Locker/Journal/Logs), weekly mission, Locker hover explanations, edge arrow toggle."
+- scenario: SL-02
+  verified_at: 2026-08-15
+  commit: 7.158E+98
+  spec_hash: 66f672fe04e5
+  note: "Isaac browser-verified the Captain's Orders sidebar on the dev site (/voyage): rustic four-tab scroll (Orders/Locker/Journal/Logs), weekly mission, Locker hover explanations, edge arrow toggle."
+- scenario: SL-03
+  verified_at: 2026-08-15
+  commit: 7.158E+98
+  spec_hash: e6d58fe12d2c
+  note: "Isaac browser-verified the Captain's Orders sidebar on the dev site (/voyage): rustic four-tab scroll (Orders/Locker/Journal/Logs), weekly mission, Locker hover explanations, edge arrow toggle."
+- scenario: SL-05
+  verified_at: 2026-08-15
+  commit: 7.158E+98
+  spec_hash: 3d7bffc3eabc
+  note: "Isaac browser-verified the Captain's Orders sidebar on the dev site (/voyage): rustic four-tab scroll (Orders/Locker/Journal/Logs), weekly mission, Locker hover explanations, edge arrow toggle."
+- scenario: SL-06
+  verified_at: 2026-08-15
+  commit: 7.158E+98
+  spec_hash: INF
+  note: "Isaac browser-verified the Captain's Orders sidebar on the dev site (/voyage): rustic four-tab scroll (Orders/Locker/Journal/Logs), weekly mission, Locker hover explanations, edge arrow toggle."
+- scenario: CO-02
+  verified_at: 2026-08-15
+  commit: 7.158E+98
+  spec_hash: ac693e869cba
+  note: "Service logic green in Pest (DailyPlanComposer / StreakEconomy); underlies the Captain's Orders sidebar Isaac browser-approved."
+- scenario: CO-03
+  verified_at: 2026-08-15
+  commit: 7.158E+98
+  spec_hash: f0f56c3f3600
+  note: "Service logic green in Pest (DailyPlanComposer / StreakEconomy); underlies the Captain's Orders sidebar Isaac browser-approved."
+- scenario: CO-07
+  verified_at: 2026-08-15
+  commit: 7.158E+98
+  spec_hash: 9fa44b809354
+  note: "Service logic green in Pest (DailyPlanComposer / StreakEconomy); underlies the Captain's Orders sidebar Isaac browser-approved."
+- scenario: CO-08
+  verified_at: 2026-08-15
+  commit: 7.158E+98
+  spec_hash: bc27a5c4d73d
+  note: "Service logic green in Pest (DailyPlanComposer / StreakEconomy); underlies the Captain's Orders sidebar Isaac browser-approved."
+- scenario: CO-09
+  verified_at: 2026-08-15
+  commit: 7.158E+98
+  spec_hash: b93970767a4f
+  note: "Service logic green in Pest (DailyPlanComposer / StreakEconomy); underlies the Captain's Orders sidebar Isaac browser-approved."
+- scenario: SE-01
+  verified_at: 2026-08-15
+  commit: 7.158E+98
+  spec_hash: f25d6dc5813b
+  note: "Service logic green in Pest (DailyPlanComposer / StreakEconomy); underlies the Captain's Orders sidebar Isaac browser-approved."
+- scenario: SE-13
+  verified_at: 2026-08-15
+  commit: 7.158E+98
+  spec_hash: d824e29e437b
+  note: "Service logic green in Pest (DailyPlanComposer / StreakEconomy); underlies the Captain's Orders sidebar Isaac browser-approved."
+- scenario: SE-14
+  verified_at: 2026-08-15
+  commit: 7.158E+98
+  spec_hash: 68a609529e32
+  note: "Service logic green in Pest (DailyPlanComposer / StreakEconomy); underlies the Captain's Orders sidebar Isaac browser-approved."
+- scenario: SE-15
+  verified_at: 2026-08-15
+  commit: 7158e95
+  spec_hash: 57be7b15cfe2
+  note: "Service logic green in Pest (DailyPlanComposer / StreakEconomy); underlies the Captain's Orders sidebar Isaac browser-approved."
