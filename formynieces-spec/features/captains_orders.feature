@@ -89,6 +89,15 @@ Feature: Captain's Orders — the daily brief and the day's minimum
   @scenario:CO-10
   Scenario: The brief never shows the child the guardian layer's numbers
     When she reads any Captain's Brief
-    Then she is never shown a percentage, a pace deficit, a target count, or a weeks-behind figure
+    Then she is never shown a percentage, a pace deficit, or a weeks-behind figure
     And the orders speak only in duties and encouragement
-    # Two-layer separation (adventure_map AM-06, weekly_targets WT-03).
+    # Two-layer separation (adventure_map AM-06, weekly_targets WT-03). A kind
+    # weekly goal count is allowed and lives in CO-11; pace/deficit numbers do not.
+
+  @scenario:CO-11
+  Scenario: The brief names this week's goal and her progress toward it
+    Given a student with a weekly target of several modules, some already mastered
+    When she opens the Captain's Brief
+    Then the brief names this week's goal as a friendly count of islands to conquer
+    And it shows how many she has conquered so far this week
+    And the progress is framed as an encouraging quest, never a percentage or a deficit

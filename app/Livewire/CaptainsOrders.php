@@ -2,8 +2,10 @@
 
 namespace App\Livewire;
 
+use App\Models\DailyPlan;
 use App\Models\StreakReward;
 use App\Models\StudentStreak;
+use App\Models\WeeklyTarget;
 use App\Services\Motivation\DailyPlanComposer;
 use App\Services\Motivation\StreakEconomyService;
 use Illuminate\Contracts\View\View;
@@ -13,16 +15,22 @@ use Livewire\Component;
 /**
  * Captain's Orders — the collapsible Voyage sidebar (CO / SL).
  *
- * Two tabs: the Captain's Brief (today's minimum duties as a checklist, morning
- * and evening) and the Ship's Log (streaks + the Captain's Locker of rewards).
- * The student is always resolved from the session, never a URL. Nothing from the
- * guardian's honest layer or a pace number ever appears here (CO-10 / SL-07).
+ * Four tabs: Orders (today's brief + this week's goal), Locker (protective
+ * rewards), Journal (streaks + milestones), and Logs (the day-by-day record).
+ * The student is always resolved from the session, never a URL. No pace deficit,
+ * percentage, or weeks-behind figure ever appears here (CO-10 / SL-07); a kind
+ * weekly goal count is allowed (CO-11).
  */
 class CaptainsOrders extends Component
 {
     public bool $collapsed = false;
 
-    public string $tab = 'brief';
+    public string $tab = 'orders';
+
+    /** Debug-only day override for previewing another weekday (e.g. ?as_of=2026-08-17). */
+    public ?string $asOf = null;
+
+    private const TABS = ['orders', 'locker', 'journal', 'logs'];
 
     private const DUTY_LABELS = [
         'vocabulary' => 'Vocabulary check',
@@ -53,6 +61,27 @@ class CaptainsOrders extends Component
         'lifebuoy' => 'Bring a just-lost streak back.',
     ];
 
+    /** Longer explanations, revealed only when a reward is highlighted. */
+    private const REWARD_LONG = [
+        'shore_leave' => "Skip one of today's duties and keep your streak safe — as long as you're on course. A well-earned day off from a single job.",
+        'anchor' => "Drop anchor and freeze every streak for a whole day. The ultimate safety net for a day you simply can't sail — it always keeps your streaks whole.",
+        'tailwind' => 'Catch a tailwind and sail ahead: do a subject twice today to bank up to two days in advance, so a future day can be lighter.',
+        'lifebuoy' => 'Lost a streak overboard? Throw a Lifebuoy to bring a just-lost streak back to life — one rescue per slip.',
+    ];
+
+    private const MILESTONES = [3, 7, 14, 30];
+
+    public function mount(): void
+    {
+        if (config('app.debug') && ($raw = request()->query('as_of'))) {
+            try {
+                $this->asOf = Carbon::parse($raw)->toDateString();
+            } catch (\Throwable) {
+                $this->asOf = null;
+            }
+        }
+    }
+
     public function toggle(): void
     {
         $this->collapsed = ! $this->collapsed;
@@ -60,7 +89,7 @@ class CaptainsOrders extends Component
 
     public function showTab(string $tab): void
     {
-        $this->tab = in_array($tab, ['brief', 'log'], true) ? $tab : 'brief';
+        $this->tab = in_array($tab, self::TABS, true) ? $tab : 'orders';
     }
 
     /**
@@ -71,8 +100,9 @@ class CaptainsOrders extends Component
     public function completeThread(string $duty): void
     {
         $studentId = (int) auth()->id();
-        app(DailyPlanComposer::class)->markDuty($studentId, $duty);
-        app(StreakEconomyService::class)->completeDailyMinimumIfMet($studentId);
+        $on = $this->today();
+        app(DailyPlanComposer::class)->markDuty($studentId, $duty, $on);
+        app(StreakEconomyService::class)->completeDailyMinimumIfMet($studentId, $on);
     }
 
     public function useReward(string $type): void
@@ -83,11 +113,17 @@ class CaptainsOrders extends Component
         }
     }
 
+    private function today(): Carbon
+    {
+        return $this->asOf ? Carbon::parse($this->asOf) : Carbon::today();
+    }
+
     public function render(): View
     {
         $studentId = (int) auth()->id();
+        $today = $this->today();
 
-        $plan = app(DailyPlanComposer::class)->forDay($studentId);
+        $plan = app(DailyPlanComposer::class)->forDay($studentId, $today);
 
         $duties = collect($plan->duties)->map(fn ($done, $key) => [
             'key' => $key,
@@ -96,7 +132,15 @@ class CaptainsOrders extends Component
             'placeholder' => in_array($key, ['vocabulary', 'reading', 'writing'], true),
         ])->values();
 
+        // This week's goal + progress — a kind count, never a pace number (CO-11).
+        $weekStart = $today->copy()->startOfWeek()->toDateString();
+        $targets = WeeklyTarget::where('student_id', $studentId)
+            ->where('week_start_date', $weekStart)->get();
+        $weeklyGoal = $targets->count();
+        $weeklyDone = $targets->filter(fn ($t) => $t->state() === 'completed')->count();
+
         $streaks = StudentStreak::where('student_id', $studentId)->pluck('count', 'type');
+        $voyageStreak = (int) ($streaks['voyage'] ?? 0);
 
         $subStreaks = collect(self::SUBSTREAKS)->map(fn ($type, $label) => [
             'label' => $label,
@@ -107,20 +151,39 @@ class CaptainsOrders extends Component
             'type' => $type,
             'label' => self::REWARD_LABELS[$type],
             'blurb' => self::REWARD_BLURBS[$type],
+            'long' => self::REWARD_LONG[$type],
             'held' => (int) (StreakReward::where('student_id', $studentId)
                 ->where('type', $type)->value('quantity') ?? 0),
         ]);
+
+        $milestones = collect(self::MILESTONES)->map(fn ($m) => [
+            'days' => $m,
+            'reached' => $voyageStreak >= $m,
+        ]);
+
+        $logs = DailyPlan::where('student_id', $studentId)
+            ->orderByDesc('date')->take(7)->get()
+            ->map(fn ($p) => [
+                'date' => Carbon::parse($p->date)->format('D j M'),
+                'rest' => $p->duties === [],
+                'done' => $p->isMinimumMet(),
+            ]);
 
         return view('livewire.captains-orders', [
             'duties' => $duties,
             'writingDay' => $plan->is_writing_day,
             'writingDone' => (bool) ($plan->duties['writing'] ?? true),
             'isRestDay' => $plan->duties === [],
-            'isEvening' => Carbon::now()->hour >= 17,
+            'isEvening' => ($this->asOf ? Carbon::parse($this->asOf)->hour : Carbon::now()->hour) >= 17,
             'allDone' => $plan->isMinimumMet(),
-            'voyageStreak' => (int) ($streaks['voyage'] ?? 0),
+            'weeklyGoal' => $weeklyGoal,
+            'weeklyDone' => $weeklyDone,
+            'weeklyPct' => $weeklyGoal > 0 ? (int) round($weeklyDone / $weeklyGoal * 100) : 0,
+            'voyageStreak' => $voyageStreak,
             'subStreaks' => $subStreaks,
             'rewards' => $rewards,
+            'milestones' => $milestones,
+            'logs' => $logs,
         ]);
     }
 }
