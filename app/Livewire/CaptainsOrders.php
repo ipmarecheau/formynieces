@@ -33,8 +33,7 @@ class CaptainsOrders extends Component
     private const TABS = ['orders', 'locker', 'journal', 'logs'];
 
     private const DUTY_LABELS = [
-        'vocabulary' => 'Vocabulary check',
-        'reading' => 'Reading voyage',
+        'morning_tide' => 'Morning Tide',
         'map' => 'Sail the map',
         'writing' => "Ship's writing",
     ];
@@ -129,7 +128,7 @@ class CaptainsOrders extends Component
             'key' => $key,
             'label' => self::DUTY_LABELS[$key] ?? ucfirst($key),
             'done' => (bool) $done,
-            'placeholder' => in_array($key, ['vocabulary', 'reading', 'writing'], true),
+            'placeholder' => in_array($key, ['writing'], true),
         ])->values();
 
         // This week's goal + progress — a kind count, never a pace number (CO-11).

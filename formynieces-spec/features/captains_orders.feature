@@ -4,9 +4,9 @@ Feature: Captain's Orders — the daily brief and the day's minimum
   Orders answers it. It is a collapsible sidebar on the Voyage — and only there,
   never layered over a lesson or a reading passage — where Smooth, as captain,
   hands down the day's brief: the small set of duties that count as today's
-  minimum, shown as a checklist. The minimum is four threads — a vocabulary
-  check, a reading assignment, forward progress on the map, and, on Monday,
-  Wednesday and Friday, a piece of writing. The brief is delivered twice: a
+  minimum, shown as a checklist. The minimum is three threads — the Morning Tide
+  (a single linked reading-and-vocabulary ritual), forward progress on the map,
+  and, on Monday, Wednesday and Friday, a piece of writing. The brief is delivered twice: a
   morning brief that sets the orders and an evening brief that shows what is left
   and offers a short review. Orders are always framed kindly and never expose the
   guardian layer's pace, percentages, or deficits. The sidebar carries two tabs:
@@ -27,7 +27,7 @@ Feature: Captain's Orders — the daily brief and the day's minimum
     Given a weekday she has not yet started
     When she opens the Captain's Brief
     Then Smooth greets her with the day's orders
-    And the orders list her daily minimum as a checklist: a vocabulary check, a reading assignment, and progress on the map
+    And the orders list her daily minimum as a checklist: the Morning Tide (reading and vocabulary) and progress on the map
     And each item shows whether it is still to do or already done
 
   @scenario:CO-03

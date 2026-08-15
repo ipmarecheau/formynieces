@@ -1,11 +1,11 @@
 <?php
 
+use App\Models\StudentStreak;
 use App\Models\SyllabusModule;
 use App\Models\User;
 use App\Models\WeeklyTarget;
 use App\Services\Motivation\DailyPlanComposer;
 use App\Services\Motivation\StreakEconomyService;
-use App\Models\StudentStreak;
 use Illuminate\Support\Carbon;
 
 function dpcStudent(): User
@@ -25,7 +25,7 @@ it('lists vocabulary, reading and map on a plain weekday, no writing', function 
     $plan = dpc()->forDay($student->id, $tuesday);
 
     expect($plan->is_writing_day)->toBeFalse()
-        ->and(array_keys($plan->duties))->toEqualCanonicalizing(['vocabulary', 'reading', 'map'])
+        ->and(array_keys($plan->duties))->toEqualCanonicalizing(['morning_tide', 'map'])
         ->and($plan->duties)->not->toHaveKey('writing');
 })->group('scenario:CO-02');
 
@@ -67,7 +67,7 @@ it('offers bounded catch-up on the weekend when she has fallen behind, never wri
     $saturday = Carbon::parse('2026-08-22');
     $plan = dpc()->forDay($student->id, $saturday);
 
-    expect(array_keys($plan->duties))->toEqualCanonicalizing(['vocabulary', 'reading', 'map'])
+    expect(array_keys($plan->duties))->toEqualCanonicalizing(['morning_tide', 'map'])
         ->and($plan->duties)->not->toHaveKey('writing');
 })->group('scenario:CO-09');
 
@@ -76,7 +76,7 @@ it('completing every duty closes the day and extends the Voyage streak', functio
     $wednesday = Carbon::parse('2026-08-19');
 
     dpc()->forDay($student->id, $wednesday);
-    foreach (['vocabulary', 'reading', 'map', 'writing'] as $duty) {
+    foreach (['morning_tide', 'map', 'writing'] as $duty) {
         dpc()->markDuty($student->id, $duty, $wednesday);
     }
 

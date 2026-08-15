@@ -21,8 +21,9 @@ use Illuminate\Support\Carbon;
  */
 class DailyPlanComposer
 {
-    /** The threads always required on a study day. */
-    private const WEEKDAY_DUTIES = ['vocabulary', 'reading', 'map'];
+    /** The threads always required on a study day. The Morning Tide is one duty
+     *  covering reading + vocabulary (DR/DV presented as a single ritual). */
+    private const WEEKDAY_DUTIES = ['morning_tide', 'map'];
 
     /** ISO weekdays that carry a writing duty: Monday, Wednesday, Friday. */
     private const WRITING_DAYS = [1, 3, 5];

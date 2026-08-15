@@ -14,6 +14,7 @@ use App\Livewire\GuardianDashboard;
 use App\Livewire\GuardianProgress;
 use App\Livewire\LessonWalk;
 use App\Livewire\ModuleEntry;
+use App\Livewire\MorningTide;
 use App\Livewire\PracticeWalk;
 use App\Livewire\ReteachWalk;
 use App\Livewire\TutorialWalk;
@@ -122,6 +123,10 @@ Route::middleware('auth')->group(function () {
         // Tier 2 — an island's own mini-voyage: a walkable interior path of levels.
         Route::get('/voyage/{island}', [VoyageController::class, 'island'])
             ->name('student.voyage.island');
+
+        // The Morning Tide — the daily reading + vocabulary ritual. [DR/DV]
+        Route::get('/morning-tide', MorningTide::class)
+            ->name('student.morning-tide');
 
         // The Writer's Log — the parallel writing track's home, reached from the
         // Writer's Log stop on any island. [WR-01/02/03]

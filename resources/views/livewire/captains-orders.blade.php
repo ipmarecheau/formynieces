@@ -214,7 +214,9 @@
                                         <span class="co-check">{{ $duty['done'] ? '✓' : '' }}</span>
                                         <span class="co-duty-label">{{ $duty['label'] }}</span>
                                         @if (! $duty['done'])
-                                            @if ($duty['key'] === 'map')
+                                            @if ($duty['key'] === 'morning_tide')
+                                                <a class="co-duty-do" style="text-decoration:none;" href="{{ route('student.morning-tide') }}">start</a>
+                                            @elseif ($duty['key'] === 'map')
                                                 <span class="co-duty-note">at sea</span>
                                             @elseif ($duty['placeholder'])
                                                 <button class="co-duty-do" wire:click="completeThread('{{ $duty['key'] }}')">mark done</button>
