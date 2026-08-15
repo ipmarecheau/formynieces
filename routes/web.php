@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ChildSetupController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExamAgentController;
@@ -33,6 +34,10 @@ Route::get('/contact', [PublicPageController::class, 'contact'])->name('contact'
 Route::post('/contact', [PublicPageController::class, 'sendContact'])->name('contact.send');
 Route::get('/book-a-call', [PublicPageController::class, 'book'])->name('book.call');
 Route::post('/book-a-call', [PublicPageController::class, 'bookCall'])->name('book.store');
+
+// Smooth chat widget (LC-01..06) — public, throttled.
+Route::post('/chat/session', [ChatController::class, 'start'])->middleware('throttle:10,1')->name('chat.start');
+Route::post('/chat/message', [ChatController::class, 'message'])->middleware('throttle:30,1')->name('chat.message');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])

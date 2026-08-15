@@ -242,5 +242,6 @@
     })();
 </script>
 @yield('scripts')
+@include('partials.chat-widget')
 </body>
 </html>

@@ -26,6 +26,7 @@
 | `faq_page.feature` | @mvp | — (FQ-01…05 built: programme / child-experience / parent / money-safety questions, funnels to the call) | guardian, public |
 | `contact_us.feature` | @mvp | — (CU-01…03 built: form → `contact_messages`, validation, admin inbox with mark-handled) | guardian, public, admin |
 | `parent_onboarding_call.feature` | @mvp | — (OC-01…05 built: weekday-evening + Saturday windows in TT time, live availability, no double-booking, admin calendar with statuses) | guardian, public, admin |
+| `live_chat.feature` | @mvp | — (LC-01…06 built: proactive Smooth popup for guests, scripted bot qualification, Slack + email notify, WhatsApp/book-call handoffs, admin Chats inbox with transcript) | guardian, public, admin |
 | `school_journal.feature` | @mvp | — (SJ-01…06 specced for the MVP; build pending — graded-paper upload + structured capture, term timeline, feeds weekly summary and daily plan, two-layer separation) | guardian, system |
 | `motivation_layer.feature` | @mvp | — | student |
 | `captains_orders.feature` | @mvp | — | student, system |

@@ -93,6 +93,7 @@ Cross-check: every Gherkin `When/Then` in `features/` must land on a screen here
 | F3 | FAQ — the questions parents actually ask (programme, child experience, parent experience, money/tech/safety) as accordions; funnels to the call | `/faq` | @mvp ✅ | FQ-01…05 |
 | F4 | Contact — message form (name, email, topic, message) → `contact_messages`, confirmation banner; admin inbox in the panel | `/contact` | @mvp ✅ | CU-01…03 — "Contact Messages" resource (Website group) |
 | F5 | Book a call — the 15-minute onboarding-call booking: two weeks of days, weekday 5:00–7:45pm + Saturday 8:00am–4:45pm slot starts (TT time), Sundays closed; parent details form; confirmation screen; admin calendar in the panel | `/book-a-call` | @mvp ✅ | OC-01…05 — "Onboarding Calls" resource (Website group); no double-booking (unique slot) |
+| F6 | Smooth chat widget — proactive popup (guests only, once per 30 days, after ~35s or half-scroll), scripted bot qualification (name, standard, worry, contact) → `chat_conversations`/`chat_messages`, Slack webhook + email notify, WhatsApp (`wa.me` click-to-chat) + book-a-call handoffs, honest "within a few hours" reply promise; admin "Chats" inbox with transcript + close | (widget on all public pages) | @mvp ✅ | LC-01…06 — set `SLACK_CHAT_WEBHOOK_URL` to light up Slack; email fallback always on |
 
 ---
 

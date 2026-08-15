@@ -70,6 +70,13 @@ return [
             'bot_user_oauth_token' => env('SLACK_BOT_USER_OAUTH_TOKEN'),
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
+
+        // LC-04 — incoming webhook the chat widget pings when a parent writes in.
+        'chat_webhook' => env('SLACK_CHAT_WEBHOOK_URL'),
+    ],
+
+    'chat' => [
+        'notify_email' => env('CHAT_NOTIFY_EMAIL', 'admin@formynieces.com'),
     ],
 
 ];
