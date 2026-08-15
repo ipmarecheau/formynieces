@@ -37,3 +37,10 @@ Feature: Lesson bank import and export
     Then it lists every supported block type and its required fields
       And it offers a downloadable template bundle that uses every block type
       And that template is itself a valid, importable bundle
+
+  @scenario:LB-05
+  Scenario: A guide shows how to generate lessons with Claude Code from source material
+    Given an admin opens the lesson creation guide
+    Then it explains generating a lesson + question bank with Claude Code from a textbook chapter or past paper
+      And it states the re-teach block fields (rule + practiceItems) a lesson must carry
+      And it states the minimum practice questions required per difficulty level

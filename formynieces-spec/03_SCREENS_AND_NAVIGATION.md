@@ -76,6 +76,7 @@ Cross-check: every Gherkin `When/Then` in `features/` must land on a screen here
 | E6 | Reading pool authoring/import (passages + comprehension questions + marked vocabulary, keyed by reading level) | @mvp | DR-06 — stocks `reading_passages` / `vocabulary_words` in advance |
 | E7 | LessonResource — author a lesson from typed interaction blocks (Builder), + bulk JSON import (upsert by module code, preview), export (all + per-row), and version-controlled seeding | @mvp ✅ | LE-05 + LB-01/02/03 |
 | E8 | Lesson Import Guide — navigable, exhaustive reference (per block type) + downloadable template | @mvp ✅ | LB-04 — generated from `LessonBlockSchema` |
+| E9 | Create Lessons with Claude — workflow guide: generate a lesson + question bank with Claude Code from a textbook/past-paper upload; states the re-teach block fields (`rule`/`practiceItems`) and the ≥15-questions-per-level minimum | ✅ | LB-05 — pairs the `lesson-authoring` skill |
 
 **Count:** MVP = 18 screens/states (A:3, B:7, C:7 incl. states, D:3 minus states… effectively ~16 distinct routes), plus the daily morning ritual (C5a reading, C5b vocabulary) and its admin authoring screen (E6), and the lesson authoring + bulk-import screens (E7 LessonResource, E8 Import Guide). Close to the 21-screen sitemap from the 09 June session — the deltas are the additions B7 (resume) and C8 (history, deferred), the daily-reading/vocabulary ritual (C5a/C5b/E6), the lesson authoring/import (E7/E8), and the deferral of D4–D7.
 
