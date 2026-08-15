@@ -6,6 +6,7 @@ use App\Http\Controllers\ExamAgentController;
 use App\Http\Controllers\GuardianPauseController;
 use App\Http\Controllers\GuardianReconciliationController;
 use App\Http\Controllers\LessonExportController;
+use App\Http\Controllers\PublicPageController;
 use App\Http\Controllers\VoyageController;
 use App\Livewire\DiagnosticWalk;
 use App\Livewire\GuardianDashboard;
@@ -24,6 +25,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Public marketing pages + the parent onboarding call (AB/FQ/CU/OC).
+Route::get('/about', [PublicPageController::class, 'about'])->name('about');
+Route::get('/faq', [PublicPageController::class, 'faq'])->name('faq');
+Route::get('/contact', [PublicPageController::class, 'contact'])->name('contact');
+Route::post('/contact', [PublicPageController::class, 'sendContact'])->name('contact.send');
+Route::get('/book-a-call', [PublicPageController::class, 'book'])->name('book.call');
+Route::post('/book-a-call', [PublicPageController::class, 'bookCall'])->name('book.store');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])

@@ -6,8 +6,8 @@ it('shows guest CTAs on the landing page for visitors', function () {
     $this->get('/')
         ->assertOk()
         ->assertSeeText('Sign In')
-        ->assertSeeText('Start the voyage')
-        ->assertSeeText('Get Started');
+        ->assertSeeText('Book a call')
+        ->assertSeeText('Create an account');
 });
 
 it('shows the user greeting and a logout on the landing page when authenticated', function () {
@@ -22,6 +22,7 @@ it('shows the user greeting and a logout on the landing page when authenticated'
         ->assertSeeText('Aaliyah')          // greeting shows her first name
         ->assertSeeText('Log out')
         ->assertSeeText('My Dashboard')
-        ->assertDontSeeText('Start the voyage') // guest hero CTA hidden
-        ->assertDontSeeText('Sign In');            // no sign-in prompt when logged in
+        ->assertDontSeeText('Book a free 15-minute call') // guest hero CTA hidden
+        ->assertDontSeeText('Create an account')           // no signup prompt when logged in
+        ->assertDontSeeText('Sign In');                    // no sign-in prompt when logged in
 });

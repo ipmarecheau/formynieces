@@ -22,6 +22,10 @@
 | `writing_track.feature` | @mvp | trend view, guardian view @v1.1 · now M/W/F cadence + Captain's Brief entry & map gate (WR-06/07) | student, system |
 | `guardian_dashboard.feature` | @mvp | digest @v1.1 | guardian |
 | `landing_page.feature` | @mvp | — (LP-01…13 built: parent-pain hero with an auto-rotating jumbotron + Smooth, the eight pillars, how-it-works, gender-neutral copy, $200/month pricing with the two written guarantees, honest coming-soon marking for the school journal) | guardian, public |
+| `about_page.feature` | @mvp | — (AB-01…04 built: origin story, four beliefs, why-a-turtle, funnels to the call) | guardian, public |
+| `faq_page.feature` | @mvp | — (FQ-01…05 built: programme / child-experience / parent / money-safety questions, funnels to the call) | guardian, public |
+| `contact_us.feature` | @mvp | — (CU-01…03 built: form → `contact_messages`, validation, admin inbox with mark-handled) | guardian, public, admin |
+| `parent_onboarding_call.feature` | @mvp | — (OC-01…05 built: weekday-evening + Saturday windows in TT time, live availability, no double-booking, admin calendar with statuses) | guardian, public, admin |
 | `school_journal.feature` | @mvp | — (SJ-01…06 specced for the MVP; build pending — graded-paper upload + structured capture, term timeline, feeds weekly summary and daily plan, two-layer separation) | guardian, system |
 | `motivation_layer.feature` | @mvp | — | student |
 | `captains_orders.feature` | @mvp | — | student, system |

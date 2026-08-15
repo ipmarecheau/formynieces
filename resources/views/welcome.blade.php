@@ -548,12 +548,13 @@
                         <button type="submit" class="btn-nav-primary">Log out</button>
                     </form>
                 @else
+                    <a class="nav-anchor" href="{{ route('about') }}">About</a>
                     <a class="nav-anchor" href="#meet-smooth">Meet Smooth</a>
                     <a class="nav-anchor" href="#for-parents">For Parents</a>
-                    <a class="nav-anchor" href="#pricing">Pricing</a>
-                    <a class="nav-anchor" href="#how-it-works">How it works</a>
+                    <a class="nav-anchor" href="{{ route('faq') }}">FAQ</a>
+                    <a class="nav-anchor" href="{{ route('contact') }}">Contact</a>
                     <a class="btn-nav-ghost" href="{{ route('login') }}">Sign In</a>
-                    <a class="btn-nav-primary" href="{{ route('register') }}">Get Started</a>
+                    <a class="btn-nav-primary" href="{{ route('book.call') }}">Book a call</a>
                 @endauth
             </div>
         </div>
@@ -624,8 +625,8 @@
                         @auth
                             <a class="btn-primary" href="{{ $homeUrl }}">Go to your dashboard →</a>
                         @else
-                            <a class="btn-primary" href="{{ route('register') }}">Start the voyage ⛵</a>
-                            <a class="btn-ghost" href="{{ route('login') }}">Sign In</a>
+                            <a class="btn-primary" href="{{ route('book.call') }}">Book a free 15-minute call →</a>
+                            <a class="btn-ghost" href="{{ route('register') }}">Create an account</a>
                         @endauth
                     </div>
 
@@ -932,7 +933,8 @@
                     @auth
                         <a class="btn-primary" href="{{ $homeUrl }}">Go to your dashboard →</a>
                     @else
-                        <a class="btn-primary" href="{{ route('register') }}">Start the voyage ⛵</a>
+                        <a class="btn-primary" href="{{ route('book.call') }}">Book a free call</a>
+                        <p class="pricing-note" style="margin-top:12px;">or <a href="{{ route('register') }}" style="color: var(--aqua);">create an account</a> and start today</p>
                     @endauth
                 </div>
                 <div class="guarantee-col">
@@ -969,10 +971,11 @@
                 @else
                     <h2>Give your child a smoother SEA.</h2>
                     <p>
-                        The voyage to SEA 2027 starts with one calm tap — and a turtle who never
-                        lets them feel lost. Backed by our 14-day money-back promise: you risk nothing.
+                        Not sure yet? Book fifteen minutes with us — free, no pressure. And when you do
+                        start, you are covered by the 14-day money-back promise: you risk nothing.
                     </p>
-                    <a class="btn-primary" href="{{ route('register') }}">Start the voyage ⛵</a>
+                    <a class="btn-primary" href="{{ route('book.call') }}">Book a free 15-minute call</a>
+                    <a class="btn-ghost" href="{{ route('register') }}" style="margin-left:10px;">Create an account</a>
                 @endauth
             </div>
         </div>
@@ -983,6 +986,10 @@
         <p>
             © {{ date("Y") }} SmoothSeas &nbsp;·&nbsp;
             Built with ❤️ in Trinidad &amp; Tobago &nbsp;·&nbsp;
+            <a href="{{ route('about') }}">About</a> ·
+            <a href="{{ route('faq') }}">FAQ</a> ·
+            <a href="{{ route('contact') }}">Contact</a> ·
+            <a href="{{ route('book.call') }}">Book a call</a> ·
             @auth
                 <a href="{{ $homeUrl }}">My Dashboard</a>
             @else

@@ -8,7 +8,8 @@ it('shows a hero that names the parent pain, with Smooth beside it', function ()
         ->assertOk()
         ->assertSee('never have to guess')                              // the core worry, in the headline
         ->assertSee('/images/voyage/companion/smooth.webp')             // Smooth in the hero
-        ->assertSee('Start the voyage')                                  // primary CTA
+        ->assertSee('Book a free 15-minute call')                       // primary conversion CTA
+        ->assertSee('Create an account')                                // direct signup path
         ->assertSee('Sign In');                                         // guest can reach login
 })->group('scenario:LP-01');
 
