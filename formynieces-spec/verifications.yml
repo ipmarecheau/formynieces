@@ -736,3 +736,68 @@
   commit: ce305ae
   spec_hash: 20a4ea465b32
   note: "Isaac browser-verified admin page: nav item, 4 sections, 15/level minimum, both import links"
+- scenario: LP-01
+  verified_at: 2026-08-15
+  commit: 5c62f8d
+  spec_hash: a0fada26dae9
+  note: "Isaac browser-verified: hero/jumbotron/pillars/pricing/guarantees/funnel"
+- scenario: LP-02
+  verified_at: 2026-08-15
+  commit: 5c62f8d
+  spec_hash: c20d6527d9fd
+  note: "Isaac browser-verified: hero/jumbotron/pillars/pricing/guarantees/funnel"
+- scenario: LP-03
+  verified_at: 2026-08-15
+  commit: 5c62f8d
+  spec_hash: 935f4da7542e
+  note: "Isaac browser-verified: hero/jumbotron/pillars/pricing/guarantees/funnel"
+- scenario: LP-04
+  verified_at: 2026-08-15
+  commit: 5c62f8d
+  spec_hash: 364d7239de2f
+  note: "Isaac browser-verified: hero/jumbotron/pillars/pricing/guarantees/funnel"
+- scenario: LP-05
+  verified_at: 2026-08-15
+  commit: 5c62f8d
+  spec_hash: fde91d5d2c8c
+  note: "Isaac browser-verified: hero/jumbotron/pillars/pricing/guarantees/funnel"
+- scenario: LP-06
+  verified_at: 2026-08-15
+  commit: 5c62f8d
+  spec_hash: cc93c248c44c
+  note: "Isaac browser-verified: hero/jumbotron/pillars/pricing/guarantees/funnel"
+- scenario: LP-07
+  verified_at: 2026-08-15
+  commit: 5c62f8d
+  spec_hash: 2cfdaae73018
+  note: "Isaac browser-verified: hero/jumbotron/pillars/pricing/guarantees/funnel"
+- scenario: LP-08
+  verified_at: 2026-08-15
+  commit: 5c62f8d
+  spec_hash: 89b138dd19ab
+  note: "Isaac browser-verified: hero/jumbotron/pillars/pricing/guarantees/funnel"
+- scenario: LP-09
+  verified_at: 2026-08-15
+  commit: 5c62f8d
+  spec_hash: 8221615c5a9c
+  note: "Isaac browser-verified: hero/jumbotron/pillars/pricing/guarantees/funnel"
+- scenario: LP-10
+  verified_at: 2026-08-15
+  commit: 5c62f8d
+  spec_hash: d18bf54b6229
+  note: "Isaac browser-verified: hero/jumbotron/pillars/pricing/guarantees/funnel"
+- scenario: LP-11
+  verified_at: 2026-08-15
+  commit: 5c62f8d
+  spec_hash: 122c6b572d36
+  note: "Isaac browser-verified: hero/jumbotron/pillars/pricing/guarantees/funnel"
+- scenario: LP-12
+  verified_at: 2026-08-15
+  commit: 5c62f8d
+  spec_hash: 7a457a327cdc
+  note: "Isaac browser-verified: hero/jumbotron/pillars/pricing/guarantees/funnel"
+- scenario: LP-13
+  verified_at: 2026-08-15
+  commit: 5c62f8d
+  spec_hash: f296afd79cd4
+  note: "Isaac browser-verified: hero/jumbotron/pillars/pricing/guarantees/funnel"
