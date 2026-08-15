@@ -9,29 +9,42 @@
 
         /* Collapsed rail — a rolled scroll pinned to the mast */
         .co-rail {
-            position: fixed; left: 0; top: 96px; z-index: 40;
-            display: flex; flex-direction: column; align-items: center; gap: 6px;
-            padding: 14px 8px; cursor: pointer;
+            position: fixed; left: 0; top: 84px; z-index: 40;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+            width: 72px; min-height: 240px; padding: 18px 8px; cursor: pointer;
             background: linear-gradient(180deg, #6b4a2b, #4a3119);
             border: 2px solid #3a2712; border-left: none;
-            border-radius: 0 12px 12px 0;
-            box-shadow: 3px 4px 10px rgba(0,0,0,0.4);
+            border-radius: 0 16px 16px 0;
+            box-shadow: 3px 4px 12px rgba(0,0,0,0.45);
             color: #f0e0bd;
             animation: co-rail-in .26s ease-out;
         }
-        .co-rail-ico { font-size: 1.5rem; }
+        .co-rail:hover { background: linear-gradient(180deg, #7a5730, #533722); }
+        .co-rail-ico { font-size: 1.7rem; }
         .co-rail-label {
-            font-family: 'Fredoka One', cursive; font-size: 0.7rem;
-            writing-mode: vertical-rl; letter-spacing: 1px;
+            font-family: 'Fredoka One', cursive; font-size: 0.82rem; line-height: 1.05;
+            text-align: center;
         }
+        .co-rail-arrow { font-size: 1.15rem; color: #f6b71e; line-height: 1; }
 
         /* Expanded parchment panel in a wood frame */
         .co-panel {
             position: fixed; left: 0; top: 88px; z-index: 40;
-            width: min(320px, 86vw); max-height: calc(100vh - 108px);
-            overflow-y: auto;
+            width: min(320px, 86vw);
         }
+        /* Arrow marker on the side of the scroll — collapse toward the edge */
+        .co-edge-toggle {
+            position: absolute; top: 60px; right: -18px; z-index: 41;
+            width: 22px; height: 60px; cursor: pointer;
+            display: grid; place-items: center;
+            background: linear-gradient(180deg, #6b4a2b, #4a3119);
+            color: #f6b71e; border: 2px solid #3a2712; border-left: none;
+            border-radius: 0 10px 10px 0; font-size: 1rem; font-weight: 900;
+            box-shadow: 2px 2px 6px rgba(0,0,0,0.35);
+        }
+        .co-edge-toggle:hover { background: linear-gradient(180deg, #7a5730, #533722); }
         .co-frame {
+            max-height: calc(100vh - 120px); overflow-y: auto;
             transform-origin: top center;
             animation: co-unroll .34s cubic-bezier(.2,.85,.25,1);
             background:
@@ -62,12 +75,6 @@
         }
         .co-title-main { font-family: 'Fredoka One', cursive; font-size: 1.15rem; color: #4a3119; line-height: 1; }
         .co-title-sub { font-size: 0.72rem; font-weight: 800; color: #8a6531; text-transform: uppercase; letter-spacing: 1px; }
-        .co-collapse {
-            margin-left: auto; border: none; cursor: pointer;
-            width: 26px; height: 26px; border-radius: 50%;
-            background: #9e3b23; color: #f4e8c8; font-weight: 900; font-size: 0.8rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
 
         .co-tabs { display: flex; gap: 3px; padding: 4px 10px 10px; }
         .co-tab {
@@ -148,16 +155,18 @@
         .co-empty { font-size: 0.82rem; color: #7a5a2e; text-align: center; padding: 14px 4px; }
 
         @media (max-width: 640px) {
-            .co-panel { top: auto; bottom: 0; left: 0; width: 100vw; max-height: 56vh; border-radius: 0; }
-            .co-frame { border-radius: 0; border-left: none; border-right: none; }
-            .co-rail { top: auto; bottom: 12px; }
+            .co-panel { top: auto; bottom: 0; left: 0; width: 100vw; }
+            .co-frame { max-height: 56vh; border-radius: 0; border-left: none; border-right: none; }
+            .co-edge-toggle { top: 8px; right: 8px; border-radius: 8px; border-left: 2px solid #3a2712; }
+            .co-rail { top: auto; bottom: 12px; min-height: 0; width: auto; flex-direction: row; padding: 10px 14px; }
         }
     </style>
 
     @if ($collapsed)
-        <button class="co-rail" wire:click="toggle" title="Open Captain's Orders">
+        <button class="co-rail" wire:click="toggle" title="Open Captain's Orders" aria-label="Open Captain's Orders">
             <span class="co-rail-ico">📜</span>
-            <span class="co-rail-label">Orders</span>
+            <span class="co-rail-label">Captain's<br>Orders</span>
+            <span class="co-rail-arrow">▸</span>
         </button>
     @else
         <aside class="co-panel">
@@ -168,7 +177,6 @@
                         <div class="co-title-main">Captain's Orders</div>
                         <div class="co-title-sub">{{ $isEvening ? 'Evening watch' : 'Morning muster' }}</div>
                     </div>
-                    <button class="co-collapse" wire:click="toggle" title="Roll up the orders">✕</button>
                 </header>
 
                 <nav class="co-tabs">
@@ -283,6 +291,7 @@
                     </div>
                 @endif
             </div>
+            <button class="co-edge-toggle" wire:click="toggle" title="Roll up the orders" aria-label="Collapse Captain's Orders">◀</button>
         </aside>
     @endif
 </div>
