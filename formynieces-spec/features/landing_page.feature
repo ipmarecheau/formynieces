@@ -56,10 +56,11 @@ Feature: Landing page — speak to Caribbean parents
     And it ties coverage to the SEA exam framework
 
   @scenario:LP-08
-  Scenario: Effectiveness — a daily rhythm that compounds
+  Scenario: Effectiveness — a flexible daily rhythm that compounds
     Given a visitor reads the effectiveness section
-    Then it describes the short daily study plan
-    And the morning vocabulary ritual and reading assignments
+    Then it states the daily learning time is flexible — as little as twenty minutes or as much as two hours
+    And that practice time is unlimited
+    And it still anchors the morning vocabulary ritual and reading assignments
 
   @scenario:LP-09
   Scenario: Reinforcement — the child's effort pays off at home
@@ -86,3 +87,10 @@ Feature: Landing page — speak to Caribbean parents
     Given a visitor reads the landing page
     Then the copy addresses the child neutrally — never only daughters
     And the product presents itself as SmoothSeas for Caribbean families
+
+  @scenario:LP-13
+  Scenario: One fare, two written promises
+    Given a visitor reads the pricing section
+    Then it states the price plainly — $200 per month for everything
+    And it offers a 14-day money-back guarantee — a full refund if unsatisfied for any reason, no questions asked
+    And it guarantees measurable improvement in Math, ELA, Writing and Vocabulary in 14 days or less

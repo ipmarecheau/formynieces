@@ -65,10 +65,13 @@ it('promises coverage of every SEA component — Math, ELA and Writing', functio
         ->assertSee('SEA');
 })->group('scenario:LP-07');
 
-it('promises effectiveness — a daily plan, morning vocabulary, reading assignments', function () {
+it('promises a flexible daily rhythm — 20 minutes to two hours, unlimited practice', function () {
     $this->get('/')
         ->assertOk()
         ->assertSee('daily study plan')
+        ->assertSee('as little as 20 minutes')
+        ->assertSee('two full hours')
+        ->assertSee('Unlimited practice')
         ->assertSee('morning vocabulary ritual')
         ->assertSee('reading assignments');
 })->group('scenario:LP-08');
@@ -95,7 +98,7 @@ it('cycles the core messages in an auto-rotating hero jumbotron', function () {
         ->assertSee('plans itself — around your child')                 // slide 2: adaptability
         ->assertSee('ask to log in')                                   // slide 3: enjoyment
         ->assertSee('in one harbour')                                   // slide 4: convenience
-        ->assertSee('Twenty focused minutes a day')                     // slide 5: effectiveness
+        ->assertSee('daily rhythm that fits')                            // slide 5: effectiveness
         ->assertSee('jumbo-dot');                                       // jump-to-message dots
 })->group('scenario:LP-11');
 
@@ -107,3 +110,15 @@ it('speaks to parents of both boys and girls, as SmoothSeas', function () {
         ->assertDontSee('daughter')
         ->assertDontSee(' girls');
 })->group('scenario:LP-12');
+
+it('prices plainly — $200/month with the 14-day money-back and improvement guarantees', function () {
+    $this->get('/')
+        ->assertOk()
+        ->assertSee('$200')
+        ->assertSee('14-day money-back guarantee')
+        ->assertSee('no questions asked')
+        ->assertSee('measurable')
+        ->assertSee('improvement')
+        ->assertSee('14 days or less')
+        ->assertSee('Math, ELA, Writing and Vocabulary');
+})->group('scenario:LP-13');

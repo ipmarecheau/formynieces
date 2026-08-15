@@ -443,6 +443,37 @@
         .step-body h3 { font-family: 'Fredoka One', cursive; font-size: 17.5px; margin-bottom: 5px; color: var(--text); }
         .step-body p { font-size: 14.5px; line-height: 1.65; color: var(--dim); }
 
+        /* ── PRICING ── */
+        .pricing-wrap { display: grid; grid-template-columns: 1.05fr .95fr; gap: 22px; align-items: stretch; }
+        .pricing-card {
+            background: var(--card2); border: 1.5px solid rgba(246,183,30,.45);
+            border-radius: 24px; padding: 40px 32px; text-align: center;
+            box-shadow: 0 24px 60px rgba(0,0,0,.35); position: relative; overflow: hidden;
+        }
+        .pricing-card::before { content: '⚓'; position: absolute; right: 1rem; top: .6rem; font-size: 2.4rem; opacity: .12; }
+        .pricing-flag {
+            display: inline-block; padding: 5px 14px; border-radius: 999px;
+            font-size: 11.5px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+            background: rgba(246,183,30,.16); color: var(--gold-light); border: 1.5px solid rgba(246,183,30,.45);
+        }
+        .price {
+            font-family: 'Fredoka One', cursive; font-size: clamp(46px, 7vw, 64px); line-height: 1;
+            background: linear-gradient(135deg, var(--aqua), var(--gold-light));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            margin: 18px 0 4px;
+        }
+        .price span { font-family: 'Nunito', sans-serif; font-size: 18px; color: var(--muted); -webkit-text-fill-color: var(--muted); }
+        .pricing-note { font-size: 13px; color: var(--dim); font-weight: 700; margin-bottom: 6px; }
+        .pricing-feats { list-style: none; text-align: left; max-width: 380px; margin: 22px auto 30px; display: flex; flex-direction: column; gap: 11px; }
+        .pricing-feats li { display: flex; gap: 10px; align-items: baseline; font-size: 14.5px; font-weight: 700; color: var(--text); }
+        .pricing-feats li::before { content: '✓'; color: var(--gold); font-weight: 800; }
+        .guarantee-col { display: flex; flex-direction: column; gap: 22px; }
+        .guarantee-card { background: var(--card); border: 1.5px solid var(--border); border-radius: 20px; padding: 28px 26px; flex: 1; }
+        .guarantee-card .g-icon { font-size: 28px; display: block; margin-bottom: 12px; }
+        .guarantee-card h3 { font-family: 'Fredoka One', cursive; font-size: 17.5px; color: var(--aqua); margin-bottom: 8px; line-height: 1.3; }
+        .guarantee-card p { font-size: 14.5px; line-height: 1.7; color: var(--dim); }
+        .guarantee-card strong { color: var(--text); }
+
         /* ── CTA BANNER ── */
         .cta-banner {
             background: linear-gradient(135deg, rgba(34,211,238,.25), rgba(246,183,30,.2));
@@ -472,6 +503,7 @@
             .facts-row { grid-template-columns: repeat(2, 1fr); }
             .hero { padding: 56px 0 72px; }
             .stage-smooth { width: 230px; }
+            .pricing-wrap { grid-template-columns: 1fr; }
         }
         @media (max-width: 620px) {
             .nav-anchor { display: none; }
@@ -518,6 +550,7 @@
                 @else
                     <a class="nav-anchor" href="#meet-smooth">Meet Smooth</a>
                     <a class="nav-anchor" href="#for-parents">For Parents</a>
+                    <a class="nav-anchor" href="#pricing">Pricing</a>
                     <a class="nav-anchor" href="#how-it-works">How it works</a>
                     <a class="btn-nav-ghost" href="{{ route('login') }}">Sign In</a>
                     <a class="btn-nav-primary" href="{{ route('register') }}">Get Started</a>
@@ -570,10 +603,11 @@
                             </div>
                             <div class="jumbo-slide" role="group" aria-roledescription="slide" aria-label="5 of 5" aria-hidden="true">
                                 <span class="jumbo-kicker">Effectiveness</span>
-                                <h2 class="jumbo-title">Twenty focused minutes a day.</h2>
+                                <h2 class="jumbo-title">A daily rhythm that fits your child.</h2>
                                 <p class="jumbo-sub">
-                                    A short <strong>daily study plan</strong> anchored by a <strong>morning vocabulary
-                                    ritual</strong> and daily <strong>reading assignments</strong> — small sails that compound.
+                                    A <strong>daily study plan</strong> anchored by a <strong>morning vocabulary
+                                    ritual</strong> and daily <strong>reading assignments</strong> — as little as
+                                    20 minutes, or two full hours when they're on a roll.
                                 </p>
                             </div>
                         </div>
@@ -777,10 +811,11 @@
 
                 <div class="pillar" data-reveal>
                     <div class="pillar-icon">☀️</div>
-                    <h3>Effectiveness — a daily rhythm that compounds.</h3>
+                    <h3>Effectiveness — a flexible rhythm that compounds.</h3>
                     <p>
-                        A short daily study plan they can actually finish — anchored by a morning vocabulary ritual
-                        and daily reading assignments. Twenty focused minutes beat two exhausting hours.
+                        Daily learning bends to your family: <strong>as little as 20 minutes or as much as two full
+                        hours</strong> — and practice time is always <strong>unlimited</strong>. Anchored by a
+                        morning vocabulary ritual and daily reading assignments.
                     </p>
                     <div class="accent"><span class="sun-rise">☀️</span></div>
                 </div>
@@ -822,8 +857,8 @@
                     <span class="fact-label">SEA subjects, one voyage</span>
                 </div>
                 <div class="fact-card" data-reveal style="--rd:.08s">
-                    <span class="fact-num">~20 min</span>
-                    <span class="fact-label">their daily sail</span>
+                    <span class="fact-num">20m–2h</span>
+                    <span class="fact-label">daily learning · unlimited practice</span>
                 </div>
                 <div class="fact-card" data-reveal style="--rd:.16s">
                     <span class="fact-num">1 / wk</span>
@@ -865,7 +900,58 @@
                     <div class="step-num">3</div>
                     <div class="step-body">
                         <h3>Daily sails, weekly reports</h3>
-                        <p>About twenty focused minutes a day — a lesson, a tutorial, some practice. You watch the horizon from the Parent Portal, with a fresh report every week.</p>
+                        <p>From a 20-minute sail to a two-hour deep dive — their choice — plus unlimited practice time. You watch the horizon from the Parent Portal, with a fresh report every week.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing">
+        <div class="container">
+            <p class="section-label" data-reveal>One simple fare</p>
+            <h2 class="section-title" data-reveal style="--rd:.08s">$200 a month. Everything included.</h2>
+            <p class="section-sub" data-reveal style="--rd:.16s">
+                Every component of the SEA, the adaptive daily plans, the weekly reports and Smooth himself —
+                one price, backed by two promises we put in writing.
+            </p>
+
+            <div class="pricing-wrap">
+                <div class="pricing-card" data-reveal>
+                    <span class="pricing-flag">All-inclusive</span>
+                    <div class="price">$200<span> / month</span></div>
+                    <p class="pricing-note">per family · cancel anytime</p>
+                    <ul class="pricing-feats">
+                        <li>All three SEA components — Math, ELA &amp; Writing</li>
+                        <li>Adaptive daily plans: 20 minutes to 2 hours</li>
+                        <li>Unlimited practice time</li>
+                        <li>Weekly parent reports + the Parent Portal</li>
+                        <li>Smooth the turtle, at the helm every day</li>
+                    </ul>
+                    @auth
+                        <a class="btn-primary" href="{{ $homeUrl }}">Go to your dashboard →</a>
+                    @else
+                        <a class="btn-primary" href="{{ route('register') }}">Start the voyage ⛵</a>
+                    @endauth
+                </div>
+                <div class="guarantee-col">
+                    <div class="guarantee-card" data-reveal style="--rd:.1s">
+                        <span class="g-icon">🛟</span>
+                        <h3>14-day money-back guarantee</h3>
+                        <p>
+                            Your child logs in and uses the platform. If you are unsatisfied for <em>any</em> reason,
+                            we refund every cent — <strong>no questions asked</strong>.
+                        </p>
+                    </div>
+                    <div class="guarantee-card" data-reveal style="--rd:.2s">
+                        <span class="g-icon">📈</span>
+                        <h3>Measurable improvement in 14 days or less</h3>
+                        <p>
+                            Use SmoothSeas for two weeks and we guarantee you will see <strong>measurable
+                            improvement</strong> in their <strong>Math, ELA, Writing and Vocabulary</strong> —
+                            in 14 days or less.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -884,7 +970,7 @@
                     <h2>Give your child a smoother SEA.</h2>
                     <p>
                         The voyage to SEA 2027 starts with one calm tap — and a turtle who never
-                        lets them feel lost.
+                        lets them feel lost. Backed by our 14-day money-back promise: you risk nothing.
                     </p>
                     <a class="btn-primary" href="{{ route('register') }}">Start the voyage ⛵</a>
                 @endauth
