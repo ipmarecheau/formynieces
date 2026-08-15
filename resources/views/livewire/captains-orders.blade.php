@@ -143,6 +143,9 @@
             box-shadow: 0 8px 18px rgba(0,0,0,0.45); border: 1px solid #b98a4b;
         }
         .co-reward:hover .co-tip, .co-reward:focus-within .co-tip { display: block; }
+        /* The bottom rewards open their explanation upward so the scroll never clips it. */
+        .co-reward:nth-last-child(1) .co-tip,
+        .co-reward:nth-last-child(2) .co-tip { top: auto; bottom: calc(100% + 4px); }
 
         /* Logs */
         .co-logs { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
@@ -155,10 +158,10 @@
         .co-empty { font-size: 0.82rem; color: #7a5a2e; text-align: center; padding: 14px 4px; }
 
         @media (max-width: 640px) {
-            .co-panel { top: auto; bottom: 0; left: 0; width: 100vw; }
-            .co-frame { max-height: 56vh; border-radius: 0; border-left: none; border-right: none; }
+            .co-panel { top: 64px; bottom: auto; left: 0; width: 100vw; }
+            .co-frame { max-height: 72vh; border-radius: 0 0 14px 14px; border-left: none; border-right: none; }
             .co-edge-toggle { top: 8px; right: 8px; border-radius: 8px; border-left: 2px solid #3a2712; }
-            .co-rail { top: auto; bottom: 12px; min-height: 0; width: auto; flex-direction: row; padding: 10px 14px; }
+            .co-rail { top: 64px; bottom: auto; min-height: 0; width: auto; flex-direction: row; gap: 8px; padding: 8px 14px; border-radius: 0 0 14px 0; }
         }
     </style>
 
