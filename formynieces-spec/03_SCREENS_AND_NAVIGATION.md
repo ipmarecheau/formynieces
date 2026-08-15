@@ -63,6 +63,8 @@ Cross-check: every Gherkin `When/Then` in `features/` must land on a screen here
 | D5 | Settings: pause/resume child (S6) | `/guardian/settings` | @v1.1 | rare |
 | D6 | Invite second guardian, read-only (S8) | `/guardian/settings` | @roadmap | once |
 | D7 | Weekly email digest (S7) | (email, not screen) | @v1.1 | weekly push |
+| D8 | School journal — file a graded paper (upload photo/PDF + structured entry) | `/guardian/journal` | @mvp | termly, as papers arrive |
+| D9 | School journal — term timeline (entries grouped by term, strand/score/comment at a glance) | `/guardian/journal` | @mvp | termly review |
 
 ### E. Admin (Filament — already scaffolded)
 
@@ -78,7 +80,13 @@ Cross-check: every Gherkin `When/Then` in `features/` must land on a screen here
 | E8 | Lesson Import Guide — navigable, exhaustive reference (per block type) + downloadable template | @mvp ✅ | LB-04 — generated from `LessonBlockSchema` |
 | E9 | Create Lessons with Claude — workflow guide: generate a lesson + question bank with Claude Code from a textbook/past-paper upload; states the re-teach block fields (`rule`/`practiceItems`) and the ≥15-questions-per-level minimum | ✅ | LB-05 — pairs the `lesson-authoring` skill |
 
-**Count:** MVP = 18 screens/states (A:3, B:7, C:7 incl. states, D:3 minus states… effectively ~16 distinct routes), plus the daily morning ritual (C5a reading, C5b vocabulary) and its admin authoring screen (E6), and the lesson authoring + bulk-import screens (E7 LessonResource, E8 Import Guide). Close to the 21-screen sitemap from the 09 June session — the deltas are the additions B7 (resume) and C8 (history, deferred), the daily-reading/vocabulary ritual (C5a/C5b/E6), the lesson authoring/import (E7/E8), and the deferral of D4–D7.
+**Count:** MVP = 18 screens/states (A:3, B:7, C:7 incl. states, D:3 minus states… effectively ~16 distinct routes), plus the daily morning ritual (C5a reading, C5b vocabulary) and its admin authoring screen (E6), and the lesson authoring + bulk-import screens (E7 LessonResource, E8 Import Guide). Close to the 21-screen sitemap from the 09 June session — the deltas are the additions B7 (resume) and C8 (history, deferred), the daily-reading/vocabulary ritual (C5a/C5b/E6), the lesson authoring/import (E7/E8), the deferral of D4–D7, the school journal (D8/D9), and the public landing page (F1).
+
+### F. Public / marketing (no auth)
+
+| # | Screen | Route | Priority | Notes |
+|---|---|---|---|---|
+| F1 | Landing page — parent-pain hero with Smooth, the eight pillars (visibility, adaptability, enjoyment, convenience, coverage, effectiveness, reinforcement, consolidation), how-it-works, CTAs | `/` | @mvp ✅ | LP-01…10 — Smooth poses reused from the student app; school-journal pillar marked "coming in the MVP" until SJ-01…06 are built |
 
 ---
 

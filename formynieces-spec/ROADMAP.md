@@ -23,6 +23,7 @@
 - [ ] `writing_submissions` table + weekly prompt + Groq rubric feedback + graceful queue on rate-limit.
 - [ ] **Daily reading + vocabulary** (`DR-01…06`, `DV-01…05`): `reading_passages` / `daily_reading_assignments` / `vocabulary_words` / `vocabulary_reviews` tables; admin reading-pool authoring; the ~15-min morning ritual (level-matched passage + comprehension + passage-drawn vocabulary with spaced repetition), formative and streak-linked.
 - [ ] Weekly target rollover job (Sunday) with rollover cap.
+- [ ] **School journal** (`SJ-01…06`): graded-paper upload (photo/PDF) + structured capture (date, term, strand, type, score, teacher comment) in the Parent Portal; term timeline; school evidence labelled alongside platform evidence in the weekly summary; a school-flagged weak strand gently steers the daily plan; two-layer separation keeps all school grades out of the child layer.
 - [ ] Guardian dashboard answering the four Sunday questions (D1–D3).
 - [ ] Streak (motivational layer) + two-layer separation enforced in routing.
 - [ ] Decide + implement `in_review` status semantics.
