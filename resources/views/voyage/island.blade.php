@@ -78,7 +78,7 @@
         .vy-back:hover { background: rgba(255,255,255,0.18); }
 
         .vy-wrap {
-            max-width: 1500px; margin: 0 auto; padding: 14px 16px 18px;
+            max-width: min(94vw, 2200px); margin: 0 auto; padding: 14px 16px 18px;
             min-height: calc(100vh - 58px);
             display: flex; flex-direction: column;
         }
@@ -198,17 +198,21 @@
         /* AM-08: the map holds a compact number per stop; the legend beside it
            carries the full names + status, so long labels never overlap again. */
         .vy-stage { display: flex; flex-direction: column; gap: 16px; flex: 1 1 auto; min-height: 0; }
-        .vy-map-col { height: 56vh; }
+        /* Mobile (stacked): the container hugs the map's own aspect ratio — no wasted padding. */
+        .vy-map-col { aspect-ratio: 2752 / 1536; }
+        .vy-map-col .mv-viewport { min-height: 0; }
         .vy-legend { display: flex; flex-direction: column; min-height: 0; }
         .vy-legend-head { flex: 0 0 auto; }
         .vy-legend-list { overflow-y: auto; min-height: 0; max-height: 45vh; }
         @media (min-width: 900px) {
             /* Definite height (not min-height) so the flex-grow + height:100% chain
                below resolves and the map window fills the column. */
-            .vy-wrap { height: calc(100vh - 58px); }
-            .vy-stage { flex-direction: row; align-items: stretch; }
-            .vy-map-col { flex: 1 1 52%; min-width: 0; height: 100%; }
-            .vy-legend { flex: 1 1 48%; min-width: 0; height: 100%; }
+            .vy-wrap { height: calc(100vh - 58px); justify-content: center; }
+            /* The map keeps its own aspect ratio (no letterbox); the row hugs it and centres
+               vertically, so big screens make the map bigger instead of padding it. */
+            .vy-stage { flex: 0 1 auto; flex-direction: row; align-items: stretch; }
+            .vy-map-col { flex: 1 1 70%; min-width: 0; aspect-ratio: 2752 / 1536; }
+            .vy-legend { flex: 1 1 30%; min-width: 0; }
             .vy-legend-list { max-height: none; }
         }
 
