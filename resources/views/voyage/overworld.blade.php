@@ -257,6 +257,7 @@
     </nav>
 
     <div class="vy-wrap">
+        <livewire:captains-orders wire:key="captains-orders" />
         <livewire:smooth-guide guide="voyage" wire:key="guide-voyage" />
 
         <div class="vy-stage">
