@@ -126,8 +126,26 @@ prompt, options(json), correct_index, difficulty, strand, distractor_notes. Admi
 ### ExamAgentInsight 🤖 (computed, optionally cached)
 Honest layer: pace vs 30-week calendar, weighted readiness (50/30/20), next-week recommendation, weak strands. Groq `generateSummary()`. Cache per student×week to respect free-tier limits (30 req/min, 14.4k/day).
 
-### Streak 🔥 (derived or small table)
-current_days, best. Motivational layer only — never shown to guardian as a judgement metric. Advanced by returning to the loop **and** by completing the daily morning reading/vocabulary ritual (DR/DV); surfaced on the Voyage home.
+### Streak 🔥 🔧 (master + sub-streaks — ML + SE)
+current_days, best, per stream. Motivational layer only — never shown to guardian as a judgement metric. A **master Voyage streak** (completing the day's minimum — CO-07/SE-01) sits over **sub-streaks** per thread (reading DR, vocabulary DV, writing WR, map/mastery ML-05), plus the existing login (ML-04) and weekly on-pace (ML-06) streaks. Advanced by completing the daily minimum; frozen by a guardian pause (ML-03) or an Anchor reward (SE-08); a 3-day starter grace protects a new voyager (SE-03). Surfaced in the Ship's Log (SL-02) and on the Voyage home (SH-04).
+*Backed by (proposed):* `student_streaks` (student_id, `stream` ∈ {voyage, reading, vocabulary, writing, map, login, on_pace}, current_days, best_days, last_credited_on, frozen_until) — one row per student×stream.
+
+### DailyMinimum / Captain's Brief 🧭 🆕 (the day's required duties — CO)
+*Backed by (proposed):* `daily_plans` (student_id, date, `duties` json {vocabulary, reading, map, writing?} each with a done flag, is_writing_day, completed_at) — one per student per day. The Captain's Brief is the student-facing view; the morning brief sets the duties, the evening brief shows what remains + an optional review (CO-02/CO-06). Writing appears only on Mon/Wed/Fri (CO-03) and soft-gates map advancement that day (CO-05). Weekends stand down to rest when on pace, or offer bounded, kind catch-up when behind (CO-08/CO-09). Never shows the child pace/percentage numbers (CO-10).
+
+| Attributes | Verbs (student/system) | Notes |
+|---|---|---|
+| date, per-duty done flags, is_writing_day, completed_at | compose (system, daily), check off a duty, complete the day | Completing the full minimum advances the master Voyage streak (CO-07/SE-01). Map progress = any map activity that day. |
+
+### StreakReward / Captain's Locker 🎁 🆕 (protective reward inventory — SE/SL)
+*Backed by (proposed):* `streak_rewards` (student_id, `type` ∈ {shore_leave, anchor, tailwind, lifebuoy}, quantity, source ∈ {ahead, milestone, guardian, xp}) — the child's Locker, shown in the Ship's Log (SL-05). Effects (SE-07..11): **Shore Leave** excuses one duty for a day, on pace only, without fabricating progress; **Anchor** freezes all streaks for a day, even behind pace; **Tailwind** raises the accelerate cap to two days ahead; **Lifebuoy** revives a just-reset streak once. Earned four ways (SE-13..16): getting ahead, milestones, guardian-granted (the one guardian→student crossing, SE-15), or bought with XP (@roadmap). A separate **cosmetic** track (Smooth's wardrobe, Captain's rank) is @roadmap (cosmetic_rewards CR).
+
+| Attributes | Verbs | Notes |
+|---|---|---|
+| type, quantity, source | earn (system/guardian), hold, spend (SL-06) | Honest + never-negative: protection saves streaks, never falsifies pace; a lost streak restarts kindly (SE-12, ML-02). |
+
+### Pace / on-pace ⚖️ (derived from WeeklyTarget — no new table)
+"On pace" = mastered work meets or leads this week's target (SE-04; the weekly yardstick in weekly_targets, on-pace streak ML-06). A guardian-layer truth that reaches the child only as kind flexibility — weekend rest and Shore Leave eligibility — never as a deficit (SE-05/06, CO-09, WT-03).
 
 ### Digest 📬 🆕 `@v1.1`
 Weekly guardian email. Needs: notifications table or mail log + scheduled job.
@@ -162,3 +180,7 @@ Guardian 1──* Student 1──* ProgressRecord *──1 SyllabusModule 1─�
 | second-guardian link table (read-only role) | `@roadmap` (S8) |
 | notifications/digest log | `@v1.1` (S7) |
 | student `known_weak_areas` (nullable JSON, guardian hint, reconciled at reveal) | `@mvp` |
+| `daily_plans` table (the day's Captain's Brief minimum + completion, CO) | `@mvp` |
+| `student_streaks` table (master Voyage + per-stream sub-streaks, ML/SE) | `@mvp` |
+| `streak_rewards` table (Captain's Locker: shore_leave/anchor/tailwind/lifebuoy, SE) | `@mvp` |
+| cosmetics (Smooth wardrobe, Captain's rank) | `@roadmap` (CR) |

@@ -44,8 +44,19 @@ Feature: Syllabus adventure map — the Voyage
     When she opens the island
     Then each stop shows its position number on the map
     And a legend beside the map names every stop in order with its status,
-      whether conquered, current, locked, or the Writer's Log
+      whether conquered, current, or locked
     And the legend shows no percentage, target count, or pace position
+    # Writing is no longer a stop on the map; it moved to the Captain's Brief
+    # (writing_track WR-01/WR-07, captains_orders CO-03).
+
+  @scenario:AM-11
+  Scenario: On a writing day, a new level opens only after the day's writing
+    Given today is a writing day and the student's writing is not yet done
+    When she taps a new, not-yet-started level on an open island
+    Then Smooth invites her to finish today's writing first, in kind, non-alarming language
+    And the map, its islands, and already-started levels stay visible and playable
+    And once the writing is done the level opens normally
+    # The daily-ritual gate is CO-05 / WR-07; writing is not a stop on the map.
 
   @roadmap @scenario:AM-05
   Scenario: This week's suggested levels carry a star, without blocking the rest

@@ -50,11 +50,18 @@ Feature: Student home — the Voyage is the front door
       And she is not sent to a separate dashboard to see it
 
     @scenario:SH-05
-    Scenario: The Writer's Log stop opens this week's writing prompt
-      Given a student on an island whose Writer's Log stop is shown
-      And a writing prompt exists for the current week
-      When she opens the Writer's Log stop
-      Then she is taken to this week's writing prompt
-      And the stop is no longer a "coming soon" placeholder
-      # This relocates WR-01's entry point from the dashboard writing card to the
-      # Writer's Log stop on the Voyage.
+    Scenario: Writing is reached from the Captain's Orders, not a stop on the map
+      Given a student on a writing day with a writing duty in her Captain's Brief
+      When she opens that writing duty
+      Then she is taken to today's writing prompt
+      And no Writer's Log stop competes for the entry on the map
+      # Writing left the map in the Captain's Orders redesign; entry is the
+      # Captain's Brief (CO-03, WR-01).
+
+    @scenario:SH-07
+    Scenario: The Captain's Orders sidebar is part of the Voyage home
+      Given a student on her Voyage
+      When she opens her voyage
+      Then the Captain's Orders sidebar is available there, showing today's brief
+      And her daily minimum and streak are reached from the Voyage, not a separate dashboard
+      # The sidebar spec is captains_orders (CO-01); the Ship's Log is ship_log (SL-*).

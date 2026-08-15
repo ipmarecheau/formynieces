@@ -46,11 +46,13 @@ Cross-check: every Gherkin `When/Then` in `features/` must land on a screen here
 | C5 | Mastery celebration | (state of C4) | @mvp | daily |
 | C5a | Morning reading — passage + comprehension check (resumable, warm feedback, no grade, streak) | `/morning/reading` | @mvp | daily — from Voyage home |
 | C5b | Daily vocabulary — words drawn from the passage, use-in-sentence, spaced review | `/morning/vocabulary` | @mvp | daily — follows reading, completes the ~15-min ritual |
-| C6 | Writing prompt + editor | `/writing` | @mvp | weekly — one tap from dashboard card |
+| C6 | Writing prompt + editor | `/writing` | @mvp | Mon/Wed/Fri — from the Captain's Brief writing duty (was the dashboard card) |
 | C7 | Writing feedback view | `/writing/{id}` | @mvp | weekly |
 | C8 | Writing history + rubric profile | `/writing/history` | @v1.1 | occasional |
 | C9 | Revision-mode dashboard variant (buffer weeks) | (state of C1/C2) | @roadmap | last 6 weeks |
 | C10 | Exam-week calm state | (state of C1) | @roadmap | once |
+| C11 | Captain's Orders — collapsible Voyage sidebar; **Captain's Brief** tab = today's minimum checklist (morning + evening brief), writing on M/W/F, weekend rest/catch-up | sidebar on the Voyage (`/map`) | @mvp | daily — persistent on the Voyage |
+| C12 | Ship's Log — sidebar tab: master + sub streaks, history/milestones, and the **Captain's Locker** reward inventory (spend Shore Leave/Anchor/Tailwind/Lifebuoy) | sidebar on the Voyage (`/map`) | @mvp | daily/occasional |
 
 ### D. Guardian (weekly loop)
 
@@ -114,7 +116,7 @@ flowchart TD
     C4 -->|3× first-try D5| C5
     C5 --> C1
     C2 -->|tap current stop module| C3
-    C1 -->|writing card, Saturdays| C6[C6 Writing Editor] --> C7[C7 Feedback] --> C1
+    C1 -->|writing duty, M/W/F| C6[C6 Writing Editor] --> C7[C7 Feedback] --> C1
     C1 -->|morning ritual, ~15 min| C5a[C5a Morning Reading + Comprehension] --> C5b[C5b Daily Vocabulary] --> C1
 
     D1 --> D2[D2 Exam Agent Detail]
@@ -128,7 +130,7 @@ flowchart TD
 
 ## 3. Navigation principles (from the frequency rule)
 
-1. Student persistent nav has exactly **two** items: Home, Map. Everything else is reached through cards on Home. A 10-year-old never sees a hamburger menu.
+1. Student persistent nav has exactly **two** items: Home, Map. On the Voyage a collapsible **Captain's Orders** sidebar carries the day's Brief and the Ship's Log (CO/SL); everything else is reached through cards on Home. A 10-year-old never sees a hamburger menu.
 2. Guardian home is a **single screen that answers the four Sunday questions**; drill-downs are one tap, never required.
 3. Onboarding is a rail (no nav escape mid-diagnostic — only "save and finish later," which closes the session resumably).
 4. Honest/agent content never appears in student routes; motivational framing never replaces data in guardian routes. (Two-layer model enforced at the routing level.)

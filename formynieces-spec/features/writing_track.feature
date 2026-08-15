@@ -1,14 +1,17 @@
 @mvp @student @system
 Feature: Parallel writing track
-  Writing is a parallel track for the 20%-weight Writing paper: weekly prompts
-  with warm AI rubric feedback. Writing never enters the module mastery model
-  and never reduces to a grade or a pass/fail status.
+  Writing is a parallel track for the 20%-weight Writing paper: short prompts on
+  Monday, Wednesday and Friday with warm AI rubric feedback, reached from the
+  Captain's Brief rather than from a stop on the map. On those days writing is one
+  of the day's minimum duties and a same-day soft gate to advancing on the map;
+  weekends are off. Writing never enters the module mastery model and never
+  reduces to a grade or a pass/fail status.
 
   @scenario:WR-01
-  Scenario: The weekly prompt is reachable from the dashboard
-    Given a student in an active study week
-    When she opens the writing card on her dashboard
-    Then she sees this week's prompt adapted from past Creative Writing papers
+  Scenario: The day's prompt is reached from the Captain's Brief on a writing day
+    Given a student on a writing day (Monday, Wednesday or Friday)
+    When she opens the writing duty in her Captain's Brief
+    Then she sees today's prompt adapted from past Creative Writing papers
 
   @scenario:WR-02
   Scenario: A submission returns a four-criterion rubric profile
@@ -25,6 +28,23 @@ Feature: Parallel writing track
     When a student submits her writing
     Then her submission is saved and queued for scoring
     And she is told her feedback is on its way
+
+  @scenario:WR-06
+  Scenario: Writing runs Monday, Wednesday and Friday, with weekends off
+    Given a study week
+    When the writing schedule is read
+    Then a writing prompt is due on Monday, Wednesday and Friday
+    And no writing is due on Saturday or Sunday
+    And completing a day's writing checks off the writing duty and advances her writing sub-streak
+
+  @scenario:WR-07
+  Scenario: Writing is the writing-day gate to advancing on the map
+    Given today is a writing day and her writing is not yet done
+    When she tries to open a new level on the map
+    Then she is invited to finish today's writing first, without lockout language
+    And once her writing is done the new level opens
+    And writing is no longer shown as a stop on the map
+    # Authoritative gate behaviour is CO-05; the map side is adventure_map AM-11.
 
   @v1.1 @scenario:WR-04
   Scenario: The history view shows rubric growth
