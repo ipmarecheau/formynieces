@@ -731,3 +731,8 @@
   commit: 0587674
   spec_hash: 23277b90b60d
   note: ""
+- scenario: LB-05
+  verified_at: 2026-08-15
+  commit: ce305ae
+  spec_hash: 20a4ea465b32
+  note: "Isaac browser-verified admin page: nav item, 4 sections, 15/level minimum, both import links"
