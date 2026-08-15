@@ -50,10 +50,10 @@ Feature: Landing page — speak to Caribbean parents
     And no paid add-ons or external tools are implied
 
   @scenario:LP-07
-  Scenario: Coverage — every strand of ELA
+  Scenario: Coverage — every component of the SEA
     Given a visitor reads the coverage section
-    Then it lists the strands covered: grammar, vocabulary, reading comprehension and writing
-    And it ties coverage to the SEA framework
+    Then it lists the components covered: mathematics, english language arts and writing
+    And it ties coverage to the SEA exam framework
 
   @scenario:LP-08
   Scenario: Effectiveness — a daily rhythm that compounds

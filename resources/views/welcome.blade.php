@@ -6,8 +6,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmoothSeas — SEA English prep, sailed with a turtle named Smooth</title>
-    <meta name="description" content="The ELA companion for Caribbean primary-school children: a daily plan that adapts to them, weekly reports for parents, and Smooth the turtle at the helm.">
+    <title>SmoothSeas — SEA exam prep, sailed with a turtle named Smooth</title>
+    <meta name="description" content="The SEA companion for Caribbean primary-school children: Math, ELA and Writing in one adaptive daily plan — weekly reports for parents, and Smooth the turtle at the helm.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -537,9 +537,9 @@
                         <div class="jumbo-track">
                             <div class="jumbo-slide is-active" role="group" aria-roledescription="slide" aria-label="1 of 5">
                                 <span class="jumbo-kicker">For parents who want the truth, weekly</span>
-                                <h1 class="jumbo-title">You'll never have to guess how your child is doing in English again.</h1>
+                                <h1 class="jumbo-title">You'll never have to guess how your child is doing again.</h1>
                                 <p class="jumbo-sub">
-                                    SmoothSeas plans the whole ELA journey, adjusts it <strong>every single day</strong>,
+                                    SmoothSeas plans the whole SEA journey — Math, ELA and Writing — adjusts it <strong>every single day</strong>,
                                     and shows you — <strong>every week</strong> — exactly where they stand.
                                 </p>
                             </div>
@@ -563,8 +563,9 @@
                                 <span class="jumbo-kicker">Convenience &amp; coverage</span>
                                 <h2 class="jumbo-title">Everything they need, in one harbour.</h2>
                                 <p class="jumbo-sub">
-                                    <strong>Lessons, tutorials and practice</strong> — covering every ELA strand of the
-                                    SEA: grammar, vocabulary, reading comprehension, writing.
+                                    <strong>Lessons, tutorials and practice</strong> — covering every component of
+                                    the SEA: <strong>Mathematics</strong>, <strong>English Language Arts</strong>
+                                    and <strong>Writing</strong>.
                                 </p>
                             </div>
                             <div class="jumbo-slide" role="group" aria-roledescription="slide" aria-label="5 of 5" aria-hidden="true">
@@ -595,10 +596,11 @@
                     </div>
 
                     <div class="hero-chips">
-                        <span class="chip" style="--fp:4.2s">📖 Reading</span>
-                        <span class="chip" style="--fp:3.8s; --fpd:-.6s">✏️ Grammar</span>
-                        <span class="chip" style="--fp:4.5s; --fpd:-1.2s">🗣️ Vocabulary</span>
-                        <span class="chip" style="--fp:4s; --fpd:-1.8s">✍️ Writing</span>
+                        <span class="chip" style="--fp:4.2s">🔢 Math</span>
+                        <span class="chip" style="--fp:3.8s; --fpd:-.6s">📖 Reading</span>
+                        <span class="chip" style="--fp:4.5s; --fpd:-1.2s">✏️ Grammar</span>
+                        <span class="chip" style="--fp:4s; --fpd:-1.8s">🗣️ Vocabulary</span>
+                        <span class="chip" style="--fp:4.3s; --fpd:-.9s">✍️ Writing</span>
                     </div>
                 </div>
 
@@ -682,6 +684,7 @@
                 <div class="spot-visual" data-reveal>
                     <div class="mock-card">
                         <div class="mock-head">📎 Your weekly report — Week 6</div>
+                        <div class="mock-row"><span>🔢 Math</span><div class="bar"><i style="--w:74%"></i></div><b>74%</b></div>
                         <div class="mock-row"><span>📖 Reading</span><div class="bar"><i style="--w:82%"></i></div><b>82%</b></div>
                         <div class="mock-row"><span>✏️ Grammar</span><div class="bar"><i style="--w:64%"></i></div><b>64%</b></div>
                         <div class="mock-row"><span>🗣️ Vocabulary</span><div class="bar"><i style="--w:91%"></i></div><b>91%</b></div>
@@ -726,7 +729,7 @@
                     <h3>The curriculum plans itself — around her.</h3>
                     <p class="worry">I bought workbooks. We did two pages. Then life happened.</p>
                     <p>
-                        You don't build the timetable — the platform does. It charts the whole ELA voyage from a
+                        You don't build the timetable — the platform does. It charts the whole SEA voyage from a
                         friendly diagnostic, then re-plans <strong>every single day</strong> around their pace.
                         Breezed through? They advance. Struggled? It circles back. And when life happens,
                         you can pause and resume with one tap — no guilt, no catching-up cliff.
@@ -763,12 +766,13 @@
 
                 <div class="pillar" data-reveal style="--rd:.16s">
                     <div class="pillar-icon">🧭</div>
-                    <h3>Coverage — all of ELA, one voyage.</h3>
+                    <h3>Coverage — every component of the SEA.</h3>
                     <p>
-                        Grammar, Vocabulary, Reading comprehension and Writing — the strands they'll meet on the
-                        SEA, taught as one connected journey instead of disconnected drills.
+                        <strong>Mathematics</strong>, <strong>English Language Arts</strong> and <strong>Writing</strong> —
+                        the components they'll meet on exam day, taught as one connected journey
+                        instead of disconnected drills.
                     </p>
-                    <div class="accent strand-chips"><span>✏️ Grammar</span><span>🗣️ Vocabulary</span><span>📖 Reading</span><span>✍️ Writing</span></div>
+                    <div class="accent strand-chips"><span>🔢 Math</span><span>✏️ Grammar</span><span>🗣️ Vocabulary</span><span>📖 Reading</span><span>✍️ Writing</span></div>
                 </div>
 
                 <div class="pillar" data-reveal>
@@ -814,8 +818,8 @@
         <div class="container">
             <div class="facts-row">
                 <div class="fact-card" data-reveal>
-                    <span class="fact-num">4</span>
-                    <span class="fact-label">ELA strands, one voyage</span>
+                    <span class="fact-num">3</span>
+                    <span class="fact-label">SEA subjects, one voyage</span>
                 </div>
                 <div class="fact-card" data-reveal style="--rd:.08s">
                     <span class="fact-num">~20 min</span>
@@ -854,7 +858,7 @@
                     <div class="step-num">2</div>
                     <div class="step-body">
                         <h3>Smooth charts the voyage</h3>
-                        <p>A friendly diagnostic finds where they truly are — not where the syllabus assumes they are — and the whole ELA curriculum is planned from there.</p>
+                        <p>A friendly diagnostic finds where they truly are — not where the syllabus assumes they are — and the whole SEA curriculum is planned from there.</p>
                     </div>
                 </div>
                 <div class="step" data-reveal style="--rd:.2s">

@@ -56,12 +56,11 @@ it('promises convenience — lessons, tutorials and practice in one place', func
         ->assertSee('Lessons, tutorials and practice');
 })->group('scenario:LP-06');
 
-it('promises coverage of every ELA strand, tied to the SEA', function () {
+it('promises coverage of every SEA component — Math, ELA and Writing', function () {
     $this->get('/')
         ->assertOk()
-        ->assertSee('Grammar')
-        ->assertSee('Vocabulary')
-        ->assertSee('Reading comprehension')
+        ->assertSee('Mathematics')
+        ->assertSee('English Language Arts')
         ->assertSee('Writing')
         ->assertSee('SEA');
 })->group('scenario:LP-07');
