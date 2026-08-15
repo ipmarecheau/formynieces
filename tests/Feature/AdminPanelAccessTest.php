@@ -1,37 +1,30 @@
 <?php
 
 use App\Models\User;
-use Filament\Facades\Filament;
 
-it('allows an admin into the panel', function () {
-    $admin = User::create([
-        'name' => 'Admin',
-        'email' => 'admin@test.com',
-        'password' => bcrypt('password'),
-        'role' => 'admin',
-    ]);
+/** Security — the Filament admin panel is admin-only: students and guardians are forbidden. */
+it('lets an admin into the panel but forbids students and guardians', function () {
+    $panel = filament()->getPanel('admin');
 
-    expect($admin->canAccessPanel(Filament::getDefaultPanel()))->toBeTrue();
+    expect(User::factory()->create(['role' => 'admin'])->canAccessPanel($panel))->toBeTrue()
+        ->and(User::factory()->create(['role' => 'student'])->canAccessPanel($panel))->toBeFalse()
+        ->and(User::factory()->create(['role' => 'guardian'])->canAccessPanel($panel))->toBeFalse();
 });
 
-it('denies a student from the panel', function () {
-    $student = User::create([
-        'name' => 'Aaliyah',
-        'email' => 'aaliyah@students.formynieces.com',
-        'password' => bcrypt('password'),
-        'role' => 'student',
-    ]);
+it('forbids a student from loading an admin panel route', function () {
+    $this->actingAs(User::factory()->create(['role' => 'student', 'onboarding_completed_at' => now()]));
 
-    expect($student->canAccessPanel(Filament::getDefaultPanel()))->toBeFalse();
+    $this->get('/admin/lesson-creation-guide')->assertForbidden();
 });
 
-it('denies a guardian from the panel', function () {
-    $guardian = User::create([
-        'name' => 'Guardian',
-        'email' => 'guardian@test.com',
-        'password' => bcrypt('password'),
-        'role' => 'guardian',
-    ]);
+it('forbids a guardian from loading an admin panel route', function () {
+    $this->actingAs(User::factory()->create(['role' => 'guardian']));
 
-    expect($guardian->canAccessPanel(Filament::getDefaultPanel()))->toBeFalse();
+    $this->get('/admin/lesson-creation-guide')->assertForbidden();
+});
+
+it('lets an admin load an admin panel route', function () {
+    $this->actingAs(User::factory()->create(['role' => 'admin']));
+
+    $this->get('/admin/lesson-creation-guide')->assertSuccessful();
 });

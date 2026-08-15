@@ -28,116 +28,121 @@ Route::get('/', function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])
         ->name('dashboard');
-    Route::get('/guardian/dashboard', GuardianDashboard::class)
-        ->name('guardian.dashboard');
-    Route::get('/guardian/dashboard', GuardianDashboard::class)
-        ->name('guardian.dashboard');
-    Route::get('/guardian/progress', GuardianProgress::class)
-        ->name('guardian.progress');
-    Route::get('/exam-agent', [ExamAgentController::class, 'index'])
-        ->name('exam-agent');
-    Route::get('/child-setup', [ChildSetupController::class, 'create'])
-        ->name('child.setup');
-    Route::post('/child-setup', [ChildSetupController::class, 'store'])
-        ->name('child.store');
 
-    // RR-04: a guardian resolves a pending reconciliation from the Parent Portal.
-    Route::post('/guardian/reconciliation/{student}/proceed', [GuardianReconciliationController::class, 'proceed'])
-        ->name('guardian.reconciliation.proceed');
-    Route::post('/guardian/reconciliation/{student}/keep', [GuardianReconciliationController::class, 'keep'])
-        ->name('guardian.reconciliation.keep');
+    // Guardian-only — the Parent Portal.
+    Route::middleware('role:guardian')->group(function () {
+        Route::get('/guardian/dashboard', GuardianDashboard::class)
+            ->name('guardian.dashboard');
+        Route::get('/guardian/progress', GuardianProgress::class)
+            ->name('guardian.progress');
+        Route::get('/exam-agent', [ExamAgentController::class, 'index'])
+            ->name('exam-agent');
+        Route::get('/child-setup', [ChildSetupController::class, 'create'])
+            ->name('child.setup');
+        Route::post('/child-setup', [ChildSetupController::class, 'store'])
+            ->name('child.store');
 
-    // Pause / resume a student from the Parent Portal. [WT-04 / WT-05 / ML-03]
-    Route::post('/guardian/students/{student}/pause', [GuardianPauseController::class, 'pause'])
-        ->name('guardian.pause');
-    Route::post('/guardian/students/{student}/resume', [GuardianPauseController::class, 'resume'])
-        ->name('guardian.resume');
+        // RR-04: a guardian resolves a pending reconciliation from the Parent Portal.
+        Route::post('/guardian/reconciliation/{student}/proceed', [GuardianReconciliationController::class, 'proceed'])
+            ->name('guardian.reconciliation.proceed');
+        Route::post('/guardian/reconciliation/{student}/keep', [GuardianReconciliationController::class, 'keep'])
+            ->name('guardian.reconciliation.keep');
+
+        // Pause / resume a student from the Parent Portal. [WT-04 / WT-05 / ML-03]
+        Route::post('/guardian/students/{student}/pause', [GuardianPauseController::class, 'pause'])
+            ->name('guardian.pause');
+        Route::post('/guardian/students/{student}/resume', [GuardianPauseController::class, 'resume'])
+            ->name('guardian.resume');
+    });
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/diagnostic', function () {
-        return view('student.diagnostic-intro');
-    })->name('diagnostic.intro');
-
-    // Admin: download a single lesson as a JSON bundle (LB-02). Authorised in the controller.
+    // Admin/guardian: download a single lesson as a JSON bundle (LB-02). Authorised in the controller.
     Route::get('/lesson-bank/export/{lesson}', LessonExportController::class)->name('lessons.export');
 
-    Route::get('/practice/{module}', PracticeWalk::class)
-        ->name('practice.walk');
+    // Student-only — the learning loop.
+    Route::middleware('role:student')->group(function () {
+        Route::get('/diagnostic', function () {
+            return view('student.diagnostic-intro');
+        })->name('diagnostic.intro');
 
-    Route::get('/diagnostic/start', function () {
-        try {
-            app(SessionLifecycle::class)
-                ->startOrResume(auth()->id());
-        } catch (DomainException $e) {
-            return redirect()->route('diagnostic.intro');
-        }
+        Route::get('/practice/{module}', PracticeWalk::class)
+            ->name('practice.walk');
 
-        return redirect()->route('diagnostic.walk');
-    })->name('diagnostic.start');
+        Route::get('/diagnostic/start', function () {
+            try {
+                app(SessionLifecycle::class)
+                    ->startOrResume(auth()->id());
+            } catch (DomainException $e) {
+                return redirect()->route('diagnostic.intro');
+            }
 
-    Route::get('/diagnostic/walk', DiagnosticWalk::class)
-        ->name('diagnostic.walk');
+            return redirect()->route('diagnostic.walk');
+        })->name('diagnostic.start');
 
-    // RR-11: a pending student is held here (naming her guardian's login +
-    // support) until the guardian decides or the 3-day hold times out.
-    Route::get('/awaiting-guardian', function () {
-        $student = auth()->user();
+        Route::get('/diagnostic/walk', DiagnosticWalk::class)
+            ->name('diagnostic.walk');
 
-        if (! app(DiagnosticReconciliation::class)->isPending($student)) {
-            return redirect()->route('student.map');
-        }
+        // RR-11: a pending student is held here (naming her guardian's login +
+        // support) until the guardian decides or the 3-day hold times out.
+        Route::get('/awaiting-guardian', function () {
+            $student = auth()->user();
 
-        return view('student.awaiting-guardian', [
-            'guardianEmail' => $student->guardian?->email,
-        ]);
-    })->name('student.awaiting-guardian');
+            if (! app(DiagnosticReconciliation::class)->isPending($student)) {
+                return redirect()->route('student.map');
+            }
 
-    // Student's own roadmap — auth-only, never verified (synthetic emails).
-    Route::get('/my-map', [DashboardController::class, 'index'])
-        ->name('student.map');
+            return view('student.awaiting-guardian', [
+                'guardianEmail' => $student->guardian?->email,
+            ]);
+        })->name('student.awaiting-guardian');
 
-    // The Voyage — gamified standalone alternative to the dashboard. [AM]
-    Route::get('/voyage', [VoyageController::class, 'overworld'])
-        ->name('student.voyage');
+        // Student's own roadmap — auth-only, never verified (synthetic emails).
+        Route::get('/my-map', [DashboardController::class, 'index'])
+            ->name('student.map');
 
-    // Tier 2 — an island's own mini-voyage: a walkable interior path of levels.
-    Route::get('/voyage/{island}', [VoyageController::class, 'island'])
-        ->name('student.voyage.island');
+        // The Voyage — gamified standalone alternative to the dashboard. [AM]
+        Route::get('/voyage', [VoyageController::class, 'overworld'])
+            ->name('student.voyage');
 
-    // The Writer's Log — the parallel writing track's home, reached from the
-    // Writer's Log stop on any island. [WR-01/02/03]
-    Route::get('/writing', WritingStop::class)
-        ->name('student.writing');
+        // Tier 2 — an island's own mini-voyage: a walkable interior path of levels.
+        Route::get('/voyage/{island}', [VoyageController::class, 'island'])
+            ->name('student.voyage.island');
 
-    // Streak-celebration splash shown after login to students with active streaks.
-    Route::get('/welcome-back', [DashboardController::class, 'studentSplash'])
-        ->name('student.splash');
+        // The Writer's Log — the parallel writing track's home, reached from the
+        // Writer's Log stop on any island. [WR-01/02/03]
+        Route::get('/writing', WritingStop::class)
+            ->name('student.writing');
 
-    // The front door to a module's loop: explainer -> competency check -> outcome. [LL-19/20/21]
-    Route::get('/practice/{module}/enter', ModuleEntry::class)
-        ->name('practice.enter');
+        // Streak-celebration splash shown after login to students with active streaks.
+        Route::get('/welcome-back', [DashboardController::class, 'studentSplash'])
+            ->name('student.splash');
 
-    // AG-05: guided pages heartbeat here while she is actively engaged; each beat credits
-    // a fixed active interval to today's 2-hour pool (practice never beats).
-    Route::post('/guided-time/beat', function (GuidedTime $guidedTime) {
-        $guidedTime->beat(auth()->id());
+        // The front door to a module's loop: explainer -> competency check -> outcome. [LL-19/20/21]
+        Route::get('/practice/{module}/enter', ModuleEntry::class)
+            ->name('practice.enter');
 
-        return response()->json(['remaining' => $guidedTime->remainingSecondsToday(auth()->id())]);
-    })->name('guided-time.beat');
+        // AG-05: guided pages heartbeat here while she is actively engaged; each beat credits
+        // a fixed active interval to today's 2-hour pool (practice never beats).
+        Route::post('/guided-time/beat', function (GuidedTime $guidedTime) {
+            $guidedTime->beat(auth()->id());
 
-    Route::get('/practice/{module}/lesson', LessonWalk::class)
-        ->name('practice.lesson');
+            return response()->json(['remaining' => $guidedTime->remainingSecondsToday(auth()->id())]);
+        })->name('guided-time.beat');
 
-    Route::get('/practice/{module}/tutorial', TutorialWalk::class)
-        ->name('practice.tutorial');
+        Route::get('/practice/{module}/lesson', LessonWalk::class)
+            ->name('practice.lesson');
 
-    // The AI-assisted re-teach, entered when practice goes badly (LL-14…16, LL-22).
-    Route::get('/practice/{module}/reteach', ReteachWalk::class)
-        ->name('practice.reteach');
+        Route::get('/practice/{module}/tutorial', TutorialWalk::class)
+            ->name('practice.tutorial');
 
-    Route::get('/practice/{module}', PracticeWalk::class)
-        ->name('practice.walk');
+        // The AI-assisted re-teach, entered when practice goes badly (LL-14…16, LL-22).
+        Route::get('/practice/{module}/reteach', ReteachWalk::class)
+            ->name('practice.reteach');
+
+        Route::get('/practice/{module}', PracticeWalk::class)
+            ->name('practice.walk');
+    });
 });
 
 require __DIR__.'/auth.php';
