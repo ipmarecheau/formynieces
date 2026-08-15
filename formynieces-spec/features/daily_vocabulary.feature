@@ -50,3 +50,11 @@ Feature: Daily vocabulary
     Then the vocabulary set is short enough to finish the whole morning routine in about fifteen minutes
     And completing it advances her daily streak alongside reading
     And the full ritual can be done on a phone during her commute
+
+  @scenario:DV-06
+  Scenario: Learned words are tested in context within comprehension
+    Given she has met vocabulary words drawn from a passage
+    When a later passage's comprehension check is composed
+    Then it can ask her to use or interpret a due word in the new context
+    And getting a word right in context counts toward retaining it, feeding the spaced schedule
+    And it is treated as reinforcement, never a scored grade

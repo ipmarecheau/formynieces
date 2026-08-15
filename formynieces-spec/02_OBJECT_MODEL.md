@@ -107,11 +107,11 @@ prompt, options(json), correct_index, difficulty, strand, distractor_notes. Admi
 | title, body, reading_level, comprehension questions, marked vocabulary words | admin: author/import, retire · system: serve one unseen passage matched to level | has many VocabularyWords; serves into DailyReadingAssignment |
 
 ### DailyReadingAssignment 📖 🆕 (the per-student per-morning served passage — DR)
-*Backed by (proposed):* `daily_reading_assignments` (student_id, passage_id, date, answers json, resume/position state, completed_at) — one per student per day; resumable mid-commute; formative (never a grade, never module mastery).
+*Backed by (proposed):* `daily_reading_assignments` (student_id, passage_id, date, answers json, resume/position state, started_at, completed_at, `comprehension_score` 0–100, `words_per_minute`) — one per student per day; resumable mid-commute. Comprehension IS scored and kept (DR-07); reading pace = passage word count over the started→completed reading time (DR-08).
 
 | Attributes | Verbs (student/system) | Notes |
 |---|---|---|
-| date, chosen passage, her comprehension answers, resume position, completed_at | serve (system, matched to level), answer, resume, complete | Difficulty tracks her reading level and nudges up as she comprehends well / eases if she struggles. Completion advances the daily **Streak**. Never serves a passage she has already seen. |
+| date, passage, answers, resume position, comprehension_score, words_per_minute, started_at, completed_at | serve (matched to level), answer, resume, score, complete | Difficulty tracks her reading level (DR-04). Completion advances the daily **Streak**; the running comprehension average is tracked toward a **95% goal** and pace against an **age band** (DR-08) — a kind signal that earns perks, never a gate or a grade shown to the child (DR-03/09). Never serves a seen passage. Sized to ~10–15 min (DR-10). |
 
 ### VocabularyWord 🔤 🆕 (a word drawn from a passage — DV)
 *Backed by (proposed):* `vocabulary_words` (passage_id, word, definition, context_sentence). Today's words come from that morning's passage; each is shown in the sentence it appeared in.
@@ -122,6 +122,13 @@ prompt, options(json), correct_index, difficulty, strand, distractor_notes. Admi
 
 ### VocabularyReview 🔁 🆕 (per-student spaced-repetition state — DV)
 *Backed by (proposed):* `vocabulary_reviews` (student_id, word_id, ease/interval, due_at, last_seen_at) — one per student×word. Words she keeps getting right return less often; words she keeps missing return sooner. Formative only.
+
+### SchoolJournalEntry 🏫 🆕 (a digitised classroom assessment — SJ)
+*Backed by (proposed):* `school_journal_entries` (student_id, `uploaded_by` ∈ {student, guardian}, image_path, assessment_date, term, subject, strand, assessment_type, score, teacher_comment, `ocr_text`, `ocr_confidence` json, `digitisation_status` ∈ {pending, digitised, confirmed}, created_at). A student or guardian uploads a photo (SJ-01); a vision/OCR pipeline fills the structured fields (SJ-07), low-confidence fields flagged for a quick confirmation (SJ-02). The OCR sits behind an **`OcrService` seam** (a stub now; a real CNN/vision model or LLM-vision call later) so the pipeline is swappable.
+
+| Attributes | Verbs | Notes |
+|---|---|---|
+| image, assessment_date, term, subject, strand, type, score, comment, ocr_text, confidence, status | upload (student/guardian), digitise (system OCR), confirm/correct (guardian), weigh (engine) | Strong performance on a covered strand records a **corroborating confidence signal** (SJ-08) — supports inferred understanding in the honest layer, never auto-masters or overrides platform mastery, never a gate. Feeds the weekly summary (SJ-04), the daily plan's gentle focus (SJ-05), and per-strand trends across terms (SJ-09). Guardian/system layer; never a judgement in the child's world (SJ-06). |
 
 ### ExamAgentInsight 🤖 (computed, optionally cached)
 Honest layer: pace vs 30-week calendar, weighted readiness (50/30/20), next-week recommendation, weak strands. Groq `generateSummary()`. Cache per student×week to respect free-tier limits (30 req/min, 14.4k/day).
@@ -173,6 +180,9 @@ Guardian 1──* Student 1──* ProgressRecord *──1 SyllabusModule 1─�
 | `writing_submissions` table | `@mvp` |
 | `reading_passages` + `daily_reading_assignments` tables (daily reading, DR) | `@mvp` |
 | `vocabulary_words` + `vocabulary_reviews` tables (daily vocabulary + spaced repetition, DV) | `@mvp` |
+| `daily_reading_assignments` add comprehension_score, words_per_minute, started_at (DR score + pace) | `@mvp` |
+| `school_journal_entries` table (student/guardian upload + OCR fields + corroboration signal, SJ) | `@mvp` |
+| `OcrService` seam (stub → real CNN/vision/LLM-vision later) for school-journal digitisation | `@mvp` |
 | `student_progress.status` add `in_review` (or equivalent) | `@mvp` (decision needed) |
 | student `target_sea_year` | `@mvp` |
 | guardian phone + verification fields | `@v1.1` |

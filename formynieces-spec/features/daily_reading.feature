@@ -1,13 +1,15 @@
 @mvp @student @admin @system
 Feature: Daily reading and comprehension
-  A short morning reading ritual: one passage plus a comprehension check, sized to be
-  done on a device on the way to school. Its goals are to strengthen reading, deepen
-  comprehension, and — through a short written response each day — feed the writing skill.
-  Passages are AUTHORED OR IMPORTED IN ADVANCE into a level-keyed pool; they are never
-  generated in real time. Each morning the student is served one unseen passage matched to
-  her reading level. Like the writing track, reading is FORMATIVE: it earns warm feedback and
-  a daily streak, but never a grade, never pass/fail, and never a change to module mastery.
-  Together with daily vocabulary it is the roughly fifteen-minute morning routine.
+  A daily reading ritual — one passage plus a comprehension check — provided by the app and
+  sized so a Std-5 student finishes in about ten to fifteen minutes. Its goals are to
+  strengthen reading, deepen comprehension, and — through a short written response — feed the
+  writing skill. Passages are AUTHORED OR IMPORTED IN ADVANCE into a level-keyed pool, never
+  generated in real time; the day's vocabulary is drawn from the same passage so words are met
+  and tested in context. Comprehension IS scored and the score is KEPT: the platform tracks
+  each student toward a 95% comprehension goal and a healthy reading pace for her age band.
+  This progress is a KIND signal — it earns perks and never becomes a letter grade, a
+  pass/fail, or a gate, and never changes module mastery. The child sees only warm
+  encouragement; the numbers live with the system and the guardian.
 
   Background:
     Given a student has completed her diagnostic
@@ -63,3 +65,33 @@ Feature: Daily reading and comprehension
     Then each passage is stored with its reading level and its questions
     And passages become available to be served on future mornings
     And the same passage is never served to a student who has already seen it
+
+  @scenario:DR-07
+  Scenario: Comprehension is scored and the score is kept
+    Given she has answered the comprehension check
+    When her answers are graded
+    Then her comprehension score for that passage is recorded against the day
+    And her running comprehension average is updated
+    And the raw score is a system/guardian-layer number, never shown to her as a grade
+
+  @scenario:DR-08
+  Scenario: Progress is tracked toward a 95% comprehension goal and a healthy reading pace
+    Given she has completed morning reading on several days
+    When her reading progress is read
+    Then her comprehension average is tracked against a 95% goal
+    And her reading pace in words per minute is tracked against an age-appropriate band
+    And both trends are available in the guardian/honest layer over time
+
+  @scenario:DR-09
+  Scenario: Strong reading progress earns perks, never a gate
+    Given she reaches or holds the 95% comprehension goal, or improves her reading pace
+    When her progress is tallied
+    Then she earns a perk for it (a streak reward or XP)
+    And falling short of the goal never blocks the map, breaks a streak, or shames her
+
+  @scenario:DR-10
+  Scenario: The reading and comprehension are sized to ten to fifteen minutes
+    Given a passage served to a Std-5 reader at her level
+    When the assignment is prepared
+    Then the passage length and question count are sized for a ten-to-fifteen-minute session
+    And the daily vocabulary that follows is additional to this reading time
