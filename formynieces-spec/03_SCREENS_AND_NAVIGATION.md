@@ -86,7 +86,7 @@ Cross-check: every Gherkin `When/Then` in `features/` must land on a screen here
 
 | # | Screen | Route | Priority | Notes |
 |---|---|---|---|---|
-| F1 | Landing page — parent-pain hero with Smooth, the eight pillars (visibility, adaptability, enjoyment, convenience, coverage, effectiveness, reinforcement, consolidation), how-it-works, CTAs | `/` | @mvp ✅ | LP-01…10 — Smooth poses reused from the student app; school-journal pillar marked "coming in the MVP" until SJ-01…06 are built |
+| F1 | Landing page — parent-pain hero with an auto-rotating jumbotron of the core messages + Smooth, the eight pillars (visibility, adaptability, enjoyment, convenience, coverage, effectiveness, reinforcement, consolidation), how-it-works, CTAs; gender-neutral copy for boys and girls | `/` | @mvp ✅ | LP-01…12 — Smooth poses reused from the student app; school-journal pillar marked "coming in the MVP" until SJ-01…06 are built |
 
 ---
 

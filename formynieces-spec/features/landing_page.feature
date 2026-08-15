@@ -20,25 +20,25 @@ Feature: Landing page — speak to Caribbean parents
   Scenario: Meet Smooth — the captain is introduced properly
     Given a visitor scrolls to the companion section
     Then Smooth is introduced by name with his poses
-    And the page shows what he does: he guides her through every screen
-    And he explains the rule and re-teaches when she misses, without scolding
-    And he celebrates her wins
+    And the page shows what he does: he guides every child through every screen
+    And he explains the rule and re-teaches when a child misses, without scolding
+    And he celebrates the wins
 
   @scenario:LP-03
-  Scenario: Visibility — the parent always knows where she stands
+  Scenario: Visibility — the parent always knows where the child stands
     Given a visitor reads the visibility section
     Then it promises a clear weekly picture in the Parent Portal
-    And it explains that a struggling rule reroutes her plan through a gentle re-teach the parent can see
+    And it explains that a struggling rule reroutes the child's plan through a gentle re-teach the parent can see
     And no claim depends on a feature that is not built
 
   @scenario:LP-04
-  Scenario: Control and adaptability — the curriculum plans itself around her
+  Scenario: Control and adaptability — the curriculum plans itself around the child
     Given a visitor reads the adaptability section
-    Then it explains that the platform plans her curriculum and re-plans it daily around her pace and misses
+    Then it explains that the platform plans the curriculum and re-plans it daily around the child's pace and misses
     And it mentions the parent can pause and resume when life happens
 
   @scenario:LP-05
-  Scenario: Enjoyment — she will want to log in
+  Scenario: Enjoyment — a child will want to log in
     Given a visitor reads the enjoyment section
     Then it shows the gamified voyage map of islands and streaks and celebrations
     And it is honest that the fun serves the learning, not the other way around
@@ -62,7 +62,7 @@ Feature: Landing page — speak to Caribbean parents
     And the morning vocabulary ritual and reading assignments
 
   @scenario:LP-09
-  Scenario: Reinforcement — her effort pays off at home
+  Scenario: Reinforcement — the child's effort pays off at home
     Given a visitor reads the reinforcement section
     Then it explains that the parent sets the treasure: streaks and mastery become the currency for rewards the parent chooses
     And the platform's role stops at showing the effort honestly
@@ -71,5 +71,18 @@ Feature: Landing page — speak to Caribbean parents
   Scenario: Consolidation — the platform works with her school
     Given a visitor reads the consolidation section
     Then it explains the school journal: graded papers from school kept beside the platform's own picture
-    And that classroom evidence will weigh into her daily plan
+    And that classroom evidence will weigh into the daily plan
     And the section is clearly marked as coming in the MVP, not live today
+
+  @scenario:LP-11
+  Scenario: The hero jumbotron cycles the core messages
+    Given a visitor watching the hero
+    Then the jumbotron rotates automatically through the core messages
+    And the visitor can jump straight to any message from its dots
+    And it pauses while the visitor hovers, and waits for them when they prefer reduced motion
+
+  @scenario:LP-12
+  Scenario: The page speaks to parents of both boys and girls
+    Given a visitor reads the landing page
+    Then the copy addresses the child neutrally — never only daughters
+    And the product presents itself as SmoothSeas for Caribbean families

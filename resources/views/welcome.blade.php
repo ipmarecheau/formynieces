@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SmoothSeas — SEA English prep, sailed with a turtle named Smooth</title>
-    <meta name="description" content="The ELA companion for Caribbean primary-school girls: a daily plan that adapts to her, weekly reports for parents, and Smooth the turtle at the helm.">
+    <meta name="description" content="The ELA companion for Caribbean primary-school children: a daily plan that adapts to them, weekly reports for parents, and Smooth the turtle at the helm.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -225,6 +225,46 @@
         .stage-spark.s1 { top: 18%; left: 8%; font-size: 18px; }
         .stage-spark.s2 { bottom: 12%; right: 6%; font-size: 24px; animation-delay: -1.2s; }
         .stage-spark.s3 { top: 44%; left: -2%; font-size: 14px; animation-delay: -2.1s; }
+
+        /* ── HERO JUMBOTRON (auto-rotating messages) ── */
+        .jumbotron { position: relative; outline: none; }
+        .jumbo-track { display: grid; }
+        .jumbo-slide {
+            grid-area: 1 / 1;
+            opacity: 0; transform: translateY(16px);
+            transition: opacity .55s ease, transform .55s ease;
+            pointer-events: none; visibility: hidden;
+        }
+        .jumbo-slide.is-active { opacity: 1; transform: none; pointer-events: auto; visibility: visible; }
+        .jumbo-kicker {
+            display: block; font-size: 12.5px; font-weight: 800; letter-spacing: .12em;
+            text-transform: uppercase; color: var(--gold); margin-bottom: 12px;
+        }
+        .jumbo-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: clamp(28px, 4.4vw, 46px); line-height: 1.16;
+            background: linear-gradient(135deg, #ecfeff 0%, var(--aqua) 45%, #fcd34d 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; margin-bottom: 16px;
+        }
+        .jumbo-sub { font-size: 17px; line-height: 1.7; color: var(--muted); max-width: 540px; margin-bottom: 30px; }
+        .jumbo-sub strong { color: var(--text); }
+        .jumbo-dots { display: flex; gap: 9px; margin: 26px 0 4px; }
+        .jumbo-dot {
+            width: 12px; height: 12px; border-radius: 50%; padding: 0; cursor: pointer;
+            background: rgba(103,232,249,.25); border: 1.5px solid rgba(103,232,249,.45);
+            position: relative; transition: background .2s, border-color .2s;
+        }
+        .jumbo-dot:hover { background: rgba(103,232,249,.45); }
+        .jumbo-dot.is-active { border-color: var(--gold); }
+        .jumbo-dot::after {
+            content: ''; position: absolute; inset: 2px; border-radius: 50%;
+            background: var(--gold); transform: scale(0);
+        }
+        .jumbo-dot.is-active::after { animation: dotFill var(--jumbo-dur, 5.4s) linear forwards; }
+        .jumbotron.is-paused .jumbo-dot.is-active::after { animation-play-state: paused; }
+        @keyframes dotFill { from { transform: scale(0); } to { transform: scale(1); } }
+        .jumbo-hint { font-size: 11.5px; color: var(--dim); font-weight: 700; letter-spacing: .04em; }
 
         /* ── ANIMATED WAVE DIVIDER ── */
         .wave-wrap { position: relative; height: 70px; overflow: hidden; margin-top: -70px; }
@@ -447,6 +487,8 @@
             [data-reveal] { opacity: 1 !important; transform: none !important; }
             .mock-card .bar i { width: var(--w); }
             .stage-bubble { position: static; margin-top: 18px; max-width: 300px; }
+            .jumbo-slide { transition: none !important; }
+            .jumbo-dot.is-active::after { transform: scale(1); }
         }
     </style>
 </head>
@@ -491,19 +533,63 @@
                 <div data-reveal>
                     <div class="hero-badge">🇹🇹 Now charting: SEA 2027 — for Caribbean families</div>
 
-                    <h1>You'll never have to guess how she's doing in English again.</h1>
-
-                    <p class="hero-sub">
-                        SmoothSeas plans her whole ELA journey, adjusts it <strong>every single day</strong>,
-                        and shows you — <strong>every week</strong> — exactly where she stands.
-                        At the helm: <strong>a turtle named Smooth</strong>, who makes her want to log in.
-                    </p>
+                    <div class="jumbotron" id="jumbotron" tabindex="0" role="region" aria-roledescription="carousel" aria-label="What SmoothSeas does for your family">
+                        <div class="jumbo-track">
+                            <div class="jumbo-slide is-active" role="group" aria-roledescription="slide" aria-label="1 of 5">
+                                <span class="jumbo-kicker">For parents who want the truth, weekly</span>
+                                <h1 class="jumbo-title">You'll never have to guess how your child is doing in English again.</h1>
+                                <p class="jumbo-sub">
+                                    SmoothSeas plans the whole ELA journey, adjusts it <strong>every single day</strong>,
+                                    and shows you — <strong>every week</strong> — exactly where they stand.
+                                </p>
+                            </div>
+                            <div class="jumbo-slide" role="group" aria-roledescription="slide" aria-label="2 of 5" aria-hidden="true">
+                                <span class="jumbo-kicker">Control &amp; adaptability</span>
+                                <h2 class="jumbo-title">The curriculum plans itself — around your child.</h2>
+                                <p class="jumbo-sub">
+                                    Breezed through? They advance. Struggled? It circles back gently.
+                                    And when life happens, <strong>pause and resume</strong> with one tap.
+                                </p>
+                            </div>
+                            <div class="jumbo-slide" role="group" aria-roledescription="slide" aria-label="3 of 5" aria-hidden="true">
+                                <span class="jumbo-kicker">Enjoyment</span>
+                                <h2 class="jumbo-title">They'll ask to log in. Really.</h2>
+                                <p class="jumbo-sub">
+                                    A gamified <strong>voyage map</strong> of glowing islands, streaks and celebrations —
+                                    with a turtle named <strong>Smooth</strong> at the helm.
+                                </p>
+                            </div>
+                            <div class="jumbo-slide" role="group" aria-roledescription="slide" aria-label="4 of 5" aria-hidden="true">
+                                <span class="jumbo-kicker">Convenience &amp; coverage</span>
+                                <h2 class="jumbo-title">Everything they need, in one harbour.</h2>
+                                <p class="jumbo-sub">
+                                    <strong>Lessons, tutorials and practice</strong> — covering every ELA strand of the
+                                    SEA: grammar, vocabulary, reading comprehension, writing.
+                                </p>
+                            </div>
+                            <div class="jumbo-slide" role="group" aria-roledescription="slide" aria-label="5 of 5" aria-hidden="true">
+                                <span class="jumbo-kicker">Effectiveness</span>
+                                <h2 class="jumbo-title">Twenty focused minutes a day.</h2>
+                                <p class="jumbo-sub">
+                                    A short <strong>daily study plan</strong> anchored by a <strong>morning vocabulary
+                                    ritual</strong> and daily <strong>reading assignments</strong> — small sails that compound.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="jumbo-dots" role="tablist" aria-label="Choose a message">
+                            <button type="button" class="jumbo-dot is-active" data-i="0" aria-label="Message 1: visibility"></button>
+                            <button type="button" class="jumbo-dot" data-i="1" aria-label="Message 2: adaptability"></button>
+                            <button type="button" class="jumbo-dot" data-i="2" aria-label="Message 3: enjoyment"></button>
+                            <button type="button" class="jumbo-dot" data-i="3" aria-label="Message 4: convenience"></button>
+                            <button type="button" class="jumbo-dot" data-i="4" aria-label="Message 5: effectiveness"></button>
+                        </div>
+                    </div>
 
                     <div class="hero-cta">
                         @auth
                             <a class="btn-primary" href="{{ $homeUrl }}">Go to your dashboard →</a>
                         @else
-                            <a class="btn-primary" href="{{ route('register') }}">Start her voyage ⛵</a>
+                            <a class="btn-primary" href="{{ route('register') }}">Start the voyage ⛵</a>
                             <a class="btn-ghost" href="{{ route('login') }}">Sign In</a>
                         @endauth
                     </div>
@@ -541,9 +627,9 @@
     <section id="meet-smooth">
         <div class="container">
             <p class="section-label" data-reveal>Meet the captain</p>
-            <h2 class="section-title" data-reveal style="--rd:.08s">Her study buddy is a turtle named Smooth.</h2>
+            <h2 class="section-title" data-reveal style="--rd:.08s">Your child's study buddy is a turtle named Smooth.</h2>
             <p class="section-sub" data-reveal style="--rd:.16s">
-                He's not a mascot bolted onto a test bank — he's her companion on every screen,
+                He's not a mascot bolted onto a test bank — he's the companion on every screen,
                 in every lesson, all the way to the SEA.
             </p>
 
@@ -553,15 +639,15 @@
                 </div>
                 <div data-reveal style="--rd:.15s">
                     <div class="meet-quote">
-                        <strong>Ahoy! I'm Smooth.</strong> I sail with her through every lesson. When she misses
+                        <strong>Ahoy! I'm Smooth.</strong> I sail with your child through every lesson. When they miss
                         a rule, we take it again — together, word by word, until it clicks. And I never,
-                        ever make her feel small.
+                        ever make anyone feel small.
                     </div>
                     <div class="meet-cards">
                         <div class="meet-card">
                             <span class="m-icon">🧭</span>
-                            <h4>He shows her the way</h4>
-                            <p>A friendly how-to appears the first time she opens any screen — then never nags again.</p>
+                            <h4>He shows them the way</h4>
+                            <p>A friendly how-to appears the first time they open any screen — then never nags again.</p>
                         </div>
                         <div class="meet-card">
                             <span class="m-icon">💛</span>
@@ -595,7 +681,7 @@
             <div class="spotlight">
                 <div class="spot-visual" data-reveal>
                     <div class="mock-card">
-                        <div class="mock-head">📎 Your weekly report — Aaliyah · Week 6</div>
+                        <div class="mock-head">📎 Your weekly report — Week 6</div>
                         <div class="mock-row"><span>📖 Reading</span><div class="bar"><i style="--w:82%"></i></div><b>82%</b></div>
                         <div class="mock-row"><span>✏️ Grammar</span><div class="bar"><i style="--w:64%"></i></div><b>64%</b></div>
                         <div class="mock-row"><span>🗣️ Vocabulary</span><div class="bar"><i style="--w:91%"></i></div><b>91%</b></div>
@@ -608,8 +694,8 @@
                     <h3>You'll always know where she stands.</h3>
                     <p class="worry">"How was school today?" — "Fine." …That's all I ever get.</p>
                     <p>
-                        Every week, a clear picture waits in your Parent Portal: what she conquered, what she's
-                        still working on, and where the voyage is headed. And when a rule needs extra work, her
+                        Every week, a clear picture waits in your Parent Portal: what they conquered, what they're
+                        still working on, and where the voyage is headed. And when a rule needs extra work, the
                         plan quietly reroutes through a gentle re-teach — <strong>and you see it</strong>, so nothing
                         surprises you at term's end.
                     </p>
@@ -625,12 +711,12 @@
             <div class="spotlight flip">
                 <div class="spot-visual" data-reveal>
                     <div class="mock-card">
-                        <div class="mock-head">🗺️ Her voyage — recharted overnight</div>
+                        <div class="mock-head">🗺️ The voyage — recharted overnight</div>
                         <ul class="rechart">
                             <li><span class="day">Mon</span><span class="what">Plurals practice <small>needs one more win</small></span><span class="mv moved">→ Tue</span></li>
                             <li><span class="day">Tue</span><span class="what">Vocabulary sail</span><span class="mv kept">kept</span></li>
                             <li><span class="day">Wed</span><span class="what">Reading: tides &amp; currents</span><span class="mv kept">kept</span></li>
-                            <li><span class="day">Thu</span><span class="what">Re-teach: plurals <small>her one wobbly rule</small></span><span class="mv added">+ added</span></li>
+                            <li><span class="day">Thu</span><span class="what">Re-teach: plurals <small>their one wobbly rule</small></span><span class="mv added">+ added</span></li>
                         </ul>
                         <div class="mock-note">Paused for the school fair? It recharts around that too.</div>
                     </div>
@@ -640,9 +726,9 @@
                     <h3>The curriculum plans itself — around her.</h3>
                     <p class="worry">I bought workbooks. We did two pages. Then life happened.</p>
                     <p>
-                        You don't build the timetable — the platform does. It charts her whole ELA voyage from a
-                        friendly diagnostic, then re-plans <strong>every single day</strong> around her pace.
-                        Breezed through? She advances. Struggled? It circles back. And when life happens,
+                        You don't build the timetable — the platform does. It charts the whole ELA voyage from a
+                        friendly diagnostic, then re-plans <strong>every single day</strong> around their pace.
+                        Breezed through? They advance. Struggled? It circles back. And when life happens,
                         you can pause and resume with one tap — no guilt, no catching-up cliff.
                     </p>
                     <ul class="spot-points">
@@ -657,10 +743,10 @@
             <div class="pillars-grid">
                 <div class="pillar" data-reveal>
                     <div class="pillar-icon">🏝️</div>
-                    <h3>Enjoyment — she'll ask to sail.</h3>
+                    <h3>Enjoyment — they'll ask to sail.</h3>
                     <p>
-                        Her lessons live on a gamified voyage map — glowing islands to conquer, streaks to keep,
-                        celebrations when she lands a win. She'll want to log in; you'll want her to.
+                        The lessons live on a gamified voyage map — glowing islands to conquer, streaks to keep,
+                        celebrations on every win. They'll want to log in; you'll want them to.
                     </p>
                     <div class="accent"><div class="island-dots"><span class="lit"></span><span class="lit"></span><span class="lit"></span><span></span></div></div>
                 </div>
@@ -679,7 +765,7 @@
                     <div class="pillar-icon">🧭</div>
                     <h3>Coverage — all of ELA, one voyage.</h3>
                     <p>
-                        Grammar, Vocabulary, Reading comprehension and Writing — the strands she'll meet on the
+                        Grammar, Vocabulary, Reading comprehension and Writing — the strands they'll meet on the
                         SEA, taught as one connected journey instead of disconnected drills.
                     </p>
                     <div class="accent strand-chips"><span>✏️ Grammar</span><span>🗣️ Vocabulary</span><span>📖 Reading</span><span>✍️ Writing</span></div>
@@ -689,7 +775,7 @@
                     <div class="pillar-icon">☀️</div>
                     <h3>Effectiveness — a daily rhythm that compounds.</h3>
                     <p>
-                        A short daily study plan she can actually finish — anchored by a morning vocabulary ritual
+                        A short daily study plan they can actually finish — anchored by a morning vocabulary ritual
                         and daily reading assignments. Twenty focused minutes beat two exhausting hours.
                     </p>
                     <div class="accent"><span class="sun-rise">☀️</span></div>
@@ -699,7 +785,7 @@
                     <div class="pillar-icon">🏆</div>
                     <h3>Reinforcement — her effort pays off at home.</h3>
                     <p>
-                        You set the treasure. Her streaks and mastery stars become the currency for the rewards
+                        You set the treasure. Streaks and mastery stars become the currency for the rewards
                         you choose — the beach trip, the new book, the extra story at bedtime.
                     </p>
                     <div class="accent"><span class="star-spark">⭐</span><span class="star-spark">⭐</span><span class="star-spark">🎁</span></div>
@@ -709,8 +795,8 @@
                     <div class="pillar-icon">🏫</div>
                     <h3>Consolidation — we work with her school.</h3>
                     <p>
-                        Her graded school papers join her journal, and what her teacher sees in the classroom
-                        weighs into her daily plan. One picture of her — not two.
+                        Graded school papers join the journal, and what their teacher sees in the classroom
+                        weighs into the daily plan. One picture of your child — not two.
                     </p>
                     <div class="accent">
                         <span class="paper-stamp">Graded · B+</span>
@@ -733,7 +819,7 @@
                 </div>
                 <div class="fact-card" data-reveal style="--rd:.08s">
                     <span class="fact-num">~20 min</span>
-                    <span class="fact-label">her daily sail</span>
+                    <span class="fact-label">their daily sail</span>
                 </div>
                 <div class="fact-card" data-reveal style="--rd:.16s">
                     <span class="fact-num">1 / wk</span>
@@ -760,15 +846,15 @@
                 <div class="step" data-reveal>
                     <div class="step-num">1</div>
                     <div class="step-body">
-                        <h3>Set her compass</h3>
-                        <p>Create your parent account, add her, and choose her exam year. Two minutes — no credit card, no consultation.</p>
+                        <h3>Set the compass</h3>
+                        <p>Create your parent account, add your child, and choose their exam year. Two minutes — no credit card, no consultation.</p>
                     </div>
                 </div>
                 <div class="step" data-reveal style="--rd:.1s">
                     <div class="step-num">2</div>
                     <div class="step-body">
                         <h3>Smooth charts the voyage</h3>
-                        <p>A friendly diagnostic finds where she truly is — not where the syllabus assumes she is — and her whole ELA curriculum is planned from there.</p>
+                        <p>A friendly diagnostic finds where they truly are — not where the syllabus assumes they are — and the whole ELA curriculum is planned from there.</p>
                     </div>
                 </div>
                 <div class="step" data-reveal style="--rd:.2s">
@@ -791,12 +877,12 @@
                     <p>Pick up right where you left off — the tide is waiting.</p>
                     <a class="btn-primary" href="{{ $homeUrl }}">Go to your dashboard →</a>
                 @else
-                    <h2>Give her a smoother SEA.</h2>
+                    <h2>Give your child a smoother SEA.</h2>
                     <p>
                         The voyage to SEA 2027 starts with one calm tap — and a turtle who never
-                        lets her feel lost.
+                        lets them feel lost.
                     </p>
-                    <a class="btn-primary" href="{{ route('register') }}">Start her voyage ⛵</a>
+                    <a class="btn-primary" href="{{ route('register') }}">Start the voyage ⛵</a>
                 @endauth
             </div>
         </div>
@@ -848,6 +934,57 @@
             });
         }, { threshold: 0.15 });
         document.querySelectorAll('[data-reveal]').forEach(function (el) { io.observe(el); });
+
+        // Hero jumbotron — auto-rotating core messages (LP-11)
+        var jumbo = document.getElementById('jumbotron');
+        if (jumbo) {
+            var slides = Array.prototype.slice.call(jumbo.querySelectorAll('.jumbo-slide'));
+            var dots = Array.prototype.slice.call(jumbo.querySelectorAll('.jumbo-dot'));
+            var ji = 0, jtimer = null, JDUR = 5400;
+
+            function jGo(n) {
+                ji = ((n % slides.length) + slides.length) % slides.length;
+                slides.forEach(function (s, i) {
+                    s.classList.toggle('is-active', i === ji);
+                    s.setAttribute('aria-hidden', i === ji ? 'false' : 'true');
+                });
+                dots.forEach(function (d, i) {
+                    d.classList.toggle('is-active', i === ji);
+                    d.setAttribute('aria-selected', i === ji ? 'true' : 'false');
+                });
+            }
+            function jRestart() {
+                if (jtimer) { clearInterval(jtimer); jtimer = null; }
+                if (!reduced) { jtimer = setInterval(function () { jGo(ji + 1); }, JDUR); }
+            }
+            dots.forEach(function (d) {
+                d.addEventListener('click', function () { jGo(+d.getAttribute('data-i')); jRestart(); });
+            });
+            jumbo.addEventListener('mouseenter', function () { jumbo.classList.add('is-paused'); if (jtimer) { clearInterval(jtimer); jtimer = null; } });
+            jumbo.addEventListener('mouseleave', function () { jumbo.classList.remove('is-paused'); jRestart(); });
+            jumbo.addEventListener('focusin', function () { jumbo.classList.add('is-paused'); if (jtimer) { clearInterval(jtimer); jtimer = null; } });
+            jumbo.addEventListener('focusout', function () { jumbo.classList.remove('is-paused'); jRestart(); });
+            jumbo.addEventListener('keydown', function (e) {
+                if (e.key === 'ArrowRight') { jGo(ji + 1); jRestart(); }
+                if (e.key === 'ArrowLeft')  { jGo(ji - 1); jRestart(); }
+            });
+            // Swipe on touch screens
+            var jx = null;
+            jumbo.addEventListener('pointerdown', function (e) { jx = e.clientX; });
+            jumbo.addEventListener('pointerup', function (e) {
+                if (jx === null) { return; }
+                var dx = e.clientX - jx;
+                if (Math.abs(dx) > 40) { jGo(ji + (dx < 0 ? 1 : -1)); jRestart(); }
+                jx = null;
+            });
+            // Don't burn cycles in a hidden tab
+            document.addEventListener('visibilitychange', function () {
+                if (document.hidden) { if (jtimer) { clearInterval(jtimer); jtimer = null; } }
+                else { jRestart(); }
+            });
+            jGo(0);
+            jRestart();
+        }
 
         // Smooth's rotating greetings
         var bubble = document.getElementById('smoothBubble');

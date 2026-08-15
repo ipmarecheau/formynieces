@@ -8,7 +8,7 @@ it('shows a hero that names the parent pain, with Smooth beside it', function ()
         ->assertOk()
         ->assertSee('never have to guess')                              // the core worry, in the headline
         ->assertSee('/images/voyage/companion/smooth.webp')             // Smooth in the hero
-        ->assertSee('Start her voyage')                                 // primary CTA
+        ->assertSee('Start the voyage')                                  // primary CTA
         ->assertSee('Sign In');                                         // guest can reach login
 })->group('scenario:LP-01');
 
@@ -23,7 +23,7 @@ it('introduces Smooth properly — guide, patient re-teacher, celebrator', funct
     $this->get('/')
         ->assertOk()
         ->assertSee('a turtle named Smooth')
-        ->assertSee('He shows her the way')
+        ->assertSee('He shows them the way')
         ->assertSee('never scolds')
         ->assertSee('He celebrates');
 })->group('scenario:LP-02');
@@ -87,3 +87,24 @@ it('promises consolidation — the school journal, honestly marked as coming', f
         ->assertSee('school papers')
         ->assertSee('Coming in the MVP');
 })->group('scenario:LP-10');
+
+it('cycles the core messages in an auto-rotating hero jumbotron', function () {
+    $this->get('/')
+        ->assertOk()
+        ->assertSee('aria-roledescription', false)                     // the jumbotron carousel region
+        ->assertSee('never have to guess')                            // slide 1: visibility
+        ->assertSee('plans itself — around your child')                 // slide 2: adaptability
+        ->assertSee('ask to log in')                                   // slide 3: enjoyment
+        ->assertSee('in one harbour')                                   // slide 4: convenience
+        ->assertSee('Twenty focused minutes a day')                     // slide 5: effectiveness
+        ->assertSee('jumbo-dot');                                       // jump-to-message dots
+})->group('scenario:LP-11');
+
+it('speaks to parents of both boys and girls, as SmoothSeas', function () {
+    $response = $this->get('/');
+    $response->assertOk()
+        ->assertSee('SmoothSeas')
+        ->assertSee('your child')
+        ->assertDontSee('daughter')
+        ->assertDontSee(' girls');
+})->group('scenario:LP-12');

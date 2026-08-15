@@ -21,7 +21,7 @@
 | `weekly_targets.feature` | @mvp | pause/resume @v1.1 | system |
 | `writing_track.feature` | @mvp | trend view, guardian view @v1.1 | student, system |
 | `guardian_dashboard.feature` | @mvp | digest @v1.1 | guardian |
-| `landing_page.feature` | @mvp | — (LP-01…10 built: parent-pain hero with Smooth, the eight pillars, how-it-works, honest coming-soon marking for the school journal) | guardian, public |
+| `landing_page.feature` | @mvp | — (LP-01…12 built: parent-pain hero with an auto-rotating jumbotron + Smooth, the eight pillars, how-it-works, gender-neutral copy, honest coming-soon marking for the school journal) | guardian, public |
 | `school_journal.feature` | @mvp | — (SJ-01…06 specced for the MVP; build pending — graded-paper upload + structured capture, term timeline, feeds weekly summary and daily plan, two-layer separation) | guardian, system |
 | `motivation_layer.feature` | @mvp | — | student |
 | `exam_readiness.feature` | @roadmap | — | student |
