@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Services\SchoolJournal\OcrService;
 use App\Services\SchoolJournal\SchoolEvidenceService;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
@@ -55,7 +56,7 @@ class SchoolJournal extends Component
             'digitisation_status' => SchoolJournalEntry::STATUS_PENDING,
         ]);
 
-        $result = $ocr->digitize(storage_path('app/'.$path), $this->paper->getMimeType());
+        $result = $ocr->digitize(Storage::disk('local')->path($path), $this->paper->getMimeType());
 
         if ($result !== null) {
             $entry->fill($result['fields']);

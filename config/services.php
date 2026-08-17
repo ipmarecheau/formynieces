@@ -30,9 +30,12 @@ return [
         // Optional preferred provider order for the primary model (comma-separated), e.g. "Alibaba,DeepInfra".
         'provider_order' => array_values(array_filter(array_map('trim', explode(',', (string) env('LLM_PROVIDER_ORDER', ''))))),
 
-        // School-journal digitisation (SJ-07). A vision-capable model id; unset = OCR
-        // disabled and the guardian enters fields by hand (the honest fallback).
+        // School-journal digitisation (SJ-07). Vision-capable model ids — primary first,
+        // then fallbacks tried in order when a call fails or returns junk. Chosen by
+        // `php artisan sj:ocr-benchmark` (see tests/fixtures/graded_paper.jpg):
+        // gemma-3-4b scored 6/6 at $0.000048/call; the free tiers matched at $0.
         'vision_model' => env('LLM_VISION_MODEL'),
+        'vision_fallback_models' => array_values(array_filter(array_map('trim', explode(',', (string) env('LLM_VISION_FALLBACK_MODELS', ''))))),
 
         // AI governance budget (AG-01..04). Per-student, per-month, in USD.
         // Discretionary AI (clarify chat, re-teach, worked examples) stops at the soft

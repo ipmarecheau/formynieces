@@ -125,20 +125,36 @@ class OcrService
     }
 
     /**
-     * The LLM-vision call. Kept private and small so the whole backend is one
-     * method to swap for a CNN some day.
+     * The LLM-vision call, with the benchmark-chosen fallback chain. Kept small
+     * so the whole backend is one method to swap for a CNN some day.
      *
      * @return array<string, mixed>|null
      */
     private function visionCall(string $dataUrl, string $mime): ?array
     {
         $key = (string) config('services.llm.key');
-        $baseUrl = rtrim((string) config('services.llm.base_url'), '');
-        $model = (string) config('services.llm.vision_model');
-        if ($key === '' || $baseUrl === '' || $model === '') {
+        $baseUrl = rtrim((string) config('services.llm.base_url'), '/');
+        $models = array_values(array_unique(array_merge(
+            [(string) config('services.llm.vision_model')],
+            (array) config('services.llm.vision_fallback_models', []),
+        )));
+        if ($key === '' || $baseUrl === '' || $models === ['']) {
             return null; // not configured — manual entry path takes over
         }
 
+        foreach ($models as $model) {
+            $decoded = $this->requestVisionModel($baseUrl, $key, $model, $dataUrl);
+            if ($decoded !== null) {
+                return $decoded;
+            }
+        }
+
+        return null;
+    }
+
+    /** @return array<string, mixed>|null */
+    private function requestVisionModel(string $baseUrl, string $key, string $model, string $dataUrl): ?array
+    {
         $system = <<<'TXT'
         You read photos of graded school assessments (Caribbean primary school, SEA syllabus).
         Extract structured fields and rate how certain you are for EACH field, 0.00 to 1.00.

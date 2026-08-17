@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\SchoolJournalEntry;
 use App\Services\SchoolJournal\OcrService;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
@@ -42,7 +43,7 @@ class StudentSchoolJournal extends Component
         ]);
 
         // Digitise silently when possible — but never surface scores here (SJ-06).
-        $result = $ocr->digitize(storage_path('app/'.$path), $this->paper->getMimeType());
+        $result = $ocr->digitize(Storage::disk('local')->path($path), $this->paper->getMimeType());
         if ($result !== null) {
             $entry->fill($result['fields']);
             $entry->ocr_text = $result['text'];
