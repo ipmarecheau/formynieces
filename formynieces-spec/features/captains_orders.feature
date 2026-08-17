@@ -101,3 +101,13 @@ Feature: Captain's Orders — the daily brief and the day's minimum
     Then the brief names this week's goal as a friendly count of islands to conquer
     And it shows how many she has conquered so far this week
     And the progress is framed as an encouraging quest, never a percentage or a deficit
+
+  @scenario:CO-12
+  Scenario: On a phone the orders do not bury the sea
+    Given a student opens her Voyage on a small screen
+    When the Captain's Orders sidebar is shown
+    Then the map stays reachable without dismissing the whole brief
+    And the sidebar opens keeping some of the sea in view, or collapses to a peek she can expand
+    And her companion's help affordance never covers the island list
+    # Observed on mobile: the expanded orders panel filled the screen and pushed the map
+    # below the fold, and the help bubble overlapped the island legend.

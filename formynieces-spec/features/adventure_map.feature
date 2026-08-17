@@ -75,6 +75,15 @@ Feature: Syllabus adventure map — the Voyage
       And no placement weights, percentages, or pace deficits are displayed
       And every island's state reflects only her mastery, never her pace
 
+    @scenario:AM-12
+    Scenario: A locked island never reads as a contradiction
+      Given a locked island that already holds levels she mastered in her diagnostic
+      When she sees it on the map and in the legend
+      Then it does not show a bare conquered count beside its locked badge
+      And any already-known levels there are framed as skills she brings, not progress waiting
+      And the island's locked state stays clear and unalarming
+      # Observed: a locked island showing "2/7" reads as "locked but done" to a child.
+
   @roadmap @scenario:AM-07
   Scenario: The buffer switches the map to revision mode
     Given the current week is within 6 weeks of the exam date

@@ -46,6 +46,16 @@ Feature: Parallel writing track
     And writing is no longer shown as a stop on the map
     # Authoritative gate behaviour is CO-05; the map side is adventure_map AM-11.
 
+  @scenario:WR-08
+  Scenario: The writing gate never strands her when there is no prompt
+    Given today is a writing day but no writing prompt is available for her
+    When she opens the writing duty from her Captain's Brief
+    Then she is not blocked from advancing on the map for want of a prompt
+    And the writing duty is stood down for the day rather than left as an impossible task
+    And the day can still be completed without a writing submission
+    # Pairs with WR-07/CO-05: the gate assumes a prompt exists; with none it must lift.
+    # Observed: the writing stop shows "No prompt this week" while writing gates advancing.
+
   @v1.1 @scenario:WR-04
   Scenario: The history view shows rubric growth
     Given a student with 4 or more scored submissions

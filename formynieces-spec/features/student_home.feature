@@ -65,3 +65,13 @@ Feature: Student home — the Voyage is the front door
       Then the Captain's Orders sidebar is available there, showing today's brief
       And her daily minimum and streak are reached from the Voyage, not a separate dashboard
       # The sidebar spec is captains_orders (CO-01); the Ship's Log is ship_log (SL-*).
+
+    @scenario:SH-08
+    Scenario: Every child-layer screen offers a way back to the Voyage
+      Given a student on a child-layer screen away from the overworld —
+        a level's entry, the Morning Tide, a lesson, or the writing duty
+      When she wants to return home
+      Then a clear, consistent "back to my Voyage" control is present on that screen
+      And she never has to rely on the browser's back button to reach her home
+      # Observed: the island interior and the writing duty had a back link, but the
+      # module entry and the Morning Tide did not.

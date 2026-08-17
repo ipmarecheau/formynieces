@@ -63,6 +63,16 @@ Feature: Reveal and roadmap seeding
       And she is not sent back into the diagnostic while the hold is unresolved
       And once the hold times out her next login proceeds her to the map
 
+    @scenario:RR-13
+    Scenario: The guardian is told when a reconciliation is waiting on her
+      Given the diagnostic cleared a strand the guardian flagged and her decision is needed
+      And her student is being held on the waiting page
+      When the reconciliation is left pending
+      Then the guardian is notified out of the app that a decision is waiting
+      And the notice explains that her student is paused until she chooses or the hold times out
+      # Without this the child is held (RR-11) while the guardian has no signal. The
+      # in-app banner is guardian_dashboard GD-10; the auto-proceed safety net is RR-10.
+
   @scenario:RR-06
   Scenario: Completion computes the starting week and first target
     Given a student's diagnostic session has completed

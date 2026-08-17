@@ -55,6 +55,16 @@ Feature: Ship's Log — her story so far
     And the Ship's Log reflects the change
     # What each reward does, and when it may be used, is defined in streak_economy (SE-*).
 
+  @scenario:SL-08
+  Scenario: The Locker shows how rewards are earned, and never deflates when empty
+    Given a student opens her Captain's Locker
+    When she has not yet earned a given reward
+    Then each reward tells her, in child-kind words, how she can earn it
+    And an empty Locker is framed as rewards to sail toward, not a row of zeroes
+    And earning a reward is celebrated when its count first rises
+    # Ways to earn are defined in streak_economy (SE-13/14/15); this is the Locker view.
+    # Observed: the Locker listed every reward at "×0" with no path to earn one.
+
   @scenario:SL-07
   Scenario: The log never shows guardian-layer or school information
     When she reads her Ship's Log

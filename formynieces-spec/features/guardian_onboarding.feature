@@ -1,7 +1,8 @@
 @mvp @guardian
 Feature: Guardian account and child setup
   In order to give a niece a safe, personalised SEA preparation journey
-  a guardian creates a verified account and sets up her student profile.
+  a guardian creates a verified account and sets up her student profile — guided
+  step by step, and always clear about whose name is being asked for.
   All students must be linked to a verified guardian aged 18 or over.
 
   @scenario:GO-01
@@ -36,6 +37,31 @@ Feature: Guardian account and child setup
     Given a student whose onboarding is not completed
     When the student logs in
     Then she is taken to the diagnostic intro instead of the dashboard
+
+  @scenario:GO-09
+  Scenario: The registration form asks for the guardian's own name, not the child's
+    Given a visitor is on the registration screen
+    When she reads the name field
+    Then it is labelled as her own name, as the parent or guardian
+    And its helper text tells her she will add her child in the next step
+    And its example is an adult's name, so she does not enter the child's name here
+    # Observed: the name field's example ("e.g. Aaliyah Thomas") reads as a child's name.
+
+  @scenario:GO-10
+  Scenario: The setup journey shows the guardian where she is
+    Given a guardian moving from registration through child setup to the diagnostic hand-off
+    When she is on any step of that setup journey
+    Then the step she is on and how many remain are shown
+    And each step names, in plain language, what it is for
+
+  @scenario:GO-11
+  Scenario: The verification notice tells her exactly what to do next
+    Given a guardian who has registered but not verified her email
+    When she lands on the email verification notice
+    Then it names the address the link was sent to and what happens once she confirms
+    And she can resend the link and reach a human for help without leaving the flow
+    # Verification still gates child setup (GO-02); this removes the dead-end feeling.
+    # Fully deferring verification until after child setup is a separate product call.
 
   @v1.1 @scenario:GO-06
   Scenario: A guardian verifies a phone number

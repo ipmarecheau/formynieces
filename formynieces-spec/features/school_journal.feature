@@ -72,6 +72,15 @@ Feature: School journal — assessments from the classroom
     Then it includes what the school evidence said, alongside the platform's own picture
     And the two sources are labelled so the parent knows which is which
 
+  @scenario:SJ-10
+  Scenario: A guardian opens her student's journal from the dashboard
+    Given a guardian whose student is linked to her
+    When she follows the "open the journal" link from her guardian dashboard
+    Then her student's school journal opens successfully in the guardian layer
+    And it renders its term timeline without error, even when no entries exist yet
+    # Guards the guardian journal view (guardian.journal) against a missing-layout crash
+    # that currently returns a 500 when the link is followed.
+
   @scenario:SJ-06
   Scenario: A school mark is never a judgement metric in the child's world
     Given a school journal entry exists for a student

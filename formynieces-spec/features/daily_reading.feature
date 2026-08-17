@@ -97,3 +97,13 @@ Feature: Daily reading and comprehension
     When the assignment is prepared
     Then the passage length and question count are sized for a ten-to-fifteen-minute session
     And the daily vocabulary that follows is additional to this reading time
+
+  @scenario:DR-11
+  Scenario: The Morning Tide shows her where she is in the ritual
+    Given she starts her Morning Tide
+    When she moves through the reading, the comprehension check, and the day's words
+    Then a simple progress indicator shows the three steps and which one she is on
+    And she can see roughly how much of the ritual is left
+    And the steps carry the same warm styling as the rest of her Voyage
+    # Morning Tide bundles daily reading and daily vocabulary (captains_orders CO-02);
+    # today the reading screen gives no sense of the sequence or its length.
