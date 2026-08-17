@@ -52,13 +52,13 @@
 
             @if (($q['type'] ?? 'mc') === 'mc')
                 @foreach ($q['options'] ?? [] as $i => $option)
-                    <label class="mt-opt">
-                        <input type="radio" wire:model="currentAnswer" value="{{ $i }}">
+                    <label class="mt-opt" wire:key="q{{ $qIndex }}-o{{ $i }}">
+                        <input type="radio" wire:model="currentAnswer" value="{{ $i }}" wire:key="r{{ $qIndex }}-{{ $i }}">
                         <span>{{ $option }}</span>
                     </label>
                 @endforeach
             @else
-                <textarea class="mt-write" wire:model="currentAnswer" placeholder="Write your answer in your own words…"></textarea>
+                <textarea class="mt-write" wire:model="currentAnswer" wire:key="written-{{ $qIndex }}" placeholder="Write your answer in your own words…"></textarea>
                 <p class="mt-goal" style="text-align:left;margin-top:6px;">This one's writing practice — there's no wrong answer.</p>
             @endif
 
@@ -73,7 +73,7 @@
             <div class="mt-word">{{ $currentWord?->word }}</div>
             <div class="mt-def">{{ $currentWord?->definition }}</div>
             <div class="mt-ctx">“{{ $currentWord?->context_sentence }}”</div>
-            <textarea class="mt-write" style="margin-top:12px;" wire:model="currentSentence" placeholder="Now use it in a sentence of your own…"></textarea>
+            <textarea class="mt-write" style="margin-top:12px;" wire:model="currentSentence" wire:key="word-{{ $vocabIndex }}" placeholder="Now use it in a sentence of your own…"></textarea>
             <button class="mt-btn" wire:click="nextWord">
                 {{ $vocabIndex < $vocabTotal - 1 ? 'Next word →' : 'Finish the tide →' }}
             </button>
