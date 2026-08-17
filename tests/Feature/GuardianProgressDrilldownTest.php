@@ -92,3 +92,14 @@ it('is reachable at the guardian progress route', function () {
         ->get('/guardian/progress')
         ->assertOk();
 })->group('scenario:GD-02');
+
+// GD-08 — the drill-down leads with what needs attention, not the whole syllabus.
+it('leads with actionable buckets, summarises mastery, and collapses upcoming', function () {
+    $c = gpSeedGuardianWithProgress();
+
+    Livewire::actingAs($c['guardian'])
+        ->test(GuardianProgress::class)
+        ->assertSeeTextInOrder(['Working on', 'Upcoming'])   // actionable buckets lead, upcoming last
+        ->assertSee('1 of 4 mastered')                        // per-subject mastered/total summary (Math)
+        ->assertSee('Show all');                              // the upcoming list is collapsed behind a control
+})->group('scenario:GD-08');

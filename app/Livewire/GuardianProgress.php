@@ -27,9 +27,32 @@ class GuardianProgress extends Component
         $guardian = auth()->user();
         $student  = $guardian->students()->first();
 
+        $buckets = $this->buildBuckets($student);
+
         return view('livewire.guardian-progress', [
-            'buckets' => $this->buildBuckets($student),
+            'buckets' => $buckets,
+            'summaries' => $this->summarise($buckets),
         ]);
+    }
+
+    /**
+     * Per-subject mastered-out-of-total summary for the drill-down header.
+     *
+     * @param  array<string, array<string, array<int, mixed>>>  $buckets
+     * @return array<string, array{mastered:int, total:int}>
+     */
+    private function summarise(array $buckets): array
+    {
+        $summaries = [];
+
+        foreach ($buckets as $subject => $subjectBuckets) {
+            $summaries[$subject] = [
+                'mastered' => count($subjectBuckets['mastered']),
+                'total' => array_sum(array_map('count', $subjectBuckets)),
+            ];
+        }
+
+        return $summaries;
     }
 
     /**
