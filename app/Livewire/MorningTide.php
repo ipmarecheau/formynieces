@@ -15,34 +15,46 @@ use Livewire\Component;
 
 /**
  * The Morning Tide — one guided ritual (DR + DV): read the passage, chart it
- * (comprehension), then meet today's words in context. Satisfies the single
- * "morning_tide" duty on the Captain's Brief. Reached from Smooth's morning offer
- * or the Captain's Orders checklist. Progress is warm, never a grade (DR-03).
+ * (comprehension, with a single re-read allowed), then choose two words to build
+ * sentences with. Words she uses successfully progress toward mastery and rotate
+ * out. Satisfies the single "morning_tide" duty. Feedback is always encouraging.
  */
 #[Layout('components.layouts.diagnostic')]
 class MorningTide extends Component
 {
-    public string $phase = 'read';     // read | check | vocab | done
+    /** read | check | pick | vocab | done */
+    public string $phase = 'read';
 
     public ?int $assignmentId = null;
 
     public bool $noPassage = false;
 
+    // Comprehension check
     public int $qIndex = 0;
 
-    /** @var array<int,mixed> question index => answer */
+    /** @var array<int,mixed> */
     public array $answers = [];
 
     public mixed $currentAnswer = null;
 
-    /** @var list<int> snapshot of the day's word ids, fixed for the ritual */
-    public array $vocabWordIds = [];
+    public bool $showPassage = false;   // re-read reveal
+
+    public bool $rereadUsed = false;    // the one allowed re-read
+
+    public ?int $score = null;
+
+    // Vocabulary (choose two, master-and-rotate)
+    /** @var list<int> */
+    public array $candidateIds = [];
+
+    /** @var list<int> */
+    public array $chosenIds = [];
 
     public int $vocabIndex = 0;
 
     public string $currentSentence = '';
 
-    public ?int $score = null;
+    private const WORDS_TO_CHOOSE = 2;
 
     public function mount(): void
     {
@@ -69,6 +81,15 @@ class MorningTide extends Component
         $this->currentAnswer = null;
     }
 
+    /** Reveal the passage once during the check — a single allowed re-read. */
+    public function reread(): void
+    {
+        if (! $this->rereadUsed) {
+            $this->showPassage = true;
+            $this->rereadUsed = true;
+        }
+    }
+
     public function nextQuestion(): void
     {
         $this->answers[$this->qIndex] = $this->currentAnswer;
@@ -81,30 +102,54 @@ class MorningTide extends Component
             return;
         }
 
+        // Score + keep it (LLM scoring lands in a later increment; MC auto-grade now).
         $scored = app(DailyReadingService::class)->score($this->assignment(), $this->answers);
         $this->score = $scored->comprehension_score;
 
-        $this->vocabWordIds = app(VocabularyService::class)
-            ->wordsForToday(auth()->id(), $this->assignment()->passage)
+        $this->candidateIds = app(VocabularyService::class)
+            ->candidateWords(auth()->id(), $this->assignment()->passage)
             ->pluck('id')->all();
-        $this->vocabIndex = 0;
-        $this->phase = $this->vocabWordIds === [] ? 'done' : 'vocab';
 
-        if ($this->phase === 'done') {
+        if ($this->candidateIds === []) {
             $this->finish();
+
+            return;
         }
+
+        $this->phase = 'pick';
+    }
+
+    public function toggleChoose(int $wordId): void
+    {
+        if (in_array($wordId, $this->chosenIds, true)) {
+            $this->chosenIds = array_values(array_diff($this->chosenIds, [$wordId]));
+        } elseif (count($this->chosenIds) < self::WORDS_TO_CHOOSE) {
+            $this->chosenIds[] = $wordId;
+        }
+    }
+
+    public function startWriting(): void
+    {
+        if (count($this->chosenIds) === 0) {
+            return;
+        }
+        $this->vocabIndex = 0;
+        $this->currentSentence = '';
+        $this->phase = 'vocab';
     }
 
     public function nextWord(): void
     {
-        $wordId = $this->vocabWordIds[$this->vocabIndex] ?? null;
+        $wordId = $this->chosenIds[$this->vocabIndex] ?? null;
         if ($wordId !== null) {
-            // Meeting the word in context is reinforcement (DV-02) — it feeds the schedule.
-            app(VocabularyService::class)->recordResult(auth()->id(), $wordId, true);
+            $word = VocabularyWord::find($wordId);
+            $correct = $word !== null
+                && app(VocabularyService::class)->usedCorrectly($word->word, $this->currentSentence);
+            app(VocabularyService::class)->recordResult(auth()->id(), $wordId, $correct);
         }
         $this->currentSentence = '';
 
-        if ($this->vocabIndex < count($this->vocabWordIds) - 1) {
+        if ($this->vocabIndex < count($this->chosenIds) - 1) {
             $this->vocabIndex++;
 
             return;
@@ -127,26 +172,26 @@ class MorningTide extends Component
     }
 
     /** @return Collection<int,VocabularyWord> */
-    private function vocabWords(): Collection
+    private function words(array $ids): Collection
     {
-        if ($this->vocabWordIds === []) {
+        if ($ids === []) {
             return collect();
         }
 
-        return VocabularyWord::whereIn('id', $this->vocabWordIds)
-            ->get()->sortBy(fn ($w) => array_search($w->id, $this->vocabWordIds))->values();
+        return VocabularyWord::whereIn('id', $ids)->get()
+            ->sortBy(fn ($w) => array_search($w->id, $ids))->values();
     }
 
     public function render(): View
     {
         $assignment = $this->assignmentId !== null ? $this->assignment() : null;
-        $words = $this->phase === 'vocab' ? $this->vocabWords() : collect();
 
         return view('livewire.morning-tide', [
             'passage' => $assignment?->passage,
             'questions' => $assignment?->passage->questions ?? [],
-            'currentWord' => $words[$this->vocabIndex] ?? null,
-            'vocabTotal' => count($this->vocabWordIds),
+            'candidates' => $this->phase === 'pick' ? $this->words($this->candidateIds) : collect(),
+            'currentWord' => $this->phase === 'vocab' ? $this->words($this->chosenIds)[$this->vocabIndex] ?? null : null,
+            'chosenTotal' => count($this->chosenIds),
         ]);
     }
 }

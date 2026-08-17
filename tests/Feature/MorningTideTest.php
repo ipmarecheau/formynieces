@@ -32,6 +32,7 @@ function mtPassage(): ReadingPassage
         'is_active' => true,
     ]);
     VocabularyWord::create(['passage_id' => $passage->id, 'word' => 'beacon', 'definition' => 'a light', 'context_sentence' => 'The beacon shone.']);
+    VocabularyWord::create(['passage_id' => $passage->id, 'word' => 'weary', 'definition' => 'tired', 'context_sentence' => 'A weary crew.']);
 
     return $passage;
 }
@@ -42,15 +43,21 @@ it('walks read → comprehension → vocab and completes the Morning Tide duty',
     mtPassage();
     $this->actingAs($student);
 
+    $words = VocabularyWord::pluck('id')->all();
+
     Livewire::test(MorningTide::class)
         ->assertSet('phase', 'read')
         ->assertSee('The Lighthouse')
         ->call('startCheck')->assertSet('phase', 'check')
         ->set('currentAnswer', 0)->call('nextQuestion')
         ->set('currentAnswer', 1)->call('nextQuestion')
-        ->assertSet('phase', 'vocab')
+        ->assertSet('phase', 'pick')
         ->assertSee('beacon')
-        ->call('nextWord')
+        ->call('toggleChoose', $words[0])
+        ->call('toggleChoose', $words[1])
+        ->call('startWriting')->assertSet('phase', 'vocab')
+        ->set('currentSentence', 'The beacon guided the ship.')->call('nextWord')
+        ->set('currentSentence', 'I felt weary after the climb.')->call('nextWord')
         ->assertSet('phase', 'done');
 
     $plan = DailyPlan::where('student_id', $student->id)->where('date', '2026-08-18')->first();

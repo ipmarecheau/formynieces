@@ -20,7 +20,46 @@ class VocabularyService
 {
     public const DAILY_CAP = 6;
 
+    /** Successful uses at which a word is considered mastered and rotates out. */
+    public const MASTERY_STREAK = 3;
+
     private const MAX_INTERVAL = 30;
+
+    /**
+     * The words she may choose to build a sentence with today: due (not-yet-mastered)
+     * reviews plus new words from the passage, mastered words rotated out, capped so
+     * she picks from a small set (she then chooses two).
+     *
+     * @return Collection<int,VocabularyWord>
+     */
+    public function candidateWords(int $studentId, ReadingPassage $passage, ?Carbon $on = null): Collection
+    {
+        $on ??= Carbon::today();
+
+        $mastered = VocabularyReview::where('student_id', $studentId)
+            ->where('correct_streak', '>=', self::MASTERY_STREAK)->pluck('word_id');
+
+        $due = VocabularyReview::where('student_id', $studentId)
+            ->where('correct_streak', '<', self::MASTERY_STREAK)
+            ->whereDate('due_at', '<=', $on->toDateString())
+            ->with('word')->get()->pluck('word')->filter();
+
+        $reviewedIds = VocabularyReview::where('student_id', $studentId)->pluck('word_id');
+        $new = $passage->vocabularyWords()->whereNotIn('id', $reviewedIds)->get();
+
+        return $due->concat($new)
+            ->reject(fn ($w) => $mastered->contains($w->id))
+            ->unique('id')->take(5)->values();
+    }
+
+    /**
+     * Did her sentence actually use the word? (Fallback check; the LLM can judge
+     * this more richly later.)
+     */
+    public function usedCorrectly(string $word, string $sentence): bool
+    {
+        return str_contains(mb_strtolower($sentence), mb_strtolower(trim($word)));
+    }
 
     /**
      * The word set for today: due reviews first, then new words from the passage,
