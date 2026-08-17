@@ -54,6 +54,9 @@ class MorningTide extends Component
 
     public string $currentSentence = '';
 
+    /** @var array<int,string> word id => her sentence */
+    public array $vocabSentences = [];
+
     private const WORDS_TO_CHOOSE = 2;
 
     public function mount(): void
@@ -146,6 +149,7 @@ class MorningTide extends Component
             $correct = $word !== null
                 && app(VocabularyService::class)->usedCorrectly($word->word, $this->currentSentence);
             app(VocabularyService::class)->recordResult(auth()->id(), $wordId, $correct);
+            $this->vocabSentences[$wordId] = trim($this->currentSentence);
         }
         $this->currentSentence = '';
 
@@ -161,9 +165,80 @@ class MorningTide extends Component
     private function finish(): void
     {
         $studentId = (int) auth()->id();
+
+        if ($this->vocabSentences !== [] && $this->assignmentId !== null) {
+            $assignment = $this->assignment();
+            $assignment->vocab_sentences = $this->vocabSentences;
+            $assignment->save();
+        }
+
         app(DailyPlanComposer::class)->markDuty($studentId, 'morning_tide');
         app(StreakEconomyService::class)->completeDailyMinimumIfMet($studentId);
         $this->phase = 'done';
+    }
+
+    /**
+     * The honest, encouraging breakdown shown on the done screen (and stored for the
+     * diary): each comprehension question with her answer vs the correct one, and
+     * each word she built a sentence with.
+     *
+     * @return array{comprehension: list<array>, wordUsage: list<array>}
+     */
+    private function buildBreakdown(DailyReadingAssignment $assignment): array
+    {
+        $questions = $assignment->passage->questions ?? [];
+        $answers = $assignment->answers ?? [];
+
+        $comprehension = [];
+        foreach ($questions as $i => $q) {
+            if (($q['type'] ?? 'mc') === 'mc') {
+                $her = $answers[$i] ?? null;
+                $correctIndex = $q['correct_index'] ?? null;
+                $comprehension[] = [
+                    'prompt' => $q['prompt'] ?? '',
+                    'type' => 'mc',
+                    'yourAnswer' => $her !== null ? ($q['options'][$her] ?? '—') : '—',
+                    'correctAnswer' => $correctIndex !== null ? ($q['options'][$correctIndex] ?? '') : '',
+                    'correct' => $her !== null && (int) $her === (int) $correctIndex,
+                ];
+            } else {
+                $comprehension[] = [
+                    'prompt' => $q['prompt'] ?? '',
+                    'type' => 'written',
+                    'yourAnswer' => $answers[$i] ?? '',
+                    'correct' => null,
+                ];
+            }
+        }
+
+        $wordUsage = [];
+        foreach (($assignment->vocab_sentences ?? []) as $wordId => $sentence) {
+            $word = VocabularyWord::find($wordId);
+            if ($word === null) {
+                continue;
+            }
+            $wordUsage[] = [
+                'word' => $word->word,
+                'sentence' => (string) $sentence,
+                'used' => app(VocabularyService::class)->usedCorrectly($word->word, (string) $sentence),
+                'example' => $word->context_sentence,
+            ];
+        }
+
+        return ['comprehension' => $comprehension, 'wordUsage' => $wordUsage];
+    }
+
+    /** Honest but never-defeating message, scaled to the comprehension score. */
+    private function messageFor(?int $score): string
+    {
+        return match (true) {
+            $score === null => 'Let\'s look back at your voyage together. 🌊',
+            $score >= 95 => 'A brilliant reading, Captain! Treasure earned. 🏆',
+            $score >= 75 => 'Strong reading today — well sailed! 🌟',
+            $score >= 50 => 'Good sailing! A few to tighten up — see below. ⛵',
+            $score >= 1 => 'A brave first voyage. Let\'s see what to notice next time. 🧭',
+            default => 'Reading gets easier every day — let\'s look at these together. 🌱',
+        };
     }
 
     private function assignment(): DailyReadingAssignment
@@ -192,6 +267,8 @@ class MorningTide extends Component
             'candidates' => $this->phase === 'pick' ? $this->words($this->candidateIds) : collect(),
             'currentWord' => $this->phase === 'vocab' ? $this->words($this->chosenIds)[$this->vocabIndex] ?? null : null,
             'chosenTotal' => count($this->chosenIds),
+            'breakdown' => $this->phase === 'done' && $assignment !== null ? $this->buildBreakdown($assignment) : null,
+            'message' => $this->messageFor($this->score),
         ]);
     }
 }

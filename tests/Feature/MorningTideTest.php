@@ -58,14 +58,19 @@ it('walks read → comprehension → vocab and completes the Morning Tide duty',
         ->call('startWriting')->assertSet('phase', 'vocab')
         ->set('currentSentence', 'The beacon guided the ship.')->call('nextWord')
         ->set('currentSentence', 'I felt weary after the climb.')->call('nextWord')
-        ->assertSet('phase', 'done');
+        ->assertSet('phase', 'done')
+        ->assertSee('Comprehension')       // the breakdown is shown
+        ->assertSee('Your words')
+        ->assertSee('brilliant');          // honest, score-scaled message (100% → brilliant)
 
     $plan = DailyPlan::where('student_id', $student->id)->where('date', '2026-08-18')->first();
     expect($plan->duties['morning_tide'])->toBeTrue();
 
     $assignment = DailyReadingAssignment::where('student_id', $student->id)->first();
     expect($assignment->comprehension_score)->toBe(100)
-        ->and($assignment->completed_at)->not->toBeNull();
+        ->and($assignment->completed_at)->not->toBeNull()
+        ->and($assignment->vocab_sentences)->not->toBeNull()   // her sentences kept for the diary
+        ->and($assignment->vocab_sentences)->toHaveCount(2);
 
     Carbon::setTestNow();
 })->group('scenario:DR-02');

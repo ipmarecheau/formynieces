@@ -28,6 +28,13 @@
         .mt-compass { font-family: 'Fredoka One', cursive; font-size: 3rem; color: #34d399; text-align: center; }
         .mt-done-txt { text-align: center; font-size: 1.05rem; color: #eaf4ff; margin: 8px 0 4px; }
         .mt-link { display: inline-block; margin-top: 18px; color: #fde68a; font-weight: 800; text-decoration: none; }
+        .mt-bd-title { font-family: 'Fredoka One', cursive; font-size: 1rem; color: #fde68a; margin: 18px 0 8px; }
+        .mt-bd-row { padding: 10px 12px; border-radius: 10px; margin-bottom: 8px; background: rgba(255,255,255,0.05); border-left: 4px solid #64748b; text-align: left; }
+        .mt-bd-row.is-ok { border-left-color: #34d399; }
+        .mt-bd-row.is-no { border-left-color: #f6b71e; }
+        .mt-bd-row.is-note { border-left-color: #60a5fa; }
+        .mt-bd-q { font-weight: 800; color: #eaf4ff; margin-bottom: 4px; }
+        .mt-bd-line { font-size: 0.88rem; color: #cbd9e8; }
     </style>
 
     <div class="mt-head">
@@ -113,19 +120,48 @@
         </div>
 
     @else
-        <div class="mt-card" style="text-align:center;">
+        <div class="mt-card">
             @if ($score !== null)
-                <div class="mt-compass">{{ $score }}%</div>
-                <p style="font-size:0.85rem;color:#bfe6ff;">charted today</p>
+                <div class="mt-compass" style="text-align:center;">{{ $score }}%</div>
+                <p style="text-align:center;font-size:0.85rem;color:#bfe6ff;">reading comprehension</p>
             @endif
-            <p class="mt-done-txt">
-                @if ($score !== null && $score >= 95)
-                    A brilliant reading, Captain! Treasure earned. 🌟
-                @else
-                    Well sailed today — every voyage makes you a stronger reader. 🌊
+            <p class="mt-done-txt">{{ $message }}</p>
+
+            @if ($breakdown)
+                <div class="mt-bd-title">📖 Comprehension</div>
+                @foreach ($breakdown['comprehension'] as $item)
+                    <div class="mt-bd-row {{ $item['correct'] === true ? 'is-ok' : ($item['correct'] === false ? 'is-no' : 'is-note') }}">
+                        <div class="mt-bd-q">
+                            {{ $item['correct'] === true ? '✓' : ($item['correct'] === false ? '✗' : '✎') }}
+                            {{ $item['prompt'] }}
+                        </div>
+                        @if ($item['type'] === 'mc')
+                            <div class="mt-bd-line">Your answer: <b>{{ $item['yourAnswer'] }}</b></div>
+                            @unless ($item['correct'])
+                                <div class="mt-bd-line">Best answer: <b>{{ $item['correctAnswer'] }}</b></div>
+                            @endunless
+                        @else
+                            <div class="mt-bd-line">You wrote: <i>“{{ $item['yourAnswer'] }}”</i></div>
+                            <div class="mt-bd-line" style="color:#8fd0a8;">Kept in your diary — writing practice, not graded.</div>
+                        @endif
+                    </div>
+                @endforeach
+
+                @if (count($breakdown['wordUsage']))
+                    <div class="mt-bd-title">🔤 Your words</div>
+                    @foreach ($breakdown['wordUsage'] as $w)
+                        <div class="mt-bd-row {{ $w['used'] ? 'is-ok' : 'is-note' }}">
+                            <div class="mt-bd-q">{{ $w['used'] ? '✓' : '✎' }} {{ $w['word'] }}</div>
+                            <div class="mt-bd-line">You wrote: <i>“{{ $w['sentence'] }}”</i></div>
+                            <div class="mt-bd-line">Example: <i>“{{ $w['example'] }}”</i></div>
+                        </div>
+                    @endforeach
                 @endif
-            </p>
-            <a href="{{ route('student.voyage') }}" class="mt-link">← Back to the Voyage</a>
+            @endif
+
+            <div style="text-align:center;">
+                <a href="{{ route('student.voyage') }}" class="mt-link">← Back to the Voyage</a>
+            </div>
         </div>
     @endif
 </div>

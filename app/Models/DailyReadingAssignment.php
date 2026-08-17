@@ -12,16 +12,19 @@ class DailyReadingAssignment extends Model
         'passage_id',
         'date',
         'answers',
+        'vocab_sentences',
         'resume_position',
         'started_at',
         'completed_at',
         'comprehension_score',
+        'comprehension_feedback',
         'words_per_minute',
     ];
 
     protected $casts = [
         'date' => 'date:Y-m-d',
         'answers' => 'array',
+        'vocab_sentences' => 'array',
         'resume_position' => 'integer',
         'started_at' => 'datetime',
         'completed_at' => 'datetime',
