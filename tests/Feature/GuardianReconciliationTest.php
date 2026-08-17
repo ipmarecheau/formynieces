@@ -157,3 +157,16 @@ it('shows no reconciliation prompt when the diagnostic did not clear a flagged s
         ->test(GuardianDashboard::class)
         ->assertDontSee('Use the diagnostic');
 })->group('scenario:RR-04');
+
+it('surfaces the pending reconciliation for decision and lifts the hold when resolved', function () {
+    [$guardian, $student] = makePendingReconciliation();
+
+    $page = Livewire::actingAs($guardian)
+        ->test(GuardianDashboard::class)
+        ->assertSee('A quick check before we finish')   // prominent banner
+        ->assertSee('Use the diagnostic result')
+        ->assertSee('Keep my weak areas');
+
+    $page->call('proceedWithDiagnostic');
+    expect(app(DiagnosticReconciliation::class)->isPending($student->refresh()))->toBeFalse();
+})->group('scenario:GD-10');

@@ -96,8 +96,37 @@ it('renders the four honest answers on the guardian dashboard screen', function 
 
     Livewire::actingAs($guardian)
         ->test(GuardianDashboard::class)
-        ->assertSee('Weekly guardian summary')
+        ->assertSee('four questions')
         ->assertSee('Pace')
         ->assertSee('Recommendation')
         ->assertSee('Writing feedback');
 })->group('scenario:GD-01');
+
+// GD-07 — the dashboard is headed by the child it is about.
+it('heads the dashboard with the child name and the week it covers', function () {
+    ['guardian' => $guardian, 'student' => $student] = gdSeedGuardianWithStudent();
+
+    Livewire::actingAs($guardian)
+        ->test(GuardianDashboard::class)
+        ->assertSeeText($student->name)   // names the child
+        ->assertSee('Week of');           // and the week it covers
+})->group('scenario:GD-07');
+
+it('lets a guardian with more than one student switch between them', function () {
+    ['guardian' => $guardian] = gdSeedGuardianWithStudent();
+    User::factory()->create(['role' => 'student', 'parent_id' => $guardian->id, 'name' => 'Second Niece']);
+
+    Livewire::actingAs($guardian)
+        ->test(GuardianDashboard::class)
+        ->assertSee('Second Niece');       // the switcher lists the other child
+})->group('scenario:GD-07');
+
+// GD-11 — every pace figure is labelled so it cannot be misread.
+it('labels the pace figures so they cannot be misread', function () {
+    ['guardian' => $guardian] = gdSeedGuardianWithStudent();
+
+    Livewire::actingAs($guardian)
+        ->test(GuardianDashboard::class)
+        ->assertSee('of the exam')          // the weight is labelled
+        ->assertSee('modules mastered');    // the raw count is labelled as modules
+})->group('scenario:GD-11');

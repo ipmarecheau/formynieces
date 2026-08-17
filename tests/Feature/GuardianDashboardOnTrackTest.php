@@ -47,5 +47,5 @@ it('leads with affirmation and presents no action items on an on-track week', fu
         ->test(GuardianDashboard::class)
         ->assertSee('Target met and on pace')
         ->assertSee('Nothing to carry into next week')
-        ->assertSee('Weekly guardian summary');
+        ->assertSee('four questions');
 })->group('scenario:GD-03');

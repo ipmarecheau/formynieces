@@ -22,13 +22,21 @@ class GuardianDashboard extends Component
 
     public bool $onTrack = false;
 
+    /** GD-07 — the child this dashboard is about; null = the guardian's first student. */
+    public ?int $studentId = null;
+
     private const PAPER_WEIGHTS = ['Math' => 50, 'ELA' => 30, 'Writing' => 20];
 
     #[Layout('layouts.guardian')]
     public function render(ExamAgentService $examAgent)
     {
         $guardian = auth()->user();
-        $student = $guardian->students()->first();
+
+        $students = $guardian->students()->orderBy('name')->get();
+        $student = $this->studentId
+            ? $students->firstWhere('id', $this->studentId)
+            : $students->first();
+        $this->studentId = $student?->id;
 
         $this->targetCompleted = $this->resolveTargetCompleted($student);
 
@@ -56,6 +64,8 @@ class GuardianDashboard extends Component
             'clearedStrands' => $reconciliationPending ? $reconciliation->clearedStrands($student) : [],
             'studentName' => $student?->name,
             'student' => $student,
+            'students' => $students,
+            'weekLabel' => 'Week of '.Carbon::today()->startOfWeek()->format('j M Y'),
             'schoolThisWeek' => $student
                 ? app(SchoolEvidenceService::class)->thisWeek($student->id)
                 : collect(),

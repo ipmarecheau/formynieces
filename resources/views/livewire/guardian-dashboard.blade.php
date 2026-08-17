@@ -6,6 +6,15 @@
             font-size: 1.5rem; color: #0e7490; margin: 0 0 0.25rem;
         }
         .gd-subtitle { font-size: 0.9rem; color: #9ca3af; margin: 0; font-weight: 700; }
+        .gd-childswitch { margin-top: 0.7rem; display: flex; align-items: center; gap: 0.5rem; }
+        .gd-childswitch label {
+            font-size: 0.68rem; font-weight: 800; color: #93b2cc;
+            text-transform: uppercase; letter-spacing: 0.07em;
+        }
+        .gd-childswitch select {
+            font-family: 'Nunito', sans-serif; font-size: 0.85rem; font-weight: 700; color: #0e7490;
+            border: 1.5px solid #e6f2fb; border-radius: 10px; padding: 0.35rem 0.6rem; background: white;
+        }
         .gd-card {
             background: white; border: 1.5px solid #e6f2fb;
             border-radius: 18px; padding: 1.1rem 1.25rem; margin-bottom: 1rem;
@@ -53,8 +62,19 @@
     </style>
 
     <div class="gd-header">
-        <h1 class="gd-title">Weekly guardian summary</h1>
-        <p class="gd-subtitle">The four questions, answered honestly.</p>
+        <h1 class="gd-title">{{ $studentName ?? 'Weekly guardian summary' }}</h1>
+        <p class="gd-subtitle">{{ $weekLabel }} · the four questions, answered honestly.</p>
+
+        @if ($students->count() > 1)
+            <div class="gd-childswitch">
+                <label for="gd-child">Child</label>
+                <select id="gd-child" wire:model.live="studentId">
+                    @foreach ($students as $child)
+                        <option value="{{ $child->id }}">{{ $child->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+        @endif
     </div>
 
     @if ($reconciliationPending)
@@ -122,16 +142,22 @@
     <div class="gd-card {{ $paceStatus === 'warning' ? 'gd-warn' : '' }}">
         <p class="gd-eyebrow">Pace</p>
 
+        <p class="gd-answer" style="margin-bottom:0.7rem;">
+            These count modules she has mastered against the pace for this point in the year — not a score.
+        </p>
+
         @if ($paceStatus === 'warning')
-            <p class="gd-warn-line">{{ $weeksBehind }} week(s) behind the pacing calendar</p>
+            <p class="gd-warn-line">
+                {{ $weeksBehind }} {{ $weeksBehind === 1 ? 'week' : 'weeks' }} behind — the catch-up plan above breaks it into feasible weekly steps.
+            </p>
         @endif
 
         @foreach ($pace as $paper => $row)
             <div class="gd-paper">
                 <div class="gd-paper-head">
-                    <span class="gd-paper-name">{{ $paper }} <span class="gd-paper-weight">{{ $row['weight'] }}%</span></span>
+                    <span class="gd-paper-name">{{ $paper }} <span class="gd-paper-weight">{{ $row['weight'] }}% of the exam</span></span>
                     @if ($row['assessed'])
-                        <span class="gd-paper-stat">{{ $row['completed'] }}/{{ $row['expected'] }} on track · {{ $row['behind_count'] }} behind</span>
+                        <span class="gd-paper-stat">{{ $row['completed'] }} of {{ $row['expected'] }} modules mastered@if ($row['behind_count'] > 0) · {{ $row['behind_count'] }} to catch up@endif</span>
                     @else
                         <span class="gd-unassessed">Not yet assessed</span>
                     @endif
