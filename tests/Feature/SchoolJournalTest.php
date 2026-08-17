@@ -269,3 +269,13 @@ it('includes this week school evidence, labelled, in the guardian dashboard', fu
         ->assertSee('16/20')
         ->assertSee('never merged into');   // the two sources are labelled apart
 })->group('scenario:SJ-04');
+
+// SJ-10 — a guardian opens her student's journal from the dashboard without a 500.
+it('opens the guardian journal view without error, even with no entries', function () {
+    [$guardian, $student] = guardianWithStudent();
+
+    $this->actingAs($guardian)
+        ->get(route('guardian.journal', $student))
+        ->assertOk()
+        ->assertSeeText('School Journal');   // the term timeline renders, no MissingLayoutException
+})->group('scenario:SJ-10');

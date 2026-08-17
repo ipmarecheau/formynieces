@@ -8,6 +8,7 @@ use App\Services\SchoolJournal\OcrService;
 use App\Services\SchoolJournal\SchoolEvidenceService;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
+use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
@@ -17,6 +18,7 @@ use Livewire\WithFileUploads;
  * PDF), let the OCR seam digitise it, confirm/correct what it read, and read
  * the term timeline + per-strand trend.
  */
+#[Layout('layouts.guardian')]
 class SchoolJournal extends Component
 {
     use WithFileUploads;
