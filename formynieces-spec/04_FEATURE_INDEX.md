@@ -27,7 +27,7 @@
 | `contact_us.feature` | @mvp | — (CU-01…03 built: form → `contact_messages`, validation, admin inbox with mark-handled) | guardian, public, admin |
 | `parent_onboarding_call.feature` | @mvp | — (OC-01…05 built: weekday-evening + Saturday windows in TT time, live availability, no double-booking, admin calendar with statuses) | guardian, public, admin |
 | `live_chat.feature` | @mvp | — (LC-01…06 built: proactive Smooth popup for guests, scripted bot qualification, Slack + email notify, WhatsApp/book-call handoffs, admin Chats inbox with transcript) | guardian, public, admin |
-| `school_journal.feature` | @mvp | — (SJ-01…09: student/guardian photo upload → OCR/CNN digitisation → structured capture, term timeline, per-strand trends; strong results corroborate understanding (never gate/override); feeds weekly summary + daily plan; kind to the child) | student, guardian, system |
+| `school_journal.feature` | @mvp | — (SJ-01…09 built: uploads from student or guardian into one journal, LLM-vision OCR seam (swappable for a CNN) with low-confidence flags + guardian confirm/correct, term timeline + trend, corroborating/weak signals gently steering the daily plan, labelled weekly-summary section, child layer mark-free) | student, guardian, system |
 | `motivation_layer.feature` | @mvp | — | student |
 | `captains_orders.feature` | @mvp | — | student, system |
 | `ship_log.feature` | @mvp | — | student |

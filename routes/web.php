@@ -17,6 +17,8 @@ use App\Livewire\ModuleEntry;
 use App\Livewire\MorningTide;
 use App\Livewire\PracticeWalk;
 use App\Livewire\ReteachWalk;
+use App\Livewire\SchoolJournal;
+use App\Livewire\StudentSchoolJournal;
 use App\Livewire\TutorialWalk;
 use App\Livewire\WritingStop;
 use App\Services\Diagnostic\DiagnosticReconciliation;
@@ -68,6 +70,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
             ->name('guardian.pause');
         Route::post('/guardian/students/{student}/resume', [GuardianPauseController::class, 'resume'])
             ->name('guardian.resume');
+
+        // School journal (SJ-01..09) — the guardian's honest-layer view.
+        Route::get('/guardian/students/{student}/journal', SchoolJournal::class)
+            ->name('guardian.journal');
     });
 });
 
@@ -80,6 +86,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/diagnostic', function () {
             return view('student.diagnostic-intro');
         })->name('diagnostic.intro');
+
+        // School journal — the student's own, score-free filing view (SJ-01/SJ-06).
+        Route::get('/journal', StudentSchoolJournal::class)->name('student.journal');
 
         Route::get('/practice/{module}', PracticeWalk::class)
             ->name('practice.walk');

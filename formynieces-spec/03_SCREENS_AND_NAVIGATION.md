@@ -50,6 +50,7 @@ Cross-check: every Gherkin `When/Then` in `features/` must land on a screen here
 | C7 | Writing feedback view | `/writing/{id}` | @mvp | weekly |
 | C8 | Writing history + rubric profile | `/writing/history` | @v1.1 | occasional |
 | C9 | Revision-mode dashboard variant (buffer weeks) | (state of C1/C2) | @roadmap | last 6 weeks |
+| C9a | Student school journal — her own score-free filing view (upload + calm list, no marks shown) | `/journal` | @mvp ✅ | SJ-01/SJ-06 — same journal, child-layer clean |
 | C10 | Exam-week calm state | (state of C1) | @roadmap | once |
 | C11 | Captain's Orders — collapsible Voyage sidebar; **Captain's Brief** tab = today's minimum checklist (morning + evening brief), writing on M/W/F, weekend rest/catch-up | sidebar on the Voyage (`/map`) | @mvp | daily — persistent on the Voyage |
 | C12 | Ship's Log — sidebar tab: master + sub streaks, history/milestones, and the **Captain's Locker** reward inventory (spend Shore Leave/Anchor/Tailwind/Lifebuoy) | sidebar on the Voyage (`/map`) | @mvp | daily/occasional |
@@ -65,8 +66,8 @@ Cross-check: every Gherkin `When/Then` in `features/` must land on a screen here
 | D5 | Settings: pause/resume child (S6) | `/guardian/settings` | @v1.1 | rare |
 | D6 | Invite second guardian, read-only (S8) | `/guardian/settings` | @roadmap | once |
 | D7 | Weekly email digest (S7) | (email, not screen) | @v1.1 | weekly push |
-| D8 | School journal — file a graded paper (upload photo/PDF + structured entry) | `/guardian/journal` | @mvp | termly, as papers arrive |
-| D9 | School journal — term timeline (entries grouped by term, strand/score/comment at a glance) | `/guardian/journal` | @mvp | termly review |
+| D8 | School journal — file a graded paper (upload photo/PDF + structured entry) | `/guardian/students/{id}/journal` | @mvp ✅ | SJ-01..09 — OCR seam + confirm/correct + term timeline + trend; dashboard "From school" section (SJ-04) |
+| D9 | School journal — term timeline (entries grouped by term, strand/score/comment at a glance) | same page as D8 | @mvp ✅ | SJ-03/09 — one page serves both |
 
 ### E. Admin (Filament — already scaffolded)
 

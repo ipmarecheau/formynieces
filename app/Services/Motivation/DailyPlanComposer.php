@@ -5,6 +5,7 @@ namespace App\Services\Motivation;
 use App\Models\DailyPlan;
 use App\Models\PracticeAttempt;
 use App\Models\WeeklyTarget;
+use App\Services\SchoolJournal\SchoolEvidenceService;
 use Illuminate\Support\Carbon;
 
 /**
@@ -56,9 +57,29 @@ class DailyPlanComposer
 
         $plan->is_writing_day = $isWritingDay;
         $plan->duties = $duties;
+        $plan->focus_hint = $this->schoolFocusHint($studentId); // SJ-05 — gentle, never a gate
         $plan->save();
 
         return $plan->fresh();
+    }
+
+    /**
+     * SJ-05 — a strand the school flagged weak becomes today's gentle focus:
+     * one kind sentence in the Captain's Brief, never an extra duty, never a
+     * mention of marks or grades (the child's world stays clean, SJ-06).
+     */
+    private function schoolFocusHint(int $studentId): ?string
+    {
+        $weak = app(SchoolEvidenceService::class)->weakStrands($studentId);
+
+        if ($weak === []) {
+            return null;
+        }
+
+        $strand = $weak[0];
+
+        return "Smooth suggests visiting {$strand} today — your last school papers say a little
+        practice there would feel great. Just a suggestion, Captain!";
     }
 
     /**

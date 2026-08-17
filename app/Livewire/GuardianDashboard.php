@@ -7,6 +7,7 @@ use App\Models\WeeklyTarget;
 use App\Services\Diagnostic\DiagnosticReconciliation;
 use App\Services\Diagnostic\ReconciliationResolver;
 use App\Services\ExamAgentService;
+use App\Services\SchoolJournal\SchoolEvidenceService;
 use Illuminate\Support\Carbon;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -54,6 +55,10 @@ class GuardianDashboard extends Component
             'reconciliationPending' => $reconciliationPending,
             'clearedStrands' => $reconciliationPending ? $reconciliation->clearedStrands($student) : [],
             'studentName' => $student?->name,
+            'student' => $student,
+            'schoolThisWeek' => $student
+                ? app(SchoolEvidenceService::class)->thisWeek($student->id)
+                : collect(),
         ]);
     }
 

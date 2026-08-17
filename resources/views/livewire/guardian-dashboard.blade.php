@@ -160,4 +160,23 @@
             <p class="gd-answer">No writing feedback yet.</p>
         @endif
     </div>
+
+    {{-- From school this week (SJ-04) — labelled so the parent knows which source is which --}}
+    @if ($schoolThisWeek->isNotEmpty())
+        <div class="gd-card">
+            <p class="gd-eyebrow">From school 🏫 (journal)</p>
+            <ul style="margin: 0; padding-left: 1.1rem;">
+                @foreach ($schoolThisWeek as $entry)
+                    <li class="gd-answer">
+                        {{ $entry->assessment_date?->format('j M') }} — {{ $entry->strand ?? 'strand pending' }},
+                        {{ $entry->assessment_type ?? 'assessment' }}: <strong>{{ $entry->score ?? 'score pending' }}</strong>
+                    </li>
+                @endforeach
+            </ul>
+            <p class="gd-answer" style="opacity: .75; margin-top: .4rem;">
+                Classroom evidence from the school journal — kept beside (never merged into) our own picture.
+                <a href="{{ route('guardian.journal', $student) }}" style="text-decoration: underline;">Open the journal →</a>
+            </p>
+        </div>
+    @endif
 </div>
