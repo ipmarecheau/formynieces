@@ -57,6 +57,12 @@ class MorningTide extends Component
     /** @var array<int,string> word id => her sentence */
     public array $vocabSentences = [];
 
+    /** write | shown — within a word, show her the two examples after she submits. */
+    public string $wordStage = 'write';
+
+    /** @var list<string> */
+    public array $currentExamples = [];
+
     private const WORDS_TO_CHOOSE = 2;
 
     public function mount(): void
@@ -138,20 +144,36 @@ class MorningTide extends Component
         }
         $this->vocabIndex = 0;
         $this->currentSentence = '';
+        $this->wordStage = 'write';
+        $this->currentExamples = [];
         $this->phase = 'vocab';
     }
 
-    public function nextWord(): void
+    /** She submits her sentence for the current word; record it and show examples. */
+    public function submitSentence(): void
     {
         $wordId = $this->chosenIds[$this->vocabIndex] ?? null;
-        if ($wordId !== null) {
-            $word = VocabularyWord::find($wordId);
-            $correct = $word !== null
-                && app(VocabularyService::class)->usedCorrectly($word->word, $this->currentSentence);
+        if ($wordId === null) {
+            return;
+        }
+
+        $word = VocabularyWord::find($wordId);
+        if ($word !== null) {
+            $correct = app(VocabularyService::class)->usedCorrectly($word->word, $this->currentSentence);
             app(VocabularyService::class)->recordResult(auth()->id(), $wordId, $correct);
             $this->vocabSentences[$wordId] = trim($this->currentSentence);
+            $this->currentExamples = app(VocabularyService::class)->exampleSentences($word, auth()->id());
         }
+
+        $this->wordStage = 'shown';
+    }
+
+    /** Move on from the examples to the next word, or finish the tide. */
+    public function continueWord(): void
+    {
         $this->currentSentence = '';
+        $this->currentExamples = [];
+        $this->wordStage = 'write';
 
         if ($this->vocabIndex < count($this->chosenIds) - 1) {
             $this->vocabIndex++;
@@ -268,7 +290,7 @@ class MorningTide extends Component
             'currentWord' => $this->phase === 'vocab' ? $this->words($this->chosenIds)[$this->vocabIndex] ?? null : null,
             'chosenTotal' => count($this->chosenIds),
             'breakdown' => $this->phase === 'done' && $assignment !== null ? $this->buildBreakdown($assignment) : null,
-            'message' => $this->messageFor($this->score),
+            'message' => ($assignment?->comprehension_feedback) ?: $this->messageFor($this->score),
         ]);
     }
 }

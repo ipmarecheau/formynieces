@@ -3,9 +3,15 @@
 use App\Models\DailyReadingAssignment;
 use App\Models\ReadingPassage;
 use App\Models\User;
+use App\Services\LlmService;
 use App\Services\Motivation\StreakEconomyService;
 use App\Services\Reading\DailyReadingService;
 use Illuminate\Support\Carbon;
+
+beforeEach(function () {
+    // No real HTTP in tests — force the comprehension scorer onto its MC baseline.
+    $this->mock(LlmService::class, fn ($m) => $m->shouldReceive('completeJson')->andReturn([]));
+});
 
 function drStudent(int $level = 5): User
 {

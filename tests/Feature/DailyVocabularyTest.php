@@ -3,6 +3,7 @@
 use App\Models\ReadingPassage;
 use App\Models\User;
 use App\Models\VocabularyWord;
+use App\Services\LlmService;
 use App\Services\Reading\VocabularyService;
 use Illuminate\Support\Carbon;
 
@@ -74,3 +75,18 @@ it('caps the daily set so the ritual stays short', function () {
 
     expect(dvSvc()->wordsForToday($student->id, $passage))->toHaveCount(6);
 })->group('scenario:DV-05');
+
+it('gives two LLM example sentences for a word', function () {
+    $this->mock(LlmService::class, fn ($m) => $m->shouldReceive('completeJson')
+        ->andReturn(['examples' => ['One.', 'Two.', 'Three.']]));
+    $word = dvPassageWithWords(1)->vocabularyWords()->first();
+
+    expect(app(VocabularyService::class)->exampleSentences($word))->toBe(['One.', 'Two.']);
+})->group('scenario:DV-02');
+
+it('falls back to the context sentence when the LLM is unavailable', function () {
+    $this->mock(LlmService::class, fn ($m) => $m->shouldReceive('completeJson')->andReturn([]));
+    $word = dvPassageWithWords(1)->vocabularyWords()->first();
+
+    expect(app(VocabularyService::class)->exampleSentences($word))->toBe([$word->context_sentence]);
+})->group('scenario:DV-02');

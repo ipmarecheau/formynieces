@@ -6,8 +6,15 @@ use App\Models\DailyReadingAssignment;
 use App\Models\ReadingPassage;
 use App\Models\User;
 use App\Models\VocabularyWord;
+use App\Services\LlmService;
 use Illuminate\Support\Carbon;
 use Livewire\Livewire;
+
+beforeEach(function () {
+    // Default: LLM unavailable → MC baseline + authored example fallback. Individual
+    // tests rebind the mock to exercise the LLM path.
+    $this->mock(LlmService::class, fn ($m) => $m->shouldReceive('completeJson')->andReturn([]));
+});
 
 function mtStudent(): User
 {
@@ -56,8 +63,11 @@ it('walks read → comprehension → vocab and completes the Morning Tide duty',
         ->call('toggleChoose', $words[0])
         ->call('toggleChoose', $words[1])
         ->call('startWriting')->assertSet('phase', 'vocab')
-        ->set('currentSentence', 'The beacon guided the ship.')->call('nextWord')
-        ->set('currentSentence', 'I felt weary after the climb.')->call('nextWord')
+        ->set('currentSentence', 'The beacon guided the ship.')->call('submitSentence')
+        ->assertSet('wordStage', 'shown')->assertSee('Ways to use')
+        ->call('continueWord')
+        ->set('currentSentence', 'I felt weary after the climb.')->call('submitSentence')
+        ->call('continueWord')
         ->assertSet('phase', 'done')
         ->assertSee('Comprehension')       // the breakdown is shown
         ->assertSee('Your words')
@@ -84,3 +94,30 @@ it('serves the Morning Tide page', function () {
         ->assertOk()
         ->assertSee('Morning Tide');
 })->group('scenario:DR-02');
+
+it('shows LLM word examples and feedback when the LLM is available', function () {
+    $this->mock(LlmService::class, fn ($m) => $m->shouldReceive('completeJson')
+        ->andReturn(['score' => 90, 'feedback' => 'Lovely reading, Maya!', 'examples' => ['ex one', 'ex two']]));
+    Carbon::setTestNow(Carbon::parse('2026-08-18 08:00'));
+    $student = mtStudent();
+    mtPassage();
+    $this->actingAs($student);
+    $words = VocabularyWord::pluck('id')->all();
+
+    Livewire::test(MorningTide::class)
+        ->call('startCheck')
+        ->set('currentAnswer', 0)->call('nextQuestion')
+        ->set('currentAnswer', 1)->call('nextQuestion')
+        ->call('toggleChoose', $words[0])
+        ->call('toggleChoose', $words[1])
+        ->call('startWriting')
+        ->set('currentSentence', 'x')->call('submitSentence')
+        ->assertSee('ex one')       // LLM-generated example shown
+        ->call('continueWord')
+        ->set('currentSentence', 'y')->call('submitSentence')
+        ->call('continueWord')
+        ->assertSet('phase', 'done')
+        ->assertSee('Lovely reading, Maya!');   // LLM feedback on the done screen
+
+    Carbon::setTestNow();
+})->group('scenario:DR-07');

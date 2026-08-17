@@ -113,10 +113,19 @@
             <div class="mt-word">{{ $currentWord?->word }}</div>
             <div class="mt-def">{{ $currentWord?->definition }}</div>
             <div class="mt-ctx">“{{ $currentWord?->context_sentence }}”</div>
-            <textarea class="mt-write" style="margin-top:12px;" wire:model="currentSentence" wire:key="word-{{ $vocabIndex }}" placeholder="Now use it in a sentence of your own…"></textarea>
-            <button class="mt-btn" wire:click="nextWord">
-                {{ $vocabIndex < $chosenTotal - 1 ? 'Next word →' : 'Finish the tide →' }}
-            </button>
+
+            @if ($wordStage === 'write')
+                <textarea class="mt-write" style="margin-top:12px;" wire:model="currentSentence" wire:key="word-{{ $vocabIndex }}" placeholder="Now use it in a sentence of your own…"></textarea>
+                <button class="mt-btn" wire:click="submitSentence">Show me examples →</button>
+            @else
+                <div class="mt-bd-title" style="margin-top:14px;">Ways to use “{{ $currentWord?->word }}”</div>
+                @foreach ($currentExamples as $ex)
+                    <div class="mt-ctx" style="margin-bottom:8px;">“{{ $ex }}”</div>
+                @endforeach
+                <button class="mt-btn" wire:click="continueWord">
+                    {{ $vocabIndex < $chosenTotal - 1 ? 'Next word →' : 'Finish the tide →' }}
+                </button>
+            @endif
         </div>
 
     @else

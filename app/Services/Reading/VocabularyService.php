@@ -5,6 +5,7 @@ namespace App\Services\Reading;
 use App\Models\ReadingPassage;
 use App\Models\VocabularyReview;
 use App\Models\VocabularyWord;
+use App\Services\LlmService;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 
@@ -24,6 +25,8 @@ class VocabularyService
     public const MASTERY_STREAK = 3;
 
     private const MAX_INTERVAL = 30;
+
+    public function __construct(private LlmService $llm) {}
 
     /**
      * The words she may choose to build a sentence with today: due (not-yet-mastered)
@@ -59,6 +62,34 @@ class VocabularyService
     public function usedCorrectly(string $word, string $sentence): bool
     {
         return str_contains(mb_strtolower($sentence), mb_strtolower(trim($word)));
+    }
+
+    /**
+     * Two example sentences for a word, shown after her own attempt. LLM-first;
+     * baseline fallback is the authored context sentence (one model example).
+     *
+     * @return list<string>
+     */
+    public function exampleSentences(VocabularyWord $word, ?int $studentId = null): array
+    {
+        $result = $this->llm->completeJson(
+            'You are a warm primary teacher. Give two simple, correct example sentences using the given '
+            .'word, for a Standard 5 pupil (age ~10). Return JSON only: {"examples": ["...", "..."]}.',
+            "Word: {$word->word}\nMeaning: {$word->definition}",
+            200,
+            $studentId,
+            essential: false,
+        );
+
+        $examples = $result['examples'] ?? null;
+        if (is_array($examples)) {
+            $examples = array_values(array_filter(array_map(fn ($e) => trim((string) $e), $examples)));
+            if (count($examples) >= 1) {
+                return array_slice($examples, 0, 2);
+            }
+        }
+
+        return array_values(array_filter([$word->context_sentence]));
     }
 
     /**

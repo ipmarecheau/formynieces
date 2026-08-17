@@ -32,6 +32,7 @@ class DailyReadingService
     public function __construct(
         private StreakService $streaks,
         private StreakEconomyService $economy,
+        private ComprehensionScorer $scorer,
     ) {}
 
     public function readingLevel(User $student): int
@@ -90,20 +91,15 @@ class DailyReadingService
     public function score(DailyReadingAssignment $assignment, array $answers, ?Carbon $finishedAt = null): DailyReadingAssignment
     {
         $finishedAt ??= now();
-        $questions = $assignment->passage->questions ?? [];
 
-        $gradable = 0;
-        $correct = 0;
-        foreach ($questions as $i => $question) {
-            if (($question['type'] ?? 'mc') !== 'mc') {
-                continue; // written response — reinforcement, not scored
-            }
-            $gradable++;
-            if (isset($answers[$i]) && (int) $answers[$i] === (int) ($question['correct_index'] ?? -1)) {
-                $correct++;
-            }
-        }
-        $scorePct = $gradable > 0 ? (int) round($correct / $gradable * 100) : 0;
+        // LLM-first appraisal (weighs the written answer), MC baseline on fallback.
+        $appraisal = $this->scorer->score(
+            $assignment->passage,
+            $assignment->passage->questions ?? [],
+            $answers,
+            $assignment->student_id,
+        );
+        $scorePct = $appraisal['score'];
 
         $wpm = null;
         if ($assignment->started_at !== null) {
@@ -114,6 +110,7 @@ class DailyReadingService
         $assignment->update([
             'answers' => $answers,
             'comprehension_score' => $scorePct,
+            'comprehension_feedback' => $appraisal['feedback'],
             'words_per_minute' => $wpm,
             'completed_at' => $finishedAt,
         ]);
