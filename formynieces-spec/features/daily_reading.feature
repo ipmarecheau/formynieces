@@ -10,6 +10,8 @@ Feature: Daily reading and comprehension
   This progress is a KIND signal — it earns perks and never becomes a letter grade, a
   pass/fail, or a gate, and never changes module mastery. The child sees only warm
   encouragement; the numbers live with the system and the guardian.
+  # For now the LLM helps carry content, scoring and examples; a curated,
+  # syllabus-aligned essay & word bank is the roadmap successor (essay_word_bank).
 
   Background:
     Given a student has completed her diagnostic

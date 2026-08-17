@@ -7,6 +7,8 @@ Feature: Daily vocabulary
   once. Like reading and writing, vocabulary is FORMATIVE: warm feedback and streak credit, never
   a grade, never pass/fail, never a change to module mastery. It completes the roughly
   fifteen-minute morning routine that begins with daily reading.
+  # Words come from the passage for now; a curated, syllabus-aligned word bank is
+  # the roadmap successor (essay_word_bank).
 
   Background:
     Given a student has completed her morning reading passage

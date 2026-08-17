@@ -37,6 +37,7 @@
 | `admin_content.feature` | mixed | modules @mvp · anchors, monitor @v1.1 | admin |
 | `question_bank.feature` | @v1.1 | — | admin |
 | `writing_bank.feature` | @v1.1 | import/populate @v1.1 (WB-01/02 built) · serving, grading deferred (WB-03/04) | admin, student |
+| `essay_word_bank.feature` | @roadmap | curated, syllabus-aligned essay + word banks (EW-01…05) — durable successor to the LLM-carried reading pool | admin, system |
 | `progression.feature` | @roadmap | XP, multipliers, weekly leagues | student |
 | `focus_timer.feature` | @roadmap | optional Pomodoro blocks | student |
 
