@@ -98,6 +98,10 @@
             box-shadow: 0 0 0 3px rgba(34,211,238,0.2);
         }
         input::placeholder { color: rgba(196,181,253,0.4); }
+        .field-hint {
+            margin-top: 6px; font-size: 12px; color: var(--muted);
+            text-transform: none; letter-spacing: 0; font-weight: 500;
+        }
 
         /* 18+ attestation checkbox */
         .attestation { margin-bottom: 18px; }
@@ -149,6 +153,8 @@
         <p>Join your SEA journey today</p>
     </div>
 
+    @include('partials.setup-stepper', ['current' => 1])
+
     @if ($errors->any())
         <div class="errors">
             <ul>
@@ -163,11 +169,12 @@
         @csrf
 
         <div class="field">
-            <label for="name">Full Name</label>
+            <label for="name">Your Name (Parent / Guardian)</label>
             <input type="text" id="name" name="name"
                    value="{{ old('name') }}"
-                   placeholder="e.g. Aaliyah Thomas"
+                   placeholder="e.g. Maria Thomas"
                    required autofocus autocomplete="name">
+            <p class="field-hint">This is your account. You'll add your child in the next step.</p>
         </div>
 
         <div class="field">

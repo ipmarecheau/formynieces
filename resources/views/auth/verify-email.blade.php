@@ -104,6 +104,10 @@
             transition: color 0.2s;
         }
         .logout-btn:hover { color: #fcd34d; }
+
+        .help-line { margin-top: 20px; font-size: 13px; color: var(--muted); }
+        .help-line a { color: #67e8f9; font-weight: 700; text-decoration: none; }
+        .help-line a:hover { color: #fcd34d; }
     </style>
 </head>
 <body>
@@ -119,9 +123,10 @@
     </div>
 
     <p class="intro">
-        Thanks for signing up! Before getting started, could you verify your email
-        address by clicking the link we just emailed to you? If you didn't receive
-        the email, we'll gladly send you another.
+        Thanks for signing up! We sent a verification link to
+        <strong style="color: var(--text);">{{ auth()->user()->email }}</strong>.
+        Click it to confirm your email — then you'll set up your child and start her
+        diagnostic. Didn't get it? Resend it below.
     </p>
 
     @if (session('status') == 'verification-link-sent')
@@ -135,6 +140,10 @@
         @csrf
         <button type="submit" class="btn-submit">Resend Verification Email 🌟</button>
     </form>
+
+    <p class="help-line">
+        Need help? <a href="{{ route('contact') }}">Contact us</a> and a real person will reply.
+    </p>
 
     <form method="POST" action="{{ route('logout') }}" class="logout-form">
         @csrf

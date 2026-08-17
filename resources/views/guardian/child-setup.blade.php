@@ -197,6 +197,8 @@
             <p>Create her account and start her SEA adventure</p>
         </div>
 
+        @include('partials.setup-stepper', ['current' => 2])
+
         @if ($errors->any())
             <div class="errors">
                 <ul>
