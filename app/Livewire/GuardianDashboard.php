@@ -6,7 +6,10 @@ use App\Models\User;
 use App\Models\WeeklyTarget;
 use App\Services\Diagnostic\DiagnosticReconciliation;
 use App\Services\Diagnostic\ReconciliationResolver;
+use App\Services\Diagnostic\SessionLifecycle;
 use App\Services\ExamAgentService;
+use App\Services\Motivation\StreakEconomyService;
+use App\Services\Pacing\PauseService;
 use App\Services\SchoolJournal\SchoolEvidenceService;
 use Illuminate\Support\Carbon;
 use Livewire\Attributes\Layout;
@@ -83,7 +86,7 @@ class GuardianDashboard extends Component
      * Captain's Locker. The one sanctioned crossing point between the honest
      * layer and the child's motivational world.
      */
-    public function grantReward(string $type, \App\Services\Motivation\StreakEconomyService $economy): void
+    public function grantReward(string $type, StreakEconomyService $economy): void
     {
         $student = auth()->user()->students()->find($this->studentId)
             ?? auth()->user()->students()->first();
@@ -99,6 +102,53 @@ class GuardianDashboard extends Component
         }
 
         $this->dispatch('reward-granted', type: $type);
+    }
+
+    /**
+     * GD-09 — the guardian pauses her student's journey from the dashboard. A
+     * pause freezes streaks and stops the pacing clock (WT-05); an honest-layer
+     * control, never shown to the child.
+     */
+    public function pauseJourney(PauseService $pauses): void
+    {
+        $student = $this->resolveStudent();
+        if ($student !== null) {
+            $pauses->pause($student);
+            $this->dispatch('journey-paused');
+        }
+    }
+
+    /**
+     * GD-09 — the guardian resumes a paused journey from the dashboard, bridging
+     * frozen day-streaks so the pause never counts against the student (ML-03).
+     */
+    public function resumeJourney(PauseService $pauses): void
+    {
+        $student = $this->resolveStudent();
+        if ($student !== null) {
+            $pauses->resume($student);
+            $this->dispatch('journey-resumed');
+        }
+    }
+
+    /**
+     * GD-09 — the guardian requests a diagnostic retake from the dashboard,
+     * starting a fresh diagnostic session for the student. Honest-layer only.
+     */
+    public function requestRetake(SessionLifecycle $sessions): void
+    {
+        $student = $this->resolveStudent();
+        if ($student !== null) {
+            $sessions->startOrResume($student->id);
+            $this->dispatch('retake-requested');
+        }
+    }
+
+    /** The child this dashboard is acting on — the selected student, or the first. */
+    private function resolveStudent(): ?User
+    {
+        return auth()->user()->students()->find($this->studentId)
+            ?? auth()->user()->students()->first();
     }
 
     /**
