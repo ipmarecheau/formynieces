@@ -2,13 +2,16 @@
 
 namespace App\Livewire;
 
+use App\Models\PracticeQuestion;
 use App\Models\StudentProgress;
 use App\Models\SyllabusModule;
+use App\Models\WeeklyTarget;
 use App\Services\Practice\LearningGate;
 use App\Services\Practice\PracticeQuestions;
 use App\Services\Practice\QuestionExposure;
 use App\Services\Practice\RecordPracticeAttempt;
 use App\Services\Practice\Remediation;
+use Illuminate\Support\Carbon;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -161,6 +164,18 @@ class PracticeWalk extends Component
         // CE-02/03: a milestone this answer just crossed plays a big celebration
         // instead of the plain feedback screen.
         if ($this->isMastered && ! $wasMastered) {
+            // CE-05: if this mastery was the last module in the week's target, the
+            // week-complete celebration plays instead of the plain mastery one.
+            if ($this->justCompletedWeeklyTarget()) {
+                $this->celebration = [
+                    'type' => 'weekcomplete',
+                    'title' => "This week's targets — all done! 🌟",
+                    'sub' => 'You finished every island on this week\'s voyage plan. Incredible sailing, Captain!',
+                ];
+
+                return;
+            }
+
             $this->celebration = [
                 'type' => 'mastery',
                 'title' => 'You mastered it! 🎉',
@@ -183,7 +198,41 @@ class PracticeWalk extends Component
             'correct' => $wasCorrect,
             'explanation' => $this->question['explanation'] ?? '',
             'mastered' => $this->isMastered,   // so the feedback screen can announce it
+            'misconception' => null,
+            'worked_example' => null,
         ];
+
+        // LL-09: when the chosen distractor is tagged, name the specific misconception
+        // and show its worked example — framed as not-yet, never failure. Untagged
+        // options keep the generic explanation (progressive enhancement).
+        if (! $wasCorrect) {
+            $question = PracticeQuestion::find($this->question['id']);
+            $misconception = $question?->misconceptionFor($chosenIndex);
+            if ($misconception !== null) {
+                $this->feedback['misconception'] = $misconception->label;
+                $this->feedback['worked_example'] = $misconception->worked_example;
+            }
+        }
+    }
+
+    /**
+     * CE-05 — true when this module is in the current week's target and every module
+     * in that target is now completed (this mastery was the last one).
+     */
+    private function justCompletedWeeklyTarget(): bool
+    {
+        $weekStart = Carbon::today()->startOfWeek()->toDateString();
+
+        $targets = WeeklyTarget::query()
+            ->where('student_id', auth()->id())
+            ->where('week_start_date', $weekStart)
+            ->get();
+
+        if ($targets->isEmpty() || ! $targets->contains('module_id', $this->moduleId)) {
+            return false;
+        }
+
+        return $targets->every(fn (WeeklyTarget $t): bool => $t->state() === 'completed');
     }
 
     /** Dismiss a level-up celebration and continue to the next question (CE-02). */

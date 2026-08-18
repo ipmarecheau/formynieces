@@ -340,5 +340,12 @@
             </aside>
         </div>
     </div>
+
+    @if (!empty($streakMilestone))
+        {{-- CE-04: a streak-milestone celebration, named warmly and never as a metric. --}}
+        <x-celebration
+            title="{{ $streakMilestone }}-day voyage streak! 🎉"
+            sub="You've sailed {{ $streakMilestone }} days in a row, Captain. What a run!" />
+    @endif
 </body>
 </html>

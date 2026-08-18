@@ -22,6 +22,7 @@ class PracticeQuestion extends Model
         'correct_index',
         'hint',
         'explanation',
+        'distractor_notes',
         'is_active',
         'source_ref',
         'content_hash',
@@ -52,6 +53,7 @@ class PracticeQuestion extends Model
 
     protected $casts = [
         'options' => 'array',   // JSON text <-> PHP array, like the diagnostic reads anchors
+        'distractor_notes' => 'array',
         'difficulty' => 'integer',
         'sequence_order' => 'integer',
         'correct_index' => 'integer',
@@ -61,5 +63,33 @@ class PracticeQuestion extends Model
     public function module(): BelongsTo
     {
         return $this->belongsTo(SyllabusModule::class, 'module_id');
+    }
+
+    /**
+     * The misconception this chosen option reveals, if the distractor is tagged
+     * (LL-09). Mirrors the diagnostic's distractor_notes.misconceptions[index]
+     * shape, resolving the tag against this module's taxonomy. Null when the
+     * option is correct or untagged — the caller then falls back to the generic
+     * explanation (progressive enhancement).
+     */
+    public function misconceptionFor(int $chosenIndex): ?Misconception
+    {
+        if ($chosenIndex === $this->correct_index) {
+            return null;
+        }
+
+        $notes = $this->distractor_notes ?? [];
+        $key = $notes['misconceptions'][(string) $chosenIndex]
+            ?? $notes['misconceptions'][$chosenIndex]
+            ?? null;
+
+        if ($key === null) {
+            return null;
+        }
+
+        return Misconception::query()
+            ->where('module_id', $this->module_id)
+            ->where('key', $key)
+            ->first();
     }
 }

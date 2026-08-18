@@ -29,6 +29,9 @@ class StreakEconomyService
     /** The per-thread sub-streaks that feed the master (SE-02). */
     public const SUB_STREAKS = ['reading', 'vocabulary', 'writing', 'map'];
 
+    /** Master-streak lengths that earn a celebration when reached (CE-04). */
+    public const STREAK_MILESTONES = [3, 7, 14, 30, 60, 100];
+
     /** Starter protection days a new voyager begins with (SE-03). */
     public const STARTER_PROTECTION_DAYS = 3;
 
@@ -328,6 +331,37 @@ class StreakEconomyService
         $streak->save();
 
         return true;
+    }
+
+    /**
+     * CE-04 — the master-streak milestone to celebrate once when she opens her
+     * Voyage, or null if none is pending. Claims it (records celebrated_count) so
+     * the same milestone never celebrates twice. The highest not-yet-celebrated
+     * milestone at or below her current streak wins.
+     */
+    public function claimStreakMilestone(int $studentId): ?int
+    {
+        $streak = StudentStreak::query()
+            ->where('student_id', $studentId)
+            ->where('type', self::MASTER_STREAK)
+            ->first();
+
+        if ($streak === null) {
+            return null;
+        }
+
+        $milestone = collect(self::STREAK_MILESTONES)
+            ->filter(fn (int $m): bool => $m <= $streak->count && $m > ($streak->celebrated_count ?? 0))
+            ->max();
+
+        if ($milestone === null) {
+            return null;
+        }
+
+        $streak->celebrated_count = $milestone;
+        $streak->save();
+
+        return $milestone;
     }
 
     private function shieldFor(int $studentId): StreakShield

@@ -12,6 +12,7 @@ class StudentStreak extends Model
         'type',
         'count',
         'previous_count',
+        'celebrated_count',
         'last_activity_date',
         'restarted_at',
     ];
@@ -19,6 +20,7 @@ class StudentStreak extends Model
     protected $casts = [
         'count' => 'integer',
         'previous_count' => 'integer',
+        'celebrated_count' => 'integer',
         'last_activity_date' => 'date:Y-m-d',
         'restarted_at' => 'date:Y-m-d',
     ];

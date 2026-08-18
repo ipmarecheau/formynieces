@@ -28,6 +28,9 @@
     .pw-feedback-head.good { color: #67e8f9; }
     .pw-feedback-head.notyet { color: #f0abfc; }
     .pw-explanation { font-size: 16px; line-height: 1.65; color: rgba(243,232,255,0.92); text-align: center; margin-bottom: 26px; }
+    .pw-misconception { margin-bottom: 26px; }
+    .pw-misconception-label { font-size: 16px; color: #f0abfc; text-align: center; margin: 0 0 10px; }
+    .pw-misconception .pw-explanation { margin-bottom: 0; }
     .pw-next { display: block; margin: 0 auto; background: linear-gradient(135deg, #0e7490, #f6b71e); border: none; border-radius: 999px; padding: 14px 34px; color: white; font-family: 'Fredoka One', cursive; font-size: 16px; cursor: pointer; text-decoration: none; text-align: center; }
     .pw-empty { font-family: 'Fredoka One', cursive; font-size: 20px; color: #67e8f9; text-align: center; }
     .pw-master-head { font-family: 'Fredoka One', cursive; font-size: 28px; color: #fcd34d; text-align: center; margin-bottom: 10px; }
@@ -70,7 +73,7 @@
 
     @elseif ($celebration)
         <x-celebration :title="$celebration['title']" :sub="$celebration['sub']">
-            @if ($celebration['type'] === 'mastery')
+            @if (in_array($celebration['type'], ['mastery', 'weekcomplete'], true))
                 <a href="{{ route('student.voyage') }}">Back to my voyage →</a>
             @else
                 <button type="button" wire:click="continueAfterCelebration">Keep climbing! →</button>
@@ -94,7 +97,15 @@
             @else
                 <p class="pw-feedback-head notyet">Not yet — here's the idea 🌱</p>
             @endif
-            <div class="pw-explanation">{!! $feedback['explanation'] !!}</div>
+            @if (!empty($feedback['misconception']))
+                {{-- LL-09: a correction targeted to the mistake she actually made, framed as not-yet. --}}
+                <div class="pw-misconception">
+                    <p class="pw-misconception-label">{{ $feedback['misconception'] }}</p>
+                    <div class="pw-explanation">{!! $feedback['worked_example'] !!}</div>
+                </div>
+            @else
+                <div class="pw-explanation">{!! $feedback['explanation'] !!}</div>
+            @endif
             <button type="button" class="pw-next" wire:click="next">Next →</button>
         </div>
 

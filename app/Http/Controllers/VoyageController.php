@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Models\StudentStreak;
 use App\Models\WeeklyTarget;
+use App\Services\Motivation\StreakEconomyService;
 use App\Services\Pacing\AdventureMapBuilder;
 use App\Support\VoyageCompanion;
 use App\Support\VoyageInteriors;
@@ -59,11 +60,16 @@ final class VoyageController extends Controller
         $companion = VoyageCompanion::for($user->name, $streaks, $thisWeekTopics);
         $companion['avatarUrl'] = $this->companionAvatarUrl($companion['avatar']);
 
+        // CE-04: a streak-milestone celebration plays once when she next opens her
+        // Voyage — named warmly, never as a metric.
+        $streakMilestone = app(StreakEconomyService::class)->claimStreakMilestone($user->id);
+
         return view('voyage.overworld', [
             'user' => $user,
             'islands' => $islands,
             'streaks' => $streaks,
             'companion' => $companion,
+            'streakMilestone' => $streakMilestone,
         ]);
     }
 
