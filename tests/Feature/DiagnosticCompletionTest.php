@@ -204,3 +204,33 @@ it('generates the roadmap (journey + first weekly target) when an onboarded stud
         ->get();
     expect($targets)->not->toBeEmpty();
 })->group('scenario:RR-06');
+
+// RR-13 — the guardian is told when a reconciliation is waiting on her.
+it('notifies the guardian when a reconciliation is left pending', function () {
+    Illuminate\Support\Facades\Notification::fake();
+
+    $flaggedStrand = collect(SyllabusModule::strandsBySubject())->flatten()->first();
+    $guardian = User::factory()->create(['role' => 'guardian']);
+    $student = User::create([
+        'name' => 'Aaliyah',
+        'email' => 'rr13-'.uniqid().'@students.formynieces.com',
+        'password' => bcrypt('secret'),
+        'role' => 'student',
+        'target_sea_year' => 2027,
+        'onboarding_completed_at' => null,
+        'known_weak_areas' => [$flaggedStrand],
+        'parent_id' => $guardian->id,
+    ]);
+
+    $sessionId = app(SessionLifecycle::class)->startOrResume($student->id);
+    walkSessionToEnd($sessionId);
+    Livewire::actingAs($student)->test(DiagnosticWalk::class);
+
+    // Precondition: a decision really is due.
+    expect(app(DiagnosticReconciliation::class)->requiresGuardianDecision($student->refresh()))->toBeTrue();
+
+    Illuminate\Support\Facades\Notification::assertSentTo(
+        $guardian,
+        App\Notifications\ReconciliationPendingNotification::class,
+    );
+})->group('scenario:RR-13');

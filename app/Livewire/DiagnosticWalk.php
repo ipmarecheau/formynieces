@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\User;
+use App\Notifications\ReconciliationPendingNotification;
 use App\Services\Diagnostic\DiagnosticReconciliation;
 use App\Services\Diagnostic\ItemWalk;
 use App\Services\Diagnostic\SessionLifecycle;
@@ -100,9 +101,15 @@ class DiagnosticWalk extends Component
                 // cleared a strand the guardian flagged, generation waits until
                 // she reconciles (or the 3-day auto-proceed resolves it). [RR-04]
                 $student = User::find($session->student_id);
-                if ($student !== null && $student->target_sea_year !== null
-                    && ! app(DiagnosticReconciliation::class)->requiresGuardianDecision($student)) {
-                    app(RoadmapGenerator::class)->generate($student);
+                if ($student !== null && $student->target_sea_year !== null) {
+                    if (app(DiagnosticReconciliation::class)->requiresGuardianDecision($student)) {
+                        // RR-13: the child is held pending the guardian's decision —
+                        // tell the guardian a decision is waiting so she isn't silently stuck.
+                        $guardian = $student->parent_id ? User::find($student->parent_id) : null;
+                        $guardian?->notify(new ReconciliationPendingNotification($student));
+                    } else {
+                        app(RoadmapGenerator::class)->generate($student);
+                    }
                 }
             }
 
