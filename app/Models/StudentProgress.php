@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Carbon;
 
 class StudentProgress extends Model
 {
@@ -49,6 +50,24 @@ class StudentProgress extends Model
         $graceEnd = $due->copy()->addDays(self::GRACE_DAYS);
 
         return now()->gte($due) && now()->lt($graceEnd);
+    }
+
+    /**
+     * True once a mastered level's grace has fully passed without re-mastery, so
+     * it must decay to review (LL-17). Past mastered_at + 14d window + 5d grace.
+     */
+    public function hasDecayed(?Carbon $asOf = null): bool
+    {
+        if ($this->status !== 'mastered' || $this->mastered_at === null) {
+            return false;
+        }
+
+        $asOf ??= now();
+        $graceEnd = $this->mastered_at->copy()
+            ->addDays(self::MAINTENANCE_DAYS)
+            ->addDays(self::GRACE_DAYS);
+
+        return $asOf->gte($graceEnd);
     }
 
     public function student(): BelongsTo

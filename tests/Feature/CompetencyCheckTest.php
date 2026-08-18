@@ -76,6 +76,31 @@ it('masters the module when she clears one D1, D3 and D5 question on the first t
     )->toBe('mastered');
 })->group('scenario:LL-20');
 
+it('masters the module at the check stage of the loop, completing the check', function () {
+    $student = ll20Student('ll11');
+    $module = ll20Module();
+    ll20Question($module->id, 1, 0, 'D1 place value');
+    ll20Question($module->id, 3, 1, 'D3 place value');
+    ll20Question($module->id, 5, 2, 'D5 place value');
+
+    // The check stage of the loop: one at each of D1/D3/D5, all first-try correct.
+    Livewire::actingAs($student)
+        ->test(ModuleEntry::class, ['module' => $module])
+        ->call('beginCheck')
+        ->assertSet('phase', 'check')
+        ->call('answerCheck', 0)
+        ->call('answerCheck', 1)
+        ->call('answerCheck', 2)
+        ->assertSet('phase', 'outcome') // the check is complete
+        ->assertSet('mastered', true);
+
+    expect(
+        StudentProgress::where('student_id', $student->id)
+            ->where('module_id', $module->id)
+            ->value('status')
+    )->toBe('mastered');
+})->group('scenario:LL-11');
+
 it('does not master the module if any of the three is missed on the first try', function () {
     $student = ll20Student('ll20b');
     $module = ll20Module();

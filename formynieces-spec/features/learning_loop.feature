@@ -297,6 +297,8 @@ Feature: Module learning loop
   @scenario:LL-11
   Scenario: The competency check is the mastery climb, shown as its own stage
     Given she is at the check stage of the loop
-    When she answers three distinct questions correctly on the first try at difficulty 5
+    When she answers one question at each of D1, D3 and D5 correctly on the first try
     Then the module's status becomes "mastered"
     And the check stage is marked complete on the stepper
+    # The test-out shape is defined in LL-20; this scenario is the same check seen
+    # as the loop's final stage. Maintenance re-checks draw three D5 (LL-24).

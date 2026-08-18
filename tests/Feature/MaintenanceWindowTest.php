@@ -2,10 +2,14 @@
 
 use App\Livewire\ModuleEntry;
 use App\Models\PracticeQuestion;
+use App\Models\StudentJourney;
 use App\Models\StudentProgress;
 use App\Models\SyllabusModule;
 use App\Models\User;
 use App\Services\Pacing\AdventureMapBuilder;
+use App\Services\Pacing\WeeklyRollover;
+use App\Services\Practice\CompetencyCheck;
+use App\Services\Practice\MaintenanceDecay;
 use Illuminate\Support\Carbon;
 use Livewire\Livewire;
 
@@ -133,3 +137,89 @@ it('does not offer the re-mastery check before the due day', function () {
 
     Carbon::setTestNow();
 })->group('scenario:LL-24');
+
+/**
+ * LL-17 — a mastered competency that is not maintained slips to review: after the
+ * two-week window and five-day grace pass without a re-mastery, its status becomes
+ * "mastered_review", it becomes eligible for a future weekly target again, and three
+ * D5 first-try-correct restores it to "mastered".
+ */
+it('decays an un-maintained mastered level to review once its grace has passed', function () {
+    $student = mwStudent('ll17a');
+    $module = mwModule();
+    StudentProgress::create([
+        'student_id' => $student->id,
+        'module_id' => $module->id,
+        'status' => 'mastered',
+        'mastered_at' => now()->subDays(20),   // 14d window + 5d grace fully passed
+    ]);
+
+    $decayed = app(MaintenanceDecay::class)->run();
+
+    expect($decayed)->toBe(1)
+        ->and(StudentProgress::where('student_id', $student->id)
+            ->where('module_id', $module->id)->value('status'))->toBe('mastered_review');
+})->group('scenario:LL-17');
+
+it('leaves a mastered level within its grace window alone', function () {
+    $student = mwStudent('ll17b');
+    $module = mwModule();
+    StudentProgress::create([
+        'student_id' => $student->id,
+        'module_id' => $module->id,
+        'status' => 'mastered',
+        'mastered_at' => now()->subDays(16),   // past due (14d) but inside 5d grace
+    ]);
+
+    app(MaintenanceDecay::class)->run();
+
+    expect(StudentProgress::where('student_id', $student->id)
+        ->where('module_id', $module->id)->value('status'))->toBe('mastered');
+})->group('scenario:LL-17');
+
+it('makes a decayed level eligible for a future weekly target again', function () {
+    $student = mwStudent('ll17c');
+    StudentJourney::create([
+        'student_id' => $student->id,
+        'journey_start' => now()->subWeeks(4)->toDateString(),
+        'exam_date' => now()->addWeeks(26)->toDateString(),
+    ]);
+    $module = mwModule();
+    StudentProgress::create([
+        'student_id' => $student->id,
+        'module_id' => $module->id,
+        'status' => 'mastered_review',   // already decayed
+        'mastered_at' => now()->subDays(20),
+    ]);
+
+    $targets = app(WeeklyRollover::class)->runFor($student);
+
+    // A decayed level is no longer counted as mastered, so it re-enters the queue.
+    expect($targets->pluck('module_id'))->toContain($module->id);
+})->group('scenario:LL-17');
+
+it('restores a decayed level to mastered with three D5 first-try-correct', function () {
+    Carbon::setTestNow('2026-08-20 10:00:00');
+
+    $student = mwStudent('ll17d');
+    $module = mwModule();
+    mwD5($module->id, 0, 'D5 one');
+    mwD5($module->id, 1, 'D5 two');
+    mwD5($module->id, 2, 'D5 three');
+    $progress = StudentProgress::create([
+        'student_id' => $student->id,
+        'module_id' => $module->id,
+        'status' => 'mastered_review',
+        'mastered_at' => now()->subDays(20),
+    ]);
+
+    $check = app(CompetencyCheck::class);
+    $served = $check->serveMaintenance($student->id, $module->id);
+    $answers = $served->mapWithKeys(fn ($q) => [$q->id => $q->correct_index])->all();
+    $passed = $check->gradeMaintenance($student->id, $module->id, $served, $answers);
+
+    expect($passed)->toBeTrue()
+        ->and($progress->fresh()->status)->toBe('mastered');
+
+    Carbon::setTestNow();
+})->group('scenario:LL-17');

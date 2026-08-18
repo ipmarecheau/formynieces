@@ -15,3 +15,8 @@ Schedule::command('reconciliation:auto-proceed')->daily();
 // QB-12/13: daily snapshot of the practice question bank, pruning backups older
 // than 30 days so the last month is always restorable.
 Schedule::command('questions:backup')->dailyAt('02:00');
+
+// LL-17: the weekly review that slips a mastered level to "mastered_review" when
+// its maintenance window + grace passed without a re-mastery, making it eligible
+// for a future weekly target again.
+Schedule::command('practice:decay-maintenance')->weekly();
