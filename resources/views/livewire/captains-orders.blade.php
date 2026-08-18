@@ -134,6 +134,8 @@
         .co-reward-name { font-size: 0.82rem; font-weight: 800; color: #4a3119; }
         .co-reward-count { color: #9e3b23; }
         .co-reward-blurb { font-size: 0.7rem; color: #7a5a2e; }
+        .co-reward-earn { font-size: 0.66rem; color: #9e6a2e; font-weight: 700; margin-top: 3px; }
+        .co-locker-empty { font-size: 0.74rem; color: #6b4a2b; font-weight: 700; line-height: 1.45; margin-bottom: 10px; }
         .co-reward-body { flex: 1; }
         .co-reward-use { cursor: pointer; border: none; border-radius: 6px; padding: 4px 10px; font-size: 0.72rem; font-weight: 800; color: #f4e8c8; background: linear-gradient(135deg, #6b4a2b, #8a6531); }
         .co-tip {
@@ -240,12 +242,19 @@
                     </div>
                 @elseif ($tab === 'locker')
                     <div class="co-body">
+                        @php($lockerEmpty = collect($rewards)->every(fn ($r) => $r['held'] === 0))
+                        @if ($lockerEmpty)
+                            <p class="co-locker-empty">Your Locker is empty for now — these are rewards to sail toward. Get ahead and reach milestones to earn them! ⛵</p>
+                        @endif
                         @foreach ($rewards as $r)
                             <div class="co-reward" tabindex="0">
                                 <span class="co-reward-ico">{{ ['shore_leave' => '🏝️', 'anchor' => '⚓', 'tailwind' => '🌬️', 'lifebuoy' => '🛟'][$r['type']] }}</span>
                                 <div class="co-reward-body">
                                     <div class="co-reward-name">{{ $r['label'] }} <span class="co-reward-count">×{{ $r['held'] }}</span></div>
                                     <div class="co-reward-blurb">{{ $r['blurb'] }}</div>
+                                    @if ($r['held'] === 0)
+                                        <div class="co-reward-earn">How to earn: {{ $r['earn'] }}</div>
+                                    @endif
                                 </div>
                                 @if ($r['held'] > 0)
                                     <button class="co-reward-use" wire:click="useReward('{{ $r['type'] }}')">Use</button>

@@ -68,6 +68,14 @@ class CaptainsOrders extends Component
         'lifebuoy' => 'Lost a streak overboard? Throw a Lifebuoy to bring a just-lost streak back to life — one rescue per slip.',
     ];
 
+    /** SL-08 — how each reward is earned, so an empty Locker is a goal, not a wall. */
+    private const REWARD_EARN = [
+        'shore_leave' => 'Get ahead of your weekly plan, or reach a streak milestone.',
+        'anchor' => 'Reach a big streak milestone — or your captain can grant you one.',
+        'tailwind' => 'Sail ahead of your weekly plan two days running.',
+        'lifebuoy' => 'Reach a milestone, and keep it spare for a day a streak slips.',
+    ];
+
     private const MILESTONES = [3, 7, 14, 30];
 
     public function mount(): void
@@ -151,6 +159,7 @@ class CaptainsOrders extends Component
             'label' => self::REWARD_LABELS[$type],
             'blurb' => self::REWARD_BLURBS[$type],
             'long' => self::REWARD_LONG[$type],
+            'earn' => self::REWARD_EARN[$type],
             'held' => (int) (StreakReward::where('student_id', $studentId)
                 ->where('type', $type)->value('quantity') ?? 0),
         ]);

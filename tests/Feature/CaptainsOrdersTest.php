@@ -151,3 +151,14 @@ it('uses a held reward from the Locker', function () {
 
     expect(app(StreakEconomyService::class)->balance($student->id, 'anchor'))->toBe(0);
 })->group('scenario:SL-06');
+
+// SL-08 — the Locker shows how rewards are earned and never deflates when empty.
+it('shows how to earn rewards and frames an empty Locker as goals', function () {
+    $this->actingAs(coStudent());
+
+    Livewire::test(CaptainsOrders::class)
+        ->call('showTab', 'locker')
+        ->assertSee('rewards to sail toward')   // empty-Locker framing, not a row of zeroes
+        ->assertSee('How to earn')              // each reward tells her how to earn it
+        ->assertSee('reach milestones');
+})->group('scenario:SL-08');
