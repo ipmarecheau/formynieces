@@ -8,6 +8,7 @@ use App\Http\Controllers\GuardianPauseController;
 use App\Http\Controllers\GuardianReconciliationController;
 use App\Http\Controllers\LessonExportController;
 use App\Http\Controllers\PublicPageController;
+use App\Http\Controllers\SchoolJournalClipController;
 use App\Http\Controllers\VoyageController;
 use App\Livewire\DiagnosticWalk;
 use App\Livewire\GuardianDashboard;
@@ -74,6 +75,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
         // School journal (SJ-01..09) — the guardian's honest-layer view.
         Route::get('/guardian/students/{student}/journal', SchoolJournal::class)
             ->name('guardian.journal');
+
+        // SJ-12 — question clips (photo of the question + its marked solution).
+        Route::get('/guardian/journal-question/{question}/clip', [SchoolJournalClipController::class, 'show'])
+            ->name('guardian.journal.clip');
     });
 });
 

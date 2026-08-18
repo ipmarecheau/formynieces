@@ -2,6 +2,7 @@
 
 namespace App\Services\SchoolJournal;
 
+use App\Models\SyllabusModule;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
@@ -155,17 +156,7 @@ class OcrService
     /** @return array<string, mixed>|null */
     private function requestVisionModel(string $baseUrl, string $key, string $model, string $dataUrl): ?array
     {
-        $system = <<<'TXT'
-        You read photos of graded school assessments (Caribbean primary school, SEA syllabus).
-        Extract structured fields and rate how certain you are for EACH field, 0.00 to 1.00.
-        Rules:
-        - score: exactly as written, e.g. "18/20" or "85%". If unreadable, null.
-        - strand: the skill tested, in SEA terms if possible (e.g. "Grammar", "Number", "Vocabulary").
-        - teacher_comment: the teacher's written remark, verbatim if readable.
-        - Never guess. Low certainty means a LOW confidence number, not a plausible invention.
-        Respond with valid JSON only: {"subject":..,"strand":..,"assessment_type":..,"score":..,
-        "teacher_comment":..,"text":"<full transcribed text>","confidence":{"subject":0.0,...}}
-        TXT;
+        $system = $this->extractionPrompt();
 
         $messages = [[
             'role' => 'user',
@@ -209,5 +200,56 @@ class OcrService
 
             return null;
         }
+    }
+
+    /**
+     * The extraction contract (SJ-07 + SJ-11..13): top-level fields plus a
+     * per-question breakdown aligned to the voyage's syllabus topics, with each
+     * question's region on the page for clipping and the student's reasoning.
+     */
+    private function extractionPrompt(): string
+    {
+        $topics = $this->syllabusTopicList();
+
+        return <<<TXT
+        You read photos of graded school assessments (Caribbean primary school, SEA syllabus).
+        Extract the paper's header fields AND a per-question breakdown, rating how certain you
+        are for EACH extracted value, 0.00 to 1.00.
+        Rules:
+        - score: exactly as written, e.g. "18/20" or "85%". If unreadable, null.
+        - strand: the skill tested, in SEA terms if possible (e.g. "Grammar", "Number", "Vocabulary").
+        - teacher_comment: the teacher's written remark, verbatim if readable.
+        - For EVERY numbered question on the paper: what was asked (prompt), what the student wrote
+          (student_answer), the correct answer as the teacher marked it (correct_answer), whether it
+          was marked correct (is_correct), the topic it tests (topic — prefer one from the SYLLABUS
+          TOPICS list below; also echo its module code into module_code when you used one), what the
+          student's answer suggests they were thinking — the misconception or reasoning behind a
+          wrong answer, never a judgement of the child (reasoning_note), and box: the question's
+          region on the page as integers 0-1000, [x1,y1,x2,y2], covering the question AND the
+          teacher's marking/solution beside it.
+        - Never guess. Low certainty means a LOW confidence number, not a plausible invention.
+
+        SYLLABUS TOPICS (code: topic — subject):
+        {$topics}
+
+        Respond with valid JSON only:
+        {"subject":..,"strand":..,"assessment_type":..,"score":..,"teacher_comment":..,
+         "text":"<full transcribed text>",
+         "confidence":{"subject":0.0,"strand":0.0,"assessment_type":0.0,"score":0.0,"teacher_comment":0.0},
+         "questions":[{"number":1,"prompt":..,"student_answer":..,"correct_answer":..,
+          "is_correct":true,"topic":..,"module_code":null,"topic_confidence":0.0,
+          "reasoning_note":..,"box":[0,0,1000,1000]}]}
+        TXT;
+    }
+
+    /** Compact "CODE: topic (subject)" list for prompt alignment. */
+    private function syllabusTopicList(): string
+    {
+        return SyllabusModule::query()
+            ->orderBy('subject')
+            ->orderBy('sequence_order')
+            ->get(['code', 'subject', 'topic'])
+            ->map(fn (SyllabusModule $m) => "{$m->code}: {$m->topic} ({$m->subject})")
+            ->implode("\n");
     }
 }

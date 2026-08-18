@@ -3,8 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\SchoolJournalEntry;
-use App\Services\SchoolJournal\OcrService;
-use Illuminate\Support\Facades\Storage;
+use App\Services\SchoolJournal\JournalDigitiser;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
@@ -24,7 +23,7 @@ class StudentSchoolJournal extends Component
 
     public string $note = '';
 
-    public function savePaper(OcrService $ocr): void
+    public function savePaper(JournalDigitiser $digitiser): void
     {
         $this->validate([
             'paper' => ['required', 'file', 'mimes:jpg,jpeg,png,webp,pdf', 'max:10240'],
@@ -42,15 +41,9 @@ class StudentSchoolJournal extends Component
             'digitisation_status' => SchoolJournalEntry::STATUS_PENDING,
         ]);
 
-        // Digitise silently when possible — but never surface scores here (SJ-06).
-        $result = $ocr->digitize(Storage::disk('local')->path($path), $this->paper->getMimeType());
-        if ($result !== null) {
-            $entry->fill($result['fields']);
-            $entry->ocr_text = $result['text'];
-            $entry->ocr_confidence = $result['confidence'];
-            $entry->digitisation_status = SchoolJournalEntry::STATUS_DIGITISED;
-            $entry->save();
-        }
+        // Digitise silently when possible — but never surface scores or
+        // reasoning here; her world stays clean (SJ-06/SJ-13).
+        $digitiser->digitise($entry, $this->paper->getMimeType());
 
         $this->note = 'Paper filed! Smooth tucked it into your journal — it helps him steer your voyage. 🐢';
         $this->reset('paper');

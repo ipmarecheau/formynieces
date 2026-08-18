@@ -88,3 +88,28 @@ Feature: School journal — assessments from the classroom
     Then no school score is used to gate, penalise, or shame her there
     And her motivational world carries on untouched by classroom marks
     And a weak result never breaks a streak or blocks the map
+
+  @scenario:SJ-11
+  Scenario: Each question on the paper is stored with its syllabus topic
+    Given a digitised assessment containing several questions
+    When the per-question breakdown is stored
+    Then each question holds its prompt, the student's answer, the correct answer as marked, and whether it was marked correct
+    And each question is aligned to a syllabus topic, so classroom evidence speaks the same language as the voyage
+    And an alignment the pipeline could not make confidently is flagged, never guessed
+
+  @scenario:SJ-12
+  Scenario: A screenshot of each question and its solution is saved
+    Given a digitised assessment whose questions carry their region on the page
+    When the breakdown is stored
+    Then each question keeps a clipped image of itself — the question and its worked solution as the teacher marked it
+    And a clip the pipeline could not cut cleanly falls back to the full page, never a broken image
+    And the clips are viewable from the journal for years to come
+
+  @scenario:SJ-13
+  Scenario: The AI reads the student's answer and their reasoning — for the honest layer only
+    Given a question where the student answered incorrectly
+    When the breakdown is stored
+    Then the pipeline records what the student's answer suggests they were thinking — the misconception, not just the wrong string
+    And that reasoning note is visible to the guardian, beside the clip
+    And it is never shown in the child's world, where no question-level analysis ever appears
+    And a per-topic weak signal from wrong answers steers the daily plan's gentle focus more precisely than a strand alone

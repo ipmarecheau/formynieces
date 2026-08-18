@@ -12,6 +12,7 @@ class SchoolStrandSignal extends Model
         'student_id',
         'school_journal_entry_id',
         'strand',
+        'syllabus_module_id',
         'direction',
         'strength',
     ];

@@ -4,10 +4,9 @@ namespace App\Livewire;
 
 use App\Models\SchoolJournalEntry;
 use App\Models\User;
-use App\Services\SchoolJournal\OcrService;
+use App\Services\SchoolJournal\JournalDigitiser;
 use App\Services\SchoolJournal\SchoolEvidenceService;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
@@ -41,8 +40,8 @@ class SchoolJournal extends Component
         $this->student = $student;
     }
 
-    /** SJ-01 — store the upload; SJ-07 — digitise when the seam can. */
-    public function savePaper(OcrService $ocr): void
+    /** SJ-01 — store the upload; SJ-07/11/12/13 — digitise when the seam can. */
+    public function savePaper(JournalDigitiser $digitiser): void
     {
         $this->validate([
             'paper' => ['required', 'file', 'mimes:jpg,jpeg,png,webp,pdf', 'max:10240'],
@@ -58,22 +57,11 @@ class SchoolJournal extends Component
             'digitisation_status' => SchoolJournalEntry::STATUS_PENDING,
         ]);
 
-        $result = $ocr->digitize(Storage::disk('local')->path($path), $this->paper->getMimeType());
+        $ran = $digitiser->digitise($entry, $this->paper->getMimeType());
 
-        if ($result !== null) {
-            $entry->fill($result['fields']);
-            $entry->ocr_text = $result['text'];
-            $entry->ocr_confidence = $result['confidence'];
-            $entry->digitisation_status = SchoolJournalEntry::STATUS_DIGITISED;
-            $entry->save();
-
-            if ($result['review'] !== []) {
-                $this->uploadNote = 'Filed — but I was not sure about: '.implode(', ', $result['review']).'. Please check them.';
-                $this->beginConfirmation($entry->id);
-            } else {
-                $this->uploadNote = 'Filed and read. Please give it a quick look and confirm.';
-                $this->beginConfirmation($entry->id);
-            }
+        if ($ran) {
+            $this->uploadNote = 'Filed and read — every question is broken out below. Please give it a quick look and confirm.';
+            $this->beginConfirmation($entry->id);
         } else {
             $this->uploadNote = 'Filed. I could not read this one automatically — please enter the details by hand.';
             $this->beginConfirmation($entry->id);

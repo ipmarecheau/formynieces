@@ -92,6 +92,52 @@
         @endforelse
     </div>
 
+    {{-- Per-question breakdown (SJ-11..13) — clips, alignment, reasoning --}}
+    @php($questionsByEntry = App\Models\SchoolJournalQuestion::whereIn('school_journal_entry_id', $grouped->flatten()->pluck('id'))->with('module')->get()->groupBy('school_journal_entry_id'))
+    @foreach ($questionsByEntry as $entryId => $questions)
+        <div class="fmn-card">
+            <h2 class="fmn-section-title">🧩 Questions — topics tested</h2>
+            <div class="flex flex-col gap-3">
+                @foreach ($questions as $q)
+                    <div class="rounded-xl p-3 flex gap-3" style="background: rgba(12,36,64,.6); border: 1.5px solid rgba(103,232,249,.2);">
+                        <div style="flex: 0 0 132px;">
+                            <a href="{{ route('guardian.journal.clip', $q) }}" target="_blank" rel="noopener" title="Open the clip">
+                                <img src="{{ route('guardian.journal.clip', $q) }}" alt="Question {{ $q->number }} clip"
+                                     style="width: 132px; border-radius: 8px; border: 1px solid rgba(103,232,249,.25);">
+                            </a>
+                        </div>
+                        <div class="text-sm" style="min-width: 0;">
+                            <p class="font-bold" style="color: #e6f2fb;">
+                                Q{{ $q->number ?? '?' }} ·
+                                @if ($q->module)
+                                    {{ $q->module->code }} — {{ $q->module->topic }}
+                                @else
+                                    <span style="color: #fcd34d;">{{ $q->topic_label ?? 'topic not matched' }}</span>
+                                    @if ($q->topic_label)
+                                        <em style="color: #93b2cc;"> (needs confirming)</em>
+                                    @endif
+                                @endif
+                                @if ($q->is_correct === true)<span style="color: #6ee7b7;"> ✓</span>@elseif ($q->is_correct === false)<span style="color: #fda4af;"> ✗</span>@endif
+                            </p>
+                            @if ($q->prompt)<p style="color: #93b2cc; margin-top: 2px;">{{ \Illuminate\Support\Str::limit($q->prompt, 120) }}</p>@endif
+                            <p style="margin-top: 4px; color: #93b2cc;">
+                                Wrote: <strong style="color: #e6f2fb;">{{ $q->student_answer ?? '—' }}</strong>
+                                @if ($q->is_correct === false && $q->correct_answer)
+                                    · Marked: <strong style="color: #6ee7b7;">{{ $q->correct_answer }}</strong>
+                                @endif
+                            </p>
+                            @if ($q->reasoning_note)
+                                <p style="margin-top: 6px; padding: 6px 10px; border-radius: 8px; background: rgba(246,183,30,.08); border: 1px dashed rgba(246,183,30,.35); color: #fcd34d;">
+                                    🧠 {{ $q->reasoning_note }}
+                                </p>
+                            @endif
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    @endforeach
+
     {{-- Trend (SJ-09) --}}
     @if ($trend !== [])
         <div class="fmn-card">

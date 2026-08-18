@@ -66,7 +66,7 @@ Cross-check: every Gherkin `When/Then` in `features/` must land on a screen here
 | D5 | Settings: pause/resume child (S6) | `/guardian/settings` | @v1.1 | rare |
 | D6 | Invite second guardian, read-only (S8) | `/guardian/settings` | @roadmap | once |
 | D7 | Weekly email digest (S7) | (email, not screen) | @v1.1 | weekly push |
-| D8 | School journal — file a graded paper (upload photo/PDF + structured entry) | `/guardian/students/{id}/journal` | @mvp ✅ | SJ-01..09 — OCR seam + confirm/correct + term timeline + trend; dashboard "From school" section (SJ-04) |
+| D8 | School journal — file a graded paper (upload photo/PDF + structured entry) | `/guardian/students/{id}/journal` | @mvp ✅ | SJ-01..13 — nova-lite OCR chain + confirm/correct + per-question breakdown (syllabus-aligned topics, question clips, reasoning notes) + term timeline + trend; dashboard "From school" section (SJ-04) |
 | D9 | School journal — term timeline (entries grouped by term, strand/score/comment at a glance) | same page as D8 | @mvp ✅ | SJ-03/09 — one page serves both |
 
 ### E. Admin (Filament — already scaffolded)

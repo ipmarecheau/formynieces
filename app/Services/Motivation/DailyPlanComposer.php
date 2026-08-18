@@ -70,16 +70,16 @@ class DailyPlanComposer
      */
     private function schoolFocusHint(int $studentId): ?string
     {
-        $weak = app(SchoolEvidenceService::class)->weakStrands($studentId);
+        $focus = app(SchoolEvidenceService::class)->weakestFocus($studentId);
 
-        if ($weak === []) {
+        if ($focus === null) {
             return null;
         }
 
-        $strand = $weak[0];
+        [$label, $isTopic] = $focus;
+        $what = $isTopic ? "{$label} (straight from her school papers)" : $label;
 
-        return "Smooth suggests visiting {$strand} today — your last school papers say a little
-        practice there would feel great. Just a suggestion, Captain!";
+        return "Smooth suggests visiting {$what} today — a little practice there would feel great. Just a suggestion, Captain!";
     }
 
     /**
