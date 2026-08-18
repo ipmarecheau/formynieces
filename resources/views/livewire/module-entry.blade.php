@@ -43,6 +43,7 @@
     $backHref = $islandSlug ? route('student.voyage.island', $islandSlug) : route('student.voyage');
 @endphp
 <div class="me-wrap">
+    @include('partials.voyage-crumb')
     <p class="me-topic">{{ $topic }}</p>
 
     <div class="me-card">

@@ -45,6 +45,8 @@
         </div>
     </div>
 
+    @include('partials.voyage-crumb')
+
     @if ($noPassage)
         <div class="mt-card" style="text-align:center;">
             <p style="font-size:1.05rem;">Calm seas today, Captain — no new reading has washed in. Sail on! ⛵</p>

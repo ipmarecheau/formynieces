@@ -24,6 +24,7 @@
 </style>
 
 <div class="tw-wrap">
+    @include('partials.voyage-crumb')
     <p class="tw-topic">{{ $topic }}</p>
     <p class="tw-tag">Worked example with Smooth</p>
 

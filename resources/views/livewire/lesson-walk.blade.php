@@ -91,6 +91,7 @@
 </style>
 
 <div class="lw-wrap">
+    @include('partials.voyage-crumb')
     {{-- Isolated, empty Alpine scope for scroll-on-handoff — must NOT wrap any wire:click content,
          or (with this app's multiple-Alpine quirk) it swallows Livewire clicks inside it. --}}
     <div x-data
