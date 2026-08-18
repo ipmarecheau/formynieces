@@ -32,6 +32,12 @@ it('lists vocabulary, reading and map on a plain weekday, no writing', function 
 it('adds a writing duty on Monday, Wednesday and Friday only', function () {
     $student = dpcStudent();
 
+    // A prompt exists this week, so writing is a real, completable duty (WR-08).
+    App\Models\WritingPrompt::create([
+        'week_start_date' => Carbon::parse('2026-08-17')->toDateString(), // Monday of this week
+        'title' => 'Prompt', 'prompt' => 'Write.', 'type' => 'narrative',
+    ]);
+
     $wednesday = dpc()->forDay($student->id, Carbon::parse('2026-08-19'));
     $friday = dpc()->forDay($student->id, Carbon::parse('2026-08-21'));
     $tuesday = dpc()->forDay($student->id, Carbon::parse('2026-08-18'));
@@ -86,3 +92,36 @@ it('completing every duty closes the day and extends the Voyage streak', functio
     expect($completed)->toBeTrue()
         ->and(StudentStreak::where('student_id', $student->id)->where('type', 'voyage')->value('count'))->toBe(1);
 })->group('scenario:CO-07');
+
+// WR-08 — the writing gate never strands her when there is no prompt.
+it('stands writing down on a writing day when no prompt is available', function () {
+    Carbon::setTestNow(Carbon::parse('2026-08-17 09:00')); // Monday = a writing day
+
+    $student = dpcStudent();
+    // No WritingPrompt seeded → WritingPrompt::forWeek() is null.
+
+    $plan = app(DailyPlanComposer::class)->forDay($student->id);
+
+    expect($plan->is_writing_day)->toBeTrue()          // it IS a writing day...
+        ->and($plan->duties)->not->toHaveKey('writing'); // ...but writing is stood down, so the gate lifts
+
+    Carbon::setTestNow();
+})->group('scenario:WR-08');
+
+it('requires writing on a writing day once a prompt exists', function () {
+    Carbon::setTestNow(Carbon::parse('2026-08-17 09:00')); // Monday
+
+    $student = dpcStudent();
+    App\Models\WritingPrompt::create([
+        'week_start_date' => Carbon::parse('2026-08-17')->startOfWeek()->toDateString(),
+        'title' => 'A day at the market',
+        'prompt' => 'Write about a busy morning at the market.',
+        'type' => 'narrative',
+    ]);
+
+    $plan = app(DailyPlanComposer::class)->forDay($student->id);
+
+    expect($plan->duties)->toHaveKey('writing');
+
+    Carbon::setTestNow();
+})->group('scenario:WR-08');

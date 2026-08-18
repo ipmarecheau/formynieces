@@ -5,6 +5,7 @@ namespace App\Services\Motivation;
 use App\Models\DailyPlan;
 use App\Models\PracticeAttempt;
 use App\Models\WeeklyTarget;
+use App\Models\WritingPrompt;
 use App\Services\SchoolJournal\SchoolEvidenceService;
 use Illuminate\Support\Carbon;
 
@@ -115,7 +116,10 @@ class DailyPlanComposer
         }
 
         $duties = self::WEEKDAY_DUTIES;
-        if ($isWritingDay) {
+        // WR-08: writing is a duty (and the map gate) only when a prompt actually
+        // exists this week. With no prompt, writing is stood down so she is never
+        // stranded behind an impossible task.
+        if ($isWritingDay && WritingPrompt::forWeek($on) !== null) {
             $duties[] = 'writing';
         }
 
