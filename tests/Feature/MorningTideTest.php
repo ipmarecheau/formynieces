@@ -121,3 +121,16 @@ it('shows LLM word examples and feedback when the LLM is available', function ()
 
     Carbon::setTestNow();
 })->group('scenario:DR-07');
+
+// DR-11 — the Morning Tide shows where she is in the read → questions → words ritual.
+it('shows the read → questions → words step indicator', function () {
+    Carbon::setTestNow(Carbon::parse('2026-08-18 08:00')); // Tuesday
+    $student = mtStudent();
+    mtPassage();
+    $this->actingAs($student);
+
+    Livewire::test(MorningTide::class)
+        ->assertSet('phase', 'read')
+        ->assertSee('Questions')   // step labels distinct from the "Reading & words" header
+        ->assertSee('Words');
+})->group('scenario:DR-11');

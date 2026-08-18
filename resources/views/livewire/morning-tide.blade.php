@@ -25,6 +25,14 @@
         .mt-btn { display: inline-block; margin-top: 16px; cursor: pointer; border: none; border-radius: 999px; padding: 12px 26px; font-family: 'Fredoka One', cursive; font-size: 1rem; color: #fff7ed; background: linear-gradient(135deg, #f97316, #f6b71e); box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
         .mt-btn[disabled] { opacity: 0.45; cursor: default; }
         .mt-progress { font-size: 0.8rem; font-weight: 800; color: #bfe6ff; margin-bottom: 12px; }
+        .mt-steps { display: flex; align-items: center; gap: 8px; margin-bottom: 18px; }
+        .mt-step { display: flex; align-items: center; gap: 6px; }
+        .mt-step-dot { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; font-size: 0.8rem; font-weight: 800; background: rgba(255,255,255,0.08); border: 1.5px solid rgba(255,255,255,0.25); color: #bfe6ff; }
+        .mt-step-label { font-size: 0.82rem; font-weight: 800; color: #bfe6ff; }
+        .mt-step.is-current .mt-step-dot { background: linear-gradient(135deg, #f97316, #f6b71e); border-color: transparent; color: #fff7ed; }
+        .mt-step.is-current .mt-step-label { color: #fde68a; }
+        .mt-step.is-done .mt-step-dot { border-color: rgba(134,239,172,0.6); color: #86efac; }
+        .mt-step-bar { flex: 1; height: 2px; background: rgba(255,255,255,0.18); border-radius: 2px; min-width: 12px; }
         .mt-compass { font-family: 'Fredoka One', cursive; font-size: 3rem; color: #34d399; text-align: center; }
         .mt-done-txt { text-align: center; font-size: 1.05rem; color: #eaf4ff; margin: 8px 0 4px; }
         .mt-link { display: inline-block; margin-top: 18px; color: #fde68a; font-weight: 800; text-decoration: none; }
@@ -46,6 +54,21 @@
     </div>
 
     @include('partials.voyage-crumb')
+
+    {{-- DR-11 — where she is in the read → questions → words ritual --}}
+    @unless ($noPassage)
+        @php($mtActive = ['read' => 1, 'check' => 2, 'pick' => 3, 'vocab' => 3, 'done' => 4][$phase] ?? 1)
+        <div class="mt-steps" aria-label="Morning Tide progress">
+            @foreach (['Reading', 'Questions', 'Words'] as $mtI => $mtLabel)
+                @php($mtN = $mtI + 1)
+                <div class="mt-step {{ $mtN < $mtActive ? 'is-done' : ($mtN === $mtActive ? 'is-current' : '') }}">
+                    <span class="mt-step-dot">{{ $mtN < $mtActive ? '✓' : $mtN }}</span>
+                    <span class="mt-step-label">{{ $mtLabel }}</span>
+                </div>
+                @unless ($loop->last)<span class="mt-step-bar"></span>@endunless
+            @endforeach
+        </div>
+    @endunless
 
     @if ($noPassage)
         <div class="mt-card" style="text-align:center;">
