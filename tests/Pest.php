@@ -16,6 +16,7 @@ use Tests\TestCase;
 
 pest()->extend(TestCase::class)
     ->use(RefreshDatabase::class)
+    ->afterEach(fn () => \Illuminate\Support\Carbon::setTestNow())
     ->in('Feature', 'Browser');
 
 /*
