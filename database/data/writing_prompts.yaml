@@ -1,0 +1,130 @@
+# Writing prompt bank for the Writer's Log (WR-01/06).
+# One shared prompt per Monday-anchored study week; the seeder assigns these to
+# consecutive weeks from the current week's Monday. Genres span the four the SEA
+# writing paper draws on: narrative, expository, descriptive, persuasive.
+# PROVENANCE: original, authored for this platform, SEA Standard 5 (T&T) aligned.
+prompts:
+
+  # ── Narrative — tell a story ──
+  - title: "The Mystery Door"
+    type: narrative
+    prompt: "One rainy afternoon you find a small door at the back of your classroom cupboard that you have never seen before. Write a story about what happens when you open it."
+
+  - title: "The Stray That Followed Me Home"
+    type: narrative
+    prompt: "On the walk home from school, a thin, muddy dog starts following you and will not turn back. Write a story about what happens next and what you decide to do."
+
+  - title: "The Night the Lights Went Out"
+    type: narrative
+    prompt: "The electricity goes out on your whole street during a big family lime. Write a story about the night that follows in the dark."
+
+  - title: "A Gift I Will Never Forget"
+    type: narrative
+    prompt: "Think of a gift you were given that meant more than its price. Write a story about how you received it and why it stayed with you."
+
+  - title: "Lost in the Savannah"
+    type: narrative
+    prompt: "You become separated from your family in the Queen's Park Savannah as evening falls. Write a story about finding your way back."
+
+  - title: "The Day I Was Brave"
+    type: narrative
+    prompt: "Write a story about a time you were frightened but did the right thing anyway."
+
+  - title: "The Message in the Bottle"
+    type: narrative
+    prompt: "Walking along Maracas Beach, you find a sealed bottle with a note inside. Write a story about the message and where it leads you."
+
+  - title: "The New Student"
+    type: narrative
+    prompt: "A new student joins your class halfway through the term and no one will talk to them. Write a story about what happens when you do."
+
+  # ── Expository — explain or inform ──
+  - title: "How to Make a Local Favourite"
+    type: expository
+    prompt: "Choose a dish your family loves — doubles, pelau, macaroni pie, or another. Explain, step by step, how it is made so that someone who has never cooked it could follow along."
+
+  - title: "Why the Sea Matters to Us"
+    type: expository
+    prompt: "Trinidad and Tobago is surrounded by the sea. Explain the different ways the sea is important to the people who live here."
+
+  - title: "Getting Ready for the SEA"
+    type: expository
+    prompt: "Explain the steps a Standard 5 student can take to prepare well for the SEA exam, and why each step helps."
+
+  - title: "From Seed to Plant"
+    type: expository
+    prompt: "Explain how a small seed grows into a full plant, describing what it needs at each stage."
+
+  - title: "Why Recycling Helps"
+    type: expository
+    prompt: "Explain what recycling is and how it helps your community and the environment."
+
+  - title: "The Rules of the Game"
+    type: expository
+    prompt: "Choose a game you enjoy — cricket, football, All Fours, or another. Explain the rules clearly enough for a beginner to play."
+
+  - title: "How We Celebrate Carnival"
+    type: expository
+    prompt: "Explain how Carnival is celebrated in Trinidad and Tobago, describing the main parts and what makes each special."
+
+  # ── Descriptive — paint a picture in words ──
+  - title: "Market Morning"
+    type: descriptive
+    prompt: "Describe a busy Saturday morning at a local market — the sights, sounds, smells and the feeling of the crowd."
+
+  - title: "My Quiet Place"
+    type: descriptive
+    prompt: "Describe the place you go to feel calm and happy, so clearly that your reader can picture standing there with you."
+
+  - title: "The Rainy Season Storm"
+    type: descriptive
+    prompt: "Describe a heavy thunderstorm in the rainy season, from the first dark clouds to the last drops."
+
+  - title: "The Steelpan Plays"
+    type: descriptive
+    prompt: "Describe watching and listening to a steelpan performance — how it looks, how it sounds, and how it makes you feel."
+
+  - title: "Grandma's Kitchen"
+    type: descriptive
+    prompt: "Describe the kitchen of an older relative — the smells, the sounds, the small details that make it theirs."
+
+  - title: "The View from the Hill"
+    type: descriptive
+    prompt: "Describe the view when you reach the top of a high hill and look out over the land and sea below."
+
+  - title: "The Hummingbird"
+    type: descriptive
+    prompt: "A hummingbird hovers at a flower in the garden. Describe it closely — its colours, its movement, and the moment before it darts away."
+
+  # ── Persuasive — make your case ──
+  - title: "Please, Can We Have a Pet?"
+    type: persuasive
+    prompt: "You want a pet, but your parents are not sure. Write to persuade them, giving strong reasons and answering their worries."
+
+  - title: "Should We Wear Uniforms?"
+    type: persuasive
+    prompt: "Some people think school uniforms are a good idea and others do not. Choose a side and write to persuade your reader to agree with you."
+
+  - title: "Keep Our Schoolyard Clean"
+    type: persuasive
+    prompt: "Write a speech to persuade your classmates to keep the schoolyard clean, explaining why it matters and what everyone can do."
+
+  - title: "Read More Books"
+    type: persuasive
+    prompt: "Your friend says reading is boring. Write to persuade them to give books a real chance."
+
+  - title: "Phones in School?"
+    type: persuasive
+    prompt: "Should students be allowed to bring mobile phones to school? Argue your view and try to convince a reader who disagrees."
+
+  - title: "Build Us a Park"
+    type: persuasive
+    prompt: "Write a letter to persuade your town council to build a park in your community, giving clear reasons it is needed."
+
+  - title: "Save the Leatherbacks"
+    type: persuasive
+    prompt: "Leatherback turtles nest on our beaches and need protection. Write to persuade people to help keep them safe."
+
+  - title: "Less Homework?"
+    type: persuasive
+    prompt: "Some say students get too much homework. Take a side and write to persuade your reader, giving reasons and examples."
