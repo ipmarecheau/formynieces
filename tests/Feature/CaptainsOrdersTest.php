@@ -171,3 +171,21 @@ it('renders the orders panel as a mobile-safe bottom sheet', function () {
         ->assertSee('data-co12="sheet"', false)   // the bottom-sheet marker on the panel
         ->assertSee('56vh');                        // the mobile rule caps height so map shows above
 })->group('scenario:CO-12');
+
+// CO-04 — the daily minimum can be completed in any order; each duty checks off independently.
+it('lets the daily minimum be completed in any order', function () {
+    Carbon::setTestNow(Carbon::parse('2026-08-18 09:00')); // Tuesday (no writing gate to consider)
+    $student = coStudent();
+    $composer = app(App\Services\Motivation\DailyPlanComposer::class);
+
+    $plan = $composer->forDay($student->id);
+    $reversed = array_reverse($plan->requiredDuties()); // finish them back-to-front
+
+    foreach ($reversed as $duty) {
+        $composer->markDuty($student->id, $duty);
+        $fresh = App\Models\DailyPlan::where('student_id', $student->id)->first();
+        expect($fresh->duties[$duty])->toBeTrue(); // checks off as soon as she finishes it, whatever the order
+    }
+
+    expect(App\Models\DailyPlan::where('student_id', $student->id)->first()->isMinimumMet())->toBeTrue();
+})->group('scenario:CO-04');

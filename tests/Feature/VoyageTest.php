@@ -402,3 +402,14 @@ it('reframes an already-known level on a locked island instead of a bare count',
         ->assertOk()
         ->assertSee('known');
 })->group('scenario:AM-12');
+
+// SH-07 — the Captain's Orders sidebar is part of the Voyage home.
+it('shows the Captain\'s Orders sidebar on the Voyage home', function () {
+    $this->seed(SyllabusModuleSeeder::class);
+    $this->seed(ModulePrerequisiteSeeder::class);
+    $student = makeVoyageStudent();
+
+    $this->actingAs($student)->get(route('student.voyage'))
+        ->assertOk()
+        ->assertSee('Captain');   // the sidebar renders on the Voyage, not a separate dashboard
+})->group('scenario:SH-07');
