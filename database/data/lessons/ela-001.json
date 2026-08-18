@@ -1,0 +1,80 @@
+[
+  {
+    "module": "ELA-001",
+    "title": "Making tricky plurals: words ending in y, f, and hissing sounds",
+    "is_published": true,
+    "blocks": [
+      {
+        "type": "text",
+        "content": "Most words become plural by just adding -s: one book, two books. But some words are tricky. Let's learn three little tricks that catch a lot of people out."
+      },
+      {
+        "type": "key",
+        "content": "Trick 1 — When a word ends in a consonant then y, change the y to i and add es."
+      },
+      {
+        "type": "example",
+        "content": "The plural of 'baby'.",
+        "steps": [
+          "'baby' ends in a consonant (b) then y.",
+          "Change the y to i: 'babi'.",
+          "Add es: 'babies'.",
+          "So one baby, two babies."
+        ]
+      },
+      {
+        "type": "fillblank",
+        "prompt": "One city, two ___.",
+        "answer": "cities",
+        "explain": "'city' ends in a consonant (t) then y, so change y to i and add es: cities.",
+        "rule": "If a word ends in a consonant then y, change the y to i and add es.",
+        "practiceItems": [
+          { "prompt": "the plural of 'baby'", "answer": "babies" },
+          { "prompt": "the plural of 'lady'", "answer": "ladies" },
+          { "prompt": "the plural of 'penny'", "answer": "pennies" },
+          { "prompt": "the plural of 'story'", "answer": "stories" },
+          { "prompt": "the plural of 'party'", "answer": "parties" }
+        ]
+      },
+      {
+        "type": "key",
+        "content": "Trick 2 — When a word ends in f or fe, change the f to v and add es."
+      },
+      {
+        "type": "check",
+        "question": "What is the plural of 'leaf'?",
+        "options": ["leafs", "leaves", "leafes"],
+        "answer": 1,
+        "explain": "'leaf' ends in f, so change the f to v and add es: leaves.",
+        "rule": "If a word ends in f or fe, change the f to v and add es.",
+        "practiceItems": [
+          { "prompt": "the plural of 'knife'", "answer": "knives" },
+          { "prompt": "the plural of 'wolf'", "answer": "wolves" },
+          { "prompt": "the plural of 'half'", "answer": "halves" },
+          { "prompt": "the plural of 'shelf'", "answer": "shelves" }
+        ]
+      },
+      {
+        "type": "key",
+        "content": "Trick 3 — When a word ends in a hissing sound (s, x, ch, or sh), add es."
+      },
+      {
+        "type": "fillblank",
+        "prompt": "One bus, two ___.",
+        "answer": "buses",
+        "explain": "'bus' ends in the hissing sound s, so add es: buses.",
+        "rule": "If a word ends in s, x, ch or sh, add es to make it plural.",
+        "practiceItems": [
+          { "prompt": "the plural of 'box'", "answer": "boxes" },
+          { "prompt": "the plural of 'church'", "answer": "churches" },
+          { "prompt": "the plural of 'brush'", "answer": "brushes" },
+          { "prompt": "the plural of 'glass'", "answer": "glasses" }
+        ]
+      },
+      {
+        "type": "text",
+        "content": "Nice work! Three tricks: consonant + y turns to ies, f turns to ves, and hissing sounds add es. When a plural looks tricky, ask which trick fits. Time to practise!"
+      }
+    ]
+  }
+]
