@@ -169,3 +169,26 @@ it('only serves questions she has not seen before', function () {
     expect($servedIds)->toContain($freshD3->id)
         ->and($servedIds)->not->toContain($seenD3->id);
 })->group('scenario:LL-20');
+
+/**
+ * LL-10 — failing the check offers the module's tutorial again before her next
+ * attempt; taking it is optional and never scored.
+ */
+it('offers the tutorial again after a failed check, before the next attempt', function () {
+    $student = ll20Student('ll10');
+    $module = ll20Module();
+    ll20Question($module->id, 1, 0, 'D1 place value');
+    ll20Question($module->id, 3, 1, 'D3 place value');
+    ll20Question($module->id, 5, 2, 'D5 place value');
+
+    Livewire::actingAs($student)
+        ->test(ModuleEntry::class, ['module' => $module])
+        ->call('beginCheck')
+        ->call('answerCheck', 0)   // D1 correct
+        ->call('answerCheck', 3)   // D3 WRONG — check failed
+        ->call('answerCheck', 2)   // D5 correct
+        ->assertSet('phase', 'outcome')
+        ->assertSet('mastered', false)
+        // The (unscored) tutorial is offered again before she retries.
+        ->assertSee(route('practice.tutorial', $module->id), false);
+})->group('scenario:LL-10');

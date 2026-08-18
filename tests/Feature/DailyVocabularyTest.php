@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\ReadingPassage;
+use App\Models\StudentProgress;
 use App\Models\User;
 use App\Models\VocabularyWord;
 use App\Services\LlmService;
@@ -90,3 +91,17 @@ it('falls back to the context sentence when the LLM is unavailable', function ()
 
     expect(app(VocabularyService::class)->exampleSentences($word))->toBe([$word->context_sentence]);
 })->group('scenario:DV-02');
+
+/**
+ * DV-04 — vocabulary is formative and feeds writing, not mastery: recording a word
+ * result advances only the spaced schedule and never changes a module's mastery.
+ */
+it('records a vocabulary result without changing any module mastery', function () {
+    $student = dvStudent();
+    $passage = dvPassageWithWords();
+    $word = $passage->vocabularyWords()->first();
+
+    dvSvc()->recordResult($student->id, $word->id, correct: true);
+
+    expect(StudentProgress::where('student_id', $student->id)->exists())->toBeFalse();
+})->group('scenario:DV-04');

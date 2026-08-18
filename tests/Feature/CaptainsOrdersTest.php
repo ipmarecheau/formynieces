@@ -7,6 +7,7 @@ use App\Models\StudentStreak;
 use App\Models\SyllabusModule;
 use App\Models\User;
 use App\Models\WeeklyTarget;
+use App\Services\Motivation\DailyPlanComposer;
 use App\Services\Motivation\StreakEconomyService;
 use Illuminate\Support\Carbon;
 use Livewire\Livewire;
@@ -176,16 +177,34 @@ it('renders the orders panel as a mobile-safe bottom sheet', function () {
 it('lets the daily minimum be completed in any order', function () {
     Carbon::setTestNow(Carbon::parse('2026-08-18 09:00')); // Tuesday (no writing gate to consider)
     $student = coStudent();
-    $composer = app(App\Services\Motivation\DailyPlanComposer::class);
+    $composer = app(DailyPlanComposer::class);
 
     $plan = $composer->forDay($student->id);
     $reversed = array_reverse($plan->requiredDuties()); // finish them back-to-front
 
     foreach ($reversed as $duty) {
         $composer->markDuty($student->id, $duty);
-        $fresh = App\Models\DailyPlan::where('student_id', $student->id)->first();
+        $fresh = DailyPlan::where('student_id', $student->id)->first();
         expect($fresh->duties[$duty])->toBeTrue(); // checks off as soon as she finishes it, whatever the order
     }
 
-    expect(App\Models\DailyPlan::where('student_id', $student->id)->first()->isMinimumMet())->toBeTrue();
+    expect(DailyPlan::where('student_id', $student->id)->first()->isMinimumMet())->toBeTrue();
 })->group('scenario:CO-04');
+
+/**
+ * SL-07 — the Ship's Log (the Logs tab) never shows guardian-layer or school
+ * information: no weeks-behind figure, no pace deficit, no school grade.
+ */
+it('never shows guardian-layer or school information in the log', function () {
+    Carbon::setTestNow(Carbon::parse('2026-08-18 08:00'));
+    $this->actingAs(coStudent());
+
+    Livewire::test(CaptainsOrders::class)
+        ->set('tab', 'logs')
+        ->assertDontSeeText('weeks behind')
+        ->assertDontSeeText('behind pace')
+        ->assertDontSeeText('School grade')
+        ->assertDontSeeText('deficit');
+
+    Carbon::setTestNow();
+})->group('scenario:SL-07');

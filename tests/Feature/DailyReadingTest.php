@@ -2,6 +2,8 @@
 
 use App\Models\DailyReadingAssignment;
 use App\Models\ReadingPassage;
+use App\Models\StudentProgress;
+use App\Models\StudentStreak;
 use App\Models\User;
 use App\Services\LlmService;
 use App\Services\Motivation\StreakEconomyService;
@@ -107,3 +109,46 @@ it('grants a perk when she reaches the comprehension goal, never a gate', functi
 
     expect(app(StreakEconomyService::class)->balance($student->id, 'shore_leave'))->toBe(1);
 })->group('scenario:DR-09');
+
+/**
+ * DR-03 — reading and comprehension are formative: warm feedback, no letter grade
+ * or pass/fail, and no module's mastery status changes.
+ */
+it('returns warm feedback and never changes mastery when comprehension is scored', function () {
+    // The warm summary comes from the LLM appraisal; make it return one.
+    $this->mock(LlmService::class, fn ($m) => $m->shouldReceive('completeJson')
+        ->andReturn(['score' => 100, 'feedback' => 'You understood the setting well — look for the character\'s reason next time.']));
+
+    $student = drStudent();
+    $passage = drPassage();
+    $assignment = drSvc()->serve($student);
+
+    $scored = drSvc()->score($assignment, [0 => 0, 1 => 1]);
+
+    expect($scored->comprehension_feedback)->not->toBeNull()
+        // No letter grade or pass/fail is stored — a percentage summary, not A/B/pass.
+        ->and($scored->comprehension_feedback)->not->toContain('pass')
+        // Formative: it never writes a mastery row for the child.
+        ->and(StudentProgress::where('student_id', $student->id)->exists())->toBeFalse();
+})->group('scenario:DR-03');
+
+/**
+ * DR-05 — the ride-to-school ritual is resumable: one assignment per morning, and
+ * completing the reading advances her daily reading streak.
+ */
+it('serves one resumable assignment per morning and advances the reading streak on completion', function () {
+    $student = drStudent();
+    drPassage();
+
+    $first = drSvc()->serve($student);
+    $again = drSvc()->serve($student);
+    // Resumable: the same morning's assignment, not a fresh one.
+    expect($again->id)->toBe($first->id);
+
+    drSvc()->score($first, [0 => 0, 1 => 1]);
+
+    $streak = StudentStreak::where('student_id', $student->id)
+        ->where('type', 'reading')->first();
+    expect($streak)->not->toBeNull()
+        ->and($streak->count)->toBeGreaterThanOrEqual(1);
+})->group('scenario:DR-05');
