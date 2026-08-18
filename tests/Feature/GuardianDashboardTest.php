@@ -130,3 +130,15 @@ it('labels the pace figures so they cannot be misread', function () {
         ->assertSee('of the exam')          // the weight is labelled
         ->assertSee('modules mastered');    // the raw count is labelled as modules
 })->group('scenario:GD-11');
+
+// SE-15 — a guardian grants a streak reward that lands in the student's Locker.
+it('lets a guardian grant a reward into the student Locker', function () {
+    ['guardian' => $guardian, 'student' => $student] = gdSeedGuardianWithStudent();
+
+    Livewire::actingAs($guardian)
+        ->test(GuardianDashboard::class)
+        ->call('grantReward', 'anchor')
+        ->assertDispatched('reward-granted');
+
+    expect(app(App\Services\Motivation\StreakEconomyService::class)->balance($student->id, 'anchor'))->toBe(1);
+})->group('scenario:SE-15');

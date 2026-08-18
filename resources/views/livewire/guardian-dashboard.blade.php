@@ -59,6 +59,12 @@
         .gd-affirm-sub { font-size: 0.85rem; color: #15803d; margin: 0; font-weight: 600; }
         .gd-triage-step { font-size: 0.9rem; color: #1f2937; margin: 0 0 0.4rem; line-height: 1.5; }
         .gd-triage-step:last-child { margin-bottom: 0; }
+        .gd-rewards { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .gd-reward-btn {
+            font-family: 'Nunito', sans-serif; font-size: 0.82rem; font-weight: 800; cursor: pointer;
+            color: #0e7490; background: white; border: 1.5px solid #cbe4f0; border-radius: 10px; padding: 0.45rem 0.9rem;
+        }
+        .gd-reward-btn:hover { background: #eff6ff; }
     </style>
 
     <div class="gd-header">
@@ -176,6 +182,22 @@
         <p class="gd-eyebrow">Recommendation</p>
         <p class="gd-answer">{{ $recommendation }}</p>
     </div>
+
+    {{-- SE-15 — grant a streak reward to the student's Captain's Locker (the one honest→child crossing) --}}
+    @if ($student)
+        <div class="gd-card">
+            <p class="gd-eyebrow">Grant a reward</p>
+            <p class="gd-answer" style="margin-bottom:0.7rem;">
+                Protect an upcoming day off — a granted reward appears in {{ $studentName }}'s Captain's Locker.
+            </p>
+            <div class="gd-rewards">
+                @foreach ($rewardTypes as $type => $label)
+                    <button type="button" class="gd-reward-btn" wire:click="grantReward('{{ $type }}')">{{ $label }}</button>
+                @endforeach
+            </div>
+            <p class="gd-answer" wire:loading wire:target="grantReward" style="margin-top:0.5rem; color:#16a34a;">Granting…</p>
+        </div>
+    @endif
 
     {{-- Q4 — writing feedback pointer --}}
     <div class="gd-card">

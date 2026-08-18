@@ -66,10 +66,39 @@ class GuardianDashboard extends Component
             'student' => $student,
             'students' => $students,
             'weekLabel' => 'Week of '.Carbon::today()->startOfWeek()->format('j M Y'),
+            'rewardTypes' => [
+                'shore_leave' => 'Shore Leave',
+                'anchor' => 'Anchor',
+                'tailwind' => 'Tailwind',
+                'lifebuoy' => 'Lifebuoy',
+            ],
             'schoolThisWeek' => $student
                 ? app(SchoolEvidenceService::class)->thisWeek($student->id)
                 : collect(),
         ]);
+    }
+
+    /**
+     * SE-15 — the guardian grants a streak reward, which lands in the student's
+     * Captain's Locker. The one sanctioned crossing point between the honest
+     * layer and the child's motivational world.
+     */
+    public function grantReward(string $type, \App\Services\Motivation\StreakEconomyService $economy): void
+    {
+        $student = auth()->user()->students()->find($this->studentId)
+            ?? auth()->user()->students()->first();
+
+        if ($student === null) {
+            return;
+        }
+
+        try {
+            $economy->grantReward($student->id, $type, 'guardian');
+        } catch (\InvalidArgumentException) {
+            return;
+        }
+
+        $this->dispatch('reward-granted', type: $type);
     }
 
     /**
