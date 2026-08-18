@@ -162,3 +162,12 @@ it('shows how to earn rewards and frames an empty Locker as goals', function () 
         ->assertSee('How to earn')              // each reward tells her how to earn it
         ->assertSee('reach milestones');
 })->group('scenario:SL-08');
+
+// CO-12 — on a phone the orders are a bottom sheet, so the sea stays in view (never a full cover).
+it('renders the orders panel as a mobile-safe bottom sheet', function () {
+    $this->actingAs(coStudent());
+
+    Livewire::test(CaptainsOrders::class)
+        ->assertSee('data-co12="sheet"', false)   // the bottom-sheet marker on the panel
+        ->assertSee('56vh');                        // the mobile rule caps height so map shows above
+})->group('scenario:CO-12');

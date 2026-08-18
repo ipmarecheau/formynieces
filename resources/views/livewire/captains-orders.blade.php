@@ -160,10 +160,11 @@
         .co-empty { font-size: 0.82rem; color: #7a5a2e; text-align: center; padding: 14px 4px; }
 
         @media (max-width: 640px) {
-            .co-panel { top: 64px; bottom: auto; left: 0; width: 100vw; }
-            .co-frame { max-height: 72vh; border-radius: 0 0 14px 14px; border-left: none; border-right: none; }
+            /* CO-12: a bottom sheet so the sea stays in view above the brief, never a full-screen cover. */
+            .co-panel { top: auto; bottom: 0; left: 0; width: 100vw; }
+            .co-frame { max-height: 56vh; border-radius: 14px 14px 0 0; border-left: none; border-right: none; }
             .co-edge-toggle { top: 8px; right: 8px; border-radius: 8px; border-left: 2px solid #3a2712; }
-            .co-rail { top: 64px; bottom: auto; min-height: 0; width: auto; flex-direction: row; gap: 8px; padding: 8px 14px; border-radius: 0 0 14px 0; }
+            .co-rail { top: auto; bottom: 0; min-height: 0; width: auto; flex-direction: row; gap: 8px; padding: 8px 14px; border-radius: 14px 14px 0 0; }
         }
     </style>
 
@@ -174,7 +175,7 @@
             <span class="co-rail-arrow">▸</span>
         </button>
     @else
-        <aside class="co-panel">
+        <aside class="co-panel" data-co12="sheet">
             <div class="co-frame">
                 <header class="co-head">
                     <div class="co-crest">🐢</div>
