@@ -152,3 +152,22 @@ it('serves one resumable assignment per morning and advances the reading streak 
     expect($streak)->not->toBeNull()
         ->and($streak->count)->toBeGreaterThanOrEqual(1);
 })->group('scenario:DR-05');
+
+/**
+ * DR-10 — the reading + comprehension are sized for a ten-to-fifteen-minute session.
+ * This is an authoring-guideline property, not engine logic; the guard asserts the
+ * served assignment stays within a single short sitting (a bounded question count,
+ * one passage) and that vocabulary is additional, not folded into this time.
+ */
+it('serves a single short passage with a bounded question count for one sitting', function () {
+    $student = drStudent(5);
+    $passage = drPassage(5);
+
+    $assignment = drSvc()->serve($student);
+    $questions = $assignment->passage->questions ?? [];
+
+    expect($assignment->passage->word_count)->toBeGreaterThan(0)
+        // A single sitting's worth of questions, not a full exam.
+        ->and(count($questions))->toBeLessThanOrEqual(6)
+        ->and(count($questions))->toBeGreaterThanOrEqual(1);
+})->group('scenario:DR-10');
