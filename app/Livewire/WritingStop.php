@@ -62,6 +62,11 @@ class WritingStop extends Component
             'status' => WritingSubmission::STATUS_PENDING,
         ]);
 
+        // WR-06 — a completed day's writing checks off the writing duty and advances
+        // the writing sub-streak, regardless of how scoring resolves (WR-03).
+        app(\App\Services\Motivation\DailyPlanComposer::class)->markDuty(auth()->id(), 'writing');
+        app(\App\Services\Motivation\StreakService::class)->recordActivity(auth()->id(), 'writing');
+
         try {
             $submission->applyRubric($scorer->score($submission));
             $this->queued = false;

@@ -111,3 +111,25 @@ it('saves and queues the submission when the AI scorer is unavailable', function
 
     Queue::assertPushed(ScoreWritingSubmission::class, fn ($job) => $job->submission->is($submission));
 })->group('scenario:WR-03');
+
+// WR-06 — completing the day's writing checks off the duty and advances the writing sub-streak.
+it('checks off the writing duty and advances the writing sub-streak on submission', function () {
+    Illuminate\Support\Carbon::setTestNow(Illuminate\Support\Carbon::parse('2026-08-17 09:00')); // Monday
+    Http::fake(['*' => Http::response(wrLlmRubric([
+        'content_score' => 7, 'language_score' => 7, 'grammar_score' => 8, 'organisation_score' => 6,
+        'did_well' => ['Strong opening', 'Vivid words'], 'try_next' => 'Add a feeling.',
+    ]), 200)]);
+
+    $student = wrStudent();
+    wrCurrentPrompt();
+
+    Livewire::actingAs($student)
+        ->test(WritingStop::class)
+        ->set('body', 'Once upon a rainy afternoon I found a small wooden door behind the shelves and stepped through.')
+        ->call('submit')
+        ->assertHasNoErrors();
+
+    $plan = app(App\Services\Motivation\DailyPlanComposer::class)->forDay($student->id);
+    expect($plan->duties['writing'] ?? false)->toBeTrue()
+        ->and((int) App\Models\StudentStreak::where('student_id', $student->id)->where('type', 'writing')->value('count'))->toBe(1);
+})->group('scenario:WR-06');

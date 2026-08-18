@@ -79,6 +79,18 @@ class ModuleEntry extends Component
         $this->topic = $module->topic;
         $this->islandSlug = app(AdventureMapBuilder::class)->islandSlugForModule(auth()->user(), $module->id);
 
+        // CO-05 / WR-07 / AM-11 — on a writing day, opening a NEW level waits for the
+        // day's writing. A kind nudge, not a wall: she is sailed back to the map
+        // (still explorable); already-started levels are never gated.
+        if (app(\App\Services\Motivation\WritingGate::class)->blocksNewLevel(auth()->id(), $module->id)) {
+            session()->flash('writingGate', "Finish today's writing first, Captain — then this new level opens. ✍️");
+            $this->redirect($this->islandSlug
+                ? route('student.voyage.island', $this->islandSlug)
+                : route('student.voyage'));
+
+            return;
+        }
+
         // Sequence-gate state for the outcome choices (LE-03/LE-06).
         $gate = app(LearningGate::class);
         $this->workedExamplesLocked = ! $gate->workedExamplesUnlocked(auth()->id(), $module->id);
