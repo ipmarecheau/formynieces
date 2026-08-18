@@ -67,5 +67,19 @@ applies to lessons only — don't document the others as per-topic.
    its day's words.
 3. **Writing prompts** — ~30 weekly prompts spanning narrative, expository, descriptive, persuasive.
 
-> Next: an admin **Content Audit** page that reads `ContentCoverageService` and, given the
-> syllabus, uses AI to recommend the *minimum* content set for seamless operation. (To brainstorm.)
+## Related features (specced, not yet built — `@roadmap`)
+
+- **`content_audit.feature` (CA-01..06)** — an interactive admin page that reasons over three axes
+  and *recommends* (never generates) the minimum content to bank in advance:
+  1. **Coverage** — how much exists (this `ContentCoverageService`).
+  2. **Realtime-generation exposure** — where a thin bank forces AI to improvise content at runtime
+     (worked examples, reading-pool gap-fill, vocabulary examples, writing prompts). Learning and
+     assessment AI (tutoring, scoring, moderation) is *sanctioned* and never a target.
+  3. **Quality** — how existing content is received, so it can say "rework these" not just "add more".
+- **`content_feedback.feature` (CF-01..06)** — the capture layer that feeds axis 3: a light, skippable
+  **three-face** reaction (🙁 / 🙂 / 😍) for students on the content they meet, plus a **separate**
+  parent channel for weekly-experience feedback. Never touches the child's streaks/pace, never a
+  score she sees.
+
+The audit is the *analysis* surface; content_feedback is the *capture* surface; this file + the
+`content:coverage` command are the deterministic *coverage* source they both build on.
