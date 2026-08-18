@@ -14,8 +14,9 @@ use Symfony\Component\Yaml\Yaml;
  * module via practice_questions.module_id (no pivot), and carry teaching fields
  * (hint, explanation) the diagnostic anchors don't.
  *
- * difficulty: easy=1 (rung 1), medium=2 (rung 2), hard=3 (rung 3). A module needs
- * >=3 distinct questions per rung for the climb to reach mastery.
+ * difficulty: easy=1, medium=3, hard=5 — the loop's real climb rungs (1 -> 3 -> 5,
+ * mastery at 5; see RecordPracticeAttempt/CompetencyCheck). A module needs >=3
+ * distinct questions per rung for the climb to reach mastery.
  *
  * Idempotent: clears practice questions for the seeded module ids before inserting,
  * so re-running db:seed does not duplicate.
@@ -26,8 +27,8 @@ class PracticeQuestionSeeder extends Seeder
 {
     private const DIFFICULTY_MAP = [
         'easy'   => 1,
-        'medium' => 2,
-        'hard'   => 3,
+        'medium' => 3,
+        'hard'   => 5,
     ];
 
     public function run(): void
