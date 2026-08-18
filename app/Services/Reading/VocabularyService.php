@@ -114,6 +114,38 @@ class VocabularyService
     }
 
     /**
+     * DV-06 — the due words she has already met that appear in THIS passage's text,
+     * so a later comprehension check can ask her to use or interpret one in the new
+     * context. Scan-based: a due word whose spelling occurs in the passage body
+     * (case-insensitive). Only words already in her review schedule qualify — these
+     * are reinforcement, never freshly-introduced words.
+     *
+     * @return Collection<int,VocabularyWord>
+     */
+    public function dueWordsInPassage(int $studentId, ReadingPassage $passage, ?Carbon $on = null): Collection
+    {
+        $on ??= Carbon::today();
+        $body = (string) $passage->body;
+
+        return VocabularyReview::where('student_id', $studentId)
+            ->whereDate('due_at', '<=', $on->toDateString())
+            ->with('word')->get()
+            ->pluck('word')->filter()
+            ->filter(fn (VocabularyWord $word): bool => stripos($body, (string) $word->word) !== false)
+            ->values();
+    }
+
+    /**
+     * DV-06 — she used or interpreted a due word correctly inside a later passage's
+     * comprehension. This counts toward retaining it, feeding the spaced schedule
+     * exactly like a review — it is reinforcement, never a scored grade.
+     */
+    public function reinforceInContext(int $studentId, int $wordId, bool $correct, ?Carbon $on = null): VocabularyReview
+    {
+        return $this->recordResult($studentId, $wordId, $correct, $on);
+    }
+
+    /**
      * Record how she did on a word and reschedule it (DV-03). Correct → the interval
      * roughly doubles (capped); wrong → it resets to tomorrow.
      */

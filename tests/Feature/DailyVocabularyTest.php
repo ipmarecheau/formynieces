@@ -3,6 +3,7 @@
 use App\Models\ReadingPassage;
 use App\Models\StudentProgress;
 use App\Models\User;
+use App\Models\VocabularyReview;
 use App\Models\VocabularyWord;
 use App\Services\LlmService;
 use App\Services\Reading\VocabularyService;
@@ -105,3 +106,45 @@ it('records a vocabulary result without changing any module mastery', function (
 
     expect(StudentProgress::where('student_id', $student->id)->exists())->toBeFalse();
 })->group('scenario:DV-04');
+
+/**
+ * DV-06 — learned words are tested in context within comprehension: a due word she
+ * has met can be surfaced in a later passage that uses it, and getting it right in
+ * context feeds the spaced schedule as reinforcement, never a scored grade.
+ */
+it('surfaces a due word that appears in a later passage and reinforces it in context', function () {
+    $student = dvStudent();
+
+    // A word she met earlier, now due for review.
+    $firstPassage = ReadingPassage::create([
+        'title' => 'Harbour life', 'body' => 'The harbour was busy.', 'reading_level' => 5,
+        'word_count' => 4, 'questions' => [], 'is_active' => true,
+    ]);
+    $word = VocabularyWord::create([
+        'passage_id' => $firstPassage->id, 'word' => 'harbour',
+        'definition' => 'a sheltered place for boats', 'context_sentence' => 'The harbour was calm.',
+    ]);
+    VocabularyReview::create([
+        'student_id' => $student->id, 'word_id' => $word->id,
+        'interval_days' => 2, 'correct_streak' => 1,
+        'due_at' => now()->subDay()->toDateString(), // due
+        'last_seen_at' => now()->subDays(3)->toDateString(),
+    ]);
+
+    // A LATER passage whose text uses the same word.
+    $laterPassage = ReadingPassage::create([
+        'title' => 'A trip to the coast', 'body' => 'They walked along the harbour at dawn.',
+        'reading_level' => 5, 'word_count' => 7, 'questions' => [], 'is_active' => true,
+    ]);
+
+    $due = dvSvc()->dueWordsInPassage($student->id, $laterPassage);
+    expect($due->pluck('word'))->toContain('harbour');
+
+    $review = dvSvc()->reinforceInContext($student->id, $word->id, correct: true);
+
+    // Feeds the spaced schedule (interval grows, next due pushed out)...
+    expect($review->interval_days)->toBeGreaterThan(2)
+        ->and(Carbon::parse($review->due_at)->gt(now()))->toBeTrue()
+        // ...and it is never mastery/grade.
+        ->and(StudentProgress::where('student_id', $student->id)->exists())->toBeFalse();
+})->group('scenario:DV-06');
