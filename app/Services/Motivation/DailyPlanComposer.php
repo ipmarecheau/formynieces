@@ -131,7 +131,7 @@ class DailyPlanComposer
      * this week means nothing is due, which is on pace. Guardian-layer truth; the
      * child only ever meets it as weekend rest, never as a deficit.
      */
-    private function isOnPace(int $studentId, Carbon $on): bool
+    public function isOnPace(int $studentId, Carbon $on): bool
     {
         $weekStart = $on->copy()->startOfWeek()->toDateString();
 

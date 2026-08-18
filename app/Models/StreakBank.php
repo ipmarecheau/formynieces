@@ -5,22 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class StudentStreak extends Model
+/**
+ * Days a subject's streak has been banked ahead by accelerating (SE-09), up to
+ * the banking limit (one normally, two with a Tailwind — SE-10).
+ */
+class StreakBank extends Model
 {
     protected $fillable = [
         'student_id',
-        'type',
-        'count',
-        'previous_count',
-        'last_activity_date',
-        'restarted_at',
+        'subject',
+        'days_ahead',
     ];
 
     protected $casts = [
-        'count' => 'integer',
-        'previous_count' => 'integer',
-        'last_activity_date' => 'date:Y-m-d',
-        'restarted_at' => 'date:Y-m-d',
+        'days_ahead' => 'integer',
     ];
 
     public function student(): BelongsTo

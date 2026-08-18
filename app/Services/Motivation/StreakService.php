@@ -42,6 +42,10 @@ class StreakService
             $streak->count += 1;
         } else {
             // A gap, or first ever activity — start a fresh streak.
+            // Snapshot the count that was lost so a Lifebuoy can revive it (SE-11).
+            if ($last !== null) {
+                $streak->previous_count = $streak->count;
+            }
             $streak->count = 1;
             // A genuine return after a break only when there was prior activity;
             // a first-ever day is not a "welcome back".
