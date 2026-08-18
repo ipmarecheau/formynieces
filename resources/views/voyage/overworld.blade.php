@@ -316,7 +316,16 @@
                             <li class="vy-legend-row is-{{ $island['state'] }} {{ $island['current'] ? 'is-current' : '' }} {{ ($island['this_week'] ?? false) ? 'is-thisweek' : '' }}">
                                 <span class="vy-legend-num">{{ $loop->iteration }}</span>
                                 <span class="vy-legend-name">{{ $island['state'] === 'locked' ? '🔒' : $island['icon'] }} {{ $island['name'] }}</span>
-                                <span class="vy-legend-count">{{ $island['conquered'] }} / {{ $island['total'] }}</span>
+                                <span class="vy-legend-count">
+                                    @if ($island['state'] === 'locked')
+                                        {{-- AM-12: a locked island never shows a bare conquered count
+                                             beside its lock; any already-mastered levels are framed as
+                                             skills she brings, not progress waiting. --}}
+                                        @if ($island['conquered'] > 0){{ $island['conquered'] }} known @endif
+                                    @else
+                                        {{ $island['conquered'] }} / {{ $island['total'] }}
+                                    @endif
+                                </span>
                                 <span class="vy-legend-status">
                                     @if($island['this_week'] ?? false) This week
                                     @elseif($island['current']) Sailing here

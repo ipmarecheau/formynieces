@@ -377,3 +377,28 @@ it('shows a behind-pace student the same kind voyage — mastery only, no pace o
         ->assertOk()
         ->assertSee('/ ', false);
 })->group('scenario:AM-06');
+
+// AM-12 — a locked island never reads as a contradiction (no bare conquered count).
+it('reframes an already-known level on a locked island instead of a bare count', function () {
+    $this->seed(SyllabusModuleSeeder::class);
+    $this->seed(ModulePrerequisiteSeeder::class);
+
+    $student = makeVoyageStudent();
+
+    // Master a level that lives on the SECOND (locked) island without finishing the first.
+    $islands = app(AdventureMapBuilder::class)->buildVoyage($student);
+    $lockedLevelId = $islands[1]['levels'][0]['id'];
+    StudentProgress::create([
+        'student_id' => $student->id, 'module_id' => $lockedLevelId, 'status' => 'mastered', 'score' => 3,
+    ]);
+
+    // The second island now has a conquered level but stays locked.
+    $islands = app(AdventureMapBuilder::class)->buildVoyage($student);
+    expect($islands[1]['state'])->toBe('locked')
+        ->and($islands[1]['conquered'])->toBeGreaterThan(0);
+
+    // Its legend row reframes as "N known", never a bare "N / total" beside the lock.
+    $this->actingAs($student)->get(route('student.voyage'))
+        ->assertOk()
+        ->assertSee('known');
+})->group('scenario:AM-12');
