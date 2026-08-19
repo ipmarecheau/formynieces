@@ -1,0 +1,42 @@
+[
+  {
+    "module": "ELA-038",
+    "title": "Graphic texts: purpose and audience",
+    "is_published": true,
+    "blocks": [
+      { "type": "text", "content": "Every poster, advert or sign is made for a reason and aimed at particular people. Knowing the purpose and audience helps you read a graphic text wisely." },
+      { "type": "key", "content": "A media text's purpose is usually to inform, to persuade, or to entertain." },
+      { "type": "example", "content": "Reading the purpose.", "steps": ["A safety sign giving a rule → to inform.", "An advert selling sneakers → to persuade.", "A funny comic strip → to entertain." ] },
+      {
+        "type": "check",
+        "question": "A billboard that says 'Buy now — half price today!' has what main purpose?",
+        "options": ["to inform", "to persuade", "to entertain"],
+        "answer": 1,
+        "explain": "It is pushing you to buy, so its purpose is to persuade.",
+        "rule": "A media text's purpose is to inform, to persuade, or to entertain.",
+        "practiceItems": [
+          { "prompt": "an advert's main purpose is usually to ___", "answer": "persuade" },
+          { "prompt": "a safety sign's purpose is to ___", "answer": "inform" },
+          { "prompt": "a funny comic's purpose is to ___", "answer": "entertain" },
+          { "prompt": "the reason a text is made is its ___", "answer": "purpose" }
+        ]
+      },
+      { "type": "key", "content": "The audience is the group of people a media text is aimed at." },
+      {
+        "type": "check",
+        "question": "A cereal advert full of cartoon characters and bright colours is aimed at which audience?",
+        "options": ["children", "farmers", "doctors"],
+        "answer": 0,
+        "explain": "Cartoons and bright colours are chosen to appeal to children — the target audience.",
+        "rule": "The audience is the group of people a media text is aimed at.",
+        "practiceItems": [
+          { "prompt": "who a media text is aimed at is its ___", "answer": "audience" },
+          { "prompt": "cartoon characters aim a text at ___", "answer": "children" },
+          { "prompt": "a text that only gives facts aims to ___", "answer": "inform" },
+          { "prompt": "an advert tries to change the audience's ___ (mind/height)", "answer": "mind" }
+        ]
+      },
+      { "type": "text", "content": "Ask why a graphic text was made and who it is for. Purpose and audience unlock its meaning. Let's practise!" }
+    ]
+  }
+]

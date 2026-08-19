@@ -1,0 +1,42 @@
+[
+  {
+    "module": "ELA-031",
+    "title": "Poetry: words that appeal to the senses (imagery)",
+    "is_published": true,
+    "blocks": [
+      { "type": "text", "content": "Poems let you see, hear and even smell what is happening. Words that appeal to your five senses create pictures in your mind — this is called imagery." },
+      { "type": "key", "content": "Imagery uses words that appeal to the senses: sight, sound, smell, taste and touch." },
+      { "type": "text", "content": "Read these lines: 'The crackling fire glowed warm and bright, / Its smoky scent filled the cold night.'" },
+      {
+        "type": "check",
+        "question": "The word 'crackling' appeals to which sense?",
+        "options": ["sight", "sound", "taste"],
+        "answer": 1,
+        "explain": "'crackling' is a sound you hear, so it appeals to the sense of sound.",
+        "rule": "Imagery uses words that appeal to the senses — sight, sound, smell, taste and touch.",
+        "practiceItems": [
+          { "prompt": "'crackling' appeals to the sense of ___", "answer": "sound" },
+          { "prompt": "'glowed bright' appeals to the sense of ___", "answer": "sight" },
+          { "prompt": "'smoky scent' appeals to the sense of ___", "answer": "smell" },
+          { "prompt": "words that appeal to the senses create ___", "answer": "imagery" }
+        ]
+      },
+      { "type": "key", "content": "When you read a poem, notice which sense each strong word is calling to." },
+      {
+        "type": "check",
+        "question": "'The juicy, sweet mango dripped down her chin.' Which sense does 'sweet' appeal to?",
+        "options": ["taste", "sound", "sight"],
+        "answer": 0,
+        "explain": "'sweet' is a flavour you taste, so it appeals to the sense of taste.",
+        "rule": "Match each sensory word to the sense it appeals to.",
+        "practiceItems": [
+          { "prompt": "'sweet' appeals to the sense of ___", "answer": "taste" },
+          { "prompt": "'soft and fuzzy' appeals to the sense of ___", "answer": "touch" },
+          { "prompt": "'loud drums' appeals to the sense of ___", "answer": "sound" },
+          { "prompt": "the five senses give a poem strong ___", "answer": "imagery" }
+        ]
+      },
+      { "type": "text", "content": "Sensory words paint pictures in the reader's mind. Look for the sense behind each one. Let's practise!" }
+    ]
+  }
+]

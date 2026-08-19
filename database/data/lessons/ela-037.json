@@ -1,0 +1,42 @@
+[
+  {
+    "module": "ELA-037",
+    "title": "Graphic texts: implied messages and design elements",
+    "is_published": true,
+    "blocks": [
+      { "type": "text", "content": "Graphic texts also send messages they do not say out loud. These implied messages are carried by design — the colours, the size of things, and the images chosen." },
+      { "type": "key", "content": "An implied message is suggested through images, colour and design, not stated in words." },
+      { "type": "example", "content": "Reading between the pictures.", "steps": ["A juice advert shows a big, smiling family in bright sunshine.", "It never says 'this juice makes families happy'.", "But the design implies exactly that." ] },
+      {
+        "type": "check",
+        "question": "An advert for trainers shows a famous runner winning a race. What is the implied message?",
+        "options": ["races are long", "these trainers will help you win", "runners are tall"],
+        "answer": 1,
+        "explain": "The design suggests, without saying it, that the trainers make you a winner — that is the implied message.",
+        "rule": "An implied message is suggested through images, colour and design, not stated in words.",
+        "practiceItems": [
+          { "prompt": "a message that is suggested, not stated, is ___ (implied/overt)", "answer": "implied" },
+          { "prompt": "colour, size and images are ___ elements", "answer": "design" },
+          { "prompt": "bright colours and smiles suggest a ___ feeling (happy/sad)", "answer": "happy" },
+          { "prompt": "an implied message is not said in ___", "answer": "words" }
+        ]
+      },
+      { "type": "key", "content": "Design elements — big text, bold colours, and chosen images — are used to guide how you feel." },
+      {
+        "type": "check",
+        "question": "Why is the price on a sale poster often the biggest, brightest text?",
+        "options": ["to fill the page", "to catch your eye and pull you in", "to hide it"],
+        "answer": 1,
+        "explain": "Big, bright text is a design choice made to grab your attention.",
+        "rule": "Design elements like size and colour are chosen to catch attention and shape feelings.",
+        "practiceItems": [
+          { "prompt": "the biggest word on a poster is meant to catch your ___", "answer": "eye" },
+          { "prompt": "colour, size and images are ___ elements", "answer": "design" },
+          { "prompt": "a suggested, unspoken message is ___ (implied/overt)", "answer": "implied" },
+          { "prompt": "bold red can suggest ___ or danger (excitement/boredom)", "answer": "excitement" }
+        ]
+      },
+      { "type": "text", "content": "Look past the words: colours, sizes and images whisper an implied message. Read the design, not just the text. Let's practise!" }
+    ]
+  }
+]

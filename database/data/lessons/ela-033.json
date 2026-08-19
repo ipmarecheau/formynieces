@@ -1,0 +1,42 @@
+[
+  {
+    "module": "ELA-033",
+    "title": "Poetry: drawing conclusions and judging characters",
+    "is_published": true,
+    "blocks": [
+      { "type": "text", "content": "Poems and stories rarely tell you outright what a character is like. You work it out — you draw a conclusion — from what they say and do." },
+      { "type": "key", "content": "Judge a character by what they say, what they do, and how others respond to them." },
+      { "type": "text", "content": "Read this: 'Though he was tired, Kofi carried the old woman's heavy bags all the way home, and would take no thanks.'" },
+      {
+        "type": "check",
+        "question": "What kind of person is Kofi?",
+        "options": ["kind", "selfish", "lazy"],
+        "answer": 0,
+        "explain": "He helped even while tired and wanted no thanks — his actions show he is kind.",
+        "rule": "Judge a character by what they say and do.",
+        "practiceItems": [
+          { "prompt": "someone who helps without wanting thanks is ___", "answer": "kind" },
+          { "prompt": "we judge characters by what they say and ___", "answer": "do" },
+          { "prompt": "a character who shares is ___ (generous/greedy)", "answer": "generous" },
+          { "prompt": "a smart guess about a character is a ___ (conclusion/fact)", "answer": "conclusion" }
+        ]
+      },
+      { "type": "key", "content": "A conclusion is your judgement, supported by the evidence of the character's behaviour." },
+      {
+        "type": "check",
+        "question": "'Reena grabbed the biggest slice and pushed past the smaller children.' What can you conclude about Reena?",
+        "options": ["She is generous.", "She is selfish.", "She is shy."],
+        "answer": 1,
+        "explain": "Taking the biggest slice and pushing others shows selfish behaviour.",
+        "rule": "Support a conclusion about a character with the evidence of their actions.",
+        "practiceItems": [
+          { "prompt": "grabbing the most and pushing others shows someone is ___", "answer": "selfish" },
+          { "prompt": "a judgement backed by evidence is a ___", "answer": "conclusion" },
+          { "prompt": "back up your judgement with the character's ___", "answer": "actions" },
+          { "prompt": "someone who waits their turn is ___ (patient/rude)", "answer": "patient" }
+        ]
+      },
+      { "type": "text", "content": "Watch what characters do, then draw a fair conclusion backed by that evidence. Let's practise!" }
+    ]
+  }
+]

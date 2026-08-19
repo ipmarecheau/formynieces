@@ -1,0 +1,41 @@
+[
+  {
+    "module": "ELA-030",
+    "title": "Poetry: similes, metaphors and personification",
+    "is_published": true,
+    "blocks": [
+      { "type": "text", "content": "Poets use figures of speech to make ordinary things feel alive. You already know similes and metaphors — now meet personification." },
+      { "type": "key", "content": "A simile compares with 'like' or 'as'; a metaphor says one thing IS another." },
+      {
+        "type": "check",
+        "question": "Which line is a simile?",
+        "options": ["Her smile was sunshine.", "Her smile was as warm as sunshine."],
+        "answer": 1,
+        "explain": "It compares using 'as', so it is a simile.",
+        "rule": "A simile compares two things using 'like' or 'as'; a metaphor says one thing IS another.",
+        "practiceItems": [
+          { "prompt": "simile or metaphor: 'as cold as ice'", "answer": "simile" },
+          { "prompt": "simile or metaphor: 'The night is a black cloak'", "answer": "metaphor" },
+          { "prompt": "a simile uses 'as' or ___", "answer": "like" },
+          { "prompt": "simile or metaphor: 'brave as a lion'", "answer": "simile" }
+        ]
+      },
+      { "type": "key", "content": "Personification gives human actions or feelings to non-human things: the wind whispered; the leaves danced." },
+      {
+        "type": "check",
+        "question": "Which line uses personification?",
+        "options": ["The old car was very fast.", "The old car groaned and coughed up the hill."],
+        "answer": 1,
+        "explain": "Groaning and coughing are human actions given to a car, so it is personification.",
+        "rule": "Personification gives human actions or feelings to non-human things.",
+        "practiceItems": [
+          { "prompt": "'the wind whispered' is an example of ___", "answer": "personification" },
+          { "prompt": "'the leaves danced' is ___", "answer": "personification" },
+          { "prompt": "'the sun smiled down' is ___", "answer": "personification" },
+          { "prompt": "giving human actions to a thing is called ___", "answer": "personification" }
+        ]
+      },
+      { "type": "text", "content": "Similes and metaphors compare; personification brings things to life with human actions. Watch for all three in poems. Let's practise!" }
+    ]
+  }
+]
