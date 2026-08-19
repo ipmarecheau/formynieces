@@ -834,3 +834,31 @@ passages:
       - word: "proud"
         definition: "pleased about something you have done"
         context_sentence: "I was so proud."
+
+  - title: "The Ripe Pommecythere"
+    reading_level: 3
+    body: >
+      A pommecythere tree grows by our house. In the season, the yellow fruit
+      hangs low. I pick one and rub off the skin. It is sweet and a little sour.
+      The juice runs down my hand. I share the rest with my brother on the step.
+    questions:
+      - prompt: "What colour is the ripe fruit?"
+        type: mc
+        options: ["yellow", "green", "red", "brown"]
+        correct_index: 0
+      - prompt: "How does the fruit taste?"
+        type: mc
+        options: ["sweet and a little sour", "very bitter", "salty", "hot"]
+        correct_index: 0
+      - prompt: "Write who the child shares the fruit with."
+        type: written
+    vocabulary:
+      - word: "season"
+        definition: "the time of year when something happens"
+        context_sentence: "In the season, the yellow fruit hangs low."
+      - word: "skin"
+        definition: "the outer covering of a fruit"
+        context_sentence: "I rub off the skin."
+      - word: "sour"
+        definition: "having a sharp taste, like a lime"
+        context_sentence: "It is sweet and a little sour."
