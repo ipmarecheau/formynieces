@@ -5538,3 +5538,538 @@ questions:
     options: ["4", "12", "3", "6"]
     correct_index: 0
     explanation: "12 ÷ 3 = 4."
+
+  # ── Module 53 (ELA-002): Doubling the Final Consonant ──
+  - module: 53
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "run + ing = ?"
+    options: ["running", "runing", "runnning", "runs"]
+    correct_index: 0
+    explanation: "Double the n: running."
+  - module: 53
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "hop + ed = ?"
+    options: ["hopped", "hoped", "hopd", "hoping"]
+    correct_index: 0
+    explanation: "Double the p: hopped."
+  - module: 53
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "big + er = ?"
+    options: ["bigger", "biger", "bigest", "biging"]
+    correct_index: 0
+    explanation: "Double the g: bigger."
+  - module: 53
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "swim + ing = ?"
+    options: ["swimming", "swiming", "swimmming", "swims"]
+    correct_index: 0
+    explanation: "Double the m: swimming."
+  - module: 53
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "sit + ing = ?"
+    options: ["sitting", "siting", "sittting", "sits"]
+    correct_index: 0
+    explanation: "Double the t: sitting."
+  - module: 53
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "stop + ed = ?"
+    options: ["stopped", "stoped", "stopd", "stopping"]
+    correct_index: 0
+    explanation: "Double the p: stopped."
+  - module: 53
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "win + er = ?"
+    options: ["winner", "winer", "winnest", "wining"]
+    correct_index: 0
+    explanation: "Double the n: winner."
+  - module: 53
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "Which spelling is correct?"
+    options: ["jumping", "jumpping", "jumbing", "jumpin"]
+    correct_index: 0
+    explanation: "'jump' ends in two consonants, so do not double: jumping."
+  - module: 53
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "hot + er = ?"
+    options: ["hotter", "hoter", "hotest", "hoting"]
+    correct_index: 0
+    explanation: "Double the t: hotter."
+  - module: 53
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "Which word doubles its last letter before -ing?"
+    options: ["run", "jump", "read", "help"]
+    correct_index: 0
+    explanation: "'run' ends in one vowel + one consonant, so it doubles: running."
+  - module: 53
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "Which is spelled correctly?"
+    options: ["beginning", "begining", "beginnning", "begins"]
+    correct_index: 0
+    explanation: "beginning doubles the n."
+  - module: 53
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "clap + ing = ?"
+    options: ["clapping", "claping", "clappping", "claps"]
+    correct_index: 0
+    explanation: "Double the p: clapping."
+  - module: 53
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "Which word does NOT double its last letter before -ing?"
+    options: ["rain", "run", "hop", "sit"]
+    correct_index: 0
+    explanation: "'rain' has two vowels before the n, so it does not double: raining."
+  - module: 53
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "shop + ed = ?"
+    options: ["shopped", "shoped", "shopd", "shopping"]
+    correct_index: 0
+    explanation: "Double the p: shopped."
+  - module: 53
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "Which is spelled correctly?"
+    options: ["planned", "planed", "plannned", "plans"]
+    correct_index: 0
+    explanation: "planned doubles the n."
+
+  # ── Module 54 (ELA-003): Dropping the Silent -e ──
+  - module: 54
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "make + ing = ?"
+    options: ["making", "makeing", "makking", "makes"]
+    correct_index: 0
+    explanation: "Drop the e: making."
+  - module: 54
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "ride + ing = ?"
+    options: ["riding", "rideing", "ridding", "rides"]
+    correct_index: 0
+    explanation: "Drop the e: riding."
+  - module: 54
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "hope + ing = ?"
+    options: ["hoping", "hopeing", "hopping", "hopes"]
+    correct_index: 0
+    explanation: "Drop the e: hoping."
+  - module: 54
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "bake + ed = ?"
+    options: ["baked", "bakeed", "bakked", "bakes"]
+    correct_index: 0
+    explanation: "Drop the e: baked."
+  - module: 54
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "drive + ing = ?"
+    options: ["driving", "driveing", "drivving", "drives"]
+    correct_index: 0
+    explanation: "Drop the e: driving."
+  - module: 54
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "use + able = ?"
+    options: ["usable", "useable", "ussable", "uses"]
+    correct_index: 0
+    explanation: "Drop the e: usable."
+  - module: 54
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "Which is spelled correctly?"
+    options: ["hopeful", "hopful", "hopefull", "hoping"]
+    correct_index: 0
+    explanation: "-ful starts with a consonant, so keep the e: hopeful."
+  - module: 54
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "nice + ly = ?"
+    options: ["nicely", "nicly", "niclly", "nices"]
+    correct_index: 0
+    explanation: "-ly starts with a consonant, so keep the e: nicely."
+  - module: 54
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "care + ful = ?"
+    options: ["careful", "carful", "carefull", "cares"]
+    correct_index: 0
+    explanation: "Keep the e before -ful: careful."
+  - module: 54
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "Which word KEEPS the silent e?"
+    options: ["safely", "makeing", "rideing", "hopeing"]
+    correct_index: 0
+    explanation: "-ly starts with a consonant, so 'safely' keeps the e."
+  - module: 54
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "love + ing = ?"
+    options: ["loving", "loveing", "lovving", "loves"]
+    correct_index: 0
+    explanation: "Drop the e: loving."
+  - module: 54
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "Which is spelled correctly?"
+    options: ["lovely", "lovly", "lovelly", "loving"]
+    correct_index: 0
+    explanation: "-ly starts with a consonant, so keep the e: lovely."
+  - module: 54
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "Which word DROPS the silent e?"
+    options: ["making", "hopeful", "nicely", "careful"]
+    correct_index: 0
+    explanation: "-ing starts with a vowel, so 'making' drops the e."
+  - module: 54
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "write + ing = ?"
+    options: ["writing", "writeing", "writting", "writes"]
+    correct_index: 0
+    explanation: "Drop the e: writing."
+  - module: 54
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "hope + ful = ?"
+    options: ["hopeful", "hopful", "hopefull", "hoped"]
+    correct_index: 0
+    explanation: "Keep the e before -ful: hopeful."
+
+  # ── Module 55 (ELA-004): ie/ei and Homophones ──
+  - module: 55
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "Which is spelled correctly?"
+    options: ["believe", "beleive", "belive", "beleeve"]
+    correct_index: 0
+    explanation: "i before e (no c): believe."
+  - module: 55
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "Which is spelled correctly?"
+    options: ["receive", "recieve", "receeve", "receve"]
+    correct_index: 0
+    explanation: "e before i after c: receive."
+  - module: 55
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "Which word means 'a place'?"
+    options: ["there", "their", "they're", "thier"]
+    correct_index: 0
+    explanation: "'there' means a place (it contains 'here')."
+  - module: 55
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "Which word means 'belonging to them'?"
+    options: ["their", "there", "they're", "thier"]
+    correct_index: 0
+    explanation: "'their' means belonging to them."
+  - module: 55
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "Which is the short way to write 'they are'?"
+    options: ["they're", "their", "there", "theyre"]
+    correct_index: 0
+    explanation: "'they're' is short for 'they are'."
+  - module: 55
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "Write i before e, except after ___?"
+    options: ["c", "s", "t", "b"]
+    correct_index: 0
+    explanation: "The rule is i before e except after c."
+  - module: 55
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "Which is spelled correctly?"
+    options: ["field", "feild", "feeld", "filde"]
+    correct_index: 0
+    explanation: "i before e: field."
+  - module: 55
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "Which is spelled correctly?"
+    options: ["ceiling", "cieling", "celing", "ceeling"]
+    correct_index: 0
+    explanation: "e before i after c: ceiling."
+  - module: 55
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "Put your bag over ___ by the door."
+    options: ["there", "their", "they're", "thier"]
+    correct_index: 0
+    explanation: "This points to a place, so 'there'."
+  - module: 55
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "The children lost ___ shoes."
+    options: ["their", "there", "they're", "thier"]
+    correct_index: 0
+    explanation: "The shoes belong to them, so 'their'."
+  - module: 55
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "Which is spelled correctly?"
+    options: ["achieve", "acheive", "acheeve", "acheve"]
+    correct_index: 0
+    explanation: "i before e: achieve."
+  - module: 55
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "Which is spelled correctly?"
+    options: ["thief", "theif", "theef", "theif"]
+    correct_index: 0
+    explanation: "i before e: thief."
+  - module: 55
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "___ going to the park now."
+    options: ["They're", "Their", "There", "Theyre"]
+    correct_index: 0
+    explanation: "'They're' means 'they are'."
+  - module: 55
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "Which word follows 'i before e except after c'?"
+    options: ["receive", "beleive", "recieve", "freind"]
+    correct_index: 0
+    explanation: "'receive' correctly has e before i after c."
+  - module: 55
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "Which is spelled correctly?"
+    options: ["piece", "peice", "peece", "pise"]
+    correct_index: 0
+    explanation: "i before e: piece."
+
+  # ── Module 56 (ELA-005): Prefixes and Suffixes ──
+  - module: 56
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "What does 'un-' mean in 'unhappy'?"
+    options: ["not", "very", "again", "before"]
+    correct_index: 0
+    explanation: "'un-' means not, so unhappy means not happy."
+  - module: 56
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "Add the prefix un- to 'kind'."
+    options: ["unkind", "kindun", "unkindly", "kinder"]
+    correct_index: 0
+    explanation: "un- + kind = unkind."
+  - module: 56
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "The suffix '-ful' means?"
+    options: ["full of", "without", "not", "again"]
+    correct_index: 0
+    explanation: "'-ful' means full of."
+  - module: 56
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "care + ful = ?"
+    options: ["careful", "carful", "carefull", "caring"]
+    correct_index: 0
+    explanation: "care + ful = careful."
+  - module: 56
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "A word part added to the FRONT of a word is a?"
+    options: ["prefix", "suffix", "root", "ending"]
+    correct_index: 0
+    explanation: "A prefix goes at the front."
+  - module: 56
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "Add the prefix un- to 'lock'."
+    options: ["unlock", "lockun", "unlocked", "locking"]
+    correct_index: 0
+    explanation: "un- + lock = unlock."
+  - module: 56
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "hope + ful = ?"
+    options: ["hopeful", "hopful", "hopefull", "hoping"]
+    correct_index: 0
+    explanation: "hope + ful = hopeful."
+  - module: 56
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "A word part added to the END of a word is a?"
+    options: ["suffix", "prefix", "root", "start"]
+    correct_index: 0
+    explanation: "A suffix goes at the end."
+  - module: 56
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "What does 're-' mean in 'redo'?"
+    options: ["again", "not", "very", "before"]
+    correct_index: 0
+    explanation: "'re-' means again, so redo means do again."
+  - module: 56
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "help + ful = ?"
+    options: ["helpful", "helpfull", "helpul", "helping"]
+    correct_index: 0
+    explanation: "help + ful = helpful."
+  - module: 56
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "What does 'dis-' mean in 'disagree'?"
+    options: ["not / opposite", "very", "again", "full of"]
+    correct_index: 0
+    explanation: "'dis-' means not or the opposite."
+  - module: 56
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "What is the root word in 'unhappy'?"
+    options: ["happy", "un", "unhap", "ppy"]
+    correct_index: 0
+    explanation: "The root word is happy."
+  - module: 56
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "The suffix '-less' means?"
+    options: ["without", "full of", "again", "not yet"]
+    correct_index: 0
+    explanation: "'-less' means without, so hopeless means without hope."
+  - module: 56
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "joy + ful = ?"
+    options: ["joyful", "joyfull", "joyul", "joying"]
+    correct_index: 0
+    explanation: "joy + ful = joyful."
+  - module: 56
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "What does 'pre-' mean in 'preview'?"
+    options: ["before", "after", "not", "again"]
+    correct_index: 0
+    explanation: "'pre-' means before."
+
+  # ── Module 57 (ELA-006): Synonyms and Antonyms ──
+  - module: 57
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "A synonym for 'happy' is?"
+    options: ["glad", "sad", "angry", "tired"]
+    correct_index: 0
+    explanation: "'glad' means the same as happy."
+  - module: 57
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "A synonym for 'big' is?"
+    options: ["large", "small", "tiny", "short"]
+    correct_index: 0
+    explanation: "'large' means the same as big."
+  - module: 57
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "An antonym for 'hot' is?"
+    options: ["cold", "warm", "boiling", "fire"]
+    correct_index: 0
+    explanation: "'cold' is the opposite of hot."
+  - module: 57
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "An antonym for 'up' is?"
+    options: ["down", "high", "top", "over"]
+    correct_index: 0
+    explanation: "'down' is the opposite of up."
+  - module: 57
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "A synonym is a word that means the?"
+    options: ["same", "opposite", "first", "last"]
+    correct_index: 0
+    explanation: "A synonym means the same."
+  - module: 57
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "A synonym for 'fast' is?"
+    options: ["quick", "slow", "late", "still"]
+    correct_index: 0
+    explanation: "'quick' means the same as fast."
+  - module: 57
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "An antonym for 'happy' is?"
+    options: ["sad", "glad", "joyful", "merry"]
+    correct_index: 0
+    explanation: "'sad' is the opposite of happy."
+  - module: 57
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "A synonym for 'small' is?"
+    options: ["little", "big", "huge", "tall"]
+    correct_index: 0
+    explanation: "'little' means the same as small."
+  - module: 57
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "An antonym for 'fast' is?"
+    options: ["slow", "quick", "rapid", "speedy"]
+    correct_index: 0
+    explanation: "'slow' is the opposite of fast."
+  - module: 57
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "An antonym is a word that means the?"
+    options: ["opposite", "same", "first", "similar"]
+    correct_index: 0
+    explanation: "An antonym means the opposite."
+  - module: 57
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "A synonym for 'begin' is?"
+    options: ["start", "end", "stop", "finish"]
+    correct_index: 0
+    explanation: "'start' means the same as begin."
+  - module: 57
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "An antonym for 'empty' is?"
+    options: ["full", "hollow", "bare", "open"]
+    correct_index: 0
+    explanation: "'full' is the opposite of empty."
+  - module: 57
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "A synonym for 'shout' is?"
+    options: ["yell", "whisper", "mumble", "hush"]
+    correct_index: 0
+    explanation: "'yell' means the same as shout."
+  - module: 57
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "An antonym for 'ancient' is?"
+    options: ["modern", "old", "aged", "past"]
+    correct_index: 0
+    explanation: "'modern' is the opposite of ancient."
+  - module: 57
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "A synonym for 'brave' is?"
+    options: ["bold", "scared", "weak", "shy"]
+    correct_index: 0
+    explanation: "'bold' means the same as brave."
