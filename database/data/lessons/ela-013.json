@@ -1,0 +1,61 @@
+[
+  {
+    "module": "ELA-013",
+    "title": "Subject-verb agreement: matching the verb to the subject",
+    "is_published": true,
+    "blocks": [
+      {
+        "type": "text",
+        "content": "The subject and the verb of a sentence must agree — they have to match. Get this right and your sentences sound correct every time."
+      },
+      {
+        "type": "key",
+        "content": "One person or thing (a singular subject) takes a verb ending in s: the dog barks."
+      },
+      {
+        "type": "example",
+        "content": "Matching a singular subject.",
+        "steps": [
+          "Subject: 'the bird' (just one).",
+          "A singular subject needs the verb with s: 'sings'.",
+          "The bird sings."
+        ]
+      },
+      {
+        "type": "fillblank",
+        "prompt": "The cat ___ very fast. (run)",
+        "answer": "runs",
+        "explain": "'The cat' is singular, so the verb takes an s: runs.",
+        "rule": "A singular subject (one person or thing) takes a verb ending in s.",
+        "practiceItems": [
+          { "prompt": "'She ___ every day.' (play)", "answer": "plays" },
+          { "prompt": "'He ___ his lunch.' (eat)", "answer": "eats" },
+          { "prompt": "'The baby ___.' (cry)", "answer": "cries" },
+          { "prompt": "'The dog ___.' (bark)", "answer": "barks" }
+        ]
+      },
+      {
+        "type": "key",
+        "content": "More than one (a plural subject), and the words I and you, take the verb WITHOUT s: the dogs bark."
+      },
+      {
+        "type": "check",
+        "question": "Which sentence is correct?",
+        "options": ["The children plays outside.", "The children play outside."],
+        "answer": 1,
+        "explain": "'The children' is plural, so the verb has no s: play.",
+        "rule": "A plural subject takes a verb with no s.",
+        "practiceItems": [
+          { "prompt": "'They ___ home.' (run)", "answer": "run" },
+          { "prompt": "'We ___ a song.' (sing)", "answer": "sing" },
+          { "prompt": "'The dogs ___.' (bark)", "answer": "bark" },
+          { "prompt": "'The girls ___ netball.' (play)", "answer": "play" }
+        ]
+      },
+      {
+        "type": "text",
+        "content": "One thing takes a verb with s; more than one takes a verb without s. Check they agree every time. Let's practise!"
+      }
+    ]
+  }
+]

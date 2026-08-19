@@ -1,0 +1,61 @@
+[
+  {
+    "module": "ELA-016",
+    "title": "Modal verbs: can, may, should, could and might",
+    "is_published": true,
+    "blocks": [
+      {
+        "type": "text",
+        "content": "Modal verbs are helping words that come before another verb. They show whether you are able to, allowed to, or likely to do something."
+      },
+      {
+        "type": "key",
+        "content": "A modal comes before a main verb to show ability (can), permission (may), advice (should) or possibility (might)."
+      },
+      {
+        "type": "example",
+        "content": "Reading a modal.",
+        "steps": [
+          "'I can swim' — 'can' shows ability.",
+          "'May I go?' — 'may' asks for permission.",
+          "The modal always sits just before the main verb."
+        ]
+      },
+      {
+        "type": "check",
+        "question": "Which sentence politely asks for permission?",
+        "options": ["May I leave the room?", "Might I leave the room?", "Would I leave the room?"],
+        "answer": 0,
+        "explain": "'may' is the modal that asks for or gives permission: May I leave the room?",
+        "rule": "The modal 'may' asks for or gives permission.",
+        "practiceItems": [
+          { "prompt": "modal for asking permission: ___ I come in?", "answer": "may" },
+          { "prompt": "modal for ability: I ___ swim", "answer": "can" },
+          { "prompt": "modal for advice: you ___ rest", "answer": "should" },
+          { "prompt": "modal for possibility: it ___ rain later", "answer": "might" }
+        ]
+      },
+      {
+        "type": "key",
+        "content": "Use 'should' to give advice, and 'could' for a possibility or a polite request."
+      },
+      {
+        "type": "fillblank",
+        "prompt": "Give advice: You ___ study for your test.",
+        "answer": "should",
+        "explain": "'should' gives advice about the right thing to do: You should study.",
+        "rule": "Use 'should' to give advice about the right thing to do.",
+        "practiceItems": [
+          { "prompt": "advice modal: you ___ eat well", "answer": "should" },
+          { "prompt": "advice modal: we ___ help others", "answer": "should" },
+          { "prompt": "polite request modal: ___ you help me, please?", "answer": "could" },
+          { "prompt": "possibility modal: we ___ win if we try", "answer": "might" }
+        ]
+      },
+      {
+        "type": "text",
+        "content": "Can for ability, may for permission, should for advice, might and could for possibility. Pick the modal that fits your meaning. Let's practise!"
+      }
+    ]
+  }
+]

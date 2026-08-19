@@ -1,0 +1,59 @@
+[
+  {
+    "module": "ELA-015",
+    "title": "Compound and complex sentences: joining ideas",
+    "is_published": true,
+    "blocks": [
+      {
+        "type": "text",
+        "content": "Short sentences are clear, but joining them makes your writing flow. Let's learn two ways to join ideas into one sentence."
+      },
+      {
+        "type": "key",
+        "content": "A compound sentence joins two complete sentences with and, but or or."
+      },
+      {
+        "type": "example",
+        "content": "Making a compound sentence.",
+        "steps": [
+          "Two complete sentences: 'I was tired.' and 'I kept going.'",
+          "Join them with 'but': 'I was tired, but I kept going.'"
+        ]
+      },
+      {
+        "type": "fillblank",
+        "prompt": "Join with 'and': She sang. He danced.",
+        "answer": "She sang and he danced",
+        "explain": "Join the two complete ideas with 'and': She sang and he danced.",
+        "rule": "A compound sentence joins two complete sentences with and, but or or.",
+        "practiceItems": [
+          { "prompt": "join with 'and': I read. I slept.", "answer": "I read and I slept" },
+          { "prompt": "join with 'but': It was small. It was strong.", "answer": "It was small but it was strong" },
+          { "prompt": "join with 'or': We can walk. We can run.", "answer": "We can walk or we can run" },
+          { "prompt": "join with 'and': He cooked. She cleaned.", "answer": "He cooked and she cleaned" }
+        ]
+      },
+      {
+        "type": "key",
+        "content": "A complex sentence adds a part that starts with because, when, if or although. That part cannot stand alone."
+      },
+      {
+        "type": "fillblank",
+        "prompt": "Add the joining word (a reason): I stayed inside ___ it was raining.",
+        "answer": "because",
+        "explain": "'because' gives the reason, making a complex sentence: I stayed inside because it was raining.",
+        "rule": "A complex sentence adds a part beginning with because, when, if or although.",
+        "practiceItems": [
+          { "prompt": "reason word: I was happy ___ we won", "answer": "because" },
+          { "prompt": "time word: ___ the bell rang, we left", "answer": "when" },
+          { "prompt": "condition word: ___ it rains, we stay in", "answer": "if" },
+          { "prompt": "reason word: she smiled ___ she passed", "answer": "because" }
+        ]
+      },
+      {
+        "type": "text",
+        "content": "Compound joins two whole ideas with and/but/or; complex adds a because/when/if part. Both make your writing flow. Let's practise!"
+      }
+    ]
+  }
+]
