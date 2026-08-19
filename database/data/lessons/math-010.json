@@ -1,0 +1,40 @@
+[
+  {
+    "module": "MATH-010",
+    "title": "Pattern rules and missing numbers",
+    "is_published": true,
+    "blocks": [
+      { "type": "text", "content": "Every pattern has a rule hidden inside it. Find the rule and you can fill any gap, even in the middle of the pattern." },
+      { "type": "key", "content": "Find the rule by working out what changes from one number to the next, then use it to fill missing numbers." },
+      { "type": "example", "content": "Finding the rule.", "steps": ["Look at 4, 8, 12, 16.", "Each number is 4 more than the last.", "So the rule is 'add 4'."] },
+      {
+        "type": "fillblank",
+        "prompt": "The rule for 4, 8, 12, 16 is 'add ___'.",
+        "answer": "4",
+        "explain": "Each number goes up by 4, so the rule is 'add 4'.",
+        "rule": "Find a pattern's rule by working out the change from one number to the next.",
+        "practiceItems": [
+          { "prompt": "the rule for 5, 10, 15 is add ___", "answer": "5" },
+          { "prompt": "the rule for 2, 4, 6 is add ___", "answer": "2" },
+          { "prompt": "the missing number: 7, ___, 21, 28 (rule add 7)", "answer": "14" },
+          { "prompt": "the missing number: 10, 20, ___, 40", "answer": "30" }
+        ]
+      },
+      { "type": "key", "content": "Some rules multiply instead of add. In a doubling pattern, each number is twice the one before: 2, 4, 8, 16." },
+      {
+        "type": "fillblank",
+        "prompt": "Continue the doubling pattern: 2, 4, 8, ___",
+        "answer": "16",
+        "explain": "Each number is doubled, so after 8 comes 8 x 2 = 16.",
+        "rule": "In a doubling pattern, each number is twice the number before it.",
+        "practiceItems": [
+          { "prompt": "double the last: 2, 4, 8, ___", "answer": "16" },
+          { "prompt": "double the last: 1, 2, 4, ___", "answer": "8" },
+          { "prompt": "double the last: 5, 10, 20, ___", "answer": "40" },
+          { "prompt": "double the last: 3, 6, 12, ___", "answer": "24" }
+        ]
+      },
+      { "type": "text", "content": "Work out the rule first, then use it to fill any gap or extend the pattern. Let's practise!" }
+    ]
+  }
+]

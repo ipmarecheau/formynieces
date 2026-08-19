@@ -1,0 +1,40 @@
+[
+  {
+    "module": "MATH-011",
+    "title": "Finding an unknown number (algebraic thinking)",
+    "is_published": true,
+    "blocks": [
+      { "type": "text", "content": "Sometimes a number is hidden behind a letter or a box. Algebra is just the clever art of working out what that missing number must be." },
+      { "type": "key", "content": "A letter stands for an unknown number. To find it, undo what was done — do the opposite operation." },
+      { "type": "example", "content": "Solving n + 5 = 12.", "steps": ["Something plus 5 makes 12.", "Undo the +5 by subtracting: 12 - 5 = 7.", "So n = 7. Check: 7 + 5 = 12. Correct!"] },
+      {
+        "type": "fillblank",
+        "prompt": "If n + 5 = 12, then n = ___",
+        "answer": "7",
+        "explain": "Undo the +5: 12 - 5 = 7, so n = 7.",
+        "rule": "To find an unknown in an addition, subtract to undo it.",
+        "practiceItems": [
+          { "prompt": "if x + 3 = 10, then x =", "answer": "7" },
+          { "prompt": "if n + 4 = 9, then n =", "answer": "5" },
+          { "prompt": "if a + 6 = 6, then a =", "answer": "0" },
+          { "prompt": "if y + 10 = 15, then y =", "answer": "5" }
+        ]
+      },
+      { "type": "key", "content": "To undo a multiplication, divide; to undo a subtraction, add." },
+      {
+        "type": "fillblank",
+        "prompt": "If 3 x n = 12, then n = ___",
+        "answer": "4",
+        "explain": "Undo the times 3 by dividing: 12 ÷ 3 = 4, so n = 4.",
+        "rule": "Undo the operation to find the unknown: divide to undo a multiply, add to undo a subtract.",
+        "practiceItems": [
+          { "prompt": "if 2 x n = 10, then n =", "answer": "5" },
+          { "prompt": "if n - 4 = 6, then n =", "answer": "10" },
+          { "prompt": "if 5 x n = 20, then n =", "answer": "4" },
+          { "prompt": "if n - 2 = 8, then n =", "answer": "10" }
+        ]
+      },
+      { "type": "text", "content": "To free a hidden number, do the opposite operation and always check by putting your answer back in. Let's practise!" }
+    ]
+  }
+]

@@ -1,0 +1,40 @@
+[
+  {
+    "module": "MATH-008",
+    "title": "Dividing whole numbers",
+    "is_published": true,
+    "blocks": [
+      { "type": "text", "content": "Division shares a number into equal groups, or finds how many groups fit. You can always check a division by multiplying back." },
+      { "type": "key", "content": "Division shares a total into equal parts. To check, multiply the answer by the divisor to get back the total." },
+      { "type": "example", "content": "Dividing 84 ÷ 4.", "steps": ["Share 84 into 4 equal groups.", "Each group gets 21.", "Check: 21 x 4 = 84. Correct!"] },
+      {
+        "type": "fillblank",
+        "prompt": "84 ÷ 4 = ___",
+        "answer": "21",
+        "explain": "84 shared into 4 equal groups is 21 each, and 21 x 4 = 84.",
+        "rule": "Divide to share into equal groups; check by multiplying the answer by the divisor.",
+        "practiceItems": [
+          { "prompt": "36 ÷ 6", "answer": "6" },
+          { "prompt": "100 ÷ 4", "answer": "25" },
+          { "prompt": "63 ÷ 9", "answer": "7" },
+          { "prompt": "48 ÷ 8", "answer": "6" }
+        ]
+      },
+      { "type": "key", "content": "When a number does not divide exactly, the amount left over is called the remainder." },
+      {
+        "type": "fillblank",
+        "prompt": "17 ÷ 5 = 3 remainder ___",
+        "answer": "2",
+        "explain": "5 x 3 = 15, and 17 - 15 = 2, so the remainder is 2.",
+        "rule": "The remainder is the amount left over after dividing into equal groups.",
+        "practiceItems": [
+          { "prompt": "the remainder of 17 ÷ 5", "answer": "2" },
+          { "prompt": "the remainder of 20 ÷ 3", "answer": "2" },
+          { "prompt": "the remainder of 10 ÷ 4", "answer": "2" },
+          { "prompt": "the remainder of 13 ÷ 4", "answer": "1" }
+        ]
+      },
+      { "type": "text", "content": "Share into equal groups, check by multiplying, and name what is left over as the remainder. Let's practise!" }
+    ]
+  }
+]

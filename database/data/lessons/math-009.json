@@ -1,0 +1,40 @@
+[
+  {
+    "module": "MATH-009",
+    "title": "Number patterns: increasing and decreasing",
+    "is_published": true,
+    "blocks": [
+      { "type": "text", "content": "A number pattern follows a rule. Once you spot the rule, you can carry the pattern on as far as you like." },
+      { "type": "key", "content": "In an increasing pattern, add the same amount each step: 2, 4, 6, 8 adds 2 each time." },
+      { "type": "example", "content": "Continuing an increasing pattern.", "steps": ["Look at 2, 4, 6, 8.", "Each number is 2 more than the last.", "So the next number is 8 + 2 = 10."] },
+      {
+        "type": "fillblank",
+        "prompt": "Continue the pattern: 2, 4, 6, 8, ___",
+        "answer": "10",
+        "explain": "The pattern adds 2 each step, so after 8 comes 10.",
+        "rule": "In an increasing pattern, add the same amount each step.",
+        "practiceItems": [
+          { "prompt": "next in 5, 10, 15, ___", "answer": "20" },
+          { "prompt": "next in 3, 6, 9, ___", "answer": "12" },
+          { "prompt": "next in 10, 20, 30, ___", "answer": "40" },
+          { "prompt": "next in 1, 2, 3, 4, ___", "answer": "5" }
+        ]
+      },
+      { "type": "key", "content": "In a decreasing pattern, subtract the same amount each step: 20, 17, 14 takes away 3 each time." },
+      {
+        "type": "fillblank",
+        "prompt": "Continue the pattern: 20, 17, 14, ___",
+        "answer": "11",
+        "explain": "The pattern subtracts 3 each step, so after 14 comes 11.",
+        "rule": "In a decreasing pattern, subtract the same amount each step.",
+        "practiceItems": [
+          { "prompt": "next in 10, 8, 6, ___", "answer": "4" },
+          { "prompt": "next in 30, 25, 20, ___", "answer": "15" },
+          { "prompt": "next in 9, 7, 5, ___", "answer": "3" },
+          { "prompt": "next in 100, 90, 80, ___", "answer": "70" }
+        ]
+      },
+      { "type": "text", "content": "Find how much the pattern changes each step, then keep adding or subtracting that amount. Let's practise!" }
+    ]
+  }
+]
