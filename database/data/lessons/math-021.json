@@ -1,0 +1,40 @@
+[
+  {
+    "module": "MATH-021",
+    "title": "Decimals in real life: money problems",
+    "is_published": true,
+    "blocks": [
+      { "type": "text", "content": "Money is decimals you use every day. Dollars and cents are written with two decimal places, and shopping is full of adding totals and working out change." },
+      { "type": "key", "content": "Money is written with two decimal places (dollars and cents). Line up the points to add prices together." },
+      { "type": "example", "content": "Adding two prices.", "steps": ["A drink costs $3.50 and a snack costs $2.25.", "Line up the points and add.", "$3.50 + $2.25 = $5.75."] },
+      {
+        "type": "fillblank",
+        "prompt": "$3.50 + $2.25 = $___",
+        "answer": "5.75",
+        "explain": "50 cents + 25 cents = 75 cents, and $3 + $2 = $5, giving $5.75.",
+        "rule": "Line up the decimal points to add money amounts together.",
+        "practiceItems": [
+          { "prompt": "$3.50 + $2.25 (dollars and cents)", "answer": "5.75" },
+          { "prompt": "$4.10 + $1.05", "answer": "5.15" },
+          { "prompt": "$2.30 + $0.40", "answer": "2.70" },
+          { "prompt": "$1.25 + $1.25", "answer": "2.50" }
+        ]
+      },
+      { "type": "key", "content": "To find change, subtract the total cost from the money you handed over." },
+      {
+        "type": "fillblank",
+        "prompt": "You pay $10 for a book that costs $6.50. Your change is $___",
+        "answer": "3.50",
+        "explain": "$10.00 - $6.50 = $3.50 change.",
+        "rule": "To find change, subtract the cost from the money given.",
+        "practiceItems": [
+          { "prompt": "change from $5 for a $3.25 item", "answer": "1.75" },
+          { "prompt": "$10 - $4.20", "answer": "5.80" },
+          { "prompt": "$8.00 - $2.50", "answer": "5.50" },
+          { "prompt": "$20 - $12.75", "answer": "7.25" }
+        ]
+      },
+      { "type": "text", "content": "Line up the points to add prices, and subtract the cost from what you paid to get the change. Let's practise!" }
+    ]
+  }
+]

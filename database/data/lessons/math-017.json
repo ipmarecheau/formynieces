@@ -1,0 +1,40 @@
+[
+  {
+    "module": "MATH-017",
+    "title": "Decimal place value and expanded notation",
+    "is_published": true,
+    "blocks": [
+      { "type": "text", "content": "The digits after a decimal point have their own place values — tenths, hundredths and thousandths — each one ten times smaller than the last." },
+      { "type": "key", "content": "After the decimal point, the places are tenths, then hundredths, then thousandths." },
+      { "type": "example", "content": "Reading a decimal.", "steps": ["Look at 3.45.", "The 4 is in the tenths place (0.4).", "The 5 is in the hundredths place (0.05)."] },
+      {
+        "type": "fillblank",
+        "prompt": "In 3.45, the digit in the tenths place is ___",
+        "answer": "4",
+        "explain": "The first digit after the point is the tenths place, which is 4.",
+        "rule": "The first place after the decimal point is tenths, the next is hundredths.",
+        "practiceItems": [
+          { "prompt": "in 2.7, the tenths digit", "answer": "7" },
+          { "prompt": "in 0.56, the hundredths digit", "answer": "6" },
+          { "prompt": "in 3.45, the tenths digit", "answer": "4" },
+          { "prompt": "in 1.09, the tenths digit", "answer": "0" }
+        ]
+      },
+      { "type": "key", "content": "Expanded notation shows a decimal as a sum of place values: 3.45 = 3 + 0.4 + 0.05." },
+      {
+        "type": "fillblank",
+        "prompt": "Complete: 3.45 = 3 + 0.4 + ___",
+        "answer": "0.05",
+        "explain": "The 5 is in the hundredths place, so its value is 0.05.",
+        "rule": "Write a decimal in expanded form as the sum of each digit's place value.",
+        "practiceItems": [
+          { "prompt": "2.7 = 2 + ___", "answer": "0.7" },
+          { "prompt": "0.56 = 0.5 + ___", "answer": "0.06" },
+          { "prompt": "the tenths part of 3.45", "answer": "0.4" },
+          { "prompt": "1.2 = 1 + ___", "answer": "0.2" }
+        ]
+      },
+      { "type": "text", "content": "The places after the point get ten times smaller each step. Read them and you can expand any decimal. Let's practise!" }
+    ]
+  }
+]
