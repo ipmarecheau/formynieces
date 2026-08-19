@@ -616,3 +616,645 @@ questions:
     options: ["100,000", "99,999", "equal", "neither"]
     correct_index: 0
     explanation: "100,000 has six digits, one more than 99,999."
+
+  # ── Module 6 (MATH-006): Addition and Subtraction ──
+  - module: 6
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "What is 23 + 14?"
+    options: ["37", "36", "38", "27"]
+    correct_index: 0
+    explanation: "23 + 14 = 37."
+  - module: 6
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "What is 50 + 30?"
+    options: ["80", "70", "60", "90"]
+    correct_index: 0
+    explanation: "50 + 30 = 80."
+  - module: 6
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "What is 45 - 12?"
+    options: ["33", "32", "34", "23"]
+    correct_index: 0
+    explanation: "45 - 12 = 33."
+  - module: 6
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "What is 100 - 40?"
+    options: ["60", "50", "70", "40"]
+    correct_index: 0
+    explanation: "100 - 40 = 60."
+  - module: 6
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "What is 16 + 7?"
+    options: ["23", "22", "24", "21"]
+    correct_index: 0
+    explanation: "16 + 7 = 23."
+  - module: 6
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "What is 347 + 285?"
+    options: ["632", "622", "532", "642"]
+    correct_index: 0
+    explanation: "347 + 285 = 632."
+  - module: 6
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "What is 523 - 187?"
+    options: ["336", "346", "436", "326"]
+    correct_index: 0
+    explanation: "523 - 187 = 336."
+  - module: 6
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "What is 256 + 137?"
+    options: ["393", "383", "493", "392"]
+    correct_index: 0
+    explanation: "256 + 137 = 393."
+  - module: 6
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "What is 400 - 150?"
+    options: ["250", "350", "150", "240"]
+    correct_index: 0
+    explanation: "400 - 150 = 250."
+  - module: 6
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "What is 128 + 65?"
+    options: ["193", "183", "293", "192"]
+    correct_index: 0
+    explanation: "128 + 65 = 193."
+  - module: 6
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "What is 1,245 + 678?"
+    options: ["1,923", "1,913", "1,823", "1,933"]
+    correct_index: 0
+    explanation: "1,245 + 678 = 1,923."
+  - module: 6
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "What is 2,000 - 764?"
+    options: ["1,236", "1,246", "1,336", "1,226"]
+    correct_index: 0
+    explanation: "2,000 - 764 = 1,236."
+  - module: 6
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "What is 3,456 + 1,544?"
+    options: ["5,000", "4,900", "5,100", "4,990"]
+    correct_index: 0
+    explanation: "3,456 + 1,544 = 5,000."
+  - module: 6
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "What is 5,003 - 1,876?"
+    options: ["3,127", "3,137", "3,227", "3,117"]
+    correct_index: 0
+    explanation: "5,003 - 1,876 = 3,127."
+  - module: 6
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "What is 4,321 + 2,679?"
+    options: ["7,000", "6,900", "7,100", "6,990"]
+    correct_index: 0
+    explanation: "4,321 + 2,679 = 7,000."
+
+  # ── Module 7 (MATH-007): Multiplication ──
+  - module: 7
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "What is 6 x 7?"
+    options: ["42", "48", "36", "49"]
+    correct_index: 0
+    explanation: "6 x 7 = 42."
+  - module: 7
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "What is 8 x 5?"
+    options: ["40", "45", "35", "48"]
+    correct_index: 0
+    explanation: "8 x 5 = 40."
+  - module: 7
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "What is 9 x 3?"
+    options: ["27", "24", "28", "21"]
+    correct_index: 0
+    explanation: "9 x 3 = 27."
+  - module: 7
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "What is 4 x 4?"
+    options: ["16", "12", "20", "8"]
+    correct_index: 0
+    explanation: "4 x 4 = 16."
+  - module: 7
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "What is 7 x 6?"
+    options: ["42", "36", "48", "40"]
+    correct_index: 0
+    explanation: "7 x 6 = 42."
+  - module: 7
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "What is 34 x 6?"
+    options: ["204", "194", "214", "180"]
+    correct_index: 0
+    explanation: "34 x 6 = 204."
+  - module: 7
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "What is 25 x 4?"
+    options: ["100", "90", "110", "80"]
+    correct_index: 0
+    explanation: "25 x 4 = 100."
+  - module: 7
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "What is 45 x 10?"
+    options: ["450", "405", "4,500", "45"]
+    correct_index: 0
+    explanation: "45 x 10 = 450."
+  - module: 7
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "What is 12 x 8?"
+    options: ["96", "86", "106", "84"]
+    correct_index: 0
+    explanation: "12 x 8 = 96."
+  - module: 7
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "What is 23 x 5?"
+    options: ["115", "105", "125", "110"]
+    correct_index: 0
+    explanation: "23 x 5 = 115."
+  - module: 7
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "What is 123 x 4?"
+    options: ["492", "482", "512", "472"]
+    correct_index: 0
+    explanation: "123 x 4 = 492."
+  - module: 7
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "What is 56 x 12?"
+    options: ["672", "662", "682", "684"]
+    correct_index: 0
+    explanation: "56 x 12 = 672."
+  - module: 7
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "What is 34 x 20?"
+    options: ["680", "640", "700", "660"]
+    correct_index: 0
+    explanation: "34 x 20 = 680."
+  - module: 7
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "What is 250 x 3?"
+    options: ["750", "650", "850", "730"]
+    correct_index: 0
+    explanation: "250 x 3 = 750."
+  - module: 7
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "What is 15 x 15?"
+    options: ["225", "215", "235", "205"]
+    correct_index: 0
+    explanation: "15 x 15 = 225."
+
+  # ── Module 8 (MATH-008): Division ──
+  - module: 8
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "What is 24 ÷ 6?"
+    options: ["4", "3", "5", "6"]
+    correct_index: 0
+    explanation: "24 ÷ 6 = 4."
+  - module: 8
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "What is 30 ÷ 5?"
+    options: ["6", "5", "7", "8"]
+    correct_index: 0
+    explanation: "30 ÷ 5 = 6."
+  - module: 8
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "What is 18 ÷ 2?"
+    options: ["9", "8", "10", "7"]
+    correct_index: 0
+    explanation: "18 ÷ 2 = 9."
+  - module: 8
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "What is 28 ÷ 7?"
+    options: ["4", "3", "5", "6"]
+    correct_index: 0
+    explanation: "28 ÷ 7 = 4."
+  - module: 8
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "What is 40 ÷ 8?"
+    options: ["5", "4", "6", "7"]
+    correct_index: 0
+    explanation: "40 ÷ 8 = 5."
+  - module: 8
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "What is 84 ÷ 4?"
+    options: ["21", "22", "20", "24"]
+    correct_index: 0
+    explanation: "84 ÷ 4 = 21."
+  - module: 8
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "What is 100 ÷ 4?"
+    options: ["25", "20", "30", "24"]
+    correct_index: 0
+    explanation: "100 ÷ 4 = 25."
+  - module: 8
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "What is 63 ÷ 9?"
+    options: ["7", "8", "6", "9"]
+    correct_index: 0
+    explanation: "63 ÷ 9 = 7."
+  - module: 8
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "What is 96 ÷ 8?"
+    options: ["12", "11", "13", "14"]
+    correct_index: 0
+    explanation: "96 ÷ 8 = 12."
+  - module: 8
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "What is 17 ÷ 5?"
+    options: ["3 remainder 2", "2 remainder 3", "4 remainder 1", "3 remainder 1"]
+    correct_index: 0
+    explanation: "5 x 3 = 15, and 17 - 15 = 2, so 3 remainder 2."
+  - module: 8
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "What is 144 ÷ 12?"
+    options: ["12", "11", "13", "14"]
+    correct_index: 0
+    explanation: "144 ÷ 12 = 12."
+  - module: 8
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "What is 225 ÷ 5?"
+    options: ["45", "44", "55", "35"]
+    correct_index: 0
+    explanation: "225 ÷ 5 = 45."
+  - module: 8
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "What is 500 ÷ 4?"
+    options: ["125", "120", "130", "105"]
+    correct_index: 0
+    explanation: "500 ÷ 4 = 125."
+  - module: 8
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "What is 91 ÷ 7?"
+    options: ["13", "12", "14", "11"]
+    correct_index: 0
+    explanation: "91 ÷ 7 = 13."
+  - module: 8
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "What is 50 ÷ 8?"
+    options: ["6 remainder 2", "6 remainder 1", "5 remainder 2", "7 remainder 1"]
+    correct_index: 0
+    explanation: "8 x 6 = 48, and 50 - 48 = 2, so 6 remainder 2."
+
+  # ── Module 9 (MATH-009): Number Patterns ──
+  - module: 9
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "What comes next: 2, 4, 6, 8, ?"
+    options: ["10", "9", "11", "12"]
+    correct_index: 0
+    explanation: "The pattern adds 2 each time, so 10 comes next."
+  - module: 9
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "What comes next: 5, 10, 15, ?"
+    options: ["20", "25", "18", "16"]
+    correct_index: 0
+    explanation: "The pattern adds 5 each time, so 20 comes next."
+  - module: 9
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "What comes next: 10, 8, 6, ?"
+    options: ["4", "5", "3", "2"]
+    correct_index: 0
+    explanation: "The pattern subtracts 2 each time, so 4 comes next."
+  - module: 9
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "What comes next: 3, 6, 9, ?"
+    options: ["12", "11", "15", "13"]
+    correct_index: 0
+    explanation: "The pattern adds 3 each time, so 12 comes next."
+  - module: 9
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "What comes next: 20, 17, 14, ?"
+    options: ["11", "10", "12", "13"]
+    correct_index: 0
+    explanation: "The pattern subtracts 3 each time, so 11 comes next."
+  - module: 9
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "What comes next: 100, 90, 80, ?"
+    options: ["70", "75", "60", "65"]
+    correct_index: 0
+    explanation: "The pattern subtracts 10 each time, so 70 comes next."
+  - module: 9
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "What comes next: 7, 14, 21, ?"
+    options: ["28", "27", "35", "24"]
+    correct_index: 0
+    explanation: "The pattern adds 7 each time, so 28 comes next."
+  - module: 9
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "What comes next: 50, 45, 40, ?"
+    options: ["35", "30", "36", "34"]
+    correct_index: 0
+    explanation: "The pattern subtracts 5 each time, so 35 comes next."
+  - module: 9
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "What comes next: 6, 12, 18, ?"
+    options: ["24", "20", "30", "22"]
+    correct_index: 0
+    explanation: "The pattern adds 6 each time, so 24 comes next."
+  - module: 9
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "What number is missing: 4, 8, __, 16?"
+    options: ["12", "10", "14", "11"]
+    correct_index: 0
+    explanation: "The pattern adds 4 each time, so the missing number is 12."
+  - module: 9
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "What comes next: 2, 4, 8, 16, ?"
+    options: ["32", "24", "20", "18"]
+    correct_index: 0
+    explanation: "Each number doubles, so 16 x 2 = 32."
+  - module: 9
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "What comes next: 1, 4, 9, 16, ?"
+    options: ["25", "20", "24", "18"]
+    correct_index: 0
+    explanation: "These are square numbers (1, 4, 9, 16), so next is 5 x 5 = 25."
+  - module: 9
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "What number is missing: 3, 9, 27, __?"
+    options: ["81", "54", "72", "36"]
+    correct_index: 0
+    explanation: "Each number is multiplied by 3, so 27 x 3 = 81."
+  - module: 9
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "What comes next: 100, 50, 25, ?"
+    options: ["12.5", "20", "15", "10"]
+    correct_index: 0
+    explanation: "Each number is halved, so 25 ÷ 2 = 12.5."
+  - module: 9
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "What number is missing: 5, __, 15, 20, 25?"
+    options: ["10", "12", "8", "11"]
+    correct_index: 0
+    explanation: "The pattern adds 5 each time, so the missing number is 10."
+
+  # ── Module 10 (MATH-010): Pattern Rules ──
+  - module: 10
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "The rule for 4, 8, 12, 16 is 'add ___'."
+    options: ["4", "2", "8", "3"]
+    correct_index: 0
+    explanation: "Each number is 4 more than the last."
+  - module: 10
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "The rule for 5, 10, 15 is 'add ___'."
+    options: ["5", "10", "3", "2"]
+    correct_index: 0
+    explanation: "Each number is 5 more than the last."
+  - module: 10
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "What number is missing: 10, 20, __, 40?"
+    options: ["30", "25", "35", "50"]
+    correct_index: 0
+    explanation: "The rule is add 10, so the missing number is 30."
+  - module: 10
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "The rule for 2, 4, 6, 8 is 'add ___'."
+    options: ["2", "1", "4", "3"]
+    correct_index: 0
+    explanation: "Each number is 2 more than the last."
+  - module: 10
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "What number is missing: 7, __, 21, 28?"
+    options: ["14", "15", "12", "10"]
+    correct_index: 0
+    explanation: "The rule is add 7, so the missing number is 14."
+  - module: 10
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "What is the rule for 3, 6, 12, 24?"
+    options: ["double it", "add 3", "add 6", "add 12"]
+    correct_index: 0
+    explanation: "Each number is twice the one before."
+  - module: 10
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "What comes next in the doubling pattern 2, 4, 8, ?"
+    options: ["16", "12", "10", "20"]
+    correct_index: 0
+    explanation: "Doubling 8 gives 16."
+  - module: 10
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "The rule for 100, 90, 80 is 'subtract ___'."
+    options: ["10", "20", "5", "15"]
+    correct_index: 0
+    explanation: "Each number is 10 less than the last."
+  - module: 10
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "What number is missing: 6, 12, 18, __?"
+    options: ["24", "20", "30", "22"]
+    correct_index: 0
+    explanation: "The rule is add 6, so the missing number is 24."
+  - module: 10
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "What is the rule for 5, 10, 20, 40?"
+    options: ["double it", "add 5", "add 10", "add 15"]
+    correct_index: 0
+    explanation: "Each number is twice the one before."
+  - module: 10
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "The rule for 1, 3, 9, 27 is 'multiply by ___'."
+    options: ["3", "2", "9", "4"]
+    correct_index: 0
+    explanation: "Each number is 3 times the one before."
+  - module: 10
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "What number is missing: 2, 4, 8, __, 32?"
+    options: ["16", "12", "20", "24"]
+    correct_index: 0
+    explanation: "Each number doubles, so after 8 comes 16."
+  - module: 10
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "What is the rule for 64, 32, 16, 8?"
+    options: ["halve it", "subtract 32", "subtract 16", "double it"]
+    correct_index: 0
+    explanation: "Each number is half the one before."
+  - module: 10
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "What number is missing (square numbers): 1, 4, 9, __, 25?"
+    options: ["16", "12", "18", "20"]
+    correct_index: 0
+    explanation: "These are square numbers, and 4 x 4 = 16."
+  - module: 10
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "The rule for 5, 8, 11, 14 is 'add ___'."
+    options: ["3", "2", "4", "5"]
+    correct_index: 0
+    explanation: "Each number is 3 more than the last."
+
+  # ── Module 11 (MATH-011): Unknown Numbers ──
+  - module: 11
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "If n + 5 = 12, what is n?"
+    options: ["7", "6", "8", "17"]
+    correct_index: 0
+    explanation: "12 - 5 = 7, so n = 7."
+  - module: 11
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "If x + 3 = 10, what is x?"
+    options: ["7", "6", "8", "13"]
+    correct_index: 0
+    explanation: "10 - 3 = 7, so x = 7."
+  - module: 11
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "If a + 4 = 9, what is a?"
+    options: ["5", "4", "6", "13"]
+    correct_index: 0
+    explanation: "9 - 4 = 5, so a = 5."
+  - module: 11
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "If n + 0 = 6, what is n?"
+    options: ["6", "0", "5", "7"]
+    correct_index: 0
+    explanation: "Adding 0 changes nothing, so n = 6."
+  - module: 11
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "If y + 10 = 15, what is y?"
+    options: ["5", "4", "6", "25"]
+    correct_index: 0
+    explanation: "15 - 10 = 5, so y = 5."
+  - module: 11
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "If 3 x n = 12, what is n?"
+    options: ["4", "3", "5", "36"]
+    correct_index: 0
+    explanation: "12 ÷ 3 = 4, so n = 4."
+  - module: 11
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "If n - 4 = 6, what is n?"
+    options: ["10", "2", "8", "24"]
+    correct_index: 0
+    explanation: "6 + 4 = 10, so n = 10."
+  - module: 11
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "If 2 x n = 10, what is n?"
+    options: ["5", "4", "6", "20"]
+    correct_index: 0
+    explanation: "10 ÷ 2 = 5, so n = 5."
+  - module: 11
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "If n - 2 = 8, what is n?"
+    options: ["10", "6", "9", "16"]
+    correct_index: 0
+    explanation: "8 + 2 = 10, so n = 10."
+  - module: 11
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "If 5 x n = 20, what is n?"
+    options: ["4", "3", "5", "25"]
+    correct_index: 0
+    explanation: "20 ÷ 5 = 4, so n = 4."
+  - module: 11
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "If n + 15 = 40, what is n?"
+    options: ["25", "24", "26", "55"]
+    correct_index: 0
+    explanation: "40 - 15 = 25, so n = 25."
+  - module: 11
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "If 4 x n = 24, what is n?"
+    options: ["6", "5", "7", "20"]
+    correct_index: 0
+    explanation: "24 ÷ 4 = 6, so n = 6."
+  - module: 11
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "If n - 12 = 18, what is n?"
+    options: ["30", "6", "28", "24"]
+    correct_index: 0
+    explanation: "18 + 12 = 30, so n = 30."
+  - module: 11
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "If 6 x n = 42, what is n?"
+    options: ["7", "6", "8", "36"]
+    correct_index: 0
+    explanation: "42 ÷ 6 = 7, so n = 7."
+  - module: 11
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "If n + n = 14, what is n?"
+    options: ["7", "14", "6", "28"]
+    correct_index: 0
+    explanation: "n + n means 2 x n = 14, so n = 7."
