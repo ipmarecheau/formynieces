@@ -1,0 +1,41 @@
+[
+  {
+    "module": "MATH-029",
+    "title": "Classifying triangles and quadrilaterals",
+    "is_published": true,
+    "blocks": [
+      { "type": "text", "content": "Not all triangles are the same, and neither are four-sided shapes. We sort them into families by their sides and angles." },
+      { "type": "key", "content": "Triangles are named by their sides: equilateral (3 equal sides), isosceles (2 equal sides), scalene (no equal sides)." },
+      { "type": "example", "content": "Naming a triangle.", "steps": ["A triangle has all three sides the same length.", "'Equi' means equal, 'lateral' means sides.", "So it is an equilateral triangle."] },
+      {
+        "type": "fillblank",
+        "prompt": "A triangle with all three sides equal is called ___.",
+        "answer": "equilateral",
+        "explain": "Equilateral means all sides are equal.",
+        "rule": "Name a triangle by its sides: equilateral (3 equal), isosceles (2 equal), scalene (none equal).",
+        "practiceItems": [
+          { "prompt": "a triangle with 3 equal sides", "answer": "equilateral" },
+          { "prompt": "a triangle with exactly 2 equal sides", "answer": "isosceles" },
+          { "prompt": "a triangle with no equal sides", "answer": "scalene" },
+          { "prompt": "the number of sides on any triangle", "answer": "3" }
+        ]
+      },
+      { "type": "key", "content": "A quadrilateral is any shape with exactly four straight sides — squares, rectangles and rhombuses are all quadrilaterals." },
+      {
+        "type": "check",
+        "question": "How many sides does a quadrilateral have?",
+        "options": ["3", "4", "5"],
+        "answer": 1,
+        "explain": "'Quad' means four, so a quadrilateral has four sides.",
+        "rule": "A quadrilateral is any shape with exactly four straight sides.",
+        "practiceItems": [
+          { "prompt": "sides on a quadrilateral", "answer": "4" },
+          { "prompt": "a quadrilateral with 4 equal sides and 4 right angles", "answer": "square" },
+          { "prompt": "a quadrilateral with opposite sides equal and 4 right angles", "answer": "rectangle" },
+          { "prompt": "right angles in a rectangle", "answer": "4" }
+        ]
+      },
+      { "type": "text", "content": "Sort triangles by equal sides, and remember any four-sided shape is a quadrilateral. Let's practise!" }
+    ]
+  }
+]

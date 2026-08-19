@@ -1,0 +1,41 @@
+[
+  {
+    "module": "MATH-033",
+    "title": "Polygons and composite shapes",
+    "is_published": true,
+    "blocks": [
+      { "type": "text", "content": "A polygon is a closed shape made of straight sides. When you join polygons together, you get composite shapes." },
+      { "type": "key", "content": "A polygon is a closed shape with straight sides. It is named by its number of sides." },
+      { "type": "example", "content": "Naming polygons.", "steps": ["3 sides is a triangle.", "5 sides is a pentagon.", "6 sides is a hexagon."] },
+      {
+        "type": "fillblank",
+        "prompt": "A closed shape with straight sides is called a ___.",
+        "answer": "polygon",
+        "explain": "Any closed, straight-sided shape is a polygon.",
+        "rule": "A polygon is a closed shape with straight sides, named by its number of sides.",
+        "practiceItems": [
+          { "prompt": "a closed shape made of straight sides", "answer": "polygon" },
+          { "prompt": "a 3-sided polygon", "answer": "triangle" },
+          { "prompt": "a 4-sided polygon", "answer": "quadrilateral" },
+          { "prompt": "a 6-sided polygon", "answer": "hexagon" }
+        ]
+      },
+      { "type": "key", "content": "A composite shape is made by joining simpler shapes together, like a square joined to a triangle." },
+      {
+        "type": "check",
+        "question": "A shape made by joining a square and a triangle is a:",
+        "options": ["circle", "composite shape", "line"],
+        "answer": 1,
+        "explain": "Two simpler shapes joined together make a composite shape.",
+        "rule": "A composite shape is made of simpler shapes joined together.",
+        "practiceItems": [
+          { "prompt": "a shape made of simpler shapes joined is a ___ shape", "answer": "composite" },
+          { "prompt": "a 5-sided polygon", "answer": "pentagon" },
+          { "prompt": "an 8-sided polygon", "answer": "octagon" },
+          { "prompt": "a closed straight-sided shape is a ___", "answer": "polygon" }
+        ]
+      },
+      { "type": "text", "content": "Polygons are closed straight-sided shapes; join a few and you build a composite shape. Let's practise!" }
+    ]
+  }
+]
