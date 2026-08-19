@@ -3234,3 +3234,493 @@ passages:
       - word: "precise"
         definition: "exact and accurate"
         context_sentence: "It can share such precise information."
+
+  - title: "Rebuilding the Reef"
+    reading_level: 6
+    body: >
+      When a coral reef is damaged, it can take decades to recover on its own. But
+      marine scientists have found clever ways to help. In underwater nurseries,
+      they grow small pieces of healthy coral on frames, tending them like a garden.
+      Once the fragments are strong, divers carefully attach them to the damaged
+      reef, where they slowly spread and heal the wound. The work is painstaking and
+      slow, one coral at a time, yet already fish are returning to reefs once thought
+      lost. It is a hopeful reminder that with patience and effort, even great damage
+      can be undone.
+    questions:
+      - prompt: "How do scientists grow new coral?"
+        type: mc
+        options: ["on frames in underwater nurseries", "in ordinary fish tanks", "on the beach", "in the open sea only"]
+        correct_index: 0
+      - prompt: "What sign shows the restored reefs are recovering?"
+        type: mc
+        options: ["fish are returning", "the water turns blue", "the coral turns white", "the divers leave"]
+        correct_index: 0
+      - prompt: "Explain what the writer means by 'even great damage can be undone'."
+        type: written
+    vocabulary:
+      - word: "nurseries"
+        definition: "places where young plants or creatures are grown and cared for"
+        context_sentence: "They grow coral in underwater nurseries."
+      - word: "fragments"
+        definition: "small broken pieces"
+        context_sentence: "Once the fragments are strong, divers attach them."
+      - word: "painstaking"
+        definition: "done with great care and effort"
+        context_sentence: "The work is painstaking and slow."
+
+  - title: "The Sound of the Nation"
+    reading_level: 6
+    body: >
+      Calypso is far more than catchy music; it is the voice of a people. Born in
+      the days of struggle, the calypsonian used clever, witty lyrics to comment on
+      the news, to mock the powerful, and to speak truths that could not be said
+      plainly. Wrapped in humour and rhythm, a calypso could carry a sharp message
+      that made listeners both laugh and think. Through wars, elections, and hard
+      times, the calypsonian has held up a mirror to society. To this day, a great
+      calypso can change minds where a plain speech would fail.
+    questions:
+      - prompt: "How did the calypsonian comment on the powerful?"
+        type: mc
+        options: ["through clever, witty lyrics", "with silence", "by writing letters", "with long speeches"]
+        correct_index: 0
+      - prompt: "What could a calypso make listeners do?"
+        type: mc
+        options: ["both laugh and think", "only dance", "fall asleep", "grow angry only"]
+        correct_index: 0
+      - prompt: "Explain what is meant by the calypsonian holding 'a mirror to society'."
+        type: written
+    vocabulary:
+      - word: "witty"
+        definition: "clever and amusing"
+        context_sentence: "The calypsonian used witty lyrics."
+      - word: "mock"
+        definition: "to make fun of"
+        context_sentence: "To mock the powerful."
+      - word: "society"
+        definition: "the people living together in a community"
+        context_sentence: "A mirror to society."
+
+  - title: "The Water Beneath Us"
+    reading_level: 6
+    body: >
+      Not all the world's fresh water flows in rivers and lakes. Vast amounts lie
+      hidden underground, soaked into layers of rock and sand called aquifers. Rain
+      seeps slowly down over many years to fill these hidden stores. Wells and
+      pumps draw the water up for drinking and farming. But if we take it out faster
+      than the rain replaces it, the underground stores shrink, and in coastal areas
+      salty sea water can creep in to spoil what remains. This invisible resource is
+      precious, and using it wisely today ensures there will be water for tomorrow.
+    questions:
+      - prompt: "What are the underground layers of rock and sand that hold water called?"
+        type: mc
+        options: ["aquifers", "reservoirs", "glaciers", "wetlands"]
+        correct_index: 0
+      - prompt: "What can happen in coastal areas if too much water is taken out?"
+        type: mc
+        options: ["salty sea water can creep in", "the ground rises", "rivers dry up at once", "the water turns hot"]
+        correct_index: 0
+      - prompt: "Explain why the writer calls underground water 'precious'."
+        type: written
+    vocabulary:
+      - word: "aquifers"
+        definition: "underground layers of rock that hold water"
+        context_sentence: "Water lies in aquifers underground."
+      - word: "seeps"
+        definition: "flows slowly through small openings"
+        context_sentence: "Rain seeps slowly down."
+      - word: "resource"
+        definition: "a useful supply that people can draw on"
+        context_sentence: "This invisible resource is precious."
+
+  - title: "Creatures of Habit"
+    reading_level: 6
+    body: >
+      Much of what we do each day, we do without thinking. Brushing our teeth,
+      taking the same route to school, reaching for a snack when bored: these are
+      habits, actions repeated so often they become automatic. Habits can serve us
+      well, saving effort for harder tasks, or they can quietly harm us. The good
+      news is that habits can be changed. By repeating a new action again and again,
+      especially at the same time or place, we can slowly wear a new groove into our
+      routine. We are, in large part, the sum of the small things we do every day.
+    questions:
+      - prompt: "What makes an action become a habit?"
+        type: mc
+        options: ["repeating it so often it becomes automatic", "doing it once", "being told to do it", "reading about it"]
+        correct_index: 0
+      - prompt: "How can a new habit be built?"
+        type: mc
+        options: ["by repeating a new action again and again", "by wishing for it", "by writing it down once", "by forgetting the old one"]
+        correct_index: 0
+      - prompt: "Explain the idea that 'we are the sum of the small things we do every day'."
+        type: written
+    vocabulary:
+      - word: "automatic"
+        definition: "done without conscious thought"
+        context_sentence: "Actions repeated so often they become automatic."
+      - word: "routine"
+        definition: "a regular, fixed way of doing things"
+        context_sentence: "We wear a new groove into our routine."
+      - word: "repeated"
+        definition: "done again and again"
+        context_sentence: "Actions repeated so often become habits."
+
+  - title: "Guarding the Truth"
+    reading_level: 6
+    body: >
+      Devika worked for a company that was quietly dumping waste into the river. She
+      knew that speaking out could cost her the job she needed. For weeks she
+      wrestled with fear and duty. In the end, she gathered proof and reported the
+      wrongdoing to the authorities. It was not easy: some called her a traitor, and
+      she lost friends. But the dumping stopped, and the river slowly grew clean
+      again. To stand up for what is right when it is difficult and unpopular is one
+      of the hardest and most important kinds of courage.
+    questions:
+      - prompt: "What wrongdoing did Devika discover?"
+        type: mc
+        options: ["the company was dumping waste into the river", "workers were underpaid", "the products were fake", "money was stolen"]
+        correct_index: 0
+      - prompt: "What was the result of her speaking out?"
+        type: mc
+        options: ["the dumping stopped and the river grew clean", "nothing changed", "she was promoted", "the river dried up"]
+        correct_index: 0
+      - prompt: "Explain why standing up for the truth was 'one of the hardest kinds of courage'."
+        type: written
+    vocabulary:
+      - word: "wrestled"
+        definition: "struggled with a difficult problem or feeling"
+        context_sentence: "She wrestled with fear and duty."
+      - word: "authorities"
+        definition: "people or groups with the power to make decisions"
+        context_sentence: "She reported the wrongdoing to the authorities."
+      - word: "unpopular"
+        definition: "not liked or approved of by many"
+        context_sentence: "To stand up when it is difficult and unpopular."
+
+  - title: "The Body's Defenders"
+    reading_level: 6
+    body: >
+      Inside your body, an unseen army is always on guard. This is your immune
+      system, a network of cells that hunts down harmful germs. When a new disease
+      appears, the body must learn to recognise it, which takes precious time.
+      Vaccines offer a clever shortcut. A vaccine shows the immune system a harmless
+      piece of a germ, so the body learns to defeat it in advance. Then, if the real
+      disease ever arrives, the defenders are ready and strike at once. Through
+      vaccines, millions of lives have been saved from illnesses that once killed
+      without mercy.
+    questions:
+      - prompt: "What is the immune system?"
+        type: mc
+        options: ["a network of cells that fights harmful germs", "a kind of bone", "a part of the blood only", "a type of vaccine"]
+        correct_index: 0
+      - prompt: "How does a vaccine help the body?"
+        type: mc
+        options: ["it lets the body learn to defeat a germ in advance", "it removes all germs", "it makes the body sleep", "it cools the blood"]
+        correct_index: 0
+      - prompt: "Explain why a vaccine is described as 'a clever shortcut'."
+        type: written
+    vocabulary:
+      - word: "immune"
+        definition: "protected against a disease"
+        context_sentence: "This is your immune system."
+      - word: "recognise"
+        definition: "to know something because it has been met before"
+        context_sentence: "The body must learn to recognise it."
+      - word: "vaccine"
+        definition: "a medicine that helps the body fight a disease"
+        context_sentence: "A vaccine shows the immune system a harmless piece of a germ."
+
+  - title: "A River of Plastic"
+    reading_level: 6
+    body: >
+      Every year, millions of tonnes of plastic end up in the sea. Unlike leaves or
+      wood, plastic does not rot away; it lingers for hundreds of years, breaking
+      into ever smaller pieces. Sea turtles mistake floating bags for jellyfish and
+      swallow them; seabirds feed bright fragments to their chicks. The problem can
+      feel overwhelming, but it begins with small, everyday choices. Refusing a
+      single-use bag, choosing a reusable bottle, and disposing of rubbish properly
+      all help. The ocean's health depends not on a few grand gestures, but on
+      millions of ordinary people caring enough to change.
+    questions:
+      - prompt: "Why is plastic in the sea such a lasting problem?"
+        type: mc
+        options: ["it does not rot and lingers for hundreds of years", "it sinks at once", "fish eat it safely", "it turns into food"]
+        correct_index: 0
+      - prompt: "According to the passage, where does the solution begin?"
+        type: mc
+        options: ["with small, everyday choices", "with the government alone", "with scientists only", "with the sea itself"]
+        correct_index: 0
+      - prompt: "Explain the idea that the ocean's health depends on 'millions of ordinary people'."
+        type: written
+    vocabulary:
+      - word: "lingers"
+        definition: "stays for a long time"
+        context_sentence: "Plastic lingers for hundreds of years."
+      - word: "overwhelming"
+        definition: "very great; too much to deal with"
+        context_sentence: "The problem can feel overwhelming."
+      - word: "reusable"
+        definition: "able to be used again"
+        context_sentence: "Choosing a reusable bottle helps."
+
+  - title: "The Habit of Saving"
+    reading_level: 6
+    body: >
+      When Jamal received a little money each week, it burned a hole in his pocket;
+      it was gone by the weekend. His grandfather taught him a simple rule: pay
+      yourself first. Before spending anything, Jamal put a small part into a jar he
+      could not easily open. At first the coins added up slowly, and the waiting was
+      hard. But month by month the jar grew heavier. When his old bicycle broke,
+      Jamal had the savings to repair it without asking anyone. He learned that
+      wealth is built not by great sums, but by the patient habit of setting a
+      little aside.
+    questions:
+      - prompt: "What simple rule did Jamal's grandfather teach him?"
+        type: mc
+        options: ["pay yourself first", "spend it all quickly", "never earn money", "borrow when needed"]
+        correct_index: 0
+      - prompt: "How was Jamal able to repair his bicycle?"
+        type: mc
+        options: ["he had savings put aside", "he sold the jar", "his grandfather paid", "he found money"]
+        correct_index: 0
+      - prompt: "Explain the lesson that 'wealth is built by the patient habit of setting a little aside'."
+        type: written
+    vocabulary:
+      - word: "wealth"
+        definition: "a large amount of money or valuable things"
+        context_sentence: "Wealth is built by patient habits."
+      - word: "patient"
+        definition: "able to wait calmly without hurrying"
+        context_sentence: "The patient habit of setting a little aside."
+      - word: "savings"
+        definition: "money kept for future use"
+        context_sentence: "Jamal had the savings to repair it."
+
+  - title: "The Vanishing Pawi"
+    reading_level: 6
+    body: >
+      High in the forested hills of Trinidad lives the pawi, a large black bird
+      found nowhere else on earth. Sadly, it is one of the world's most endangered
+      birds. Hunting and the clearing of its mountain forest have driven its numbers
+      dangerously low. Because the pawi exists only here, if it disappears from
+      Trinidad, it disappears from the whole planet forever. Scientists and villagers
+      now work together to protect the last patches of its habitat and to persuade
+      hunters to leave it in peace. Saving the pawi is a duty that belongs to us
+      alone, for no other nation can do it.
+    questions:
+      - prompt: "Why is the pawi found 'nowhere else on earth' important?"
+        type: mc
+        options: ["if it vanishes here, it is gone from the whole planet", "it is the largest bird", "it can be found abroad", "it cannot fly"]
+        correct_index: 0
+      - prompt: "What has driven the pawi's numbers dangerously low?"
+        type: mc
+        options: ["hunting and clearing of its forest", "too much rain", "other birds", "cold weather"]
+        correct_index: 0
+      - prompt: "Explain why the writer says saving the pawi 'belongs to us alone'."
+        type: written
+    vocabulary:
+      - word: "endangered"
+        definition: "at serious risk of dying out"
+        context_sentence: "It is one of the most endangered birds."
+      - word: "habitat"
+        definition: "the natural home of an animal"
+        context_sentence: "They protect the last patches of its habitat."
+      - word: "persuade"
+        definition: "to make someone agree by giving reasons"
+        context_sentence: "To persuade hunters to leave it in peace."
+
+  - title: "The Art of Listening"
+    reading_level: 6
+    body: >
+      Everyone speaks, but few truly listen. To listen well is more than staying
+      silent while another talks; it is giving your whole attention, watching their
+      face, and trying to understand the feeling behind their words. Too often we
+      are only waiting for our turn to speak, already forming a reply. A good
+      listener makes the speaker feel valued and understood, and often learns things
+      a talker never could. In arguments, careful listening can cool anger faster
+      than any clever answer. Of all the skills we can develop, the humble art of
+      listening may be among the most powerful.
+    questions:
+      - prompt: "What is true listening, according to the passage?"
+        type: mc
+        options: ["giving whole attention and understanding the feeling behind the words", "staying silent only", "nodding politely", "repeating what is said"]
+        correct_index: 0
+      - prompt: "What can careful listening do in an argument?"
+        type: mc
+        options: ["cool anger faster than a clever answer", "win the argument by force", "end the conversation", "prove who is right"]
+        correct_index: 0
+      - prompt: "Explain why the writer calls listening a 'humble' but 'powerful' art."
+        type: written
+    vocabulary:
+      - word: "attention"
+        definition: "careful thought and notice given to something"
+        context_sentence: "Listening is giving your whole attention."
+      - word: "valued"
+        definition: "treated as important"
+        context_sentence: "A good listener makes the speaker feel valued."
+      - word: "develop"
+        definition: "to grow or improve over time"
+        context_sentence: "Of all the skills we can develop."
+
+  - title: "The Meaning of Freedom"
+    reading_level: 6
+    body: >
+      We often think of freedom simply as being able to do whatever we want. Yet
+      true freedom is more thoughtful than that. A river is most free not when it
+      overflows in every direction, but when it flows powerfully within its banks.
+      In the same way, a person becomes truly free through self-control, education,
+      and respect for others. A society is free not when there are no rules, but
+      when its rules are fair and protect everyone equally. Real freedom, then, is
+      not the absence of all limits, but the presence of the right ones.
+    questions:
+      - prompt: "How does the passage say a person becomes 'truly free'?"
+        type: mc
+        options: ["through self-control, education, and respect for others", "by breaking all rules", "by having lots of money", "by living alone"]
+        correct_index: 0
+      - prompt: "When is a society free, according to the writer?"
+        type: mc
+        options: ["when its rules are fair and protect everyone equally", "when there are no rules", "when the strongest decide", "when it is silent"]
+        correct_index: 0
+      - prompt: "Explain the comparison of freedom to 'a river that flows powerfully within its banks'."
+        type: written
+    vocabulary:
+      - word: "overflows"
+        definition: "spills over the edges"
+        context_sentence: "Not when it overflows in every direction."
+      - word: "self-control"
+        definition: "the ability to control one's own actions"
+        context_sentence: "A person becomes free through self-control."
+      - word: "presence"
+        definition: "the state of being there; existence of something"
+        context_sentence: "Freedom is the presence of the right limits."
+
+  - title: "The Great Migration of the Monarch"
+    reading_level: 6
+    body: >
+      The monarch butterfly weighs less than a paperclip, yet it makes one of the
+      most astonishing journeys in nature. Each year, monarchs travel thousands of
+      kilometres to reach the same forests where their ancestors wintered. What
+      makes this so remarkable is that no single butterfly lives to make the whole
+      round trip. The journey spans several short generations; the great-grandchild
+      of the butterfly that set out completes the return. Somehow, without ever
+      having seen the destination, each new generation knows the way. It is a mystery
+      that continues to amaze the scientists who study it.
+    questions:
+      - prompt: "What is remarkable about which butterfly completes the round trip?"
+        type: mc
+        options: ["no single butterfly lives to make the whole trip", "only the oldest one does", "they all live for years", "one leader guides them"]
+        correct_index: 0
+      - prompt: "How does each new generation know the way?"
+        type: mc
+        options: ["it is a mystery scientists cannot fully explain", "an older butterfly teaches them", "they follow a map", "they follow ships"]
+        correct_index: 0
+      - prompt: "Explain why the monarch's migration is called 'one of the most astonishing journeys in nature'."
+        type: written
+    vocabulary:
+      - word: "astonishing"
+        definition: "very surprising and impressive"
+        context_sentence: "It makes one of the most astonishing journeys."
+      - word: "generations"
+        definition: "groups of living things born and living about the same time"
+        context_sentence: "The journey spans several short generations."
+      - word: "destination"
+        definition: "the place a journey is heading to"
+        context_sentence: "Without ever having seen the destination."
+
+  - title: "The Weight of Words"
+    reading_level: 6
+    body: >
+      A careless word can wound as deeply as a blow, and a kind word can heal what
+      medicine cannot reach. We sometimes forget that once spoken, words cannot be
+      called back, like feathers scattered to the wind. A cruel joke may be
+      forgotten by the one who tells it, yet remembered for years by the one it hurt.
+      Just as surely, a word of encouragement can lift a struggling person and change
+      the course of their day, or even their life. Because words carry such weight,
+      it is wise to weigh them carefully before we let them fly.
+    questions:
+      - prompt: "What comparison does the writer use for spoken words that cannot be taken back?"
+        type: mc
+        options: ["feathers scattered to the wind", "stones in a wall", "coins in a jar", "seeds in soil"]
+        correct_index: 0
+      - prompt: "What can a word of encouragement do?"
+        type: mc
+        options: ["lift a struggling person and change their day", "cost a lot of money", "cause an argument", "be easily forgotten"]
+        correct_index: 0
+      - prompt: "Explain why the writer advises us to 'weigh our words carefully before we let them fly'."
+        type: written
+    vocabulary:
+      - word: "careless"
+        definition: "not giving enough attention or thought"
+        context_sentence: "A careless word can wound deeply."
+      - word: "encouragement"
+        definition: "words that give someone hope or confidence"
+        context_sentence: "A word of encouragement can lift a person."
+      - word: "weigh"
+        definition: "to think carefully about"
+        context_sentence: "It is wise to weigh our words."
+
+  - title: "The Mystery of Dreams"
+    reading_level: 6
+    body: >
+      Every night, as we sleep, our minds create strange and vivid stories we call
+      dreams. Even now, scientists do not fully understand why we dream. Some
+      believe dreams help the brain sort through the day's memories, keeping what
+      matters and discarding the rest. Others think dreaming lets us safely rehearse
+      dangers or work through worries. Dreams can be joyful, frightening, or utterly
+      nonsensical, and most are forgotten within moments of waking. Whatever their
+      true purpose, dreams reveal that even in sleep, the human mind is a restless
+      and wondrous place, forever busy in the dark.
+    questions:
+      - prompt: "What is one thing scientists believe dreams may do?"
+        type: mc
+        options: ["help the brain sort through the day's memories", "cool the body", "make us taller", "stop the heart"]
+        correct_index: 0
+      - prompt: "What happens to most dreams after we wake?"
+        type: mc
+        options: ["they are forgotten within moments", "they come true", "they are written down", "they repeat"]
+        correct_index: 0
+      - prompt: "Explain what the writer means by the mind being 'a restless and wondrous place, forever busy in the dark'."
+        type: written
+    vocabulary:
+      - word: "vivid"
+        definition: "very clear and lifelike"
+        context_sentence: "Our minds create strange and vivid stories."
+      - word: "discarding"
+        definition: "throwing away what is not wanted"
+        context_sentence: "Keeping what matters and discarding the rest."
+      - word: "rehearse"
+        definition: "to practise something beforehand"
+        context_sentence: "Dreaming lets us safely rehearse dangers."
+
+  - title: "The Spider's Silk"
+    reading_level: 6
+    body: >
+      For its weight, spider silk is one of the strongest materials on Earth,
+      stronger even than steel of the same thickness, yet so fine that a strand is
+      almost invisible. A spider spins several different kinds of silk from tiny
+      spinnerets: some sticky to trap prey, some dry and tough to anchor the web.
+      Scientists have long dreamed of copying this remarkable thread to make
+      lightweight ropes, medical stitches, and even body armour. So far, no factory
+      has matched what a small creature produces effortlessly each night. The humble
+      spider, it seems, is an engineer whose skill we are only beginning to
+      understand.
+    questions:
+      - prompt: "Why is spider silk considered remarkable?"
+        type: mc
+        options: ["it is stronger than steel for its weight", "it glows in the dark", "it never breaks", "it is made of metal"]
+        correct_index: 0
+      - prompt: "What is one use scientists hope to copy silk for?"
+        type: mc
+        options: ["medical stitches and body armour", "cooking food", "painting walls", "cooling houses"]
+        correct_index: 0
+      - prompt: "Explain what the writer means by calling the spider 'an engineer whose skill we are only beginning to understand'."
+        type: written
+    vocabulary:
+      - word: "spinnerets"
+        definition: "the organs a spider uses to produce silk"
+        context_sentence: "A spider spins silk from tiny spinnerets."
+      - word: "anchor"
+        definition: "to hold something firmly in place"
+        context_sentence: "Some silk is dry and tough to anchor the web."
+      - word: "effortlessly"
+        definition: "done easily, without strain"
+        context_sentence: "What a small creature produces effortlessly each night."
