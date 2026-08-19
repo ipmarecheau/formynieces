@@ -1,0 +1,41 @@
+[
+  {
+    "module": "MATH-046",
+    "title": "Tally charts, frequency tables and bar graphs",
+    "is_published": true,
+    "blocks": [
+      { "type": "text", "content": "When we collect data, we need neat ways to record and show it. Tally charts, frequency tables and bar graphs all help us see how often things happen." },
+      { "type": "key", "content": "A tally records each item with a mark. Every fifth mark crosses the group, making a 'gate' of 5 so counts are easy to read." },
+      { "type": "example", "content": "Reading a tally.", "steps": ["A gate of crossed marks stands for 5.", "Three more single marks add 3.", "So the total frequency is 5 + 3 = 8."] },
+      {
+        "type": "fillblank",
+        "prompt": "A tally gate of 5, plus 3 single marks, means a frequency of ___",
+        "answer": "8",
+        "explain": "One gate is 5, plus 3 more, is 5 + 3 = 8.",
+        "rule": "A tally gate stands for 5; add the extra single marks to get the total frequency.",
+        "practiceItems": [
+          { "prompt": "a full tally gate stands for", "answer": "5" },
+          { "prompt": "a gate of 5 plus 2 more marks", "answer": "7" },
+          { "prompt": "two full gates together", "answer": "10" },
+          { "prompt": "a gate of 5 plus 4 more marks", "answer": "9" }
+        ]
+      },
+      { "type": "key", "content": "A frequency table lists how many of each item there are; a bar graph shows the same counts as bars." },
+      {
+        "type": "check",
+        "question": "In a bar graph, a taller bar means:",
+        "options": ["more", "less", "nothing"],
+        "answer": 0,
+        "explain": "The taller the bar, the greater the frequency it shows.",
+        "rule": "In a bar graph, the taller the bar, the greater the frequency.",
+        "practiceItems": [
+          { "prompt": "a taller bar means ___ (more/less)", "answer": "more" },
+          { "prompt": "frequency means how ___ (many/big)", "answer": "many" },
+          { "prompt": "5 tally marks means a frequency of", "answer": "5" },
+          { "prompt": "the tallest bar shows the ___ (most/least)", "answer": "most" }
+        ]
+      },
+      { "type": "text", "content": "Tally as you count, total the frequency, and taller bars mean more. Let's practise!" }
+    ]
+  }
+]

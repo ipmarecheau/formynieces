@@ -1,0 +1,40 @@
+[
+  {
+    "module": "MATH-047",
+    "title": "Interpreting pictographs and block graphs",
+    "is_published": true,
+    "blocks": [
+      { "type": "text", "content": "A pictograph uses pictures to show data, where each picture stands for a number. Reading the key is the first thing you must do." },
+      { "type": "key", "content": "In a pictograph, each picture stands for a number given by the key. Multiply the number of pictures by that value." },
+      { "type": "example", "content": "Reading a pictograph.", "steps": ["The key says each star = 2 apples.", "There are 3 stars.", "So the total is 3 x 2 = 6 apples."] },
+      {
+        "type": "fillblank",
+        "prompt": "If each star = 2 apples, then 3 stars = ___ apples",
+        "answer": "6",
+        "explain": "3 stars x 2 apples each = 6 apples.",
+        "rule": "In a pictograph, multiply the number of pictures by the key's value.",
+        "practiceItems": [
+          { "prompt": "if a star = 2, then 4 stars =", "answer": "8" },
+          { "prompt": "if a star = 5, then 2 stars =", "answer": "10" },
+          { "prompt": "if a star = 2, then 3 stars =", "answer": "6" },
+          { "prompt": "if a star = 10, then 1 star =", "answer": "10" }
+        ]
+      },
+      { "type": "key", "content": "Always read the key first, then multiply the number of pictures by its value." },
+      {
+        "type": "fillblank",
+        "prompt": "Each picture = 5. Four pictures = 4 x 5 = ___",
+        "answer": "20",
+        "explain": "4 pictures x 5 each = 20.",
+        "rule": "Read the key value, then multiply it by the number of pictures.",
+        "practiceItems": [
+          { "prompt": "key = 5, with 3 pictures", "answer": "15" },
+          { "prompt": "key = 2, with 5 pictures", "answer": "10" },
+          { "prompt": "key = 10, with 2 pictures", "answer": "20" },
+          { "prompt": "key = 3, with 3 pictures", "answer": "9" }
+        ]
+      },
+      { "type": "text", "content": "Read the key, count the pictures, and multiply. That unlocks any pictograph. Let's practise!" }
+    ]
+  }
+]

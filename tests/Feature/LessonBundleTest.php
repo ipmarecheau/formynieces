@@ -15,24 +15,18 @@ beforeEach(function () {
     $this->seed(LessonSeeder::class);
 });
 
-it('imports the ELA-001 plurals lesson as a coherent, published bundle', function () {
-    $module = SyllabusModule::where('code', 'ELA-001')->firstOrFail();
-    $lesson = Lesson::where('module_id', $module->id)->first();
+it('has authored a published lesson for every syllabus module', function () {
+    $moduleCount = SyllabusModule::count();
+    $withLessons = Lesson::where('is_published', true)->distinct()->count('module_id');
 
-    expect($lesson)->not->toBeNull()
-        ->and($lesson->is_published)->toBeTrue();
+    expect($moduleCount)->toBe(90)
+        ->and($withLessons)->toBe(90);
 });
 
-it('every authored ELA lesson meets the authoring checklist', function () {
-    $elaModuleIds = SyllabusModule::where('code', 'like', 'ELA-%')->pluck('id', 'code');
-    $lessons = Lesson::whereIn('module_id', $elaModuleIds)->get();
-
-    // We authored a lesson for every ELA module.
-    expect($lessons)->toHaveCount($elaModuleIds->count());
-
+it('every authored lesson meets the authoring checklist', function () {
     $interactiveTypes = ['check', 'fillblank', 'markwords', 'matchpairs', 'ordersteps'];
 
-    foreach ($lessons as $lesson) {
+    foreach (Lesson::all() as $lesson) {
         $blocks = collect($lesson->blocks);
         $interactive = $blocks->whereIn('type', $interactiveTypes);
 

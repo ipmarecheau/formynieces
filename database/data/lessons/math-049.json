@@ -1,0 +1,40 @@
+[
+  {
+    "module": "MATH-049",
+    "title": "The mean (average)",
+    "is_published": true,
+    "blocks": [
+      { "type": "text", "content": "The mean, or average, gives one number that stands in for a whole set of data. It tells you the 'middle' or 'fair share' value." },
+      { "type": "key", "content": "To find the mean, add all the values together, then divide by how many values there are." },
+      { "type": "example", "content": "Finding the mean.", "steps": ["Look at 2, 4, 6.", "Add them: 2 + 4 + 6 = 12.", "There are 3 values, so divide: 12 ÷ 3 = 4. The mean is 4."] },
+      {
+        "type": "fillblank",
+        "prompt": "The mean of 2, 4, 6 is (2 + 4 + 6) ÷ 3 = ___",
+        "answer": "4",
+        "explain": "The total is 12, and 12 ÷ 3 = 4.",
+        "rule": "The mean is the total of the values divided by the number of values.",
+        "practiceItems": [
+          { "prompt": "mean of 3, 3, 3", "answer": "3" },
+          { "prompt": "mean of 2, 4", "answer": "3" },
+          { "prompt": "mean of 1, 2, 3", "answer": "2" },
+          { "prompt": "mean of 4, 6, 8", "answer": "6" }
+        ]
+      },
+      { "type": "key", "content": "Divide by the COUNT of values — how many numbers there are, not their total." },
+      {
+        "type": "fillblank",
+        "prompt": "The mean of 10 and 20 is (10 + 20) ÷ 2 = ___",
+        "answer": "15",
+        "explain": "The total is 30, and there are 2 values, so 30 ÷ 2 = 15.",
+        "rule": "Divide the total by how many values there are to get the mean.",
+        "practiceItems": [
+          { "prompt": "mean of 5 and 15", "answer": "10" },
+          { "prompt": "mean of 0 and 10", "answer": "5" },
+          { "prompt": "mean of 6, 6, 6, 6", "answer": "6" },
+          { "prompt": "mean of 2, 4, 6, 8", "answer": "5" }
+        ]
+      },
+      { "type": "text", "content": "Add them all up, then divide by how many there are. That is the mean. Let's practise!" }
+    ]
+  }
+]

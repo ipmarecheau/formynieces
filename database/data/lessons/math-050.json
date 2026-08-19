@@ -1,0 +1,41 @@
+[
+  {
+    "module": "MATH-050",
+    "title": "Analysing data to draw conclusions",
+    "is_published": true,
+    "blocks": [
+      { "type": "text", "content": "Data is only useful when we read it and act on it. By comparing the numbers, we can draw conclusions and make sensible decisions." },
+      { "type": "key", "content": "Compare the values in a table or graph to see which is the most and which is the least." },
+      { "type": "example", "content": "Reading a table.", "steps": ["A shop sold 5 red, 8 blue and 3 green shirts.", "Compare the numbers: 8 is the biggest.", "So blue shirts sold the most."] },
+      {
+        "type": "fillblank",
+        "prompt": "A shop sold 5 red, 8 blue, 3 green shirts. Which colour sold most? ___",
+        "answer": "blue",
+        "explain": "8 is the largest number, and that is blue.",
+        "rule": "Compare the values to find which category is greatest or least.",
+        "practiceItems": [
+          { "prompt": "the most sold, where red=5, blue=8, green=3", "answer": "blue" },
+          { "prompt": "the highest of 5, 8, 3", "answer": "8" },
+          { "prompt": "the lowest of 5, 8, 3", "answer": "3" },
+          { "prompt": "the total of 5, 8, 3", "answer": "16" }
+        ]
+      },
+      { "type": "key", "content": "Use what the data shows to make a decision — for example, stock more of what sells best." },
+      {
+        "type": "check",
+        "question": "If blue shirts sell the most, the shop should stock more:",
+        "options": ["red", "blue", "green"],
+        "answer": 1,
+        "explain": "Stocking more of the best-seller (blue) is the sensible decision.",
+        "rule": "Use the data to make a sensible decision, like stocking more of the best-seller.",
+        "practiceItems": [
+          { "prompt": "stock more of the ___ selling item (best/worst)", "answer": "best" },
+          { "prompt": "the most popular of 4, 9, 2", "answer": "9" },
+          { "prompt": "the least popular of 4, 9, 2", "answer": "2" },
+          { "prompt": "the total of 4, 9, 2", "answer": "15" }
+        ]
+      },
+      { "type": "text", "content": "Compare the numbers, draw your conclusion, and let the data guide your decision. Let's practise!" }
+    ]
+  }
+]
