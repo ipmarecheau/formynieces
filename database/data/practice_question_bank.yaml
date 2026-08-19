@@ -4896,3 +4896,645 @@ questions:
     options: ["48", "14", "36", "86"]
     correct_index: 0
     explanation: "8 x $6 = $48."
+
+  # ── Module 46 (MATH-046): Tally Charts, Frequency Tables and Bar Graphs ──
+  - module: 46
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A full tally gate stands for?"
+    options: ["5", "4", "3", "10"]
+    correct_index: 0
+    explanation: "A crossed tally gate stands for 5."
+  - module: 46
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A tally gate of 5 plus 2 more marks means a frequency of?"
+    options: ["7", "6", "8", "5"]
+    correct_index: 0
+    explanation: "5 + 2 = 7."
+  - module: 46
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "In a bar graph, a taller bar means?"
+    options: ["more", "less", "nothing", "same"]
+    correct_index: 0
+    explanation: "A taller bar shows a greater frequency."
+  - module: 46
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "Two full tally gates together mean a frequency of?"
+    options: ["10", "5", "8", "12"]
+    correct_index: 0
+    explanation: "5 + 5 = 10."
+  - module: 46
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "5 tally marks means a frequency of?"
+    options: ["5", "4", "10", "1"]
+    correct_index: 0
+    explanation: "5 marks is a frequency of 5."
+  - module: 46
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A tally gate of 5 plus 4 more marks means a frequency of?"
+    options: ["9", "8", "10", "5"]
+    correct_index: 0
+    explanation: "5 + 4 = 9."
+  - module: 46
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "Frequency means how ___ ?"
+    options: ["many", "big", "tall", "wide"]
+    correct_index: 0
+    explanation: "Frequency means how many times something happens."
+  - module: 46
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "The tallest bar on a bar graph shows the?"
+    options: ["most", "least", "middle", "none"]
+    correct_index: 0
+    explanation: "The tallest bar is the most frequent."
+  - module: 46
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A tally gate of 5 plus 3 more marks means a frequency of?"
+    options: ["8", "7", "9", "5"]
+    correct_index: 0
+    explanation: "5 + 3 = 8."
+  - module: 46
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "Three full tally gates mean a frequency of?"
+    options: ["15", "10", "12", "18"]
+    correct_index: 0
+    explanation: "5 x 3 = 15."
+  - module: 46
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "Two full gates plus 3 more marks means a frequency of?"
+    options: ["13", "10", "12", "8"]
+    correct_index: 0
+    explanation: "10 + 3 = 13."
+  - module: 46
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A frequency of 8 is written in tally marks as?"
+    options: ["1 gate and 3 marks", "2 gates", "1 gate and 2 marks", "8 gates"]
+    correct_index: 0
+    explanation: "8 = one gate of 5 plus 3 single marks."
+  - module: 46
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "The shortest bar on a bar graph shows the?"
+    options: ["least", "most", "middle", "none"]
+    correct_index: 0
+    explanation: "The shortest bar is the least frequent."
+  - module: 46
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "Four full tally gates mean a frequency of?"
+    options: ["20", "15", "16", "25"]
+    correct_index: 0
+    explanation: "5 x 4 = 20."
+  - module: 46
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A tally gate of 5 plus 1 more mark means a frequency of?"
+    options: ["6", "5", "7", "4"]
+    correct_index: 0
+    explanation: "5 + 1 = 6."
+
+  # ── Module 47 (MATH-047): Pictographs and Block Graphs ──
+  - module: 47
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "If each star = 2, then 3 stars = ?"
+    options: ["6", "5", "3", "23"]
+    correct_index: 0
+    explanation: "3 x 2 = 6."
+  - module: 47
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "If each star = 2, then 4 stars = ?"
+    options: ["8", "6", "4", "24"]
+    correct_index: 0
+    explanation: "4 x 2 = 8."
+  - module: 47
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "If each star = 5, then 2 stars = ?"
+    options: ["10", "7", "5", "25"]
+    correct_index: 0
+    explanation: "2 x 5 = 10."
+  - module: 47
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "If each star = 2, then 1 star = ?"
+    options: ["2", "1", "4", "3"]
+    correct_index: 0
+    explanation: "1 x 2 = 2."
+  - module: 47
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "If each picture = 10, then 1 picture = ?"
+    options: ["10", "1", "100", "20"]
+    correct_index: 0
+    explanation: "1 x 10 = 10."
+  - module: 47
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "If each picture = 5, then 4 pictures = ?"
+    options: ["20", "9", "15", "25"]
+    correct_index: 0
+    explanation: "4 x 5 = 20."
+  - module: 47
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "If each = 5, then 3 pictures = ?"
+    options: ["15", "8", "10", "20"]
+    correct_index: 0
+    explanation: "3 x 5 = 15."
+  - module: 47
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "If each = 2, then 5 pictures = ?"
+    options: ["10", "7", "12", "25"]
+    correct_index: 0
+    explanation: "5 x 2 = 10."
+  - module: 47
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "If each = 10, then 2 pictures = ?"
+    options: ["20", "12", "30", "102"]
+    correct_index: 0
+    explanation: "2 x 10 = 20."
+  - module: 47
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "If each = 3, then 3 pictures = ?"
+    options: ["9", "6", "12", "33"]
+    correct_index: 0
+    explanation: "3 x 3 = 9."
+  - module: 47
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "If each star = 4, then 5 stars = ?"
+    options: ["20", "9", "16", "45"]
+    correct_index: 0
+    explanation: "5 x 4 = 20."
+  - module: 47
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "If each = 5, then 6 pictures = ?"
+    options: ["30", "11", "25", "56"]
+    correct_index: 0
+    explanation: "6 x 5 = 30."
+  - module: 47
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "If each = 2, then 10 pictures = ?"
+    options: ["20", "12", "22", "210"]
+    correct_index: 0
+    explanation: "10 x 2 = 20."
+  - module: 47
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "If each = 10, then 5 pictures = ?"
+    options: ["50", "15", "60", "105"]
+    correct_index: 0
+    explanation: "5 x 10 = 50."
+  - module: 47
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "If each = 6, then 4 pictures = ?"
+    options: ["24", "10", "18", "64"]
+    correct_index: 0
+    explanation: "4 x 6 = 24."
+
+  # ── Module 48 (MATH-048): Mode ──
+  - module: 48
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "The mode of 2, 3, 3, 5 is?"
+    options: ["3", "2", "5", "13"]
+    correct_index: 0
+    explanation: "3 appears most often."
+  - module: 48
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "The mode of 1, 2, 2, 4 is?"
+    options: ["2", "1", "4", "9"]
+    correct_index: 0
+    explanation: "2 appears most often."
+  - module: 48
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "The mode of 5, 5, 6, 7 is?"
+    options: ["5", "6", "7", "23"]
+    correct_index: 0
+    explanation: "5 appears most often."
+  - module: 48
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "The mode of 4, 4, 4, 9 is?"
+    options: ["4", "9", "17", "21"]
+    correct_index: 0
+    explanation: "4 appears most often."
+  - module: 48
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "The mode is the value that appears?"
+    options: ["most often", "least", "in the middle", "first"]
+    correct_index: 0
+    explanation: "The mode is the most frequent value."
+  - module: 48
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "The mode of 1, 1, 2, 3 is?"
+    options: ["1", "2", "3", "7"]
+    correct_index: 0
+    explanation: "1 appears most often."
+  - module: 48
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "The mode of 3, 3, 3, 8 is?"
+    options: ["3", "8", "17", "14"]
+    correct_index: 0
+    explanation: "3 appears most often."
+  - module: 48
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "The mode of 7, 8, 8, 9 is?"
+    options: ["8", "7", "9", "32"]
+    correct_index: 0
+    explanation: "8 appears most often."
+  - module: 48
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "The mode appears the ___ often?"
+    options: ["most", "least", "same", "never"]
+    correct_index: 0
+    explanation: "The mode appears the most often."
+  - module: 48
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "The mode of 2, 4, 4, 4, 6 is?"
+    options: ["4", "2", "6", "20"]
+    correct_index: 0
+    explanation: "4 appears most often."
+  - module: 48
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "The mode of 10, 20, 20, 30 is?"
+    options: ["20", "10", "30", "80"]
+    correct_index: 0
+    explanation: "20 appears most often."
+  - module: 48
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "The mode of 6, 6, 7, 7, 7 is?"
+    options: ["7", "6", "20", "33"]
+    correct_index: 0
+    explanation: "7 appears most often."
+  - module: 48
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "The mode of 1, 2, 3, 3, 3, 4 is?"
+    options: ["3", "2", "4", "16"]
+    correct_index: 0
+    explanation: "3 appears most often."
+  - module: 48
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "The mode of 9, 9, 9, 5 is?"
+    options: ["9", "5", "32", "23"]
+    correct_index: 0
+    explanation: "9 appears most often."
+  - module: 48
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "The mode of 2, 2, 5, 5, 5, 8 is?"
+    options: ["5", "2", "8", "27"]
+    correct_index: 0
+    explanation: "5 appears most often."
+
+  # ── Module 49 (MATH-049): Mean (Average) ──
+  - module: 49
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "The mean of 2, 4, 6 is (2 + 4 + 6) ÷ 3 = ?"
+    options: ["4", "3", "12", "6"]
+    correct_index: 0
+    explanation: "12 ÷ 3 = 4."
+  - module: 49
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "The mean of 3, 3, 3 is?"
+    options: ["3", "9", "6", "1"]
+    correct_index: 0
+    explanation: "9 ÷ 3 = 3."
+  - module: 49
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "The mean of 2, 4 is (2 + 4) ÷ 2 = ?"
+    options: ["3", "6", "2", "8"]
+    correct_index: 0
+    explanation: "6 ÷ 2 = 3."
+  - module: 49
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "The mean of 1, 2, 3 is?"
+    options: ["2", "6", "3", "1"]
+    correct_index: 0
+    explanation: "6 ÷ 3 = 2."
+  - module: 49
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "The mean of 4, 6, 8 is?"
+    options: ["6", "18", "9", "4"]
+    correct_index: 0
+    explanation: "18 ÷ 3 = 6."
+  - module: 49
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "The mean of 10 and 20 is (10 + 20) ÷ 2 = ?"
+    options: ["15", "30", "10", "20"]
+    correct_index: 0
+    explanation: "30 ÷ 2 = 15."
+  - module: 49
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "The mean of 5 and 15 is?"
+    options: ["10", "20", "5", "15"]
+    correct_index: 0
+    explanation: "20 ÷ 2 = 10."
+  - module: 49
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "The mean of 0 and 10 is?"
+    options: ["5", "10", "0", "20"]
+    correct_index: 0
+    explanation: "10 ÷ 2 = 5."
+  - module: 49
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "The mean of 6, 6, 6, 6 is?"
+    options: ["6", "24", "12", "4"]
+    correct_index: 0
+    explanation: "24 ÷ 4 = 6."
+  - module: 49
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "The mean of 2, 4, 6, 8 is?"
+    options: ["5", "20", "4", "10"]
+    correct_index: 0
+    explanation: "20 ÷ 4 = 5."
+  - module: 49
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "The mean of 10, 20, 30 is?"
+    options: ["20", "60", "30", "10"]
+    correct_index: 0
+    explanation: "60 ÷ 3 = 20."
+  - module: 49
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "The mean of 5, 10, 15, 20 is?"
+    options: ["12.5", "50", "10", "15"]
+    correct_index: 0
+    explanation: "50 ÷ 4 = 12.5."
+  - module: 49
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "The mean of 3, 5, 7 is?"
+    options: ["5", "15", "7", "3"]
+    correct_index: 0
+    explanation: "15 ÷ 3 = 5."
+  - module: 49
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "The mean of 8, 12 is?"
+    options: ["10", "20", "8", "12"]
+    correct_index: 0
+    explanation: "20 ÷ 2 = 10."
+  - module: 49
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "The mean of 1, 3, 5, 7 is?"
+    options: ["4", "16", "5", "7"]
+    correct_index: 0
+    explanation: "16 ÷ 4 = 4."
+
+  # ── Module 50 (MATH-050): Analysing Data ──
+  - module: 50
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A shop sold 5 red, 8 blue, 3 green shirts. Which sold most?"
+    options: ["blue", "red", "green", "equal"]
+    correct_index: 0
+    explanation: "8 (blue) is the largest number."
+  - module: 50
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "The highest of 5, 8, 3 is?"
+    options: ["8", "5", "3", "16"]
+    correct_index: 0
+    explanation: "8 is the highest."
+  - module: 50
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "The lowest of 5, 8, 3 is?"
+    options: ["3", "5", "8", "16"]
+    correct_index: 0
+    explanation: "3 is the lowest."
+  - module: 50
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "The total of 5, 8, 3 is?"
+    options: ["16", "13", "10", "8"]
+    correct_index: 0
+    explanation: "5 + 8 + 3 = 16."
+  - module: 50
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "If blue shirts sell most, the shop should stock more?"
+    options: ["blue", "red", "green", "none"]
+    correct_index: 0
+    explanation: "Stock more of the best-seller, blue."
+  - module: 50
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "The most popular of 4, 9, 2 is?"
+    options: ["9", "4", "2", "15"]
+    correct_index: 0
+    explanation: "9 is the largest."
+  - module: 50
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "The least popular of 4, 9, 2 is?"
+    options: ["2", "4", "9", "15"]
+    correct_index: 0
+    explanation: "2 is the smallest."
+  - module: 50
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "The total of 4, 9, 2 is?"
+    options: ["15", "13", "11", "9"]
+    correct_index: 0
+    explanation: "4 + 9 + 2 = 15."
+  - module: 50
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A wise shop stocks more of the ___ selling item?"
+    options: ["best", "worst", "middle", "none"]
+    correct_index: 0
+    explanation: "Stock more of the best-selling item."
+  - module: 50
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "The greatest of 12, 7, 20 is?"
+    options: ["20", "12", "7", "39"]
+    correct_index: 0
+    explanation: "20 is the greatest."
+  - module: 50
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "Sales were Mon 10, Tue 15, Wed 5. Which was the best day?"
+    options: ["Tuesday", "Monday", "Wednesday", "equal"]
+    correct_index: 0
+    explanation: "15 (Tuesday) is the most."
+  - module: 50
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "The total of sales 10, 15, 5 is?"
+    options: ["30", "25", "20", "15"]
+    correct_index: 0
+    explanation: "10 + 15 + 5 = 30."
+  - module: 50
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "The difference between the most (15) and least (5) is?"
+    options: ["10", "20", "5", "15"]
+    correct_index: 0
+    explanation: "15 - 5 = 10."
+  - module: 50
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "The smallest of 20, 35, 15 is?"
+    options: ["15", "20", "35", "70"]
+    correct_index: 0
+    explanation: "15 is the smallest."
+  - module: 50
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "If A = 25, B = 40, C = 10, which is largest?"
+    options: ["B", "A", "C", "equal"]
+    correct_index: 0
+    explanation: "40 (B) is the largest."
+
+  # ── Module 51 (MATH-051): Multi-step Data Analysis ──
+  - module: 51
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "Scores 6, 8, 10. The total = 6 + 8 + 10 = ?"
+    options: ["24", "20", "18", "68"]
+    correct_index: 0
+    explanation: "6 + 8 + 10 = 24."
+  - module: 51
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "The total of 5, 5, 5 is?"
+    options: ["15", "10", "5", "55"]
+    correct_index: 0
+    explanation: "5 + 5 + 5 = 15."
+  - module: 51
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "The total of 2, 4, 6, 8 is?"
+    options: ["20", "18", "16", "10"]
+    correct_index: 0
+    explanation: "2 + 4 + 6 + 8 = 20."
+  - module: 51
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "The total of 10, 20 is?"
+    options: ["30", "20", "10", "25"]
+    correct_index: 0
+    explanation: "10 + 20 = 30."
+  - module: 51
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "The total of 3, 3, 3, 3 is?"
+    options: ["12", "9", "6", "33"]
+    correct_index: 0
+    explanation: "3 x 4 = 12."
+  - module: 51
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "Scores 6, 8, 10 total 24. The mean = 24 ÷ 3 = ?"
+    options: ["8", "6", "12", "24"]
+    correct_index: 0
+    explanation: "24 ÷ 3 = 8."
+  - module: 51
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A total of 20 over 4 values gives a mean of?"
+    options: ["5", "4", "20", "10"]
+    correct_index: 0
+    explanation: "20 ÷ 4 = 5."
+  - module: 51
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A total of 30 over 3 values gives a mean of?"
+    options: ["10", "30", "3", "15"]
+    correct_index: 0
+    explanation: "30 ÷ 3 = 10."
+  - module: 51
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A total of 12 over 4 values gives a mean of?"
+    options: ["3", "4", "12", "6"]
+    correct_index: 0
+    explanation: "12 ÷ 4 = 3."
+  - module: 51
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "The difference between 10 and 6 is?"
+    options: ["4", "16", "6", "10"]
+    correct_index: 0
+    explanation: "10 - 6 = 4."
+  - module: 51
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "Scores 4, 6, 8, 10. The total is?"
+    options: ["28", "24", "20", "18"]
+    correct_index: 0
+    explanation: "4 + 6 + 8 + 10 = 28."
+  - module: 51
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A total of 28 over 4 values gives a mean of?"
+    options: ["7", "4", "28", "14"]
+    correct_index: 0
+    explanation: "28 ÷ 4 = 7."
+  - module: 51
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "Scores 5, 10, 15. The mean = 30 ÷ 3 = ?"
+    options: ["10", "30", "15", "5"]
+    correct_index: 0
+    explanation: "30 ÷ 3 = 10."
+  - module: 51
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A total of 40 over 5 values gives a mean of?"
+    options: ["8", "5", "40", "10"]
+    correct_index: 0
+    explanation: "40 ÷ 5 = 8."
+  - module: 51
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "Scores 2, 4, 6. The total then the mean = 12 ÷ 3 = ?"
+    options: ["4", "12", "3", "6"]
+    correct_index: 0
+    explanation: "12 ÷ 3 = 4."
