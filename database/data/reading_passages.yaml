@@ -862,3 +862,460 @@ passages:
       - word: "sour"
         definition: "having a sharp taste, like a lime"
         context_sentence: "It is sweet and a little sour."
+
+  # ── Level 4 ──
+  - title: "The Coral Reef"
+    reading_level: 4
+    body: >
+      Beneath the calm blue sea near Tobago lies a coral reef. The coral looks
+      like a garden of stone, but it is alive. Bright fish of every colour dart
+      between its branches. Sea turtles glide slowly overhead. The reef gives the
+      little creatures a place to hide and feed. Sadly, when the water grows too
+      warm or dirty, the coral turns white and dies. That is why we must keep our
+      seas clean and healthy.
+    questions:
+      - prompt: "Where is this coral reef found?"
+        type: mc
+        options: ["near Tobago", "near Guyana", "in a river", "in a lake"]
+        correct_index: 0
+      - prompt: "Why does the reef matter to little sea creatures?"
+        type: mc
+        options: ["it gives them a place to hide and feed", "it makes waves", "it blocks boats", "it gives them air"]
+        correct_index: 0
+      - prompt: "The passage says the reef 'is alive'. Explain what this tells us about coral."
+        type: written
+    vocabulary:
+      - word: "beneath"
+        definition: "under or below something"
+        context_sentence: "Beneath the calm blue sea lies a coral reef."
+      - word: "dart"
+        definition: "to move quickly and suddenly"
+        context_sentence: "Bright fish dart between its branches."
+      - word: "glide"
+        definition: "to move smoothly and easily"
+        context_sentence: "Sea turtles glide slowly overhead."
+
+  - title: "The Science Fair"
+    reading_level: 4
+    body: >
+      For weeks, Anil worked on his science project. He wanted to show how plants
+      need sunlight to grow. He placed one bean plant on the windowsill and hid
+      another in a dark cupboard. Each day he watered both and measured them. The
+      plant in the light grew tall and green. The one in the dark stayed thin and
+      pale. At the fair, Anil proudly explained his results, and the judges gave
+      him a prize.
+    questions:
+      - prompt: "What did Anil want to show?"
+        type: mc
+        options: ["that plants need sunlight", "that plants need music", "how fish swim", "how rain falls"]
+        correct_index: 0
+      - prompt: "What happened to the plant kept in the dark?"
+        type: mc
+        options: ["it stayed thin and pale", "it grew tall", "it turned red", "it died at once"]
+        correct_index: 0
+      - prompt: "Why do you think Anil watered BOTH plants the same way?"
+        type: written
+    vocabulary:
+      - word: "measured"
+        definition: "found the size or amount of something"
+        context_sentence: "Each day he watered both and measured them."
+      - word: "pale"
+        definition: "light in colour; without strong colour"
+        context_sentence: "The one in the dark stayed thin and pale."
+      - word: "results"
+        definition: "what is found out at the end of an experiment"
+        context_sentence: "Anil explained his results."
+
+  - title: "The Hurricane Warning"
+    reading_level: 4
+    body: >
+      The radio said a storm was coming. My family got ready at once. Daddy
+      boarded up the windows with strong wood. Mummy filled bottles with water
+      and bought tins of food. We charged our torches and moved things off the
+      floor. That night the wind roared and the rain lashed the house. We stayed
+      together and felt safe because we had prepared. By morning, the storm had
+      passed, and we were thankful.
+    questions:
+      - prompt: "How did the family first learn about the storm?"
+        type: mc
+        options: ["from the radio", "from a friend", "from the newspaper", "from the sky"]
+        correct_index: 0
+      - prompt: "Why did the family feel safe during the storm?"
+        type: mc
+        options: ["they had prepared", "the storm was small", "they were asleep", "the wind stopped"]
+        correct_index: 0
+      - prompt: "Write two things the family did to get ready."
+        type: written
+    vocabulary:
+      - word: "boarded"
+        definition: "covered with wooden boards"
+        context_sentence: "Daddy boarded up the windows."
+      - word: "lashed"
+        definition: "hit hard, like heavy rain"
+        context_sentence: "The rain lashed the house."
+      - word: "prepared"
+        definition: "got ready ahead of time"
+        context_sentence: "We felt safe because we had prepared."
+
+  - title: "The Old Fisherman"
+    reading_level: 4
+    body: >
+      Every dawn, old Mr Boodram pushes his wooden boat into the sea. His hands
+      are rough from years of pulling nets. He knows where the fish gather and
+      how to read the wind. The young fishermen with fast boats sometimes laugh
+      at his slow ways. But when they return with empty nets, Mr Boodram's boat
+      is full. Patience and knowledge, he says, catch more than speed.
+    questions:
+      - prompt: "When does Mr Boodram go to sea?"
+        type: mc
+        options: ["every dawn", "at midday", "at night", "on Sundays"]
+        correct_index: 0
+      - prompt: "According to Mr Boodram, what catches more fish than speed?"
+        type: mc
+        options: ["patience and knowledge", "a fast boat", "a big net", "luck"]
+        correct_index: 0
+      - prompt: "Why do you think the young fishermen stop laughing at Mr Boodram?"
+        type: written
+    vocabulary:
+      - word: "dawn"
+        definition: "the first light of the morning"
+        context_sentence: "Every dawn, Mr Boodram pushes his boat into the sea."
+      - word: "gather"
+        definition: "to come together in a group"
+        context_sentence: "He knows where the fish gather."
+      - word: "patience"
+        definition: "the ability to wait calmly"
+        context_sentence: "Patience and knowledge catch more than speed."
+
+  - title: "Saving Water"
+    reading_level: 4
+    body: >
+      In the dry season, water becomes scarce. Miss Persad taught our class how
+      to save it. She showed us to turn off the tap while brushing our teeth. We
+      learned to catch rainwater in a barrel for the garden. A dripping pipe, she
+      said, can waste buckets of water in a week. Small habits add up to a big
+      difference. Now my whole family is careful with every drop.
+    questions:
+      - prompt: "Who taught the class about saving water?"
+        type: mc
+        options: ["Miss Persad", "Mr Ali", "the principal", "a fisherman"]
+        correct_index: 0
+      - prompt: "What can a dripping pipe waste in a week?"
+        type: mc
+        options: ["buckets of water", "a cup of water", "no water", "a barrel of oil"]
+        correct_index: 0
+      - prompt: "Explain what Miss Persad meant by 'small habits add up to a big difference'."
+        type: written
+    vocabulary:
+      - word: "scarce"
+        definition: "hard to find; not enough"
+        context_sentence: "In the dry season, water becomes scarce."
+      - word: "barrel"
+        definition: "a large round container"
+        context_sentence: "We learned to catch rainwater in a barrel."
+      - word: "habits"
+        definition: "things you do often, almost without thinking"
+        context_sentence: "Small habits add up to a big difference."
+
+  - title: "The Ant Colony"
+    reading_level: 4
+    body: >
+      Under the mango tree, thousands of ants live together in a colony. Each ant
+      has a job. Some search for food and carry crumbs many times their own size.
+      Others dig tunnels or guard the nest. They follow a trail of scent left by
+      the ants before them. Alone, one ant is weak, but together they can move a
+      whole leaf. Ants teach us the power of working as a team.
+    questions:
+      - prompt: "Where do the ants live?"
+        type: mc
+        options: ["in a colony under the mango tree", "in the house", "in the river", "on a branch"]
+        correct_index: 0
+      - prompt: "How do the ants find their way?"
+        type: mc
+        options: ["they follow a trail of scent", "they use their eyes only", "they follow the sun", "they guess"]
+        correct_index: 0
+      - prompt: "What lesson does the passage say we can learn from ants?"
+        type: written
+    vocabulary:
+      - word: "colony"
+        definition: "a large group living together"
+        context_sentence: "Thousands of ants live together in a colony."
+      - word: "tunnels"
+        definition: "underground passages"
+        context_sentence: "Others dig tunnels."
+      - word: "trail"
+        definition: "a line or path to follow"
+        context_sentence: "They follow a trail of scent."
+
+  - title: "The Power Cut"
+    reading_level: 4
+    body: >
+      One evening the lights suddenly went out. The whole street was dark and
+      quiet. Instead of watching television, my family lit candles and sat
+      together. My grandmother told us stories from when she was a girl. We
+      laughed and played games by the flickering light. When the power came back,
+      we almost wished it had stayed off a little longer. Sometimes the best
+      moments come without electricity.
+    questions:
+      - prompt: "What did the family do instead of watching television?"
+        type: mc
+        options: ["lit candles and told stories", "went to sleep", "left the house", "fixed the lights"]
+        correct_index: 0
+      - prompt: "Why did they almost wish the power had stayed off?"
+        type: mc
+        options: ["they were enjoying the time together", "they hated television", "it was too bright", "they were afraid"]
+        correct_index: 0
+      - prompt: "What does the last sentence tell us about spending time as a family?"
+        type: written
+    vocabulary:
+      - word: "suddenly"
+        definition: "quickly and without warning"
+        context_sentence: "One evening the lights suddenly went out."
+      - word: "flickering"
+        definition: "shining unsteadily, going bright and dim"
+        context_sentence: "We played games by the flickering light."
+      - word: "moments"
+        definition: "short periods of time"
+        context_sentence: "The best moments come without electricity."
+
+  - title: "A Trip to Tobago"
+    reading_level: 4
+    body: >
+      For the holidays, we took the ferry across to Tobago. The crossing was long
+      but the sea was calm. On the island, the beaches were quiet and the water
+      was clear as glass. We snorkelled and saw fish of every colour. In the
+      evening we ate crab and dumpling by the shore. Tobago felt peaceful, far
+      from the rush of the city. I did not want the week to end.
+    questions:
+      - prompt: "How did the family travel to Tobago?"
+        type: mc
+        options: ["by ferry", "by plane", "by car", "by boat they built"]
+        correct_index: 0
+      - prompt: "How was the water at the beaches?"
+        type: mc
+        options: ["clear as glass", "dark and rough", "cold and grey", "full of mud"]
+        correct_index: 0
+      - prompt: "Why do you think the writer says Tobago 'felt peaceful'?"
+        type: written
+    vocabulary:
+      - word: "ferry"
+        definition: "a boat that carries people across water"
+        context_sentence: "We took the ferry across to Tobago."
+      - word: "snorkelled"
+        definition: "swam while breathing through a tube to see underwater"
+        context_sentence: "We snorkelled and saw fish."
+      - word: "peaceful"
+        definition: "calm and quiet"
+        context_sentence: "Tobago felt peaceful."
+
+  - title: "The School Garden"
+    reading_level: 4
+    body: >
+      Our class started a garden behind the school. We cleared the weeds, turned
+      the soil, and planted seeds of tomato, ochro, and sweet pepper. Each group
+      took turns to water and weed. It was hard work under the hot sun. Slowly,
+      green shoots appeared, then flowers, then fruit. When we harvested our
+      first crop, we shared the vegetables with the whole school. We had grown
+      food with our own hands.
+    questions:
+      - prompt: "What did the class plant in the garden?"
+        type: mc
+        options: ["tomato, ochro, and sweet pepper", "corn and rice", "mango trees", "flowers only"]
+        correct_index: 0
+      - prompt: "What did the class do with their first crop?"
+        type: mc
+        options: ["shared it with the whole school", "sold it", "threw it away", "kept it secret"]
+        correct_index: 0
+      - prompt: "The passage says the work was hard. Write why it was still worth doing."
+        type: written
+    vocabulary:
+      - word: "cleared"
+        definition: "removed to make space"
+        context_sentence: "We cleared the weeds."
+      - word: "harvested"
+        definition: "gathered a crop when it was ready"
+        context_sentence: "We harvested our first crop."
+      - word: "crop"
+        definition: "plants grown for food"
+        context_sentence: "We shared our crop with the school."
+
+  - title: "The Runaway Goat"
+    reading_level: 4
+    body: >
+      Mr Singh kept a stubborn goat named Billy. One market day, Billy chewed
+      through his rope and escaped. He trotted down the road, nibbling flowers
+      from every yard. The neighbours chased him this way and that, but Billy was
+      too quick. At last, a little girl held out a ripe mango. Billy could not
+      resist. She led him gently home while everyone laughed at the morning's
+      adventure.
+    questions:
+      - prompt: "How did Billy the goat escape?"
+        type: mc
+        options: ["he chewed through his rope", "he opened the gate", "he jumped the fence", "someone let him out"]
+        correct_index: 0
+      - prompt: "What finally stopped Billy?"
+        type: mc
+        options: ["a ripe mango", "a loud shout", "a big net", "the rain"]
+        correct_index: 0
+      - prompt: "Why do you think the mango worked when chasing did not?"
+        type: written
+    vocabulary:
+      - word: "stubborn"
+        definition: "not willing to change or obey"
+        context_sentence: "Mr Singh kept a stubborn goat named Billy."
+      - word: "nibbling"
+        definition: "taking small bites"
+        context_sentence: "He trotted down the road, nibbling flowers."
+      - word: "resist"
+        definition: "to stop yourself from wanting something"
+        context_sentence: "Billy could not resist."
+
+  - title: "Learning to Swim"
+    reading_level: 4
+    body: >
+      At first, the deep water frightened me. My chest felt tight and I clung to
+      the edge of the pool. My coach was patient and kind. She taught me to float
+      on my back and to kick with steady legs. Bit by bit, my fear melted away.
+      One afternoon I swam a whole length by myself. The water that once scared
+      me now feels like a friend.
+    questions:
+      - prompt: "How did the child feel about the deep water at first?"
+        type: mc
+        options: ["frightened", "excited", "bored", "angry"]
+        correct_index: 0
+      - prompt: "What did the coach first teach the child to do?"
+        type: mc
+        options: ["float on the back and kick", "dive deep", "hold the breath", "swim fast"]
+        correct_index: 0
+      - prompt: "Explain what the writer means by 'the water now feels like a friend'."
+        type: written
+    vocabulary:
+      - word: "clung"
+        definition: "held on tightly"
+        context_sentence: "I clung to the edge of the pool."
+      - word: "float"
+        definition: "to rest on top of water without sinking"
+        context_sentence: "She taught me to float on my back."
+      - word: "steady"
+        definition: "firm and even, not shaky"
+        context_sentence: "She taught me to kick with steady legs."
+
+  - title: "The Broken Promise"
+    reading_level: 4
+    body: >
+      Ravi promised to help his sister paint her fence on Saturday. But when his
+      friends called him to play cricket, he forgot all about it. His sister
+      waited alone with the paint and brush. When Ravi came home, he saw her tired
+      face and felt ashamed. The next day he woke early and painted the fence
+      himself. He learned that keeping a promise means more than a game.
+    questions:
+      - prompt: "What had Ravi promised to do?"
+        type: mc
+        options: ["help paint the fence", "buy paint", "play cricket", "clean the yard"]
+        correct_index: 0
+      - prompt: "How did Ravi feel when he saw his sister's tired face?"
+        type: mc
+        options: ["ashamed", "proud", "angry", "happy"]
+        correct_index: 0
+      - prompt: "What lesson did Ravi learn by the end of the story?"
+        type: written
+    vocabulary:
+      - word: "promised"
+        definition: "said you would surely do something"
+        context_sentence: "Ravi promised to help his sister."
+      - word: "ashamed"
+        definition: "feeling bad about something you did wrong"
+        context_sentence: "He saw her tired face and felt ashamed."
+      - word: "keeping"
+        definition: "doing what you said you would do"
+        context_sentence: "Keeping a promise means more than a game."
+
+  - title: "The Firefly Night"
+    reading_level: 4
+    body: >
+      On warm nights in the countryside, tiny lights float in the dark. They are
+      fireflies, small beetles that glow to send signals to one another. As a
+      child, my mother chased them across the fields. She would gently cup one in
+      her hands to watch it blink, then set it free. Their soft light, she says,
+      is one of nature's quiet wonders. I hope they never disappear.
+    questions:
+      - prompt: "What are fireflies?"
+        type: mc
+        options: ["small beetles that glow", "little birds", "tiny fish", "flying ants"]
+        correct_index: 0
+      - prompt: "Why do fireflies glow?"
+        type: mc
+        options: ["to send signals to one another", "to keep warm", "to scare enemies", "to find food"]
+        correct_index: 0
+      - prompt: "Why do you think the mother set each firefly free?"
+        type: written
+    vocabulary:
+      - word: "signals"
+        definition: "messages sent without words"
+        context_sentence: "They glow to send signals to one another."
+      - word: "cup"
+        definition: "to hold gently in curved hands"
+        context_sentence: "She would gently cup one in her hands."
+      - word: "wonders"
+        definition: "amazing and beautiful things"
+        context_sentence: "Their light is one of nature's quiet wonders."
+
+  - title: "Market Day Maths"
+    reading_level: 4
+    body: >
+      On Saturday, Mummy sent me to buy provisions with a fifty-dollar bill. I
+      bought yams for twenty dollars and tomatoes for fifteen. In my head, I
+      added the cost and worked out my change. The vendor was surprised that I
+      counted so quickly. Maths from school helped me in real life. I brought
+      home the right change and Mummy was proud.
+    questions:
+      - prompt: "How much money did Mummy give the child?"
+        type: mc
+        options: ["fifty dollars", "twenty dollars", "fifteen dollars", "a hundred dollars"]
+        correct_index: 0
+      - prompt: "How much did the yams and tomatoes cost together?"
+        type: mc
+        options: ["thirty-five dollars", "twenty dollars", "fifty dollars", "fifteen dollars"]
+        correct_index: 0
+      - prompt: "Explain how school maths helped the child at the market."
+        type: written
+    vocabulary:
+      - word: "provisions"
+        definition: "food supplies such as ground foods"
+        context_sentence: "Mummy sent me to buy provisions."
+      - word: "vendor"
+        definition: "a person who sells things"
+        context_sentence: "The vendor was surprised."
+      - word: "change"
+        definition: "the money returned when you pay too much"
+        context_sentence: "I brought home the right change."
+
+  - title: "The Injured Bird"
+    reading_level: 4
+    body: >
+      One morning I found a young bird on the ground. It had fallen from its nest
+      and could not fly. I lifted it gently and made a soft bed in a box. I fed it
+      water and tiny bits of fruit. Each day it grew stronger. After a week, it
+      began to flap its wings. Then I opened the box and it flew up into the tree.
+      I felt sad and happy at the same time.
+    questions:
+      - prompt: "Why could the young bird not fly?"
+        type: mc
+        options: ["it had fallen from its nest", "it was too fat", "it was asleep", "it was tied up"]
+        correct_index: 0
+      - prompt: "What did the child make for the bird?"
+        type: mc
+        options: ["a soft bed in a box", "a nest in a tree", "a cage", "a swing"]
+        correct_index: 0
+      - prompt: "Why do you think the child felt 'sad and happy at the same time'?"
+        type: written
+    vocabulary:
+      - word: "injured"
+        definition: "hurt or harmed"
+        context_sentence: "One morning I found an injured bird."
+      - word: "gently"
+        definition: "in a soft, careful way"
+        context_sentence: "I lifted it gently."
+      - word: "flap"
+        definition: "to move wings up and down"
+        context_sentence: "It began to flap its wings."
