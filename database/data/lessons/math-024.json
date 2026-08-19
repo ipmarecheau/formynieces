@@ -1,0 +1,40 @@
+[
+  {
+    "module": "MATH-024",
+    "title": "Percent problems: discounts and sale prices",
+    "is_published": true,
+    "blocks": [
+      { "type": "text", "content": "Shops love percents. A discount is a percent taken off a price. Working out the discount, then the new price, is a two-step skill." },
+      { "type": "key", "content": "A discount is a percent OF the original price. Find it just like any percent of an amount." },
+      { "type": "example", "content": "Finding a discount.", "steps": ["A $50 shirt has 10% off.", "10% of $50 = $5.", "So the discount is $5."] },
+      {
+        "type": "fillblank",
+        "prompt": "A $50 item has 10% off. The discount is $___",
+        "answer": "5",
+        "explain": "10% of $50 is $5, so the discount is $5.",
+        "rule": "A discount is a percent of the original price.",
+        "practiceItems": [
+          { "prompt": "10% of $80", "answer": "8" },
+          { "prompt": "50% of $60", "answer": "30" },
+          { "prompt": "25% of $40", "answer": "10" },
+          { "prompt": "10% of $150", "answer": "15" }
+        ]
+      },
+      { "type": "key", "content": "To get the sale price, subtract the discount from the original price." },
+      {
+        "type": "fillblank",
+        "prompt": "A $50 item with a $5 discount now costs $___",
+        "answer": "45",
+        "explain": "$50 - $5 = $45.",
+        "rule": "Subtract the discount from the original price to get the sale price.",
+        "practiceItems": [
+          { "prompt": "$80 minus its 10% discount of $8", "answer": "72" },
+          { "prompt": "$60 minus its 50% discount of $30", "answer": "30" },
+          { "prompt": "$40 minus its 25% discount of $10", "answer": "30" },
+          { "prompt": "$20 minus its 10% discount of $2", "answer": "18" }
+        ]
+      },
+      { "type": "text", "content": "Find the discount as a percent of the price, then subtract it. Two steps to any sale price. Let's practise!" }
+    ]
+  }
+]

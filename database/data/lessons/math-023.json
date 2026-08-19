@@ -1,0 +1,40 @@
+[
+  {
+    "module": "MATH-023",
+    "title": "Finding a percent of a quantity",
+    "is_published": true,
+    "blocks": [
+      { "type": "text", "content": "Finding a percent of an amount comes up everywhere — sales, scores, tips. A few friendly percents have quick shortcuts." },
+      { "type": "key", "content": "50% is a half (divide by 2), and 10% is a tenth (divide by 10)." },
+      { "type": "example", "content": "Finding 50% of 40.", "steps": ["50% means one half.", "Half of 40 is 40 ÷ 2 = 20.", "So 50% of 40 = 20."] },
+      {
+        "type": "fillblank",
+        "prompt": "50% of 40 = ___",
+        "answer": "20",
+        "explain": "50% is a half, and half of 40 is 20.",
+        "rule": "50% of a number is half of it; 10% is a tenth of it.",
+        "practiceItems": [
+          { "prompt": "10% of 50", "answer": "5" },
+          { "prompt": "50% of 80", "answer": "40" },
+          { "prompt": "10% of 200", "answer": "20" },
+          { "prompt": "50% of 30", "answer": "15" }
+        ]
+      },
+      { "type": "key", "content": "25% is a quarter — divide by 4." },
+      {
+        "type": "fillblank",
+        "prompt": "25% of 20 = ___",
+        "answer": "5",
+        "explain": "25% is a quarter, and 20 ÷ 4 = 5.",
+        "rule": "25% of a number is a quarter of it (divide by 4).",
+        "practiceItems": [
+          { "prompt": "25% of 8", "answer": "2" },
+          { "prompt": "25% of 40", "answer": "10" },
+          { "prompt": "25% of 100", "answer": "25" },
+          { "prompt": "10% of 90", "answer": "9" }
+        ]
+      },
+      { "type": "text", "content": "50% halve it, 25% quarter it, 10% divide by ten. Learn the shortcuts and percents become easy. Let's practise!" }
+    ]
+  }
+]
