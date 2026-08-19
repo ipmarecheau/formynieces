@@ -1,0 +1,41 @@
+[
+  {
+    "module": "MATH-005",
+    "title": "Ordering and comparing whole numbers",
+    "is_published": true,
+    "blocks": [
+      { "type": "text", "content": "To put numbers in order, you compare them place by place. This helps you say which is bigger, which is smaller, and line numbers up from least to greatest." },
+      { "type": "key", "content": "Compare numbers from the LEFT. The number with the bigger digit in the first place where they differ is the greater number." },
+      { "type": "example", "content": "Comparing 3,450 and 3,540.", "steps": ["Thousands are the same: 3 and 3.", "Hundreds differ: 4 and 5.", "Since 4 is less than 5, 3,450 is less than 3,540."] },
+      {
+        "type": "fillblank",
+        "prompt": "Which is greater, 3,450 or 3,540? Type the greater number.",
+        "answer": "3540",
+        "explain": "They match in the thousands, but 3,540 has 5 hundreds against 4 hundreds, so 3,540 is greater.",
+        "rule": "Compare from the left; the bigger digit in the first differing place makes the greater number.",
+        "practiceItems": [
+          { "prompt": "the greater of 250 and 520", "answer": "520" },
+          { "prompt": "the greater of 1,000 and 999", "answer": "1000" },
+          { "prompt": "the smaller of 45 and 54", "answer": "45" },
+          { "prompt": "the greater of 6,300 and 6,030", "answer": "6300" }
+        ]
+      },
+      { "type": "key", "content": "The symbol < means 'less than' and > means 'greater than'. The wide, open end always faces the bigger number." },
+      {
+        "type": "check",
+        "question": "Which symbol makes this true: 45 __ 54 ?",
+        "options": ["<", ">", "="],
+        "answer": 0,
+        "explain": "45 is less than 54, so we use the 'less than' symbol: 45 < 54.",
+        "rule": "Use < for less than and > for greater than; the open end faces the bigger number.",
+        "practiceItems": [
+          { "prompt": "the symbol for 45 __ 54 (type < or >)", "answer": "<" },
+          { "prompt": "the symbol for 90 __ 19 (type < or >)", "answer": ">" },
+          { "prompt": "the symbol for 7 __ 7 (type < > or =)", "answer": "=" },
+          { "prompt": "the symbol for 100 __ 99 (type < or >)", "answer": ">" }
+        ]
+      },
+      { "type": "text", "content": "Compare place by place from the left, then use < or > with the open end facing the bigger number. Let's practise!" }
+    ]
+  }
+]

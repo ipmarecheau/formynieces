@@ -1,0 +1,40 @@
+[
+  {
+    "module": "MATH-002",
+    "title": "Expanded notation: writing a number as a sum of its place values",
+    "is_published": true,
+    "blocks": [
+      { "type": "text", "content": "Expanded notation breaks a number open so you can see the value of every digit. It is a clear way to show what a number is really made of." },
+      { "type": "key", "content": "Expanded notation writes a number as the sum of each digit's value: 345 = 300 + 40 + 5." },
+      { "type": "example", "content": "Expanding a number.", "steps": ["Take 526.", "The 5 is 500, the 2 is 20, the 6 is 6.", "So 526 = 500 + 20 + 6."] },
+      {
+        "type": "fillblank",
+        "prompt": "Complete the expanded form: 526 = 500 + ___ + 6",
+        "answer": "20",
+        "explain": "The 2 is in the tens place, so its value is 20.",
+        "rule": "In expanded notation, each part is a digit multiplied by its place value.",
+        "practiceItems": [
+          { "prompt": "345 = 300 + ___ + 5", "answer": "40" },
+          { "prompt": "782 = 700 + 80 + ___", "answer": "2" },
+          { "prompt": "the tens part of 526 in expanded form", "answer": "20" },
+          { "prompt": "the hundreds part of 900 + 30 + 4", "answer": "900" }
+        ]
+      },
+      { "type": "key", "content": "To go back to the standard number, just add the place values together." },
+      {
+        "type": "fillblank",
+        "prompt": "Add the place values: 300 + 40 + 5 = ___",
+        "answer": "345",
+        "explain": "300 + 40 + 5 = 345.",
+        "rule": "Add the place values back together to get the standard number.",
+        "practiceItems": [
+          { "prompt": "200 + 50 + 3", "answer": "253" },
+          { "prompt": "600 + 0 + 9", "answer": "609" },
+          { "prompt": "400 + 20 + 1", "answer": "421" },
+          { "prompt": "700 + 90 + 0", "answer": "790" }
+        ]
+      },
+      { "type": "text", "content": "Expanded notation shows a number's hidden parts, and adding those parts brings it back together. Let's practise!" }
+    ]
+  }
+]

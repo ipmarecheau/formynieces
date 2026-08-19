@@ -1,0 +1,41 @@
+[
+  {
+    "module": "MATH-001",
+    "title": "Place value up to one million",
+    "is_published": true,
+    "blocks": [
+      { "type": "text", "content": "In our number system, where a digit sits decides how much it is worth. The same digit 5 can mean five, fifty, or five hundred — it all depends on its place." },
+      { "type": "key", "content": "Each place, from the right, is worth ten times the one before: ones, tens, hundreds, thousands, ten-thousands, hundred-thousands, millions." },
+      { "type": "example", "content": "The value of a digit.", "steps": ["Look at 5,308.", "The 3 sits in the hundreds place.", "So its value is 3 hundreds = 300."] },
+      {
+        "type": "fillblank",
+        "prompt": "In 5,308, the value of the digit 3 is ___.",
+        "answer": "300",
+        "explain": "The 3 is in the hundreds place, so its value is 3 x 100 = 300.",
+        "rule": "A digit's value is the digit multiplied by its place (ones, tens, hundreds, thousands...).",
+        "practiceItems": [
+          { "prompt": "the value of the 4 in 3,415", "answer": "400" },
+          { "prompt": "the value of the 6 in 6,000", "answer": "6000" },
+          { "prompt": "the value of the 2 in 250", "answer": "200" },
+          { "prompt": "the value of the 8 in 1,800", "answer": "800" }
+        ]
+      },
+      { "type": "key", "content": "To name a digit's place, count the columns from the right: ones, tens, hundreds, then thousands." },
+      {
+        "type": "check",
+        "question": "In the number 6,245, the digit 2 is in which place?",
+        "options": ["ones", "tens", "hundreds", "thousands"],
+        "answer": 2,
+        "explain": "Counting from the right: 5 ones, 4 tens, 2 hundreds. So the 2 is in the hundreds place.",
+        "rule": "Count the columns from the right to name a digit's place: ones, tens, hundreds, thousands.",
+        "practiceItems": [
+          { "prompt": "the place of the 5 in 5,000 (thousands/hundreds)", "answer": "thousands" },
+          { "prompt": "the place of the 3 in 30", "answer": "tens" },
+          { "prompt": "the place of the 7 in 700", "answer": "hundreds" },
+          { "prompt": "the place of the 9 in 9", "answer": "ones" }
+        ]
+      },
+      { "type": "text", "content": "Where a digit sits tells you its value. Count the places from the right and you can read any number up to a million. Let's practise!" }
+    ]
+  }
+]
