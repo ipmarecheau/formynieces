@@ -2707,3 +2707,35 @@ passages:
       - word: "notice"
         definition: "to become aware of something"
         context_sentence: "We use it without noticing."
+
+  - title: "The Weather Watcher"
+    reading_level: 5
+    body: >
+      Long before television forecasts, farmers and fishermen read the sky itself.
+      A red sky at dusk often promised fair weather to come, while a ring around
+      the moon warned of rain. They watched how the birds flew low and how the
+      ants hurried to higher ground before a storm. These signs were passed down
+      through the generations and rarely failed. Even today, science confirms that
+      many of these old observations were remarkably accurate. Nature, it turns
+      out, gives clear warnings to those who learn to look.
+    questions:
+      - prompt: "What did a ring around the moon warn of?"
+        type: mc
+        options: ["rain", "sunshine", "wind only", "an eclipse"]
+        correct_index: 0
+      - prompt: "How were these weather signs passed on?"
+        type: mc
+        options: ["through the generations", "written in books", "on the radio", "by the government"]
+        correct_index: 0
+      - prompt: "Explain what is meant by 'Nature gives clear warnings to those who learn to look'."
+        type: written
+    vocabulary:
+      - word: "forecasts"
+        definition: "statements about what the weather will be"
+        context_sentence: "Long before television forecasts."
+      - word: "observations"
+        definition: "things noticed by watching carefully"
+        context_sentence: "Many of these old observations were accurate."
+      - word: "accurate"
+        definition: "correct and exact"
+        context_sentence: "The observations were remarkably accurate."
