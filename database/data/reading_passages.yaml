@@ -2739,3 +2739,498 @@ passages:
       - word: "accurate"
         definition: "correct and exact"
         context_sentence: "The observations were remarkably accurate."
+
+  # ── Level 6 ──
+  - title: "A Warming World"
+    reading_level: 6
+    body: >
+      Scientists around the globe agree that the earth is slowly growing warmer.
+      When we burn coal, oil, and gas for energy, we release gases that trap heat
+      in the atmosphere, much like a blanket wrapped around the planet. As
+      temperatures rise, ice at the poles melts, sea levels creep higher, and
+      weather grows more extreme. For small island nations like ours, this is not
+      a distant threat but a present danger. The encouraging news is that solutions
+      exist. By using cleaner energy, protecting forests, and wasting less, humanity
+      can still slow the warming and safeguard the world for future generations.
+    questions:
+      - prompt: "What happens when we burn coal, oil, and gas?"
+        type: mc
+        options: ["gases are released that trap heat", "the earth cools", "rain increases", "ice grows"]
+        correct_index: 0
+      - prompt: "Why is warming described as 'a present danger' for island nations?"
+        type: mc
+        options: ["rising seas and extreme weather threaten them now", "they burn the most fuel", "they have no forests", "they are far away"]
+        correct_index: 0
+      - prompt: "Explain the comparison of the trapped gases to 'a blanket wrapped around the planet'."
+        type: written
+    vocabulary:
+      - word: "atmosphere"
+        definition: "the layer of gases surrounding the earth"
+        context_sentence: "Gases trap heat in the atmosphere."
+      - word: "extreme"
+        definition: "far greater than usual; severe"
+        context_sentence: "Weather grows more extreme."
+      - word: "safeguard"
+        definition: "to protect from harm"
+        context_sentence: "Humanity can safeguard the world for the future."
+
+  - title: "The First Peoples"
+    reading_level: 6
+    body: >
+      Long before European ships appeared on the horizon, the islands were home to
+      the First Peoples, the Amerindians. They lived in harmony with the land,
+      fishing the rivers, hunting in the forests, and cultivating cassava and
+      maize. They were skilled potters and boat-builders, travelling between
+      islands in canoes carved from single trees. Much of their language survives
+      in the names of our places and plants. Though their numbers dwindled after
+      colonisation, their descendants and their legacy endure. To understand our
+      nation fully, we must first honour those who walked this land before all
+      others.
+    questions:
+      - prompt: "How did the First Peoples travel between islands?"
+        type: mc
+        options: ["in canoes carved from single trees", "on rafts of reeds", "by swimming", "on large ships"]
+        correct_index: 0
+      - prompt: "Where does much of their language survive today?"
+        type: mc
+        options: ["in the names of places and plants", "in old songs only", "in one village", "nowhere"]
+        correct_index: 0
+      - prompt: "Explain why the writer says we must 'honour those who walked this land before all others'."
+        type: written
+    vocabulary:
+      - word: "cultivating"
+        definition: "growing crops by preparing and working the land"
+        context_sentence: "Fishing the rivers and cultivating cassava."
+      - word: "dwindled"
+        definition: "became smaller in number"
+        context_sentence: "Their numbers dwindled after colonisation."
+      - word: "legacy"
+        definition: "something handed down from the past"
+        context_sentence: "Their descendants and their legacy endure."
+
+  - title: "How Plants Make Food"
+    reading_level: 6
+    body: >
+      Unlike animals, plants make their own food in a remarkable process called
+      photosynthesis. Inside their leaves lies a green substance called
+      chlorophyll, which captures the energy of sunlight. Using this energy, the
+      plant combines water drawn up through its roots with carbon dioxide taken
+      from the air. From these simple ingredients it produces sugar for food and
+      releases oxygen as a by-product. In this quiet, invisible way, plants feed
+      themselves, feed the animals that eat them, and fill the air with the oxygen
+      that nearly all life depends upon. They are the green engines of our world.
+    questions:
+      - prompt: "What does chlorophyll do in the leaf?"
+        type: mc
+        options: ["captures the energy of sunlight", "stores water", "gives the plant its smell", "keeps out insects"]
+        correct_index: 0
+      - prompt: "What gas do plants release during photosynthesis?"
+        type: mc
+        options: ["oxygen", "carbon dioxide", "smoke", "steam"]
+        correct_index: 0
+      - prompt: "Explain why the writer calls plants 'the green engines of our world'."
+        type: written
+    vocabulary:
+      - word: "photosynthesis"
+        definition: "the way green plants make food using sunlight"
+        context_sentence: "A remarkable process called photosynthesis."
+      - word: "captures"
+        definition: "takes hold of and keeps"
+        context_sentence: "Chlorophyll captures the energy of sunlight."
+      - word: "by-product"
+        definition: "something extra made while producing another thing"
+        context_sentence: "It releases oxygen as a by-product."
+
+  - title: "The Found Treasure"
+    reading_level: 6
+    body: >
+      While clearing an old field, two workers unearthed a clay pot filled with
+      ancient coins. Word spread quickly, and soon many people claimed the treasure
+      was theirs. The landowner said it was found on his property; the workers said
+      their labour had uncovered it; the government said such antiquities belonged
+      to the nation's heritage. A wise magistrate reminded them that some things are
+      too valuable to belong to any one person. In the end, the coins were placed
+      in a museum, where thousands could learn from them, and the finders were
+      honoured for their honesty in reporting the discovery.
+    questions:
+      - prompt: "What did the two workers unearth?"
+        type: mc
+        options: ["a clay pot filled with ancient coins", "a chest of gold", "old bones", "a buried house"]
+        correct_index: 0
+      - prompt: "Where were the coins finally placed?"
+        type: mc
+        options: ["in a museum", "with the landowner", "back in the field", "with the workers"]
+        correct_index: 0
+      - prompt: "Explain the magistrate's idea that 'some things are too valuable to belong to any one person'."
+        type: written
+    vocabulary:
+      - word: "unearthed"
+        definition: "dug up from the ground"
+        context_sentence: "Two workers unearthed a clay pot."
+      - word: "antiquities"
+        definition: "objects from ancient times"
+        context_sentence: "Such antiquities belonged to the nation's heritage."
+      - word: "heritage"
+        definition: "the history and traditions passed down to a people"
+        context_sentence: "It belonged to the nation's heritage."
+
+  - title: "The Journey of the Birds"
+    reading_level: 6
+    body: >
+      Each year, as the northern lands grow cold, millions of birds embark on an
+      extraordinary journey southward. Some travel thousands of kilometres,
+      crossing oceans and deserts to reach warmer feeding grounds. How they find
+      their way remains one of nature's great mysteries. Scientists believe the
+      birds navigate using the position of the sun and stars, and can even sense
+      the earth's magnetic field like a living compass. Guided by instincts older
+      than memory, they return to the very same places year after year. Their
+      migration reminds us how much of the natural world we have yet to understand.
+    questions:
+      - prompt: "Why do the birds travel southward each year?"
+        type: mc
+        options: ["to reach warmer feeding grounds", "to escape other birds", "to find water only", "to lay eggs at sea"]
+        correct_index: 0
+      - prompt: "How do scientists believe the birds navigate?"
+        type: mc
+        options: ["by the sun, stars, and earth's magnetic field", "by following roads", "by chance", "by following ships"]
+        correct_index: 0
+      - prompt: "Explain what the writer means by 'instincts older than memory'."
+        type: written
+    vocabulary:
+      - word: "embark"
+        definition: "to begin a journey"
+        context_sentence: "Millions of birds embark on a journey southward."
+      - word: "navigate"
+        definition: "to find the way from one place to another"
+        context_sentence: "The birds navigate using the sun and stars."
+      - word: "instincts"
+        definition: "natural ways of behaving that are not learned"
+        context_sentence: "Guided by instincts older than memory."
+
+  - title: "The Two-Edged Screen"
+    reading_level: 6
+    body: >
+      The smartphone has transformed the way we live. In an instant we can speak to
+      relatives across the world, look up any fact, and carry a library in our
+      pocket. Yet this powerful tool has two edges. Spending hours scrolling can
+      steal time from sleep, study, and real conversation. Some people grow anxious
+      when parted from their devices, and false information can spread as easily as
+      true. The screen itself is neither good nor evil; what matters is how wisely
+      we choose to use it. Mastering our tools, rather than being mastered by them,
+      is the challenge of our age.
+    questions:
+      - prompt: "What does the writer mean by the smartphone having 'two edges'?"
+        type: mc
+        options: ["it can help and harm depending on use", "it has two screens", "it cuts things", "it needs two hands"]
+        correct_index: 0
+      - prompt: "What can spread as easily as true information?"
+        type: mc
+        options: ["false information", "kindness", "music", "money"]
+        correct_index: 0
+      - prompt: "Explain the challenge of 'mastering our tools, rather than being mastered by them'."
+        type: written
+    vocabulary:
+      - word: "transformed"
+        definition: "changed completely"
+        context_sentence: "The smartphone has transformed the way we live."
+      - word: "anxious"
+        definition: "worried and uneasy"
+        context_sentence: "Some people grow anxious without their devices."
+      - word: "mastering"
+        definition: "gaining full control or skill over something"
+        context_sentence: "Mastering our tools is the challenge of our age."
+
+  - title: "The Power of Forgiveness"
+    reading_level: 6
+    body: >
+      When his rival spread cruel lies about him, Marcus burned with anger and
+      dreamed of revenge. For weeks the bitterness gnawed at him, robbing him of
+      sleep and joy. Then a wise aunt told him that holding on to hatred is like
+      drinking poison and expecting the other person to suffer. Slowly, Marcus
+      chose to let the anger go, not because his rival deserved forgiveness, but
+      because he himself deserved peace. The weight lifted from his heart. He
+      learned that forgiveness is not a gift we give to others so much as a
+      freedom we grant ourselves.
+    questions:
+      - prompt: "What did the bitterness do to Marcus?"
+        type: mc
+        options: ["robbed him of sleep and joy", "made him rich", "helped him win", "made him famous"]
+        correct_index: 0
+      - prompt: "Why did Marcus finally let the anger go?"
+        type: mc
+        options: ["because he himself deserved peace", "his rival apologised", "he forgot about it", "he was told to"]
+        correct_index: 0
+      - prompt: "Explain the saying that 'holding on to hatred is like drinking poison'."
+        type: written
+    vocabulary:
+      - word: "rival"
+        definition: "a person competing against another"
+        context_sentence: "His rival spread cruel lies."
+      - word: "bitterness"
+        definition: "a deep, angry, unhappy feeling"
+        context_sentence: "The bitterness gnawed at him."
+      - word: "forgiveness"
+        definition: "the act of letting go of anger toward someone"
+        context_sentence: "Forgiveness is a freedom we grant ourselves."
+
+  - title: "The Restless Earth"
+    reading_level: 6
+    body: >
+      Deep beneath our feet, the earth is far from still. Its outer shell is broken
+      into enormous slabs of rock called plates, which drift slowly over hot,
+      molten rock below. Where these plates grind against one another, pressure
+      builds over many years. When it is suddenly released, the ground shudders in
+      an earthquake. In some places, molten rock forces its way to the surface and
+      erupts as a volcano. Though these events can be destructive, they also build
+      mountains and enrich the soil. The planet we walk upon is not a finished
+      thing, but a world forever being remade.
+    questions:
+      - prompt: "What are the enormous slabs of rock in the earth's shell called?"
+        type: mc
+        options: ["plates", "cores", "crusts", "beds"]
+        correct_index: 0
+      - prompt: "What causes an earthquake, according to the passage?"
+        type: mc
+        options: ["the sudden release of built-up pressure between plates", "heavy rain", "strong wind", "the moon"]
+        correct_index: 0
+      - prompt: "Explain the idea that the earth is 'a world forever being remade'."
+        type: written
+    vocabulary:
+      - word: "molten"
+        definition: "melted by great heat"
+        context_sentence: "The plates drift over hot, molten rock."
+      - word: "erupts"
+        definition: "bursts out violently"
+        context_sentence: "Molten rock erupts as a volcano."
+      - word: "destructive"
+        definition: "causing great damage"
+        context_sentence: "These events can be destructive."
+
+  - title: "Medicine from the Forest"
+    reading_level: 6
+    body: >
+      For centuries, the people of the Caribbean have used the plants around them
+      to heal the sick. A bush tea might ease a fever; the sap of a certain leaf
+      might soothe a wound. This knowledge, gathered over generations, is a kind of
+      living library. Today scientists study these traditional remedies, and many
+      modern medicines have their roots in forest plants. Yet as forests are cut
+      down, some plants disappear before their secrets can be learned. Protecting
+      the wild is therefore not only about beauty; it may hold cures for diseases
+      we have not yet defeated.
+    questions:
+      - prompt: "How was the knowledge of plant medicines gathered?"
+        type: mc
+        options: ["over generations", "in a single year", "from books abroad", "by accident once"]
+        correct_index: 0
+      - prompt: "Why might some plant cures be lost forever?"
+        type: mc
+        options: ["forests are cut down before the plants are studied", "no one is interested", "the plants move", "medicine is banned"]
+        correct_index: 0
+      - prompt: "Explain why the writer calls traditional knowledge 'a living library'."
+        type: written
+    vocabulary:
+      - word: "remedies"
+        definition: "things used to cure illness"
+        context_sentence: "Scientists study these traditional remedies."
+      - word: "traditional"
+        definition: "based on long-established custom"
+        context_sentence: "Many medicines have roots in traditional remedies."
+      - word: "defeated"
+        definition: "overcome; beaten"
+        context_sentence: "Diseases we have not yet defeated."
+
+  - title: "The True Test of a Leader"
+    reading_level: 6
+    body: >
+      When the team was winning, everyone wanted to be captain. But when they lost
+      three matches in a row and spirits sank, only Denise stepped forward. She did
+      not blame her teammates or make excuses. Instead she encouraged the weakest
+      players, took responsibility for mistakes, and reminded everyone why they
+      loved the game. Slowly, confidence returned, and so did their victories. The
+      coach observed that anyone can lead in easy times; the true test of a leader
+      is how they carry others through hardship. Real leadership, he said, is
+      measured not by glory, but by service.
+    questions:
+      - prompt: "When did Denise step forward to lead?"
+        type: mc
+        options: ["when the team was losing and spirits sank", "when they were winning", "at the awards ceremony", "when she was asked"]
+        correct_index: 0
+      - prompt: "What did Denise do instead of blaming her teammates?"
+        type: mc
+        options: ["encouraged them and took responsibility", "quit the team", "argued with the coach", "played alone"]
+        correct_index: 0
+      - prompt: "Explain the coach's belief that leadership is 'measured not by glory, but by service'."
+        type: written
+    vocabulary:
+      - word: "responsibility"
+        definition: "the duty to answer for something"
+        context_sentence: "She took responsibility for mistakes."
+      - word: "confidence"
+        definition: "belief in one's own ability"
+        context_sentence: "Slowly, confidence returned."
+      - word: "service"
+        definition: "the act of helping others"
+        context_sentence: "Leadership is measured by service."
+
+  - title: "Power from Nature"
+    reading_level: 6
+    body: >
+      For most of history, humans burned wood and later coal and oil to power their
+      lives. But these fuels pollute the air and will one day run out. Now, engineers
+      are turning to sources that nature renews endlessly. Great turbines spin in the
+      wind, panels drink in the energy of the tropical sun, and dams harness the
+      force of falling water. In a land as blessed with sunshine as ours, the
+      possibilities are enormous. Renewable energy promises not only cleaner air but
+      also a future that does not depend on burning what cannot be replaced.
+    questions:
+      - prompt: "What is a problem with fuels like coal and oil?"
+        type: mc
+        options: ["they pollute the air and will run out", "they are too cheap", "they make no heat", "they are new"]
+        correct_index: 0
+      - prompt: "Which renewable source is described as especially suited to our land?"
+        type: mc
+        options: ["the tropical sun", "coal", "falling snow", "geothermal steam"]
+        correct_index: 0
+      - prompt: "Explain why renewable energy 'does not depend on burning what cannot be replaced'."
+        type: written
+    vocabulary:
+      - word: "pollute"
+        definition: "to make dirty or harmful"
+        context_sentence: "These fuels pollute the air."
+      - word: "turbines"
+        definition: "machines with blades turned by wind or water to make power"
+        context_sentence: "Great turbines spin in the wind."
+      - word: "renewable"
+        definition: "able to be replaced by nature; not used up"
+        context_sentence: "Renewable energy promises cleaner air."
+
+  - title: "The Strength of the Team"
+    reading_level: 6
+    body: >
+      Why can a group achieve what no single person can? Part of the answer lies in
+      how people combine their different strengths. One member may be creative,
+      another careful, a third good at encouraging the rest. When they trust one
+      another and share a common goal, the whole becomes greater than the sum of its
+      parts. But teamwork is not automatic; it requires listening, compromise, and
+      the humility to admit when someone else has a better idea. The finest teams are
+      not simply collections of talented individuals, but groups who have learned to
+      pull together as one.
+    questions:
+      - prompt: "Why can a group achieve what a single person cannot?"
+        type: mc
+        options: ["people combine their different strengths", "there are more of them to shout", "one person does everything", "they work less"]
+        correct_index: 0
+      - prompt: "What does teamwork require, according to the passage?"
+        type: mc
+        options: ["listening, compromise, and humility", "one strong leader only", "silence", "competition"]
+        correct_index: 0
+      - prompt: "Explain the phrase 'the whole becomes greater than the sum of its parts'."
+        type: written
+    vocabulary:
+      - word: "combine"
+        definition: "to join together"
+        context_sentence: "People combine their different strengths."
+      - word: "compromise"
+        definition: "an agreement where each side gives up a little"
+        context_sentence: "Teamwork requires listening and compromise."
+      - word: "humility"
+        definition: "the quality of not being proud; modesty"
+        context_sentence: "The humility to admit a better idea."
+
+  - title: "The Vanishing Ocelot"
+    reading_level: 6
+    body: >
+      Deep in the forests of Trinidad prowls the ocelot, a beautiful spotted wild
+      cat. Once common, it is now rarely seen. As people clear the forest for farms
+      and houses, the ocelot loses the cover it needs to hunt and hide. Some are
+      killed for their striking fur or because they take a farmer's chickens. Each
+      creature lost weakens the delicate web of forest life, for the ocelot helps
+      keep the numbers of rats and other small animals in check. Conservationists
+      now work to protect the remaining forest, hoping the ocelot's soft footsteps
+      will not vanish from our land forever.
+    questions:
+      - prompt: "Why is the ocelot now rarely seen?"
+        type: mc
+        options: ["people clear the forest it needs", "it moved to the city", "it sleeps all day", "it left the island"]
+        correct_index: 0
+      - prompt: "How does the ocelot help the forest?"
+        type: mc
+        options: ["it keeps the numbers of rats and small animals in check", "it plants trees", "it cleans rivers", "it scares tourists"]
+        correct_index: 0
+      - prompt: "Explain how losing the ocelot could 'weaken the delicate web of forest life'."
+        type: written
+    vocabulary:
+      - word: "prowls"
+        definition: "moves about quietly, hunting"
+        context_sentence: "The ocelot prowls the forests of Trinidad."
+      - word: "striking"
+        definition: "very noticeable or impressive"
+        context_sentence: "Some are killed for their striking fur."
+      - word: "conservationists"
+        definition: "people who work to protect nature"
+        context_sentence: "Conservationists work to protect the forest."
+
+  - title: "The Meaning of Home"
+    reading_level: 6
+    body: >
+      When her family moved abroad for work, Priya thought she had lost her home
+      forever. In the cold new city, everything felt strange and grey. Yet as the
+      months passed, she discovered that home was not only a place on a map. It
+      lived in the smell of her mother's cooking, in the language they spoke around
+      the table, in the songs and stories they carried with them. She began to
+      teach her new friends about her island, and in sharing it, she felt it grow
+      stronger inside her. Home, she realised, is something we carry in the heart as
+      much as we stand upon with our feet.
+    questions:
+      - prompt: "What did Priya first believe when her family moved abroad?"
+        type: mc
+        options: ["that she had lost her home forever", "that she would be rich", "that she would return soon", "that she would forget her island"]
+        correct_index: 0
+      - prompt: "Where did Priya discover home still 'lived'?"
+        type: mc
+        options: ["in cooking, language, songs, and stories", "in the new city's shops", "in photographs only", "in her old house"]
+        correct_index: 0
+      - prompt: "Explain the idea that 'home is something we carry in the heart'."
+        type: written
+    vocabulary:
+      - word: "abroad"
+        definition: "in a foreign country"
+        context_sentence: "Her family moved abroad for work."
+      - word: "discovered"
+        definition: "found out for the first time"
+        context_sentence: "She discovered that home was not only a place."
+      - word: "realised"
+        definition: "came to understand"
+        context_sentence: "Home, she realised, is carried in the heart."
+
+  - title: "The Language of Bees"
+    reading_level: 6
+    body: >
+      When a honeybee discovers a rich patch of flowers, it does not keep the news
+      to itself. Returning to the hive, it performs a curious 'waggle dance',
+      moving in a figure-eight pattern across the honeycomb. The angle of the dance
+      tells the other bees the direction of the flowers in relation to the sun,
+      while its length reveals how far away they are. Through this silent dance, one
+      bee can guide hundreds of others straight to the food. Scientists marvel that
+      such a tiny creature can share such precise information without a single word.
+    questions:
+      - prompt: "What does the bee's 'waggle dance' tell the other bees?"
+        type: mc
+        options: ["the direction and distance of the flowers", "the colour of the flowers", "the time of day", "the weather"]
+        correct_index: 0
+      - prompt: "How does the length of the dance help the other bees?"
+        type: mc
+        options: ["it reveals how far away the flowers are", "it shows the flower's size", "it names the flower", "it counts the bees"]
+        correct_index: 0
+      - prompt: "Explain why scientists 'marvel' at the bee's dance."
+        type: written
+    vocabulary:
+      - word: "performs"
+        definition: "carries out an action for others to see"
+        context_sentence: "It performs a curious waggle dance."
+      - word: "reveals"
+        definition: "makes something known"
+        context_sentence: "Its length reveals how far away they are."
+      - word: "precise"
+        definition: "exact and accurate"
+        context_sentence: "It can share such precise information."
