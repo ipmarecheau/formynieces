@@ -6073,3 +6073,1180 @@ questions:
     options: ["bold", "scared", "weak", "shy"]
     correct_index: 0
     explanation: "'bold' means the same as brave."
+
+  # ── Module 58 (ELA-007): End Marks ──
+  - module: 58
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "Which mark ends the question 'What is your name'?"
+    options: ["?", ".", "!", ","]
+    correct_index: 0
+    explanation: "A question ends with a question mark."
+  - module: 58
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "Which mark ends the telling sentence 'The sky is blue'?"
+    options: [".", "?", "!", ";"]
+    correct_index: 0
+    explanation: "A statement ends with a full stop."
+  - module: 58
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "Which mark best ends 'Watch out'?"
+    options: ["!", ".", "?", ","]
+    correct_index: 0
+    explanation: "A warning with strong feeling ends with an exclamation mark."
+  - module: 58
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "'Where are you going' ends with?"
+    options: ["?", ".", "!", ";"]
+    correct_index: 0
+    explanation: "It is a question, so a question mark."
+  - module: 58
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "A statement (telling sentence) ends with a?"
+    options: ["full stop", "question mark", "exclamation mark", "comma"]
+    correct_index: 0
+    explanation: "A statement ends with a full stop."
+  - module: 58
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "'How old are you' ends with?"
+    options: ["?", ".", "!", ","]
+    correct_index: 0
+    explanation: "It is a question."
+  - module: 58
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "'Be careful' (a warning) ends with?"
+    options: ["!", ".", "?", ";"]
+    correct_index: 0
+    explanation: "A warning ends with an exclamation mark."
+  - module: 58
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "'I am ten years old' ends with?"
+    options: [".", "?", "!", ","]
+    correct_index: 0
+    explanation: "It is a statement, so a full stop."
+  - module: 58
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "A question ends with a?"
+    options: ["question mark", "full stop", "exclamation mark", "comma"]
+    correct_index: 0
+    explanation: "A question ends with a question mark."
+  - module: 58
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "'What a lovely day' (strong feeling) ends with?"
+    options: ["!", ".", "?", ";"]
+    correct_index: 0
+    explanation: "Strong feeling ends with an exclamation mark."
+  - module: 58
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "'Stop right now' ends with?"
+    options: ["!", ".", "?", ","]
+    correct_index: 0
+    explanation: "It is a strong command, so an exclamation mark."
+  - module: 58
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "'Do you like mango' ends with?"
+    options: ["?", ".", "!", ";"]
+    correct_index: 0
+    explanation: "It is a question."
+  - module: 58
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "A sentence with strong feeling ends with a?"
+    options: ["exclamation mark", "full stop", "question mark", "comma"]
+    correct_index: 0
+    explanation: "Strong feeling takes an exclamation mark."
+  - module: 58
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "'The cat sat on the mat' ends with?"
+    options: [".", "?", "!", ";"]
+    correct_index: 0
+    explanation: "It is a statement, so a full stop."
+  - module: 58
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "'Are you ready' ends with?"
+    options: ["?", ".", "!", ","]
+    correct_index: 0
+    explanation: "It is a question."
+
+  # ── Module 59 (ELA-008): Apostrophes ──
+  - module: 59
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "The short form of 'do not' is?"
+    options: ["don't", "dont", "do'nt", "donot"]
+    correct_index: 0
+    explanation: "The apostrophe replaces the missing o: don't."
+  - module: 59
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "The short form of 'I am' is?"
+    options: ["I'm", "Im", "I'am", "Iam"]
+    correct_index: 0
+    explanation: "The apostrophe replaces the missing a: I'm."
+  - module: 59
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "The short form of 'it is' is?"
+    options: ["it's", "its", "it'is", "itis"]
+    correct_index: 0
+    explanation: "The apostrophe replaces the missing i: it's."
+  - module: 59
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "The bone belonging to the dog is the ___ bone."
+    options: ["dog's", "dogs", "dogs'", "dog"]
+    correct_index: 0
+    explanation: "Add apostrophe + s to show belonging: dog's."
+  - module: 59
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "The apostrophe in 'don't' shows?"
+    options: ["missing letters", "belonging", "a plural", "a question"]
+    correct_index: 0
+    explanation: "In a short form it stands for the missing letters."
+  - module: 59
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "The short form of 'cannot' is?"
+    options: ["can't", "cant", "ca'nt", "cannt"]
+    correct_index: 0
+    explanation: "can't replaces the missing 'no'."
+  - module: 59
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "The short form of 'they are' is?"
+    options: ["they're", "theyre", "their", "there"]
+    correct_index: 0
+    explanation: "they're replaces the missing a."
+  - module: 59
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "The toy belonging to the boy is the ___ toy."
+    options: ["boy's", "boys", "boys'", "boy"]
+    correct_index: 0
+    explanation: "Add apostrophe + s: boy's."
+  - module: 59
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "The book belonging to Maya is ___ book."
+    options: ["Maya's", "Mayas", "Mayas'", "Maya"]
+    correct_index: 0
+    explanation: "Add apostrophe + s: Maya's."
+  - module: 59
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "To show something belongs to one person, you add?"
+    options: ["apostrophe + s", "just s", "an apostrophe after s", "nothing"]
+    correct_index: 0
+    explanation: "Add an apostrophe then s."
+  - module: 59
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "The short form of 'we will' is?"
+    options: ["we'll", "well", "we'ill", "wewill"]
+    correct_index: 0
+    explanation: "we'll replaces the missing 'wi'."
+  - module: 59
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "The short form of 'is not' is?"
+    options: ["isn't", "isnt", "is'nt", "isnot"]
+    correct_index: 0
+    explanation: "isn't replaces the missing o."
+  - module: 59
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "The collar belonging to the cat is the ___ collar."
+    options: ["cat's", "cats", "cats'", "cat"]
+    correct_index: 0
+    explanation: "Add apostrophe + s: cat's."
+  - module: 59
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "The short form of 'she is' is?"
+    options: ["she's", "shes", "she'is", "sheis"]
+    correct_index: 0
+    explanation: "she's replaces the missing i."
+  - module: 59
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "The bag belonging to Sara is ___ bag."
+    options: ["Sara's", "Saras", "Saras'", "Sara"]
+    correct_index: 0
+    explanation: "Add apostrophe + s: Sara's."
+
+  # ── Module 60 (ELA-009): Commas ──
+  - module: 60
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "Which sentence is punctuated correctly?"
+    options: ["I like tea, coffee and juice.", "I like tea coffee and juice.", "I like, tea coffee and juice.", "I like tea coffee, and, juice."]
+    correct_index: 0
+    explanation: "Commas separate the list items."
+  - module: 60
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "Commas are used to separate items in a?"
+    options: ["list", "question", "name", "word"]
+    correct_index: 0
+    explanation: "Use commas in a list."
+  - module: 60
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "Add the comma: 'Come here Sara' becomes?"
+    options: ["Come here, Sara", "Come, here Sara", "Come here Sara,", "Come here Sara"]
+    correct_index: 0
+    explanation: "A comma separates the name you are speaking to."
+  - module: 60
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "Which needs commas?"
+    options: ["a list of three items", "a single word", "a full stop", "a capital letter"]
+    correct_index: 0
+    explanation: "A list of three or more items needs commas."
+  - module: 60
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "'red green and blue' written with commas is?"
+    options: ["red, green and blue", "red green, and blue", "red, green, and, blue", "red green and blue"]
+    correct_index: 0
+    explanation: "Commas separate the list."
+  - module: 60
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "Which is correct?"
+    options: ["Thank you, Mr Ali", "Thank, you Mr Ali", "Thank you Mr, Ali", "Thank you Mr Ali"]
+    correct_index: 0
+    explanation: "A comma separates the name spoken to."
+  - module: 60
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "A comma tells the reader to?"
+    options: ["pause", "stop fully", "shout", "ask"]
+    correct_index: 0
+    explanation: "A comma is a short pause."
+  - module: 60
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "Which list is punctuated correctly?"
+    options: ["dogs, cats and birds", "dogs cats and birds", "dogs, cats, and, birds", "dogs cats, and birds"]
+    correct_index: 0
+    explanation: "Commas separate the list items."
+  - module: 60
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "Quotation marks go around a person's?"
+    options: ["exact spoken words", "name", "list", "pause"]
+    correct_index: 0
+    explanation: "Quotation marks show the exact words spoken."
+  - module: 60
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "'Yes Mom' with a comma is?"
+    options: ["Yes, Mom", "Yes Mom,", "Yes,Mom", "Yes Mom"]
+    correct_index: 0
+    explanation: "A comma separates the name."
+  - module: 60
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "Which sentence uses commas correctly?"
+    options: ["We bought rice, peas and chicken.", "We bought rice peas, and chicken.", "We, bought rice peas and chicken.", "We bought, rice peas and chicken."]
+    correct_index: 0
+    explanation: "Commas separate the list items."
+  - module: 60
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "Which shows correct speech punctuation?"
+    options: ["Maya said, \"I am ready.\"", "Maya said I am ready.", "Maya, said I am ready.", "Maya said \"I am ready\""]
+    correct_index: 0
+    explanation: "A comma before the speech, and the end mark inside the quotes."
+  - module: 60
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "'Well done Maya' with a comma is?"
+    options: ["Well done, Maya", "Well, done Maya", "Well done Maya,", "Well done Maya"]
+    correct_index: 0
+    explanation: "A comma separates the name spoken to."
+  - module: 60
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "In a list of three or more items you use?"
+    options: ["commas", "full stops", "question marks", "capitals"]
+    correct_index: 0
+    explanation: "Use commas to separate list items."
+  - module: 60
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "'Goodbye Anil' with a comma is?"
+    options: ["Goodbye, Anil", "Goodbye Anil,", "Good, bye Anil", "Goodbye Anil"]
+    correct_index: 0
+    explanation: "A comma separates the name."
+
+  # ── Module 61 (ELA-010): Capital Letters ──
+  - module: 61
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "Which word needs a capital letter?"
+    options: ["monday", "happy", "river", "table"]
+    correct_index: 0
+    explanation: "Days of the week are proper nouns: Monday."
+  - module: 61
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "The name 'maya' written correctly is?"
+    options: ["Maya", "maya", "MAYA", "mAya"]
+    correct_index: 0
+    explanation: "Names begin with a capital: Maya."
+  - module: 61
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "Which word is always written as a capital?"
+    options: ["I", "me", "you", "we"]
+    correct_index: 0
+    explanation: "The word I is always a capital."
+  - module: 61
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "A sentence always begins with a?"
+    options: ["capital letter", "full stop", "comma", "small letter"]
+    correct_index: 0
+    explanation: "Sentences begin with a capital letter."
+  - module: 61
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "The country 'trinidad' written correctly is?"
+    options: ["Trinidad", "trinidad", "TRINIDAD", "triniDad"]
+    correct_index: 0
+    explanation: "Places are proper nouns: Trinidad."
+  - module: 61
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "Which word needs a capital?"
+    options: ["august", "summer", "month", "warm"]
+    correct_index: 0
+    explanation: "Months are proper nouns: August."
+  - module: 61
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "Which sentence is correct?"
+    options: ["My dog ran.", "my dog ran.", "MY dog ran.", "my Dog ran."]
+    correct_index: 0
+    explanation: "A sentence begins with a capital."
+  - module: 61
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "The day 'monday' written correctly is?"
+    options: ["Monday", "monday", "MONDAY", "monDay"]
+    correct_index: 0
+    explanation: "Days begin with a capital: Monday."
+  - module: 61
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "Names of people and places begin with a?"
+    options: ["capital letter", "small letter", "comma", "full stop"]
+    correct_index: 0
+    explanation: "Proper nouns take a capital."
+  - module: 61
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "Which sentence is written correctly?"
+    options: ["My sister and I sang.", "my sister and i sang.", "My sister and i sang.", "my sister and I sang."]
+    correct_index: 0
+    explanation: "Capital to start, and I is always a capital."
+  - module: 61
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "Which word needs a capital letter?"
+    options: ["anil", "dog", "school", "running"]
+    correct_index: 0
+    explanation: "Anil is a name, a proper noun."
+  - module: 61
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "Which is correct?"
+    options: ["We live in Port of Spain.", "we live in port of spain.", "We live in port of Spain.", "we live in Port of Spain."]
+    correct_index: 0
+    explanation: "Capital to start, and the place name is capitalised."
+  - module: 61
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "The month 'december' written correctly is?"
+    options: ["December", "december", "DECEMBER", "decemBer"]
+    correct_index: 0
+    explanation: "Months take a capital: December."
+  - module: 61
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "In 'i went to tobago', which words should be capitalised?"
+    options: ["both I and Tobago", "only I", "only Tobago", "none"]
+    correct_index: 0
+    explanation: "The word I and the place name Tobago both need capitals."
+  - module: 61
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "Which sentence is correct?"
+    options: ["On Friday, Maya visited Anil.", "on friday, maya visited anil.", "On friday, Maya visited Anil.", "on Friday, maya visited anil."]
+    correct_index: 0
+    explanation: "Sentence start, day, and names all take capitals."
+
+  # ── Module 62 (ELA-011): Parts of Speech ──
+  - module: 62
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "Which word is a noun?"
+    options: ["dog", "run", "quickly", "happy"]
+    correct_index: 0
+    explanation: "'dog' names a thing, so it is a noun."
+  - module: 62
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "A noun is a person, place or?"
+    options: ["thing", "action", "description", "time"]
+    correct_index: 0
+    explanation: "A noun names a person, place or thing."
+  - module: 62
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "Which word is an adjective (a describing word)?"
+    options: ["red", "car", "run", "slowly"]
+    correct_index: 0
+    explanation: "'red' describes a noun, so it is an adjective."
+  - module: 62
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "In 'the cup is full', which word is the noun?"
+    options: ["cup", "is", "full", "the"]
+    correct_index: 0
+    explanation: "'cup' names a thing."
+  - module: 62
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "An adjective describes a?"
+    options: ["noun", "verb", "comma", "sentence"]
+    correct_index: 0
+    explanation: "An adjective describes a noun."
+  - module: 62
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "Which word is a verb (an action word)?"
+    options: ["jump", "table", "blue", "happy"]
+    correct_index: 0
+    explanation: "'jump' is an action, so it is a verb."
+  - module: 62
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "In 'the tall boy smiled', which is the adjective?"
+    options: ["tall", "boy", "smiled", "the"]
+    correct_index: 0
+    explanation: "'tall' describes the boy."
+  - module: 62
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "An adverb often ends in?"
+    options: ["-ly", "-ing", "-ed", "-s"]
+    correct_index: 0
+    explanation: "Many adverbs end in -ly, like quickly."
+  - module: 62
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "Which word is a noun?"
+    options: ["school", "big", "quickly", "and"]
+    correct_index: 0
+    explanation: "'school' names a place."
+  - module: 62
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "In 'she ran quickly', which is the adverb?"
+    options: ["quickly", "she", "ran", "and"]
+    correct_index: 0
+    explanation: "'quickly' describes how she ran."
+  - module: 62
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "In 'the happy child laughed', which is the adjective?"
+    options: ["happy", "child", "laughed", "the"]
+    correct_index: 0
+    explanation: "'happy' describes the child."
+  - module: 62
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "Which word is an adverb?"
+    options: ["slowly", "slow", "snail", "tired"]
+    correct_index: 0
+    explanation: "'slowly' describes how an action is done."
+  - module: 62
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "A word that takes the place of a noun (he, she, it) is a?"
+    options: ["pronoun", "adjective", "adverb", "verb"]
+    correct_index: 0
+    explanation: "A pronoun stands in for a noun."
+  - module: 62
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "In 'the red car is fast', which word is a noun?"
+    options: ["car", "red", "fast", "is"]
+    correct_index: 0
+    explanation: "'car' names a thing."
+  - module: 62
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "Which sentence contains an adjective?"
+    options: ["The blue sky is clear.", "The dog ran.", "She sang.", "They left."]
+    correct_index: 0
+    explanation: "'blue' is an adjective describing the sky."
+
+  # ── Module 63 (ELA-012): Verb Tense ──
+  - module: 63
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "The past tense of 'play' is?"
+    options: ["played", "play", "playing", "plays"]
+    correct_index: 0
+    explanation: "Add -ed: played."
+  - module: 63
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "The past tense of 'walk' is?"
+    options: ["walked", "walk", "walking", "walks"]
+    correct_index: 0
+    explanation: "Add -ed: walked."
+  - module: 63
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "Add -ing to 'sing':"
+    options: ["singing", "singed", "sings", "sang"]
+    correct_index: 0
+    explanation: "sing + ing = singing."
+  - module: 63
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "The past tense of 'jump' is?"
+    options: ["jumped", "jump", "jumping", "jumps"]
+    correct_index: 0
+    explanation: "Add -ed: jumped."
+  - module: 63
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "To show the future, we use the word?"
+    options: ["will", "did", "was", "is"]
+    correct_index: 0
+    explanation: "'will' makes the future tense."
+  - module: 63
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "The past tense of 'call' is?"
+    options: ["called", "call", "calling", "calls"]
+    correct_index: 0
+    explanation: "Add -ed: called."
+  - module: 63
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "Add -ing to 'read':"
+    options: ["reading", "readed", "reads", "red"]
+    correct_index: 0
+    explanation: "read + ing = reading."
+  - module: 63
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "'Right now she is ___ a song.' (sing)"
+    options: ["singing", "singed", "sings", "sang"]
+    correct_index: 0
+    explanation: "The continuous form is singing."
+  - module: 63
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "The past tense of 'help' is?"
+    options: ["helped", "help", "helping", "helps"]
+    correct_index: 0
+    explanation: "Add -ed: helped."
+  - module: 63
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "'Tomorrow I ___ visit my aunt.'"
+    options: ["will", "did", "was", "am"]
+    correct_index: 0
+    explanation: "The future uses 'will'."
+  - module: 63
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "Add -ing to 'run' (double the n):"
+    options: ["running", "runing", "runned", "runs"]
+    correct_index: 0
+    explanation: "run + ing doubles the n: running."
+  - module: 63
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "The past tense of 'stop' is?"
+    options: ["stopped", "stoped", "stopping", "stops"]
+    correct_index: 0
+    explanation: "Double the p and add -ed: stopped."
+  - module: 63
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "Which sentence is in the past tense?"
+    options: ["She walked home.", "She walks home.", "She will walk home.", "She is walking home."]
+    correct_index: 0
+    explanation: "'walked' is the past tense."
+  - module: 63
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "The continuous form of 'they eat' is 'they are ___'."
+    options: ["eating", "ate", "eats", "eat"]
+    correct_index: 0
+    explanation: "Add -ing: eating."
+  - module: 63
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "Which sentence is in the future tense?"
+    options: ["I will play later.", "I played.", "I am playing.", "I play."]
+    correct_index: 0
+    explanation: "'will play' is the future tense."
+
+  # ── Module 64 (ELA-013): Subject-Verb Agreement ──
+  - module: 64
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "'The cat ___ fast.' (run)"
+    options: ["runs", "run", "running", "ran"]
+    correct_index: 0
+    explanation: "A singular subject takes 'runs'."
+  - module: 64
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "'She ___ every day.' (play)"
+    options: ["plays", "play", "playing", "played"]
+    correct_index: 0
+    explanation: "Singular subject: plays."
+  - module: 64
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "'They ___ home.' (run)"
+    options: ["run", "runs", "running", "ran"]
+    correct_index: 0
+    explanation: "Plural subject: run (no s)."
+  - module: 64
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "'He ___ his lunch.' (eat)"
+    options: ["eats", "eat", "eating", "ate"]
+    correct_index: 0
+    explanation: "Singular subject: eats."
+  - module: 64
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "A singular subject takes a verb ending in?"
+    options: ["s", "ed", "ing", "ly"]
+    correct_index: 0
+    explanation: "A singular subject takes a verb ending in s."
+  - module: 64
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "'The dogs ___.' (bark)"
+    options: ["bark", "barks", "barking", "barked"]
+    correct_index: 0
+    explanation: "Plural subject: bark (no s)."
+  - module: 64
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "'The baby ___.' (cry)"
+    options: ["cries", "crys", "cry", "crying"]
+    correct_index: 0
+    explanation: "Singular subject: cries (y becomes ies)."
+  - module: 64
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "Which sentence is correct?"
+    options: ["The children play outside.", "The children plays outside.", "The children playing outside.", "The children plays outsides."]
+    correct_index: 0
+    explanation: "Plural subject: play (no s)."
+  - module: 64
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "'We ___ a song.' (sing)"
+    options: ["sing", "sings", "singing", "sang"]
+    correct_index: 0
+    explanation: "Plural subject: sing (no s)."
+  - module: 64
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "A plural subject takes a verb with?"
+    options: ["no s", "an s", "ed", "ing"]
+    correct_index: 0
+    explanation: "A plural subject takes a verb with no s."
+  - module: 64
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "'The bird ___ sweetly.' (sing)"
+    options: ["sings", "sing", "singing", "sang"]
+    correct_index: 0
+    explanation: "Singular subject: sings."
+  - module: 64
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "Which sentence is correct?"
+    options: ["The girls play netball.", "The girls plays netball.", "The girl play netball.", "The girls playing netball."]
+    correct_index: 0
+    explanation: "Plural subject: play."
+  - module: 64
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "'The teacher ___ the class.' (help)"
+    options: ["helps", "help", "helping", "helped"]
+    correct_index: 0
+    explanation: "Singular subject: helps."
+  - module: 64
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "'The boys ___ football.' (play)"
+    options: ["play", "plays", "playing", "played"]
+    correct_index: 0
+    explanation: "Plural subject: play."
+  - module: 64
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "Which sentence is correct?"
+    options: ["He runs fast.", "He run fast.", "He running fast.", "He runs fasts."]
+    correct_index: 0
+    explanation: "Singular subject: runs."
+
+  # ── Module 65 (ELA-014): Prepositions and Conjunctions ──
+  - module: 65
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "'The cat sat ___ the mat.' (on top)"
+    options: ["on", "and", "but", "the"]
+    correct_index: 0
+    explanation: "'on' shows position."
+  - module: 65
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "'The ball rolled ___ the bed.' (beneath)"
+    options: ["under", "and", "or", "but"]
+    correct_index: 0
+    explanation: "'under' shows position."
+  - module: 65
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "A word that joins ideas (and, but, or) is a?"
+    options: ["conjunction", "preposition", "noun", "verb"]
+    correct_index: 0
+    explanation: "A conjunction joins ideas."
+  - module: 65
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "'rice ___ peas' (joining to add)"
+    options: ["and", "but", "under", "on"]
+    correct_index: 0
+    explanation: "'and' adds ideas together."
+  - module: 65
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "A word that shows position (in, on, under) is a?"
+    options: ["preposition", "conjunction", "noun", "adjective"]
+    correct_index: 0
+    explanation: "A preposition shows position."
+  - module: 65
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "'The toy is ___ the box.' (inside)"
+    options: ["in", "and", "but", "or"]
+    correct_index: 0
+    explanation: "'in' shows position."
+  - module: 65
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "'I was tired ___ I kept going.' (to contrast)"
+    options: ["but", "and", "or", "in"]
+    correct_index: 0
+    explanation: "'but' shows a contrast."
+  - module: 65
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "'The shop is ___ the two houses.' (in the middle)"
+    options: ["between", "on", "and", "but"]
+    correct_index: 0
+    explanation: "'between' shows position in the middle."
+  - module: 65
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "'I ran ___ I was late.' (to give a reason)"
+    options: ["because", "and", "but", "or"]
+    correct_index: 0
+    explanation: "'because' gives a reason."
+  - module: 65
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "'tea ___ coffee?' (a choice)"
+    options: ["or", "and", "but", "on"]
+    correct_index: 0
+    explanation: "'or' offers a choice."
+  - module: 65
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "'She hid ___ the door.' (at the back of)"
+    options: ["behind", "on", "and", "or"]
+    correct_index: 0
+    explanation: "'behind' shows position."
+  - module: 65
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "Which word is a preposition?"
+    options: ["under", "and", "but", "because"]
+    correct_index: 0
+    explanation: "'under' shows position, so it is a preposition."
+  - module: 65
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "Which word is a conjunction?"
+    options: ["because", "under", "on", "between"]
+    correct_index: 0
+    explanation: "'because' joins ideas, so it is a conjunction."
+  - module: 65
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "'small ___ strong' (to contrast)"
+    options: ["but", "and", "or", "on"]
+    correct_index: 0
+    explanation: "'but' shows a contrast."
+  - module: 65
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "'The bird flew ___ the tree.' (up into)"
+    options: ["into", "and", "but", "because"]
+    correct_index: 0
+    explanation: "'into' shows position and movement."
+
+  # ── Module 66 (ELA-015): Compound and Complex Sentences ──
+  - module: 66
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "A sentence that joins two complete ideas with and/but/or is a?"
+    options: ["compound sentence", "simple word", "question", "list"]
+    correct_index: 0
+    explanation: "That is a compound sentence."
+  - module: 66
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "Join with 'and': 'She sang. He danced.'"
+    options: ["She sang and he danced.", "She sang. And he danced.", "She and sang he danced.", "She sang he danced and."]
+    correct_index: 0
+    explanation: "Join the two ideas with 'and'."
+  - module: 66
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "Which word can join two sentences?"
+    options: ["but", "the", "very", "quickly"]
+    correct_index: 0
+    explanation: "'but' is a joining word (conjunction)."
+  - module: 66
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "A complex sentence adds a part starting with because, when, if or?"
+    options: ["although", "and", "but", "or"]
+    correct_index: 0
+    explanation: "'although' can begin the added part."
+  - module: 66
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "'I stayed inside ___ it was raining.' (a reason)"
+    options: ["because", "and", "but", "or"]
+    correct_index: 0
+    explanation: "'because' gives the reason."
+  - module: 66
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "Join with 'but': 'It was small. It was strong.'"
+    options: ["It was small but it was strong.", "It was small. But strong.", "It small but was strong.", "It was but small strong."]
+    correct_index: 0
+    explanation: "Join the ideas with 'but'."
+  - module: 66
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "Which is a compound sentence?"
+    options: ["I ran and I won.", "I ran fast.", "The red ball.", "Running quickly."]
+    correct_index: 0
+    explanation: "It joins two complete ideas with 'and'."
+  - module: 66
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "'___ the bell rang, we left.' (a time word)"
+    options: ["When", "And", "But", "Or"]
+    correct_index: 0
+    explanation: "'When' shows time in a complex sentence."
+  - module: 66
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "Join with 'or': 'We can walk. We can run.'"
+    options: ["We can walk or we can run.", "We walk can or run.", "We can walk. Or run.", "Or we can walk run."]
+    correct_index: 0
+    explanation: "Join with 'or' to offer a choice."
+  - module: 66
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "The added part of a complex sentence?"
+    options: ["cannot stand alone", "is a full sentence", "is a list", "is a question"]
+    correct_index: 0
+    explanation: "It depends on the main part and cannot stand alone."
+  - module: 66
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "'___ it rains, we stay in.' (a condition)"
+    options: ["If", "And", "But", "Or"]
+    correct_index: 0
+    explanation: "'If' shows a condition."
+  - module: 66
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "Which joining word gives a reason?"
+    options: ["because", "and", "but", "or"]
+    correct_index: 0
+    explanation: "'because' gives a reason."
+  - module: 66
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "Join with 'and': 'He cooked. She cleaned.'"
+    options: ["He cooked and she cleaned.", "He cooked. And cleaned.", "He and cooked she cleaned.", "And he cooked she cleaned."]
+    correct_index: 0
+    explanation: "Join the ideas with 'and'."
+  - module: 66
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "'She smiled ___ she passed.' (a reason)"
+    options: ["because", "when", "if", "and"]
+    correct_index: 0
+    explanation: "'because' gives the reason."
+  - module: 66
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "Which is a complex sentence?"
+    options: ["I stayed in because it rained.", "I ran and I won.", "The blue sky.", "Fast and strong."]
+    correct_index: 0
+    explanation: "It adds a 'because' part that cannot stand alone."
+
+  # ── Module 67 (ELA-016): Modal Verbs ──
+  - module: 67
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "Which modal asks for permission?"
+    options: ["may", "run", "the", "very"]
+    correct_index: 0
+    explanation: "'may' asks for permission."
+  - module: 67
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "'I ___ swim.' (ability)"
+    options: ["can", "the", "very", "and"]
+    correct_index: 0
+    explanation: "'can' shows ability."
+  - module: 67
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "A modal verb comes before another?"
+    options: ["verb", "noun", "comma", "full stop"]
+    correct_index: 0
+    explanation: "A modal comes before a main verb."
+  - module: 67
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "'You ___ rest.' (advice)"
+    options: ["should", "the", "and", "very"]
+    correct_index: 0
+    explanation: "'should' gives advice."
+  - module: 67
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "'It ___ rain later.' (possibility)"
+    options: ["might", "the", "and", "very"]
+    correct_index: 0
+    explanation: "'might' shows possibility."
+  - module: 67
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "Which sentence politely asks permission?"
+    options: ["May I leave the room?", "Run I leave the room?", "I leave the room.", "Leave I may room?"]
+    correct_index: 0
+    explanation: "'May I...' asks permission."
+  - module: 67
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "'We ___ help others.' (advice)"
+    options: ["should", "did", "was", "the"]
+    correct_index: 0
+    explanation: "'should' gives advice."
+  - module: 67
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "Which modal shows ability?"
+    options: ["can", "the", "very", "and"]
+    correct_index: 0
+    explanation: "'can' shows ability."
+  - module: 67
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "'___ you help me, please?' (polite request)"
+    options: ["Could", "The", "And", "Very"]
+    correct_index: 0
+    explanation: "'Could' makes a polite request."
+  - module: 67
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "'should' is used to give?"
+    options: ["advice", "permission", "a name", "a list"]
+    correct_index: 0
+    explanation: "'should' gives advice."
+  - module: 67
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "Which modal shows possibility?"
+    options: ["might", "the", "very", "and"]
+    correct_index: 0
+    explanation: "'might' shows possibility."
+  - module: 67
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "'You ___ study for your test.' (advice)"
+    options: ["should", "did", "was", "the"]
+    correct_index: 0
+    explanation: "'should' gives advice."
+  - module: 67
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "'may' is the modal for?"
+    options: ["permission", "a place", "a colour", "a number"]
+    correct_index: 0
+    explanation: "'may' asks or gives permission."
+  - module: 67
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "Which of these is a modal verb?"
+    options: ["could", "cook", "cat", "car"]
+    correct_index: 0
+    explanation: "'could' is a modal verb."
+  - module: 67
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "'We ___ win if we try.' (possibility)"
+    options: ["might", "did", "was", "the"]
+    correct_index: 0
+    explanation: "'might' shows possibility."
+
+  # ── Module 68 (ELA-017): Comparative and Superlative ──
+  - module: 68
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "The comparative of 'tall' is?"
+    options: ["taller", "tallest", "tall", "talling"]
+    correct_index: 0
+    explanation: "Add -er to compare two: taller."
+  - module: 68
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "The comparative of 'fast' is?"
+    options: ["faster", "fastest", "fast", "fasting"]
+    correct_index: 0
+    explanation: "Add -er: faster."
+  - module: 68
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "To compare TWO things, add?"
+    options: ["-er", "-est", "-ing", "-ly"]
+    correct_index: 0
+    explanation: "Add -er to compare two things."
+  - module: 68
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "The superlative of 'tall' is?"
+    options: ["tallest", "taller", "tall", "talling"]
+    correct_index: 0
+    explanation: "Add -est for the most of all: tallest."
+  - module: 68
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "The comparative of 'small' is?"
+    options: ["smaller", "smallest", "small", "smalling"]
+    correct_index: 0
+    explanation: "Add -er: smaller."
+  - module: 68
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "The superlative of 'fast' is?"
+    options: ["fastest", "faster", "fast", "fasting"]
+    correct_index: 0
+    explanation: "Add -est: fastest."
+  - module: 68
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "The comparative of 'big' is?"
+    options: ["bigger", "biger", "biggest", "bigest"]
+    correct_index: 0
+    explanation: "Double the g and add -er: bigger."
+  - module: 68
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "To show the MOST of all, add?"
+    options: ["-est", "-er", "-ing", "-ly"]
+    correct_index: 0
+    explanation: "Add -est for the most of all."
+  - module: 68
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "The superlative of 'small' is?"
+    options: ["smallest", "smaller", "small", "smalling"]
+    correct_index: 0
+    explanation: "Add -est: smallest."
+  - module: 68
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "'A giraffe is ___ than a horse.' (tall)"
+    options: ["taller", "tallest", "tall", "talling"]
+    correct_index: 0
+    explanation: "Comparing two, so use taller."
+  - module: 68
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "The superlative of 'big' is?"
+    options: ["biggest", "bigest", "bigger", "biger"]
+    correct_index: 0
+    explanation: "Double the g and add -est: biggest."
+  - module: 68
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "For long words, we use ___ instead of -er to compare two."
+    options: ["more", "most", "very", "-est"]
+    correct_index: 0
+    explanation: "Long words use 'more' (e.g. more careful)."
+  - module: 68
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "'That is the ___ mountain of all.' (high)"
+    options: ["highest", "higher", "high", "highing"]
+    correct_index: 0
+    explanation: "The most of all uses -est: highest."
+  - module: 68
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "The comparative of 'happy' is?"
+    options: ["happier", "happiest", "happy", "happyer"]
+    correct_index: 0
+    explanation: "Change y to i and add -er: happier."
+  - module: 68
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "The superlative of 'good' is?"
+    options: ["best", "goodest", "gooder", "more good"]
+    correct_index: 0
+    explanation: "'good' is irregular: good, better, best."
