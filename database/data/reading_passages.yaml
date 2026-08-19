@@ -1748,3 +1748,34 @@ passages:
       - word: "escape"
         definition: "to get away from danger"
         context_sentence: "The crab can drop its claw and escape."
+
+  - title: "The Water Cycle"
+    reading_level: 4
+    body: >
+      Water is always on the move in a never-ending journey. The hot sun heats
+      the sea, and water rises into the air as invisible vapour. High up, it cools
+      and forms clouds. When the clouds grow heavy, the water falls back as rain.
+      The rain runs into rivers, which carry it back to the sea, and the whole
+      cycle begins again. Thanks to this cycle, the earth never runs out of fresh
+      water.
+    questions:
+      - prompt: "What makes water rise into the air?"
+        type: mc
+        options: ["the heat of the sun", "the wind", "the moon", "the rivers"]
+        correct_index: 0
+      - prompt: "What happens when the clouds grow heavy?"
+        type: mc
+        options: ["the water falls back as rain", "they disappear", "they turn to ice", "they stay still"]
+        correct_index: 0
+      - prompt: "Explain why the passage calls it a 'never-ending journey'."
+        type: written
+    vocabulary:
+      - word: "vapour"
+        definition: "water in the form of a gas in the air"
+        context_sentence: "Water rises into the air as invisible vapour."
+      - word: "cools"
+        definition: "becomes less hot"
+        context_sentence: "High up, it cools and forms clouds."
+      - word: "cycle"
+        definition: "a set of events that repeats again and again"
+        context_sentence: "The whole cycle begins again."
