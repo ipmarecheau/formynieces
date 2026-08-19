@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\SchoolJournalEntry;
 use App\Services\SchoolJournal\JournalDigitiser;
+use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
@@ -14,6 +15,7 @@ use Livewire\WithFileUploads;
  * score-free. What the paper said stays in the honest layer with her guardian;
  * her world only knows the paper was filed and it helps Smooth steer.
  */
+#[Layout('components.layouts.diagnostic')]
 class StudentSchoolJournal extends Component
 {
     use WithFileUploads;
