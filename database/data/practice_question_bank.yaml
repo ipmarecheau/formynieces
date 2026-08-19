@@ -3826,3 +3826,1073 @@ questions:
     options: ["100", "40", "20", "110"]
     correct_index: 0
     explanation: "10 x 10 = 100."
+
+  # ── Module 36 (MATH-036): Linear Measure and Conversion ──
+  - module: 36
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "1 metre = ? centimetres"
+    options: ["100", "10", "1000", "50"]
+    correct_index: 0
+    explanation: "There are 100 cm in 1 m."
+  - module: 36
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "1 centimetre = ? millimetres"
+    options: ["10", "100", "5", "1000"]
+    correct_index: 0
+    explanation: "There are 10 mm in 1 cm."
+  - module: 36
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "1 kilometre = ? metres"
+    options: ["1000", "100", "10", "500"]
+    correct_index: 0
+    explanation: "There are 1000 m in 1 km."
+  - module: 36
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "2 metres = ? cm"
+    options: ["200", "20", "2000", "100"]
+    correct_index: 0
+    explanation: "2 x 100 = 200 cm."
+  - module: 36
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "How many centimetres are in 1 metre?"
+    options: ["100", "10", "1000", "50"]
+    correct_index: 0
+    explanation: "There are 100 cm in a metre."
+  - module: 36
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "3 m = ? cm"
+    options: ["300", "30", "3000", "3"]
+    correct_index: 0
+    explanation: "3 x 100 = 300 cm."
+  - module: 36
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "5 m = ? cm"
+    options: ["500", "50", "5000", "5"]
+    correct_index: 0
+    explanation: "5 x 100 = 500 cm."
+  - module: 36
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "200 cm = ? m"
+    options: ["2", "20", "200", "0.2"]
+    correct_index: 0
+    explanation: "200 ÷ 100 = 2 m."
+  - module: 36
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "1.5 m = ? cm"
+    options: ["150", "15", "1500", "105"]
+    correct_index: 0
+    explanation: "1.5 x 100 = 150 cm."
+  - module: 36
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "How many mm are in 2 cm?"
+    options: ["20", "2", "200", "12"]
+    correct_index: 0
+    explanation: "2 x 10 = 20 mm."
+  - module: 36
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "2 km = ? m"
+    options: ["2000", "200", "20", "2"]
+    correct_index: 0
+    explanation: "2 x 1000 = 2000 m."
+  - module: 36
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "500 cm = ? m"
+    options: ["5", "50", "500", "0.5"]
+    correct_index: 0
+    explanation: "500 ÷ 100 = 5 m."
+  - module: 36
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "4 m = ? mm"
+    options: ["4000", "400", "40", "4"]
+    correct_index: 0
+    explanation: "4 m = 400 cm = 4000 mm."
+  - module: 36
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "3000 m = ? km"
+    options: ["3", "30", "300", "0.3"]
+    correct_index: 0
+    explanation: "3000 ÷ 1000 = 3 km."
+  - module: 36
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "How many cm are in 2.5 m?"
+    options: ["250", "25", "2500", "205"]
+    correct_index: 0
+    explanation: "2.5 x 100 = 250 cm."
+
+  # ── Module 37 (MATH-037): Perimeter of Squares and Rectangles ──
+  - module: 37
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A square with side 5 has perimeter 4 x 5 = ?"
+    options: ["20", "25", "10", "9"]
+    correct_index: 0
+    explanation: "4 x 5 = 20."
+  - module: 37
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A 4 by 2 rectangle has perimeter 2 x (4 + 2) = ?"
+    options: ["12", "8", "6", "10"]
+    correct_index: 0
+    explanation: "2 x 6 = 12."
+  - module: 37
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A square with side 3 has perimeter?"
+    options: ["12", "9", "6", "33"]
+    correct_index: 0
+    explanation: "4 x 3 = 12."
+  - module: 37
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A 6 by 3 rectangle has perimeter 2 x (6 + 3) = ?"
+    options: ["18", "9", "12", "63"]
+    correct_index: 0
+    explanation: "2 x 9 = 18."
+  - module: 37
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A square with side 10 has perimeter?"
+    options: ["40", "20", "100", "14"]
+    correct_index: 0
+    explanation: "4 x 10 = 40."
+  - module: 37
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A 7 by 2 rectangle has perimeter?"
+    options: ["18", "14", "9", "16"]
+    correct_index: 0
+    explanation: "2 x (7 + 2) = 18."
+  - module: 37
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A square with side 5 has perimeter?"
+    options: ["20", "25", "10", "9"]
+    correct_index: 0
+    explanation: "4 x 5 = 20."
+  - module: 37
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "An 8 by 1 rectangle has perimeter 2 x (8 + 1) = ?"
+    options: ["18", "9", "8", "16"]
+    correct_index: 0
+    explanation: "2 x 9 = 18."
+  - module: 37
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A 10 by 5 rectangle has perimeter?"
+    options: ["30", "15", "50", "25"]
+    correct_index: 0
+    explanation: "2 x (10 + 5) = 30."
+  - module: 37
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A square with side 8 has perimeter?"
+    options: ["32", "16", "64", "12"]
+    correct_index: 0
+    explanation: "4 x 8 = 32."
+  - module: 37
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A 12 by 8 rectangle has perimeter 2 x (12 + 8) = ?"
+    options: ["40", "20", "96", "48"]
+    correct_index: 0
+    explanation: "2 x 20 = 40."
+  - module: 37
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A square with side 15 has perimeter?"
+    options: ["60", "30", "225", "45"]
+    correct_index: 0
+    explanation: "4 x 15 = 60."
+  - module: 37
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A 20 by 5 rectangle has perimeter?"
+    options: ["50", "25", "100", "40"]
+    correct_index: 0
+    explanation: "2 x (20 + 5) = 50."
+  - module: 37
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A square with side 7 has perimeter?"
+    options: ["28", "14", "49", "21"]
+    correct_index: 0
+    explanation: "4 x 7 = 28."
+  - module: 37
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A 9 by 6 rectangle has perimeter 2 x (9 + 6) = ?"
+    options: ["30", "15", "54", "45"]
+    correct_index: 0
+    explanation: "2 x 15 = 30."
+
+  # ── Module 38 (MATH-038): Area of Squares and Rectangles ──
+  - module: 38
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A 5 by 3 rectangle has area 5 x 3 = ?"
+    options: ["15", "8", "16", "53"]
+    correct_index: 0
+    explanation: "5 x 3 = 15."
+  - module: 38
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A square with side 4 has area 4 x 4 = ?"
+    options: ["16", "8", "12", "44"]
+    correct_index: 0
+    explanation: "4 x 4 = 16."
+  - module: 38
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A 4 by 2 rectangle has area?"
+    options: ["8", "6", "12", "42"]
+    correct_index: 0
+    explanation: "4 x 2 = 8."
+  - module: 38
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A square with side 5 has area?"
+    options: ["25", "10", "20", "55"]
+    correct_index: 0
+    explanation: "5 x 5 = 25."
+  - module: 38
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A 6 by 3 rectangle has area?"
+    options: ["18", "9", "12", "63"]
+    correct_index: 0
+    explanation: "6 x 3 = 18."
+  - module: 38
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A square with side 6 has area?"
+    options: ["36", "12", "24", "66"]
+    correct_index: 0
+    explanation: "6 x 6 = 36."
+  - module: 38
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A 7 by 2 rectangle has area?"
+    options: ["14", "9", "16", "72"]
+    correct_index: 0
+    explanation: "7 x 2 = 14."
+  - module: 38
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A 10 by 3 rectangle has area?"
+    options: ["30", "13", "20", "103"]
+    correct_index: 0
+    explanation: "10 x 3 = 30."
+  - module: 38
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A square with side 3 has area?"
+    options: ["9", "6", "12", "33"]
+    correct_index: 0
+    explanation: "3 x 3 = 9."
+  - module: 38
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "An 8 by 4 rectangle has area?"
+    options: ["32", "12", "24", "84"]
+    correct_index: 0
+    explanation: "8 x 4 = 32."
+  - module: 38
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A square with side 8 has area?"
+    options: ["64", "16", "32", "88"]
+    correct_index: 0
+    explanation: "8 x 8 = 64."
+  - module: 38
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A 12 by 5 rectangle has area?"
+    options: ["60", "17", "34", "125"]
+    correct_index: 0
+    explanation: "12 x 5 = 60."
+  - module: 38
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A square with side 10 has area?"
+    options: ["100", "40", "20", "110"]
+    correct_index: 0
+    explanation: "10 x 10 = 100."
+  - module: 38
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A 9 by 6 rectangle has area?"
+    options: ["54", "15", "30", "96"]
+    correct_index: 0
+    explanation: "9 x 6 = 54."
+  - module: 38
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A 7 by 7 square has area?"
+    options: ["49", "14", "28", "77"]
+    correct_index: 0
+    explanation: "7 x 7 = 49."
+
+  # ── Module 39 (MATH-039): Perimeter of Compound Shapes ──
+  - module: 39
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A shape with outside sides 3, 4, 3, 4 has perimeter?"
+    options: ["14", "12", "10", "7"]
+    correct_index: 0
+    explanation: "3 + 4 + 3 + 4 = 14."
+  - module: 39
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A shape with sides 2, 2, 2, 2 has perimeter?"
+    options: ["8", "6", "4", "2"]
+    correct_index: 0
+    explanation: "2 + 2 + 2 + 2 = 8."
+  - module: 39
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A shape with sides 5, 3, 5, 3 has perimeter?"
+    options: ["16", "13", "10", "8"]
+    correct_index: 0
+    explanation: "5 + 3 + 5 + 3 = 16."
+  - module: 39
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A shape with sides 1, 2, 3, 4 has perimeter?"
+    options: ["10", "8", "9", "6"]
+    correct_index: 0
+    explanation: "1 + 2 + 3 + 4 = 10."
+  - module: 39
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A shape with sides 6, 6, 6 has perimeter?"
+    options: ["18", "12", "6", "36"]
+    correct_index: 0
+    explanation: "6 + 6 + 6 = 18."
+  - module: 39
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A shape with sides 4, 4, 4, 4, 4 has perimeter?"
+    options: ["20", "16", "25", "24"]
+    correct_index: 0
+    explanation: "4 x 5 = 20."
+  - module: 39
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A shape with sides 3, 3, 5, 5 has perimeter?"
+    options: ["16", "13", "10", "8"]
+    correct_index: 0
+    explanation: "3 + 3 + 5 + 5 = 16."
+  - module: 39
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A shape with sides 2, 4, 2, 4 has perimeter?"
+    options: ["12", "8", "10", "6"]
+    correct_index: 0
+    explanation: "2 + 4 + 2 + 4 = 12."
+  - module: 39
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A shape with sides 7, 1, 7, 1 has perimeter?"
+    options: ["16", "14", "10", "8"]
+    correct_index: 0
+    explanation: "7 + 1 + 7 + 1 = 16."
+  - module: 39
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A shape with sides 5, 5, 5, 5 has perimeter?"
+    options: ["20", "25", "10", "15"]
+    correct_index: 0
+    explanation: "5 x 4 = 20."
+  - module: 39
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "An L-shape with sides 6, 3, 3, 3, 3, 6 has perimeter?"
+    options: ["24", "18", "15", "12"]
+    correct_index: 0
+    explanation: "6 + 3 + 3 + 3 + 3 + 6 = 24."
+  - module: 39
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A shape with sides 8, 2, 5, 2, 3, 4 has perimeter?"
+    options: ["24", "20", "22", "18"]
+    correct_index: 0
+    explanation: "8 + 2 + 5 + 2 + 3 + 4 = 24."
+  - module: 39
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A shape with sides 10, 4, 10, 4 has perimeter?"
+    options: ["28", "20", "24", "14"]
+    correct_index: 0
+    explanation: "10 + 4 + 10 + 4 = 28."
+  - module: 39
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A shape with six sides of 5 each has perimeter?"
+    options: ["30", "25", "20", "35"]
+    correct_index: 0
+    explanation: "5 x 6 = 30."
+  - module: 39
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A shape with sides 12, 6, 6, 6, 6, 12 has perimeter?"
+    options: ["48", "36", "24", "30"]
+    correct_index: 0
+    explanation: "12 + 6 + 6 + 6 + 6 + 12 = 48."
+
+  # ── Module 40 (MATH-040): Area of Compound Shapes ──
+  - module: 40
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "Two rectangles have areas 6 and 4. The total area is?"
+    options: ["10", "24", "2", "64"]
+    correct_index: 0
+    explanation: "6 + 4 = 10."
+  - module: 40
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "Two parts have areas 5 and 3. The total is?"
+    options: ["8", "15", "2", "53"]
+    correct_index: 0
+    explanation: "5 + 3 = 8."
+  - module: 40
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "Two parts have areas 10 and 6. The total is?"
+    options: ["16", "60", "4", "106"]
+    correct_index: 0
+    explanation: "10 + 6 = 16."
+  - module: 40
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "Two parts have areas 8 and 8. The total is?"
+    options: ["16", "64", "0", "88"]
+    correct_index: 0
+    explanation: "8 + 8 = 16."
+  - module: 40
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "Two parts have areas 12 and 3. The total is?"
+    options: ["15", "36", "9", "123"]
+    correct_index: 0
+    explanation: "12 + 3 = 15."
+  - module: 40
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A 2x2 rectangle plus a 3x3 rectangle: 4 + 9 = ?"
+    options: ["13", "12", "6", "36"]
+    correct_index: 0
+    explanation: "4 + 9 = 13."
+  - module: 40
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A 4x2 plus a 1x2 rectangle: 8 + 2 = ?"
+    options: ["10", "16", "6", "82"]
+    correct_index: 0
+    explanation: "8 + 2 = 10."
+  - module: 40
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A 5x1 plus a 2x2 rectangle: 5 + 4 = ?"
+    options: ["9", "10", "7", "54"]
+    correct_index: 0
+    explanation: "5 + 4 = 9."
+  - module: 40
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A 3x3 plus a 3x1 rectangle: 9 + 3 = ?"
+    options: ["12", "27", "6", "93"]
+    correct_index: 0
+    explanation: "9 + 3 = 12."
+  - module: 40
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "Two parts have areas 20 and 5. The total is?"
+    options: ["25", "100", "15", "205"]
+    correct_index: 0
+    explanation: "20 + 5 = 25."
+  - module: 40
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A 5x4 plus a 2x2 rectangle: 20 + 4 = ?"
+    options: ["24", "40", "16", "204"]
+    correct_index: 0
+    explanation: "20 + 4 = 24."
+  - module: 40
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A 6x3 plus a 3x3 rectangle: 18 + 9 = ?"
+    options: ["27", "54", "9", "183"]
+    correct_index: 0
+    explanation: "18 + 9 = 27."
+  - module: 40
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A 10x2 plus a 5x2 rectangle: 20 + 10 = ?"
+    options: ["30", "100", "10", "202"]
+    correct_index: 0
+    explanation: "20 + 10 = 30."
+  - module: 40
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A 4x4 plus a 4x2 rectangle: 16 + 8 = ?"
+    options: ["24", "64", "8", "168"]
+    correct_index: 0
+    explanation: "16 + 8 = 24."
+  - module: 40
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A 7x2 plus a 3x2 rectangle: 14 + 6 = ?"
+    options: ["20", "42", "8", "146"]
+    correct_index: 0
+    explanation: "14 + 6 = 20."
+
+  # ── Module 41 (MATH-041): Volume and Capacity ──
+  - module: 41
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A 2 by 3 by 4 box has volume 2 x 3 x 4 = ?"
+    options: ["24", "9", "14", "234"]
+    correct_index: 0
+    explanation: "2 x 3 x 4 = 24."
+  - module: 41
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A 2 by 2 by 2 box has volume?"
+    options: ["8", "6", "4", "222"]
+    correct_index: 0
+    explanation: "2 x 2 x 2 = 8."
+  - module: 41
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "1 litre = ? millilitres"
+    options: ["1000", "100", "10", "500"]
+    correct_index: 0
+    explanation: "There are 1000 ml in 1 litre."
+  - module: 41
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A 1 by 2 by 3 box has volume?"
+    options: ["6", "5", "9", "123"]
+    correct_index: 0
+    explanation: "1 x 2 x 3 = 6."
+  - module: 41
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "How many ml are in 2 litres?"
+    options: ["2000", "200", "20", "2"]
+    correct_index: 0
+    explanation: "2 x 1000 = 2000 ml."
+  - module: 41
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A 3 by 3 by 1 box has volume?"
+    options: ["9", "7", "6", "331"]
+    correct_index: 0
+    explanation: "3 x 3 x 1 = 9."
+  - module: 41
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A 2 by 5 by 1 box has volume?"
+    options: ["10", "8", "7", "251"]
+    correct_index: 0
+    explanation: "2 x 5 x 1 = 10."
+  - module: 41
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "3000 ml = ? litres"
+    options: ["3", "30", "300", "0.3"]
+    correct_index: 0
+    explanation: "3000 ÷ 1000 = 3 litres."
+  - module: 41
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "How many ml are in half a litre?"
+    options: ["500", "50", "5", "1000"]
+    correct_index: 0
+    explanation: "Half of 1000 is 500 ml."
+  - module: 41
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A 4 by 2 by 2 box has volume?"
+    options: ["16", "8", "10", "422"]
+    correct_index: 0
+    explanation: "4 x 2 x 2 = 16."
+  - module: 41
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A 5 by 4 by 2 box has volume?"
+    options: ["40", "11", "20", "542"]
+    correct_index: 0
+    explanation: "5 x 4 x 2 = 40."
+  - module: 41
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A 3 by 3 by 3 box has volume?"
+    options: ["27", "9", "18", "333"]
+    correct_index: 0
+    explanation: "3 x 3 x 3 = 27."
+  - module: 41
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "5 litres = ? ml"
+    options: ["5000", "500", "50", "5"]
+    correct_index: 0
+    explanation: "5 x 1000 = 5000 ml."
+  - module: 41
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A 10 by 2 by 2 box has volume?"
+    options: ["40", "14", "20", "1022"]
+    correct_index: 0
+    explanation: "10 x 2 x 2 = 40."
+  - module: 41
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "2500 ml = ? litres"
+    options: ["2.5", "25", "250", "0.25"]
+    correct_index: 0
+    explanation: "2500 ÷ 1000 = 2.5 litres."
+
+  # ── Module 42 (MATH-042): Mass and Weight ──
+  - module: 42
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "1 kilogram = ? grams"
+    options: ["1000", "100", "10", "500"]
+    correct_index: 0
+    explanation: "There are 1000 g in 1 kg."
+  - module: 42
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "2 kg = ? g"
+    options: ["2000", "200", "20", "2"]
+    correct_index: 0
+    explanation: "2 x 1000 = 2000 g."
+  - module: 42
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "How many grams are in 1 kg?"
+    options: ["1000", "100", "10", "500"]
+    correct_index: 0
+    explanation: "There are 1000 g in a kilogram."
+  - module: 42
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "3000 g = ? kg"
+    options: ["3", "30", "300", "0.3"]
+    correct_index: 0
+    explanation: "3000 ÷ 1000 = 3 kg."
+  - module: 42
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "How many grams are in half a kg?"
+    options: ["500", "50", "5", "1000"]
+    correct_index: 0
+    explanation: "Half of 1000 is 500 g."
+  - module: 42
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "5 kg = ? g"
+    options: ["5000", "500", "50", "5"]
+    correct_index: 0
+    explanation: "5 x 1000 = 5000 g."
+  - module: 42
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "4000 g = ? kg"
+    options: ["4", "40", "400", "0.4"]
+    correct_index: 0
+    explanation: "4000 ÷ 1000 = 4 kg."
+  - module: 42
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "1 tonne = ? kg"
+    options: ["1000", "100", "10", "500"]
+    correct_index: 0
+    explanation: "There are 1000 kg in 1 tonne."
+  - module: 42
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "1.5 kg = ? g"
+    options: ["1500", "150", "15", "105"]
+    correct_index: 0
+    explanation: "1.5 x 1000 = 1500 g."
+  - module: 42
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "How many kg are in 2000 g?"
+    options: ["2", "20", "200", "0.2"]
+    correct_index: 0
+    explanation: "2000 ÷ 1000 = 2 kg."
+  - module: 42
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "10 kg = ? g"
+    options: ["10000", "1000", "100", "10"]
+    correct_index: 0
+    explanation: "10 x 1000 = 10000 g."
+  - module: 42
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "2 tonnes = ? kg"
+    options: ["2000", "200", "20", "2"]
+    correct_index: 0
+    explanation: "2 x 1000 = 2000 kg."
+  - module: 42
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "2500 g = ? kg"
+    options: ["2.5", "25", "250", "0.25"]
+    correct_index: 0
+    explanation: "2500 ÷ 1000 = 2.5 kg."
+  - module: 42
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "How many grams are in 3 kg?"
+    options: ["3000", "300", "30", "3"]
+    correct_index: 0
+    explanation: "3 x 1000 = 3000 g."
+  - module: 42
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "0.5 kg = ? g"
+    options: ["500", "50", "5", "5000"]
+    correct_index: 0
+    explanation: "0.5 x 1000 = 500 g."
+
+  # ── Module 43 (MATH-043): Time ──
+  - module: 43
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "1 hour = ? minutes"
+    options: ["60", "100", "30", "24"]
+    correct_index: 0
+    explanation: "There are 60 minutes in an hour."
+  - module: 43
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "1 minute = ? seconds"
+    options: ["60", "100", "30", "24"]
+    correct_index: 0
+    explanation: "There are 60 seconds in a minute."
+  - module: 43
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "1 day = ? hours"
+    options: ["24", "12", "60", "7"]
+    correct_index: 0
+    explanation: "There are 24 hours in a day."
+  - module: 43
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "2 hours = ? minutes"
+    options: ["120", "60", "100", "240"]
+    correct_index: 0
+    explanation: "2 x 60 = 120 minutes."
+  - module: 43
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "How many minutes are in half an hour?"
+    options: ["30", "60", "15", "45"]
+    correct_index: 0
+    explanation: "Half of 60 is 30 minutes."
+  - module: 43
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "3 hours = ? minutes"
+    options: ["180", "120", "90", "300"]
+    correct_index: 0
+    explanation: "3 x 60 = 180 minutes."
+  - module: 43
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "120 minutes = ? hours"
+    options: ["2", "1", "3", "120"]
+    correct_index: 0
+    explanation: "120 ÷ 60 = 2 hours."
+  - module: 43
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "How many minutes are in 1.5 hours?"
+    options: ["90", "60", "75", "150"]
+    correct_index: 0
+    explanation: "1.5 x 60 = 90 minutes."
+  - module: 43
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "1 week = ? days"
+    options: ["7", "5", "30", "14"]
+    correct_index: 0
+    explanation: "There are 7 days in a week."
+  - module: 43
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "How many seconds are in 2 minutes?"
+    options: ["120", "60", "100", "240"]
+    correct_index: 0
+    explanation: "2 x 60 = 120 seconds."
+  - module: 43
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "4 hours = ? minutes"
+    options: ["240", "180", "120", "400"]
+    correct_index: 0
+    explanation: "4 x 60 = 240 minutes."
+  - module: 43
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "180 minutes = ? hours"
+    options: ["3", "2", "4", "180"]
+    correct_index: 0
+    explanation: "180 ÷ 60 = 3 hours."
+  - module: 43
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "How many hours are in 2 days?"
+    options: ["48", "24", "36", "12"]
+    correct_index: 0
+    explanation: "2 x 24 = 48 hours."
+  - module: 43
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "How many minutes are in a quarter of an hour?"
+    options: ["15", "30", "20", "45"]
+    correct_index: 0
+    explanation: "60 ÷ 4 = 15 minutes."
+  - module: 43
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "1 year = ? months"
+    options: ["12", "10", "52", "365"]
+    correct_index: 0
+    explanation: "There are 12 months in a year."
+
+  # ── Module 44 (MATH-044): Real-life Measurement Problems ──
+  - module: 44
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A jug holds 2 litres = ? ml"
+    options: ["2000", "200", "20", "2"]
+    correct_index: 0
+    explanation: "2 x 1000 = 2000 ml."
+  - module: 44
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "3 kg = ? g"
+    options: ["3000", "300", "30", "3"]
+    correct_index: 0
+    explanation: "3 x 1000 = 3000 g."
+  - module: 44
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "2 hours = ? minutes"
+    options: ["120", "60", "100", "240"]
+    correct_index: 0
+    explanation: "2 x 60 = 120 minutes."
+  - module: 44
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "5 m = ? cm"
+    options: ["500", "50", "5000", "5"]
+    correct_index: 0
+    explanation: "5 x 100 = 500 cm."
+  - module: 44
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "You pour 500 ml from a 2000 ml jug. How much is left?"
+    options: ["1500", "2500", "1000", "500"]
+    correct_index: 0
+    explanation: "2000 - 500 = 1500 ml."
+  - module: 44
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "1000 ml - 250 ml = ?"
+    options: ["750", "850", "650", "250"]
+    correct_index: 0
+    explanation: "1000 - 250 = 750 ml."
+  - module: 44
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "2000 g - 500 g = ?"
+    options: ["1500", "2500", "1000", "500"]
+    correct_index: 0
+    explanation: "2000 - 500 = 1500 g."
+  - module: 44
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "60 min - 15 min = ?"
+    options: ["45", "30", "55", "15"]
+    correct_index: 0
+    explanation: "60 - 15 = 45 minutes."
+  - module: 44
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "500 ml + 500 ml = ?"
+    options: ["1000", "500", "250", "100"]
+    correct_index: 0
+    explanation: "500 + 500 = 1000 ml (1 litre)."
+  - module: 44
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A rope is 3 m. You cut off 100 cm. How many cm are left?"
+    options: ["200", "300", "100", "2"]
+    correct_index: 0
+    explanation: "3 m = 300 cm, and 300 - 100 = 200 cm."
+  - module: 44
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A tank holds 5 litres. You use 2000 ml. How many ml are left?"
+    options: ["3000", "3500", "2000", "5000"]
+    correct_index: 0
+    explanation: "5 litres = 5000 ml, and 5000 - 2000 = 3000 ml."
+  - module: 44
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "You have 2 kg of rice and use 750 g. How many grams are left?"
+    options: ["1250", "1500", "750", "2000"]
+    correct_index: 0
+    explanation: "2 kg = 2000 g, and 2000 - 750 = 1250 g."
+  - module: 44
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A film is 2 hours. You watch 90 minutes. How many minutes are left?"
+    options: ["30", "60", "45", "120"]
+    correct_index: 0
+    explanation: "2 hours = 120 min, and 120 - 90 = 30 min."
+  - module: 44
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "Add 1.5 litres and 500 ml. What is the total in ml?"
+    options: ["2000", "1500", "1000", "2500"]
+    correct_index: 0
+    explanation: "1.5 litres = 1500 ml, and 1500 + 500 = 2000 ml."
+  - module: 44
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A wire is 2 m. You use 120 cm. How many cm are left?"
+    options: ["80", "120", "200", "20"]
+    correct_index: 0
+    explanation: "2 m = 200 cm, and 200 - 120 = 80 cm."
+
+  # ── Module 45 (MATH-045): Multi-step Measurement Problems ──
+  - module: 45
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A 4 by 3 room has floor area 4 x 3 = ? square m"
+    options: ["12", "7", "14", "43"]
+    correct_index: 0
+    explanation: "4 x 3 = 12 square metres."
+  - module: 45
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A 5 by 4 rectangle has area 5 x 4 = ?"
+    options: ["20", "9", "18", "54"]
+    correct_index: 0
+    explanation: "5 x 4 = 20."
+  - module: 45
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A square with side 6 has area?"
+    options: ["36", "12", "24", "66"]
+    correct_index: 0
+    explanation: "6 x 6 = 36."
+  - module: 45
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A 2 by 3 by 2 box has volume?"
+    options: ["12", "7", "10", "232"]
+    correct_index: 0
+    explanation: "2 x 3 x 2 = 12."
+  - module: 45
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A 5 by 4 rectangle has perimeter 2 x (5 + 4) = ?"
+    options: ["18", "20", "9", "45"]
+    correct_index: 0
+    explanation: "2 x 9 = 18."
+  - module: 45
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "6 square m of carpet at $5 per square m costs?"
+    options: ["30", "11", "25", "35"]
+    correct_index: 0
+    explanation: "6 x $5 = $30."
+  - module: 45
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "10 square m at $8 per square m costs?"
+    options: ["80", "18", "28", "108"]
+    correct_index: 0
+    explanation: "10 x $8 = $80."
+  - module: 45
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A 4 by 2 room: find the area, then the cost at $10 per square m."
+    options: ["80", "60", "8", "20"]
+    correct_index: 0
+    explanation: "Area 8, then 8 x $10 = $80."
+  - module: 45
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A 3 by 3 room: find the area, then the cost at $2 per square m."
+    options: ["18", "9", "6", "36"]
+    correct_index: 0
+    explanation: "Area 9, then 9 x $2 = $18."
+  - module: 45
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A square with side 5 has area?"
+    options: ["25", "10", "20", "55"]
+    correct_index: 0
+    explanation: "5 x 5 = 25."
+  - module: 45
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A 6 by 5 room needs carpet. Find the area, then the cost at $10 per square m."
+    options: ["300", "30", "110", "60"]
+    correct_index: 0
+    explanation: "Area 30, then 30 x $10 = $300."
+  - module: 45
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A 10 by 4 room has area = ? square m"
+    options: ["40", "14", "28", "104"]
+    correct_index: 0
+    explanation: "10 x 4 = 40 square metres."
+  - module: 45
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A 3 by 4 by 5 box has volume?"
+    options: ["60", "12", "35", "345"]
+    correct_index: 0
+    explanation: "3 x 4 x 5 = 60."
+  - module: 45
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "Fence a 7 by 3 garden: perimeter = 2 x (7 + 3) = ?"
+    options: ["20", "21", "10", "73"]
+    correct_index: 0
+    explanation: "2 x 10 = 20."
+  - module: 45
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "8 square m of tiles at $6 per square m costs?"
+    options: ["48", "14", "36", "86"]
+    correct_index: 0
+    explanation: "8 x $6 = $48."
