@@ -7250,3 +7250,1073 @@ questions:
     options: ["best", "goodest", "gooder", "more good"]
     correct_index: 0
     explanation: "'good' is irregular: good, better, best."
+
+  # ── Module 69 (ELA-018): Narrative Writing ──
+  - module: 69
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "A story's three parts are beginning, middle and?"
+    options: ["end", "list", "title", "name"]
+    correct_index: 0
+    explanation: "A story has a beginning, middle and end."
+  - module: 69
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "The part of a story where you meet the characters is the?"
+    options: ["beginning", "middle", "end", "title"]
+    correct_index: 0
+    explanation: "Characters are introduced at the beginning."
+  - module: 69
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "The part where the problem happens is the?"
+    options: ["middle", "beginning", "end", "title"]
+    correct_index: 0
+    explanation: "The problem happens in the middle."
+  - module: 69
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "The part where the problem is solved is the?"
+    options: ["end", "beginning", "middle", "title"]
+    correct_index: 0
+    explanation: "The problem is solved at the end."
+  - module: 69
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "A stronger word for 'ran' quickly is?"
+    options: ["raced", "walked", "sat", "stopped"]
+    correct_index: 0
+    explanation: "'raced' is a stronger, more exact word."
+  - module: 69
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "A stronger word for 'said' loudly is?"
+    options: ["shouted", "whispered", "asked", "thought"]
+    correct_index: 0
+    explanation: "'shouted' shows a loud way of speaking."
+  - module: 69
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "Which sentence paints a clearer picture?"
+    options: ["The muddy dog raced across the wet yard.", "The dog ran.", "A dog.", "It ran away."]
+    correct_index: 0
+    explanation: "It uses exact, sensory words."
+  - module: 69
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "A stronger word for 'big' is?"
+    options: ["huge", "small", "tiny", "little"]
+    correct_index: 0
+    explanation: "'huge' is a stronger word for big."
+  - module: 69
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "Descriptive writing uses words that appeal to the?"
+    options: ["senses", "numbers", "dates", "titles"]
+    correct_index: 0
+    explanation: "Description appeals to the five senses."
+  - module: 69
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "A story is told in what order?"
+    options: ["beginning, middle, end", "end, middle, beginning", "middle only", "no order"]
+    correct_index: 0
+    explanation: "In order: beginning, middle, end."
+  - module: 69
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "A stronger word for 'happy' is?"
+    options: ["delighted", "sad", "upset", "tired"]
+    correct_index: 0
+    explanation: "'delighted' is a stronger word for happy."
+  - module: 69
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "A stronger word for 'nice' (about food) is?"
+    options: ["delicious", "bad", "plain", "boring"]
+    correct_index: 0
+    explanation: "'delicious' is exact and vivid."
+  - module: 69
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "The setting of a story is the?"
+    options: ["time and place", "problem", "ending", "title"]
+    correct_index: 0
+    explanation: "The setting is when and where it happens."
+  - module: 69
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "A stronger word for 'looked' closely is?"
+    options: ["studied", "ignored", "left", "slept"]
+    correct_index: 0
+    explanation: "'studied' shows looking closely."
+  - module: 69
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "Which sentence is the most descriptive?"
+    options: ["Golden sunlight spilled across the calm sea.", "The sea was there.", "It was a sea.", "Sea."]
+    correct_index: 0
+    explanation: "It uses vivid, sensory language."
+
+  # ── Module 70 (ELA-019): Expository Writing ──
+  - module: 70
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "Expository writing gives the reader?"
+    options: ["facts", "opinions", "stories", "poems"]
+    correct_index: 0
+    explanation: "Expository writing informs with facts."
+  - module: 70
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "'Water is wet' is a?"
+    options: ["fact", "opinion", "story", "poem"]
+    correct_index: 0
+    explanation: "It can be checked, so it is a fact."
+  - module: 70
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "'Blue is the best colour' is a?"
+    options: ["opinion", "fact", "rule", "title"]
+    correct_index: 0
+    explanation: "It is a feeling, so an opinion."
+  - module: 70
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "A fact is something that can be?"
+    options: ["checked", "imagined", "felt only", "guessed"]
+    correct_index: 0
+    explanation: "A fact can be checked and is true for everyone."
+  - module: 70
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "'Trinidad is an island' is a?"
+    options: ["fact", "opinion", "story", "joke"]
+    correct_index: 0
+    explanation: "It can be checked, so it is a fact."
+  - module: 70
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "Which of these is a fact?"
+    options: ["The sun is a star.", "The sun is beautiful.", "Sunsets are the best.", "I love the sun."]
+    correct_index: 0
+    explanation: "It can be checked, so it is a fact."
+  - module: 70
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "Which of these is an opinion?"
+    options: ["Doubles taste amazing.", "Doubles is a food.", "Trinidad has doubles.", "Doubles has bread."]
+    correct_index: 0
+    explanation: "'taste amazing' is a feeling, so an opinion."
+  - module: 70
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "A report is organised: topic, facts, then a?"
+    options: ["summary", "joke", "poem", "song"]
+    correct_index: 0
+    explanation: "A report closes with a summary."
+  - module: 70
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "The part of a report that names the topic is the?"
+    options: ["opening", "middle", "closing", "title only"]
+    correct_index: 0
+    explanation: "The opening names the topic."
+  - module: 70
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "Expository writing keeps out the writer's?"
+    options: ["opinions", "facts", "topic", "details"]
+    correct_index: 0
+    explanation: "It reports facts, not opinions."
+  - module: 70
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "Which sentence belongs in a factual report?"
+    options: ["A frog is an amphibian.", "Frogs are the cutest animals.", "I hate frogs.", "Frogs are boring."]
+    correct_index: 0
+    explanation: "It is a checkable fact."
+  - module: 70
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "Which of these is an opinion?"
+    options: ["Mango is the tastiest fruit.", "A mango is a fruit.", "Mangoes grow on trees.", "Mangoes have seeds."]
+    correct_index: 0
+    explanation: "'tastiest' is a feeling, so an opinion."
+  - module: 70
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "The closing of a report should?"
+    options: ["sum up", "start a new topic", "give an opinion", "tell a story"]
+    correct_index: 0
+    explanation: "The closing sums up the report."
+  - module: 70
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "'The Earth orbits the Sun' is a?"
+    options: ["fact", "opinion", "story", "joke"]
+    correct_index: 0
+    explanation: "It can be checked, so it is a fact."
+  - module: 70
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "Expository writing is written to?"
+    options: ["inform", "entertain only", "persuade only", "confuse"]
+    correct_index: 0
+    explanation: "Its purpose is to inform."
+
+  # ── Module 71 (ELA-020): Figurative Language ──
+  - module: 71
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "A simile compares using 'like' or?"
+    options: ["as", "the", "and", "but"]
+    correct_index: 0
+    explanation: "A simile uses 'like' or 'as'."
+  - module: 71
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "'as brave as a ___'"
+    options: ["lion", "chair", "book", "cup"]
+    correct_index: 0
+    explanation: "The common simile is 'as brave as a lion'."
+  - module: 71
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "'She shone like a star' is a?"
+    options: ["simile", "fact", "list", "question"]
+    correct_index: 0
+    explanation: "It compares using 'like', so it is a simile."
+  - module: 71
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "A metaphor says one thing ___ another."
+    options: ["is", "near", "under", "beside"]
+    correct_index: 0
+    explanation: "A metaphor says one thing IS another."
+  - module: 71
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "'as busy as a ___' (an insect)"
+    options: ["bee", "dog", "cat", "fish"]
+    correct_index: 0
+    explanation: "The common simile is 'as busy as a bee'."
+  - module: 71
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "Which is a simile?"
+    options: ["She shone like a star.", "She is a shining star.", "She shines.", "A star."]
+    correct_index: 0
+    explanation: "It uses 'like', so it is a simile."
+  - module: 71
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "'The snow was a white blanket' is a?"
+    options: ["metaphor", "simile", "fact", "question"]
+    correct_index: 0
+    explanation: "It says the snow IS a blanket, a metaphor."
+  - module: 71
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "'as white as ___'"
+    options: ["snow", "night", "coal", "mud"]
+    correct_index: 0
+    explanation: "The common simile is 'as white as snow'."
+  - module: 71
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "Is 'Time is money' a simile or a metaphor?"
+    options: ["metaphor", "simile", "fact", "list"]
+    correct_index: 0
+    explanation: "It says one thing IS another, so a metaphor."
+  - module: 71
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "A simile always uses?"
+    options: ["like or as", "is", "and", "but"]
+    correct_index: 0
+    explanation: "A simile uses 'like' or 'as'."
+  - module: 71
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "Which is a metaphor?"
+    options: ["The world is a stage.", "brave as a lion", "sang like a bird", "fast as lightning"]
+    correct_index: 0
+    explanation: "It says one thing IS another with no 'like' or 'as'."
+  - module: 71
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "'sang like a bird' is a?"
+    options: ["simile", "metaphor", "fact", "question"]
+    correct_index: 0
+    explanation: "It uses 'like', so it is a simile."
+  - module: 71
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "'The classroom was a zoo' is a?"
+    options: ["metaphor", "simile", "fact", "list"]
+    correct_index: 0
+    explanation: "It says the classroom IS a zoo, a metaphor."
+  - module: 71
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "Which sentence is a simile?"
+    options: ["He is as tall as a tree.", "He is a tall tree.", "He is tall.", "A tree."]
+    correct_index: 0
+    explanation: "It uses 'as', so it is a simile."
+  - module: 71
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "Giving human actions to a thing (the wind whispered) is called?"
+    options: ["personification", "simile", "metaphor", "fact"]
+    correct_index: 0
+    explanation: "That is personification."
+
+  # ── Module 72 (ELA-021): Organisation ──
+  - module: 72
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "A group of sentences about one idea is a?"
+    options: ["paragraph", "word", "letter", "title"]
+    correct_index: 0
+    explanation: "That is a paragraph."
+  - module: 72
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "You start a new paragraph for a new?"
+    options: ["idea", "word", "letter", "comma"]
+    correct_index: 0
+    explanation: "A new paragraph signals a new idea."
+  - module: 72
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "A linking word that adds an idea is?"
+    options: ["also", "stop", "the", "very"]
+    correct_index: 0
+    explanation: "'also' adds another idea."
+  - module: 72
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "A paragraph should hold one main?"
+    options: ["idea", "letter", "comma", "title"]
+    correct_index: 0
+    explanation: "One paragraph, one main idea."
+  - module: 72
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "A linking word to show a result is?"
+    options: ["so", "and only", "the", "very"]
+    correct_index: 0
+    explanation: "'so' shows a result."
+  - module: 72
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "When should you start a new paragraph?"
+    options: ["when you move to a new idea", "after every sentence", "only at the end", "never"]
+    correct_index: 0
+    explanation: "Start a new paragraph for a new idea."
+  - module: 72
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "A linking word to contrast two ideas is?"
+    options: ["however", "also", "and", "then"]
+    correct_index: 0
+    explanation: "'however' shows a contrast."
+  - module: 72
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "A linking word to show time order is?"
+    options: ["then", "however", "because", "but"]
+    correct_index: 0
+    explanation: "'then' shows time order."
+  - module: 72
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "Sentences in a paragraph should be about the ___ idea."
+    options: ["same", "different", "opposite", "no"]
+    correct_index: 0
+    explanation: "They should all be about the same idea."
+  - module: 72
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "Good writing mixes short and long?"
+    options: ["sentences", "letters", "titles", "commas"]
+    correct_index: 0
+    explanation: "Varying sentence length keeps writing lively."
+  - module: 72
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "Which linking word adds another idea?"
+    options: ["also", "however", "but", "instead"]
+    correct_index: 0
+    explanation: "'also' adds an idea."
+  - module: 72
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "Which linking word shows a result?"
+    options: ["so", "however", "but", "although"]
+    correct_index: 0
+    explanation: "'so' shows a result."
+  - module: 72
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "A well-organised text guides the reader?"
+    options: ["smoothly", "confusingly", "backwards", "randomly"]
+    correct_index: 0
+    explanation: "Good organisation guides the reader smoothly."
+  - module: 72
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "Which linking word shows contrast?"
+    options: ["however", "also", "then", "and"]
+    correct_index: 0
+    explanation: "'however' shows a contrast."
+  - module: 72
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "Varying sentence length keeps writing?"
+    options: ["lively", "dull", "empty", "short"]
+    correct_index: 0
+    explanation: "A mix of lengths keeps writing lively."
+
+  # ── Module 74 (ELA-023): Supporting Details ──
+  - module: 74
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "A supporting detail is a smaller fact that backs up the?"
+    options: ["main idea", "title", "author", "page"]
+    correct_index: 0
+    explanation: "Details back up the main idea."
+  - module: 74
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "Details often answer who, what, when, where and?"
+    options: ["why", "never", "stop", "the"]
+    correct_index: 0
+    explanation: "Details answer who, what, when, where and why."
+  - module: 74
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "The main idea is supported by several?"
+    options: ["details", "titles", "authors", "pages"]
+    correct_index: 0
+    explanation: "Several details support the main idea."
+  - module: 74
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "A supporting detail is ___ than the main idea."
+    options: ["smaller", "bigger", "longer", "louder"]
+    correct_index: 0
+    explanation: "A detail is a smaller fact."
+  - module: 74
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "Details give ___ about the main idea."
+    options: ["specifics", "nothing", "titles", "pages"]
+    correct_index: 0
+    explanation: "Details give specifics."
+  - module: 74
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "In 'The library is helpful; it has quiet reading corners', the detail is?"
+    options: ["it has quiet reading corners", "the library is helpful", "libraries exist", "reading"]
+    correct_index: 0
+    explanation: "The small fact supports the main idea."
+  - module: 74
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "A detail usually answers a question like?"
+    options: ["who or what", "how long is the book", "who wrote it", "the title"]
+    correct_index: 0
+    explanation: "Details answer who, what, when, where, why."
+  - module: 74
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "The main idea is backed up by supporting?"
+    options: ["details", "titles", "pages", "authors"]
+    correct_index: 0
+    explanation: "Supporting details back it up."
+  - module: 74
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "Which is a supporting detail?"
+    options: ["It has thousands of books.", "The library is a helpful place.", "Libraries are good.", "Books."]
+    correct_index: 0
+    explanation: "It is a specific fact backing the main idea."
+  - module: 74
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "A detail is a ___ fact."
+    options: ["small", "whole", "false", "loud"]
+    correct_index: 0
+    explanation: "A detail is a small fact."
+  - module: 74
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "Supporting details make the main idea?"
+    options: ["stronger and clearer", "weaker", "longer", "shorter"]
+    correct_index: 0
+    explanation: "Details strengthen and clarify the main idea."
+  - module: 74
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "In 'Bees help plants; they carry pollen', the detail is?"
+    options: ["they carry pollen", "bees help plants", "bees are important", "plants"]
+    correct_index: 0
+    explanation: "The small fact supports the main idea."
+  - module: 74
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "Good writers support their main idea with?"
+    options: ["evidence and examples", "opinions only", "the title", "nothing"]
+    correct_index: 0
+    explanation: "Details are evidence and examples."
+  - module: 74
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "A detail that does NOT support the main idea should be?"
+    options: ["left out", "kept", "made the title", "repeated"]
+    correct_index: 0
+    explanation: "Unrelated details should be left out."
+  - module: 74
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "The main idea plus its details make a?"
+    options: ["clear paragraph", "single word", "title", "list of names"]
+    correct_index: 0
+    explanation: "Together they form a clear paragraph."
+
+  # ── Module 75 (ELA-024): Context Meaning ──
+  - module: 75
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "The words around a word that give its meaning are the?"
+    options: ["context", "title", "author", "page"]
+    correct_index: 0
+    explanation: "The surrounding words are the context."
+  - module: 75
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "If soup is 'bland', it has little?"
+    options: ["flavour", "water", "colour", "salt only"]
+    correct_index: 0
+    explanation: "'bland' means having little flavour."
+  - module: 75
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "Context clues help you find a word's?"
+    options: ["meaning", "spelling", "length", "colour"]
+    correct_index: 0
+    explanation: "Context clues reveal meaning."
+  - module: 75
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "'enormous' means very?"
+    options: ["big", "small", "fast", "slow"]
+    correct_index: 0
+    explanation: "'enormous' means very big."
+  - module: 75
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "To find a hard word's meaning, read the words ___ it."
+    options: ["around", "above only", "never", "without"]
+    correct_index: 0
+    explanation: "Read the words around it for clues."
+  - module: 75
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "'The path was treacherous, full of loose rocks.' 'treacherous' means?"
+    options: ["dangerous", "safe", "short", "flat"]
+    correct_index: 0
+    explanation: "Loose rocks are a danger, so treacherous means dangerous."
+  - module: 75
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "'exhausted' means very?"
+    options: ["tired", "happy", "hungry", "fast"]
+    correct_index: 0
+    explanation: "'exhausted' means very tired."
+  - module: 75
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "'The soup was bland, so she added salt.' 'bland' means?"
+    options: ["having little flavour", "very spicy", "very hot", "frozen"]
+    correct_index: 0
+    explanation: "She added salt for flavour, so bland means little flavour."
+  - module: 75
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "Clues that reveal a word's meaning are called context?"
+    options: ["clues", "words only", "titles", "pages"]
+    correct_index: 0
+    explanation: "They are context clues."
+  - module: 75
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "'gigantic' means very?"
+    options: ["large", "tiny", "quiet", "dark"]
+    correct_index: 0
+    explanation: "'gigantic' means very large."
+  - module: 75
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "'The delicate glass shattered easily.' 'delicate' means?"
+    options: ["easily broken", "very strong", "heavy", "dark"]
+    correct_index: 0
+    explanation: "It shattered easily, so delicate means easily broken."
+  - module: 75
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "'furious' means very?"
+    options: ["angry", "calm", "happy", "sleepy"]
+    correct_index: 0
+    explanation: "'furious' means very angry."
+  - module: 75
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "'The ancient ruins were thousands of years old.' 'ancient' means?"
+    options: ["very old", "brand new", "small", "bright"]
+    correct_index: 0
+    explanation: "Thousands of years old, so ancient means very old."
+  - module: 75
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "'She was reluctant and did not want to go.' 'reluctant' means?"
+    options: ["unwilling", "eager", "happy", "fast"]
+    correct_index: 0
+    explanation: "She did not want to go, so reluctant means unwilling."
+  - module: 75
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "'The generous man gave freely.' 'generous' means?"
+    options: ["giving", "greedy", "mean", "quiet"]
+    correct_index: 0
+    explanation: "He gave freely, so generous means giving."
+
+  # ── Module 76 (ELA-025): Cause and Effect ──
+  - module: 76
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "The reason something happens is the?"
+    options: ["cause", "effect", "title", "list"]
+    correct_index: 0
+    explanation: "The cause is the reason."
+  - module: 76
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "What happens as a result is the?"
+    options: ["effect", "cause", "title", "name"]
+    correct_index: 0
+    explanation: "The effect is the result."
+  - module: 76
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "In 'It rained, so we stayed in', the cause is the?"
+    options: ["rain", "staying in", "house", "title"]
+    correct_index: 0
+    explanation: "The rain is the cause."
+  - module: 76
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "A signal word for cause and effect is?"
+    options: ["because", "and", "the", "very"]
+    correct_index: 0
+    explanation: "'because' links a cause to an effect."
+  - module: 76
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "In 'he tripped and fell', the effect is that he?"
+    options: ["fell", "ran", "slept", "ate"]
+    correct_index: 0
+    explanation: "Falling is the effect."
+  - module: 76
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "In 'She studied hard, so she passed', the effect is?"
+    options: ["she passed", "she studied hard", "the test", "the school"]
+    correct_index: 0
+    explanation: "Passing is the result, so the effect."
+  - module: 76
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "Which word signals a cause?"
+    options: ["because", "and", "the", "very"]
+    correct_index: 0
+    explanation: "'because' introduces a cause."
+  - module: 76
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "In 'The plant grew because it was watered', the cause is?"
+    options: ["it was watered", "the plant grew", "the pot", "the sun only"]
+    correct_index: 0
+    explanation: "Watering is the cause."
+  - module: 76
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "Cause and effect are linked by signal?"
+    options: ["words", "numbers", "titles", "pages"]
+    correct_index: 0
+    explanation: "Signal words link them."
+  - module: 76
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "The cause comes ___ the effect."
+    options: ["before", "after", "never", "instead of"]
+    correct_index: 0
+    explanation: "The cause happens first."
+  - module: 76
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "In 'The ice melted because the sun was hot', the effect is?"
+    options: ["the ice melted", "the sun was hot", "the water", "the day"]
+    correct_index: 0
+    explanation: "Melting is the result, so the effect."
+  - module: 76
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "A signal word that introduces a result is?"
+    options: ["so", "because", "under", "the"]
+    correct_index: 0
+    explanation: "'so' introduces a result."
+  - module: 76
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "In 'He was late, so he ran', the cause is that he was?"
+    options: ["late", "early", "tired", "fast"]
+    correct_index: 0
+    explanation: "Being late is the cause."
+  - module: 76
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "'The flowers died because no one watered them.' The cause is?"
+    options: ["no one watered them", "the flowers died", "the garden", "the sun"]
+    correct_index: 0
+    explanation: "Not watering is the cause."
+  - module: 76
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "To find an effect, ask?"
+    options: ["what happened?", "why? only", "who wrote it?", "the title?"]
+    correct_index: 0
+    explanation: "The effect answers 'what happened?'."
+
+  # ── Module 77 (ELA-026): Inference ──
+  - module: 77
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "A smart guess from clues is called an?"
+    options: ["inference", "opinion", "title", "list"]
+    correct_index: 0
+    explanation: "That is an inference."
+  - module: 77
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "An inference uses clues and what you already?"
+    options: ["know", "forget", "ignore", "hide"]
+    correct_index: 0
+    explanation: "It uses clues plus what you know."
+  - module: 77
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "A grey sky and an umbrella suggest it might?"
+    options: ["rain", "snow", "shine", "freeze"]
+    correct_index: 0
+    explanation: "These clues suggest rain."
+  - module: 77
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "An inference is a smart ___ from clues."
+    options: ["guess", "fact stated", "title", "list"]
+    correct_index: 0
+    explanation: "It is a smart guess."
+  - module: 77
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "Reading between the lines means making an?"
+    options: ["inference", "list", "title", "opinion"]
+    correct_index: 0
+    explanation: "It means making an inference."
+  - module: 77
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "'Maya grabbed her umbrella and looked at the grey sky.' You can infer?"
+    options: ["it might rain", "it is sunny", "she is asleep", "she is swimming"]
+    correct_index: 0
+    explanation: "The clues suggest rain."
+  - module: 77
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "A growling stomach is a clue that someone is?"
+    options: ["hungry", "tired", "happy", "cold"]
+    correct_index: 0
+    explanation: "A growling stomach suggests hunger."
+  - module: 77
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "Yawning and rubbing eyes suggests someone is?"
+    options: ["tired", "excited", "angry", "fast"]
+    correct_index: 0
+    explanation: "These clues suggest tiredness."
+  - module: 77
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "To infer, you combine clues with your own?"
+    options: ["knowledge", "guessing only", "title", "page"]
+    correct_index: 0
+    explanation: "You combine clues with what you know."
+  - module: 77
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "An inference is NOT stated ___ in the text."
+    options: ["directly", "never", "loudly", "first"]
+    correct_index: 0
+    explanation: "An inference is not stated directly."
+  - module: 77
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "'Ravi's stomach growled as he stared at the clock.' You can infer Ravi is?"
+    options: ["hungry", "asleep", "swimming", "angry"]
+    correct_index: 0
+    explanation: "A growling stomach means hungry."
+  - module: 77
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "'She wiped her tears and smiled.' You can infer she felt?"
+    options: ["relieved or happy again", "hungry", "cold", "fast"]
+    correct_index: 0
+    explanation: "Smiling after tears suggests relief."
+  - module: 77
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "'The ground was wet and puddles were everywhere.' You can infer it?"
+    options: ["rained", "was sunny", "was dry", "was windy"]
+    correct_index: 0
+    explanation: "Wet ground and puddles suggest rain."
+  - module: 77
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "'He packed his bag and put on his uniform.' You can infer he is going to?"
+    options: ["school", "sleep", "the beach", "cook"]
+    correct_index: 0
+    explanation: "A uniform and bag suggest school."
+  - module: 77
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "A good inference is supported by?"
+    options: ["clues in the text", "no clues", "the title only", "guessing wildly"]
+    correct_index: 0
+    explanation: "It is backed by clues in the text."
+
+  # ── Module 78 (ELA-027): Purpose and Audience ──
+  - module: 78
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "A text that gives facts has the purpose to?"
+    options: ["inform", "confuse", "hide", "forget"]
+    correct_index: 0
+    explanation: "Facts inform the reader."
+  - module: 78
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "A text that tries to convince you aims to?"
+    options: ["persuade", "inform only", "entertain only", "confuse"]
+    correct_index: 0
+    explanation: "Convincing is persuading."
+  - module: 78
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "A funny story aims to?"
+    options: ["entertain", "inform", "persuade", "warn"]
+    correct_index: 0
+    explanation: "A funny story entertains."
+  - module: 78
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "Who a text is written for is its?"
+    options: ["audience", "purpose", "title", "author"]
+    correct_index: 0
+    explanation: "The readers are the audience."
+  - module: 78
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "A recipe that tells you the steps aims to?"
+    options: ["inform", "entertain", "persuade", "frighten"]
+    correct_index: 0
+    explanation: "A recipe informs."
+  - module: 78
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "A poster saying 'Save water!' has the purpose to?"
+    options: ["persuade", "inform only", "entertain", "confuse"]
+    correct_index: 0
+    explanation: "It is persuading you to act."
+  - module: 78
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "A book with big pictures and simple words is for which audience?"
+    options: ["young children", "scientists", "drivers", "doctors"]
+    correct_index: 0
+    explanation: "Pictures and simple words suit young children."
+  - module: 78
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "The reason a text is written is its?"
+    options: ["purpose", "audience", "title", "length"]
+    correct_index: 0
+    explanation: "The reason is the purpose."
+  - module: 78
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "An advertisement's purpose is usually to?"
+    options: ["persuade", "inform only", "entertain only", "warn"]
+    correct_index: 0
+    explanation: "Adverts persuade you to buy."
+  - module: 78
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "A news report giving facts aims to?"
+    options: ["inform", "persuade", "entertain", "frighten"]
+    correct_index: 0
+    explanation: "A news report informs."
+  - module: 78
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "A billboard saying 'Buy now!' aims to?"
+    options: ["persuade", "inform", "entertain", "teach"]
+    correct_index: 0
+    explanation: "It pushes you to buy, so it persuades."
+  - module: 78
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "A text full of cartoon characters is aimed at?"
+    options: ["children", "farmers", "doctors", "builders"]
+    correct_index: 0
+    explanation: "Cartoons appeal to children."
+  - module: 78
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "A comic strip is written mainly to?"
+    options: ["entertain", "inform", "persuade", "warn"]
+    correct_index: 0
+    explanation: "A comic entertains."
+  - module: 78
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "To find the audience, ask?"
+    options: ["who is it for?", "why? only", "what colour?", "how long?"]
+    correct_index: 0
+    explanation: "The audience is who it is for."
+  - module: 78
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "A safety sign giving a rule aims to?"
+    options: ["inform", "entertain", "persuade", "confuse"]
+    correct_index: 0
+    explanation: "A safety sign informs."
+
+  # ── Module 79 (ELA-028): Evaluating Texts ──
+  - module: 79
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "To support your view about a text, give?"
+    options: ["evidence from the text", "a louder voice", "a guess", "nothing"]
+    correct_index: 0
+    explanation: "Back your view with evidence from the text."
+  - module: 79
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "A personal view is your?"
+    options: ["opinion", "fact", "title", "list"]
+    correct_index: 0
+    explanation: "A view is an opinion."
+  - module: 79
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "Good evidence comes from the?"
+    options: ["text", "title only", "cover", "author's name"]
+    correct_index: 0
+    explanation: "Evidence comes from the text."
+  - module: 79
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "To evaluate a text is to ___ it."
+    options: ["judge", "copy", "ignore", "hide"]
+    correct_index: 0
+    explanation: "Evaluating means judging."
+  - module: 79
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "'Because she saved the cat' is an example of?"
+    options: ["evidence", "a title", "an opinion only", "a guess"]
+    correct_index: 0
+    explanation: "It is evidence from the text."
+  - module: 79
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "The best way to support your view is to?"
+    options: ["give evidence from the text", "say it louder", "guess", "repeat it"]
+    correct_index: 0
+    explanation: "Support it with evidence from the text."
+  - module: 79
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "When you evaluate a text, you are?"
+    options: ["judging how good it is", "counting words", "copying it", "reading fast"]
+    correct_index: 0
+    explanation: "Evaluating is judging its quality."
+  - module: 79
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "A judgement should be backed with?"
+    options: ["evidence", "volume", "guessing", "nothing"]
+    correct_index: 0
+    explanation: "Back a judgement with evidence."
+  - module: 79
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "Your view of a text is your?"
+    options: ["opinion", "fact", "title", "page"]
+    correct_index: 0
+    explanation: "A view is an opinion."
+  - module: 79
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "Evidence for your view comes from the?"
+    options: ["text", "cover", "title only", "author"]
+    correct_index: 0
+    explanation: "Evidence comes from the text."
+  - module: 79
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "A strong opinion about a character is backed by their?"
+    options: ["actions in the text", "name only", "the title", "the page number"]
+    correct_index: 0
+    explanation: "Judge a character by their actions."
+  - module: 79
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "To evaluate how convincing a text is, you judge its?"
+    options: ["reasons and evidence", "length only", "colour", "font"]
+    correct_index: 0
+    explanation: "Judge its reasons and evidence."
+  - module: 79
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "Which shows a well-supported view?"
+    options: ["She is brave because she ran into the fire.", "She is brave because I say so.", "She is brave.", "Brave."]
+    correct_index: 0
+    explanation: "It backs the view with evidence from the text."
+  - module: 79
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "Evaluating means giving a judgement plus a?"
+    options: ["reason", "title", "guess", "page number"]
+    correct_index: 0
+    explanation: "A judgement needs a reason."
+  - module: 79
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "A good evaluation uses evidence from the?"
+    options: ["text", "cover", "title", "author's name"]
+    correct_index: 0
+    explanation: "Use evidence from the text."
