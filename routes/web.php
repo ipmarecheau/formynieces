@@ -21,6 +21,7 @@ use App\Livewire\ReteachWalk;
 use App\Livewire\SchoolJournal;
 use App\Livewire\StudentSchoolJournal;
 use App\Livewire\TutorialWalk;
+use App\Livewire\WelcomeAboard;
 use App\Livewire\WritingStop;
 use App\Services\Diagnostic\DiagnosticReconciliation;
 use App\Services\Diagnostic\SessionLifecycle;
@@ -129,6 +130,10 @@ Route::middleware('auth')->group(function () {
         // Student's own roadmap — auth-only, never verified (synthetic emails).
         Route::get('/my-map', [DashboardController::class, 'index'])
             ->name('student.map');
+
+        // First-login welcome + joining bonus, before her first Voyage. [TR-01/05]
+        Route::get('/welcome', WelcomeAboard::class)
+            ->name('student.welcome');
 
         // The Voyage — gamified standalone alternative to the dashboard. [AM]
         Route::get('/voyage', [VoyageController::class, 'overworld'])

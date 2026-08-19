@@ -36,6 +36,7 @@ it('routes an onboarded student to her populated dashboard on login', function (
         'parent_id' => $guardian->id,
         'email' => 'aaliyah-onboarded@students.formynieces.com',
         'onboarding_completed_at' => now(),
+        'welcomed_at' => now(), // an established returning student
     ]);
 
     // Seed progress so the dashboard is populated, not an empty shell.

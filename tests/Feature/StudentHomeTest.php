@@ -21,6 +21,7 @@ function shHomeStudent(): User
         'password' => 'secret-password', // hashed cast; log in with the raw string
         'role' => 'student',
         'onboarding_completed_at' => now(),
+        'welcomed_at' => now(), // an established returning student
     ]);
 }
 

@@ -9,6 +9,7 @@ function ml07Student(): User
         'role' => 'student',
         'email' => 'aaliyah-ml07-'.uniqid().'@students.formynieces.com',
         'onboarding_completed_at' => now(),
+        'welcomed_at' => now(), // an established returning student
     ]);
     StudentStreak::create([
         'student_id' => $student->id,

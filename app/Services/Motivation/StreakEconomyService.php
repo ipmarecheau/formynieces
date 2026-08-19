@@ -60,6 +60,17 @@ class StreakEconomyService
     }
 
     /**
+     * Grant a joining bonus of one of every reward type to a new voyager's Locker
+     * (TR-05). Idempotency is the caller's responsibility (guarded by users.welcomed_at).
+     */
+    public function grantJoiningBonus(int $studentId): void
+    {
+        foreach (StreakReward::TYPES as $type) {
+            $this->grantReward($studentId, $type, 'joining_bonus');
+        }
+    }
+
+    /**
      * How many of a reward the student currently holds (SL-05).
      */
     public function balance(int $studentId, string $type): int

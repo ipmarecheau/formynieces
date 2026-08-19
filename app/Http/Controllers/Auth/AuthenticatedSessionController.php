@@ -86,6 +86,12 @@ class AuthenticatedSessionController extends Controller
         // at least one active streak, otherwise she goes straight to her Voyage —
         // her one home (SH-01). The splash then flows on to the Voyage too (SH-06).
         if ($user->isStudent()) {
+            // First arrival after onboarding: welcome her aboard and grant the
+            // joining bonus, then she flows on to her Voyage where the tour runs (TR-01).
+            if (! $user->hasBeenWelcomed()) {
+                return route('student.welcome');
+            }
+
             $hasActiveStreak = StudentStreak::where('student_id', $user->id)
                 ->where('count', '>', 0)
                 ->exists();

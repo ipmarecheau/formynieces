@@ -51,6 +51,13 @@
         }
         .vy-brand { font-family: 'Fredoka One', cursive; font-size: 1.3rem; color: #e6f2fb; }
         .vy-nav-right { display: flex; align-items: center; gap: 10px; }
+        .vy-tour-btn {
+            font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.82rem;
+            padding: 8px 16px; border-radius: 999px; cursor: pointer;
+            border: 1.5px solid rgba(246,183,30,0.55); color: #fde68a;
+            background: rgba(246,183,30,0.12);
+        }
+        .vy-tour-btn:hover { background: rgba(246,183,30,0.22); }
         .vy-switch, .vy-logout {
             font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.82rem;
             padding: 8px 16px; border-radius: 999px; cursor: pointer; text-decoration: none;
@@ -243,6 +250,8 @@
     <nav class="vy-nav">
         <span class="vy-brand">⛵ Your Voyage</span>
         <div class="vy-nav-right">
+            {{-- TR-04: replay the first-run tour any time. --}}
+            <button type="button" class="vy-tour-btn" onclick="Livewire.dispatch('start-tour')" title="Take the tour again">🧭 Take the tour</button>
             {{-- SH-04: her streak rides along the top of her home. --}}
             @if(($streaks['practice'] ?? 0) > 0)
                 <span class="vy-streak" title="Practice day streak">🔥 {{ $streaks['practice'] }} day streak</span>
@@ -259,6 +268,7 @@
     <div class="vy-wrap">
         <livewire:captains-orders wire:key="captains-orders" />
         <livewire:smooth-guide guide="voyage" wire:key="guide-voyage" />
+        <livewire:voyage-tour wire:key="voyage-tour" />
 
         <div class="vy-stage">
             <div class="vy-map-col">

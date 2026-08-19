@@ -23,6 +23,7 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
         'role',
         'parent_id',
         'onboarding_completed_at', // Slice 1
+        'welcomed_at', // TR-01: first welcome + joining bonus fired
         'guardian_reconciled_at', // RR-04 reconciliation decision
         'paused_at', // Pause/resume: null = active
         'age_attested_at',
@@ -44,6 +45,7 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'onboarding_completed_at' => 'datetime', // Slice 1
+            'welcomed_at' => 'datetime', // TR-01: first welcome + joining bonus
             'guardian_reconciled_at' => 'datetime', // RR-04 reconciliation decision
             'paused_at' => 'datetime', // Pause/resume
             'age_attested_at' => 'datetime',
@@ -52,6 +54,12 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
             'weekly_module_cap_override' => 'integer',
             'seen_guides' => 'array',
         ];
+    }
+
+    /** Has this student already been welcomed aboard (welcome + joining bonus)? (TR-01) */
+    public function hasBeenWelcomed(): bool
+    {
+        return $this->welcomed_at !== null;
     }
 
     /** Has this student already dismissed the named Smooth guide? (SG-02) */
