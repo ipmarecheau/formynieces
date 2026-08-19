@@ -2259,3 +2259,451 @@ passages:
       - word: "persistence"
         definition: "the quality of not giving up"
         context_sentence: "Persistence often outlasts hardship."
+
+  - title: "The Hummingbird's Secret"
+    reading_level: 5
+    body: >
+      The hummingbird is a tiny marvel of nature. Its wings beat so fast that they
+      become a blur and produce a soft humming sound. This rapid motion lets the
+      bird hover perfectly still in the air, sipping nectar from deep inside
+      flowers with its long, slender beak. To fuel such effort, it must eat almost
+      constantly, visiting hundreds of blooms a day. In return, it carries pollen
+      from flower to flower, helping the plants to reproduce. Small though it is,
+      the hummingbird plays a mighty role in its habitat.
+    questions:
+      - prompt: "Why can the hummingbird hover perfectly still?"
+        type: mc
+        options: ["its wings beat extremely fast", "it holds its breath", "it grips a branch", "it is very light"]
+        correct_index: 0
+      - prompt: "Why must the hummingbird eat almost constantly?"
+        type: mc
+        options: ["to fuel the effort of its fast wings", "it is greedy", "flowers are far apart", "it stores food"]
+        correct_index: 0
+      - prompt: "Explain how the hummingbird helps plants while feeding."
+        type: written
+    vocabulary:
+      - word: "marvel"
+        definition: "something that causes wonder"
+        context_sentence: "The hummingbird is a tiny marvel of nature."
+      - word: "hover"
+        definition: "to stay in one place in the air"
+        context_sentence: "It can hover perfectly still."
+      - word: "reproduce"
+        definition: "to produce young or new plants"
+        context_sentence: "It helps the plants to reproduce."
+
+  - title: "The Great Debate"
+    reading_level: 5
+    body: >
+      The school held a debate on whether pupils should be allowed to bring phones
+      to class. One side argued that phones help with research and keep families
+      in touch. The other warned that phones distract from learning and tempt
+      cheating. Both teams gathered evidence and spoke with passion. In the end,
+      the judges did not simply pick a winner, but praised how each side listened
+      and answered the other with respect. A good debate, the principal said,
+      sharpens the mind and teaches us to disagree without quarrelling.
+    questions:
+      - prompt: "What was the debate about?"
+        type: mc
+        options: ["whether pupils should bring phones to class", "the school uniform", "sports day", "lunch menus"]
+        correct_index: 0
+      - prompt: "What did the judges praise most?"
+        type: mc
+        options: ["how each side listened with respect", "how loud they were", "how long they spoke", "who had more people"]
+        correct_index: 0
+      - prompt: "Explain what is meant by learning 'to disagree without quarrelling'."
+        type: written
+    vocabulary:
+      - word: "argued"
+        definition: "gave reasons for or against something"
+        context_sentence: "One side argued that phones help with research."
+      - word: "distract"
+        definition: "to take attention away"
+        context_sentence: "Phones distract from learning."
+      - word: "evidence"
+        definition: "facts that show something is true"
+        context_sentence: "Both teams gathered evidence."
+
+  - title: "The Eclipse"
+    reading_level: 5
+    body: >
+      One afternoon the sky began to darken, though it was not yet evening. A
+      solar eclipse was taking place, as the moon moved directly between the earth
+      and the sun. For a few minutes, the moon blocked the sun's light, and a
+      strange twilight fell over the land. Birds grew quiet, thinking night had
+      come. Our teacher warned us never to look straight at the sun, but to view
+      it safely through a special filter. Then, as the moon slid onward, daylight
+      returned, and the world woke up again.
+    questions:
+      - prompt: "What causes a solar eclipse?"
+        type: mc
+        options: ["the moon moves between the earth and the sun", "the sun goes out", "clouds cover the sun", "the earth stops"]
+        correct_index: 0
+      - prompt: "Why did the birds grow quiet?"
+        type: mc
+        options: ["they thought night had come", "they were frightened of noise", "they flew away", "they were hungry"]
+        correct_index: 0
+      - prompt: "Explain why the teacher warned against looking straight at the sun."
+        type: written
+    vocabulary:
+      - word: "eclipse"
+        definition: "when one body in space blocks the light of another"
+        context_sentence: "A solar eclipse was taking place."
+      - word: "twilight"
+        definition: "the dim light between day and night"
+        context_sentence: "A strange twilight fell over the land."
+      - word: "filter"
+        definition: "something that lets only part of the light through"
+        context_sentence: "View it safely through a special filter."
+
+  - title: "The Wisdom of the Elder"
+    reading_level: 5
+    body: >
+      When two brothers quarrelled bitterly over a piece of land, they went to old
+      Pa Joseph for judgement. He listened to each in turn without a word. Then he
+      handed them a single dry stick and asked each to break it, which they did
+      with ease. Next he tied ten sticks together and asked them to break the
+      bundle. Try as they might, neither could. 'Alone you are easily broken,' he
+      said, 'but together you cannot be.' The brothers understood, and shared the
+      land in peace.
+    questions:
+      - prompt: "What could the brothers not break?"
+        type: mc
+        options: ["a bundle of ten sticks tied together", "a single stick", "a rope", "a stone"]
+        correct_index: 0
+      - prompt: "What did Pa Joseph want the brothers to learn?"
+        type: mc
+        options: ["they are stronger together than apart", "sticks are strong", "he was clever", "land is worthless"]
+        correct_index: 0
+      - prompt: "Explain the meaning of 'Alone you are easily broken, but together you cannot be'."
+        type: written
+    vocabulary:
+      - word: "quarrelled"
+        definition: "argued angrily"
+        context_sentence: "Two brothers quarrelled over land."
+      - word: "judgement"
+        definition: "a decision about what is right"
+        context_sentence: "They went to Pa Joseph for judgement."
+      - word: "bundle"
+        definition: "a number of things tied together"
+        context_sentence: "He tied ten sticks into a bundle."
+
+  - title: "The Sound of Music"
+    reading_level: 5
+    body: >
+      Sound is a kind of invisible wave that travels through the air. When a pan
+      is struck or a string is plucked, it vibrates rapidly back and forth. These
+      vibrations push the air into waves that spread outward until they reach our
+      ears. The faster something vibrates, the higher the note we hear; the slower
+      it vibrates, the lower the note. Our ears turn these tiny waves into the
+      music we love. What seems like magic is really the wonderful science of
+      moving air.
+    questions:
+      - prompt: "What happens to an object when it makes a sound?"
+        type: mc
+        options: ["it vibrates rapidly", "it grows hot", "it changes colour", "it stops moving"]
+        correct_index: 0
+      - prompt: "What decides whether a note is high or low?"
+        type: mc
+        options: ["how fast the object vibrates", "how big it is", "its colour", "how heavy it is"]
+        correct_index: 0
+      - prompt: "Explain how a sound reaches our ears from a plucked string."
+        type: written
+    vocabulary:
+      - word: "invisible"
+        definition: "not able to be seen"
+        context_sentence: "Sound is an invisible wave."
+      - word: "vibrates"
+        definition: "moves quickly back and forth"
+        context_sentence: "The string vibrates rapidly."
+      - word: "spread"
+        definition: "to move outward over an area"
+        context_sentence: "The waves spread outward."
+
+  - title: "The Champion's Discipline"
+    reading_level: 5
+    body: >
+      People saw only the medals that Keisha won and called her lucky. They did
+      not see the cold mornings when she rose at five to train while others slept.
+      They did not see the sweets she gave up or the parties she missed. Talent,
+      her coach often reminded her, is only a beginning; it is discipline that
+      turns talent into greatness. Every champion, Keisha knew, is built not in
+      the bright moment of victory, but in the quiet hours of hard, unseen work.
+    questions:
+      - prompt: "What did people fail to see about Keisha's success?"
+        type: mc
+        options: ["the hard, unseen training", "her medals", "her races", "her coach"]
+        correct_index: 0
+      - prompt: "According to her coach, what turns talent into greatness?"
+        type: mc
+        options: ["discipline", "luck", "money", "friends"]
+        correct_index: 0
+      - prompt: "Explain the idea that a champion is 'built in the quiet hours of hard work'."
+        type: written
+    vocabulary:
+      - word: "talent"
+        definition: "a natural ability to do something well"
+        context_sentence: "Talent is only a beginning."
+      - word: "discipline"
+        definition: "the practice of training oneself to work hard"
+        context_sentence: "It is discipline that turns talent into greatness."
+      - word: "victory"
+        definition: "a win or success"
+        context_sentence: "Not in the bright moment of victory."
+
+  - title: "The Value of Failure"
+    reading_level: 5
+    body: >
+      When Thomas first tried to build a working model bridge, it collapsed at
+      once. His second attempt sagged in the middle, and his third snapped under a
+      light weight. Rather than give up, Thomas studied each failure to learn why
+      it had happened. Slowly he understood how to spread the load and strengthen
+      the joints. His final bridge held far more weight than any other in the
+      class. Failure, he realised, is not the opposite of success but a step on
+      the road toward it.
+    questions:
+      - prompt: "What did Thomas do after each bridge failed?"
+        type: mc
+        options: ["studied the failure to learn why", "gave up", "copied a friend", "started a new hobby"]
+        correct_index: 0
+      - prompt: "How did his final bridge compare to the others?"
+        type: mc
+        options: ["it held far more weight", "it was the smallest", "it also collapsed", "it was the prettiest"]
+        correct_index: 0
+      - prompt: "Explain the idea that 'failure is a step on the road toward success'."
+        type: written
+    vocabulary:
+      - word: "collapsed"
+        definition: "fell down suddenly"
+        context_sentence: "The model bridge collapsed at once."
+      - word: "sagged"
+        definition: "sank or bent downward in the middle"
+        context_sentence: "His second attempt sagged in the middle."
+      - word: "load"
+        definition: "the weight that something carries"
+        context_sentence: "He understood how to spread the load."
+
+  - title: "Life in a Pond"
+    reading_level: 5
+    body: >
+      A quiet pond may seem like still water, but it teems with life. On the
+      surface, insects skate and lily pads float. Below, small fish dart among the
+      weeds while tadpoles wriggle toward becoming frogs. Tiny plants make food
+      from sunlight and give off the oxygen the creatures breathe. Each living
+      thing depends on the others: the frog eats the insect, the bird eats the
+      frog. Together they form a delicate balance, an entire tiny world contained
+      within a single pond.
+    questions:
+      - prompt: "What are tadpoles in the process of becoming?"
+        type: mc
+        options: ["frogs", "fish", "birds", "insects"]
+        correct_index: 0
+      - prompt: "What do the tiny plants provide for the creatures?"
+        type: mc
+        options: ["food and oxygen", "shade only", "shelter only", "water"]
+        correct_index: 0
+      - prompt: "Explain what is meant by the 'delicate balance' of the pond."
+        type: written
+    vocabulary:
+      - word: "teems"
+        definition: "is full of; swarms with"
+        context_sentence: "The pond teems with life."
+      - word: "oxygen"
+        definition: "the gas that living things need to breathe"
+        context_sentence: "Plants give off the oxygen creatures breathe."
+      - word: "balance"
+        definition: "a state where things are in the right amounts"
+        context_sentence: "They form a delicate balance."
+
+  - title: "The First Carnival"
+    reading_level: 5
+    body: >
+      Carnival in Trinidad and Tobago has deep and serious roots. Long ago, when
+      the enslaved people won their freedom, they took to the streets to
+      celebrate. They created their own music, costumes, and dances, turning
+      pain into joy and struggle into art. Over time these celebrations grew into
+      the great festival we know today, with its steelpan, calypso, and dazzling
+      masquerade. Behind every feather and every beat lies a story of a people who
+      transformed their suffering into one of the greatest cultural festivals on
+      earth.
+    questions:
+      - prompt: "When did the enslaved people first take to the streets to celebrate?"
+        type: mc
+        options: ["when they won their freedom", "at Christmas", "at harvest time", "when the ships arrived"]
+        correct_index: 0
+      - prompt: "What did the people turn their struggle into?"
+        type: mc
+        options: ["art", "money", "silence", "war"]
+        correct_index: 0
+      - prompt: "Explain what is meant by 'turning pain into joy and struggle into art'."
+        type: written
+    vocabulary:
+      - word: "enslaved"
+        definition: "made to be a slave, forced to work without freedom"
+        context_sentence: "The enslaved people won their freedom."
+      - word: "masquerade"
+        definition: "a parade of people in costume and masks"
+        context_sentence: "Its steelpan, calypso, and dazzling masquerade."
+      - word: "transformed"
+        definition: "changed completely"
+        context_sentence: "A people who transformed their suffering."
+
+  - title: "The Courage to Be Honest"
+    reading_level: 5
+    body: >
+      During the test, Denzil realised he had accidentally seen a classmate's
+      answer sheet. When he received full marks, he knew that one of them was not
+      truly his own. It would have been easy to say nothing. Instead, he went to
+      his teacher and explained what had happened. The teacher was surprised, then
+      deeply proud. She told him that honesty when no one is watching is the truest
+      test of character. Denzil lost one mark that day, but he kept something far
+      more valuable.
+    questions:
+      - prompt: "Why did Denzil feel one mark was not truly his own?"
+        type: mc
+        options: ["he had accidentally seen a classmate's answer", "he had guessed it", "the teacher told him", "he cheated on purpose"]
+        correct_index: 0
+      - prompt: "What did the teacher say is the truest test of character?"
+        type: mc
+        options: ["honesty when no one is watching", "getting full marks", "working quickly", "helping friends"]
+        correct_index: 0
+      - prompt: "Explain what 'far more valuable' thing Denzil kept."
+        type: written
+    vocabulary:
+      - word: "accidentally"
+        definition: "by chance, not on purpose"
+        context_sentence: "He had accidentally seen the answer sheet."
+      - word: "honesty"
+        definition: "the quality of telling the truth"
+        context_sentence: "Honesty when no one is watching."
+      - word: "character"
+        definition: "the sort of person someone truly is"
+        context_sentence: "The truest test of character."
+
+  - title: "The Blackout Rescue"
+    reading_level: 5
+    body: >
+      When the great storm knocked out the power, the whole town fell dark. In one
+      house, an elderly man who needed his breathing machine was in danger. His
+      young neighbour, Shanti, remembered that the health centre had a generator.
+      Without hesitating, she ran through the driving rain to fetch help. Nurses
+      hurried back with her and moved the old man to safety. Later, people called
+      Shanti a hero, but she said she had only done what any good neighbour should.
+      Sometimes courage is simply refusing to look away.
+    questions:
+      - prompt: "Why was the elderly man in danger during the blackout?"
+        type: mc
+        options: ["he needed his breathing machine", "his house flooded", "he was lost", "he had no food"]
+        correct_index: 0
+      - prompt: "What did Shanti remember that could help?"
+        type: mc
+        options: ["the health centre had a generator", "the shop sold candles", "the road was open", "the phone worked"]
+        correct_index: 0
+      - prompt: "Explain what Shanti meant by 'courage is simply refusing to look away'."
+        type: written
+    vocabulary:
+      - word: "generator"
+        definition: "a machine that makes electricity"
+        context_sentence: "The health centre had a generator."
+      - word: "hesitating"
+        definition: "pausing before acting because of doubt"
+        context_sentence: "Without hesitating, she ran for help."
+      - word: "hero"
+        definition: "a person admired for brave deeds"
+        context_sentence: "People called Shanti a hero."
+
+  - title: "The Gift of Music"
+    reading_level: 5
+    body: >
+      In the children's ward of the hospital, the days could feel long and grey.
+      Then, on Wednesdays, a group of volunteers came to play music for the sick
+      children. As the guitar and pan began to sing, faces that had been dull
+      lifted into smiles. Some children clapped, others simply closed their eyes
+      and listened. The doctors noticed that the young patients seemed calmer and
+      even healed a little faster. Music, it seems, can reach places that medicine
+      alone cannot.
+    questions:
+      - prompt: "Who came to the ward on Wednesdays?"
+        type: mc
+        options: ["a group of volunteers to play music", "new doctors", "the children's families", "teachers"]
+        correct_index: 0
+      - prompt: "What did the doctors notice about the young patients?"
+        type: mc
+        options: ["they seemed calmer and healed faster", "they slept less", "they ate more", "they grew taller"]
+        correct_index: 0
+      - prompt: "Explain the idea that 'music can reach places that medicine alone cannot'."
+        type: written
+    vocabulary:
+      - word: "ward"
+        definition: "a room in a hospital for patients"
+        context_sentence: "In the children's ward of the hospital."
+      - word: "volunteers"
+        definition: "people who help without being paid"
+        context_sentence: "A group of volunteers came to play music."
+      - word: "healed"
+        definition: "became well again"
+        context_sentence: "The children healed a little faster."
+
+  - title: "The Young Entrepreneur"
+    reading_level: 5
+    body: >
+      Twelve-year-old Aaliyah wanted to earn money for a new bicycle. Rather than
+      simply asking her parents, she looked around for a need she could fill. She
+      noticed that neighbours often had ripe fruit going to waste. So she began
+      collecting it, making fresh juice, and selling it at the corner on hot
+      afternoons. She kept careful records of what she spent and earned. Within a
+      few months, she had saved enough for her bicycle and learned lessons about
+      money that no classroom could teach.
+    questions:
+      - prompt: "What need did Aaliyah notice she could fill?"
+        type: mc
+        options: ["ripe fruit was going to waste", "the road was dirty", "children were hungry", "the shop was closed"]
+        correct_index: 0
+      - prompt: "What did she keep careful records of?"
+        type: mc
+        options: ["what she spent and earned", "the weather", "her homework", "her friends"]
+        correct_index: 0
+      - prompt: "Explain what lessons Aaliyah learned that 'no classroom could teach'."
+        type: written
+    vocabulary:
+      - word: "entrepreneur"
+        definition: "a person who starts a business"
+        context_sentence: "The young entrepreneur wanted a bicycle."
+      - word: "records"
+        definition: "written notes kept for information"
+        context_sentence: "She kept careful records."
+      - word: "earned"
+        definition: "got money in return for work"
+        context_sentence: "Records of what she spent and earned."
+
+  - title: "The Silent Language"
+    reading_level: 5
+    body: >
+      Not all messages are spoken with words. A smile can welcome a stranger, and
+      a frown can warn of anger. Crossed arms may show that a person feels closed
+      off, while a gentle nod says 'I am listening'. This is called body language,
+      and we use it every day without noticing. Sometimes what a person does with
+      their face and hands tells us more than what they say aloud. Learning to
+      read this silent language helps us understand others and treat them with
+      care.
+    questions:
+      - prompt: "What is 'body language'?"
+        type: mc
+        options: ["messages sent without words, through the body", "a foreign language", "sign writing", "a secret code"]
+        correct_index: 0
+      - prompt: "What might crossed arms show?"
+        type: mc
+        options: ["that a person feels closed off", "that a person is cold only", "that a person is tired", "that a person is happy"]
+        correct_index: 0
+      - prompt: "Explain how reading body language 'helps us treat others with care'."
+        type: written
+    vocabulary:
+      - word: "frown"
+        definition: "a face that shows anger or worry"
+        context_sentence: "A frown can warn of anger."
+      - word: "gesture"
+        definition: "a movement of the body that carries meaning"
+        context_sentence: "A gentle nod is a gesture that says 'I am listening'."
+      - word: "notice"
+        definition: "to become aware of something"
+        context_sentence: "We use it without noticing."
