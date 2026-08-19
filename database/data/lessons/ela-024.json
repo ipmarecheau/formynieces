@@ -1,0 +1,42 @@
+[
+  {
+    "module": "ELA-024",
+    "title": "Working out word meaning from context",
+    "is_published": true,
+    "blocks": [
+      { "type": "text", "content": "You do not need a dictionary for every hard word. The words around it — the context — often give you clues to what it means." },
+      { "type": "key", "content": "Use the words around a word (the context) to work out its meaning." },
+      { "type": "text", "content": "Read this: 'The soup was so bland that Anil added salt and pepper to give it some flavour.'" },
+      {
+        "type": "check",
+        "question": "What does the word 'bland' mean in this sentence?",
+        "options": ["very spicy", "having little flavour", "very hot"],
+        "answer": 1,
+        "explain": "Anil added salt and pepper to give it flavour, so 'bland' must mean it had little flavour.",
+        "rule": "Use the words around a word (the context) to work out its meaning.",
+        "practiceItems": [
+          { "prompt": "the words around a word that give its meaning are the ___", "answer": "context" },
+          { "prompt": "if soup is 'bland', it has little ___", "answer": "flavour" },
+          { "prompt": "context clues help you find a word's ___", "answer": "meaning" },
+          { "prompt": "the clue words are ___ the hard word (around/far from)", "answer": "around" }
+        ]
+      },
+      { "type": "key", "content": "Look for clues: examples, opposites, or an explanation nearby often reveal the meaning." },
+      {
+        "type": "check",
+        "question": "'The path was treacherous, full of loose rocks and sudden drops.' What does 'treacherous' mean?",
+        "options": ["safe and easy", "dangerous", "short"],
+        "answer": 1,
+        "explain": "Loose rocks and sudden drops are dangers, so 'treacherous' means dangerous.",
+        "rule": "Nearby examples and descriptions are context clues to a word's meaning.",
+        "practiceItems": [
+          { "prompt": "'treacherous' means very ___ (dangerous/safe)", "answer": "dangerous" },
+          { "prompt": "'enormous' means very ___", "answer": "big" },
+          { "prompt": "'exhausted' means very ___", "answer": "tired" },
+          { "prompt": "clues that reveal meaning are called context ___", "answer": "clues" }
+        ]
+      },
+      { "type": "text", "content": "When a word is hard, read around it. The context almost always leaves you clues. Let's practise!" }
+    ]
+  }
+]
