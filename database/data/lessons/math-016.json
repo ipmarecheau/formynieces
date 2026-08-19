@@ -1,0 +1,40 @@
+[
+  {
+    "module": "MATH-016",
+    "title": "Fraction word problems",
+    "is_published": true,
+    "blocks": [
+      { "type": "text", "content": "Real problems often hide fractions inside a story. The trick is to read carefully, decide whether to add or subtract, and work with the tops." },
+      { "type": "key", "content": "When parts are joined together, ADD the fractions (keeping the same bottom)." },
+      { "type": "example", "content": "Combining parts.", "steps": ["Maya ate 1/4 of a pizza and Jed ate 2/4.", "Joined together, add the tops: 1 + 2 = 3.", "Together they ate 3/4 of the pizza."] },
+      {
+        "type": "fillblank",
+        "prompt": "Ravi read 1/5 of a book, then 3/5 more. How much has he read? ___",
+        "answer": "4/5",
+        "explain": "Add the parts: 1/5 + 3/5 = 4/5.",
+        "rule": "When parts are joined, add the fractions and keep the same bottom.",
+        "practiceItems": [
+          { "prompt": "1/4 + 1/4", "answer": "2/4" },
+          { "prompt": "eat 2/6 then 3/6 of a cake — total", "answer": "5/6" },
+          { "prompt": "1/5 + 3/5", "answer": "4/5" },
+          { "prompt": "2/8 + 4/8", "answer": "6/8" }
+        ]
+      },
+      { "type": "key", "content": "When some is taken away or used up, SUBTRACT to find what is left." },
+      {
+        "type": "fillblank",
+        "prompt": "A jug is 3/4 full. You pour out 1/4. How much is left? ___",
+        "answer": "2/4",
+        "explain": "Subtract what is poured out: 3/4 - 1/4 = 2/4.",
+        "rule": "When some is used or taken away, subtract the fractions to find what remains.",
+        "practiceItems": [
+          { "prompt": "a whole minus 1/3: 3/3 - 1/3", "answer": "2/3" },
+          { "prompt": "5/6 - 2/6", "answer": "3/6" },
+          { "prompt": "4/5 - 1/5", "answer": "3/5" },
+          { "prompt": "7/8 - 3/8", "answer": "4/8" }
+        ]
+      },
+      { "type": "text", "content": "Joined together means add; taken away means subtract. Read the story, then work with the tops. Let's practise!" }
+    ]
+  }
+]
