@@ -1258,3 +1258,538 @@ questions:
     options: ["7", "14", "6", "28"]
     correct_index: 0
     explanation: "n + n means 2 x n = 14, so n = 7."
+
+  # ── Module 12 (MATH-012): Equivalent Fractions and Simplifying ──
+  - module: 12
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "Which fraction is equal to 1/2?"
+    options: ["2/4", "1/3", "2/3", "1/4"]
+    correct_index: 0
+    explanation: "Multiply top and bottom of 1/2 by 2 to get 2/4."
+  - module: 12
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "1/2 = ?/6. What is the missing top number?"
+    options: ["3", "2", "4", "6"]
+    correct_index: 0
+    explanation: "Multiply 1/2 top and bottom by 3: 3/6."
+  - module: 12
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "Simplify 2/4."
+    options: ["1/2", "1/4", "2/2", "1/3"]
+    correct_index: 0
+    explanation: "Divide top and bottom by 2: 2/4 = 1/2."
+  - module: 12
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "1/3 = ?/9. What is the missing top number?"
+    options: ["3", "2", "4", "6"]
+    correct_index: 0
+    explanation: "Multiply 1/3 top and bottom by 3: 3/9."
+  - module: 12
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "Which fraction is equal to 1/4?"
+    options: ["2/8", "2/4", "1/8", "3/4"]
+    correct_index: 0
+    explanation: "Multiply 1/4 top and bottom by 2: 2/8."
+  - module: 12
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "Simplify 4/8."
+    options: ["1/2", "1/4", "2/4", "1/8"]
+    correct_index: 0
+    explanation: "Divide top and bottom by 4: 4/8 = 1/2."
+  - module: 12
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "Simplify 6/8."
+    options: ["3/4", "2/4", "3/8", "1/2"]
+    correct_index: 0
+    explanation: "Divide top and bottom by 2: 6/8 = 3/4."
+  - module: 12
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "2/3 = ?/6. What is the missing top number?"
+    options: ["4", "3", "2", "6"]
+    correct_index: 0
+    explanation: "Multiply 2/3 top and bottom by 2: 4/6."
+  - module: 12
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "Simplify 5/10."
+    options: ["1/2", "1/5", "2/5", "5/5"]
+    correct_index: 0
+    explanation: "Divide top and bottom by 5: 5/10 = 1/2."
+  - module: 12
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "Which fraction is equal to 3/4?"
+    options: ["6/8", "3/8", "4/6", "2/4"]
+    correct_index: 0
+    explanation: "Multiply 3/4 top and bottom by 2: 6/8."
+  - module: 12
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "Simplify 8/12."
+    options: ["2/3", "3/4", "4/6", "2/4"]
+    correct_index: 0
+    explanation: "Divide top and bottom by 4: 8/12 = 2/3."
+  - module: 12
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "Simplify 9/12."
+    options: ["3/4", "2/3", "3/6", "4/6"]
+    correct_index: 0
+    explanation: "Divide top and bottom by 3: 9/12 = 3/4."
+  - module: 12
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "6/9 in simplest form is ?/3. What is the missing top number?"
+    options: ["2", "3", "4", "1"]
+    correct_index: 0
+    explanation: "Divide 6/9 top and bottom by 3: 2/3."
+  - module: 12
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "Simplify 10/15."
+    options: ["2/3", "3/5", "5/10", "2/5"]
+    correct_index: 0
+    explanation: "Divide top and bottom by 5: 10/15 = 2/3."
+  - module: 12
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "Which fraction is equal to 2/5?"
+    options: ["4/10", "2/10", "5/10", "4/5"]
+    correct_index: 0
+    explanation: "Multiply 2/5 top and bottom by 2: 4/10."
+
+  # ── Module 13 (MATH-013): Adding and Subtracting Fractions ──
+  - module: 13
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "1/5 + 2/5 = ?"
+    options: ["3/5", "3/10", "2/5", "1/5"]
+    correct_index: 0
+    explanation: "Add the tops, keep the bottom: 1/5 + 2/5 = 3/5."
+  - module: 13
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "1/4 + 1/4 = ?"
+    options: ["2/4", "1/8", "2/8", "1/4"]
+    correct_index: 0
+    explanation: "1/4 + 1/4 = 2/4."
+  - module: 13
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "3/8 - 1/8 = ?"
+    options: ["2/8", "4/8", "2/16", "3/8"]
+    correct_index: 0
+    explanation: "3/8 - 1/8 = 2/8."
+  - module: 13
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "2/7 + 3/7 = ?"
+    options: ["5/7", "5/14", "6/7", "1/7"]
+    correct_index: 0
+    explanation: "2/7 + 3/7 = 5/7."
+  - module: 13
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "4/6 - 2/6 = ?"
+    options: ["2/6", "6/6", "2/12", "3/6"]
+    correct_index: 0
+    explanation: "4/6 - 2/6 = 2/6."
+  - module: 13
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "5/8 - 2/8 = ?"
+    options: ["3/8", "7/8", "3/16", "2/8"]
+    correct_index: 0
+    explanation: "5/8 - 2/8 = 3/8."
+  - module: 13
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "4/9 + 2/9 = ?"
+    options: ["6/9", "6/18", "8/9", "2/9"]
+    correct_index: 0
+    explanation: "4/9 + 2/9 = 6/9."
+  - module: 13
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "7/10 - 2/10 = ?"
+    options: ["5/10", "9/10", "5/20", "3/10"]
+    correct_index: 0
+    explanation: "7/10 - 2/10 = 5/10."
+  - module: 13
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "1/3 + 1/3 = ?"
+    options: ["2/3", "2/6", "1/3", "2/9"]
+    correct_index: 0
+    explanation: "1/3 + 1/3 = 2/3."
+  - module: 13
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "5/6 - 3/6 = ?"
+    options: ["2/6", "8/6", "2/12", "3/6"]
+    correct_index: 0
+    explanation: "5/6 - 3/6 = 2/6."
+  - module: 13
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "3/8 + 3/8 + 1/8 = ?"
+    options: ["7/8", "7/24", "6/8", "7/16"]
+    correct_index: 0
+    explanation: "3 + 3 + 1 = 7 eighths, so 7/8."
+  - module: 13
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "9/10 - 4/10 = ?"
+    options: ["5/10", "13/10", "5/20", "4/10"]
+    correct_index: 0
+    explanation: "9/10 - 4/10 = 5/10."
+  - module: 13
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "2/12 + 5/12 = ?"
+    options: ["7/12", "7/24", "3/12", "10/12"]
+    correct_index: 0
+    explanation: "2/12 + 5/12 = 7/12."
+  - module: 13
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "11/12 - 5/12 = ?"
+    options: ["6/12", "16/12", "6/24", "5/12"]
+    correct_index: 0
+    explanation: "11/12 - 5/12 = 6/12."
+  - module: 13
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "1/5 + 1/5 + 1/5 = ?"
+    options: ["3/5", "3/15", "1/5", "3/10"]
+    correct_index: 0
+    explanation: "1 + 1 + 1 = 3 fifths, so 3/5."
+
+  # ── Module 14 (MATH-014): Multiplying Fractions ──
+  - module: 14
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "1/2 x 1/2 = ?"
+    options: ["1/4", "1/2", "2/4", "1/1"]
+    correct_index: 0
+    explanation: "Tops 1x1=1, bottoms 2x2=4, so 1/4."
+  - module: 14
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "1/2 of 10 = ?"
+    options: ["5", "10", "2", "20"]
+    correct_index: 0
+    explanation: "10 ÷ 2 = 5."
+  - module: 14
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "1/3 of 9 = ?"
+    options: ["3", "9", "6", "27"]
+    correct_index: 0
+    explanation: "9 ÷ 3 = 3."
+  - module: 14
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "1/2 x 1/3 = ?"
+    options: ["1/6", "1/5", "2/6", "1/3"]
+    correct_index: 0
+    explanation: "Tops 1x1=1, bottoms 2x3=6, so 1/6."
+  - module: 14
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "1/4 of 8 = ?"
+    options: ["2", "4", "8", "32"]
+    correct_index: 0
+    explanation: "8 ÷ 4 = 2."
+  - module: 14
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "2/3 x 1/2 = ?"
+    options: ["2/6", "2/5", "3/6", "2/3"]
+    correct_index: 0
+    explanation: "Tops 2x1=2, bottoms 3x2=6, so 2/6."
+  - module: 14
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "1/4 x 1/2 = ?"
+    options: ["1/8", "1/6", "2/8", "1/4"]
+    correct_index: 0
+    explanation: "Tops 1x1=1, bottoms 4x2=8, so 1/8."
+  - module: 14
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "1/2 of 20 = ?"
+    options: ["10", "20", "5", "40"]
+    correct_index: 0
+    explanation: "20 ÷ 2 = 10."
+  - module: 14
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "2/3 of 6 = ?"
+    options: ["4", "6", "2", "9"]
+    correct_index: 0
+    explanation: "6 ÷ 3 = 2, then 2 x 2 = 4."
+  - module: 14
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "3/4 x 1/2 = ?"
+    options: ["3/8", "3/6", "4/8", "3/4"]
+    correct_index: 0
+    explanation: "Tops 3x1=3, bottoms 4x2=8, so 3/8."
+  - module: 14
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "3/4 of 8 = ?"
+    options: ["6", "8", "2", "12"]
+    correct_index: 0
+    explanation: "8 ÷ 4 = 2, then 2 x 3 = 6."
+  - module: 14
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "2/5 of 10 = ?"
+    options: ["4", "5", "2", "20"]
+    correct_index: 0
+    explanation: "10 ÷ 5 = 2, then 2 x 2 = 4."
+  - module: 14
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "2/3 x 3/4 = ?"
+    options: ["6/12", "5/7", "6/7", "2/4"]
+    correct_index: 0
+    explanation: "Tops 2x3=6, bottoms 3x4=12, so 6/12."
+  - module: 14
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "3/5 of 20 = ?"
+    options: ["12", "15", "10", "60"]
+    correct_index: 0
+    explanation: "20 ÷ 5 = 4, then 4 x 3 = 12."
+  - module: 14
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "1/2 x 1/4 = ?"
+    options: ["1/8", "1/6", "2/8", "1/2"]
+    correct_index: 0
+    explanation: "Tops 1x1=1, bottoms 2x4=8, so 1/8."
+
+  # ── Module 15 (MATH-015): Fractions of a Collection ──
+  - module: 15
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "1/2 of 12 = ?"
+    options: ["6", "12", "3", "24"]
+    correct_index: 0
+    explanation: "12 ÷ 2 = 6."
+  - module: 15
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "1/3 of 12 = ?"
+    options: ["4", "12", "6", "3"]
+    correct_index: 0
+    explanation: "12 ÷ 3 = 4."
+  - module: 15
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "1/4 of 8 = ?"
+    options: ["2", "4", "8", "1"]
+    correct_index: 0
+    explanation: "8 ÷ 4 = 2."
+  - module: 15
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "1/5 of 15 = ?"
+    options: ["3", "5", "15", "10"]
+    correct_index: 0
+    explanation: "15 ÷ 5 = 3."
+  - module: 15
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "1/2 of 20 = ?"
+    options: ["10", "20", "5", "2"]
+    correct_index: 0
+    explanation: "20 ÷ 2 = 10."
+  - module: 15
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "3/4 of 8 = ?"
+    options: ["6", "8", "2", "12"]
+    correct_index: 0
+    explanation: "8 ÷ 4 = 2, then 2 x 3 = 6."
+  - module: 15
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "2/3 of 9 = ?"
+    options: ["6", "9", "3", "18"]
+    correct_index: 0
+    explanation: "9 ÷ 3 = 3, then 3 x 2 = 6."
+  - module: 15
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "2/5 of 10 = ?"
+    options: ["4", "5", "2", "20"]
+    correct_index: 0
+    explanation: "10 ÷ 5 = 2, then 2 x 2 = 4."
+  - module: 15
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "3/4 of 12 = ?"
+    options: ["9", "12", "3", "16"]
+    correct_index: 0
+    explanation: "12 ÷ 4 = 3, then 3 x 3 = 9."
+  - module: 15
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "2/3 of 12 = ?"
+    options: ["8", "12", "4", "18"]
+    correct_index: 0
+    explanation: "12 ÷ 3 = 4, then 4 x 2 = 8."
+  - module: 15
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "3/5 of 20 = ?"
+    options: ["12", "15", "10", "60"]
+    correct_index: 0
+    explanation: "20 ÷ 5 = 4, then 4 x 3 = 12."
+  - module: 15
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "5/6 of 12 = ?"
+    options: ["10", "12", "2", "15"]
+    correct_index: 0
+    explanation: "12 ÷ 6 = 2, then 2 x 5 = 10."
+  - module: 15
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "3/8 of 16 = ?"
+    options: ["6", "8", "2", "48"]
+    correct_index: 0
+    explanation: "16 ÷ 8 = 2, then 2 x 3 = 6."
+  - module: 15
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "4/5 of 25 = ?"
+    options: ["20", "25", "5", "100"]
+    correct_index: 0
+    explanation: "25 ÷ 5 = 5, then 5 x 4 = 20."
+  - module: 15
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "2/7 of 21 = ?"
+    options: ["6", "7", "3", "42"]
+    correct_index: 0
+    explanation: "21 ÷ 7 = 3, then 3 x 2 = 6."
+
+  # ── Module 16 (MATH-016): Fraction Word Problems ──
+  - module: 16
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "Maya ate 1/4 of a pizza and Jed ate 2/4. How much did they eat together?"
+    options: ["3/4", "3/8", "1/4", "2/4"]
+    correct_index: 0
+    explanation: "1/4 + 2/4 = 3/4."
+  - module: 16
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "A jug is 3/4 full. You pour out 1/4. How much is left?"
+    options: ["2/4", "4/4", "3/16", "1/4"]
+    correct_index: 0
+    explanation: "3/4 - 1/4 = 2/4."
+  - module: 16
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "You read 1/5 of a book, then 3/5 more. How much have you read?"
+    options: ["4/5", "4/10", "3/5", "1/5"]
+    correct_index: 0
+    explanation: "1/5 + 3/5 = 4/5."
+  - module: 16
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "You read 1/3 of a book then 1/3 more. How much have you read?"
+    options: ["2/3", "2/6", "1/3", "2/9"]
+    correct_index: 0
+    explanation: "1/3 + 1/3 = 2/3."
+  - module: 16
+    difficulty: easy
+    sea_section: "Section I"
+    prompt: "A ribbon is 5/6 m and you use 2/6 m. How much is left?"
+    options: ["3/6", "7/6", "3/12", "2/6"]
+    correct_index: 0
+    explanation: "5/6 - 2/6 = 3/6."
+  - module: 16
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "You eat 2/8 of a cake, then 4/8 more. How much have you eaten?"
+    options: ["6/8", "6/16", "2/8", "8/8"]
+    correct_index: 0
+    explanation: "2/8 + 4/8 = 6/8."
+  - module: 16
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "A ribbon is 7/8 m. You cut off 3/8 m. How much is left?"
+    options: ["4/8", "10/8", "4/16", "3/8"]
+    correct_index: 0
+    explanation: "7/8 - 3/8 = 4/8."
+  - module: 16
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "In a class of 20, one half are girls. How many girls?"
+    options: ["10", "20", "5", "2"]
+    correct_index: 0
+    explanation: "1/2 of 20 = 10."
+  - module: 16
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "Three quarters of 12 sweets are given away. How many given away?"
+    options: ["9", "12", "3", "16"]
+    correct_index: 0
+    explanation: "3/4 of 12 = 9."
+  - module: 16
+    difficulty: medium
+    sea_section: "Section I"
+    prompt: "2/5 + 2/5 = ?"
+    options: ["4/5", "4/10", "2/5", "4/25"]
+    correct_index: 0
+    explanation: "2/5 + 2/5 = 4/5."
+  - module: 16
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "A tank is 5/6 full and 2/6 leaks out. How much remains?"
+    options: ["3/6", "7/6", "3/12", "2/6"]
+    correct_index: 0
+    explanation: "5/6 - 2/6 = 3/6."
+  - module: 16
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "One quarter of 40 students walk to school. How many walk?"
+    options: ["10", "40", "4", "20"]
+    correct_index: 0
+    explanation: "1/4 of 40 = 10."
+  - module: 16
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "You spend 1/3 of your money, then 1/3 more. What fraction have you spent?"
+    options: ["2/3", "2/6", "1/3", "2/9"]
+    correct_index: 0
+    explanation: "1/3 + 1/3 = 2/3."
+  - module: 16
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "Two thirds of 15 mangoes are ripe. How many are ripe?"
+    options: ["10", "15", "5", "45"]
+    correct_index: 0
+    explanation: "15 ÷ 3 = 5, then 5 x 2 = 10."
+  - module: 16
+    difficulty: hard
+    sea_section: "Section I"
+    prompt: "A wall is 3/8 painted. You paint 3/8 more. How much is painted now?"
+    options: ["6/8", "6/16", "3/8", "9/8"]
+    correct_index: 0
+    explanation: "3/8 + 3/8 = 6/8."
