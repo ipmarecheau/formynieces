@@ -1,0 +1,40 @@
+[
+  {
+    "module": "MATH-036",
+    "title": "Linear measure and converting length",
+    "is_published": true,
+    "blocks": [
+      { "type": "text", "content": "We measure length in millimetres, centimetres, metres and kilometres. Knowing how they relate lets you switch between them easily." },
+      { "type": "key", "content": "1 metre = 100 centimetres, 1 centimetre = 10 millimetres, and 1 kilometre = 1000 metres." },
+      { "type": "example", "content": "Metres to centimetres.", "steps": ["There are 100 cm in 1 m.", "So 3 m has 3 x 100 = 300 cm.", "The smaller the unit, the more of them you need."] },
+      {
+        "type": "fillblank",
+        "prompt": "1 metre = ___ centimetres.",
+        "answer": "100",
+        "explain": "There are 100 centimetres in one metre.",
+        "rule": "1 m = 100 cm, 1 cm = 10 mm, 1 km = 1000 m.",
+        "practiceItems": [
+          { "prompt": "centimetres in 1 metre", "answer": "100" },
+          { "prompt": "millimetres in 1 centimetre", "answer": "10" },
+          { "prompt": "metres in 1 kilometre", "answer": "1000" },
+          { "prompt": "centimetres in 2 metres", "answer": "200" }
+        ]
+      },
+      { "type": "key", "content": "To change a larger unit to a smaller one, multiply. To change smaller to larger, divide." },
+      {
+        "type": "fillblank",
+        "prompt": "3 m = ___ cm",
+        "answer": "300",
+        "explain": "Multiply by 100: 3 x 100 = 300 cm.",
+        "rule": "Multiply to convert to a smaller unit; divide to convert to a larger unit.",
+        "practiceItems": [
+          { "prompt": "2 m in cm", "answer": "200" },
+          { "prompt": "5 m in cm", "answer": "500" },
+          { "prompt": "200 cm in m", "answer": "2" },
+          { "prompt": "1.5 m in cm", "answer": "150" }
+        ]
+      },
+      { "type": "text", "content": "Remember 100 cm in a metre and 1000 m in a kilometre, and convert by multiplying or dividing. Let's practise!" }
+    ]
+  }
+]

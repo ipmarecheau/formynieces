@@ -1,0 +1,40 @@
+[
+  {
+    "module": "MATH-041",
+    "title": "Volume and capacity",
+    "is_published": true,
+    "blocks": [
+      { "type": "text", "content": "Volume is the space a solid takes up; capacity is how much a container can hold. Both are easy once you know the rules." },
+      { "type": "key", "content": "The volume of a box is length x width x height, measured in cubic units." },
+      { "type": "example", "content": "Volume of a box.", "steps": ["A box is 2 by 3 by 4.", "Volume = length x width x height = 2 x 3 x 4.", "So the volume is 24 cubic cm."] },
+      {
+        "type": "fillblank",
+        "prompt": "A box 2 by 3 by 4 has volume 2 x 3 x 4 = ___ cubic cm",
+        "answer": "24",
+        "explain": "2 x 3 x 4 = 24 cubic cm.",
+        "rule": "Volume of a box = length x width x height.",
+        "practiceItems": [
+          { "prompt": "volume of a 2 by 2 by 2 box", "answer": "8" },
+          { "prompt": "volume of a 1 by 2 by 3 box", "answer": "6" },
+          { "prompt": "volume of a 3 by 3 by 1 box", "answer": "9" },
+          { "prompt": "volume of a 2 by 5 by 1 box", "answer": "10" }
+        ]
+      },
+      { "type": "key", "content": "Capacity is measured in litres and millilitres: 1 litre = 1000 millilitres." },
+      {
+        "type": "fillblank",
+        "prompt": "1 litre = ___ millilitres",
+        "answer": "1000",
+        "explain": "There are 1000 millilitres in one litre.",
+        "rule": "1 litre = 1000 millilitres.",
+        "practiceItems": [
+          { "prompt": "millilitres in 1 litre", "answer": "1000" },
+          { "prompt": "millilitres in 2 litres", "answer": "2000" },
+          { "prompt": "litres in 3000 millilitres", "answer": "3" },
+          { "prompt": "millilitres in half a litre", "answer": "500" }
+        ]
+      },
+      { "type": "text", "content": "Volume multiplies length, width and height; capacity counts litres and millilitres. Let's practise!" }
+    ]
+  }
+]

@@ -1,0 +1,40 @@
+[
+  {
+    "module": "MATH-044",
+    "title": "Real-life measurement problems",
+    "is_published": true,
+    "blocks": [
+      { "type": "text", "content": "Everyday problems mix measurements — pouring drinks, weighing food, timing journeys. The key is to work in the same unit before you add or subtract." },
+      { "type": "key", "content": "Before comparing or combining measurements, convert them to the SAME unit." },
+      { "type": "example", "content": "Same unit first.", "steps": ["A jug holds 2 litres.", "To work in millilitres, convert: 2 litres = 2000 ml.", "Now you can compare or subtract in millilitres."] },
+      {
+        "type": "fillblank",
+        "prompt": "A jug holds 2 litres = ___ ml",
+        "answer": "2000",
+        "explain": "2 litres x 1000 = 2000 ml.",
+        "rule": "Convert measurements to the same unit before combining them.",
+        "practiceItems": [
+          { "prompt": "2 litres in ml", "answer": "2000" },
+          { "prompt": "3 kg in grams", "answer": "3000" },
+          { "prompt": "2 hours in minutes", "answer": "120" },
+          { "prompt": "5 m in cm", "answer": "500" }
+        ]
+      },
+      { "type": "key", "content": "Once units match, add or subtract to solve the problem." },
+      {
+        "type": "fillblank",
+        "prompt": "You pour 500 ml from a 2000 ml jug. Left = 2000 - 500 = ___ ml",
+        "answer": "1500",
+        "explain": "2000 - 500 = 1500 ml remaining.",
+        "rule": "With units matching, subtract to find what remains or add to find a total.",
+        "practiceItems": [
+          { "prompt": "1000 ml - 250 ml", "answer": "750" },
+          { "prompt": "2000 g - 500 g", "answer": "1500" },
+          { "prompt": "60 min - 15 min", "answer": "45" },
+          { "prompt": "500 ml + 500 ml", "answer": "1000" }
+        ]
+      },
+      { "type": "text", "content": "Match the units first, then add or subtract. That is the secret to any measurement problem. Let's practise!" }
+    ]
+  }
+]

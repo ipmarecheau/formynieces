@@ -1,0 +1,40 @@
+[
+  {
+    "module": "MATH-045",
+    "title": "Multi-step problems: area, perimeter and volume",
+    "is_published": true,
+    "blocks": [
+      { "type": "text", "content": "Bigger problems often ask you to find a measurement, then use it — like finding a floor's area, then the cost to cover it. Take it one step at a time." },
+      { "type": "key", "content": "First work out the measurement asked for — area, perimeter or volume — using the right formula." },
+      { "type": "example", "content": "Finding a floor area.", "steps": ["A room is 4 m by 3 m.", "Floor area = length x width = 4 x 3.", "So the area is 12 square metres."] },
+      {
+        "type": "fillblank",
+        "prompt": "A room 4 m by 3 m has floor area 4 x 3 = ___ square m",
+        "answer": "12",
+        "explain": "Area = length x width = 4 x 3 = 12 square metres.",
+        "rule": "Work out the required measurement first, using area = l x w, perimeter = sum of sides, or volume = l x w x h.",
+        "practiceItems": [
+          { "prompt": "area of a 5 by 4 rectangle", "answer": "20" },
+          { "prompt": "perimeter of a 5 by 4 rectangle: 2 x (5 + 4)", "answer": "18" },
+          { "prompt": "volume of a 2 by 3 by 2 box", "answer": "12" },
+          { "prompt": "area of a square with side 6", "answer": "36" }
+        ]
+      },
+      { "type": "key", "content": "Then use that measurement in the next step, such as multiplying by a cost per unit." },
+      {
+        "type": "fillblank",
+        "prompt": "A 4 by 3 room needs 12 square m of carpet. At $10 per square m, the cost = 12 x 10 = $___",
+        "answer": "120",
+        "explain": "12 square metres x $10 = $120.",
+        "rule": "Use the measurement you found in the next step, like measurement x cost per unit.",
+        "practiceItems": [
+          { "prompt": "6 square m of carpet at $5 each", "answer": "30" },
+          { "prompt": "10 square m at $8 each", "answer": "80" },
+          { "prompt": "area 4x2, then times $10 per square m", "answer": "80" },
+          { "prompt": "area 3x3, then times $2 per square m", "answer": "18" }
+        ]
+      },
+      { "type": "text", "content": "Find the measurement first, then carry it into the next step. One calculation at a time keeps a big problem simple. Let's practise!" }
+    ]
+  }
+]

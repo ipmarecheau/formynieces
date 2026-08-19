@@ -1,0 +1,40 @@
+[
+  {
+    "module": "MATH-037",
+    "title": "Perimeter of squares and rectangles",
+    "is_published": true,
+    "blocks": [
+      { "type": "text", "content": "Perimeter is the total distance all the way around the edge of a shape. For a square or rectangle, there is a quick formula." },
+      { "type": "key", "content": "The perimeter of a square is 4 x the side length, because all four sides are equal." },
+      { "type": "example", "content": "Perimeter of a square.", "steps": ["A square has a side of 5 cm.", "All 4 sides are 5 cm.", "Perimeter = 4 x 5 = 20 cm."] },
+      {
+        "type": "fillblank",
+        "prompt": "A square with side 5 cm has perimeter 4 x 5 = ___ cm",
+        "answer": "20",
+        "explain": "4 sides of 5 cm each: 4 x 5 = 20 cm.",
+        "rule": "The perimeter of a square is 4 x the side length.",
+        "practiceItems": [
+          { "prompt": "perimeter of a square with side 3", "answer": "12" },
+          { "prompt": "perimeter of a square with side 10", "answer": "40" },
+          { "prompt": "perimeter of a 4 by 2 rectangle: 2 x (4 + 2)", "answer": "12" },
+          { "prompt": "perimeter of a 6 by 3 rectangle", "answer": "18" }
+        ]
+      },
+      { "type": "key", "content": "The perimeter of a rectangle is 2 x (length + width), because opposite sides are equal." },
+      {
+        "type": "fillblank",
+        "prompt": "A 7 by 2 rectangle has perimeter 2 x (7 + 2) = ___",
+        "answer": "18",
+        "explain": "2 x (7 + 2) = 2 x 9 = 18.",
+        "rule": "The perimeter of a rectangle is 2 x (length + width).",
+        "practiceItems": [
+          { "prompt": "perimeter of a 5 by 5 square", "answer": "20" },
+          { "prompt": "perimeter of an 8 by 1 rectangle", "answer": "18" },
+          { "prompt": "perimeter of a 3 by 3 square", "answer": "12" },
+          { "prompt": "perimeter of a 10 by 5 rectangle", "answer": "30" }
+        ]
+      },
+      { "type": "text", "content": "Square: 4 x side. Rectangle: 2 x (length + width). Add your way around the shape. Let's practise!" }
+    ]
+  }
+]

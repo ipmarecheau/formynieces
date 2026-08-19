@@ -1,0 +1,40 @@
+[
+  {
+    "module": "MATH-038",
+    "title": "Area of squares and rectangles",
+    "is_published": true,
+    "blocks": [
+      { "type": "text", "content": "Area is the amount of flat space a shape covers. We measure it in square units, and for rectangles it is a simple multiplication." },
+      { "type": "key", "content": "The area of a rectangle is length x width." },
+      { "type": "example", "content": "Area of a rectangle.", "steps": ["A rectangle is 5 cm long and 3 cm wide.", "Area = length x width = 5 x 3.", "So the area is 15 square cm."] },
+      {
+        "type": "fillblank",
+        "prompt": "A 5 by 3 rectangle has area 5 x 3 = ___ square cm",
+        "answer": "15",
+        "explain": "Area = length x width = 5 x 3 = 15 square cm.",
+        "rule": "The area of a rectangle is length x width.",
+        "practiceItems": [
+          { "prompt": "area of a 4 by 2 rectangle", "answer": "8" },
+          { "prompt": "area of a square with side 5", "answer": "25" },
+          { "prompt": "area of a 6 by 3 rectangle", "answer": "18" },
+          { "prompt": "area of a square with side 3", "answer": "9" }
+        ]
+      },
+      { "type": "key", "content": "The area of a square is side x side, since its length and width are the same." },
+      {
+        "type": "fillblank",
+        "prompt": "A square with side 6 has area 6 x 6 = ___",
+        "answer": "36",
+        "explain": "Area of a square = side x side = 6 x 6 = 36.",
+        "rule": "The area of a square is side x side.",
+        "practiceItems": [
+          { "prompt": "area of a square with side 4", "answer": "16" },
+          { "prompt": "area of a 7 by 2 rectangle", "answer": "14" },
+          { "prompt": "area of a 10 by 3 rectangle", "answer": "30" },
+          { "prompt": "area of a square with side 8", "answer": "64" }
+        ]
+      },
+      { "type": "text", "content": "Area is length times width — and for a square, side times side. Count the squares inside. Let's practise!" }
+    ]
+  }
+]
