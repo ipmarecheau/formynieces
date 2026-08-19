@@ -291,3 +291,546 @@ passages:
       - word: "tight"
         definition: "held firmly, not loose"
         context_sentence: "I hold the string tight."
+
+  - title: "My Birthday Party"
+    reading_level: 3
+    body: >
+      Today is my birthday. I am nine years old. Mummy baked a big chocolate
+      cake. My friends came to play games in the yard. We sang and danced to
+      soca music. I blew out the candles and made a wish. It was the best day.
+    questions:
+      - prompt: "How old is the child now?"
+        type: mc
+        options: ["nine", "eight", "ten", "seven"]
+        correct_index: 0
+      - prompt: "What kind of cake did Mummy bake?"
+        type: mc
+        options: ["chocolate", "vanilla", "coconut", "fruit"]
+        correct_index: 0
+      - prompt: "Write what the child did before making a wish."
+        type: written
+    vocabulary:
+      - word: "baked"
+        definition: "cooked in an oven"
+        context_sentence: "Mummy baked a big chocolate cake."
+      - word: "candles"
+        definition: "sticks of wax that give light when lit"
+        context_sentence: "I blew out the candles."
+      - word: "wish"
+        definition: "a hope for something you want"
+        context_sentence: "I made a wish."
+
+  - title: "The Pet Cat"
+    reading_level: 3
+    body: >
+      We have a soft grey cat named Smoky. She likes to nap in the sun all day.
+      At night, Smoky chases moths around the lamp. She purrs when I rub her
+      head. Smoky keeps the mice away from our kitchen. She is a very good cat.
+    questions:
+      - prompt: "What is the cat's name?"
+        type: mc
+        options: ["Smoky", "Max", "Tiger", "Boots"]
+        correct_index: 0
+      - prompt: "What does Smoky chase at night?"
+        type: mc
+        options: ["moths", "birds", "dogs", "cars"]
+        correct_index: 0
+      - prompt: "Write one useful thing Smoky does."
+        type: written
+    vocabulary:
+      - word: "nap"
+        definition: "a short sleep"
+        context_sentence: "She likes to nap in the sun."
+      - word: "chases"
+        definition: "runs after"
+        context_sentence: "Smoky chases moths around the lamp."
+      - word: "purrs"
+        definition: "makes a soft sound when happy"
+        context_sentence: "She purrs when I rub her head."
+
+  - title: "Fishing with Uncle"
+    reading_level: 3
+    body: >
+      Early in the morning, Uncle took me fishing by the river. We sat quietly on
+      the bank and waited. I held the rod tight. Suddenly the line pulled hard.
+      I reeled it in and caught a small silver fish. Uncle smiled and said I did
+      well.
+    questions:
+      - prompt: "Where did they go fishing?"
+        type: mc
+        options: ["by the river", "at the sea", "in a pond", "at the lake"]
+        correct_index: 0
+      - prompt: "What did the child catch?"
+        type: mc
+        options: ["a small silver fish", "a crab", "a big shark", "a boot"]
+        correct_index: 0
+      - prompt: "Write what happened when the line pulled hard."
+        type: written
+    vocabulary:
+      - word: "bank"
+        definition: "the ground at the side of a river"
+        context_sentence: "We sat quietly on the bank."
+      - word: "reeled"
+        definition: "wound the line in to pull the fish closer"
+        context_sentence: "I reeled it in and caught a fish."
+      - word: "silver"
+        definition: "shiny and grey-white like a coin"
+        context_sentence: "I caught a small silver fish."
+
+  - title: "Carnival Costume"
+    reading_level: 3
+    body: >
+      For Kiddies Carnival, my mother made me a bright costume. It had blue and
+      gold feathers and shiny beads. I wore it in the children's parade. We
+      danced down the road to the beat of the steelpan. Everybody clapped. I felt
+      like a king.
+    questions:
+      - prompt: "What was on the costume?"
+        type: mc
+        options: ["feathers and beads", "leaves and mud", "paper and glue", "wool and string"]
+        correct_index: 0
+      - prompt: "What did the child dance to?"
+        type: mc
+        options: ["the steelpan", "a drum only", "no music", "a radio"]
+        correct_index: 0
+      - prompt: "Write how the child felt in the costume."
+        type: written
+    vocabulary:
+      - word: "costume"
+        definition: "special clothes worn for a show or party"
+        context_sentence: "My mother made me a bright costume."
+      - word: "beads"
+        definition: "small round shiny pieces used to decorate"
+        context_sentence: "It had shiny beads."
+      - word: "parade"
+        definition: "a line of people moving through the streets"
+        context_sentence: "I wore it in the children's parade."
+
+  - title: "Helping Granny"
+    reading_level: 3
+    body: >
+      On Sundays I visit my granny. She cannot walk very far now. I sweep her
+      yard and water her flowers. I read her stories from my school book. Granny
+      gives me a warm hug and a sweet biscuit. Helping her makes me feel good.
+    questions:
+      - prompt: "When does the child visit Granny?"
+        type: mc
+        options: ["on Sundays", "on Mondays", "every night", "on holidays"]
+        correct_index: 0
+      - prompt: "What does Granny give the child?"
+        type: mc
+        options: ["a hug and a biscuit", "money", "a toy", "a book"]
+        correct_index: 0
+      - prompt: "Write two ways the child helps Granny."
+        type: written
+    vocabulary:
+      - word: "sweep"
+        definition: "to clean the floor with a broom"
+        context_sentence: "I sweep her yard."
+      - word: "warm"
+        definition: "friendly and loving"
+        context_sentence: "Granny gives me a warm hug."
+      - word: "visit"
+        definition: "to go to see someone"
+        context_sentence: "On Sundays I visit my granny."
+
+  - title: "At the Library"
+    reading_level: 3
+    body: >
+      Our class went to the library on Friday. It was quiet and cool inside.
+      Rows and rows of books stood on the shelves. I found a book about sea
+      turtles. The kind librarian helped me borrow it. I read the whole book that
+      weekend.
+    questions:
+      - prompt: "What was the library like inside?"
+        type: mc
+        options: ["quiet and cool", "loud and hot", "dark and wet", "small and dusty"]
+        correct_index: 0
+      - prompt: "What was the child's book about?"
+        type: mc
+        options: ["sea turtles", "cars", "cooking", "sport"]
+        correct_index: 0
+      - prompt: "Write who helped the child borrow the book."
+        type: written
+    vocabulary:
+      - word: "shelves"
+        definition: "flat boards where books are kept"
+        context_sentence: "Books stood on the shelves."
+      - word: "librarian"
+        definition: "a person who works in a library"
+        context_sentence: "The kind librarian helped me."
+      - word: "borrow"
+        definition: "to take something for a while and give it back"
+        context_sentence: "She helped me borrow it."
+
+  - title: "The Lost Shoe"
+    reading_level: 3
+    body: >
+      One morning I could not find my left shoe. I looked under the bed and
+      behind the door. I searched in the yard and by the gate. At last, I found
+      it in the dog's basket! Max had taken my shoe to sleep on. I laughed and
+      hugged him.
+    questions:
+      - prompt: "What could the child not find?"
+        type: mc
+        options: ["a left shoe", "a book", "a hat", "a sock"]
+        correct_index: 0
+      - prompt: "Where was the shoe at last?"
+        type: mc
+        options: ["in the dog's basket", "under the bed", "in the yard", "by the gate"]
+        correct_index: 0
+      - prompt: "Write two places the child looked for the shoe."
+        type: written
+    vocabulary:
+      - word: "searched"
+        definition: "looked carefully to find something"
+        context_sentence: "I searched in the yard."
+      - word: "basket"
+        definition: "a container to hold things"
+        context_sentence: "I found it in the dog's basket."
+      - word: "laughed"
+        definition: "made happy sounds because something was funny"
+        context_sentence: "I laughed and hugged him."
+
+  - title: "The Hen and Her Chicks"
+    reading_level: 3
+    body: >
+      A brown hen lives in our back yard. She sat on her eggs for many days. One
+      morning, the eggs cracked open. Tiny yellow chicks stepped out. They peep
+      and follow their mother everywhere. The hen keeps her chicks safe and warm
+      under her wings.
+    questions:
+      - prompt: "What came out of the eggs?"
+        type: mc
+        options: ["yellow chicks", "ducks", "snakes", "birds"]
+        correct_index: 0
+      - prompt: "How does the hen keep the chicks warm?"
+        type: mc
+        options: ["under her wings", "in a box", "by the fire", "in the sun"]
+        correct_index: 0
+      - prompt: "Write what the chicks do all day."
+        type: written
+    vocabulary:
+      - word: "cracked"
+        definition: "broke open"
+        context_sentence: "The eggs cracked open."
+      - word: "peep"
+        definition: "make a small high sound like a young bird"
+        context_sentence: "They peep and follow their mother."
+      - word: "safe"
+        definition: "free from harm or danger"
+        context_sentence: "The hen keeps her chicks safe."
+
+  - title: "A New Friend"
+    reading_level: 3
+    body: >
+      A new girl joined our class today. Her name is Amara and she looked shy. At
+      lunch, she sat alone. I went over and shared my snack with her. We talked
+      and soon we were laughing together. Now Amara is my good friend.
+    questions:
+      - prompt: "What is the new girl's name?"
+        type: mc
+        options: ["Amara", "Maya", "Reena", "Ava"]
+        correct_index: 0
+      - prompt: "What did the child share with her?"
+        type: mc
+        options: ["a snack", "a book", "a pen", "a toy"]
+        correct_index: 0
+      - prompt: "Write how Amara looked when she joined the class."
+        type: written
+    vocabulary:
+      - word: "joined"
+        definition: "became part of a group"
+        context_sentence: "A new girl joined our class."
+      - word: "shy"
+        definition: "nervous around new people"
+        context_sentence: "She looked shy."
+      - word: "shared"
+        definition: "gave a part to someone else"
+        context_sentence: "I shared my snack with her."
+
+  - title: "The Night Sky"
+    reading_level: 3
+    body: >
+      At night, my father and I sit on the step and look up. The sky is dark and
+      full of tiny stars. The moon glows bright and round. My father points out
+      shapes made by the stars. A cool breeze blows. I feel small under the huge
+      sky.
+    questions:
+      - prompt: "When do they look at the sky?"
+        type: mc
+        options: ["at night", "in the morning", "at noon", "in the rain"]
+        correct_index: 0
+      - prompt: "How does the moon look?"
+        type: mc
+        options: ["bright and round", "small and dark", "red", "square"]
+        correct_index: 0
+      - prompt: "Write what the father points out in the sky."
+        type: written
+    vocabulary:
+      - word: "glows"
+        definition: "shines with a soft light"
+        context_sentence: "The moon glows bright and round."
+      - word: "points"
+        definition: "shows where something is with a finger"
+        context_sentence: "My father points out shapes."
+      - word: "huge"
+        definition: "very, very big"
+        context_sentence: "I feel small under the huge sky."
+
+  - title: "Washing the Car"
+    reading_level: 3
+    body: >
+      On Saturday, Daddy and I washed the car. We filled a bucket with soapy
+      water. I scrubbed the wheels while Daddy cleaned the top. Water splashed
+      everywhere and we got wet. When we finished, the car was shiny and clean.
+      Daddy said thank you.
+    questions:
+      - prompt: "What did they fill the bucket with?"
+        type: mc
+        options: ["soapy water", "sand", "oil", "juice"]
+        correct_index: 0
+      - prompt: "What part did the child scrub?"
+        type: mc
+        options: ["the wheels", "the top", "the seats", "the glass"]
+        correct_index: 0
+      - prompt: "Write how the car looked when they finished."
+        type: written
+    vocabulary:
+      - word: "bucket"
+        definition: "a round container with a handle for carrying water"
+        context_sentence: "We filled a bucket with soapy water."
+      - word: "scrubbed"
+        definition: "rubbed hard to clean"
+        context_sentence: "I scrubbed the wheels."
+      - word: "shiny"
+        definition: "bright and clean, reflecting light"
+        context_sentence: "The car was shiny and clean."
+
+  - title: "The Thunderstorm"
+    reading_level: 3
+    body: >
+      Last night a big storm came. The wind howled and bent the trees. Bright
+      lightning flashed across the sky. Then a loud clap of thunder made me jump.
+      I hid under my blanket until it passed. In the morning, the sun came out
+      again.
+    questions:
+      - prompt: "What made the child jump?"
+        type: mc
+        options: ["the thunder", "the rain", "the dog", "the wind only"]
+        correct_index: 0
+      - prompt: "Where did the child hide?"
+        type: mc
+        options: ["under the blanket", "in the yard", "on the roof", "by the gate"]
+        correct_index: 0
+      - prompt: "Write what the wind did to the trees."
+        type: written
+    vocabulary:
+      - word: "howled"
+        definition: "made a long, loud sound"
+        context_sentence: "The wind howled and bent the trees."
+      - word: "lightning"
+        definition: "a bright flash of light in a storm"
+        context_sentence: "Bright lightning flashed across the sky."
+      - word: "passed"
+        definition: "came to an end and went away"
+        context_sentence: "I hid until it passed."
+
+  - title: "Making Roti"
+    reading_level: 3
+    body: >
+      My aunty makes roti on Sunday. She mixes flour and water into soft dough.
+      She rolls it flat and round. Then she cooks it on the hot tawah. The kitchen
+      smells warm and sweet. I love to eat fresh roti with curry.
+    questions:
+      - prompt: "What does aunty mix to make dough?"
+        type: mc
+        options: ["flour and water", "sugar and salt", "rice and peas", "milk and eggs"]
+        correct_index: 0
+      - prompt: "What does she cook the roti on?"
+        type: mc
+        options: ["a hot tawah", "a pot", "a plate", "the fire"]
+        correct_index: 0
+      - prompt: "Write what the child eats with the roti."
+        type: written
+    vocabulary:
+      - word: "mixes"
+        definition: "stirs things together"
+        context_sentence: "She mixes flour and water."
+      - word: "dough"
+        definition: "a soft mix of flour and water before cooking"
+        context_sentence: "She mixes flour and water into soft dough."
+      - word: "flat"
+        definition: "smooth and level, not thick"
+        context_sentence: "She rolls it flat and round."
+
+  - title: "The School Trip"
+    reading_level: 3
+    body: >
+      Our class went on a trip to the zoo. We saw a big lazy lion and tall
+      giraffes. Colourful parrots called out from the trees. My favourite was the
+      cheeky monkey that clapped its hands. We ate our lunch under a shady tree.
+      I did not want to go home.
+    questions:
+      - prompt: "Where did the class go?"
+        type: mc
+        options: ["the zoo", "the beach", "the market", "a farm"]
+        correct_index: 0
+      - prompt: "What was the child's favourite animal?"
+        type: mc
+        options: ["the monkey", "the lion", "the giraffe", "the parrot"]
+        correct_index: 0
+      - prompt: "Write two animals the class saw."
+        type: written
+    vocabulary:
+      - word: "lazy"
+        definition: "not wanting to move or work"
+        context_sentence: "We saw a big lazy lion."
+      - word: "colourful"
+        definition: "having many bright colours"
+        context_sentence: "Colourful parrots called from the trees."
+      - word: "cheeky"
+        definition: "playful in a naughty way"
+        context_sentence: "The cheeky monkey clapped its hands."
+
+  - title: "The Sea Turtle"
+    reading_level: 3
+    body: >
+      At night on the beach, a big turtle came out of the sea. She dug a deep
+      hole in the sand with her flippers. She laid her round white eggs and
+      covered them. Then she crawled slowly back to the water. We watched quietly
+      so we did not scare her.
+    questions:
+      - prompt: "What did the turtle dig in the sand?"
+        type: mc
+        options: ["a deep hole", "a wall", "a road", "a pool"]
+        correct_index: 0
+      - prompt: "What did the turtle lay?"
+        type: mc
+        options: ["round white eggs", "shells", "stones", "seaweed"]
+        correct_index: 0
+      - prompt: "Write why the children watched quietly."
+        type: written
+    vocabulary:
+      - word: "dug"
+        definition: "made a hole by moving away sand or earth"
+        context_sentence: "She dug a deep hole in the sand."
+      - word: "flippers"
+        definition: "flat wide limbs used for swimming"
+        context_sentence: "She dug with her flippers."
+      - word: "crawled"
+        definition: "moved slowly along the ground"
+        context_sentence: "She crawled slowly back to the water."
+
+  - title: "A Rainy Day Inside"
+    reading_level: 3
+    body: >
+      The rain fell all day, so we could not play outside. My sister and I built
+      a fort with chairs and a sheet. We read comics by the light of a torch.
+      Mummy made hot cocoa for us. Being stuck inside turned into a cosy day.
+    questions:
+      - prompt: "Why could they not play outside?"
+        type: mc
+        options: ["it rained all day", "it was too hot", "it was night", "they were sick"]
+        correct_index: 0
+      - prompt: "What did they build?"
+        type: mc
+        options: ["a fort", "a boat", "a kite", "a garden"]
+        correct_index: 0
+      - prompt: "Write what Mummy made for them."
+        type: written
+    vocabulary:
+      - word: "fort"
+        definition: "a play house or safe place made to hide in"
+        context_sentence: "We built a fort with chairs and a sheet."
+      - word: "torch"
+        definition: "a small light you hold in your hand"
+        context_sentence: "We read comics by the light of a torch."
+      - word: "cosy"
+        definition: "warm and comfortable"
+        context_sentence: "It turned into a cosy day."
+
+  - title: "The Corn Field"
+    reading_level: 3
+    body: >
+      My grandfather grows corn on his small plot. In the sun, the green stalks
+      grow taller than me. When the corn is ready, we pick the fat cobs. Granny
+      boils them in a big pot. Hot corn with a little salt is my favourite treat.
+    questions:
+      - prompt: "What does grandfather grow?"
+        type: mc
+        options: ["corn", "rice", "beans", "tomatoes"]
+        correct_index: 0
+      - prompt: "How does Granny cook the corn?"
+        type: mc
+        options: ["she boils it", "she fries it", "she bakes it", "she grills it"]
+        correct_index: 0
+      - prompt: "Write how tall the corn stalks grow."
+        type: written
+    vocabulary:
+      - word: "plot"
+        definition: "a small piece of land for growing things"
+        context_sentence: "My grandfather grows corn on his small plot."
+      - word: "stalks"
+        definition: "the tall stems of a plant"
+        context_sentence: "The green stalks grow taller than me."
+      - word: "cobs"
+        definition: "the long parts where corn grains grow"
+        context_sentence: "We pick the fat cobs."
+
+  - title: "The Kind Neighbour"
+    reading_level: 3
+    body: >
+      Miss Joan lives next door to us. She is old but very kind. When my ball
+      went over her fence, she gave it back with a smile. She shares fruit from
+      her tree with everyone. On my birthday, she baked me a sweet bread. I am
+      glad she is our neighbour.
+    questions:
+      - prompt: "Who lives next door?"
+        type: mc
+        options: ["Miss Joan", "Uncle Sam", "Granny", "Mr Ali"]
+        correct_index: 0
+      - prompt: "What did Miss Joan bake for the birthday?"
+        type: mc
+        options: ["sweet bread", "a cake", "biscuits", "roti"]
+        correct_index: 0
+      - prompt: "Write one kind thing Miss Joan does."
+        type: written
+    vocabulary:
+      - word: "neighbour"
+        definition: "a person who lives near you"
+        context_sentence: "Miss Joan lives next door to us."
+      - word: "fence"
+        definition: "a wall of wood or wire around a yard"
+        context_sentence: "My ball went over her fence."
+      - word: "glad"
+        definition: "happy about something"
+        context_sentence: "I am glad she is our neighbour."
+
+  - title: "Learning to Ride"
+    reading_level: 3
+    body: >
+      My uncle gave me an old blue bicycle. At first I wobbled and fell. My uncle
+      held the seat and ran beside me. Slowly I learned to balance. Then he let
+      go, and I rode all by myself! I was so proud that I did not stop smiling.
+    questions:
+      - prompt: "What did the uncle give the child?"
+        type: mc
+        options: ["a bicycle", "a scooter", "a car", "a kite"]
+        correct_index: 0
+      - prompt: "What happened at first?"
+        type: mc
+        options: ["the child wobbled and fell", "the child rode fast", "the bike broke", "nothing"]
+        correct_index: 0
+      - prompt: "Write how the child felt after riding alone."
+        type: written
+    vocabulary:
+      - word: "wobbled"
+        definition: "moved unsteadily from side to side"
+        context_sentence: "At first I wobbled and fell."
+      - word: "balance"
+        definition: "to stay steady without falling"
+        context_sentence: "Slowly I learned to balance."
+      - word: "proud"
+        definition: "pleased about something you have done"
+        context_sentence: "I was so proud."
