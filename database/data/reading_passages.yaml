@@ -3724,3 +3724,998 @@ passages:
       - word: "effortlessly"
         definition: "done easily, without strain"
         context_sentence: "What a small creature produces effortlessly each night."
+
+  - title: "The Currents of the Ocean"
+    reading_level: 7
+    body: >
+      Beneath the restless surface of the sea, vast rivers of water circle the globe,
+      driven by wind, heat, and the spin of the Earth itself. These ocean currents
+      carry warmth from the tropics toward the poles, tempering climates on distant
+      shores; without them, much of Europe would lie frozen. They ferry nutrients
+      that feed great blooms of life, and they scatter the eggs of creatures across
+      thousands of miles. Yet as the planet warms, these ancient currents may falter,
+      and scientists warn that even a slight slowing could reshape weather across
+      whole continents. The ocean, it turns out, is not a barrier between nations but
+      a shared and delicate machine.
+    questions:
+      - prompt: "What drives the ocean's great currents?"
+        type: mc
+        options: ["wind, heat, and the Earth's spin", "the moon alone", "passing ships", "underwater volcanoes only"]
+        correct_index: 0
+      - prompt: "Why does the writer say Europe would be frozen without currents?"
+        type: mc
+        options: ["currents carry warmth toward the poles", "currents block the sun", "currents make rain", "currents cool the tropics"]
+        correct_index: 0
+      - prompt: "Explain what the writer means by calling the ocean 'a shared and delicate machine'."
+        type: written
+    vocabulary:
+      - word: "tempering"
+        definition: "making something less extreme or more moderate"
+        context_sentence: "Tempering climates on distant shores."
+      - word: "nutrients"
+        definition: "substances that living things need to grow"
+        context_sentence: "They ferry nutrients that feed great blooms of life."
+      - word: "falter"
+        definition: "to weaken or begin to fail"
+        context_sentence: "These ancient currents may falter."
+
+  - title: "The Long Road to Emancipation"
+    reading_level: 7
+    body: >
+      Freedom, for the enslaved people of the Caribbean, was not simply given; it was
+      won through generations of resistance, courage, and unbreakable hope. Though the
+      law finally abolished slavery in 1834, true liberty came slowly, for the freed
+      people still faced poverty, prejudice, and years of forced apprenticeship. Yet
+      they built villages, founded churches and schools, and passed down a fierce
+      belief that no person should ever own another. Emancipation Day is therefore not
+      only a celebration but a solemn remembrance of those who endured the
+      unendurable. To understand freedom fully, we must remember how dearly it was
+      purchased.
+    questions:
+      - prompt: "In what year was slavery abolished, according to the passage?"
+        type: mc
+        options: ["1834", "1900", "1776", "1950"]
+        correct_index: 0
+      - prompt: "What did the freed people build after emancipation?"
+        type: mc
+        options: ["villages, churches, and schools", "factories and railways", "castles", "ships"]
+        correct_index: 0
+      - prompt: "Explain what the writer means by 'we must remember how dearly it was purchased'."
+        type: written
+    vocabulary:
+      - word: "abolished"
+        definition: "officially ended or done away with"
+        context_sentence: "The law finally abolished slavery."
+      - word: "apprenticeship"
+        definition: "a period of required labour or training"
+        context_sentence: "Years of forced apprenticeship."
+      - word: "solemn"
+        definition: "serious and dignified"
+        context_sentence: "A solemn remembrance of those who endured."
+
+  - title: "The Memory of Trees"
+    reading_level: 7
+    body: >
+      A tree carries its whole history within it. Each year it lays down a fresh ring
+      of wood, wide in seasons of plenty and narrow in years of drought, so that a
+      single stump can tell a story stretching back centuries. Scientists read these
+      rings the way a historian reads an old manuscript, tracing ancient fires,
+      floods, and shifts in climate long before any human wrote them down. Some trees
+      alive today were already old when great empires rose and fell. To stand before
+      such a tree is to stand before a living record, patient and silent, that has
+      quietly outlasted the noise of human ambition.
+    questions:
+      - prompt: "What makes a tree's rings wide or narrow?"
+        type: mc
+        options: ["plentiful or dry seasons", "the colour of its leaves", "the height of the tree", "the animals nearby"]
+        correct_index: 0
+      - prompt: "How do scientists use tree rings?"
+        type: mc
+        options: ["to trace ancient fires, floods, and climate", "to measure the wind", "to count the leaves", "to find gold"]
+        correct_index: 0
+      - prompt: "Explain what the writer means by calling a tree 'a living record'."
+        type: written
+    vocabulary:
+      - word: "drought"
+        definition: "a long period with little or no rain"
+        context_sentence: "Narrow in years of drought."
+      - word: "manuscript"
+        definition: "an old handwritten document"
+        context_sentence: "The way a historian reads an old manuscript."
+      - word: "outlasted"
+        definition: "lived or lasted longer than something else"
+        context_sentence: "Quietly outlasted the noise of human ambition."
+
+  - title: "The Unseen Force"
+    reading_level: 7
+    body: >
+      Gravity is the quietest ruler of the universe, yet nothing escapes its reach. It
+      holds our feet to the ground, keeps the moon circling the Earth, and binds
+      billions of stars into the slow, wheeling shape of a galaxy. Though we never see
+      it, we feel its pull in every step and every fall. For centuries people simply
+      accepted that objects dropped downward, until curious minds began to ask why.
+      Their questions revealed that the same force pulling an apple to the earth also
+      governs the paths of distant planets. It is a humbling thought: one invisible
+      rule, written into everything, connects the smallest pebble to the greatest star.
+    questions:
+      - prompt: "What does gravity do to the moon?"
+        type: mc
+        options: ["keeps it circling the Earth", "makes it glow", "pushes it away", "changes its colour"]
+        correct_index: 0
+      - prompt: "What did curious minds begin to ask?"
+        type: mc
+        options: ["why objects fall downward", "how to fly", "where stars go", "why the sky is blue"]
+        correct_index: 0
+      - prompt: "Explain what the writer means by 'one invisible rule connects the smallest pebble to the greatest star'."
+        type: written
+    vocabulary:
+      - word: "binds"
+        definition: "holds tightly together"
+        context_sentence: "Binds billions of stars into a galaxy."
+      - word: "governs"
+        definition: "controls or directs"
+        context_sentence: "The same force governs the paths of planets."
+      - word: "humbling"
+        definition: "making one feel modest or small"
+        context_sentence: "It is a humbling thought."
+
+  - title: "The Fragile Balance"
+    reading_level: 7
+    body: >
+      In nature, every living thing is bound to countless others in a web so intricate
+      that the loss of one thread can unravel the whole. Remove the top predator from
+      a forest, and the deer multiply, the young trees are eaten, and the soil itself
+      begins to wash away. Restore that predator, and slowly the forest heals. Such
+      chains of cause and effect remind us that no creature, however small or fierce,
+      stands alone. When people treat a single species as worthless, they often fail
+      to see the hidden work it performs. Wisdom, in dealing with the natural world,
+      begins with humility about how little we truly understand.
+    questions:
+      - prompt: "What happens when the top predator is removed?"
+        type: mc
+        options: ["deer multiply and young trees are eaten", "the forest grows faster", "rivers dry up", "birds leave"]
+        correct_index: 0
+      - prompt: "What does the writer say wisdom about nature begins with?"
+        type: mc
+        options: ["humility about how little we understand", "cutting down forests", "counting animals", "building fences"]
+        correct_index: 0
+      - prompt: "Explain what the writer means by 'the loss of one thread can unravel the whole'."
+        type: written
+    vocabulary:
+      - word: "intricate"
+        definition: "very detailed and complicated"
+        context_sentence: "A web so intricate."
+      - word: "predator"
+        definition: "an animal that hunts others for food"
+        context_sentence: "Remove the top predator from a forest."
+      - word: "humility"
+        definition: "a modest view of one's own importance"
+        context_sentence: "Wisdom begins with humility."
+
+  - title: "The Courage to Question"
+    reading_level: 7
+    body: >
+      Progress has always depended on those brave enough to doubt what everyone else
+      accepts. When the whole world believed the sun circled the Earth, a few patient
+      observers dared to suggest otherwise, and endured ridicule for it. To question
+      is not to be disrespectful; it is to take an idea seriously enough to test it.
+      A mind that accepts every claim without examination is as poorly served as one
+      that rejects everything out of stubbornness. True learning lives in the balance:
+      open enough to consider, careful enough to demand evidence. The student who asks
+      "how do we know?" has already begun the most important work of the mind.
+    questions:
+      - prompt: "What did patient observers dare to suggest?"
+        type: mc
+        options: ["that the Earth circled the sun", "that the sky was solid", "that the sea had no bottom", "that stars were fires"]
+        correct_index: 0
+      - prompt: "According to the writer, to question an idea is to do what?"
+        type: mc
+        options: ["take it seriously enough to test it", "insult the speaker", "ignore it", "accept it blindly"]
+        correct_index: 0
+      - prompt: "Explain what the writer means by asking 'how do we know?' being the most important work of the mind."
+        type: written
+    vocabulary:
+      - word: "ridicule"
+        definition: "unkind mockery or laughter aimed at someone"
+        context_sentence: "They endured ridicule for it."
+      - word: "examination"
+        definition: "careful and detailed inspection"
+        context_sentence: "Accepts every claim without examination."
+      - word: "evidence"
+        definition: "facts that show whether something is true"
+        context_sentence: "Careful enough to demand evidence."
+
+  - title: "The Roots of Language"
+    reading_level: 7
+    body: >
+      Every language spoken today grew, over countless generations, from older tongues
+      now long silent. Words travel and change like rivers, borrowing from neighbours,
+      shedding old sounds, and inventing new ones to name a changing world. The
+      English we speak is a patchwork stitched from many peoples, and the Creole of the
+      Caribbean carries within it the voices of Africa, Europe, and India woven
+      together. Far from being careless or broken, such languages are living proof of
+      human ingenuity, shaped by history itself. To lose a language is to lose a way of
+      seeing; to cherish one is to keep an entire people's memory alive.
+    questions:
+      - prompt: "How does the writer say words change?"
+        type: mc
+        options: ["they travel and change like rivers", "they never change", "they are fixed by law", "they shrink each year"]
+        correct_index: 0
+      - prompt: "What voices does Caribbean Creole carry, according to the passage?"
+        type: mc
+        options: ["Africa, Europe, and India", "only Europe", "only Africa", "none at all"]
+        correct_index: 0
+      - prompt: "Explain what the writer means by 'to lose a language is to lose a way of seeing'."
+        type: written
+    vocabulary:
+      - word: "tongues"
+        definition: "languages"
+        context_sentence: "Grew from older tongues now long silent."
+      - word: "patchwork"
+        definition: "something made of many different pieces joined together"
+        context_sentence: "English is a patchwork stitched from many peoples."
+      - word: "ingenuity"
+        definition: "cleverness and inventiveness"
+        context_sentence: "Living proof of human ingenuity."
+
+  - title: "The Machinery of Weather"
+    reading_level: 7
+    body: >
+      A thunderstorm may seem like chaos, but it is the visible working of an enormous,
+      orderly machine. The sun heats the land, warm air rises and cools, moisture
+      gathers into towering clouds, and within them charges build until lightning
+      leaps to balance them. Every drop of rain, every gust of wind, obeys laws that
+      scientists can measure and, increasingly, predict. This understanding is no idle
+      curiosity: an accurate forecast can send fishermen safely to harbour and warn a
+      village before a flood arrives. The more clearly we read the sky's machinery, the
+      better we can live with a power far greater than ourselves.
+    questions:
+      - prompt: "What causes lightning, according to the passage?"
+        type: mc
+        options: ["charges build until they must balance", "birds flying", "the moon rising", "cold water"]
+        correct_index: 0
+      - prompt: "Why does the writer say weather understanding is not 'idle curiosity'?"
+        type: mc
+        options: ["forecasts can keep people safe", "it makes storms stop", "it controls the sun", "it is only for fun"]
+        correct_index: 0
+      - prompt: "Explain what the writer means by calling a storm 'the visible working of an orderly machine'."
+        type: written
+    vocabulary:
+      - word: "moisture"
+        definition: "tiny drops of water in the air"
+        context_sentence: "Moisture gathers into towering clouds."
+      - word: "charges"
+        definition: "amounts of electricity"
+        context_sentence: "Charges build until lightning leaps."
+      - word: "forecast"
+        definition: "a prediction of future weather"
+        context_sentence: "An accurate forecast can send fishermen to harbour."
+
+  - title: "The Discipline of Practice"
+    reading_level: 7
+    body: >
+      We admire the pianist whose fingers fly and the athlete whose body seems to obey
+      without effort, and we call it talent. But behind that ease lie thousands of
+      unseen hours of patient, often tedious repetition. Skill is not a gift that
+      arrives whole; it is built slowly, one corrected mistake at a time, long after
+      the excitement of a new pursuit has faded. Those who succeed are rarely the most
+      gifted at the start, but those who kept returning when the work grew dull. The
+      true secret, if there is one, is simply this: to practise deliberately, and to
+      refuse to quit.
+    questions:
+      - prompt: "What lies behind an athlete's apparent ease?"
+        type: mc
+        options: ["thousands of unseen hours of repetition", "pure luck", "expensive equipment", "a single lesson"]
+        correct_index: 0
+      - prompt: "Who does the writer say usually succeeds?"
+        type: mc
+        options: ["those who keep returning when work grows dull", "the most gifted beginners", "the youngest players", "the wealthiest"]
+        correct_index: 0
+      - prompt: "Explain what the writer means by 'skill is built one corrected mistake at a time'."
+        type: written
+    vocabulary:
+      - word: "tedious"
+        definition: "boring because it goes on a long time"
+        context_sentence: "Patient, often tedious repetition."
+      - word: "deliberately"
+        definition: "carefully and on purpose"
+        context_sentence: "To practise deliberately."
+      - word: "pursuit"
+        definition: "an activity someone works at"
+        context_sentence: "The excitement of a new pursuit."
+
+  - title: "The Vanishing Glaciers"
+    reading_level: 7
+    body: >
+      High in the mountains and across the frozen poles lie great sheets of ancient
+      ice, formed from snows that fell before history began. For thousands of years
+      they held their shape, feeding rivers each summer as they slowly melted and
+      renewing themselves each winter as fresh snow arrived. Now that balance is
+      breaking. As the world grows warmer, the ice retreats faster than the snow can
+      replace it, and glaciers that fed whole civilisations are shrinking within a
+      single lifetime. Their loss will raise the seas and rob distant valleys of their
+      water. The quiet melting of a far-off glacier, it turns out, can reach the
+      doorstep of us all.
+    questions:
+      - prompt: "How did glaciers stay in balance for thousands of years?"
+        type: mc
+        options: ["fresh snow replaced what melted", "they never melted", "rain refilled them", "people rebuilt them"]
+        correct_index: 0
+      - prompt: "What two effects of melting glaciers does the writer name?"
+        type: mc
+        options: ["rising seas and lost water supplies", "louder storms and colder winters", "more fish and more trees", "brighter skies"]
+        correct_index: 0
+      - prompt: "Explain what the writer means by a far-off glacier reaching 'the doorstep of us all'."
+        type: written
+    vocabulary:
+      - word: "glaciers"
+        definition: "great slow-moving masses of ice"
+        context_sentence: "Glaciers that fed whole civilisations."
+      - word: "retreats"
+        definition: "moves back or shrinks away"
+        context_sentence: "The ice retreats faster than the snow can replace it."
+      - word: "renewing"
+        definition: "making fresh or whole again"
+        context_sentence: "Renewing themselves each winter."
+
+  - title: "The Art of Persuasion"
+    reading_level: 7
+    body: >
+      To persuade is one of the oldest and most powerful of human skills, and like any
+      power it can be used well or badly. A skilful speaker appeals to reason with
+      evidence, to emotion with vivid images, and to trust by seeming honest and fair.
+      The same tools that rally a nation to justice can also mislead a crowd toward
+      folly, and the words sound equally fine in both mouths. That is why a careful
+      listener learns to ask not only "how does this make me feel?" but "is it
+      actually true?" To be moved by words is human; to weigh them before being moved
+      is wisdom.
+    questions:
+      - prompt: "What three things does a skilful speaker appeal to?"
+        type: mc
+        options: ["reason, emotion, and trust", "money, fame, and power", "fear, hunger, and sleep", "colour, sound, and light"]
+        correct_index: 0
+      - prompt: "What question does a careful listener also ask?"
+        type: mc
+        options: ["is it actually true?", "who is speaking loudest?", "how long will it take?", "where are we?"]
+        correct_index: 0
+      - prompt: "Explain what the writer means by 'to weigh words before being moved is wisdom'."
+        type: written
+    vocabulary:
+      - word: "persuade"
+        definition: "to convince someone to believe or do something"
+        context_sentence: "To persuade is one of the oldest human skills."
+      - word: "folly"
+        definition: "foolishness or a foolish act"
+        context_sentence: "Mislead a crowd toward folly."
+      - word: "rally"
+        definition: "to gather people together for a cause"
+        context_sentence: "Rally a nation to justice."
+
+  - title: "The Chemistry of Cooking"
+    reading_level: 7
+    body: >
+      A kitchen is a quiet laboratory where transformations happen every day. When
+      dough meets heat, trapped bubbles of gas expand and the loaf rises; when sugar
+      is warmed, it darkens and takes on a deep, toasted flavour it never had before.
+      These are not tricks but chemistry, the same science studied in gleaming
+      laboratories, unfolding in ordinary pots and pans. The cook who understands why
+      a sauce thickens or why meat browns can correct a dish instead of merely hoping.
+      Far from being separate worlds, science and everyday life are woven together, and
+      the humble act of preparing a meal is proof of it.
+    questions:
+      - prompt: "Why does a loaf rise in the oven?"
+        type: mc
+        options: ["trapped gas bubbles expand", "the flour turns to water", "it absorbs light", "the salt melts"]
+        correct_index: 0
+      - prompt: "What advantage does an understanding cook have?"
+        type: mc
+        options: ["they can correct a dish, not just hope", "they cook faster only", "they need no recipes", "they use less fire"]
+        correct_index: 0
+      - prompt: "Explain what the writer means by calling a kitchen 'a quiet laboratory'."
+        type: written
+    vocabulary:
+      - word: "transformations"
+        definition: "complete changes in form or nature"
+        context_sentence: "Transformations happen every day."
+      - word: "expand"
+        definition: "to grow larger in size"
+        context_sentence: "Bubbles of gas expand and the loaf rises."
+      - word: "gleaming"
+        definition: "shining brightly"
+        context_sentence: "The same science studied in gleaming laboratories."
+
+  - title: "The Ripple Effect"
+    reading_level: 7
+    body: >
+      A single act of kindness rarely stops with the person who receives it. The child
+      helped across a busy road grows up to help another; the stranger who is shown
+      patience passes that patience on, often without ever knowing where it began. In
+      this way, one small deed can travel outward through a community like ripples
+      across a pond, touching lives the giver will never meet. The same is true, sadly,
+      of cruelty, which hardens hearts and spreads in its own dark way. Since we cannot
+      always choose what happens to us, the truest measure of a person may be which of
+      these ripples they choose to send out.
+    questions:
+      - prompt: "How does the writer describe an act of kindness spreading?"
+        type: mc
+        options: ["like ripples across a pond", "like a falling stone", "like a closing door", "like a sudden storm"]
+        correct_index: 0
+      - prompt: "What does the writer say is also true of cruelty?"
+        type: mc
+        options: ["it hardens hearts and spreads", "it disappears at once", "it helps no one but harms no one", "it cannot travel"]
+        correct_index: 0
+      - prompt: "Explain what the writer means by 'the truest measure of a person is which ripples they send out'."
+        type: written
+    vocabulary:
+      - word: "ripples"
+        definition: "small waves spreading across water"
+        context_sentence: "Like ripples across a pond."
+      - word: "community"
+        definition: "a group of people living or working together"
+        context_sentence: "Travel outward through a community."
+      - word: "measure"
+        definition: "a way of judging the size or worth of something"
+        context_sentence: "The truest measure of a person."
+
+  - title: "The Threads of Trade"
+    reading_level: 7
+    body: >
+      The shirt on your back and the phone in your hand have travelled further than
+      most people ever will. Cotton grown in one land may be spun in another, sewn in a
+      third, and sold in a fourth, its journey stitched from the labour of strangers
+      across the globe. This vast network of trade can lift whole nations out of
+      poverty, yet it can also hide injustice, when those who make our goods are paid
+      too little to share in their worth. To be a thoughtful buyer is to remember the
+      unseen hands behind each object, and to ask whether the bargain was fair to
+      everyone who touched it.
+    questions:
+      - prompt: "What journey does the writer describe a shirt taking?"
+        type: mc
+        options: ["grown, spun, sewn, and sold in different lands", "made entirely in one town", "found already finished", "printed by a machine"]
+        correct_index: 0
+      - prompt: "What injustice can trade hide?"
+        type: mc
+        options: ["makers paid too little to share the worth", "goods that are too cheap to sell", "shops that stay empty", "ships that never sail"]
+        correct_index: 0
+      - prompt: "Explain what the writer means by 'the unseen hands behind each object'."
+        type: written
+    vocabulary:
+      - word: "network"
+        definition: "a large connected system"
+        context_sentence: "This vast network of trade."
+      - word: "injustice"
+        definition: "unfair treatment"
+        context_sentence: "It can also hide injustice."
+      - word: "bargain"
+        definition: "an agreement, especially about price"
+        context_sentence: "Whether the bargain was fair."
+
+  - title: "The Digital Footprint"
+    reading_level: 7
+    body: >
+      Every message we send and every photograph we share leaves a mark that does not
+      fade as easily as we imagine. Long after a moment has passed, its record may
+      remain, copied and stored on machines far beyond our reach. This lasting trail,
+      our digital footprint, can open doors, showing the world our talents and our
+      kindness, but it can also follow us in ways we never intended. The wise course
+      is not fear but care: to pause before we post, to remember that the internet
+      rarely forgets, and to build a trail we will not one day wish to erase. What we
+      share today speaks for us tomorrow.
+    questions:
+      - prompt: "Why does a digital footprint last?"
+        type: mc
+        options: ["records are copied and stored on distant machines", "the internet deletes everything nightly", "photographs fade slowly", "no one keeps records"]
+        correct_index: 0
+      - prompt: "What wise course does the writer recommend?"
+        type: mc
+        options: ["to pause before we post", "to never use the internet", "to post as much as possible", "to fear all technology"]
+        correct_index: 0
+      - prompt: "Explain what the writer means by 'what we share today speaks for us tomorrow'."
+        type: written
+    vocabulary:
+      - word: "record"
+        definition: "a stored account of something"
+        context_sentence: "Its record may remain."
+      - word: "trail"
+        definition: "a series of marks left behind"
+        context_sentence: "This lasting trail, our digital footprint."
+      - word: "intended"
+        definition: "meant or planned"
+        context_sentence: "In ways we never intended."
+
+  - title: "The Pull of the Tides"
+    reading_level: 7
+    body: >
+      Twice each day the sea climbs the shore and twice it falls away, a rhythm so
+      steady that fishermen set their lives by it. This great breathing of the ocean is
+      no accident: it is the moon, and to a lesser degree the sun, tugging gently at
+      the water as they pass overhead. When both line up, the tides swell higher than
+      usual; when they pull against each other, the tides grow mild. For those who
+      gather from the shore, misreading this rhythm can be dangerous, for a rising tide
+      can trap the careless on a vanishing sandbank. The heavens, in this quiet way,
+      shape the daily labour of people who may never think of them.
+    questions:
+      - prompt: "What mainly causes the tides?"
+        type: mc
+        options: ["the moon tugging at the water", "the wind alone", "passing ships", "warm currents"]
+        correct_index: 0
+      - prompt: "When do tides swell highest?"
+        type: mc
+        options: ["when the sun and moon line up", "when clouds gather", "at midnight only", "in winter only"]
+        correct_index: 0
+      - prompt: "Explain what the writer means by 'the heavens shape the daily labour of people'."
+        type: written
+    vocabulary:
+      - word: "rhythm"
+        definition: "a regular repeated pattern"
+        context_sentence: "A rhythm so steady."
+      - word: "swell"
+        definition: "to grow larger or rise"
+        context_sentence: "The tides swell higher than usual."
+      - word: "sandbank"
+        definition: "a raised ridge of sand near the shore"
+        context_sentence: "A rising tide can trap the careless on a vanishing sandbank."
+
+  - title: "The Genius of the Brain"
+    reading_level: 7
+    body: >
+      Weighing little more than a large mango, the human brain is the most complex
+      object we have ever discovered. Within it, billions of tiny cells pass signals
+      along a web of connections greater in number than the stars of our galaxy. This
+      soft grey tissue lets you read these very words, recall a distant birthday, feel
+      wonder, and imagine a future that does not yet exist. Even so, much of how it
+      works remains a mystery, and the mind studying the brain is, remarkably, the
+      brain studying itself. To care for it, through rest, curiosity, and learning, is
+      to tend the most extraordinary instrument any of us will ever own.
+    questions:
+      - prompt: "What does the writer compare the number of brain connections to?"
+        type: mc
+        options: ["the stars of our galaxy", "grains of sand on a beach", "drops in the sea", "leaves on a tree"]
+        correct_index: 0
+      - prompt: "What remarkable idea does the writer point out?"
+        type: mc
+        options: ["the brain studies itself", "the brain never rests", "the brain is the largest organ", "the brain feels no pain"]
+        correct_index: 0
+      - prompt: "Explain what the writer means by calling the brain 'the most extraordinary instrument any of us will ever own'."
+        type: written
+    vocabulary:
+      - word: "complex"
+        definition: "made of many connected parts; complicated"
+        context_sentence: "The most complex object we have ever discovered."
+      - word: "signals"
+        definition: "messages passed from one place to another"
+        context_sentence: "Billions of tiny cells pass signals."
+      - word: "tissue"
+        definition: "the material that living bodies are made of"
+        context_sentence: "This soft grey tissue lets you read."
+
+  - title: "The Story of Numbers"
+    reading_level: 7
+    body: >
+      Numbers seem so ordinary that we forget they were once a great invention. Early
+      peoples counted with notches on bone and pebbles in a pouch, but as trade and
+      building grew, they needed something more. Different civilisations invented
+      different symbols, and one idea, the humble zero, was so difficult to grasp that
+      it arrived late and changed everything, for it let us write vast numbers with
+      ease. Today the same handful of digits carries rockets to distant planets and
+      keeps track of a shopkeeper's change. Behind every calculation lies thousands of
+      years of human thought, quietly passed from one generation to the next.
+    questions:
+      - prompt: "How did early peoples count?"
+        type: mc
+        options: ["with notches on bone and pebbles", "with computers", "with printed books", "with clocks"]
+        correct_index: 0
+      - prompt: "Why was the zero important?"
+        type: mc
+        options: ["it let people write vast numbers with ease", "it made counting slower", "it replaced all letters", "it stopped trade"]
+        correct_index: 0
+      - prompt: "Explain what the writer means by 'behind every calculation lies thousands of years of human thought'."
+        type: written
+    vocabulary:
+      - word: "notches"
+        definition: "small cuts made as marks"
+        context_sentence: "Notches on bone."
+      - word: "civilisations"
+        definition: "advanced and organised human societies"
+        context_sentence: "Different civilisations invented different symbols."
+      - word: "digits"
+        definition: "the single figures from 0 to 9"
+        context_sentence: "The same handful of digits."
+
+  - title: "The Colours of Light"
+    reading_level: 7
+    body: >
+      The light that seems plain and white is, in truth, a hidden crowd of colours
+      travelling together. When sunlight passes through a raindrop, it bends and
+      separates, and for a moment the sky reveals its secret in a rainbow's arch.
+      Colour, then, is not something objects possess but something they do: a leaf
+      appears green because it drinks in every colour except green, which it throws
+      back to our eyes. Understanding this changed how people saw the world and led to
+      inventions from cameras to healing lasers. There is a lesson in it, too, that
+      what looks simple is often woven from many things we have not yet learned to see.
+    questions:
+      - prompt: "What happens when sunlight passes through a raindrop?"
+        type: mc
+        options: ["it bends and separates into colours", "it turns to heat", "it disappears", "it becomes sound"]
+        correct_index: 0
+      - prompt: "Why does a leaf appear green?"
+        type: mc
+        options: ["it throws back green and drinks the rest", "it is painted green", "it makes its own light", "it reflects all colours"]
+        correct_index: 0
+      - prompt: "Explain what the writer means by 'what looks simple is often woven from many things'."
+        type: written
+    vocabulary:
+      - word: "separates"
+        definition: "divides into parts"
+        context_sentence: "It bends and separates."
+      - word: "reveals"
+        definition: "makes known or shows"
+        context_sentence: "The sky reveals its secret."
+      - word: "possess"
+        definition: "to have or own"
+        context_sentence: "Colour is not something objects possess."
+
+  - title: "The Burden of Choice"
+    reading_level: 7
+    body: >
+      To be free is also to be responsible, and that is heavier than it sounds. When
+      only one path lies open, no one can blame us for taking it; but when many paths
+      stretch ahead, each choice becomes ours to answer for. This is why difficult
+      decisions can feel like a weight, and why some people would rather be told what to
+      do than face the labour of deciding. Yet it is precisely in choosing, weighing
+      one good against another and living with the result, that a person grows. The
+      freedom we prize and the responsibility we sometimes dread are, in the end, the
+      very same thing seen from two sides.
+    questions:
+      - prompt: "Why can many open paths feel like a weight?"
+        type: mc
+        options: ["each choice becomes ours to answer for", "they are all closed", "no one is watching", "there is nothing to gain"]
+        correct_index: 0
+      - prompt: "Where does the writer say a person grows?"
+        type: mc
+        options: ["in choosing and living with the result", "in avoiding all decisions", "in being told what to do", "in waiting"]
+        correct_index: 0
+      - prompt: "Explain what the writer means by freedom and responsibility being 'the same thing seen from two sides'."
+        type: written
+    vocabulary:
+      - word: "responsible"
+        definition: "answerable for one's actions"
+        context_sentence: "To be free is also to be responsible."
+      - word: "weighing"
+        definition: "carefully considering and comparing"
+        context_sentence: "Weighing one good against another."
+      - word: "dread"
+        definition: "to fear greatly"
+        context_sentence: "The responsibility we sometimes dread."
+
+  - title: "The Silent Extinction"
+    reading_level: 7
+    body: >
+      When a great animal disappears, the world takes notice, but most species vanish
+      without a sound. Insects, frogs, and small plants slip quietly out of existence,
+      unmourned and often unnamed, though each may have held some hidden use we never
+      discovered. A vanished flower might have cured a disease; a lost beetle might
+      have kept a pest in check. Because these losses are silent, it is easy to
+      pretend they do not matter, yet together they weaken the living fabric on which
+      we all depend. To protect the small and unglamorous is not sentiment but
+      good sense, for we cannot value what we have already thrown away.
+    questions:
+      - prompt: "Why do most extinctions go unnoticed?"
+        type: mc
+        options: ["small species vanish quietly", "they happen very slowly only", "no one keeps records of animals", "they are reversed at once"]
+        correct_index: 0
+      - prompt: "What example of a hidden use does the writer give?"
+        type: mc
+        options: ["a flower that might have cured a disease", "a bird that could sing", "a fish that glowed", "a tree that gave shade"]
+        correct_index: 0
+      - prompt: "Explain what the writer means by 'we cannot value what we have already thrown away'."
+        type: written
+    vocabulary:
+      - word: "extinction"
+        definition: "the dying out of a kind of living thing"
+        context_sentence: "The silent extinction."
+      - word: "unmourned"
+        definition: "not grieved for"
+        context_sentence: "Unmourned and often unnamed."
+      - word: "fabric"
+        definition: "the underlying structure of something"
+        context_sentence: "They weaken the living fabric."
+
+  - title: "The Wisdom of Doubt"
+    reading_level: 7
+    body: >
+      There is a strength in being willing to say "I might be wrong." The person who is
+      certain of everything has stopped learning, for certainty shuts the door that
+      curiosity would keep open. History is crowded with confident mistakes: whole
+      nations once sure the Earth was flat, wise doctors once sure that washing hands
+      was needless. Doubt, used well, is not weakness but a lantern, showing us where
+      our knowledge ends and inviting us to look further. This does not mean believing
+      nothing; it means holding our beliefs firmly enough to act, yet loosely enough to
+      change them when the evidence demands.
+    questions:
+      - prompt: "What does the writer say certainty does?"
+        type: mc
+        options: ["shuts the door that curiosity would keep open", "makes people kinder", "speeds up learning", "reveals the truth"]
+        correct_index: 0
+      - prompt: "What does the writer compare well-used doubt to?"
+        type: mc
+        options: ["a lantern", "a locked door", "a heavy chain", "a still pond"]
+        correct_index: 0
+      - prompt: "Explain what the writer means by holding beliefs 'firmly enough to act, yet loosely enough to change them'."
+        type: written
+    vocabulary:
+      - word: "certainty"
+        definition: "the state of being completely sure"
+        context_sentence: "Certainty shuts the door."
+      - word: "lantern"
+        definition: "a lamp that gives light in the dark"
+        context_sentence: "Doubt is a lantern."
+      - word: "demands"
+        definition: "requires firmly"
+        context_sentence: "When the evidence demands."
+
+  - title: "The Engine of Weather and Harvest"
+    reading_level: 7
+    body: >
+      Rain is not the enemy of the farmer nor the friend of the fisherman by chance;
+      it is part of a single engine that never rests. Water rises unseen from ocean and
+      leaf, gathers into cloud, falls upon the hills, and runs back to the sea, only to
+      rise again. Upon this endless circle rest the crops in the field and the water in
+      the tap. When the rhythm holds, harvests are full and wells stay sweet; when it
+      falters, drought or flood can follow. To waste water carelessly, then, is to
+      forget how far each drop has travelled, and how many depend on its faithful
+      return.
+    questions:
+      - prompt: "What does the passage say water does in its endless circle?"
+        type: mc
+        options: ["rises, forms cloud, falls, and returns to the sea", "stays in the ocean", "turns to stone", "vanishes forever"]
+        correct_index: 0
+      - prompt: "What rests upon this circle?"
+        type: mc
+        options: ["the crops and the water in the tap", "only the fish", "the wind", "the stars"]
+        correct_index: 0
+      - prompt: "Explain what the writer means by 'how far each drop has travelled'."
+        type: written
+    vocabulary:
+      - word: "engine"
+        definition: "a system that produces continuous action"
+        context_sentence: "Part of a single engine that never rests."
+      - word: "endless"
+        definition: "having no end"
+        context_sentence: "This endless circle."
+      - word: "faithful"
+        definition: "reliable and unfailing"
+        context_sentence: "How many depend on its faithful return."
+
+  - title: "The Cost of Silence"
+    reading_level: 7
+    body: >
+      Sometimes the greatest harm is done not by those who act wrongly but by those who
+      say nothing. When a person is treated unfairly and the bystanders look away, the
+      silence itself becomes a kind of permission. It takes real courage to speak up,
+      for the one who objects risks becoming a target too. Yet history remembers with
+      gratitude the few who refused to stay quiet, whose single voice gave others the
+      courage to add their own. To notice a wrong and say nothing is easy and
+      comfortable; to name it plainly, even alone, is how the comfortable silence is at
+      last broken.
+    questions:
+      - prompt: "What does the writer say silence can become?"
+        type: mc
+        options: ["a kind of permission", "a form of kindness", "a way to help", "a hidden strength"]
+        correct_index: 0
+      - prompt: "Why does speaking up take courage?"
+        type: mc
+        options: ["the one who objects risks becoming a target", "it is against the law", "no one ever listens", "it costs money"]
+        correct_index: 0
+      - prompt: "Explain what the writer means by a single voice giving 'others the courage to add their own'."
+        type: written
+    vocabulary:
+      - word: "bystanders"
+        definition: "people who are present but do not take part"
+        context_sentence: "The bystanders look away."
+      - word: "permission"
+        definition: "consent or approval to do something"
+        context_sentence: "The silence becomes a kind of permission."
+      - word: "objects"
+        definition: "expresses disagreement or opposition"
+        context_sentence: "The one who objects risks becoming a target."
+
+  - title: "The Architecture of the Ant"
+    reading_level: 7
+    body: >
+      No single ant is clever, yet an ant colony behaves as though it possesses a mind
+      of its own. Following simple rules and faint chemical trails, thousands of tiny
+      workers build sprawling nests with tunnels, nurseries, and even chambers to farm
+      fungus for food. No architect draws a plan, and no ruler gives commands; the
+      order arises from countless small actions added together. Scientists study these
+      colonies to understand how complex behaviour can emerge from simple parts, a
+      question that reaches from the anthill to the human city. In the humble ant lies
+      a lesson: that great things are often built not by one grand mind but by many
+      willing hands.
+    questions:
+      - prompt: "How do the ants build without a plan?"
+        type: mc
+        options: ["order arises from many small actions", "one ant commands the rest", "they copy other animals", "they work by chance alone"]
+        correct_index: 0
+      - prompt: "Why do scientists study ant colonies?"
+        type: mc
+        options: ["to see how complex behaviour emerges from simple parts", "to train the ants", "to collect the fungus", "to measure the tunnels"]
+        correct_index: 0
+      - prompt: "Explain what the writer means by 'great things are built by many willing hands'."
+        type: written
+    vocabulary:
+      - word: "colony"
+        definition: "a large group of the same creatures living together"
+        context_sentence: "An ant colony behaves as though it has a mind."
+      - word: "sprawling"
+        definition: "spreading out over a large area"
+        context_sentence: "Sprawling nests with tunnels."
+      - word: "emerge"
+        definition: "to come into being or appear"
+        context_sentence: "How complex behaviour can emerge from simple parts."
+
+  - title: "The Value of Rest"
+    reading_level: 7
+    body: >
+      In a world that praises busyness, rest is often mistaken for laziness, yet
+      nothing could be further from the truth. The body repairs itself in sleep, the
+      mind sorts and stores what it has learned, and even fields left fallow for a
+      season return richer than before. Great ideas rarely arrive to an exhausted
+      mind; they surface in the quiet moments, on a walk or in the pause between
+      efforts. To rest well is not to abandon our work but to prepare for it, for the
+      bow that is never unstrung will one day lose its spring. Those who honour rest
+      are not the enemies of achievement but its wisest servants.
+    questions:
+      - prompt: "What does the body do during sleep?"
+        type: mc
+        options: ["repairs itself", "grows colder", "stops all activity", "forgets everything"]
+        correct_index: 0
+      - prompt: "When does the writer say great ideas often surface?"
+        type: mc
+        options: ["in quiet moments and pauses", "only under pressure", "while rushing", "never"]
+        correct_index: 0
+      - prompt: "Explain what the writer means by 'the bow that is never unstrung will lose its spring'."
+        type: written
+    vocabulary:
+      - word: "fallow"
+        definition: "left unplanted so the soil can recover"
+        context_sentence: "Fields left fallow for a season."
+      - word: "surface"
+        definition: "to come up or appear"
+        context_sentence: "They surface in the quiet moments."
+      - word: "unstrung"
+        definition: "with the tension released"
+        context_sentence: "The bow that is never unstrung."
+
+  - title: "The Promise of Vaccines"
+    reading_level: 7
+    body: >
+      Few discoveries have saved as many lives as the vaccine, yet its idea is
+      strikingly simple. By showing the body a harmless trace of a disease, a vaccine
+      teaches the immune system to recognise the true enemy before it ever strikes, so
+      that the real illness, when it comes, is defeated in hours instead of weeks.
+      Diseases that once emptied villages have, through patient science, been driven to
+      the edge of extinction. This protection grows stronger still when many people
+      share it, for a disease that finds no one to infect cannot spread. In the tiny
+      drop of a vaccine lies one of the quiet triumphs of human cooperation.
+    questions:
+      - prompt: "How does a vaccine protect the body?"
+        type: mc
+        options: ["it teaches the immune system to recognise the disease", "it makes the body warmer", "it removes all germs from the air", "it replaces the blood"]
+        correct_index: 0
+      - prompt: "Why does protection grow stronger when many share it?"
+        type: mc
+        options: ["a disease that finds no one to infect cannot spread", "vaccines work only in crowds", "it becomes cheaper", "the germs grow weaker with age"]
+        correct_index: 0
+      - prompt: "Explain what the writer means by a vaccine being 'a quiet triumph of human cooperation'."
+        type: written
+    vocabulary:
+      - word: "immune"
+        definition: "able to resist a particular disease"
+        context_sentence: "It teaches the immune system."
+      - word: "trace"
+        definition: "a very small amount"
+        context_sentence: "A harmless trace of a disease."
+      - word: "triumphs"
+        definition: "great victories or achievements"
+        context_sentence: "One of the quiet triumphs of human cooperation."
+
+  - title: "The Reach of a Teacher"
+    reading_level: 7
+    body: >
+      A teacher's work is strange, for its results ripen long after the lesson ends and
+      often far from sight. The patient word offered to a discouraged child, the
+      standard held high when it would have been easier to lower it, may bear fruit in
+      a life the teacher never sees complete. Every doctor, every engineer, every
+      careful parent was first a pupil shaped by someone who believed they could learn.
+      This is why the influence of a good teacher can never be fully measured; it
+      travels forward through the years, from one mind to the next, long after the
+      teacher's own name is forgotten. To teach well is to plant a shade tree under
+      which one may never sit.
+    questions:
+      - prompt: "Why are a teacher's results hard to see?"
+        type: mc
+        options: ["they ripen long after the lesson ends", "they never appear", "they happen instantly", "only exams reveal them"]
+        correct_index: 0
+      - prompt: "What was every doctor and engineer first?"
+        type: mc
+        options: ["a pupil shaped by a teacher", "a famous inventor", "a natural genius", "a stranger"]
+        correct_index: 0
+      - prompt: "Explain what the writer means by 'to teach well is to plant a shade tree under which one may never sit'."
+        type: written
+    vocabulary:
+      - word: "ripen"
+        definition: "to become fully developed"
+        context_sentence: "Its results ripen long after the lesson."
+      - word: "discouraged"
+        definition: "having lost confidence or hope"
+        context_sentence: "Offered to a discouraged child."
+      - word: "influence"
+        definition: "the power to affect others"
+        context_sentence: "The influence of a good teacher."
+
+  - title: "The Restless Atom"
+    reading_level: 7
+    body: >
+      Everything you can touch, the desk, the air, your very hand, is built from
+      particles far too small to see, called atoms. Though a single atom is almost
+      entirely empty space, the tireless dance of its parts gives matter its strength
+      and shape. Arrange these atoms one way and you have soft, dark coal; arrange the
+      very same kind another way and you have a diamond hard enough to cut steel. That
+      the everyday world hides such secrets inside its smallest pieces astonished the
+      scientists who first glimpsed it. It reminds us that the ordinary, looked at
+      closely enough, is never ordinary at all.
+    questions:
+      - prompt: "What are all touchable things built from?"
+        type: mc
+        options: ["atoms too small to see", "invisible waves of sound", "drops of water", "grains of light"]
+        correct_index: 0
+      - prompt: "What example shows arrangement matters?"
+        type: mc
+        options: ["the same atoms form coal or diamond", "atoms turn to gold", "atoms disappear", "atoms make only metal"]
+        correct_index: 0
+      - prompt: "Explain what the writer means by 'the ordinary, looked at closely, is never ordinary at all'."
+        type: written
+    vocabulary:
+      - word: "particles"
+        definition: "extremely small pieces of matter"
+        context_sentence: "Built from particles far too small to see."
+      - word: "tireless"
+        definition: "never stopping or growing weary"
+        context_sentence: "The tireless dance of its parts."
+      - word: "glimpsed"
+        definition: "saw briefly or for the first time"
+        context_sentence: "The scientists who first glimpsed it."
+
+  - title: "The Weight of a Promise"
+    reading_level: 7
+    body: >
+      A promise is only a handful of words, yet it can bind us more tightly than any
+      chain. When we give our word, we hand another person the right to expect
+      something of us, and to build their own plans upon our reliability. This is why a
+      broken promise wounds so deeply: it is not merely a task left undone but a trust
+      betrayed. Those known for keeping their word gain a quiet power, for people will
+      lean on them in matters great and small. To promise less and deliver it fully is
+      worth far more than to promise the world and vanish. In the end, our reputation
+      is simply the sum of the promises we have kept.
+    questions:
+      - prompt: "Why does a broken promise wound deeply?"
+        type: mc
+        options: ["it is a trust betrayed, not just a task undone", "it wastes money", "it takes a long time", "it is against the law"]
+        correct_index: 0
+      - prompt: "What does the writer say our reputation is?"
+        type: mc
+        options: ["the sum of the promises we have kept", "how much we own", "how loudly we speak", "how many friends we have"]
+        correct_index: 0
+      - prompt: "Explain what the writer means by 'to promise less and deliver it fully'."
+        type: written
+    vocabulary:
+      - word: "bind"
+        definition: "to tie or hold firmly"
+        context_sentence: "It can bind us more tightly than any chain."
+      - word: "reliability"
+        definition: "the quality of being dependable"
+        context_sentence: "To build their plans upon our reliability."
+      - word: "betrayed"
+        definition: "broken faith with; let down"
+        context_sentence: "A trust betrayed."

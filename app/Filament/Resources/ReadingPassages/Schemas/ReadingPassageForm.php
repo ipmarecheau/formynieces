@@ -35,7 +35,7 @@ class ReadingPassageForm
                             ->columnSpanFull(),
                         Select::make('reading_level')
                             ->label('Reading level')
-                            ->options(array_combine(range(1, 6), range(1, 6)))
+                            ->options(array_combine(range(1, 7), range(1, 7)))
                             ->helperText('The level this passage is keyed to; served to students at that reading level.')
                             ->required(),
                         Toggle::make('is_active')

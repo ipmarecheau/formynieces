@@ -60,6 +60,29 @@ it('stores an authored passage with its level and questions', function () {
         ->and($passage->questions[0]['options'])->toBe(['stairs', 'a hill']);
 })->group('scenario:DR-06');
 
+it('accepts a passage authored at reading level 7', function () {
+    $admin = rpAdmin();
+
+    Livewire::actingAs($admin)->test(CreateReadingPassage::class)
+        ->fillForm([
+            'title' => 'The Distant Signal',
+            'reading_level' => 7,
+            'is_active' => true,
+            'body' => 'The astronomers waited through the long night for a whisper from the stars.',
+            'word_count' => 13,
+            'questions' => [
+                ['prompt' => 'What did the astronomers wait for?', 'type' => 'mc', 'options' => ['a signal', 'a storm'], 'correct_index' => 0],
+            ],
+        ])
+        ->call('create')
+        ->assertHasNoFormErrors();
+
+    assertDatabaseHas(ReadingPassage::class, [
+        'title' => 'The Distant Signal',
+        'reading_level' => 7,
+    ]);
+})->group('scenario:DR-06');
+
 it('makes an authored passage available to be served on future mornings', function () {
     $admin = rpAdmin();
 

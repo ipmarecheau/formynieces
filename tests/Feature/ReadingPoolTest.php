@@ -2,6 +2,7 @@
 
 use App\Models\ReadingPassage;
 use App\Models\VocabularyWord;
+use App\Services\Content\ContentCoverageService;
 use Database\Seeders\ReadingPassageSeeder;
 
 /**
@@ -21,6 +22,27 @@ it('seeds passages with questions and vocabulary, keyed by reading level', funct
             // DV-01: each passage yields at least three vocabulary words.
             ->and($passage->vocabularyWords()->count())->toBeGreaterThanOrEqual(3);
     }
+});
+
+/**
+ * The seamless-offline bar: every expected reading level is fully stocked with the
+ * target number of active, unseen passages so a term never repeats one (DR-06 / LL-18).
+ */
+it('stocks the target number of active passages for every expected reading level', function () {
+    $this->seed(ReadingPassageSeeder::class);
+
+    foreach (ContentCoverageService::READING_LEVELS as $level) {
+        expect(ReadingPassage::where('reading_level', $level)->where('is_active', true)->count())
+            ->toBe(ContentCoverageService::PASSAGES_PER_LEVEL, "level {$level} is not fully stocked");
+    }
+});
+
+it('has no duplicate passage titles across the pool', function () {
+    $this->seed(ReadingPassageSeeder::class);
+
+    $titles = ReadingPassage::pluck('title');
+
+    expect($titles->count())->toBe($titles->unique()->count());
 });
 
 it('is idempotent — re-seeding does not duplicate a passage or its vocabulary', function () {

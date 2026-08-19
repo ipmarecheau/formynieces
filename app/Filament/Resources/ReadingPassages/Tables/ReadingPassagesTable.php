@@ -38,7 +38,7 @@ class ReadingPassagesTable
             ->filters([
                 SelectFilter::make('reading_level')
                     ->label('Reading level')
-                    ->options(array_combine(range(1, 6), range(1, 6))),
+                    ->options(array_combine(range(1, 7), range(1, 7))),
                 TernaryFilter::make('is_active')
                     ->label('Available to serve'),
             ])
