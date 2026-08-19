@@ -1,0 +1,60 @@
+[
+  {
+    "module": "ELA-008",
+    "title": "Apostrophes: short forms and showing belonging",
+    "is_published": true,
+    "blocks": [
+      {
+        "type": "text",
+        "content": "The apostrophe ( ' ) is a small mark with two big jobs: it makes short forms of words, and it shows that something belongs to someone."
+      },
+      {
+        "type": "key",
+        "content": "In a short form (a contraction), the apostrophe takes the place of the missing letters: do not becomes don't."
+      },
+      {
+        "type": "example",
+        "content": "Making a short form.",
+        "steps": [
+          "Start with two words: 'can not'.",
+          "Join them and drop the letters 'no': 'cant'.",
+          "Put an apostrophe where the letters were removed: 'can't'."
+        ]
+      },
+      {
+        "type": "fillblank",
+        "prompt": "Write the short form of 'I am'.",
+        "answer": "I'm",
+        "explain": "Drop the 'a' from 'am' and put an apostrophe in its place: I'm.",
+        "rule": "In a short form, the apostrophe stands in place of the missing letters.",
+        "practiceItems": [
+          { "prompt": "the short form of 'do not'", "answer": "don't" },
+          { "prompt": "the short form of 'it is'", "answer": "it's" },
+          { "prompt": "the short form of 'they are'", "answer": "they're" },
+          { "prompt": "the short form of 'cannot'", "answer": "can't" }
+        ]
+      },
+      {
+        "type": "key",
+        "content": "To show something belongs to one person or thing, add an apostrophe then s: the dog's bone means the bone belonging to the dog."
+      },
+      {
+        "type": "fillblank",
+        "prompt": "The toy belonging to the boy is the ___ toy.",
+        "answer": "boy's",
+        "explain": "Add apostrophe + s to show belonging: the boy's toy.",
+        "rule": "To show that something belongs to one person or thing, add an apostrophe then s.",
+        "practiceItems": [
+          { "prompt": "the collar belonging to the dog: the ___ collar", "answer": "dog's" },
+          { "prompt": "the book belonging to Maya: ___ book", "answer": "Maya's" },
+          { "prompt": "the ball belonging to the girl: the ___ ball", "answer": "girl's" },
+          { "prompt": "the bag belonging to Sara: ___ bag", "answer": "Sara's" }
+        ]
+      },
+      {
+        "type": "text",
+        "content": "Two jobs: the apostrophe fills in for missing letters, and it shows belonging with an added s. Let's practise!"
+      }
+    ]
+  }
+]
