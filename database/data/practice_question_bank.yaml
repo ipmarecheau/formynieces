@@ -8320,3 +8320,1180 @@ questions:
     options: ["text", "cover", "title", "author's name"]
     correct_index: 0
     explanation: "Use evidence from the text."
+
+  # ── Module 80 (ELA-029): Poetry — Explicit Information ──
+  - module: 80
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "Information stated directly in a text is called?"
+    options: ["explicit", "hidden", "implied", "secret"]
+    correct_index: 0
+    explanation: "Directly stated information is explicit."
+  - module: 80
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "In 'the brown bird sang', the bird's colour is?"
+    options: ["brown", "blue", "black", "red"]
+    correct_index: 0
+    explanation: "The text states brown directly."
+  - module: 80
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "To retrieve explicit information, find the exact?"
+    options: ["words", "title", "author", "page"]
+    correct_index: 0
+    explanation: "Find the exact words that state it."
+  - module: 80
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "Explicit answers are ___ in the text."
+    options: ["stated", "hidden", "guessed", "missing"]
+    correct_index: 0
+    explanation: "Explicit answers are stated."
+  - module: 80
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "In 'The little brown bird sat on the wall', the bird sat on the?"
+    options: ["wall", "roof", "branch", "fence"]
+    correct_index: 0
+    explanation: "The text states the wall."
+  - module: 80
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "Explicit means the answer is right?"
+    options: ["there in the words", "hidden", "guessed", "imagined"]
+    correct_index: 0
+    explanation: "Explicit means stated right there."
+  - module: 80
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "In 'The cat slept on the warm mat', where did the cat sleep?"
+    options: ["on the mat", "on a bed", "on the wall", "outside"]
+    correct_index: 0
+    explanation: "The text states the mat."
+  - module: 80
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "To answer an explicit question, you should?"
+    options: ["point to the exact words", "guess", "imagine", "skip it"]
+    correct_index: 0
+    explanation: "Point to the exact words."
+  - module: 80
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "In 'Two red apples fell from the tree', how many apples fell?"
+    options: ["two", "one", "three", "red"]
+    correct_index: 0
+    explanation: "The text states two."
+  - module: 80
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "Explicit information does NOT need you to?"
+    options: ["guess", "read", "look", "find"]
+    correct_index: 0
+    explanation: "You do not need to guess; it is stated."
+  - module: 80
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "In 'The tall ship sailed at dawn', when did the ship sail?"
+    options: ["at dawn", "at noon", "at night", "never"]
+    correct_index: 0
+    explanation: "The text states at dawn."
+  - module: 80
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "In 'She wore a bright yellow hat', the hat was?"
+    options: ["yellow", "red", "blue", "green"]
+    correct_index: 0
+    explanation: "The text states yellow."
+  - module: 80
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "An explicit detail is one that is?"
+    options: ["clearly stated", "only hinted", "left out", "imagined"]
+    correct_index: 0
+    explanation: "Explicit details are clearly stated."
+  - module: 80
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "In 'The three kittens played all day', how many kittens were there?"
+    options: ["three", "two", "four", "one"]
+    correct_index: 0
+    explanation: "The text states three."
+  - module: 80
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "To find explicit information, you look for words that?"
+    options: ["state it directly", "hint at it", "hide it", "change it"]
+    correct_index: 0
+    explanation: "Look for words that state it directly."
+
+  # ── Module 81 (ELA-030): Poetry — Figures of Speech ──
+  - module: 81
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "'the wind whispered' is an example of?"
+    options: ["personification", "simile", "fact", "list"]
+    correct_index: 0
+    explanation: "It gives the wind a human action."
+  - module: 81
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "A simile compares using 'like' or?"
+    options: ["as", "is", "and", "the"]
+    correct_index: 0
+    explanation: "A simile uses 'like' or 'as'."
+  - module: 81
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "'the sun smiled down' is?"
+    options: ["personification", "a simile", "a fact", "a list"]
+    correct_index: 0
+    explanation: "The sun is given a human action."
+  - module: 81
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "A metaphor says one thing ___ another."
+    options: ["is", "like", "near", "under"]
+    correct_index: 0
+    explanation: "A metaphor says one thing IS another."
+  - module: 81
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "Giving human actions to a thing is called?"
+    options: ["personification", "a fact", "a list", "a title"]
+    correct_index: 0
+    explanation: "That is personification."
+  - module: 81
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "'as cold as ice' is a?"
+    options: ["simile", "metaphor", "fact", "personification"]
+    correct_index: 0
+    explanation: "It uses 'as', so it is a simile."
+  - module: 81
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "'The night is a black cloak' is a?"
+    options: ["metaphor", "simile", "fact", "personification"]
+    correct_index: 0
+    explanation: "It says one thing IS another, a metaphor."
+  - module: 81
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "'the leaves danced' is an example of?"
+    options: ["personification", "a simile", "a fact", "a list"]
+    correct_index: 0
+    explanation: "Leaves are given a human action."
+  - module: 81
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "A simile uses 'as' or?"
+    options: ["like", "is", "and", "the"]
+    correct_index: 0
+    explanation: "A simile uses 'like' or 'as'."
+  - module: 81
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "'brave as a lion' is a?"
+    options: ["simile", "metaphor", "fact", "personification"]
+    correct_index: 0
+    explanation: "It uses 'as', so a simile."
+  - module: 81
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "Which line uses personification?"
+    options: ["The old car groaned up the hill.", "The car was fast.", "The car is red.", "A car."]
+    correct_index: 0
+    explanation: "Groaning is a human action given to a car."
+  - module: 81
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "'Her smile was sunshine' is a?"
+    options: ["metaphor", "simile", "fact", "personification"]
+    correct_index: 0
+    explanation: "It says the smile IS sunshine, a metaphor."
+  - module: 81
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "'Her smile was as warm as sunshine' is a?"
+    options: ["simile", "metaphor", "fact", "personification"]
+    correct_index: 0
+    explanation: "It uses 'as', so a simile."
+  - module: 81
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "'the flowers nodded in the breeze' is?"
+    options: ["personification", "a simile", "a fact", "a metaphor"]
+    correct_index: 0
+    explanation: "Flowers are given a human action."
+  - module: 81
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "A comparison using 'like' or 'as' is a?"
+    options: ["simile", "metaphor", "fact", "personification"]
+    correct_index: 0
+    explanation: "That is a simile."
+
+  # ── Module 82 (ELA-031): Poetry — Imagery ──
+  - module: 82
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "Words that appeal to the five senses create?"
+    options: ["imagery", "facts", "lists", "titles"]
+    correct_index: 0
+    explanation: "Sensory words create imagery."
+  - module: 82
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "'crackling' appeals to the sense of?"
+    options: ["sound", "sight", "taste", "smell"]
+    correct_index: 0
+    explanation: "Crackling is a sound."
+  - module: 82
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "'glowed bright' appeals to the sense of?"
+    options: ["sight", "sound", "taste", "touch"]
+    correct_index: 0
+    explanation: "Brightness is seen."
+  - module: 82
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "'smoky scent' appeals to the sense of?"
+    options: ["smell", "sight", "sound", "taste"]
+    correct_index: 0
+    explanation: "A scent is smelled."
+  - module: 82
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "Imagery helps the reader ___ the scene."
+    options: ["picture", "forget", "ignore", "skip"]
+    correct_index: 0
+    explanation: "Imagery helps the reader picture it."
+  - module: 82
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "'sweet' appeals to the sense of?"
+    options: ["taste", "sight", "sound", "touch"]
+    correct_index: 0
+    explanation: "Sweetness is tasted."
+  - module: 82
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "'soft and fuzzy' appeals to the sense of?"
+    options: ["touch", "sight", "sound", "taste"]
+    correct_index: 0
+    explanation: "Softness is felt by touch."
+  - module: 82
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "'loud drums' appeals to the sense of?"
+    options: ["sound", "sight", "smell", "taste"]
+    correct_index: 0
+    explanation: "Loudness is heard."
+  - module: 82
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "The five senses are sight, sound, smell, taste and?"
+    options: ["touch", "time", "number", "colour"]
+    correct_index: 0
+    explanation: "The fifth sense is touch."
+  - module: 82
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "Words that make a picture in your mind are called?"
+    options: ["imagery", "facts", "titles", "lists"]
+    correct_index: 0
+    explanation: "They are imagery."
+  - module: 82
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "'the salty taste of the sea' appeals to?"
+    options: ["taste", "sight", "sound", "touch"]
+    correct_index: 0
+    explanation: "Saltiness is tasted."
+  - module: 82
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "'the bitter cold' appeals to the sense of?"
+    options: ["touch", "sight", "sound", "taste"]
+    correct_index: 0
+    explanation: "Cold is felt by touch."
+  - module: 82
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "'a flash of red' appeals to the sense of?"
+    options: ["sight", "sound", "smell", "taste"]
+    correct_index: 0
+    explanation: "A colour is seen."
+  - module: 82
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "'the roar of thunder' appeals to the sense of?"
+    options: ["sound", "sight", "smell", "taste"]
+    correct_index: 0
+    explanation: "A roar is heard."
+  - module: 82
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "Strong imagery makes writing more?"
+    options: ["vivid", "dull", "empty", "short"]
+    correct_index: 0
+    explanation: "Imagery makes writing vivid."
+
+  # ── Module 83 (ELA-032): Poetry — Mood and Tone ──
+  - module: 83
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "The feeling a poem gives the reader is the?"
+    options: ["mood", "title", "author", "length"]
+    correct_index: 0
+    explanation: "That feeling is the mood."
+  - module: 83
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "Dark, cold words create a ___ mood."
+    options: ["gloomy", "cheerful", "funny", "calm"]
+    correct_index: 0
+    explanation: "They create a gloomy mood."
+  - module: 83
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "Bright, sunny words create a ___ mood."
+    options: ["cheerful", "gloomy", "angry", "sad"]
+    correct_index: 0
+    explanation: "They create a cheerful mood."
+  - module: 83
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "The poet's attitude to the subject is the?"
+    options: ["tone", "mood", "title", "rhyme"]
+    correct_index: 0
+    explanation: "That attitude is the tone."
+  - module: 83
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "Mood is built from the poet's ___ choices."
+    options: ["word", "number", "page", "title"]
+    correct_index: 0
+    explanation: "Mood comes from word choices."
+  - module: 83
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "Words like 'empty, dark, cold' create which mood?"
+    options: ["gloomy", "cheerful", "funny", "excited"]
+    correct_index: 0
+    explanation: "They create a gloomy mood."
+  - module: 83
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "A poem that pokes gentle fun has which tone?"
+    options: ["playful", "angry", "frightened", "sad"]
+    correct_index: 0
+    explanation: "Gentle fun is a playful tone."
+  - module: 83
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "The feeling in the reader is the?"
+    options: ["mood", "tone", "title", "rhyme"]
+    correct_index: 0
+    explanation: "The reader's feeling is the mood."
+  - module: 83
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "Sad, heavy words give a ___ tone."
+    options: ["serious", "silly", "happy", "bright"]
+    correct_index: 0
+    explanation: "They give a serious tone."
+  - module: 83
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "A cheerful poem uses ___ words."
+    options: ["bright and happy", "dark and cold", "angry", "empty"]
+    correct_index: 0
+    explanation: "Cheerful poems use bright, happy words."
+  - module: 83
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "'A cold wind moaned across the empty hill' creates a ___ mood."
+    options: ["gloomy", "cheerful", "funny", "calm"]
+    correct_index: 0
+    explanation: "The words create a gloomy mood."
+  - module: 83
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "Tone is the poet's ___ toward the subject."
+    options: ["attitude", "spelling", "title", "rhyme"]
+    correct_index: 0
+    explanation: "Tone is the poet's attitude."
+  - module: 83
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "A poem full of laughter and jokes has a ___ tone."
+    options: ["playful", "serious", "gloomy", "angry"]
+    correct_index: 0
+    explanation: "Jokes give a playful tone."
+  - module: 83
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "The mood of a poem is the ___ it creates."
+    options: ["feeling", "fact", "title", "number"]
+    correct_index: 0
+    explanation: "Mood is the feeling created."
+  - module: 83
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "Gentle, soft words often create a ___ mood."
+    options: ["calm", "frightening", "angry", "noisy"]
+    correct_index: 0
+    explanation: "Gentle words create a calm mood."
+
+  # ── Module 84 (ELA-033): Poetry — Judging Characters ──
+  - module: 84
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "Someone who helps without wanting thanks is?"
+    options: ["kind", "selfish", "lazy", "rude"]
+    correct_index: 0
+    explanation: "Helping without reward shows kindness."
+  - module: 84
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "We judge characters by what they say and?"
+    options: ["do", "hide", "forget", "own"]
+    correct_index: 0
+    explanation: "Judge by what they say and do."
+  - module: 84
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "A character who shares is?"
+    options: ["generous", "greedy", "mean", "rude"]
+    correct_index: 0
+    explanation: "Sharing shows generosity."
+  - module: 84
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "A smart guess about a character is a?"
+    options: ["conclusion", "fact stated", "title", "rhyme"]
+    correct_index: 0
+    explanation: "It is a conclusion."
+  - module: 84
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "Someone who waits their turn is?"
+    options: ["patient", "rude", "greedy", "lazy"]
+    correct_index: 0
+    explanation: "Waiting shows patience."
+  - module: 84
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "Grabbing the most and pushing others shows someone is?"
+    options: ["selfish", "kind", "patient", "generous"]
+    correct_index: 0
+    explanation: "That behaviour is selfish."
+  - module: 84
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "A judgement backed by a character's actions is a?"
+    options: ["conclusion", "guess only", "title", "rhyme"]
+    correct_index: 0
+    explanation: "It is a supported conclusion."
+  - module: 84
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "'Kofi carried the old woman's bags home' shows he is?"
+    options: ["helpful", "lazy", "rude", "greedy"]
+    correct_index: 0
+    explanation: "Carrying her bags shows he is helpful."
+  - module: 84
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "We back up our judgement with the character's?"
+    options: ["actions", "name only", "title", "age"]
+    correct_index: 0
+    explanation: "Support it with their actions."
+  - module: 84
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "Someone who tells the truth is?"
+    options: ["honest", "dishonest", "lazy", "rude"]
+    correct_index: 0
+    explanation: "Telling the truth is honest."
+  - module: 84
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "'She shared her lunch with the new boy' shows she is?"
+    options: ["kind", "selfish", "mean", "lazy"]
+    correct_index: 0
+    explanation: "Sharing shows kindness."
+  - module: 84
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "'He broke the toy and blamed his sister' shows he is?"
+    options: ["dishonest", "honest", "kind", "brave"]
+    correct_index: 0
+    explanation: "Blaming another shows dishonesty."
+  - module: 84
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "To conclude what a character is like, look at their?"
+    options: ["behaviour", "name", "age", "height"]
+    correct_index: 0
+    explanation: "Look at their behaviour."
+  - module: 84
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "'She stayed calm and helped everyone' shows she is?"
+    options: ["level-headed", "panicky", "rude", "lazy"]
+    correct_index: 0
+    explanation: "Staying calm shows she is level-headed."
+  - module: 84
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "A character who keeps trying after failing is?"
+    options: ["determined", "lazy", "weak", "rude"]
+    correct_index: 0
+    explanation: "Persistence shows determination."
+
+  # ── Module 85 (ELA-034): Poetry — Connections ──
+  - module: 85
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "Linking a text to your own life is text-to-?"
+    options: ["self", "world", "text", "title"]
+    correct_index: 0
+    explanation: "That is a text-to-self connection."
+  - module: 85
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "Linking a text to the wider world is text-to-?"
+    options: ["world", "self", "text", "title"]
+    correct_index: 0
+    explanation: "That is a text-to-world connection."
+  - module: 85
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "Linking a text to another book is text-to-?"
+    options: ["text", "self", "world", "title"]
+    correct_index: 0
+    explanation: "That is a text-to-text connection."
+  - module: 85
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "Making connections helps you ___ a text."
+    options: ["understand", "ignore", "forget", "skip"]
+    correct_index: 0
+    explanation: "Connections help you understand."
+  - module: 85
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "A poem that reminds you of your own day is a text-to-___ connection."
+    options: ["self", "world", "text", "page"]
+    correct_index: 0
+    explanation: "It links to your own life, text-to-self."
+  - module: 85
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "A poem about a first day at school reminds you of your own first day. This is text-to-?"
+    options: ["self", "world", "text", "title"]
+    correct_index: 0
+    explanation: "It links to your own experience."
+  - module: 85
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "A poem about protecting the sea reminds you of a beach clean-up. This is text-to-?"
+    options: ["world", "self", "text", "title"]
+    correct_index: 0
+    explanation: "It links to a real-world event."
+  - module: 85
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "Two poems on the same topic remind you of each other. This is text-to-?"
+    options: ["text", "self", "world", "title"]
+    correct_index: 0
+    explanation: "It links one text to another."
+  - module: 85
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "Connections make reading more?"
+    options: ["meaningful", "boring", "empty", "short"]
+    correct_index: 0
+    explanation: "Connections make reading meaningful."
+  - module: 85
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "Linking a story to a real news event is text-to-?"
+    options: ["world", "self", "text", "page"]
+    correct_index: 0
+    explanation: "It links to the wider world."
+  - module: 85
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "A poem about a lost pet reminds you of your own lost pet. This is text-to-?"
+    options: ["self", "world", "text", "title"]
+    correct_index: 0
+    explanation: "It links to your own experience."
+  - module: 85
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "A story that reminds you of another story is text-to-?"
+    options: ["text", "self", "world", "page"]
+    correct_index: 0
+    explanation: "It links one text to another."
+  - module: 85
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "A poem about pollution reminds you of your polluted river. This is text-to-?"
+    options: ["world", "self", "text", "title"]
+    correct_index: 0
+    explanation: "It links to a real-world issue."
+  - module: 85
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "Making connections deepens your?"
+    options: ["understanding", "confusion", "boredom", "spelling"]
+    correct_index: 0
+    explanation: "Connections deepen understanding."
+  - module: 85
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "The three kinds of connection are text-to-self, text-to-world and text-to-?"
+    options: ["text", "title", "author", "page"]
+    correct_index: 0
+    explanation: "The third is text-to-text."
+
+  # ── Module 86 (ELA-035): Poetry — Solutions and Appreciation ──
+  - module: 86
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "A problem between characters is called a?"
+    options: ["conflict", "title", "rhyme", "list"]
+    correct_index: 0
+    explanation: "That is a conflict."
+  - module: 86
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "A fair way to share one bike between two friends is to take?"
+    options: ["turns", "it away", "none", "both"]
+    correct_index: 0
+    explanation: "Taking turns is fair."
+  - module: 86
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "A good solution is ___ to everyone."
+    options: ["fair", "unfair", "secret", "funny"]
+    correct_index: 0
+    explanation: "A good solution is fair."
+  - module: 86
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "Solving a conflict means finding a fair?"
+    options: ["solution", "title", "rhyme", "list"]
+    correct_index: 0
+    explanation: "It means finding a fair solution."
+  - module: 86
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "Saying why you enjoyed a poem shows?"
+    options: ["appreciation", "anger", "boredom", "fear"]
+    correct_index: 0
+    explanation: "It shows appreciation."
+  - module: 86
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "The fairest solution when two want one toy is to?"
+    options: ["take turns", "fight", "break it", "give up"]
+    correct_index: 0
+    explanation: "Taking turns is fair to both."
+  - module: 86
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "Appreciation should say what you enjoyed and?"
+    options: ["why", "when only", "who", "the page"]
+    correct_index: 0
+    explanation: "Say what you enjoyed and why."
+  - module: 86
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "A fair fix to a problem is a good?"
+    options: ["solution", "conflict", "title", "rhyme"]
+    correct_index: 0
+    explanation: "It is a good solution."
+  - module: 86
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "A conflict is a ___ between characters."
+    options: ["problem", "song", "title", "list"]
+    correct_index: 0
+    explanation: "A conflict is a problem."
+  - module: 86
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "A good solution keeps everyone treated?"
+    options: ["fairly", "unfairly", "badly", "angrily"]
+    correct_index: 0
+    explanation: "Everyone is treated fairly."
+  - module: 86
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "Two friends both want the last mango. A fair solution is to?"
+    options: ["share it", "fight for it", "throw it away", "hide it"]
+    correct_index: 0
+    explanation: "Sharing is fair."
+  - module: 86
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "Real appreciation of a poem names what you enjoyed and its?"
+    options: ["effect", "page number", "title only", "length"]
+    correct_index: 0
+    explanation: "Name what you enjoyed and its effect."
+  - module: 86
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "When characters disagree, that is a?"
+    options: ["conflict", "rhyme", "title", "list"]
+    correct_index: 0
+    explanation: "A disagreement is a conflict."
+  - module: 86
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "A fair solution treats everyone?"
+    options: ["equally", "unequally", "harshly", "rudely"]
+    correct_index: 0
+    explanation: "Fair means everyone equally."
+  - module: 86
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "Which shows appreciation of a poem?"
+    options: ["I liked how the images made me feel calm.", "It is short.", "I don't know.", "It has words."]
+    correct_index: 0
+    explanation: "It names what was enjoyed and its effect."
+
+  # ── Module 87 (ELA-036): Graphic Texts — Overt Messages ──
+  - module: 87
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "A message stated clearly and directly is?"
+    options: ["overt", "hidden", "implied", "secret"]
+    correct_index: 0
+    explanation: "A clearly stated message is overt."
+  - module: 87
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "'No Littering' is an ___ message."
+    options: ["overt", "implied", "hidden", "secret"]
+    correct_index: 0
+    explanation: "It states its message directly."
+  - module: 87
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "An overt message is easy to?"
+    options: ["read", "miss", "hide", "forget"]
+    correct_index: 0
+    explanation: "An overt message is easy to read."
+  - module: 87
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "A text that mixes words and pictures is a ___ text."
+    options: ["graphic", "spoken", "blank", "secret"]
+    correct_index: 0
+    explanation: "It is a graphic text."
+  - module: 87
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "A sign saying 'No Entry' means?"
+    options: ["do not go in", "come in", "go faster", "stop and rest"]
+    correct_index: 0
+    explanation: "It states: do not enter."
+  - module: 87
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "A poster with a bin and 'Keep our park clean' overtly means?"
+    options: ["do not litter", "buy a bin", "parks are big", "litter here"]
+    correct_index: 0
+    explanation: "The stated message is to keep the park clean."
+  - module: 87
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "The clear stated message of a poster is the ___ message."
+    options: ["overt", "implied", "hidden", "secret"]
+    correct_index: 0
+    explanation: "The clear stated message is overt."
+  - module: 87
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "To find the overt message, read the words and the?"
+    options: ["picture", "author", "title only", "page"]
+    correct_index: 0
+    explanation: "Read the words and the main picture together."
+  - module: 87
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "A poster with a toothbrush and 'Brush twice a day' overtly means?"
+    options: ["brush your teeth twice a day", "buy a toothbrush", "dentists are busy", "teeth are white"]
+    correct_index: 0
+    explanation: "The words state it plainly."
+  - module: 87
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "An overt message is ___ directly."
+    options: ["stated", "hidden", "guessed", "missing"]
+    correct_index: 0
+    explanation: "An overt message is stated directly."
+  - module: 87
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "A road sign with a red circle and 'No Entry' overtly means?"
+    options: ["do not enter this way", "the road is pretty", "drive faster", "turn around slowly"]
+    correct_index: 0
+    explanation: "It states: do not enter this way."
+  - module: 87
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "A poster mixing words and images is a ___ text."
+    options: ["graphic", "spoken", "blank", "musical"]
+    correct_index: 0
+    explanation: "It is a graphic text."
+  - module: 87
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "An overt message is one you can read straight?"
+    options: ["off the page", "between lines", "from the colours only", "from the size only"]
+    correct_index: 0
+    explanation: "You can read it straight off the page."
+  - module: 87
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "A sign 'Wet Floor' overtly warns you the floor is?"
+    options: ["wet", "dry", "clean", "new"]
+    correct_index: 0
+    explanation: "It states the floor is wet."
+  - module: 87
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "The overt message uses the words plus the main?"
+    options: ["image", "author", "title", "page number"]
+    correct_index: 0
+    explanation: "Words plus the main image give the overt message."
+
+  # ── Module 88 (ELA-037): Graphic Texts — Implied Messages ──
+  - module: 88
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "A message that is suggested, not stated, is?"
+    options: ["implied", "overt", "stated", "printed"]
+    correct_index: 0
+    explanation: "A suggested message is implied."
+  - module: 88
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "Colour, size and images are ___ elements."
+    options: ["design", "spoken", "random", "secret"]
+    correct_index: 0
+    explanation: "They are design elements."
+  - module: 88
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "Bright colours and smiles suggest a ___ feeling."
+    options: ["happy", "sad", "angry", "dull"]
+    correct_index: 0
+    explanation: "They suggest a happy feeling."
+  - module: 88
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "An implied message is not said in?"
+    options: ["words", "colours", "pictures", "designs"]
+    correct_index: 0
+    explanation: "An implied message is not stated in words."
+  - module: 88
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "The biggest word on a poster is meant to catch your?"
+    options: ["eye", "foot", "ear", "hand"]
+    correct_index: 0
+    explanation: "It is meant to catch your eye."
+  - module: 88
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "An advert with a big smiling family selling juice implies the juice makes families?"
+    options: ["happy", "sad", "tired", "angry"]
+    correct_index: 0
+    explanation: "The design implies happiness."
+  - module: 88
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "A suggested, unspoken message is?"
+    options: ["implied", "overt", "stated", "printed"]
+    correct_index: 0
+    explanation: "It is implied."
+  - module: 88
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "Colour and size are examples of ___ elements."
+    options: ["design", "spoken", "secret", "random"]
+    correct_index: 0
+    explanation: "They are design elements."
+  - module: 88
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "An advert with a famous runner winning implies the trainers help you?"
+    options: ["win", "lose", "rest", "sleep"]
+    correct_index: 0
+    explanation: "The design implies you will win."
+  - module: 88
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "Design elements guide how you?"
+    options: ["feel", "spell", "count", "read aloud"]
+    correct_index: 0
+    explanation: "Design guides how you feel."
+  - module: 88
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "Why is the price on a sale poster often the biggest, brightest text?"
+    options: ["to catch your eye", "to hide it", "to fill space", "to confuse"]
+    correct_index: 0
+    explanation: "Big, bright text catches the eye."
+  - module: 88
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "Bold red can suggest ___ or danger."
+    options: ["excitement", "boredom", "calm", "sleep"]
+    correct_index: 0
+    explanation: "Red suggests excitement or danger."
+  - module: 88
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "An implied message is read from the ___, not the words."
+    options: ["design", "title", "page number", "author"]
+    correct_index: 0
+    explanation: "It is read from the design."
+  - module: 88
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "To read an implied message, look past the words at the?"
+    options: ["images and colours", "page number", "author's name", "title only"]
+    correct_index: 0
+    explanation: "Look at the images and colours."
+  - module: 88
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "Design choices are made to shape the reader's?"
+    options: ["feelings", "spelling", "height", "age"]
+    correct_index: 0
+    explanation: "Design shapes the reader's feelings."
+
+  # ── Module 89 (ELA-038): Graphic Texts — Purpose and Audience ──
+  - module: 89
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "An advert's main purpose is usually to?"
+    options: ["persuade", "inform only", "confuse", "warn"]
+    correct_index: 0
+    explanation: "Adverts persuade."
+  - module: 89
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "A safety sign's purpose is to?"
+    options: ["inform", "entertain", "persuade", "confuse"]
+    correct_index: 0
+    explanation: "Safety signs inform."
+  - module: 89
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "A funny comic's purpose is to?"
+    options: ["entertain", "inform", "persuade", "warn"]
+    correct_index: 0
+    explanation: "A comic entertains."
+  - module: 89
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "The reason a text is made is its?"
+    options: ["purpose", "audience", "title", "colour"]
+    correct_index: 0
+    explanation: "The reason is the purpose."
+  - module: 89
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "Who a media text is aimed at is its?"
+    options: ["audience", "purpose", "title", "author"]
+    correct_index: 0
+    explanation: "Who it is for is the audience."
+  - module: 89
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "A billboard saying 'Buy now — half price!' aims to?"
+    options: ["persuade", "inform only", "entertain", "warn"]
+    correct_index: 0
+    explanation: "It pushes you to buy, so it persuades."
+  - module: 89
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "A cereal advert with cartoons is aimed at?"
+    options: ["children", "farmers", "doctors", "drivers"]
+    correct_index: 0
+    explanation: "Cartoons aim it at children."
+  - module: 89
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "A media text made only to give facts aims to?"
+    options: ["inform", "persuade", "entertain", "frighten"]
+    correct_index: 0
+    explanation: "Facts inform."
+  - module: 89
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "An advert tries to change the audience's?"
+    options: ["mind", "height", "age", "spelling"]
+    correct_index: 0
+    explanation: "It tries to change their mind."
+  - module: 89
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "A poster's target group of readers is its?"
+    options: ["audience", "purpose", "title", "colour"]
+    correct_index: 0
+    explanation: "The target readers are the audience."
+  - module: 89
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "A comic strip is made mainly to?"
+    options: ["entertain", "inform", "persuade", "warn"]
+    correct_index: 0
+    explanation: "A comic entertains."
+  - module: 89
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "To find a media text's purpose, ask?"
+    options: ["why was it made?", "how long?", "what colour?", "who owns it?"]
+    correct_index: 0
+    explanation: "Ask why it was made."
+  - module: 89
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "A poster for a children's show is aimed at?"
+    options: ["children and families", "scientists", "builders", "drivers"]
+    correct_index: 0
+    explanation: "It is aimed at children and families."
+  - module: 89
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "A 'Danger: High Voltage' sign aims to?"
+    options: ["warn and inform", "entertain", "persuade to buy", "tell a story"]
+    correct_index: 0
+    explanation: "It warns and informs of danger."
+  - module: 89
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "Knowing the audience helps you read a media text?"
+    options: ["wisely", "backwards", "aloud", "slowly"]
+    correct_index: 0
+    explanation: "It helps you read it wisely."
+
+  # ── Module 90 (ELA-039): Graphic Texts — Evaluating Techniques ──
+  - module: 90
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "A short, catchy phrase in an advert is a?"
+    options: ["slogan", "title", "list", "fact"]
+    correct_index: 0
+    explanation: "A short catchy phrase is a slogan."
+  - module: 90
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "A famous face is used to make you ___ the product."
+    options: ["trust", "ignore", "forget", "hide"]
+    correct_index: 0
+    explanation: "A famous face builds trust."
+  - module: 90
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "Bright colours are used to grab your?"
+    options: ["attention", "foot", "ear", "hand"]
+    correct_index: 0
+    explanation: "Bright colours grab attention."
+  - module: 90
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "'Taste the sunshine!' is an example of a?"
+    options: ["slogan", "fact", "list", "title"]
+    correct_index: 0
+    explanation: "It is a catchy slogan."
+  - module: 90
+    difficulty: easy
+    sea_section: "Section II"
+    prompt: "Judging how well an advert works is to ___ it."
+    options: ["evaluate", "copy", "ignore", "hide"]
+    correct_index: 0
+    explanation: "Judging it is evaluating."
+  - module: 90
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "Why does an advert use a famous sports star?"
+    options: ["to make you trust and want the product", "to teach maths", "to fill space", "to warn you"]
+    correct_index: 0
+    explanation: "A famous star builds trust and desire."
+  - module: 90
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "A catchy phrase technique is a?"
+    options: ["slogan", "fact", "title", "page"]
+    correct_index: 0
+    explanation: "A catchy phrase is a slogan."
+  - module: 90
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "Bright colour is a technique to grab?"
+    options: ["attention", "spelling", "numbers", "titles"]
+    correct_index: 0
+    explanation: "Colour grabs attention."
+  - module: 90
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "An evaluation should give a judgement and a?"
+    options: ["reason", "title", "guess", "colour"]
+    correct_index: 0
+    explanation: "A judgement needs a reason."
+  - module: 90
+    difficulty: medium
+    sea_section: "Section II"
+    prompt: "Media makers use techniques to ___ you."
+    options: ["win over", "bore", "confuse only", "ignore"]
+    correct_index: 0
+    explanation: "Techniques are used to win you over."
+  - module: 90
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "To evaluate a media text is to judge how well its ___ work."
+    options: ["techniques", "colours only", "letters", "fonts"]
+    correct_index: 0
+    explanation: "Judge how well its techniques work."
+  - module: 90
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "A slogan is designed to be?"
+    options: ["catchy and memorable", "long and dull", "hidden", "random"]
+    correct_index: 0
+    explanation: "A slogan is catchy and memorable."
+  - module: 90
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "Using a celebrity in an advert is a persuasive?"
+    options: ["technique", "fact", "title", "warning"]
+    correct_index: 0
+    explanation: "It is a persuasive technique."
+  - module: 90
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "An advert's bright colours and slogan are meant to?"
+    options: ["attract and persuade", "inform only", "warn", "confuse"]
+    correct_index: 0
+    explanation: "They attract attention and persuade."
+  - module: 90
+    difficulty: hard
+    sea_section: "Section II"
+    prompt: "A good evaluation of an advert gives a judgement plus?"
+    options: ["reasons", "a title", "a guess", "a colour"]
+    correct_index: 0
+    explanation: "A judgement needs reasons."
