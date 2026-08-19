@@ -1779,3 +1779,483 @@ passages:
       - word: "cycle"
         definition: "a set of events that repeats again and again"
         context_sentence: "The whole cycle begins again."
+
+  # ── Level 5 ──
+  - title: "The Birth of the Steelpan"
+    reading_level: 5
+    body: >
+      The steelpan is the only acoustic musical instrument invented in the
+      twentieth century, and it was born in Trinidad and Tobago. In the crowded
+      yards of Laventille, young men experimented with discarded oil drums. By
+      carefully hammering dents into the metal, they discovered that different
+      areas produced different notes. What began as noise on rubbish became rich,
+      ringing melodies. Once frowned upon, the pan is now celebrated worldwide as
+      the national instrument. It stands as proof that creativity can rise from
+      the humblest of beginnings.
+    questions:
+      - prompt: "What everyday objects were used to make the first steelpans?"
+        type: mc
+        options: ["discarded oil drums", "wooden boxes", "metal pipes", "clay pots"]
+        correct_index: 0
+      - prompt: "How did the makers get different notes from the metal?"
+        type: mc
+        options: ["by hammering dents into different areas", "by painting it", "by heating it", "by cutting holes"]
+        correct_index: 0
+      - prompt: "Explain what the writer means by 'creativity can rise from the humblest of beginnings'."
+        type: written
+    vocabulary:
+      - word: "invented"
+        definition: "created something that did not exist before"
+        context_sentence: "The steelpan is the only instrument invented in the twentieth century."
+      - word: "discarded"
+        definition: "thrown away as no longer wanted"
+        context_sentence: "They experimented with discarded oil drums."
+      - word: "celebrated"
+        definition: "praised and admired widely"
+        context_sentence: "The pan is now celebrated worldwide."
+
+  - title: "The Mangrove Swamp"
+    reading_level: 5
+    body: >
+      Where the river meets the sea, mangrove trees grow in the salty mud. Their
+      tangled roots arch above the water like bent fingers. These roots trap mud
+      and protect the coast from crashing waves and storms. The swamp is a nursery
+      for young fish, crabs, and shrimp, which shelter among the roots until they
+      are big enough for the open sea. Birds nest in the branches above. Though it
+      may look like wasteland, the mangrove is one of the richest and most
+      important habitats on earth.
+    questions:
+      - prompt: "How do the mangrove roots protect the coast?"
+        type: mc
+        options: ["they trap mud and block waves", "they make the water fresh", "they give shade", "they attract tourists"]
+        correct_index: 0
+      - prompt: "Why is the swamp called a 'nursery'?"
+        type: mc
+        options: ["young sea creatures shelter and grow there", "babies are born there", "flowers grow there", "it is quiet"]
+        correct_index: 0
+      - prompt: "Explain why the mangrove is important even though it 'may look like wasteland'."
+        type: written
+    vocabulary:
+      - word: "tangled"
+        definition: "twisted together in a messy way"
+        context_sentence: "Their tangled roots arch above the water."
+      - word: "shelter"
+        definition: "to stay somewhere safe from harm"
+        context_sentence: "Young fish shelter among the roots."
+      - word: "habitats"
+        definition: "the natural homes of animals and plants"
+        context_sentence: "The mangrove is one of the richest habitats on earth."
+
+  - title: "The Young Inventor"
+    reading_level: 5
+    body: >
+      Amara noticed that her grandmother struggled to see the small buttons on the
+      stove. Instead of accepting the problem, she decided to solve it. Using
+      cardboard and bright stickers, she built a simple guide that fitted over the
+      dials. Her grandmother could now cook safely on her own. Amara's teacher
+      entered the idea in a national competition, where it won first prize. The
+      judges praised not the fancy materials, but the caring thought behind the
+      invention. A good idea, they said, begins with noticing a real need.
+    questions:
+      - prompt: "What problem did Amara notice?"
+        type: mc
+        options: ["her grandmother could not see the stove buttons", "the stove was broken", "the food was cold", "the kitchen was dark"]
+        correct_index: 0
+      - prompt: "What did the judges praise about the invention?"
+        type: mc
+        options: ["the caring thought behind it", "the expensive parts", "how big it was", "how fast it worked"]
+        correct_index: 0
+      - prompt: "Explain the judges' comment that 'a good idea begins with noticing a real need'."
+        type: written
+    vocabulary:
+      - word: "struggled"
+        definition: "found something hard to do"
+        context_sentence: "Her grandmother struggled to see the buttons."
+      - word: "solve"
+        definition: "to find an answer to a problem"
+        context_sentence: "She decided to solve it."
+      - word: "praised"
+        definition: "said good things about"
+        context_sentence: "The judges praised the caring thought."
+
+  - title: "The Story of Cocoa"
+    reading_level: 5
+    body: >
+      Long ago, Trinidad was famous around the world for its fine cocoa. Farmers
+      grew the trees in the shade of the hills, and their pods held the seeds we
+      call cocoa beans. Workers split the pods, scooped out the wet beans, and
+      left them to dry in the sun, dancing on them to keep them turning. From
+      these humble beans came the chocolate loved everywhere. Today, some farmers
+      are reviving the old estates, proud to share the rich flavour of Trinitario
+      cocoa once more.
+    questions:
+      - prompt: "Where did the seeds we call cocoa beans come from?"
+        type: mc
+        options: ["inside the pods of the cocoa tree", "from the roots", "from the flowers", "from the leaves"]
+        correct_index: 0
+      - prompt: "Why did the workers dance on the beans?"
+        type: mc
+        options: ["to keep them turning as they dried", "to celebrate", "to clean their feet", "to make music"]
+        correct_index: 0
+      - prompt: "Explain why some farmers today are 'reviving the old estates'."
+        type: written
+    vocabulary:
+      - word: "pods"
+        definition: "the cases that hold seeds"
+        context_sentence: "Their pods held the cocoa beans."
+      - word: "reviving"
+        definition: "bringing back to life or use"
+        context_sentence: "Some farmers are reviving the old estates."
+      - word: "flavour"
+        definition: "the taste of something"
+        context_sentence: "They share the rich flavour of Trinitario cocoa."
+
+  - title: "The Difficult Decision"
+    reading_level: 5
+    body: >
+      Kofi found a wallet stuffed with money on the pavement. His family was poor,
+      and the cash could buy so much they needed. For a moment he was tempted to
+      keep it. But he thought of how worried the owner must be. Inside the wallet
+      was a card with an address. Kofi walked a mile to return it. The grateful
+      owner offered him a reward, but Kofi simply smiled and said doing the right
+      thing was reward enough. He walked home poorer in pocket but richer in
+      spirit.
+    questions:
+      - prompt: "What did Kofi find on the pavement?"
+        type: mc
+        options: ["a wallet full of money", "a bag of food", "a phone", "a watch"]
+        correct_index: 0
+      - prompt: "How did Kofi find the owner?"
+        type: mc
+        options: ["a card with an address was inside", "he asked around", "the owner called", "the police helped"]
+        correct_index: 0
+      - prompt: "Explain what is meant by 'poorer in pocket but richer in spirit'."
+        type: written
+    vocabulary:
+      - word: "tempted"
+        definition: "feeling a strong wish to do something"
+        context_sentence: "He was tempted to keep it."
+      - word: "grateful"
+        definition: "feeling thankful"
+        context_sentence: "The grateful owner offered him a reward."
+      - word: "reward"
+        definition: "something given in return for good work"
+        context_sentence: "Doing the right thing was reward enough."
+
+  - title: "Looking at the Stars"
+    reading_level: 5
+    body: >
+      For thousands of years, people have gazed up at the night sky and wondered.
+      The ancient sailors used the stars to find their way across vast oceans,
+      long before maps or machines. Astronomers study the stars to learn how the
+      universe works. Some stars we see tonight are so far away that their light
+      began its journey before we were born. When you look up, you are gazing not
+      just across great distances, but back through time itself.
+    questions:
+      - prompt: "How did ancient sailors use the stars?"
+        type: mc
+        options: ["to find their way across oceans", "to tell the temperature", "to catch fish", "to send messages"]
+        correct_index: 0
+      - prompt: "Why can starlight be older than the person looking at it?"
+        type: mc
+        options: ["the light travelled a long time to reach us", "stars are ancient people", "the sky is old", "light moves backwards"]
+        correct_index: 0
+      - prompt: "Explain the idea that looking at stars is 'gazing back through time itself'."
+        type: written
+    vocabulary:
+      - word: "gazed"
+        definition: "looked steadily for a long time"
+        context_sentence: "People have gazed up at the night sky."
+      - word: "vast"
+        definition: "extremely large"
+        context_sentence: "Sailors crossed vast oceans."
+      - word: "astronomers"
+        definition: "scientists who study the stars and planets"
+        context_sentence: "Astronomers study the stars."
+
+  - title: "Stage Fright"
+    reading_level: 5
+    body: >
+      Reya had practised her poem until she knew every word. Yet as she stepped
+      onto the stage, her heart pounded and her hands trembled. The bright lights
+      and the sea of faces made her mind go blank. She took a slow, deep breath
+      and remembered her teacher's advice: speak to one friendly face at a time.
+      Slowly her voice steadied. By the last line, she had forgotten her fear
+      entirely. The applause taught her that courage is not the absence of fear,
+      but acting in spite of it.
+    questions:
+      - prompt: "What happened to Reya when she stepped onto the stage?"
+        type: mc
+        options: ["her heart pounded and her mind went blank", "she forgot the poem", "she fell", "she laughed"]
+        correct_index: 0
+      - prompt: "What advice helped her steady her voice?"
+        type: mc
+        options: ["speak to one friendly face at a time", "close her eyes", "speak very fast", "look at the floor"]
+        correct_index: 0
+      - prompt: "Explain the lesson that 'courage is not the absence of fear'."
+        type: written
+    vocabulary:
+      - word: "trembled"
+        definition: "shook slightly, often from fear"
+        context_sentence: "Her hands trembled."
+      - word: "steadied"
+        definition: "became firm and calm"
+        context_sentence: "Slowly her voice steadied."
+      - word: "courage"
+        definition: "the ability to face fear or danger"
+        context_sentence: "Courage is acting in spite of fear."
+
+  - title: "The Marathon"
+    reading_level: 5
+    body: >
+      Sunil trained for months before the big marathon. The route stretched over
+      twenty-six miles through the hot city streets. From the start, faster
+      runners surged ahead, and Sunil felt like giving up. But he set himself a
+      simple goal: reach the next corner, then the next. Mile after mile fell
+      behind him. His legs burned and his lungs ached, yet he pressed on. When at
+      last he crossed the finish line, he understood that the race had been won
+      not with his legs, but with his mind.
+    questions:
+      - prompt: "How long was the marathon route?"
+        type: mc
+        options: ["over twenty-six miles", "ten miles", "five miles", "one hundred miles"]
+        correct_index: 0
+      - prompt: "What simple goal did Sunil set himself?"
+        type: mc
+        options: ["reach the next corner, then the next", "beat everyone", "run very fast", "stop and rest"]
+        correct_index: 0
+      - prompt: "Explain what Sunil means by 'the race had been won with his mind'."
+        type: written
+    vocabulary:
+      - word: "surged"
+        definition: "moved forward suddenly and powerfully"
+        context_sentence: "Faster runners surged ahead."
+      - word: "pressed"
+        definition: "kept going with effort"
+        context_sentence: "He pressed on."
+      - word: "understood"
+        definition: "came to know the meaning of something"
+        context_sentence: "He understood the race had been won with his mind."
+
+  - title: "The Power of Reading"
+    reading_level: 5
+    body: >
+      Books are like doors that open onto other worlds. Through reading, a child
+      in a small village can wander the streets of distant cities, dive to the
+      ocean floor, or travel back to ancient times. Reading builds not only
+      knowledge but imagination and empathy, letting us feel what others feel.
+      The more we read, the wider our world becomes and the better we understand
+      it. A person who reads lives a thousand lives; a person who never reads
+      lives only one.
+    questions:
+      - prompt: "What does the passage compare books to?"
+        type: mc
+        options: ["doors onto other worlds", "heavy stones", "empty boxes", "closed windows"]
+        correct_index: 0
+      - prompt: "Besides knowledge, what does reading build?"
+        type: mc
+        options: ["imagination and empathy", "muscles", "money", "speed"]
+        correct_index: 0
+      - prompt: "Explain the meaning of 'a person who reads lives a thousand lives'."
+        type: written
+    vocabulary:
+      - word: "wander"
+        definition: "to move about without a fixed path"
+        context_sentence: "A child can wander the streets of distant cities."
+      - word: "imagination"
+        definition: "the power to form pictures in the mind"
+        context_sentence: "Reading builds imagination."
+      - word: "empathy"
+        definition: "the ability to understand another's feelings"
+        context_sentence: "Reading builds empathy."
+
+  - title: "The Kind Bus Driver"
+    reading_level: 5
+    body: >
+      Mr Baptiste had driven the same route for thirty years. He knew every
+      passenger by name and always had a warm greeting. When an elderly woman
+      could not find her fare one morning, he quietly paid it himself and waved
+      her aboard. On rainy days he waited an extra moment for the child running
+      late. His small kindnesses cost him little but meant a great deal to others.
+      When he retired, the whole community came to thank the man who had made
+      every journey brighter.
+    questions:
+      - prompt: "How long had Mr Baptiste driven the route?"
+        type: mc
+        options: ["thirty years", "one year", "ten years", "fifty years"]
+        correct_index: 0
+      - prompt: "What did he do when the elderly woman could not find her fare?"
+        type: mc
+        options: ["he quietly paid it himself", "he made her leave", "he waited an hour", "he called for help"]
+        correct_index: 0
+      - prompt: "Explain why the community came to thank him when he retired."
+        type: written
+    vocabulary:
+      - word: "greeting"
+        definition: "friendly words said when you meet someone"
+        context_sentence: "He always had a warm greeting."
+      - word: "fare"
+        definition: "the money paid to travel"
+        context_sentence: "She could not find her fare."
+      - word: "retired"
+        definition: "stopped working after many years"
+        context_sentence: "When he retired, the community thanked him."
+
+  - title: "How Birds Fly"
+    reading_level: 5
+    body: >
+      Have you ever watched a corbeau circle high above without flapping its
+      wings? Birds are built for flight in wonderful ways. Their bones are light
+      and hollow, so they are not too heavy to rise. Their curved wings push air
+      downward, and the air pushes them up in return. By spreading their feathers,
+      they ride on rising warm air like a surfer on a wave. Everything about a
+      bird, from its shape to its feathers, works together to conquer the sky.
+    questions:
+      - prompt: "Why are birds not too heavy to fly?"
+        type: mc
+        options: ["their bones are light and hollow", "they eat little", "they are small", "they have feathers"]
+        correct_index: 0
+      - prompt: "How does a bird rise without flapping?"
+        type: mc
+        options: ["it rides on rising warm air", "it holds its breath", "it swims", "it uses its tail only"]
+        correct_index: 0
+      - prompt: "Explain how a bird's curved wings help it rise."
+        type: written
+    vocabulary:
+      - word: "hollow"
+        definition: "having an empty space inside"
+        context_sentence: "Their bones are light and hollow."
+      - word: "curved"
+        definition: "bent in a smooth line, not straight"
+        context_sentence: "Their curved wings push air downward."
+      - word: "conquer"
+        definition: "to overcome or master something"
+        context_sentence: "Everything works together to conquer the sky."
+
+  - title: "A Letter to the Future"
+    reading_level: 5
+    body: >
+      Our class buried a time capsule in the schoolyard, to be opened in fifty
+      years. Inside we placed photographs, a newspaper, and letters to the
+      students of the future. I wrote about my hopes for a cleaner, kinder world.
+      It felt strange to imagine a child not yet born reading my words. Perhaps by
+      then the problems we face will be solved, or perhaps new ones will have
+      arisen. Either way, I hope our letters remind them that people long ago
+      cared deeply about their tomorrow.
+    questions:
+      - prompt: "When is the time capsule to be opened?"
+        type: mc
+        options: ["in fifty years", "next year", "in ten years", "never"]
+        correct_index: 0
+      - prompt: "What did the writer's letter describe?"
+        type: mc
+        options: ["hopes for a cleaner, kinder world", "a favourite game", "the weather", "a shopping list"]
+        correct_index: 0
+      - prompt: "Explain why it felt 'strange' to write to a child not yet born."
+        type: written
+    vocabulary:
+      - word: "capsule"
+        definition: "a sealed container"
+        context_sentence: "We buried a time capsule."
+      - word: "imagine"
+        definition: "to form a picture of something in the mind"
+        context_sentence: "It felt strange to imagine a future child."
+      - word: "arisen"
+        definition: "come into being; appeared"
+        context_sentence: "New problems will have arisen."
+
+  - title: "The Coral in Danger"
+    reading_level: 5
+    body: >
+      Scientists have grown worried about the coral reefs of the Caribbean. When
+      the sea becomes too warm, the coral loses its colour and turns a ghostly
+      white, a process called bleaching. Bleached coral is weak and can easily
+      die, taking with it the countless creatures that depend on the reef. Warmer
+      seas are caused partly by the way people burn fuels and heat the planet. Yet
+      there is hope: by protecting the reefs and reducing pollution, communities
+      can give the coral a chance to recover.
+    questions:
+      - prompt: "What happens to coral when the sea becomes too warm?"
+        type: mc
+        options: ["it loses colour and turns white (bleaching)", "it grows faster", "it turns green", "it becomes stone"]
+        correct_index: 0
+      - prompt: "According to the passage, what gives the coral 'a chance to recover'?"
+        type: mc
+        options: ["protecting reefs and reducing pollution", "warmer water", "more fishing", "doing nothing"]
+        correct_index: 0
+      - prompt: "Explain why bleached coral puts other sea creatures in danger."
+        type: written
+    vocabulary:
+      - word: "bleaching"
+        definition: "losing colour and turning white"
+        context_sentence: "This process is called bleaching."
+      - word: "depend"
+        definition: "to need something to survive"
+        context_sentence: "Creatures that depend on the reef."
+      - word: "recover"
+        definition: "to become healthy again"
+        context_sentence: "The coral gets a chance to recover."
+
+  - title: "The Village Storyteller"
+    reading_level: 5
+    body: >
+      Every full moon, the children of the village gathered under the samaan tree
+      to hear old Tante Cee tell her tales. Her voice rose and fell like music as
+      she spun stories of clever spiders, brave heroes, and talking animals. Some
+      tales made them laugh, others sent shivers down their spines, but each one
+      carried a lesson wrapped inside. Long before books were common, it was
+      through such storytellers that the wisdom of the ancestors passed from one
+      generation to the next.
+    questions:
+      - prompt: "When did the children gather to hear the stories?"
+        type: mc
+        options: ["every full moon", "every morning", "on Sundays", "at Christmas"]
+        correct_index: 0
+      - prompt: "What did each of Tante Cee's tales carry inside it?"
+        type: mc
+        options: ["a lesson", "a song", "a gift", "a secret name"]
+        correct_index: 0
+      - prompt: "Explain how storytellers helped pass on 'the wisdom of the ancestors'."
+        type: written
+    vocabulary:
+      - word: "gathered"
+        definition: "came together in a group"
+        context_sentence: "The children gathered under the samaan tree."
+      - word: "spun"
+        definition: "told or created (a story)"
+        context_sentence: "She spun stories of clever spiders."
+      - word: "generation"
+        definition: "all the people born around the same time"
+        context_sentence: "Wisdom passed from one generation to the next."
+
+  - title: "The Determined Farmer"
+    reading_level: 5
+    body: >
+      When drought struck the district, most farmers gave up and let their fields
+      turn to dust. But Mr Ali refused to surrender. He dug a small pond to catch
+      what little rain fell and carried water in buckets to his youngest plants.
+      Neighbours called him foolish for working so hard on dying land. Yet when
+      the rains at last returned, his roots were still alive while others had to
+      start again. His harvest that season was the finest for miles. Persistence,
+      the district learned, often outlasts hardship.
+    questions:
+      - prompt: "What did Mr Ali do to save his youngest plants?"
+        type: mc
+        options: ["carried water in buckets to them", "moved them indoors", "cut them down", "left them alone"]
+        correct_index: 0
+      - prompt: "Why was his harvest the finest for miles that season?"
+        type: mc
+        options: ["his roots stayed alive through the drought", "he planted more", "he had better seeds", "it rained only on his field"]
+        correct_index: 0
+      - prompt: "Explain the lesson that 'persistence often outlasts hardship'."
+        type: written
+    vocabulary:
+      - word: "drought"
+        definition: "a long period with little or no rain"
+        context_sentence: "When drought struck the district."
+      - word: "surrender"
+        definition: "to give up"
+        context_sentence: "Mr Ali refused to surrender."
+      - word: "persistence"
+        definition: "the quality of not giving up"
+        context_sentence: "Persistence often outlasts hardship."
