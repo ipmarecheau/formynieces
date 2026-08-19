@@ -1319,3 +1319,432 @@ passages:
       - word: "flap"
         definition: "to move wings up and down"
         context_sentence: "It began to flap its wings."
+
+  - title: "The Leatherback's Journey"
+    reading_level: 4
+    body: >
+      The leatherback is the largest turtle in the world, and many nest on the
+      beaches of Trinidad. After years at sea, the female returns to the very
+      beach where she was born. She heaves her heavy body up the sand and digs a
+      nest with care. There she lays her eggs before slipping back into the
+      waves. Weeks later, tiny hatchlings scramble to the sea. Volunteers guard
+      the nests so the turtles can survive.
+    questions:
+      - prompt: "Where does the female leatherback return to nest?"
+        type: mc
+        options: ["the beach where she was born", "any beach", "a river", "the deep sea"]
+        correct_index: 0
+      - prompt: "Why do volunteers guard the nests?"
+        type: mc
+        options: ["so the turtles can survive", "to take the eggs", "to clean the beach", "to count tourists"]
+        correct_index: 0
+      - prompt: "Write why it is remarkable that the turtle finds the same beach."
+        type: written
+    vocabulary:
+      - word: "heaves"
+        definition: "lifts or pulls with great effort"
+        context_sentence: "She heaves her heavy body up the sand."
+      - word: "hatchlings"
+        definition: "baby animals that have just come out of eggs"
+        context_sentence: "Tiny hatchlings scramble to the sea."
+      - word: "survive"
+        definition: "to stay alive"
+        context_sentence: "Volunteers guard the nests so the turtles can survive."
+
+  - title: "The Drummer Boy"
+    reading_level: 4
+    body: >
+      Kwesi loved the sound of the steelpan more than anything. His family was
+      poor and could not buy him an instrument. So each evening he practised on
+      empty paint tins behind the house. He tapped out rhythms until his hands
+      knew every note. A pan man heard him and offered to teach him for free.
+      Years later, Kwesi led his own band at Panorama. His dream had come true
+      through hard work.
+    questions:
+      - prompt: "What did Kwesi practise on at first?"
+        type: mc
+        options: ["empty paint tins", "a real steelpan", "a drum", "a guitar"]
+        correct_index: 0
+      - prompt: "How did Kwesi's dream finally come true?"
+        type: mc
+        options: ["through hard work", "by luck", "by buying a pan", "by giving up"]
+        correct_index: 0
+      - prompt: "Why do you think the pan man offered to teach Kwesi for free?"
+        type: written
+    vocabulary:
+      - word: "instrument"
+        definition: "an object used to make music"
+        context_sentence: "They could not buy him an instrument."
+      - word: "rhythms"
+        definition: "patterns of beats in music"
+        context_sentence: "He tapped out rhythms."
+      - word: "led"
+        definition: "was in charge of; guided"
+        context_sentence: "Kwesi led his own band at Panorama."
+
+  - title: "The Flood"
+    reading_level: 4
+    body: >
+      After days of heavy rain, the river burst its banks. Brown water crept into
+      the streets and then into the houses. Families rushed to move their
+      belongings upstairs. Neighbours helped one another carry the old and the
+      young to safety. Boats moved slowly along roads that had become rivers.
+      When the water finally went down, the community worked together to clean the
+      mud and rebuild. Hardship had brought them closer.
+    questions:
+      - prompt: "Why did the river flood the streets?"
+        type: mc
+        options: ["days of heavy rain made it burst its banks", "a dam broke", "the sea rose", "a pipe burst"]
+        correct_index: 0
+      - prompt: "How did the neighbours behave during the flood?"
+        type: mc
+        options: ["they helped one another", "they ran away", "they argued", "they did nothing"]
+        correct_index: 0
+      - prompt: "Explain what the writer means by 'hardship had brought them closer'."
+        type: written
+    vocabulary:
+      - word: "burst"
+        definition: "broke open suddenly"
+        context_sentence: "The river burst its banks."
+      - word: "belongings"
+        definition: "the things a person owns"
+        context_sentence: "Families rushed to move their belongings upstairs."
+      - word: "community"
+        definition: "the people who live in one area"
+        context_sentence: "The community worked together to rebuild."
+
+  - title: "The Honeybee"
+    reading_level: 4
+    body: >
+      A honeybee is small, but it does a great job. It flies from flower to
+      flower, drinking sweet nectar. As it moves, yellow pollen sticks to its
+      body and is carried to the next bloom. This helps plants make seeds and
+      fruit. Back at the hive, the bees turn the nectar into honey. Without bees,
+      many of the foods we love would not grow. We should protect these busy
+      little workers.
+    questions:
+      - prompt: "What sticks to the bee as it visits flowers?"
+        type: mc
+        options: ["yellow pollen", "water", "sand", "leaves"]
+        correct_index: 0
+      - prompt: "What do the bees make from the nectar?"
+        type: mc
+        options: ["honey", "wax only", "seeds", "bread"]
+        correct_index: 0
+      - prompt: "Explain why the passage says we should protect bees."
+        type: written
+    vocabulary:
+      - word: "nectar"
+        definition: "the sweet liquid inside flowers"
+        context_sentence: "It drinks sweet nectar."
+      - word: "pollen"
+        definition: "the fine yellow dust flowers make"
+        context_sentence: "Yellow pollen sticks to its body."
+      - word: "hive"
+        definition: "the home where bees live"
+        context_sentence: "Back at the hive, bees turn nectar into honey."
+
+  - title: "The Recycling Club"
+    reading_level: 4
+    body: >
+      Our school started a recycling club to keep the yard clean. We placed three
+      bins: one for paper, one for plastic, and one for tins. At first, some
+      students did not bother to sort their rubbish. So we made bright posters and
+      gave a prize to the tidiest class. Soon everyone joined in. We sold the
+      collected plastic and used the money to buy new books. Caring for the earth
+      helped our school too.
+    questions:
+      - prompt: "How many bins did the club place?"
+        type: mc
+        options: ["three", "two", "four", "one"]
+        correct_index: 0
+      - prompt: "What did the club do with the money from the plastic?"
+        type: mc
+        options: ["bought new books", "kept it", "threw it away", "gave a party"]
+        correct_index: 0
+      - prompt: "Write how the club got more students to join in."
+        type: written
+    vocabulary:
+      - word: "recycling"
+        definition: "using old things again instead of throwing them away"
+        context_sentence: "Our school started a recycling club."
+      - word: "sort"
+        definition: "to put into groups"
+        context_sentence: "Some students did not sort their rubbish."
+      - word: "collected"
+        definition: "gathered together"
+        context_sentence: "We sold the collected plastic."
+
+  - title: "The Cricket Match"
+    reading_level: 4
+    body: >
+      It was the last over of the village match. Our team needed six runs to win.
+      Everyone held their breath as Devon walked to the crease. The bowler ran in
+      fast. Devon watched the ball closely, swung, and struck it high over the
+      boundary. A mighty six! The crowd leapt up, cheering wildly. Devon had won
+      the match with the last ball. He would be talked about for weeks.
+    questions:
+      - prompt: "How many runs did the team need to win?"
+        type: mc
+        options: ["six", "four", "ten", "one"]
+        correct_index: 0
+      - prompt: "How did Devon win the match?"
+        type: mc
+        options: ["he hit a six over the boundary", "he ran fast", "he bowled well", "the other team gave up"]
+        correct_index: 0
+      - prompt: "Why does the writer say 'everyone held their breath'?"
+        type: written
+    vocabulary:
+      - word: "crease"
+        definition: "the line where a batsman stands in cricket"
+        context_sentence: "Devon walked to the crease."
+      - word: "boundary"
+        definition: "the edge of a cricket field"
+        context_sentence: "He struck it high over the boundary."
+      - word: "mighty"
+        definition: "very powerful or great"
+        context_sentence: "A mighty six!"
+
+  - title: "Grandpa's Old Radio"
+    reading_level: 4
+    body: >
+      In the corner of Grandpa's house sits an old wooden radio. It is scratched
+      and dusty, but he will not throw it away. Long ago, the whole family would
+      gather around it to listen to the news and cricket. Grandpa says it once
+      brought them word of important events from far away. Though we now have
+      phones and televisions, he keeps the radio as a treasured memory of simpler
+      times.
+    questions:
+      - prompt: "Why will Grandpa not throw away the radio?"
+        type: mc
+        options: ["it is a treasured memory", "it still works perfectly", "it is worth money", "it is new"]
+        correct_index: 0
+      - prompt: "What did the family use the radio for long ago?"
+        type: mc
+        options: ["to listen to news and cricket", "to watch films", "to make calls", "to play music videos"]
+        correct_index: 0
+      - prompt: "Why do you think the old radio means so much to Grandpa?"
+        type: written
+    vocabulary:
+      - word: "scratched"
+        definition: "marked with thin lines from wear"
+        context_sentence: "It is scratched and dusty."
+      - word: "gather"
+        definition: "to come together"
+        context_sentence: "The family would gather around it."
+      - word: "treasured"
+        definition: "valued very much"
+        context_sentence: "He keeps the radio as a treasured memory."
+
+  - title: "The Rainforest Walk"
+    reading_level: 4
+    body: >
+      Our guide led us along a narrow path deep into the rainforest. Tall trees
+      formed a green roof high above us. The air was damp and full of the calls
+      of unseen birds. We spotted a bright hummingbird and a line of leaf-cutter
+      ants. The guide warned us to look but never to take. A rainforest, he said,
+      is a delicate web where every plant and creature has its place.
+    questions:
+      - prompt: "What did the tall trees form above the walkers?"
+        type: mc
+        options: ["a green roof", "a wall", "a bridge", "a river"]
+        correct_index: 0
+      - prompt: "What did the guide warn the group to do?"
+        type: mc
+        options: ["look but never take", "run quickly", "stay silent", "pick flowers"]
+        correct_index: 0
+      - prompt: "Explain what the guide meant by 'a delicate web'."
+        type: written
+    vocabulary:
+      - word: "damp"
+        definition: "slightly wet"
+        context_sentence: "The air was damp."
+      - word: "spotted"
+        definition: "saw or noticed"
+        context_sentence: "We spotted a bright hummingbird."
+      - word: "delicate"
+        definition: "easily damaged; needing care"
+        context_sentence: "A rainforest is a delicate web."
+
+  - title: "The Missing Lunch"
+    reading_level: 4
+    body: >
+      At break time, Anisa reached into her bag, but her lunch was gone. She was
+      sure someone had taken it. She looked at Jaden with an angry face. But then
+      she remembered leaving her lunch bag on the kitchen table that morning. She
+      had been quick to blame without knowing the truth. Anisa said sorry to
+      Jaden, and he shared his roti with her. She learned to be sure before
+      accusing anyone.
+    questions:
+      - prompt: "Where was Anisa's lunch really?"
+        type: mc
+        options: ["on the kitchen table at home", "in Jaden's bag", "in the bin", "at school"]
+        correct_index: 0
+      - prompt: "What did Jaden do after Anisa said sorry?"
+        type: mc
+        options: ["shared his roti with her", "walked away", "laughed", "told the teacher"]
+        correct_index: 0
+      - prompt: "What lesson did Anisa learn from this?"
+        type: written
+    vocabulary:
+      - word: "sure"
+        definition: "certain; having no doubt"
+        context_sentence: "She was sure someone had taken it."
+      - word: "blame"
+        definition: "to say someone did something wrong"
+        context_sentence: "She had been quick to blame."
+      - word: "accusing"
+        definition: "saying someone has done something wrong"
+        context_sentence: "Be sure before accusing anyone."
+
+  - title: "The Village Potter"
+    reading_level: 4
+    body: >
+      In the village lives a potter named Miss Rookmin. She digs clay from the
+      river bank and shapes it with her hands. On her spinning wheel, a lump of
+      clay rises into a smooth bowl. She dries her pots in the sun, then bakes
+      them in a hot oven. People come from far to buy her jars and cups. What was
+      once soft mud becomes something useful and beautiful.
+    questions:
+      - prompt: "Where does Miss Rookmin get her clay?"
+        type: mc
+        options: ["from the river bank", "from a shop", "from the sea", "from a mountain"]
+        correct_index: 0
+      - prompt: "What does she use to shape the clay into a bowl?"
+        type: mc
+        options: ["a spinning wheel", "a knife", "a hammer", "a brush"]
+        correct_index: 0
+      - prompt: "Explain the change from 'soft mud' to 'something useful and beautiful'."
+        type: written
+    vocabulary:
+      - word: "clay"
+        definition: "soft earth that can be shaped and baked hard"
+        context_sentence: "She digs clay from the river bank."
+      - word: "shapes"
+        definition: "makes into a form"
+        context_sentence: "She shapes it with her hands."
+      - word: "useful"
+        definition: "able to be used to help"
+        context_sentence: "Soft mud becomes something useful."
+
+  - title: "The Wise Parrot"
+    reading_level: 4
+    body: >
+      A green parrot lived in the yard and could copy any sound it heard. It
+      whistled like the kettle and barked like the dog. One day a thief crept into
+      the yard at night. The parrot suddenly shouted, "Who is there?" in the
+      grandmother's voice. The frightened thief ran away, thinking someone was
+      awake. In the morning, the family laughed and gave the clever parrot an
+      extra piece of fruit.
+    questions:
+      - prompt: "What could the parrot do?"
+        type: mc
+        options: ["copy any sound it heard", "fly very high", "open doors", "sing songs"]
+        correct_index: 0
+      - prompt: "Why did the thief run away?"
+        type: mc
+        options: ["he thought someone was awake", "he saw a dog", "it started to rain", "the parrot bit him"]
+        correct_index: 0
+      - prompt: "Why do you think the family gave the parrot extra fruit?"
+        type: written
+    vocabulary:
+      - word: "copy"
+        definition: "to make the same sound or action"
+        context_sentence: "It could copy any sound it heard."
+      - word: "crept"
+        definition: "moved slowly and quietly"
+        context_sentence: "A thief crept into the yard at night."
+      - word: "clever"
+        definition: "quick to understand; smart"
+        context_sentence: "The family gave the clever parrot fruit."
+
+  - title: "Shadows"
+    reading_level: 4
+    body: >
+      Have you ever noticed how your shadow changes during the day? In the early
+      morning, when the sun is low, your shadow is long and thin. At noon, when
+      the sun is high overhead, your shadow shrinks to a small dark pool at your
+      feet. As evening comes, it stretches out long again. A shadow forms because
+      your body blocks the light. Watching shadows can even tell you the time of
+      day.
+    questions:
+      - prompt: "When is your shadow long and thin?"
+        type: mc
+        options: ["in the early morning", "at noon", "at midnight", "never"]
+        correct_index: 0
+      - prompt: "Why does a shadow form?"
+        type: mc
+        options: ["your body blocks the light", "the sun is cold", "the ground is dark", "the wind blows"]
+        correct_index: 0
+      - prompt: "Explain why your shadow is smallest at noon."
+        type: written
+    vocabulary:
+      - word: "shadow"
+        definition: "the dark shape made when something blocks light"
+        context_sentence: "Your shadow is long and thin."
+      - word: "shrinks"
+        definition: "gets smaller"
+        context_sentence: "Your shadow shrinks to a small dark pool."
+      - word: "stretches"
+        definition: "gets longer"
+        context_sentence: "It stretches out long again."
+
+  - title: "A Kindness Returned"
+    reading_level: 4
+    body: >
+      One rainy afternoon, Maya shared her umbrella with a stranger at the bus
+      stop. The old man thanked her warmly and went on his way. Weeks later, Maya
+      dropped her purse in the busy market without noticing. A voice called out
+      behind her. It was the same old man, holding out her purse. Kindness, Maya
+      realised, often finds its way back to us. She never forgot that rainy day.
+    questions:
+      - prompt: "What did Maya share at the bus stop?"
+        type: mc
+        options: ["her umbrella", "her lunch", "her book", "her money"]
+        correct_index: 0
+      - prompt: "Who returned Maya's purse?"
+        type: mc
+        options: ["the same old man", "a police officer", "her friend", "the vendor"]
+        correct_index: 0
+      - prompt: "Explain what Maya realised about kindness."
+        type: written
+    vocabulary:
+      - word: "stranger"
+        definition: "a person you do not know"
+        context_sentence: "Maya shared her umbrella with a stranger."
+      - word: "warmly"
+        definition: "in a friendly, kind way"
+        context_sentence: "The old man thanked her warmly."
+      - word: "realised"
+        definition: "came to understand"
+        context_sentence: "Kindness, Maya realised, finds its way back."
+
+  - title: "The Careful Crab"
+    reading_level: 4
+    body: >
+      On the muddy bank of the swamp lives the blue crab. It hides in a deep hole
+      to stay safe from birds and people. When it feels the ground shake, it
+      scuttles quickly back into its burrow. At night it comes out to feed. If an
+      enemy grabs its claw, the crab can drop the claw and escape, growing a new
+      one later. Nature has given the crab clever ways to survive.
+    questions:
+      - prompt: "Where does the blue crab hide to stay safe?"
+        type: mc
+        options: ["in a deep hole", "under a leaf", "in the sea", "up a tree"]
+        correct_index: 0
+      - prompt: "What can the crab do if an enemy grabs its claw?"
+        type: mc
+        options: ["drop the claw and escape", "bite hard", "swim away", "play dead"]
+        correct_index: 0
+      - prompt: "Write two ways the crab protects itself."
+        type: written
+    vocabulary:
+      - word: "scuttles"
+        definition: "runs with quick little steps"
+        context_sentence: "It scuttles quickly back into its burrow."
+      - word: "burrow"
+        definition: "a hole in the ground where an animal lives"
+        context_sentence: "It scuttles back into its burrow."
+      - word: "escape"
+        definition: "to get away from danger"
+        context_sentence: "The crab can drop its claw and escape."
