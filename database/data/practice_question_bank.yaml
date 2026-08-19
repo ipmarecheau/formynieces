@@ -2970,3 +2970,859 @@ questions:
     options: ["$28", "$72", "$18", "$32"]
     correct_index: 0
     explanation: "4 x $18 = $72, and $100 - $72 = $28."
+
+  # ── Module 28 (MATH-028): Properties of Solids and Plane Shapes ──
+  - module: 28
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "How many faces does a cube have?"
+    options: ["6", "4", "8", "12"]
+    correct_index: 0
+    explanation: "A cube has 6 square faces."
+  - module: 28
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "How many sides does a triangle have?"
+    options: ["3", "4", "5", "6"]
+    correct_index: 0
+    explanation: "A triangle has 3 sides."
+  - module: 28
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "How many sides does a square have?"
+    options: ["4", "3", "5", "6"]
+    correct_index: 0
+    explanation: "A square has 4 sides."
+  - module: 28
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "How many edges does a cube have?"
+    options: ["12", "6", "8", "4"]
+    correct_index: 0
+    explanation: "A cube has 12 edges."
+  - module: 28
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "How many sides does a pentagon have?"
+    options: ["5", "4", "6", "3"]
+    correct_index: 0
+    explanation: "A pentagon has 5 sides."
+  - module: 28
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "How many vertices (corners) does a cube have?"
+    options: ["8", "6", "12", "4"]
+    correct_index: 0
+    explanation: "A cube has 8 vertices."
+  - module: 28
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "How many sides does a hexagon have?"
+    options: ["6", "5", "7", "8"]
+    correct_index: 0
+    explanation: "A hexagon has 6 sides."
+  - module: 28
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A flat shape like a square is called a?"
+    options: ["plane shape", "solid", "edge", "vertex"]
+    correct_index: 0
+    explanation: "Flat, two-dimensional shapes are plane shapes."
+  - module: 28
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "How many sides does a rectangle have?"
+    options: ["4", "3", "5", "6"]
+    correct_index: 0
+    explanation: "A rectangle has 4 sides."
+  - module: 28
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "The flat surfaces of a solid are called?"
+    options: ["faces", "edges", "corners", "points"]
+    correct_index: 0
+    explanation: "The flat surfaces of a solid are its faces."
+  - module: 28
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "How many sides does an octagon have?"
+    options: ["8", "6", "7", "10"]
+    correct_index: 0
+    explanation: "An octagon has 8 sides."
+  - module: 28
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A solid with 6 square faces is a?"
+    options: ["cube", "cylinder", "cone", "sphere"]
+    correct_index: 0
+    explanation: "A cube has 6 square faces."
+  - module: 28
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "Where two faces of a solid meet is called an?"
+    options: ["edge", "face", "vertex", "angle"]
+    correct_index: 0
+    explanation: "Two faces meet along an edge."
+  - module: 28
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "How many corners does a triangle have?"
+    options: ["3", "4", "2", "6"]
+    correct_index: 0
+    explanation: "A triangle has 3 corners."
+  - module: 28
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A shape with all points the same distance from the centre is a?"
+    options: ["circle", "square", "triangle", "hexagon"]
+    correct_index: 0
+    explanation: "A circle has every point the same distance from its centre."
+
+  # ── Module 29 (MATH-029): Triangles and Quadrilaterals ──
+  - module: 29
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A triangle with all 3 sides equal is?"
+    options: ["equilateral", "isosceles", "scalene", "square"]
+    correct_index: 0
+    explanation: "Equilateral means all sides equal."
+  - module: 29
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "How many sides does a quadrilateral have?"
+    options: ["4", "3", "5", "6"]
+    correct_index: 0
+    explanation: "A quadrilateral has 4 sides."
+  - module: 29
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A triangle with exactly 2 equal sides is?"
+    options: ["isosceles", "equilateral", "scalene", "round"]
+    correct_index: 0
+    explanation: "Isosceles means two equal sides."
+  - module: 29
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A shape with 4 equal sides and 4 right angles is a?"
+    options: ["square", "triangle", "circle", "pentagon"]
+    correct_index: 0
+    explanation: "A square has 4 equal sides and 4 right angles."
+  - module: 29
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "How many sides does any triangle have?"
+    options: ["3", "4", "5", "2"]
+    correct_index: 0
+    explanation: "Every triangle has 3 sides."
+  - module: 29
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A triangle with no equal sides is?"
+    options: ["scalene", "equilateral", "isosceles", "square"]
+    correct_index: 0
+    explanation: "Scalene means no sides equal."
+  - module: 29
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A quadrilateral with opposite sides equal and 4 right angles is a?"
+    options: ["rectangle", "triangle", "pentagon", "circle"]
+    correct_index: 0
+    explanation: "A rectangle has opposite sides equal and 4 right angles."
+  - module: 29
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "How many right angles does a rectangle have?"
+    options: ["4", "2", "3", "1"]
+    correct_index: 0
+    explanation: "A rectangle has 4 right angles."
+  - module: 29
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "The word part 'quad' in quadrilateral means?"
+    options: ["four", "three", "five", "two"]
+    correct_index: 0
+    explanation: "'Quad' means four."
+  - module: 29
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "An equilateral triangle has how many equal angles?"
+    options: ["3", "2", "1", "0"]
+    correct_index: 0
+    explanation: "All three angles are equal in an equilateral triangle."
+  - module: 29
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A four-sided shape with only one pair of parallel sides is a?"
+    options: ["trapezium", "square", "triangle", "hexagon"]
+    correct_index: 0
+    explanation: "A trapezium has exactly one pair of parallel sides."
+  - module: 29
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "The three angles of a triangle add up to how many degrees?"
+    options: ["180", "90", "360", "120"]
+    correct_index: 0
+    explanation: "The angles of any triangle total 180 degrees."
+  - module: 29
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A quadrilateral with 4 equal sides but no right angles is a?"
+    options: ["rhombus", "square", "rectangle", "circle"]
+    correct_index: 0
+    explanation: "A rhombus has 4 equal sides but its angles are not right angles."
+  - module: 29
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "An isosceles triangle has how many equal sides?"
+    options: ["2", "3", "0", "1"]
+    correct_index: 0
+    explanation: "An isosceles triangle has 2 equal sides."
+  - module: 29
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A square is a special kind of?"
+    options: ["rectangle", "triangle", "circle", "pentagon"]
+    correct_index: 0
+    explanation: "A square is a rectangle with all sides equal."
+
+  # ── Module 30 (MATH-030): Symmetry ──
+  - module: 30
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "How many lines of symmetry does a square have?"
+    options: ["4", "2", "1", "0"]
+    correct_index: 0
+    explanation: "A square has 4 lines of symmetry."
+  - module: 30
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A line that divides a shape into two matching halves is a line of?"
+    options: ["symmetry", "angle", "area", "length"]
+    correct_index: 0
+    explanation: "It is called a line of symmetry."
+  - module: 30
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "How many lines of symmetry does a rectangle have?"
+    options: ["2", "4", "1", "0"]
+    correct_index: 0
+    explanation: "A rectangle has 2 lines of symmetry."
+  - module: 30
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "The two halves across a line of symmetry are?"
+    options: ["mirror images", "different", "bigger", "smaller"]
+    correct_index: 0
+    explanation: "They are mirror images of each other."
+  - module: 30
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "How many lines of symmetry does an equilateral triangle have?"
+    options: ["3", "2", "1", "4"]
+    correct_index: 0
+    explanation: "An equilateral triangle has 3 lines of symmetry."
+  - module: 30
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "Which has more lines of symmetry, a square or a rectangle?"
+    options: ["square", "rectangle", "same", "neither"]
+    correct_index: 0
+    explanation: "A square has 4, a rectangle has 2."
+  - module: 30
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "Does a circle have many lines of symmetry?"
+    options: ["yes", "no", "only one", "none"]
+    correct_index: 0
+    explanation: "A circle has infinitely many lines of symmetry."
+  - module: 30
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "Folded along a line of symmetry, the two halves?"
+    options: ["match", "differ", "overlap wrongly", "disappear"]
+    correct_index: 0
+    explanation: "They match exactly."
+  - module: 30
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "How many lines of symmetry does the letter A have?"
+    options: ["1", "2", "0", "3"]
+    correct_index: 0
+    explanation: "The letter A has 1 vertical line of symmetry."
+  - module: 30
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "How many lines of symmetry does a regular hexagon have?"
+    options: ["6", "3", "2", "1"]
+    correct_index: 0
+    explanation: "A regular hexagon has 6 lines of symmetry."
+  - module: 30
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "How many lines of symmetry does a scalene triangle have?"
+    options: ["0", "1", "2", "3"]
+    correct_index: 0
+    explanation: "A scalene triangle has no lines of symmetry."
+  - module: 30
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "How many lines of symmetry does the letter H have?"
+    options: ["2", "1", "0", "3"]
+    correct_index: 0
+    explanation: "The letter H has 2 lines of symmetry (vertical and horizontal)."
+  - module: 30
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A rectangle that is not a square has how many lines of symmetry?"
+    options: ["2", "4", "1", "0"]
+    correct_index: 0
+    explanation: "Such a rectangle has 2 lines of symmetry."
+  - module: 30
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "How many lines of symmetry does a regular pentagon have?"
+    options: ["5", "2", "1", "0"]
+    correct_index: 0
+    explanation: "A regular pentagon has 5 lines of symmetry."
+  - module: 30
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "How many lines of symmetry does the letter S have?"
+    options: ["0", "1", "2", "3"]
+    correct_index: 0
+    explanation: "The letter S has no lines of symmetry."
+
+  # ── Module 31 (MATH-031): Angles ──
+  - module: 31
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A right angle measures how many degrees?"
+    options: ["90", "45", "180", "60"]
+    correct_index: 0
+    explanation: "A right angle is 90 degrees."
+  - module: 31
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "An angle less than 90 degrees is called?"
+    options: ["acute", "right", "obtuse", "straight"]
+    correct_index: 0
+    explanation: "An angle under 90 degrees is acute."
+  - module: 31
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "An angle more than 90 degrees is called?"
+    options: ["obtuse", "acute", "right", "small"]
+    correct_index: 0
+    explanation: "An angle over 90 degrees is obtuse."
+  - module: 31
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A straight line makes an angle of how many degrees?"
+    options: ["180", "90", "360", "45"]
+    correct_index: 0
+    explanation: "A straight line is 180 degrees."
+  - module: 31
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A square corner is what kind of angle?"
+    options: ["right", "acute", "obtuse", "straight"]
+    correct_index: 0
+    explanation: "A square corner is a right angle."
+  - module: 31
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "An angle of 45 degrees is?"
+    options: ["acute", "right", "obtuse", "straight"]
+    correct_index: 0
+    explanation: "45 is less than 90, so it is acute."
+  - module: 31
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "An angle of 120 degrees is?"
+    options: ["obtuse", "acute", "right", "straight"]
+    correct_index: 0
+    explanation: "120 is more than 90, so it is obtuse."
+  - module: 31
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "An angle of exactly 90 degrees is?"
+    options: ["right", "acute", "obtuse", "straight"]
+    correct_index: 0
+    explanation: "Exactly 90 degrees is a right angle."
+  - module: 31
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "An angle of 100 degrees is?"
+    options: ["obtuse", "acute", "right", "straight"]
+    correct_index: 0
+    explanation: "100 is more than 90, so it is obtuse."
+  - module: 31
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "An angle of 30 degrees is?"
+    options: ["acute", "obtuse", "right", "straight"]
+    correct_index: 0
+    explanation: "30 is less than 90, so it is acute."
+  - module: 31
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "Two right angles together make how many degrees?"
+    options: ["180", "90", "360", "270"]
+    correct_index: 0
+    explanation: "90 + 90 = 180 degrees."
+  - module: 31
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "An angle of 89 degrees is?"
+    options: ["acute", "right", "obtuse", "straight"]
+    correct_index: 0
+    explanation: "89 is just under 90, so it is acute."
+  - module: 31
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "An angle of 91 degrees is?"
+    options: ["obtuse", "acute", "right", "straight"]
+    correct_index: 0
+    explanation: "91 is just over 90, so it is obtuse."
+  - module: 31
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A full turn is how many degrees?"
+    options: ["360", "180", "90", "270"]
+    correct_index: 0
+    explanation: "A full turn is 360 degrees."
+  - module: 31
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "Half of a right angle is how many degrees?"
+    options: ["45", "90", "30", "60"]
+    correct_index: 0
+    explanation: "Half of 90 is 45 degrees."
+
+  # ── Module 32 (MATH-032): Geometric Patterns ──
+  - module: 32
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "Pattern: circle, square, circle, square, ? The next shape is a?"
+    options: ["circle", "square", "triangle", "none"]
+    correct_index: 0
+    explanation: "The unit circle-square repeats, so a circle comes next."
+  - module: 32
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "Pattern: red, blue, red, blue, ? The next is?"
+    options: ["red", "blue", "green", "none"]
+    correct_index: 0
+    explanation: "The unit red-blue repeats, so red comes next."
+  - module: 32
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "Pattern: 1, 3, 5, ? (add 2 each time)"
+    options: ["7", "6", "8", "9"]
+    correct_index: 0
+    explanation: "5 + 2 = 7."
+  - module: 32
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "Pattern: triangle, square, triangle, ? The next is?"
+    options: ["square", "triangle", "circle", "none"]
+    correct_index: 0
+    explanation: "The unit triangle-square repeats, so a square comes next."
+  - module: 32
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A pattern that repeats the same unit is a?"
+    options: ["repeating pattern", "growing pattern", "number", "shape"]
+    correct_index: 0
+    explanation: "It is a repeating pattern."
+  - module: 32
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "Pattern: 2, 4, 6, ? The next is?"
+    options: ["8", "7", "10", "9"]
+    correct_index: 0
+    explanation: "6 + 2 = 8."
+  - module: 32
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "Pattern: 1, 4, 7, ? (add 3 each time)"
+    options: ["10", "9", "11", "8"]
+    correct_index: 0
+    explanation: "7 + 3 = 10."
+  - module: 32
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A pattern that gets bigger each step is a?"
+    options: ["growing pattern", "repeating pattern", "shrinking", "number"]
+    correct_index: 0
+    explanation: "It is a growing pattern."
+  - module: 32
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "Pattern: 5, 10, 15, ? The next is?"
+    options: ["20", "25", "18", "16"]
+    correct_index: 0
+    explanation: "15 + 5 = 20."
+  - module: 32
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "Pattern of dots: 1, 2, 3, ? The next is?"
+    options: ["4", "5", "3", "6"]
+    correct_index: 0
+    explanation: "3 + 1 = 4."
+  - module: 32
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "Pattern: 2, 4, 8, 16, ? (doubling)"
+    options: ["32", "24", "20", "18"]
+    correct_index: 0
+    explanation: "16 x 2 = 32."
+  - module: 32
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "Pattern: 1, 4, 9, 16, ? (square numbers)"
+    options: ["25", "20", "24", "18"]
+    correct_index: 0
+    explanation: "5 x 5 = 25."
+  - module: 32
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "Pattern: 100, 50, 25, ? (halving)"
+    options: ["12.5", "20", "15", "10"]
+    correct_index: 0
+    explanation: "25 ÷ 2 = 12.5."
+  - module: 32
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "Shapes with 3, then 4, then 5 sides — the next has how many sides?"
+    options: ["6", "7", "5", "4"]
+    correct_index: 0
+    explanation: "The number of sides increases by 1, so 6 comes next."
+  - module: 32
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "Pattern: 3, 6, 12, 24, ? (doubling)"
+    options: ["48", "36", "30", "40"]
+    correct_index: 0
+    explanation: "24 x 2 = 48."
+
+  # ── Module 33 (MATH-033): Polygons and Composite Shapes ──
+  - module: 33
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A closed shape with straight sides is a?"
+    options: ["polygon", "circle", "line", "point"]
+    correct_index: 0
+    explanation: "A closed straight-sided shape is a polygon."
+  - module: 33
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A 3-sided polygon is a?"
+    options: ["triangle", "square", "pentagon", "hexagon"]
+    correct_index: 0
+    explanation: "3 sides makes a triangle."
+  - module: 33
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A 4-sided polygon is a?"
+    options: ["quadrilateral", "triangle", "pentagon", "circle"]
+    correct_index: 0
+    explanation: "4 sides makes a quadrilateral."
+  - module: 33
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A 6-sided polygon is a?"
+    options: ["hexagon", "pentagon", "octagon", "square"]
+    correct_index: 0
+    explanation: "6 sides makes a hexagon."
+  - module: 33
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A shape made of simpler shapes joined together is a?"
+    options: ["composite shape", "polygon", "circle", "line"]
+    correct_index: 0
+    explanation: "Joined simpler shapes make a composite shape."
+  - module: 33
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A 5-sided polygon is a?"
+    options: ["pentagon", "hexagon", "square", "octagon"]
+    correct_index: 0
+    explanation: "5 sides makes a pentagon."
+  - module: 33
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "An 8-sided polygon is a?"
+    options: ["octagon", "hexagon", "pentagon", "triangle"]
+    correct_index: 0
+    explanation: "8 sides makes an octagon."
+  - module: 33
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A square joined to a triangle makes a?"
+    options: ["composite shape", "circle", "line", "point"]
+    correct_index: 0
+    explanation: "Joining two shapes makes a composite shape."
+  - module: 33
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "Is a circle a polygon?"
+    options: ["no", "yes", "sometimes", "always"]
+    correct_index: 0
+    explanation: "A circle has no straight sides, so it is not a polygon."
+  - module: 33
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A 7-sided polygon is a?"
+    options: ["heptagon", "hexagon", "octagon", "pentagon"]
+    correct_index: 0
+    explanation: "7 sides makes a heptagon."
+  - module: 33
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A regular polygon has all sides?"
+    options: ["equal", "different", "curved", "missing"]
+    correct_index: 0
+    explanation: "A regular polygon has all sides equal."
+  - module: 33
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "How many sides does a decagon have?"
+    options: ["10", "8", "9", "12"]
+    correct_index: 0
+    explanation: "A decagon has 10 sides."
+  - module: 33
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A composite shape is split into simpler shapes to find its?"
+    options: ["area", "name", "colour", "weight"]
+    correct_index: 0
+    explanation: "We split it to work out its area."
+  - module: 33
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A polygon with 4 equal sides and 4 right angles is a?"
+    options: ["square", "triangle", "pentagon", "circle"]
+    correct_index: 0
+    explanation: "That is a square."
+  - module: 33
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "How many sides does a nonagon have?"
+    options: ["9", "8", "10", "7"]
+    correct_index: 0
+    explanation: "A nonagon has 9 sides."
+
+  # ── Module 34 (MATH-034): Problems with Solids and Plane Shapes ──
+  - module: 34
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "How many faces must you paint to cover a whole cube?"
+    options: ["6", "4", "8", "12"]
+    correct_index: 0
+    explanation: "A cube has 6 faces."
+  - module: 34
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "How many squares are in a cube's net?"
+    options: ["6", "4", "8", "12"]
+    correct_index: 0
+    explanation: "A cube's net has 6 squares."
+  - module: 34
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "How many edges does a cube have?"
+    options: ["12", "6", "8", "4"]
+    correct_index: 0
+    explanation: "A cube has 12 edges."
+  - module: 34
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "How many corners does a square have?"
+    options: ["4", "3", "5", "6"]
+    correct_index: 0
+    explanation: "A square has 4 corners."
+  - module: 34
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "How many sides do 2 triangles have altogether?"
+    options: ["6", "3", "5", "4"]
+    correct_index: 0
+    explanation: "3 + 3 = 6 sides."
+  - module: 34
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "How many vertices does a cube have?"
+    options: ["8", "6", "12", "4"]
+    correct_index: 0
+    explanation: "A cube has 8 vertices."
+  - module: 34
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "How many sides do 2 squares have altogether?"
+    options: ["8", "4", "6", "12"]
+    correct_index: 0
+    explanation: "4 + 4 = 8 sides."
+  - module: 34
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A cube's net folds into how many square faces?"
+    options: ["6", "4", "8", "5"]
+    correct_index: 0
+    explanation: "It folds into 6 square faces."
+  - module: 34
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "How many sides do a triangle and a square have altogether?"
+    options: ["7", "6", "8", "5"]
+    correct_index: 0
+    explanation: "3 + 4 = 7 sides."
+  - module: 34
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "How many corners do 2 triangles have altogether?"
+    options: ["6", "3", "4", "8"]
+    correct_index: 0
+    explanation: "3 + 3 = 6 corners."
+  - module: 34
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "How many edges do 2 cubes have altogether?"
+    options: ["24", "12", "16", "20"]
+    correct_index: 0
+    explanation: "12 + 12 = 24 edges."
+  - module: 34
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "How many faces do 2 cubes have altogether?"
+    options: ["12", "6", "8", "10"]
+    correct_index: 0
+    explanation: "6 + 6 = 12 faces."
+  - module: 34
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A shape has 5 sides. How many sides do 3 of them have altogether?"
+    options: ["15", "10", "8", "12"]
+    correct_index: 0
+    explanation: "5 x 3 = 15 sides."
+  - module: 34
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "How many vertices do 2 cubes have altogether?"
+    options: ["16", "8", "12", "10"]
+    correct_index: 0
+    explanation: "8 + 8 = 16 vertices."
+  - module: 34
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "How many sides do a pentagon and a hexagon have altogether?"
+    options: ["11", "10", "12", "9"]
+    correct_index: 0
+    explanation: "5 + 6 = 11 sides."
+
+  # ── Module 35 (MATH-035): Multi-step Shape Problems ──
+  - module: 35
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A square with side 5 cm has perimeter 4 x 5 = ?"
+    options: ["20", "25", "10", "9"]
+    correct_index: 0
+    explanation: "4 x 5 = 20."
+  - module: 35
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A 5 by 3 rectangle has area 5 x 3 = ?"
+    options: ["15", "8", "16", "53"]
+    correct_index: 0
+    explanation: "5 x 3 = 15."
+  - module: 35
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A 4 by 2 rectangle has perimeter 2 x (4 + 2) = ?"
+    options: ["12", "8", "6", "10"]
+    correct_index: 0
+    explanation: "2 x 6 = 12."
+  - module: 35
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A square with side 4 has area 4 x 4 = ?"
+    options: ["16", "8", "12", "44"]
+    correct_index: 0
+    explanation: "4 x 4 = 16."
+  - module: 35
+    difficulty: easy
+    sea_section: "Section III"
+    prompt: "A 6 by 3 rectangle has area 6 x 3 = ?"
+    options: ["18", "9", "12", "63"]
+    correct_index: 0
+    explanation: "6 x 3 = 18."
+  - module: 35
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A 7 by 2 rectangle has perimeter 2 x (7 + 2) = ?"
+    options: ["18", "14", "9", "16"]
+    correct_index: 0
+    explanation: "2 x 9 = 18."
+  - module: 35
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A square with side 6 has area 6 x 6 = ?"
+    options: ["36", "12", "24", "18"]
+    correct_index: 0
+    explanation: "6 x 6 = 36."
+  - module: 35
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A 10 by 5 rectangle has perimeter 2 x (10 + 5) = ?"
+    options: ["30", "15", "50", "25"]
+    correct_index: 0
+    explanation: "2 x 15 = 30."
+  - module: 35
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A 7 by 2 rectangle has area 7 x 2 = ?"
+    options: ["14", "9", "16", "72"]
+    correct_index: 0
+    explanation: "7 x 2 = 14."
+  - module: 35
+    difficulty: medium
+    sea_section: "Section III"
+    prompt: "A square with side 3 has perimeter 4 x 3 = ?"
+    options: ["12", "9", "6", "33"]
+    correct_index: 0
+    explanation: "4 x 3 = 12."
+  - module: 35
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A 4 by 3 room has floor area 4 x 3 = ? square m"
+    options: ["12", "7", "14", "43"]
+    correct_index: 0
+    explanation: "4 x 3 = 12 square metres."
+  - module: 35
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A room needs 12 square m of carpet at $10 per square m. The cost is?"
+    options: ["120", "12", "22", "110"]
+    correct_index: 0
+    explanation: "12 x $10 = $120."
+  - module: 35
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A 5 by 4 rectangle: area minus perimeter = 20 - 18 = ?"
+    options: ["2", "38", "4", "0"]
+    correct_index: 0
+    explanation: "Area 20, perimeter 18, so 20 - 18 = 2."
+  - module: 35
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "6 square m of carpet at $5 per square m costs?"
+    options: ["30", "11", "25", "35"]
+    correct_index: 0
+    explanation: "6 x $5 = $30."
+  - module: 35
+    difficulty: hard
+    sea_section: "Section III"
+    prompt: "A square with side 10 has area 10 x 10 = ?"
+    options: ["100", "40", "20", "110"]
+    correct_index: 0
+    explanation: "10 x 10 = 100."
