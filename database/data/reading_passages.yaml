@@ -1,0 +1,293 @@
+# Daily reading pool (DR-06). Passages are keyed by reading level (3-7), each with
+# comprehension questions and vocabulary words drawn from the passage (DV-01).
+# PROVENANCE: original, authored for this platform, T&T context, SEA-aligned.
+passages:
+
+  # ── Level 3 ──
+  - title: "My Dog Max"
+    reading_level: 3
+    body: >
+      Max is my dog. He is brown and small. Every morning, Max runs to the gate
+      to meet me. He wags his tail when he is happy. I give Max food and clean
+      water. At night, Max sleeps close by my bed. I love my dog Max very much.
+    questions:
+      - prompt: "What colour is Max?"
+        type: mc
+        options: ["brown", "black", "white", "grey"]
+        correct_index: 0
+      - prompt: "Where does Max sleep at night?"
+        type: mc
+        options: ["by the bed", "at the gate", "on the roof", "in a tree"]
+        correct_index: 0
+      - prompt: "Write one thing the boy does to care for Max."
+        type: written
+    vocabulary:
+      - word: "wags"
+        definition: "moves from side to side"
+        context_sentence: "He wags his tail when he is happy."
+      - word: "gate"
+        definition: "a door in a fence or wall"
+        context_sentence: "Max runs to the gate to meet me."
+      - word: "clean"
+        definition: "not dirty"
+        context_sentence: "I give Max food and clean water."
+
+  - title: "A Day at the Beach"
+    reading_level: 3
+    body: >
+      On Saturday, my family went to Maracas Beach. The sand was warm under my
+      feet. I built a tall castle with a bucket. My little sister splashed in the
+      waves and laughed. We ate shark and bake for lunch. The sea breeze felt
+      cool and nice. It was a happy day.
+    questions:
+      - prompt: "Which beach did the family visit?"
+        type: mc
+        options: ["Maracas Beach", "Store Bay", "Mayaro", "Las Cuevas"]
+        correct_index: 0
+      - prompt: "What did the girl build?"
+        type: mc
+        options: ["a castle", "a boat", "a house", "a kite"]
+        correct_index: 0
+      - prompt: "Write how the sea breeze felt."
+        type: written
+    vocabulary:
+      - word: "splashed"
+        definition: "hit the water so it flew up"
+        context_sentence: "My little sister splashed in the waves."
+      - word: "breeze"
+        definition: "a gentle wind"
+        context_sentence: "The sea breeze felt cool and nice."
+      - word: "warm"
+        definition: "a little hot, not cold"
+        context_sentence: "The sand was warm under my feet."
+
+  - title: "The Busy Market"
+    reading_level: 3
+    body: >
+      Every Saturday, Mummy takes me to the market. It is loud and full of
+      people. We buy sweet mangoes, green figs, and fresh fish. A woman calls
+      out the price of her tomatoes. The smell of pepper fills the air. I help
+      Mummy carry the heavy bags home.
+    questions:
+      - prompt: "When do they go to the market?"
+        type: mc
+        options: ["every Saturday", "every Monday", "at night", "on holidays"]
+        correct_index: 0
+      - prompt: "What does the child help to carry?"
+        type: mc
+        options: ["the heavy bags", "the fish", "the money", "the baby"]
+        correct_index: 0
+      - prompt: "Write two things they buy at the market."
+        type: written
+    vocabulary:
+      - word: "fresh"
+        definition: "newly made or picked, not old"
+        context_sentence: "We buy fresh fish at the market."
+      - word: "price"
+        definition: "how much money something costs"
+        context_sentence: "A woman calls out the price of her tomatoes."
+      - word: "heavy"
+        definition: "hard to lift because it weighs a lot"
+        context_sentence: "I help Mummy carry the heavy bags home."
+
+  - title: "Rain on the Roof"
+    reading_level: 3
+    body: >
+      The dark clouds came in the afternoon. Soon the rain began to fall. It made
+      a loud drumming sound on our galvanise roof. I sat by the window and
+      watched the water run down the glass. The garden looked greener after the
+      rain. Then a bright rainbow filled the sky.
+    questions:
+      - prompt: "What sound did the rain make on the roof?"
+        type: mc
+        options: ["a loud drumming", "a soft whisper", "a sharp bang", "no sound"]
+        correct_index: 0
+      - prompt: "What appeared after the rain?"
+        type: mc
+        options: ["a rainbow", "the moon", "snow", "a star"]
+        correct_index: 0
+      - prompt: "Write how the garden looked after the rain."
+        type: written
+    vocabulary:
+      - word: "drumming"
+        definition: "a steady beating sound"
+        context_sentence: "It made a loud drumming sound on the roof."
+      - word: "greener"
+        definition: "more green than before"
+        context_sentence: "The garden looked greener after the rain."
+      - word: "bright"
+        definition: "full of light; easy to see"
+        context_sentence: "A bright rainbow filled the sky."
+
+  - title: "The Little Bird"
+    reading_level: 3
+    body: >
+      A small yellow bird lives in the tree outside my house. Each morning it
+      sings a sweet song. It hops from branch to branch looking for seeds. One
+      day I put crumbs on the sill. The bird flew down and ate them quickly. Now
+      it visits me every day.
+    questions:
+      - prompt: "What colour is the bird?"
+        type: mc
+        options: ["yellow", "blue", "red", "brown"]
+        correct_index: 0
+      - prompt: "What did the child put on the sill?"
+        type: mc
+        options: ["crumbs", "water", "a nest", "a toy"]
+        correct_index: 0
+      - prompt: "Write what the bird does each morning."
+        type: written
+    vocabulary:
+      - word: "hops"
+        definition: "makes small jumps"
+        context_sentence: "It hops from branch to branch."
+      - word: "crumbs"
+        definition: "tiny bits of bread or food"
+        context_sentence: "I put crumbs on the sill."
+      - word: "visits"
+        definition: "comes to see someone or somewhere"
+        context_sentence: "Now it visits me every day."
+
+  - title: "The Mango Tree"
+    reading_level: 3
+    body: >
+      A big mango tree grows in our yard. In the dry season, its branches fill
+      with juicy mangoes. My brother climbs up to pick the ripe ones. We share
+      them with our neighbours. The sweet fruit drips down our chins. Under the
+      tree, we sit in the cool shade.
+    questions:
+      - prompt: "When does the tree fill with mangoes?"
+        type: mc
+        options: ["in the dry season", "in December", "at night", "in the rain"]
+        correct_index: 0
+      - prompt: "Who climbs the tree to pick mangoes?"
+        type: mc
+        options: ["my brother", "my sister", "the neighbour", "the dog"]
+        correct_index: 0
+      - prompt: "Write what they do with the mangoes they pick."
+        type: written
+    vocabulary:
+      - word: "juicy"
+        definition: "full of juice"
+        context_sentence: "Its branches fill with juicy mangoes."
+      - word: "ripe"
+        definition: "grown and ready to eat"
+        context_sentence: "My brother picks the ripe ones."
+      - word: "shade"
+        definition: "a cool, dark place out of the sun"
+        context_sentence: "We sit in the cool shade."
+
+  - title: "The Bus Ride"
+    reading_level: 3
+    body: >
+      Grandpa and I took the maxi to town. The seats were soft and the music
+      played loudly. Through the window I saw shops, cars, and tall buildings.
+      A man sold nuts at the stop. When we reached town, we walked to the park.
+      The bus ride was fun.
+    questions:
+      - prompt: "Who went to town with the child?"
+        type: mc
+        options: ["Grandpa", "Mummy", "a friend", "the teacher"]
+        correct_index: 0
+      - prompt: "What did the man sell at the stop?"
+        type: mc
+        options: ["nuts", "fish", "toys", "books"]
+        correct_index: 0
+      - prompt: "Write one thing the child saw through the window."
+        type: written
+    vocabulary:
+      - word: "soft"
+        definition: "gentle to touch, not hard"
+        context_sentence: "The seats were soft."
+      - word: "loudly"
+        definition: "with a lot of noise"
+        context_sentence: "The music played loudly."
+      - word: "reached"
+        definition: "arrived at a place"
+        context_sentence: "When we reached town, we walked to the park."
+
+  - title: "The Football Game"
+    reading_level: 3
+    body: >
+      After school, we play football on the field. I am on the red team. My
+      friend Kwame kicks the ball to me. I run fast and shoot. The ball flies
+      into the net. Goal! My team cheers and jumps. We win the game two to one.
+    questions:
+      - prompt: "Which team is the child on?"
+        type: mc
+        options: ["the red team", "the blue team", "the green team", "no team"]
+        correct_index: 0
+      - prompt: "What was the final score?"
+        type: mc
+        options: ["two to one", "one to one", "three to two", "zero to zero"]
+        correct_index: 0
+      - prompt: "Write what the team did after the goal."
+        type: written
+    vocabulary:
+      - word: "shoot"
+        definition: "to kick or throw at the goal"
+        context_sentence: "I run fast and shoot."
+      - word: "cheers"
+        definition: "shouts happily"
+        context_sentence: "My team cheers and jumps."
+      - word: "win"
+        definition: "to come first in a game"
+        context_sentence: "We win the game two to one."
+
+  - title: "My Little Garden"
+    reading_level: 3
+    body: >
+      Behind our house I have a small garden. I planted seeds in the dark soil.
+      Every day I water them and pull out the weeds. Slowly, tiny green shoots
+      pushed up. Now I have red tomatoes and green lettuce. I feel proud when I
+      pick my own food.
+    questions:
+      - prompt: "What did the child plant in the soil?"
+        type: mc
+        options: ["seeds", "flowers", "trees", "stones"]
+        correct_index: 0
+      - prompt: "What grew in the garden?"
+        type: mc
+        options: ["tomatoes and lettuce", "mangoes", "corn", "beans"]
+        correct_index: 0
+      - prompt: "Write two things the child does every day for the garden."
+        type: written
+    vocabulary:
+      - word: "soil"
+        definition: "the earth that plants grow in"
+        context_sentence: "I planted seeds in the dark soil."
+      - word: "weeds"
+        definition: "wild plants you do not want"
+        context_sentence: "I pull out the weeds."
+      - word: "shoots"
+        definition: "new little parts of a growing plant"
+        context_sentence: "Tiny green shoots pushed up."
+
+  - title: "Flying My Kite"
+    reading_level: 3
+    body: >
+      In the windy season, I fly my kite in the savannah. My kite is red with a
+      long tail. I let out the string and it climbs high into the sky. The wind
+      tugs and the kite dances above the trees. I hold the string tight so it
+      does not fly away.
+    questions:
+      - prompt: "Where does the child fly the kite?"
+        type: mc
+        options: ["in the savannah", "on the beach", "at home", "in a shop"]
+        correct_index: 0
+      - prompt: "What colour is the kite?"
+        type: mc
+        options: ["red", "blue", "yellow", "green"]
+        correct_index: 0
+      - prompt: "Write why the child holds the string tight."
+        type: written
+    vocabulary:
+      - word: "climbs"
+        definition: "goes higher"
+        context_sentence: "It climbs high into the sky."
+      - word: "tugs"
+        definition: "pulls sharply"
+        context_sentence: "The wind tugs and the kite dances."
+      - word: "tight"
+        definition: "held firmly, not loose"
+        context_sentence: "I hold the string tight."
