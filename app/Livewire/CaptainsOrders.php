@@ -54,10 +54,10 @@ class CaptainsOrders extends Component
     ];
 
     private const REWARD_BLURBS = [
-        'shore_leave' => 'Take the day off one duty.',
-        'anchor' => 'Hold every streak steady for a day.',
-        'tailwind' => 'Sail a day ahead on a subject.',
-        'lifebuoy' => 'Bring a just-lost streak back.',
+        'shore_leave' => 'Freeze one streak for one day.',
+        'anchor' => 'Freeze all streaks for one day.',
+        'tailwind' => 'Do additional work today and get less work tomorrow.',
+        'lifebuoy' => 'Did a streak reset? Use this to get another chance and continue the streak.',
     ];
 
     /** Longer explanations, revealed only when a reward is highlighted. */

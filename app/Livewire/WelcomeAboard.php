@@ -37,10 +37,10 @@ class WelcomeAboard extends Component
         }
 
         $this->perks = [
-            ['type' => 'shore_leave', 'label' => 'Shore Leave', 'icon' => '🏖️', 'blurb' => 'Skip one duty for a day, streak safe.'],
-            ['type' => 'anchor', 'label' => 'Anchor', 'icon' => '⚓', 'blurb' => 'Freeze every streak for a day off.'],
-            ['type' => 'tailwind', 'label' => 'Tailwind', 'icon' => '🌬️', 'blurb' => 'Sail ahead and bank an extra day.'],
-            ['type' => 'lifebuoy', 'label' => 'Lifebuoy', 'icon' => '🛟', 'blurb' => 'Rescue a streak that just reset.'],
+            ['type' => 'shore_leave', 'label' => 'Shore Leave', 'icon' => '🏝️', 'blurb' => 'Freeze one streak for one day.'],
+            ['type' => 'anchor', 'label' => 'Anchor', 'icon' => '⚓', 'blurb' => 'Freeze all streaks for one day.'],
+            ['type' => 'tailwind', 'label' => 'Tailwind', 'icon' => '🌬️', 'blurb' => 'Do additional work today and get less work tomorrow.'],
+            ['type' => 'lifebuoy', 'label' => 'Lifebuoy', 'icon' => '🛟', 'blurb' => 'Did a streak reset? Use this to get another chance and continue the streak.'],
         ];
     }
 
