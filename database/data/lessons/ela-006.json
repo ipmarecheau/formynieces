@@ -1,0 +1,68 @@
+[
+  {
+    "module": "ELA-006",
+    "title": "Synonyms and antonyms: words that mean the same or the opposite",
+    "is_published": true,
+    "blocks": [
+      {
+        "type": "text",
+        "content": "English gives us many words for the same idea, and pairs of words that are exact opposites. Knowing them makes your reading and writing much stronger."
+      },
+      {
+        "type": "key",
+        "content": "A synonym is a word that means the SAME thing, or nearly the same: 'big' and 'large'."
+      },
+      {
+        "type": "example",
+        "content": "Finding a synonym.",
+        "steps": [
+          "Take the word 'happy'.",
+          "Think of another word with the same meaning.",
+          "'glad' means the same as 'happy' — they are synonyms."
+        ]
+      },
+      {
+        "type": "matchpairs",
+        "instruction": "Match each word to its synonym (a word that means the same).",
+        "pairs": [
+          { "left": "happy", "right": "glad" },
+          { "left": "big", "right": "large" },
+          { "left": "fast", "right": "quick" },
+          { "left": "small", "right": "little" }
+        ],
+        "rule": "A synonym is a word that means the same, or nearly the same, as another word.",
+        "practiceItems": [
+          { "prompt": "a synonym for 'happy'", "answer": "glad" },
+          { "prompt": "a synonym for 'big'", "answer": "large" },
+          { "prompt": "a synonym for 'fast'", "answer": "quick" },
+          { "prompt": "a synonym for 'small'", "answer": "little" }
+        ]
+      },
+      {
+        "type": "key",
+        "content": "An antonym is a word that means the OPPOSITE: 'hot' and 'cold'."
+      },
+      {
+        "type": "matchpairs",
+        "instruction": "Match each word to its antonym (a word that means the opposite).",
+        "pairs": [
+          { "left": "hot", "right": "cold" },
+          { "left": "up", "right": "down" },
+          { "left": "happy", "right": "sad" },
+          { "left": "fast", "right": "slow" }
+        ],
+        "rule": "An antonym is a word that means the opposite of another word.",
+        "practiceItems": [
+          { "prompt": "an antonym for 'hot'", "answer": "cold" },
+          { "prompt": "an antonym for 'up'", "answer": "down" },
+          { "prompt": "an antonym for 'happy'", "answer": "sad" },
+          { "prompt": "an antonym for 'fast'", "answer": "slow" }
+        ]
+      },
+      {
+        "type": "text",
+        "content": "Synonyms mean the same, antonyms mean the opposite. Collect them like treasure — they make your writing shine. Let's practise!"
+      }
+    ]
+  }
+]

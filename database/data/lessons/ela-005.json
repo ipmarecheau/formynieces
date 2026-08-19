@@ -1,0 +1,61 @@
+[
+  {
+    "module": "ELA-005",
+    "title": "Building words with prefixes and suffixes",
+    "is_published": true,
+    "blocks": [
+      {
+        "type": "text",
+        "content": "Long words are often a small root word with extra parts added. Learn the parts and you can work out the whole word's meaning."
+      },
+      {
+        "type": "key",
+        "content": "A prefix goes in FRONT of a root word and changes its meaning. 'un-' means 'not', so 'unhappy' means 'not happy'."
+      },
+      {
+        "type": "example",
+        "content": "Adding the prefix un-.",
+        "steps": [
+          "Start with the root word: 'kind'.",
+          "Add the prefix un- to the front: 'unkind'.",
+          "un- means 'not', so 'unkind' means 'not kind'."
+        ]
+      },
+      {
+        "type": "check",
+        "question": "What does 'un-' mean in the word 'unlock'?",
+        "options": ["very", "not or undo", "again"],
+        "answer": 1,
+        "explain": "The prefix un- means 'not' or 'the opposite', so 'unlock' means to undo a lock.",
+        "rule": "The prefix un- means 'not' or 'the opposite of'.",
+        "practiceItems": [
+          { "prompt": "add un- to 'happy'", "answer": "unhappy" },
+          { "prompt": "add un- to 'fair'", "answer": "unfair" },
+          { "prompt": "add un- to 'kind'", "answer": "unkind" },
+          { "prompt": "add un- to 'lock'", "answer": "unlock" }
+        ]
+      },
+      {
+        "type": "key",
+        "content": "A suffix goes at the END of a root word. '-ful' means 'full of', so 'hopeful' means 'full of hope'."
+      },
+      {
+        "type": "fillblank",
+        "prompt": "care + ful = ___",
+        "answer": "careful",
+        "explain": "The suffix -ful means 'full of', so 'careful' means full of care.",
+        "rule": "The suffix -ful means 'full of'.",
+        "practiceItems": [
+          { "prompt": "care + ful", "answer": "careful" },
+          { "prompt": "hope + ful", "answer": "hopeful" },
+          { "prompt": "joy + ful", "answer": "joyful" },
+          { "prompt": "help + ful", "answer": "helpful" }
+        ]
+      },
+      {
+        "type": "text",
+        "content": "A prefix at the front, a suffix at the end, a root in the middle — break a word into parts and its meaning opens up. Let's practise!"
+      }
+    ]
+  }
+]

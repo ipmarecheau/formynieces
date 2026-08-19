@@ -1,0 +1,62 @@
+[
+  {
+    "module": "ELA-003",
+    "title": "Dropping the silent -e before adding an ending",
+    "is_published": true,
+    "blocks": [
+      {
+        "type": "text",
+        "content": "Many words end in a silent e — you write it but don't say it, like in 'make'. When you add an ending, that e sometimes has to go."
+      },
+      {
+        "type": "key",
+        "content": "When a word ends in a silent e, drop the e before adding an ending that starts with a vowel (-ing, -ed, -able)."
+      },
+      {
+        "type": "example",
+        "content": "Adding -ing to 'make'.",
+        "steps": [
+          "'make' ends in a silent e.",
+          "The ending -ing starts with a vowel.",
+          "Drop the e and add -ing: 'making'."
+        ]
+      },
+      {
+        "type": "fillblank",
+        "prompt": "ride + ing = ___",
+        "answer": "riding",
+        "explain": "'ride' ends in silent e and -ing starts with a vowel, so drop the e: riding.",
+        "rule": "When a word ends in silent e, drop the e before an ending that starts with a vowel.",
+        "practiceItems": [
+          { "prompt": "make + ing", "answer": "making" },
+          { "prompt": "hope + ing", "answer": "hoping" },
+          { "prompt": "bake + ed", "answer": "baked" },
+          { "prompt": "drive + ing", "answer": "driving" },
+          { "prompt": "use + able", "answer": "usable" }
+        ]
+      },
+      {
+        "type": "key",
+        "content": "But KEEP the silent e when the ending starts with a consonant, like -ful or -ly."
+      },
+      {
+        "type": "check",
+        "question": "Which spelling is correct?",
+        "options": ["hopful", "hopeful", "hopefull"],
+        "answer": 1,
+        "explain": "-ful starts with a consonant, so keep the silent e: hopeful.",
+        "rule": "Keep the silent e when the ending starts with a consonant, like -ful or -ly.",
+        "practiceItems": [
+          { "prompt": "hope + ful", "answer": "hopeful" },
+          { "prompt": "nice + ly", "answer": "nicely" },
+          { "prompt": "care + ful", "answer": "careful" },
+          { "prompt": "safe + ly", "answer": "safely" }
+        ]
+      },
+      {
+        "type": "text",
+        "content": "Remember: a vowel ending pushes the e out; a consonant ending lets it stay. Let's practise!"
+      }
+    ]
+  }
+]
