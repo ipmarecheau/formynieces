@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\PracticeQuestion;
+use App\Models\ReteachSession;
 use App\Models\StudentProgress;
 use App\Models\SyllabusModule;
 use App\Models\WeeklyTarget;
@@ -40,6 +41,13 @@ class PracticeWalk extends Component
     /** After a re-teach trigger: show the warm hand-off splash before routing to the lesson (LL-14). */
     public bool $reteachSplash = false;
 
+    /**
+     * True while a brand-new student is on the first-run tour (TR-07). Only then is the
+     * correct option exposed to the coach (to guide a deliberate miss), and a single
+     * guided miss is enough to demonstrate the AI-assisted re-teach.
+     */
+    public bool $tourMode = false;
+
     public ?array $question = null;
 
     public ?array $feedback = null;
@@ -51,6 +59,7 @@ class PracticeWalk extends Component
     {
         $this->moduleId = $module->id;
         $this->topic = $module->topic;
+        $this->tourMode = auth()->user()?->onGuidedTour() ?? false;
 
         // Sequence gate (LE-03): practice stays locked until she has finished the worked examples.
         // Send her back to the module entry with a kind message (LE-06) rather than in.
@@ -149,7 +158,11 @@ class PracticeWalk extends Component
         // into an AI-assisted re-teach — kindly, never framed as failure (LL-14/LL-22).
         if (! $wasCorrect) {
             $remediation = app(Remediation::class);
-            if ($trigger = $remediation->triggerFor(auth()->id(), $this->moduleId)) {
+            // On the first-run tour, one guided miss is enough to show the AI re-teach (TR-07);
+            // otherwise the normal bad-run trigger (two hard misses, or five of seven) applies.
+            $trigger = $remediation->triggerFor(auth()->id(), $this->moduleId)
+                ?? ($this->tourMode ? ReteachSession::TRIGGER_STREAK : null);
+            if ($trigger !== null) {
                 $remediation->start(auth()->id(), $this->moduleId, $trigger);
                 // Don't snap straight into the lesson — show a warm hand-off splash first so the
                 // switch never feels abrupt (LL-14). She taps through when she's ready, and the

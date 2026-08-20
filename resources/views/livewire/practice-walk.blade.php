@@ -120,7 +120,8 @@
             @endif
             <div class="pw-options">
                 @foreach ($question['options'] as $index => $optionText)
-                    <button type="button" class="pw-option" wire:click="choose({{ $index }})" wire:loading.attr="disabled">{{ $optionText }}</button>
+                    <button type="button" class="pw-option" wire:click="choose({{ $index }})" wire:loading.attr="disabled"
+                        @if ($tourMode) data-tour-option data-correct="{{ (int) ($index === $question['correct_index']) }}" @endif>{{ $optionText }}</button>
                 @endforeach
             </div>
         </div>

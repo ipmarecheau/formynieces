@@ -330,5 +330,5 @@
 </div>
 @endif
 
-<livewire:loop-coach leg="learn" wire:key="loop-coach-learn" />
+<livewire:loop-coach :leg="$reteach ? 'reteach' : 'learn'" wire:key="loop-coach-{{ $reteach ? 'reteach' : 'learn' }}" />
 </div>

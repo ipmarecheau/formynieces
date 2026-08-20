@@ -13,8 +13,12 @@ use Livewire\Component;
  */
 class LoopCoach extends Component
 {
-    /** Which loop leg this instance coaches: learn | examples | practice. */
+    /** Which loop leg this instance coaches: learn | examples | practice | reteach. */
     public string $leg;
+
+    /** The student's tour position on arrival (before advancing) — lets the practice leg tell a
+     *  first visit apart from the return after the AI re-teach, to show the right coaching. */
+    public ?string $stage = null;
 
     public bool $open = false;
 
@@ -24,6 +28,7 @@ class LoopCoach extends Component
         $user = auth()->user();
 
         if ($user?->onGuidedTour()) {
+            $this->stage = $user->tour_stage;
             $user->advanceTourStage($leg);
             $this->open = true;
         }

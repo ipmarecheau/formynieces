@@ -136,3 +136,43 @@ it('shows a mastery celebration, not coming-soon, once the module is mastered', 
         ->assertSee('mastered')
         ->assertDontSee('coming soon');
 })->group('scenario:LL-06');
+
+it('lets a guided-tour miss trigger the AI re-teach on purpose (TR-07)', function () {
+    $student = User::factory()->create(['tour_stage' => 'practice']);
+    $module = SyllabusModule::factory()->create();
+
+    PracticeQuestion::factory()->create([
+        'module_id' => $module->id,
+        'difficulty' => 1,
+        'options' => ['A', 'B', 'C', 'D'],
+        'correct_index' => 1,
+    ]);
+
+    Livewire::actingAs($student)
+        ->test(PracticeWalk::class, ['module' => $module])
+        ->assertSet('tourMode', true)
+        ->call('choose', 0)                 // first miss → a kind second attempt
+        ->assertSet('awaitingRetry', true)
+        ->call('choose', 0)                 // miss again → the tour hands off to the re-teach
+        ->assertSet('reteachSplash', true);
+})->group('scenario:TR-07');
+
+it('does not force a re-teach for a normal student on a single miss', function () {
+    $student = User::factory()->create(['tour_stage' => null]);
+    $module = SyllabusModule::factory()->create();
+
+    PracticeQuestion::factory()->create([
+        'module_id' => $module->id,
+        'difficulty' => 1,
+        'options' => ['A', 'B', 'C', 'D'],
+        'correct_index' => 1,
+        'explanation' => 'B is the one.',
+    ]);
+
+    Livewire::actingAs($student)
+        ->test(PracticeWalk::class, ['module' => $module])
+        ->assertSet('tourMode', false)
+        ->call('choose', 0)
+        ->call('choose', 0)
+        ->assertSet('reteachSplash', false);
+})->group('scenario:TR-07');
