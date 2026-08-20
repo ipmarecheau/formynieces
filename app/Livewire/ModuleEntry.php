@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\PracticeQuestion;
 use App\Models\StudentProgress;
 use App\Models\SyllabusModule;
+use App\Services\Motivation\WritingGate;
 use App\Services\Pacing\AdventureMapBuilder;
 use App\Services\Practice\CompetencyCheck;
 use App\Services\Practice\LearningGate;
@@ -82,7 +83,7 @@ class ModuleEntry extends Component
         // CO-05 / WR-07 / AM-11 — on a writing day, opening a NEW level waits for the
         // day's writing. A kind nudge, not a wall: she is sailed back to the map
         // (still explorable); already-started levels are never gated.
-        if (app(\App\Services\Motivation\WritingGate::class)->blocksNewLevel(auth()->id(), $module->id)) {
+        if (app(WritingGate::class)->blocksNewLevel(auth()->id(), $module->id)) {
             session()->flash('writingGate', "Finish today's writing first, Captain — then this new level opens. ✍️");
             $this->redirect($this->islandSlug
                 ? route('student.voyage.island', $this->islandSlug)
@@ -138,6 +139,9 @@ class ModuleEntry extends Component
         $this->checkIndex = 0;
         $this->checkAnswers = [];
         $this->phase = 'check';
+
+        // Let the first-run lesson tour follow the student's real progress (TR-07).
+        $this->dispatch('lesson-phase', phase: 'check');
     }
 
     /** Record her answer to the current check question and advance, or grade at the end. */
@@ -169,6 +173,9 @@ class ModuleEntry extends Component
             : $service->grade(auth()->id(), $this->moduleId, $served, $this->checkAnswers);
 
         $this->phase = 'outcome';
+
+        // Tell the lesson tour how the real check landed, so it coaches the right path (TR-07).
+        $this->dispatch('lesson-phase', phase: 'outcome', mastered: $this->mastered);
     }
 
     public function render()
