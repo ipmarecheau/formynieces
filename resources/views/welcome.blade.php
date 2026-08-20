@@ -368,7 +368,7 @@
                 <a class="nav-link" href="{{ route('faq') }}">FAQ</a>
             </nav>
             <div class="nav-actions desktop">
-                <a class="link-quiet" href="{{ route('login') }}">Sign in</a>
+                <a class="link-quiet" href="{{ route('login') }}">Sign In</a>
                 <a class="btn btn-primary" href="{{ route('book.call') }}">Book a free call</a>
             </div>
         @endauth
@@ -400,7 +400,7 @@
             <a class="nav-link" href="{{ route('contact') }}">Contact</a>
             <div class="drawer-actions">
                 <a class="btn btn-primary" href="{{ route('book.call') }}">Book a free call</a>
-                <a class="btn btn-secondary" href="{{ route('login') }}">Sign in</a>
+                <a class="btn btn-secondary" href="{{ route('login') }}">Sign In</a>
             </div>
         @endauth
     </div>
@@ -416,14 +416,14 @@
                 <p class="hero-lede">
                     SmoothSeas plans the whole exam journey — Math, ELA and Writing — adjusts it
                     <strong>every day</strong> to your child, and shows you <strong>every week</strong> exactly
-                    where they stand.
+                    where they stand. You'll <strong>never have to guess</strong> how they're doing again.
                 </p>
                 <div class="hero-cta">
                     @auth
                         <a class="btn btn-primary btn-lg" href="{{ $homeUrl }}">Go to your dashboard →</a>
                     @else
                         <a class="btn btn-primary btn-lg" href="{{ route('book.call') }}">Book a free 15-minute call</a>
-                        <a class="link-quiet" href="{{ route('register') }}">or create an account</a>
+                        <a class="link-quiet" href="{{ route('register') }}">Create an account</a>
                     @endauth
                 </div>
                 @guest
@@ -487,7 +487,7 @@
                 <div class="meet-cards">
                     <div class="meet-card">
                         <span class="m-icon">🧭</span>
-                        <h4>Shows the way</h4>
+                        <h4>He shows them the way</h4>
                         <p>A friendly how-to the first time they open any screen — then never nags.</p>
                     </div>
                     <div class="meet-card">
@@ -497,7 +497,7 @@
                     </div>
                     <div class="meet-card">
                         <span class="m-icon">🎉</span>
-                        <h4>Celebrates wins</h4>
+                        <h4>He celebrates every win</h4>
                         <p>Streaks, mastery stars and end-of-lesson victories, big and small.</p>
                     </div>
                 </div>
@@ -538,8 +538,8 @@
 
             <div class="feature" data-reveal>
                 <div class="feature-icon">🗺️</div>
-                <h3>The plan builds itself — around your child.</h3>
-                <p>A friendly diagnostic charts the whole SEA voyage, then re-plans every day around their pace. Breezed through? They advance. Struggled? It circles back. Pause and resume with one tap.</p>
+                <h3>The curriculum plans itself — around your child.</h3>
+                <p>A friendly diagnostic charts the whole SEA voyage, then re-plans every day around their pace. Breezed through? They advance. Struggled? It circles back. And when life happens, pause and resume with one tap.</p>
             </div>
             <div class="feature" data-reveal style="--rd:.06s">
                 <div class="feature-icon">🏝️</div>
@@ -549,7 +549,7 @@
             <div class="feature" data-reveal style="--rd:.12s">
                 <div class="feature-icon">⚓</div>
                 <h3>Everything in one harbour.</h3>
-                <p>Interactive lessons, guided tutorials and adaptive practice in one place. No worksheet hunting, no six apps, no lost logins.</p>
+                <p>Lessons, tutorials and practice — all in one place. No worksheet hunting, no six apps, no lost logins.</p>
             </div>
             <div class="feature" data-reveal>
                 <div class="feature-icon">🧭</div>
@@ -564,7 +564,12 @@
             <div class="feature" data-reveal style="--rd:.12s">
                 <div class="feature-icon">☀️</div>
                 <h3>A rhythm that fits.</h3>
-                <p>As little as 20 minutes or as much as two full hours — their choice — anchored by a morning vocabulary ritual and daily reading. Practice is always unlimited.</p>
+                <p>A daily study plan bends to your family: as little as 20 minutes or as much as two full hours — their choice — anchored by a morning vocabulary ritual and daily reading assignments. Unlimited practice, always.</p>
+            </div>
+            <div class="feature" data-reveal>
+                <div class="feature-icon">🏫</div>
+                <h3>We work with their school.</h3>
+                <p>Graded school papers join the journal, and what their teacher sees weighs into the daily plan — one honest picture of your child. <em>Coming in the MVP.</em></p>
             </div>
         </div>
     </div>
@@ -671,7 +676,7 @@
             @auth
                 <a href="{{ $homeUrl }}">My dashboard</a>
             @else
-                <a href="{{ route('login') }}">Sign in</a>
+                <a href="{{ route('login') }}">Sign In</a>
             @endauth
         </div>
     </div>

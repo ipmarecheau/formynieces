@@ -91,16 +91,13 @@ it('promises consolidation — the school journal, honestly marked as coming', f
         ->assertSee('Coming in the MVP');
 })->group('scenario:LP-10');
 
-it('cycles the core messages in an auto-rotating hero jumbotron', function () {
+it('leads with a single clear hero — the core worry and one primary CTA, no auto-rotating carousel', function () {
     $this->get('/')
         ->assertOk()
-        ->assertSee('aria-roledescription', false)                     // the jumbotron carousel region
-        ->assertSee('never have to guess')                            // slide 1: visibility
-        ->assertSee('plans itself — around your child')                 // slide 2: adaptability
-        ->assertSee('ask to log in')                                   // slide 3: enjoyment
-        ->assertSee('in one harbour')                                   // slide 4: convenience
-        ->assertSee('daily rhythm that fits')                            // slide 5: effectiveness
-        ->assertSee('jumbo-dot');                                       // jump-to-message dots
+        ->assertSee('never have to guess')                              // the core worry, stated once and plainly
+        ->assertSee('Book a free 15-minute call')                       // the one primary conversion CTA
+        ->assertSee('Create an account')                                // the quiet secondary path
+        ->assertDontSee('jumbo-dot');                                   // the old auto-rotating jumbotron is gone
 })->group('scenario:LP-11');
 
 it('speaks to parents of both boys and girls, as SmoothSeas', function () {
