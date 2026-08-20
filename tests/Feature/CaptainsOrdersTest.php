@@ -95,6 +95,18 @@ it('switches between the Orders, Locker, Journal and Logs tabs', function () {
         ->call('showTab', 'orders')->assertSet('tab', 'orders');
 })->group('scenario:SL-01');
 
+it('lets the tour open a tab as Smooth walks the student through each one (TR-07)', function () {
+    $this->actingAs(coStudent());
+
+    Livewire::test(CaptainsOrders::class)
+        ->set('collapsed', true)
+        ->dispatch('tour-show-tab', tab: 'journal')
+        ->assertSet('tab', 'journal')
+        ->assertSet('collapsed', false)  // opening a tab also unrolls the orders
+        ->dispatch('tour-show-tab', tab: 'logs')
+        ->assertSet('tab', 'logs');
+})->group('scenario:TR-07');
+
 it('shows the master Voyage streak and sub-streaks in the Journal', function () {
     $student = coStudent();
     $this->actingAs($student);

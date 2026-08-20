@@ -48,6 +48,7 @@
                 'lines' => $c['lines'],
                 'interactive' => $c['interactive'] ?? false,
                 'hint' => $c['hint'] ?? 'Tap the highlighted area to keep going 👆',
+                'show_tab' => $c['show_tab'] ?? null,
                 'avatar' => $this->avatarUrl($c['pose']),
             ])->values()),
             get current() { return this.chapters[this.i] ?? null; },
@@ -68,6 +69,10 @@
                 if (this.current && this.current.key === 'sail') {
                     if (window.Livewire) window.Livewire.dispatch('tour-collapse-orders');
                     this.$nextTick(() => setTimeout(() => this.place(), 420));
+                } else if (this.current && this.current.show_tab) {
+                    // Walk the student through each Orders tab: switch to it, then spotlight it.
+                    if (window.Livewire) window.Livewire.dispatch('tour-show-tab', { tab: this.current.show_tab });
+                    this.$nextTick(() => setTimeout(() => this.place(), 260));
                 } else {
                     this.$nextTick(() => this.place());
                 }

@@ -44,18 +44,32 @@ return [
             ],
         ],
         [
-            'key' => 'tasks', 'title' => 'Today’s tasks', 'pose' => 'chart', 'target' => '.co-frame', 'interactive' => false,
+            'key' => 'tab-orders', 'title' => 'The Orders tab', 'pose' => 'chart', 'target' => '[data-tour="tab-orders"]', 'show_tab' => 'orders', 'interactive' => false,
             'lines' => [
-                'Here it is! Start with your Morning Tide, then finish the lessons listed for today.',
+                'Four tabs live up here — let me walk you through each one. This first is your Orders.',
+                'Start with your Morning Tide, then finish the lessons listed for today.',
                 'Each one checks off as you master it — that’s how you stay on course for your big exam.',
-                'The tabs up top hold your Locker of perks, your Journal of streaks, and your Logs — tap any to peek.',
             ],
         ],
         [
-            'key' => 'locker', 'title' => 'Your Captain’s Locker', 'pose' => 'cheer', 'target' => '.co-frame', 'interactive' => false,
+            'key' => 'tab-locker', 'title' => 'The Locker tab', 'pose' => 'cheer', 'target' => '[data-tour="tab-locker"]', 'show_tab' => 'locker', 'interactive' => false,
             'lines' => [
-                'Your Locker holds your perks — little helpers that protect your streak.',
-                'You already have one of each as a joining gift. 🎁',
+                'Next is your Captain’s Locker — it holds your perks, little helpers that protect your streak.',
+                'You already have one of each as a joining gift. 🎁 Tap one any time you need it.',
+            ],
+        ],
+        [
+            'key' => 'tab-journal', 'title' => 'The Journal tab', 'pose' => 'chart', 'target' => '[data-tour="tab-journal"]', 'show_tab' => 'journal', 'interactive' => false,
+            'lines' => [
+                'Your Journal keeps every streak you’re building — reading, vocabulary, writing and the map.',
+                'The milestones show how many days in a row you’ve sailed. Keep them alive! 🔥',
+            ],
+        ],
+        [
+            'key' => 'tab-logs', 'title' => 'The Logs tab', 'pose' => 'chart', 'target' => '[data-tour="tab-logs"]', 'show_tab' => 'logs', 'interactive' => false,
+            'lines' => [
+                'Last is your Logs — the day-by-day record of every voyage you’ve completed.',
+                'It’s a proud trail of everywhere you’ve sailed. Now let’s go conquer an island!',
             ],
         ],
         [

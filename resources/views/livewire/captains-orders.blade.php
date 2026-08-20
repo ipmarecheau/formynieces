@@ -187,10 +187,10 @@
                 </header>
 
                 <nav class="co-tabs">
-                    <button class="co-tab {{ $tab === 'orders' ? 'is-on' : '' }}" wire:click="showTab('orders')">Orders</button>
-                    <button class="co-tab {{ $tab === 'locker' ? 'is-on' : '' }}" wire:click="showTab('locker')">Locker</button>
-                    <button class="co-tab {{ $tab === 'journal' ? 'is-on' : '' }}" wire:click="showTab('journal')">Journal</button>
-                    <button class="co-tab {{ $tab === 'logs' ? 'is-on' : '' }}" wire:click="showTab('logs')">Logs</button>
+                    <button class="co-tab {{ $tab === 'orders' ? 'is-on' : '' }}" wire:click="showTab('orders')" data-tour="tab-orders">Orders</button>
+                    <button class="co-tab {{ $tab === 'locker' ? 'is-on' : '' }}" wire:click="showTab('locker')" data-tour="tab-locker">Locker</button>
+                    <button class="co-tab {{ $tab === 'journal' ? 'is-on' : '' }}" wire:click="showTab('journal')" data-tour="tab-journal">Journal</button>
+                    <button class="co-tab {{ $tab === 'logs' ? 'is-on' : '' }}" wire:click="showTab('logs')" data-tour="tab-logs">Logs</button>
                 </nav>
 
                 @if ($tab === 'orders')

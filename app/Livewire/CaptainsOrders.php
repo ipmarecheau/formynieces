@@ -115,6 +115,14 @@ class CaptainsOrders extends Component
         $this->tab = in_array($tab, self::TABS, true) ? $tab : 'orders';
     }
 
+    /** TR-07 — the tour switches tabs as Smooth walks the student through each one. */
+    #[On('tour-show-tab')]
+    public function showTabForTour(string $tab): void
+    {
+        $this->collapsed = false;
+        $this->showTab($tab);
+    }
+
     /**
      * Check a thread off for today. The map checks off on its own from practice;
      * this is the affordance for the reading/vocabulary/writing threads whose
