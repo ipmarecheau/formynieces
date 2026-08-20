@@ -126,4 +126,6 @@
         </div>
     @endif
 </div>
+
+<livewire:loop-coach leg="practice" wire:key="loop-coach-practice" />
 </div>

@@ -63,4 +63,6 @@
     @endif
 </div>
 @endif
+
+<livewire:loop-coach leg="examples" wire:key="loop-coach-examples" />
 </div>

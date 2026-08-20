@@ -63,10 +63,39 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
         return $this->welcomed_at !== null;
     }
 
+    /**
+     * The ordered legs of the first-run interactive tour (TR-07). After the overworld
+     * and island, the student is walked through the whole learning loop on the real
+     * pages: the check (guided to miss on purpose) → lesson → worked examples →
+     * practice, then the relearn/AI leg, and finally done.
+     *
+     * @var array<int, string>
+     */
+    public const TOUR_STAGES = ['overworld', 'island', 'lesson', 'learn', 'examples', 'practice', 'reteach', 'done'];
+
     /** Move the student to a stage of the interactive cross-page tour. (TR-07) */
     public function setTourStage(?string $stage): void
     {
         $this->forceFill(['tour_stage' => $stage])->save();
+    }
+
+    /** Is the student mid-way through the first-run interactive tour? (TR-07) */
+    public function onGuidedTour(): bool
+    {
+        return $this->tour_stage !== null && $this->tour_stage !== 'done';
+    }
+
+    /**
+     * Advance the tour to a later leg, never backwards — so re-opening an already-seen
+     * page can't rewind the walkthrough. (TR-07)
+     */
+    public function advanceTourStage(string $stage): void
+    {
+        $current = array_search($this->tour_stage, self::TOUR_STAGES, true);
+        $next = array_search($stage, self::TOUR_STAGES, true);
+        if ($next !== false && ($current === false || $next > $current)) {
+            $this->setTourStage($stage);
+        }
     }
 
     /** Has this student already dismissed the named Smooth guide? (SG-02) */

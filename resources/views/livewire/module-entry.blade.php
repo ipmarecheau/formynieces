@@ -80,7 +80,8 @@
                 <div class="me-prompt">{!! $current['prompt'] !!}</div>
                 <div class="me-options">
                     @foreach ($current['options'] as $i => $option)
-                        <button type="button" class="me-option" wire:click="answerCheck({{ $i }})" wire:key="opt-{{ $checkIndex }}-{{ $i }}">{{ $option }}</button>
+                        <button type="button" class="me-option" wire:click="answerCheck({{ $i }})" wire:key="opt-{{ $checkIndex }}-{{ $i }}"
+                            @if ($tourMode) data-tour-option data-correct="{{ (int) ($i === ($current['correct'] ?? -1)) }}" @endif>{{ $option }}</button>
                     @endforeach
                 </div>
             @else

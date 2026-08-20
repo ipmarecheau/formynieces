@@ -26,17 +26,17 @@
                         title: 'How this level works',
                         lines: [
                             'This is a real stop! First comes a quick check — three questions.',
-                            'Ace all three and you’ve <b>already mastered it</b>, no lesson needed. Miss one and we learn it together.',
+                            'For this tour, let’s <b>miss one on purpose</b> so I can show you the whole learn-it-together loop.',
                         ],
                         do: 'Tap “Start the quick check” to begin 👆',
                     },
                     check: {
-                        title: 'Your quick check',
+                        title: 'Pick a wrong one — on purpose!',
                         lines: [
-                            'Answer each question the best you can — this one counts for real.',
-                            'Get all three and you skip straight ahead. Miss one and I’ll help you learn it.',
+                            'Normally you’d answer your best. But for the tour, tap the option I’m pointing to — it’s a <b>wrong</b> answer.',
+                            'That takes us into the part where we learn it together. 🐢',
                         ],
-                        do: 'Tap your answer for each question 👆',
+                        do: 'Tap the highlighted (wrong) answer 👆',
                     },
                     outcomeMiss: {
                         title: 'Let’s learn it together',
@@ -60,16 +60,18 @@
                     if (this.phase === 'outcome') { return this.mastered ? this.copy.outcomeMastered : this.copy.outcomeMiss; }
                     return this.copy[this.phase];
                 },
-                targetSel() {
-                    if (this.phase === 'explainer') { return '.me-card'; }
-                    if (this.phase === 'check') { return '.me-options'; }
-                    if (this.phase === 'outcome' && !this.mastered) { return '.me-choices'; }
+                targetEl() {
+                    if (this.phase === 'explainer') { return document.querySelector('.me-card'); }
+                    if (this.phase === 'check') {
+                        // Point at a WRONG option so she can miss it on purpose (tour mode exposes it).
+                        return document.querySelector('[data-tour-option][data-correct=\'0\']') || document.querySelector('.me-options');
+                    }
+                    if (this.phase === 'outcome' && !this.mastered) { return document.querySelector('.me-choices'); }
                     return null;   // mastered → no spotlight, just a centred celebration card
                 },
                 hasHole: false, holeStyle: '',
                 place() {
-                    const sel = this.targetSel();
-                    const el = sel ? document.querySelector(sel) : null;
+                    const el = this.targetEl();
                     if (!el) { this.hasHole = false; return; }
                     el.scrollIntoView({ behavior: 'auto', block: 'center' });
                     this.$nextTick(() => { const r = el.getBoundingClientRect(); const p = 8;
@@ -84,8 +86,11 @@
              }"
              x-init="
                 $nextTick(() => place());
-                if (window.Livewire) { window.Livewire.on('lesson-phase', (e) => { const d = Array.isArray(e) ? e[0] : e; setPhase(d.phase, d.mastered); }); }
-                // Keep the spotlight snug as the real page re-renders between check questions.
+                if (window.Livewire) {
+                    window.Livewire.on('lesson-phase', (e) => { const d = Array.isArray(e) ? e[0] : e; setPhase(d.phase, d.mastered); });
+                    // Re-spotlight the next wrong option as the real check advances question to question.
+                    window.Livewire.hook('commit', ({ succeed }) => { succeed(() => { this.$nextTick(() => setTimeout(() => this.place(), 60)); }); });
+                }
                 window.addEventListener('resize', () => place());
              ">
             <div class="lt-hole" x-show="hasHole" :style="holeStyle"></div>

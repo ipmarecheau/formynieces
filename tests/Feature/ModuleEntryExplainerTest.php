@@ -64,3 +64,27 @@ it('opens the entry page from the map route', function () {
         ->assertOk()
         ->assertSeeText('How this level works');
 })->group('scenario:LL-19');
+
+it('enters tour mode only for a student on the first-run tour', function () {
+    $module = SyllabusModule::create([
+        'subject' => 'Math',
+        'topic' => 'Number: Place Value',
+        'sea_section' => 'A',
+        'sequence_order' => 1,
+        'pacing_week' => 1,
+        'description' => 'Understand place value.',
+        'resources' => [],
+    ]);
+
+    $guided = User::create([
+        'name' => 'Maya', 'email' => 'maya-tourmode@test.com', 'password' => bcrypt('secret'),
+        'role' => 'student', 'onboarding_completed_at' => now(), 'tour_stage' => 'lesson',
+    ]);
+    $normal = User::create([
+        'name' => 'Jae', 'email' => 'jae-tourmode@test.com', 'password' => bcrypt('secret'),
+        'role' => 'student', 'onboarding_completed_at' => now(), 'tour_stage' => null,
+    ]);
+
+    Livewire::actingAs($guided)->test(ModuleEntry::class, ['module' => $module])->assertSet('tourMode', true);
+    Livewire::actingAs($normal)->test(ModuleEntry::class, ['module' => $module])->assertSet('tourMode', false);
+})->group('scenario:TR-07');

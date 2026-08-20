@@ -74,10 +74,18 @@ class ModuleEntry extends Component
     /** A kind message carried back from a locked stage she tried to open by link (LE-06). */
     public ?string $lockMessage = null;
 
+    /**
+     * True while a brand-new student is on the first-run tour (TR-07). Only then is the
+     * correct option exposed to the client, so Smooth's coach can point her at a WRONG
+     * answer on purpose to demonstrate the learn-it-together loop. Never set otherwise.
+     */
+    public bool $tourMode = false;
+
     public function mount(SyllabusModule $module): void
     {
         $this->moduleId = $module->id;
         $this->topic = $module->topic;
+        $this->tourMode = auth()->user()?->onGuidedTour() ?? false;
         $this->islandSlug = app(AdventureMapBuilder::class)->islandSlugForModule(auth()->user(), $module->id);
 
         // CO-05 / WR-07 / AM-11 — on a writing day, opening a NEW level waits for the
@@ -134,6 +142,9 @@ class ModuleEntry extends Component
             'id' => $q->id,
             'prompt' => $q->prompt,
             'options' => $q->options,
+            // The correct index is exposed to the client ONLY on the first-run tour, so the
+            // coach can spotlight a wrong option; a normal check never leaks it (LL-20 / TR-07).
+            ...($this->tourMode ? ['correct' => (int) $q->correct_index] : []),
         ])->all();
 
         $this->checkIndex = 0;

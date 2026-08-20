@@ -329,4 +329,6 @@
     <livewire:clarify-chat :module-id="$moduleId" wire:key="clarify-{{ $moduleId }}" />
 </div>
 @endif
+
+<livewire:loop-coach leg="learn" wire:key="loop-coach-learn" />
 </div>

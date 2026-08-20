@@ -31,7 +31,8 @@
                     <img class="it-avatar" src="{{ $this->avatarUrl() }}" alt="Smooth the turtle">
                     <div class="it-title">This island’s stops</div>
                 </div>
-                <p class="it-line">Each stop is a level to conquer — follow the trail in order. Let’s open the first one!</p>
+                <p class="it-line">We’ve reset your voyage to a fresh start, so we can sail the <b>whole learning loop</b> together from the very beginning. 🌊</p>
+                <p class="it-line">Let’s open the first stop — and this time we’ll <b>miss a question on purpose</b>, so I can show you how we learn it together.</p>
                 <p class="it-handoff">👆 Tap the glowing stop to open its lesson</p>
                 <button type="button" class="it-skip" wire:click="skip">Skip the tour</button>
             </div>
