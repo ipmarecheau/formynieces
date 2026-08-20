@@ -44,3 +44,11 @@ Feature: Application tour and welcome
   Scenario: The welcome and tour are child-layer only
     When she is welcomed and toured
     Then no pace, percentage, target, or grade is shown to her anywhere in them
+
+  @scenario:TR-07
+  Scenario: The tour is interactive and continues across screens
+    Given she is on the overworld leg of the tour
+    When she reaches the final chapter
+    Then she is invited to tap her first island to sail in
+    And the tour resumes on the island, asking her to open the first stop
+    And it then explains the learning loop inside the lesson before ending

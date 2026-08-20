@@ -6,13 +6,13 @@ use Livewire\Attributes\On;
 use Livewire\Component;
 
 /**
- * TR-02/03/04 — the first-run application tour, guided from the Voyage home.
+ * TR-02/03/04/07 — the overworld leg of the interactive cross-page tour.
  *
- * Auto-opens on a student's first Voyage visit (once she has been welcomed), steps
- * through chapters spotlighting each area, awaits her click to advance, and never
- * nags: once finished it stays closed (persisted in users.seen_guides as "tour").
- * The "Take the tour" control reopens it any time (TR-04). Content is child-layer,
- * from config/tour.php.
+ * Auto-opens when the student's tour_stage is 'overworld' (set at welcome), steps
+ * through chapters spotlighting each area, and ends on an interactive hand-off: she
+ * taps her first island to sail in, where IslandTour picks the tour up. "Take the
+ * tour" restarts it; skipping ends it (tour_stage → 'done', remembered so it never
+ * nags). Content is child-layer, from config/tour.php.
  */
 class VoyageTour extends Component
 {
@@ -20,24 +20,23 @@ class VoyageTour extends Component
 
     public function mount(): void
     {
-        // First visit after being welcomed auto-opens; a finished tour stays closed.
-        $user = auth()->user();
-        $this->open = $user !== null
-            && $user->hasBeenWelcomed()
-            && ! $user->hasSeenGuide('tour');
+        $this->open = auth()->user()?->tour_stage === 'overworld';
     }
 
-    /** Reopen on demand from the "Take the tour" control (TR-04). */
+    /** Reopen from the "Take the tour" control — restart the whole cross-page tour (TR-04). */
     #[On('start-tour')]
     public function start(): void
     {
+        auth()->user()?->setTourStage('overworld');
         $this->open = true;
     }
 
-    /** Finish (or skip) — remember it so it never nags again (TR-03). */
+    /** Finish or skip the overworld leg — end the tour and remember it (TR-03). */
     public function finish(): void
     {
-        auth()->user()?->markGuideSeen('tour');
+        $user = auth()->user();
+        $user?->setTourStage('done');
+        $user?->markGuideSeen('tour');
         $this->open = false;
     }
 

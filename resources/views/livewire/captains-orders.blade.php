@@ -102,6 +102,7 @@
         .co-check { width: 20px; height: 20px; flex: none; border-radius: 50%; display: grid; place-items: center; font-size: 0.8rem; font-weight: 900; border: 2px solid #b98a4b; color: #2f7d5b; }
         .co-duty.is-done .co-check { background: #2f7d5b; color: #fff; border-color: #2f7d5b; }
         .co-duty-label { flex: 1; }
+        .co-tasks-head { font-family: 'Fredoka One', cursive; font-size: 0.82rem; color: #7a4a1a; margin: 14px 0 7px; }
         .co-duty-note { font-size: 0.68rem; font-weight: 800; color: #8a6531; text-transform: uppercase; }
         .co-duty-do { cursor: pointer; border: none; border-radius: 6px; padding: 3px 8px; font-size: 0.68rem; font-weight: 800; color: #f4e8c8; background: #6b4a2b; }
         .co-soon { font-size: 0.6rem; font-weight: 800; color: #9e3b23; text-transform: uppercase; }
@@ -229,6 +230,23 @@
                                     </li>
                                 @endforeach
                             </ul>
+
+                            {{-- CO-02: today's paced lessons — a task list toward the exam that
+                                 checks off as each topic is mastered. --}}
+                            @if (count($lessonTasks) > 0)
+                                <p class="co-tasks-head" data-tour="orders-lessons">🧭 Today's lessons — finish these to stay on course</p>
+                                <ul class="co-checklist">
+                                    @foreach ($lessonTasks as $task)
+                                        <li class="co-duty {{ $task['done'] ? 'is-done' : '' }}">
+                                            <span class="co-check">{{ $task['done'] ? '✓' : '' }}</span>
+                                            <span class="co-duty-label">{{ $task['subject'] }}: {{ $task['topic'] }}</span>
+                                            @if (! $task['done'])
+                                                <a class="co-duty-do" style="text-decoration:none;" href="{{ $task['url'] }}">start</a>
+                                            @endif
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            @endif
 
                             @if ($writingDay && ! $writingDone)
                                 <p class="co-gate">✍️ Finish today's writing to open the next island on the map.</p>

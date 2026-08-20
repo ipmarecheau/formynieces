@@ -51,7 +51,8 @@ it('grants one of each perk as a joining bonus, only once', function () {
         expect(StreakReward::where('student_id', $student->id)->where('type', $type)->value('quantity'))
             ->toBe(1);
     }
-    expect($student->fresh()->welcomed_at)->not->toBeNull();
+    expect($student->fresh()->welcomed_at)->not->toBeNull()
+        ->and($student->fresh()->tour_stage)->toBe('overworld'); // queued to start the tour
 
     // Revisiting the welcome page does not grant the bonus again.
     Livewire::actingAs($student->fresh())->test(WelcomeAboard::class);
@@ -65,8 +66,9 @@ it('grants one of each perk as a joining bonus, only once', function () {
 /** TR-02 — the tour auto-opens on a welcomed student's first Voyage, in chapters. */
 it('auto-opens the chaptered tour for a welcomed student who has not seen it', function () {
     $student = tourStudent(welcomed: true);
+    $student->setTourStage('overworld');
 
-    $component = Livewire::actingAs($student)->test(VoyageTour::class)
+    $component = Livewire::actingAs($student->fresh())->test(VoyageTour::class)
         ->assertSet('open', true);
 
     expect(count($component->instance()->tour()['chapters']))->toBeGreaterThanOrEqual(3);

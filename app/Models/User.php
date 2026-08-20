@@ -24,6 +24,7 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
         'parent_id',
         'onboarding_completed_at', // Slice 1
         'welcomed_at', // TR-01: first welcome + joining bonus fired
+        'tour_stage', // TR-07: cross-page interactive tour position
         'guardian_reconciled_at', // RR-04 reconciliation decision
         'paused_at', // Pause/resume: null = active
         'age_attested_at',
@@ -60,6 +61,12 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
     public function hasBeenWelcomed(): bool
     {
         return $this->welcomed_at !== null;
+    }
+
+    /** Move the student to a stage of the interactive cross-page tour. (TR-07) */
+    public function setTourStage(?string $stage): void
+    {
+        $this->forceFill(['tour_stage' => $stage])->save();
     }
 
     /** Has this student already dismissed the named Smooth guide? (SG-02) */

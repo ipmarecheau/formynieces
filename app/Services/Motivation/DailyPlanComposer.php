@@ -84,6 +84,36 @@ class DailyPlanComposer
     }
 
     /**
+     * CO-02 (task list) — today's specific lessons to finish, drawn from this
+     * week's exam-pacing targets. Each is a topic the child should complete to
+     * stay on pace; it checks off when the module is mastered. Child-layer only:
+     * a topic name and its done flag, never a pace number or deadline.
+     *
+     * @return list<array{module_id:int, subject:string, topic:string, done:bool, url:string}>
+     */
+    public function todaysLessonTasks(int $studentId, ?Carbon $on = null): array
+    {
+        $on ??= Carbon::today();
+        $weekStart = $on->copy()->startOfWeek()->toDateString();
+
+        return WeeklyTarget::with('module')
+            ->where('student_id', $studentId)
+            ->where('week_start_date', $weekStart)
+            ->get()
+            ->filter(fn (WeeklyTarget $t) => $t->module !== null)
+            ->sortBy(fn (WeeklyTarget $t) => $t->state() === 'completed') // unfinished first
+            ->map(fn (WeeklyTarget $t) => [
+                'module_id' => $t->module_id,
+                'subject' => $t->module->subject,
+                'topic' => $t->module->topic,
+                'done' => $t->state() === 'completed',
+                'url' => route('practice.enter', $t->module_id),
+            ])
+            ->values()
+            ->all();
+    }
+
+    /**
      * Mark a single duty done for the day (used by a thread's engine, or the
      * sidebar for threads whose engines are not yet built).
      */

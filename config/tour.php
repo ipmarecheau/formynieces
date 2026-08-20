@@ -1,85 +1,68 @@
 <?php
 
 /**
- * The first-run application tour (TR-02/03) — Smooth walks a new voyager through
- * what she does each day, one chapter at a time, guided from her Voyage home.
+ * The first-run overworld tour (TR-02/03/07) — Smooth walks a new voyager through
+ * her Voyage home, one chapter at a time, spotlighting each area. The final chapter
+ * is interactive: she taps her first island to sail in, and the tour continues on
+ * the island (IslandTour) and then inside a lesson (LessonTour).
  *
- * Each chapter: a title, a Smooth pose (wave|cheer|chart), a CSS `target` on the
- * Voyage overworld to spotlight (null = a centred card, no spotlight), and ordered
- * child-layer `lines` — never pace, percentages, or targets.
+ * Each chapter: title, Smooth pose (wave|cheer|chart), a CSS `target` to spotlight
+ * (null = a centred card), `interactive` (true = let her tap the spotlit element to
+ * continue, no Next button), and ordered child-layer `lines`.
  */
 return [
 
     'title' => 'Your tour of the ship',
     'chapters' => [
         [
-            'key' => 'welcome',
-            'title' => 'Welcome aboard!',
-            'pose' => 'wave',
-            'target' => null,
+            'key' => 'welcome', 'title' => 'Welcome aboard!', 'pose' => 'wave', 'target' => null, 'interactive' => false,
             'lines' => [
                 'Ahoy! I’m Smooth, your turtle first mate. 🐢',
-                'Let me show you around your ship in a few quick stops — tap Next to sail on.',
+                'Let me show you around your ship — tap Next to sail on.',
             ],
         ],
         [
-            'key' => 'map',
-            'title' => 'Your Voyage map',
-            'pose' => 'chart',
-            'target' => '.vy-map',
+            'key' => 'map', 'title' => 'Your Voyage map', 'pose' => 'chart', 'target' => '.vy-map', 'interactive' => false,
             'lines' => [
                 'This is your sea! Every island is a skill, and every stop on it is something to learn.',
-                'The glowing islands are where to sail this week — tap one to start exploring.',
+                'The glowing islands are where to sail this week.',
             ],
         ],
         [
-            'key' => 'orders',
-            'title' => 'Captain’s Orders',
-            'pose' => 'chart',
-            'target' => '.co-frame',
+            'key' => 'legend', 'title' => 'The island list', 'pose' => 'chart', 'target' => '.vy-legend', 'interactive' => false,
             'lines' => [
-                'These are your orders for today — your daily minimum, as a simple checklist.',
-                'Do them in any order you like. Finish them to keep your streak sailing!',
+                'This list names every island and shows which are open, locked, or glowing for this week.',
+                'It’s your quick key to the whole map.',
             ],
         ],
         [
-            'key' => 'morning_tide',
-            'title' => 'Morning Tide',
-            'pose' => 'wave',
-            'target' => '.co-frame',
+            'key' => 'orders', 'title' => 'Captain’s Orders', 'pose' => 'chart', 'target' => '.co-rail', 'interactive' => true,
+            'hint' => 'Tap your Orders scroll to unroll it 📜',
             'lines' => [
-                'Each morning starts with your Morning Tide: a short reading, a few questions, then some new words.',
-                'It’s made to fit in your pocket — perfect for the ride to school.',
+                'This rolled-up scroll on the left is your Captain’s Orders.',
+                'Give it a tap to unroll it and see today’s plan!',
             ],
         ],
         [
-            'key' => 'learning',
-            'title' => 'Learning a stop',
-            'pose' => 'chart',
-            'target' => '.vy-map',
+            'key' => 'tasks', 'title' => 'Today’s tasks', 'pose' => 'chart', 'target' => '.co-frame', 'interactive' => false,
             'lines' => [
-                'Tap a stop and you’ll get a lesson, some worked examples, then practice.',
-                'Clear the check at the top and that stop is mastered — the next one opens up!',
+                'Here it is! Start with your Morning Tide, then finish the lessons listed for today.',
+                'Each one checks off as you master it — that’s how you stay on course for your big exam.',
+                'The tabs up top hold your Locker of perks, your Journal of streaks, and your Logs — tap any to peek.',
             ],
         ],
         [
-            'key' => 'locker',
-            'title' => 'Your Captain’s Locker',
-            'pose' => 'cheer',
-            'target' => '.co-frame',
+            'key' => 'locker', 'title' => 'Your Captain’s Locker', 'pose' => 'cheer', 'target' => '.co-frame', 'interactive' => false,
             'lines' => [
-                'Open the Locker tab to find your perks — little helpers that protect your streak.',
-                'You already have one of each as a joining gift. Use them whenever you need! 🎁',
+                'Your Locker holds your perks — little helpers that protect your streak.',
+                'You already have one of each as a joining gift. 🎁',
             ],
         ],
         [
-            'key' => 'setsail',
-            'title' => 'Ready to sail!',
-            'pose' => 'cheer',
-            'target' => null,
+            'key' => 'sail', 'title' => 'Let’s sail in!', 'pose' => 'cheer', 'target' => '.vy-island.is-current', 'interactive' => true,
+            'hint' => 'Tap the glowing island to keep going 👆',
             'lines' => [
-                'That’s the whole ship! You can replay this tour any time from the “Take the tour” button.',
-                'Now — let’s go start your first Morning Tide. Onward, Captain! ⛵',
+                'Ready? Tap this glowing island to sail in and see its stops!',
             ],
         ],
     ],

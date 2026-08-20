@@ -36,6 +36,8 @@
             @endforeach
         </ul>
 
-        <a href="{{ route('student.voyage') }}" class="wa-cta" wire:navigate.hover>Set sail →</a>
+        {{-- A full-page load (no wire:navigate) so the tour reliably auto-opens on
+             arrival — an SPA swap can lose the tour's initial open state (hydration race). --}}
+        <a href="{{ route('student.voyage') }}" class="wa-cta">Set sail →</a>
     </div>
 </div>

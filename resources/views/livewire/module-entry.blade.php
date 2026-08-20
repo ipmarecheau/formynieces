@@ -150,4 +150,6 @@
         </x-celebration>
     @endif
 </div>
+
+<livewire:lesson-tour wire:key="lesson-tour" />
 </div>

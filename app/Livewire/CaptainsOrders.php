@@ -10,6 +10,7 @@ use App\Services\Motivation\DailyPlanComposer;
 use App\Services\Motivation\StreakEconomyService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Carbon;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 /**
@@ -87,11 +88,26 @@ class CaptainsOrders extends Component
                 $this->asOf = null;
             }
         }
+
+        // TR-07: during the overworld tour the orders start rolled up, so opening
+        // them is a step of the tour (the student taps the scroll to expand it).
+        if (auth()->user()?->tour_stage === 'overworld') {
+            $this->collapsed = true;
+        }
     }
 
     public function toggle(): void
     {
         $this->collapsed = ! $this->collapsed;
+        // Let the tour advance when the student opens the orders (TR-07).
+        $this->dispatch('orders-toggled', collapsed: $this->collapsed);
+    }
+
+    /** TR-07 — the tour rolls the orders back up before the island hand-off. */
+    #[On('tour-collapse-orders')]
+    public function collapseForTour(): void
+    {
+        $this->collapsed = true;
     }
 
     public function showTab(string $tab): void
@@ -130,7 +146,11 @@ class CaptainsOrders extends Component
         $studentId = (int) auth()->id();
         $today = $this->today();
 
-        $plan = app(DailyPlanComposer::class)->forDay($studentId, $today);
+        $composer = app(DailyPlanComposer::class);
+        $plan = $composer->forDay($studentId, $today);
+
+        // CO-02 — today's paced lessons, as a check-off task list toward the exam.
+        $lessonTasks = $composer->todaysLessonTasks($studentId, $today);
 
         $duties = collect($plan->duties)->map(fn ($done, $key) => [
             'key' => $key,
@@ -179,6 +199,7 @@ class CaptainsOrders extends Component
 
         return view('livewire.captains-orders', [
             'duties' => $duties,
+            'lessonTasks' => $lessonTasks,
             'writingDay' => $plan->is_writing_day,
             'writingDone' => (bool) ($plan->duties['writing'] ?? true),
             'isRestDay' => $plan->duties === [],

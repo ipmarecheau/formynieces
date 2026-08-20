@@ -269,7 +269,12 @@
     </nav>
 
     <div class="vy-wrap">
-        <livewire:smooth-guide guide="island" wire:key="guide-island" />
+        {{-- TR-07: the island tour supersedes the single "exploring an island" guide,
+             so it never stacks over and blocks the interactive tour. --}}
+        @unless (in_array(auth()->user()?->tour_stage, ['overworld', 'island', 'lesson'], true))
+            <livewire:smooth-guide guide="island" wire:key="guide-island" />
+        @endunless
+        <livewire:island-tour wire:key="island-tour" />
         @if ($hasReview)
             <livewire:smooth-guide guide="review" :alert="true" wire:key="guide-review" />
         @endif

@@ -32,7 +32,8 @@ class WelcomeAboard extends Component
         if ($user !== null && ! $user->hasBeenWelcomed()) {
             DB::transaction(function () use ($user, $economy) {
                 $economy->grantJoiningBonus($user->id);
-                $user->forceFill(['welcomed_at' => now()])->save();
+                // Welcomed + queued to start the interactive tour on her first Voyage.
+                $user->forceFill(['welcomed_at' => now(), 'tour_stage' => 'overworld'])->save();
             });
         }
 

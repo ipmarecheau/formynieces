@@ -13,6 +13,7 @@ class DailyPlan extends Model
         'is_writing_day',
         'duties',
         'completed_at',
+        'parent_summary_sent_at',
     ];
 
     protected $casts = [
@@ -20,6 +21,7 @@ class DailyPlan extends Model
         'is_writing_day' => 'boolean',
         'duties' => 'array',
         'completed_at' => 'datetime',
+        'parent_summary_sent_at' => 'datetime',
     ];
 
     public function student(): BelongsTo

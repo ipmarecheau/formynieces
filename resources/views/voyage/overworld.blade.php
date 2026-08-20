@@ -267,7 +267,12 @@
 
     <div class="vy-wrap">
         <livewire:captains-orders wire:key="captains-orders" />
-        <livewire:smooth-guide guide="voyage" wire:key="guide-voyage" />
+        {{-- TR-02: the full first-run tour supersedes the single "how to sail" guide;
+             show that guide only once the tour has been seen, so two full-screen
+             overlays never stack and swallow each other's clicks. --}}
+        @if (auth()->user()?->hasSeenGuide('tour'))
+            <livewire:smooth-guide guide="voyage" wire:key="guide-voyage" />
+        @endif
         <livewire:voyage-tour wire:key="voyage-tour" />
 
         <div class="vy-stage">
