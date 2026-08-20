@@ -138,6 +138,13 @@ class ModuleEntry extends Component
             ? $service->serveMaintenance(auth()->id(), $this->moduleId)
             : $service->serve(auth()->id(), $this->moduleId);
 
+        // On the first-run tour the check is a single question: one guided miss lands
+        // straight on the outcome, so the walkthrough stays snappy and every tap visibly
+        // moves things along (TR-07). A normal check always serves the full D1/D3/D5 set.
+        if ($this->tourMode) {
+            $served = $served->take(1);
+        }
+
         $this->checkQuestions = $served->map(fn (PracticeQuestion $q): array => [
             'id' => $q->id,
             'prompt' => $q->prompt,

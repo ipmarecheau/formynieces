@@ -34,7 +34,7 @@
                         title: 'Pick a wrong one — on purpose!',
                         lines: [
                             'Normally you’d answer your best. But for the tour, tap the option I’m pointing to — it’s a <b>wrong</b> answer.',
-                            'That takes us into the part where we learn it together. 🐢',
+                            'One tap and we’ll head straight into learning it together. 🐢',
                         ],
                         do: 'Tap the highlighted (wrong) answer 👆',
                     },
