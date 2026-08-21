@@ -60,6 +60,9 @@
         @endphp
 
         <style>
+            /* Reserve room at the foot of the page so the fixed coach card never covers the
+               lesson/practice controls (the Next button, answer inputs) beneath it. */
+            .dx-content { padding-bottom: 260px; }
             .lc-glow { position: relative; z-index: 1; outline: 3px solid #f0abfc !important; outline-offset: 3px; box-shadow: 0 0 0 5px rgba(240,171,252,0.4), 0 0 22px rgba(240,171,252,0.6) !important; border-radius: 12px; }
             /* Click-through body (only its buttons capture) so it never blocks a tap on a
                spotlighted control beneath it. */
