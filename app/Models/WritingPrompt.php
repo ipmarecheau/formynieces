@@ -37,7 +37,9 @@ class WritingPrompt extends Model
      */
     public static function forWeek(?Carbon $on = null): ?self
     {
-        $weekStart = ($on ?? now())->startOfWeek()->toDateString();
+        // copy() so we never mutate the caller's Carbon (forDay reuses it for the
+        // plan-date lookup right after — mutating it here corrupted the daily plan).
+        $weekStart = ($on ?? now())->copy()->startOfWeek()->toDateString();
 
         return self::where('week_start_date', $weekStart)->first();
     }
