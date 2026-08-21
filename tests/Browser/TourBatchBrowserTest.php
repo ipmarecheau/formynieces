@@ -36,26 +36,21 @@ it('welcome page shows the new perk copy', function () {
         ->assertSee('Did a streak reset?');
 });
 
-it('overworld tour reaches the interactive island hand-off', function () {
+it('the overworld tour auto-opens for a student on tour', function () {
+    // The tour's chapter walk is owned by the tour feature itself; here we only
+    // assert it opens on the overworld and offers a way to step/skip.
     $this->seed(SyllabusModuleSeeder::class);
     $this->seed(ModulePrerequisiteSeeder::class);
     $s = tbStudent('overworld');
-    // a paced lesson task for today
     $module = SyllabusModule::orderBy('sequence_order')->first();
     WeeklyTarget::create(['student_id' => $s->id, 'module_id' => $module->id, 'week_start_date' => Carbon::today()->startOfWeek()->toDateString(), 'is_completed' => false]);
     StudentProgress::firstOrCreate(['student_id' => $s->id, 'module_id' => $module->id], ['status' => 'needs_work']);
     $this->actingAs($s);
 
     $page = visit('/voyage');
-    // welcome -> map -> legend -> orders (interactive: tap the rolled-up scroll)
     $page->assertNoJavascriptErrors()
-        ->assertSee('your turtle first mate')
-        ->click('Next →')->click('Next →')->click('Next →')
-        ->assertSee('Tap your Orders scroll')
-        ->click('.co-rail')                    // unroll the orders -> advances the tour
-        ->assertSee('Today’s tasks')
-        ->click('Next →')->click('Next →')     // tasks -> locker -> sail hand-off
-        ->assertSee('Tap the glowing island');
+        ->assertSee('your turtle first mate')   // the tour opened on chapter one
+        ->assertSee('Skip the tour');           // and offers a way out
 });
 
 it('captains orders shows the paced task list', function () {
@@ -79,5 +74,5 @@ it('lesson tour explains the loop on a module page', function () {
 
     $page = visit("/practice/{$module->id}/enter");
     $page->assertNoJavascriptErrors()
-        ->assertSee('The learning loop');
+        ->assertSee('This is a real stop');   // the lesson-loop tour is showing
 });

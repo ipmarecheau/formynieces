@@ -34,6 +34,9 @@
         .tour-handoff { text-align: center; font-size: 0.98rem; font-weight: 900; color: #fde68a; margin: 4px 0 2px; }
     </style>
 
+    {{-- Only emit the tour (and its chapter text) while it is open, so a student
+         who isn't touring carries none of it in her page (VC-03). --}}
+    @if ($open)
     @php($tour = $this->tour())
     <div
         x-data="{
@@ -135,4 +138,5 @@
             </div>
         </template>
     </div>
+    @endif
 </div>
