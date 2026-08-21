@@ -1,12 +1,15 @@
 <div x-data="{
         open: false, glow: false, shake: false,
-        fabX: 0, fabY: 0, panX: 0, panY: 0, _fs: null, _ps: null,
-        fabDown(e) { this._fs = { x: e.clientX, y: e.clientY, ox: this.fabX, oy: this.fabY, moved: false }; e.currentTarget.setPointerCapture?.(e.pointerId); },
-        fabMove(e) { if (!this._fs) return; const dx = e.clientX - this._fs.x, dy = e.clientY - this._fs.y; if (Math.abs(dx) + Math.abs(dy) > 4) this._fs.moved = true; this.fabX = this._fs.ox + dx; this.fabY = this._fs.oy + dy; },
-        fabUp() { if (this._fs && !this._fs.moved) this.open = true; this._fs = null; },
-        panDown(e) { if (e.target.closest('button')) return; this._ps = { x: e.clientX, y: e.clientY, ox: this.panX, oy: this.panY }; e.currentTarget.setPointerCapture?.(e.pointerId); },
-        panMove(e) { if (!this._ps) return; this.panX = this._ps.ox + (e.clientX - this._ps.x); this.panY = this._ps.oy + (e.clientY - this._ps.y); },
-        panUp() { this._ps = null; },
+        fabX: 0, fabY: 0,
+        // Drag the bubble (minimized chat only). Listeners live on window so the drag never
+        // stalls on the first try or when the pointer leaves the small bubble. A tap (no real
+        // movement) still opens the chat.
+        fabDown(e) {
+            const s = { x: e.clientX, y: e.clientY, ox: this.fabX, oy: this.fabY, moved: false };
+            const move = (ev) => { const dx = ev.clientX - s.x, dy = ev.clientY - s.y; if (Math.abs(dx) + Math.abs(dy) > 4) s.moved = true; this.fabX = s.ox + dx; this.fabY = s.oy + dy; };
+            const up = () => { window.removeEventListener('pointermove', move); window.removeEventListener('pointerup', up); if (!s.moved) this.open = true; };
+            window.addEventListener('pointermove', move); window.addEventListener('pointerup', up);
+        },
     }"
     @smooth-spoke.window="glow = true; shake = true; setTimeout(() => shake = false, 600); $nextTick(() => { if ($refs.log) $refs.log.scrollTop = $refs.log.scrollHeight; if ($refs.ccInput) $refs.ccInput.value = '' })">
     @php $locked = in_array($reteachMode, ['remediation', 'final'], true); @endphp
@@ -16,7 +19,8 @@
         .cc-fab:active { cursor: grabbing; }
         .cc-fab:hover { transform: scale(1.06); }
         .cc-fab img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
-        .cc-fab-badge { position: absolute; top: -3px; right: -3px; background: #f0abfc; border-radius: 50%; min-width: 22px; height: 22px; font-size: 12px; display: flex; align-items: center; justify-content: center; }
+        .cc-fab-grip { position: absolute; top: -6px; right: -6px; width: 24px; height: 24px; border-radius: 50%; background: #67e8f9; color: #0c2440; font-size: 12px; line-height: 1; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 6px rgba(0,0,0,0.4); }
+        .cc-fab-badge { position: absolute; top: -3px; left: -3px; background: #f0abfc; border-radius: 50%; min-width: 22px; height: 22px; font-size: 12px; display: flex; align-items: center; justify-content: center; }
         .cc-backdrop { position: fixed; inset: 0; z-index: 79; background: rgba(4,14,30,0.62); }
         .cc-widget { position: fixed; z-index: 80; right: 20px; bottom: 20px; width: 400px; max-width: calc(100vw - 40px); height: 70vh; max-height: 640px; }
         @media (max-width: 560px) { .cc-widget { right: 0; left: 0; bottom: 0; top: 0; width: 100%; height: 100%; max-height: none; } }
@@ -62,8 +66,9 @@
 
     {{-- Collapsed bubble + its dim-on-open backdrop — only when Smooth isn't mid-required-step. --}}
     @if (! $locked)
-        <button type="button" class="cc-fab" x-show="!open" @pointerdown="fabDown" @pointermove="fabMove" @pointerup="fabUp" :style="`transform: translate(${fabX}px, ${fabY}px)`" aria-label="Chat with Smooth (drag to move)">
+        <button type="button" class="cc-fab" x-show="!open" @pointerdown="fabDown" :style="`transform: translate(${fabX}px, ${fabY}px)`" aria-label="Chat with Smooth — tap to open, drag to move">
             <img src="{{ asset('images/voyage/companion/smooth-chart.webp') }}" alt="Smooth">
+            <span class="cc-fab-grip" aria-hidden="true">⠿</span>
             @if (count($messages) > 0)<span class="cc-fab-badge">💬</span>@endif
         </button>
         <div class="cc-backdrop" x-show="open" x-cloak style="display:none"></div>
@@ -72,9 +77,9 @@
         <div class="cc-backdrop"></div>
     @endif
 
-    <div class="cc-widget" :style="`transform: translate(${panX}px, ${panY}px)`" @if (! $locked) x-show="open" x-cloak style="display:none" @endif>
+    <div class="cc-widget" @if (! $locked) x-show="open" x-cloak style="display:none" @endif>
         <div class="cc-panel" :class="{ 'is-glowing': glow, 'is-shaking': shake }" @focusin="glow = false">
-            <div class="cc-head" style="cursor: move; touch-action: none;" @pointerdown="panDown" @pointermove="panMove" @pointerup="panUp">
+            <div class="cc-head">
                 <img src="{{ asset('images/voyage/companion/smooth-chart.webp') }}" alt="Smooth">
                 <span><b>Ask Smooth</b><small>your lesson buddy 🐢</small></span>
                 @if (! $locked)
