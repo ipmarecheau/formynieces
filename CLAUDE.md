@@ -611,8 +611,11 @@ git log pre-cascade..main --oneline
 - **specs:trace false STALE** — the unquoted `verified_at` bug is still live. A
   STALE on a scenario whose `.feature` is untouched (`git log --oneline -- <file>`
   shows no edit since its verify date) is THIS bug, not a real spec change.
-- **GroqService** — this box has a placeholder `GROQ_API_KEY`. Tests pass because
-  the constructor only assigns; any test making a real Groq call would fail.
-  `GroqService` hard-failing on a null key is a known fragility (parked).
-- **`.env.example` is out of date** — a fresh clone needs `GROQ_API_KEY` added by
-  hand to reach green. Parked as a candidate fix.
+- **LLM = OpenRouter, not Groq** — `LlmService` talks to OpenRouter
+  (`services.llm.base_url = https://openrouter.ai/api/v1`, model `qwen/qwen3.7-flash`
+  with mistral/nova fallbacks). This box has a **real** `LLM_API_KEY` (`sk-or-…`), so
+  live calls generate (a `complete()` call returns real text, subject to the monthly
+  USD cap). The old "GroqService / placeholder GROQ_API_KEY" note was stale — Groq is
+  only mentioned as one possible provider in the LlmService docblock; ignore it.
+- **`.env.example` may lag** — a fresh clone needs the `LLM_*` keys (API key, model,
+  base_url) set to reach a working LLM; tests stub/fallback so they pass without one.

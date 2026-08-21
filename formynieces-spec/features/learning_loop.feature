@@ -118,18 +118,21 @@ Feature: Module learning loop
   # ---------------------------------------------------- the tutorial stage (folded)
 
   @scenario:TU-01
-  Scenario: The tutorial sits between the lesson and practice
+  Scenario: The tutorial walks three worked examples between lesson and practice
     Given the module has human-vetted worked examples
     When she finishes reading the module's lesson
     Then she can start the worked examples from the lesson
+    And Smooth walks her through three worked examples in turn
     And from the worked examples she can move on to practice
 
   @scenario:TU-02
-  Scenario: A worked example reveals the method one step at a time
+  Scenario: A worked example is revealed step by step, then she predicts the answer
     Given she is viewing a worked example walked through by Smooth
     When she advances through it
     Then each step of the solution is revealed in order
-    And the final answer is shown at the end
+    And before the answer, Smooth hands her the wheel to predict it herself
+    And Smooth reacts warmly to her guess in his own words before revealing the answer
+    And her prediction is never scored
 
   @scenario:TU-03
   Scenario: The tutorial is never scored
