@@ -3,7 +3,13 @@
         <style>
             .lt-hole { position: fixed; z-index: 2000; border-radius: 12px; pointer-events: none; box-shadow: 0 0 0 9999px rgba(20,6,34,0.55); outline: 3px solid #f0abfc; outline-offset: 4px; transition: all .25s ease; }
             .lt-scrim { position: fixed; inset: 0; z-index: 2000; background: rgba(20,6,34,0.5); pointer-events: none; }
-            .lt-card { position: fixed; left: 50%; transform: translateX(-50%); bottom: 16px; z-index: 2002; width: min(94vw, 400px); background: linear-gradient(160deg, #241436, #3a1f52); border: 1.5px solid rgba(240,171,252,0.5); border-radius: 18px; box-shadow: 0 14px 40px rgba(0,0,0,0.5); padding: 15px 17px 14px; color: #f3e8ff; }
+            /* The card body is click-through so it can never swallow a tap meant for a
+               spotlighted control beneath it; only its own buttons capture clicks. */
+            .lt-card { position: fixed; left: 50%; transform: translateX(-50%); bottom: 16px; z-index: 2002; width: min(94vw, 400px); background: linear-gradient(160deg, #241436, #3a1f52); border: 1.5px solid rgba(240,171,252,0.5); border-radius: 18px; box-shadow: 0 14px 40px rgba(0,0,0,0.5); padding: 15px 17px 14px; color: #f3e8ff; pointer-events: none; }
+            .lt-card button { pointer-events: auto; }
+            /* Interactive-leg highlight: a glow drawn ON the real control, with no dimming
+               overlay anywhere, so the tap always reaches it. */
+            .lt-glow { position: relative; z-index: 1; outline: 3px solid #f0abfc !important; outline-offset: 3px; box-shadow: 0 0 0 5px rgba(240,171,252,0.4), 0 0 22px rgba(240,171,252,0.6) !important; border-radius: 12px; }
             .lt-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
             .lt-avatar { width: 48px; height: 48px; object-fit: contain; flex: none; }
             .lt-title { font-size: 1.1rem; font-weight: 900; color: #f0abfc; }
@@ -69,8 +75,19 @@
                     if (this.phase === 'outcome' && !this.mastered) { return document.querySelector('.me-choices'); }
                     return null;   // mastered → no spotlight, just a centred celebration card
                 },
-                hasHole: false, holeStyle: '',
+                hasHole: false, dim: true, holeStyle: '',
+                clearGlow() { document.querySelectorAll('.lt-glow').forEach(e => e.classList.remove('lt-glow')); },
                 place() {
+                    this.clearGlow();
+                    // The check is interactive: highlight the real option with a glow ON the element
+                    // and dim NOTHING, so there is never an overlay between her tap and the button.
+                    if (this.phase === 'check') {
+                        const opt = document.querySelector('[data-tour-option][data-correct=\'0\']') || document.querySelector('.me-options');
+                        this.hasHole = false; this.dim = false;
+                        if (opt) { opt.classList.add('lt-glow'); opt.scrollIntoView({ behavior: 'auto', block: 'center' }); }
+                        return;
+                    }
+                    this.dim = true;
                     const el = this.targetEl();
                     if (!el) { this.hasHole = false; return; }
                     el.scrollIntoView({ behavior: 'auto', block: 'center' });
@@ -88,13 +105,11 @@
                 $nextTick(() => place());
                 if (window.Livewire) {
                     window.Livewire.on('lesson-phase', (e) => { const d = Array.isArray(e) ? e[0] : e; setPhase(d.phase, d.mastered); });
-                    // Re-spotlight the next wrong option as the real check advances question to question.
-                    window.Livewire.hook('commit', ({ succeed }) => { succeed(() => { this.$nextTick(() => setTimeout(() => this.place(), 60)); }); });
                 }
                 window.addEventListener('resize', () => place());
              ">
-            <div class="lt-hole" x-show="hasHole" :style="holeStyle"></div>
-            <div class="lt-scrim" x-show="!hasHole"></div>
+            <div class="lt-hole" x-show="hasHole && dim" :style="holeStyle"></div>
+            <div class="lt-scrim" x-show="!hasHole && dim"></div>
 
             <div class="lt-card">
                 <div class="lt-head">

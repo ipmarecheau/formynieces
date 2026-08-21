@@ -60,8 +60,11 @@
         @endphp
 
         <style>
-            .lc-hole { position: fixed; z-index: 2000; border-radius: 14px; pointer-events: none; box-shadow: 0 0 0 9999px rgba(20,6,34,0.5); outline: 3px solid #f0abfc; outline-offset: 4px; transition: all .25s ease; }
-            .lc-card { position: fixed; left: 50%; transform: translateX(-50%); bottom: 16px; z-index: 2002; width: min(94vw, 400px); background: linear-gradient(160deg, #241436, #3a1f52); border: 1.5px solid rgba(240,171,252,0.5); border-radius: 18px; box-shadow: 0 14px 40px rgba(0,0,0,0.5); padding: 15px 17px 14px; color: #f3e8ff; }
+            .lc-glow { position: relative; z-index: 1; outline: 3px solid #f0abfc !important; outline-offset: 3px; box-shadow: 0 0 0 5px rgba(240,171,252,0.4), 0 0 22px rgba(240,171,252,0.6) !important; border-radius: 12px; }
+            /* Click-through body (only its buttons capture) so it never blocks a tap on a
+               spotlighted control beneath it. */
+            .lc-card { position: fixed; left: 50%; transform: translateX(-50%); bottom: 16px; z-index: 2002; width: min(94vw, 400px); background: linear-gradient(160deg, #241436, #3a1f52); border: 1.5px solid rgba(240,171,252,0.5); border-radius: 18px; box-shadow: 0 14px 40px rgba(0,0,0,0.5); padding: 15px 17px 14px; color: #f3e8ff; pointer-events: none; }
+            .lc-card button { pointer-events: auto; }
             .lc-card.is-min { padding: 10px 14px; width: auto; }
             .lc-head { display: flex; align-items: center; gap: 10px; }
             .lc-avatar { width: 44px; height: 44px; object-fit: contain; flex: none; }
@@ -77,23 +80,21 @@
         <div x-data="{
                 min: false,
                 spot: @js($copy['spot']),
-                hasHole: false, holeStyle: '',
+                clearGlow() { document.querySelectorAll('.lc-glow').forEach(e => e.classList.remove('lc-glow')); },
                 place() {
-                    if (!this.spot) { this.hasHole = false; return; }
+                    this.clearGlow();
+                    if (!this.spot || this.min) { return; }
                     const el = document.querySelector(this.spot);
-                    if (!el) { this.hasHole = false; return; }
-                    el.scrollIntoView({ behavior: 'auto', block: 'center' });
-                    this.$nextTick(() => { const r = el.getBoundingClientRect(); const p = 8;
-                        this.holeStyle = `top:${r.top-p}px;left:${r.left-p}px;width:${r.width+p*2}px;height:${r.height+p*2}px;`; this.hasHole = true; });
+                    // Highlight the real control with a glow ON the element — never a full-screen
+                    // overlay — so a tap always reaches the option or the chat beneath it.
+                    if (el) { el.classList.add('lc-glow'); el.scrollIntoView({ behavior: 'auto', block: 'center' }); }
                 },
              }"
              x-init="
-                $nextTick(() => place());
+                $nextTick(() => setTimeout(() => place(), 80));
                 window.addEventListener('resize', () => place());
-                if (window.Livewire) { window.Livewire.hook('commit', ({ succeed }) => { succeed(() => { if (!min) this.$nextTick(() => setTimeout(() => this.place(), 60)); }); }); }
+                if (window.Livewire) { window.Livewire.hook('commit', ({ succeed }) => { succeed(() => { this.$nextTick(() => setTimeout(() => this.place(), 80)); }); }); }
              ">
-            {{-- A spotlight ring for the deliberate-miss and AI-chat legs; other legs are a plain tip card. --}}
-            <div class="lc-hole" x-show="hasHole && !min" :style="holeStyle"></div>
 
             <div class="lc-card" :class="{ 'is-min': min }">
                 <div class="lc-head">
