@@ -1,9 +1,19 @@
-<div x-data="{ open: false, glow: false, shake: false }"
+<div x-data="{
+        open: false, glow: false, shake: false,
+        fabX: 0, fabY: 0, panX: 0, panY: 0, _fs: null, _ps: null,
+        fabDown(e) { this._fs = { x: e.clientX, y: e.clientY, ox: this.fabX, oy: this.fabY, moved: false }; e.currentTarget.setPointerCapture?.(e.pointerId); },
+        fabMove(e) { if (!this._fs) return; const dx = e.clientX - this._fs.x, dy = e.clientY - this._fs.y; if (Math.abs(dx) + Math.abs(dy) > 4) this._fs.moved = true; this.fabX = this._fs.ox + dx; this.fabY = this._fs.oy + dy; },
+        fabUp() { if (this._fs && !this._fs.moved) this.open = true; this._fs = null; },
+        panDown(e) { if (e.target.closest('button')) return; this._ps = { x: e.clientX, y: e.clientY, ox: this.panX, oy: this.panY }; e.currentTarget.setPointerCapture?.(e.pointerId); },
+        panMove(e) { if (!this._ps) return; this.panX = this._ps.ox + (e.clientX - this._ps.x); this.panY = this._ps.oy + (e.clientY - this._ps.y); },
+        panUp() { this._ps = null; },
+    }"
     @smooth-spoke.window="glow = true; shake = true; setTimeout(() => shake = false, 600); $nextTick(() => { if ($refs.log) $refs.log.scrollTop = $refs.log.scrollHeight; if ($refs.ccInput) $refs.ccInput.value = '' })">
     @php $locked = in_array($reteachMode, ['remediation', 'final'], true); @endphp
     <style>
         [x-cloak] { display: none !important; }
-        .cc-fab { position: fixed; z-index: 80; right: 20px; bottom: 20px; width: 66px; height: 66px; border-radius: 50%; border: 3px solid #67e8f9; background: #0c2440; padding: 4px; cursor: pointer; box-shadow: 0 8px 22px rgba(0,0,0,0.4); transition: transform 0.15s; }
+        .cc-fab { position: fixed; z-index: 80; right: 20px; bottom: 20px; width: 66px; height: 66px; border-radius: 50%; border: 3px solid #67e8f9; background: #0c2440; padding: 4px; cursor: grab; touch-action: none; box-shadow: 0 8px 22px rgba(0,0,0,0.4); }
+        .cc-fab:active { cursor: grabbing; }
         .cc-fab:hover { transform: scale(1.06); }
         .cc-fab img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
         .cc-fab-badge { position: absolute; top: -3px; right: -3px; background: #f0abfc; border-radius: 50%; min-width: 22px; height: 22px; font-size: 12px; display: flex; align-items: center; justify-content: center; }
@@ -52,7 +62,7 @@
 
     {{-- Collapsed bubble + its dim-on-open backdrop — only when Smooth isn't mid-required-step. --}}
     @if (! $locked)
-        <button type="button" class="cc-fab" x-show="!open" @click="open = true" aria-label="Chat with Smooth">
+        <button type="button" class="cc-fab" x-show="!open" @pointerdown="fabDown" @pointermove="fabMove" @pointerup="fabUp" :style="`transform: translate(${fabX}px, ${fabY}px)`" aria-label="Chat with Smooth (drag to move)">
             <img src="{{ asset('images/voyage/companion/smooth-chart.webp') }}" alt="Smooth">
             @if (count($messages) > 0)<span class="cc-fab-badge">💬</span>@endif
         </button>
@@ -62,9 +72,9 @@
         <div class="cc-backdrop"></div>
     @endif
 
-    <div class="cc-widget" @if (! $locked) x-show="open" x-cloak style="display:none" @endif>
+    <div class="cc-widget" :style="`transform: translate(${panX}px, ${panY}px)`" @if (! $locked) x-show="open" x-cloak style="display:none" @endif>
         <div class="cc-panel" :class="{ 'is-glowing': glow, 'is-shaking': shake }" @focusin="glow = false">
-            <div class="cc-head">
+            <div class="cc-head" style="cursor: move; touch-action: none;" @pointerdown="panDown" @pointermove="panMove" @pointerup="panUp">
                 <img src="{{ asset('images/voyage/companion/smooth-chart.webp') }}" alt="Smooth">
                 <span><b>Ask Smooth</b><small>your lesson buddy 🐢</small></span>
                 @if (! $locked)

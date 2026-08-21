@@ -68,6 +68,7 @@
                spotlighted control beneath it. */
             .lc-card { position: fixed; left: 50%; transform: translateX(-50%); bottom: 16px; z-index: 2002; width: min(94vw, 400px); background: linear-gradient(160deg, #241436, #3a1f52); border: 1.5px solid rgba(240,171,252,0.5); border-radius: 18px; box-shadow: 0 14px 40px rgba(0,0,0,0.5); padding: 15px 17px 14px; color: #f3e8ff; pointer-events: none; }
             .lc-card button { pointer-events: auto; }
+            .lc-head { pointer-events: auto; }   /* the drag handle must receive pointer events */
             .lc-card.is-min { padding: 10px 14px; width: auto; }
             .lc-head { display: flex; align-items: center; gap: 10px; }
             .lc-avatar { width: 44px; height: 44px; object-fit: contain; flex: none; }
@@ -83,6 +84,10 @@
         <div x-data="{
                 min: false,
                 spot: @js($copy['spot']),
+                dx: 0, dy: 0, _d: null,
+                down(e) { if (e.target.closest('button')) return; this._d = { x: e.clientX, y: e.clientY, ox: this.dx, oy: this.dy }; e.currentTarget.setPointerCapture?.(e.pointerId); },
+                mv(e) { if (!this._d) return; this.dx = this._d.ox + (e.clientX - this._d.x); this.dy = this._d.oy + (e.clientY - this._d.y); },
+                up() { this._d = null; },
                 // Idempotent: only touch the glow class when it actually needs to change, so
                 // re-runs never churn the DOM. No Livewire hooks — this must never interfere
                 // with the host page's Livewire cycle (that was breaking the lesson's Next).
@@ -101,8 +106,8 @@
                 window.addEventListener('beforeunload', () => clearInterval(_t));
              ">
 
-            <div class="lc-card" :class="{ 'is-min': min }">
-                <div class="lc-head">
+            <div class="lc-card" :class="{ 'is-min': min }" :style="`transform: translate(calc(-50% + ${dx}px), ${dy}px)`">
+                <div class="lc-head" style="cursor: move; touch-action: none;" @pointerdown="down" @pointermove="mv" @pointerup="up">
                     <img class="lc-avatar" src="{{ $this->avatarUrl() }}" alt="Smooth the turtle">
                     <div class="lc-title" x-text="min ? 'Smooth’s tour' : @js($copy['title'])"></div>
                     <button type="button" class="lc-toggle" @click="min = !min; if(!min) place()" x-text="min ? '▲' : '▾'" :aria-label="min ? 'Expand tip' : 'Minimise tip'"></button>
