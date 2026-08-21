@@ -51,4 +51,27 @@ Feature: Application tour and welcome
     When she reaches the final chapter
     Then she is invited to tap her first island to sail in
     And the tour resumes on the island, asking her to open the first stop
-    And it then explains the learning loop inside the lesson before ending
+    And it then coaches her through the real learning loop before ending
+
+  @scenario:TR-08
+  Scenario: The tour walks her through each of the Captain's Orders tabs
+    Given the overworld tour has her open her Captain's Orders
+    When the tour continues through the Orders panel
+    Then it opens and explains each tab in turn — Orders, Locker, Journal, and Logs
+    And each tab is shown on screen as Smooth describes it
+
+  @scenario:TR-09
+  Scenario: The tour coaches the real learning loop, guiding a deliberate miss
+    Given she has sailed into a lesson stop while on the tour
+    When the tour reaches the quick check
+    Then it points her to a wrong answer to choose on purpose
+    And missing it takes her into the real lesson, then the worked examples, then practice
+    And the coaching rides the real pages, not an imitation of them
+
+  @scenario:TR-10
+  Scenario: The tour shows the AI-assisted relearn from a practice miss
+    Given the tour has reached practice
+    When it guides her to miss a practice question on purpose
+    Then she is taken into the relearn, where Smooth helps her one-on-one in the chat
+    And once she works through it she is returned to practice
+    And the tour ends, having shown her the whole loop

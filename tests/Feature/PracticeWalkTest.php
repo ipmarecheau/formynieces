@@ -155,7 +155,7 @@ it('lets a guided-tour miss trigger the AI re-teach on purpose (TR-07)', functio
         ->assertSet('awaitingRetry', true)
         ->call('choose', 0)                 // miss again → the tour hands off to the re-teach
         ->assertSet('reteachSplash', true);
-})->group('scenario:TR-07');
+})->group('scenario:TR-10');
 
 it('does not force a re-teach for a normal student on a single miss', function () {
     $student = User::factory()->create(['tour_stage' => null]);
@@ -175,4 +175,4 @@ it('does not force a re-teach for a normal student on a single miss', function (
         ->call('choose', 0)
         ->call('choose', 0)
         ->assertSet('reteachSplash', false);
-})->group('scenario:TR-07');
+})->group('scenario:TR-10');

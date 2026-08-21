@@ -28,7 +28,7 @@ it('opens and advances the tour stage for a student mid-tour', function () {
         ->assertSet('open', true);
 
     expect($student->fresh()->tour_stage)->toBe('learn');
-})->group('scenario:TR-07');
+})->group('scenario:TR-09');
 
 it('never rewinds the tour to an earlier leg', function () {
     $student = loopStudent('practice');
@@ -38,7 +38,7 @@ it('never rewinds the tour to an earlier leg', function () {
 
     // Already at practice — coaching the lesson page must not send her backwards.
     expect($student->fresh()->tour_stage)->toBe('practice');
-})->group('scenario:TR-07');
+})->group('scenario:TR-09');
 
 it('stays hidden for a student who is not on the tour', function () {
     $student = loopStudent(null);
@@ -48,7 +48,7 @@ it('stays hidden for a student who is not on the tour', function () {
         ->assertSet('open', false);
 
     expect($student->fresh()->tour_stage)->toBeNull();
-})->group('scenario:TR-07');
+})->group('scenario:TR-09');
 
 it('ends the whole tour when skipped or finished', function () {
     $student = loopStudent('practice');
@@ -59,4 +59,4 @@ it('ends the whole tour when skipped or finished', function () {
         ->assertSet('open', false);
 
     expect($student->fresh()->tour_stage)->toBe('done');
-})->group('scenario:TR-07');
+})->group('scenario:TR-09');

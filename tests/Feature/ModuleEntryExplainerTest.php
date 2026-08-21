@@ -87,4 +87,4 @@ it('enters tour mode only for a student on the first-run tour', function () {
 
     Livewire::actingAs($guided)->test(ModuleEntry::class, ['module' => $module])->assertSet('tourMode', true);
     Livewire::actingAs($normal)->test(ModuleEntry::class, ['module' => $module])->assertSet('tourMode', false);
-})->group('scenario:TR-07');
+})->group('scenario:TR-09');
