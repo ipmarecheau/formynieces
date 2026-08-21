@@ -1,5 +1,6 @@
 <div>
 @include('partials.guided-heartbeat')
+<x-loop-rail stage="practice" :reteach="true" />
 <style>
     .rw-wrap { min-height: 100vh; padding: 28px 20px 48px; max-width: 720px; margin: 0 auto; }
     .rw-tag { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #fcd34d; margin-bottom: 6px; }

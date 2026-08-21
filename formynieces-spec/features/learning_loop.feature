@@ -271,12 +271,13 @@ Feature: Module learning loop
   # ---------------------------------------------------- the loop is visible (stepper)
 
   @scenario:LL-08
-  Scenario: A loop stepper shows her current stage for every module
+  Scenario: A loop rail shows her current stage for every module
     Given she has opened a module
     When she views the module
-    Then she sees a stepper of the loop stages: lesson, tutorial, practice, check
-    And her current stage is highlighted
-    And the stepper has the same layout for every module
+    Then a rail down the side shows the loop's named stages: Check, Lesson, Practice, Mastered
+    And her current stage is highlighted and the stages before it are ticked done
+    And when a practice miss sends her to re-learn, the rail shows the loop back to Practice
+    And the rail has the same layout for every module, in child-layer terms only
 
   @scenario:LL-09
   Scenario: A wrong answer offers a correction targeted to her mistake

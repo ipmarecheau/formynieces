@@ -3,6 +3,7 @@
     @include('partials.guided-locked', ['moduleId' => $moduleId])
 @else
 @include('partials.guided-heartbeat')
+<x-loop-rail stage="lesson" />
 <style>
     .tw-wrap { min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 32px 20px 48px; }
     .tw-topic { font-family: 'Fredoka One', cursive; font-size: 20px; color: #e6f2fb; text-align: center; margin-bottom: 6px; }

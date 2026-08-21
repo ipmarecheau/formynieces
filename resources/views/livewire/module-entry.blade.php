@@ -42,6 +42,8 @@
 @php
     $backHref = $islandSlug ? route('student.voyage.island', $islandSlug) : route('student.voyage');
 @endphp
+<x-loop-rail :stage="($phase === 'maintained' || ($phase === 'outcome' && ($mastered ?? false))) ? 'mastered' : 'check'" />
+
 <div class="me-wrap">
     @include('partials.voyage-crumb')
     <p class="me-topic">{{ $topic }}</p>

@@ -3,6 +3,7 @@
     @include('partials.guided-locked', ['moduleId' => $moduleId])
 @else
 @include('partials.guided-heartbeat')
+<x-loop-rail stage="lesson" />
 {{-- No how-to guide FAB here: on lesson pages the chat widget (clarify-chat) owns the bottom-right. --}}
 <style>
     .lw-wrap { min-height: 100vh; padding: 28px 20px 48px; max-width: 1120px; margin: 0 auto; }

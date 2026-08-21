@@ -1,5 +1,6 @@
 <div>
 <livewire:smooth-guide guide="practice" wire:key="guide-practice" />
+<x-loop-rail stage="practice" />
 <style>
     .pw-wrap { min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 32px 20px 48px; }
     .pw-topic { font-family: 'Fredoka One', cursive; font-size: 20px; color: #e6f2fb; text-align: center; margin-bottom: 8px; }
