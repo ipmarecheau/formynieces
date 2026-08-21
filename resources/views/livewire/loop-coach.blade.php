@@ -83,20 +83,22 @@
         <div x-data="{
                 min: false,
                 spot: @js($copy['spot']),
-                clearGlow() { document.querySelectorAll('.lc-glow').forEach(e => e.classList.remove('lc-glow')); },
+                // Idempotent: only touch the glow class when it actually needs to change, so
+                // re-runs never churn the DOM. No Livewire hooks — this must never interfere
+                // with the host page's Livewire cycle (that was breaking the lesson's Next).
                 place() {
-                    this.clearGlow();
-                    if (!this.spot || this.min) { return; }
-                    const el = document.querySelector(this.spot);
-                    // Highlight the real control with a glow ON the element — never a full-screen
-                    // overlay — so a tap always reaches the option or the chat beneath it.
-                    if (el) { el.classList.add('lc-glow'); el.scrollIntoView({ behavior: 'auto', block: 'center' }); }
+                    const el = (this.spot && !this.min) ? document.querySelector(this.spot) : null;
+                    document.querySelectorAll('.lc-glow').forEach(e => { if (e !== el) { e.classList.remove('lc-glow'); } });
+                    if (el && !el.classList.contains('lc-glow')) { el.classList.add('lc-glow'); el.scrollIntoView({ behavior: 'auto', block: 'center' }); }
                 },
              }"
              x-init="
                 $nextTick(() => setTimeout(() => place(), 80));
                 window.addEventListener('resize', () => place());
-                if (window.Livewire) { window.Livewire.hook('commit', ({ succeed }) => { succeed(() => { this.$nextTick(() => setTimeout(() => this.place(), 80)); }); }); }
+                {{-- Re-assert the glow after the real page re-renders (e.g. a practice retry), fully
+                     decoupled from Livewire so it can never break the host page's clicks. --}}
+                let _t = setInterval(() => place(), 500);
+                window.addEventListener('beforeunload', () => clearInterval(_t));
              ">
 
             <div class="lc-card" :class="{ 'is-min': min }">
