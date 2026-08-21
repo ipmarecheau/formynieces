@@ -19,9 +19,6 @@ use Illuminate\Support\Collection;
  */
 class Remediation
 {
-    /** Difficulties that count toward the two-in-a-row trigger (D3/D5). */
-    private const HARD_RUNGS = [3, 5];
-
     private const WINDOW_SIZE = 7;
 
     private const WINDOW_MISSES = 5;
@@ -47,10 +44,11 @@ class Remediation
             return ReteachSession::TRIGGER_WINDOW;
         }
 
-        // LL-14: the last two resolved at D3/D5 were both hard misses.
-        $lastTwoHard = $outcomes->whereIn('difficulty', self::HARD_RUNGS)->values()->take(-self::STREAK_MISSES);
-        if ($lastTwoHard->count() === self::STREAK_MISSES
-            && $lastTwoHard->every(fn ($o): bool => ! $o->is_correct)) {
+        // LL-14: the last two resolved questions were both misses — at ANY difficulty,
+        // so two hard misses in a row pull her into the re-teach even on the easy rungs.
+        $lastTwo = $outcomes->values()->take(-self::STREAK_MISSES);
+        if ($lastTwo->count() === self::STREAK_MISSES
+            && $lastTwo->every(fn ($o): bool => ! $o->is_correct)) {
             return ReteachSession::TRIGGER_STREAK;
         }
 

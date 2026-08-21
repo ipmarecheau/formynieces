@@ -155,8 +155,8 @@ Feature: Module learning loop
   # --------------------------------------------------------- pushed remediation
 
   @scenario:LL-14
-  Scenario: Two missed questions in a row at D3 or D5 trigger an AI-assisted re-teach
-    Given she is practising at difficulty 3 or difficulty 5
+  Scenario: Two missed questions in a row trigger an AI-assisted re-teach
+    Given she is practising at any difficulty
     When she misses two questions in a row on both attempts
     Then she is pulled back into an AI-assisted re-teach for the module
     And she may redo the lesson and/or the tutorial with AI assistance

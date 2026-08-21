@@ -46,14 +46,15 @@ it('triggers a re-teach on two hard misses in a row at D3 or D5', function () {
     expect($gate->triggerFor($student->id, $module->id))->toBe(ReteachSession::TRIGGER_STREAK);
 })->group('scenario:LL-14');
 
-it('does not trigger the streak rule at D1', function () {
+it('triggers the streak rule at any difficulty, including D1', function () {
     $student = remStudent('14b');
     $module = SyllabusModule::factory()->create();
 
     remOutcome($student->id, $module->id, 1, hardMiss: true);
-    remOutcome($student->id, $module->id, 1, hardMiss: true);
-
     expect(app(Remediation::class)->triggerFor($student->id, $module->id))->toBeNull();
+
+    remOutcome($student->id, $module->id, 1, hardMiss: true);   // two misses in a row — even at D1
+    expect(app(Remediation::class)->triggerFor($student->id, $module->id))->toBe(ReteachSession::TRIGGER_STREAK);
 })->group('scenario:LL-14');
 
 /** LL-22 — five hard misses in the last seven trigger a re-teach (any difficulty). */
