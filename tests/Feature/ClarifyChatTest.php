@@ -156,6 +156,29 @@ it('remediates the block rule with type-the-word + say-it-back, then returns (LL
         ->assertDispatched('remediation-return');
 })->group('scenario:LL-15', 'scenario:LL-25');
 
+/** LL-25 — a block with no authored rule must not show an empty "here's the rule" bubble
+ *  or ask her to restate nothing: reveal the answer kindly and return to the lesson. */
+it('reveals the answer without an empty rule bubble when the block has no rule', function () {
+    $student = ccStudent();
+    $module = ccModule();
+    ccStartReteach($student, $module);
+    fakeModerator(SafetyResult::safe());
+
+    $component = Livewire::actingAs($student)
+        ->test(ClarifyChat::class, ['moduleId' => $module->id])
+        ->call('startRemediation', '', ['prompt' => "the plural of 'baby'", 'answer' => 'babies'])
+        ->assertSet('remStep', 'check')
+        ->set('draft', 'babys')->call('send');   // wrong, but there is no rule to teach
+
+    $component->assertSet('reteachMode', 'dormant')   // returned to the lesson, no say-it-back
+        ->assertSee('babies')                         // revealed the answer instead
+        ->assertDontSee("here's the rule")
+        ->assertDispatched('remediation-return');
+
+    // No empty assistant bubble slipped into the transcript.
+    expect(collect($component->get('messages'))->every(fn ($m) => trim($m['content']) !== ''))->toBeTrue();
+})->group('scenario:LL-25');
+
 /** LL-24 — a correct typed same-rule answer returns to the lesson without the say-it-back. */
 it('returns to the lesson when she types the right same-rule answer (LL-24)', function () {
     $student = ccStudent();

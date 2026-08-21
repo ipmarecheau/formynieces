@@ -126,6 +126,18 @@ class ClarifyChat extends Component
 
                 return;
             }
+            // With no authored rule to teach, don't promise one or ask her to
+            // restate nothing — reveal the answer kindly and return to the lesson.
+            if (trim($this->remRule) === '') {
+                $answer = (string) ($this->remItem['answer'] ?? '');
+                $this->reply($answer !== ''
+                    ? "Not quite — the answer is “{$answer}”. Let's keep going 🐢"
+                    : "Not quite — let's keep going and we'll come back to it 🐢");
+                $this->finishRemediation();
+
+                return;
+            }
+
             $this->reply('Not quite — here\'s the rule 🐢');
             $this->reply($this->remRule);
             $this->remStep = 'sayback';
@@ -349,6 +361,11 @@ class ClarifyChat extends Component
 
     private function reply(string $content): void
     {
+        // Never emit an empty bubble (e.g. a lesson block with no authored rule).
+        if (trim($content) === '') {
+            return;
+        }
+
         $this->messages[] = ['role' => 'assistant', 'content' => $content];
 
         // Nudge the UI to glow so she notices Smooth spoke and replies.
