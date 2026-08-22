@@ -3,8 +3,8 @@ Feature: Module learning loop
   A student earns a competency one module at a time through a repeating loop —
   Explainer → Competency Check → (Lesson → Tutorials → Practice) → Competency Check.
   Opening a level first explains the loop in her own language, then offers a fast
-  COMPETENCY CHECK: one question at each real difficulty — D1, D3, D5. Clear all three
-  on the first try and she has tested out — the module is mastered without ever touching
+  COMPETENCY CHECK: two questions at each real difficulty — D1, D3, D5 (six in all). Clear
+  all six on the first try and she has tested out — the module is mastered without ever touching
   the lesson. If she does not test out, she CHOOSES her way in: the interactive LESSON,
   the worked-example TUTORIALS (walked through by Smooth), or straight to PRACTICE. The
   lesson and tutorials are OPTIONAL scaffolding she pulls in only when she needs them.
@@ -36,8 +36,8 @@ Feature: Module learning loop
   @scenario:LL-20
   Scenario: The competency check is a fast test-out at D1, D3 and D5
     Given she has read the loop explanation for a needs_work module
-    When she is given one question at each difficulty — D1, then D3, then D5
-    And she answers all three correctly on the first try
+    When she is given two questions at each difficulty — D1, then D3, then D5 (six in all)
+    And she answers all six correctly on the first try
     Then the module's status becomes "mastered"
     And she never had to open the lesson or the tutorial
     And the check only ever serves her questions she has not seen before
@@ -45,7 +45,7 @@ Feature: Module learning loop
   @scenario:LL-21
   Scenario: Failing the competency check offers a choice of lesson, tutorial or practice
     Given she has taken the competency check for a module
-    When she does not clear all three questions on the first try
+    When she does not clear all six questions on the first try
     Then the module is not mastered
     And she is offered a choice of the lesson, the tutorial, or practice
     And nothing about the miss is framed as failure
@@ -301,7 +301,7 @@ Feature: Module learning loop
   @scenario:LL-11
   Scenario: The competency check is the mastery climb, shown as its own stage
     Given she is at the check stage of the loop
-    When she answers one question at each of D1, D3 and D5 correctly on the first try
+    When she answers two questions at each of D1, D3 and D5 correctly on the first try
     Then the module's status becomes "mastered"
     And the check stage is marked complete on the stepper
     # The test-out shape is defined in LL-20; this scenario is the same check seen

@@ -96,7 +96,7 @@
         .lr-lbl { font-size: .72rem; font-weight: 800; letter-spacing: .02em; }
         .lr-token {
             position: absolute; transform: translate(-50%,-50%);
-            font-size: 1.5rem; z-index: 4; transition: top .5s cubic-bezier(.5,1.3,.4,1), left .5s;
+            font-size: 1.5rem; z-index: 4; transition: top 1s cubic-bezier(.5,1.25,.35,1), left 1s cubic-bezier(.5,1.25,.35,1);
             filter: drop-shadow(0 2px 4px rgba(0,0,0,.5));
         }
         @media (max-width: 640px) {

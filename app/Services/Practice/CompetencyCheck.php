@@ -12,8 +12,8 @@ use Illuminate\Support\Collection;
 /**
  * CompetencyCheck — the fast test-out that greets a level.
  *
- * She is served ONE unseen question at each real difficulty — D1, D3, D5. Clear all
- * three on the first (only) try and she has tested out: the module is mastered without
+ * She is served TWO unseen questions at each real difficulty — D1, D3, D5 (six in all). Clear all
+ * six on the first (only) try and she has tested out: the module is mastered without
  * ever opening the lesson or tutorial. Anything less and she is handed the choice of
  * lesson / tutorial / practice (LL-21) — the check itself never masters on a miss.
  *
@@ -23,8 +23,11 @@ use Illuminate\Support\Collection;
  */
 class CompetencyCheck
 {
-    /** One question at each real difficulty, easy → tricky. */
+    /** The real difficulties tested, easy → tricky. */
     public const DIFFICULTIES = [1, 3, 5];
+
+    /** How many questions are served at each difficulty (6 total: two per level). */
+    public const QUESTIONS_PER_DIFFICULTY = 2;
 
     /** The hardest rung — the maintenance re-check draws only these. */
     public const MASTERY_DIFFICULTY = 5;
@@ -39,7 +42,7 @@ class CompetencyCheck
     ) {}
 
     /**
-     * One unseen active question at each of D1/D3/D5 for the module, in that order.
+     * Two unseen active questions at each of D1/D3/D5 (six total), in that order.
      * Each served question is recorded on the no-repeat ledger.
      *
      * @return Collection<int,PracticeQuestion>
@@ -50,12 +53,16 @@ class CompetencyCheck
         $served = collect();
 
         foreach (self::DIFFICULTIES as $difficulty) {
-            $candidates = $pool->where('difficulty', $difficulty)->values();
-            $question = $this->exposure->pickUnseen($studentId, $candidates, allowRecycle: false);
+            for ($n = 0; $n < self::QUESTIONS_PER_DIFFICULTY; $n++) {
+                $candidates = $pool->where('difficulty', $difficulty)
+                    ->reject(fn (PracticeQuestion $q): bool => $served->contains('id', $q->id))
+                    ->values();
+                $question = $this->exposure->pickUnseen($studentId, $candidates, allowRecycle: false);
 
-            if ($question !== null) {
-                $this->exposure->record($studentId, $question->content_hash, 'check');
-                $served->push($question);
+                if ($question !== null) {
+                    $this->exposure->record($studentId, $question->content_hash, 'check');
+                    $served->push($question);
+                }
             }
         }
 
@@ -64,7 +71,7 @@ class CompetencyCheck
 
     /**
      * Grade the served check. $answers maps question id => chosen option index.
-     * She tests out only by answering ONE question at every difficulty correctly on
+     * She tests out only by answering every served question (two per difficulty) correctly on
      * the first try. On a pass the module is marked mastered.
      *
      * @param  Collection<int,PracticeQuestion>  $served
@@ -72,7 +79,7 @@ class CompetencyCheck
      */
     public function grade(int $studentId, int $moduleId, Collection $served, array $answers): bool
     {
-        $passed = $served->count() === count(self::DIFFICULTIES)
+        $passed = $served->count() === count(self::DIFFICULTIES) * self::QUESTIONS_PER_DIFFICULTY
             && $served->every(fn (PracticeQuestion $q): bool => ($answers[$q->id] ?? null) === $q->correct_index);
 
         if ($passed) {

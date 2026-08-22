@@ -9,8 +9,8 @@ use App\Models\User;
 use Livewire\Livewire;
 
 /**
- * LL-20 — the competency check is a fast test-out: one question at each of D1, D3, D5.
- * Clear all three first-try and the module is mastered, with no lesson or tutorial, and
+ * LL-20 — the competency check is a fast test-out: two questions at each of D1, D3, D5 (six).
+ * Clear all six first-try and the module is mastered, with no lesson or tutorial, and
  * the check only ever serves questions she has not seen before.
  */
 function ll20Student(string $suffix): User
@@ -52,20 +52,26 @@ function ll20Question(int $moduleId, int $difficulty, int $correctIndex, string 
     ]);
 }
 
+/** The full check pool: two questions at each of D1/D3/D5 (six), all with correct index 0. */
+function ll20SixQuestions(int $moduleId): void
+{
+    foreach ([1, 1, 3, 3, 5, 5] as $i => $d) {
+        ll20Question($moduleId, $d, 0, "D{$d} q{$i}");
+    }
+}
+
 it('masters the module when she clears one D1, D3 and D5 question on the first try', function () {
     $student = ll20Student('ll20a');
     $module = ll20Module();
-    ll20Question($module->id, 1, 0, 'D1 place value');
-    ll20Question($module->id, 3, 1, 'D3 place value');
-    ll20Question($module->id, 5, 2, 'D5 place value');
+    ll20SixQuestions($module->id);
 
     Livewire::actingAs($student)
         ->test(ModuleEntry::class, ['module' => $module])
         ->call('beginCheck')
         ->assertSet('phase', 'check')
-        ->call('answerCheck', 0)   // D1 correct
-        ->call('answerCheck', 1)   // D3 correct
-        ->call('answerCheck', 2)   // D5 correct
+        ->call('answerCheck', 0)->call('answerCheck', 0)   // D1 ×2
+        ->call('answerCheck', 0)->call('answerCheck', 0)   // D3 ×2
+        ->call('answerCheck', 0)->call('answerCheck', 0)   // D5 ×2 — all six first-try correct
         ->assertSet('phase', 'outcome')
         ->assertSet('mastered', true);
 
@@ -79,18 +85,16 @@ it('masters the module when she clears one D1, D3 and D5 question on the first t
 it('masters the module at the check stage of the loop, completing the check', function () {
     $student = ll20Student('ll11');
     $module = ll20Module();
-    ll20Question($module->id, 1, 0, 'D1 place value');
-    ll20Question($module->id, 3, 1, 'D3 place value');
-    ll20Question($module->id, 5, 2, 'D5 place value');
+    ll20SixQuestions($module->id);
 
     // The check stage of the loop: one at each of D1/D3/D5, all first-try correct.
     Livewire::actingAs($student)
         ->test(ModuleEntry::class, ['module' => $module])
         ->call('beginCheck')
         ->assertSet('phase', 'check')
-        ->call('answerCheck', 0)
-        ->call('answerCheck', 1)
-        ->call('answerCheck', 2)
+        ->call('answerCheck', 0)->call('answerCheck', 0)
+        ->call('answerCheck', 0)->call('answerCheck', 0)
+        ->call('answerCheck', 0)->call('answerCheck', 0)   // all six first-try correct
         ->assertSet('phase', 'outcome') // the check is complete
         ->assertSet('mastered', true);
 
@@ -104,16 +108,14 @@ it('masters the module at the check stage of the loop, completing the check', fu
 it('does not master the module if any of the three is missed on the first try', function () {
     $student = ll20Student('ll20b');
     $module = ll20Module();
-    ll20Question($module->id, 1, 0, 'D1 place value');
-    ll20Question($module->id, 3, 1, 'D3 place value');
-    ll20Question($module->id, 5, 2, 'D5 place value');
+    ll20SixQuestions($module->id);
 
     Livewire::actingAs($student)
         ->test(ModuleEntry::class, ['module' => $module])
         ->call('beginCheck')
-        ->call('answerCheck', 0)   // D1 correct
-        ->call('answerCheck', 3)   // D3 WRONG
-        ->call('answerCheck', 2)   // D5 correct
+        ->call('answerCheck', 0)->call('answerCheck', 0)
+        ->call('answerCheck', 0)->call('answerCheck', 1)   // one WRONG — no test-out
+        ->call('answerCheck', 0)->call('answerCheck', 0)
         ->assertSet('phase', 'outcome')
         ->assertSet('mastered', false);
 
@@ -127,16 +129,14 @@ it('does not master the module if any of the three is missed on the first try', 
 it('offers a choice of lesson, tutorial or practice when she does not test out', function () {
     $student = ll20Student('ll21');
     $module = ll20Module();
-    ll20Question($module->id, 1, 0, 'D1 place value');
-    ll20Question($module->id, 3, 1, 'D3 place value');
-    ll20Question($module->id, 5, 2, 'D5 place value');
+    ll20SixQuestions($module->id);
 
     Livewire::actingAs($student)
         ->test(ModuleEntry::class, ['module' => $module])
         ->call('beginCheck')
-        ->call('answerCheck', 0)   // D1 correct
-        ->call('answerCheck', 3)   // D3 WRONG — no test-out
-        ->call('answerCheck', 2)   // D5 correct
+        ->call('answerCheck', 0)->call('answerCheck', 0)
+        ->call('answerCheck', 0)->call('answerCheck', 1)   // one WRONG — no test-out
+        ->call('answerCheck', 0)->call('answerCheck', 0)
         ->assertSet('phase', 'outcome')
         ->assertSet('mastered', false)
         ->assertSee(route('practice.lesson', $module->id), false)
@@ -177,16 +177,14 @@ it('only serves questions she has not seen before', function () {
 it('offers the tutorial again after a failed check, before the next attempt', function () {
     $student = ll20Student('ll10');
     $module = ll20Module();
-    ll20Question($module->id, 1, 0, 'D1 place value');
-    ll20Question($module->id, 3, 1, 'D3 place value');
-    ll20Question($module->id, 5, 2, 'D5 place value');
+    ll20SixQuestions($module->id);
 
     Livewire::actingAs($student)
         ->test(ModuleEntry::class, ['module' => $module])
         ->call('beginCheck')
-        ->call('answerCheck', 0)   // D1 correct
-        ->call('answerCheck', 3)   // D3 WRONG — check failed
-        ->call('answerCheck', 2)   // D5 correct
+        ->call('answerCheck', 0)->call('answerCheck', 0)
+        ->call('answerCheck', 0)->call('answerCheck', 1)   // one WRONG — check failed
+        ->call('answerCheck', 0)->call('answerCheck', 0)
         ->assertSet('phase', 'outcome')
         ->assertSet('mastered', false)
         // The (unscored) tutorial is offered again before she retries.
