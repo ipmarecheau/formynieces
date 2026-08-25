@@ -1,42 +1,104 @@
 [
-  {
-    "module": "ELA-035",
-    "title": "Poetry: solving conflicts and appreciating a poem",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "Stories and poems often show a problem between people — a conflict. A thoughtful reader can suggest a fair solution, and can say why a poem is worth enjoying." },
-      { "type": "key", "content": "A conflict is a problem between characters. A good solution is fair to everyone involved." },
-      { "type": "text", "content": "Read this: 'Two friends, Amir and Jed, both want to ride the one bicycle at the same time.'" },
-      {
-        "type": "check",
-        "question": "What is the fairest solution to their conflict?",
-        "options": ["One friend keeps it all day.", "They take turns riding it.", "They both pull on it."],
-        "answer": 1,
-        "explain": "Taking turns is fair to both friends, so it is the best solution.",
-        "rule": "A good solution to a conflict is fair to everyone involved.",
-        "practiceItems": [
-          { "prompt": "a problem between characters is called a ___", "answer": "conflict" },
-          { "prompt": "a fair way to share one bike between two friends is to take ___", "answer": "turns" },
-          { "prompt": "a good solution is ___ to everyone (fair/unfair)", "answer": "fair" },
-          { "prompt": "solving a conflict means finding a fair ___", "answer": "solution" }
+    {
+        "module": "ELA-035",
+        "title": "Poetry: solving conflicts and appreciating a poem",
+        "is_published": true,
+        "objectives_direct": [
+            "E-POE-86"
+        ],
+        "objectives_indirect": [
+            "E-POE-84",
+            "E-POE-85"
+        ],
+        "canonical_examples_source": "Language rules self-verified; format ref: bank uk-ks2-2024-gps (KS2 GPS).",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Stories and poems often show a problem between people — a conflict. A thoughtful reader can suggest a fair solution, and can say why a poem is worth enjoying.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "A conflict is a problem between characters. A good solution is fair to everyone involved.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "text",
+                "content": "Read this: 'Two friends, Amir and Jed, both want to ride the one bicycle at the same time.'",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "What is the fairest solution to their conflict?",
+                "options": [
+                    "One friend keeps it all day.",
+                    "They take turns riding it.",
+                    "They both pull on it."
+                ],
+                "answer": 1,
+                "explain": "Taking turns is fair to both friends, so it is the best solution.",
+                "rule": "A good solution to a conflict is fair to everyone involved.",
+                "practiceItems": [
+                    {
+                        "prompt": "a problem between characters is called a ___",
+                        "answer": "conflict"
+                    },
+                    {
+                        "prompt": "a fair way to share one bike between two friends is to take ___",
+                        "answer": "turns"
+                    },
+                    {
+                        "prompt": "a good solution is ___ to everyone (fair/unfair)",
+                        "answer": "fair"
+                    },
+                    {
+                        "prompt": "solving a conflict means finding a fair ___",
+                        "answer": "solution"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "To appreciate a poem is to say what you enjoyed about it and why — its images, its sounds, or its message.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "Which shows real appreciation of a poem?",
+                "options": [
+                    "It is short.",
+                    "I liked how the sea images made me feel calm.",
+                    "I do not know."
+                ],
+                "answer": 1,
+                "explain": "It names what was enjoyed (the sea images) and the effect (feeling calm) — that is appreciation.",
+                "rule": "Appreciating a poem means saying what you enjoyed and why.",
+                "practiceItems": [
+                    {
+                        "prompt": "saying why you enjoyed a poem shows ___ (appreciation/anger)",
+                        "answer": "appreciation"
+                    },
+                    {
+                        "prompt": "appreciation should say what you enjoyed and ___",
+                        "answer": "why"
+                    },
+                    {
+                        "prompt": "a fair fix to a problem is a good ___",
+                        "answer": "solution"
+                    },
+                    {
+                        "prompt": "a problem between characters is a ___",
+                        "answer": "conflict"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "text",
+                "content": "Suggest solutions that are fair to all, and say clearly why a poem is worth enjoying. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "To appreciate a poem is to say what you enjoyed about it and why — its images, its sounds, or its message." },
-      {
-        "type": "check",
-        "question": "Which shows real appreciation of a poem?",
-        "options": ["It is short.", "I liked how the sea images made me feel calm.", "I do not know."],
-        "answer": 1,
-        "explain": "It names what was enjoyed (the sea images) and the effect (feeling calm) — that is appreciation.",
-        "rule": "Appreciating a poem means saying what you enjoyed and why.",
-        "practiceItems": [
-          { "prompt": "saying why you enjoyed a poem shows ___ (appreciation/anger)", "answer": "appreciation" },
-          { "prompt": "appreciation should say what you enjoyed and ___", "answer": "why" },
-          { "prompt": "a fair fix to a problem is a good ___", "answer": "solution" },
-          { "prompt": "a problem between characters is a ___", "answer": "conflict" }
-        ]
-      },
-      { "type": "text", "content": "Suggest solutions that are fair to all, and say clearly why a poem is worth enjoying. Let's practise!" }
-    ]
-  }
+    }
 ]

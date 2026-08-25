@@ -1,40 +1,99 @@
 [
-  {
-    "module": "MATH-026",
-    "title": "Direct proportion and unequal sharing",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "If more of one thing means proportionally more of another, that is direct proportion. And when we share unequally, we use ratios." },
-      { "type": "key", "content": "In direct proportion, find the value of ONE first, then multiply for however many you need." },
-      { "type": "example", "content": "Finding the cost of one.", "steps": ["3 pens cost $6.", "One pen costs $6 ÷ 3 = $2.", "So 5 pens cost 5 x $2 = $10."] },
-      {
-        "type": "fillblank",
-        "prompt": "If 3 pens cost $6, then 1 pen costs $___",
-        "answer": "2",
-        "explain": "$6 ÷ 3 = $2 for one pen.",
-        "rule": "In direct proportion, find the value of one unit first by dividing.",
-        "practiceItems": [
-          { "prompt": "if 2 apples cost $4, one costs $", "answer": "2" },
-          { "prompt": "if 4 books cost $20, one costs $", "answer": "5" },
-          { "prompt": "if 1 pen is $2, then 5 pens cost $", "answer": "10" },
-          { "prompt": "if 1 apple is $2, then 3 cost $", "answer": "6" }
+    {
+        "module": "MATH-026",
+        "title": "Direct proportion and unequal sharing",
+        "is_published": true,
+        "objectives_direct": [
+            "M-PRB-26"
+        ],
+        "objectives_indirect": [
+            "M-PRB-25",
+            "M-PRB-27"
+        ],
+        "canonical_examples_source": "Arithmetic self-verified; method ref: NCERT Class 5/6 Maths; format ref: bank uk-ks2-2024 maths.",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "If more of one thing means proportionally more of another, that is direct proportion. And when we share unequally, we use ratios.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "In direct proportion, find the value of ONE first, then multiply for however many you need.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Finding the cost of one.",
+                "steps": [
+                    "3 pens cost $6.",
+                    "One pen costs $6 ÷ 3 = $2.",
+                    "So 5 pens cost 5 x $2 = $10."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "If 3 pens cost $6, then 1 pen costs $___",
+                "answer": "2",
+                "explain": "$6 ÷ 3 = $2 for one pen.",
+                "rule": "In direct proportion, find the value of one unit first by dividing.",
+                "practiceItems": [
+                    {
+                        "prompt": "if 2 apples cost $4, one costs $",
+                        "answer": "2"
+                    },
+                    {
+                        "prompt": "if 4 books cost $20, one costs $",
+                        "answer": "5"
+                    },
+                    {
+                        "prompt": "if 1 pen is $2, then 5 pens cost $",
+                        "answer": "10"
+                    },
+                    {
+                        "prompt": "if 1 apple is $2, then 3 cost $",
+                        "answer": "6"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "To share in a ratio like 1:2, add the numbers to find the total number of equal parts.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "To share $12 in the ratio 1:2, the total number of parts is 1 + 2 = ___",
+                "answer": "3",
+                "explain": "Add the ratio numbers: 1 + 2 = 3 equal parts.",
+                "rule": "Add the ratio numbers to find the total parts, then share the amount into that many equal parts.",
+                "practiceItems": [
+                    {
+                        "prompt": "total parts in the ratio 1:3",
+                        "answer": "4"
+                    },
+                    {
+                        "prompt": "total parts in the ratio 2:3",
+                        "answer": "5"
+                    },
+                    {
+                        "prompt": "one part of $12 shared in 1:2 (12 ÷ 3)",
+                        "answer": "4"
+                    },
+                    {
+                        "prompt": "the bigger share of $12 in ratio 1:2 (two parts)",
+                        "answer": "8"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "text",
+                "content": "For proportion, find one then scale up. For sharing, add the ratio parts and split into equal groups. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "To share in a ratio like 1:2, add the numbers to find the total number of equal parts." },
-      {
-        "type": "fillblank",
-        "prompt": "To share $12 in the ratio 1:2, the total number of parts is 1 + 2 = ___",
-        "answer": "3",
-        "explain": "Add the ratio numbers: 1 + 2 = 3 equal parts.",
-        "rule": "Add the ratio numbers to find the total parts, then share the amount into that many equal parts.",
-        "practiceItems": [
-          { "prompt": "total parts in the ratio 1:3", "answer": "4" },
-          { "prompt": "total parts in the ratio 2:3", "answer": "5" },
-          { "prompt": "one part of $12 shared in 1:2 (12 ÷ 3)", "answer": "4" },
-          { "prompt": "the bigger share of $12 in ratio 1:2 (two parts)", "answer": "8" }
-        ]
-      },
-      { "type": "text", "content": "For proportion, find one then scale up. For sharing, add the ratio parts and split into equal groups. Let's practise!" }
-    ]
-  }
+    }
 ]

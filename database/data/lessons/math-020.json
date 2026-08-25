@@ -1,40 +1,100 @@
 [
-  {
-    "module": "MATH-020",
-    "title": "Multiplying and dividing decimals by 10 and 100",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "Multiplying or dividing a decimal by 10 or 100 is quick once you know the trick: you just slide the decimal point." },
-      { "type": "key", "content": "To multiply a decimal by 10, move the decimal point one place to the RIGHT; by 100, move it two places right." },
-      { "type": "example", "content": "Multiplying 3.4 x 10.", "steps": ["Move the point one place right.", "3.4 becomes 34.", "So 3.4 x 10 = 34."] },
-      {
-        "type": "fillblank",
-        "prompt": "3.4 x 10 = ___",
-        "answer": "34",
-        "explain": "Moving the point one place right turns 3.4 into 34.",
-        "rule": "To multiply by 10 move the point one place right; by 100 move it two places right.",
-        "practiceItems": [
-          { "prompt": "2.5 x 10", "answer": "25" },
-          { "prompt": "0.6 x 10", "answer": "6" },
-          { "prompt": "1.2 x 100", "answer": "120" },
-          { "prompt": "0.07 x 100", "answer": "7" }
+    {
+        "module": "MATH-020",
+        "title": "Multiplying and dividing decimals by 10 and 100",
+        "is_published": true,
+        "objectives_direct": [
+            "M-DEC-20"
+        ],
+        "objectives_indirect": [
+            "M-DEC-18",
+            "M-DEC-19",
+            "M-DEC-21"
+        ],
+        "canonical_examples_source": "Arithmetic self-verified; method ref: NCERT Class 5/6 Maths; format ref: bank uk-ks2-2024 maths.",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Multiplying or dividing a decimal by 10 or 100 is quick once you know the trick: you just slide the decimal point.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "To multiply a decimal by 10, move the decimal point one place to the RIGHT; by 100, move it two places right.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Multiplying 3.4 x 10.",
+                "steps": [
+                    "Move the point one place right.",
+                    "3.4 becomes 34.",
+                    "So 3.4 x 10 = 34."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "3.4 x 10 = ___",
+                "answer": "34",
+                "explain": "Moving the point one place right turns 3.4 into 34.",
+                "rule": "To multiply by 10 move the point one place right; by 100 move it two places right.",
+                "practiceItems": [
+                    {
+                        "prompt": "2.5 x 10",
+                        "answer": "25"
+                    },
+                    {
+                        "prompt": "0.6 x 10",
+                        "answer": "6"
+                    },
+                    {
+                        "prompt": "1.2 x 100",
+                        "answer": "120"
+                    },
+                    {
+                        "prompt": "0.07 x 100",
+                        "answer": "7"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "To divide a decimal by 10, move the decimal point one place to the LEFT; by 100, move it two places left.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "34 ÷ 10 = ___",
+                "answer": "3.4",
+                "explain": "Moving the point one place left turns 34 into 3.4.",
+                "rule": "To divide by 10 move the point one place left; by 100 move it two places left.",
+                "practiceItems": [
+                    {
+                        "prompt": "25 ÷ 10",
+                        "answer": "2.5"
+                    },
+                    {
+                        "prompt": "6 ÷ 10",
+                        "answer": "0.6"
+                    },
+                    {
+                        "prompt": "120 ÷ 100",
+                        "answer": "1.2"
+                    },
+                    {
+                        "prompt": "7 ÷ 100",
+                        "answer": "0.07"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "text",
+                "content": "Times 10 or 100 slides the point right; divide by 10 or 100 slides it left. Count the zeros to count the places. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "To divide a decimal by 10, move the decimal point one place to the LEFT; by 100, move it two places left." },
-      {
-        "type": "fillblank",
-        "prompt": "34 ÷ 10 = ___",
-        "answer": "3.4",
-        "explain": "Moving the point one place left turns 34 into 3.4.",
-        "rule": "To divide by 10 move the point one place left; by 100 move it two places left.",
-        "practiceItems": [
-          { "prompt": "25 ÷ 10", "answer": "2.5" },
-          { "prompt": "6 ÷ 10", "answer": "0.6" },
-          { "prompt": "120 ÷ 100", "answer": "1.2" },
-          { "prompt": "7 ÷ 100", "answer": "0.07" }
-        ]
-      },
-      { "type": "text", "content": "Times 10 or 100 slides the point right; divide by 10 or 100 slides it left. Count the zeros to count the places. Let's practise!" }
-    ]
-  }
+    }
 ]

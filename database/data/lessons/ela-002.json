@@ -1,62 +1,109 @@
 [
-  {
-    "module": "ELA-002",
-    "title": "Doubling the last letter before adding -ing, -ed or -er",
-    "is_published": true,
-    "blocks": [
-      {
-        "type": "text",
-        "content": "When you add -ing or -ed to a short word, sometimes you double the last letter first. Let's learn exactly when to do it."
-      },
-      {
-        "type": "key",
-        "content": "For a short word ending in one vowel then one consonant, double the final consonant before adding an ending that starts with a vowel (like -ing, -ed, -er)."
-      },
-      {
-        "type": "example",
-        "content": "Adding -ing to 'run'.",
-        "steps": [
-          "'run' ends in one vowel (u) then one consonant (n).",
-          "Double the final consonant: 'runn'.",
-          "Add -ing: 'running'."
+    {
+        "module": "ELA-002",
+        "title": "Doubling the last letter before adding -ing, -ed or -er",
+        "is_published": true,
+        "objectives_direct": [
+            "E-SPE-53"
+        ],
+        "objectives_indirect": [
+            "E-SPE-52",
+            "E-SPE-54",
+            "E-SPE-55"
+        ],
+        "canonical_examples_source": "Language rules self-verified; format ref: bank uk-ks2-2024-gps (KS2 GPS).",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "When you add -ing or -ed to a short word, sometimes you double the last letter first. Let's learn exactly when to do it.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "For a short word ending in one vowel then one consonant, double the final consonant before adding an ending that starts with a vowel (like -ing, -ed, -er).",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Adding -ing to 'run'.",
+                "steps": [
+                    "'run' ends in one vowel (u) then one consonant (n).",
+                    "Double the final consonant: 'runn'.",
+                    "Add -ing: 'running'."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "hop + ed = ___",
+                "answer": "hopped",
+                "explain": "'hop' ends in one vowel then one consonant, so double the p and add -ed: hopped.",
+                "rule": "For a short word ending in one vowel then one consonant, double the last consonant before -ing, -ed or -er.",
+                "practiceItems": [
+                    {
+                        "prompt": "run + ing",
+                        "answer": "running"
+                    },
+                    {
+                        "prompt": "stop + ed",
+                        "answer": "stopped"
+                    },
+                    {
+                        "prompt": "swim + ing",
+                        "answer": "swimming"
+                    },
+                    {
+                        "prompt": "big + er",
+                        "answer": "bigger"
+                    },
+                    {
+                        "prompt": "win + er",
+                        "answer": "winner"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "Do NOT double when the word ends in two consonants (jump) or has two vowels before the consonant (rain).",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "Which spelling is correct?",
+                "options": [
+                    "jumpping",
+                    "jumping",
+                    "jumbing"
+                ],
+                "answer": 1,
+                "explain": "'jump' ends in two consonants (m, p), so you do not double — just add -ing: jumping.",
+                "rule": "Do not double the last consonant when the word ends in two consonants or has two vowels before the consonant.",
+                "practiceItems": [
+                    {
+                        "prompt": "jump + ing",
+                        "answer": "jumping"
+                    },
+                    {
+                        "prompt": "help + ing",
+                        "answer": "helping"
+                    },
+                    {
+                        "prompt": "rain + ing",
+                        "answer": "raining"
+                    },
+                    {
+                        "prompt": "read + ing",
+                        "answer": "reading"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "text",
+                "content": "So: one vowel + one consonant means double it; two consonants or two vowels means leave it. Time to practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      {
-        "type": "fillblank",
-        "prompt": "hop + ed = ___",
-        "answer": "hopped",
-        "explain": "'hop' ends in one vowel then one consonant, so double the p and add -ed: hopped.",
-        "rule": "For a short word ending in one vowel then one consonant, double the last consonant before -ing, -ed or -er.",
-        "practiceItems": [
-          { "prompt": "run + ing", "answer": "running" },
-          { "prompt": "stop + ed", "answer": "stopped" },
-          { "prompt": "swim + ing", "answer": "swimming" },
-          { "prompt": "big + er", "answer": "bigger" },
-          { "prompt": "win + er", "answer": "winner" }
-        ]
-      },
-      {
-        "type": "key",
-        "content": "Do NOT double when the word ends in two consonants (jump) or has two vowels before the consonant (rain)."
-      },
-      {
-        "type": "check",
-        "question": "Which spelling is correct?",
-        "options": ["jumpping", "jumping", "jumbing"],
-        "answer": 1,
-        "explain": "'jump' ends in two consonants (m, p), so you do not double — just add -ing: jumping.",
-        "rule": "Do not double the last consonant when the word ends in two consonants or has two vowels before the consonant.",
-        "practiceItems": [
-          { "prompt": "jump + ing", "answer": "jumping" },
-          { "prompt": "help + ing", "answer": "helping" },
-          { "prompt": "rain + ing", "answer": "raining" },
-          { "prompt": "read + ing", "answer": "reading" }
-        ]
-      },
-      {
-        "type": "text",
-        "content": "So: one vowel + one consonant means double it; two consonants or two vowels means leave it. Time to practise!"
-      }
-    ]
-  }
+    }
 ]

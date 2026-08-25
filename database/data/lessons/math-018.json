@@ -1,40 +1,100 @@
 [
-  {
-    "module": "MATH-018",
-    "title": "Ordering and rounding decimals",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "Comparing decimals is like comparing whole numbers — you just start at the tenths and work right, keeping the decimal points lined up." },
-      { "type": "key", "content": "To compare decimals, line up the points and compare place by place from the left. More tenths means a bigger number." },
-      { "type": "example", "content": "Comparing 0.5 and 0.45.", "steps": ["Tenths: 0.5 has 5 tenths, 0.45 has 4 tenths.", "5 tenths is more than 4 tenths.", "So 0.5 is greater than 0.45."] },
-      {
-        "type": "fillblank",
-        "prompt": "Which is greater, 0.5 or 0.45? Type it.",
-        "answer": "0.5",
-        "explain": "0.5 has 5 tenths, which beats the 4 tenths in 0.45, so 0.5 is greater.",
-        "rule": "Compare decimals from the left, tenths first; more tenths means a greater number.",
-        "practiceItems": [
-          { "prompt": "the greater of 0.7 and 0.07", "answer": "0.7" },
-          { "prompt": "the greater of 1.2 and 1.15", "answer": "1.2" },
-          { "prompt": "the smaller of 0.3 and 0.9", "answer": "0.3" },
-          { "prompt": "the greater of 0.6 and 0.59", "answer": "0.6" }
+    {
+        "module": "MATH-018",
+        "title": "Ordering and rounding decimals",
+        "is_published": true,
+        "objectives_direct": [
+            "M-DEC-18"
+        ],
+        "objectives_indirect": [
+            "M-DEC-17",
+            "M-DEC-19",
+            "M-DEC-20"
+        ],
+        "canonical_examples_source": "Arithmetic self-verified; method ref: NCERT Class 5/6 Maths; format ref: bank uk-ks2-2024 maths.",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Comparing decimals is like comparing whole numbers — you just start at the tenths and work right, keeping the decimal points lined up.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "To compare decimals, line up the points and compare place by place from the left. More tenths means a bigger number.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Comparing 0.5 and 0.45.",
+                "steps": [
+                    "Tenths: 0.5 has 5 tenths, 0.45 has 4 tenths.",
+                    "5 tenths is more than 4 tenths.",
+                    "So 0.5 is greater than 0.45."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "Which is greater, 0.5 or 0.45? Type it.",
+                "answer": "0.5",
+                "explain": "0.5 has 5 tenths, which beats the 4 tenths in 0.45, so 0.5 is greater.",
+                "rule": "Compare decimals from the left, tenths first; more tenths means a greater number.",
+                "practiceItems": [
+                    {
+                        "prompt": "the greater of 0.7 and 0.07",
+                        "answer": "0.7"
+                    },
+                    {
+                        "prompt": "the greater of 1.2 and 1.15",
+                        "answer": "1.2"
+                    },
+                    {
+                        "prompt": "the smaller of 0.3 and 0.9",
+                        "answer": "0.3"
+                    },
+                    {
+                        "prompt": "the greater of 0.6 and 0.59",
+                        "answer": "0.6"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "To round to the nearest whole number, look at the tenths digit: 5 or more rounds up, less than 5 rounds down.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "Round 3.7 to the nearest whole number: ___",
+                "answer": "4",
+                "explain": "The tenths digit is 7, which is 5 or more, so round up to 4.",
+                "rule": "Round to the nearest whole by the tenths digit: 5 or more rounds up, less rounds down.",
+                "practiceItems": [
+                    {
+                        "prompt": "round 2.3 to the nearest whole",
+                        "answer": "2"
+                    },
+                    {
+                        "prompt": "round 5.5 to the nearest whole",
+                        "answer": "6"
+                    },
+                    {
+                        "prompt": "round 8.2 to the nearest whole",
+                        "answer": "8"
+                    },
+                    {
+                        "prompt": "round 4.9 to the nearest whole",
+                        "answer": "5"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "text",
+                "content": "Line up the points to compare, and check the tenths digit to round. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "To round to the nearest whole number, look at the tenths digit: 5 or more rounds up, less than 5 rounds down." },
-      {
-        "type": "fillblank",
-        "prompt": "Round 3.7 to the nearest whole number: ___",
-        "answer": "4",
-        "explain": "The tenths digit is 7, which is 5 or more, so round up to 4.",
-        "rule": "Round to the nearest whole by the tenths digit: 5 or more rounds up, less rounds down.",
-        "practiceItems": [
-          { "prompt": "round 2.3 to the nearest whole", "answer": "2" },
-          { "prompt": "round 5.5 to the nearest whole", "answer": "6" },
-          { "prompt": "round 8.2 to the nearest whole", "answer": "8" },
-          { "prompt": "round 4.9 to the nearest whole", "answer": "5" }
-        ]
-      },
-      { "type": "text", "content": "Line up the points to compare, and check the tenths digit to round. Let's practise!" }
-    ]
-  }
+    }
 ]

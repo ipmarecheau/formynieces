@@ -1,65 +1,108 @@
 [
-  {
-    "module": "ELA-019",
-    "title": "Expository writing: reporting facts clearly",
-    "is_published": true,
-    "blocks": [
-      {
-        "type": "text",
-        "content": "Expository writing explains or informs. A report tells the reader true facts about a topic, in a clear order, without the writer's opinions getting in the way."
-      },
-      {
-        "type": "key",
-        "content": "A fact can be checked and is true for everyone. An opinion is what one person feels or prefers."
-      },
-      {
-        "type": "example",
-        "content": "Fact or opinion?",
-        "steps": [
-          "'The sun is a star.' — this can be checked, so it is a fact.",
-          "'The sun is beautiful.' — this is a feeling, so it is an opinion.",
-          "A report is built from facts."
-        ]
-      },
-      {
-        "type": "check",
-        "question": "Which of these is a FACT?",
-        "options": ["Blue is the best colour.", "Trinidad is an island."],
-        "answer": 1,
-        "explain": "'Trinidad is an island' can be checked and is true for everyone, so it is a fact.",
-        "rule": "A fact can be checked and is true for everyone; an opinion is what someone feels.",
-        "practiceItems": [
-          { "prompt": "fact or opinion: 'Water is wet'", "answer": "fact" },
-          { "prompt": "fact or opinion: 'Blue is the best colour'", "answer": "opinion" },
-          { "prompt": "fact or opinion: 'Trinidad is an island'", "answer": "fact" },
-          { "prompt": "fact or opinion: 'Doubles taste amazing'", "answer": "opinion" }
-        ]
-      },
-      {
-        "type": "key",
-        "content": "Organise a report in order: open by naming the topic, give grouped facts in the middle, and close with a short summary."
-      },
-      {
-        "type": "ordersteps",
-        "instruction": "Put the parts of a report in the correct order.",
-        "items": [
-          "Name the topic",
-          "Give facts about it",
-          "Add more detail",
-          "Sum up at the end"
+    {
+        "module": "ELA-019",
+        "title": "Expository writing: reporting facts clearly",
+        "is_published": true,
+        "objectives_direct": [
+            "E-WRI-70"
         ],
-        "rule": "A report opens with the topic, gives grouped facts in the middle, and closes with a summary.",
-        "practiceItems": [
-          { "prompt": "the part of a report that names the topic (opening/middle/closing)", "answer": "opening" },
-          { "prompt": "the part that gives the facts", "answer": "middle" },
-          { "prompt": "the part that sums up at the end", "answer": "closing" },
-          { "prompt": "what expository writing gives instead of opinions", "answer": "facts" }
+        "objectives_indirect": [
+            "E-WRI-69",
+            "E-WRI-71",
+            "E-WRI-72"
+        ],
+        "canonical_examples_source": "Language rules self-verified; format ref: bank uk-ks2-2024-gps (KS2 GPS).",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Expository writing explains or informs. A report tells the reader true facts about a topic, in a clear order, without the writer's opinions getting in the way.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "A fact can be checked and is true for everyone. An opinion is what one person feels or prefers.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Fact or opinion?",
+                "steps": [
+                    "'The sun is a star.' — this can be checked, so it is a fact.",
+                    "'The sun is beautiful.' — this is a feeling, so it is an opinion.",
+                    "A report is built from facts."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "Which of these is a FACT?",
+                "options": [
+                    "Blue is the best colour.",
+                    "Trinidad is an island."
+                ],
+                "answer": 1,
+                "explain": "'Trinidad is an island' can be checked and is true for everyone, so it is a fact.",
+                "rule": "A fact can be checked and is true for everyone; an opinion is what someone feels.",
+                "practiceItems": [
+                    {
+                        "prompt": "fact or opinion: 'Water is wet'",
+                        "answer": "fact"
+                    },
+                    {
+                        "prompt": "fact or opinion: 'Blue is the best colour'",
+                        "answer": "opinion"
+                    },
+                    {
+                        "prompt": "fact or opinion: 'Trinidad is an island'",
+                        "answer": "fact"
+                    },
+                    {
+                        "prompt": "fact or opinion: 'Doubles taste amazing'",
+                        "answer": "opinion"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "Organise a report in order: open by naming the topic, give grouped facts in the middle, and close with a short summary.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "ordersteps",
+                "instruction": "Put the parts of a report in the correct order.",
+                "items": [
+                    "Name the topic",
+                    "Give facts about it",
+                    "Add more detail",
+                    "Sum up at the end"
+                ],
+                "rule": "A report opens with the topic, gives grouped facts in the middle, and closes with a summary.",
+                "practiceItems": [
+                    {
+                        "prompt": "the part of a report that names the topic (opening/middle/closing)",
+                        "answer": "opening"
+                    },
+                    {
+                        "prompt": "the part that gives the facts",
+                        "answer": "middle"
+                    },
+                    {
+                        "prompt": "the part that sums up at the end",
+                        "answer": "closing"
+                    },
+                    {
+                        "prompt": "what expository writing gives instead of opinions",
+                        "answer": "facts"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "text",
+                "content": "Report the facts, keep opinions out, and organise from topic to summary. That is clear expository writing. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      {
-        "type": "text",
-        "content": "Report the facts, keep opinions out, and organise from topic to summary. That is clear expository writing. Let's practise!"
-      }
-    ]
-  }
+    }
 ]

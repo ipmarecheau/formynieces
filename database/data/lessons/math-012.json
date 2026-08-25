@@ -1,40 +1,99 @@
 [
-  {
-    "module": "MATH-012",
-    "title": "Equivalent fractions and simplifying",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "Different-looking fractions can be worth exactly the same amount. Learning to spot and make these equivalent fractions is a key fraction skill." },
-      { "type": "key", "content": "To make an equivalent fraction, multiply the top and bottom by the same number: 1/2 = 2/4." },
-      { "type": "example", "content": "Making an equivalent fraction.", "steps": ["Start with 1/2.", "Multiply top and bottom by 2.", "1 x 2 = 2 and 2 x 2 = 4, so 1/2 = 2/4."] },
-      {
-        "type": "fillblank",
-        "prompt": "1/2 is the same as ?/6. The missing top number is ___",
-        "answer": "3",
-        "explain": "Multiply top and bottom of 1/2 by 3: 1/2 = 3/6.",
-        "rule": "Multiply the top and bottom by the same number to make an equivalent fraction.",
-        "practiceItems": [
-          { "prompt": "1/2 = ?/6 (the top number)", "answer": "3" },
-          { "prompt": "1/3 = ?/9 (the top number)", "answer": "3" },
-          { "prompt": "1/4 = ?/8 (the top number)", "answer": "2" },
-          { "prompt": "1/5 = ?/10 (the top number)", "answer": "2" }
+    {
+        "module": "MATH-012",
+        "title": "Equivalent fractions and simplifying",
+        "is_published": true,
+        "objectives_direct": [
+            "M-FRA-12"
+        ],
+        "objectives_indirect": [
+            "M-FRA-13",
+            "M-FRA-14"
+        ],
+        "canonical_examples_source": "Arithmetic self-verified; method ref: NCERT Class 5/6 Maths; format ref: bank uk-ks2-2024 maths.",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Different-looking fractions can be worth exactly the same amount. Learning to spot and make these equivalent fractions is a key fraction skill.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "To make an equivalent fraction, multiply the top and bottom by the same number: 1/2 = 2/4.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Making an equivalent fraction.",
+                "steps": [
+                    "Start with 1/2.",
+                    "Multiply top and bottom by 2.",
+                    "1 x 2 = 2 and 2 x 2 = 4, so 1/2 = 2/4."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "1/2 is the same as ?/6. The missing top number is ___",
+                "answer": "3",
+                "explain": "Multiply top and bottom of 1/2 by 3: 1/2 = 3/6.",
+                "rule": "Multiply the top and bottom by the same number to make an equivalent fraction.",
+                "practiceItems": [
+                    {
+                        "prompt": "1/2 = ?/6 (the top number)",
+                        "answer": "3"
+                    },
+                    {
+                        "prompt": "1/3 = ?/9 (the top number)",
+                        "answer": "3"
+                    },
+                    {
+                        "prompt": "1/4 = ?/8 (the top number)",
+                        "answer": "2"
+                    },
+                    {
+                        "prompt": "1/5 = ?/10 (the top number)",
+                        "answer": "2"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "To simplify a fraction, divide the top and bottom by the same number until you cannot go smaller.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "Simplify 4/8. It becomes 1/___",
+                "answer": "2",
+                "explain": "Divide top and bottom by 4: 4/8 = 1/2.",
+                "rule": "Simplify by dividing the top and bottom by the same number.",
+                "practiceItems": [
+                    {
+                        "prompt": "6/8 simplifies to 3/? (the bottom)",
+                        "answer": "4"
+                    },
+                    {
+                        "prompt": "2/6 simplifies to 1/? (the bottom)",
+                        "answer": "3"
+                    },
+                    {
+                        "prompt": "5/10 simplifies to 1/? (the bottom)",
+                        "answer": "2"
+                    },
+                    {
+                        "prompt": "4/6 simplifies to 2/? (the bottom)",
+                        "answer": "3"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "text",
+                "content": "Multiply to make bigger equivalent fractions, and divide to simplify to smaller ones. The value stays the same. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "To simplify a fraction, divide the top and bottom by the same number until you cannot go smaller." },
-      {
-        "type": "fillblank",
-        "prompt": "Simplify 4/8. It becomes 1/___",
-        "answer": "2",
-        "explain": "Divide top and bottom by 4: 4/8 = 1/2.",
-        "rule": "Simplify by dividing the top and bottom by the same number.",
-        "practiceItems": [
-          { "prompt": "6/8 simplifies to 3/? (the bottom)", "answer": "4" },
-          { "prompt": "2/6 simplifies to 1/? (the bottom)", "answer": "3" },
-          { "prompt": "5/10 simplifies to 1/? (the bottom)", "answer": "2" },
-          { "prompt": "4/6 simplifies to 2/? (the bottom)", "answer": "3" }
-        ]
-      },
-      { "type": "text", "content": "Multiply to make bigger equivalent fractions, and divide to simplify to smaller ones. The value stays the same. Let's practise!" }
-    ]
-  }
+    }
 ]

@@ -1,40 +1,99 @@
 [
-  {
-    "module": "MATH-007",
-    "title": "Multiplying whole numbers",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "Multiplication is a fast way to add equal groups. Knowing your times tables and a few tricks makes big multiplications quick." },
-      { "type": "key", "content": "To multiply, work from the right: multiply each digit, and carry to the next column when a result reaches ten or more." },
-      { "type": "example", "content": "Multiplying 34 x 6.", "steps": ["Ones: 6 x 4 = 24, write 4 carry 2.", "Tens: 6 x 3 = 18, add the carried 2 to get 20.", "Answer: 204."] },
-      {
-        "type": "fillblank",
-        "prompt": "34 x 6 = ___",
-        "answer": "204",
-        "explain": "6 x 4 = 24 (carry 2), 6 x 3 = 18, plus 2 = 20, giving 204.",
-        "rule": "Multiply from the right, carrying to the next column when a product reaches ten or more.",
-        "practiceItems": [
-          { "prompt": "12 x 5", "answer": "60" },
-          { "prompt": "25 x 4", "answer": "100" },
-          { "prompt": "7 x 8", "answer": "56" },
-          { "prompt": "9 x 6", "answer": "54" }
+    {
+        "module": "MATH-007",
+        "title": "Multiplying whole numbers",
+        "is_published": true,
+        "objectives_direct": [
+            "M-OPS-07"
+        ],
+        "objectives_indirect": [
+            "M-OPS-06",
+            "M-OPS-08"
+        ],
+        "canonical_examples_source": "Arithmetic self-verified; method ref: NCERT Class 5/6 Maths; format ref: bank uk-ks2-2024 maths.",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Multiplication is a fast way to add equal groups. Knowing your times tables and a few tricks makes big multiplications quick.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "To multiply, work from the right: multiply each digit, and carry to the next column when a result reaches ten or more.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Multiplying 34 x 6.",
+                "steps": [
+                    "Ones: 6 x 4 = 24, write 4 carry 2.",
+                    "Tens: 6 x 3 = 18, add the carried 2 to get 20.",
+                    "Answer: 204."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "34 x 6 = ___",
+                "answer": "204",
+                "explain": "6 x 4 = 24 (carry 2), 6 x 3 = 18, plus 2 = 20, giving 204.",
+                "rule": "Multiply from the right, carrying to the next column when a product reaches ten or more.",
+                "practiceItems": [
+                    {
+                        "prompt": "12 x 5",
+                        "answer": "60"
+                    },
+                    {
+                        "prompt": "25 x 4",
+                        "answer": "100"
+                    },
+                    {
+                        "prompt": "7 x 8",
+                        "answer": "56"
+                    },
+                    {
+                        "prompt": "9 x 6",
+                        "answer": "54"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "To multiply by 10, add one zero; to multiply by 100, add two zeros.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "45 x 10 = ___",
+                "answer": "450",
+                "explain": "Multiplying by 10 adds one zero: 45 becomes 450.",
+                "rule": "To multiply a whole number by 10 add one zero; by 100 add two zeros.",
+                "practiceItems": [
+                    {
+                        "prompt": "23 x 10",
+                        "answer": "230"
+                    },
+                    {
+                        "prompt": "6 x 100",
+                        "answer": "600"
+                    },
+                    {
+                        "prompt": "40 x 10",
+                        "answer": "400"
+                    },
+                    {
+                        "prompt": "12 x 100",
+                        "answer": "1200"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "text",
+                "content": "Multiply column by column and carry, and use the zero trick for 10 and 100. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "To multiply by 10, add one zero; to multiply by 100, add two zeros." },
-      {
-        "type": "fillblank",
-        "prompt": "45 x 10 = ___",
-        "answer": "450",
-        "explain": "Multiplying by 10 adds one zero: 45 becomes 450.",
-        "rule": "To multiply a whole number by 10 add one zero; by 100 add two zeros.",
-        "practiceItems": [
-          { "prompt": "23 x 10", "answer": "230" },
-          { "prompt": "6 x 100", "answer": "600" },
-          { "prompt": "40 x 10", "answer": "400" },
-          { "prompt": "12 x 100", "answer": "1200" }
-        ]
-      },
-      { "type": "text", "content": "Multiply column by column and carry, and use the zero trick for 10 and 100. Let's practise!" }
-    ]
-  }
+    }
 ]

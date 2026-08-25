@@ -1,40 +1,99 @@
 [
-  {
-    "module": "MATH-027",
-    "title": "Multi-step money problems",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "Real-life problems often need more than one step. The secret is to slow down and do one calculation at a time." },
-      { "type": "key", "content": "Break a multi-step problem into steps. First work out the total cost." },
-      { "type": "example", "content": "Working out a total.", "steps": ["You buy 3 books at $5 each.", "Total cost = 3 x $5 = $15.", "Now you are ready for the next step."] },
-      {
-        "type": "fillblank",
-        "prompt": "3 books at $5 each cost a total of $___",
-        "answer": "15",
-        "explain": "3 x $5 = $15.",
-        "rule": "In a multi-step problem, work out the total cost first (price times quantity).",
-        "practiceItems": [
-          { "prompt": "4 pens at $3 each", "answer": "12" },
-          { "prompt": "5 sweets at $2 each", "answer": "10" },
-          { "prompt": "2 books at $8 each", "answer": "16" },
-          { "prompt": "6 apples at $1 each", "answer": "6" }
+    {
+        "module": "MATH-027",
+        "title": "Multi-step money problems",
+        "is_published": true,
+        "objectives_direct": [
+            "M-PRB-27"
+        ],
+        "objectives_indirect": [
+            "M-PRB-25",
+            "M-PRB-26"
+        ],
+        "canonical_examples_source": "Arithmetic self-verified; method ref: NCERT Class 5/6 Maths; format ref: bank uk-ks2-2024 maths.",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Real-life problems often need more than one step. The secret is to slow down and do one calculation at a time.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "Break a multi-step problem into steps. First work out the total cost.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Working out a total.",
+                "steps": [
+                    "You buy 3 books at $5 each.",
+                    "Total cost = 3 x $5 = $15.",
+                    "Now you are ready for the next step."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "3 books at $5 each cost a total of $___",
+                "answer": "15",
+                "explain": "3 x $5 = $15.",
+                "rule": "In a multi-step problem, work out the total cost first (price times quantity).",
+                "practiceItems": [
+                    {
+                        "prompt": "4 pens at $3 each",
+                        "answer": "12"
+                    },
+                    {
+                        "prompt": "5 sweets at $2 each",
+                        "answer": "10"
+                    },
+                    {
+                        "prompt": "2 books at $8 each",
+                        "answer": "16"
+                    },
+                    {
+                        "prompt": "6 apples at $1 each",
+                        "answer": "6"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "The next step is often the change: subtract the total cost from the money you paid.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "You spend $15 on books and pay with $20. Your change is $___",
+                "answer": "5",
+                "explain": "$20 - $15 = $5 change.",
+                "rule": "After finding the total, subtract it from the money paid to get the change.",
+                "practiceItems": [
+                    {
+                        "prompt": "pay $20 for $12 of goods: change",
+                        "answer": "8"
+                    },
+                    {
+                        "prompt": "pay $50 for $35 of goods: change",
+                        "answer": "15"
+                    },
+                    {
+                        "prompt": "pay $10 for a $6.50 item: change",
+                        "answer": "3.50"
+                    },
+                    {
+                        "prompt": "pay $100 for $75 of goods: change",
+                        "answer": "25"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "text",
+                "content": "Take it step by step: total first, then change. One calculation at a time keeps you right. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "The next step is often the change: subtract the total cost from the money you paid." },
-      {
-        "type": "fillblank",
-        "prompt": "You spend $15 on books and pay with $20. Your change is $___",
-        "answer": "5",
-        "explain": "$20 - $15 = $5 change.",
-        "rule": "After finding the total, subtract it from the money paid to get the change.",
-        "practiceItems": [
-          { "prompt": "pay $20 for $12 of goods: change", "answer": "8" },
-          { "prompt": "pay $50 for $35 of goods: change", "answer": "15" },
-          { "prompt": "pay $10 for a $6.50 item: change", "answer": "3.50" },
-          { "prompt": "pay $100 for $75 of goods: change", "answer": "25" }
-        ]
-      },
-      { "type": "text", "content": "Take it step by step: total first, then change. One calculation at a time keeps you right. Let's practise!" }
-    ]
-  }
+    }
 ]

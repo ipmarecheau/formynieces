@@ -1,59 +1,99 @@
 [
-  {
-    "module": "ELA-004",
-    "title": "Tricky spellings: 'i before e' and the there / their / they're words",
-    "is_published": true,
-    "blocks": [
-      {
-        "type": "text",
-        "content": "Some spellings just have to be learned because they don't sound the way they look. Here are two that come up all the time."
-      },
-      {
-        "type": "key",
-        "content": "Write i before e, except after c. So we write 'believe', but 'receive'."
-      },
-      {
-        "type": "example",
-        "content": "Choosing ie or ei.",
-        "steps": [
-          "'believe' has no c before the gap, so i before e: bel-ie-ve.",
-          "'receive' has a c before the gap, so e before i: rec-ei-ve."
+    {
+        "module": "ELA-004",
+        "title": "Tricky spellings: 'i before e' and the there / their / they're words",
+        "is_published": true,
+        "objectives_direct": [
+            "E-SPE-55"
+        ],
+        "objectives_indirect": [
+            "E-SPE-53",
+            "E-SPE-54",
+            "E-SPE-56"
+        ],
+        "canonical_examples_source": "Language rules self-verified; format ref: bank uk-ks2-2024-gps (KS2 GPS).",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Some spellings just have to be learned because they don't sound the way they look. Here are two that come up all the time.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "Write i before e, except after c. So we write 'believe', but 'receive'.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Choosing ie or ei.",
+                "steps": [
+                    "'believe' has no c before the gap, so i before e: bel-ie-ve.",
+                    "'receive' has a c before the gap, so e before i: rec-ei-ve."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "Fill the gap in 'ach__ve' with ie or ei.",
+                "answer": "ie",
+                "explain": "There is no c before the gap, so i before e: achieve.",
+                "rule": "Write i before e, except after c.",
+                "practiceItems": [
+                    {
+                        "prompt": "ie or ei in 'bel__ve'",
+                        "answer": "ie"
+                    },
+                    {
+                        "prompt": "ie or ei in 'rec__ve'",
+                        "answer": "ei"
+                    },
+                    {
+                        "prompt": "ie or ei in 'f__ld'",
+                        "answer": "ie"
+                    },
+                    {
+                        "prompt": "ie or ei in 'c__ling'",
+                        "answer": "ei"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "there = a place · their = belonging to them · they're = the short way to say 'they are'.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "Put your bag over ___ by the door.",
+                "answer": "there",
+                "explain": "This one points to a place, so it is 'there' (it has the word 'here' inside it).",
+                "rule": "there is a place, their means belonging to them, they're means 'they are'.",
+                "practiceItems": [
+                    {
+                        "prompt": "the word for a place, spelt like 'here' with a t",
+                        "answer": "there"
+                    },
+                    {
+                        "prompt": "the word meaning belonging to them",
+                        "answer": "their"
+                    },
+                    {
+                        "prompt": "the short way to write 'they are'",
+                        "answer": "they're"
+                    },
+                    {
+                        "prompt": "The children lost ___ shoes (belonging to them)",
+                        "answer": "their"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "text",
+                "content": "Two tricky ones sorted: i before e except after c, and there / their / they're. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      {
-        "type": "fillblank",
-        "prompt": "Fill the gap in 'ach__ve' with ie or ei.",
-        "answer": "ie",
-        "explain": "There is no c before the gap, so i before e: achieve.",
-        "rule": "Write i before e, except after c.",
-        "practiceItems": [
-          { "prompt": "ie or ei in 'bel__ve'", "answer": "ie" },
-          { "prompt": "ie or ei in 'rec__ve'", "answer": "ei" },
-          { "prompt": "ie or ei in 'f__ld'", "answer": "ie" },
-          { "prompt": "ie or ei in 'c__ling'", "answer": "ei" }
-        ]
-      },
-      {
-        "type": "key",
-        "content": "there = a place · their = belonging to them · they're = the short way to say 'they are'."
-      },
-      {
-        "type": "fillblank",
-        "prompt": "Put your bag over ___ by the door.",
-        "answer": "there",
-        "explain": "This one points to a place, so it is 'there' (it has the word 'here' inside it).",
-        "rule": "there is a place, their means belonging to them, they're means 'they are'.",
-        "practiceItems": [
-          { "prompt": "the word for a place, spelt like 'here' with a t", "answer": "there" },
-          { "prompt": "the word meaning belonging to them", "answer": "their" },
-          { "prompt": "the short way to write 'they are'", "answer": "they're" },
-          { "prompt": "The children lost ___ shoes (belonging to them)", "answer": "their" }
-        ]
-      },
-      {
-        "type": "text",
-        "content": "Two tricky ones sorted: i before e except after c, and there / their / they're. Let's practise!"
-      }
-    ]
-  }
+    }
 ]

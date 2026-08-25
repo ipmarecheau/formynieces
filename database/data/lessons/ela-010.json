@@ -1,62 +1,101 @@
 [
-  {
-    "module": "ELA-010",
-    "title": "Capital letters: names, sentence starts and the word I",
-    "is_published": true,
-    "blocks": [
-      {
-        "type": "text",
-        "content": "Capital letters are not just for decoration — they signal important words to the reader. Let's learn the main times you must use one."
-      },
-      {
-        "type": "key",
-        "content": "Use a capital letter to begin every sentence, for names of people and places, for days and months, and always for the word I."
-      },
-      {
-        "type": "example",
-        "content": "Spotting the capitals.",
-        "steps": [
-          "'anil lives in trinidad.' has three that need capitals.",
-          "Start of the sentence and the name: 'Anil'.",
-          "The place (a proper noun): 'Trinidad'.",
-          "Correct: 'Anil lives in Trinidad.'"
+    {
+        "module": "ELA-010",
+        "title": "Capital letters: names, sentence starts and the word I",
+        "is_published": true,
+        "objectives_direct": [
+            "E-CAP-61"
+        ],
+        "objectives_indirect": [],
+        "canonical_examples_source": "Language rules self-verified; format ref: bank uk-ks2-2024-gps (KS2 GPS).",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Capital letters are not just for decoration — they signal important words to the reader. Let's learn the main times you must use one.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "Use a capital letter to begin every sentence, for names of people and places, for days and months, and always for the word I.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Spotting the capitals.",
+                "steps": [
+                    "'anil lives in trinidad.' has three that need capitals.",
+                    "Start of the sentence and the name: 'Anil'.",
+                    "The place (a proper noun): 'Trinidad'.",
+                    "Correct: 'Anil lives in Trinidad.'"
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "Write the name with its capital letter: maya",
+                "answer": "Maya",
+                "explain": "Names of people are proper nouns and begin with a capital letter: Maya.",
+                "rule": "Names of people and places (proper nouns), days and months begin with a capital letter.",
+                "practiceItems": [
+                    {
+                        "prompt": "capitalise the country: trinidad",
+                        "answer": "Trinidad"
+                    },
+                    {
+                        "prompt": "capitalise the day: monday",
+                        "answer": "Monday"
+                    },
+                    {
+                        "prompt": "capitalise the month: august",
+                        "answer": "August"
+                    },
+                    {
+                        "prompt": "capitalise the name: anil",
+                        "answer": "Anil"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "Always begin a sentence with a capital letter, and always write the word I as a capital.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "Which sentence is written correctly?",
+                "options": [
+                    "my sister and i sang.",
+                    "My sister and I sang."
+                ],
+                "answer": 1,
+                "explain": "A sentence begins with a capital (My), and the word I is always a capital.",
+                "rule": "A sentence always begins with a capital letter, and the word I is always written as a capital.",
+                "practiceItems": [
+                    {
+                        "prompt": "capitalise the first word: 'the sky is blue' → first word",
+                        "answer": "The"
+                    },
+                    {
+                        "prompt": "the word for yourself that is always a capital",
+                        "answer": "I"
+                    },
+                    {
+                        "prompt": "capitalise the first word of 'run fast'",
+                        "answer": "Run"
+                    },
+                    {
+                        "prompt": "capitalise the first word of 'we won'",
+                        "answer": "We"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "text",
+                "content": "Capitals start sentences, name people and places, and mark the word I. Look out for them every time you write. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      {
-        "type": "fillblank",
-        "prompt": "Write the name with its capital letter: maya",
-        "answer": "Maya",
-        "explain": "Names of people are proper nouns and begin with a capital letter: Maya.",
-        "rule": "Names of people and places (proper nouns), days and months begin with a capital letter.",
-        "practiceItems": [
-          { "prompt": "capitalise the country: trinidad", "answer": "Trinidad" },
-          { "prompt": "capitalise the day: monday", "answer": "Monday" },
-          { "prompt": "capitalise the month: august", "answer": "August" },
-          { "prompt": "capitalise the name: anil", "answer": "Anil" }
-        ]
-      },
-      {
-        "type": "key",
-        "content": "Always begin a sentence with a capital letter, and always write the word I as a capital."
-      },
-      {
-        "type": "check",
-        "question": "Which sentence is written correctly?",
-        "options": ["my sister and i sang.", "My sister and I sang."],
-        "answer": 1,
-        "explain": "A sentence begins with a capital (My), and the word I is always a capital.",
-        "rule": "A sentence always begins with a capital letter, and the word I is always written as a capital.",
-        "practiceItems": [
-          { "prompt": "capitalise the first word: 'the sky is blue' → first word", "answer": "The" },
-          { "prompt": "the word for yourself that is always a capital", "answer": "I" },
-          { "prompt": "capitalise the first word of 'run fast'", "answer": "Run" },
-          { "prompt": "capitalise the first word of 'we won'", "answer": "We" }
-        ]
-      },
-      {
-        "type": "text",
-        "content": "Capitals start sentences, name people and places, and mark the word I. Look out for them every time you write. Let's practise!"
-      }
-    ]
-  }
+    }
 ]

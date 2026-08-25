@@ -1,42 +1,105 @@
 [
-  {
-    "module": "ELA-023",
-    "title": "Finding supporting details",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "The main idea needs support. Supporting details are the smaller facts and examples that prove or explain the main idea." },
-      { "type": "key", "content": "A supporting detail is a smaller fact or example that backs up the main idea." },
-      { "type": "text", "content": "Read this: 'The library is a helpful place. It has thousands of books, quiet reading corners, and kind helpers who find what you need.'" },
-      {
-        "type": "check",
-        "question": "Which sentence is a supporting DETAIL, not the main idea?",
-        "options": ["The library is a helpful place.", "It has quiet reading corners.", "Libraries exist everywhere."],
-        "answer": 1,
-        "explain": "'It has quiet reading corners' is a small fact that backs up the main idea that the library is helpful.",
-        "rule": "A supporting detail is a smaller fact or example that backs up the main idea.",
-        "practiceItems": [
-          { "prompt": "a fact that backs up the main idea is a ___ detail", "answer": "supporting" },
-          { "prompt": "the main idea is supported by several ___", "answer": "details" },
-          { "prompt": "'quiet reading corners' is a supporting ___", "answer": "detail" },
-          { "prompt": "details are ___ than the main idea (smaller/bigger)", "answer": "smaller" }
+    {
+        "module": "ELA-023",
+        "title": "Finding supporting details",
+        "is_published": true,
+        "objectives_direct": [
+            "E-RCM-74"
+        ],
+        "objectives_indirect": [
+            "E-RCM-73",
+            "E-RCM-75",
+            "E-RCM-76"
+        ],
+        "canonical_examples_source": "Language rules self-verified; format ref: bank uk-ks2-2024-gps (KS2 GPS).",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "The main idea needs support. Supporting details are the smaller facts and examples that prove or explain the main idea.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "A supporting detail is a smaller fact or example that backs up the main idea.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "text",
+                "content": "Read this: 'The library is a helpful place. It has thousands of books, quiet reading corners, and kind helpers who find what you need.'",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "Which sentence is a supporting DETAIL, not the main idea?",
+                "options": [
+                    "The library is a helpful place.",
+                    "It has quiet reading corners.",
+                    "Libraries exist everywhere."
+                ],
+                "answer": 1,
+                "explain": "'It has quiet reading corners' is a small fact that backs up the main idea that the library is helpful.",
+                "rule": "A supporting detail is a smaller fact or example that backs up the main idea.",
+                "practiceItems": [
+                    {
+                        "prompt": "a fact that backs up the main idea is a ___ detail",
+                        "answer": "supporting"
+                    },
+                    {
+                        "prompt": "the main idea is supported by several ___",
+                        "answer": "details"
+                    },
+                    {
+                        "prompt": "'quiet reading corners' is a supporting ___",
+                        "answer": "detail"
+                    },
+                    {
+                        "prompt": "details are ___ than the main idea (smaller/bigger)",
+                        "answer": "smaller"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "Details often answer the questions who, what, when, where and why.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "A supporting detail usually answers a question like:",
+                "options": [
+                    "what is the whole text about?",
+                    "who, what, when, where or why?",
+                    "how long is the text?"
+                ],
+                "answer": 1,
+                "explain": "Details give specifics — who, what, when, where and why.",
+                "rule": "Supporting details answer questions like who, what, when, where and why.",
+                "practiceItems": [
+                    {
+                        "prompt": "details often answer who, what, when, where and ___",
+                        "answer": "why"
+                    },
+                    {
+                        "prompt": "a detail gives ___ about the main idea (specifics/nothing)",
+                        "answer": "specifics"
+                    },
+                    {
+                        "prompt": "the main idea is backed up by supporting ___",
+                        "answer": "details"
+                    },
+                    {
+                        "prompt": "a detail is a ___ fact (small/whole)",
+                        "answer": "small"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "text",
+                "content": "Supporting details are the small facts that prove the main idea. Look for the who, what, when, where and why. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "Details often answer the questions who, what, when, where and why." },
-      {
-        "type": "check",
-        "question": "A supporting detail usually answers a question like:",
-        "options": ["what is the whole text about?", "who, what, when, where or why?", "how long is the text?"],
-        "answer": 1,
-        "explain": "Details give specifics — who, what, when, where and why.",
-        "rule": "Supporting details answer questions like who, what, when, where and why.",
-        "practiceItems": [
-          { "prompt": "details often answer who, what, when, where and ___", "answer": "why" },
-          { "prompt": "a detail gives ___ about the main idea (specifics/nothing)", "answer": "specifics" },
-          { "prompt": "the main idea is backed up by supporting ___", "answer": "details" },
-          { "prompt": "a detail is a ___ fact (small/whole)", "answer": "small" }
-        ]
-      },
-      { "type": "text", "content": "Supporting details are the small facts that prove the main idea. Look for the who, what, when, where and why. Let's practise!" }
-    ]
-  }
+    }
 ]

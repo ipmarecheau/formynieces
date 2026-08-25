@@ -1,62 +1,109 @@
 [
-  {
-    "module": "ELA-007",
-    "title": "Ending a sentence: full stop, question mark and exclamation mark",
-    "is_published": true,
-    "blocks": [
-      {
-        "type": "text",
-        "content": "Every sentence needs the right mark at the end. The mark tells the reader whether you are telling, asking, or showing strong feeling."
-      },
-      {
-        "type": "key",
-        "content": "A telling sentence ends with a full stop (.). A question ends with a question mark (?). A sentence with strong feeling ends with an exclamation mark (!)."
-      },
-      {
-        "type": "example",
-        "content": "Choosing the end mark.",
-        "steps": [
-          "'The sky is blue' tells us something → full stop: The sky is blue.",
-          "'Where are you going' asks something → question mark: Where are you going?",
-          "'Watch out' shows strong feeling → exclamation mark: Watch out!"
+    {
+        "module": "ELA-007",
+        "title": "Ending a sentence: full stop, question mark and exclamation mark",
+        "is_published": true,
+        "objectives_direct": [
+            "E-PUN-58"
+        ],
+        "objectives_indirect": [
+            "E-PUN-59",
+            "E-PUN-60"
+        ],
+        "canonical_examples_source": "Language rules self-verified; format ref: bank uk-ks2-2024-gps (KS2 GPS).",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Every sentence needs the right mark at the end. The mark tells the reader whether you are telling, asking, or showing strong feeling.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "A telling sentence ends with a full stop (.). A question ends with a question mark (?). A sentence with strong feeling ends with an exclamation mark (!).",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Choosing the end mark.",
+                "steps": [
+                    "'The sky is blue' tells us something → full stop: The sky is blue.",
+                    "'Where are you going' asks something → question mark: Where are you going?",
+                    "'Watch out' shows strong feeling → exclamation mark: Watch out!"
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "Which mark should end this sentence: 'What is your name'?",
+                "options": [
+                    "a full stop",
+                    "a question mark",
+                    "an exclamation mark"
+                ],
+                "answer": 1,
+                "explain": "It is asking something, so it ends with a question mark: What is your name?",
+                "rule": "A sentence that asks something ends with a question mark.",
+                "practiceItems": [
+                    {
+                        "prompt": "the end mark for 'Where do you live'",
+                        "answer": "?"
+                    },
+                    {
+                        "prompt": "the end mark for 'How old are you'",
+                        "answer": "?"
+                    },
+                    {
+                        "prompt": "the end mark for 'Are you ready'",
+                        "answer": "?"
+                    },
+                    {
+                        "prompt": "the end mark for 'What time is it'",
+                        "answer": "?"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "Use an exclamation mark for a shout, a warning, or strong feeling.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "Which mark best ends this sentence: 'Look out, the ball is coming'?",
+                "options": [
+                    "a full stop",
+                    "a question mark",
+                    "an exclamation mark"
+                ],
+                "answer": 2,
+                "explain": "It is a warning with strong feeling, so it ends with an exclamation mark.",
+                "rule": "A sentence with strong feeling, a warning, or a shout ends with an exclamation mark.",
+                "practiceItems": [
+                    {
+                        "prompt": "the end mark for 'Be careful'",
+                        "answer": "!"
+                    },
+                    {
+                        "prompt": "the end mark for 'What a lovely day'",
+                        "answer": "!"
+                    },
+                    {
+                        "prompt": "the end mark for 'Stop right now'",
+                        "answer": "!"
+                    },
+                    {
+                        "prompt": "the end mark for the calm sentence 'The sky is blue'",
+                        "answer": "."
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "text",
+                "content": "Telling ends with a full stop, asking ends with a question mark, strong feeling ends with an exclamation mark. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      {
-        "type": "check",
-        "question": "Which mark should end this sentence: 'What is your name'?",
-        "options": ["a full stop", "a question mark", "an exclamation mark"],
-        "answer": 1,
-        "explain": "It is asking something, so it ends with a question mark: What is your name?",
-        "rule": "A sentence that asks something ends with a question mark.",
-        "practiceItems": [
-          { "prompt": "the end mark for 'Where do you live'", "answer": "?" },
-          { "prompt": "the end mark for 'How old are you'", "answer": "?" },
-          { "prompt": "the end mark for 'Are you ready'", "answer": "?" },
-          { "prompt": "the end mark for 'What time is it'", "answer": "?" }
-        ]
-      },
-      {
-        "type": "key",
-        "content": "Use an exclamation mark for a shout, a warning, or strong feeling."
-      },
-      {
-        "type": "check",
-        "question": "Which mark best ends this sentence: 'Look out, the ball is coming'?",
-        "options": ["a full stop", "a question mark", "an exclamation mark"],
-        "answer": 2,
-        "explain": "It is a warning with strong feeling, so it ends with an exclamation mark.",
-        "rule": "A sentence with strong feeling, a warning, or a shout ends with an exclamation mark.",
-        "practiceItems": [
-          { "prompt": "the end mark for 'Be careful'", "answer": "!" },
-          { "prompt": "the end mark for 'What a lovely day'", "answer": "!" },
-          { "prompt": "the end mark for 'Stop right now'", "answer": "!" },
-          { "prompt": "the end mark for the calm sentence 'The sky is blue'", "answer": "." }
-        ]
-      },
-      {
-        "type": "text",
-        "content": "Telling ends with a full stop, asking ends with a question mark, strong feeling ends with an exclamation mark. Let's practise!"
-      }
-    ]
-  }
+    }
 ]

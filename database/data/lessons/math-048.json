@@ -1,41 +1,105 @@
 [
-  {
-    "module": "MATH-048",
-    "title": "The mode of a data set",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "One useful thing to know about a set of data is which value shows up the most. That value has a special name: the mode." },
-      { "type": "key", "content": "The mode is the value that appears most often in a data set." },
-      { "type": "example", "content": "Finding the mode.", "steps": ["Look at 2, 3, 3, 5.", "The value 3 appears twice, more than any other.", "So the mode is 3."] },
-      {
-        "type": "fillblank",
-        "prompt": "In the data 2, 3, 3, 5, the mode is ___",
-        "answer": "3",
-        "explain": "3 appears most often (twice), so it is the mode.",
-        "rule": "The mode is the value that appears most often.",
-        "practiceItems": [
-          { "prompt": "mode of 1, 2, 2, 4", "answer": "2" },
-          { "prompt": "mode of 5, 5, 6, 7", "answer": "5" },
-          { "prompt": "mode of 4, 4, 4, 9", "answer": "4" },
-          { "prompt": "mode of 1, 1, 2, 3", "answer": "1" }
+    {
+        "module": "MATH-048",
+        "title": "The mode of a data set",
+        "is_published": true,
+        "objectives_direct": [
+            "M-STA-48"
+        ],
+        "objectives_indirect": [
+            "M-STA-46",
+            "M-STA-47",
+            "M-STA-49"
+        ],
+        "canonical_examples_source": "Arithmetic self-verified; method ref: NCERT Class 5/6 Maths; format ref: bank uk-ks2-2024 maths.",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "One useful thing to know about a set of data is which value shows up the most. That value has a special name: the mode.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "The mode is the value that appears most often in a data set.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Finding the mode.",
+                "steps": [
+                    "Look at 2, 3, 3, 5.",
+                    "The value 3 appears twice, more than any other.",
+                    "So the mode is 3."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "In the data 2, 3, 3, 5, the mode is ___",
+                "answer": "3",
+                "explain": "3 appears most often (twice), so it is the mode.",
+                "rule": "The mode is the value that appears most often.",
+                "practiceItems": [
+                    {
+                        "prompt": "mode of 1, 2, 2, 4",
+                        "answer": "2"
+                    },
+                    {
+                        "prompt": "mode of 5, 5, 6, 7",
+                        "answer": "5"
+                    },
+                    {
+                        "prompt": "mode of 4, 4, 4, 9",
+                        "answer": "4"
+                    },
+                    {
+                        "prompt": "mode of 1, 1, 2, 3",
+                        "answer": "1"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "To find the mode, count how many times each value appears and pick the one that appears the most.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "The mode is the value that appears:",
+                "options": [
+                    "most often",
+                    "least often",
+                    "in the middle"
+                ],
+                "answer": 0,
+                "explain": "The mode is always the most frequently appearing value.",
+                "rule": "Find the mode by choosing the value that appears the most often.",
+                "practiceItems": [
+                    {
+                        "prompt": "mode of 3, 3, 3, 8",
+                        "answer": "3"
+                    },
+                    {
+                        "prompt": "mode of 7, 8, 8, 9",
+                        "answer": "8"
+                    },
+                    {
+                        "prompt": "the mode appears the ___ often (most/least)",
+                        "answer": "most"
+                    },
+                    {
+                        "prompt": "mode of 2, 4, 4, 4, 6",
+                        "answer": "4"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "text",
+                "content": "The mode is simply the most common value. Count each one and pick the winner. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "To find the mode, count how many times each value appears and pick the one that appears the most." },
-      {
-        "type": "check",
-        "question": "The mode is the value that appears:",
-        "options": ["most often", "least often", "in the middle"],
-        "answer": 0,
-        "explain": "The mode is always the most frequently appearing value.",
-        "rule": "Find the mode by choosing the value that appears the most often.",
-        "practiceItems": [
-          { "prompt": "mode of 3, 3, 3, 8", "answer": "3" },
-          { "prompt": "mode of 7, 8, 8, 9", "answer": "8" },
-          { "prompt": "the mode appears the ___ often (most/least)", "answer": "most" },
-          { "prompt": "mode of 2, 4, 4, 4, 6", "answer": "4" }
-        ]
-      },
-      { "type": "text", "content": "The mode is simply the most common value. Count each one and pick the winner. Let's practise!" }
-    ]
-  }
+    }
 ]

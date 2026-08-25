@@ -1,40 +1,99 @@
 [
-  {
-    "module": "MATH-035",
-    "title": "Multi-step shape problems: perimeter and area",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "Some shape problems need two ideas at once — perimeter (the distance around) and area (the space inside). Take them one at a time." },
-      { "type": "key", "content": "Perimeter is the total distance around a shape. For a rectangle, add the length and width, then double it: 2 x (length + width)." },
-      { "type": "example", "content": "Perimeter of a rectangle.", "steps": ["A rectangle is 5 cm by 3 cm.", "Add length and width: 5 + 3 = 8.", "Double it: 2 x 8 = 16 cm."] },
-      {
-        "type": "fillblank",
-        "prompt": "A 5 cm by 3 cm rectangle has perimeter 2 x (5 + 3) = ___ cm",
-        "answer": "16",
-        "explain": "2 x (5 + 3) = 2 x 8 = 16 cm.",
-        "rule": "Perimeter of a rectangle = 2 x (length + width).",
-        "practiceItems": [
-          { "prompt": "perimeter of a 4 by 2 rectangle: 2 x (4 + 2)", "answer": "12" },
-          { "prompt": "perimeter of a square with side 5: 4 x 5", "answer": "20" },
-          { "prompt": "perimeter of a 6 by 1 rectangle", "answer": "14" },
-          { "prompt": "perimeter of a square with side 3", "answer": "12" }
+    {
+        "module": "MATH-035",
+        "title": "Multi-step shape problems: perimeter and area",
+        "is_published": true,
+        "objectives_direct": [
+            "M-GEO-35"
+        ],
+        "objectives_indirect": [
+            "M-GEO-33",
+            "M-GEO-34"
+        ],
+        "canonical_examples_source": "Arithmetic self-verified; method ref: NCERT Class 5/6 Maths; format ref: bank uk-ks2-2024 maths.",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Some shape problems need two ideas at once — perimeter (the distance around) and area (the space inside). Take them one at a time.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "Perimeter is the total distance around a shape. For a rectangle, add the length and width, then double it: 2 x (length + width).",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Perimeter of a rectangle.",
+                "steps": [
+                    "A rectangle is 5 cm by 3 cm.",
+                    "Add length and width: 5 + 3 = 8.",
+                    "Double it: 2 x 8 = 16 cm."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "A 5 cm by 3 cm rectangle has perimeter 2 x (5 + 3) = ___ cm",
+                "answer": "16",
+                "explain": "2 x (5 + 3) = 2 x 8 = 16 cm.",
+                "rule": "Perimeter of a rectangle = 2 x (length + width).",
+                "practiceItems": [
+                    {
+                        "prompt": "perimeter of a 4 by 2 rectangle: 2 x (4 + 2)",
+                        "answer": "12"
+                    },
+                    {
+                        "prompt": "perimeter of a square with side 5: 4 x 5",
+                        "answer": "20"
+                    },
+                    {
+                        "prompt": "perimeter of a 6 by 1 rectangle",
+                        "answer": "14"
+                    },
+                    {
+                        "prompt": "perimeter of a square with side 3",
+                        "answer": "12"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "Area is the space inside a shape. For a rectangle, multiply length by width.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "Area of a 5 cm by 3 cm rectangle = 5 x 3 = ___ square cm",
+                "answer": "15",
+                "explain": "Area = length x width = 5 x 3 = 15 square cm.",
+                "rule": "Area of a rectangle = length x width.",
+                "practiceItems": [
+                    {
+                        "prompt": "area of a 4 by 2 rectangle",
+                        "answer": "8"
+                    },
+                    {
+                        "prompt": "area of a square with side 5",
+                        "answer": "25"
+                    },
+                    {
+                        "prompt": "area of a 6 by 3 rectangle",
+                        "answer": "18"
+                    },
+                    {
+                        "prompt": "area of a square with side 4",
+                        "answer": "16"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "text",
+                "content": "Perimeter adds up all the sides; area multiplies length by width. Keep the two ideas separate and work step by step. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "Area is the space inside a shape. For a rectangle, multiply length by width." },
-      {
-        "type": "fillblank",
-        "prompt": "Area of a 5 cm by 3 cm rectangle = 5 x 3 = ___ square cm",
-        "answer": "15",
-        "explain": "Area = length x width = 5 x 3 = 15 square cm.",
-        "rule": "Area of a rectangle = length x width.",
-        "practiceItems": [
-          { "prompt": "area of a 4 by 2 rectangle", "answer": "8" },
-          { "prompt": "area of a square with side 5", "answer": "25" },
-          { "prompt": "area of a 6 by 3 rectangle", "answer": "18" },
-          { "prompt": "area of a square with side 4", "answer": "16" }
-        ]
-      },
-      { "type": "text", "content": "Perimeter adds up all the sides; area multiplies length by width. Keep the two ideas separate and work step by step. Let's practise!" }
-    ]
-  }
+    }
 ]

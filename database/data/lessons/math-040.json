@@ -1,40 +1,100 @@
 [
-  {
-    "module": "MATH-040",
-    "title": "Area of compound shapes",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "To find the area of a tricky compound shape, break it into simple rectangles, find the area of each, and add them up." },
-      { "type": "key", "content": "Split a compound shape into rectangles, find each rectangle's area, then add the areas together." },
-      { "type": "example", "content": "Splitting a shape.", "steps": ["An L-shape splits into two rectangles.", "One has area 6, the other has area 4.", "Total area = 6 + 4 = 10 square units."] },
-      {
-        "type": "fillblank",
-        "prompt": "Two rectangles have areas 6 and 4. The total area = 6 + 4 = ___",
-        "answer": "10",
-        "explain": "Add the parts: 6 + 4 = 10.",
-        "rule": "Split a compound shape into rectangles, find each area, and add them.",
-        "practiceItems": [
-          { "prompt": "areas 5 and 3 added", "answer": "8" },
-          { "prompt": "areas 10 and 6 added", "answer": "16" },
-          { "prompt": "areas 8 and 8 added", "answer": "16" },
-          { "prompt": "areas 12 and 3 added", "answer": "15" }
+    {
+        "module": "MATH-040",
+        "title": "Area of compound shapes",
+        "is_published": true,
+        "objectives_direct": [
+            "M-MEA-40"
+        ],
+        "objectives_indirect": [
+            "M-MEA-38",
+            "M-MEA-39",
+            "M-MEA-41"
+        ],
+        "canonical_examples_source": "Arithmetic self-verified; method ref: NCERT Class 5/6 Maths; format ref: bank uk-ks2-2024 maths.",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "To find the area of a tricky compound shape, break it into simple rectangles, find the area of each, and add them up.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "Split a compound shape into rectangles, find each rectangle's area, then add the areas together.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Splitting a shape.",
+                "steps": [
+                    "An L-shape splits into two rectangles.",
+                    "One has area 6, the other has area 4.",
+                    "Total area = 6 + 4 = 10 square units."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "Two rectangles have areas 6 and 4. The total area = 6 + 4 = ___",
+                "answer": "10",
+                "explain": "Add the parts: 6 + 4 = 10.",
+                "rule": "Split a compound shape into rectangles, find each area, and add them.",
+                "practiceItems": [
+                    {
+                        "prompt": "areas 5 and 3 added",
+                        "answer": "8"
+                    },
+                    {
+                        "prompt": "areas 10 and 6 added",
+                        "answer": "16"
+                    },
+                    {
+                        "prompt": "areas 8 and 8 added",
+                        "answer": "16"
+                    },
+                    {
+                        "prompt": "areas 12 and 3 added",
+                        "answer": "15"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "Find each rectangle's area with length x width first, then add.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "A 3 by 2 rectangle plus a 2 by 2 rectangle: 6 + 4 = ___",
+                "answer": "10",
+                "explain": "3 x 2 = 6 and 2 x 2 = 4, so 6 + 4 = 10.",
+                "rule": "Work out each part's area with length x width, then add the parts.",
+                "practiceItems": [
+                    {
+                        "prompt": "2x2 plus 3x3: 4 + 9",
+                        "answer": "13"
+                    },
+                    {
+                        "prompt": "4x2 plus 1x2: 8 + 2",
+                        "answer": "10"
+                    },
+                    {
+                        "prompt": "5x1 plus 2x2: 5 + 4",
+                        "answer": "9"
+                    },
+                    {
+                        "prompt": "3x3 plus 3x1: 9 + 3",
+                        "answer": "12"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "text",
+                "content": "Break the shape into rectangles, area each one with length x width, then add. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "Find each rectangle's area with length x width first, then add." },
-      {
-        "type": "fillblank",
-        "prompt": "A 3 by 2 rectangle plus a 2 by 2 rectangle: 6 + 4 = ___",
-        "answer": "10",
-        "explain": "3 x 2 = 6 and 2 x 2 = 4, so 6 + 4 = 10.",
-        "rule": "Work out each part's area with length x width, then add the parts.",
-        "practiceItems": [
-          { "prompt": "2x2 plus 3x3: 4 + 9", "answer": "13" },
-          { "prompt": "4x2 plus 1x2: 8 + 2", "answer": "10" },
-          { "prompt": "5x1 plus 2x2: 5 + 4", "answer": "9" },
-          { "prompt": "3x3 plus 3x1: 9 + 3", "answer": "12" }
-        ]
-      },
-      { "type": "text", "content": "Break the shape into rectangles, area each one with length x width, then add. Let's practise!" }
-    ]
-  }
+    }
 ]

@@ -1,40 +1,99 @@
 [
-  {
-    "module": "MATH-051",
-    "title": "Multi-step data analysis",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "The hardest data questions ask for more than one step — perhaps a total and then an average, or a total and then a difference. Work through them one step at a time." },
-      { "type": "key", "content": "For a multi-step data problem, find the total first by adding all the values." },
-      { "type": "example", "content": "Finding a total.", "steps": ["Three test scores are 6, 8 and 10.", "Add them: 6 + 8 + 10 = 24.", "Now the total is ready for the next step."] },
-      {
-        "type": "fillblank",
-        "prompt": "Scores are 6, 8, 10. The total = 6 + 8 + 10 = ___",
-        "answer": "24",
-        "explain": "6 + 8 + 10 = 24.",
-        "rule": "In a multi-step data problem, add all the values to find the total first.",
-        "practiceItems": [
-          { "prompt": "total of 5, 5, 5", "answer": "15" },
-          { "prompt": "total of 2, 4, 6, 8", "answer": "20" },
-          { "prompt": "total of 10, 20", "answer": "30" },
-          { "prompt": "total of 3, 3, 3, 3", "answer": "12" }
+    {
+        "module": "MATH-051",
+        "title": "Multi-step data analysis",
+        "is_published": true,
+        "objectives_direct": [
+            "M-STA-51"
+        ],
+        "objectives_indirect": [
+            "M-STA-49",
+            "M-STA-50"
+        ],
+        "canonical_examples_source": "Arithmetic self-verified; method ref: NCERT Class 5/6 Maths; format ref: bank uk-ks2-2024 maths.",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "The hardest data questions ask for more than one step — perhaps a total and then an average, or a total and then a difference. Work through them one step at a time.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "For a multi-step data problem, find the total first by adding all the values.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Finding a total.",
+                "steps": [
+                    "Three test scores are 6, 8 and 10.",
+                    "Add them: 6 + 8 + 10 = 24.",
+                    "Now the total is ready for the next step."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "Scores are 6, 8, 10. The total = 6 + 8 + 10 = ___",
+                "answer": "24",
+                "explain": "6 + 8 + 10 = 24.",
+                "rule": "In a multi-step data problem, add all the values to find the total first.",
+                "practiceItems": [
+                    {
+                        "prompt": "total of 5, 5, 5",
+                        "answer": "15"
+                    },
+                    {
+                        "prompt": "total of 2, 4, 6, 8",
+                        "answer": "20"
+                    },
+                    {
+                        "prompt": "total of 10, 20",
+                        "answer": "30"
+                    },
+                    {
+                        "prompt": "total of 3, 3, 3, 3",
+                        "answer": "12"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "Then use the total for the next step — divide by the count for the mean, or subtract to find a difference.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "The scores 6, 8, 10 total 24. Their mean = 24 ÷ 3 = ___",
+                "answer": "8",
+                "explain": "24 ÷ 3 = 8, so the mean score is 8.",
+                "rule": "Use the total in the next step: divide by the count for the mean, or subtract for a difference.",
+                "practiceItems": [
+                    {
+                        "prompt": "mean of a total of 20 over 4 values",
+                        "answer": "5"
+                    },
+                    {
+                        "prompt": "mean of a total of 30 over 3 values",
+                        "answer": "10"
+                    },
+                    {
+                        "prompt": "mean of a total of 12 over 4 values",
+                        "answer": "3"
+                    },
+                    {
+                        "prompt": "the difference between 10 and 6",
+                        "answer": "4"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "text",
+                "content": "Total first, then mean or difference. Break a multi-step data question into single steps and it becomes easy. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "Then use the total for the next step — divide by the count for the mean, or subtract to find a difference." },
-      {
-        "type": "fillblank",
-        "prompt": "The scores 6, 8, 10 total 24. Their mean = 24 ÷ 3 = ___",
-        "answer": "8",
-        "explain": "24 ÷ 3 = 8, so the mean score is 8.",
-        "rule": "Use the total in the next step: divide by the count for the mean, or subtract for a difference.",
-        "practiceItems": [
-          { "prompt": "mean of a total of 20 over 4 values", "answer": "5" },
-          { "prompt": "mean of a total of 30 over 3 values", "answer": "10" },
-          { "prompt": "mean of a total of 12 over 4 values", "answer": "3" },
-          { "prompt": "the difference between 10 and 6", "answer": "4" }
-        ]
-      },
-      { "type": "text", "content": "Total first, then mean or difference. Break a multi-step data question into single steps and it becomes easy. Let's practise!" }
-    ]
-  }
+    }
 ]

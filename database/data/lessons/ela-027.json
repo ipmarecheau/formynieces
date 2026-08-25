@@ -1,42 +1,110 @@
 [
-  {
-    "module": "ELA-027",
-    "title": "The writer's purpose and audience",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "Every text is written for a reason and for someone. Knowing the writer's purpose and audience helps you understand why it is written the way it is." },
-      { "type": "key", "content": "A writer's purpose is usually to INFORM (give facts), to PERSUADE (change your mind), or to ENTERTAIN (enjoy)." },
-      { "type": "example", "content": "Reading the purpose.", "steps": ["A news report giving facts → to inform.", "A poster saying 'Save water!' → to persuade.", "A funny story → to entertain." ] },
-      {
-        "type": "check",
-        "question": "A poster that says 'Vote for cleaner beaches!' has what main purpose?",
-        "options": ["to inform", "to persuade", "to entertain"],
-        "answer": 1,
-        "explain": "It is trying to change your mind and get you to act, so its purpose is to persuade.",
-        "rule": "A writer's purpose is to inform, to persuade, or to entertain.",
-        "practiceItems": [
-          { "prompt": "purpose of a text that gives facts", "answer": "inform" },
-          { "prompt": "purpose of a text that tries to convince you", "answer": "persuade" },
-          { "prompt": "purpose of a funny story", "answer": "entertain" },
-          { "prompt": "purpose of a recipe that tells you the steps", "answer": "inform" }
+    {
+        "module": "ELA-027",
+        "title": "The writer's purpose and audience",
+        "is_published": true,
+        "objectives_direct": [
+            "E-RCM-78"
+        ],
+        "objectives_indirect": [
+            "E-RCM-76",
+            "E-RCM-77",
+            "E-RCM-79"
+        ],
+        "canonical_examples_source": "Language rules self-verified; format ref: bank uk-ks2-2024-gps (KS2 GPS).",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Every text is written for a reason and for someone. Knowing the writer's purpose and audience helps you understand why it is written the way it is.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "A writer's purpose is usually to INFORM (give facts), to PERSUADE (change your mind), or to ENTERTAIN (enjoy).",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Reading the purpose.",
+                "steps": [
+                    "A news report giving facts → to inform.",
+                    "A poster saying 'Save water!' → to persuade.",
+                    "A funny story → to entertain."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "A poster that says 'Vote for cleaner beaches!' has what main purpose?",
+                "options": [
+                    "to inform",
+                    "to persuade",
+                    "to entertain"
+                ],
+                "answer": 1,
+                "explain": "It is trying to change your mind and get you to act, so its purpose is to persuade.",
+                "rule": "A writer's purpose is to inform, to persuade, or to entertain.",
+                "practiceItems": [
+                    {
+                        "prompt": "purpose of a text that gives facts",
+                        "answer": "inform"
+                    },
+                    {
+                        "prompt": "purpose of a text that tries to convince you",
+                        "answer": "persuade"
+                    },
+                    {
+                        "prompt": "purpose of a funny story",
+                        "answer": "entertain"
+                    },
+                    {
+                        "prompt": "purpose of a recipe that tells you the steps",
+                        "answer": "inform"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "The audience is WHO the text is written for — for example, young children, parents, or shoppers.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "A book with big pictures and very simple words is written for which audience?",
+                "options": [
+                    "young children",
+                    "scientists",
+                    "car drivers"
+                ],
+                "answer": 0,
+                "explain": "Big pictures and simple words suit young children, so they are the audience.",
+                "rule": "The audience is the group of readers a text is written for.",
+                "practiceItems": [
+                    {
+                        "prompt": "who a text is written for is its ___",
+                        "answer": "audience"
+                    },
+                    {
+                        "prompt": "a text with simple words and pictures is for young ___",
+                        "answer": "children"
+                    },
+                    {
+                        "prompt": "the reason a text is written is its ___",
+                        "answer": "purpose"
+                    },
+                    {
+                        "prompt": "an advertisement's purpose is usually to ___",
+                        "answer": "persuade"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "text",
+                "content": "Ask 'why was this written?' for the purpose, and 'who is it for?' for the audience. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "The audience is WHO the text is written for — for example, young children, parents, or shoppers." },
-      {
-        "type": "check",
-        "question": "A book with big pictures and very simple words is written for which audience?",
-        "options": ["young children", "scientists", "car drivers"],
-        "answer": 0,
-        "explain": "Big pictures and simple words suit young children, so they are the audience.",
-        "rule": "The audience is the group of readers a text is written for.",
-        "practiceItems": [
-          { "prompt": "who a text is written for is its ___", "answer": "audience" },
-          { "prompt": "a text with simple words and pictures is for young ___", "answer": "children" },
-          { "prompt": "the reason a text is written is its ___", "answer": "purpose" },
-          { "prompt": "an advertisement's purpose is usually to ___", "answer": "persuade" }
-        ]
-      },
-      { "type": "text", "content": "Ask 'why was this written?' for the purpose, and 'who is it for?' for the audience. Let's practise!" }
-    ]
-  }
+    }
 ]

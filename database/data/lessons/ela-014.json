@@ -1,61 +1,105 @@
 [
-  {
-    "module": "ELA-014",
-    "title": "Prepositions and conjunctions: position words and joining words",
-    "is_published": true,
-    "blocks": [
-      {
-        "type": "text",
-        "content": "Two small groups of words do big jobs: prepositions tell us where or when, and conjunctions join ideas together."
-      },
-      {
-        "type": "key",
-        "content": "A preposition shows position — where something is: in, on, under, behind, between."
-      },
-      {
-        "type": "example",
-        "content": "Choosing a preposition.",
-        "steps": [
-          "Where is the cat? Beneath the table.",
-          "The position word for 'beneath' is 'under'.",
-          "The cat is under the table."
+    {
+        "module": "ELA-014",
+        "title": "Prepositions and conjunctions: position words and joining words",
+        "is_published": true,
+        "objectives_direct": [
+            "E-GRA-65"
+        ],
+        "objectives_indirect": [
+            "E-GRA-63",
+            "E-GRA-64",
+            "E-GRA-66"
+        ],
+        "canonical_examples_source": "Language rules self-verified; format ref: bank uk-ks2-2024-gps (KS2 GPS).",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Two small groups of words do big jobs: prepositions tell us where or when, and conjunctions join ideas together.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "A preposition shows position — where something is: in, on, under, behind, between.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Choosing a preposition.",
+                "steps": [
+                    "Where is the cat? Beneath the table.",
+                    "The position word for 'beneath' is 'under'.",
+                    "The cat is under the table."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "The ball rolled ___ the bed. (beneath it)",
+                "answer": "under",
+                "explain": "'under' is the preposition that shows position beneath something.",
+                "rule": "A preposition shows position — where something is.",
+                "practiceItems": [
+                    {
+                        "prompt": "position word: the cat sat ___ the mat (on top)",
+                        "answer": "on"
+                    },
+                    {
+                        "prompt": "position word: the shop is ___ the two houses (in the middle)",
+                        "answer": "between"
+                    },
+                    {
+                        "prompt": "position word: the toy is ___ the box (inside)",
+                        "answer": "in"
+                    },
+                    {
+                        "prompt": "position word: she hid ___ the door (at the back of)",
+                        "answer": "behind"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "A conjunction joins words or ideas: and (to add), but (to contrast), because (to give a reason), or (to give a choice).",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "Which joining word best fits: 'I was tired ___ I kept going.'?",
+                "options": [
+                    "and",
+                    "but",
+                    "or"
+                ],
+                "answer": 1,
+                "explain": "The two ideas contrast, so 'but' is the best joining word.",
+                "rule": "A conjunction joins words or ideas: and, but, because, or.",
+                "practiceItems": [
+                    {
+                        "prompt": "joining word to add: rice ___ peas",
+                        "answer": "and"
+                    },
+                    {
+                        "prompt": "joining word to contrast: small ___ strong",
+                        "answer": "but"
+                    },
+                    {
+                        "prompt": "joining word to give a reason: I ran ___ I was late",
+                        "answer": "because"
+                    },
+                    {
+                        "prompt": "joining word for a choice: tea ___ coffee",
+                        "answer": "or"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "text",
+                "content": "Prepositions place things; conjunctions join ideas. Small words, big jobs. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      {
-        "type": "fillblank",
-        "prompt": "The ball rolled ___ the bed. (beneath it)",
-        "answer": "under",
-        "explain": "'under' is the preposition that shows position beneath something.",
-        "rule": "A preposition shows position — where something is.",
-        "practiceItems": [
-          { "prompt": "position word: the cat sat ___ the mat (on top)", "answer": "on" },
-          { "prompt": "position word: the shop is ___ the two houses (in the middle)", "answer": "between" },
-          { "prompt": "position word: the toy is ___ the box (inside)", "answer": "in" },
-          { "prompt": "position word: she hid ___ the door (at the back of)", "answer": "behind" }
-        ]
-      },
-      {
-        "type": "key",
-        "content": "A conjunction joins words or ideas: and (to add), but (to contrast), because (to give a reason), or (to give a choice)."
-      },
-      {
-        "type": "check",
-        "question": "Which joining word best fits: 'I was tired ___ I kept going.'?",
-        "options": ["and", "but", "or"],
-        "answer": 1,
-        "explain": "The two ideas contrast, so 'but' is the best joining word.",
-        "rule": "A conjunction joins words or ideas: and, but, because, or.",
-        "practiceItems": [
-          { "prompt": "joining word to add: rice ___ peas", "answer": "and" },
-          { "prompt": "joining word to contrast: small ___ strong", "answer": "but" },
-          { "prompt": "joining word to give a reason: I ran ___ I was late", "answer": "because" },
-          { "prompt": "joining word for a choice: tea ___ coffee", "answer": "or" }
-        ]
-      },
-      {
-        "type": "text",
-        "content": "Prepositions place things; conjunctions join ideas. Small words, big jobs. Let's practise!"
-      }
-    ]
-  }
+    }
 ]

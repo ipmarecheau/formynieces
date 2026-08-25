@@ -1,41 +1,105 @@
 [
-  {
-    "module": "MATH-031",
-    "title": "Angles: right, acute and obtuse",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "An angle measures a turn or a corner. We sort angles into families by how big they are, measured in degrees." },
-      { "type": "key", "content": "A right angle is exactly 90 degrees — a square corner. An acute angle is smaller than 90 degrees." },
-      { "type": "example", "content": "Recognising angles.", "steps": ["The corner of a book is a right angle: 90 degrees.", "A narrow, sharp angle like 45 degrees is smaller than 90.", "So 45 degrees is an acute angle."] },
-      {
-        "type": "fillblank",
-        "prompt": "A right angle measures ___ degrees.",
-        "answer": "90",
-        "explain": "A right angle is a square corner, exactly 90 degrees.",
-        "rule": "A right angle is exactly 90 degrees; an acute angle is less than 90 degrees.",
-        "practiceItems": [
-          { "prompt": "degrees in a right angle", "answer": "90" },
-          { "prompt": "an angle less than 90 degrees is called", "answer": "acute" },
-          { "prompt": "an angle more than 90 degrees is called", "answer": "obtuse" },
-          { "prompt": "degrees in a straight line", "answer": "180" }
+    {
+        "module": "MATH-031",
+        "title": "Angles: right, acute and obtuse",
+        "is_published": true,
+        "objectives_direct": [
+            "M-GEO-31"
+        ],
+        "objectives_indirect": [
+            "M-GEO-29",
+            "M-GEO-30",
+            "M-GEO-32"
+        ],
+        "canonical_examples_source": "Arithmetic self-verified; method ref: NCERT Class 5/6 Maths; format ref: bank uk-ks2-2024 maths.",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "An angle measures a turn or a corner. We sort angles into families by how big they are, measured in degrees.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "A right angle is exactly 90 degrees — a square corner. An acute angle is smaller than 90 degrees.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Recognising angles.",
+                "steps": [
+                    "The corner of a book is a right angle: 90 degrees.",
+                    "A narrow, sharp angle like 45 degrees is smaller than 90.",
+                    "So 45 degrees is an acute angle."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "A right angle measures ___ degrees.",
+                "answer": "90",
+                "explain": "A right angle is a square corner, exactly 90 degrees.",
+                "rule": "A right angle is exactly 90 degrees; an acute angle is less than 90 degrees.",
+                "practiceItems": [
+                    {
+                        "prompt": "degrees in a right angle",
+                        "answer": "90"
+                    },
+                    {
+                        "prompt": "an angle less than 90 degrees is called",
+                        "answer": "acute"
+                    },
+                    {
+                        "prompt": "an angle more than 90 degrees is called",
+                        "answer": "obtuse"
+                    },
+                    {
+                        "prompt": "degrees in a straight line",
+                        "answer": "180"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "An obtuse angle is bigger than 90 degrees but smaller than 180 degrees — a wide, open corner.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "An angle of 45 degrees is:",
+                "options": [
+                    "acute",
+                    "right",
+                    "obtuse"
+                ],
+                "answer": 0,
+                "explain": "45 is less than 90, so it is an acute angle.",
+                "rule": "Acute is under 90 degrees, right is exactly 90, obtuse is over 90.",
+                "practiceItems": [
+                    {
+                        "prompt": "45 degrees is (acute/obtuse)",
+                        "answer": "acute"
+                    },
+                    {
+                        "prompt": "120 degrees is (acute/obtuse)",
+                        "answer": "obtuse"
+                    },
+                    {
+                        "prompt": "90 degrees is a ___ angle",
+                        "answer": "right"
+                    },
+                    {
+                        "prompt": "100 degrees is (acute/obtuse)",
+                        "answer": "obtuse"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "text",
+                "content": "Under 90 is acute, exactly 90 is right, over 90 is obtuse. Compare every angle to the square corner. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "An obtuse angle is bigger than 90 degrees but smaller than 180 degrees — a wide, open corner." },
-      {
-        "type": "check",
-        "question": "An angle of 45 degrees is:",
-        "options": ["acute", "right", "obtuse"],
-        "answer": 0,
-        "explain": "45 is less than 90, so it is an acute angle.",
-        "rule": "Acute is under 90 degrees, right is exactly 90, obtuse is over 90.",
-        "practiceItems": [
-          { "prompt": "45 degrees is (acute/obtuse)", "answer": "acute" },
-          { "prompt": "120 degrees is (acute/obtuse)", "answer": "obtuse" },
-          { "prompt": "90 degrees is a ___ angle", "answer": "right" },
-          { "prompt": "100 degrees is (acute/obtuse)", "answer": "obtuse" }
-        ]
-      },
-      { "type": "text", "content": "Under 90 is acute, exactly 90 is right, over 90 is obtuse. Compare every angle to the square corner. Let's practise!" }
-    ]
-  }
+    }
 ]

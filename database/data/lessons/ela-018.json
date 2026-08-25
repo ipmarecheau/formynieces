@@ -1,65 +1,107 @@
 [
-  {
-    "module": "ELA-018",
-    "title": "Narrative writing: structuring a story and painting a picture",
-    "is_published": true,
-    "blocks": [
-      {
-        "type": "text",
-        "content": "A good story takes the reader on a journey. It has a clear shape, and it uses strong words that let the reader SEE what is happening."
-      },
-      {
-        "type": "key",
-        "content": "A story has three parts: a beginning that sets the scene and meets the characters, a middle with a problem, and an end that solves it."
-      },
-      {
-        "type": "example",
-        "content": "The shape of a story.",
-        "steps": [
-          "Beginning: Maya finds a lost puppy on her way home.",
-          "Middle: The puppy runs into the busy market and she loses it.",
-          "End: A kind vendor helps her find it, and she takes it home."
-        ]
-      },
-      {
-        "type": "ordersteps",
-        "instruction": "Put these story parts in the correct order.",
-        "items": [
-          "Introduce the character and the setting",
-          "A problem happens",
-          "The character tries to solve it",
-          "The problem is solved and the story ends"
+    {
+        "module": "ELA-018",
+        "title": "Narrative writing: structuring a story and painting a picture",
+        "is_published": true,
+        "objectives_direct": [
+            "E-WRI-69"
         ],
-        "rule": "A story is told in order: a beginning that sets the scene, a middle with a problem, and an end that solves it.",
-        "practiceItems": [
-          { "prompt": "the part of a story where you meet the characters (beginning/middle/end)", "answer": "beginning" },
-          { "prompt": "the part where the problem happens", "answer": "middle" },
-          { "prompt": "the part where the problem is solved", "answer": "end" },
-          { "prompt": "the part that sets the scene", "answer": "beginning" }
+        "objectives_indirect": [
+            "E-WRI-70",
+            "E-WRI-71"
+        ],
+        "canonical_examples_source": "Language rules self-verified; format ref: bank uk-ks2-2024-gps (KS2 GPS).",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "A good story takes the reader on a journey. It has a clear shape, and it uses strong words that let the reader SEE what is happening.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "A story has three parts: a beginning that sets the scene and meets the characters, a middle with a problem, and an end that solves it.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "The shape of a story.",
+                "steps": [
+                    "Beginning: Maya finds a lost puppy on her way home.",
+                    "Middle: The puppy runs into the busy market and she loses it.",
+                    "End: A kind vendor helps her find it, and she takes it home."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "ordersteps",
+                "instruction": "Put these story parts in the correct order.",
+                "items": [
+                    "Introduce the character and the setting",
+                    "A problem happens",
+                    "The character tries to solve it",
+                    "The problem is solved and the story ends"
+                ],
+                "rule": "A story is told in order: a beginning that sets the scene, a middle with a problem, and an end that solves it.",
+                "practiceItems": [
+                    {
+                        "prompt": "the part of a story where you meet the characters (beginning/middle/end)",
+                        "answer": "beginning"
+                    },
+                    {
+                        "prompt": "the part where the problem happens",
+                        "answer": "middle"
+                    },
+                    {
+                        "prompt": "the part where the problem is solved",
+                        "answer": "end"
+                    },
+                    {
+                        "prompt": "the part that sets the scene",
+                        "answer": "beginning"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "Descriptive language uses the senses and strong, exact words to paint a picture: not 'the dog ran', but 'the muddy dog raced across the wet yard'.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "Which sentence paints a clearer picture?",
+                "options": [
+                    "The dog ran away.",
+                    "The muddy brown dog raced across the wet yard."
+                ],
+                "answer": 1,
+                "explain": "The second uses exact, sensory words, so the reader can picture it.",
+                "rule": "Descriptive writing uses the senses and strong, exact words instead of plain, general ones.",
+                "practiceItems": [
+                    {
+                        "prompt": "a stronger word for 'ran' quickly",
+                        "answer": "raced"
+                    },
+                    {
+                        "prompt": "a stronger word for 'said' loudly",
+                        "answer": "shouted"
+                    },
+                    {
+                        "prompt": "a stronger word for 'big'",
+                        "answer": "huge"
+                    },
+                    {
+                        "prompt": "a stronger word for 'happy'",
+                        "answer": "delighted"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "text",
+                "content": "Shape your story with a beginning, middle and end, then bring it to life with exact, sensory words. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      {
-        "type": "key",
-        "content": "Descriptive language uses the senses and strong, exact words to paint a picture: not 'the dog ran', but 'the muddy dog raced across the wet yard'."
-      },
-      {
-        "type": "check",
-        "question": "Which sentence paints a clearer picture?",
-        "options": ["The dog ran away.", "The muddy brown dog raced across the wet yard."],
-        "answer": 1,
-        "explain": "The second uses exact, sensory words, so the reader can picture it.",
-        "rule": "Descriptive writing uses the senses and strong, exact words instead of plain, general ones.",
-        "practiceItems": [
-          { "prompt": "a stronger word for 'ran' quickly", "answer": "raced" },
-          { "prompt": "a stronger word for 'said' loudly", "answer": "shouted" },
-          { "prompt": "a stronger word for 'big'", "answer": "huge" },
-          { "prompt": "a stronger word for 'happy'", "answer": "delighted" }
-        ]
-      },
-      {
-        "type": "text",
-        "content": "Shape your story with a beginning, middle and end, then bring it to life with exact, sensory words. Let's practise!"
-      }
-    ]
-  }
+    }
 ]

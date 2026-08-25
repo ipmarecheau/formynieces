@@ -1,42 +1,108 @@
 [
-  {
-    "module": "MATH-003",
-    "title": "Rounding to the nearest thousand",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "Rounding gives a number that is close enough but much easier to use. Rounding to the nearest thousand smooths a number to the nearest 1,000." },
-      { "type": "key", "content": "To round to the nearest thousand, look at the hundreds digit: 5 or more rounds up, 4 or less rounds down." },
-      { "type": "example", "content": "Round 6,432 to the nearest thousand.", "steps": ["The hundreds digit is 4.", "4 is less than 5, so we round down.", "6,432 rounds to 6,000."] },
-      {
-        "type": "fillblank",
-        "prompt": "4,700 rounds to the nearest thousand: ___",
-        "answer": "5000",
-        "options": ["4000", "5000"],
-        "explain": "The hundreds digit is 7, which is 5 or more, so round up to 5,000.",
-        "rule": "To round to the nearest thousand, look at the hundreds digit: 5 or more rounds up, 4 or less rounds down.",
-        "practiceItems": [
-          { "prompt": "4,700 rounded to the nearest thousand", "answer": "5000" },
-          { "prompt": "6,432 rounded to the nearest thousand", "answer": "6000" },
-          { "prompt": "3,500 rounded to the nearest thousand", "answer": "4000" },
-          { "prompt": "8,200 rounded to the nearest thousand", "answer": "8000" }
+    {
+        "module": "MATH-003",
+        "title": "Rounding to the nearest thousand",
+        "is_published": true,
+        "objectives_direct": [
+            "M-NUM-03"
+        ],
+        "objectives_indirect": [
+            "M-NUM-01",
+            "M-NUM-02",
+            "M-NUM-04"
+        ],
+        "canonical_examples_source": "Arithmetic self-verified; method ref: NCERT Class 5/6 Maths; format ref: bank uk-ks2-2024 maths.",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Rounding gives a number that is close enough but much easier to use. Rounding to the nearest thousand smooths a number to the nearest 1,000.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "To round to the nearest thousand, look at the hundreds digit: 5 or more rounds up, 4 or less rounds down.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Round 6,432 to the nearest thousand.",
+                "steps": [
+                    "The hundreds digit is 4.",
+                    "4 is less than 5, so we round down.",
+                    "6,432 rounds to 6,000."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "4,700 rounds to the nearest thousand: ___",
+                "answer": "5000",
+                "options": [
+                    "4000",
+                    "5000"
+                ],
+                "explain": "The hundreds digit is 7, which is 5 or more, so round up to 5,000.",
+                "rule": "To round to the nearest thousand, look at the hundreds digit: 5 or more rounds up, 4 or less rounds down.",
+                "practiceItems": [
+                    {
+                        "prompt": "4,700 rounded to the nearest thousand",
+                        "answer": "5000"
+                    },
+                    {
+                        "prompt": "6,432 rounded to the nearest thousand",
+                        "answer": "6000"
+                    },
+                    {
+                        "prompt": "3,500 rounded to the nearest thousand",
+                        "answer": "4000"
+                    },
+                    {
+                        "prompt": "8,200 rounded to the nearest thousand",
+                        "answer": "8000"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "The hundreds digit is the only one you need to check — the tens and ones do not change the rounding.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "Round 8,512 to the nearest thousand.",
+                "options": [
+                    "8,000",
+                    "9,000"
+                ],
+                "answer": 1,
+                "explain": "The hundreds digit is 5, which is 5 or more, so round up to 9,000.",
+                "rule": "Check the hundreds digit only: 5 or more rounds up to the next thousand, 4 or less rounds down.",
+                "practiceItems": [
+                    {
+                        "prompt": "8,512 rounded to the nearest thousand",
+                        "answer": "9000"
+                    },
+                    {
+                        "prompt": "2,400 rounded to the nearest thousand",
+                        "answer": "2000"
+                    },
+                    {
+                        "prompt": "7,800 rounded to the nearest thousand",
+                        "answer": "8000"
+                    },
+                    {
+                        "prompt": "1,500 rounded to the nearest thousand",
+                        "answer": "2000"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "text",
+                "content": "Check the hundreds digit: 5 or more rounds up, 4 or less rounds down. That is all there is to it. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "The hundreds digit is the only one you need to check — the tens and ones do not change the rounding." },
-      {
-        "type": "check",
-        "question": "Round 8,512 to the nearest thousand.",
-        "options": ["8,000", "9,000"],
-        "answer": 1,
-        "explain": "The hundreds digit is 5, which is 5 or more, so round up to 9,000.",
-        "rule": "Check the hundreds digit only: 5 or more rounds up to the next thousand, 4 or less rounds down.",
-        "practiceItems": [
-          { "prompt": "8,512 rounded to the nearest thousand", "answer": "9000" },
-          { "prompt": "2,400 rounded to the nearest thousand", "answer": "2000" },
-          { "prompt": "7,800 rounded to the nearest thousand", "answer": "8000" },
-          { "prompt": "1,500 rounded to the nearest thousand", "answer": "2000" }
-        ]
-      },
-      { "type": "text", "content": "Check the hundreds digit: 5 or more rounds up, 4 or less rounds down. That is all there is to it. Let's practise!" }
-    ]
-  }
+    }
 ]

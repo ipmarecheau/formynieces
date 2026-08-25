@@ -1,42 +1,109 @@
 [
-  {
-    "module": "ELA-028",
-    "title": "Evaluating a text and supporting your view",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "Reading is not only about understanding — it is about judging. When you evaluate a text, you give your own view and back it up with evidence from the text." },
-      { "type": "key", "content": "To support an opinion about a text, give evidence FROM the text — not just a feeling." },
-      { "type": "example", "content": "Backing up a view.", "steps": ["View: 'The character is brave.'", "Weak support: 'Because I think so.'", "Strong support: 'Because she ran into the burning house to save the cat.'" ] },
-      {
-        "type": "check",
-        "question": "What is the best way to support your view about a text?",
-        "options": ["say it more loudly", "give evidence from the text", "guess what happens next"],
-        "answer": 1,
-        "explain": "A strong view is backed by evidence taken from the text itself.",
-        "rule": "Support your opinion about a text with evidence from the text.",
-        "practiceItems": [
-          { "prompt": "back up your opinion with ___ from the text", "answer": "evidence" },
-          { "prompt": "a personal view is your ___", "answer": "opinion" },
-          { "prompt": "good evidence comes from the ___", "answer": "text" },
-          { "prompt": "'because she saved the cat' is an example of ___", "answer": "evidence" }
+    {
+        "module": "ELA-028",
+        "title": "Evaluating a text and supporting your view",
+        "is_published": true,
+        "objectives_direct": [
+            "E-RCM-79"
+        ],
+        "objectives_indirect": [
+            "E-RCM-77",
+            "E-RCM-78"
+        ],
+        "canonical_examples_source": "Language rules self-verified; format ref: bank uk-ks2-2024-gps (KS2 GPS).",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Reading is not only about understanding — it is about judging. When you evaluate a text, you give your own view and back it up with evidence from the text.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "To support an opinion about a text, give evidence FROM the text — not just a feeling.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Backing up a view.",
+                "steps": [
+                    "View: 'The character is brave.'",
+                    "Weak support: 'Because I think so.'",
+                    "Strong support: 'Because she ran into the burning house to save the cat.'"
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "What is the best way to support your view about a text?",
+                "options": [
+                    "say it more loudly",
+                    "give evidence from the text",
+                    "guess what happens next"
+                ],
+                "answer": 1,
+                "explain": "A strong view is backed by evidence taken from the text itself.",
+                "rule": "Support your opinion about a text with evidence from the text.",
+                "practiceItems": [
+                    {
+                        "prompt": "back up your opinion with ___ from the text",
+                        "answer": "evidence"
+                    },
+                    {
+                        "prompt": "a personal view is your ___",
+                        "answer": "opinion"
+                    },
+                    {
+                        "prompt": "good evidence comes from the ___",
+                        "answer": "text"
+                    },
+                    {
+                        "prompt": "'because she saved the cat' is an example of ___",
+                        "answer": "evidence"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "To evaluate is to judge how good, useful or convincing a text is — and say why.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "When you evaluate a text, you are:",
+                "options": [
+                    "counting the words",
+                    "judging how good or convincing it is",
+                    "copying it out"
+                ],
+                "answer": 1,
+                "explain": "Evaluating means judging the quality of a text and giving reasons.",
+                "rule": "To evaluate a text is to judge how good, useful or convincing it is, with reasons.",
+                "practiceItems": [
+                    {
+                        "prompt": "to evaluate a text is to ___ it (judge/copy)",
+                        "answer": "judge"
+                    },
+                    {
+                        "prompt": "a judgement should be backed with ___",
+                        "answer": "evidence"
+                    },
+                    {
+                        "prompt": "your view of a text is your ___",
+                        "answer": "opinion"
+                    },
+                    {
+                        "prompt": "evidence for your view comes from the ___",
+                        "answer": "text"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "text",
+                "content": "Give your view, then prove it with evidence from the text. That is how you evaluate well. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "To evaluate is to judge how good, useful or convincing a text is — and say why." },
-      {
-        "type": "check",
-        "question": "When you evaluate a text, you are:",
-        "options": ["counting the words", "judging how good or convincing it is", "copying it out"],
-        "answer": 1,
-        "explain": "Evaluating means judging the quality of a text and giving reasons.",
-        "rule": "To evaluate a text is to judge how good, useful or convincing it is, with reasons.",
-        "practiceItems": [
-          { "prompt": "to evaluate a text is to ___ it (judge/copy)", "answer": "judge" },
-          { "prompt": "a judgement should be backed with ___", "answer": "evidence" },
-          { "prompt": "your view of a text is your ___", "answer": "opinion" },
-          { "prompt": "evidence for your view comes from the ___", "answer": "text" }
-        ]
-      },
-      { "type": "text", "content": "Give your view, then prove it with evidence from the text. That is how you evaluate well. Let's practise!" }
-    ]
-  }
+    }
 ]

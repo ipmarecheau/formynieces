@@ -1,40 +1,100 @@
 [
-  {
-    "module": "MATH-013",
-    "title": "Adding and subtracting fractions (same denominator)",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "When fractions share the same bottom number, adding and subtracting them is simple — you only work with the tops." },
-      { "type": "key", "content": "To add fractions with the same bottom (denominator), add the top numbers and keep the bottom the same." },
-      { "type": "example", "content": "Adding 1/5 + 2/5.", "steps": ["The bottoms are the same: 5.", "Add the tops: 1 + 2 = 3.", "Keep the bottom: 3/5."] },
-      {
-        "type": "fillblank",
-        "prompt": "1/5 + 2/5 = ___",
-        "answer": "3/5",
-        "explain": "Add the tops (1 + 2 = 3) and keep the bottom 5: 3/5.",
-        "rule": "To add fractions with the same bottom, add the tops and keep the bottom.",
-        "practiceItems": [
-          { "prompt": "2/7 + 3/7", "answer": "5/7" },
-          { "prompt": "1/4 + 2/4", "answer": "3/4" },
-          { "prompt": "4/9 + 2/9", "answer": "6/9" },
-          { "prompt": "1/3 + 1/3", "answer": "2/3" }
+    {
+        "module": "MATH-013",
+        "title": "Adding and subtracting fractions (same denominator)",
+        "is_published": true,
+        "objectives_direct": [
+            "M-FRA-13"
+        ],
+        "objectives_indirect": [
+            "M-FRA-12",
+            "M-FRA-14",
+            "M-FRA-15"
+        ],
+        "canonical_examples_source": "Arithmetic self-verified; method ref: NCERT Class 5/6 Maths; format ref: bank uk-ks2-2024 maths.",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "When fractions share the same bottom number, adding and subtracting them is simple — you only work with the tops.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "To add fractions with the same bottom (denominator), add the top numbers and keep the bottom the same.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Adding 1/5 + 2/5.",
+                "steps": [
+                    "The bottoms are the same: 5.",
+                    "Add the tops: 1 + 2 = 3.",
+                    "Keep the bottom: 3/5."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "1/5 + 2/5 = ___",
+                "answer": "3/5",
+                "explain": "Add the tops (1 + 2 = 3) and keep the bottom 5: 3/5.",
+                "rule": "To add fractions with the same bottom, add the tops and keep the bottom.",
+                "practiceItems": [
+                    {
+                        "prompt": "2/7 + 3/7",
+                        "answer": "5/7"
+                    },
+                    {
+                        "prompt": "1/4 + 2/4",
+                        "answer": "3/4"
+                    },
+                    {
+                        "prompt": "4/9 + 2/9",
+                        "answer": "6/9"
+                    },
+                    {
+                        "prompt": "1/3 + 1/3",
+                        "answer": "2/3"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "To subtract fractions with the same bottom, subtract the top numbers and keep the bottom the same.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "5/8 - 2/8 = ___",
+                "answer": "3/8",
+                "explain": "Subtract the tops (5 - 2 = 3) and keep the bottom 8: 3/8.",
+                "rule": "To subtract fractions with the same bottom, subtract the tops and keep the bottom.",
+                "practiceItems": [
+                    {
+                        "prompt": "4/5 - 1/5",
+                        "answer": "3/5"
+                    },
+                    {
+                        "prompt": "3/4 - 1/4",
+                        "answer": "2/4"
+                    },
+                    {
+                        "prompt": "7/10 - 2/10",
+                        "answer": "5/10"
+                    },
+                    {
+                        "prompt": "5/6 - 3/6",
+                        "answer": "2/6"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "text",
+                "content": "Same bottom? Just add or subtract the tops and keep the bottom. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "To subtract fractions with the same bottom, subtract the top numbers and keep the bottom the same." },
-      {
-        "type": "fillblank",
-        "prompt": "5/8 - 2/8 = ___",
-        "answer": "3/8",
-        "explain": "Subtract the tops (5 - 2 = 3) and keep the bottom 8: 3/8.",
-        "rule": "To subtract fractions with the same bottom, subtract the tops and keep the bottom.",
-        "practiceItems": [
-          { "prompt": "4/5 - 1/5", "answer": "3/5" },
-          { "prompt": "3/4 - 1/4", "answer": "2/4" },
-          { "prompt": "7/10 - 2/10", "answer": "5/10" },
-          { "prompt": "5/6 - 3/6", "answer": "2/6" }
-        ]
-      },
-      { "type": "text", "content": "Same bottom? Just add or subtract the tops and keep the bottom. Let's practise!" }
-    ]
-  }
+    }
 ]

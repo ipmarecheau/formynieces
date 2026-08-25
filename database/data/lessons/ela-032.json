@@ -1,42 +1,105 @@
 [
-  {
-    "module": "ELA-032",
-    "title": "Poetry: mood, tone and point of view",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "Poems carry feelings. The words a poet chooses create a mood for the reader and reveal the poet's own attitude, or tone." },
-      { "type": "key", "content": "Mood is the feeling a poem creates in the reader." },
-      { "type": "text", "content": "Read these lines: 'The empty house stood dark and still, / A cold wind moaned across the hill.'" },
-      {
-        "type": "check",
-        "question": "What is the mood of these lines?",
-        "options": ["cheerful", "gloomy", "funny"],
-        "answer": 1,
-        "explain": "Words like 'empty', 'dark', 'cold' and 'moaned' create a gloomy, uneasy feeling.",
-        "rule": "Mood is the feeling a poem creates in the reader, built from the poet's word choices.",
-        "practiceItems": [
-          { "prompt": "the feeling a poem gives the reader is the ___", "answer": "mood" },
-          { "prompt": "dark, cold, still words create a ___ mood (gloomy/happy)", "answer": "gloomy" },
-          { "prompt": "bright, sunny words create a ___ mood (cheerful/sad)", "answer": "cheerful" },
-          { "prompt": "mood is built from the poet's ___ choices", "answer": "word" }
+    {
+        "module": "ELA-032",
+        "title": "Poetry: mood, tone and point of view",
+        "is_published": true,
+        "objectives_direct": [
+            "E-POE-83"
+        ],
+        "objectives_indirect": [
+            "E-POE-81",
+            "E-POE-82",
+            "E-POE-84"
+        ],
+        "canonical_examples_source": "Language rules self-verified; format ref: bank uk-ks2-2024-gps (KS2 GPS).",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Poems carry feelings. The words a poet chooses create a mood for the reader and reveal the poet's own attitude, or tone.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "Mood is the feeling a poem creates in the reader.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "text",
+                "content": "Read these lines: 'The empty house stood dark and still, / A cold wind moaned across the hill.'",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "What is the mood of these lines?",
+                "options": [
+                    "cheerful",
+                    "gloomy",
+                    "funny"
+                ],
+                "answer": 1,
+                "explain": "Words like 'empty', 'dark', 'cold' and 'moaned' create a gloomy, uneasy feeling.",
+                "rule": "Mood is the feeling a poem creates in the reader, built from the poet's word choices.",
+                "practiceItems": [
+                    {
+                        "prompt": "the feeling a poem gives the reader is the ___",
+                        "answer": "mood"
+                    },
+                    {
+                        "prompt": "dark, cold, still words create a ___ mood (gloomy/happy)",
+                        "answer": "gloomy"
+                    },
+                    {
+                        "prompt": "bright, sunny words create a ___ mood (cheerful/sad)",
+                        "answer": "cheerful"
+                    },
+                    {
+                        "prompt": "mood is built from the poet's ___ choices",
+                        "answer": "word"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "Tone is the poet's own attitude towards the subject — for example, serious, playful, or angry.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "A poem that pokes gentle fun at a lazy cat most likely has which tone?",
+                "options": [
+                    "playful",
+                    "angry",
+                    "frightened"
+                ],
+                "answer": 0,
+                "explain": "Gentle fun shows a light, playful attitude — that is the tone.",
+                "rule": "Tone is the poet's attitude towards the subject.",
+                "practiceItems": [
+                    {
+                        "prompt": "the poet's attitude towards the subject is the ___",
+                        "answer": "tone"
+                    },
+                    {
+                        "prompt": "gentle fun gives a ___ tone (playful/angry)",
+                        "answer": "playful"
+                    },
+                    {
+                        "prompt": "the feeling in the reader is the ___",
+                        "answer": "mood"
+                    },
+                    {
+                        "prompt": "sad, heavy words give a ___ tone (serious/silly)",
+                        "answer": "serious"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "text",
+                "content": "Mood is what the reader feels; tone is the poet's attitude. Read the word choices to sense both. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "Tone is the poet's own attitude towards the subject — for example, serious, playful, or angry." },
-      {
-        "type": "check",
-        "question": "A poem that pokes gentle fun at a lazy cat most likely has which tone?",
-        "options": ["playful", "angry", "frightened"],
-        "answer": 0,
-        "explain": "Gentle fun shows a light, playful attitude — that is the tone.",
-        "rule": "Tone is the poet's attitude towards the subject.",
-        "practiceItems": [
-          { "prompt": "the poet's attitude towards the subject is the ___", "answer": "tone" },
-          { "prompt": "gentle fun gives a ___ tone (playful/angry)", "answer": "playful" },
-          { "prompt": "the feeling in the reader is the ___", "answer": "mood" },
-          { "prompt": "sad, heavy words give a ___ tone (serious/silly)", "answer": "serious" }
-        ]
-      },
-      { "type": "text", "content": "Mood is what the reader feels; tone is the poet's attitude. Read the word choices to sense both. Let's practise!" }
-    ]
-  }
+    }
 ]

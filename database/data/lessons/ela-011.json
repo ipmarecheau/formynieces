@@ -1,58 +1,97 @@
 [
-  {
-    "module": "ELA-011",
-    "title": "Parts of speech: nouns, adjectives and adverbs",
-    "is_published": true,
-    "blocks": [
-      {
-        "type": "text",
-        "content": "Every word in a sentence has a job. Knowing the main jobs helps you understand and build better sentences."
-      },
-      {
-        "type": "key",
-        "content": "A noun is a person, place or thing (dog, school, cup). A pronoun stands in for a noun (he, she, it, they)."
-      },
-      {
-        "type": "example",
-        "content": "Finding the noun.",
-        "steps": [
-          "Sentence: 'The cup is full.'",
-          "Ask: which word names a thing? 'cup'.",
-          "So 'cup' is the noun."
+    {
+        "module": "ELA-011",
+        "title": "Parts of speech: nouns, adjectives and adverbs",
+        "is_published": true,
+        "objectives_direct": [
+            "E-GRA-62"
+        ],
+        "objectives_indirect": [
+            "E-GRA-63",
+            "E-GRA-64"
+        ],
+        "canonical_examples_source": "Language rules self-verified; format ref: bank uk-ks2-2024-gps (KS2 GPS).",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Every word in a sentence has a job. Knowing the main jobs helps you understand and build better sentences.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "A noun is a person, place or thing (dog, school, cup). A pronoun stands in for a noun (he, she, it, they).",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Finding the noun.",
+                "steps": [
+                    "Sentence: 'The cup is full.'",
+                    "Ask: which word names a thing? 'cup'.",
+                    "So 'cup' is the noun."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "markwords",
+                "instruction": "Tap the noun (the naming word) in the sentence.",
+                "text": "The *dog* ran across the yard.",
+                "rule": "A noun is a person, place or thing.",
+                "practiceItems": [
+                    {
+                        "prompt": "a noun for a place where you learn",
+                        "answer": "school"
+                    },
+                    {
+                        "prompt": "the noun in 'the cup is full'",
+                        "answer": "cup"
+                    },
+                    {
+                        "prompt": "a noun for a person who teaches",
+                        "answer": "teacher"
+                    },
+                    {
+                        "prompt": "a noun for an animal that barks",
+                        "answer": "dog"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "An adjective describes a noun (a red car). An adverb describes a verb and often ends in -ly (she ran quickly).",
+                "cognition": "knowing"
+            },
+            {
+                "type": "markwords",
+                "instruction": "Tap the adjective (the describing word) in the sentence.",
+                "text": "The *tall* boy smiled.",
+                "rule": "An adjective is a word that describes a noun.",
+                "practiceItems": [
+                    {
+                        "prompt": "the adjective in 'a red car'",
+                        "answer": "red"
+                    },
+                    {
+                        "prompt": "an adjective (describing word) meaning very large",
+                        "answer": "huge"
+                    },
+                    {
+                        "prompt": "the adjective in 'the happy child'",
+                        "answer": "happy"
+                    },
+                    {
+                        "prompt": "an adjective for something that is not hot",
+                        "answer": "cold"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "text",
+                "content": "Nouns name, adjectives describe nouns, and adverbs describe verbs. Spot each word's job as you read. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      {
-        "type": "markwords",
-        "instruction": "Tap the noun (the naming word) in the sentence.",
-        "text": "The *dog* ran across the yard.",
-        "rule": "A noun is a person, place or thing.",
-        "practiceItems": [
-          { "prompt": "a noun for a place where you learn", "answer": "school" },
-          { "prompt": "the noun in 'the cup is full'", "answer": "cup" },
-          { "prompt": "a noun for a person who teaches", "answer": "teacher" },
-          { "prompt": "a noun for an animal that barks", "answer": "dog" }
-        ]
-      },
-      {
-        "type": "key",
-        "content": "An adjective describes a noun (a red car). An adverb describes a verb and often ends in -ly (she ran quickly)."
-      },
-      {
-        "type": "markwords",
-        "instruction": "Tap the adjective (the describing word) in the sentence.",
-        "text": "The *tall* boy smiled.",
-        "rule": "An adjective is a word that describes a noun.",
-        "practiceItems": [
-          { "prompt": "the adjective in 'a red car'", "answer": "red" },
-          { "prompt": "an adjective (describing word) meaning very large", "answer": "huge" },
-          { "prompt": "the adjective in 'the happy child'", "answer": "happy" },
-          { "prompt": "an adjective for something that is not hot", "answer": "cold" }
-        ]
-      },
-      {
-        "type": "text",
-        "content": "Nouns name, adjectives describe nouns, and adverbs describe verbs. Spot each word's job as you read. Let's practise!"
-      }
-    ]
-  }
+    }
 ]

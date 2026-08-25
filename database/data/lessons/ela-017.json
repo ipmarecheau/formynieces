@@ -1,60 +1,99 @@
 [
-  {
-    "module": "ELA-017",
-    "title": "Comparing with -er and -est (comparative and superlative)",
-    "is_published": true,
-    "blocks": [
-      {
-        "type": "text",
-        "content": "When we compare things, adjectives change their ending. Learn the two endings and you can compare anything clearly."
-      },
-      {
-        "type": "key",
-        "content": "Add -er to an adjective to compare TWO things: a giraffe is taller than a horse."
-      },
-      {
-        "type": "example",
-        "content": "Comparing two things.",
-        "steps": [
-          "Adjective: 'tall'.",
-          "To compare two, add -er: 'taller'.",
-          "A giraffe is taller than a horse."
+    {
+        "module": "ELA-017",
+        "title": "Comparing with -er and -est (comparative and superlative)",
+        "is_published": true,
+        "objectives_direct": [
+            "E-GRA-68"
+        ],
+        "objectives_indirect": [
+            "E-GRA-66",
+            "E-GRA-67"
+        ],
+        "canonical_examples_source": "Language rules self-verified; format ref: bank uk-ks2-2024-gps (KS2 GPS).",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "When we compare things, adjectives change their ending. Learn the two endings and you can compare anything clearly.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "Add -er to an adjective to compare TWO things: a giraffe is taller than a horse.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Comparing two things.",
+                "steps": [
+                    "Adjective: 'tall'.",
+                    "To compare two, add -er: 'taller'.",
+                    "A giraffe is taller than a horse."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "Compare two: A truck is ___ than a car. (big)",
+                "answer": "bigger",
+                "explain": "Add -er to compare two things; 'big' doubles the g: bigger.",
+                "rule": "Add -er to an adjective to compare two things (double a final consonant after a short vowel).",
+                "practiceItems": [
+                    {
+                        "prompt": "comparative of 'tall'",
+                        "answer": "taller"
+                    },
+                    {
+                        "prompt": "comparative of 'fast'",
+                        "answer": "faster"
+                    },
+                    {
+                        "prompt": "comparative of 'small'",
+                        "answer": "smaller"
+                    },
+                    {
+                        "prompt": "comparative of 'big' (double the g)",
+                        "answer": "bigger"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "Add -est to show the most of ALL: the tallest tree in the park.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "The most of all: That is the ___ mountain of them all. (high)",
+                "answer": "highest",
+                "explain": "Add -est to show the most of all: highest.",
+                "rule": "Add -est to an adjective to show the most of all.",
+                "practiceItems": [
+                    {
+                        "prompt": "superlative of 'tall'",
+                        "answer": "tallest"
+                    },
+                    {
+                        "prompt": "superlative of 'fast'",
+                        "answer": "fastest"
+                    },
+                    {
+                        "prompt": "superlative of 'small'",
+                        "answer": "smallest"
+                    },
+                    {
+                        "prompt": "superlative of 'big' (double the g)",
+                        "answer": "biggest"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "text",
+                "content": "Use -er to compare two, and -est for the most of all. For long words, use 'more' and 'most' instead. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      {
-        "type": "fillblank",
-        "prompt": "Compare two: A truck is ___ than a car. (big)",
-        "answer": "bigger",
-        "explain": "Add -er to compare two things; 'big' doubles the g: bigger.",
-        "rule": "Add -er to an adjective to compare two things (double a final consonant after a short vowel).",
-        "practiceItems": [
-          { "prompt": "comparative of 'tall'", "answer": "taller" },
-          { "prompt": "comparative of 'fast'", "answer": "faster" },
-          { "prompt": "comparative of 'small'", "answer": "smaller" },
-          { "prompt": "comparative of 'big' (double the g)", "answer": "bigger" }
-        ]
-      },
-      {
-        "type": "key",
-        "content": "Add -est to show the most of ALL: the tallest tree in the park."
-      },
-      {
-        "type": "fillblank",
-        "prompt": "The most of all: That is the ___ mountain of them all. (high)",
-        "answer": "highest",
-        "explain": "Add -est to show the most of all: highest.",
-        "rule": "Add -est to an adjective to show the most of all.",
-        "practiceItems": [
-          { "prompt": "superlative of 'tall'", "answer": "tallest" },
-          { "prompt": "superlative of 'fast'", "answer": "fastest" },
-          { "prompt": "superlative of 'small'", "answer": "smallest" },
-          { "prompt": "superlative of 'big' (double the g)", "answer": "biggest" }
-        ]
-      },
-      {
-        "type": "text",
-        "content": "Use -er to compare two, and -est for the most of all. For long words, use 'more' and 'most' instead. Let's practise!"
-      }
-    ]
-  }
+    }
 ]
