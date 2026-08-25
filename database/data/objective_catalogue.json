@@ -1,0 +1,902 @@
+[
+    {
+        "code": "M-NUM-01",
+        "module_seq": 1,
+        "subject": "Math",
+        "strand": "Number Concepts",
+        "strand_code": "NUM",
+        "lesson_code": "MATH-001",
+        "topic": "Number Concepts: Place Value up to One Million",
+        "objective": "Place Value up to One Million"
+    },
+    {
+        "code": "M-NUM-02",
+        "module_seq": 2,
+        "subject": "Math",
+        "strand": "Number Concepts",
+        "strand_code": "NUM",
+        "lesson_code": "MATH-002",
+        "topic": "Number Concepts: Expanded Notation",
+        "objective": "Expanded Notation"
+    },
+    {
+        "code": "M-NUM-03",
+        "module_seq": 3,
+        "subject": "Math",
+        "strand": "Number Concepts",
+        "strand_code": "NUM",
+        "lesson_code": "MATH-003",
+        "topic": "Number Concepts: Rounding to the Nearest Thousand",
+        "objective": "Rounding to the Nearest Thousand"
+    },
+    {
+        "code": "M-NUM-04",
+        "module_seq": 4,
+        "subject": "Math",
+        "strand": "Number Concepts",
+        "strand_code": "NUM",
+        "lesson_code": "MATH-004",
+        "topic": "Number Concepts: Factors, Multiples, Primes and Square Numbers",
+        "objective": "Factors, Multiples, Primes and Square Numbers"
+    },
+    {
+        "code": "M-NUM-05",
+        "module_seq": 5,
+        "subject": "Math",
+        "strand": "Number Concepts",
+        "strand_code": "NUM",
+        "lesson_code": "MATH-005",
+        "topic": "Number Concepts: Ordering and Comparing Whole Numbers",
+        "objective": "Ordering and Comparing Whole Numbers"
+    },
+    {
+        "code": "M-OPS-06",
+        "module_seq": 6,
+        "subject": "Math",
+        "strand": "Whole Number Operations",
+        "strand_code": "OPS",
+        "lesson_code": "MATH-006",
+        "topic": "Whole Number Operations: Addition and Subtraction",
+        "objective": "Addition and Subtraction"
+    },
+    {
+        "code": "M-OPS-07",
+        "module_seq": 7,
+        "subject": "Math",
+        "strand": "Whole Number Operations",
+        "strand_code": "OPS",
+        "lesson_code": "MATH-007",
+        "topic": "Whole Number Operations: Multiplication",
+        "objective": "Multiplication"
+    },
+    {
+        "code": "M-OPS-08",
+        "module_seq": 8,
+        "subject": "Math",
+        "strand": "Whole Number Operations",
+        "strand_code": "OPS",
+        "lesson_code": "MATH-008",
+        "topic": "Whole Number Operations: Division",
+        "objective": "Division"
+    },
+    {
+        "code": "M-PAT-09",
+        "module_seq": 9,
+        "subject": "Math",
+        "strand": "Number Patterns",
+        "strand_code": "PAT",
+        "lesson_code": "MATH-009",
+        "topic": "Number Patterns: Repeating, Increasing and Decreasing Patterns",
+        "objective": "Repeating, Increasing and Decreasing Patterns"
+    },
+    {
+        "code": "M-PAT-10",
+        "module_seq": 10,
+        "subject": "Math",
+        "strand": "Number Patterns",
+        "strand_code": "PAT",
+        "lesson_code": "MATH-010",
+        "topic": "Number Patterns: Pattern Rules and Missing Elements",
+        "objective": "Pattern Rules and Missing Elements"
+    },
+    {
+        "code": "M-ALG-11",
+        "module_seq": 11,
+        "subject": "Math",
+        "strand": "Number Relationships / Algebra",
+        "strand_code": "ALG",
+        "lesson_code": "MATH-011",
+        "topic": "Number Relationships: Algebraic Thinking with Unknown Numbers",
+        "objective": "Algebraic Thinking with Unknown Numbers"
+    },
+    {
+        "code": "M-FRA-12",
+        "module_seq": 12,
+        "subject": "Math",
+        "strand": "Fractions",
+        "strand_code": "FRA",
+        "lesson_code": "MATH-012",
+        "topic": "Fractions: Equivalent Fractions and Simplification",
+        "objective": "Equivalent Fractions and Simplification"
+    },
+    {
+        "code": "M-FRA-13",
+        "module_seq": 13,
+        "subject": "Math",
+        "strand": "Fractions",
+        "strand_code": "FRA",
+        "lesson_code": "MATH-013",
+        "topic": "Fractions: Addition and Subtraction",
+        "objective": "Addition and Subtraction"
+    },
+    {
+        "code": "M-FRA-14",
+        "module_seq": 14,
+        "subject": "Math",
+        "strand": "Fractions",
+        "strand_code": "FRA",
+        "lesson_code": "MATH-014",
+        "topic": "Fractions: Multiplication and Division",
+        "objective": "Multiplication and Division"
+    },
+    {
+        "code": "M-FRA-15",
+        "module_seq": 15,
+        "subject": "Math",
+        "strand": "Fractions",
+        "strand_code": "FRA",
+        "lesson_code": "MATH-015",
+        "topic": "Fractions: Fractions of a Collection",
+        "objective": "Fractions of a Collection"
+    },
+    {
+        "code": "M-FRA-16",
+        "module_seq": 16,
+        "subject": "Math",
+        "strand": "Fractions",
+        "strand_code": "FRA",
+        "lesson_code": "MATH-016",
+        "topic": "Fractions: One-step and Multi-step Word Problems",
+        "objective": "One-step and Multi-step Word Problems"
+    },
+    {
+        "code": "M-DEC-17",
+        "module_seq": 17,
+        "subject": "Math",
+        "strand": "Decimals",
+        "strand_code": "DEC",
+        "lesson_code": "MATH-017",
+        "topic": "Decimals: Place Value and Expanded Notation",
+        "objective": "Place Value and Expanded Notation"
+    },
+    {
+        "code": "M-DEC-18",
+        "module_seq": 18,
+        "subject": "Math",
+        "strand": "Decimals",
+        "strand_code": "DEC",
+        "lesson_code": "MATH-018",
+        "topic": "Decimals: Ordering and Rounding",
+        "objective": "Ordering and Rounding"
+    },
+    {
+        "code": "M-DEC-19",
+        "module_seq": 19,
+        "subject": "Math",
+        "strand": "Decimals",
+        "strand_code": "DEC",
+        "lesson_code": "MATH-019",
+        "topic": "Decimals: Addition and Subtraction",
+        "objective": "Addition and Subtraction"
+    },
+    {
+        "code": "M-DEC-20",
+        "module_seq": 20,
+        "subject": "Math",
+        "strand": "Decimals",
+        "strand_code": "DEC",
+        "lesson_code": "MATH-020",
+        "topic": "Decimals: Multiplication and Division",
+        "objective": "Multiplication and Division"
+    },
+    {
+        "code": "M-DEC-21",
+        "module_seq": 21,
+        "subject": "Math",
+        "strand": "Decimals",
+        "strand_code": "DEC",
+        "lesson_code": "MATH-021",
+        "topic": "Decimals: Real-world Problems with Four Operations",
+        "objective": "Real-world Problems with Four Operations"
+    },
+    {
+        "code": "M-PCT-22",
+        "module_seq": 22,
+        "subject": "Math",
+        "strand": "Percent",
+        "strand_code": "PCT",
+        "lesson_code": "MATH-022",
+        "topic": "Percent: Converting Between Fractions, Decimals and Percent",
+        "objective": "Converting Between Fractions, Decimals and Percent"
+    },
+    {
+        "code": "M-PCT-23",
+        "module_seq": 23,
+        "subject": "Math",
+        "strand": "Percent",
+        "strand_code": "PCT",
+        "lesson_code": "MATH-023",
+        "topic": "Percent: Calculating Percent of a Quantity",
+        "objective": "Calculating Percent of a Quantity"
+    },
+    {
+        "code": "M-PCT-24",
+        "module_seq": 24,
+        "subject": "Math",
+        "strand": "Percent",
+        "strand_code": "PCT",
+        "lesson_code": "MATH-024",
+        "topic": "Percent: One-step and Multi-step Percent Problems",
+        "objective": "One-step and Multi-step Percent Problems"
+    },
+    {
+        "code": "M-PRB-25",
+        "module_seq": 25,
+        "subject": "Math",
+        "strand": "Problem Solving",
+        "strand_code": "PRB",
+        "lesson_code": "MATH-025",
+        "topic": "Problem Solving: Profit, Loss, Best Buy, Discount and VAT",
+        "objective": "Profit, Loss, Best Buy, Discount and VAT"
+    },
+    {
+        "code": "M-PRB-26",
+        "module_seq": 26,
+        "subject": "Math",
+        "strand": "Problem Solving",
+        "strand_code": "PRB",
+        "lesson_code": "MATH-026",
+        "topic": "Problem Solving: Direct Proportion and Unequal Sharing",
+        "objective": "Direct Proportion and Unequal Sharing"
+    },
+    {
+        "code": "M-PRB-27",
+        "module_seq": 27,
+        "subject": "Math",
+        "strand": "Problem Solving",
+        "strand_code": "PRB",
+        "lesson_code": "MATH-027",
+        "topic": "Number: Multi-step Real-life Problem (Whole Numbers and Money)",
+        "objective": "Multi-step Real-life Problem (Whole Numbers and Money)"
+    },
+    {
+        "code": "M-GEO-28",
+        "module_seq": 28,
+        "subject": "Math",
+        "strand": "Geometry",
+        "strand_code": "GEO",
+        "lesson_code": "MATH-028",
+        "topic": "Geometry: Properties of Solids and Plane Shapes",
+        "objective": "Properties of Solids and Plane Shapes"
+    },
+    {
+        "code": "M-GEO-29",
+        "module_seq": 29,
+        "subject": "Math",
+        "strand": "Geometry",
+        "strand_code": "GEO",
+        "lesson_code": "MATH-029",
+        "topic": "Geometry: Classifying Triangles and Quadrilaterals",
+        "objective": "Classifying Triangles and Quadrilaterals"
+    },
+    {
+        "code": "M-GEO-30",
+        "module_seq": 30,
+        "subject": "Math",
+        "strand": "Geometry",
+        "strand_code": "GEO",
+        "lesson_code": "MATH-030",
+        "topic": "Geometry: Symmetry and Lines of Symmetry",
+        "objective": "Symmetry and Lines of Symmetry"
+    },
+    {
+        "code": "M-GEO-31",
+        "module_seq": 31,
+        "subject": "Math",
+        "strand": "Geometry",
+        "strand_code": "GEO",
+        "lesson_code": "MATH-031",
+        "topic": "Geometry: Angles \u2014 Right, Acute and Obtuse",
+        "objective": "Angles \u2014 Right, Acute and Obtuse"
+    },
+    {
+        "code": "M-GEO-32",
+        "module_seq": 32,
+        "subject": "Math",
+        "strand": "Geometry",
+        "strand_code": "GEO",
+        "lesson_code": "MATH-032",
+        "topic": "Geometry: Geometric Patterns",
+        "objective": "Geometric Patterns"
+    },
+    {
+        "code": "M-GEO-33",
+        "module_seq": 33,
+        "subject": "Math",
+        "strand": "Geometry",
+        "strand_code": "GEO",
+        "lesson_code": "MATH-033",
+        "topic": "Geometry: Constructing Polygons and Composite Shapes",
+        "objective": "Constructing Polygons and Composite Shapes"
+    },
+    {
+        "code": "M-GEO-34",
+        "module_seq": 34,
+        "subject": "Math",
+        "strand": "Geometry",
+        "strand_code": "GEO",
+        "lesson_code": "MATH-034",
+        "topic": "Geometry: Solving Problems with Solids and Plane Shapes",
+        "objective": "Solving Problems with Solids and Plane Shapes"
+    },
+    {
+        "code": "M-GEO-35",
+        "module_seq": 35,
+        "subject": "Math",
+        "strand": "Geometry",
+        "strand_code": "GEO",
+        "lesson_code": "MATH-035",
+        "topic": "Geometry: Multi-step Problem Involving Shapes and Properties",
+        "objective": "Multi-step Problem Involving Shapes and Properties"
+    },
+    {
+        "code": "M-MEA-36",
+        "module_seq": 36,
+        "subject": "Math",
+        "strand": "Measurement",
+        "strand_code": "MEA",
+        "lesson_code": "MATH-036",
+        "topic": "Measurement: Linear Measure and Conversion",
+        "objective": "Linear Measure and Conversion"
+    },
+    {
+        "code": "M-MEA-37",
+        "module_seq": 37,
+        "subject": "Math",
+        "strand": "Measurement",
+        "strand_code": "MEA",
+        "lesson_code": "MATH-037",
+        "topic": "Measurement: Perimeter of Squares and Rectangles",
+        "objective": "Perimeter of Squares and Rectangles"
+    },
+    {
+        "code": "M-MEA-38",
+        "module_seq": 38,
+        "subject": "Math",
+        "strand": "Measurement",
+        "strand_code": "MEA",
+        "lesson_code": "MATH-038",
+        "topic": "Measurement: Area of Squares and Rectangles",
+        "objective": "Area of Squares and Rectangles"
+    },
+    {
+        "code": "M-MEA-39",
+        "module_seq": 39,
+        "subject": "Math",
+        "strand": "Measurement",
+        "strand_code": "MEA",
+        "lesson_code": "MATH-039",
+        "topic": "Measurement: Perimeter of Compound Shapes",
+        "objective": "Perimeter of Compound Shapes"
+    },
+    {
+        "code": "M-MEA-40",
+        "module_seq": 40,
+        "subject": "Math",
+        "strand": "Measurement",
+        "strand_code": "MEA",
+        "lesson_code": "MATH-040",
+        "topic": "Measurement: Area of Compound Shapes",
+        "objective": "Area of Compound Shapes"
+    },
+    {
+        "code": "M-MEA-41",
+        "module_seq": 41,
+        "subject": "Math",
+        "strand": "Measurement",
+        "strand_code": "MEA",
+        "lesson_code": "MATH-041",
+        "topic": "Measurement: Volume and Capacity",
+        "objective": "Volume and Capacity"
+    },
+    {
+        "code": "M-MEA-42",
+        "module_seq": 42,
+        "subject": "Math",
+        "strand": "Measurement",
+        "strand_code": "MEA",
+        "lesson_code": "MATH-042",
+        "topic": "Measurement: Mass and Weight Conversion",
+        "objective": "Mass and Weight Conversion"
+    },
+    {
+        "code": "M-MEA-43",
+        "module_seq": 43,
+        "subject": "Math",
+        "strand": "Measurement",
+        "strand_code": "MEA",
+        "lesson_code": "MATH-043",
+        "topic": "Measurement: Time \u2014 Reading and Converting",
+        "objective": "Time \u2014 Reading and Converting"
+    },
+    {
+        "code": "M-MEA-44",
+        "module_seq": 44,
+        "subject": "Math",
+        "strand": "Measurement",
+        "strand_code": "MEA",
+        "lesson_code": "MATH-044",
+        "topic": "Measurement: Real-life Problems \u2014 Volume, Capacity, Mass and Time",
+        "objective": "Real-life Problems \u2014 Volume, Capacity, Mass and Time"
+    },
+    {
+        "code": "M-MEA-45",
+        "module_seq": 45,
+        "subject": "Math",
+        "strand": "Measurement",
+        "strand_code": "MEA",
+        "lesson_code": "MATH-045",
+        "topic": "Measurement: Multi-step Problem Involving Area, Perimeter or Volume",
+        "objective": "Multi-step Problem Involving Area, Perimeter or Volume"
+    },
+    {
+        "code": "M-STA-46",
+        "module_seq": 46,
+        "subject": "Math",
+        "strand": "Statistics",
+        "strand_code": "STA",
+        "lesson_code": "MATH-046",
+        "topic": "Statistics: Tally Charts, Frequency Tables and Bar Graphs",
+        "objective": "Tally Charts, Frequency Tables and Bar Graphs"
+    },
+    {
+        "code": "M-STA-47",
+        "module_seq": 47,
+        "subject": "Math",
+        "strand": "Statistics",
+        "strand_code": "STA",
+        "lesson_code": "MATH-047",
+        "topic": "Statistics: Interpreting Pictographs and Block Graphs",
+        "objective": "Interpreting Pictographs and Block Graphs"
+    },
+    {
+        "code": "M-STA-48",
+        "module_seq": 48,
+        "subject": "Math",
+        "strand": "Statistics",
+        "strand_code": "STA",
+        "lesson_code": "MATH-048",
+        "topic": "Statistics: Mode of a Data Set",
+        "objective": "Mode of a Data Set"
+    },
+    {
+        "code": "M-STA-49",
+        "module_seq": 49,
+        "subject": "Math",
+        "strand": "Statistics",
+        "strand_code": "STA",
+        "lesson_code": "MATH-049",
+        "topic": "Statistics: Mean/Average \u2014 Calculation and Problems",
+        "objective": "Mean/Average \u2014 Calculation and Problems"
+    },
+    {
+        "code": "M-STA-50",
+        "module_seq": 50,
+        "subject": "Math",
+        "strand": "Statistics",
+        "strand_code": "STA",
+        "lesson_code": "MATH-050",
+        "topic": "Statistics: Analysing Data to Draw Conclusions and Make Decisions",
+        "objective": "Analysing Data to Draw Conclusions and Make Decisions"
+    },
+    {
+        "code": "M-STA-51",
+        "module_seq": 51,
+        "subject": "Math",
+        "strand": "Statistics",
+        "strand_code": "STA",
+        "lesson_code": "MATH-051",
+        "topic": "Statistics: Multi-step Data Analysis Problem",
+        "objective": "Multi-step Data Analysis Problem"
+    },
+    {
+        "code": "E-SPE-52",
+        "module_seq": 52,
+        "subject": "ELA",
+        "strand": "Spelling",
+        "strand_code": "SPE",
+        "lesson_code": "ELA-001",
+        "topic": "Spelling: Plural Forms \u2014 y to i, f to v, and -es endings",
+        "objective": "Plural Forms \u2014 y to i, f to v, and -es endings"
+    },
+    {
+        "code": "E-SPE-53",
+        "module_seq": 53,
+        "subject": "ELA",
+        "strand": "Spelling",
+        "strand_code": "SPE",
+        "lesson_code": "ELA-002",
+        "topic": "Spelling: Doubling Final Consonant Before Adding Endings",
+        "objective": "Doubling Final Consonant Before Adding Endings"
+    },
+    {
+        "code": "E-SPE-54",
+        "module_seq": 54,
+        "subject": "ELA",
+        "strand": "Spelling",
+        "strand_code": "SPE",
+        "lesson_code": "ELA-003",
+        "topic": "Spelling: Dropping Silent -e Before Adding Endings",
+        "objective": "Dropping Silent -e Before Adding Endings"
+    },
+    {
+        "code": "E-SPE-55",
+        "module_seq": 55,
+        "subject": "ELA",
+        "strand": "Spelling",
+        "strand_code": "SPE",
+        "lesson_code": "ELA-004",
+        "topic": "Spelling: ie/ei Words, Silent Letters and Common Homophones",
+        "objective": "ie/ei Words, Silent Letters and Common Homophones"
+    },
+    {
+        "code": "E-SPE-56",
+        "module_seq": 56,
+        "subject": "ELA",
+        "strand": "Spelling",
+        "strand_code": "SPE",
+        "lesson_code": "ELA-005",
+        "topic": "Spelling: Prefixes, Suffixes and Root Words",
+        "objective": "Prefixes, Suffixes and Root Words"
+    },
+    {
+        "code": "E-SPE-57",
+        "module_seq": 57,
+        "subject": "ELA",
+        "strand": "Spelling",
+        "strand_code": "SPE",
+        "lesson_code": "ELA-006",
+        "topic": "Spelling: Synonyms, Antonyms, Homographs and Multiple-meaning Words",
+        "objective": "Synonyms, Antonyms, Homographs and Multiple-meaning Words"
+    },
+    {
+        "code": "E-PUN-58",
+        "module_seq": 58,
+        "subject": "ELA",
+        "strand": "Punctuation",
+        "strand_code": "PUN",
+        "lesson_code": "ELA-007",
+        "topic": "Punctuation: Full Stop, Question Mark and Exclamation Mark",
+        "objective": "Full Stop, Question Mark and Exclamation Mark"
+    },
+    {
+        "code": "E-PUN-59",
+        "module_seq": 59,
+        "subject": "ELA",
+        "strand": "Punctuation",
+        "strand_code": "PUN",
+        "lesson_code": "ELA-008",
+        "topic": "Punctuation: Apostrophes in Contractions and Possessives",
+        "objective": "Apostrophes in Contractions and Possessives"
+    },
+    {
+        "code": "E-PUN-60",
+        "module_seq": 60,
+        "subject": "ELA",
+        "strand": "Punctuation",
+        "strand_code": "PUN",
+        "lesson_code": "ELA-009",
+        "topic": "Punctuation: Quotation Marks, Colons and Commas",
+        "objective": "Quotation Marks, Colons and Commas"
+    },
+    {
+        "code": "E-CAP-61",
+        "module_seq": 61,
+        "subject": "ELA",
+        "strand": "Capitalisation",
+        "strand_code": "CAP",
+        "lesson_code": "ELA-010",
+        "topic": "Capitalisation: Proper Nouns, Titles, Quotations and Headlines",
+        "objective": "Proper Nouns, Titles, Quotations and Headlines"
+    },
+    {
+        "code": "E-GRA-62",
+        "module_seq": 62,
+        "subject": "ELA",
+        "strand": "Grammar",
+        "strand_code": "GRA",
+        "lesson_code": "ELA-011",
+        "topic": "Grammar: Parts of Speech \u2014 Nouns, Pronouns, Adjectives, Adverbs",
+        "objective": "Parts of Speech \u2014 Nouns, Pronouns, Adjectives, Adverbs"
+    },
+    {
+        "code": "E-GRA-63",
+        "module_seq": 63,
+        "subject": "ELA",
+        "strand": "Grammar",
+        "strand_code": "GRA",
+        "lesson_code": "ELA-012",
+        "topic": "Grammar: Verb Tense \u2014 Simple, Continuous and Perfect Forms",
+        "objective": "Verb Tense \u2014 Simple, Continuous and Perfect Forms"
+    },
+    {
+        "code": "E-GRA-64",
+        "module_seq": 64,
+        "subject": "ELA",
+        "strand": "Grammar",
+        "strand_code": "GRA",
+        "lesson_code": "ELA-013",
+        "topic": "Grammar: Subject-Verb Agreement and Concord",
+        "objective": "Subject-Verb Agreement and Concord"
+    },
+    {
+        "code": "E-GRA-65",
+        "module_seq": 65,
+        "subject": "ELA",
+        "strand": "Grammar",
+        "strand_code": "GRA",
+        "lesson_code": "ELA-014",
+        "topic": "Grammar: Prepositions and Conjunctions in Context",
+        "objective": "Prepositions and Conjunctions in Context"
+    },
+    {
+        "code": "E-GRA-66",
+        "module_seq": 66,
+        "subject": "ELA",
+        "strand": "Grammar",
+        "strand_code": "GRA",
+        "lesson_code": "ELA-015",
+        "topic": "Grammar: Compound and Complex Sentences",
+        "objective": "Compound and Complex Sentences"
+    },
+    {
+        "code": "E-GRA-67",
+        "module_seq": 67,
+        "subject": "ELA",
+        "strand": "Grammar",
+        "strand_code": "GRA",
+        "lesson_code": "ELA-016",
+        "topic": "Grammar: Modals \u2014 can, may, should, would, could, might",
+        "objective": "Modals \u2014 can, may, should, would, could, might"
+    },
+    {
+        "code": "E-GRA-68",
+        "module_seq": 68,
+        "subject": "ELA",
+        "strand": "Grammar",
+        "strand_code": "GRA",
+        "lesson_code": "ELA-017",
+        "topic": "Grammar: Comparative and Superlative Forms of Adjectives and Adverbs",
+        "objective": "Comparative and Superlative Forms of Adjectives and Adverbs"
+    },
+    {
+        "code": "E-WRI-69",
+        "module_seq": 69,
+        "subject": "ELA",
+        "strand": "Writing",
+        "strand_code": "WRI",
+        "lesson_code": "ELA-018",
+        "topic": "ELA Writing: Narrative Writing \u2014 Story Structure and Descriptive Language",
+        "objective": "Narrative Writing \u2014 Story Structure and Descriptive Language"
+    },
+    {
+        "code": "E-WRI-70",
+        "module_seq": 70,
+        "subject": "ELA",
+        "strand": "Writing",
+        "strand_code": "WRI",
+        "lesson_code": "ELA-019",
+        "topic": "ELA Writing: Expository Writing \u2014 Reports and Factual Detail",
+        "objective": "Expository Writing \u2014 Reports and Factual Detail"
+    },
+    {
+        "code": "E-WRI-71",
+        "module_seq": 71,
+        "subject": "ELA",
+        "strand": "Writing",
+        "strand_code": "WRI",
+        "lesson_code": "ELA-020",
+        "topic": "ELA Writing: Figurative Language \u2014 Simile, Metaphor, Sensory Detail",
+        "objective": "Figurative Language \u2014 Simile, Metaphor, Sensory Detail"
+    },
+    {
+        "code": "E-WRI-72",
+        "module_seq": 72,
+        "subject": "ELA",
+        "strand": "Writing",
+        "strand_code": "WRI",
+        "lesson_code": "ELA-021",
+        "topic": "ELA Writing: Organisation, Coherence and Sentence Variety",
+        "objective": "Organisation, Coherence and Sentence Variety"
+    },
+    {
+        "code": "E-RCM-73",
+        "module_seq": 73,
+        "subject": "ELA",
+        "strand": "Reading Comprehension",
+        "strand_code": "RCM",
+        "lesson_code": "ELA-022",
+        "topic": "Reading Comprehension: Identifying Main Idea in Non-fiction Text",
+        "objective": "Identifying Main Idea in Non-fiction Text"
+    },
+    {
+        "code": "E-RCM-74",
+        "module_seq": 74,
+        "subject": "ELA",
+        "strand": "Reading Comprehension",
+        "strand_code": "RCM",
+        "lesson_code": "ELA-023",
+        "topic": "Reading Comprehension: Identifying Supporting Details",
+        "objective": "Identifying Supporting Details"
+    },
+    {
+        "code": "E-RCM-75",
+        "module_seq": 75,
+        "subject": "ELA",
+        "strand": "Reading Comprehension",
+        "strand_code": "RCM",
+        "lesson_code": "ELA-024",
+        "topic": "Reading Comprehension: Contextual Meaning of Words and Phrases",
+        "objective": "Contextual Meaning of Words and Phrases"
+    },
+    {
+        "code": "E-RCM-76",
+        "module_seq": 76,
+        "subject": "ELA",
+        "strand": "Reading Comprehension",
+        "strand_code": "RCM",
+        "lesson_code": "ELA-025",
+        "topic": "Reading Comprehension: Cause and Effect Relationships",
+        "objective": "Cause and Effect Relationships"
+    },
+    {
+        "code": "E-RCM-77",
+        "module_seq": 77,
+        "subject": "ELA",
+        "strand": "Reading Comprehension",
+        "strand_code": "RCM",
+        "lesson_code": "ELA-026",
+        "topic": "Reading Comprehension: Inferring Meaning and Making Connections",
+        "objective": "Inferring Meaning and Making Connections"
+    },
+    {
+        "code": "E-RCM-78",
+        "module_seq": 78,
+        "subject": "ELA",
+        "strand": "Reading Comprehension",
+        "strand_code": "RCM",
+        "lesson_code": "ELA-027",
+        "topic": "Reading Comprehension: Writer's Purpose and Audience",
+        "objective": "Writer's Purpose and Audience"
+    },
+    {
+        "code": "E-RCM-79",
+        "module_seq": 79,
+        "subject": "ELA",
+        "strand": "Reading Comprehension",
+        "strand_code": "RCM",
+        "lesson_code": "ELA-028",
+        "topic": "Reading Comprehension: Evaluating Texts and Supporting Personal Views",
+        "objective": "Evaluating Texts and Supporting Personal Views"
+    },
+    {
+        "code": "E-POE-80",
+        "module_seq": 80,
+        "subject": "ELA",
+        "strand": "Poetry",
+        "strand_code": "POE",
+        "lesson_code": "ELA-029",
+        "topic": "Poetry: Retrieving Explicitly Stated Information",
+        "objective": "Retrieving Explicitly Stated Information"
+    },
+    {
+        "code": "E-POE-81",
+        "module_seq": 81,
+        "subject": "ELA",
+        "strand": "Poetry",
+        "strand_code": "POE",
+        "lesson_code": "ELA-030",
+        "topic": "Poetry: Figures of Speech \u2014 Simile, Metaphor, Personification",
+        "objective": "Figures of Speech \u2014 Simile, Metaphor, Personification"
+    },
+    {
+        "code": "E-POE-82",
+        "module_seq": 82,
+        "subject": "ELA",
+        "strand": "Poetry",
+        "strand_code": "POE",
+        "lesson_code": "ELA-031",
+        "topic": "Poetry: Words that Appeal to the Senses and Create Imagery",
+        "objective": "Words that Appeal to the Senses and Create Imagery"
+    },
+    {
+        "code": "E-POE-83",
+        "module_seq": 83,
+        "subject": "ELA",
+        "strand": "Poetry",
+        "strand_code": "POE",
+        "lesson_code": "ELA-032",
+        "topic": "Poetry: Mood, Tone and the Writer's Point of View",
+        "objective": "Mood, Tone and the Writer's Point of View"
+    },
+    {
+        "code": "E-POE-84",
+        "module_seq": 84,
+        "subject": "ELA",
+        "strand": "Poetry",
+        "strand_code": "POE",
+        "lesson_code": "ELA-033",
+        "topic": "Poetry: Drawing Conclusions and Making Judgements on Characters",
+        "objective": "Drawing Conclusions and Making Judgements on Characters"
+    },
+    {
+        "code": "E-POE-85",
+        "module_seq": 85,
+        "subject": "ELA",
+        "strand": "Poetry",
+        "strand_code": "POE",
+        "lesson_code": "ELA-034",
+        "topic": "Poetry: Connecting Literature to Real-life Situations",
+        "objective": "Connecting Literature to Real-life Situations"
+    },
+    {
+        "code": "E-POE-86",
+        "module_seq": 86,
+        "subject": "ELA",
+        "strand": "Poetry",
+        "strand_code": "POE",
+        "lesson_code": "ELA-035",
+        "topic": "Poetry: Offering Solutions to Conflicts and Evaluating Appreciation",
+        "objective": "Offering Solutions to Conflicts and Evaluating Appreciation"
+    },
+    {
+        "code": "E-GTX-87",
+        "module_seq": 87,
+        "subject": "ELA",
+        "strand": "Graphic Text",
+        "strand_code": "GTX",
+        "lesson_code": "ELA-036",
+        "topic": "Graphic Text: Comprehending Overt Messages in Media Texts",
+        "objective": "Comprehending Overt Messages in Media Texts"
+    },
+    {
+        "code": "E-GTX-88",
+        "module_seq": 88,
+        "subject": "ELA",
+        "strand": "Graphic Text",
+        "strand_code": "GTX",
+        "lesson_code": "ELA-037",
+        "topic": "Graphic Text: Identifying Implied Messages and Design Elements",
+        "objective": "Identifying Implied Messages and Design Elements"
+    },
+    {
+        "code": "E-GTX-89",
+        "module_seq": 89,
+        "subject": "ELA",
+        "strand": "Graphic Text",
+        "strand_code": "GTX",
+        "lesson_code": "ELA-038",
+        "topic": "Graphic Text: Purpose and Audience of Media Texts",
+        "objective": "Purpose and Audience of Media Texts"
+    },
+    {
+        "code": "E-GTX-90",
+        "module_seq": 90,
+        "subject": "ELA",
+        "strand": "Graphic Text",
+        "strand_code": "GTX",
+        "lesson_code": "ELA-039",
+        "topic": "Graphic Text: Evaluating Techniques Used in Media Texts",
+        "objective": "Evaluating Techniques Used in Media Texts"
+    }
+]
