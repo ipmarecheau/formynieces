@@ -83,6 +83,10 @@ class LessonImporter
                         'title' => $entry['title'],
                         'blocks' => array_values($entry['blocks']),
                         'is_published' => (bool) ($entry['is_published'] ?? true),
+                        // Objective codes this lesson teaches directly / reinforces indirectly, for
+                        // the objective badge + Syllabus page (optional; defaults to the module's own code).
+                        'objectives_direct' => array_values((array) ($entry['objectives_direct'] ?? [$module->code])),
+                        'objectives_indirect' => array_values((array) ($entry['objectives_indirect'] ?? [])),
                     ],
                 );
             }

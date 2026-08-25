@@ -88,6 +88,10 @@
     .lw-cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
     .lw-start { flex: 1; min-width: 200px; background: linear-gradient(135deg, #0e7490, #f6b71e); border: none; border-radius: 999px; padding: 15px 30px; color: white; font-family: 'Fredoka One', cursive; font-size: 16px; cursor: pointer; text-decoration: none; text-align: center; }
     .lw-secondary { background: rgba(255,255,255,0.08); border: 2px solid rgba(34,211,238,0.4); color: #e6f2fb; }
+    .lw-obj { position: relative; display: inline-flex; align-items: center; gap: 6px; margin: -12px 0 20px; font-size: 12px; font-weight: 800; color: #f6b71e; background: rgba(246,183,30,0.12); border: 1px solid rgba(246,183,30,0.5); border-radius: 999px; padding: 5px 12px; cursor: help; }
+    .lw-obj-tip { position: absolute; top: calc(100% + 6px); left: 0; z-index: 20; width: max(240px, 60vw); max-width: 340px; background: #0a1f38; border: 1px solid rgba(34,211,238,0.4); border-radius: 12px; padding: 11px 13px; font-size: 12.5px; font-weight: 600; line-height: 1.5; color: #e6f2fb; opacity: 0; visibility: hidden; transition: opacity .15s; }
+    .lw-obj-tip b { color: #67e8f9; }
+    .lw-obj:hover .lw-obj-tip, .lw-obj:focus .lw-obj-tip { opacity: 1; visibility: visible; }
     @media (prefers-reduced-motion: reduce) { .lw-card, .lw-block, .lw-complete, .lw-complete img { animation: none; } }
 </style>
 
@@ -111,6 +115,14 @@
     @endif
     <p class="lw-subject">{{ $subject }}</p>
     <p class="lw-topic">{{ $topic }}</p>
+    @if (! empty($objectivesDirect))
+        <div class="lw-obj" tabindex="0">🎯 Objectives
+            <div class="lw-obj-tip">
+                <b>Taught directly:</b> {{ implode(', ', $objectivesDirect) }}
+                @if (! empty($objectivesIndirect))<br><b>Reinforces:</b> {{ implode(', ', $objectivesIndirect) }}@endif
+            </div>
+        </div>
+    @endif
 
     <div class="lw-card" id="lw-lesson">
             @if ($lessonInProgress)

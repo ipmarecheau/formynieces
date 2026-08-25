@@ -16,11 +16,15 @@ class Lesson extends Model
         'title',
         'blocks',
         'is_published',
+        'objectives_direct',
+        'objectives_indirect',
     ];
 
     protected $casts = [
         'blocks' => 'array',
         'is_published' => 'boolean',
+        'objectives_direct' => 'array',
+        'objectives_indirect' => 'array',
     ];
 
     public function module(): BelongsTo

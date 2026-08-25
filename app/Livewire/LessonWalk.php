@@ -45,6 +45,11 @@ class LessonWalk extends Component
 
     public array $lessonBlocks = [];
 
+    /** SEA objective codes this lesson teaches directly / reinforces indirectly (TR/§6 objective badge). */
+    public array $objectivesDirect = [];
+
+    public array $objectivesIndirect = [];
+
     /** How many blocks have been revealed so far (chunked step-through). */
     public int $revealed = 1;
 
@@ -107,6 +112,8 @@ class LessonWalk extends Component
         $lesson = Lesson::where('module_id', $module->id)->where('is_published', true)->first();
         $this->lessonTitle = $lesson?->title;
         $this->lessonBlocks = $lesson?->blocks ?? [];
+        $this->objectivesDirect = $lesson?->objectives_direct ?? [];
+        $this->objectivesIndirect = $lesson?->objectives_indirect ?? [];
 
         // A no-lesson placeholder, or a lesson already at its last block, unlocks practice.
         $this->refreshCompletion();

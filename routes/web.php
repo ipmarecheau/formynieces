@@ -20,6 +20,7 @@ use App\Livewire\PracticeWalk;
 use App\Livewire\ReteachWalk;
 use App\Livewire\SchoolJournal;
 use App\Livewire\StudentSchoolJournal;
+use App\Livewire\SyllabusMap;
 use App\Livewire\TutorialWalk;
 use App\Livewire\WelcomeAboard;
 use App\Livewire\WritingStop;
@@ -86,6 +87,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::middleware('auth')->group(function () {
     // Admin/guardian: download a single lesson as a JSON bundle (LB-02). Authorised in the controller.
     Route::get('/lesson-bank/export/{lesson}', LessonExportController::class)->name('lessons.export');
+
+    // Syllabus coverage — read-only map of every objective to its lesson + progress. For students
+    // (their own) and guardians (their child). Lessons open from the Voyage, never from here.
+    Route::get('/syllabus', SyllabusMap::class)->name('syllabus');
 
     // Student-only — the learning loop.
     Route::middleware('role:student')->group(function () {
