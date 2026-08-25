@@ -89,6 +89,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "Look at the pattern 2, 5, 8, 11, ... Kim says the next number is 13. Is she right?",
+                "options": [
+                    "No — the rule is add 3, so 11 + 3 = 14",
+                    "Yes, the next number is 13",
+                    "The rule is add 2, so 13"
+                ],
+                "answer": 0,
+                "explain": "Find the step between terms: 5 − 2 = 3 and 8 − 5 = 3. The pattern adds 3 each time, so after 11 comes 11 + 3 = 14, not 13. Always check the step before guessing the next number.",
+                "rule": "Find the constant difference, then add it to the last term.",
+                "principle": "A number pattern continues by its rule, which you find from the differences.",
+                "canonical_solution": [
+                    "5 − 2 = 3 and 8 − 5 = 3",
+                    "The rule is add 3",
+                    "11 + 3 = 14",
+                    "So the next number is 14, not 13"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "finds the difference between terms (3)"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "applies +3 to 11 to get 14"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains the rule comes from the constant difference"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "adds 2 instead of 3",
+                        "coach": "Check two gaps: 5−2 and 8−5 are both 3."
+                    },
+                    {
+                        "if": "guesses without finding the step",
+                        "coach": "Work out the difference first, then add it."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "the difference in 2, 5, 8",
+                        "answer": "3"
+                    },
+                    {
+                        "prompt": "11 + 3",
+                        "answer": "14"
+                    },
+                    {
+                        "prompt": "the number after 14 in this pattern",
+                        "answer": "17"
+                    },
+                    {
+                        "prompt": "8 + 3",
+                        "answer": "11"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Find how much the pattern changes each step, then keep adding or subtracting that amount. Let's practise!",
                 "cognition": "knowing"

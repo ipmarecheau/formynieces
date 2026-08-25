@@ -91,6 +91,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "A stall had 3,000 mangoes and sold 1,850. Reeta says about 2,000 are left. Is that sensible?",
+                "options": [
+                    "No — about 1,000 are left (3,000 − 1,850 = 1,150)",
+                    "Yes, about 2,000 are left",
+                    "About 3,000 are left"
+                ],
+                "answer": 0,
+                "explain": "Estimate to check: 1,850 is close to 2,000, and 3,000 − 2,000 = 1,000. The exact answer, 3,000 − 1,850 = 1,150, is close to 1,000 — not 2,000. Reeta's guess is too high.",
+                "rule": "Estimate by rounding to check whether an answer is sensible.",
+                "principle": "A quick estimate should be close to the exact answer; if not, something is wrong.",
+                "canonical_solution": [
+                    "Round 1,850 to about 2,000",
+                    "3,000 − 2,000 = 1,000",
+                    "Exact: 3,000 − 1,850 = 1,150",
+                    "About 1,000 are left, so 2,000 is too high"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "rounds and subtracts to estimate, and/or computes 1,150"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "compares the estimate to Reeta's 2,000 and rejects it"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "uses estimation as a sensibleness check"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "adds instead of subtracting",
+                        "coach": "She sold mangoes, so subtract what was sold from what she had."
+                    },
+                    {
+                        "if": "estimates 1,850 as 1,000",
+                        "coach": "1,850 is closer to 2,000 than to 1,000."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "3,000 − 1,850",
+                        "answer": "1150"
+                    },
+                    {
+                        "prompt": "1,850 rounded to the nearest thousand",
+                        "answer": "2000"
+                    },
+                    {
+                        "prompt": "3,000 − 2,000",
+                        "answer": "1000"
+                    },
+                    {
+                        "prompt": "1,150 rounded to the nearest thousand",
+                        "answer": "1000"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Keep the columns lined up, carry when you add, borrow when you subtract. Let's practise!",
                 "cognition": "knowing"

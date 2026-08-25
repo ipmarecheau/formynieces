@@ -99,6 +99,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "Kavi says 4,500 rounds down to 4,000 because 5 is a small digit. Is he right?",
+                "options": [
+                    "No — 4,500 is exactly halfway, so it rounds UP to 5,000",
+                    "Yes, it rounds to 4,000",
+                    "It rounds to 4,500"
+                ],
+                "answer": 0,
+                "explain": "4,500 sits exactly halfway between 4,000 and 5,000. The rule is that a halfway number rounds up, so 4,500 rounds to 5,000.",
+                "rule": "When the hundreds digit is 5 or more, round the thousands up.",
+                "principle": "At the halfway point (500) we round up, not down.",
+                "canonical_solution": [
+                    "4,500 is between 4,000 and 5,000",
+                    "The hundreds digit is 5 (exactly halfway)",
+                    "The rule rounds halfway up",
+                    "So 4,500 rounds to 5,000"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "checks the hundreds digit to decide the rounding"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "recognises 4,500 is halfway and rounds up"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "states that halfway rounds up"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "rounds 4,500 down to 4,000",
+                        "coach": "A 5 in the hundreds means halfway, and halfway rounds up to 5,000."
+                    },
+                    {
+                        "if": "keeps it as 4,500",
+                        "coach": "Rounding to the nearest thousand must land on a thousand, like 4,000 or 5,000."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "4,500 rounded to the nearest thousand",
+                        "answer": "5000"
+                    },
+                    {
+                        "prompt": "3,500 rounded to the nearest thousand",
+                        "answer": "4000"
+                    },
+                    {
+                        "prompt": "6,400 rounded to the nearest thousand",
+                        "answer": "6000"
+                    },
+                    {
+                        "prompt": "7,500 rounded to the nearest thousand",
+                        "answer": "8000"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Check the hundreds digit: 5 or more rounds up, 4 or less rounds down. That is all there is to it. Let's practise!",
                 "cognition": "knowing"

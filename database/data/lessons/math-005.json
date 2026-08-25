@@ -95,6 +95,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "Which is larger, 45,600 or 45,060? Ken says 45,060 because he sees a 6 further along. How do you know for sure?",
+                "options": [
+                    "45,600 — at the first place they differ (hundreds) 6 beats 0",
+                    "45,060 is larger",
+                    "They are equal"
+                ],
+                "answer": 0,
+                "explain": "Compare from the left. Both start 45,_, so look at the hundreds place: 45,600 has 6 hundreds and 45,060 has 0 hundreds. Since 6 is more than 0, 45,600 is the larger number. Where the 6 sits matters, not just that it is there.",
+                "rule": "Compare numbers digit by digit from the left; the first place that differs decides.",
+                "principle": "A digit's place, not just its size, decides which number is bigger.",
+                "canonical_solution": [
+                    "Both numbers are 45-thousand something",
+                    "Compare the hundreds place: 6 vs 0",
+                    "6 is greater than 0",
+                    "So 45,600 > 45,060"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "compares matching places from the left"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "finds the first differing place (hundreds) and compares 6 and 0"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains that place value, not just the digit, decides"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "picks the number where a big digit appears later",
+                        "coach": "A 6 in the hundreds is worth more than a 6 in the tens. Compare the same places."
+                    },
+                    {
+                        "if": "counts digits only",
+                        "coach": "Both have five digits — compare place by place from the left."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "larger of 45,600 and 45,060 (type the number)",
+                        "answer": "45600"
+                    },
+                    {
+                        "prompt": "the hundreds digit of 45,600",
+                        "answer": "6"
+                    },
+                    {
+                        "prompt": "the hundreds digit of 45,060",
+                        "answer": "0"
+                    },
+                    {
+                        "prompt": "larger of 8,200 and 8,020 (type the number)",
+                        "answer": "8200"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Compare place by place from the left, then use < or > with the open end facing the bigger number. Let's practise!",
                 "cognition": "knowing"

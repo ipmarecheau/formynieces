@@ -90,6 +90,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "To work out 12 x 25, Ann does 12 x 20 = 240, then 12 x 5 = 60, then adds: 240 + 60 = 300. Why does her method work?",
+                "options": [
+                    "She split 25 into 20 + 5 and multiplied each part, then added (12x20=240, 12x5=60, total 300)",
+                    "It works by luck; you cannot split numbers like that",
+                    "It works but the total should be 360"
+                ],
+                "answer": 0,
+                "explain": "25 is the same as 20 + 5. Multiplying 12 by each part and adding gives the same as 12 x 25: 240 + 60 = 300. Splitting a factor into easier parts and adding the results always works.",
+                "rule": "You can split a factor into parts, multiply each, and add the answers.",
+                "principle": "Multiplication can be broken into parts that add back to the whole (the distributive idea).",
+                "canonical_solution": [
+                    "25 = 20 + 5",
+                    "12 x 20 = 240",
+                    "12 x 5 = 60",
+                    "240 + 60 = 300, which equals 12 x 25"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "computes 12x20 and 12x5 correctly"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "shows 240 + 60 = 300 matches 12 x 25"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains that splitting a factor and adding gives the same product"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "multiplies the parts together instead of adding",
+                        "coach": "After splitting, add the two products (240 + 60), do not multiply them."
+                    },
+                    {
+                        "if": "splits but forgets a part",
+                        "coach": "Use both parts: 12 x 20 AND 12 x 5."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "12 x 25",
+                        "answer": "300"
+                    },
+                    {
+                        "prompt": "12 x 20",
+                        "answer": "240"
+                    },
+                    {
+                        "prompt": "12 x 5",
+                        "answer": "60"
+                    },
+                    {
+                        "prompt": "15 x 20",
+                        "answer": "300"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Multiply column by column and carry, and use the zero trick for 10 and 100. Let's practise!",
                 "cognition": "knowing"
