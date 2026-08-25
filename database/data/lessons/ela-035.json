@@ -95,6 +95,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "A poem shows two friends who have stopped speaking after an argument. What is a good solution you could suggest?",
+                "options": [
+                    "They could talk calmly and each say sorry",
+                    "They should never speak again",
+                    "Ignore the poem completely"
+                ],
+                "answer": 0,
+                "explain": "A conflict is a disagreement between people. A sensible solution repairs the relationship — here the friends could talk calmly and apologise. Offering a fair solution shows you understood the conflict.",
+                "rule": "Offer a sensible solution that resolves the conflict fairly.",
+                "principle": "Evaluating a text includes proposing reasonable solutions to its conflicts.",
+                "canonical_solution": [
+                    "The conflict: two friends not speaking",
+                    "A good solution repairs it",
+                    "Talking and apologising does that",
+                    "So: talk calmly and say sorry"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "identifies the conflict"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "proposes a fair, repairing solution"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains a solution should resolve the conflict"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "suggests never speaking",
+                        "coach": "That deepens the conflict rather than solving it."
+                    },
+                    {
+                        "if": "dismisses the task",
+                        "coach": "Think of a fair way to mend the friendship."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "a disagreement between characters is a",
+                        "answer": "conflict"
+                    },
+                    {
+                        "prompt": "a good response to a conflict is to",
+                        "answer": "talk"
+                    },
+                    {
+                        "prompt": "does saying sorry help solve a conflict? (yes/no)",
+                        "answer": "yes"
+                    },
+                    {
+                        "prompt": "suggesting a fix means offering a",
+                        "answer": "solution"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Suggest solutions that are fair to all, and say clearly why a poem is worth enjoying. Let's practise!",
                 "cognition": "knowing"

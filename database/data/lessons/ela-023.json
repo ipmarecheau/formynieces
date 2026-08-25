@@ -96,6 +96,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "The main idea is 'Exercise keeps you healthy.' Which sentence is a supporting detail?",
+                "options": [
+                    "'It makes your heart stronger' — it gives a reason for the main idea",
+                    "'My cat is fluffy' — unrelated",
+                    "'The end.'"
+                ],
+                "answer": 0,
+                "explain": "Supporting details back up the main idea with reasons or examples. 'It makes your heart stronger' explains WHY exercise keeps you healthy, so it supports the main idea. The cat sentence has nothing to do with it.",
+                "rule": "Supporting details give reasons or examples for the main idea.",
+                "principle": "Details must connect to and strengthen the main idea.",
+                "canonical_solution": [
+                    "Main idea: exercise keeps you healthy",
+                    "A detail gives a reason or example",
+                    "'makes your heart stronger' is a reason",
+                    "So it is the supporting detail"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "checks which sentence links to the main idea"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "picks the heart sentence as support"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains details back up the main idea"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "picks the unrelated sentence",
+                        "coach": "A detail must connect to the main idea."
+                    },
+                    {
+                        "if": "picks 'The end.'",
+                        "coach": "That gives no reason or example."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "sentences that back up the main idea are supporting",
+                        "answer": "details"
+                    },
+                    {
+                        "prompt": "should a detail relate to the main idea? (yes/no)",
+                        "answer": "yes"
+                    },
+                    {
+                        "prompt": "is an unrelated sentence a good detail? (yes/no)",
+                        "answer": "no"
+                    },
+                    {
+                        "prompt": "details give reasons or",
+                        "answer": "examples"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Supporting details are the small facts that prove the main idea. Look for the who, what, when, where and why. Let's practise!",
                 "cognition": "knowing"

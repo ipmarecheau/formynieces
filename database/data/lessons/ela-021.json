@@ -95,6 +95,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "A paragraph jumps from breakfast, to space rockets, to new shoes. What is the problem?",
+                "options": [
+                    "The sentences are not about one topic — a paragraph should stick to one main idea",
+                    "It is simply too short",
+                    "There is nothing wrong"
+                ],
+                "answer": 0,
+                "explain": "A good paragraph sticks to one main idea, with each sentence connected to it. Jumping between unrelated topics leaves the reader lost. This is about coherence — keeping the writing on one track.",
+                "rule": "Keep a paragraph to one main idea, with sentences linked to it.",
+                "principle": "Coherent writing stays on one topic and connects its ideas.",
+                "canonical_solution": [
+                    "The three sentences are unrelated",
+                    "A paragraph needs one main idea",
+                    "Its sentences should connect to that idea",
+                    "So the problem is a lack of coherence"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "checks whether the sentences share a topic"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "sees they jump topics"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains a paragraph keeps one main idea"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "blames the length",
+                        "coach": "The issue is the mixed topics, not the length."
+                    },
+                    {
+                        "if": "sees no problem",
+                        "coach": "Unrelated sentences make the paragraph hard to follow."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "how many main ideas should one paragraph have?",
+                        "answer": "one"
+                    },
+                    {
+                        "prompt": "writing that stays on topic and connects ideas is",
+                        "answer": "coherent"
+                    },
+                    {
+                        "prompt": "does jumping topics help a paragraph? (yes/no)",
+                        "answer": "no"
+                    },
+                    {
+                        "prompt": "a linking word like 'first' or 'next' is a",
+                        "answer": "connective"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "One idea per paragraph, linking words to connect them, and a mix of short and long sentences — that is well-organised writing. Let's practise!",
                 "cognition": "knowing"

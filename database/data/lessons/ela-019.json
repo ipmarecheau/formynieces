@@ -99,6 +99,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "Which sentence belongs in a factual report: 'Dogs have four legs' or 'Dogs are the best pets'?",
+                "options": [
+                    "'Dogs have four legs' — it is a fact that can be checked",
+                    "'Dogs are the best pets' — it sounds convincing",
+                    "Both are facts"
+                ],
+                "answer": 0,
+                "explain": "A report gives facts — things that can be checked and are true for everyone. 'Dogs have four legs' can be checked. 'Dogs are the best pets' is an opinion; someone else might prefer cats. Reports stick to facts.",
+                "rule": "A report uses facts (checkable), not opinions (personal views).",
+                "principle": "Expository writing informs with facts, not the writer's feelings.",
+                "canonical_solution": [
+                    "A fact can be checked and is true for all",
+                    "'Dogs have four legs' can be checked",
+                    "'best pets' is a personal opinion",
+                    "So the fact belongs in the report"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "tests whether each statement can be checked"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "picks the checkable fact"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains reports use facts, not opinions"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "picks the strong-sounding opinion",
+                        "coach": "Sounding convincing does not make it a fact — can it be checked?"
+                    },
+                    {
+                        "if": "calls both facts",
+                        "coach": "'best pets' is a view, so it is an opinion."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "a statement that can be checked is a",
+                        "answer": "fact"
+                    },
+                    {
+                        "prompt": "a personal view is an",
+                        "answer": "opinion"
+                    },
+                    {
+                        "prompt": "'dogs have four legs' — fact or opinion?",
+                        "answer": "fact"
+                    },
+                    {
+                        "prompt": "'ice cream is the best' — fact or opinion?",
+                        "answer": "opinion"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Report the facts, keep opinions out, and organise from topic to summary. That is clear expository writing. Let's practise!",
                 "cognition": "knowing"

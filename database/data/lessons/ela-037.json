@@ -101,6 +101,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "A gym poster shows a strong, smiling person mid-workout, with no words about how you will feel. What is the IMPLIED message?",
+                "options": [
+                    "That the gym will make you strong and happy — it is suggested by the image",
+                    "That the person is tired and sad",
+                    "There is no message at all"
+                ],
+                "answer": 0,
+                "explain": "An implied message is suggested rather than stated. The strong, smiling person hints that joining the gym will make YOU strong and happy, even though no words say so. You read the image, not just the words.",
+                "rule": "An implied message is suggested by images or design, not stated in words.",
+                "principle": "Design choices carry meaning beyond the written words.",
+                "canonical_solution": [
+                    "No words state the benefit",
+                    "The image shows strength and a smile",
+                    "That suggests you will be strong and happy",
+                    "So that is the implied message"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "reads the image, not just words"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "states the suggested message"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains implied means suggested"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "reads it as tired/sad",
+                        "coach": "The person is strong and smiling — a positive suggestion."
+                    },
+                    {
+                        "if": "says no message",
+                        "coach": "Images imply messages even without words."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "a message suggested but not stated is",
+                        "answer": "implied"
+                    },
+                    {
+                        "prompt": "the strong smiling person suggests you will be",
+                        "answer": "strong"
+                    },
+                    {
+                        "prompt": "do images carry implied messages? (yes/no)",
+                        "answer": "yes"
+                    },
+                    {
+                        "prompt": "implied is the opposite of",
+                        "answer": "overt"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Look past the words: colours, sizes and images whisper an implied message. Read the design, not just the text. Let's practise!",
                 "cognition": "knowing"

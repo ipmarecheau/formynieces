@@ -95,6 +95,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "A poem says plainly 'The cat sat on the red mat.' What colour is the mat, and how do you find that out?",
+                "options": [
+                    "red — the poem states it directly, so you just retrieve it",
+                    "blue — you have to guess",
+                    "It does not say"
+                ],
+                "answer": 0,
+                "explain": "Some information is stated directly (explicit). The poem plainly says the mat is red, so you simply find it in the text — no guessing needed. Retrieving explicit information means locating what is clearly stated.",
+                "rule": "Explicit information is stated in the text; find it, do not guess.",
+                "principle": "Retrieving explicit facts means locating what the text clearly says.",
+                "canonical_solution": [
+                    "The poem says 'the red mat'",
+                    "That is stated directly",
+                    "So the mat is red",
+                    "You retrieve it, not infer it"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "locates the stated word in the text"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "answers 'red' from the text"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains explicit info is found, not guessed"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "guesses another colour",
+                        "coach": "The colour is stated — find it in the line."
+                    },
+                    {
+                        "if": "says it is not given",
+                        "coach": "The poem says 'red mat' directly."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "information stated directly is",
+                        "answer": "explicit"
+                    },
+                    {
+                        "prompt": "the mat's colour in the poem",
+                        "answer": "red"
+                    },
+                    {
+                        "prompt": "do you find or guess explicit information?",
+                        "answer": "find"
+                    },
+                    {
+                        "prompt": "explicit means clearly",
+                        "answer": "stated"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "When a question asks something the poem states outright, find those exact words. Let's practise!",
                 "cognition": "knowing"

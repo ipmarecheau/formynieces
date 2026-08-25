@@ -96,6 +96,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "In a poem, a girl shares her only lunch with a hungry friend. What can you judge about her character?",
+                "options": [
+                    "She is kind and generous — her action shows it",
+                    "She is greedy",
+                    "You cannot tell anything about her"
+                ],
+                "answer": 0,
+                "explain": "We judge characters by what they do. Sharing her only lunch with someone hungry is a caring, generous act, so we can conclude she is kind. Actions reveal character.",
+                "rule": "Judge a character by their actions in the text.",
+                "principle": "Character is shown through behaviour, not just description.",
+                "canonical_solution": [
+                    "She shares her only lunch",
+                    "That is a caring, giving act",
+                    "Actions reveal character",
+                    "So she is kind and generous"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "uses the character's action as evidence"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "concludes she is kind/generous"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains actions reveal character"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "says greedy",
+                        "coach": "Sharing your only lunch is the opposite of greedy."
+                    },
+                    {
+                        "if": "says you cannot tell",
+                        "coach": "Her action is a clear clue to her character."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "we judge a character by their",
+                        "answer": "actions"
+                    },
+                    {
+                        "prompt": "sharing her lunch shows she is",
+                        "answer": "kind"
+                    },
+                    {
+                        "prompt": "does what a character does reveal their personality? (yes/no)",
+                        "answer": "yes"
+                    },
+                    {
+                        "prompt": "a person who gives to others is",
+                        "answer": "generous"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Watch what characters do, then draw a fair conclusion backed by that evidence. Let's practise!",
                 "cognition": "knowing"

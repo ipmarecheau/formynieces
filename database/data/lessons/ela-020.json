@@ -99,6 +99,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "'She is as brave as a lion.' Is this a simile or a metaphor, and how do you know?",
+                "options": [
+                    "A simile — it compares using the word 'as'",
+                    "A metaphor — it says she actually IS a lion",
+                    "Neither, it is a plain fact"
+                ],
+                "answer": 0,
+                "explain": "A simile compares two things using 'like' or 'as'. Here 'as brave as a lion' uses 'as', so it is a simile. A metaphor would drop the 'as' and say she IS a lion.",
+                "rule": "A simile compares with 'like' or 'as'; a metaphor says one thing is another.",
+                "principle": "The signal words 'like' or 'as' mark a simile.",
+                "canonical_solution": [
+                    "The phrase compares her bravery to a lion's",
+                    "It uses the word 'as'",
+                    "'like'/'as' signals a simile",
+                    "So it is a simile"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "spots the comparison and the word 'as'"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "names it a simile"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains like/as marks a simile"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "calls it a metaphor",
+                        "coach": "A metaphor drops 'as'; this keeps it, so simile."
+                    },
+                    {
+                        "if": "sees no comparison",
+                        "coach": "It compares her bravery to a lion's."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "a comparison using 'like' or 'as' is a",
+                        "answer": "simile"
+                    },
+                    {
+                        "prompt": "a comparison saying one thing IS another is a",
+                        "answer": "metaphor"
+                    },
+                    {
+                        "prompt": "'brave as a lion' is a",
+                        "answer": "simile"
+                    },
+                    {
+                        "prompt": "'the classroom was a zoo' is a",
+                        "answer": "metaphor"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "A simile compares with 'like' or 'as'; a metaphor says one thing IS another. Both make writing vivid. Let's practise!",
                 "cognition": "knowing"

@@ -95,6 +95,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "A passage explains, step by step, how bees make honey. Is the main idea 'bees are yellow' or 'bees make honey through several steps'?",
+                "options": [
+                    "'Bees make honey through several steps' — it covers the whole passage",
+                    "'Bees are yellow' — a small detail",
+                    "The passage has no main idea"
+                ],
+                "answer": 0,
+                "explain": "The main idea is what the WHOLE passage is mostly about. Since the passage is all about the steps of making honey, that is the main idea. 'Bees are yellow' might be one small detail, not the overall point.",
+                "rule": "The main idea is the overall point of the whole passage.",
+                "principle": "A main idea covers the whole text, not a single detail.",
+                "canonical_solution": [
+                    "The passage is about making honey",
+                    "That covers the whole text",
+                    "'bees are yellow' is a small detail",
+                    "So the main idea is bees make honey through steps"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "asks what the whole passage is about"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "chooses the overall point, not a detail"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains main idea covers the whole text"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "picks a small detail",
+                        "coach": "A detail is not the main idea — what is the whole passage about?"
+                    },
+                    {
+                        "if": "says no main idea",
+                        "coach": "Most passages have one overall point."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "does the main idea cover the whole passage or one detail?",
+                        "answer": "whole passage"
+                    },
+                    {
+                        "prompt": "a small fact in a passage is a",
+                        "answer": "detail"
+                    },
+                    {
+                        "prompt": "'bees are yellow' — main idea or detail?",
+                        "answer": "detail"
+                    },
+                    {
+                        "prompt": "the overall point of a passage is the",
+                        "answer": "main idea"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "The main idea is the big point the whole text is making. Ask 'what is this mostly about?' and you will find it. Let's practise!",
                 "cognition": "knowing"

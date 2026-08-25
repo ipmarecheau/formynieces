@@ -96,6 +96,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "'The juicy, sweet mango dripped down her chin.' Which senses does this imagery appeal to?",
+                "options": [
+                    "Taste and touch — 'sweet' is taste and 'dripped down her chin' is touch",
+                    "Only hearing",
+                    "It appeals to no senses"
+                ],
+                "answer": 0,
+                "explain": "Imagery uses words that appeal to the senses so you can almost feel the scene. 'sweet' appeals to taste and 'dripped down her chin' appeals to touch. Sense words make writing vivid.",
+                "rule": "Imagery uses sense words (sight, sound, smell, taste, touch) to paint a picture.",
+                "principle": "Sense words let the reader experience the scene.",
+                "canonical_solution": [
+                    "'sweet' appeals to taste",
+                    "'dripped down her chin' appeals to touch",
+                    "These are sense words = imagery",
+                    "So it appeals to taste and touch"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "matches words to the senses"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "identifies taste and touch"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains imagery appeals to the senses"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "says only hearing",
+                        "coach": "There is no sound word here; look at taste and touch."
+                    },
+                    {
+                        "if": "sees no senses",
+                        "coach": "'sweet' and 'dripped' are sense words."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "words that appeal to the senses create",
+                        "answer": "imagery"
+                    },
+                    {
+                        "prompt": "'sweet' appeals to which sense?",
+                        "answer": "taste"
+                    },
+                    {
+                        "prompt": "sight, hearing, smell, taste and",
+                        "answer": "touch"
+                    },
+                    {
+                        "prompt": "does imagery help you picture a scene? (yes/no)",
+                        "answer": "yes"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Sensory words paint pictures in the reader's mind. Look for the sense behind each one. Let's practise!",
                 "cognition": "knowing"

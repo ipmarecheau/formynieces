@@ -100,6 +100,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "'The road was icy, so the car slid.' What is the cause and what is the effect?",
+                "options": [
+                    "Cause: the icy road; effect: the car slid",
+                    "Cause: the car slid; effect: the icy road",
+                    "They are the same thing"
+                ],
+                "answer": 0,
+                "explain": "The cause is the reason something happens; the effect is what results. The icy road came first and made the car slide, so the icy road is the cause and the sliding is the effect. The word 'so' points to the effect.",
+                "rule": "The cause happens first and makes the effect; 'so' often signals the effect.",
+                "principle": "Cause and effect are linked in order: reason then result.",
+                "canonical_solution": [
+                    "The icy road came first",
+                    "It made the car slide",
+                    "So icy road = cause",
+                    "car slid = effect"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "orders the two events"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "names the icy road as cause, sliding as effect"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains cause leads to effect"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "swaps them",
+                        "coach": "The road iced over first, then the car slid — cause then effect."
+                    },
+                    {
+                        "if": "sees no link",
+                        "coach": "'so' connects the cause to its effect."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "the reason something happens is the",
+                        "answer": "cause"
+                    },
+                    {
+                        "prompt": "what happens as a result is the",
+                        "answer": "effect"
+                    },
+                    {
+                        "prompt": "in 'icy road, so car slid', the cause is the",
+                        "answer": "icy road"
+                    },
+                    {
+                        "prompt": "the word that often signals an effect",
+                        "answer": "so"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Ask 'why did it happen?' for the cause, and 'what happened?' for the effect. Watch for because and so. Let's practise!",
                 "cognition": "knowing"

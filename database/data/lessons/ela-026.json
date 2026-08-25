@@ -96,6 +96,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "'Mia grabbed her umbrella and frowned at the sky.' What can you infer about the weather?",
+                "options": [
+                    "It is probably about to rain — the umbrella and the sky are clues",
+                    "It is a bright sunny day",
+                    "She is going to the beach"
+                ],
+                "answer": 0,
+                "explain": "The text does not say 'it is raining', but the clues — grabbing an umbrella, frowning at the sky — let you infer that rain is likely. Inferring means using clues plus what you already know.",
+                "rule": "Infer by combining text clues with what you already know.",
+                "principle": "An inference is a sensible conclusion the text does not state outright.",
+                "canonical_solution": [
+                    "Clue 1: she grabbed an umbrella",
+                    "Clue 2: she frowned at the sky",
+                    "Umbrellas and dark skies suggest rain",
+                    "So you infer rain is coming"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "gathers the clues (umbrella, sky)"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "infers rain is likely"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains inference uses clues plus knowledge"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "picks sunny",
+                        "coach": "Why grab an umbrella and frown at the sky if it were sunny?"
+                    },
+                    {
+                        "if": "waits for it to be stated",
+                        "coach": "Inference fills in what the text leaves unsaid."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "working out what is not stated directly is to",
+                        "answer": "infer"
+                    },
+                    {
+                        "prompt": "the umbrella suggests",
+                        "answer": "rain"
+                    },
+                    {
+                        "prompt": "does inferring use clues? (yes/no)",
+                        "answer": "yes"
+                    },
+                    {
+                        "prompt": "frowning at the sky suggests bad",
+                        "answer": "weather"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Gather the clues, add what you know, and make your smart guess. That is inferring. Let's practise!",
                 "cognition": "knowing"

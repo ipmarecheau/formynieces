@@ -100,6 +100,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "You say a story is exciting. What makes that a STRONG opinion rather than a weak one?",
+                "options": [
+                    "Giving a reason from the text, like the fast chase scene",
+                    "Just saying 'because I like it'",
+                    "Saying nothing at all"
+                ],
+                "answer": 0,
+                "explain": "An opinion is stronger when you back it with evidence from the text. Saying the chase scene made your heart race points to something in the story. 'Because I like it' gives the reader no reason to agree.",
+                "rule": "Support an opinion with evidence from the text.",
+                "principle": "A judgement is convincing only when backed by evidence.",
+                "canonical_solution": [
+                    "An opinion needs support",
+                    "Support means evidence from the text",
+                    "The chase scene is such evidence",
+                    "So it makes the opinion strong"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "looks for evidence in the text"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "chooses the text-based reason"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains opinions need evidence"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "accepts 'because I like it'",
+                        "coach": "That gives no reason from the text."
+                    },
+                    {
+                        "if": "gives no support",
+                        "coach": "Point to something in the story to back your view."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "a strong opinion is backed by",
+                        "answer": "evidence"
+                    },
+                    {
+                        "prompt": "evidence should come from the",
+                        "answer": "text"
+                    },
+                    {
+                        "prompt": "is 'because I like it' strong support? (yes/no)",
+                        "answer": "no"
+                    },
+                    {
+                        "prompt": "supporting a view needs a",
+                        "answer": "reason"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Give your view, then prove it with evidence from the text. That is how you evaluate well. Let's practise!",
                 "cognition": "knowing"

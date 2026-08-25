@@ -96,6 +96,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "A poem is full of words like 'gloomy', 'dark' and 'alone'. What mood does it create, and how do you know?",
+                "options": [
+                    "A sad, lonely mood — the word choices are dark",
+                    "A happy, cheerful mood",
+                    "No mood at all"
+                ],
+                "answer": 0,
+                "explain": "Mood is the feeling a poem gives the reader, and it comes from the poet's word choices. 'gloomy', 'dark' and 'alone' are heavy, sad words, so they build a sad, lonely mood.",
+                "rule": "A poet's word choices build the mood.",
+                "principle": "Mood is created by the connotations of the words chosen.",
+                "canonical_solution": [
+                    "The words are 'gloomy', 'dark', 'alone'",
+                    "These words feel heavy and sad",
+                    "Word choice builds mood",
+                    "So the mood is sad and lonely"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "reads the word choices as evidence"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "names a sad/lonely mood"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "links word choice to mood"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "says cheerful",
+                        "coach": "'gloomy' and 'dark' are not cheerful words."
+                    },
+                    {
+                        "if": "sees no mood",
+                        "coach": "Word choices always create some feeling."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "the feeling a poem gives is its",
+                        "answer": "mood"
+                    },
+                    {
+                        "prompt": "'gloomy' and 'dark' create a ___ mood",
+                        "answer": "sad"
+                    },
+                    {
+                        "prompt": "do word choices affect mood? (yes/no)",
+                        "answer": "yes"
+                    },
+                    {
+                        "prompt": "the writer's attitude to the subject is the",
+                        "answer": "tone"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Mood is what the reader feels; tone is the poet's attitude. Read the word choices to sense both. Let's practise!",
                 "cognition": "knowing"

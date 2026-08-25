@@ -89,6 +89,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "'The wind whispered through the trees.' Which figure of speech is this, and why?",
+                "options": [
+                    "Personification — the wind is given a human action (whispering)",
+                    "A simile — it uses 'like' or 'as'",
+                    "It is a plain fact"
+                ],
+                "answer": 0,
+                "explain": "Whispering is something people do, not the wind. Giving a human action or feeling to a non-human thing is personification. There is no 'like' or 'as', so it is not a simile.",
+                "rule": "Personification gives human qualities to non-human things.",
+                "principle": "Figures of speech are named by how they work, not just by sounding poetic.",
+                "canonical_solution": [
+                    "Whispering is a human action",
+                    "The wind cannot really whisper",
+                    "Giving it a human action = personification",
+                    "So this is personification"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "notices a human action given to the wind"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "names it personification"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "distinguishes it from a simile"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "calls it a simile",
+                        "coach": "No 'like' or 'as' here — it is personification."
+                    },
+                    {
+                        "if": "calls it a fact",
+                        "coach": "Wind cannot whisper; that is figurative language."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "giving human traits to objects is",
+                        "answer": "personification"
+                    },
+                    {
+                        "prompt": "'as brave as a lion' is a",
+                        "answer": "simile"
+                    },
+                    {
+                        "prompt": "'the wind whispered' is",
+                        "answer": "personification"
+                    },
+                    {
+                        "prompt": "comparing with 'like' or 'as' is a",
+                        "answer": "simile"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Similes and metaphors compare; personification brings things to life with human actions. Watch for all three in poems. Let's practise!",
                 "cognition": "knowing"

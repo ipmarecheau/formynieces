@@ -98,6 +98,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "A story opens with 'And they lived happily ever after.' What is wrong with starting there?",
+                "options": [
+                    "That is an ending — a story should set the scene, build a problem, then resolve it",
+                    "Nothing is wrong",
+                    "Stories should always start with the ending"
+                ],
+                "answer": 0,
+                "explain": "A story has a shape: a beginning that sets the scene, a middle where a problem grows, and an ending that resolves it. 'Happily ever after' is the resolution, so it belongs at the end, not the start.",
+                "rule": "A narrative moves beginning to middle to end: scene, problem, resolution.",
+                "principle": "Story structure orders events so tension builds and then resolves.",
+                "canonical_solution": [
+                    "Beginning sets the scene",
+                    "Middle builds a problem",
+                    "Ending resolves it",
+                    "'Happily ever after' is a resolution, so it belongs at the end"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "recognises the three story parts"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "sees 'happily ever after' is a resolution"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains the beginning-middle-end order"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "sees no problem",
+                        "coach": "The resolution cannot come first — the problem has not happened yet."
+                    },
+                    {
+                        "if": "thinks order does not matter",
+                        "coach": "Tension must build before it resolves."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "the part of a story that sets the scene",
+                        "answer": "beginning"
+                    },
+                    {
+                        "prompt": "the part where the problem grows",
+                        "answer": "middle"
+                    },
+                    {
+                        "prompt": "the part that solves the problem",
+                        "answer": "ending"
+                    },
+                    {
+                        "prompt": "does a story build to a problem then solve it? (yes/no)",
+                        "answer": "yes"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Shape your story with a beginning, middle and end, then bring it to life with exact, sensory words. Let's practise!",
                 "cognition": "knowing"

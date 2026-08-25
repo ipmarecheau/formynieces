@@ -101,6 +101,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "A bright advert for a new toy is full of cartoons and playful colours. Who is the intended audience, and how can you tell?",
+                "options": [
+                    "Children — the cartoons and bright colours are aimed at them",
+                    "Elderly people",
+                    "Scientists"
+                ],
+                "answer": 0,
+                "explain": "The audience is who the text is made for. Cartoons and playful colours appeal to children, so children are the intended audience. Design choices are clues to the audience and purpose.",
+                "rule": "Design choices reveal the intended audience and purpose.",
+                "principle": "Media makers shape design to fit a target audience.",
+                "canonical_solution": [
+                    "The advert uses cartoons and bright colours",
+                    "Those appeal to children",
+                    "So the audience is children",
+                    "(design choices give it away)"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "reads the design choices as clues"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "names children as the audience"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "links design to audience"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "picks an adult audience",
+                        "coach": "Cartoons and playful colours target children."
+                    },
+                    {
+                        "if": "ignores the design",
+                        "coach": "The look of the advert points to its audience."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "who an advert is aimed at is the",
+                        "answer": "audience"
+                    },
+                    {
+                        "prompt": "bright cartoons usually target",
+                        "answer": "children"
+                    },
+                    {
+                        "prompt": "the reason an advert is made is its",
+                        "answer": "purpose"
+                    },
+                    {
+                        "prompt": "do design choices hint at the audience? (yes/no)",
+                        "answer": "yes"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Ask why a graphic text was made and who it is for. Purpose and audience unlock its meaning. Let's practise!",
                 "cognition": "knowing"
