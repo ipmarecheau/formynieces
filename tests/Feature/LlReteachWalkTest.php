@@ -88,11 +88,13 @@ it('remediates the missed block with its own rule and lands in progress after th
     ]]);
     app(Remediation::class)->start($student->id, $module->id, ReteachSession::TRIGGER_STREAK);
 
-    $c = Livewire::actingAs($student)->test(LessonWalk::class, ['module' => $module])
-        ->assertSet('reteach', true)
-        ->call('answerCheck', 0, 0)                 // 1st wrong -> retry (two tries)
+    $c = Livewire::actingAs($student)->test(LessonWalk::class, ['module' => $module]);
+    // Options are shuffled on mount — derive the wrong index rather than assuming index 0.
+    $wrong = 1 - (int) $c->get('lessonBlocks')[0]['answer'];
+    $c->assertSet('reteach', true)
+        ->call('answerCheck', 0, $wrong)            // 1st wrong -> retry (two tries)
         ->assertSet('handoffSplash', false)
-        ->call('answerCheck', 0, 0)                 // 2nd wrong -> hand-off splash
+        ->call('answerCheck', 0, $wrong)            // 2nd wrong -> hand-off splash
         ->assertSet('handoffSplash', true)
         ->call('enterRemediation')                  // cycle 1 -> chat gets THIS block's rule + first same-rule word
         ->assertSet('remediationCycle', 1)
@@ -105,9 +107,9 @@ it('remediates the missed block with its own rule and lands in progress after th
     // Cycle 1 → re-ask wrong → cycle 2 → re-ask wrong → cycle 3 → re-ask wrong → in progress (LL-26/27).
     $c->call('onRemediationReturn')->assertSet('paused', false);
     expect($c->get('checkResults'))->not->toHaveKey(0);      // the block is re-asked
-    $c->call('answerCheck', 0, 0)->assertSet('remediationCycle', 2);
-    $c->call('onRemediationReturn')->call('answerCheck', 0, 0)->assertSet('remediationCycle', 3);
-    $c->call('onRemediationReturn')->call('answerCheck', 0, 0)
+    $c->call('answerCheck', 0, $wrong)->assertSet('remediationCycle', 2);
+    $c->call('onRemediationReturn')->call('answerCheck', 0, $wrong)->assertSet('remediationCycle', 3);
+    $c->call('onRemediationReturn')->call('answerCheck', 0, $wrong)
         ->assertSet('lessonInProgress', true)
         ->assertSet('paused', false);
 
@@ -125,11 +127,14 @@ it('resolves the remediation when she gets the re-asked block right', function (
     ]]);
     app(Remediation::class)->start($student->id, $module->id, ReteachSession::TRIGGER_STREAK);
 
-    $c = Livewire::actingAs($student)->test(LessonWalk::class, ['module' => $module])
-        ->call('answerCheck', 0, 0)->call('answerCheck', 0, 0)   // two misses -> splash
+    $c = Livewire::actingAs($student)->test(LessonWalk::class, ['module' => $module]);
+    // Options are shuffled on mount — read the remapped correct index so the miss/hit are real.
+    $correct = (int) $c->get('lessonBlocks')[0]['answer'];
+    $wrong = 1 - $correct;
+    $c->call('answerCheck', 0, $wrong)->call('answerCheck', 0, $wrong)   // two misses -> splash
         ->call('enterRemediation')->assertSet('remediationCycle', 1)
         ->call('onRemediationReturn')
-        ->call('answerCheck', 0, 1)                              // correct re-ask -> resolved
+        ->call('answerCheck', 0, $correct)                      // correct re-ask -> resolved
         ->assertSet('remediationCycle', 0)
         ->assertSet('lessonComplete', true)
         ->assertDispatched('reteach-final');

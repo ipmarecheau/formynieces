@@ -17,7 +17,10 @@ class LessonTour extends Component
     public function mount(): void
     {
         $user = auth()->user();
-        $this->open = in_array($user?->tour_stage, ['island', 'lesson'], true);
+        // Only during the first-run tour (or one the user re-started) — never once she has seen it,
+        // so a returning student opening a lesson isn't shown the tour.
+        $this->open = in_array($user?->tour_stage, ['island', 'lesson'], true)
+            && ! ($user?->hasSeenGuide('tour') ?? false);
         if ($this->open && $user?->tour_stage !== 'lesson') {
             $user->setTourStage('lesson');
         }

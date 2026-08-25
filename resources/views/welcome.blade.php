@@ -353,7 +353,7 @@
             </nav>
             <div class="nav-actions desktop">
                 <span class="nav-user">Hi, {{ \Illuminate\Support\Str::of(auth()->user()->name)->before(' ') }} 👋</span>
-                <a class="btn btn-primary" href="{{ $homeUrl }}">My dashboard</a>
+                <a class="btn btn-primary" href="{{ $homeUrl }}">My Dashboard</a>
                 <form method="POST" action="{{ route('logout') }}" class="nav-logout">
                     @csrf
                     <button type="submit" class="btn btn-secondary">Log out</button>
@@ -385,7 +385,7 @@
             <a class="nav-link" href="{{ route('faq') }}">FAQ</a>
             <a class="nav-link" href="{{ route('contact') }}">Contact</a>
             <div class="drawer-actions">
-                <a class="btn btn-primary" href="{{ $homeUrl }}">My dashboard</a>
+                <a class="btn btn-primary" href="{{ $homeUrl }}">My Dashboard</a>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button type="submit" class="btn btn-secondary" style="width:100%">Log out</button>
@@ -674,7 +674,7 @@
             <a href="{{ route('contact') }}">Contact</a>
             <a href="{{ route('book.call') }}">Book a call</a>
             @auth
-                <a href="{{ $homeUrl }}">My dashboard</a>
+                <a href="{{ $homeUrl }}">My Dashboard</a>
             @else
                 <a href="{{ route('login') }}">Sign In</a>
             @endauth

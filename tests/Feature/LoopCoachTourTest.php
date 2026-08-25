@@ -50,6 +50,15 @@ it('stays hidden for a student who is not on the tour', function () {
     expect($student->fresh()->tour_stage)->toBeNull();
 })->group('scenario:TR-09');
 
+it('stays hidden once the student has already seen the tour, even if a stage lingers', function () {
+    $student = loopStudent('lesson');
+    $student->markGuideSeen('tour');
+
+    Livewire::actingAs($student)
+        ->test(LoopCoach::class, ['leg' => 'learn'])
+        ->assertSet('open', false);
+})->group('scenario:TR-07');
+
 it('ends the whole tour when skipped or finished', function () {
     $student = loopStudent('practice');
 

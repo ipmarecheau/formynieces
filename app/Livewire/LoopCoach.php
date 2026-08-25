@@ -27,7 +27,9 @@ class LoopCoach extends Component
         $this->leg = $leg;
         $user = auth()->user();
 
-        if ($user?->onGuidedTour()) {
+        // Only during the first-run tour (or one the user re-started) — never once she has seen it,
+        // so a returning student on a lesson/practice page isn't shown the tour coach.
+        if ($user?->onGuidedTour() && ! $user->hasSeenGuide('tour')) {
             $this->stage = $user->tour_stage;
             $user->advanceTourStage($leg);
             $this->open = true;

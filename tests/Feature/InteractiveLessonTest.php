@@ -71,16 +71,22 @@ it('steps through the lesson, gates on checks, and unlocks practice on completio
         ['type' => 'text', 'content' => 'Now you are ready to practise.'],
     ]]);
 
-    Livewire::actingAs($student)->test(LessonWalk::class, ['module' => $module])
+    $component = Livewire::actingAs($student)->test(LessonWalk::class, ['module' => $module]);
+    // Options are shuffled on mount so the correct choice is never a fixed default — read
+    // the remapped answer index rather than assuming the authored position.
+    $correct = (int) $component->get('lessonBlocks')[1]['answer'];
+    $wrong = 1 - $correct;
+
+    $component
         ->assertSet('revealed', 1)                  // starts on the first block only
         ->assertSet('lessonComplete', false)        // practice is gated
         ->call('next')                              // reveal the check
         ->assertSet('revealed', 2)
-        ->call('answerCheck', 1, 0)                 // wrong choice
+        ->call('answerCheck', 1, $wrong)            // wrong choice
         ->assertSet('lessonComplete', false)
         ->call('next')                              // gated: cannot pass an unanswered check
         ->assertSet('revealed', 2)
-        ->call('answerCheck', 1, 1)                 // correct choice
+        ->call('answerCheck', 1, $correct)          // correct choice
         ->call('next')                              // reveal the last block
         ->assertSet('revealed', 3)
         ->assertSet('lessonComplete', true);        // worked all the way through -> practice unlocks
@@ -130,9 +136,11 @@ it('leaves her module progress and mastery status unchanged when she completes t
     $before = $progress->fresh()->getAttributes();
 
     // Work all the way through the lesson, answering the inline check correctly.
-    Livewire::actingAs($student)->test(LessonWalk::class, ['module' => $module])
+    $component = Livewire::actingAs($student)->test(LessonWalk::class, ['module' => $module]);
+    $correct = (int) $component->get('lessonBlocks')[1]['answer'];   // options are shuffled on mount
+    $component
         ->call('next')                  // reveal the check
-        ->call('answerCheck', 1, 1)     // answer it correctly
+        ->call('answerCheck', 1, $correct)     // answer it correctly
         ->call('next')                  // reveal the last block
         ->assertSet('lessonComplete', true);
 

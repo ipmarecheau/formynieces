@@ -27,7 +27,11 @@ class VoyageTour extends Component
     #[On('start-tour')]
     public function start(): void
     {
-        auth()->user()?->setTourStage('overworld');
+        $user = auth()->user();
+        // She chose to take the tour again — forget that she's seen it so every leg (including the
+        // lesson coaches, which are gated on "not seen") runs on the replay.
+        $user?->forgetGuide('tour');
+        $user?->setTourStage('overworld');
         $this->open = true;
     }
 

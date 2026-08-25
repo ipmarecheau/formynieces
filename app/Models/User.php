@@ -115,6 +115,16 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
         }
     }
 
+    /** Forget a dismissed guide so it can run again — e.g. when she re-starts the tour herself. (TR-04) */
+    public function forgetGuide(string $key): void
+    {
+        $seen = $this->seen_guides ?? [];
+        if (in_array($key, $seen, true)) {
+            $this->seen_guides = array_values(array_filter($seen, fn ($g) => $g !== $key));
+            $this->save();
+        }
+    }
+
     // A student belongs to a guardian (column stays parent_id for now).
     public function parent(): BelongsTo
     {

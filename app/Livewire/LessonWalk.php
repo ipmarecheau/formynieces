@@ -111,12 +111,47 @@ class LessonWalk extends Component
 
         $lesson = Lesson::where('module_id', $module->id)->where('is_published', true)->first();
         $this->lessonTitle = $lesson?->title;
-        $this->lessonBlocks = $lesson?->blocks ?? [];
+        $this->lessonBlocks = $this->shuffleChoiceBlocks($lesson?->blocks ?? []);
         $this->objectivesDirect = $lesson?->objectives_direct ?? [];
         $this->objectivesIndirect = $lesson?->objectives_indirect ?? [];
 
         // A no-lesson placeholder, or a lesson already at its last block, unlocks practice.
         $this->refreshCompletion();
+    }
+
+    /**
+     * Randomise each check/fillblank's option order so the correct answer is never a fixed or
+     * default choice, and remap the check's `answer` index to the option's new position. Done once
+     * at mount so the order is stable through the lesson but varies from one sitting to the next.
+     * (markwords/matchpairs/ordersteps already present shuffled.)
+     *
+     * @param  array<int, array<string, mixed>>  $blocks
+     * @return array<int, array<string, mixed>>
+     */
+    private function shuffleChoiceBlocks(array $blocks): array
+    {
+        foreach ($blocks as $i => $block) {
+            $type = $block['type'] ?? '';
+            $options = $block['options'] ?? null;
+
+            if (! is_array($options) || count($options) < 2) {
+                continue;
+            }
+
+            if ($type === 'check') {
+                $order = array_keys($options);
+                shuffle($order);
+                $correct = (int) ($block['answer'] ?? 0);
+                $blocks[$i]['options'] = array_map(fn ($k) => $options[$k], $order);
+                $blocks[$i]['answer'] = array_search($correct, $order, true);
+            } elseif ($type === 'fillblank') {
+                // fillblank matches on the typed/tapped string, so order-only shuffle is safe.
+                shuffle($options);
+                $blocks[$i]['options'] = $options;
+            }
+        }
+
+        return $blocks;
     }
 
     /** Reveal the next block, once the current one isn't a still-unanswered check. */
