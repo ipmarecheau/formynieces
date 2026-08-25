@@ -96,6 +96,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "The prefix 'un' is added to 'kind' to make 'unkind'. What does 'unkind' mean, and why?",
+                "options": [
+                    "not kind — the prefix 'un' means 'not'",
+                    "very kind — 'un' makes it stronger",
+                    "kind again"
+                ],
+                "answer": 0,
+                "explain": "A prefix goes on the front of a root word and changes its meaning. 'un' means 'not', so 'un' + 'kind' = 'not kind'. Knowing the prefix lets you work out a new word without being told.",
+                "rule": "The prefix 'un' means 'not'; it flips the root word's meaning.",
+                "principle": "A prefix changes a root word's meaning in a predictable way.",
+                "canonical_solution": [
+                    "'un' is a prefix meaning not",
+                    "The root is 'kind'",
+                    "un + kind = not kind",
+                    "So 'unkind' means not kind"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "separates the prefix from the root"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "applies 'un' = not to get 'not kind'"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains a prefix changes meaning predictably"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "thinks un makes it stronger",
+                        "coach": "'un' means not, so it reverses the meaning."
+                    },
+                    {
+                        "if": "confuses un with re",
+                        "coach": "'re' means again; 'un' means not."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "does 'unhappy' mean not happy? (yes/no)",
+                        "answer": "yes"
+                    },
+                    {
+                        "prompt": "the prefix that means 'not'",
+                        "answer": "un"
+                    },
+                    {
+                        "prompt": "unkind means not ___",
+                        "answer": "kind"
+                    },
+                    {
+                        "prompt": "the prefix 're' means",
+                        "answer": "again"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "A prefix at the front, a suffix at the end, a root in the middle — break a word into parts and its meaning opens up. Let's practise!",
                 "cognition": "knowing"

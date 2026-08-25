@@ -96,6 +96,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "'I was tired ___ I kept working.' Which joining word fits: 'and' or 'but', and why?",
+                "options": [
+                    "but — it joins two ideas that go against each other (tired, yet kept working)",
+                    "and — it simply adds one idea to another",
+                    "on — it shows a place"
+                ],
+                "answer": 0,
+                "explain": "Being tired usually means you would stop, but this person kept working — the ideas pull against each other. 'but' is the joining word for contrasting ideas. 'and' would only add ideas that go together.",
+                "rule": "Use 'but' to join contrasting ideas; use 'and' to add similar ones.",
+                "principle": "The right conjunction shows how two ideas relate.",
+                "canonical_solution": [
+                    "Idea 1: I was tired",
+                    "Idea 2: I kept working",
+                    "These go against each other",
+                    "So use 'but'"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "compares how the two ideas relate"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "chooses 'but' for the contrast"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains conjunctions show the relationship"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "picks 'and'",
+                        "coach": "The ideas clash, so 'but' fits better than 'and'."
+                    },
+                    {
+                        "if": "picks 'on'",
+                        "coach": "'on' is a preposition of place, not a joining word here."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "the joining word for opposite ideas",
+                        "answer": "but"
+                    },
+                    {
+                        "prompt": "the joining word for adding ideas",
+                        "answer": "and"
+                    },
+                    {
+                        "prompt": "'the cat sat ___ the mat'",
+                        "answer": "on"
+                    },
+                    {
+                        "prompt": "a joining word is called a",
+                        "answer": "conjunction"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Prepositions place things; conjunctions join ideas. Small words, big jobs. Let's practise!",
                 "cognition": "knowing"

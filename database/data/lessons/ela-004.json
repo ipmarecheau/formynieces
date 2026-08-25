@@ -90,6 +90,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "In 'The dog wagged ___ tail', which word is right: their, there, or they're?",
+                "options": [
+                    "their — it shows the tail belongs to the dog",
+                    "there — it means a place",
+                    "they're — it means they are"
+                ],
+                "answer": 0,
+                "explain": "These three sound the same but mean different things. 'their' shows belonging, 'there' points to a place, and 'they're' is short for 'they are'. The tail belongs to the dog, so 'their' is correct.",
+                "rule": "Choose the homophone by its meaning: their (belonging), there (place), they're (they are).",
+                "principle": "Words that sound alike are chosen by meaning, not sound.",
+                "canonical_solution": [
+                    "The tail belongs to the dog",
+                    "Belonging = their",
+                    "there is a place; they're = they are",
+                    "So 'their tail' is correct"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "checks the meaning needed (belonging)"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "chooses 'their' and rules out the others"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains homophones are picked by meaning"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "picks there or they're",
+                        "coach": "'there' is a place and 'they're' means they are — here we need belonging."
+                    },
+                    {
+                        "if": "chooses by sound",
+                        "coach": "They all sound alike; choose by what the sentence means."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "the possessive form (belonging): their, there, or they're",
+                        "answer": "their"
+                    },
+                    {
+                        "prompt": "the short form of 'they are'",
+                        "answer": "they're"
+                    },
+                    {
+                        "prompt": "the word meaning a place",
+                        "answer": "there"
+                    },
+                    {
+                        "prompt": "the word for the dog's tail: ___ tail",
+                        "answer": "their"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Two tricky ones sorted: i before e except after c, and there / their / they're. Let's practise!",
                 "cognition": "knowing"

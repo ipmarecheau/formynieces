@@ -95,6 +95,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "'The dogs barks loudly' sounds wrong. What is the mistake?",
+                "options": [
+                    "It should be 'The dogs bark' — a plural subject takes 'bark'",
+                    "It is correct",
+                    "It should be 'The dogs barking'"
+                ],
+                "answer": 0,
+                "explain": "The subject and verb must agree. 'dogs' is plural (more than one), so it takes the plain verb 'bark'. You add the -s to the verb only when the subject is a single thing: 'The dog barks'.",
+                "rule": "A singular subject takes the -s verb; a plural subject takes the plain verb.",
+                "principle": "Subject and verb must agree in number.",
+                "canonical_solution": [
+                    "'dogs' is plural",
+                    "Plural subjects use the plain verb",
+                    "So 'dogs bark', not 'dogs barks'",
+                    "(one dog would 'bark s')"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "checks if the subject is singular or plural"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "matches 'dogs' with 'bark'"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains subject-verb agreement"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "keeps 'barks' with a plural",
+                        "coach": "Many dogs 'bark'; one dog 'barks'."
+                    },
+                    {
+                        "if": "changes the subject instead",
+                        "coach": "The subject is fine; fix the verb to 'bark'."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "'the dog ___' (bark)",
+                        "answer": "barks"
+                    },
+                    {
+                        "prompt": "'the dogs ___' (bark)",
+                        "answer": "bark"
+                    },
+                    {
+                        "prompt": "'she ___' (run)",
+                        "answer": "runs"
+                    },
+                    {
+                        "prompt": "'they ___' (run)",
+                        "answer": "run"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "One thing takes a verb with s; more than one takes a verb without s. Check they agree every time. Let's practise!",
                 "cognition": "knowing"

@@ -90,6 +90,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "The words 'do not' are shortened to 'don't'. Why is the apostrophe there?",
+                "options": [
+                    "It replaces the missing o from 'not'",
+                    "It shows the word belongs to someone",
+                    "It is just for decoration"
+                ],
+                "answer": 0,
+                "explain": "In a contraction, an apostrophe marks where letters have been taken out. 'do not' loses the o, so 'don't' has the apostrophe standing in for it. (The same mark also shows belonging, as in 'the dog's bone'.)",
+                "rule": "An apostrophe marks missing letters in a contraction (and shows possession).",
+                "principle": "The apostrophe stands in for something left out or shows ownership.",
+                "canonical_solution": [
+                    "'do not' becomes 'don't'",
+                    "The o in 'not' is removed",
+                    "The apostrophe marks that missing o",
+                    "So don't has the apostrophe where the o was"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "sees which letters were removed"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "explains the apostrophe replaces the o"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "knows the apostrophe marks missing letters or possession"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "thinks it shows possession here",
+                        "coach": "In 'don't' it marks the missing o, a contraction."
+                    },
+                    {
+                        "if": "places it wrongly (do'nt)",
+                        "coach": "It goes where the letter is missing: don't."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "'do not' as a contraction",
+                        "answer": "don't"
+                    },
+                    {
+                        "prompt": "'cannot' as a contraction",
+                        "answer": "can't"
+                    },
+                    {
+                        "prompt": "the bone belonging to the dog: the ___ bone",
+                        "answer": "dog's"
+                    },
+                    {
+                        "prompt": "'it is' as a contraction",
+                        "answer": "it's"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Two jobs: the apostrophe fills in for missing letters, and it shows belonging with an added s. Let's practise!",
                 "cognition": "knowing"

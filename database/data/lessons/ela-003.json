@@ -100,6 +100,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "Tom writes 'makeing' for make + ing. Why is it wrong?",
+                "options": [
+                    "Drop the silent e before -ing: 'making'",
+                    "It is correct as 'makeing'",
+                    "It should be 'makking'"
+                ],
+                "answer": 0,
+                "explain": "'make' ends in a silent e. When you add an ending that starts with a vowel, like -ing, you drop that e: making. But before an ending that starts with a consonant (like -ful), you keep it.",
+                "rule": "Drop the silent e before a vowel ending; keep it before a consonant ending.",
+                "principle": "The silent e is dropped only when a vowel ending takes over its job.",
+                "canonical_solution": [
+                    "'make' ends in silent e",
+                    "-ing starts with a vowel",
+                    "So drop the e",
+                    "make + ing = making"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "notices the silent e and the vowel ending"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "drops the e to get making"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains dropping e before a vowel ending"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "keeps the e",
+                        "coach": "Before -ing the silent e is dropped: making."
+                    },
+                    {
+                        "if": "doubles a letter",
+                        "coach": "No doubling here — just drop the e."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "make + ing",
+                        "answer": "making"
+                    },
+                    {
+                        "prompt": "hope + ed",
+                        "answer": "hoped"
+                    },
+                    {
+                        "prompt": "write + ing",
+                        "answer": "writing"
+                    },
+                    {
+                        "prompt": "use + ful",
+                        "answer": "useful"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Remember: a vowel ending pushes the e out; a consonant ending lets it stay. Let's practise!",
                 "cognition": "knowing"

@@ -90,6 +90,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "You compare THREE mangoes by size. Do you say one is 'bigger' or the 'biggest', and why?",
+                "options": [
+                    "biggest — the superlative is used for three or more",
+                    "bigger — it works for any number",
+                    "big — no ending is needed"
+                ],
+                "answer": 0,
+                "explain": "'bigger' (the comparative) compares just two things. 'biggest' (the superlative) is for three or more. With three mangoes, you pick the 'biggest'.",
+                "rule": "Use the comparative (-er) for two; the superlative (-est) for three or more.",
+                "principle": "The form of an adjective depends on how many things are compared.",
+                "canonical_solution": [
+                    "Comparative 'bigger' compares two",
+                    "Superlative 'biggest' compares three or more",
+                    "Here there are three mangoes",
+                    "So use 'biggest'"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "counts how many things are compared"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "chooses 'biggest' for three"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "links form to number compared"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "uses 'bigger' for three",
+                        "coach": "'bigger' is for two; three or more takes 'biggest'."
+                    },
+                    {
+                        "if": "uses plain 'big'",
+                        "coach": "Comparing needs -er or -est, not the plain word."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "the superlative of 'big'",
+                        "answer": "biggest"
+                    },
+                    {
+                        "prompt": "the comparative of 'big'",
+                        "answer": "bigger"
+                    },
+                    {
+                        "prompt": "the comparative of 'tall'",
+                        "answer": "taller"
+                    },
+                    {
+                        "prompt": "the superlative of 'tall'",
+                        "answer": "tallest"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Use -er to compare two, and -est for the most of all. For long words, use 'more' and 'most' instead. Let's practise!",
                 "cognition": "knowing"

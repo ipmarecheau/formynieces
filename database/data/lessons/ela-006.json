@@ -122,6 +122,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "Are 'happy' and 'sad' synonyms or antonyms, and how can you tell?",
+                "options": [
+                    "Antonyms — they mean the opposite",
+                    "Synonyms — they mean the same",
+                    "Homophones — they sound the same"
+                ],
+                "answer": 0,
+                "explain": "Synonyms mean nearly the same thing (big and large). Antonyms mean the opposite. 'happy' and 'sad' are opposite feelings, so they are antonyms.",
+                "rule": "Synonyms mean the same; antonyms mean the opposite.",
+                "principle": "Words are related by meaning: same (synonym) or opposite (antonym).",
+                "canonical_solution": [
+                    "'happy' and 'sad' are opposite feelings",
+                    "Opposite meanings = antonyms",
+                    "(same meanings would be synonyms)",
+                    "So they are antonyms"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "compares the two meanings"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "sees they are opposite, so antonyms"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "distinguishes synonym from antonym"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "says synonyms",
+                        "coach": "Synonyms mean the same; happy and sad are opposite."
+                    },
+                    {
+                        "if": "says homophones",
+                        "coach": "Homophones sound alike; these differ in meaning."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "words with opposite meanings are called",
+                        "answer": "antonyms"
+                    },
+                    {
+                        "prompt": "words with the same meaning are called",
+                        "answer": "synonyms"
+                    },
+                    {
+                        "prompt": "an antonym of 'happy'",
+                        "answer": "sad"
+                    },
+                    {
+                        "prompt": "a synonym of 'big'",
+                        "answer": "large"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Synonyms mean the same, antonyms mean the opposite. Collect them like treasure — they make your writing shine. Let's practise!",
                 "cognition": "knowing"

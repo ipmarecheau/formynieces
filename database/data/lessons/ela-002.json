@@ -100,6 +100,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "Ann writes 'runing' for run + ing. Why is it wrong, and what is the rule?",
+                "options": [
+                    "Double the final n: 'running' — a short vowel and one final consonant double before -ing",
+                    "It is correct as 'runing'",
+                    "It should be 'runnning'"
+                ],
+                "answer": 0,
+                "explain": "'run' has one short vowel (u) and one final consonant (n). Before an ending that starts with a vowel, like -ing, you double that consonant: running. This keeps the vowel short.",
+                "rule": "One short vowel + one final consonant: double the consonant before a vowel ending.",
+                "principle": "Doubling the consonant protects the short vowel sound.",
+                "canonical_solution": [
+                    "'run' = short vowel u + single consonant n",
+                    "-ing starts with a vowel",
+                    "So double the n",
+                    "run + ing = running"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "checks the vowel and final consonant of 'run'"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "doubles the n to get running"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains doubling keeps the vowel short"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "does not double",
+                        "coach": "One short vowel plus one consonant means double: running."
+                    },
+                    {
+                        "if": "doubles too many",
+                        "coach": "Double only once: running, not runnning."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "run + ing",
+                        "answer": "running"
+                    },
+                    {
+                        "prompt": "hop + ed",
+                        "answer": "hopped"
+                    },
+                    {
+                        "prompt": "sit + ing",
+                        "answer": "sitting"
+                    },
+                    {
+                        "prompt": "big + est",
+                        "answer": "biggest"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "So: one vowel + one consonant means double it; two consonants or two vowels means leave it. Time to practise!",
                 "cognition": "knowing"

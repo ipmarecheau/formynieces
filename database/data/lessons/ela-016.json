@@ -96,6 +96,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "'You ___ wear a helmet when you ride.' For firm advice, which modal fits best: should, might, or can?",
+                "options": [
+                    "should — it gives advice or a sense of duty",
+                    "might — it means maybe",
+                    "can — it means being able to"
+                ],
+                "answer": 0,
+                "explain": "Modals change how strong or certain a sentence is. 'should' gives advice or duty, 'might' shows only a possibility, and 'can' shows ability. For firm safety advice, 'should' fits: 'You should wear a helmet.'",
+                "rule": "'should' = advice/duty, 'might' = possibility, 'can' = ability.",
+                "principle": "Different modals carry different degrees of certainty or obligation.",
+                "canonical_solution": [
+                    "The sentence gives safety advice",
+                    "'should' expresses advice/duty",
+                    "'might' is only maybe; 'can' is ability",
+                    "So 'should' fits best"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "decides what the sentence needs (advice)"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "picks 'should' over 'might'/'can'"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains modals show certainty or obligation"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "picks 'might'",
+                        "coach": "'might' is just maybe; advice needs 'should'."
+                    },
+                    {
+                        "if": "picks 'can'",
+                        "coach": "'can' is about ability, not advice."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "the modal that gives advice",
+                        "answer": "should"
+                    },
+                    {
+                        "prompt": "the modal that shows possibility",
+                        "answer": "might"
+                    },
+                    {
+                        "prompt": "the modal that shows ability",
+                        "answer": "can"
+                    },
+                    {
+                        "prompt": "'you ___ be tired' (maybe)",
+                        "answer": "might"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Can for ability, may for permission, should for advice, might and could for possibility. Pick the modal that fits your meaning. Let's practise!",
                 "cognition": "knowing"

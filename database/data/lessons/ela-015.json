@@ -90,6 +90,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "Join 'It rained.' and 'We stayed inside.' using 'because'. Which version puts the reason in the right place?",
+                "options": [
+                    "We stayed inside because it rained",
+                    "Because we stayed inside it rained",
+                    "It rained because we stayed inside"
+                ],
+                "answer": 0,
+                "explain": "'because' introduces the reason. The rain is the reason we stayed inside, so it goes after 'because': 'We stayed inside because it rained.' The last option swaps cause and effect and no longer makes sense.",
+                "rule": "'because' introduces the reason (the cause) for the main idea.",
+                "principle": "A complex sentence must keep cause and effect in the right order.",
+                "canonical_solution": [
+                    "Main idea: we stayed inside",
+                    "Reason: it rained",
+                    "'because' introduces the reason",
+                    "So: We stayed inside because it rained"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "identifies the cause and the effect"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "places 'because' before the reason"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "keeps cause and effect sensible"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "swaps cause and effect",
+                        "coach": "The rain caused staying inside, not the other way round."
+                    },
+                    {
+                        "if": "starts awkwardly with 'Because'",
+                        "coach": "The clearest order puts the main idea first, then the reason."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "a word that joins two sentences",
+                        "answer": "and"
+                    },
+                    {
+                        "prompt": "the joining word that gives a reason",
+                        "answer": "because"
+                    },
+                    {
+                        "prompt": "'I ran ___ I jumped'",
+                        "answer": "and"
+                    },
+                    {
+                        "prompt": "does 'because' give a reason? (yes/no)",
+                        "answer": "yes"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Compound joins two whole ideas with and/but/or; complex adds a because/when/if part. Both make your writing flow. Let's practise!",
                 "cognition": "knowing"

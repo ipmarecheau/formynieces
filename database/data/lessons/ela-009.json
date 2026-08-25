@@ -89,6 +89,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "In the sentence Mum said Come inside, where should the quotation marks go?",
+                "options": [
+                    "Around the spoken words: Mum said, \"Come inside.\"",
+                    "Around the whole sentence including 'Mum said'",
+                    "No quotation marks are needed"
+                ],
+                "answer": 0,
+                "explain": "Quotation marks go around the exact words a person says, not the words that tell us who is speaking. Only 'Come inside' is spoken, so the marks wrap just those words: Mum said, \"Come inside.\"",
+                "rule": "Quotation marks enclose only the exact spoken words.",
+                "principle": "Punctuation shows the reader where speech begins and ends.",
+                "canonical_solution": [
+                    "'Mum said' tells who speaks",
+                    "'Come inside' is the spoken part",
+                    "Quotation marks wrap the spoken part",
+                    "So: Mum said, \"Come inside.\""
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "separates the spoken words from 'Mum said'"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "wraps only 'Come inside' in quotation marks"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains marks show start and end of speech"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "quotes the whole sentence",
+                        "coach": "Only the spoken words go in quotation marks, not 'Mum said'."
+                    },
+                    {
+                        "if": "uses no marks",
+                        "coach": "Speech needs quotation marks around the spoken words."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "quotation marks go around the ___ words",
+                        "answer": "spoken"
+                    },
+                    {
+                        "prompt": "the punctuation that introduces a list",
+                        "answer": "colon"
+                    },
+                    {
+                        "prompt": "the mark that separates items in a list",
+                        "answer": "comma"
+                    },
+                    {
+                        "prompt": "do quotation marks go around what a person says? (yes/no)",
+                        "answer": "yes"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "When you write a person's exact words, quotation marks go around them: Maya said, \"I am ready.\" Notice the comma before the speech and the end mark inside the quotes. Let's practise the commas!",
                 "cognition": "knowing"

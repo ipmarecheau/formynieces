@@ -100,6 +100,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "Sam ends the sentence 'Where is my bag' with a full stop. Is that the right end mark?",
+                "options": [
+                    "No — it asks something, so it needs a question mark",
+                    "Yes, a full stop is correct",
+                    "It needs an exclamation mark"
+                ],
+                "answer": 0,
+                "explain": "The end mark shows the job of a sentence. This sentence asks something, so it is a question and needs a question mark: 'Where is my bag?' A full stop is for a statement.",
+                "rule": "Questions end with a question mark; statements end with a full stop.",
+                "principle": "The end mark matches what the sentence is doing.",
+                "canonical_solution": [
+                    "'Where is my bag' asks something",
+                    "A question takes a question mark",
+                    "So it should end with ?",
+                    "A full stop would be wrong here"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "identifies the sentence as a question"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "chooses a question mark"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "matches end mark to sentence type"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "keeps the full stop",
+                        "coach": "It is asking something, so use a question mark."
+                    },
+                    {
+                        "if": "uses an exclamation mark",
+                        "coach": "That is for strong feeling; a plain question takes ?"
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "the end mark for a question",
+                        "answer": "?"
+                    },
+                    {
+                        "prompt": "the end mark for a statement",
+                        "answer": "."
+                    },
+                    {
+                        "prompt": "the end mark for a shout or strong feeling",
+                        "answer": "!"
+                    },
+                    {
+                        "prompt": "the mark that ends 'Where is my bag'",
+                        "answer": "?"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Telling ends with a full stop, asking ends with a question mark, strong feeling ends with an exclamation mark. Let's practise!",
                 "cognition": "knowing"
