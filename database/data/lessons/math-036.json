@@ -90,6 +90,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "Sam says 3 metres is the same as 30 centimetres. Is he right?",
+                "options": [
+                    "No — 1 m = 100 cm, so 3 m = 300 cm",
+                    "Yes, 30 cm",
+                    "3 m = 3000 cm"
+                ],
+                "answer": 0,
+                "explain": "There are 100 centimetres in every metre. So to change metres to centimetres you multiply by 100: 3 x 100 = 300 cm. Sam only multiplied by 10.",
+                "rule": "To change metres to centimetres, multiply by 100.",
+                "principle": "Converting to a smaller unit means more of them, so you multiply.",
+                "canonical_solution": [
+                    "1 m = 100 cm",
+                    "3 m = 3 x 100",
+                    "3 x 100 = 300",
+                    "So 3 m = 300 cm"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "uses 1 m = 100 cm"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "multiplies by 100 to get 300"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains smaller units mean multiply"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "multiplies by 10",
+                        "coach": "There are 100 cm in a metre, not 10."
+                    },
+                    {
+                        "if": "divides instead",
+                        "coach": "Going to a smaller unit gives more of them, so multiply."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "3 m in cm",
+                        "answer": "300"
+                    },
+                    {
+                        "prompt": "1 m in cm",
+                        "answer": "100"
+                    },
+                    {
+                        "prompt": "2 m in cm",
+                        "answer": "200"
+                    },
+                    {
+                        "prompt": "500 cm in m",
+                        "answer": "5"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Remember 100 cm in a metre and 1000 m in a kilometre, and convert by multiplying or dividing. Let's practise!",
                 "cognition": "knowing"

@@ -96,6 +96,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "A shop's ice-cream sales were: Monday 10, Tuesday 12, Wednesday 30, Thursday 11. Which day stands out, and what might explain it?",
+                "options": [
+                    "Wednesday — 30 is far above the usual 10-12, perhaps a very hot day",
+                    "Monday, because it is the lowest",
+                    "They are all the same"
+                ],
+                "answer": 0,
+                "explain": "Most days sold around 10 to 12, but Wednesday sold 30 — much higher than the rest. A value far from the others stands out, and a real reason (like a hot day) often explains it. Reading data means spotting what is unusual and asking why.",
+                "rule": "Look for values far from the others, then think about why.",
+                "principle": "Data analysis is not just reading numbers, but noticing and explaining what is unusual.",
+                "canonical_solution": [
+                    "Most days are near 10-12",
+                    "Wednesday is 30, far higher",
+                    "So Wednesday stands out",
+                    "A likely reason: a very hot day boosts ice-cream sales"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "compares each day to the others"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "identifies Wednesday as far above the rest"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "offers a sensible reason for the unusual value"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "picks the lowest day",
+                        "coach": "The one that STANDS OUT is far from the others — that is Wednesday's 30."
+                    },
+                    {
+                        "if": "reads without comparing",
+                        "coach": "Compare days to spot the unusual one."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "the highest sales value",
+                        "answer": "30"
+                    },
+                    {
+                        "prompt": "which day sold 30",
+                        "answer": "wednesday"
+                    },
+                    {
+                        "prompt": "30 − 12",
+                        "answer": "18"
+                    },
+                    {
+                        "prompt": "the lowest sales value",
+                        "answer": "10"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Compare the numbers, draw your conclusion, and let the data guide your decision. Let's practise!",
                 "cognition": "knowing"

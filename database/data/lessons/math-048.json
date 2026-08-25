@@ -96,6 +96,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "For the data 2, 3, 3, 5, 7, Ken says the mode is 5 because it is a big number in the middle. Is he right?",
+                "options": [
+                    "No — the mode is 3, the value that appears most often",
+                    "Yes, the mode is 5",
+                    "The mode is 7"
+                ],
+                "answer": 0,
+                "explain": "The mode is the value that shows up most often, not the biggest or the middle one. Here 3 appears twice and every other number once, so the mode is 3.",
+                "rule": "The mode is the most frequently occurring value.",
+                "principle": "Mode is about how often a value appears, not its size.",
+                "canonical_solution": [
+                    "Count each value's appearances",
+                    "3 appears twice; others once",
+                    "Most frequent = 3",
+                    "So the mode is 3"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "counts how often each value appears"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "picks 3 as most frequent"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains mode is about frequency, not size"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "picks the biggest number",
+                        "coach": "That is not the mode — look for the most repeated value."
+                    },
+                    {
+                        "if": "picks the middle value",
+                        "coach": "The middle is the median; the mode is the most common."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "the mode of 2, 3, 3, 5, 7",
+                        "answer": "3"
+                    },
+                    {
+                        "prompt": "the name for the most common value",
+                        "answer": "mode"
+                    },
+                    {
+                        "prompt": "how many 3s are in 2, 3, 3, 5, 7",
+                        "answer": "2"
+                    },
+                    {
+                        "prompt": "the mode of 4, 4, 4, 9",
+                        "answer": "4"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "The mode is simply the most common value. Count each one and pick the winner. Let's practise!",
                 "cognition": "knowing"

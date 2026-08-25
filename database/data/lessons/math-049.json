@@ -91,6 +91,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "To find the mean of 4, 6 and 8, Mia adds them to get 18 and stops there. What must she still do?",
+                "options": [
+                    "Divide by how many numbers there are: 18 / 3 = 6",
+                    "Nothing, the mean is 18",
+                    "The mean is 3"
+                ],
+                "answer": 0,
+                "explain": "The mean shares the total equally among the values. Add them (4 + 6 + 8 = 18), then divide by how many there are (3): 18 / 3 = 6. Mia did the adding but forgot the sharing step.",
+                "rule": "Mean = the total divided by how many numbers there are.",
+                "principle": "The mean shares the sum equally across all the values.",
+                "canonical_solution": [
+                    "Add: 4 + 6 + 8 = 18",
+                    "Count the numbers: 3",
+                    "Divide: 18 / 3 = 6",
+                    "So the mean is 6"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "adds then divides by the count"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "gets 6, not 18"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains the mean shares the total equally"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "stops at the total 18",
+                        "coach": "The total is not the mean — divide it by how many numbers."
+                    },
+                    {
+                        "if": "divides by the wrong count",
+                        "coach": "There are 3 numbers, so divide by 3."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "4 + 6 + 8",
+                        "answer": "18"
+                    },
+                    {
+                        "prompt": "18 / 3",
+                        "answer": "6"
+                    },
+                    {
+                        "prompt": "the mean of 4, 6, 8",
+                        "answer": "6"
+                    },
+                    {
+                        "prompt": "how many numbers in 4, 6, 8",
+                        "answer": "3"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Add them all up, then divide by how many there are. That is the mean. Let's practise!",
                 "cognition": "knowing"

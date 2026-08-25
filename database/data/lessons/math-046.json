@@ -95,6 +95,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "In a tally chart, a group of four marks with a diagonal line through them stands for what number?",
+                "options": [
+                    "5 — the diagonal line is the fifth mark, crossing the four",
+                    "4",
+                    "6"
+                ],
+                "answer": 0,
+                "explain": "Tally marks are grouped in fives to count quickly. Four upright marks plus the diagonal that crosses them make 5. So a crossed group is 5, and you count up in fives.",
+                "rule": "A crossed tally group (four marks plus a diagonal) equals 5.",
+                "principle": "Tallies group in fives so totals are quick to read.",
+                "canonical_solution": [
+                    "Four upright marks",
+                    "plus one diagonal across them",
+                    "= 5 marks in the group",
+                    "So a crossed group stands for 5"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "counts the diagonal as the fifth mark"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "gives the group value as 5"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains tallies group in fives"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "answers 4",
+                        "coach": "The diagonal is a 5th mark, making 5."
+                    },
+                    {
+                        "if": "answers 6",
+                        "coach": "There are four uprights plus one diagonal — five in all."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "the value of one crossed tally group",
+                        "answer": "5"
+                    },
+                    {
+                        "prompt": "5 + 5 + 3",
+                        "answer": "13"
+                    },
+                    {
+                        "prompt": "the value of two crossed tally groups",
+                        "answer": "10"
+                    },
+                    {
+                        "prompt": "10 + 3",
+                        "answer": "13"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Tally as you count, total the frequency, and taller bars mean more. Let's practise!",
                 "cognition": "knowing"

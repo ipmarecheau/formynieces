@@ -91,6 +91,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "Mia finds the perimeter of an 8 by 3 rectangle by doing 8 + 3 = 11. Is that right?",
+                "options": [
+                    "No — perimeter is all four sides: 8 + 3 + 8 + 3 = 22",
+                    "Yes, 11",
+                    "It is 24"
+                ],
+                "answer": 0,
+                "explain": "Perimeter is the distance all the way around. A rectangle has two lengths and two widths, so add all four sides: 8 + 3 + 8 + 3 = 22. Mia only added one length and one width.",
+                "rule": "Perimeter of a rectangle = add all four sides (or 2 x (length + width)).",
+                "principle": "Perimeter is the whole distance around, not just two sides.",
+                "canonical_solution": [
+                    "Rectangle sides: 8, 3, 8, 3",
+                    "Add them: 8 + 3 + 8 + 3",
+                    "= 22",
+                    "So the perimeter is 22"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "adds all four sides or uses 2 x (l + w)"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "gets 22, not 11"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains perimeter is the full distance around"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "adds only length + width",
+                        "coach": "There are two of each side — add all four."
+                    },
+                    {
+                        "if": "multiplies length x width",
+                        "coach": "That is area; perimeter adds the sides."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "the perimeter of an 8 by 3 rectangle",
+                        "answer": "22"
+                    },
+                    {
+                        "prompt": "8 + 3",
+                        "answer": "11"
+                    },
+                    {
+                        "prompt": "2 x 11",
+                        "answer": "22"
+                    },
+                    {
+                        "prompt": "the perimeter of a 5 by 2 rectangle",
+                        "answer": "14"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Square: 4 x side. Rectangle: 2 x (length + width). Add your way around the shape. Let's practise!",
                 "cognition": "knowing"

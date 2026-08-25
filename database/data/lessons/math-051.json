@@ -90,6 +90,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "In a class of 20, half chose cricket and a quarter chose football. The rest chose netball. How many chose netball?",
+                "options": [
+                    "5 — cricket 10, football 5, so netball = 20 − 15 = 5",
+                    "10",
+                    "15"
+                ],
+                "answer": 0,
+                "explain": "Work out each part, then find the rest. Cricket: half of 20 = 10. Football: a quarter of 20 = 5. Together that is 15, so netball is 20 − 15 = 5. A multi-step data problem needs each part before the leftover.",
+                "rule": "Find each known part, add them, then subtract from the total for the rest.",
+                "principle": "The parts of a data set must add up to the whole.",
+                "canonical_solution": [
+                    "Cricket: 1/2 of 20 = 10",
+                    "Football: 1/4 of 20 = 5",
+                    "Together: 10 + 5 = 15",
+                    "Netball: 20 − 15 = 5"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "finds each fraction of 20 then subtracts"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "reaches 5 for netball"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "uses that the parts total the whole"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "forgets to subtract from 20",
+                        "coach": "Netball is the leftover: 20 minus cricket and football."
+                    },
+                    {
+                        "if": "miscounts a fraction",
+                        "coach": "Half of 20 is 10; a quarter is 5."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "1/2 of 20",
+                        "answer": "10"
+                    },
+                    {
+                        "prompt": "1/4 of 20",
+                        "answer": "5"
+                    },
+                    {
+                        "prompt": "10 + 5",
+                        "answer": "15"
+                    },
+                    {
+                        "prompt": "20 − 15",
+                        "answer": "5"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Total first, then mean or difference. Break a multi-step data question into single steps and it becomes easy. Let's practise!",
                 "cognition": "knowing"

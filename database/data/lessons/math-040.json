@@ -91,6 +91,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "For an L-shape made from a 6 by 4 rectangle with a 2 by 2 square removed, one girl adds two rectangles (12 + 8) and another subtracts (24 − 4). Do both give the same area?",
+                "options": [
+                    "Yes — both give 20 square units (24 − 4 = 20, and 12 + 8 = 20)",
+                    "No, they give different answers",
+                    "Only the subtracting method works"
+                ],
+                "answer": 0,
+                "explain": "Splitting into two rectangles (say 6x2 = 12 and 4x2 = 8) gives 12 + 8 = 20. Taking the whole 6x4 = 24 and removing the 2x2 = 4 gives 24 − 4 = 20. Both correct methods must agree because they measure the same space.",
+                "rule": "Find a compound area by splitting into rectangles and adding, or by subtracting the missing piece.",
+                "principle": "Different correct methods for the same shape give the same area.",
+                "canonical_solution": [
+                    "Subtract method: 6 x 4 = 24, minus 2 x 2 = 4, gives 20",
+                    "Split method: 6 x 2 = 12 and 4 x 2 = 8, gives 12 + 8 = 20",
+                    "Both equal 20",
+                    "So the methods agree"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "carries out both the split and the subtract method"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "shows both give 20"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains correct methods must agree"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "expects different answers",
+                        "coach": "Both measure the same shape, so both give 20."
+                    },
+                    {
+                        "if": "miscounts a sub-rectangle",
+                        "coach": "Check each rectangle's sides before multiplying."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "6 x 4 − 2 x 2",
+                        "answer": "20"
+                    },
+                    {
+                        "prompt": "6 x 4",
+                        "answer": "24"
+                    },
+                    {
+                        "prompt": "2 x 2",
+                        "answer": "4"
+                    },
+                    {
+                        "prompt": "12 + 8",
+                        "answer": "20"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Break the shape into rectangles, area each one with length x width, then add. Let's practise!",
                 "cognition": "knowing"

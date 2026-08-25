@@ -91,6 +91,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "A box measures 2 by 3 by 4. Sam finds its volume by doing 2 + 3 + 4 = 9. Is he right?",
+                "options": [
+                    "No — volume multiplies the three sides: 2 x 3 x 4 = 24 cubic units",
+                    "Yes, 9",
+                    "It is 12"
+                ],
+                "answer": 0,
+                "explain": "Volume is how much space fills the box, found by multiplying length x width x height: 2 x 3 x 4 = 24 cubic units. Adding the sides gives a length, not a volume.",
+                "rule": "Volume of a box = length x width x height.",
+                "principle": "Volume fills 3D space, so all three dimensions multiply.",
+                "canonical_solution": [
+                    "Volume = length x width x height",
+                    "2 x 3 = 6",
+                    "6 x 4 = 24",
+                    "So the volume is 24 cubic units"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "multiplies all three dimensions"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "gets 24, not 9"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains volume needs all three sides multiplied"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "adds the sides",
+                        "coach": "Adding gives a length; volume multiplies the three sides."
+                    },
+                    {
+                        "if": "multiplies only two sides",
+                        "coach": "That is one face's area; multiply by the height too."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "2 x 3 x 4",
+                        "answer": "24"
+                    },
+                    {
+                        "prompt": "2 x 3",
+                        "answer": "6"
+                    },
+                    {
+                        "prompt": "6 x 4",
+                        "answer": "24"
+                    },
+                    {
+                        "prompt": "the volume of a 1 by 2 by 3 box",
+                        "answer": "6"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Volume multiplies length, width and height; capacity counts litres and millilitres. Let's practise!",
                 "cognition": "knowing"

@@ -90,6 +90,67 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "A rectangular floor is 5 m by 4 m. You tile it with 1 m squares and put skirting (edging) around the walls. Which numbers are right?",
+                "options": [
+                    "20 tiles (area = 5 x 4) and 18 m of skirting (perimeter = 2 x (5 + 4))",
+                    "20 tiles and 20 m of skirting",
+                    "18 tiles and 18 m of skirting"
+                ],
+                "answer": 0,
+                "explain": "Tiles cover the floor, so use area: 5 x 4 = 20 tiles. Skirting goes around the edge, so use perimeter: 2 x (5 + 4) = 18 m. The job tells you which measure to use.",
+                "rule": "Use area to cover a surface; use perimeter to go around the edge.",
+                "principle": "Choosing area or perimeter depends on what the real task needs.",
+                "canonical_solution": [
+                    "Tiles cover the floor: area = 5 x 4 = 20",
+                    "Skirting goes around: perimeter = 2 x (5 + 4) = 18",
+                    "So 20 tiles and 18 m of skirting"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "computes area (20) and perimeter (18)"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "matches tiles to area and skirting to perimeter"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "picks the measure that fits the task"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "uses area for the skirting",
+                        "coach": "Skirting runs along the walls — that is the perimeter."
+                    },
+                    {
+                        "if": "uses perimeter for the tiles",
+                        "coach": "Tiles cover the floor — that is the area."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "5 x 4",
+                        "answer": "20"
+                    },
+                    {
+                        "prompt": "2 x (5 + 4)",
+                        "answer": "18"
+                    },
+                    {
+                        "prompt": "the perimeter of a 5 by 4 rectangle",
+                        "answer": "18"
+                    },
+                    {
+                        "prompt": "the area of a 5 by 4 rectangle",
+                        "answer": "20"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Find the measurement first, then carry it into the next step. One calculation at a time keeps a big problem simple. Let's practise!",
                 "cognition": "knowing"

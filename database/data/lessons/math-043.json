@@ -91,6 +91,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "Ken needs to change 2 hours into minutes. He writes 200 minutes. Is he right?",
+                "options": [
+                    "No — 1 hour = 60 minutes, so 2 hours = 2 x 60 = 120 minutes",
+                    "Yes, 200 minutes",
+                    "20 minutes"
+                ],
+                "answer": 0,
+                "explain": "An hour has 60 minutes, not 100. So 2 hours = 2 x 60 = 120 minutes. Time does not go in tens or hundreds like money — it goes in 60s.",
+                "rule": "To change hours to minutes, multiply by 60.",
+                "principle": "Time units use 60, not 10 or 100.",
+                "canonical_solution": [
+                    "1 hour = 60 minutes",
+                    "2 hours = 2 x 60",
+                    "= 120",
+                    "So 2 hours = 120 minutes"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "uses 1 hour = 60 minutes"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "multiplies to get 120"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "notes time counts in 60s"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "multiplies by 100",
+                        "coach": "An hour is 60 minutes, so times 60."
+                    },
+                    {
+                        "if": "uses tens",
+                        "coach": "Time is not base ten — 60 minutes make an hour."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "2 hours in minutes",
+                        "answer": "120"
+                    },
+                    {
+                        "prompt": "1 hour in minutes",
+                        "answer": "60"
+                    },
+                    {
+                        "prompt": "3 hours in minutes",
+                        "answer": "180"
+                    },
+                    {
+                        "prompt": "90 minutes in hours",
+                        "answer": "1.5"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "60 minutes in an hour, 60 seconds in a minute. Multiply or divide by 60 to convert. Let's practise!",
                 "cognition": "knowing"

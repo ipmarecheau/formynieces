@@ -96,6 +96,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "You cut a small 2 by 2 square notch out of one corner of a 6 by 4 rectangle. What happens to the perimeter?",
+                "options": [
+                    "It stays 20 — the two new inside edges replace the two edges that were removed",
+                    "It drops to 16",
+                    "It cannot be worked out"
+                ],
+                "answer": 0,
+                "explain": "The original perimeter is 6 + 4 + 6 + 4 = 20. Cutting the corner removes 2 + 2 from the outer edges but adds 2 + 2 as the new notch edges. The amounts cancel, so the perimeter is still 20 — even though the area got smaller.",
+                "rule": "Perimeter is the distance around the outside; count every outer edge, including notches.",
+                "principle": "Area and perimeter change independently — one can stay the same while the other changes.",
+                "canonical_solution": [
+                    "Original perimeter: 6 + 4 + 6 + 4 = 20",
+                    "Corner cut removes 2 + 2 of outer edge",
+                    "But adds 2 + 2 of new notch edge",
+                    "Net change 0, so perimeter stays 20"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "compares edges removed and edges added"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "sees they cancel, so perimeter is unchanged (20)"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "notes area can change while perimeter does not"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "assumes cutting shrinks the perimeter",
+                        "coach": "The notch adds new edges equal to those removed, so the perimeter holds."
+                    },
+                    {
+                        "if": "confuses it with area",
+                        "coach": "Area does drop by 4; but perimeter counts the outer path."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "the perimeter of a 6 by 4 rectangle",
+                        "answer": "20"
+                    },
+                    {
+                        "prompt": "6 + 4 + 6 + 4",
+                        "answer": "20"
+                    },
+                    {
+                        "prompt": "does a corner notch change the perimeter? (yes/no)",
+                        "answer": "no"
+                    },
+                    {
+                        "prompt": "2 + 2",
+                        "answer": "4"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "No matter how bumpy the shape, the perimeter is every outside edge added up once. Go all the way around. Let's practise!",
                 "cognition": "knowing"

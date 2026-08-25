@@ -91,6 +91,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "On a pictograph, each picture stands for 5 mangoes. A row has 4 pictures. Sara says that means 4 mangoes. What did she forget?",
+                "options": [
+                    "Each picture stands for 5, so 4 pictures = 4 x 5 = 20 mangoes",
+                    "Nothing, it is 4 mangoes",
+                    "It is 9 mangoes"
+                ],
+                "answer": 0,
+                "explain": "A pictograph has a key telling you what one picture is worth. Here one picture = 5 mangoes, so 4 pictures = 4 x 5 = 20. Sara counted pictures but forgot to use the key.",
+                "rule": "Multiply the number of pictures by the value in the key.",
+                "principle": "A pictograph symbol usually stands for more than one — always read the key.",
+                "canonical_solution": [
+                    "Key: 1 picture = 5 mangoes",
+                    "There are 4 pictures",
+                    "4 x 5 = 20",
+                    "So the row shows 20 mangoes"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "multiplies pictures by the key value"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "gets 20, not 4"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains reading the key"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "counts pictures as ones",
+                        "coach": "Each picture is worth 5 — multiply by the key."
+                    },
+                    {
+                        "if": "adds 5 and 4",
+                        "coach": "Multiply: 4 pictures x 5 each = 20."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "4 x 5",
+                        "answer": "20"
+                    },
+                    {
+                        "prompt": "the value of one picture (key = 5)",
+                        "answer": "5"
+                    },
+                    {
+                        "prompt": "3 pictures worth 5 each",
+                        "answer": "15"
+                    },
+                    {
+                        "prompt": "5 x 4",
+                        "answer": "20"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Read the key, count the pictures, and multiply. That unlocks any pictograph. Let's practise!",
                 "cognition": "knowing"
