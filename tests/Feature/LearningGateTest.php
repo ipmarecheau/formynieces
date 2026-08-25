@@ -112,8 +112,18 @@ it('records the tutorial stage when the worked example is fully revealed, unlock
     // Lesson first, or the worked-examples guard would send her back out.
     app(LearningGate::class)->markCompleted($student->id, $module->id, ModuleStageCompletion::STAGE_LESSON);
 
-    Livewire::actingAs($student)->test(TutorialWalk::class, ['module' => $module])
-        ->call('revealAll');
+    // Walk the whole tutorial: reveal each worked example's steps, predict, then continue —
+    // through all three examples until it's done and the tutorial stage is recorded.
+    $tutorial = Livewire::actingAs($student)->test(TutorialWalk::class, ['module' => $module]);
+    $guard = 0;
+    while ($tutorial->get('phase') !== 'done' && $guard++ < 60) {
+        match ($tutorial->get('phase')) {
+            'walk' => $tutorial->call('nextStep'),
+            'predict' => $tutorial->call('predict', 0),
+            default => $tutorial->call('continueExample'), // 'reveal'
+        };
+    }
+    $tutorial->assertSet('phase', 'done');
 
     expect(app(LearningGate::class)->practiceUnlocked($student->id, $module->id))->toBeTrue();
     $this->assertDatabaseHas('module_stage_completions', [
