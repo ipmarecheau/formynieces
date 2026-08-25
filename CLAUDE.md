@@ -482,7 +482,13 @@ confirmation. (Learned when RR-06 was self-verified; corrected.)
 
 ---
 
-## GLM executor delegation
+## GLM executor delegation — RETIRED (2026-08-25)
+
+**GLM is no longer used.** Isaac retired the GLM-5.2 executor: it repeatedly role-played
+the orchestrator (wrote nothing) and was flaky on edits. The orchestrator now writes ALL
+implementation code itself — Step 3 of the loop is no longer delegated. Every commit uses
+`Executed-By: Claude`. Do NOT launch GLM subprocesses or use the G2 delegation gate. The rest
+of this section is kept for history only; the chat-level control gates (G1, G3–G7) still stand.
 
 The local executor is GLM-5.2 via Z.ai, launched as a headless subprocess. It is
 the ONLY place autonomy exists, and only after G2 approval.
