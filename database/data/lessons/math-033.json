@@ -96,6 +96,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "A rectangle is 6 by 4. To make an L-shape you cut a 2 by 2 square out of one corner. Does the area go up, down, or stay the same?",
+                "options": [
+                    "Down — cutting out a 2 by 2 square removes 4 square units (24 becomes 20)",
+                    "Up",
+                    "Stays the same"
+                ],
+                "answer": 0,
+                "explain": "The rectangle's area is 6 x 4 = 24. Cutting a 2 x 2 square takes away 2 x 2 = 4 square units, leaving 24 − 4 = 20. Removing part of a shape must make the area smaller.",
+                "rule": "Removing a piece from a shape decreases its area by that piece's area.",
+                "principle": "A composite shape's area is built by adding or removing rectangles.",
+                "canonical_solution": [
+                    "Rectangle area: 6 x 4 = 24",
+                    "Cut-out area: 2 x 2 = 4",
+                    "24 − 4 = 20",
+                    "So the area goes down to 20 square units"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "computes both the rectangle and the cut-out area"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "subtracts to see the area drops to 20"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains removing area decreases the total"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "thinks cutting changes only the shape not the area",
+                        "coach": "You removed material, so 4 square units are gone."
+                    },
+                    {
+                        "if": "adds the cut-out",
+                        "coach": "It is cut OUT, so subtract its area."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "6 x 4",
+                        "answer": "24"
+                    },
+                    {
+                        "prompt": "2 x 2",
+                        "answer": "4"
+                    },
+                    {
+                        "prompt": "24 − 4",
+                        "answer": "20"
+                    },
+                    {
+                        "prompt": "area removed by a 2 by 2 cut",
+                        "answer": "4"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Polygons are closed straight-sided shapes; join a few and you build a composite shape. Let's practise!",
                 "cognition": "knowing"

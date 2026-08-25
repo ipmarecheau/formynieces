@@ -96,6 +96,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "A cuboid box has 6 faces. Ken says he only needs to measure 3 faces to know the sizes of all 6. Could he be right?",
+                "options": [
+                    "Yes — opposite faces of a cuboid are equal, so 3 different faces cover all 6",
+                    "No, he must measure all 6 separately",
+                    "A cuboid has only 3 faces"
+                ],
+                "answer": 0,
+                "explain": "A cuboid's faces come in matching pairs: front and back, top and bottom, left and right. Each pair is equal, so measuring one of each pair (3 faces) tells him all 6. Spotting the pairs saves work.",
+                "rule": "A cuboid's opposite faces are equal, forming 3 matching pairs.",
+                "principle": "Symmetry in a solid means some measurements are repeated.",
+                "canonical_solution": [
+                    "A cuboid has 6 faces",
+                    "They form 3 pairs of equal opposite faces",
+                    "Measuring 1 of each pair = 3 faces",
+                    "That covers all 6"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "groups the 6 faces into pairs"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "sees 3 measurements are enough"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "uses the equal-opposite-faces property"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "insists on 6 measurements",
+                        "coach": "Opposite faces are equal, so 3 measurements do the job."
+                    },
+                    {
+                        "if": "says a cuboid has 3 faces",
+                        "coach": "It has 6 faces, in 3 equal pairs."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "the number of faces on a cuboid",
+                        "answer": "6"
+                    },
+                    {
+                        "prompt": "the number of pairs of equal faces on a cuboid",
+                        "answer": "3"
+                    },
+                    {
+                        "prompt": "the number of edges on a cuboid",
+                        "answer": "12"
+                    },
+                    {
+                        "prompt": "the number of vertices on a cuboid",
+                        "answer": "8"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Know the properties, and shape problems become simple counting. Let's practise!",
                 "cognition": "knowing"

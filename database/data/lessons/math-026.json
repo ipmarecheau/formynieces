@@ -90,6 +90,67 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "3 exercise books cost $18. How much would 5 cost, and how do you work it out?",
+                "options": [
+                    "$30 — one book is 18 / 3 = 6, so 5 books = 6 x 5 = 30",
+                    "$23",
+                    "$90"
+                ],
+                "answer": 0,
+                "explain": "Find the cost of one book first: 18 / 3 = $6. Then scale up to 5 books: 6 x 5 = $30. This is direct proportion — more books cost proportionally more.",
+                "rule": "Find the cost of one (divide), then multiply for the number you want.",
+                "principle": "In direct proportion, cost grows in step with quantity.",
+                "canonical_solution": [
+                    "One book: 18 / 3 = 6",
+                    "Five books: 6 x 5 = 30",
+                    "So 5 books cost $30"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "finds the unit cost then scales up"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "gets $30, not by adding a fixed amount"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains proportion: one first, then multiply"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "adds $6 to $18 for two extra books wrongly",
+                        "coach": "Find one book's cost first: 18 / 3 = 6, then times 5."
+                    },
+                    {
+                        "if": "multiplies 18 by 5",
+                        "coach": "That prices 15 books — first find one book's cost."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "18 / 3",
+                        "answer": "6"
+                    },
+                    {
+                        "prompt": "6 x 5",
+                        "answer": "30"
+                    },
+                    {
+                        "prompt": "6 x 3",
+                        "answer": "18"
+                    },
+                    {
+                        "prompt": "cost of 4 books at $6 each",
+                        "answer": "24"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "For proportion, find one then scale up. For sharing, add the ratio parts and split into equal groups. Let's practise!",
                 "cognition": "knowing"

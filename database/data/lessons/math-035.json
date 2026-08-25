@@ -90,6 +90,67 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "A square garden has sides of 5 m. You need fencing around it and grass inside it. One of these is 20 and one is 25 — which is which?",
+                "options": [
+                    "Perimeter (fencing) = 20 m, area (grass) = 25 square m",
+                    "Perimeter = 25, area = 20",
+                    "Both are 20"
+                ],
+                "answer": 0,
+                "explain": "Perimeter is the distance around: 4 sides of 5 m = 4 x 5 = 20 m of fencing. Area is the space inside: 5 x 5 = 25 square metres of grass. They measure different things, so they have different units.",
+                "rule": "Perimeter is the distance around (add the sides); area is the space inside (length x width).",
+                "principle": "Perimeter and area measure different things and are not interchangeable.",
+                "canonical_solution": [
+                    "Perimeter = 4 x 5 = 20 m (fencing)",
+                    "Area = 5 x 5 = 25 square m (grass)",
+                    "So 20 is the perimeter and 25 is the area"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "computes perimeter (20) and area (25) separately"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "matches fencing to perimeter and grass to area"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "distinguishes distance-around from space-inside"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "swaps perimeter and area",
+                        "coach": "Fencing goes around (perimeter 20 m); grass fills inside (area 25 square m)."
+                    },
+                    {
+                        "if": "uses the same value for both",
+                        "coach": "Add sides for perimeter; multiply sides for area."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "the perimeter of a 5 m square",
+                        "answer": "20"
+                    },
+                    {
+                        "prompt": "the area of a 5 m square",
+                        "answer": "25"
+                    },
+                    {
+                        "prompt": "4 x 5",
+                        "answer": "20"
+                    },
+                    {
+                        "prompt": "5 x 5",
+                        "answer": "25"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Perimeter adds up all the sides; area multiplies length by width. Keep the two ideas separate and work step by step. Let's practise!",
                 "cognition": "knowing"

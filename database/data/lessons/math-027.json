@@ -90,6 +90,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "You buy 2 shirts at $45 each and 1 cap at $30, and pay with $150. What change do you get?",
+                "options": [
+                    "$30 — 2 x 45 = 90, plus 30 = 120, then 150 − 120 = 30",
+                    "$75",
+                    "$45"
+                ],
+                "answer": 0,
+                "explain": "Work in steps. Shirts: 2 x 45 = 90. Add the cap: 90 + 30 = 120 total. Then change: 150 − 120 = 30. Each step must be done before the next.",
+                "rule": "Add up the whole cost first, then subtract from what you paid.",
+                "principle": "Multi-step money problems must be solved one step at a time in order.",
+                "canonical_solution": [
+                    "Shirts: 2 x 45 = 90",
+                    "Total: 90 + 30 = 120",
+                    "Change: 150 − 120 = 30",
+                    "So the change is $30"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "computes shirt cost, adds the cap, then subtracts"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "reaches $30 with the steps in order"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains total first, then change"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "forgets one shirt",
+                        "coach": "There are 2 shirts: 2 x 45 = 90."
+                    },
+                    {
+                        "if": "subtracts before adding the cap",
+                        "coach": "Find the full total (120) before working out change."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "2 x 45",
+                        "answer": "90"
+                    },
+                    {
+                        "prompt": "90 + 30",
+                        "answer": "120"
+                    },
+                    {
+                        "prompt": "150 − 120",
+                        "answer": "30"
+                    },
+                    {
+                        "prompt": "45 x 2",
+                        "answer": "90"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Take it step by step: total first, then change. One calculation at a time keeps you right. Let's practise!",
                 "cognition": "knowing"

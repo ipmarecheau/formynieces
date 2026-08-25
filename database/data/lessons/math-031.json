@@ -96,6 +96,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "Ken says a 90 degree angle is acute because it looks small. Is he right?",
+                "options": [
+                    "No — 90 degrees is a right angle; acute angles are less than 90 degrees",
+                    "Yes, 90 degrees is acute",
+                    "90 degrees is obtuse"
+                ],
+                "answer": 0,
+                "explain": "Angles are named by size: less than 90 degrees is acute, exactly 90 degrees is a right angle, and more than 90 degrees is obtuse. A 90 degree angle is exactly a right angle — the corner of a square — not acute.",
+                "rule": "Acute is under 90 degrees, right is exactly 90 degrees, obtuse is over 90 degrees.",
+                "principle": "Angles are classified by their measure, not by how they look.",
+                "canonical_solution": [
+                    "Acute: less than 90 degrees",
+                    "Right: exactly 90 degrees",
+                    "90 degrees is exactly a right angle",
+                    "So it is not acute"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "compares 90 degrees to the boundaries"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "names 90 degrees as a right angle"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "classifies by measure not appearance"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "calls 90 degrees acute",
+                        "coach": "Acute is strictly less than 90; 90 is a right angle."
+                    },
+                    {
+                        "if": "guesses from the look",
+                        "coach": "Measure it — the name depends on the degrees."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "the size of a right angle in degrees",
+                        "answer": "90"
+                    },
+                    {
+                        "prompt": "is 60 degrees acute? (yes/no)",
+                        "answer": "yes"
+                    },
+                    {
+                        "prompt": "is 120 degrees obtuse? (yes/no)",
+                        "answer": "yes"
+                    },
+                    {
+                        "prompt": "acute angles are less than how many degrees?",
+                        "answer": "90"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Under 90 is acute, exactly 90 is right, over 90 is obtuse. Compare every angle to the square corner. Let's practise!",
                 "cognition": "knowing"

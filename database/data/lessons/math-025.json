@@ -90,6 +90,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "Which is better value: 6 mangoes for $12, or 10 mangoes for $25?",
+                "options": [
+                    "6 for $12 — that is $2 each, cheaper than $2.50 each",
+                    "10 for $25, because you get more mangoes",
+                    "They are the same value"
+                ],
+                "answer": 0,
+                "explain": "Compare the price of ONE mango. 12 / 6 = $2 each; 25 / 10 = $2.50 each. The 6-for-$12 deal is cheaper per mango, so it is better value even though you get fewer.",
+                "rule": "To compare value, work out the price of one item (the unit price).",
+                "principle": "Best value depends on price per item, not the total number.",
+                "canonical_solution": [
+                    "6 for $12: 12 / 6 = $2 each",
+                    "10 for $25: 25 / 10 = $2.50 each",
+                    "$2 is less than $2.50",
+                    "So 6 for $12 is better value"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "divides to find each unit price"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "compares $2 and $2.50 and picks the cheaper"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains value is price per item"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "picks the larger quantity",
+                        "coach": "More mangoes is not better if each one costs more — compare unit price."
+                    },
+                    {
+                        "if": "compares totals only",
+                        "coach": "Divide by the number of mangoes to compare fairly."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "12 / 6",
+                        "answer": "2"
+                    },
+                    {
+                        "prompt": "25 / 10",
+                        "answer": "2.5"
+                    },
+                    {
+                        "prompt": "cheaper unit price: 2 or 2.5",
+                        "answer": "2"
+                    },
+                    {
+                        "prompt": "6 x 2",
+                        "answer": "12"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Sell for more than cost to profit; add VAT on, take a discount off. It is all adding and subtracting from a price. Let's practise!",
                 "cognition": "knowing"

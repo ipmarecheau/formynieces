@@ -90,6 +90,67 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "A $200 bag has 25% off. What is the sale price, and what steps get you there?",
+                "options": [
+                    "$150 — 25% of 200 is 50, then 200 − 50 = 150",
+                    "$50",
+                    "$175"
+                ],
+                "answer": 0,
+                "explain": "First find the discount: 25% of 200 is a quarter of 200 = 50. Then take it off the price: 200 − 50 = 150. The discount is what you save, not the price you pay.",
+                "rule": "Find the discount first, then subtract it from the original price.",
+                "principle": "A percent-off problem needs the discount worked out before the final price.",
+                "canonical_solution": [
+                    "25% of 200 = 50 (the discount)",
+                    "200 − 50 = 150",
+                    "So the sale price is $150"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "finds 25% of 200 (50)"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "subtracts the discount to get 150"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains discount then subtract"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "answers $50",
+                        "coach": "$50 is what you save; the price you pay is 200 − 50 = 150."
+                    },
+                    {
+                        "if": "adds the discount",
+                        "coach": "Money OFF means subtract, not add."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "25% of 200",
+                        "answer": "50"
+                    },
+                    {
+                        "prompt": "200 − 50",
+                        "answer": "150"
+                    },
+                    {
+                        "prompt": "10% of 200",
+                        "answer": "20"
+                    },
+                    {
+                        "prompt": "50% of 200",
+                        "answer": "100"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Find the discount as a percent of the price, then subtract it. Two steps to any sale price. Let's practise!",
                 "cognition": "knowing"

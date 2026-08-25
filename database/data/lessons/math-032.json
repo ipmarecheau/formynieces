@@ -91,6 +91,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "A shape pattern goes triangle, square, pentagon, ... with 3, 4, 5 sides. How many sides does the next shape have, and why?",
+                "options": [
+                    "6 sides (a hexagon) — the number of sides goes up by 1 each time",
+                    "5 sides again",
+                    "8 sides"
+                ],
+                "answer": 0,
+                "explain": "Look at the side counts: 3, 4, 5. Each shape has one more side than the last. So the next shape has 6 sides — a hexagon. Finding the rule from the numbers lets you predict the next shape.",
+                "rule": "Find the rule in the numbers, then use it to predict the next term.",
+                "principle": "A geometric pattern can follow a number rule you can extend.",
+                "canonical_solution": [
+                    "Sides so far: 3, 4, 5",
+                    "The rule is add 1 side",
+                    "5 + 1 = 6",
+                    "So the next shape has 6 sides (a hexagon)"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "reads the side counts as a number pattern"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "applies +1 to get 6 sides"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains predicting from the rule"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "repeats 5",
+                        "coach": "The sides increase each time: 3, 4, 5, then 6."
+                    },
+                    {
+                        "if": "jumps to 8",
+                        "coach": "The rule adds 1 side, so 6 comes next."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "the number of sides on a pentagon",
+                        "answer": "5"
+                    },
+                    {
+                        "prompt": "the number of sides on a hexagon",
+                        "answer": "6"
+                    },
+                    {
+                        "prompt": "the next number after 3, 4, 5",
+                        "answer": "6"
+                    },
+                    {
+                        "prompt": "the number of sides on a square",
+                        "answer": "4"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Find the repeating unit or the growing rule, then carry the pattern forward. Let's practise!",
                 "cognition": "knowing"
