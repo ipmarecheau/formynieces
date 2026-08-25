@@ -1,41 +1,160 @@
 [
-  {
-    "module": "ELA-030",
-    "title": "Poetry: similes, metaphors and personification",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "Poets use figures of speech to make ordinary things feel alive. You already know similes and metaphors — now meet personification." },
-      { "type": "key", "content": "A simile compares with 'like' or 'as'; a metaphor says one thing IS another." },
-      {
-        "type": "check",
-        "question": "Which line is a simile?",
-        "options": ["Her smile was sunshine.", "Her smile was as warm as sunshine."],
-        "answer": 1,
-        "explain": "It compares using 'as', so it is a simile.",
-        "rule": "A simile compares two things using 'like' or 'as'; a metaphor says one thing IS another.",
-        "practiceItems": [
-          { "prompt": "simile or metaphor: 'as cold as ice'", "answer": "simile" },
-          { "prompt": "simile or metaphor: 'The night is a black cloak'", "answer": "metaphor" },
-          { "prompt": "a simile uses 'as' or ___", "answer": "like" },
-          { "prompt": "simile or metaphor: 'brave as a lion'", "answer": "simile" }
+    {
+        "module": "ELA-030",
+        "title": "Poetry: similes, metaphors and personification",
+        "is_published": true,
+        "objectives_direct": [
+            "E-POE-81"
+        ],
+        "objectives_indirect": [
+            "E-POE-80",
+            "E-POE-82",
+            "E-POE-83"
+        ],
+        "canonical_examples_source": "Language rules self-verified; format ref: bank uk-ks2-2024-gps (KS2 GPS).",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Poets use figures of speech to make ordinary things feel alive. You already know similes and metaphors — now meet personification.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "A simile compares with 'like' or 'as'; a metaphor says one thing IS another.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "Which line is a simile?",
+                "options": [
+                    "Her smile was sunshine.",
+                    "Her smile was as warm as sunshine."
+                ],
+                "answer": 1,
+                "explain": "It compares using 'as', so it is a simile.",
+                "rule": "A simile compares two things using 'like' or 'as'; a metaphor says one thing IS another.",
+                "practiceItems": [
+                    {
+                        "prompt": "simile or metaphor: 'as cold as ice'",
+                        "answer": "simile"
+                    },
+                    {
+                        "prompt": "simile or metaphor: 'The night is a black cloak'",
+                        "answer": "metaphor"
+                    },
+                    {
+                        "prompt": "a simile uses 'as' or ___",
+                        "answer": "like"
+                    },
+                    {
+                        "prompt": "simile or metaphor: 'brave as a lion'",
+                        "answer": "simile"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "Personification gives human actions or feelings to non-human things: the wind whispered; the leaves danced.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "Which line uses personification?",
+                "options": [
+                    "The old car was very fast.",
+                    "The old car groaned and coughed up the hill."
+                ],
+                "answer": 1,
+                "explain": "Groaning and coughing are human actions given to a car, so it is personification.",
+                "rule": "Personification gives human actions or feelings to non-human things.",
+                "practiceItems": [
+                    {
+                        "prompt": "'the wind whispered' is an example of ___",
+                        "answer": "personification"
+                    },
+                    {
+                        "prompt": "'the leaves danced' is ___",
+                        "answer": "personification"
+                    },
+                    {
+                        "prompt": "'the sun smiled down' is ___",
+                        "answer": "personification"
+                    },
+                    {
+                        "prompt": "giving human actions to a thing is called ___",
+                        "answer": "personification"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "'The wind whispered through the trees.' Which figure of speech is this, and why?",
+                "options": [
+                    "Personification — the wind is given a human action (whispering)",
+                    "A simile — it uses 'like' or 'as'",
+                    "It is a plain fact"
+                ],
+                "answer": 0,
+                "explain": "Whispering is something people do, not the wind. Giving a human action or feeling to a non-human thing is personification. There is no 'like' or 'as', so it is not a simile.",
+                "rule": "Personification gives human qualities to non-human things.",
+                "principle": "Figures of speech are named by how they work, not just by sounding poetic.",
+                "canonical_solution": [
+                    "Whispering is a human action",
+                    "The wind cannot really whisper",
+                    "Giving it a human action = personification",
+                    "So this is personification"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "notices a human action given to the wind"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "names it personification"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "distinguishes it from a simile"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "calls it a simile",
+                        "coach": "No 'like' or 'as' here — it is personification."
+                    },
+                    {
+                        "if": "calls it a fact",
+                        "coach": "Wind cannot whisper; that is figurative language."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "giving human traits to objects is",
+                        "answer": "personification"
+                    },
+                    {
+                        "prompt": "'as brave as a lion' is a",
+                        "answer": "simile"
+                    },
+                    {
+                        "prompt": "'the wind whispered' is",
+                        "answer": "personification"
+                    },
+                    {
+                        "prompt": "comparing with 'like' or 'as' is a",
+                        "answer": "simile"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "content": "Similes and metaphors compare; personification brings things to life with human actions. Watch for all three in poems. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "Personification gives human actions or feelings to non-human things: the wind whispered; the leaves danced." },
-      {
-        "type": "check",
-        "question": "Which line uses personification?",
-        "options": ["The old car was very fast.", "The old car groaned and coughed up the hill."],
-        "answer": 1,
-        "explain": "Groaning and coughing are human actions given to a car, so it is personification.",
-        "rule": "Personification gives human actions or feelings to non-human things.",
-        "practiceItems": [
-          { "prompt": "'the wind whispered' is an example of ___", "answer": "personification" },
-          { "prompt": "'the leaves danced' is ___", "answer": "personification" },
-          { "prompt": "'the sun smiled down' is ___", "answer": "personification" },
-          { "prompt": "giving human actions to a thing is called ___", "answer": "personification" }
-        ]
-      },
-      { "type": "text", "content": "Similes and metaphors compare; personification brings things to life with human actions. Watch for all three in poems. Let's practise!" }
-    ]
-  }
+    }
 ]

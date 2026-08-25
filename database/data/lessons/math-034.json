@@ -1,41 +1,167 @@
 [
-  {
-    "module": "MATH-034",
-    "title": "Solving problems with solids and plane shapes",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "Once you know a shape's properties, you can use them to solve real problems — like how many faces to paint, or how a net folds into a solid." },
-      { "type": "key", "content": "Use a solid's properties to answer questions: a cube has 6 faces, 12 edges and 8 vertices." },
-      { "type": "example", "content": "Painting a cube.", "steps": ["A cube has 6 faces.", "To paint every face, you must paint all 6.", "So the answer is 6 faces."] },
-      {
-        "type": "fillblank",
-        "prompt": "How many faces must you paint to cover a whole cube? ___",
-        "answer": "6",
-        "explain": "A cube has 6 faces, so all 6 must be painted.",
-        "rule": "Use the count of faces, edges or vertices to solve a problem about a solid.",
-        "practiceItems": [
-          { "prompt": "faces on a cube", "answer": "6" },
-          { "prompt": "edges on a cube", "answer": "12" },
-          { "prompt": "sides on 2 triangles altogether", "answer": "6" },
-          { "prompt": "corners on a square", "answer": "4" }
+    {
+        "module": "MATH-034",
+        "title": "Solving problems with solids and plane shapes",
+        "is_published": true,
+        "objectives_direct": [
+            "M-GEO-34"
+        ],
+        "objectives_indirect": [
+            "M-GEO-32",
+            "M-GEO-33",
+            "M-GEO-35"
+        ],
+        "canonical_examples_source": "Arithmetic self-verified; method ref: NCERT Class 5/6 Maths; format ref: bank uk-ks2-2024 maths.",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Once you know a shape's properties, you can use them to solve real problems — like how many faces to paint, or how a net folds into a solid.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "Use a solid's properties to answer questions: a cube has 6 faces, 12 edges and 8 vertices.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Painting a cube.",
+                "steps": [
+                    "A cube has 6 faces.",
+                    "To paint every face, you must paint all 6.",
+                    "So the answer is 6 faces."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "How many faces must you paint to cover a whole cube? ___",
+                "answer": "6",
+                "explain": "A cube has 6 faces, so all 6 must be painted.",
+                "rule": "Use the count of faces, edges or vertices to solve a problem about a solid.",
+                "practiceItems": [
+                    {
+                        "prompt": "faces on a cube",
+                        "answer": "6"
+                    },
+                    {
+                        "prompt": "edges on a cube",
+                        "answer": "12"
+                    },
+                    {
+                        "prompt": "sides on 2 triangles altogether",
+                        "answer": "6"
+                    },
+                    {
+                        "prompt": "corners on a square",
+                        "answer": "4"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "A net is a flat pattern that folds up into a solid. A cube's net is made of 6 squares.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "How many squares are in the net of a cube?",
+                "options": [
+                    "4",
+                    "6",
+                    "8"
+                ],
+                "answer": 1,
+                "explain": "A cube has 6 faces, so its net has 6 squares.",
+                "rule": "A cube is made of 6 square faces, so its net has 6 squares.",
+                "practiceItems": [
+                    {
+                        "prompt": "squares in a cube's net",
+                        "answer": "6"
+                    },
+                    {
+                        "prompt": "faces on a cube",
+                        "answer": "6"
+                    },
+                    {
+                        "prompt": "edges on a cube",
+                        "answer": "12"
+                    },
+                    {
+                        "prompt": "vertices on a cube",
+                        "answer": "8"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "A cuboid box has 6 faces. Ken says he only needs to measure 3 faces to know the sizes of all 6. Could he be right?",
+                "options": [
+                    "Yes — opposite faces of a cuboid are equal, so 3 different faces cover all 6",
+                    "No, he must measure all 6 separately",
+                    "A cuboid has only 3 faces"
+                ],
+                "answer": 0,
+                "explain": "A cuboid's faces come in matching pairs: front and back, top and bottom, left and right. Each pair is equal, so measuring one of each pair (3 faces) tells him all 6. Spotting the pairs saves work.",
+                "rule": "A cuboid's opposite faces are equal, forming 3 matching pairs.",
+                "principle": "Symmetry in a solid means some measurements are repeated.",
+                "canonical_solution": [
+                    "A cuboid has 6 faces",
+                    "They form 3 pairs of equal opposite faces",
+                    "Measuring 1 of each pair = 3 faces",
+                    "That covers all 6"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "groups the 6 faces into pairs"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "sees 3 measurements are enough"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "uses the equal-opposite-faces property"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "insists on 6 measurements",
+                        "coach": "Opposite faces are equal, so 3 measurements do the job."
+                    },
+                    {
+                        "if": "says a cuboid has 3 faces",
+                        "coach": "It has 6 faces, in 3 equal pairs."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "the number of faces on a cuboid",
+                        "answer": "6"
+                    },
+                    {
+                        "prompt": "the number of pairs of equal faces on a cuboid",
+                        "answer": "3"
+                    },
+                    {
+                        "prompt": "the number of edges on a cuboid",
+                        "answer": "12"
+                    },
+                    {
+                        "prompt": "the number of vertices on a cuboid",
+                        "answer": "8"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "content": "Know the properties, and shape problems become simple counting. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "A net is a flat pattern that folds up into a solid. A cube's net is made of 6 squares." },
-      {
-        "type": "check",
-        "question": "How many squares are in the net of a cube?",
-        "options": ["4", "6", "8"],
-        "answer": 1,
-        "explain": "A cube has 6 faces, so its net has 6 squares.",
-        "rule": "A cube is made of 6 square faces, so its net has 6 squares.",
-        "practiceItems": [
-          { "prompt": "squares in a cube's net", "answer": "6" },
-          { "prompt": "faces on a cube", "answer": "6" },
-          { "prompt": "edges on a cube", "answer": "12" },
-          { "prompt": "vertices on a cube", "answer": "8" }
-        ]
-      },
-      { "type": "text", "content": "Know the properties, and shape problems become simple counting. Let's practise!" }
-    ]
-  }
+    }
 ]

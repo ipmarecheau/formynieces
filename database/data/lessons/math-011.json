@@ -1,40 +1,158 @@
 [
-  {
-    "module": "MATH-011",
-    "title": "Finding an unknown number (algebraic thinking)",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "Sometimes a number is hidden behind a letter or a box. Algebra is just the clever art of working out what that missing number must be." },
-      { "type": "key", "content": "A letter stands for an unknown number. To find it, undo what was done — do the opposite operation." },
-      { "type": "example", "content": "Solving n + 5 = 12.", "steps": ["Something plus 5 makes 12.", "Undo the +5 by subtracting: 12 - 5 = 7.", "So n = 7. Check: 7 + 5 = 12. Correct!"] },
-      {
-        "type": "fillblank",
-        "prompt": "If n + 5 = 12, then n = ___",
-        "answer": "7",
-        "explain": "Undo the +5: 12 - 5 = 7, so n = 7.",
-        "rule": "To find an unknown in an addition, subtract to undo it.",
-        "practiceItems": [
-          { "prompt": "if x + 3 = 10, then x =", "answer": "7" },
-          { "prompt": "if n + 4 = 9, then n =", "answer": "5" },
-          { "prompt": "if a + 6 = 6, then a =", "answer": "0" },
-          { "prompt": "if y + 10 = 15, then y =", "answer": "5" }
+    {
+        "module": "MATH-011",
+        "title": "Finding an unknown number (algebraic thinking)",
+        "is_published": true,
+        "objectives_direct": [
+            "M-ALG-11"
+        ],
+        "objectives_indirect": [],
+        "canonical_examples_source": "Arithmetic self-verified; method ref: NCERT Class 5/6 Maths; format ref: bank uk-ks2-2024 maths.",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Sometimes a number is hidden behind a letter or a box. Algebra is just the clever art of working out what that missing number must be.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "A letter stands for an unknown number. To find it, undo what was done — do the opposite operation.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Solving n + 5 = 12.",
+                "steps": [
+                    "Something plus 5 makes 12.",
+                    "Undo the +5 by subtracting: 12 - 5 = 7.",
+                    "So n = 7. Check: 7 + 5 = 12. Correct!"
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "If n + 5 = 12, then n = ___",
+                "answer": "7",
+                "explain": "Undo the +5: 12 - 5 = 7, so n = 7.",
+                "rule": "To find an unknown in an addition, subtract to undo it.",
+                "practiceItems": [
+                    {
+                        "prompt": "if x + 3 = 10, then x =",
+                        "answer": "7"
+                    },
+                    {
+                        "prompt": "if n + 4 = 9, then n =",
+                        "answer": "5"
+                    },
+                    {
+                        "prompt": "if a + 6 = 6, then a =",
+                        "answer": "0"
+                    },
+                    {
+                        "prompt": "if y + 10 = 15, then y =",
+                        "answer": "5"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "To undo a multiplication, divide; to undo a subtraction, add.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "If 3 x n = 12, then n = ___",
+                "answer": "4",
+                "explain": "Undo the times 3 by dividing: 12 ÷ 3 = 4, so n = 4.",
+                "rule": "Undo the operation to find the unknown: divide to undo a multiply, add to undo a subtract.",
+                "practiceItems": [
+                    {
+                        "prompt": "if 2 x n = 10, then n =",
+                        "answer": "5"
+                    },
+                    {
+                        "prompt": "if n - 4 = 6, then n =",
+                        "answer": "10"
+                    },
+                    {
+                        "prompt": "if 5 x n = 20, then n =",
+                        "answer": "4"
+                    },
+                    {
+                        "prompt": "if n - 2 = 8, then n =",
+                        "answer": "10"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "Ravi solves n + 7 = 20 and writes n = 27. Is he right, and how do you check?",
+                "options": [
+                    "No — subtract 7 from both sides: n = 13 (check: 13 + 7 = 20)",
+                    "Yes, n = 27",
+                    "n = 20"
+                ],
+                "answer": 0,
+                "explain": "To undo + 7, do the opposite: subtract 7 from both sides. 20 − 7 = 13, so n = 13. Check by putting it back: 13 + 7 = 20. Ravi added instead of subtracting.",
+                "rule": "To find an unknown, do the inverse operation to both sides, then check.",
+                "principle": "Solving for an unknown means undoing the operation, and the answer must satisfy the equation.",
+                "canonical_solution": [
+                    "n + 7 = 20",
+                    "Subtract 7 from both sides: n = 20 − 7",
+                    "n = 13",
+                    "Check: 13 + 7 = 20"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "subtracts 7 from both sides"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "gets n = 13 and checks it fits"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains using the inverse operation to solve"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "adds 7 to 20",
+                        "coach": "To undo + 7 you subtract 7, not add it."
+                    },
+                    {
+                        "if": "does not check the answer",
+                        "coach": "Put your answer back: it must make 20."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "20 − 7",
+                        "answer": "13"
+                    },
+                    {
+                        "prompt": "13 + 7",
+                        "answer": "20"
+                    },
+                    {
+                        "prompt": "if n + 5 = 12, then n",
+                        "answer": "7"
+                    },
+                    {
+                        "prompt": "if n − 4 = 10, then n",
+                        "answer": "14"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "content": "To free a hidden number, do the opposite operation and always check by putting your answer back in. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "To undo a multiplication, divide; to undo a subtraction, add." },
-      {
-        "type": "fillblank",
-        "prompt": "If 3 x n = 12, then n = ___",
-        "answer": "4",
-        "explain": "Undo the times 3 by dividing: 12 ÷ 3 = 4, so n = 4.",
-        "rule": "Undo the operation to find the unknown: divide to undo a multiply, add to undo a subtract.",
-        "practiceItems": [
-          { "prompt": "if 2 x n = 10, then n =", "answer": "5" },
-          { "prompt": "if n - 4 = 6, then n =", "answer": "10" },
-          { "prompt": "if 5 x n = 20, then n =", "answer": "4" },
-          { "prompt": "if n - 2 = 8, then n =", "answer": "10" }
-        ]
-      },
-      { "type": "text", "content": "To free a hidden number, do the opposite operation and always check by putting your answer back in. Let's practise!" }
-    ]
-  }
+    }
 ]

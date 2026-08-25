@@ -1,40 +1,161 @@
 [
-  {
-    "module": "MATH-008",
-    "title": "Dividing whole numbers",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "Division shares a number into equal groups, or finds how many groups fit. You can always check a division by multiplying back." },
-      { "type": "key", "content": "Division shares a total into equal parts. To check, multiply the answer by the divisor to get back the total." },
-      { "type": "example", "content": "Dividing 84 ÷ 4.", "steps": ["Share 84 into 4 equal groups.", "Each group gets 21.", "Check: 21 x 4 = 84. Correct!"] },
-      {
-        "type": "fillblank",
-        "prompt": "84 ÷ 4 = ___",
-        "answer": "21",
-        "explain": "84 shared into 4 equal groups is 21 each, and 21 x 4 = 84.",
-        "rule": "Divide to share into equal groups; check by multiplying the answer by the divisor.",
-        "practiceItems": [
-          { "prompt": "36 ÷ 6", "answer": "6" },
-          { "prompt": "100 ÷ 4", "answer": "25" },
-          { "prompt": "63 ÷ 9", "answer": "7" },
-          { "prompt": "48 ÷ 8", "answer": "6" }
+    {
+        "module": "MATH-008",
+        "title": "Dividing whole numbers",
+        "is_published": true,
+        "objectives_direct": [
+            "M-OPS-08"
+        ],
+        "objectives_indirect": [
+            "M-OPS-06",
+            "M-OPS-07"
+        ],
+        "canonical_examples_source": "Arithmetic self-verified; method ref: NCERT Class 5/6 Maths; format ref: bank uk-ks2-2024 maths.",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Division shares a number into equal groups, or finds how many groups fit. You can always check a division by multiplying back.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "Division shares a total into equal parts. To check, multiply the answer by the divisor to get back the total.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Dividing 84 ÷ 4.",
+                "steps": [
+                    "Share 84 into 4 equal groups.",
+                    "Each group gets 21.",
+                    "Check: 21 x 4 = 84. Correct!"
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "84 ÷ 4 = ___",
+                "answer": "21",
+                "explain": "84 shared into 4 equal groups is 21 each, and 21 x 4 = 84.",
+                "rule": "Divide to share into equal groups; check by multiplying the answer by the divisor.",
+                "practiceItems": [
+                    {
+                        "prompt": "36 ÷ 6",
+                        "answer": "6"
+                    },
+                    {
+                        "prompt": "100 ÷ 4",
+                        "answer": "25"
+                    },
+                    {
+                        "prompt": "63 ÷ 9",
+                        "answer": "7"
+                    },
+                    {
+                        "prompt": "48 ÷ 8",
+                        "answer": "6"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "When a number does not divide exactly, the amount left over is called the remainder.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "17 ÷ 5 = 3 remainder ___",
+                "answer": "2",
+                "explain": "5 x 3 = 15, and 17 - 15 = 2, so the remainder is 2.",
+                "rule": "The remainder is the amount left over after dividing into equal groups.",
+                "practiceItems": [
+                    {
+                        "prompt": "the remainder of 17 ÷ 5",
+                        "answer": "2"
+                    },
+                    {
+                        "prompt": "the remainder of 20 ÷ 3",
+                        "answer": "2"
+                    },
+                    {
+                        "prompt": "the remainder of 10 ÷ 4",
+                        "answer": "2"
+                    },
+                    {
+                        "prompt": "the remainder of 13 ÷ 4",
+                        "answer": "1"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "40 children go on a trip. Each car holds 6 children. 40 / 6 = 6 remainder 4. How many cars are needed?",
+                "options": [
+                    "7 cars — 6 cars carry 36, and the last 4 children still need a car",
+                    "6 cars",
+                    "6 cars, and leave the other 4 behind"
+                ],
+                "answer": 0,
+                "explain": "6 cars carry 6 x 6 = 36 children, but 4 children are still waiting. You cannot leave them, so you need one more car — 7 in total. The remainder means you round the number of cars UP.",
+                "rule": "When everyone must be carried, round the number of vehicles up for any remainder.",
+                "principle": "The remainder is not always dropped; the context decides what to do with it.",
+                "canonical_solution": [
+                    "40 / 6 = 6 remainder 4",
+                    "6 cars carry 36 children",
+                    "4 children are left over",
+                    "So 1 more car is needed: 7 cars"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "divides 40 by 6 and finds remainder 4"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "sees the 4 leftover children need another car"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains the remainder means rounding cars up"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "answers 6 and ignores the remainder",
+                        "coach": "The 4 leftover children still need a car — round up to 7."
+                    },
+                    {
+                        "if": "leaves the extra children behind",
+                        "coach": "Everyone goes, so add a car for the remainder."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "the remainder of 40 / 6",
+                        "answer": "4"
+                    },
+                    {
+                        "prompt": "6 x 6",
+                        "answer": "36"
+                    },
+                    {
+                        "prompt": "cars of 6 needed for 40 children",
+                        "answer": "7"
+                    },
+                    {
+                        "prompt": "40 / 8",
+                        "answer": "5"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "content": "Share into equal groups, check by multiplying, and name what is left over as the remainder. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "When a number does not divide exactly, the amount left over is called the remainder." },
-      {
-        "type": "fillblank",
-        "prompt": "17 ÷ 5 = 3 remainder ___",
-        "answer": "2",
-        "explain": "5 x 3 = 15, and 17 - 15 = 2, so the remainder is 2.",
-        "rule": "The remainder is the amount left over after dividing into equal groups.",
-        "practiceItems": [
-          { "prompt": "the remainder of 17 ÷ 5", "answer": "2" },
-          { "prompt": "the remainder of 20 ÷ 3", "answer": "2" },
-          { "prompt": "the remainder of 10 ÷ 4", "answer": "2" },
-          { "prompt": "the remainder of 13 ÷ 4", "answer": "1" }
-        ]
-      },
-      { "type": "text", "content": "Share into equal groups, check by multiplying, and name what is left over as the remainder. Let's practise!" }
-    ]
-  }
+    }
 ]

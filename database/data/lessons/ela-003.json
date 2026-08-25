@@ -1,62 +1,171 @@
 [
-  {
-    "module": "ELA-003",
-    "title": "Dropping the silent -e before adding an ending",
-    "is_published": true,
-    "blocks": [
-      {
-        "type": "text",
-        "content": "Many words end in a silent e — you write it but don't say it, like in 'make'. When you add an ending, that e sometimes has to go."
-      },
-      {
-        "type": "key",
-        "content": "When a word ends in a silent e, drop the e before adding an ending that starts with a vowel (-ing, -ed, -able)."
-      },
-      {
-        "type": "example",
-        "content": "Adding -ing to 'make'.",
-        "steps": [
-          "'make' ends in a silent e.",
-          "The ending -ing starts with a vowel.",
-          "Drop the e and add -ing: 'making'."
+    {
+        "module": "ELA-003",
+        "title": "Dropping the silent -e before adding an ending",
+        "is_published": true,
+        "objectives_direct": [
+            "E-SPE-54"
+        ],
+        "objectives_indirect": [
+            "E-SPE-52",
+            "E-SPE-53",
+            "E-SPE-55"
+        ],
+        "canonical_examples_source": "Language rules self-verified; format ref: bank uk-ks2-2024-gps (KS2 GPS).",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Many words end in a silent e — you write it but don't say it, like in 'make'. When you add an ending, that e sometimes has to go.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "When a word ends in a silent e, drop the e before adding an ending that starts with a vowel (-ing, -ed, -able).",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Adding -ing to 'make'.",
+                "steps": [
+                    "'make' ends in a silent e.",
+                    "The ending -ing starts with a vowel.",
+                    "Drop the e and add -ing: 'making'."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "ride + ing = ___",
+                "answer": "riding",
+                "explain": "'ride' ends in silent e and -ing starts with a vowel, so drop the e: riding.",
+                "rule": "When a word ends in silent e, drop the e before an ending that starts with a vowel.",
+                "practiceItems": [
+                    {
+                        "prompt": "make + ing",
+                        "answer": "making"
+                    },
+                    {
+                        "prompt": "hope + ing",
+                        "answer": "hoping"
+                    },
+                    {
+                        "prompt": "bake + ed",
+                        "answer": "baked"
+                    },
+                    {
+                        "prompt": "drive + ing",
+                        "answer": "driving"
+                    },
+                    {
+                        "prompt": "use + able",
+                        "answer": "usable"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "But KEEP the silent e when the ending starts with a consonant, like -ful or -ly.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "Which spelling is correct?",
+                "options": [
+                    "hopful",
+                    "hopeful",
+                    "hopefull"
+                ],
+                "answer": 1,
+                "explain": "-ful starts with a consonant, so keep the silent e: hopeful.",
+                "rule": "Keep the silent e when the ending starts with a consonant, like -ful or -ly.",
+                "practiceItems": [
+                    {
+                        "prompt": "hope + ful",
+                        "answer": "hopeful"
+                    },
+                    {
+                        "prompt": "nice + ly",
+                        "answer": "nicely"
+                    },
+                    {
+                        "prompt": "care + ful",
+                        "answer": "careful"
+                    },
+                    {
+                        "prompt": "safe + ly",
+                        "answer": "safely"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "Tom writes 'makeing' for make + ing. Why is it wrong?",
+                "options": [
+                    "Drop the silent e before -ing: 'making'",
+                    "It is correct as 'makeing'",
+                    "It should be 'makking'"
+                ],
+                "answer": 0,
+                "explain": "'make' ends in a silent e. When you add an ending that starts with a vowel, like -ing, you drop that e: making. But before an ending that starts with a consonant (like -ful), you keep it.",
+                "rule": "Drop the silent e before a vowel ending; keep it before a consonant ending.",
+                "principle": "The silent e is dropped only when a vowel ending takes over its job.",
+                "canonical_solution": [
+                    "'make' ends in silent e",
+                    "-ing starts with a vowel",
+                    "So drop the e",
+                    "make + ing = making"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "notices the silent e and the vowel ending"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "drops the e to get making"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains dropping e before a vowel ending"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "keeps the e",
+                        "coach": "Before -ing the silent e is dropped: making."
+                    },
+                    {
+                        "if": "doubles a letter",
+                        "coach": "No doubling here — just drop the e."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "make + ing",
+                        "answer": "making"
+                    },
+                    {
+                        "prompt": "hope + ed",
+                        "answer": "hoped"
+                    },
+                    {
+                        "prompt": "write + ing",
+                        "answer": "writing"
+                    },
+                    {
+                        "prompt": "use + ful",
+                        "answer": "useful"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "content": "Remember: a vowel ending pushes the e out; a consonant ending lets it stay. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      {
-        "type": "fillblank",
-        "prompt": "ride + ing = ___",
-        "answer": "riding",
-        "explain": "'ride' ends in silent e and -ing starts with a vowel, so drop the e: riding.",
-        "rule": "When a word ends in silent e, drop the e before an ending that starts with a vowel.",
-        "practiceItems": [
-          { "prompt": "make + ing", "answer": "making" },
-          { "prompt": "hope + ing", "answer": "hoping" },
-          { "prompt": "bake + ed", "answer": "baked" },
-          { "prompt": "drive + ing", "answer": "driving" },
-          { "prompt": "use + able", "answer": "usable" }
-        ]
-      },
-      {
-        "type": "key",
-        "content": "But KEEP the silent e when the ending starts with a consonant, like -ful or -ly."
-      },
-      {
-        "type": "check",
-        "question": "Which spelling is correct?",
-        "options": ["hopful", "hopeful", "hopefull"],
-        "answer": 1,
-        "explain": "-ful starts with a consonant, so keep the silent e: hopeful.",
-        "rule": "Keep the silent e when the ending starts with a consonant, like -ful or -ly.",
-        "practiceItems": [
-          { "prompt": "hope + ful", "answer": "hopeful" },
-          { "prompt": "nice + ly", "answer": "nicely" },
-          { "prompt": "care + ful", "answer": "careful" },
-          { "prompt": "safe + ly", "answer": "safely" }
-        ]
-      },
-      {
-        "type": "text",
-        "content": "Remember: a vowel ending pushes the e out; a consonant ending lets it stay. Let's practise!"
-      }
-    ]
-  }
+    }
 ]

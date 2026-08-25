@@ -1,61 +1,166 @@
 [
-  {
-    "module": "ELA-013",
-    "title": "Subject-verb agreement: matching the verb to the subject",
-    "is_published": true,
-    "blocks": [
-      {
-        "type": "text",
-        "content": "The subject and the verb of a sentence must agree — they have to match. Get this right and your sentences sound correct every time."
-      },
-      {
-        "type": "key",
-        "content": "One person or thing (a singular subject) takes a verb ending in s: the dog barks."
-      },
-      {
-        "type": "example",
-        "content": "Matching a singular subject.",
-        "steps": [
-          "Subject: 'the bird' (just one).",
-          "A singular subject needs the verb with s: 'sings'.",
-          "The bird sings."
+    {
+        "module": "ELA-013",
+        "title": "Subject-verb agreement: matching the verb to the subject",
+        "is_published": true,
+        "objectives_direct": [
+            "E-GRA-64"
+        ],
+        "objectives_indirect": [
+            "E-GRA-62",
+            "E-GRA-63",
+            "E-GRA-65"
+        ],
+        "canonical_examples_source": "Language rules self-verified; format ref: bank uk-ks2-2024-gps (KS2 GPS).",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "The subject and the verb of a sentence must agree — they have to match. Get this right and your sentences sound correct every time.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "One person or thing (a singular subject) takes a verb ending in s: the dog barks.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Matching a singular subject.",
+                "steps": [
+                    "Subject: 'the bird' (just one).",
+                    "A singular subject needs the verb with s: 'sings'.",
+                    "The bird sings."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "The cat ___ very fast. (run)",
+                "answer": "runs",
+                "explain": "'The cat' is singular, so the verb takes an s: runs.",
+                "rule": "A singular subject (one person or thing) takes a verb ending in s.",
+                "practiceItems": [
+                    {
+                        "prompt": "'She ___ every day.' (play)",
+                        "answer": "plays"
+                    },
+                    {
+                        "prompt": "'He ___ his lunch.' (eat)",
+                        "answer": "eats"
+                    },
+                    {
+                        "prompt": "'The baby ___.' (cry)",
+                        "answer": "cries"
+                    },
+                    {
+                        "prompt": "'The dog ___.' (bark)",
+                        "answer": "barks"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "More than one (a plural subject), and the words I and you, take the verb WITHOUT s: the dogs bark.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "Which sentence is correct?",
+                "options": [
+                    "The children plays outside.",
+                    "The children play outside."
+                ],
+                "answer": 1,
+                "explain": "'The children' is plural, so the verb has no s: play.",
+                "rule": "A plural subject takes a verb with no s.",
+                "practiceItems": [
+                    {
+                        "prompt": "'They ___ home.' (run)",
+                        "answer": "run"
+                    },
+                    {
+                        "prompt": "'We ___ a song.' (sing)",
+                        "answer": "sing"
+                    },
+                    {
+                        "prompt": "'The dogs ___.' (bark)",
+                        "answer": "bark"
+                    },
+                    {
+                        "prompt": "'The girls ___ netball.' (play)",
+                        "answer": "play"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "'The dogs barks loudly' sounds wrong. What is the mistake?",
+                "options": [
+                    "It should be 'The dogs bark' — a plural subject takes 'bark'",
+                    "It is correct",
+                    "It should be 'The dogs barking'"
+                ],
+                "answer": 0,
+                "explain": "The subject and verb must agree. 'dogs' is plural (more than one), so it takes the plain verb 'bark'. You add the -s to the verb only when the subject is a single thing: 'The dog barks'.",
+                "rule": "A singular subject takes the -s verb; a plural subject takes the plain verb.",
+                "principle": "Subject and verb must agree in number.",
+                "canonical_solution": [
+                    "'dogs' is plural",
+                    "Plural subjects use the plain verb",
+                    "So 'dogs bark', not 'dogs barks'",
+                    "(one dog would 'bark s')"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "checks if the subject is singular or plural"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "matches 'dogs' with 'bark'"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains subject-verb agreement"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "keeps 'barks' with a plural",
+                        "coach": "Many dogs 'bark'; one dog 'barks'."
+                    },
+                    {
+                        "if": "changes the subject instead",
+                        "coach": "The subject is fine; fix the verb to 'bark'."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "'the dog ___' (bark)",
+                        "answer": "barks"
+                    },
+                    {
+                        "prompt": "'the dogs ___' (bark)",
+                        "answer": "bark"
+                    },
+                    {
+                        "prompt": "'she ___' (run)",
+                        "answer": "runs"
+                    },
+                    {
+                        "prompt": "'they ___' (run)",
+                        "answer": "run"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "content": "One thing takes a verb with s; more than one takes a verb without s. Check they agree every time. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      {
-        "type": "fillblank",
-        "prompt": "The cat ___ very fast. (run)",
-        "answer": "runs",
-        "explain": "'The cat' is singular, so the verb takes an s: runs.",
-        "rule": "A singular subject (one person or thing) takes a verb ending in s.",
-        "practiceItems": [
-          { "prompt": "'She ___ every day.' (play)", "answer": "plays" },
-          { "prompt": "'He ___ his lunch.' (eat)", "answer": "eats" },
-          { "prompt": "'The baby ___.' (cry)", "answer": "cries" },
-          { "prompt": "'The dog ___.' (bark)", "answer": "barks" }
-        ]
-      },
-      {
-        "type": "key",
-        "content": "More than one (a plural subject), and the words I and you, take the verb WITHOUT s: the dogs bark."
-      },
-      {
-        "type": "check",
-        "question": "Which sentence is correct?",
-        "options": ["The children plays outside.", "The children play outside."],
-        "answer": 1,
-        "explain": "'The children' is plural, so the verb has no s: play.",
-        "rule": "A plural subject takes a verb with no s.",
-        "practiceItems": [
-          { "prompt": "'They ___ home.' (run)", "answer": "run" },
-          { "prompt": "'We ___ a song.' (sing)", "answer": "sing" },
-          { "prompt": "'The dogs ___.' (bark)", "answer": "bark" },
-          { "prompt": "'The girls ___ netball.' (play)", "answer": "play" }
-        ]
-      },
-      {
-        "type": "text",
-        "content": "One thing takes a verb with s; more than one takes a verb without s. Check they agree every time. Let's practise!"
-      }
-    ]
-  }
+    }
 ]

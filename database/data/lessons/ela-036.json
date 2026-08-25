@@ -1,42 +1,171 @@
 [
-  {
-    "module": "ELA-036",
-    "title": "Graphic texts: understanding the clear (overt) message",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "Posters, signs and adverts are graphic texts — they mix words with pictures. Some of their message is stated clearly and directly. That is the overt message." },
-      { "type": "key", "content": "An overt message is the clear, directly stated message of a graphic text." },
-      { "type": "example", "content": "Reading the overt message.", "steps": ["A poster shows a rubbish bin and the words 'Keep our park clean'.", "The stated message is: do not litter — keep the park clean.", "That is the overt message." ] },
-      {
-        "type": "check",
-        "question": "A road sign shows a red circle and the words 'No Entry'. What is the overt message?",
-        "options": ["the road is pretty", "do not go in this way", "drive faster"],
-        "answer": 1,
-        "explain": "The sign states it directly: do not enter this way.",
-        "rule": "An overt message is the clear, directly stated message of a graphic text.",
-        "practiceItems": [
-          { "prompt": "a message stated clearly and directly is ___ (overt/hidden)", "answer": "overt" },
-          { "prompt": "'No Littering' is an ___ message", "answer": "overt" },
-          { "prompt": "an overt message is easy to ___ (read/miss)", "answer": "read" },
-          { "prompt": "a text that mixes words and pictures is a ___ text", "answer": "graphic" }
+    {
+        "module": "ELA-036",
+        "title": "Graphic texts: understanding the clear (overt) message",
+        "is_published": true,
+        "objectives_direct": [
+            "E-GTX-87"
+        ],
+        "objectives_indirect": [
+            "E-GTX-88",
+            "E-GTX-89"
+        ],
+        "canonical_examples_source": "Language rules self-verified; format ref: bank uk-ks2-2024-gps (KS2 GPS).",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Posters, signs and adverts are graphic texts — they mix words with pictures. Some of their message is stated clearly and directly. That is the overt message.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "An overt message is the clear, directly stated message of a graphic text.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Reading the overt message.",
+                "steps": [
+                    "A poster shows a rubbish bin and the words 'Keep our park clean'.",
+                    "The stated message is: do not litter — keep the park clean.",
+                    "That is the overt message."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "A road sign shows a red circle and the words 'No Entry'. What is the overt message?",
+                "options": [
+                    "the road is pretty",
+                    "do not go in this way",
+                    "drive faster"
+                ],
+                "answer": 1,
+                "explain": "The sign states it directly: do not enter this way.",
+                "rule": "An overt message is the clear, directly stated message of a graphic text.",
+                "practiceItems": [
+                    {
+                        "prompt": "a message stated clearly and directly is ___ (overt/hidden)",
+                        "answer": "overt"
+                    },
+                    {
+                        "prompt": "'No Littering' is an ___ message",
+                        "answer": "overt"
+                    },
+                    {
+                        "prompt": "an overt message is easy to ___ (read/miss)",
+                        "answer": "read"
+                    },
+                    {
+                        "prompt": "a text that mixes words and pictures is a ___ text",
+                        "answer": "graphic"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "To find the overt message, read the words and look at the main picture together.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "A poster shows a toothbrush and says 'Brush twice a day'. The overt message is:",
+                "options": [
+                    "buy a big toothbrush",
+                    "brush your teeth twice every day",
+                    "dentists are busy"
+                ],
+                "answer": 1,
+                "explain": "The words state it plainly: brush your teeth twice a day.",
+                "rule": "Read the words and the main image together to find the overt message.",
+                "practiceItems": [
+                    {
+                        "prompt": "the clear stated message of a poster is the ___ message",
+                        "answer": "overt"
+                    },
+                    {
+                        "prompt": "read the words and the ___ together",
+                        "answer": "picture"
+                    },
+                    {
+                        "prompt": "an overt message is ___ directly (stated/hidden)",
+                        "answer": "stated"
+                    },
+                    {
+                        "prompt": "a poster mixing words and images is a ___ text",
+                        "answer": "graphic"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "A poster shows a big apple and the words 'Eat fruit every day!' What is the overt (clearly stated) message?",
+                "options": [
+                    "Eat fruit every day — it is stated plainly in words",
+                    "Apples are expensive",
+                    "There is no message"
+                ],
+                "answer": 0,
+                "explain": "An overt message is the one stated plainly. This poster spells it out in words: 'Eat fruit every day.' You do not need to dig for it — it is right there.",
+                "rule": "The overt message is the one stated plainly in the text or words.",
+                "principle": "Media texts carry clear (overt) messages you can read directly.",
+                "canonical_solution": [
+                    "The poster's words say 'Eat fruit every day'",
+                    "That is stated plainly",
+                    "So it is the overt message",
+                    "No digging is needed"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "reads the plain words on the poster"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "states the overt message"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains overt means clearly stated"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "invents an unrelated message",
+                        "coach": "The overt message is the one written plainly."
+                    },
+                    {
+                        "if": "says there is none",
+                        "coach": "The words 'Eat fruit every day' are the message."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "a message stated plainly is",
+                        "answer": "overt"
+                    },
+                    {
+                        "prompt": "the poster tells you to eat",
+                        "answer": "fruit"
+                    },
+                    {
+                        "prompt": "is the overt message hidden or clear?",
+                        "answer": "clear"
+                    },
+                    {
+                        "prompt": "a poster's main words carry its",
+                        "answer": "message"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "content": "The overt message is the one you can read straight off the page. Words plus picture give it to you. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "To find the overt message, read the words and look at the main picture together." },
-      {
-        "type": "check",
-        "question": "A poster shows a toothbrush and says 'Brush twice a day'. The overt message is:",
-        "options": ["buy a big toothbrush", "brush your teeth twice every day", "dentists are busy"],
-        "answer": 1,
-        "explain": "The words state it plainly: brush your teeth twice a day.",
-        "rule": "Read the words and the main image together to find the overt message.",
-        "practiceItems": [
-          { "prompt": "the clear stated message of a poster is the ___ message", "answer": "overt" },
-          { "prompt": "read the words and the ___ together", "answer": "picture" },
-          { "prompt": "an overt message is ___ directly (stated/hidden)", "answer": "stated" },
-          { "prompt": "a poster mixing words and images is a ___ text", "answer": "graphic" }
-        ]
-      },
-      { "type": "text", "content": "The overt message is the one you can read straight off the page. Words plus picture give it to you. Let's practise!" }
-    ]
-  }
+    }
 ]

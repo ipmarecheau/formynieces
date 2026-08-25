@@ -1,60 +1,162 @@
 [
-  {
-    "module": "ELA-012",
-    "title": "Verb tense: past, future and the -ing continuous form",
-    "is_published": true,
-    "blocks": [
-      {
-        "type": "text",
-        "content": "A verb changes its form to tell us WHEN something happens — in the past, now, or in the future. Getting the tense right keeps your writing clear."
-      },
-      {
-        "type": "key",
-        "content": "Make the simple past of most verbs by adding -ed: today I walk, yesterday I walked."
-      },
-      {
-        "type": "example",
-        "content": "Making the past tense.",
-        "steps": [
-          "Take the verb 'play'.",
-          "Add -ed for the past: 'played'.",
-          "Yesterday I played football."
+    {
+        "module": "ELA-012",
+        "title": "Verb tense: past, future and the -ing continuous form",
+        "is_published": true,
+        "objectives_direct": [
+            "E-GRA-63"
+        ],
+        "objectives_indirect": [
+            "E-GRA-62",
+            "E-GRA-64",
+            "E-GRA-65"
+        ],
+        "canonical_examples_source": "Language rules self-verified; format ref: bank uk-ks2-2024-gps (KS2 GPS).",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "A verb changes its form to tell us WHEN something happens — in the past, now, or in the future. Getting the tense right keeps your writing clear.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "Make the simple past of most verbs by adding -ed: today I walk, yesterday I walked.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Making the past tense.",
+                "steps": [
+                    "Take the verb 'play'.",
+                    "Add -ed for the past: 'played'.",
+                    "Yesterday I played football."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "Yesterday I ___ in the yard. (play)",
+                "answer": "played",
+                "explain": "Add -ed to make the simple past of 'play': played.",
+                "rule": "Make the simple past of most verbs by adding -ed.",
+                "practiceItems": [
+                    {
+                        "prompt": "past tense of 'walk'",
+                        "answer": "walked"
+                    },
+                    {
+                        "prompt": "past tense of 'jump'",
+                        "answer": "jumped"
+                    },
+                    {
+                        "prompt": "past tense of 'call'",
+                        "answer": "called"
+                    },
+                    {
+                        "prompt": "past tense of 'help'",
+                        "answer": "helped"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "The continuous form shows an action happening now: add -ing to the verb (is playing, are running).",
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "Right now she is ___ a song. (sing)",
+                "answer": "singing",
+                "explain": "Add -ing to show the action is happening now: singing.",
+                "rule": "The continuous form adds -ing to the verb to show an action happening now.",
+                "practiceItems": [
+                    {
+                        "prompt": "add -ing: 'play'",
+                        "answer": "playing"
+                    },
+                    {
+                        "prompt": "add -ing: 'read'",
+                        "answer": "reading"
+                    },
+                    {
+                        "prompt": "add -ing: 'run' (double the n)",
+                        "answer": "running"
+                    },
+                    {
+                        "prompt": "add -ing: 'sing'",
+                        "answer": "singing"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "The sentence 'Yesterday she walk to school' does not sound right. What is wrong, and how do you know?",
+                "options": [
+                    "It should be 'walked' — 'yesterday' shows it happened in the past",
+                    "It is correct",
+                    "It should be 'walks'"
+                ],
+                "answer": 0,
+                "explain": "'Yesterday' is a signal that the action already happened, so the verb must be in the past tense: 'walked'. The time word and the verb tense have to match.",
+                "rule": "Match the verb tense to when the action happens; past actions use the past tense.",
+                "principle": "Time words and verb tense must agree.",
+                "canonical_solution": [
+                    "'Yesterday' means in the past",
+                    "The verb must be past tense",
+                    "Past of 'walk' is 'walked'",
+                    "So: 'Yesterday she walked to school'"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "spots the time word 'yesterday'"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "changes 'walk' to 'walked'"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains tense must match the time"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "leaves it as 'walk'",
+                        "coach": "Yesterday is past, so use 'walked'."
+                    },
+                    {
+                        "if": "uses 'walks'",
+                        "coach": "'walks' is present; the action already happened."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "the past tense of 'walk'",
+                        "answer": "walked"
+                    },
+                    {
+                        "prompt": "the past tense of 'play'",
+                        "answer": "played"
+                    },
+                    {
+                        "prompt": "'yesterday' signals which tense?",
+                        "answer": "past"
+                    },
+                    {
+                        "prompt": "the past tense of 'jump'",
+                        "answer": "jumped"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "content": "Past adds -ed, the continuous adds -ing, and the future uses 'will'. Match the tense to the time. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      {
-        "type": "fillblank",
-        "prompt": "Yesterday I ___ in the yard. (play)",
-        "answer": "played",
-        "explain": "Add -ed to make the simple past of 'play': played.",
-        "rule": "Make the simple past of most verbs by adding -ed.",
-        "practiceItems": [
-          { "prompt": "past tense of 'walk'", "answer": "walked" },
-          { "prompt": "past tense of 'jump'", "answer": "jumped" },
-          { "prompt": "past tense of 'call'", "answer": "called" },
-          { "prompt": "past tense of 'help'", "answer": "helped" }
-        ]
-      },
-      {
-        "type": "key",
-        "content": "The continuous form shows an action happening now: add -ing to the verb (is playing, are running)."
-      },
-      {
-        "type": "fillblank",
-        "prompt": "Right now she is ___ a song. (sing)",
-        "answer": "singing",
-        "explain": "Add -ing to show the action is happening now: singing.",
-        "rule": "The continuous form adds -ing to the verb to show an action happening now.",
-        "practiceItems": [
-          { "prompt": "add -ing: 'play'", "answer": "playing" },
-          { "prompt": "add -ing: 'read'", "answer": "reading" },
-          { "prompt": "add -ing: 'run' (double the n)", "answer": "running" },
-          { "prompt": "add -ing: 'sing'", "answer": "singing" }
-        ]
-      },
-      {
-        "type": "text",
-        "content": "Past adds -ed, the continuous adds -ing, and the future uses 'will'. Match the tense to the time. Let's practise!"
-      }
-    ]
-  }
+    }
 ]

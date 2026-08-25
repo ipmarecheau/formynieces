@@ -1,41 +1,166 @@
 [
-  {
-    "module": "MATH-005",
-    "title": "Ordering and comparing whole numbers",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "To put numbers in order, you compare them place by place. This helps you say which is bigger, which is smaller, and line numbers up from least to greatest." },
-      { "type": "key", "content": "Compare numbers from the LEFT. The number with the bigger digit in the first place where they differ is the greater number." },
-      { "type": "example", "content": "Comparing 3,450 and 3,540.", "steps": ["Thousands are the same: 3 and 3.", "Hundreds differ: 4 and 5.", "Since 4 is less than 5, 3,450 is less than 3,540."] },
-      {
-        "type": "fillblank",
-        "prompt": "Which is greater, 3,450 or 3,540? Type the greater number.",
-        "answer": "3540",
-        "explain": "They match in the thousands, but 3,540 has 5 hundreds against 4 hundreds, so 3,540 is greater.",
-        "rule": "Compare from the left; the bigger digit in the first differing place makes the greater number.",
-        "practiceItems": [
-          { "prompt": "the greater of 250 and 520", "answer": "520" },
-          { "prompt": "the greater of 1,000 and 999", "answer": "1000" },
-          { "prompt": "the smaller of 45 and 54", "answer": "45" },
-          { "prompt": "the greater of 6,300 and 6,030", "answer": "6300" }
+    {
+        "module": "MATH-005",
+        "title": "Ordering and comparing whole numbers",
+        "is_published": true,
+        "objectives_direct": [
+            "M-NUM-05"
+        ],
+        "objectives_indirect": [
+            "M-NUM-03",
+            "M-NUM-04"
+        ],
+        "canonical_examples_source": "Arithmetic self-verified; method ref: NCERT Class 5/6 Maths; format ref: bank uk-ks2-2024 maths.",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "To put numbers in order, you compare them place by place. This helps you say which is bigger, which is smaller, and line numbers up from least to greatest.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "Compare numbers from the LEFT. The number with the bigger digit in the first place where they differ is the greater number.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Comparing 3,450 and 3,540.",
+                "steps": [
+                    "Thousands are the same: 3 and 3.",
+                    "Hundreds differ: 4 and 5.",
+                    "Since 4 is less than 5, 3,450 is less than 3,540."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "Which is greater, 3,450 or 3,540? Type the greater number.",
+                "answer": "3540",
+                "explain": "They match in the thousands, but 3,540 has 5 hundreds against 4 hundreds, so 3,540 is greater.",
+                "rule": "Compare from the left; the bigger digit in the first differing place makes the greater number.",
+                "practiceItems": [
+                    {
+                        "prompt": "the greater of 250 and 520",
+                        "answer": "520"
+                    },
+                    {
+                        "prompt": "the greater of 1,000 and 999",
+                        "answer": "1000"
+                    },
+                    {
+                        "prompt": "the smaller of 45 and 54",
+                        "answer": "45"
+                    },
+                    {
+                        "prompt": "the greater of 6,300 and 6,030",
+                        "answer": "6300"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "The symbol < means 'less than' and > means 'greater than'. The wide, open end always faces the bigger number.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "Which symbol makes this true: 45 __ 54 ?",
+                "options": [
+                    "<",
+                    ">",
+                    "="
+                ],
+                "answer": 0,
+                "explain": "45 is less than 54, so we use the 'less than' symbol: 45 < 54.",
+                "rule": "Use < for less than and > for greater than; the open end faces the bigger number.",
+                "practiceItems": [
+                    {
+                        "prompt": "the symbol for 45 __ 54 (type < or >)",
+                        "answer": "<"
+                    },
+                    {
+                        "prompt": "the symbol for 90 __ 19 (type < or >)",
+                        "answer": ">"
+                    },
+                    {
+                        "prompt": "the symbol for 7 __ 7 (type < > or =)",
+                        "answer": "="
+                    },
+                    {
+                        "prompt": "the symbol for 100 __ 99 (type < or >)",
+                        "answer": ">"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "Which is larger, 45,600 or 45,060? Ken says 45,060 because he sees a 6 further along. How do you know for sure?",
+                "options": [
+                    "45,600 — at the first place they differ (hundreds) 6 beats 0",
+                    "45,060 is larger",
+                    "They are equal"
+                ],
+                "answer": 0,
+                "explain": "Compare from the left. Both start 45,_, so look at the hundreds place: 45,600 has 6 hundreds and 45,060 has 0 hundreds. Since 6 is more than 0, 45,600 is the larger number. Where the 6 sits matters, not just that it is there.",
+                "rule": "Compare numbers digit by digit from the left; the first place that differs decides.",
+                "principle": "A digit's place, not just its size, decides which number is bigger.",
+                "canonical_solution": [
+                    "Both numbers are 45-thousand something",
+                    "Compare the hundreds place: 6 vs 0",
+                    "6 is greater than 0",
+                    "So 45,600 > 45,060"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "compares matching places from the left"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "finds the first differing place (hundreds) and compares 6 and 0"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains that place value, not just the digit, decides"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "picks the number where a big digit appears later",
+                        "coach": "A 6 in the hundreds is worth more than a 6 in the tens. Compare the same places."
+                    },
+                    {
+                        "if": "counts digits only",
+                        "coach": "Both have five digits — compare place by place from the left."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "larger of 45,600 and 45,060 (type the number)",
+                        "answer": "45600"
+                    },
+                    {
+                        "prompt": "the hundreds digit of 45,600",
+                        "answer": "6"
+                    },
+                    {
+                        "prompt": "the hundreds digit of 45,060",
+                        "answer": "0"
+                    },
+                    {
+                        "prompt": "larger of 8,200 and 8,020 (type the number)",
+                        "answer": "8200"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "content": "Compare place by place from the left, then use < or > with the open end facing the bigger number. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "The symbol < means 'less than' and > means 'greater than'. The wide, open end always faces the bigger number." },
-      {
-        "type": "check",
-        "question": "Which symbol makes this true: 45 __ 54 ?",
-        "options": ["<", ">", "="],
-        "answer": 0,
-        "explain": "45 is less than 54, so we use the 'less than' symbol: 45 < 54.",
-        "rule": "Use < for less than and > for greater than; the open end faces the bigger number.",
-        "practiceItems": [
-          { "prompt": "the symbol for 45 __ 54 (type < or >)", "answer": "<" },
-          { "prompt": "the symbol for 90 __ 19 (type < or >)", "answer": ">" },
-          { "prompt": "the symbol for 7 __ 7 (type < > or =)", "answer": "=" },
-          { "prompt": "the symbol for 100 __ 99 (type < or >)", "answer": ">" }
-        ]
-      },
-      { "type": "text", "content": "Compare place by place from the left, then use < or > with the open end facing the bigger number. Let's practise!" }
-    ]
-  }
+    }
 ]

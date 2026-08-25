@@ -1,40 +1,160 @@
 [
-  {
-    "module": "MATH-002",
-    "title": "Expanded notation: writing a number as a sum of its place values",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "Expanded notation breaks a number open so you can see the value of every digit. It is a clear way to show what a number is really made of." },
-      { "type": "key", "content": "Expanded notation writes a number as the sum of each digit's value: 345 = 300 + 40 + 5." },
-      { "type": "example", "content": "Expanding a number.", "steps": ["Take 526.", "The 5 is 500, the 2 is 20, the 6 is 6.", "So 526 = 500 + 20 + 6."] },
-      {
-        "type": "fillblank",
-        "prompt": "Complete the expanded form: 526 = 500 + ___ + 6",
-        "answer": "20",
-        "explain": "The 2 is in the tens place, so its value is 20.",
-        "rule": "In expanded notation, each part is a digit multiplied by its place value.",
-        "practiceItems": [
-          { "prompt": "345 = 300 + ___ + 5", "answer": "40" },
-          { "prompt": "782 = 700 + 80 + ___", "answer": "2" },
-          { "prompt": "the tens part of 526 in expanded form", "answer": "20" },
-          { "prompt": "the hundreds part of 900 + 30 + 4", "answer": "900" }
+    {
+        "module": "MATH-002",
+        "title": "Expanded notation: writing a number as a sum of its place values",
+        "is_published": true,
+        "objectives_direct": [
+            "M-NUM-02"
+        ],
+        "objectives_indirect": [
+            "M-NUM-01"
+        ],
+        "canonical_examples_source": "Place-value arithmetic self-verified; method ref: NCERT Class 5 Maths (Maths Mela); format ref: bank uk-ks2-2024 maths.",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Ravi is filling in a cheque and has to write the number out in parts. Expanded notation breaks a number open so you can see the value of every digit. It is a clear way to show what a number is really made of.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "cognition": "knowing",
+                "content": "Expanded notation writes a number as the sum of each digit's value: 345 = 300 + 40 + 5."
+            },
+            {
+                "type": "example",
+                "content": "Expanding a number.",
+                "steps": [
+                    "Take 526.",
+                    "The 5 is 500, the 2 is 20, the 6 is 6.",
+                    "So 526 = 500 + 20 + 6."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "cognition": "applying",
+                "prompt": "Complete the expanded form: 526 = 500 + ___ + 6",
+                "answer": "20",
+                "explain": "The 2 is in the tens place, so its value is 20.",
+                "rule": "In expanded notation, each part is a digit multiplied by its place value.",
+                "practiceItems": [
+                    {
+                        "prompt": "345 = 300 + ___ + 5",
+                        "answer": "40"
+                    },
+                    {
+                        "prompt": "782 = 700 + 80 + ___",
+                        "answer": "2"
+                    },
+                    {
+                        "prompt": "the tens part of 526 in expanded form",
+                        "answer": "20"
+                    },
+                    {
+                        "prompt": "the hundreds part of 900 + 30 + 4",
+                        "answer": "900"
+                    }
+                ]
+            },
+            {
+                "type": "key",
+                "cognition": "knowing",
+                "content": "To go back to the standard number, just add the place values together."
+            },
+            {
+                "type": "fillblank",
+                "cognition": "applying",
+                "prompt": "Add the place values: 300 + 40 + 5 = ___",
+                "answer": "345",
+                "explain": "300 + 40 + 5 = 345.",
+                "rule": "Add the place values back together to get the standard number.",
+                "practiceItems": [
+                    {
+                        "prompt": "200 + 50 + 3",
+                        "answer": "253"
+                    },
+                    {
+                        "prompt": "600 + 0 + 9",
+                        "answer": "609"
+                    },
+                    {
+                        "prompt": "400 + 20 + 1",
+                        "answer": "421"
+                    },
+                    {
+                        "prompt": "700 + 90 + 0",
+                        "answer": "790"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "Meera expands 4,072 as 4,000 + 700 + 2. Something is wrong. What is her mistake?",
+                "options": [
+                    "The 0 is in the hundreds place, so it should be 4,000 + 70 + 2",
+                    "Nothing is wrong, it is correct",
+                    "It should be 4,000 + 700 + 20"
+                ],
+                "answer": 0,
+                "explain": "In 4,072 the digits are 4 thousands, 0 hundreds, 7 tens, 2 ones. The 0 holds the empty hundreds place, and the 7 is in the tens place, so the value is 4,000 + 70 + 2. Meera put the 7 in the wrong place.",
+                "rule": "Expand a number by each digit's real place; a zero holds an empty place.",
+                "principle": "Every digit is expanded by the place it actually sits in, and a zero means that place is empty.",
+                "canonical_solution": [
+                    "4,072 = 4 thousands, 0 hundreds, 7 tens, 2 ones",
+                    "The 0 holds the hundreds place (worth 0)",
+                    "The 7 is in the tens place = 70",
+                    "So 4,072 = 4,000 + 70 + 2"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "reads each digit's place, noticing the 0 in the hundreds"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "sees the 7 is tens (70), not hundreds (700)"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains a zero holds an empty place"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "ignores the 0 and shifts the other digits left",
+                        "coach": "Do not skip the 0 — it holds the hundreds place so the 7 stays in the tens."
+                    },
+                    {
+                        "if": "says it is correct",
+                        "coach": "Check each place: the 7 sits in the tens, so it is 70, not 700."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "the tens part of 4,072 in expanded form",
+                        "answer": "70"
+                    },
+                    {
+                        "prompt": "4,072 written in full",
+                        "answer": "4072"
+                    },
+                    {
+                        "prompt": "the hundreds part of 3,051",
+                        "answer": "0"
+                    },
+                    {
+                        "prompt": "5,309 = 5,000 + 300 + ___",
+                        "answer": "9"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "content": "Expanded notation shows a number's hidden parts, adding those parts brings it back together, and a zero quietly holds its place. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "To go back to the standard number, just add the place values together." },
-      {
-        "type": "fillblank",
-        "prompt": "Add the place values: 300 + 40 + 5 = ___",
-        "answer": "345",
-        "explain": "300 + 40 + 5 = 345.",
-        "rule": "Add the place values back together to get the standard number.",
-        "practiceItems": [
-          { "prompt": "200 + 50 + 3", "answer": "253" },
-          { "prompt": "600 + 0 + 9", "answer": "609" },
-          { "prompt": "400 + 20 + 1", "answer": "421" },
-          { "prompt": "700 + 90 + 0", "answer": "790" }
-        ]
-      },
-      { "type": "text", "content": "Expanded notation shows a number's hidden parts, and adding those parts brings it back together. Let's practise!" }
-    ]
-  }
+    }
 ]

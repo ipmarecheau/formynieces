@@ -1,42 +1,171 @@
 [
-  {
-    "module": "ELA-039",
-    "title": "Graphic texts: evaluating the techniques used",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "Media makers use clever techniques to grab you and win you over. A smart reader can name these techniques and judge how well they work." },
-      { "type": "key", "content": "Media techniques include slogans, bright colours, and famous faces — all used to attract attention and persuade." },
-      { "type": "example", "content": "Spotting a technique.", "steps": ["An advert has a short catchy line: 'Taste the sunshine!'", "That short, memorable phrase is a slogan.", "It is a technique to make the product stick in your mind." ] },
-      {
-        "type": "check",
-        "question": "Why does an advert use a famous sports star to hold the product?",
-        "options": ["to teach you maths", "to make you trust and want the product", "to fill empty space"],
-        "answer": 1,
-        "explain": "A famous, admired face is a technique to make you trust and want the product.",
-        "rule": "Media techniques like slogans, colour and famous faces are used to attract attention and persuade.",
-        "practiceItems": [
-          { "prompt": "a short, catchy phrase in an advert is a ___", "answer": "slogan" },
-          { "prompt": "a famous face is used to make you ___ the product (trust/ignore)", "answer": "trust" },
-          { "prompt": "bright colours are used to grab your ___", "answer": "attention" },
-          { "prompt": "'Taste the sunshine!' is an example of a ___", "answer": "slogan" }
+    {
+        "module": "ELA-039",
+        "title": "Graphic texts: evaluating the techniques used",
+        "is_published": true,
+        "objectives_direct": [
+            "E-GTX-90"
+        ],
+        "objectives_indirect": [
+            "E-GTX-88",
+            "E-GTX-89"
+        ],
+        "canonical_examples_source": "Language rules self-verified; format ref: bank uk-ks2-2024-gps (KS2 GPS).",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Media makers use clever techniques to grab you and win you over. A smart reader can name these techniques and judge how well they work.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "Media techniques include slogans, bright colours, and famous faces — all used to attract attention and persuade.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Spotting a technique.",
+                "steps": [
+                    "An advert has a short catchy line: 'Taste the sunshine!'",
+                    "That short, memorable phrase is a slogan.",
+                    "It is a technique to make the product stick in your mind."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "Why does an advert use a famous sports star to hold the product?",
+                "options": [
+                    "to teach you maths",
+                    "to make you trust and want the product",
+                    "to fill empty space"
+                ],
+                "answer": 1,
+                "explain": "A famous, admired face is a technique to make you trust and want the product.",
+                "rule": "Media techniques like slogans, colour and famous faces are used to attract attention and persuade.",
+                "practiceItems": [
+                    {
+                        "prompt": "a short, catchy phrase in an advert is a ___",
+                        "answer": "slogan"
+                    },
+                    {
+                        "prompt": "a famous face is used to make you ___ the product (trust/ignore)",
+                        "answer": "trust"
+                    },
+                    {
+                        "prompt": "bright colours are used to grab your ___",
+                        "answer": "attention"
+                    },
+                    {
+                        "prompt": "'Taste the sunshine!' is an example of a ___",
+                        "answer": "slogan"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "To evaluate a media text is to judge how well its techniques work — and to say why.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "Evaluating an advert means:",
+                "options": [
+                    "copying it neatly",
+                    "judging how well its techniques work and why",
+                    "reading it aloud fast"
+                ],
+                "answer": 1,
+                "explain": "Evaluating is judging how effective the techniques are, with reasons.",
+                "rule": "To evaluate a media text is to judge how well its techniques work, with reasons.",
+                "practiceItems": [
+                    {
+                        "prompt": "judging how well an advert works is to ___ it (evaluate/copy)",
+                        "answer": "evaluate"
+                    },
+                    {
+                        "prompt": "a catchy phrase technique is a ___",
+                        "answer": "slogan"
+                    },
+                    {
+                        "prompt": "bright colour is a technique to grab ___",
+                        "answer": "attention"
+                    },
+                    {
+                        "prompt": "an evaluation should give a judgement and a ___",
+                        "answer": "reason"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "An advert uses huge bold letters shouting 'FREE!'. Why does the designer do this?",
+                "options": [
+                    "To grab attention and persuade you — big bold words stand out",
+                    "To make it hard to read",
+                    "For no particular reason"
+                ],
+                "answer": 0,
+                "explain": "Designers choose techniques on purpose. Huge bold letters make 'FREE!' jump out and pull your eye, so the technique is used to grab attention and persuade you. Evaluating means judging why a technique is used and whether it works.",
+                "rule": "Media techniques are chosen to affect the reader; judge why and how well.",
+                "principle": "Evaluating a media text means weighing the effect of its techniques.",
+                "canonical_solution": [
+                    "Big bold letters stand out",
+                    "Standing out grabs the eye",
+                    "That is used to persuade",
+                    "So the technique grabs attention to persuade"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "identifies the technique (bold letters)"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "explains it grabs attention to persuade"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "judges the purpose and effect of the technique"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "says it hinders reading",
+                        "coach": "Bold letters help it stand out, not hide it."
+                    },
+                    {
+                        "if": "says no reason",
+                        "coach": "Designers choose bold text on purpose to catch the eye."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "big bold words are used to grab",
+                        "answer": "attention"
+                    },
+                    {
+                        "prompt": "the goal of an advert is often to",
+                        "answer": "persuade"
+                    },
+                    {
+                        "prompt": "judging how well a technique works is to",
+                        "answer": "evaluate"
+                    },
+                    {
+                        "prompt": "does bold text stand out? (yes/no)",
+                        "answer": "yes"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "content": "Name the techniques — slogans, colour, famous faces — then judge how well they work. That is evaluating media. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "To evaluate a media text is to judge how well its techniques work — and to say why." },
-      {
-        "type": "check",
-        "question": "Evaluating an advert means:",
-        "options": ["copying it neatly", "judging how well its techniques work and why", "reading it aloud fast"],
-        "answer": 1,
-        "explain": "Evaluating is judging how effective the techniques are, with reasons.",
-        "rule": "To evaluate a media text is to judge how well its techniques work, with reasons.",
-        "practiceItems": [
-          { "prompt": "judging how well an advert works is to ___ it (evaluate/copy)", "answer": "evaluate" },
-          { "prompt": "a catchy phrase technique is a ___", "answer": "slogan" },
-          { "prompt": "bright colour is a technique to grab ___", "answer": "attention" },
-          { "prompt": "an evaluation should give a judgement and a ___", "answer": "reason" }
-        ]
-      },
-      { "type": "text", "content": "Name the techniques — slogans, colour, famous faces — then judge how well they work. That is evaluating media. Let's practise!" }
-    ]
-  }
+    }
 ]

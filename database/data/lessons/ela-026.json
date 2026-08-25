@@ -1,42 +1,167 @@
 [
-  {
-    "module": "ELA-026",
-    "title": "Inferring meaning: reading between the lines",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "Writers do not say everything directly. Good readers make inferences — smart guesses from the clues in the text plus what they already know." },
-      { "type": "key", "content": "An inference is a smart guess made from clues in the text plus what you already know." },
-      { "type": "text", "content": "Read this: 'Maya grabbed her umbrella and rushed out, glancing up at the grey, heavy sky.'" },
-      {
-        "type": "check",
-        "question": "What can you infer from the clues?",
-        "options": ["It is a bright, sunny day.", "It might rain soon.", "Maya is going to sleep."],
-        "answer": 1,
-        "explain": "An umbrella and a grey, heavy sky are clues that it might rain — even though the text does not say so directly.",
-        "rule": "An inference is a smart guess from clues in the text plus what you already know.",
-        "practiceItems": [
-          { "prompt": "reading between the lines to guess is making an ___", "answer": "inference" },
-          { "prompt": "an inference uses clues and what you already ___", "answer": "know" },
-          { "prompt": "a grey sky and an umbrella suggest it might ___", "answer": "rain" },
-          { "prompt": "an inference is a smart ___ from clues", "answer": "guess" }
+    {
+        "module": "ELA-026",
+        "title": "Inferring meaning: reading between the lines",
+        "is_published": true,
+        "objectives_direct": [
+            "E-RCM-77"
+        ],
+        "objectives_indirect": [
+            "E-RCM-75",
+            "E-RCM-76",
+            "E-RCM-78"
+        ],
+        "canonical_examples_source": "Language rules self-verified; format ref: bank uk-ks2-2024-gps (KS2 GPS).",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Writers do not say everything directly. Good readers make inferences — smart guesses from the clues in the text plus what they already know.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "An inference is a smart guess made from clues in the text plus what you already know.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "text",
+                "content": "Read this: 'Maya grabbed her umbrella and rushed out, glancing up at the grey, heavy sky.'",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "What can you infer from the clues?",
+                "options": [
+                    "It is a bright, sunny day.",
+                    "It might rain soon.",
+                    "Maya is going to sleep."
+                ],
+                "answer": 1,
+                "explain": "An umbrella and a grey, heavy sky are clues that it might rain — even though the text does not say so directly.",
+                "rule": "An inference is a smart guess from clues in the text plus what you already know.",
+                "practiceItems": [
+                    {
+                        "prompt": "reading between the lines to guess is making an ___",
+                        "answer": "inference"
+                    },
+                    {
+                        "prompt": "an inference uses clues and what you already ___",
+                        "answer": "know"
+                    },
+                    {
+                        "prompt": "a grey sky and an umbrella suggest it might ___",
+                        "answer": "rain"
+                    },
+                    {
+                        "prompt": "an inference is a smart ___ from clues",
+                        "answer": "guess"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "To infer, gather the clues the writer gives, then add your own knowledge of the world.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "'Ravi's stomach growled loudly as he stared at the clock.' What can you infer?",
+                "options": [
+                    "Ravi is hungry.",
+                    "Ravi is asleep.",
+                    "Ravi is swimming."
+                ],
+                "answer": 0,
+                "explain": "A growling stomach is a clue that Ravi is hungry.",
+                "rule": "Combine the text's clues with what you know to infer what is really happening.",
+                "practiceItems": [
+                    {
+                        "prompt": "a growling stomach is a clue that someone is ___",
+                        "answer": "hungry"
+                    },
+                    {
+                        "prompt": "yawning and rubbing eyes suggests someone is ___",
+                        "answer": "tired"
+                    },
+                    {
+                        "prompt": "to infer, you combine clues with your own ___",
+                        "answer": "knowledge"
+                    },
+                    {
+                        "prompt": "an inference is not stated ___ in the text (directly/never)",
+                        "answer": "directly"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "'Mia grabbed her umbrella and frowned at the sky.' What can you infer about the weather?",
+                "options": [
+                    "It is probably about to rain — the umbrella and the sky are clues",
+                    "It is a bright sunny day",
+                    "She is going to the beach"
+                ],
+                "answer": 0,
+                "explain": "The text does not say 'it is raining', but the clues — grabbing an umbrella, frowning at the sky — let you infer that rain is likely. Inferring means using clues plus what you already know.",
+                "rule": "Infer by combining text clues with what you already know.",
+                "principle": "An inference is a sensible conclusion the text does not state outright.",
+                "canonical_solution": [
+                    "Clue 1: she grabbed an umbrella",
+                    "Clue 2: she frowned at the sky",
+                    "Umbrellas and dark skies suggest rain",
+                    "So you infer rain is coming"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "gathers the clues (umbrella, sky)"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "infers rain is likely"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains inference uses clues plus knowledge"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "picks sunny",
+                        "coach": "Why grab an umbrella and frown at the sky if it were sunny?"
+                    },
+                    {
+                        "if": "waits for it to be stated",
+                        "coach": "Inference fills in what the text leaves unsaid."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "working out what is not stated directly is to",
+                        "answer": "infer"
+                    },
+                    {
+                        "prompt": "the umbrella suggests",
+                        "answer": "rain"
+                    },
+                    {
+                        "prompt": "does inferring use clues? (yes/no)",
+                        "answer": "yes"
+                    },
+                    {
+                        "prompt": "frowning at the sky suggests bad",
+                        "answer": "weather"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "content": "Gather the clues, add what you know, and make your smart guess. That is inferring. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "To infer, gather the clues the writer gives, then add your own knowledge of the world." },
-      {
-        "type": "check",
-        "question": "'Ravi's stomach growled loudly as he stared at the clock.' What can you infer?",
-        "options": ["Ravi is hungry.", "Ravi is asleep.", "Ravi is swimming."],
-        "answer": 0,
-        "explain": "A growling stomach is a clue that Ravi is hungry.",
-        "rule": "Combine the text's clues with what you know to infer what is really happening.",
-        "practiceItems": [
-          { "prompt": "a growling stomach is a clue that someone is ___", "answer": "hungry" },
-          { "prompt": "yawning and rubbing eyes suggests someone is ___", "answer": "tired" },
-          { "prompt": "to infer, you combine clues with your own ___", "answer": "knowledge" },
-          { "prompt": "an inference is not stated ___ in the text (directly/never)", "answer": "directly" }
-        ]
-      },
-      { "type": "text", "content": "Gather the clues, add what you know, and make your smart guess. That is inferring. Let's practise!" }
-    ]
-  }
+    }
 ]

@@ -1,40 +1,163 @@
 [
-  {
-    "module": "MATH-019",
-    "title": "Adding and subtracting decimals",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "Adding and subtracting decimals is just like whole numbers, with one golden rule: keep the decimal points lined up underneath each other." },
-      { "type": "key", "content": "Line up the decimal points, then add from the right just as you would with whole numbers." },
-      { "type": "example", "content": "Adding 3.4 + 2.5.", "steps": ["Line up the points.", "Tenths: 4 + 5 = 9.", "Ones: 3 + 2 = 5.", "Answer: 5.9."] },
-      {
-        "type": "fillblank",
-        "prompt": "3.4 + 2.5 = ___",
-        "answer": "5.9",
-        "explain": "4 tenths + 5 tenths = 9 tenths, and 3 + 2 = 5, giving 5.9.",
-        "rule": "Line up the decimal points, then add from the right.",
-        "practiceItems": [
-          { "prompt": "1.2 + 3.5", "answer": "4.7" },
-          { "prompt": "0.6 + 0.3", "answer": "0.9" },
-          { "prompt": "5.5 + 1.2", "answer": "6.7" },
-          { "prompt": "2.4 + 3.1", "answer": "5.5" }
+    {
+        "module": "MATH-019",
+        "title": "Adding and subtracting decimals",
+        "is_published": true,
+        "objectives_direct": [
+            "M-DEC-19"
+        ],
+        "objectives_indirect": [
+            "M-DEC-17",
+            "M-DEC-18",
+            "M-DEC-20"
+        ],
+        "canonical_examples_source": "Arithmetic self-verified; method ref: NCERT Class 5/6 Maths; format ref: bank uk-ks2-2024 maths.",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Adding and subtracting decimals is just like whole numbers, with one golden rule: keep the decimal points lined up underneath each other.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "Line up the decimal points, then add from the right just as you would with whole numbers.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Adding 3.4 + 2.5.",
+                "steps": [
+                    "Line up the points.",
+                    "Tenths: 4 + 5 = 9.",
+                    "Ones: 3 + 2 = 5.",
+                    "Answer: 5.9."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "3.4 + 2.5 = ___",
+                "answer": "5.9",
+                "explain": "4 tenths + 5 tenths = 9 tenths, and 3 + 2 = 5, giving 5.9.",
+                "rule": "Line up the decimal points, then add from the right.",
+                "practiceItems": [
+                    {
+                        "prompt": "1.2 + 3.5",
+                        "answer": "4.7"
+                    },
+                    {
+                        "prompt": "0.6 + 0.3",
+                        "answer": "0.9"
+                    },
+                    {
+                        "prompt": "5.5 + 1.2",
+                        "answer": "6.7"
+                    },
+                    {
+                        "prompt": "2.4 + 3.1",
+                        "answer": "5.5"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "To subtract, line up the points the same way and subtract from the right.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "6.8 - 2.3 = ___",
+                "answer": "4.5",
+                "explain": "8 tenths - 3 tenths = 5 tenths, and 6 - 2 = 4, giving 4.5.",
+                "rule": "Line up the decimal points, then subtract from the right.",
+                "practiceItems": [
+                    {
+                        "prompt": "4.7 - 1.2",
+                        "answer": "3.5"
+                    },
+                    {
+                        "prompt": "8.9 - 3.4",
+                        "answer": "5.5"
+                    },
+                    {
+                        "prompt": "5.6 - 1.1",
+                        "answer": "4.5"
+                    },
+                    {
+                        "prompt": "9.8 - 4.3",
+                        "answer": "5.5"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "Ann adds 3.2 + 0.45 by lining up the last digits (the 2 under the 5) and gets 3.47. What went wrong?",
+                "options": [
+                    "She must line up the decimal points: 3.20 + 0.45 = 3.65",
+                    "Nothing, 3.47 is correct",
+                    "The answer is 3.65 but her method was fine"
+                ],
+                "answer": 0,
+                "explain": "You line up decimals by their POINTS, not their last digits, so tenths sit under tenths. Writing 3.2 as 3.20 makes it clear: 3.20 + 0.45 = 3.65. Ann added hundredths to tenths by mistake.",
+                "rule": "Line up the decimal points so matching places add together.",
+                "principle": "Only digits in the same place value may be added.",
+                "canonical_solution": [
+                    "Write 3.2 as 3.20",
+                    "Line up points: 3.20 + 0.45",
+                    "Add each place: 3.65",
+                    "So the answer is 3.65, not 3.47"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "lines up decimal points / writes 3.20"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "gets 3.65 and identifies Ann's misalignment"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains only matching places add"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "lines up the last digits",
+                        "coach": "Line up the decimal points instead, so tenths meet tenths."
+                    },
+                    {
+                        "if": "gets 3.47",
+                        "coach": "Write 3.2 as 3.20 first, then add."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "3.2 + 0.45",
+                        "answer": "3.65"
+                    },
+                    {
+                        "prompt": "3.2 written with two decimal places",
+                        "answer": "3.20"
+                    },
+                    {
+                        "prompt": "3.20 + 0.45",
+                        "answer": "3.65"
+                    },
+                    {
+                        "prompt": "0.20 + 0.45",
+                        "answer": "0.65"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "content": "Keep those decimal points lined up, and add or subtract exactly as you do with whole numbers. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "To subtract, line up the points the same way and subtract from the right." },
-      {
-        "type": "fillblank",
-        "prompt": "6.8 - 2.3 = ___",
-        "answer": "4.5",
-        "explain": "8 tenths - 3 tenths = 5 tenths, and 6 - 2 = 4, giving 4.5.",
-        "rule": "Line up the decimal points, then subtract from the right.",
-        "practiceItems": [
-          { "prompt": "4.7 - 1.2", "answer": "3.5" },
-          { "prompt": "8.9 - 3.4", "answer": "5.5" },
-          { "prompt": "5.6 - 1.1", "answer": "4.5" },
-          { "prompt": "9.8 - 4.3", "answer": "5.5" }
-        ]
-      },
-      { "type": "text", "content": "Keep those decimal points lined up, and add or subtract exactly as you do with whole numbers. Let's practise!" }
-    ]
-  }
+    }
 ]

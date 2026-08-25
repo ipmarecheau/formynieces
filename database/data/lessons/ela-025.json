@@ -1,42 +1,171 @@
 [
-  {
-    "module": "ELA-025",
-    "title": "Cause and effect: why things happen",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "Things happen for reasons. The cause is WHY something happens; the effect is WHAT happens as a result. Spotting them helps you follow any text." },
-      { "type": "key", "content": "The cause is why something happens. The effect is what happens as a result." },
-      { "type": "example", "content": "Cause and effect.", "steps": ["'It rained heavily.' — this is the cause.", "'So the match was cancelled.' — this is the effect.", "Signal words like because, so and since often link them." ] },
-      {
-        "type": "check",
-        "question": "In 'She studied hard, so she passed the test', what is the EFFECT?",
-        "options": ["she studied hard", "she passed the test"],
-        "answer": 1,
-        "explain": "Passing the test is what happened as a result, so it is the effect.",
-        "rule": "The cause is why something happens; the effect is what happens as a result.",
-        "practiceItems": [
-          { "prompt": "the reason something happens is the ___", "answer": "cause" },
-          { "prompt": "what happens as a result is the ___", "answer": "effect" },
-          { "prompt": "in 'it rained so we stayed in', the cause is the ___", "answer": "rain" },
-          { "prompt": "in 'he tripped and fell', the effect is that he ___", "answer": "fell" }
+    {
+        "module": "ELA-025",
+        "title": "Cause and effect: why things happen",
+        "is_published": true,
+        "objectives_direct": [
+            "E-RCM-76"
+        ],
+        "objectives_indirect": [
+            "E-RCM-74",
+            "E-RCM-75",
+            "E-RCM-77"
+        ],
+        "canonical_examples_source": "Language rules self-verified; format ref: bank uk-ks2-2024-gps (KS2 GPS).",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Things happen for reasons. The cause is WHY something happens; the effect is WHAT happens as a result. Spotting them helps you follow any text.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "The cause is why something happens. The effect is what happens as a result.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Cause and effect.",
+                "steps": [
+                    "'It rained heavily.' — this is the cause.",
+                    "'So the match was cancelled.' — this is the effect.",
+                    "Signal words like because, so and since often link them."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "In 'She studied hard, so she passed the test', what is the EFFECT?",
+                "options": [
+                    "she studied hard",
+                    "she passed the test"
+                ],
+                "answer": 1,
+                "explain": "Passing the test is what happened as a result, so it is the effect.",
+                "rule": "The cause is why something happens; the effect is what happens as a result.",
+                "practiceItems": [
+                    {
+                        "prompt": "the reason something happens is the ___",
+                        "answer": "cause"
+                    },
+                    {
+                        "prompt": "what happens as a result is the ___",
+                        "answer": "effect"
+                    },
+                    {
+                        "prompt": "in 'it rained so we stayed in', the cause is the ___",
+                        "answer": "rain"
+                    },
+                    {
+                        "prompt": "in 'he tripped and fell', the effect is that he ___",
+                        "answer": "fell"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "Signal words help you spot cause and effect: because, so, since, therefore, as a result.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "Which word signals a cause?",
+                "options": [
+                    "because",
+                    "and",
+                    "the"
+                ],
+                "answer": 0,
+                "explain": "'because' introduces the reason — the cause.",
+                "rule": "Signal words like because, so, since and therefore link a cause to its effect.",
+                "practiceItems": [
+                    {
+                        "prompt": "a signal word that introduces a reason",
+                        "answer": "because"
+                    },
+                    {
+                        "prompt": "a signal word that introduces a result",
+                        "answer": "so"
+                    },
+                    {
+                        "prompt": "cause and effect are linked by signal ___",
+                        "answer": "words"
+                    },
+                    {
+                        "prompt": "the cause comes ___ the effect (before/never)",
+                        "answer": "before"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "'The road was icy, so the car slid.' What is the cause and what is the effect?",
+                "options": [
+                    "Cause: the icy road; effect: the car slid",
+                    "Cause: the car slid; effect: the icy road",
+                    "They are the same thing"
+                ],
+                "answer": 0,
+                "explain": "The cause is the reason something happens; the effect is what results. The icy road came first and made the car slide, so the icy road is the cause and the sliding is the effect. The word 'so' points to the effect.",
+                "rule": "The cause happens first and makes the effect; 'so' often signals the effect.",
+                "principle": "Cause and effect are linked in order: reason then result.",
+                "canonical_solution": [
+                    "The icy road came first",
+                    "It made the car slide",
+                    "So icy road = cause",
+                    "car slid = effect"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "orders the two events"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "names the icy road as cause, sliding as effect"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains cause leads to effect"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "swaps them",
+                        "coach": "The road iced over first, then the car slid — cause then effect."
+                    },
+                    {
+                        "if": "sees no link",
+                        "coach": "'so' connects the cause to its effect."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "the reason something happens is the",
+                        "answer": "cause"
+                    },
+                    {
+                        "prompt": "what happens as a result is the",
+                        "answer": "effect"
+                    },
+                    {
+                        "prompt": "in 'icy road, so car slid', the cause is the",
+                        "answer": "icy road"
+                    },
+                    {
+                        "prompt": "the word that often signals an effect",
+                        "answer": "so"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "content": "Ask 'why did it happen?' for the cause, and 'what happened?' for the effect. Watch for because and so. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "Signal words help you spot cause and effect: because, so, since, therefore, as a result." },
-      {
-        "type": "check",
-        "question": "Which word signals a cause?",
-        "options": ["because", "and", "the"],
-        "answer": 0,
-        "explain": "'because' introduces the reason — the cause.",
-        "rule": "Signal words like because, so, since and therefore link a cause to its effect.",
-        "practiceItems": [
-          { "prompt": "a signal word that introduces a reason", "answer": "because" },
-          { "prompt": "a signal word that introduces a result", "answer": "so" },
-          { "prompt": "cause and effect are linked by signal ___", "answer": "words" },
-          { "prompt": "the cause comes ___ the effect (before/never)", "answer": "before" }
-        ]
-      },
-      { "type": "text", "content": "Ask 'why did it happen?' for the cause, and 'what happened?' for the effect. Watch for because and so. Let's practise!" }
-    ]
-  }
+    }
 ]

@@ -1,42 +1,166 @@
 [
-  {
-    "module": "ELA-022",
-    "title": "Finding the main idea of a non-fiction text",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "Every non-fiction text is mostly about one big point. Finding that point — the main idea — is the first step to understanding what you read." },
-      { "type": "key", "content": "The main idea is the most important point that the WHOLE text is about." },
-      { "type": "text", "content": "Read this: 'Bees are very important. They carry pollen from flower to flower, which helps plants make fruit and seeds. Without bees, many of our foods would not grow.'" },
-      {
-        "type": "check",
-        "question": "What is the main idea of the passage?",
-        "options": ["Bees can fly.", "Bees are important because they help plants grow our food.", "Pollen is yellow."],
-        "answer": 1,
-        "explain": "The whole passage is about why bees matter, so that is the main idea.",
-        "rule": "The main idea is the most important point the whole text is about.",
-        "practiceItems": [
-          { "prompt": "the main idea is the most ___ point of a text", "answer": "important" },
-          { "prompt": "the main idea is what the WHOLE text is ___", "answer": "about" },
-          { "prompt": "a small fact that backs up the main idea is a ___ detail", "answer": "supporting" },
-          { "prompt": "the main idea is often found in the first or last ___", "answer": "sentence" }
+    {
+        "module": "ELA-022",
+        "title": "Finding the main idea of a non-fiction text",
+        "is_published": true,
+        "objectives_direct": [
+            "E-RCM-73"
+        ],
+        "objectives_indirect": [
+            "E-RCM-74",
+            "E-RCM-75"
+        ],
+        "canonical_examples_source": "Language rules self-verified; format ref: bank uk-ks2-2024-gps (KS2 GPS).",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Every non-fiction text is mostly about one big point. Finding that point — the main idea — is the first step to understanding what you read.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "The main idea is the most important point that the WHOLE text is about.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "text",
+                "content": "Read this: 'Bees are very important. They carry pollen from flower to flower, which helps plants make fruit and seeds. Without bees, many of our foods would not grow.'",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "What is the main idea of the passage?",
+                "options": [
+                    "Bees can fly.",
+                    "Bees are important because they help plants grow our food.",
+                    "Pollen is yellow."
+                ],
+                "answer": 1,
+                "explain": "The whole passage is about why bees matter, so that is the main idea.",
+                "rule": "The main idea is the most important point the whole text is about.",
+                "practiceItems": [
+                    {
+                        "prompt": "the main idea is the most ___ point of a text",
+                        "answer": "important"
+                    },
+                    {
+                        "prompt": "the main idea is what the WHOLE text is ___",
+                        "answer": "about"
+                    },
+                    {
+                        "prompt": "a small fact that backs up the main idea is a ___ detail",
+                        "answer": "supporting"
+                    },
+                    {
+                        "prompt": "the main idea is often found in the first or last ___",
+                        "answer": "sentence"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "To find the main idea, ask yourself: 'What is this text mostly about?'",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "To find the main idea, the best question to ask is:",
+                "options": [
+                    "What is one small detail?",
+                    "What is the text mostly about?",
+                    "How many sentences are there?"
+                ],
+                "answer": 1,
+                "explain": "The main idea is the overall point, so ask what the text is mostly about.",
+                "rule": "Find the main idea by asking what the whole text is mostly about.",
+                "practiceItems": [
+                    {
+                        "prompt": "to find the main idea, ask what the text is mostly ___",
+                        "answer": "about"
+                    },
+                    {
+                        "prompt": "the main idea covers the ___ text (whole/one line)",
+                        "answer": "whole"
+                    },
+                    {
+                        "prompt": "details support the ___ idea",
+                        "answer": "main"
+                    },
+                    {
+                        "prompt": "the main idea is the big ___ of the text",
+                        "answer": "point"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "A passage explains, step by step, how bees make honey. Is the main idea 'bees are yellow' or 'bees make honey through several steps'?",
+                "options": [
+                    "'Bees make honey through several steps' — it covers the whole passage",
+                    "'Bees are yellow' — a small detail",
+                    "The passage has no main idea"
+                ],
+                "answer": 0,
+                "explain": "The main idea is what the WHOLE passage is mostly about. Since the passage is all about the steps of making honey, that is the main idea. 'Bees are yellow' might be one small detail, not the overall point.",
+                "rule": "The main idea is the overall point of the whole passage.",
+                "principle": "A main idea covers the whole text, not a single detail.",
+                "canonical_solution": [
+                    "The passage is about making honey",
+                    "That covers the whole text",
+                    "'bees are yellow' is a small detail",
+                    "So the main idea is bees make honey through steps"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "asks what the whole passage is about"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "chooses the overall point, not a detail"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains main idea covers the whole text"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "picks a small detail",
+                        "coach": "A detail is not the main idea — what is the whole passage about?"
+                    },
+                    {
+                        "if": "says no main idea",
+                        "coach": "Most passages have one overall point."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "does the main idea cover the whole passage or one detail?",
+                        "answer": "whole passage"
+                    },
+                    {
+                        "prompt": "a small fact in a passage is a",
+                        "answer": "detail"
+                    },
+                    {
+                        "prompt": "'bees are yellow' — main idea or detail?",
+                        "answer": "detail"
+                    },
+                    {
+                        "prompt": "the overall point of a passage is the",
+                        "answer": "main idea"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "content": "The main idea is the big point the whole text is making. Ask 'what is this mostly about?' and you will find it. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "To find the main idea, ask yourself: 'What is this text mostly about?'" },
-      {
-        "type": "check",
-        "question": "To find the main idea, the best question to ask is:",
-        "options": ["What is one small detail?", "What is the text mostly about?", "How many sentences are there?"],
-        "answer": 1,
-        "explain": "The main idea is the overall point, so ask what the text is mostly about.",
-        "rule": "Find the main idea by asking what the whole text is mostly about.",
-        "practiceItems": [
-          { "prompt": "to find the main idea, ask what the text is mostly ___", "answer": "about" },
-          { "prompt": "the main idea covers the ___ text (whole/one line)", "answer": "whole" },
-          { "prompt": "details support the ___ idea", "answer": "main" },
-          { "prompt": "the main idea is the big ___ of the text", "answer": "point" }
-        ]
-      },
-      { "type": "text", "content": "The main idea is the big point the whole text is making. Ask 'what is this mostly about?' and you will find it. Let's practise!" }
-    ]
-  }
+    }
 ]

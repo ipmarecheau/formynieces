@@ -1,42 +1,167 @@
 [
-  {
-    "module": "ELA-033",
-    "title": "Poetry: drawing conclusions and judging characters",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "Poems and stories rarely tell you outright what a character is like. You work it out — you draw a conclusion — from what they say and do." },
-      { "type": "key", "content": "Judge a character by what they say, what they do, and how others respond to them." },
-      { "type": "text", "content": "Read this: 'Though he was tired, Kofi carried the old woman's heavy bags all the way home, and would take no thanks.'" },
-      {
-        "type": "check",
-        "question": "What kind of person is Kofi?",
-        "options": ["kind", "selfish", "lazy"],
-        "answer": 0,
-        "explain": "He helped even while tired and wanted no thanks — his actions show he is kind.",
-        "rule": "Judge a character by what they say and do.",
-        "practiceItems": [
-          { "prompt": "someone who helps without wanting thanks is ___", "answer": "kind" },
-          { "prompt": "we judge characters by what they say and ___", "answer": "do" },
-          { "prompt": "a character who shares is ___ (generous/greedy)", "answer": "generous" },
-          { "prompt": "a smart guess about a character is a ___ (conclusion/fact)", "answer": "conclusion" }
+    {
+        "module": "ELA-033",
+        "title": "Poetry: drawing conclusions and judging characters",
+        "is_published": true,
+        "objectives_direct": [
+            "E-POE-84"
+        ],
+        "objectives_indirect": [
+            "E-POE-82",
+            "E-POE-83",
+            "E-POE-85"
+        ],
+        "canonical_examples_source": "Language rules self-verified; format ref: bank uk-ks2-2024-gps (KS2 GPS).",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Poems and stories rarely tell you outright what a character is like. You work it out — you draw a conclusion — from what they say and do.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "Judge a character by what they say, what they do, and how others respond to them.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "text",
+                "content": "Read this: 'Though he was tired, Kofi carried the old woman's heavy bags all the way home, and would take no thanks.'",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "What kind of person is Kofi?",
+                "options": [
+                    "kind",
+                    "selfish",
+                    "lazy"
+                ],
+                "answer": 0,
+                "explain": "He helped even while tired and wanted no thanks — his actions show he is kind.",
+                "rule": "Judge a character by what they say and do.",
+                "practiceItems": [
+                    {
+                        "prompt": "someone who helps without wanting thanks is ___",
+                        "answer": "kind"
+                    },
+                    {
+                        "prompt": "we judge characters by what they say and ___",
+                        "answer": "do"
+                    },
+                    {
+                        "prompt": "a character who shares is ___ (generous/greedy)",
+                        "answer": "generous"
+                    },
+                    {
+                        "prompt": "a smart guess about a character is a ___ (conclusion/fact)",
+                        "answer": "conclusion"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "A conclusion is your judgement, supported by the evidence of the character's behaviour.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "'Reena grabbed the biggest slice and pushed past the smaller children.' What can you conclude about Reena?",
+                "options": [
+                    "She is generous.",
+                    "She is selfish.",
+                    "She is shy."
+                ],
+                "answer": 1,
+                "explain": "Taking the biggest slice and pushing others shows selfish behaviour.",
+                "rule": "Support a conclusion about a character with the evidence of their actions.",
+                "practiceItems": [
+                    {
+                        "prompt": "grabbing the most and pushing others shows someone is ___",
+                        "answer": "selfish"
+                    },
+                    {
+                        "prompt": "a judgement backed by evidence is a ___",
+                        "answer": "conclusion"
+                    },
+                    {
+                        "prompt": "back up your judgement with the character's ___",
+                        "answer": "actions"
+                    },
+                    {
+                        "prompt": "someone who waits their turn is ___ (patient/rude)",
+                        "answer": "patient"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "In a poem, a girl shares her only lunch with a hungry friend. What can you judge about her character?",
+                "options": [
+                    "She is kind and generous — her action shows it",
+                    "She is greedy",
+                    "You cannot tell anything about her"
+                ],
+                "answer": 0,
+                "explain": "We judge characters by what they do. Sharing her only lunch with someone hungry is a caring, generous act, so we can conclude she is kind. Actions reveal character.",
+                "rule": "Judge a character by their actions in the text.",
+                "principle": "Character is shown through behaviour, not just description.",
+                "canonical_solution": [
+                    "She shares her only lunch",
+                    "That is a caring, giving act",
+                    "Actions reveal character",
+                    "So she is kind and generous"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "uses the character's action as evidence"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "concludes she is kind/generous"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains actions reveal character"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "says greedy",
+                        "coach": "Sharing your only lunch is the opposite of greedy."
+                    },
+                    {
+                        "if": "says you cannot tell",
+                        "coach": "Her action is a clear clue to her character."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "we judge a character by their",
+                        "answer": "actions"
+                    },
+                    {
+                        "prompt": "sharing her lunch shows she is",
+                        "answer": "kind"
+                    },
+                    {
+                        "prompt": "does what a character does reveal their personality? (yes/no)",
+                        "answer": "yes"
+                    },
+                    {
+                        "prompt": "a person who gives to others is",
+                        "answer": "generous"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "content": "Watch what characters do, then draw a fair conclusion backed by that evidence. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "A conclusion is your judgement, supported by the evidence of the character's behaviour." },
-      {
-        "type": "check",
-        "question": "'Reena grabbed the biggest slice and pushed past the smaller children.' What can you conclude about Reena?",
-        "options": ["She is generous.", "She is selfish.", "She is shy."],
-        "answer": 1,
-        "explain": "Taking the biggest slice and pushing others shows selfish behaviour.",
-        "rule": "Support a conclusion about a character with the evidence of their actions.",
-        "practiceItems": [
-          { "prompt": "grabbing the most and pushing others shows someone is ___", "answer": "selfish" },
-          { "prompt": "a judgement backed by evidence is a ___", "answer": "conclusion" },
-          { "prompt": "back up your judgement with the character's ___", "answer": "actions" },
-          { "prompt": "someone who waits their turn is ___ (patient/rude)", "answer": "patient" }
-        ]
-      },
-      { "type": "text", "content": "Watch what characters do, then draw a fair conclusion backed by that evidence. Let's practise!" }
-    ]
-  }
+    }
 ]

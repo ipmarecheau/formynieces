@@ -1,41 +1,166 @@
 [
-  {
-    "module": "MATH-030",
-    "title": "Symmetry and lines of symmetry",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "A shape has symmetry when you can fold it so both halves match exactly. The fold line is called a line of symmetry." },
-      { "type": "key", "content": "A line of symmetry divides a shape into two halves that are mirror images of each other." },
-      { "type": "example", "content": "Symmetry of a square.", "steps": ["Fold a square top to bottom — the halves match.", "Fold it side to side, and along both diagonals — all match.", "So a square has 4 lines of symmetry."] },
-      {
-        "type": "fillblank",
-        "prompt": "A square has ___ lines of symmetry.",
-        "answer": "4",
-        "explain": "A square can be folded to match along 4 different lines.",
-        "rule": "A line of symmetry splits a shape into two mirror-image halves.",
-        "practiceItems": [
-          { "prompt": "lines of symmetry in a square", "answer": "4" },
-          { "prompt": "lines of symmetry in a rectangle", "answer": "2" },
-          { "prompt": "lines of symmetry in an equilateral triangle", "answer": "3" },
-          { "prompt": "the two halves across a line of symmetry are mirror ___", "answer": "images" }
+    {
+        "module": "MATH-030",
+        "title": "Symmetry and lines of symmetry",
+        "is_published": true,
+        "objectives_direct": [
+            "M-GEO-30"
+        ],
+        "objectives_indirect": [
+            "M-GEO-28",
+            "M-GEO-29",
+            "M-GEO-31"
+        ],
+        "canonical_examples_source": "Arithmetic self-verified; method ref: NCERT Class 5/6 Maths; format ref: bank uk-ks2-2024 maths.",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "A shape has symmetry when you can fold it so both halves match exactly. The fold line is called a line of symmetry.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "A line of symmetry divides a shape into two halves that are mirror images of each other.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Symmetry of a square.",
+                "steps": [
+                    "Fold a square top to bottom — the halves match.",
+                    "Fold it side to side, and along both diagonals — all match.",
+                    "So a square has 4 lines of symmetry."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "A square has ___ lines of symmetry.",
+                "answer": "4",
+                "explain": "A square can be folded to match along 4 different lines.",
+                "rule": "A line of symmetry splits a shape into two mirror-image halves.",
+                "practiceItems": [
+                    {
+                        "prompt": "lines of symmetry in a square",
+                        "answer": "4"
+                    },
+                    {
+                        "prompt": "lines of symmetry in a rectangle",
+                        "answer": "2"
+                    },
+                    {
+                        "prompt": "lines of symmetry in an equilateral triangle",
+                        "answer": "3"
+                    },
+                    {
+                        "prompt": "the two halves across a line of symmetry are mirror ___",
+                        "answer": "images"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "Some shapes have many lines of symmetry, and some have none at all.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "Which shape has MORE lines of symmetry?",
+                "options": [
+                    "a rectangle",
+                    "a square"
+                ],
+                "answer": 1,
+                "explain": "A square has 4 lines of symmetry; a rectangle has only 2.",
+                "rule": "The number of lines of symmetry depends on the shape; a square has more than a rectangle.",
+                "practiceItems": [
+                    {
+                        "prompt": "does a circle have many lines of symmetry? (yes/no)",
+                        "answer": "yes"
+                    },
+                    {
+                        "prompt": "lines of symmetry in a rectangle",
+                        "answer": "2"
+                    },
+                    {
+                        "prompt": "the halves across a line of symmetry are ___ (equal/different)",
+                        "answer": "equal"
+                    },
+                    {
+                        "prompt": "lines of symmetry in a square",
+                        "answer": "4"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "Mia folds a square in half two ways (top-to-bottom and side-to-side) and says it has 2 lines of symmetry. Has she found them all?",
+                "options": [
+                    "No — a square has 4 lines of symmetry (2 straight and 2 diagonal)",
+                    "Yes, exactly 2",
+                    "It has only 1"
+                ],
+                "answer": 0,
+                "explain": "The two folds Mia found are real lines of symmetry, but she missed the diagonals. Fold a square corner-to-corner and the halves still match. That gives 2 more, so 4 lines in total.",
+                "rule": "Check every possible fold, including the diagonals.",
+                "principle": "A shape can have lines of symmetry you miss if you only try the obvious folds.",
+                "canonical_solution": [
+                    "Straight folds: 2 lines of symmetry",
+                    "Diagonal folds also match: 2 more",
+                    "Total = 2 + 2",
+                    "A square has 4 lines of symmetry"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "tries diagonal folds as well as straight ones"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "counts 4 lines in total"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains checking all folds, including diagonals"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "stops at 2 lines",
+                        "coach": "Try the diagonals too — a square folds corner to corner."
+                    },
+                    {
+                        "if": "counts diagonals of a rectangle the same way",
+                        "coach": "A non-square rectangle has only 2 lines; the square is special."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "lines of symmetry of a square",
+                        "answer": "4"
+                    },
+                    {
+                        "prompt": "lines of symmetry of a (non-square) rectangle",
+                        "answer": "2"
+                    },
+                    {
+                        "prompt": "does a square have diagonal symmetry? (yes/no)",
+                        "answer": "yes"
+                    },
+                    {
+                        "prompt": "lines of symmetry of an equilateral triangle",
+                        "answer": "3"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "content": "If a fold makes two matching halves, that fold is a line of symmetry. Some shapes have several. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "Some shapes have many lines of symmetry, and some have none at all." },
-      {
-        "type": "check",
-        "question": "Which shape has MORE lines of symmetry?",
-        "options": ["a rectangle", "a square"],
-        "answer": 1,
-        "explain": "A square has 4 lines of symmetry; a rectangle has only 2.",
-        "rule": "The number of lines of symmetry depends on the shape; a square has more than a rectangle.",
-        "practiceItems": [
-          { "prompt": "does a circle have many lines of symmetry? (yes/no)", "answer": "yes" },
-          { "prompt": "lines of symmetry in a rectangle", "answer": "2" },
-          { "prompt": "the halves across a line of symmetry are ___ (equal/different)", "answer": "equal" },
-          { "prompt": "lines of symmetry in a square", "answer": "4" }
-        ]
-      },
-      { "type": "text", "content": "If a fold makes two matching halves, that fold is a line of symmetry. Some shapes have several. Let's practise!" }
-    ]
-  }
+    }
 ]

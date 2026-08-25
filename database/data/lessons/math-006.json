@@ -1,40 +1,162 @@
 [
-  {
-    "module": "MATH-006",
-    "title": "Adding and subtracting whole numbers",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "Adding and subtracting large numbers is easy when you keep the place values lined up and work from the right." },
-      { "type": "key", "content": "Line up the digits by place value, add from the right, and carry a ten to the next column when a column total reaches ten or more." },
-      { "type": "example", "content": "Adding 347 + 285.", "steps": ["Ones: 7 + 5 = 12, write 2 carry 1.", "Tens: 4 + 8 + 1 = 13, write 3 carry 1.", "Hundreds: 3 + 2 + 1 = 6.", "Answer: 632."] },
-      {
-        "type": "fillblank",
-        "prompt": "347 + 285 = ___",
-        "answer": "632",
-        "explain": "7+5=12 (carry 1), 4+8+1=13 (carry 1), 3+2+1=6, giving 632.",
-        "rule": "Add from the right, carrying a ten to the next column when a total reaches ten or more.",
-        "practiceItems": [
-          { "prompt": "256 + 137", "answer": "393" },
-          { "prompt": "400 + 350", "answer": "750" },
-          { "prompt": "128 + 65", "answer": "193" },
-          { "prompt": "500 + 275", "answer": "775" }
+    {
+        "module": "MATH-006",
+        "title": "Adding and subtracting whole numbers",
+        "is_published": true,
+        "objectives_direct": [
+            "M-OPS-06"
+        ],
+        "objectives_indirect": [
+            "M-OPS-07",
+            "M-OPS-08"
+        ],
+        "canonical_examples_source": "Arithmetic self-verified; method ref: NCERT Class 5/6 Maths; format ref: bank uk-ks2-2024 maths.",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Adding and subtracting large numbers is easy when you keep the place values lined up and work from the right.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "Line up the digits by place value, add from the right, and carry a ten to the next column when a column total reaches ten or more.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Adding 347 + 285.",
+                "steps": [
+                    "Ones: 7 + 5 = 12, write 2 carry 1.",
+                    "Tens: 4 + 8 + 1 = 13, write 3 carry 1.",
+                    "Hundreds: 3 + 2 + 1 = 6.",
+                    "Answer: 632."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "347 + 285 = ___",
+                "answer": "632",
+                "explain": "7+5=12 (carry 1), 4+8+1=13 (carry 1), 3+2+1=6, giving 632.",
+                "rule": "Add from the right, carrying a ten to the next column when a total reaches ten or more.",
+                "practiceItems": [
+                    {
+                        "prompt": "256 + 137",
+                        "answer": "393"
+                    },
+                    {
+                        "prompt": "400 + 350",
+                        "answer": "750"
+                    },
+                    {
+                        "prompt": "128 + 65",
+                        "answer": "193"
+                    },
+                    {
+                        "prompt": "500 + 275",
+                        "answer": "775"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "To subtract, work from the right and borrow ten from the next column when the top digit is smaller than the bottom digit.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "523 - 187 = ___",
+                "answer": "336",
+                "explain": "Borrow to subtract: 523 - 187 = 336.",
+                "rule": "Subtract from the right, borrowing ten from the next place when the top digit is too small.",
+                "practiceItems": [
+                    {
+                        "prompt": "400 - 150",
+                        "answer": "250"
+                    },
+                    {
+                        "prompt": "312 - 108",
+                        "answer": "204"
+                    },
+                    {
+                        "prompt": "1000 - 1",
+                        "answer": "999"
+                    },
+                    {
+                        "prompt": "85 - 39",
+                        "answer": "46"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "A stall had 3,000 mangoes and sold 1,850. Reeta says about 2,000 are left. Is that sensible?",
+                "options": [
+                    "No — about 1,000 are left (3,000 − 1,850 = 1,150)",
+                    "Yes, about 2,000 are left",
+                    "About 3,000 are left"
+                ],
+                "answer": 0,
+                "explain": "Estimate to check: 1,850 is close to 2,000, and 3,000 − 2,000 = 1,000. The exact answer, 3,000 − 1,850 = 1,150, is close to 1,000 — not 2,000. Reeta's guess is too high.",
+                "rule": "Estimate by rounding to check whether an answer is sensible.",
+                "principle": "A quick estimate should be close to the exact answer; if not, something is wrong.",
+                "canonical_solution": [
+                    "Round 1,850 to about 2,000",
+                    "3,000 − 2,000 = 1,000",
+                    "Exact: 3,000 − 1,850 = 1,150",
+                    "About 1,000 are left, so 2,000 is too high"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "rounds and subtracts to estimate, and/or computes 1,150"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "compares the estimate to Reeta's 2,000 and rejects it"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "uses estimation as a sensibleness check"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "adds instead of subtracting",
+                        "coach": "She sold mangoes, so subtract what was sold from what she had."
+                    },
+                    {
+                        "if": "estimates 1,850 as 1,000",
+                        "coach": "1,850 is closer to 2,000 than to 1,000."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "3,000 − 1,850",
+                        "answer": "1150"
+                    },
+                    {
+                        "prompt": "1,850 rounded to the nearest thousand",
+                        "answer": "2000"
+                    },
+                    {
+                        "prompt": "3,000 − 2,000",
+                        "answer": "1000"
+                    },
+                    {
+                        "prompt": "1,150 rounded to the nearest thousand",
+                        "answer": "1000"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "content": "Keep the columns lined up, carry when you add, borrow when you subtract. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "To subtract, work from the right and borrow ten from the next column when the top digit is smaller than the bottom digit." },
-      {
-        "type": "fillblank",
-        "prompt": "523 - 187 = ___",
-        "answer": "336",
-        "explain": "Borrow to subtract: 523 - 187 = 336.",
-        "rule": "Subtract from the right, borrowing ten from the next place when the top digit is too small.",
-        "practiceItems": [
-          { "prompt": "400 - 150", "answer": "250" },
-          { "prompt": "312 - 108", "answer": "204" },
-          { "prompt": "1000 - 1", "answer": "999" },
-          { "prompt": "85 - 39", "answer": "46" }
-        ]
-      },
-      { "type": "text", "content": "Keep the columns lined up, carry when you add, borrow when you subtract. Let's practise!" }
-    ]
-  }
+    }
 ]

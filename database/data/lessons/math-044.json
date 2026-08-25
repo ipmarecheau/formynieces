@@ -1,40 +1,162 @@
 [
-  {
-    "module": "MATH-044",
-    "title": "Real-life measurement problems",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "Everyday problems mix measurements — pouring drinks, weighing food, timing journeys. The key is to work in the same unit before you add or subtract." },
-      { "type": "key", "content": "Before comparing or combining measurements, convert them to the SAME unit." },
-      { "type": "example", "content": "Same unit first.", "steps": ["A jug holds 2 litres.", "To work in millilitres, convert: 2 litres = 2000 ml.", "Now you can compare or subtract in millilitres."] },
-      {
-        "type": "fillblank",
-        "prompt": "A jug holds 2 litres = ___ ml",
-        "answer": "2000",
-        "explain": "2 litres x 1000 = 2000 ml.",
-        "rule": "Convert measurements to the same unit before combining them.",
-        "practiceItems": [
-          { "prompt": "2 litres in ml", "answer": "2000" },
-          { "prompt": "3 kg in grams", "answer": "3000" },
-          { "prompt": "2 hours in minutes", "answer": "120" },
-          { "prompt": "5 m in cm", "answer": "500" }
+    {
+        "module": "MATH-044",
+        "title": "Real-life measurement problems",
+        "is_published": true,
+        "objectives_direct": [
+            "M-MEA-44"
+        ],
+        "objectives_indirect": [
+            "M-MEA-42",
+            "M-MEA-43",
+            "M-MEA-45"
+        ],
+        "canonical_examples_source": "Arithmetic self-verified; method ref: NCERT Class 5/6 Maths; format ref: bank uk-ks2-2024 maths.",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Everyday problems mix measurements — pouring drinks, weighing food, timing journeys. The key is to work in the same unit before you add or subtract.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "Before comparing or combining measurements, convert them to the SAME unit.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Same unit first.",
+                "steps": [
+                    "A jug holds 2 litres.",
+                    "To work in millilitres, convert: 2 litres = 2000 ml.",
+                    "Now you can compare or subtract in millilitres."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "A jug holds 2 litres = ___ ml",
+                "answer": "2000",
+                "explain": "2 litres x 1000 = 2000 ml.",
+                "rule": "Convert measurements to the same unit before combining them.",
+                "practiceItems": [
+                    {
+                        "prompt": "2 litres in ml",
+                        "answer": "2000"
+                    },
+                    {
+                        "prompt": "3 kg in grams",
+                        "answer": "3000"
+                    },
+                    {
+                        "prompt": "2 hours in minutes",
+                        "answer": "120"
+                    },
+                    {
+                        "prompt": "5 m in cm",
+                        "answer": "500"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "Once units match, add or subtract to solve the problem.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "You pour 500 ml from a 2000 ml jug. Left = 2000 - 500 = ___ ml",
+                "answer": "1500",
+                "explain": "2000 - 500 = 1500 ml remaining.",
+                "rule": "With units matching, subtract to find what remains or add to find a total.",
+                "practiceItems": [
+                    {
+                        "prompt": "1000 ml - 250 ml",
+                        "answer": "750"
+                    },
+                    {
+                        "prompt": "2000 g - 500 g",
+                        "answer": "1500"
+                    },
+                    {
+                        "prompt": "60 min - 15 min",
+                        "answer": "45"
+                    },
+                    {
+                        "prompt": "500 ml + 500 ml",
+                        "answer": "1000"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "A jug holds 2 litres. How many 250 ml cups can it fill, and what must you do first?",
+                "options": [
+                    "8 cups — change 2 L to 2000 ml first, then 2000 / 250 = 8",
+                    "4 cups",
+                    "20 cups"
+                ],
+                "answer": 0,
+                "explain": "The jug and the cups are in different units, so change them to match: 2 L = 2000 ml. Then divide by the cup size: 2000 / 250 = 8 cups. You must use the same unit before dividing.",
+                "rule": "Convert to the same unit before comparing or dividing measurements.",
+                "principle": "Measurements can only be combined when they share a unit.",
+                "canonical_solution": [
+                    "2 L = 2000 ml",
+                    "Each cup is 250 ml",
+                    "2000 / 250 = 8",
+                    "So the jug fills 8 cups"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "converts litres to millilitres first"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "divides 2000 by 250 to get 8"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains matching units before dividing"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "divides 2 by 250",
+                        "coach": "Change 2 L to 2000 ml first, then divide."
+                    },
+                    {
+                        "if": "forgets to convert",
+                        "coach": "The jug is in litres and cups in ml — make them match."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "2 L in ml",
+                        "answer": "2000"
+                    },
+                    {
+                        "prompt": "2000 / 250",
+                        "answer": "8"
+                    },
+                    {
+                        "prompt": "1 L in ml",
+                        "answer": "1000"
+                    },
+                    {
+                        "prompt": "250 x 8",
+                        "answer": "2000"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "content": "Match the units first, then add or subtract. That is the secret to any measurement problem. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "Once units match, add or subtract to solve the problem." },
-      {
-        "type": "fillblank",
-        "prompt": "You pour 500 ml from a 2000 ml jug. Left = 2000 - 500 = ___ ml",
-        "answer": "1500",
-        "explain": "2000 - 500 = 1500 ml remaining.",
-        "rule": "With units matching, subtract to find what remains or add to find a total.",
-        "practiceItems": [
-          { "prompt": "1000 ml - 250 ml", "answer": "750" },
-          { "prompt": "2000 g - 500 g", "answer": "1500" },
-          { "prompt": "60 min - 15 min", "answer": "45" },
-          { "prompt": "500 ml + 500 ml", "answer": "1000" }
-        ]
-      },
-      { "type": "text", "content": "Match the units first, then add or subtract. That is the secret to any measurement problem. Let's practise!" }
-    ]
-  }
+    }
 ]

@@ -1,40 +1,161 @@
 [
-  {
-    "module": "MATH-025",
-    "title": "Money problems: profit, loss, discount and VAT",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "Buying and selling is full of maths. Profit, loss, discount and VAT all come down to adding to or taking away from a price." },
-      { "type": "key", "content": "Profit is how much MORE you sell for than it cost: profit = selling price - cost. A loss is when you sell for less than it cost." },
-      { "type": "example", "content": "Working out profit.", "steps": ["You buy a bag for $20 and sell it for $30.", "Profit = selling price - cost = $30 - $20.", "So the profit is $10."] },
-      {
-        "type": "fillblank",
-        "prompt": "You buy at $20 and sell at $30. Your profit is $___",
-        "answer": "10",
-        "explain": "Profit = $30 - $20 = $10.",
-        "rule": "Profit = selling price - cost. A loss is cost - selling price when you sell for less.",
-        "practiceItems": [
-          { "prompt": "buy $50, sell $65: profit", "answer": "15" },
-          { "prompt": "buy $100, sell $120: profit", "answer": "20" },
-          { "prompt": "cost $40, sell $35: loss", "answer": "5" },
-          { "prompt": "buy $10, sell $18: profit", "answer": "8" }
+    {
+        "module": "MATH-025",
+        "title": "Money problems: profit, loss, discount and VAT",
+        "is_published": true,
+        "objectives_direct": [
+            "M-PRB-25"
+        ],
+        "objectives_indirect": [
+            "M-PRB-26",
+            "M-PRB-27"
+        ],
+        "canonical_examples_source": "Arithmetic self-verified; method ref: NCERT Class 5/6 Maths; format ref: bank uk-ks2-2024 maths.",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Buying and selling is full of maths. Profit, loss, discount and VAT all come down to adding to or taking away from a price.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "Profit is how much MORE you sell for than it cost: profit = selling price - cost. A loss is when you sell for less than it cost.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Working out profit.",
+                "steps": [
+                    "You buy a bag for $20 and sell it for $30.",
+                    "Profit = selling price - cost = $30 - $20.",
+                    "So the profit is $10."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "You buy at $20 and sell at $30. Your profit is $___",
+                "answer": "10",
+                "explain": "Profit = $30 - $20 = $10.",
+                "rule": "Profit = selling price - cost. A loss is cost - selling price when you sell for less.",
+                "practiceItems": [
+                    {
+                        "prompt": "buy $50, sell $65: profit",
+                        "answer": "15"
+                    },
+                    {
+                        "prompt": "buy $100, sell $120: profit",
+                        "answer": "20"
+                    },
+                    {
+                        "prompt": "cost $40, sell $35: loss",
+                        "answer": "5"
+                    },
+                    {
+                        "prompt": "buy $10, sell $18: profit",
+                        "answer": "8"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "VAT is a tax ADDED on to a price; a discount is taken OFF.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "A $100 item with 10% VAT ($10) added costs $___",
+                "answer": "110",
+                "explain": "VAT is added on: $100 + $10 = $110.",
+                "rule": "VAT is added on to the price; a discount is taken off.",
+                "practiceItems": [
+                    {
+                        "prompt": "$50 plus 10% VAT of $5",
+                        "answer": "55"
+                    },
+                    {
+                        "prompt": "$200 plus 10% VAT of $20",
+                        "answer": "220"
+                    },
+                    {
+                        "prompt": "$100 with a $20 discount taken off",
+                        "answer": "80"
+                    },
+                    {
+                        "prompt": "$60 plus a 50% charge of $30",
+                        "answer": "90"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "Which is better value: 6 mangoes for $12, or 10 mangoes for $25?",
+                "options": [
+                    "6 for $12 — that is $2 each, cheaper than $2.50 each",
+                    "10 for $25, because you get more mangoes",
+                    "They are the same value"
+                ],
+                "answer": 0,
+                "explain": "Compare the price of ONE mango. 12 / 6 = $2 each; 25 / 10 = $2.50 each. The 6-for-$12 deal is cheaper per mango, so it is better value even though you get fewer.",
+                "rule": "To compare value, work out the price of one item (the unit price).",
+                "principle": "Best value depends on price per item, not the total number.",
+                "canonical_solution": [
+                    "6 for $12: 12 / 6 = $2 each",
+                    "10 for $25: 25 / 10 = $2.50 each",
+                    "$2 is less than $2.50",
+                    "So 6 for $12 is better value"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "divides to find each unit price"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "compares $2 and $2.50 and picks the cheaper"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains value is price per item"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "picks the larger quantity",
+                        "coach": "More mangoes is not better if each one costs more — compare unit price."
+                    },
+                    {
+                        "if": "compares totals only",
+                        "coach": "Divide by the number of mangoes to compare fairly."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "12 / 6",
+                        "answer": "2"
+                    },
+                    {
+                        "prompt": "25 / 10",
+                        "answer": "2.5"
+                    },
+                    {
+                        "prompt": "cheaper unit price: 2 or 2.5",
+                        "answer": "2"
+                    },
+                    {
+                        "prompt": "6 x 2",
+                        "answer": "12"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "content": "Sell for more than cost to profit; add VAT on, take a discount off. It is all adding and subtracting from a price. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "VAT is a tax ADDED on to a price; a discount is taken OFF." },
-      {
-        "type": "fillblank",
-        "prompt": "A $100 item with 10% VAT ($10) added costs $___",
-        "answer": "110",
-        "explain": "VAT is added on: $100 + $10 = $110.",
-        "rule": "VAT is added on to the price; a discount is taken off.",
-        "practiceItems": [
-          { "prompt": "$50 plus 10% VAT of $5", "answer": "55" },
-          { "prompt": "$200 plus 10% VAT of $20", "answer": "220" },
-          { "prompt": "$100 with a $20 discount taken off", "answer": "80" },
-          { "prompt": "$60 plus a 50% charge of $30", "answer": "90" }
-        ]
-      },
-      { "type": "text", "content": "Sell for more than cost to profit; add VAT on, take a discount off. It is all adding and subtracting from a price. Let's practise!" }
-    ]
-  }
+    }
 ]

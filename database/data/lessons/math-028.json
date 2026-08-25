@@ -1,40 +1,161 @@
 [
-  {
-    "module": "MATH-028",
-    "title": "Properties of solids and plane shapes",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "Shapes are all around us. Flat shapes are called plane shapes; solid shapes take up space. Each has properties we can count and name." },
-      { "type": "key", "content": "A solid has faces (flat surfaces), edges (where faces meet) and vertices (corners). A cube has 6 faces, 12 edges and 8 vertices." },
-      { "type": "example", "content": "Counting a cube's parts.", "steps": ["A cube has 6 square faces.", "Those faces meet at 12 edges.", "The edges meet at 8 corners, called vertices."] },
-      {
-        "type": "fillblank",
-        "prompt": "A cube has ___ faces.",
-        "answer": "6",
-        "explain": "A cube has 6 flat square faces.",
-        "rule": "A solid's faces are its flat surfaces, edges are where faces meet, vertices are the corners.",
-        "practiceItems": [
-          { "prompt": "the number of faces on a cube", "answer": "6" },
-          { "prompt": "the number of edges on a cube", "answer": "12" },
-          { "prompt": "the number of vertices on a cube", "answer": "8" },
-          { "prompt": "the number of sides on a square", "answer": "4" }
+    {
+        "module": "MATH-028",
+        "title": "Properties of solids and plane shapes",
+        "is_published": true,
+        "objectives_direct": [
+            "M-GEO-28"
+        ],
+        "objectives_indirect": [
+            "M-GEO-29",
+            "M-GEO-30"
+        ],
+        "canonical_examples_source": "Arithmetic self-verified; method ref: NCERT Class 5/6 Maths; format ref: bank uk-ks2-2024 maths.",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Shapes are all around us. Flat shapes are called plane shapes; solid shapes take up space. Each has properties we can count and name.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "A solid has faces (flat surfaces), edges (where faces meet) and vertices (corners). A cube has 6 faces, 12 edges and 8 vertices.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Counting a cube's parts.",
+                "steps": [
+                    "A cube has 6 square faces.",
+                    "Those faces meet at 12 edges.",
+                    "The edges meet at 8 corners, called vertices."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "A cube has ___ faces.",
+                "answer": "6",
+                "explain": "A cube has 6 flat square faces.",
+                "rule": "A solid's faces are its flat surfaces, edges are where faces meet, vertices are the corners.",
+                "practiceItems": [
+                    {
+                        "prompt": "the number of faces on a cube",
+                        "answer": "6"
+                    },
+                    {
+                        "prompt": "the number of edges on a cube",
+                        "answer": "12"
+                    },
+                    {
+                        "prompt": "the number of vertices on a cube",
+                        "answer": "8"
+                    },
+                    {
+                        "prompt": "the number of sides on a square",
+                        "answer": "4"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "A plane shape is flat. Name it by counting its straight sides: 3 is a triangle, 4 a quadrilateral, 5 a pentagon.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "A pentagon has ___ sides.",
+                "answer": "5",
+                "explain": "A pentagon is a plane shape with 5 straight sides.",
+                "rule": "Count the straight sides to name a plane shape.",
+                "practiceItems": [
+                    {
+                        "prompt": "sides on a triangle",
+                        "answer": "3"
+                    },
+                    {
+                        "prompt": "sides on a rectangle",
+                        "answer": "4"
+                    },
+                    {
+                        "prompt": "sides on a hexagon",
+                        "answer": "6"
+                    },
+                    {
+                        "prompt": "sides on a pentagon",
+                        "answer": "5"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "Sara says a cube and a square are the same shape. Why is that not right?",
+                "options": [
+                    "A cube is a 3D solid with 6 square faces; a square is one flat 2D shape",
+                    "They are the same thing",
+                    "A cube has 4 faces"
+                ],
+                "answer": 0,
+                "explain": "A square is flat — it has length and width only (2D). A cube is a solid you can hold — it has length, width and height (3D), and it is made of 6 square faces. A square is just one of those faces.",
+                "rule": "Solids are 3D (faces, edges, vertices); plane shapes are flat 2D.",
+                "principle": "A flat face of a solid is not the same as the whole solid.",
+                "canonical_solution": [
+                    "A square is a flat 2D shape",
+                    "A cube is a 3D solid",
+                    "A cube has 6 square faces",
+                    "So a square is one face of a cube, not the cube itself"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "compares dimensions (2D vs 3D)"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "notes a cube has 6 square faces"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains a face is not the whole solid"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "treats square and cube as identical",
+                        "coach": "A square is flat; a cube is solid with 6 square faces."
+                    },
+                    {
+                        "if": "gives a cube 4 faces",
+                        "coach": "Count them: a cube has 6 faces."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "the number of faces on a cube",
+                        "answer": "6"
+                    },
+                    {
+                        "prompt": "the number of edges on a cube",
+                        "answer": "12"
+                    },
+                    {
+                        "prompt": "the number of vertices on a cube",
+                        "answer": "8"
+                    },
+                    {
+                        "prompt": "is a square 2D or 3D?",
+                        "answer": "2d"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "content": "Solids have faces, edges and vertices; plane shapes are named by their number of sides. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "A plane shape is flat. Name it by counting its straight sides: 3 is a triangle, 4 a quadrilateral, 5 a pentagon." },
-      {
-        "type": "fillblank",
-        "prompt": "A pentagon has ___ sides.",
-        "answer": "5",
-        "explain": "A pentagon is a plane shape with 5 straight sides.",
-        "rule": "Count the straight sides to name a plane shape.",
-        "practiceItems": [
-          { "prompt": "sides on a triangle", "answer": "3" },
-          { "prompt": "sides on a rectangle", "answer": "4" },
-          { "prompt": "sides on a hexagon", "answer": "6" },
-          { "prompt": "sides on a pentagon", "answer": "5" }
-        ]
-      },
-      { "type": "text", "content": "Solids have faces, edges and vertices; plane shapes are named by their number of sides. Let's practise!" }
-    ]
-  }
+    }
 ]

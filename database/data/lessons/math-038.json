@@ -50,6 +50,22 @@
           "So she needs 16 tiles"
         ],
         "rule": "For a compound shape, find each rectangle's area, then add them.",
+        "principle": "A compound area is the sum of the areas of its rectangles.",
+        "canonical_solution": [
+          "Kitchen area = 4 x 3 = 12 m²",
+          "Pantry area = 2 x 2 = 4 m²",
+          "Total = 12 + 4 = 16 m²",
+          "So she needs 16 tiles"
+        ],
+        "rubric": [
+          { "dimension": "method", "look_for": "finds each rectangle's area before combining" },
+          { "dimension": "reasoning", "look_for": "adds the two areas to get 16 m²" },
+          { "dimension": "principle", "look_for": "explains a compound area is the sum of its parts" }
+        ],
+        "misconceptions": [
+          { "if": "adds side lengths instead of areas", "coach": "Find each rectangle's AREA first (length x width), then add." },
+          { "if": "multiplies the two areas", "coach": "The parts are added, not multiplied: 12 + 4." }
+        ],
         "practiceItems": [
           { "prompt": "a 3x3 room plus a 2x1 hall, total area", "answer": "11" },
           { "prompt": "a 5x2 room plus a 2x2 nook, total area", "answer": "14" },

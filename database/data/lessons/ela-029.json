@@ -1,42 +1,166 @@
 [
-  {
-    "module": "ELA-029",
-    "title": "Poetry: finding information the poem states directly",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "Some questions about a poem can be answered straight from the words. This is called retrieving explicit information — the answer is right there on the page." },
-      { "type": "key", "content": "Explicit information is stated directly in the text. Find the exact words that give the answer." },
-      { "type": "text", "content": "Read these lines: 'The little brown bird sat on the wall, / Singing a sweet song for one and all.'" },
-      {
-        "type": "check",
-        "question": "What colour is the bird?",
-        "options": ["brown", "blue", "black"],
-        "answer": 0,
-        "explain": "The poem says 'the little brown bird', so the colour is stated directly: brown.",
-        "rule": "Explicit information is stated directly in the text; find the exact words.",
-        "practiceItems": [
-          { "prompt": "information stated directly is ___ (explicit/hidden)", "answer": "explicit" },
-          { "prompt": "in 'the brown bird', the bird's colour is ___", "answer": "brown" },
-          { "prompt": "to retrieve explicit info, find the exact ___", "answer": "words" },
-          { "prompt": "in the lines, the bird sat on the ___", "answer": "wall" }
+    {
+        "module": "ELA-029",
+        "title": "Poetry: finding information the poem states directly",
+        "is_published": true,
+        "objectives_direct": [
+            "E-POE-80"
+        ],
+        "objectives_indirect": [
+            "E-POE-81",
+            "E-POE-82"
+        ],
+        "canonical_examples_source": "Language rules self-verified; format ref: bank uk-ks2-2024-gps (KS2 GPS).",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Some questions about a poem can be answered straight from the words. This is called retrieving explicit information — the answer is right there on the page.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "Explicit information is stated directly in the text. Find the exact words that give the answer.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "text",
+                "content": "Read these lines: 'The little brown bird sat on the wall, / Singing a sweet song for one and all.'",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "What colour is the bird?",
+                "options": [
+                    "brown",
+                    "blue",
+                    "black"
+                ],
+                "answer": 0,
+                "explain": "The poem says 'the little brown bird', so the colour is stated directly: brown.",
+                "rule": "Explicit information is stated directly in the text; find the exact words.",
+                "practiceItems": [
+                    {
+                        "prompt": "information stated directly is ___ (explicit/hidden)",
+                        "answer": "explicit"
+                    },
+                    {
+                        "prompt": "in 'the brown bird', the bird's colour is ___",
+                        "answer": "brown"
+                    },
+                    {
+                        "prompt": "to retrieve explicit info, find the exact ___",
+                        "answer": "words"
+                    },
+                    {
+                        "prompt": "in the lines, the bird sat on the ___",
+                        "answer": "wall"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "For explicit questions, do not guess — point to the words in the poem that say it.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "In the lines above, what was the bird doing?",
+                "options": [
+                    "sleeping",
+                    "singing",
+                    "flying"
+                ],
+                "answer": 1,
+                "explain": "The poem says the bird was 'Singing a sweet song', so the answer is singing.",
+                "rule": "Answer explicit questions by pointing to the exact words in the text.",
+                "practiceItems": [
+                    {
+                        "prompt": "the bird was ___ a song",
+                        "answer": "singing"
+                    },
+                    {
+                        "prompt": "explicit answers are ___ in the text (stated/guessed)",
+                        "answer": "stated"
+                    },
+                    {
+                        "prompt": "the song was for one and ___",
+                        "answer": "all"
+                    },
+                    {
+                        "prompt": "explicit means the answer is right ___ (there/hidden)",
+                        "answer": "there"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "A poem says plainly 'The cat sat on the red mat.' What colour is the mat, and how do you find that out?",
+                "options": [
+                    "red — the poem states it directly, so you just retrieve it",
+                    "blue — you have to guess",
+                    "It does not say"
+                ],
+                "answer": 0,
+                "explain": "Some information is stated directly (explicit). The poem plainly says the mat is red, so you simply find it in the text — no guessing needed. Retrieving explicit information means locating what is clearly stated.",
+                "rule": "Explicit information is stated in the text; find it, do not guess.",
+                "principle": "Retrieving explicit facts means locating what the text clearly says.",
+                "canonical_solution": [
+                    "The poem says 'the red mat'",
+                    "That is stated directly",
+                    "So the mat is red",
+                    "You retrieve it, not infer it"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "locates the stated word in the text"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "answers 'red' from the text"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains explicit info is found, not guessed"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "guesses another colour",
+                        "coach": "The colour is stated — find it in the line."
+                    },
+                    {
+                        "if": "says it is not given",
+                        "coach": "The poem says 'red mat' directly."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "information stated directly is",
+                        "answer": "explicit"
+                    },
+                    {
+                        "prompt": "the mat's colour in the poem",
+                        "answer": "red"
+                    },
+                    {
+                        "prompt": "do you find or guess explicit information?",
+                        "answer": "find"
+                    },
+                    {
+                        "prompt": "explicit means clearly",
+                        "answer": "stated"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "content": "When a question asks something the poem states outright, find those exact words. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "For explicit questions, do not guess — point to the words in the poem that say it." },
-      {
-        "type": "check",
-        "question": "In the lines above, what was the bird doing?",
-        "options": ["sleeping", "singing", "flying"],
-        "answer": 1,
-        "explain": "The poem says the bird was 'Singing a sweet song', so the answer is singing.",
-        "rule": "Answer explicit questions by pointing to the exact words in the text.",
-        "practiceItems": [
-          { "prompt": "the bird was ___ a song", "answer": "singing" },
-          { "prompt": "explicit answers are ___ in the text (stated/guessed)", "answer": "stated" },
-          { "prompt": "the song was for one and ___", "answer": "all" },
-          { "prompt": "explicit means the answer is right ___ (there/hidden)", "answer": "there" }
-        ]
-      },
-      { "type": "text", "content": "When a question asks something the poem states outright, find those exact words. Let's practise!" }
-    ]
-  }
+    }
 ]

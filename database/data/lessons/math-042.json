@@ -1,40 +1,162 @@
 [
-  {
-    "module": "MATH-042",
-    "title": "Mass and weight conversion",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "Mass tells us how heavy something is. We measure it in grams, kilograms and tonnes, and converting between them follows a simple rule." },
-      { "type": "key", "content": "1 kilogram = 1000 grams, and 1 tonne = 1000 kilograms." },
-      { "type": "example", "content": "Kilograms to grams.", "steps": ["There are 1000 g in 1 kg.", "So 5 kg has 5 x 1000 = 5000 g.", "Multiply by 1000 to go from kg to g."] },
-      {
-        "type": "fillblank",
-        "prompt": "1 kilogram = ___ grams",
-        "answer": "1000",
-        "explain": "There are 1000 grams in one kilogram.",
-        "rule": "1 kg = 1000 g, and 1 tonne = 1000 kg.",
-        "practiceItems": [
-          { "prompt": "grams in 1 kilogram", "answer": "1000" },
-          { "prompt": "grams in 2 kilograms", "answer": "2000" },
-          { "prompt": "kilograms in 3000 grams", "answer": "3" },
-          { "prompt": "grams in half a kilogram", "answer": "500" }
+    {
+        "module": "MATH-042",
+        "title": "Mass and weight conversion",
+        "is_published": true,
+        "objectives_direct": [
+            "M-MEA-42"
+        ],
+        "objectives_indirect": [
+            "M-MEA-40",
+            "M-MEA-41",
+            "M-MEA-43"
+        ],
+        "canonical_examples_source": "Arithmetic self-verified; method ref: NCERT Class 5/6 Maths; format ref: bank uk-ks2-2024 maths.",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Mass tells us how heavy something is. We measure it in grams, kilograms and tonnes, and converting between them follows a simple rule.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "1 kilogram = 1000 grams, and 1 tonne = 1000 kilograms.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Kilograms to grams.",
+                "steps": [
+                    "There are 1000 g in 1 kg.",
+                    "So 5 kg has 5 x 1000 = 5000 g.",
+                    "Multiply by 1000 to go from kg to g."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "1 kilogram = ___ grams",
+                "answer": "1000",
+                "explain": "There are 1000 grams in one kilogram.",
+                "rule": "1 kg = 1000 g, and 1 tonne = 1000 kg.",
+                "practiceItems": [
+                    {
+                        "prompt": "grams in 1 kilogram",
+                        "answer": "1000"
+                    },
+                    {
+                        "prompt": "grams in 2 kilograms",
+                        "answer": "2000"
+                    },
+                    {
+                        "prompt": "kilograms in 3000 grams",
+                        "answer": "3"
+                    },
+                    {
+                        "prompt": "grams in half a kilogram",
+                        "answer": "500"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "To convert kilograms to grams, multiply by 1000; to go from grams to kilograms, divide by 1000.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "5 kg = ___ g",
+                "answer": "5000",
+                "explain": "5 x 1000 = 5000 g.",
+                "rule": "Multiply kg by 1000 for grams; divide grams by 1000 for kilograms.",
+                "practiceItems": [
+                    {
+                        "prompt": "3 kg in grams",
+                        "answer": "3000"
+                    },
+                    {
+                        "prompt": "4000 g in kilograms",
+                        "answer": "4"
+                    },
+                    {
+                        "prompt": "kilograms in 1 tonne",
+                        "answer": "1000"
+                    },
+                    {
+                        "prompt": "grams in 1.5 kg",
+                        "answer": "1500"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "Mia says 2 kilograms is the same as 200 grams. Is she right?",
+                "options": [
+                    "No — 1 kg = 1000 g, so 2 kg = 2000 g",
+                    "Yes, 200 g",
+                    "2 kg = 20 g"
+                ],
+                "answer": 0,
+                "explain": "There are 1000 grams in a kilogram. So 2 kg = 2 x 1000 = 2000 g. Mia multiplied by 100 instead of 1000.",
+                "rule": "To change kilograms to grams, multiply by 1000.",
+                "principle": "Converting to a smaller unit multiplies the amount.",
+                "canonical_solution": [
+                    "1 kg = 1000 g",
+                    "2 kg = 2 x 1000",
+                    "= 2000",
+                    "So 2 kg = 2000 g"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "uses 1 kg = 1000 g"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "multiplies to get 2000"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains smaller unit means multiply"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "multiplies by 100",
+                        "coach": "A kilogram is 1000 grams, not 100."
+                    },
+                    {
+                        "if": "divides",
+                        "coach": "Grams are smaller, so there are more — multiply."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "2 kg in g",
+                        "answer": "2000"
+                    },
+                    {
+                        "prompt": "1 kg in g",
+                        "answer": "1000"
+                    },
+                    {
+                        "prompt": "3 kg in g",
+                        "answer": "3000"
+                    },
+                    {
+                        "prompt": "500 g in kg",
+                        "answer": "0.5"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "content": "1000 g in a kilogram, 1000 kg in a tonne. Multiply to go smaller, divide to go larger. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "To convert kilograms to grams, multiply by 1000; to go from grams to kilograms, divide by 1000." },
-      {
-        "type": "fillblank",
-        "prompt": "5 kg = ___ g",
-        "answer": "5000",
-        "explain": "5 x 1000 = 5000 g.",
-        "rule": "Multiply kg by 1000 for grams; divide grams by 1000 for kilograms.",
-        "practiceItems": [
-          { "prompt": "3 kg in grams", "answer": "3000" },
-          { "prompt": "4000 g in kilograms", "answer": "4" },
-          { "prompt": "kilograms in 1 tonne", "answer": "1000" },
-          { "prompt": "grams in 1.5 kg", "answer": "1500" }
-        ]
-      },
-      { "type": "text", "content": "1000 g in a kilogram, 1000 kg in a tonne. Multiply to go smaller, divide to go larger. Let's practise!" }
-    ]
-  }
+    }
 ]

@@ -1,61 +1,166 @@
 [
-  {
-    "module": "ELA-021",
-    "title": "Organising writing: paragraphs, linking words and sentence variety",
-    "is_published": true,
-    "blocks": [
-      {
-        "type": "text",
-        "content": "Good writing is not just correct — it is organised. Paragraphs, linking words and a mix of sentences guide the reader smoothly through your ideas."
-      },
-      {
-        "type": "key",
-        "content": "Group sentences about one idea into a paragraph, and start a new paragraph when you move to a new idea."
-      },
-      {
-        "type": "example",
-        "content": "One idea per paragraph.",
-        "steps": [
-          "Paragraph 1 tells about the morning of the trip.",
-          "When the writer reaches the beach, a NEW idea begins.",
-          "So paragraph 2 starts there."
+    {
+        "module": "ELA-021",
+        "title": "Organising writing: paragraphs, linking words and sentence variety",
+        "is_published": true,
+        "objectives_direct": [
+            "E-WRI-72"
+        ],
+        "objectives_indirect": [
+            "E-WRI-70",
+            "E-WRI-71"
+        ],
+        "canonical_examples_source": "Language rules self-verified; format ref: bank uk-ks2-2024-gps (KS2 GPS).",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Good writing is not just correct — it is organised. Paragraphs, linking words and a mix of sentences guide the reader smoothly through your ideas.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "Group sentences about one idea into a paragraph, and start a new paragraph when you move to a new idea.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "One idea per paragraph.",
+                "steps": [
+                    "Paragraph 1 tells about the morning of the trip.",
+                    "When the writer reaches the beach, a NEW idea begins.",
+                    "So paragraph 2 starts there."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "When should you start a new paragraph?",
+                "options": [
+                    "after every sentence",
+                    "when you move to a new idea",
+                    "only at the very end"
+                ],
+                "answer": 1,
+                "explain": "A new paragraph signals a new idea, so start one when the idea changes.",
+                "rule": "Group sentences about one idea into a paragraph; start a new paragraph for a new idea.",
+                "practiceItems": [
+                    {
+                        "prompt": "a paragraph should hold one main ___",
+                        "answer": "idea"
+                    },
+                    {
+                        "prompt": "start a new paragraph for a new ___",
+                        "answer": "idea"
+                    },
+                    {
+                        "prompt": "sentences in a paragraph should be about the ___ idea (same/different)",
+                        "answer": "same"
+                    },
+                    {
+                        "prompt": "a group of sentences about one idea is called a ___",
+                        "answer": "paragraph"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "Linking words join ideas smoothly: also (to add), so (to show a result), however (to contrast), then (for time order).",
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "Choose a linking word that adds more: I like mango. ___, I like plum.",
+                "answer": "also",
+                "explain": "'also' adds another idea of the same kind.",
+                "rule": "Linking words join ideas: also to add, so for a result, however to contrast, then for time order.",
+                "practiceItems": [
+                    {
+                        "prompt": "linking word to add another idea",
+                        "answer": "also"
+                    },
+                    {
+                        "prompt": "linking word to show a result",
+                        "answer": "so"
+                    },
+                    {
+                        "prompt": "linking word to contrast two ideas",
+                        "answer": "however"
+                    },
+                    {
+                        "prompt": "linking word to show time order",
+                        "answer": "then"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "A paragraph jumps from breakfast, to space rockets, to new shoes. What is the problem?",
+                "options": [
+                    "The sentences are not about one topic — a paragraph should stick to one main idea",
+                    "It is simply too short",
+                    "There is nothing wrong"
+                ],
+                "answer": 0,
+                "explain": "A good paragraph sticks to one main idea, with each sentence connected to it. Jumping between unrelated topics leaves the reader lost. This is about coherence — keeping the writing on one track.",
+                "rule": "Keep a paragraph to one main idea, with sentences linked to it.",
+                "principle": "Coherent writing stays on one topic and connects its ideas.",
+                "canonical_solution": [
+                    "The three sentences are unrelated",
+                    "A paragraph needs one main idea",
+                    "Its sentences should connect to that idea",
+                    "So the problem is a lack of coherence"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "checks whether the sentences share a topic"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "sees they jump topics"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains a paragraph keeps one main idea"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "blames the length",
+                        "coach": "The issue is the mixed topics, not the length."
+                    },
+                    {
+                        "if": "sees no problem",
+                        "coach": "Unrelated sentences make the paragraph hard to follow."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "how many main ideas should one paragraph have?",
+                        "answer": "one"
+                    },
+                    {
+                        "prompt": "writing that stays on topic and connects ideas is",
+                        "answer": "coherent"
+                    },
+                    {
+                        "prompt": "does jumping topics help a paragraph? (yes/no)",
+                        "answer": "no"
+                    },
+                    {
+                        "prompt": "a linking word like 'first' or 'next' is a",
+                        "answer": "connective"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "content": "One idea per paragraph, linking words to connect them, and a mix of short and long sentences — that is well-organised writing. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      {
-        "type": "check",
-        "question": "When should you start a new paragraph?",
-        "options": ["after every sentence", "when you move to a new idea", "only at the very end"],
-        "answer": 1,
-        "explain": "A new paragraph signals a new idea, so start one when the idea changes.",
-        "rule": "Group sentences about one idea into a paragraph; start a new paragraph for a new idea.",
-        "practiceItems": [
-          { "prompt": "a paragraph should hold one main ___", "answer": "idea" },
-          { "prompt": "start a new paragraph for a new ___", "answer": "idea" },
-          { "prompt": "sentences in a paragraph should be about the ___ idea (same/different)", "answer": "same" },
-          { "prompt": "a group of sentences about one idea is called a ___", "answer": "paragraph" }
-        ]
-      },
-      {
-        "type": "key",
-        "content": "Linking words join ideas smoothly: also (to add), so (to show a result), however (to contrast), then (for time order)."
-      },
-      {
-        "type": "fillblank",
-        "prompt": "Choose a linking word that adds more: I like mango. ___, I like plum.",
-        "answer": "also",
-        "explain": "'also' adds another idea of the same kind.",
-        "rule": "Linking words join ideas: also to add, so for a result, however to contrast, then for time order.",
-        "practiceItems": [
-          { "prompt": "linking word to add another idea", "answer": "also" },
-          { "prompt": "linking word to show a result", "answer": "so" },
-          { "prompt": "linking word to contrast two ideas", "answer": "however" },
-          { "prompt": "linking word to show time order", "answer": "then" }
-        ]
-      },
-      {
-        "type": "text",
-        "content": "One idea per paragraph, linking words to connect them, and a mix of short and long sentences — that is well-organised writing. Let's practise!"
-      }
-    ]
-  }
+    }
 ]

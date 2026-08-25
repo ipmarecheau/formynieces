@@ -1,61 +1,167 @@
 [
-  {
-    "module": "ELA-005",
-    "title": "Building words with prefixes and suffixes",
-    "is_published": true,
-    "blocks": [
-      {
-        "type": "text",
-        "content": "Long words are often a small root word with extra parts added. Learn the parts and you can work out the whole word's meaning."
-      },
-      {
-        "type": "key",
-        "content": "A prefix goes in FRONT of a root word and changes its meaning. 'un-' means 'not', so 'unhappy' means 'not happy'."
-      },
-      {
-        "type": "example",
-        "content": "Adding the prefix un-.",
-        "steps": [
-          "Start with the root word: 'kind'.",
-          "Add the prefix un- to the front: 'unkind'.",
-          "un- means 'not', so 'unkind' means 'not kind'."
+    {
+        "module": "ELA-005",
+        "title": "Building words with prefixes and suffixes",
+        "is_published": true,
+        "objectives_direct": [
+            "E-SPE-56"
+        ],
+        "objectives_indirect": [
+            "E-SPE-54",
+            "E-SPE-55",
+            "E-SPE-57"
+        ],
+        "canonical_examples_source": "Language rules self-verified; format ref: bank uk-ks2-2024-gps (KS2 GPS).",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Long words are often a small root word with extra parts added. Learn the parts and you can work out the whole word's meaning.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "A prefix goes in FRONT of a root word and changes its meaning. 'un-' means 'not', so 'unhappy' means 'not happy'.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Adding the prefix un-.",
+                "steps": [
+                    "Start with the root word: 'kind'.",
+                    "Add the prefix un- to the front: 'unkind'.",
+                    "un- means 'not', so 'unkind' means 'not kind'."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "What does 'un-' mean in the word 'unlock'?",
+                "options": [
+                    "very",
+                    "not or undo",
+                    "again"
+                ],
+                "answer": 1,
+                "explain": "The prefix un- means 'not' or 'the opposite', so 'unlock' means to undo a lock.",
+                "rule": "The prefix un- means 'not' or 'the opposite of'.",
+                "practiceItems": [
+                    {
+                        "prompt": "add un- to 'happy'",
+                        "answer": "unhappy"
+                    },
+                    {
+                        "prompt": "add un- to 'fair'",
+                        "answer": "unfair"
+                    },
+                    {
+                        "prompt": "add un- to 'kind'",
+                        "answer": "unkind"
+                    },
+                    {
+                        "prompt": "add un- to 'lock'",
+                        "answer": "unlock"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "A suffix goes at the END of a root word. '-ful' means 'full of', so 'hopeful' means 'full of hope'.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "care + ful = ___",
+                "answer": "careful",
+                "explain": "The suffix -ful means 'full of', so 'careful' means full of care.",
+                "rule": "The suffix -ful means 'full of'.",
+                "practiceItems": [
+                    {
+                        "prompt": "care + ful",
+                        "answer": "careful"
+                    },
+                    {
+                        "prompt": "hope + ful",
+                        "answer": "hopeful"
+                    },
+                    {
+                        "prompt": "joy + ful",
+                        "answer": "joyful"
+                    },
+                    {
+                        "prompt": "help + ful",
+                        "answer": "helpful"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "The prefix 'un' is added to 'kind' to make 'unkind'. What does 'unkind' mean, and why?",
+                "options": [
+                    "not kind — the prefix 'un' means 'not'",
+                    "very kind — 'un' makes it stronger",
+                    "kind again"
+                ],
+                "answer": 0,
+                "explain": "A prefix goes on the front of a root word and changes its meaning. 'un' means 'not', so 'un' + 'kind' = 'not kind'. Knowing the prefix lets you work out a new word without being told.",
+                "rule": "The prefix 'un' means 'not'; it flips the root word's meaning.",
+                "principle": "A prefix changes a root word's meaning in a predictable way.",
+                "canonical_solution": [
+                    "'un' is a prefix meaning not",
+                    "The root is 'kind'",
+                    "un + kind = not kind",
+                    "So 'unkind' means not kind"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "separates the prefix from the root"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "applies 'un' = not to get 'not kind'"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains a prefix changes meaning predictably"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "thinks un makes it stronger",
+                        "coach": "'un' means not, so it reverses the meaning."
+                    },
+                    {
+                        "if": "confuses un with re",
+                        "coach": "'re' means again; 'un' means not."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "does 'unhappy' mean not happy? (yes/no)",
+                        "answer": "yes"
+                    },
+                    {
+                        "prompt": "the prefix that means 'not'",
+                        "answer": "un"
+                    },
+                    {
+                        "prompt": "unkind means not ___",
+                        "answer": "kind"
+                    },
+                    {
+                        "prompt": "the prefix 're' means",
+                        "answer": "again"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "content": "A prefix at the front, a suffix at the end, a root in the middle — break a word into parts and its meaning opens up. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      {
-        "type": "check",
-        "question": "What does 'un-' mean in the word 'unlock'?",
-        "options": ["very", "not or undo", "again"],
-        "answer": 1,
-        "explain": "The prefix un- means 'not' or 'the opposite', so 'unlock' means to undo a lock.",
-        "rule": "The prefix un- means 'not' or 'the opposite of'.",
-        "practiceItems": [
-          { "prompt": "add un- to 'happy'", "answer": "unhappy" },
-          { "prompt": "add un- to 'fair'", "answer": "unfair" },
-          { "prompt": "add un- to 'kind'", "answer": "unkind" },
-          { "prompt": "add un- to 'lock'", "answer": "unlock" }
-        ]
-      },
-      {
-        "type": "key",
-        "content": "A suffix goes at the END of a root word. '-ful' means 'full of', so 'hopeful' means 'full of hope'."
-      },
-      {
-        "type": "fillblank",
-        "prompt": "care + ful = ___",
-        "answer": "careful",
-        "explain": "The suffix -ful means 'full of', so 'careful' means full of care.",
-        "rule": "The suffix -ful means 'full of'.",
-        "practiceItems": [
-          { "prompt": "care + ful", "answer": "careful" },
-          { "prompt": "hope + ful", "answer": "hopeful" },
-          { "prompt": "joy + ful", "answer": "joyful" },
-          { "prompt": "help + ful", "answer": "helpful" }
-        ]
-      },
-      {
-        "type": "text",
-        "content": "A prefix at the front, a suffix at the end, a root in the middle — break a word into parts and its meaning opens up. Let's practise!"
-      }
-    ]
-  }
+    }
 ]

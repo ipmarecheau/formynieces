@@ -1,59 +1,160 @@
 [
-  {
-    "module": "ELA-009",
-    "title": "Using commas, and marking what people say",
-    "is_published": true,
-    "blocks": [
-      {
-        "type": "text",
-        "content": "Commas tell the reader where to pause, and they keep a sentence clear. Let's learn two everyday jobs the comma does."
-      },
-      {
-        "type": "key",
-        "content": "Use commas to separate three or more items in a list."
-      },
-      {
-        "type": "example",
-        "content": "Punctuating a list.",
-        "steps": [
-          "The items are: apples, mangoes, bread.",
-          "Put a comma after each item except the last: 'I bought apples, mangoes and bread.'"
+    {
+        "module": "ELA-009",
+        "title": "Using commas, and marking what people say",
+        "is_published": true,
+        "objectives_direct": [
+            "E-PUN-60"
+        ],
+        "objectives_indirect": [
+            "E-PUN-58",
+            "E-PUN-59"
+        ],
+        "canonical_examples_source": "Language rules self-verified; format ref: bank uk-ks2-2024-gps (KS2 GPS).",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Commas tell the reader where to pause, and they keep a sentence clear. Let's learn two everyday jobs the comma does.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "Use commas to separate three or more items in a list.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Punctuating a list.",
+                "steps": [
+                    "The items are: apples, mangoes, bread.",
+                    "Put a comma after each item except the last: 'I bought apples, mangoes and bread.'"
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "Add the commas to this list: red green and blue",
+                "answer": "red, green and blue",
+                "explain": "Separate the list items with commas: red, green and blue.",
+                "rule": "Use a comma to separate items in a list of three or more.",
+                "practiceItems": [
+                    {
+                        "prompt": "add commas: tea coffee and juice",
+                        "answer": "tea, coffee and juice"
+                    },
+                    {
+                        "prompt": "add commas: dogs cats and birds",
+                        "answer": "dogs, cats and birds"
+                    },
+                    {
+                        "prompt": "add commas: run jump and swim",
+                        "answer": "run, jump and swim"
+                    },
+                    {
+                        "prompt": "add commas: rice peas and chicken",
+                        "answer": "rice, peas and chicken"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "Use a comma to separate the name of the person you are speaking to: 'Come here, Sara.'",
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "Add the comma: Thank you Mr Ali",
+                "answer": "Thank you, Mr Ali",
+                "explain": "Put a comma before the name of the person you are speaking to: Thank you, Mr Ali.",
+                "rule": "Use a comma to separate the name of the person you are speaking to from the rest of the sentence.",
+                "practiceItems": [
+                    {
+                        "prompt": "add a comma: Come here Sara",
+                        "answer": "Come here, Sara"
+                    },
+                    {
+                        "prompt": "add a comma: Yes Mom",
+                        "answer": "Yes, Mom"
+                    },
+                    {
+                        "prompt": "add a comma: Goodbye Anil",
+                        "answer": "Goodbye, Anil"
+                    },
+                    {
+                        "prompt": "add a comma: Well done Maya",
+                        "answer": "Well done, Maya"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "In the sentence Mum said Come inside, where should the quotation marks go?",
+                "options": [
+                    "Around the spoken words: Mum said, \"Come inside.\"",
+                    "Around the whole sentence including 'Mum said'",
+                    "No quotation marks are needed"
+                ],
+                "answer": 0,
+                "explain": "Quotation marks go around the exact words a person says, not the words that tell us who is speaking. Only 'Come inside' is spoken, so the marks wrap just those words: Mum said, \"Come inside.\"",
+                "rule": "Quotation marks enclose only the exact spoken words.",
+                "principle": "Punctuation shows the reader where speech begins and ends.",
+                "canonical_solution": [
+                    "'Mum said' tells who speaks",
+                    "'Come inside' is the spoken part",
+                    "Quotation marks wrap the spoken part",
+                    "So: Mum said, \"Come inside.\""
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "separates the spoken words from 'Mum said'"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "wraps only 'Come inside' in quotation marks"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains marks show start and end of speech"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "quotes the whole sentence",
+                        "coach": "Only the spoken words go in quotation marks, not 'Mum said'."
+                    },
+                    {
+                        "if": "uses no marks",
+                        "coach": "Speech needs quotation marks around the spoken words."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "quotation marks go around the ___ words",
+                        "answer": "spoken"
+                    },
+                    {
+                        "prompt": "the punctuation that introduces a list",
+                        "answer": "colon"
+                    },
+                    {
+                        "prompt": "the mark that separates items in a list",
+                        "answer": "comma"
+                    },
+                    {
+                        "prompt": "do quotation marks go around what a person says? (yes/no)",
+                        "answer": "yes"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "content": "When you write a person's exact words, quotation marks go around them: Maya said, \"I am ready.\" Notice the comma before the speech and the end mark inside the quotes. Let's practise the commas!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      {
-        "type": "fillblank",
-        "prompt": "Add the commas to this list: red green and blue",
-        "answer": "red, green and blue",
-        "explain": "Separate the list items with commas: red, green and blue.",
-        "rule": "Use a comma to separate items in a list of three or more.",
-        "practiceItems": [
-          { "prompt": "add commas: tea coffee and juice", "answer": "tea, coffee and juice" },
-          { "prompt": "add commas: dogs cats and birds", "answer": "dogs, cats and birds" },
-          { "prompt": "add commas: run jump and swim", "answer": "run, jump and swim" },
-          { "prompt": "add commas: rice peas and chicken", "answer": "rice, peas and chicken" }
-        ]
-      },
-      {
-        "type": "key",
-        "content": "Use a comma to separate the name of the person you are speaking to: 'Come here, Sara.'"
-      },
-      {
-        "type": "fillblank",
-        "prompt": "Add the comma: Thank you Mr Ali",
-        "answer": "Thank you, Mr Ali",
-        "explain": "Put a comma before the name of the person you are speaking to: Thank you, Mr Ali.",
-        "rule": "Use a comma to separate the name of the person you are speaking to from the rest of the sentence.",
-        "practiceItems": [
-          { "prompt": "add a comma: Come here Sara", "answer": "Come here, Sara" },
-          { "prompt": "add a comma: Yes Mom", "answer": "Yes, Mom" },
-          { "prompt": "add a comma: Goodbye Anil", "answer": "Goodbye, Anil" },
-          { "prompt": "add a comma: Well done Maya", "answer": "Well done, Maya" }
-        ]
-      },
-      {
-        "type": "text",
-        "content": "When you write a person's exact words, quotation marks go around them: Maya said, \"I am ready.\" Notice the comma before the speech and the end mark inside the quotes. Let's practise the commas!"
-      }
-    ]
-  }
+    }
 ]

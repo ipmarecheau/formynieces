@@ -1,42 +1,167 @@
 [
-  {
-    "module": "ELA-024",
-    "title": "Working out word meaning from context",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "You do not need a dictionary for every hard word. The words around it — the context — often give you clues to what it means." },
-      { "type": "key", "content": "Use the words around a word (the context) to work out its meaning." },
-      { "type": "text", "content": "Read this: 'The soup was so bland that Anil added salt and pepper to give it some flavour.'" },
-      {
-        "type": "check",
-        "question": "What does the word 'bland' mean in this sentence?",
-        "options": ["very spicy", "having little flavour", "very hot"],
-        "answer": 1,
-        "explain": "Anil added salt and pepper to give it flavour, so 'bland' must mean it had little flavour.",
-        "rule": "Use the words around a word (the context) to work out its meaning.",
-        "practiceItems": [
-          { "prompt": "the words around a word that give its meaning are the ___", "answer": "context" },
-          { "prompt": "if soup is 'bland', it has little ___", "answer": "flavour" },
-          { "prompt": "context clues help you find a word's ___", "answer": "meaning" },
-          { "prompt": "the clue words are ___ the hard word (around/far from)", "answer": "around" }
+    {
+        "module": "ELA-024",
+        "title": "Working out word meaning from context",
+        "is_published": true,
+        "objectives_direct": [
+            "E-RCM-75"
+        ],
+        "objectives_indirect": [
+            "E-RCM-73",
+            "E-RCM-74",
+            "E-RCM-76"
+        ],
+        "canonical_examples_source": "Language rules self-verified; format ref: bank uk-ks2-2024-gps (KS2 GPS).",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "You do not need a dictionary for every hard word. The words around it — the context — often give you clues to what it means.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "Use the words around a word (the context) to work out its meaning.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "text",
+                "content": "Read this: 'The soup was so bland that Anil added salt and pepper to give it some flavour.'",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "What does the word 'bland' mean in this sentence?",
+                "options": [
+                    "very spicy",
+                    "having little flavour",
+                    "very hot"
+                ],
+                "answer": 1,
+                "explain": "Anil added salt and pepper to give it flavour, so 'bland' must mean it had little flavour.",
+                "rule": "Use the words around a word (the context) to work out its meaning.",
+                "practiceItems": [
+                    {
+                        "prompt": "the words around a word that give its meaning are the ___",
+                        "answer": "context"
+                    },
+                    {
+                        "prompt": "if soup is 'bland', it has little ___",
+                        "answer": "flavour"
+                    },
+                    {
+                        "prompt": "context clues help you find a word's ___",
+                        "answer": "meaning"
+                    },
+                    {
+                        "prompt": "the clue words are ___ the hard word (around/far from)",
+                        "answer": "around"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "Look for clues: examples, opposites, or an explanation nearby often reveal the meaning.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "'The path was treacherous, full of loose rocks and sudden drops.' What does 'treacherous' mean?",
+                "options": [
+                    "safe and easy",
+                    "dangerous",
+                    "short"
+                ],
+                "answer": 1,
+                "explain": "Loose rocks and sudden drops are dangers, so 'treacherous' means dangerous.",
+                "rule": "Nearby examples and descriptions are context clues to a word's meaning.",
+                "practiceItems": [
+                    {
+                        "prompt": "'treacherous' means very ___ (dangerous/safe)",
+                        "answer": "dangerous"
+                    },
+                    {
+                        "prompt": "'enormous' means very ___",
+                        "answer": "big"
+                    },
+                    {
+                        "prompt": "'exhausted' means very ___",
+                        "answer": "tired"
+                    },
+                    {
+                        "prompt": "clues that reveal meaning are called context ___",
+                        "answer": "clues"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "'The parched land needed rain.' Using the clue 'needed rain', what does 'parched' most likely mean?",
+                "options": [
+                    "dry — the clue 'needed rain' points to it",
+                    "wet",
+                    "green"
+                ],
+                "answer": 0,
+                "explain": "You can work out an unknown word from the words around it. Land that 'needed rain' must be dry, so 'parched' means dry. Using nearby clues like this is called using context.",
+                "rule": "Use the surrounding words (context) to work out a word's meaning.",
+                "principle": "Context clues reveal the meaning of an unfamiliar word.",
+                "canonical_solution": [
+                    "The land 'needed rain'",
+                    "Land needing rain is dry",
+                    "So 'parched' means dry",
+                    "(the clue was 'needed rain')"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "uses the clue 'needed rain'"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "concludes 'parched' means dry"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains using context clues"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "picks 'wet'",
+                        "coach": "Land that needs rain is dry, not wet."
+                    },
+                    {
+                        "if": "ignores the clue",
+                        "coach": "Read the nearby words to find the meaning."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "using nearby words to find meaning is using",
+                        "answer": "context"
+                    },
+                    {
+                        "prompt": "'parched' means",
+                        "answer": "dry"
+                    },
+                    {
+                        "prompt": "the clue for 'parched' in the sentence",
+                        "answer": "needed rain"
+                    },
+                    {
+                        "prompt": "does context help find a word's meaning? (yes/no)",
+                        "answer": "yes"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "content": "When a word is hard, read around it. The context almost always leaves you clues. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "Look for clues: examples, opposites, or an explanation nearby often reveal the meaning." },
-      {
-        "type": "check",
-        "question": "'The path was treacherous, full of loose rocks and sudden drops.' What does 'treacherous' mean?",
-        "options": ["safe and easy", "dangerous", "short"],
-        "answer": 1,
-        "explain": "Loose rocks and sudden drops are dangers, so 'treacherous' means dangerous.",
-        "rule": "Nearby examples and descriptions are context clues to a word's meaning.",
-        "practiceItems": [
-          { "prompt": "'treacherous' means very ___ (dangerous/safe)", "answer": "dangerous" },
-          { "prompt": "'enormous' means very ___", "answer": "big" },
-          { "prompt": "'exhausted' means very ___", "answer": "tired" },
-          { "prompt": "clues that reveal meaning are called context ___", "answer": "clues" }
-        ]
-      },
-      { "type": "text", "content": "When a word is hard, read around it. The context almost always leaves you clues. Let's practise!" }
-    ]
-  }
+    }
 ]

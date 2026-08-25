@@ -1,42 +1,167 @@
 [
-  {
-    "module": "ELA-031",
-    "title": "Poetry: words that appeal to the senses (imagery)",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "Poems let you see, hear and even smell what is happening. Words that appeal to your five senses create pictures in your mind — this is called imagery." },
-      { "type": "key", "content": "Imagery uses words that appeal to the senses: sight, sound, smell, taste and touch." },
-      { "type": "text", "content": "Read these lines: 'The crackling fire glowed warm and bright, / Its smoky scent filled the cold night.'" },
-      {
-        "type": "check",
-        "question": "The word 'crackling' appeals to which sense?",
-        "options": ["sight", "sound", "taste"],
-        "answer": 1,
-        "explain": "'crackling' is a sound you hear, so it appeals to the sense of sound.",
-        "rule": "Imagery uses words that appeal to the senses — sight, sound, smell, taste and touch.",
-        "practiceItems": [
-          { "prompt": "'crackling' appeals to the sense of ___", "answer": "sound" },
-          { "prompt": "'glowed bright' appeals to the sense of ___", "answer": "sight" },
-          { "prompt": "'smoky scent' appeals to the sense of ___", "answer": "smell" },
-          { "prompt": "words that appeal to the senses create ___", "answer": "imagery" }
+    {
+        "module": "ELA-031",
+        "title": "Poetry: words that appeal to the senses (imagery)",
+        "is_published": true,
+        "objectives_direct": [
+            "E-POE-82"
+        ],
+        "objectives_indirect": [
+            "E-POE-80",
+            "E-POE-81",
+            "E-POE-83"
+        ],
+        "canonical_examples_source": "Language rules self-verified; format ref: bank uk-ks2-2024-gps (KS2 GPS).",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Poems let you see, hear and even smell what is happening. Words that appeal to your five senses create pictures in your mind — this is called imagery.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "Imagery uses words that appeal to the senses: sight, sound, smell, taste and touch.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "text",
+                "content": "Read these lines: 'The crackling fire glowed warm and bright, / Its smoky scent filled the cold night.'",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "The word 'crackling' appeals to which sense?",
+                "options": [
+                    "sight",
+                    "sound",
+                    "taste"
+                ],
+                "answer": 1,
+                "explain": "'crackling' is a sound you hear, so it appeals to the sense of sound.",
+                "rule": "Imagery uses words that appeal to the senses — sight, sound, smell, taste and touch.",
+                "practiceItems": [
+                    {
+                        "prompt": "'crackling' appeals to the sense of ___",
+                        "answer": "sound"
+                    },
+                    {
+                        "prompt": "'glowed bright' appeals to the sense of ___",
+                        "answer": "sight"
+                    },
+                    {
+                        "prompt": "'smoky scent' appeals to the sense of ___",
+                        "answer": "smell"
+                    },
+                    {
+                        "prompt": "words that appeal to the senses create ___",
+                        "answer": "imagery"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "When you read a poem, notice which sense each strong word is calling to.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "'The juicy, sweet mango dripped down her chin.' Which sense does 'sweet' appeal to?",
+                "options": [
+                    "taste",
+                    "sound",
+                    "sight"
+                ],
+                "answer": 0,
+                "explain": "'sweet' is a flavour you taste, so it appeals to the sense of taste.",
+                "rule": "Match each sensory word to the sense it appeals to.",
+                "practiceItems": [
+                    {
+                        "prompt": "'sweet' appeals to the sense of ___",
+                        "answer": "taste"
+                    },
+                    {
+                        "prompt": "'soft and fuzzy' appeals to the sense of ___",
+                        "answer": "touch"
+                    },
+                    {
+                        "prompt": "'loud drums' appeals to the sense of ___",
+                        "answer": "sound"
+                    },
+                    {
+                        "prompt": "the five senses give a poem strong ___",
+                        "answer": "imagery"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "'The juicy, sweet mango dripped down her chin.' Which senses does this imagery appeal to?",
+                "options": [
+                    "Taste and touch — 'sweet' is taste and 'dripped down her chin' is touch",
+                    "Only hearing",
+                    "It appeals to no senses"
+                ],
+                "answer": 0,
+                "explain": "Imagery uses words that appeal to the senses so you can almost feel the scene. 'sweet' appeals to taste and 'dripped down her chin' appeals to touch. Sense words make writing vivid.",
+                "rule": "Imagery uses sense words (sight, sound, smell, taste, touch) to paint a picture.",
+                "principle": "Sense words let the reader experience the scene.",
+                "canonical_solution": [
+                    "'sweet' appeals to taste",
+                    "'dripped down her chin' appeals to touch",
+                    "These are sense words = imagery",
+                    "So it appeals to taste and touch"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "matches words to the senses"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "identifies taste and touch"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains imagery appeals to the senses"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "says only hearing",
+                        "coach": "There is no sound word here; look at taste and touch."
+                    },
+                    {
+                        "if": "sees no senses",
+                        "coach": "'sweet' and 'dripped' are sense words."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "words that appeal to the senses create",
+                        "answer": "imagery"
+                    },
+                    {
+                        "prompt": "'sweet' appeals to which sense?",
+                        "answer": "taste"
+                    },
+                    {
+                        "prompt": "sight, hearing, smell, taste and",
+                        "answer": "touch"
+                    },
+                    {
+                        "prompt": "does imagery help you picture a scene? (yes/no)",
+                        "answer": "yes"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "content": "Sensory words paint pictures in the reader's mind. Look for the sense behind each one. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "When you read a poem, notice which sense each strong word is calling to." },
-      {
-        "type": "check",
-        "question": "'The juicy, sweet mango dripped down her chin.' Which sense does 'sweet' appeal to?",
-        "options": ["taste", "sound", "sight"],
-        "answer": 0,
-        "explain": "'sweet' is a flavour you taste, so it appeals to the sense of taste.",
-        "rule": "Match each sensory word to the sense it appeals to.",
-        "practiceItems": [
-          { "prompt": "'sweet' appeals to the sense of ___", "answer": "taste" },
-          { "prompt": "'soft and fuzzy' appeals to the sense of ___", "answer": "touch" },
-          { "prompt": "'loud drums' appeals to the sense of ___", "answer": "sound" },
-          { "prompt": "the five senses give a poem strong ___", "answer": "imagery" }
-        ]
-      },
-      { "type": "text", "content": "Sensory words paint pictures in the reader's mind. Look for the sense behind each one. Let's practise!" }
-    ]
-  }
+    }
 ]

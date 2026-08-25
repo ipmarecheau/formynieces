@@ -1,80 +1,202 @@
 [
-  {
-    "module": "ELA-001",
-    "title": "Making tricky plurals: words ending in y, f, and hissing sounds",
-    "is_published": true,
-    "blocks": [
-      {
-        "type": "text",
-        "content": "Most words become plural by just adding -s: one book, two books. But some words are tricky. Let's learn three little tricks that catch a lot of people out."
-      },
-      {
-        "type": "key",
-        "content": "Trick 1 — When a word ends in a consonant then y, change the y to i and add es."
-      },
-      {
-        "type": "example",
-        "content": "The plural of 'baby'.",
-        "steps": [
-          "'baby' ends in a consonant (b) then y.",
-          "Change the y to i: 'babi'.",
-          "Add es: 'babies'.",
-          "So one baby, two babies."
+    {
+        "module": "ELA-001",
+        "title": "Making tricky plurals: words ending in y, f, and hissing sounds",
+        "is_published": true,
+        "objectives_direct": [
+            "E-SPE-52"
+        ],
+        "objectives_indirect": [
+            "E-GRA-62",
+            "E-SPE-56"
+        ],
+        "canonical_examples_source": "Standard T&T/UK primary spelling rules; plurals self-verified. Format ref: bank uk-ks2-2024-gps (KS2 GPS spelling).",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "You are helping Aunty label the jars in her parlour: babies' biscuits, mango boxes, sweet shelves. Most words become plural by just adding -s: one book, two books. But some are tricky. Let's learn three little tricks so every label is right.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "cognition": "knowing",
+                "content": "Trick 1 — When a word ends in a consonant then y, change the y to i and add es."
+            },
+            {
+                "type": "example",
+                "content": "The plural of 'baby'.",
+                "steps": [
+                    "'baby' ends in a consonant (b) then y.",
+                    "Change the y to i: 'babi'.",
+                    "Add es: 'babies'.",
+                    "So one baby, two babies."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "cognition": "applying",
+                "prompt": "One city, two ___.",
+                "answer": "cities",
+                "explain": "'city' ends in a consonant (t) then y, so change y to i and add es: cities.",
+                "rule": "If a word ends in a consonant then y, change the y to i and add es.",
+                "practiceItems": [
+                    {
+                        "prompt": "the plural of 'baby'",
+                        "answer": "babies"
+                    },
+                    {
+                        "prompt": "the plural of 'lady'",
+                        "answer": "ladies"
+                    },
+                    {
+                        "prompt": "the plural of 'penny'",
+                        "answer": "pennies"
+                    },
+                    {
+                        "prompt": "the plural of 'story'",
+                        "answer": "stories"
+                    },
+                    {
+                        "prompt": "the plural of 'party'",
+                        "answer": "parties"
+                    }
+                ]
+            },
+            {
+                "type": "key",
+                "cognition": "knowing",
+                "content": "Trick 2 — When a word ends in f or fe, change the f to v and add es."
+            },
+            {
+                "type": "check",
+                "cognition": "applying",
+                "question": "What is the plural of 'leaf'?",
+                "options": [
+                    "leafs",
+                    "leaves",
+                    "leafes"
+                ],
+                "answer": 1,
+                "explain": "'leaf' ends in f, so change the f to v and add es: leaves.",
+                "rule": "If a word ends in f or fe, change the f to v and add es.",
+                "practiceItems": [
+                    {
+                        "prompt": "the plural of 'knife'",
+                        "answer": "knives"
+                    },
+                    {
+                        "prompt": "the plural of 'wolf'",
+                        "answer": "wolves"
+                    },
+                    {
+                        "prompt": "the plural of 'half'",
+                        "answer": "halves"
+                    },
+                    {
+                        "prompt": "the plural of 'shelf'",
+                        "answer": "shelves"
+                    }
+                ]
+            },
+            {
+                "type": "key",
+                "cognition": "knowing",
+                "content": "Trick 3 — When a word ends in a hissing sound (s, x, ch, or sh), add es."
+            },
+            {
+                "type": "fillblank",
+                "cognition": "applying",
+                "prompt": "One bus, two ___.",
+                "answer": "buses",
+                "explain": "'bus' ends in the hissing sound s, so add es: buses.",
+                "rule": "If a word ends in s, x, ch or sh, add es to make it plural.",
+                "practiceItems": [
+                    {
+                        "prompt": "the plural of 'box'",
+                        "answer": "boxes"
+                    },
+                    {
+                        "prompt": "the plural of 'church'",
+                        "answer": "churches"
+                    },
+                    {
+                        "prompt": "the plural of 'brush'",
+                        "answer": "brushes"
+                    },
+                    {
+                        "prompt": "the plural of 'glass'",
+                        "answer": "glasses"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "Aunty writes 'potatos' on a label. But the real plural of 'potato' is 'potatoes'. Which of these is the BEST reason her first spelling was wrong?",
+                "options": [
+                    "'potato' ends in o, a hissing-style ending, so it takes es — like the -es trick, not just -s",
+                    "'potato' ends in a consonant then y, so change y to i",
+                    "'potato' ends in f, so change f to v"
+                ],
+                "answer": 0,
+                "explain": "'potato' does not end in y or f, so Tricks 1 and 2 do not fit. It ends in o, which behaves like the hissing group and takes es: potatoes. The key skill is choosing WHICH trick fits before you spell.",
+                "rule": "Before making a plural, decide which ending the word has, then apply the matching trick.",
+                "principle": "A plural rule only applies when the word's ending matches it; you must first identify the ending.",
+                "canonical_solution": [
+                    "'potato' ends in o, not y and not f.",
+                    "Tricks 1 (y to i) and 2 (f to v) do not apply.",
+                    "Words like potato/tomato/hero take es: potatoes.",
+                    "So the reason is: it needs es, like the -es group, not a plain -s."
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "checks the actual ending of 'potato' (o), not a guessed trick"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "rules OUT the y and f tricks because the ending does not match"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "states that the right trick depends on the word's ending"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "picks the y-to-i trick",
+                        "coach": "'potato' has no y before the end. The y trick only fits words like baby or city."
+                    },
+                    {
+                        "if": "thinks every plural just adds -s",
+                        "coach": "Not yet — some endings need es. Look at the last letters first."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "the plural of 'potato'",
+                        "answer": "potatoes"
+                    },
+                    {
+                        "prompt": "the plural of 'tomato'",
+                        "answer": "tomatoes"
+                    },
+                    {
+                        "prompt": "the plural of 'hero'",
+                        "answer": "heroes"
+                    },
+                    {
+                        "prompt": "the plural of 'mango'",
+                        "answer": "mangoes"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "content": "Aunty's labels are perfect now. Three tricks: consonant + y turns to ies, f turns to ves, and hissing sounds add es — and always check the ending first to pick the right one. Time to practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      {
-        "type": "fillblank",
-        "prompt": "One city, two ___.",
-        "answer": "cities",
-        "explain": "'city' ends in a consonant (t) then y, so change y to i and add es: cities.",
-        "rule": "If a word ends in a consonant then y, change the y to i and add es.",
-        "practiceItems": [
-          { "prompt": "the plural of 'baby'", "answer": "babies" },
-          { "prompt": "the plural of 'lady'", "answer": "ladies" },
-          { "prompt": "the plural of 'penny'", "answer": "pennies" },
-          { "prompt": "the plural of 'story'", "answer": "stories" },
-          { "prompt": "the plural of 'party'", "answer": "parties" }
-        ]
-      },
-      {
-        "type": "key",
-        "content": "Trick 2 — When a word ends in f or fe, change the f to v and add es."
-      },
-      {
-        "type": "check",
-        "question": "What is the plural of 'leaf'?",
-        "options": ["leafs", "leaves", "leafes"],
-        "answer": 1,
-        "explain": "'leaf' ends in f, so change the f to v and add es: leaves.",
-        "rule": "If a word ends in f or fe, change the f to v and add es.",
-        "practiceItems": [
-          { "prompt": "the plural of 'knife'", "answer": "knives" },
-          { "prompt": "the plural of 'wolf'", "answer": "wolves" },
-          { "prompt": "the plural of 'half'", "answer": "halves" },
-          { "prompt": "the plural of 'shelf'", "answer": "shelves" }
-        ]
-      },
-      {
-        "type": "key",
-        "content": "Trick 3 — When a word ends in a hissing sound (s, x, ch, or sh), add es."
-      },
-      {
-        "type": "fillblank",
-        "prompt": "One bus, two ___.",
-        "answer": "buses",
-        "explain": "'bus' ends in the hissing sound s, so add es: buses.",
-        "rule": "If a word ends in s, x, ch or sh, add es to make it plural.",
-        "practiceItems": [
-          { "prompt": "the plural of 'box'", "answer": "boxes" },
-          { "prompt": "the plural of 'church'", "answer": "churches" },
-          { "prompt": "the plural of 'brush'", "answer": "brushes" },
-          { "prompt": "the plural of 'glass'", "answer": "glasses" }
-        ]
-      },
-      {
-        "type": "text",
-        "content": "Nice work! Three tricks: consonant + y turns to ies, f turns to ves, and hissing sounds add es. When a plural looks tricky, ask which trick fits. Time to practise!"
-      }
-    ]
-  }
+    }
 ]

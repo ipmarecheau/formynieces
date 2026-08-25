@@ -1,40 +1,161 @@
 [
-  {
-    "module": "MATH-022",
-    "title": "Converting between fractions, decimals and percent",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "Percent, decimals and fractions are three ways of saying the same thing. Being able to switch between them is a powerful skill." },
-      { "type": "key", "content": "Percent means 'out of 100'. So 50% means 50 out of 100, which as a decimal is 0.5." },
-      { "type": "example", "content": "Percent to decimal.", "steps": ["50% means 50 out of 100.", "50 out of 100 is 50 ÷ 100 = 0.5.", "So 50% = 0.5."] },
-      {
-        "type": "fillblank",
-        "prompt": "50% written as a decimal is ___",
-        "answer": "0.5",
-        "explain": "50% is 50 ÷ 100 = 0.5.",
-        "rule": "To change a percent to a decimal, divide by 100.",
-        "practiceItems": [
-          { "prompt": "25% as a decimal", "answer": "0.25" },
-          { "prompt": "10% as a decimal", "answer": "0.1" },
-          { "prompt": "100% as a decimal", "answer": "1" },
-          { "prompt": "75% as a decimal", "answer": "0.75" }
+    {
+        "module": "MATH-022",
+        "title": "Converting between fractions, decimals and percent",
+        "is_published": true,
+        "objectives_direct": [
+            "M-PCT-22"
+        ],
+        "objectives_indirect": [
+            "M-PCT-23",
+            "M-PCT-24"
+        ],
+        "canonical_examples_source": "Arithmetic self-verified; method ref: NCERT Class 5/6 Maths; format ref: bank uk-ks2-2024 maths.",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Percent, decimals and fractions are three ways of saying the same thing. Being able to switch between them is a powerful skill.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "Percent means 'out of 100'. So 50% means 50 out of 100, which as a decimal is 0.5.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Percent to decimal.",
+                "steps": [
+                    "50% means 50 out of 100.",
+                    "50 out of 100 is 50 ÷ 100 = 0.5.",
+                    "So 50% = 0.5."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "50% written as a decimal is ___",
+                "answer": "0.5",
+                "explain": "50% is 50 ÷ 100 = 0.5.",
+                "rule": "To change a percent to a decimal, divide by 100.",
+                "practiceItems": [
+                    {
+                        "prompt": "25% as a decimal",
+                        "answer": "0.25"
+                    },
+                    {
+                        "prompt": "10% as a decimal",
+                        "answer": "0.1"
+                    },
+                    {
+                        "prompt": "100% as a decimal",
+                        "answer": "1"
+                    },
+                    {
+                        "prompt": "75% as a decimal",
+                        "answer": "0.75"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "To change a simple fraction to a percent, rename it so the bottom is 100.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "1/2 written as a percent is ___%",
+                "answer": "50",
+                "explain": "1/2 is the same as 50/100, which is 50%.",
+                "rule": "To change a fraction to a percent, make the bottom 100.",
+                "practiceItems": [
+                    {
+                        "prompt": "1/4 as a percent (just the number)",
+                        "answer": "25"
+                    },
+                    {
+                        "prompt": "1/10 as a percent",
+                        "answer": "10"
+                    },
+                    {
+                        "prompt": "3/4 as a percent",
+                        "answer": "75"
+                    },
+                    {
+                        "prompt": "1/2 as a percent",
+                        "answer": "50"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "Ken says 1/2 and 50% are different amounts. Is he right?",
+                "options": [
+                    "No — 1/2 = 50/100 = 50%, the same amount",
+                    "Yes, 1/2 is 12%",
+                    "1/2 is 5%"
+                ],
+                "answer": 0,
+                "explain": "Percent means 'out of 100'. Half of 100 is 50, so 1/2 is 50/100 = 50%. As a decimal it is 0.5. They are three ways of writing the same amount.",
+                "rule": "To turn a fraction into a percent, write it as a number out of 100.",
+                "principle": "Fractions, decimals and percents can all name the same amount.",
+                "canonical_solution": [
+                    "Percent means out of 100",
+                    "Half of 100 is 50",
+                    "So 1/2 = 50/100 = 50%",
+                    "(and as a decimal, 0.5)"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "writes 1/2 as a number out of 100"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "shows 1/2 = 50%"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains percent means out of 100"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "reads the 2 as the percent",
+                        "coach": "Percent is out of 100 — half of 100 is 50, so 50%."
+                    },
+                    {
+                        "if": "confuses with a decimal",
+                        "coach": "1/2 = 0.5 = 50%, all the same amount."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "1/2 as a percent",
+                        "answer": "50%"
+                    },
+                    {
+                        "prompt": "0.5 as a percent",
+                        "answer": "50%"
+                    },
+                    {
+                        "prompt": "1/4 as a percent",
+                        "answer": "25%"
+                    },
+                    {
+                        "prompt": "50/100 in its simplest form",
+                        "answer": "1/2"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "content": "Percent is out of 100. Divide by 100 to get a decimal, and make the bottom 100 to get a percent. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "To change a simple fraction to a percent, rename it so the bottom is 100." },
-      {
-        "type": "fillblank",
-        "prompt": "1/2 written as a percent is ___%",
-        "answer": "50",
-        "explain": "1/2 is the same as 50/100, which is 50%.",
-        "rule": "To change a fraction to a percent, make the bottom 100.",
-        "practiceItems": [
-          { "prompt": "1/4 as a percent (just the number)", "answer": "25" },
-          { "prompt": "1/10 as a percent", "answer": "10" },
-          { "prompt": "3/4 as a percent", "answer": "75" },
-          { "prompt": "1/2 as a percent", "answer": "50" }
-        ]
-      },
-      { "type": "text", "content": "Percent is out of 100. Divide by 100 to get a decimal, and make the bottom 100 to get a percent. Let's practise!" }
-    ]
-  }
+    }
 ]

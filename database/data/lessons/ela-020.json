@@ -1,62 +1,170 @@
 [
-  {
-    "module": "ELA-020",
-    "title": "Figurative language: similes and metaphors",
-    "is_published": true,
-    "blocks": [
-      {
-        "type": "text",
-        "content": "Writers make pictures with words by comparing one thing to another. Two of the most useful tools for this are the simile and the metaphor."
-      },
-      {
-        "type": "key",
-        "content": "A simile compares two things using the words 'like' or 'as': she is as brave as a lion."
-      },
-      {
-        "type": "example",
-        "content": "Spotting a simile.",
-        "steps": [
-          "'She shone like a star.' — it compares using 'like'.",
-          "That makes it a simile.",
-          "Look for the words 'like' or 'as'."
+    {
+        "module": "ELA-020",
+        "title": "Figurative language: similes and metaphors",
+        "is_published": true,
+        "objectives_direct": [
+            "E-WRI-71"
+        ],
+        "objectives_indirect": [
+            "E-WRI-69",
+            "E-WRI-70",
+            "E-WRI-72"
+        ],
+        "canonical_examples_source": "Language rules self-verified; format ref: bank uk-ks2-2024-gps (KS2 GPS).",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Writers make pictures with words by comparing one thing to another. Two of the most useful tools for this are the simile and the metaphor.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "A simile compares two things using the words 'like' or 'as': she is as brave as a lion.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Spotting a simile.",
+                "steps": [
+                    "'She shone like a star.' — it compares using 'like'.",
+                    "That makes it a simile.",
+                    "Look for the words 'like' or 'as'."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "Which sentence is a simile?",
+                "options": [
+                    "She is a shining star.",
+                    "She shone like a star."
+                ],
+                "answer": 1,
+                "explain": "It compares using 'like', so it is a simile.",
+                "rule": "A simile compares two things using the words 'like' or 'as'.",
+                "practiceItems": [
+                    {
+                        "prompt": "a simile compares using 'as' or ___",
+                        "answer": "like"
+                    },
+                    {
+                        "prompt": "as busy as a ___ (insect that makes honey)",
+                        "answer": "bee"
+                    },
+                    {
+                        "prompt": "as brave as a ___",
+                        "answer": "lion"
+                    },
+                    {
+                        "prompt": "as white as ___",
+                        "answer": "snow"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "A metaphor says one thing IS another, with no 'like' or 'as': the classroom was a zoo.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "Is this a simile or a metaphor: 'The snow was a white blanket.'?",
+                "options": [
+                    "a simile",
+                    "a metaphor"
+                ],
+                "answer": 1,
+                "explain": "It says the snow IS a blanket, with no 'like' or 'as', so it is a metaphor.",
+                "rule": "A metaphor says one thing IS another, without using 'like' or 'as'.",
+                "practiceItems": [
+                    {
+                        "prompt": "simile or metaphor: 'Time is money'",
+                        "answer": "metaphor"
+                    },
+                    {
+                        "prompt": "simile or metaphor: 'brave as a lion'",
+                        "answer": "simile"
+                    },
+                    {
+                        "prompt": "simile or metaphor: 'The world is a stage'",
+                        "answer": "metaphor"
+                    },
+                    {
+                        "prompt": "simile or metaphor: 'sang like a bird'",
+                        "answer": "simile"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "'She is as brave as a lion.' Is this a simile or a metaphor, and how do you know?",
+                "options": [
+                    "A simile — it compares using the word 'as'",
+                    "A metaphor — it says she actually IS a lion",
+                    "Neither, it is a plain fact"
+                ],
+                "answer": 0,
+                "explain": "A simile compares two things using 'like' or 'as'. Here 'as brave as a lion' uses 'as', so it is a simile. A metaphor would drop the 'as' and say she IS a lion.",
+                "rule": "A simile compares with 'like' or 'as'; a metaphor says one thing is another.",
+                "principle": "The signal words 'like' or 'as' mark a simile.",
+                "canonical_solution": [
+                    "The phrase compares her bravery to a lion's",
+                    "It uses the word 'as'",
+                    "'like'/'as' signals a simile",
+                    "So it is a simile"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "spots the comparison and the word 'as'"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "names it a simile"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains like/as marks a simile"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "calls it a metaphor",
+                        "coach": "A metaphor drops 'as'; this keeps it, so simile."
+                    },
+                    {
+                        "if": "sees no comparison",
+                        "coach": "It compares her bravery to a lion's."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "a comparison using 'like' or 'as' is a",
+                        "answer": "simile"
+                    },
+                    {
+                        "prompt": "a comparison saying one thing IS another is a",
+                        "answer": "metaphor"
+                    },
+                    {
+                        "prompt": "'brave as a lion' is a",
+                        "answer": "simile"
+                    },
+                    {
+                        "prompt": "'the classroom was a zoo' is a",
+                        "answer": "metaphor"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "content": "A simile compares with 'like' or 'as'; a metaphor says one thing IS another. Both make writing vivid. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      {
-        "type": "check",
-        "question": "Which sentence is a simile?",
-        "options": ["She is a shining star.", "She shone like a star."],
-        "answer": 1,
-        "explain": "It compares using 'like', so it is a simile.",
-        "rule": "A simile compares two things using the words 'like' or 'as'.",
-        "practiceItems": [
-          { "prompt": "a simile compares using 'as' or ___", "answer": "like" },
-          { "prompt": "as busy as a ___ (insect that makes honey)", "answer": "bee" },
-          { "prompt": "as brave as a ___", "answer": "lion" },
-          { "prompt": "as white as ___", "answer": "snow" }
-        ]
-      },
-      {
-        "type": "key",
-        "content": "A metaphor says one thing IS another, with no 'like' or 'as': the classroom was a zoo."
-      },
-      {
-        "type": "check",
-        "question": "Is this a simile or a metaphor: 'The snow was a white blanket.'?",
-        "options": ["a simile", "a metaphor"],
-        "answer": 1,
-        "explain": "It says the snow IS a blanket, with no 'like' or 'as', so it is a metaphor.",
-        "rule": "A metaphor says one thing IS another, without using 'like' or 'as'.",
-        "practiceItems": [
-          { "prompt": "simile or metaphor: 'Time is money'", "answer": "metaphor" },
-          { "prompt": "simile or metaphor: 'brave as a lion'", "answer": "simile" },
-          { "prompt": "simile or metaphor: 'The world is a stage'", "answer": "metaphor" },
-          { "prompt": "simile or metaphor: 'sang like a bird'", "answer": "simile" }
-        ]
-      },
-      {
-        "type": "text",
-        "content": "A simile compares with 'like' or 'as'; a metaphor says one thing IS another. Both make writing vivid. Let's practise!"
-      }
-    ]
-  }
+    }
 ]

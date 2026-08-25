@@ -1,40 +1,161 @@
 [
-  {
-    "module": "MATH-023",
-    "title": "Finding a percent of a quantity",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "Finding a percent of an amount comes up everywhere — sales, scores, tips. A few friendly percents have quick shortcuts." },
-      { "type": "key", "content": "50% is a half (divide by 2), and 10% is a tenth (divide by 10)." },
-      { "type": "example", "content": "Finding 50% of 40.", "steps": ["50% means one half.", "Half of 40 is 40 ÷ 2 = 20.", "So 50% of 40 = 20."] },
-      {
-        "type": "fillblank",
-        "prompt": "50% of 40 = ___",
-        "answer": "20",
-        "explain": "50% is a half, and half of 40 is 20.",
-        "rule": "50% of a number is half of it; 10% is a tenth of it.",
-        "practiceItems": [
-          { "prompt": "10% of 50", "answer": "5" },
-          { "prompt": "50% of 80", "answer": "40" },
-          { "prompt": "10% of 200", "answer": "20" },
-          { "prompt": "50% of 30", "answer": "15" }
+    {
+        "module": "MATH-023",
+        "title": "Finding a percent of a quantity",
+        "is_published": true,
+        "objectives_direct": [
+            "M-PCT-23"
+        ],
+        "objectives_indirect": [
+            "M-PCT-22",
+            "M-PCT-24"
+        ],
+        "canonical_examples_source": "Arithmetic self-verified; method ref: NCERT Class 5/6 Maths; format ref: bank uk-ks2-2024 maths.",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "Finding a percent of an amount comes up everywhere — sales, scores, tips. A few friendly percents have quick shortcuts.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "50% is a half (divide by 2), and 10% is a tenth (divide by 10).",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Finding 50% of 40.",
+                "steps": [
+                    "50% means one half.",
+                    "Half of 40 is 40 ÷ 2 = 20.",
+                    "So 50% of 40 = 20."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "50% of 40 = ___",
+                "answer": "20",
+                "explain": "50% is a half, and half of 40 is 20.",
+                "rule": "50% of a number is half of it; 10% is a tenth of it.",
+                "practiceItems": [
+                    {
+                        "prompt": "10% of 50",
+                        "answer": "5"
+                    },
+                    {
+                        "prompt": "50% of 80",
+                        "answer": "40"
+                    },
+                    {
+                        "prompt": "10% of 200",
+                        "answer": "20"
+                    },
+                    {
+                        "prompt": "50% of 30",
+                        "answer": "15"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "25% is a quarter — divide by 4.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "fillblank",
+                "prompt": "25% of 20 = ___",
+                "answer": "5",
+                "explain": "25% is a quarter, and 20 ÷ 4 = 5.",
+                "rule": "25% of a number is a quarter of it (divide by 4).",
+                "practiceItems": [
+                    {
+                        "prompt": "25% of 8",
+                        "answer": "2"
+                    },
+                    {
+                        "prompt": "25% of 40",
+                        "answer": "10"
+                    },
+                    {
+                        "prompt": "25% of 100",
+                        "answer": "25"
+                    },
+                    {
+                        "prompt": "10% of 90",
+                        "answer": "9"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "Mia works out 10% of 250 by doing 250 / 10 = 25. Why does her method work?",
+                "options": [
+                    "Yes — 10% means one tenth, and one tenth of 250 is 250 / 10 = 25",
+                    "No, 10% of 250 is 2.5",
+                    "It is 50"
+                ],
+                "answer": 0,
+                "explain": "10% is the same as 10/100, which simplifies to 1/10 — one tenth. Finding one tenth of a number means dividing by 10, so 250 / 10 = 25. That is why her shortcut is correct.",
+                "rule": "10% of a number is that number divided by 10.",
+                "principle": "A percent is a fraction of 100, so 10% is one tenth.",
+                "canonical_solution": [
+                    "10% = 10/100 = 1/10",
+                    "One tenth of 250 = 250 / 10",
+                    "250 / 10 = 25",
+                    "So 10% of 250 is 25"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "links 10% to dividing by 10"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "computes 250 / 10 = 25"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains 10% is one tenth"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "divides by 100",
+                        "coach": "10% is one tenth — divide by 10, not 100."
+                    },
+                    {
+                        "if": "answers 2.5",
+                        "coach": "That is 1% of 250; 10% is ten times bigger, 25."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "10% of 250",
+                        "answer": "25"
+                    },
+                    {
+                        "prompt": "250 / 10",
+                        "answer": "25"
+                    },
+                    {
+                        "prompt": "20% of 250",
+                        "answer": "50"
+                    },
+                    {
+                        "prompt": "10% of 300",
+                        "answer": "30"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "content": "50% halve it, 25% quarter it, 10% divide by ten. Learn the shortcuts and percents become easy. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "25% is a quarter — divide by 4." },
-      {
-        "type": "fillblank",
-        "prompt": "25% of 20 = ___",
-        "answer": "5",
-        "explain": "25% is a quarter, and 20 ÷ 4 = 5.",
-        "rule": "25% of a number is a quarter of it (divide by 4).",
-        "practiceItems": [
-          { "prompt": "25% of 8", "answer": "2" },
-          { "prompt": "25% of 40", "answer": "10" },
-          { "prompt": "25% of 100", "answer": "25" },
-          { "prompt": "10% of 90", "answer": "9" }
-        ]
-      },
-      { "type": "text", "content": "50% halve it, 25% quarter it, 10% divide by ten. Learn the shortcuts and percents become easy. Let's practise!" }
-    ]
-  }
+    }
 ]

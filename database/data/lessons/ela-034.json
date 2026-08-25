@@ -1,42 +1,172 @@
 [
-  {
-    "module": "ELA-034",
-    "title": "Poetry: connecting literature to real life",
-    "is_published": true,
-    "blocks": [
-      { "type": "text", "content": "The best reading happens when a poem or story connects to something you know. Making connections helps you understand and remember what you read." },
-      { "type": "key", "content": "A text-to-self connection links what you read to your own life and experiences." },
-      { "type": "example", "content": "Making a connection.", "steps": ["A poem describes a child missing a friend who moved away.", "You remember when you changed schools and missed your friends.", "That is a text-to-self connection." ] },
-      {
-        "type": "check",
-        "question": "A poem about a first day at a new school reminds you of your own first day. This is a:",
-        "options": ["text-to-self connection", "text-to-world connection", "spelling rule"],
-        "answer": 0,
-        "explain": "It links the text to your own experience, so it is a text-to-self connection.",
-        "rule": "A text-to-self connection links a text to your own life and experiences.",
-        "practiceItems": [
-          { "prompt": "linking a text to your own life is text-to-___", "answer": "self" },
-          { "prompt": "linking a text to the wider world is text-to-___", "answer": "world" },
-          { "prompt": "linking a text to another book is text-to-___", "answer": "text" },
-          { "prompt": "connections help you ___ a text (understand/ignore)", "answer": "understand" }
+    {
+        "module": "ELA-034",
+        "title": "Poetry: connecting literature to real life",
+        "is_published": true,
+        "objectives_direct": [
+            "E-POE-85"
+        ],
+        "objectives_indirect": [
+            "E-POE-83",
+            "E-POE-84",
+            "E-POE-86"
+        ],
+        "canonical_examples_source": "Language rules self-verified; format ref: bank uk-ks2-2024-gps (KS2 GPS).",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "The best reading happens when a poem or story connects to something you know. Making connections helps you understand and remember what you read.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "A text-to-self connection links what you read to your own life and experiences.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Making a connection.",
+                "steps": [
+                    "A poem describes a child missing a friend who moved away.",
+                    "You remember when you changed schools and missed your friends.",
+                    "That is a text-to-self connection."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "A poem about a first day at a new school reminds you of your own first day. This is a:",
+                "options": [
+                    "text-to-self connection",
+                    "text-to-world connection",
+                    "spelling rule"
+                ],
+                "answer": 0,
+                "explain": "It links the text to your own experience, so it is a text-to-self connection.",
+                "rule": "A text-to-self connection links a text to your own life and experiences.",
+                "practiceItems": [
+                    {
+                        "prompt": "linking a text to your own life is text-to-___",
+                        "answer": "self"
+                    },
+                    {
+                        "prompt": "linking a text to the wider world is text-to-___",
+                        "answer": "world"
+                    },
+                    {
+                        "prompt": "linking a text to another book is text-to-___",
+                        "answer": "text"
+                    },
+                    {
+                        "prompt": "connections help you ___ a text (understand/ignore)",
+                        "answer": "understand"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "You can also connect a text to the wider world, or to another text you have read.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "check",
+                "question": "A poem about protecting the sea reminds you of a beach clean-up in your country. This is a:",
+                "options": [
+                    "text-to-self connection",
+                    "text-to-world connection",
+                    "text-to-text connection"
+                ],
+                "answer": 1,
+                "explain": "It links the poem to events in the wider world, so it is a text-to-world connection.",
+                "rule": "A text-to-world connection links a text to events and issues in the wider world.",
+                "practiceItems": [
+                    {
+                        "prompt": "linking a poem to a real world event is text-to-___",
+                        "answer": "world"
+                    },
+                    {
+                        "prompt": "linking two poems together is text-to-___",
+                        "answer": "text"
+                    },
+                    {
+                        "prompt": "linking a text to your own memory is text-to-___",
+                        "answer": "self"
+                    },
+                    {
+                        "prompt": "making connections helps you ___ what you read",
+                        "answer": "understand"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "A poem is about not giving up after failing a test. How does it connect to real life?",
+                "options": [
+                    "It reminds us to keep trying after we fail, like in our own lives",
+                    "It has nothing to do with real life",
+                    "Poems can never be about real things"
+                ],
+                "answer": 0,
+                "explain": "Connecting literature to life means linking the poem's message to your own experience. Everyone has failed at something, so a poem about not giving up speaks to real life — it encourages perseverance.",
+                "rule": "Connect a text's message to your own real-life experience.",
+                "principle": "Literature can mirror and guide real-life situations.",
+                "canonical_solution": [
+                    "The poem's message: keep trying after failing",
+                    "Everyone fails sometimes in real life",
+                    "So the message applies to us",
+                    "It connects by encouraging perseverance"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "finds the poem's message"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "links it to real experience"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains texts connect to life"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "says no connection",
+                        "coach": "Failing and trying again is a real-life experience."
+                    },
+                    {
+                        "if": "says poems are never real",
+                        "coach": "Poems often carry real-life messages."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "linking a text to your own experience is making a",
+                        "answer": "connection"
+                    },
+                    {
+                        "prompt": "the poem's message is about not",
+                        "answer": "giving up"
+                    },
+                    {
+                        "prompt": "can poems relate to real life? (yes/no)",
+                        "answer": "yes"
+                    },
+                    {
+                        "prompt": "keeping on after failing is called",
+                        "answer": "perseverance"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "content": "Connect what you read to yourself, the world, and other texts. The more you connect, the more you understand. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      { "type": "key", "content": "You can also connect a text to the wider world, or to another text you have read." },
-      {
-        "type": "check",
-        "question": "A poem about protecting the sea reminds you of a beach clean-up in your country. This is a:",
-        "options": ["text-to-self connection", "text-to-world connection", "text-to-text connection"],
-        "answer": 1,
-        "explain": "It links the poem to events in the wider world, so it is a text-to-world connection.",
-        "rule": "A text-to-world connection links a text to events and issues in the wider world.",
-        "practiceItems": [
-          { "prompt": "linking a poem to a real world event is text-to-___", "answer": "world" },
-          { "prompt": "linking two poems together is text-to-___", "answer": "text" },
-          { "prompt": "linking a text to your own memory is text-to-___", "answer": "self" },
-          { "prompt": "making connections helps you ___ what you read", "answer": "understand" }
-        ]
-      },
-      { "type": "text", "content": "Connect what you read to yourself, the world, and other texts. The more you connect, the more you understand. Let's practise!" }
-    ]
-  }
+    }
 ]

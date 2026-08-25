@@ -1,68 +1,193 @@
 [
-  {
-    "module": "ELA-006",
-    "title": "Synonyms and antonyms: words that mean the same or the opposite",
-    "is_published": true,
-    "blocks": [
-      {
-        "type": "text",
-        "content": "English gives us many words for the same idea, and pairs of words that are exact opposites. Knowing them makes your reading and writing much stronger."
-      },
-      {
-        "type": "key",
-        "content": "A synonym is a word that means the SAME thing, or nearly the same: 'big' and 'large'."
-      },
-      {
-        "type": "example",
-        "content": "Finding a synonym.",
-        "steps": [
-          "Take the word 'happy'.",
-          "Think of another word with the same meaning.",
-          "'glad' means the same as 'happy' — they are synonyms."
-        ]
-      },
-      {
-        "type": "matchpairs",
-        "instruction": "Match each word to its synonym (a word that means the same).",
-        "pairs": [
-          { "left": "happy", "right": "glad" },
-          { "left": "big", "right": "large" },
-          { "left": "fast", "right": "quick" },
-          { "left": "small", "right": "little" }
+    {
+        "module": "ELA-006",
+        "title": "Synonyms and antonyms: words that mean the same or the opposite",
+        "is_published": true,
+        "objectives_direct": [
+            "E-SPE-57"
         ],
-        "rule": "A synonym is a word that means the same, or nearly the same, as another word.",
-        "practiceItems": [
-          { "prompt": "a synonym for 'happy'", "answer": "glad" },
-          { "prompt": "a synonym for 'big'", "answer": "large" },
-          { "prompt": "a synonym for 'fast'", "answer": "quick" },
-          { "prompt": "a synonym for 'small'", "answer": "little" }
-        ]
-      },
-      {
-        "type": "key",
-        "content": "An antonym is a word that means the OPPOSITE: 'hot' and 'cold'."
-      },
-      {
-        "type": "matchpairs",
-        "instruction": "Match each word to its antonym (a word that means the opposite).",
-        "pairs": [
-          { "left": "hot", "right": "cold" },
-          { "left": "up", "right": "down" },
-          { "left": "happy", "right": "sad" },
-          { "left": "fast", "right": "slow" }
+        "objectives_indirect": [
+            "E-SPE-55",
+            "E-SPE-56"
         ],
-        "rule": "An antonym is a word that means the opposite of another word.",
-        "practiceItems": [
-          { "prompt": "an antonym for 'hot'", "answer": "cold" },
-          { "prompt": "an antonym for 'up'", "answer": "down" },
-          { "prompt": "an antonym for 'happy'", "answer": "sad" },
-          { "prompt": "an antonym for 'fast'", "answer": "slow" }
+        "canonical_examples_source": "Language rules self-verified; format ref: bank uk-ks2-2024-gps (KS2 GPS).",
+        "blocks": [
+            {
+                "type": "text",
+                "content": "English gives us many words for the same idea, and pairs of words that are exact opposites. Knowing them makes your reading and writing much stronger.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "key",
+                "content": "A synonym is a word that means the SAME thing, or nearly the same: 'big' and 'large'.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "example",
+                "content": "Finding a synonym.",
+                "steps": [
+                    "Take the word 'happy'.",
+                    "Think of another word with the same meaning.",
+                    "'glad' means the same as 'happy' — they are synonyms."
+                ],
+                "cognition": "knowing"
+            },
+            {
+                "type": "matchpairs",
+                "instruction": "Match each word to its synonym (a word that means the same).",
+                "pairs": [
+                    {
+                        "left": "happy",
+                        "right": "glad"
+                    },
+                    {
+                        "left": "big",
+                        "right": "large"
+                    },
+                    {
+                        "left": "fast",
+                        "right": "quick"
+                    },
+                    {
+                        "left": "small",
+                        "right": "little"
+                    }
+                ],
+                "rule": "A synonym is a word that means the same, or nearly the same, as another word.",
+                "practiceItems": [
+                    {
+                        "prompt": "a synonym for 'happy'",
+                        "answer": "glad"
+                    },
+                    {
+                        "prompt": "a synonym for 'big'",
+                        "answer": "large"
+                    },
+                    {
+                        "prompt": "a synonym for 'fast'",
+                        "answer": "quick"
+                    },
+                    {
+                        "prompt": "a synonym for 'small'",
+                        "answer": "little"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "key",
+                "content": "An antonym is a word that means the OPPOSITE: 'hot' and 'cold'.",
+                "cognition": "knowing"
+            },
+            {
+                "type": "matchpairs",
+                "instruction": "Match each word to its antonym (a word that means the opposite).",
+                "pairs": [
+                    {
+                        "left": "hot",
+                        "right": "cold"
+                    },
+                    {
+                        "left": "up",
+                        "right": "down"
+                    },
+                    {
+                        "left": "happy",
+                        "right": "sad"
+                    },
+                    {
+                        "left": "fast",
+                        "right": "slow"
+                    }
+                ],
+                "rule": "An antonym is a word that means the opposite of another word.",
+                "practiceItems": [
+                    {
+                        "prompt": "an antonym for 'hot'",
+                        "answer": "cold"
+                    },
+                    {
+                        "prompt": "an antonym for 'up'",
+                        "answer": "down"
+                    },
+                    {
+                        "prompt": "an antonym for 'happy'",
+                        "answer": "sad"
+                    },
+                    {
+                        "prompt": "an antonym for 'fast'",
+                        "answer": "slow"
+                    }
+                ],
+                "cognition": "applying"
+            },
+            {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "Are 'happy' and 'sad' synonyms or antonyms, and how can you tell?",
+                "options": [
+                    "Antonyms — they mean the opposite",
+                    "Synonyms — they mean the same",
+                    "Homophones — they sound the same"
+                ],
+                "answer": 0,
+                "explain": "Synonyms mean nearly the same thing (big and large). Antonyms mean the opposite. 'happy' and 'sad' are opposite feelings, so they are antonyms.",
+                "rule": "Synonyms mean the same; antonyms mean the opposite.",
+                "principle": "Words are related by meaning: same (synonym) or opposite (antonym).",
+                "canonical_solution": [
+                    "'happy' and 'sad' are opposite feelings",
+                    "Opposite meanings = antonyms",
+                    "(same meanings would be synonyms)",
+                    "So they are antonyms"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "compares the two meanings"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "sees they are opposite, so antonyms"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "distinguishes synonym from antonym"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "says synonyms",
+                        "coach": "Synonyms mean the same; happy and sad are opposite."
+                    },
+                    {
+                        "if": "says homophones",
+                        "coach": "Homophones sound alike; these differ in meaning."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "words with opposite meanings are called",
+                        "answer": "antonyms"
+                    },
+                    {
+                        "prompt": "words with the same meaning are called",
+                        "answer": "synonyms"
+                    },
+                    {
+                        "prompt": "an antonym of 'happy'",
+                        "answer": "sad"
+                    },
+                    {
+                        "prompt": "a synonym of 'big'",
+                        "answer": "large"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "content": "Synonyms mean the same, antonyms mean the opposite. Collect them like treasure — they make your writing shine. Let's practise!",
+                "cognition": "knowing"
+            }
         ]
-      },
-      {
-        "type": "text",
-        "content": "Synonyms mean the same, antonyms mean the opposite. Collect them like treasure — they make your writing shine. Let's practise!"
-      }
-    ]
-  }
+    }
 ]
