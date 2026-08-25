@@ -113,7 +113,7 @@ flowchart TD
       C1 <--> C2[C2 Adventure Map]
     end
     C1 -->|tap target module| C3[C3 Explainer + Competency Check]
-    C3 -->|test out: 3× first-try D1/D3/D5| C5[C5 Mastery]
+    C3 -->|test out: 6× first-try (2 each D1/D3/D5)| C5[C5 Mastery]
     C3 -->|didn't test out: choose| C3a[C3a Interactive Lesson + clarify chat]
     C3 -->|choose| C3b[C3b Tutorials ×3]
     C3 -->|choose| C4[C4 Practice D1→D3→D5]
