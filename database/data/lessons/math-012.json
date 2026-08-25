@@ -90,6 +90,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "Tim says 3/4 and 6/8 are different fractions because 6 and 8 are bigger numbers. Is he right?",
+                "options": [
+                    "No — multiply top and bottom by 2: 3/4 = 6/8, the same amount",
+                    "Yes, 6/8 is bigger",
+                    "They can never be equal"
+                ],
+                "answer": 0,
+                "explain": "If you multiply the top and the bottom by the same number, the fraction's value does not change. 3/4 with top and bottom times 2 gives 6/8. They are equivalent — the same amount of pizza, cut into more pieces.",
+                "rule": "Multiplying or dividing top and bottom by the same number keeps a fraction's value.",
+                "principle": "Bigger numbers in a fraction do not mean a bigger amount if both were scaled equally.",
+                "canonical_solution": [
+                    "3 x 2 = 6 (top)",
+                    "4 x 2 = 8 (bottom)",
+                    "So 3/4 = 6/8",
+                    "Same value, just more pieces"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "multiplies top and bottom by the same number"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "shows 3/4 and 6/8 are the same amount"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains scaling top and bottom equally keeps the value"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "thinks larger numbers mean a larger fraction",
+                        "coach": "Check by scaling: 3/4 times 2/2 is 6/8, the same size."
+                    },
+                    {
+                        "if": "changes only the top or only the bottom",
+                        "coach": "You must multiply both the top and the bottom by the same number."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "6/8 in its simplest form",
+                        "answer": "3/4"
+                    },
+                    {
+                        "prompt": "3 x 2",
+                        "answer": "6"
+                    },
+                    {
+                        "prompt": "4 x 2",
+                        "answer": "8"
+                    },
+                    {
+                        "prompt": "4/8 in its simplest form",
+                        "answer": "1/2"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Multiply to make bigger equivalent fractions, and divide to simplify to smaller ones. The value stays the same. Let's practise!",
                 "cognition": "knowing"

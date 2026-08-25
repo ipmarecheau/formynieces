@@ -91,6 +91,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "Ken finds 3/4 of 20 mangoes by doing 20 / 4 = 5, then 5 x 3 = 15. Why does his method work?",
+                "options": [
+                    "Yes — 20 / 4 = 5 is one quarter, and three quarters is 5 x 3 = 15",
+                    "No, 3/4 of 20 is 5",
+                    "It should be 20 x 3 = 60"
+                ],
+                "answer": 0,
+                "explain": "One quarter of 20 is 20 / 4 = 5. Three quarters is three of those, so 5 x 3 = 15. Dividing by the denominator finds one part, and multiplying by the numerator counts how many parts you want.",
+                "rule": "Divide by the denominator to find one part, then multiply by the numerator.",
+                "principle": "A fraction of an amount means split into equal parts, then take some of them.",
+                "canonical_solution": [
+                    "20 / 4 = 5 (one quarter)",
+                    "Three quarters = 5 x 3",
+                    "5 x 3 = 15",
+                    "So 3/4 of 20 is 15"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "divides by 4 then multiplies by 3"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "explains 5 is one quarter and 15 is three quarters"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "links dividing by the denominator and multiplying by the numerator"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "stops at 20 / 4 = 5",
+                        "coach": "That is one quarter — you need three, so times 3."
+                    },
+                    {
+                        "if": "multiplies 20 by 3",
+                        "coach": "First split into 4 parts, then take 3 of them."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "20 / 4",
+                        "answer": "5"
+                    },
+                    {
+                        "prompt": "5 x 3",
+                        "answer": "15"
+                    },
+                    {
+                        "prompt": "3/4 of 20",
+                        "answer": "15"
+                    },
+                    {
+                        "prompt": "1/4 of 20",
+                        "answer": "5"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Divide the collection into equal groups for the bottom number, then take as many groups as the top. Let's practise!",
                 "cognition": "knowing"

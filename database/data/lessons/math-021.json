@@ -90,6 +90,67 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "A roti costs $4.50. You buy 3 and pay with a $20 note. What is your change, and in what order do you work it out?",
+                "options": [
+                    "$6.50 — first 3 x 4.50 = 13.50, then 20 − 13.50 = 6.50",
+                    "$15.50",
+                    "$4.50"
+                ],
+                "answer": 0,
+                "explain": "Do the multiplication before the subtraction: three rotis cost 3 x 4.50 = 13.50. Then take that from the money paid: 20 − 13.50 = 6.50. Working in the wrong order gives the wrong change.",
+                "rule": "Find the total cost first (multiply), then subtract from what you paid.",
+                "principle": "In multi-step money problems the order of operations matters.",
+                "canonical_solution": [
+                    "3 x 4.50 = 13.50 (total cost)",
+                    "20 − 13.50 = 6.50 (change)",
+                    "So the change is $6.50"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "multiplies 3 x 4.50 then subtracts from 20"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "gets 6.50 in the right order"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains cost first, then change"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "subtracts one roti's price from 20",
+                        "coach": "You bought 3 rotis — find the total cost first."
+                    },
+                    {
+                        "if": "adds instead of subtracting for change",
+                        "coach": "Change is what is left: paid minus cost."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "3 x 4.50",
+                        "answer": "13.50"
+                    },
+                    {
+                        "prompt": "20 − 13.50",
+                        "answer": "6.50"
+                    },
+                    {
+                        "prompt": "2 x 4.50",
+                        "answer": "9.00"
+                    },
+                    {
+                        "prompt": "4.50 x 4",
+                        "answer": "18.00"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Line up the points to add prices, and subtract the cost from what you paid to get the change. Let's practise!",
                 "cognition": "knowing"

@@ -90,6 +90,67 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "A water tank is 3/4 full. During the day 1/4 of the whole tank is used. What fraction is left, and how do you know?",
+                "options": [
+                    "1/2 — 3/4 − 1/4 = 2/4, which simplifies to 1/2",
+                    "1/4 is left",
+                    "2/8 is left"
+                ],
+                "answer": 0,
+                "explain": "Both fractions are in quarters, so subtract the tops: 3/4 − 1/4 = 2/4. Two quarters is the same as one half, so half the tank is left.",
+                "rule": "Subtract fractions with the same denominator by subtracting the tops, then simplify.",
+                "principle": "Same-size pieces let you subtract counts directly, and equivalent fractions can be simplified.",
+                "canonical_solution": [
+                    "3/4 − 1/4 = 2/4",
+                    "2/4 simplifies to 1/2",
+                    "So half the tank is left"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "subtracts the numerators with a common denominator"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "gets 2/4 and simplifies to 1/2"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains subtracting counts of equal pieces"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "subtracts denominators too",
+                        "coach": "Keep the quarter-size pieces — the bottom stays 4."
+                    },
+                    {
+                        "if": "leaves the answer as 2/4",
+                        "coach": "2/4 is correct but simplify it to 1/2."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "3/4 − 1/4",
+                        "answer": "2/4"
+                    },
+                    {
+                        "prompt": "2/4 in its simplest form",
+                        "answer": "1/2"
+                    },
+                    {
+                        "prompt": "the denominator of 3/4 − 1/4",
+                        "answer": "4"
+                    },
+                    {
+                        "prompt": "3/4 − 2/4",
+                        "answer": "1/4"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Joined together means add; taken away means subtract. Read the story, then work with the tops. Let's practise!",
                 "cognition": "knowing"

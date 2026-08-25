@@ -90,6 +90,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "In the decimal 3.45, Mia says the 5 is worth 5. Is she right?",
+                "options": [
+                    "No — the 5 is in the hundredths place, so it is worth 0.05",
+                    "Yes, it is worth 5",
+                    "It is worth 0.5"
+                ],
+                "answer": 0,
+                "explain": "After the decimal point the places are tenths, then hundredths. The 4 is 4 tenths (0.4) and the 5 is 5 hundredths (0.05). A digit's place still decides its value, even after the point.",
+                "rule": "The places after the decimal point are tenths, then hundredths.",
+                "principle": "Place value continues past the decimal point, getting ten times smaller each step.",
+                "canonical_solution": [
+                    "3.45 has 3 ones, 4 tenths, 5 hundredths",
+                    "The 5 is in the hundredths place",
+                    "Hundredths means 0.05",
+                    "So the 5 is worth 0.05, not 5"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "names the place of the 5 (hundredths)"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "gives its value as 0.05"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains place value continues after the point"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "reads the 5 as a whole 5",
+                        "coach": "After the point, digits are parts of one — the 5 is 5 hundredths."
+                    },
+                    {
+                        "if": "says 0.5",
+                        "coach": "0.5 is the tenths place; the 5 here is one place further, so 0.05."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "the value of the 5 in 3.45",
+                        "answer": "0.05"
+                    },
+                    {
+                        "prompt": "the value of the 4 in 3.45",
+                        "answer": "0.4"
+                    },
+                    {
+                        "prompt": "3.45 = 3 + 0.4 + ___",
+                        "answer": "0.05"
+                    },
+                    {
+                        "prompt": "the tenths digit of 3.45",
+                        "answer": "4"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "The places after the point get ten times smaller each step. Read them and you can expand any decimal. Let's practise!",
                 "cognition": "knowing"

@@ -91,6 +91,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "Jo says 1/2 x 1/3 must be bigger than 1/2, because multiplying makes things bigger. Is she right?",
+                "options": [
+                    "No — 1/2 x 1/3 = 1/6, which is smaller than 1/2",
+                    "Yes, it gets bigger",
+                    "It stays 1/2"
+                ],
+                "answer": 0,
+                "explain": "Multiply the tops (1 x 1 = 1) and the bottoms (2 x 3 = 6) to get 1/6. Taking a third OF a half gives a smaller piece, not a bigger one. Multiplying by a fraction less than 1 makes the answer smaller.",
+                "rule": "Multiply the tops together and the bottoms together.",
+                "principle": "Multiplying by a fraction smaller than 1 makes the result smaller, not bigger.",
+                "canonical_solution": [
+                    "Tops: 1 x 1 = 1",
+                    "Bottoms: 2 x 3 = 6",
+                    "So 1/2 x 1/3 = 1/6",
+                    "1/6 is smaller than 1/2"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "multiplies tops and bottoms to get 1/6"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "sees 1/6 is smaller than 1/2"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains multiplying by a proper fraction shrinks the amount"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "assumes multiplication always increases",
+                        "coach": "A third of a half is a small piece — 1/6, smaller than 1/2."
+                    },
+                    {
+                        "if": "adds instead of multiplying",
+                        "coach": "Multiply tops and bottoms: 1x1 over 2x3."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "1/2 x 1/3",
+                        "answer": "1/6"
+                    },
+                    {
+                        "prompt": "is 1/6 smaller than 1/2? (yes/no)",
+                        "answer": "yes"
+                    },
+                    {
+                        "prompt": "2 x 3",
+                        "answer": "6"
+                    },
+                    {
+                        "prompt": "1 x 1",
+                        "answer": "1"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Tops times tops, bottoms times bottoms — and for a fraction of a number, divide then multiply. Let's practise!",
                 "cognition": "knowing"

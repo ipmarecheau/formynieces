@@ -91,6 +91,68 @@
                 "cognition": "applying"
             },
             {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "Which is bigger, 0.5 or 0.45? Tom says 0.45 because it has more digits. How do you know for sure?",
+                "options": [
+                    "0.5 — compare tenths first: 5 tenths beats 4 tenths",
+                    "0.45 is bigger, it has more digits",
+                    "They are equal"
+                ],
+                "answer": 0,
+                "explain": "Line up the places: 0.5 is the same as 0.50. Compare the tenths: 5 versus 4. Five tenths is more than four, so 0.5 is bigger. More digits after the point does not mean a bigger number.",
+                "rule": "Compare decimals place by place from the left, matching lengths with zeros if needed.",
+                "principle": "The number of decimal digits does not decide size; the place values do.",
+                "canonical_solution": [
+                    "Write 0.5 as 0.50",
+                    "Compare tenths: 5 vs 4",
+                    "5 tenths > 4 tenths",
+                    "So 0.5 > 0.45"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "matches place values (0.50) and compares tenths"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "concludes 0.5 is bigger"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains more digits does not mean bigger"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "picks the longer decimal",
+                        "coach": "Compare place by place — write 0.5 as 0.50 first."
+                    },
+                    {
+                        "if": "ignores place value",
+                        "coach": "Tenths come before hundredths; 5 tenths beats 4 tenths."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "bigger of 0.5 and 0.45 (type it)",
+                        "answer": "0.5"
+                    },
+                    {
+                        "prompt": "the tenths digit of 0.45",
+                        "answer": "4"
+                    },
+                    {
+                        "prompt": "0.5 written with two decimal places",
+                        "answer": "0.50"
+                    },
+                    {
+                        "prompt": "bigger of 0.7 and 0.68 (type it)",
+                        "answer": "0.7"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Line up the points to compare, and check the tenths digit to round. Let's practise!",
                 "cognition": "knowing"
