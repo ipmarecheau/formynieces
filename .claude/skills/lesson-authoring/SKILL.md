@@ -1,6 +1,6 @@
 ---
 name: lesson-authoring
-description: Author (or generate + vet) coherent SmoothSeas interactive lessons AND their practice-question banks so they work with the learning loop and the AI-assisted re-teach. Use whenever creating/editing a lesson JSON bundle, adding `rule`/`practiceItems` to blocks, importing practice questions, or deciding how many questions a topic needs. Covers the block flow, the re-teach fields, the relearn loop, question-import fields, and the per-level question minimum.
+description: Author (or generate + vet) immersive, interactive, KAR-balanced SmoothSeas lessons AND their practice-question banks that work with the learning loop and the AI-assisted re-teach — teaching a concept deeply, letting the child DO it with widgets, and evaluating thinking + principle-recall (not just answers) against verified ground truth. Use whenever creating/editing a lesson JSON bundle, choosing widgets, adding KAR/objective tags or AI-evaluation fields, sourcing ground truth for a module, importing practice questions, or deciding how many questions a topic needs. Covers the five non-negotiables, the AI-evaluation contract, objective mapping, just-in-time ground truth, the block flow, the re-teach fields, and the per-level question minimum.
 ---
 
 # Authoring SmoothSeas lessons + banks
@@ -9,6 +9,36 @@ A lesson and its practice bank are one deliverable per module. Get them wrong an
 tests the wrong thing. The companion reference `formynieces-spec/lesson_authoring_guide.md` has the
 full block table + a complete example — read it for block mechanics. THIS skill is the operating
 rules that keep a lesson coherent with the **learning loop** and the **re-teach**.
+
+> **Full standard: `formynieces-spec/lesson_development_guide.md`** — the immersion / KAR / AI-evaluation /
+> widget-palette / ground-truth detail with the per-strand recipes and the per-module stub. This SKILL
+> is the enforcing summary; the guide is the reference.
+
+## The five non-negotiables (every lesson)
+
+1. **Coherence** — one skill; every block, widget and item is about it (see §0 below).
+2. **Immersion** — one concrete T&T scenario, Smooth's voice, *do before read*, low reading load.
+3. **Interactivity** — **≥ half** the lesson is a manipulable widget/drag/tap/typed answer, not MC; the widget must *be* the concept (fraction bar, tile-grid, clock, drag-to-order, tag-in-context, …).
+4. **KAR — all three** — ≥1 **Knowing**, ≥1 **Applying**, ≥1 **Reasoning** block; tag each interactive block `cognition: knowing|applying|reasoning`. Reasoning is required, not optional.
+5. **AI evaluation of thinking** — every Reasoning/graded block carries `principle` + verified `canonical_solution` + a `rubric` scoring **method / reasoning / principle** (right answer, no working = *partial*) + `misconceptions` + `sample_answers`; and the child **states the principle in her own words** (LLM-judged, accepted after a few tries).
+
+**Not in a lesson: difficulty or pacing.** Every lesson is thorough; difficulty lives in the D1/D3/D5 ladder. Any time signal is *system metadata on the module*, never content.
+
+## Objective mapping (data — drives the badge + Syllabus page)
+
+Set `objectives_direct` and `objectives_indirect` by **code** (never free-hand text) plus per-block `cognition`. One source feeds the in-lesson 🎯 badge and the read-only Syllabus/progress page.
+
+## Ground truth — verify every answer, just-in-time
+
+**Never guess a `canonical_solution`.** Anchor it to a verified source:
+
+1. **Check the bank** `/root/dev/sea-ground-truth-bank/` (grep `MANIFEST.json` by strand/level/subject).
+2. **If a module lacks a verified source, fetch more ground truth ON DEMAND — approved sources only:**
+   official exams (**SEA**, UK KS2 [OGL], NAPLAN, DBE, KNEC) for format + verified answers; open curricula
+   (Illustrative Math CC-BY, Siyavula CC-BY, CK-12, Eureka, NCERT) for worked solutions; public-domain / CC
+   (Gutenberg, African Storybook) for ELA passages.
+3. **Verify independently** (recompute; cross-check ≥1 source), **add it to the bank with metadata**, and record `canonical_examples_source` in the lesson.
+4. **PROHIBITED:** copyrighted competitor/tutor worked-solutions (free-to-view ≠ free-to-reuse) and pirated textbooks. If no clean source can establish the answer, **flag the module for human review — never ship an unverified Reasoning item.**
 
 ## 0. The one rule: COHERENCE (never break this)
 
