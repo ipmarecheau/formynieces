@@ -25,9 +25,9 @@
                 "type": "example",
                 "content": "Expanding a number.",
                 "steps": [
-                    "Take 526.",
-                    "The 5 is 500, the 2 is 20, the 6 is 6.",
-                    "So 526 = 500 + 20 + 6."
+                    "Take 472.",
+                    "The 4 is 400, the 7 is 70, the 2 is 2.",
+                    "So 472 = 400 + 70 + 2."
                 ],
                 "cognition": "knowing"
             },

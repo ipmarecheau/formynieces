@@ -26,9 +26,9 @@
                 "type": "example",
                 "content": "Working out profit.",
                 "steps": [
-                    "You buy a bag for $20 and sell it for $30.",
-                    "Profit = selling price - cost = $30 - $20.",
-                    "So the profit is $10."
+                    "You buy a bag for $85 and sell it for $99.",
+                    "Profit = selling price - cost = $99 - $85.",
+                    "So the profit is $14."
                 ],
                 "cognition": "knowing"
             },

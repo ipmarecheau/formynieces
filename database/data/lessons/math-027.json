@@ -26,8 +26,8 @@
                 "type": "example",
                 "content": "Working out a total.",
                 "steps": [
-                    "You buy 3 books at $5 each.",
-                    "Total cost = 3 x $5 = $15.",
+                    "You buy 4 books at $6 each.",
+                    "Total cost = 4 x $6 = $24.",
                     "Now you are ready for the next step."
                 ],
                 "cognition": "knowing"

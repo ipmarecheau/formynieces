@@ -26,9 +26,9 @@
                 "type": "example",
                 "content": "Reading a decimal.",
                 "steps": [
-                    "Look at 3.45.",
-                    "The 4 is in the tenths place (0.4).",
-                    "The 5 is in the hundredths place (0.05)."
+                    "Look at 4.72.",
+                    "The 7 is in the tenths place (0.7).",
+                    "The 2 is in the hundredths place (0.02)."
                 ],
                 "cognition": "knowing"
             },

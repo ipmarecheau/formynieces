@@ -24,12 +24,12 @@
             },
             {
                 "type": "example",
-                "content": "Adding 347 + 285.",
+                "content": "Adding 463 + 218.",
                 "steps": [
-                    "Ones: 7 + 5 = 12, write 2 carry 1.",
-                    "Tens: 4 + 8 + 1 = 13, write 3 carry 1.",
-                    "Hundreds: 3 + 2 + 1 = 6.",
-                    "Answer: 632."
+                    "Ones: 3 + 8 = 11, write 1 carry 1.",
+                    "Tens: 6 + 1 + 1 = 8.",
+                    "Hundreds: 4 + 2 = 6.",
+                    "Answer: 681."
                 ],
                 "cognition": "knowing"
             },

@@ -26,9 +26,9 @@
                 "type": "example",
                 "content": "The value of a digit.",
                 "steps": [
-                    "Look at 5,308.",
-                    "The 3 sits in the hundreds place.",
-                    "So its value is 3 hundreds = 300."
+                    "Look at 4,271.",
+                    "The 2 sits in the hundreds place.",
+                    "So its value is 2 hundreds = 200."
                 ],
                 "cognition": "knowing"
             },

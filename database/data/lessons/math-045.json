@@ -26,9 +26,9 @@
                 "type": "example",
                 "content": "Finding a floor area.",
                 "steps": [
-                    "A room is 4 m by 3 m.",
-                    "Floor area = length x width = 4 x 3.",
-                    "So the area is 12 square metres."
+                    "A room is 7 m by 5 m.",
+                    "Floor area = length x width = 7 x 5.",
+                    "So the area is 35 square metres."
                 ],
                 "cognition": "knowing"
             },

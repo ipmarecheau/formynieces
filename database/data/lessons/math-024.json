@@ -26,9 +26,9 @@
                 "type": "example",
                 "content": "Finding a discount.",
                 "steps": [
-                    "A $50 shirt has 10% off.",
-                    "10% of $50 = $5.",
-                    "So the discount is $5."
+                    "A $45 shirt has 20% off.",
+                    "20% of $45 = $9.",
+                    "So the discount is $9."
                 ],
                 "cognition": "knowing"
             },

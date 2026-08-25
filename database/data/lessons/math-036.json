@@ -27,7 +27,7 @@
                 "content": "Metres to centimetres.",
                 "steps": [
                     "There are 100 cm in 1 m.",
-                    "So 3 m has 3 x 100 = 300 cm.",
+                    "So 4 m has 4 x 100 = 400 cm.",
                     "The smaller the unit, the more of them you need."
                 ],
                 "cognition": "knowing"

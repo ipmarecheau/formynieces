@@ -25,11 +25,11 @@
             },
             {
                 "type": "example",
-                "content": "Comparing 0.5 and 0.45.",
+                "content": "Comparing 0.8 and 0.62.",
                 "steps": [
-                    "Tenths: 0.5 has 5 tenths, 0.45 has 4 tenths.",
-                    "5 tenths is more than 4 tenths.",
-                    "So 0.5 is greater than 0.45."
+                    "Tenths: 0.8 has 8 tenths, 0.62 has 6 tenths.",
+                    "8 tenths is more than 6 tenths.",
+                    "So 0.8 is greater than 0.62."
                 ],
                 "cognition": "knowing"
             },

@@ -24,11 +24,11 @@
             },
             {
                 "type": "example",
-                "content": "Comparing 3,450 and 3,540.",
+                "content": "Comparing 2,410 and 2,530.",
                 "steps": [
-                    "Thousands are the same: 3 and 3.",
+                    "Thousands are the same: 2 and 2.",
                     "Hundreds differ: 4 and 5.",
-                    "Since 4 is less than 5, 3,450 is less than 3,540."
+                    "Since 4 is less than 5, 2,410 is less than 2,530."
                 ],
                 "cognition": "knowing"
             },

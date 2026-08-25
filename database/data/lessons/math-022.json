@@ -26,9 +26,9 @@
                 "type": "example",
                 "content": "Percent to decimal.",
                 "steps": [
-                    "50% means 50 out of 100.",
-                    "50 out of 100 is 50 ÷ 100 = 0.5.",
-                    "So 50% = 0.5."
+                    "40% means 40 out of 100.",
+                    "40 out of 100 is 40 ÷ 100 = 0.4.",
+                    "So 40% = 0.4."
                 ],
                 "cognition": "knowing"
             },

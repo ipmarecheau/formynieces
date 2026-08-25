@@ -25,11 +25,11 @@
             },
             {
                 "type": "example",
-                "content": "Multiplying 3.4 x 10.",
+                "content": "Multiplying 2.6 x 10.",
                 "steps": [
                     "Move the point one place right.",
-                    "3.4 becomes 34.",
-                    "So 3.4 x 10 = 34."
+                    "2.6 becomes 26.",
+                    "So 2.6 x 10 = 26."
                 ],
                 "cognition": "knowing"
             },

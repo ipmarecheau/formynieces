@@ -25,11 +25,11 @@
             },
             {
                 "type": "example",
-                "content": "Round 6,432 to the nearest thousand.",
+                "content": "Round 5,271 to the nearest thousand.",
                 "steps": [
-                    "The hundreds digit is 4.",
-                    "4 is less than 5, so we round down.",
-                    "6,432 rounds to 6,000."
+                    "The hundreds digit is 2.",
+                    "2 is less than 5, so we round down.",
+                    "5,271 rounds to 5,000."
                 ],
                 "cognition": "knowing"
             },

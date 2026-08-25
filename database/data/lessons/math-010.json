@@ -25,9 +25,9 @@
                 "type": "example",
                 "content": "Finding the rule.",
                 "steps": [
-                    "Look at 4, 8, 12, 16.",
-                    "Each number is 4 more than the last.",
-                    "So the rule is 'add 4'."
+                    "Look at 2, 5, 8, 11.",
+                    "Each number is 3 more than the last.",
+                    "So the rule is 'add 3'."
                 ],
                 "cognition": "knowing"
             },

@@ -21,11 +21,11 @@
             },
             {
                 "type": "example",
-                "content": "Solving n + 5 = 12.",
+                "content": "Solving n + 3 = 19.",
                 "steps": [
-                    "Something plus 5 makes 12.",
-                    "Undo the +5 by subtracting: 12 - 5 = 7.",
-                    "So n = 7. Check: 7 + 5 = 12. Correct!"
+                    "Something plus 3 makes 19.",
+                    "Undo the +3 by subtracting: 19 - 3 = 16.",
+                    "So n = 16. Check: 16 + 3 = 19. Correct!"
                 ],
                 "cognition": "knowing"
             },

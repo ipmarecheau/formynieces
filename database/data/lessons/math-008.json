@@ -24,11 +24,11 @@
             },
             {
                 "type": "example",
-                "content": "Dividing 84 ÷ 4.",
+                "content": "Dividing 96 ÷ 4.",
                 "steps": [
-                    "Share 84 into 4 equal groups.",
-                    "Each group gets 21.",
-                    "Check: 21 x 4 = 84. Correct!"
+                    "Share 96 into 4 equal groups.",
+                    "Each group gets 24.",
+                    "Check: 24 x 4 = 96. Correct!"
                 ],
                 "cognition": "knowing"
             },

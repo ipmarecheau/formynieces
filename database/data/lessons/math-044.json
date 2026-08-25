@@ -27,8 +27,8 @@
                 "type": "example",
                 "content": "Same unit first.",
                 "steps": [
-                    "A jug holds 2 litres.",
-                    "To work in millilitres, convert: 2 litres = 2000 ml.",
+                    "A jug holds 3 litres.",
+                    "To work in millilitres, convert: 3 litres = 3000 ml.",
                     "Now you can compare or subtract in millilitres."
                 ],
                 "cognition": "knowing"
