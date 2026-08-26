@@ -18,6 +18,12 @@
                 "cognition": "knowing"
             },
             {
+                "type": "solids",
+                "cognition": "knowing",
+                "question": "Tap each solid to see its faces, edges and vertices.",
+                "content": "A face is a flat surface, an edge is where two faces meet, a vertex is a corner. A cube has 6 faces, 12 edges and 8 vertices."
+            },
+            {
                 "type": "key",
                 "content": "A solid has faces (flat surfaces), edges (where faces meet) and vertices (corners). A cube has 6 faces, 12 edges and 8 vertices.",
                 "cognition": "knowing"

@@ -19,6 +19,15 @@
                 "cognition": "knowing"
             },
             {
+                "type": "cuboid",
+                "cognition": "knowing",
+                "l": 3,
+                "w": 2,
+                "h": 2,
+                "question": "Build a box and watch its volume change.",
+                "content": "Volume is how many unit cubes fill a box. The base layer has length x width cubes, and there are height layers — so volume = length x width x height. Try 3 x 2 x 2 = 12 cm³."
+            },
+            {
                 "type": "key",
                 "content": "The volume of a box is length x width x height, measured in cubic units.",
                 "cognition": "knowing"

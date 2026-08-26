@@ -19,6 +19,13 @@
                 "cognition": "knowing"
             },
             {
+                "type": "symmetry",
+                "cognition": "knowing",
+                "shape": "square",
+                "question": "Tap every fold line that makes a mirror image, then Check.",
+                "content": "A line of symmetry folds a shape into two matching halves. A square has 4 lines of symmetry; a rectangle has 2."
+            },
+            {
                 "type": "key",
                 "content": "A line of symmetry divides a shape into two halves that are mirror images of each other.",
                 "cognition": "knowing"

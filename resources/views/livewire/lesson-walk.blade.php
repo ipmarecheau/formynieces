@@ -105,6 +105,58 @@
     .clk-num { fill: #495b6a; font: 600 13px 'IBM Plex Mono', monospace; text-anchor: middle; dominant-baseline: middle; }
     .lw-clock-out { text-align: center; font-weight: 700; color: var(--lw-ink, #16242e); margin-top: 6px; }
     .lw-clock-btn { display: inline-block; margin: 6px auto 0; padding: 6px 14px; border-radius: 999px; border: 1px solid #d6c9b1; background: #fbeecd; color: #8a5a00; font-weight: 700; cursor: pointer; }
+    /* Shared widget chrome (ported from Measurement Studio) */
+    .lw-wg { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .lw-wg-out { text-align: center; font-weight: 700; color: #16242e; margin-top: 4px; }
+    .lw-wg-btns { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; margin-top: 6px; }
+    .lw-wg-btn { padding: 6px 12px; border-radius: 10px; border: 1.5px solid #d6c9b1; background: #fffdf8; color: #16242e; font-weight: 700; cursor: pointer; }
+    .lw-wg-btn.solid { background: #0d7d8c; color: #fff; border-color: #0d7d8c; }
+    .lw-wg-btn.sel { border-color: #0d7d8c; background: #e3f1f2; color: #0a5c68; }
+    /* Cuboid */
+    .lw-cuboid { position: relative; width: 220px; height: 170px; margin: 12px auto; }
+    .cube-layer { position: absolute; display: grid; gap: 2px; bottom: 40px; left: 40px; }
+    .cube { width: 22px; height: 22px; background: #0d7d8c; border: 1px solid #0a5c68; border-radius: 3px; }
+    .cube.ghost { background: transparent; border-color: #d6c9b1; border-style: dashed; }
+    /* Jug */
+    .lw-jug { width: 130px; height: 190px; position: relative; border: 3px solid #d6c9b1; border-top: none; border-radius: 0 0 22px 22px; background: #fffdf8; overflow: hidden; margin: 6px auto; }
+    .jug-fill { position: absolute; left: 0; right: 0; bottom: 0; background: linear-gradient(180deg, #4cc9d8, #22a3b3); transition: height .25s ease; }
+    .jug-mark { position: absolute; left: 0; width: 14px; height: 1.5px; background: #7d8a97; }
+    .jug-mlab { position: absolute; left: 18px; font: 600 10px 'IBM Plex Mono', monospace; color: #7d8a97; transform: translateY(-50%); }
+    /* Balance */
+    .lw-bal { width: min(92vw, 380px); height: 190px; position: relative; margin: 6px auto; }
+    .bal-pivot { position: absolute; left: 50%; top: 60px; width: 10px; height: 110px; margin-left: -5px; background: #d6c9b1; border-radius: 4px; }
+    .bal-beam { position: absolute; left: 50%; top: 56px; width: 280px; height: 10px; margin-left: -140px; background: #0a5c68; border-radius: 6px; transform-origin: center; transition: transform .35s ease; }
+    .bal-pan { position: absolute; top: 74px; width: 96px; height: 60px; border: 2px solid #d6c9b1; border-top: none; border-radius: 0 0 48px 48px; background: #eee7da; display: flex; flex-wrap: wrap; align-content: flex-end; justify-content: center; gap: 3px; padding: 5px; }
+    .bal-pan.left { left: calc(50% - 140px); } .bal-pan.right { left: calc(50% + 44px); }
+    .bal-wt { width: 26px; height: 18px; background: #f2a900; border-radius: 3px; font: 800 9px 'Nunito'; color: #3a2900; display: flex; align-items: center; justify-content: center; }
+    /* Angle */
+    .lw-ang { width: 100%; max-width: 260px; height: auto; display: block; margin: 4px auto; touch-action: none; }
+    .ang-base { stroke: #16242e; stroke-width: 4; stroke-linecap: round; }
+    .ang-ray { stroke: #0d7d8c; stroke-width: 4; stroke-linecap: round; }
+    .ang-arc { fill: none; stroke: #f2a900; stroke-width: 3; }
+    .ang-lab { fill: #8a5a00; font: 700 15px 'IBM Plex Mono', monospace; }
+    /* Ruler */
+    .lw-rul-wrap { overflow-x: auto; width: 100%; padding-bottom: 6px; }
+    .lw-rul { position: relative; height: 104px; width: 460px; }
+    .rul-tick { position: absolute; top: 56px; width: 1px; background: #7d8a97; }
+    .rul-tick.cm { height: 20px; width: 1.5px; background: #16242e; }
+    .rul-tick.mm { height: 10px; }
+    .rul-lab { position: absolute; top: 78px; font: 600 11px 'IBM Plex Mono', monospace; color: #495b6a; transform: translateX(-50%); }
+    .rul-ribbon { position: absolute; top: 20px; left: 0; height: 26px; background: #0d7d8c; border-radius: 5px; opacity: .9; }
+    .rul-handle { position: absolute; top: 8px; width: 26px; height: 50px; margin-left: -13px; background: #f2a900; border: 2px solid #fffdf8; border-radius: 8px; cursor: grab; box-shadow: 0 3px 8px rgba(0,0,0,.25); touch-action: none; }
+    /* Solids */
+    .solid-row { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+    .solid-card { width: 72px; padding: 9px 6px 7px; border: 1.5px solid #d6c9b1; border-radius: 12px; background: #fffdf8; cursor: pointer; text-align: center; font-size: 11px; font-weight: 800; color: #495b6a; }
+    .solid-card.sel { border-color: #0d7d8c; background: #e3f1f2; color: #0a5c68; }
+    .solid-card svg { display: block; margin: 0 auto 5px; }
+    .solid-ic { stroke: #0a5c68; fill: #e3f1f2; stroke-width: 2; stroke-linejoin: round; }
+    .solid-ic .b { fill: none; stroke-dasharray: 3 3; opacity: .6; }
+    /* Lines of symmetry */
+    .lw-sym { width: 160px; height: 160px; display: block; margin: 4px auto; }
+    .los-shape { fill: #0d7d8c; opacity: .85; }
+    .los-cand { stroke: #7d8a97; stroke-width: 3; stroke-dasharray: 5 5; }
+    .los-cand.on { stroke: #f2a900; stroke-dasharray: none; }
+    .los-hit { stroke: transparent; stroke-width: 16; }
 </style>
 
 <div class="lw-wrap">
@@ -278,6 +330,100 @@
                                     </div>
                                     <template x-if="result === 'yes'"><p class="lw-para" style="margin-top:.5rem;color:#0d7d8c;font-weight:700;text-align:center">✓ Yes! That is the right time.</p></template>
                                     <template x-if="result === 'no'"><p class="lw-para" style="margin-top:.5rem;text-align:center">Not yet — check the short hand (hour) and long hand (minutes), then Check again.</p></template>
+                                    @if (($block['content'] ?? '') !== '')<p class="lw-para" style="margin-top:.4rem">{{ $block['content'] }}</p>@endif
+                                </div>
+                                @break
+                            @case('cuboid')
+                                <div class="lw-numberline lw-wg" wire:ignore x-data="cuboidWidget({{ Illuminate\Support\Js::from(['l' => $block['l'] ?? 3, 'w' => $block['w'] ?? 2, 'h' => $block['h'] ?? 2]) }})">
+                                    <p class="lw-example-tag">Build it — change the sides</p>
+                                    @if (! empty($block['question']))<p class="lw-para" style="margin:.2rem 0 .4rem">{{ $block['question'] }}</p>@endif
+                                    <div class="lw-cuboid" x-ref="cub"></div>
+                                    <div class="lw-wg-btns">
+                                        <span style="font-weight:700">length</span><button type="button" class="lw-wg-btn" @click="bump('l',-1)">−</button><span x-text="l" style="min-width:14px;text-align:center"></span><button type="button" class="lw-wg-btn" @click="bump('l',1)">+</button>
+                                        <span style="font-weight:700">width</span><button type="button" class="lw-wg-btn" @click="bump('w',-1)">−</button><span x-text="w" style="min-width:14px;text-align:center"></span><button type="button" class="lw-wg-btn" @click="bump('w',1)">+</button>
+                                        <span style="font-weight:700">height</span><button type="button" class="lw-wg-btn" @click="bump('h',-1)">−</button><span x-text="h" style="min-width:14px;text-align:center"></span><button type="button" class="lw-wg-btn" @click="bump('h',1)">+</button>
+                                    </div>
+                                    <p class="lw-wg-out" x-text="readout"></p>
+                                    @if (($block['content'] ?? '') !== '')<p class="lw-para" style="margin-top:.4rem">{{ $block['content'] }}</p>@endif
+                                </div>
+                                @break
+                            @case('jug')
+                                <div class="lw-numberline lw-wg" wire:ignore x-data="jugWidget({{ Illuminate\Support\Js::from(['start' => $block['start'] ?? 0, 'max' => $block['max'] ?? 1000, 'target' => $block['target'] ?? null]) }})">
+                                    <p class="lw-example-tag">Pour it — slide to fill</p>
+                                    @if (! empty($block['question']))<p class="lw-para" style="margin:.2rem 0 .4rem">{{ $block['question'] }}</p>@endif
+                                    <div class="lw-jug" x-ref="jug"><div class="jug-fill" x-ref="fill"></div></div>
+                                    <input type="range" min="0" :max="max" step="50" value="0" @input="pour($event.target.value)" style="width:200px;margin-top:8px">
+                                    <p class="lw-wg-out" x-text="readout"></p>
+                                    <template x-if="hasTarget"><button type="button" class="lw-wg-btn solid" @click="check()">Check</button></template>
+                                    <template x-if="result === 'yes'"><p class="lw-para" style="color:#0d7d8c;font-weight:700;text-align:center">✓ That is it!</p></template>
+                                    <template x-if="result === 'no'"><p class="lw-para" style="text-align:center">Not yet — read the marks on the jug and try again.</p></template>
+                                    @if (($block['content'] ?? '') !== '')<p class="lw-para" style="margin-top:.4rem">{{ $block['content'] }}</p>@endif
+                                </div>
+                                @break
+                            @case('balance')
+                                <div class="lw-numberline lw-wg" wire:ignore x-data="balanceWidget({{ Illuminate\Support\Js::from(['target' => $block['target'] ?? 350, 'weights' => $block['weights'] ?? [100, 50, 20, 10]]) }})">
+                                    <p class="lw-example-tag">Balance it — add weights</p>
+                                    @if (! empty($block['question']))<p class="lw-para" style="margin:.2rem 0 .4rem">{{ $block['question'] }}</p>@endif
+                                    <div class="lw-bal">
+                                        <div class="bal-pivot"></div>
+                                        <div class="bal-beam" :style="'transform:rotate(' + tilt + 'deg)'"></div>
+                                        <div class="bal-pan left"><span style="font-size:26px">🧺</span></div>
+                                        <div class="bal-pan right"><span style="font-weight:800" x-text="total + ' g'"></span></div>
+                                    </div>
+                                    <div class="lw-wg-btns">
+                                        <template x-for="wt in weights" :key="wt"><button type="button" class="lw-wg-btn" @click="add(wt)" x-text="wt + ' g'"></button></template>
+                                        <button type="button" class="lw-wg-btn" @click="reset()">Reset</button>
+                                    </div>
+                                    <p class="lw-wg-out" x-text="readout"></p>
+                                    <button type="button" class="lw-wg-btn solid" @click="check()">Check</button>
+                                    <template x-if="result === 'yes'"><p class="lw-para" style="color:#0d7d8c;font-weight:700;text-align:center">✓ Balanced!</p></template>
+                                    <template x-if="result === 'over'"><p class="lw-para" style="text-align:center">Too heavy — take some weight off.</p></template>
+                                    <template x-if="result === 'under'"><p class="lw-para" style="text-align:center">Not enough yet — add more.</p></template>
+                                    @if (($block['content'] ?? '') !== '')<p class="lw-para" style="margin-top:.4rem">{{ $block['content'] }}</p>@endif
+                                </div>
+                                @break
+                            @case('angle')
+                                <div class="lw-numberline lw-wg" wire:ignore x-data="angleWidget({{ Illuminate\Support\Js::from(['start' => $block['start'] ?? 45]) }})">
+                                    <p class="lw-example-tag">Turn it — drag the gold tip</p>
+                                    @if (! empty($block['question']))<p class="lw-para" style="margin:.2rem 0 .4rem">{{ $block['question'] }}</p>@endif
+                                    <svg class="lw-ang" x-ref="ang" viewBox="0 0 260 260" role="img" aria-label="Draggable angle"></svg>
+                                    <p class="lw-wg-out" x-text="readout"></p>
+                                    @if (($block['content'] ?? '') !== '')<p class="lw-para" style="margin-top:.4rem">{{ $block['content'] }}</p>@endif
+                                </div>
+                                @break
+                            @case('ruler')
+                                <div class="lw-numberline lw-wg" wire:ignore x-data="rulerWidget({{ Illuminate\Support\Js::from(['start' => $block['start'] ?? 3.0, 'cm' => $block['cm'] ?? 15]) }})">
+                                    <p class="lw-example-tag">Measure it — drag the handle</p>
+                                    @if (! empty($block['question']))<p class="lw-para" style="margin:.2rem 0 .4rem">{{ $block['question'] }}</p>@endif
+                                    <div class="lw-rul-wrap"><div class="lw-rul" x-ref="rul"></div></div>
+                                    <p class="lw-wg-out" x-text="readout"></p>
+                                    @if (($block['content'] ?? '') !== '')<p class="lw-para" style="margin-top:.4rem">{{ $block['content'] }}</p>@endif
+                                </div>
+                                @break
+                            @case('solids')
+                                <div class="lw-numberline lw-wg" wire:ignore x-data="solidsWidget()">
+                                    <p class="lw-example-tag">Tap a solid</p>
+                                    @if (! empty($block['question']))<p class="lw-para" style="margin:.2rem 0 .4rem">{{ $block['question'] }}</p>@endif
+                                    <div class="solid-row">
+                                        <template x-for="s in solids" :key="s.id"><button type="button" class="solid-card" :class="sel === s.id ? 'sel' : ''" @click="pick(s)" x-text="s.n"></button></template>
+                                    </div>
+                                    <p class="lw-wg-out" x-text="readout"></p>
+                                    @if (($block['content'] ?? '') !== '')<p class="lw-para" style="margin-top:.4rem">{{ $block['content'] }}</p>@endif
+                                </div>
+                                @break
+                            @case('symmetry')
+                                <div class="lw-numberline lw-wg" wire:ignore x-data="symmetryWidget({{ Illuminate\Support\Js::from(['shape' => $block['shape'] ?? 'square']) }})">
+                                    <p class="lw-example-tag">Tap the fold lines that make a mirror</p>
+                                    @if (! empty($block['question']))<p class="lw-para" style="margin:.2rem 0 .4rem">{{ $block['question'] }}</p>@endif
+                                    <svg class="lw-sym" x-ref="sym" viewBox="0 0 160 160" role="img" aria-label="Shape with candidate lines of symmetry"></svg>
+                                    <div class="lw-wg-btns">
+                                        <button type="button" class="lw-wg-btn" :class="shape === 'square' ? 'sel' : ''" @click="setShape('square')">Square</button>
+                                        <button type="button" class="lw-wg-btn" :class="shape === 'rectangle' ? 'sel' : ''" @click="setShape('rectangle')">Rectangle</button>
+                                        <button type="button" class="lw-wg-btn" :class="shape === 'triangleEq' ? 'sel' : ''" @click="setShape('triangleEq')">Triangle</button>
+                                        <button type="button" class="lw-wg-btn solid" @click="check()">Check</button>
+                                    </div>
+                                    <template x-if="readout.startsWith('yes:')"><p class="lw-para" style="color:#0d7d8c;font-weight:700;text-align:center" x-text="readout.slice(4)"></p></template>
+                                    <template x-if="readout.startsWith('no:')"><p class="lw-para" style="text-align:center" x-text="readout.slice(3)"></p></template>
                                     @if (($block['content'] ?? '') !== '')<p class="lw-para" style="margin-top:.4rem">{{ $block['content'] }}</p>@endif
                                 </div>
                                 @break

@@ -19,6 +19,13 @@
                 "cognition": "knowing"
             },
             {
+                "type": "angle",
+                "cognition": "knowing",
+                "start": 45,
+                "question": "Turn the ray. Can you make a right angle?",
+                "content": "A right angle is a quarter turn = 90°. Less than a right angle is acute; more than it (up to a straight line) is obtuse."
+            },
+            {
                 "type": "key",
                 "content": "A right angle is exactly 90 degrees — a square corner. An acute angle is smaller than 90 degrees.",
                 "cognition": "knowing"

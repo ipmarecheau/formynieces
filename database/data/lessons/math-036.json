@@ -18,6 +18,13 @@
                 "cognition": "knowing"
             },
             {
+                "type": "ruler",
+                "cognition": "knowing",
+                "cm": 15,
+                "question": "Drag the handle to 6.5 cm, then read it in mm and m.",
+                "content": "1 cm = 10 mm, and 100 cm = 1 m. So 6.5 cm = 65 mm = 0.065 m."
+            },
+            {
                 "type": "key",
                 "content": "1 metre = 100 centimetres, 1 centimetre = 10 millimetres, and 1 kilometre = 1000 metres.",
                 "cognition": "knowing"

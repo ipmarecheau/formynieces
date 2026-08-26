@@ -19,6 +19,14 @@
                 "cognition": "knowing"
             },
             {
+                "type": "jug",
+                "cognition": "knowing",
+                "max": 1000,
+                "target": 750,
+                "question": "Pour 750 mL, then read it in litres.",
+                "content": "Capacity is how much a container holds. 1000 mL = 1 litre, so 750 mL = 0.75 L."
+            },
+            {
                 "type": "key",
                 "content": "Before comparing or combining measurements, convert them to the SAME unit.",
                 "cognition": "knowing"
