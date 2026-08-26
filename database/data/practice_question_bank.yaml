@@ -127,6 +127,50 @@ questions:
 - module: 1
   difficulty: easy
   sea_section: Section I
+  prompt: In the number 1,520, what is the value of the digit 1?
+  options:
+  - '1'
+  - 10,000
+  - '100'
+  - 1,000
+  correct_index: 3
+  explanation: The 1 is in the thousands place, so its value is 1,000.
+- module: 1
+  difficulty: easy
+  sea_section: Section I
+  prompt: In the number 2,824, what is the value of the digit 2?
+  options:
+  - '2'
+  - 20,000
+  - 2,000
+  - 1,000
+  correct_index: 2
+  explanation: The 2 is in the thousands place, so its value is 2,000.
+- module: 1
+  difficulty: easy
+  sea_section: Section I
+  prompt: In the number 3,286, what is the value of the digit 3?
+  options:
+  - 30,000
+  - '3'
+  - 1,000
+  - 3,000
+  correct_index: 3
+  explanation: The 3 is in the thousands place, so its value is 3,000.
+- module: 1
+  difficulty: easy
+  sea_section: Section I
+  prompt: In the number 4,611, what is the value of the digit 1?
+  options:
+  - '10'
+  - '1_0'
+  - '1'
+  - '11'
+  correct_index: 2
+  explanation: The 1 is in the ones place, so its value is 1.
+- module: 1
+  difficulty: easy
+  sea_section: Section I
   prompt: In the number 5,308, what is the value of the digit 3?
   options:
   - '3'
@@ -135,6 +179,39 @@ questions:
   - 3,000
   correct_index: 2
   explanation: The 3 is in the hundreds place, so its value is 300.
+- module: 1
+  difficulty: easy
+  sea_section: Section I
+  prompt: In the number 6,514, what is the value of the digit 6?
+  options:
+  - 1,000
+  - 60,000
+  - '6'
+  - 6,000
+  correct_index: 3
+  explanation: The 6 is in the thousands place, so its value is 6,000.
+- module: 1
+  difficulty: easy
+  sea_section: Section I
+  prompt: In the number 7,924, what is the value of the digit 2?
+  options:
+  - '2'
+  - '200'
+  - '20'
+  - '10'
+  correct_index: 2
+  explanation: The 2 is in the tens place, so its value is 20.
+- module: 1
+  difficulty: easy
+  sea_section: Section I
+  prompt: In the number 9,279, what is the value of the digit 9?
+  options:
+  - 9,000
+  - 90,000
+  - 1,000
+  - '9'
+  correct_index: 0
+  explanation: The 9 is in the thousands place, so its value is 9,000.
 - module: 1
   difficulty: easy
   sea_section: Section I
@@ -256,6 +333,83 @@ questions:
   - '339200'
   correct_index: 2
   explanation: '<p>Write each part of the words in the correct place-value column, filling empty columns with 0.</p><p><strong>Step-by-step working</strong></p><ol><li>Read the words: three hundred and forty thousand, two hundred.</li><li>Place each digit in its column to get 340 200.</li></ol><p><strong>Answer:</strong> <strong>340 200</strong></p>'
+- module: 1
+  difficulty: medium
+  sea_section: Section I
+  prompt: In the number 19,116, what is the value of the digit 1?
+  options:
+  - 100,000
+  - 10,000
+  - 1,000
+  - '1'
+  correct_index: 1
+  explanation: The 1 is in the ten thousands place, so its value is 10,000.
+- module: 1
+  difficulty: medium
+  sea_section: Section I
+  prompt: In the number 37,460, what is the value of the digit 4?
+  options:
+  - '4'
+  - 4,000
+  - '100'
+  - '400'
+  correct_index: 3
+  explanation: The 4 is in the hundreds place, so its value is 400.
+- module: 1
+  difficulty: medium
+  sea_section: Section I
+  prompt: In the number 40,512, what is the value of the digit 4?
+  options:
+  - 40,000
+  - 10,000
+  - '4'
+  - 400,000
+  correct_index: 0
+  explanation: The 4 is in the ten thousands place, so its value is 40,000.
+- module: 1
+  difficulty: medium
+  sea_section: Section I
+  prompt: In the number 80,284, what is the value of the digit 8?
+  options:
+  - 10,000
+  - '8'
+  - 80,000
+  - 800,000
+  correct_index: 2
+  explanation: The 8 is in the ten thousands place, so its value is 80,000.
+- module: 1
+  difficulty: medium
+  sea_section: Section I
+  prompt: In the number 89,131, what is the value of the digit 1?
+  options:
+  - '10'
+  - '1'
+  - 1,000
+  - '100'
+  correct_index: 3
+  explanation: The 1 is in the hundreds place, so its value is 100.
+- module: 1
+  difficulty: medium
+  sea_section: Section I
+  prompt: In the number 92,397, what is the value of the digit 7?
+  options:
+  - '1'
+  - '7'
+  - '17'
+  - '70'
+  correct_index: 1
+  explanation: The 7 is in the ones place, so its value is 7.
+- module: 1
+  difficulty: medium
+  sea_section: Section I
+  prompt: In the number 93,320, what is the value of the digit 3?
+  options:
+  - '300'
+  - '100'
+  - 3,000
+  - '3'
+  correct_index: 0
+  explanation: The 3 is in the hundreds place, so its value is 300.
 - module: 1
   difficulty: medium
   sea_section: Section I
@@ -413,6 +567,83 @@ questions:
 - module: 1
   difficulty: hard
   sea_section: Section I
+  prompt: In the number 169,403, what is the value of the digit 6?
+  options:
+  - 600,000
+  - '6'
+  - 60,000
+  - 10,000
+  correct_index: 2
+  explanation: The 6 is in the ten thousands place, so its value is 60,000.
+- module: 1
+  difficulty: hard
+  sea_section: Section I
+  prompt: In the number 497,887, what is the value of the digit 7?
+  options:
+  - 7,000
+  - 70,000
+  - 1,000
+  - '7'
+  correct_index: 0
+  explanation: The 7 is in the thousands place, so its value is 7,000.
+- module: 1
+  difficulty: hard
+  sea_section: Section I
+  prompt: In the number 581,141, what is the value of the digit 8?
+  options:
+  - '8'
+  - 800,000
+  - 80,000
+  - 10,000
+  correct_index: 2
+  explanation: The 8 is in the ten thousands place, so its value is 80,000.
+- module: 1
+  difficulty: hard
+  sea_section: Section I
+  prompt: In the number 660,086, what is the value of the digit 6?
+  options:
+  - '60'
+  - '16'
+  - '6'
+  - '1'
+  correct_index: 2
+  explanation: The 6 is in the ones place, so its value is 6.
+- module: 1
+  difficulty: hard
+  sea_section: Section I
+  prompt: In the number 711,878, what is the value of the digit 8?
+  options:
+  - '8'
+  - 8,000
+  - '800'
+  - '100'
+  correct_index: 2
+  explanation: The 8 is in the hundreds place, so its value is 800.
+- module: 1
+  difficulty: hard
+  sea_section: Section I
+  prompt: In the number 881,177, what is the value of the digit 7?
+  options:
+  - '70'
+  - '7'
+  - '700'
+  - '10'
+  correct_index: 0
+  explanation: The 7 is in the tens place, so its value is 70.
+- module: 1
+  difficulty: hard
+  sea_section: Section I
+  prompt: In the number 983,794, what is the value of the digit 9?
+  options:
+  - 100,000
+  - 9,000,000
+  - 900,000
+  - '9'
+  correct_index: 2
+  explanation: The 9 is in the hundred thousands place, so its value is 900,000.
+- module: 1
+  difficulty: hard
+  sea_section: Section I
   prompt: What is the difference in value between the two 7s in 707,200?
   options:
   - '700'
@@ -543,6 +774,116 @@ questions:
   correct_index: 1
   explanation: 'Each digit is written as its place value: 300 + 40 + 5.'
 - module: 2
+  difficulty: easy
+  sea_section: Section I
+  prompt: Write 103 in expanded form. What is the value of the ones part?
+  options:
+  - '30'
+  - '3'
+  - '1'
+  - '8'
+  correct_index: 1
+  explanation: 103 = 100 + 3. The named part is 3.
+- module: 2
+  difficulty: easy
+  sea_section: Section I
+  prompt: Write 214 in expanded form. What is the value of the tens part?
+  options:
+  - '100'
+  - '1'
+  - '10'
+  - '10_0'
+  correct_index: 2
+  explanation: 214 = 200 + 10 + 4. The named part is 10.
+- module: 2
+  difficulty: easy
+  sea_section: Section I
+  prompt: Write 256 in expanded form. What is the value of the ones part?
+  options:
+  - '6'
+  - '1'
+  - '11'
+  - '60'
+  correct_index: 0
+  explanation: 256 = 200 + 50 + 6. The named part is 6.
+- module: 2
+  difficulty: easy
+  sea_section: Section I
+  prompt: Write 256 in expanded form. What is the value of the tens part?
+  options:
+  - '10'
+  - '50'
+  - '500'
+  - '5'
+  correct_index: 1
+  explanation: 256 = 200 + 50 + 6. The named part is 50.
+- module: 2
+  difficulty: easy
+  sea_section: Section I
+  prompt: Write 619 in expanded form. What is the value of the hundreds part?
+  options:
+  - '6'
+  - '600'
+  - '60'
+  - 6,000
+  correct_index: 1
+  explanation: 619 = 600 + 10 + 9. The named part is 600.
+- module: 2
+  difficulty: easy
+  sea_section: Section I
+  prompt: Write 621 in expanded form. What is the value of the tens part?
+  options:
+  - '2'
+  - '200'
+  - '10'
+  - '20'
+  correct_index: 3
+  explanation: 621 = 600 + 20 + 1. The named part is 20.
+- module: 2
+  difficulty: easy
+  sea_section: Section I
+  prompt: Write 641 in expanded form. What is the value of the tens part?
+  options:
+  - '4'
+  - '10'
+  - '400'
+  - '40'
+  correct_index: 3
+  explanation: 641 = 600 + 40 + 1. The named part is 40.
+- module: 2
+  difficulty: easy
+  sea_section: Section I
+  prompt: Write 710 in expanded form. What is the value of the hundreds part?
+  options:
+  - '700'
+  - 7,000
+  - '7'
+  - '70'
+  correct_index: 0
+  explanation: 710 = 700 + 10. The named part is 700.
+- module: 2
+  difficulty: easy
+  sea_section: Section I
+  prompt: Write 713 in expanded form. What is the value of the tens part?
+  options:
+  - '1'
+  - '100'
+  - '10'
+  - '10_0'
+  correct_index: 2
+  explanation: 713 = 700 + 10 + 3. The named part is 10.
+- module: 2
+  difficulty: easy
+  sea_section: Section I
+  prompt: Write 798 in expanded form. What is the value of the ones part?
+  options:
+  - '8'
+  - '80'
+  - '1'
+  - '13'
+  correct_index: 0
+  explanation: 798 = 700 + 90 + 8. The named part is 8.
+- module: 2
   difficulty: medium
   sea_section: Section I
   prompt: <p>Write the numeral for (1 &times; 10 000) + (1 &times; 1 000) + (4 &times; 10) + (9 &times; 1).</p>
@@ -653,6 +994,116 @@ questions:
   correct_index: 0
   explanation: 2,406 has no tens, so it is 2000 + 400 + 6.
 - module: 2
+  difficulty: medium
+  sea_section: Section I
+  prompt: Write 2,049 in expanded form. What is the value of the tens part?
+  options:
+  - '4'
+  - '10'
+  - '400'
+  - '40'
+  correct_index: 3
+  explanation: 2,049 = 2,000 + 40 + 9. The named part is 40.
+- module: 2
+  difficulty: medium
+  sea_section: Section I
+  prompt: Write 2,290 in expanded form. What is the value of the thousands part?
+  options:
+  - '2'
+  - 20,000
+  - 2,000
+  - '200'
+  correct_index: 2
+  explanation: 2,290 = 2,000 + 200 + 90. The named part is 2,000.
+- module: 2
+  difficulty: medium
+  sea_section: Section I
+  prompt: Write 3,103 in expanded form. What is the value of the ones part?
+  options:
+  - '3'
+  - '8'
+  - '1'
+  - '30'
+  correct_index: 0
+  explanation: 3,103 = 3,000 + 100 + 3. The named part is 3.
+- module: 2
+  difficulty: medium
+  sea_section: Section I
+  prompt: Write 4,470 in expanded form. What is the value of the hundreds part?
+  options:
+  - '400'
+  - '40'
+  - '4'
+  - 4,000
+  correct_index: 0
+  explanation: 4,470 = 4,000 + 400 + 70. The named part is 400.
+- module: 2
+  difficulty: medium
+  sea_section: Section I
+  prompt: Write 4,510 in expanded form. What is the value of the hundreds part?
+  options:
+  - 5,000
+  - '5'
+  - '500'
+  - '50'
+  correct_index: 2
+  explanation: 4,510 = 4,000 + 500 + 10. The named part is 500.
+- module: 2
+  difficulty: medium
+  sea_section: Section I
+  prompt: Write 4,608 in expanded form. What is the value of the thousands part?
+  options:
+  - '4'
+  - '400'
+  - 40,000
+  - 4,000
+  correct_index: 3
+  explanation: 4,608 = 4,000 + 600 + 8. The named part is 4,000.
+- module: 2
+  difficulty: medium
+  sea_section: Section I
+  prompt: Write 4,750 in expanded form. What is the value of the thousands part?
+  options:
+  - 40,000
+  - '400'
+  - '4'
+  - 4,000
+  correct_index: 3
+  explanation: 4,750 = 4,000 + 700 + 50. The named part is 4,000.
+- module: 2
+  difficulty: medium
+  sea_section: Section I
+  prompt: Write 6,947 in expanded form. What is the value of the tens part?
+  options:
+  - '10'
+  - '400'
+  - '40'
+  - '4'
+  correct_index: 2
+  explanation: 6,947 = 6,000 + 900 + 40 + 7. The named part is 40.
+- module: 2
+  difficulty: medium
+  sea_section: Section I
+  prompt: Write 8,177 in expanded form. What is the value of the ones part?
+  options:
+  - '70'
+  - '12'
+  - '1'
+  - '7'
+  correct_index: 3
+  explanation: 8,177 = 8,000 + 100 + 70 + 7. The named part is 7.
+- module: 2
+  difficulty: medium
+  sea_section: Section I
+  prompt: Write 9,423 in expanded form. What is the value of the hundreds part?
+  options:
+  - '400'
+  - '4'
+  - '40'
+  - 4,000
+  correct_index: 0
+  explanation: 9,423 = 9,000 + 400 + 20 + 3. The named part is 400.
+- module: 2
   difficulty: hard
   sea_section: Section I
   prompt: <p>Write the numeral for (1 &times; 1 000 000) + (7 &times; 10 000) + (6 &times; 100) + (8 &times; 1).</p>
@@ -762,6 +1213,116 @@ questions:
   - 7000 + 930 + 0
   correct_index: 2
   explanation: 7,930 = 7000 + 900 + 30 (no ones).
+- module: 2
+  difficulty: hard
+  sea_section: Section I
+  prompt: Write 11,934 in expanded form. What is the value of the ten thousands part?
+  options:
+  - 100,000
+  - 1,000
+  - 10,000
+  - '1'
+  correct_index: 2
+  explanation: 11,934 = 10,000 + 1,000 + 900 + 30 + 4. The named part is 10,000.
+- module: 2
+  difficulty: hard
+  sea_section: Section I
+  prompt: Write 24,322 in expanded form. What is the value of the thousands part?
+  options:
+  - 40,000
+  - '400'
+  - 4,000
+  - '4'
+  correct_index: 2
+  explanation: 24,322 = 20,000 + 4,000 + 300 + 20 + 2. The named part is 4,000.
+- module: 2
+  difficulty: hard
+  sea_section: Section I
+  prompt: Write 28,373 in expanded form. What is the value of the tens part?
+  options:
+  - '70'
+  - '700'
+  - '10'
+  - '7'
+  correct_index: 0
+  explanation: 28,373 = 20,000 + 8,000 + 300 + 70 + 3. The named part is 70.
+- module: 2
+  difficulty: hard
+  sea_section: Section I
+  prompt: Write 31,579 in expanded form. What is the value of the tens part?
+  options:
+  - '10'
+  - '700'
+  - '7'
+  - '70'
+  correct_index: 3
+  explanation: 31,579 = 30,000 + 1,000 + 500 + 70 + 9. The named part is 70.
+- module: 2
+  difficulty: hard
+  sea_section: Section I
+  prompt: Write 42,742 in expanded form. What is the value of the ten thousands part?
+  options:
+  - '4'
+  - 40,000
+  - 400,000
+  - 4,000
+  correct_index: 1
+  explanation: 42,742 = 40,000 + 2,000 + 700 + 40 + 2. The named part is 40,000.
+- module: 2
+  difficulty: hard
+  sea_section: Section I
+  prompt: Write 56,438 in expanded form. What is the value of the tens part?
+  options:
+  - '300'
+  - '30'
+  - '3'
+  - '10'
+  correct_index: 1
+  explanation: 56,438 = 50,000 + 6,000 + 400 + 30 + 8. The named part is 30.
+- module: 2
+  difficulty: hard
+  sea_section: Section I
+  prompt: Write 63,354 in expanded form. What is the value of the thousands part?
+  options:
+  - 30,000
+  - '3'
+  - '300'
+  - 3,000
+  correct_index: 3
+  explanation: 63,354 = 60,000 + 3,000 + 300 + 50 + 4. The named part is 3,000.
+- module: 2
+  difficulty: hard
+  sea_section: Section I
+  prompt: Write 69,638 in expanded form. What is the value of the hundreds part?
+  options:
+  - '600'
+  - '6'
+  - 6,000
+  - '60'
+  correct_index: 0
+  explanation: 69,638 = 60,000 + 9,000 + 600 + 30 + 8. The named part is 600.
+- module: 2
+  difficulty: hard
+  sea_section: Section I
+  prompt: Write 73,653 in expanded form. What is the value of the tens part?
+  options:
+  - '500'
+  - '50'
+  - '10'
+  - '5'
+  correct_index: 1
+  explanation: 73,653 = 70,000 + 3,000 + 600 + 50 + 3. The named part is 50.
+- module: 2
+  difficulty: hard
+  sea_section: Section I
+  prompt: Write 98,259 in expanded form. What is the value of the ten thousands part?
+  options:
+  - 9,000
+  - 900,000
+  - '9'
+  - 90,000
+  correct_index: 3
+  explanation: 98,259 = 90,000 + 8,000 + 200 + 50 + 9. The named part is 90,000.
 - module: 3
   difficulty: easy
   sea_section: Section I
@@ -820,6 +1381,61 @@ questions:
 - module: 3
   difficulty: easy
   sea_section: Section I
+  prompt: Round 1,152 to the nearest thousand.
+  options:
+  - 2,000
+  - 1,000
+  - '0'
+  - 1,000_0
+  correct_index: 1
+  explanation: 'The hundreds digit is 1, so round down: 1,152 rounds to 1,000.'
+- module: 3
+  difficulty: easy
+  sea_section: Section I
+  prompt: Round 1,651 to the nearest thousand.
+  options:
+  - 2,000_0
+  - 1,000
+  - 3,000
+  - 2,000
+  correct_index: 3
+  explanation: 'The hundreds digit is 6, so round up: 1,651 rounds to 2,000.'
+- module: 3
+  difficulty: easy
+  sea_section: Section I
+  prompt: Round 1,936 to the nearest thousand.
+  options:
+  - 2,000_0
+  - 3,000
+  - 1,000
+  - 2,000
+  correct_index: 3
+  explanation: 'The hundreds digit is 9, so round up: 1,936 rounds to 2,000.'
+- module: 3
+  difficulty: easy
+  sea_section: Section I
+  prompt: Round 1,958 to the nearest thousand.
+  options:
+  - 2,000_0
+  - 3,000
+  - 1,000
+  - 2,000
+  correct_index: 3
+  explanation: 'The hundreds digit is 9, so round up: 1,958 rounds to 2,000.'
+- module: 3
+  difficulty: easy
+  sea_section: Section I
+  prompt: Round 2,200 to the nearest thousand.
+  options:
+  - 2,000
+  - 2,000_0
+  - 1,000
+  - 3,000
+  correct_index: 0
+  explanation: 'The hundreds digit is 2, so round down: 2,200 rounds to 2,000.'
+- module: 3
+  difficulty: easy
+  sea_section: Section I
   prompt: Round 2,500 to the nearest thousand.
   options:
   - 2,000
@@ -828,6 +1444,28 @@ questions:
   - 3,500
   correct_index: 1
   explanation: When the hundreds digit is exactly 5, we round up, so 2,500 becomes 3,000.
+- module: 3
+  difficulty: easy
+  sea_section: Section I
+  prompt: Round 3,536 to the nearest thousand.
+  options:
+  - 3,000
+  - 4,000
+  - 4,000_0
+  - 5,000
+  correct_index: 1
+  explanation: 'The hundreds digit is 5, so round up: 3,536 rounds to 4,000.'
+- module: 3
+  difficulty: easy
+  sea_section: Section I
+  prompt: Round 4,044 to the nearest thousand.
+  options:
+  - 5,000
+  - 4,000_0
+  - 3,000
+  - 4,000
+  correct_index: 3
+  explanation: 'The hundreds digit is 0, so round down: 4,044 rounds to 4,000.'
 - module: 3
   difficulty: easy
   sea_section: Section I
@@ -842,6 +1480,50 @@ questions:
 - module: 3
   difficulty: easy
   sea_section: Section I
+  prompt: Round 4,853 to the nearest thousand.
+  options:
+  - 6,000
+  - 4,000
+  - 5,000
+  - 5,000_0
+  correct_index: 2
+  explanation: 'The hundreds digit is 8, so round up: 4,853 rounds to 5,000.'
+- module: 3
+  difficulty: easy
+  sea_section: Section I
+  prompt: Round 4,910 to the nearest thousand.
+  options:
+  - 5,000_0
+  - 5,000
+  - 6,000
+  - 4,000
+  correct_index: 1
+  explanation: 'The hundreds digit is 9, so round up: 4,910 rounds to 5,000.'
+- module: 3
+  difficulty: easy
+  sea_section: Section I
+  prompt: Round 5,272 to the nearest thousand.
+  options:
+  - 5,000
+  - 5,000_0
+  - 4,000
+  - 6,000
+  correct_index: 0
+  explanation: 'The hundreds digit is 2, so round down: 5,272 rounds to 5,000.'
+- module: 3
+  difficulty: easy
+  sea_section: Section I
+  prompt: Round 5,915 to the nearest thousand.
+  options:
+  - 5,000
+  - 6,000
+  - 7,000
+  - 6,000_0
+  correct_index: 1
+  explanation: 'The hundreds digit is 9, so round up: 5,915 rounds to 6,000.'
+- module: 3
+  difficulty: easy
+  sea_section: Section I
   prompt: Round 6,800 to the nearest thousand.
   options:
   - 6,000
@@ -850,6 +1532,17 @@ questions:
   - 8,000
   correct_index: 1
   explanation: 800 is 500 or more, so we round up to 7,000.
+- module: 3
+  difficulty: easy
+  sea_section: Section I
+  prompt: Round 9,238 to the nearest thousand.
+  options:
+  - 9,000_0
+  - 8,000
+  - 9,000
+  - 10,000
+  correct_index: 2
+  explanation: 'The hundreds digit is 2, so round down: 9,238 rounds to 9,000.'
 - module: 3
   difficulty: medium
   sea_section: Section I
@@ -930,6 +1623,138 @@ questions:
 - module: 3
   difficulty: medium
   sea_section: Section I
+  prompt: Round 27,146 to the nearest thousand.
+  options:
+  - 27,000_0
+  - 28,000
+  - 27,000
+  - 26,000
+  correct_index: 2
+  explanation: 'The hundreds digit is 1, so round down: 27,146 rounds to 27,000.'
+- module: 3
+  difficulty: medium
+  sea_section: Section I
+  prompt: Round 27,361 to the nearest thousand.
+  options:
+  - 28,000
+  - 27,000_0
+  - 27,000
+  - 26,000
+  correct_index: 2
+  explanation: 'The hundreds digit is 3, so round down: 27,361 rounds to 27,000.'
+- module: 3
+  difficulty: medium
+  sea_section: Section I
+  prompt: Round 27,601 to the nearest thousand.
+  options:
+  - 29,000
+  - 28,000_0
+  - 28,000
+  - 27,000
+  correct_index: 2
+  explanation: 'The hundreds digit is 6, so round up: 27,601 rounds to 28,000.'
+- module: 3
+  difficulty: medium
+  sea_section: Section I
+  prompt: Round 36,685 to the nearest thousand.
+  options:
+  - 37,000
+  - 38,000
+  - 37,000_0
+  - 36,000
+  correct_index: 0
+  explanation: 'The hundreds digit is 6, so round up: 36,685 rounds to 37,000.'
+- module: 3
+  difficulty: medium
+  sea_section: Section I
+  prompt: Round 42,914 to the nearest thousand.
+  options:
+  - 42,000
+  - 44,000
+  - 43,000_0
+  - 43,000
+  correct_index: 3
+  explanation: 'The hundreds digit is 9, so round up: 42,914 rounds to 43,000.'
+- module: 3
+  difficulty: medium
+  sea_section: Section I
+  prompt: Round 46,265 to the nearest thousand.
+  options:
+  - 45,000
+  - 47,000
+  - 46,000_0
+  - 46,000
+  correct_index: 3
+  explanation: 'The hundreds digit is 2, so round down: 46,265 rounds to 46,000.'
+- module: 3
+  difficulty: medium
+  sea_section: Section I
+  prompt: Round 58,434 to the nearest thousand.
+  options:
+  - 58,000_0
+  - 59,000
+  - 58,000
+  - 57,000
+  correct_index: 2
+  explanation: 'The hundreds digit is 4, so round down: 58,434 rounds to 58,000.'
+- module: 3
+  difficulty: medium
+  sea_section: Section I
+  prompt: Round 81,200 to the nearest thousand.
+  options:
+  - 82,000
+  - 81,000
+  - 81,000_0
+  - 80,000
+  correct_index: 1
+  explanation: 'The hundreds digit is 2, so round down: 81,200 rounds to 81,000.'
+- module: 3
+  difficulty: medium
+  sea_section: Section I
+  prompt: Round 82,309 to the nearest thousand.
+  options:
+  - 83,000
+  - 82,000
+  - 81,000
+  - 82,000_0
+  correct_index: 1
+  explanation: 'The hundreds digit is 3, so round down: 82,309 rounds to 82,000.'
+- module: 3
+  difficulty: medium
+  sea_section: Section I
+  prompt: Round 82,512 to the nearest thousand.
+  options:
+  - 83,000
+  - 82,000
+  - 83,000_0
+  - 84,000
+  correct_index: 0
+  explanation: 'The hundreds digit is 5, so round up: 82,512 rounds to 83,000.'
+- module: 3
+  difficulty: medium
+  sea_section: Section I
+  prompt: Round 89,276 to the nearest thousand.
+  options:
+  - 89,000
+  - 89,000_0
+  - 88,000
+  - 90,000
+  correct_index: 0
+  explanation: 'The hundreds digit is 2, so round down: 89,276 rounds to 89,000.'
+- module: 3
+  difficulty: medium
+  sea_section: Section I
+  prompt: Round 97,538 to the nearest thousand.
+  options:
+  - 99,000
+  - 98,000
+  - 98,000_0
+  - 97,000
+  correct_index: 1
+  explanation: 'The hundreds digit is 5, so round up: 97,538 rounds to 98,000.'
+- module: 3
+  difficulty: medium
+  sea_section: Section I
   prompt: Which number rounds to 5,000 when rounded to the nearest thousand?
   options:
   - 4,400
@@ -1004,6 +1829,138 @@ questions:
   - 23,500
   correct_index: 2
   explanation: The range is 22,500 to 23,499, so the largest whole number is 23,499.
+- module: 3
+  difficulty: hard
+  sea_section: Section I
+  prompt: Round 125,990 to the nearest thousand.
+  options:
+  - 126,000
+  - 126,000_0
+  - 125,000
+  - 127,000
+  correct_index: 0
+  explanation: 'The hundreds digit is 9, so round up: 125,990 rounds to 126,000.'
+- module: 3
+  difficulty: hard
+  sea_section: Section I
+  prompt: Round 217,308 to the nearest thousand.
+  options:
+  - 218,000
+  - 217,000_0
+  - 216,000
+  - 217,000
+  correct_index: 3
+  explanation: 'The hundreds digit is 3, so round down: 217,308 rounds to 217,000.'
+- module: 3
+  difficulty: hard
+  sea_section: Section I
+  prompt: Round 309,267 to the nearest thousand.
+  options:
+  - 309,000
+  - 308,000
+  - 310,000
+  - 309,000_0
+  correct_index: 0
+  explanation: 'The hundreds digit is 2, so round down: 309,267 rounds to 309,000.'
+- module: 3
+  difficulty: hard
+  sea_section: Section I
+  prompt: Round 348,237 to the nearest thousand.
+  options:
+  - 347,000
+  - 348,000_0
+  - 348,000
+  - 349,000
+  correct_index: 2
+  explanation: 'The hundreds digit is 2, so round down: 348,237 rounds to 348,000.'
+- module: 3
+  difficulty: hard
+  sea_section: Section I
+  prompt: Round 379,766 to the nearest thousand.
+  options:
+  - 380,000_0
+  - 380,000
+  - 379,000
+  - 381,000
+  correct_index: 1
+  explanation: 'The hundreds digit is 7, so round up: 379,766 rounds to 380,000.'
+- module: 3
+  difficulty: hard
+  sea_section: Section I
+  prompt: Round 470,858 to the nearest thousand.
+  options:
+  - 472,000
+  - 471,000
+  - 470,000
+  - 471,000_0
+  correct_index: 1
+  explanation: 'The hundreds digit is 8, so round up: 470,858 rounds to 471,000.'
+- module: 3
+  difficulty: hard
+  sea_section: Section I
+  prompt: Round 482,364 to the nearest thousand.
+  options:
+  - 481,000
+  - 482,000_0
+  - 483,000
+  - 482,000
+  correct_index: 3
+  explanation: 'The hundreds digit is 3, so round down: 482,364 rounds to 482,000.'
+- module: 3
+  difficulty: hard
+  sea_section: Section I
+  prompt: Round 501,124 to the nearest thousand.
+  options:
+  - 500,000
+  - 501,000_0
+  - 502,000
+  - 501,000
+  correct_index: 3
+  explanation: 'The hundreds digit is 1, so round down: 501,124 rounds to 501,000.'
+- module: 3
+  difficulty: hard
+  sea_section: Section I
+  prompt: Round 550,664 to the nearest thousand.
+  options:
+  - 550,000
+  - 551,000_0
+  - 551,000
+  - 552,000
+  correct_index: 2
+  explanation: 'The hundreds digit is 6, so round up: 550,664 rounds to 551,000.'
+- module: 3
+  difficulty: hard
+  sea_section: Section I
+  prompt: Round 672,092 to the nearest thousand.
+  options:
+  - 671,000
+  - 672,000_0
+  - 673,000
+  - 672,000
+  correct_index: 3
+  explanation: 'The hundreds digit is 0, so round down: 672,092 rounds to 672,000.'
+- module: 3
+  difficulty: hard
+  sea_section: Section I
+  prompt: Round 815,198 to the nearest thousand.
+  options:
+  - 815,000_0
+  - 815,000
+  - 814,000
+  - 816,000
+  correct_index: 1
+  explanation: 'The hundreds digit is 1, so round down: 815,198 rounds to 815,000.'
+- module: 3
+  difficulty: hard
+  sea_section: Section I
+  prompt: Round 920,391 to the nearest thousand.
+  options:
+  - 921,000
+  - 920,000
+  - 919,000
+  - 920,000_0
+  correct_index: 1
+  explanation: 'The hundreds digit is 3, so round down: 920,391 rounds to 920,000.'
 - module: 3
   difficulty: hard
   sea_section: Section I
@@ -1579,6 +2536,116 @@ questions:
 - module: 5
   difficulty: easy
   sea_section: Section I
+  prompt: 'Which number is greater: 3,828 or 3,752?'
+  options:
+  - 3,828
+  - 7,580
+  - '76'
+  - 3,752
+  correct_index: 0
+  explanation: 'Compare digit by digit from the left: 3,828 is the greater number.'
+- module: 5
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Which number is greater: 4,944 or 9,183?'
+  options:
+  - 9,183
+  - 14,127
+  - 4,239
+  - 4,944
+  correct_index: 0
+  explanation: 'Compare digit by digit from the left: 9,183 is the greater number.'
+- module: 5
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Which number is greater: 6,067 or 7,166?'
+  options:
+  - 7,166
+  - 6,067
+  - 1,099
+  - 13,233
+  correct_index: 0
+  explanation: 'Compare digit by digit from the left: 7,166 is the greater number.'
+- module: 5
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Which number is greater: 8,885 or 5,525?'
+  options:
+  - 14,410
+  - 3,360
+  - 5,525
+  - 8,885
+  correct_index: 3
+  explanation: 'Compare digit by digit from the left: 8,885 is the greater number.'
+- module: 5
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Which number is greater: 9,612 or 4,449?'
+  options:
+  - 5,163
+  - 4,449
+  - 14,061
+  - 9,612
+  correct_index: 3
+  explanation: 'Compare digit by digit from the left: 9,612 is the greater number.'
+- module: 5
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Which number is less: 2,141 or 5,020?'
+  options:
+  - 2,141
+  - 7,161
+  - 5,020
+  - 2,879
+  correct_index: 0
+  explanation: 'Compare digit by digit from the left: 2,141 is the less number.'
+- module: 5
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Which number is less: 2,951 or 9,424?'
+  options:
+  - 9,424
+  - 2,951
+  - 12,375
+  - 6,473
+  correct_index: 1
+  explanation: 'Compare digit by digit from the left: 2,951 is the less number.'
+- module: 5
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Which number is less: 4,273 or 827?'
+  options:
+  - 4,273
+  - 3,446
+  - 5,100
+  - '827'
+  correct_index: 3
+  explanation: 'Compare digit by digit from the left: 827 is the less number.'
+- module: 5
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Which number is less: 4,664 or 1,237?'
+  options:
+  - 1,237
+  - 4,664
+  - 3,427
+  - 5,901
+  correct_index: 0
+  explanation: 'Compare digit by digit from the left: 1,237 is the less number.'
+- module: 5
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Which number is less: 5,763 or 5,239?'
+  options:
+  - 11,002
+  - '524'
+  - 5,763
+  - 5,239
+  correct_index: 3
+  explanation: 'Compare digit by digit from the left: 5,239 is the less number.'
+- module: 5
+  difficulty: easy
+  sea_section: Section I
   prompt: 'Which symbol makes this true: 3 __ 8 ?'
   options:
   - <
@@ -1675,6 +2742,116 @@ questions:
   - neither
   correct_index: 1
   explanation: They match in the thousands, but 3,540 has 5 hundreds against 4.
+- module: 5
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Which number is greater: 13,240 or 99,453?'
+  options:
+  - 13,240
+  - 86,213
+  - 99,453
+  - 112,693
+  correct_index: 2
+  explanation: 'Compare digit by digit from the left: 99,453 is the greater number.'
+- module: 5
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Which number is greater: 16,906 or 60,829?'
+  options:
+  - 60,829
+  - 16,906
+  - 77,735
+  - 43,923
+  correct_index: 0
+  explanation: 'Compare digit by digit from the left: 60,829 is the greater number.'
+- module: 5
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Which number is greater: 20,313 or 4,201?'
+  options:
+  - 24,514
+  - 20,313
+  - 16,112
+  - 4,201
+  correct_index: 1
+  explanation: 'Compare digit by digit from the left: 20,313 is the greater number.'
+- module: 5
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Which number is greater: 32,979 or 20,342?'
+  options:
+  - 53,321
+  - 12,637
+  - 20,342
+  - 32,979
+  correct_index: 3
+  explanation: 'Compare digit by digit from the left: 32,979 is the greater number.'
+- module: 5
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Which number is greater: 40,829 or 38,606?'
+  options:
+  - 40,829
+  - 38,606
+  - 79,435
+  - 2,223
+  correct_index: 0
+  explanation: 'Compare digit by digit from the left: 40,829 is the greater number.'
+- module: 5
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Which number is greater: 60,692 or 55,321?'
+  options:
+  - 60,692
+  - 116,013
+  - 55,321
+  - 5,371
+  correct_index: 0
+  explanation: 'Compare digit by digit from the left: 60,692 is the greater number.'
+- module: 5
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Which number is greater: 97,463 or 23,241?'
+  options:
+  - 97,463
+  - 23,241
+  - 74,222
+  - 120,704
+  correct_index: 0
+  explanation: 'Compare digit by digit from the left: 97,463 is the greater number.'
+- module: 5
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Which number is less: 24,053 or 92,214?'
+  options:
+  - 92,214
+  - 68,161
+  - 116,267
+  - 24,053
+  correct_index: 3
+  explanation: 'Compare digit by digit from the left: 24,053 is the less number.'
+- module: 5
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Which number is less: 61,946 or 58,905?'
+  options:
+  - 58,905
+  - 3,041
+  - 120,851
+  - 61,946
+  correct_index: 0
+  explanation: 'Compare digit by digit from the left: 58,905 is the less number.'
+- module: 5
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Which number is less: 99,992 or 59,008?'
+  options:
+  - 159,000
+  - 99,992
+  - 59,008
+  - 40,984
+  correct_index: 2
+  explanation: 'Compare digit by digit from the left: 59,008 is the less number.'
 - module: 5
   difficulty: medium
   sea_section: Section I
@@ -1796,6 +2973,116 @@ questions:
   - neither
   correct_index: 0
   explanation: 100,000 has six digits, one more than 99,999.
+- module: 5
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Which number is greater: 155,095 or 168,157?'
+  options:
+  - 155,095
+  - 168,157
+  - 323,252
+  - 13,062
+  correct_index: 1
+  explanation: 'Compare digit by digit from the left: 168,157 is the greater number.'
+- module: 5
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Which number is greater: 418,396 or 958,791?'
+  options:
+  - 1,377,187
+  - 958,791
+  - 418,396
+  - 540,395
+  correct_index: 1
+  explanation: 'Compare digit by digit from the left: 958,791 is the greater number.'
+- module: 5
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Which number is greater: 481,932 or 281,782?'
+  options:
+  - 481,932
+  - 281,782
+  - 200,150
+  - 763,714
+  correct_index: 0
+  explanation: 'Compare digit by digit from the left: 481,932 is the greater number.'
+- module: 5
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Which number is greater: 750,734 or 234,345?'
+  options:
+  - 750,734
+  - 985,079
+  - 234,345
+  - 516,389
+  correct_index: 0
+  explanation: 'Compare digit by digit from the left: 750,734 is the greater number.'
+- module: 5
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Which number is less: 255,884 or 294,913?'
+  options:
+  - 294,913
+  - 255,884
+  - 39,029
+  - 550,797
+  correct_index: 1
+  explanation: 'Compare digit by digit from the left: 255,884 is the less number.'
+- module: 5
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Which number is less: 417,746 or 362,457?'
+  options:
+  - 780,203
+  - 362,457
+  - 55,289
+  - 417,746
+  correct_index: 1
+  explanation: 'Compare digit by digit from the left: 362,457 is the less number.'
+- module: 5
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Which number is less: 521,945 or 240,080?'
+  options:
+  - 762,025
+  - 240,080
+  - 521,945
+  - 281,865
+  correct_index: 1
+  explanation: 'Compare digit by digit from the left: 240,080 is the less number.'
+- module: 5
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Which number is less: 578,969 or 498,557?'
+  options:
+  - 1,077,526
+  - 578,969
+  - 80,412
+  - 498,557
+  correct_index: 3
+  explanation: 'Compare digit by digit from the left: 498,557 is the less number.'
+- module: 5
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Which number is less: 667,193 or 260,867?'
+  options:
+  - 928,060
+  - 667,193
+  - 260,867
+  - 406,326
+  correct_index: 2
+  explanation: 'Compare digit by digit from the left: 260,867 is the less number.'
+- module: 5
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Which number is less: 998,536 or 378,845?'
+  options:
+  - 1,377,381
+  - 378,845
+  - 998,536
+  - 619,691
+  correct_index: 1
+  explanation: 'Compare digit by digit from the left: 378,845 is the less number.'
 - module: 5
   difficulty: hard
   sea_section: Section I
@@ -1942,6 +3229,17 @@ questions:
 - module: 6
   difficulty: easy
   sea_section: Section I
+  prompt: What is 20 + 70?
+  options:
+  - '80'
+  - '91'
+  - '100'
+  - '90'
+  correct_index: 3
+  explanation: 20 + 70 = 90.
+- module: 6
+  difficulty: easy
+  sea_section: Section I
   prompt: What is 23 + 14?
   options:
   - '37'
@@ -1950,6 +3248,17 @@ questions:
   - '27'
   correct_index: 0
   explanation: 23 + 14 = 37.
+- module: 6
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 43 - 16?
+  options:
+  - '28'
+  - '37'
+  - '27'
+  - '17'
+  correct_index: 2
+  explanation: 43 - 16 = 27.
 - module: 6
   difficulty: easy
   sea_section: Section I
@@ -1972,6 +3281,39 @@ questions:
   - '90'
   correct_index: 0
   explanation: 50 + 30 = 80.
+- module: 6
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 53 - 51?
+  options:
+  - '2'
+  - '3'
+  - '12'
+  - '-8'
+  correct_index: 0
+  explanation: 53 - 51 = 2.
+- module: 6
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 89 + 78?
+  options:
+  - '177'
+  - '167'
+  - '157'
+  - '168'
+  correct_index: 1
+  explanation: 89 + 78 = 167.
+- module: 6
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 92 - 20?
+  options:
+  - '62'
+  - '72'
+  - '73'
+  - '82'
+  correct_index: 1
+  explanation: 92 - 20 = 72.
 - module: 6
   difficulty: medium
   sea_section: Section I
@@ -2096,6 +3438,17 @@ questions:
 - module: 6
   difficulty: medium
   sea_section: Section I
+  prompt: What is 210 + 692?
+  options:
+  - '902'
+  - '912'
+  - '903'
+  - '892'
+  correct_index: 0
+  explanation: 210 + 692 = 902.
+- module: 6
+  difficulty: medium
+  sea_section: Section I
   prompt: What is 256 + 137?
   options:
   - '393'
@@ -2137,6 +3490,50 @@ questions:
   - '326'
   correct_index: 0
   explanation: 523 - 187 = 336.
+- module: 6
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 765 + 170?
+  options:
+  - '945'
+  - '925'
+  - '936'
+  - '935'
+  correct_index: 3
+  explanation: 765 + 170 = 935.
+- module: 6
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 785 + 217?
+  options:
+  - 1,002
+  - 1,012
+  - '992'
+  - 1,003
+  correct_index: 0
+  explanation: 785 + 217 = 1,002.
+- module: 6
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 885 + 477?
+  options:
+  - 1,352
+  - 1,372
+  - 1,363
+  - 1,362
+  correct_index: 3
+  explanation: 885 + 477 = 1,362.
+- module: 6
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 959 + 120?
+  options:
+  - 1,069
+  - 1,080
+  - 1,079
+  - 1,089
+  correct_index: 2
+  explanation: 959 + 120 = 1,079.
 - module: 6
   difficulty: hard
   sea_section: Section I
@@ -2272,6 +3669,17 @@ questions:
 - module: 6
   difficulty: hard
   sea_section: Section I
+  prompt: What is 2,983 - 1,672?
+  options:
+  - 1,311
+  - 1,321
+  - 1,301
+  - 1,312
+  correct_index: 0
+  explanation: 2,983 - 1,672 = 1,311.
+- module: 6
+  difficulty: hard
+  sea_section: Section I
   prompt: What is 3,456 + 1,544?
   options:
   - 5,000
@@ -2302,6 +3710,50 @@ questions:
   - 3,117
   correct_index: 0
   explanation: 5,003 - 1,876 = 3,127.
+- module: 6
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 7,498 + 4,249?
+  options:
+  - 11,737
+  - 11,748
+  - 11,747
+  - 11,757
+  correct_index: 2
+  explanation: 7,498 + 4,249 = 11,747.
+- module: 6
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 8,102 - 2,729?
+  options:
+  - 5,383
+  - 5,373
+  - 5,363
+  - 5,374
+  correct_index: 1
+  explanation: 8,102 - 2,729 = 5,373.
+- module: 6
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 8,135 - 3,885?
+  options:
+  - 4,250
+  - 4,240
+  - 4,260
+  - 4,251
+  correct_index: 0
+  explanation: 8,135 - 3,885 = 4,250.
+- module: 6
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 9,289 - 2,129?
+  options:
+  - 7,161
+  - 7,150
+  - 7,170
+  - 7,160
+  correct_index: 3
+  explanation: 9,289 - 2,129 = 7,160.
 - module: 7
   difficulty: easy
   sea_section: Section I
@@ -3020,6 +4472,28 @@ questions:
 - module: 8
   difficulty: easy
   sea_section: Section I
+  prompt: What is 10 ÷ 2?
+  options:
+  - '4'
+  - '6'
+  - '7'
+  - '5'
+  correct_index: 3
+  explanation: '10 shared into 2 equal groups gives 5. Check: 5 × 2 = 10.'
+- module: 8
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 14 ÷ 7?
+  options:
+  - '1'
+  - '2'
+  - '3'
+  - '9'
+  correct_index: 1
+  explanation: '14 shared into 7 equal groups gives 2. Check: 2 × 7 = 14.'
+- module: 8
+  difficulty: easy
+  sea_section: Section I
   prompt: What is 18 ÷ 2?
   options:
   - '9'
@@ -3064,6 +4538,39 @@ questions:
 - module: 8
   difficulty: easy
   sea_section: Section I
+  prompt: What is 30 ÷ 6?
+  options:
+  - '6'
+  - '5'
+  - '4'
+  - '11'
+  correct_index: 1
+  explanation: '30 shared into 6 equal groups gives 5. Check: 5 × 6 = 30.'
+- module: 8
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 35 ÷ 5?
+  options:
+  - '8'
+  - '12'
+  - '6'
+  - '7'
+  correct_index: 3
+  explanation: '35 shared into 5 equal groups gives 7. Check: 7 × 5 = 35.'
+- module: 8
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 36 ÷ 6?
+  options:
+  - '7'
+  - '12'
+  - '6'
+  - '5'
+  correct_index: 2
+  explanation: '36 shared into 6 equal groups gives 6. Check: 6 × 6 = 36.'
+- module: 8
+  difficulty: easy
+  sea_section: Section I
   prompt: What is 40 ÷ 8?
   options:
   - '5'
@@ -3072,6 +4579,61 @@ questions:
   - '7'
   correct_index: 0
   explanation: 40 ÷ 8 = 5.
+- module: 8
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 42 ÷ 6?
+  options:
+  - '6'
+  - '13'
+  - '7'
+  - '8'
+  correct_index: 2
+  explanation: '42 shared into 6 equal groups gives 7. Check: 7 × 6 = 42.'
+- module: 8
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 42 ÷ 7?
+  options:
+  - '6'
+  - '13'
+  - '7'
+  - '5'
+  correct_index: 0
+  explanation: '42 shared into 7 equal groups gives 6. Check: 6 × 7 = 42.'
+- module: 8
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 45 ÷ 9?
+  options:
+  - '5'
+  - '6'
+  - '4'
+  - '14'
+  correct_index: 0
+  explanation: '45 shared into 9 equal groups gives 5. Check: 5 × 9 = 45.'
+- module: 8
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 56 ÷ 8?
+  options:
+  - '7'
+  - '8'
+  - '15'
+  - '6'
+  correct_index: 0
+  explanation: '56 shared into 8 equal groups gives 7. Check: 7 × 8 = 56.'
+- module: 8
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 81 ÷ 9?
+  options:
+  - '10'
+  - '8'
+  - '9'
+  - '18'
+  correct_index: 2
+  explanation: '81 shared into 9 equal groups gives 9. Check: 9 × 9 = 81.'
 - module: 8
   difficulty: medium
   sea_section: Section I
@@ -3141,6 +4703,39 @@ questions:
 - module: 8
   difficulty: medium
   sea_section: Section I
+  prompt: What is 115 ÷ 5?
+  options:
+  - '23'
+  - '22'
+  - '24'
+  - '28'
+  correct_index: 0
+  explanation: '115 shared into 5 equal groups gives 23. Check: 23 × 5 = 115.'
+- module: 8
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 116 ÷ 4?
+  options:
+  - '30'
+  - '33'
+  - '28'
+  - '29'
+  correct_index: 3
+  explanation: '116 shared into 4 equal groups gives 29. Check: 29 × 4 = 116.'
+- module: 8
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 147 ÷ 7?
+  options:
+  - '28'
+  - '20'
+  - '22'
+  - '21'
+  correct_index: 3
+  explanation: '147 shared into 7 equal groups gives 21. Check: 21 × 7 = 147.'
+- module: 8
+  difficulty: medium
+  sea_section: Section I
   prompt: What is 17 ÷ 5?
   options:
   - 3 remainder 2
@@ -3152,6 +4747,61 @@ questions:
 - module: 8
   difficulty: medium
   sea_section: Section I
+  prompt: What is 200 ÷ 4?
+  options:
+  - '51'
+  - '49'
+  - '50'
+  - '54'
+  correct_index: 2
+  explanation: '200 shared into 4 equal groups gives 50. Check: 50 × 4 = 200.'
+- module: 8
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 308 ÷ 11?
+  options:
+  - '28'
+  - '27'
+  - '29'
+  - '39'
+  correct_index: 0
+  explanation: '308 shared into 11 equal groups gives 28. Check: 28 × 11 = 308.'
+- module: 8
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 319 ÷ 11?
+  options:
+  - '30'
+  - '28'
+  - '40'
+  - '29'
+  correct_index: 3
+  explanation: '319 shared into 11 equal groups gives 29. Check: 29 × 11 = 319.'
+- module: 8
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 42 ÷ 3?
+  options:
+  - '13'
+  - '14'
+  - '15'
+  - '17'
+  correct_index: 1
+  explanation: '42 shared into 3 equal groups gives 14. Check: 14 × 3 = 42.'
+- module: 8
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 550 ÷ 11?
+  options:
+  - '51'
+  - '49'
+  - '61'
+  - '50'
+  correct_index: 3
+  explanation: '550 shared into 11 equal groups gives 50. Check: 50 × 11 = 550.'
+- module: 8
+  difficulty: medium
+  sea_section: Section I
   prompt: What is 63 ÷ 9?
   options:
   - '7'
@@ -3160,6 +4810,28 @@ questions:
   - '9'
   correct_index: 0
   explanation: 63 ÷ 9 = 7.
+- module: 8
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 66 ÷ 3?
+  options:
+  - '25'
+  - '23'
+  - '22'
+  - '21'
+  correct_index: 2
+  explanation: '66 shared into 3 equal groups gives 22. Check: 22 × 3 = 66.'
+- module: 8
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 72 ÷ 6?
+  options:
+  - '18'
+  - '13'
+  - '11'
+  - '12'
+  correct_index: 3
+  explanation: '72 shared into 6 equal groups gives 12. Check: 12 × 6 = 72.'
 - module: 8
   difficulty: medium
   sea_section: Section I
@@ -3240,6 +4912,39 @@ questions:
 - module: 8
   difficulty: hard
   sea_section: Section I
+  prompt: What is 1,104 ÷ 12?
+  options:
+  - '93'
+  - '104'
+  - '91'
+  - '92'
+  correct_index: 3
+  explanation: '1,104 shared into 12 equal groups gives 92. Check: 92 × 12 = 1,104.'
+- module: 8
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 1,292 ÷ 17?
+  options:
+  - '76'
+  - '77'
+  - '93'
+  - '75'
+  correct_index: 0
+  explanation: '1,292 shared into 17 equal groups gives 76. Check: 76 × 17 = 1,292.'
+- module: 8
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 1,460 ÷ 20?
+  options:
+  - '73'
+  - '93'
+  - '72'
+  - '74'
+  correct_index: 0
+  explanation: '1,460 shared into 20 equal groups gives 73. Check: 73 × 20 = 1,460.'
+- module: 8
+  difficulty: hard
+  sea_section: Section I
   prompt: What is 144 ÷ 12?
   options:
   - '12'
@@ -3251,6 +4956,17 @@ questions:
 - module: 8
   difficulty: hard
   sea_section: Section I
+  prompt: What is 160 ÷ 8?
+  options:
+  - '20'
+  - '19'
+  - '21'
+  - '28'
+  correct_index: 0
+  explanation: '160 shared into 8 equal groups gives 20. Check: 20 × 8 = 160.'
+- module: 8
+  difficulty: hard
+  sea_section: Section I
   prompt: What is 225 ÷ 5?
   options:
   - '45'
@@ -3259,6 +4975,61 @@ questions:
   - '35'
   correct_index: 0
   explanation: 225 ÷ 5 = 45.
+- module: 8
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 288 ÷ 12?
+  options:
+  - '24'
+  - '23'
+  - '36'
+  - '25'
+  correct_index: 0
+  explanation: '288 shared into 12 equal groups gives 24. Check: 24 × 12 = 288.'
+- module: 8
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 400 ÷ 8?
+  options:
+  - '58'
+  - '50'
+  - '49'
+  - '51'
+  correct_index: 1
+  explanation: '400 shared into 8 equal groups gives 50. Check: 50 × 8 = 400.'
+- module: 8
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 418 ÷ 11?
+  options:
+  - '39'
+  - '37'
+  - '49'
+  - '38'
+  correct_index: 3
+  explanation: '418 shared into 11 equal groups gives 38. Check: 38 × 11 = 418.'
+- module: 8
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 423 ÷ 9?
+  options:
+  - '48'
+  - '47'
+  - '56'
+  - '46'
+  correct_index: 1
+  explanation: '423 shared into 9 equal groups gives 47. Check: 47 × 9 = 423.'
+- module: 8
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 493 ÷ 17?
+  options:
+  - '28'
+  - '29'
+  - '46'
+  - '30'
+  correct_index: 1
+  explanation: '493 shared into 17 equal groups gives 29. Check: 29 × 17 = 493.'
 - module: 8
   difficulty: hard
   sea_section: Section I
@@ -3281,6 +5052,17 @@ questions:
   - '105'
   correct_index: 0
   explanation: 500 ÷ 4 = 125.
+- module: 8
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 544 ÷ 16?
+  options:
+  - '50'
+  - '34'
+  - '33'
+  - '35'
+  correct_index: 1
+  explanation: '544 shared into 16 equal groups gives 34. Check: 34 × 16 = 544.'
 - module: 8
   difficulty: hard
   sea_section: Section I
@@ -8023,6 +9805,116 @@ questions:
   correct_index: 0
   explanation: <p>Line up the decimal points and add or subtract as with whole numbers, keeping the point in line.</p><p><strong>Step-by-step working</strong></p><ol><li>6.6 &minus; 5.6 = 1.0.</li></ol><p><strong>Answer:</strong> <strong>1.0</strong></p>
 - module: 19
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 2.8 + 6.4?
+  options:
+  - '9.3'
+  - '9.2'
+  - '10.2'
+  - '9.1'
+  correct_index: 1
+  explanation: 'Line up the decimal points and add: 2.8 + 6.4 = 9.2.'
+- module: 19
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 3.0 - 1.9?
+  options:
+  - '2.1'
+  - '1.2'
+  - '1.0'
+  - '1.1'
+  correct_index: 3
+  explanation: 'Line up the decimal points and subtract: 3.0 - 1.9 = 1.1.'
+- module: 19
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 3.3 + 8.6?
+  options:
+  - '11.8'
+  - '12.0'
+  - '11.9'
+  - '12.9'
+  correct_index: 2
+  explanation: 'Line up the decimal points and add: 3.3 + 8.6 = 11.9.'
+- module: 19
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 3.7 + 6.4?
+  options:
+  - '10.1'
+  - '11.1'
+  - '10.2'
+  - '10.0'
+  correct_index: 0
+  explanation: 'Line up the decimal points and add: 3.7 + 6.4 = 10.1.'
+- module: 19
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 4.3 - 2.5?
+  options:
+  - '1.8'
+  - '1.9'
+  - '1.7'
+  - '2.8'
+  correct_index: 0
+  explanation: 'Line up the decimal points and subtract: 4.3 - 2.5 = 1.8.'
+- module: 19
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 6.1 + 4.9?
+  options:
+  - '11.0'
+  - '10.9'
+  - '11.1'
+  - '12.0'
+  correct_index: 0
+  explanation: 'Line up the decimal points and add: 6.1 + 4.9 = 11.0.'
+- module: 19
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 6.6 - 6.5?
+  options:
+  - '0.0'
+  - '0.1'
+  - '0.2'
+  - '1.1'
+  correct_index: 1
+  explanation: 'Line up the decimal points and subtract: 6.6 - 6.5 = 0.1.'
+- module: 19
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 7.1 - 2.4?
+  options:
+  - '5.7'
+  - '4.8'
+  - '4.7'
+  - '4.6'
+  correct_index: 2
+  explanation: 'Line up the decimal points and subtract: 7.1 - 2.4 = 4.7.'
+- module: 19
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 7.3 - 5.8?
+  options:
+  - '1.4'
+  - '1.6'
+  - '1.5'
+  - '2.5'
+  correct_index: 2
+  explanation: 'Line up the decimal points and subtract: 7.3 - 5.8 = 1.5.'
+- module: 19
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 8.1 - 5.8?
+  options:
+  - '2.4'
+  - '3.3'
+  - '2.3'
+  - '2.2'
+  correct_index: 2
+  explanation: 'Line up the decimal points and subtract: 8.1 - 5.8 = 2.3.'
+- module: 19
   difficulty: medium
   sea_section: Section I
   prompt: 2.4 + 3.1 = ?
@@ -8133,6 +10025,116 @@ questions:
   correct_index: 0
   explanation: <p>Line up the decimal points and add or subtract as with whole numbers, keeping the point in line.</p><p><strong>Step-by-step working</strong></p><ol><li>4.89 &minus; 3.84 = 1.05.</li></ol><p><strong>Answer:</strong> <strong>1.05</strong></p>
 - module: 19
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 1.97 + 8.79?
+  options:
+  - '10.66'
+  - '10.76'
+  - '11.76'
+  - '10.86'
+  correct_index: 1
+  explanation: 'Line up the decimal points and add: 1.97 + 8.79 = 10.76.'
+- module: 19
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 4.78 - 3.55?
+  options:
+  - '1.33'
+  - '1.23'
+  - '1.13'
+  - '2.23'
+  correct_index: 1
+  explanation: 'Line up the decimal points and subtract: 4.78 - 3.55 = 1.23.'
+- module: 19
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 5.31 - 3.76?
+  options:
+  - '1.45'
+  - '1.55'
+  - '1.65'
+  - '2.55'
+  correct_index: 1
+  explanation: 'Line up the decimal points and subtract: 5.31 - 3.76 = 1.55.'
+- module: 19
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 5.41 - 2.95?
+  options:
+  - '3.46'
+  - '2.46'
+  - '2.36'
+  - '2.56'
+  correct_index: 1
+  explanation: 'Line up the decimal points and subtract: 5.41 - 2.95 = 2.46.'
+- module: 19
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 5.42 + 1.75?
+  options:
+  - '7.27'
+  - '7.07'
+  - '7.17'
+  - '8.17'
+  correct_index: 2
+  explanation: 'Line up the decimal points and add: 5.42 + 1.75 = 7.17.'
+- module: 19
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 6.73 - 4.99?
+  options:
+  - '1.74'
+  - '1.64'
+  - '1.84'
+  - '2.74'
+  correct_index: 0
+  explanation: 'Line up the decimal points and subtract: 6.73 - 4.99 = 1.74.'
+- module: 19
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 7.08 + 2.63?
+  options:
+  - '9.71'
+  - '10.71'
+  - '9.81'
+  - '9.61'
+  correct_index: 0
+  explanation: 'Line up the decimal points and add: 7.08 + 2.63 = 9.71.'
+- module: 19
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 7.56 - 3.26?
+  options:
+  - '4.2'
+  - '4.4'
+  - '4.3'
+  - '5.3'
+  correct_index: 2
+  explanation: 'Line up the decimal points and subtract: 7.56 - 3.26 = 4.3.'
+- module: 19
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 7.91 - 3.21?
+  options:
+  - '4.7'
+  - '4.8'
+  - '5.7'
+  - '4.6'
+  correct_index: 0
+  explanation: 'Line up the decimal points and subtract: 7.91 - 3.21 = 4.7.'
+- module: 19
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 8.85 - 2.91?
+  options:
+  - '5.84'
+  - '5.94'
+  - '6.94'
+  - '6.04'
+  correct_index: 1
+  explanation: 'Line up the decimal points and subtract: 8.85 - 2.91 = 5.94.'
+- module: 19
   difficulty: hard
   sea_section: Section I
   prompt: 10.4 - 3.7 = ?
@@ -8242,6 +10244,116 @@ questions:
   - '89.32'
   correct_index: 1
   explanation: <p>Line up the decimal points and add or subtract as with whole numbers, keeping the point in line.</p><p><strong>Step-by-step working</strong></p><ol><li>68.5 + 20.92 = 89.42.</li></ol><p><strong>Answer:</strong> <strong>89.42</strong></p>
+- module: 19
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 29.75 + 37.73?
+  options:
+  - '67.48'
+  - '68.48'
+  - '67.38'
+  - '67.58'
+  correct_index: 0
+  explanation: 'Line up the decimal points and add: 29.75 + 37.73 = 67.48.'
+- module: 19
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 44.48 + 69.01?
+  options:
+  - '113.39'
+  - '114.49'
+  - '113.59'
+  - '113.49'
+  correct_index: 3
+  explanation: 'Line up the decimal points and add: 44.48 + 69.01 = 113.49.'
+- module: 19
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 49.54 - 4.63?
+  options:
+  - '44.81'
+  - '45.91'
+  - '45.01'
+  - '44.91'
+  correct_index: 3
+  explanation: 'Line up the decimal points and subtract: 49.54 - 4.63 = 44.91.'
+- module: 19
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 52.54 + 45.78?
+  options:
+  - '98.42'
+  - '98.32'
+  - '98.22'
+  - '99.32'
+  correct_index: 1
+  explanation: 'Line up the decimal points and add: 52.54 + 45.78 = 98.32.'
+- module: 19
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 56.46 + 78.67?
+  options:
+  - '135.03'
+  - '136.13'
+  - '135.13'
+  - '135.23'
+  correct_index: 2
+  explanation: 'Line up the decimal points and add: 56.46 + 78.67 = 135.13.'
+- module: 19
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 61.73 + 24.6?
+  options:
+  - '86.33'
+  - '86.23'
+  - '87.33'
+  - '86.43'
+  correct_index: 0
+  explanation: 'Line up the decimal points and add: 61.73 + 24.6 = 86.33.'
+- module: 19
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 77.59 - 8.33?
+  options:
+  - '69.26'
+  - '69.36'
+  - '70.26'
+  - '69.16'
+  correct_index: 0
+  explanation: 'Line up the decimal points and subtract: 77.59 - 8.33 = 69.26.'
+- module: 19
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 84.47 - 64.68?
+  options:
+  - '19.79'
+  - '19.89'
+  - '20.79'
+  - '19.69'
+  correct_index: 0
+  explanation: 'Line up the decimal points and subtract: 84.47 - 64.68 = 19.79.'
+- module: 19
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 86.49 + 4.52?
+  options:
+  - '91.01'
+  - '92.01'
+  - '90.91'
+  - '91.11'
+  correct_index: 0
+  explanation: 'Line up the decimal points and add: 86.49 + 4.52 = 91.01.'
+- module: 19
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 98.75 - 74.18?
+  options:
+  - '24.67'
+  - '25.57'
+  - '24.47'
+  - '24.57'
+  correct_index: 3
+  explanation: 'Line up the decimal points and subtract: 98.75 - 74.18 = 24.57.'
 - module: 20
   difficulty: easy
   sea_section: Section I
@@ -8353,6 +10465,116 @@ questions:
   correct_index: 0
   explanation: <p>Divide as with whole numbers, keeping the decimal point in the answer lined up with the point in the number.</p><p><strong>Step-by-step working</strong></p><ol><li>8.5 &times; 3 = 25.5.</li></ol><p><strong>Answer:</strong> <strong>25.5</strong></p>
 - module: 20
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 1.6 × 100?
+  options:
+  - '160.0'
+  - '1600.0'
+  - '161.0'
+  - '16.0'
+  correct_index: 0
+  explanation: 'Move the point: 1.6 × 100 = 160.0.'
+- module: 20
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 3.2 × 10?
+  options:
+  - '3.2'
+  - '32.0'
+  - '320.0'
+  - '33.0'
+  correct_index: 1
+  explanation: 'Move the point: 3.2 × 10 = 32.0.'
+- module: 20
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 3.5 × 100?
+  options:
+  - '351.0'
+  - '3500.0'
+  - '35.0'
+  - '350.0'
+  correct_index: 3
+  explanation: 'Move the point: 3.5 × 100 = 350.0.'
+- module: 20
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 4.7 × 10?
+  options:
+  - '4.7'
+  - '47.0'
+  - '470.0'
+  - '48.0'
+  correct_index: 1
+  explanation: 'Move the point: 4.7 × 10 = 47.0.'
+- module: 20
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 5.6 × 100?
+  options:
+  - '561.0'
+  - '5600.0'
+  - '56.0'
+  - '560.0'
+  correct_index: 3
+  explanation: 'Move the point: 5.6 × 100 = 560.0.'
+- module: 20
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 5.9 × 100?
+  options:
+  - '591.0'
+  - '590.0'
+  - '59.0'
+  - '5900.0'
+  correct_index: 1
+  explanation: 'Move the point: 5.9 × 100 = 590.0.'
+- module: 20
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 6.0 × 10?
+  options:
+  - '600.0'
+  - '61.0'
+  - '6.0'
+  - '60.0'
+  correct_index: 3
+  explanation: 'Move the point: 6.0 × 10 = 60.0.'
+- module: 20
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 6.5 × 100?
+  options:
+  - '651.0'
+  - '6500.0'
+  - '650.0'
+  - '65.0'
+  correct_index: 2
+  explanation: 'Move the point: 6.5 × 100 = 650.0.'
+- module: 20
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 6.9 × 10?
+  options:
+  - '69.0'
+  - '70.0'
+  - '690.0'
+  - '6.9'
+  correct_index: 0
+  explanation: 'Move the point: 6.9 × 10 = 69.0.'
+- module: 20
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 7.8 × 10?
+  options:
+  - '78.0'
+  - '7.8'
+  - '79.0'
+  - '780.0'
+  correct_index: 0
+  explanation: 'Move the point: 7.8 × 10 = 78.0.'
+- module: 20
   difficulty: medium
   sea_section: Section I
   prompt: 0.07 x 100 = ?
@@ -8463,6 +10685,116 @@ questions:
   correct_index: 2
   explanation: <p>Divide as with whole numbers, keeping the decimal point in the answer lined up with the point in the number.</p><p><strong>Step-by-step working</strong></p><ol><li>59.5 &divide; 7 = 8.5.</li></ol><p><strong>Answer:</strong> <strong>8.5</strong></p>
 - module: 20
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 1.11 × 3?
+  options:
+  - '3.33'
+  - '0.333'
+  - '33.3'
+  - '4.33'
+  correct_index: 0
+  explanation: 1.11 × 3 = 3.33.
+- module: 20
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 1.93 × 2?
+  options:
+  - '4.86'
+  - '0.386'
+  - '38.6'
+  - '3.86'
+  correct_index: 3
+  explanation: 1.93 × 2 = 3.86.
+- module: 20
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 1.93 × 5?
+  options:
+  - '9.65'
+  - '0.965'
+  - '10.65'
+  - '96.5'
+  correct_index: 0
+  explanation: 1.93 × 5 = 9.65.
+- module: 20
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 2.41 × 4?
+  options:
+  - '9.64'
+  - '96.4'
+  - '10.64'
+  - '0.964'
+  correct_index: 0
+  explanation: 2.41 × 4 = 9.64.
+- module: 20
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 4.77 × 7?
+  options:
+  - '34.39'
+  - '33.39'
+  - '3.339'
+  - '333.9'
+  correct_index: 1
+  explanation: 4.77 × 7 = 33.39.
+- module: 20
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 5.68 × 7?
+  options:
+  - '397.6'
+  - '40.76'
+  - '3.976'
+  - '39.76'
+  correct_index: 3
+  explanation: 5.68 × 7 = 39.76.
+- module: 20
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 6.08 × 9?
+  options:
+  - '54.72'
+  - '547.2'
+  - '55.72'
+  - '5.472'
+  correct_index: 0
+  explanation: 6.08 × 9 = 54.72.
+- module: 20
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 7.43 × 9?
+  options:
+  - '668.7'
+  - '6.687'
+  - '67.87'
+  - '66.87'
+  correct_index: 3
+  explanation: 7.43 × 9 = 66.87.
+- module: 20
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 7.64 × 6?
+  options:
+  - '45.84'
+  - '4.584'
+  - '458.4'
+  - '46.84'
+  correct_index: 0
+  explanation: 7.64 × 6 = 45.84.
+- module: 20
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 7.88 × 8?
+  options:
+  - '64.04'
+  - '630.4'
+  - '63.04'
+  - '6.304'
+  correct_index: 2
+  explanation: 7.88 × 8 = 63.04.
+- module: 20
   difficulty: hard
   sea_section: Section I
   prompt: 0.35 x 100 = ?
@@ -8572,6 +10904,116 @@ questions:
   - '68.4'
   correct_index: 0
   explanation: <p>Divide as with whole numbers, keeping the decimal point in the answer lined up with the point in the number.</p><p><strong>Step-by-step working</strong></p><ol><li>54.72 &divide; 8 = 6.84.</li></ol><p><strong>Answer:</strong> <strong>6.84</strong></p>
+- module: 20
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 2.74 ÷ 100?
+  options:
+  - '0.003'
+  - '0.027'
+  - '1.027'
+  - '0.27'
+  correct_index: 1
+  explanation: 'Move the point left: 2.74 ÷ 100 = 0.027.'
+- module: 20
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 3.21 ÷ 10?
+  options:
+  - '3.21'
+  - '0.032'
+  - '0.321'
+  - '1.321'
+  correct_index: 2
+  explanation: 'Move the point left: 3.21 ÷ 10 = 0.321.'
+- module: 20
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 3.22 ÷ 10?
+  options:
+  - '0.322'
+  - '1.322'
+  - '0.032'
+  - '3.22'
+  correct_index: 0
+  explanation: 'Move the point left: 3.22 ÷ 10 = 0.322.'
+- module: 20
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 3.97 ÷ 100?
+  options:
+  - '0.004'
+  - '0.04'
+  - '1.04'
+  - '0.4'
+  correct_index: 1
+  explanation: 'Move the point left: 3.97 ÷ 100 = 0.04.'
+- module: 20
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 5.69 ÷ 10?
+  options:
+  - '5.69'
+  - '1.569'
+  - '0.569'
+  - '0.057'
+  correct_index: 2
+  explanation: 'Move the point left: 5.69 ÷ 10 = 0.569.'
+- module: 20
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 6.13 ÷ 10?
+  options:
+  - '0.061'
+  - '1.613'
+  - '6.13'
+  - '0.613'
+  correct_index: 3
+  explanation: 'Move the point left: 6.13 ÷ 10 = 0.613.'
+- module: 20
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 7.39 ÷ 10?
+  options:
+  - '7.39'
+  - '0.074'
+  - '1.739'
+  - '0.739'
+  correct_index: 3
+  explanation: 'Move the point left: 7.39 ÷ 10 = 0.739.'
+- module: 20
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 7.67 ÷ 100?
+  options:
+  - '1.077'
+  - '0.77'
+  - '0.077'
+  - '0.008'
+  correct_index: 2
+  explanation: 'Move the point left: 7.67 ÷ 100 = 0.077.'
+- module: 20
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 8.85 ÷ 100?
+  options:
+  - '1.088'
+  - '0.88'
+  - '0.088'
+  - '0.009'
+  correct_index: 2
+  explanation: 'Move the point left: 8.85 ÷ 100 = 0.088.'
+- module: 20
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 8.91 ÷ 10?
+  options:
+  - '8.91'
+  - '1.891'
+  - '0.089'
+  - '0.891'
+  correct_index: 3
+  explanation: 'Move the point left: 8.91 ÷ 10 = 0.891.'
 - module: 21
   difficulty: easy
   sea_section: Section I
@@ -9288,6 +11730,72 @@ questions:
   correct_index: 2
   explanation: <p>A percentage is a fraction out of 100. Multiply the amount by the percentage and divide by 100.</p><p><strong>Step-by-step working</strong></p><ol><li>50% of 60 = 50/100 &times; 60.</li><li>= 30.</li></ol><p><strong>Answer:</strong> <strong>30</strong></p>
 - module: 23
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 10% of 150?
+  options:
+  - '30'
+  - '15'
+  - '10'
+  - '25'
+  correct_index: 1
+  explanation: 10% of 150 = 10/100 × 150 = 15.
+- module: 23
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 10% of 40?
+  options:
+  - '4'
+  - '9'
+  - '14'
+  - '8'
+  correct_index: 0
+  explanation: 10% of 40 = 10/100 × 40 = 4.
+- module: 23
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 100% of 120?
+  options:
+  - '240'
+  - '115'
+  - '220'
+  - '120'
+  correct_index: 3
+  explanation: 100% of 120 = 100/100 × 120 = 120.
+- module: 23
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 50% of 150?
+  options:
+  - '70'
+  - '125'
+  - '150'
+  - '75'
+  correct_index: 3
+  explanation: 50% of 150 = 50/100 × 150 = 75.
+- module: 23
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 50% of 20?
+  options:
+  - '10'
+  - '20'
+  - '5'
+  - '60'
+  correct_index: 0
+  explanation: 50% of 20 = 50/100 × 20 = 10.
+- module: 23
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 50% of 60?
+  options:
+  - '80'
+  - '60'
+  - '30'
+  - '25'
+  correct_index: 2
+  explanation: 50% of 60 = 50/100 × 60 = 30.
+- module: 23
   difficulty: medium
   sea_section: Section I
   prompt: 10% of 90 = ?
@@ -9453,6 +11961,61 @@ questions:
   correct_index: 0
   explanation: <p>A percentage is a fraction out of 100. Multiply the amount by the percentage and divide by 100.</p><p><strong>Step-by-step working</strong></p><ol><li>75% of 60 = 75/100 &times; 60.</li><li>= 45.</li></ol><p><strong>Answer:</strong> <strong>45</strong></p>
 - module: 23
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 25% of 240?
+  options:
+  - '120'
+  - '55'
+  - '60'
+  - '85'
+  correct_index: 2
+  explanation: 25% of 240 = 25/100 × 240 = 60.
+- module: 23
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 50% of 100?
+  options:
+  - '50'
+  - '45'
+  - '100'
+  - '50_0'
+  correct_index: 0
+  explanation: 50% of 100 = 50/100 × 100 = 50.
+- module: 23
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 50% of 200?
+  options:
+  - '150'
+  - '95'
+  - '100'
+  - '200'
+  correct_index: 2
+  explanation: 50% of 200 = 50/100 × 200 = 100.
+- module: 23
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 75% of 200?
+  options:
+  - '150'
+  - '300'
+  - '225'
+  - '145'
+  correct_index: 0
+  explanation: 75% of 200 = 75/100 × 200 = 150.
+- module: 23
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 75% of 60?
+  options:
+  - '40'
+  - '45'
+  - '120'
+  - '90'
+  correct_index: 1
+  explanation: 75% of 60 = 75/100 × 60 = 45.
+- module: 23
   difficulty: hard
   sea_section: Section I
   prompt: 10% of 350 = ?
@@ -9617,6 +12180,61 @@ questions:
   - '425'
   correct_index: 3
   explanation: <p>A percentage is a fraction out of 100. Multiply the amount by the percentage and divide by 100.</p><p><strong>Step-by-step working</strong></p><ol><li>85% of 500 = 85/100 &times; 500.</li><li>= 425.</li></ol><p><strong>Answer:</strong> <strong>425</strong></p>
+- module: 23
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 30% of 160?
+  options:
+  - '78'
+  - '48'
+  - '43'
+  - '96'
+  correct_index: 1
+  explanation: 30% of 160 = 30/100 × 160 = 48.
+- module: 23
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 5% of 80?
+  options:
+  - '8'
+  - '9'
+  - '76'
+  - '4'
+  correct_index: 3
+  explanation: 5% of 80 = 5/100 × 80 = 4.
+- module: 23
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 60% of 160?
+  options:
+  - '192'
+  - '156'
+  - '96'
+  - '91'
+  correct_index: 2
+  explanation: 60% of 160 = 60/100 × 160 = 96.
+- module: 23
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 60% of 80?
+  options:
+  - '48'
+  - '96'
+  - '108'
+  - '43'
+  correct_index: 0
+  explanation: 60% of 80 = 60/100 × 80 = 48.
+- module: 23
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 80% of 120?
+  options:
+  - '192'
+  - '176'
+  - '91'
+  - '96'
+  correct_index: 3
+  explanation: 80% of 120 = 80/100 × 120 = 96.
 - module: 24
   difficulty: easy
   sea_section: Section I
@@ -9739,6 +12357,105 @@ questions:
   correct_index: 0
   explanation: $50 - $5 = $45.
 - module: 24
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 10% of 200?
+  options:
+  - '20'
+  - '15'
+  - '40'
+  - '30'
+  correct_index: 0
+  explanation: 10% of 200 = 10/100 × 200 = 20.
+- module: 24
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 10% of 20?
+  options:
+  - '4'
+  - '7'
+  - '2'
+  - '12'
+  correct_index: 2
+  explanation: 10% of 20 = 10/100 × 20 = 2.
+- module: 24
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 10% of 80?
+  options:
+  - '3'
+  - '8'
+  - '16'
+  - '18'
+  correct_index: 1
+  explanation: 10% of 80 = 10/100 × 80 = 8.
+- module: 24
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 100% of 100?
+  options:
+  - '100'
+  - '95'
+  - '0'
+  - '200'
+  correct_index: 0
+  explanation: 100% of 100 = 100/100 × 100 = 100.
+- module: 24
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 100% of 300?
+  options:
+  - '300'
+  - '295'
+  - '400'
+  - '600'
+  correct_index: 0
+  explanation: 100% of 300 = 100/100 × 300 = 300.
+- module: 24
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 100% of 40?
+  options:
+  - '80'
+  - '40'
+  - '35'
+  - '140'
+  correct_index: 1
+  explanation: 100% of 40 = 100/100 × 40 = 40.
+- module: 24
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 100% of 60?
+  options:
+  - '120'
+  - '55'
+  - '160'
+  - '60'
+  correct_index: 3
+  explanation: 100% of 60 = 100/100 × 60 = 60.
+- module: 24
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 100% of 80?
+  options:
+  - '160'
+  - '80'
+  - '75'
+  - '180'
+  correct_index: 1
+  explanation: 100% of 80 = 100/100 × 80 = 80.
+- module: 24
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is 50% of 240?
+  options:
+  - '240'
+  - '120'
+  - '170'
+  - '115'
+  correct_index: 1
+  explanation: 50% of 240 = 50/100 × 240 = 120.
+- module: 24
   difficulty: medium
   sea_section: Section I
   prompt: 10% of $150 = ?
@@ -9860,6 +12577,105 @@ questions:
   correct_index: 0
   explanation: 10% of $80 is $8, and $80 - $8 = $72.
 - module: 24
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 10% of 120?
+  options:
+  - '7'
+  - '24'
+  - '22'
+  - '12'
+  correct_index: 3
+  explanation: 10% of 120 = 10/100 × 120 = 12.
+- module: 24
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 20% of 80?
+  options:
+  - '11'
+  - '32'
+  - '16'
+  - '36'
+  correct_index: 2
+  explanation: 20% of 80 = 20/100 × 80 = 16.
+- module: 24
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 25% of 100?
+  options:
+  - '20'
+  - '50'
+  - '75'
+  - '25'
+  correct_index: 3
+  explanation: 25% of 100 = 25/100 × 100 = 25.
+- module: 24
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 25% of 120?
+  options:
+  - '60'
+  - '25'
+  - '55'
+  - '30'
+  correct_index: 3
+  explanation: 25% of 120 = 25/100 × 120 = 30.
+- module: 24
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 25% of 40?
+  options:
+  - '35'
+  - '5'
+  - '10'
+  - '20'
+  correct_index: 2
+  explanation: 25% of 40 = 25/100 × 40 = 10.
+- module: 24
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 25% of 60?
+  options:
+  - '40'
+  - '30'
+  - '15'
+  - '10'
+  correct_index: 2
+  explanation: 25% of 60 = 25/100 × 60 = 15.
+- module: 24
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 50% of 50?
+  options:
+  - '20'
+  - '25'
+  - '50'
+  - '75'
+  correct_index: 1
+  explanation: 50% of 50 = 50/100 × 50 = 25.
+- module: 24
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 50% of 80?
+  options:
+  - '35'
+  - '80'
+  - '90'
+  - '40'
+  correct_index: 3
+  explanation: 50% of 80 = 50/100 × 80 = 40.
+- module: 24
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is 75% of 300?
+  options:
+  - '300'
+  - '450'
+  - '225'
+  - '220'
+  correct_index: 2
+  explanation: 75% of 300 = 75/100 × 300 = 225.
+- module: 24
   difficulty: hard
   sea_section: Section II
   prompt: <p>$12,000.00 is borrowed for 5 years at 9% per annum (simple interest). How much must be repaid ALTOGETHER after 5 years?</p>
@@ -9980,6 +12796,105 @@ questions:
   - $40
   correct_index: 0
   explanation: 20% is a fifth, and $50 ÷ 5 = $10.
+- module: 24
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 15% of 320?
+  options:
+  - '96'
+  - '48'
+  - '43'
+  - '63'
+  correct_index: 1
+  explanation: 15% of 320 = 15/100 × 320 = 48.
+- module: 24
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 15% of 500?
+  options:
+  - '75'
+  - '70'
+  - '90'
+  - '150'
+  correct_index: 0
+  explanation: 15% of 500 = 15/100 × 500 = 75.
+- module: 24
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 15% of 80?
+  options:
+  - '7'
+  - '12'
+  - '24'
+  - '27'
+  correct_index: 1
+  explanation: 15% of 80 = 15/100 × 80 = 12.
+- module: 24
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 20% of 320?
+  options:
+  - '128'
+  - '59'
+  - '84'
+  - '64'
+  correct_index: 3
+  explanation: 20% of 320 = 20/100 × 320 = 64.
+- module: 24
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 30% of 450?
+  options:
+  - '270'
+  - '135'
+  - '165'
+  - '130'
+  correct_index: 1
+  explanation: 30% of 450 = 30/100 × 450 = 135.
+- module: 24
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 30% of 80?
+  options:
+  - '48'
+  - '19'
+  - '54'
+  - '24'
+  correct_index: 3
+  explanation: 30% of 80 = 30/100 × 80 = 24.
+- module: 24
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 40% of 450?
+  options:
+  - '220'
+  - '360'
+  - '175'
+  - '180'
+  correct_index: 3
+  explanation: 40% of 450 = 40/100 × 450 = 180.
+- module: 24
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 60% of 320?
+  options:
+  - '192'
+  - '252'
+  - '384'
+  - '187'
+  correct_index: 0
+  explanation: 60% of 320 = 60/100 × 320 = 192.
+- module: 24
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is 80% of 160?
+  options:
+  - '208'
+  - '128'
+  - '256'
+  - '123'
+  correct_index: 1
+  explanation: 80% of 160 = 80/100 × 160 = 128.
 - module: 25
   difficulty: easy
   sea_section: Section II
