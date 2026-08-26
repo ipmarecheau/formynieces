@@ -190,6 +190,14 @@ document.addEventListener('alpine:init', () => {
         deg: cfg.start ?? 45, readout: '', result: '', hasTarget: cfg.target != null,
         init() {
             const svg = this.$refs.ang, V = { x: 130, y: 130 }, L = 100;
+            // Context: a low brick wall along the ground, with the gate (ray) hinged at the post.
+            svg.appendChild(el('rect', { x: 24, y: 140, width: 220, height: 6, fill: '#3f2d1a', opacity: 0.55 }));
+            svg.appendChild(el('rect', { x: V.x, y: 124, width: L, height: 12, fill: '#8a7a63', stroke: '#5c4a2f', 'stroke-width': 1 }));
+            for (let wx = V.x + 16; wx < V.x + L; wx += 16) {
+                svg.appendChild(el('line', { x1: wx, y1: 124, x2: wx, y2: 136, stroke: '#5c4a2f', 'stroke-width': 1, opacity: 0.5 }));
+            }
+            const wl = el('text', { x: V.x + L / 2, y: 158, class: 'ang-num' }); wl.textContent = 'wall'; svg.appendChild(wl);
+            svg.appendChild(el('rect', { x: V.x - 5, y: 116, width: 10, height: 24, rx: 2, fill: '#6b4f2a', stroke: '#4a3418', 'stroke-width': 1 }));
             svg.appendChild(el('line', { x1: V.x, y1: V.y, x2: V.x + L, y2: V.y, class: 'ang-base' }));
             [[90, '¼'], [180, '½'], [270, '¾']].forEach(([d, t]) => {
                 const a = d * Math.PI / 180, r1 = L * 0.55, r2 = L * 0.55 + 9;

@@ -136,8 +136,8 @@
     .bal-wt { width: 26px; height: 18px; background: #f2a900; border-radius: 3px; font: 800 9px 'Nunito'; color: #3a2900; display: flex; align-items: center; justify-content: center; }
     /* Angle */
     .lw-ang { width: 100%; max-width: 260px; height: auto; display: block; margin: 4px auto; touch-action: none; }
-    .ang-base { stroke: #16242e; stroke-width: 4; stroke-linecap: round; }
-    .ang-ray { stroke: #0d7d8c; stroke-width: 4; stroke-linecap: round; }
+    .ang-base { stroke: #6b7280; stroke-width: 3; stroke-linecap: round; stroke-dasharray: 4 4; }
+    .ang-ray { stroke: #b5793a; stroke-width: 7; stroke-linecap: round; }
     .ang-arc { fill: none; stroke: #f2a900; stroke-width: 3; }
     .ang-lab { fill: #f6b71e; font: 700 15px 'IBM Plex Mono', monospace; }
     .ang-num { fill: #cbd5e1; font: 600 12px 'IBM Plex Mono', monospace; text-anchor: middle; }
