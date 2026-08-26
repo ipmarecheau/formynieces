@@ -25,12 +25,12 @@
             },
             {
                 "type": "example",
-                "content": "Adding 3.4 + 2.5.",
+                "content": "Adding 4.2 + 1.6.",
                 "steps": [
                     "Line up the points.",
-                    "Tenths: 4 + 5 = 9.",
-                    "Ones: 3 + 2 = 5.",
-                    "Answer: 5.9."
+                    "Tenths: 2 + 6 = 8.",
+                    "Ones: 4 + 1 = 5.",
+                    "Answer: 5.8."
                 ],
                 "cognition": "knowing"
             },

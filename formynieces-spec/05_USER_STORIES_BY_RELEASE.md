@@ -51,8 +51,8 @@ truth for the grown-up.
 > This week's islands shimmer to show me where to sail. Every level is one **loop**:
 > *explainer → competency check → (lesson → tutorials → practice) → competency check*.
 > When I tap a level it first **explains itself in my words**, then the **competency
-> check** gives me one question at each real difficulty — **D1, D3, D5**. Get all three
-> right first try and I've **tested out** — mastered, no lesson needed. If I don't, the
+> check** gives me two questions at each real difficulty — **D1, D3, D5** (six in all). Get
+> all six right first try and I've **tested out** — mastered, no lesson needed. If I don't, the
 > ways in open **in order**: first the interactive **lesson** (with a **clarify chat** I can
 > ask, and tap-along bits — fill the blank, tap the words, match pairs, put steps in order),
 > then the **worked examples** (walked through by **Smooth**), then **practice** — each one
@@ -244,7 +244,7 @@ the parts not yet delivered, by band.
 - **MVP — the learning-loop redesign (in progress).** The loop was reworked (2026-08-11,
   extended 2026-08-12) into *explainer → competency check → (lesson → tutorials → practice)
   → competency check*. Opening a level explains itself (`LL-19`), then a fast **test-out
-  competency check** serves one D1 + one D3 + one D5 question — clear all three first-try
+  competency check** serves two D1 + two D3 + two D5 questions (six) — clear all six first-try
   and the module is mastered (`LL-20`); miss and she **chooses** lesson, tutorial or
   practice (`LL-21`). Practice keeps the D1/D3/D5 climb, first-try-only mastery (3-in-a-row
   at D5), and the two-attempt rule. Remediation is now trigger-based: **two missed in a row

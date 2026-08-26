@@ -26,9 +26,9 @@
                 "type": "example",
                 "content": "Adding two prices.",
                 "steps": [
-                    "A drink costs $3.50 and a snack costs $2.25.",
+                    "A drink costs $4.30 and a snack costs $1.15.",
                     "Line up the points and add.",
-                    "$3.50 + $2.25 = $5.75."
+                    "$4.30 + $1.15 = $5.45."
                 ],
                 "cognition": "knowing"
             },

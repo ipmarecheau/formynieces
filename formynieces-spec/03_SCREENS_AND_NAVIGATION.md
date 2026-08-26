@@ -82,6 +82,7 @@ Cross-check: every Gherkin `When/Then` in `features/` must land on a screen here
 | E7 | LessonResource — author a lesson from typed interaction blocks (Builder), + bulk JSON import (upsert by module code, preview), export (all + per-row), and version-controlled seeding | @mvp ✅ | LE-05 + LB-01/02/03 |
 | E8 | Lesson Import Guide — navigable, exhaustive reference (per block type) + downloadable template | @mvp ✅ | LB-04 — generated from `LessonBlockSchema` |
 | E9 | Create Lessons with Claude — workflow guide: generate a lesson + question bank with Claude Code from a textbook/past-paper upload; states the re-teach block fields (`rule`/`practiceItems`) and the ≥15-questions-per-level minimum | ✅ | LB-05 — pairs the `lesson-authoring` skill |
+| E10 | Lesson preview — from LessonResource, open any lesson in the real student renderer as **Preview** (student mode) or **Re-teach** (relearn flow), with all interactions and NOTHING recorded (no stage completion / guided-time lock); Edit blocks from the same row. For ongoing lesson verification | @mvp ✅ | LE-11 — `admin.lessons.preview` / `admin.lessons.preview-reteach`, admin-guarded |
 
 **Count:** MVP = 18 screens/states (A:3, B:7, C:7 incl. states, D:3 minus states… effectively ~16 distinct routes), plus the daily morning ritual (C5a reading, C5b vocabulary) and its admin authoring screen (E6), and the lesson authoring + bulk-import screens (E7 LessonResource, E8 Import Guide). Close to the 21-screen sitemap from the 09 June session — the deltas are the additions B7 (resume) and C8 (history, deferred), the daily-reading/vocabulary ritual (C5a/C5b/E6), the lesson authoring/import (E7/E8), the deferral of D4–D7, the school journal (D8/D9), and the public landing page (F1).
 
@@ -113,7 +114,7 @@ flowchart TD
       C1 <--> C2[C2 Adventure Map]
     end
     C1 -->|tap target module| C3[C3 Explainer + Competency Check]
-    C3 -->|test out: 3× first-try D1/D3/D5| C5[C5 Mastery]
+    C3 -->|test out: 6× first-try (2 each D1/D3/D5)| C5[C5 Mastery]
     C3 -->|didn't test out: choose| C3a[C3a Interactive Lesson + clarify chat]
     C3 -->|choose| C3b[C3b Tutorials ×3]
     C3 -->|choose| C4[C4 Practice D1→D3→D5]

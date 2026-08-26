@@ -36,9 +36,9 @@
                 "type": "example",
                 "content": "Volume of a box.",
                 "steps": [
-                    "A box is 2 by 3 by 4.",
-                    "Volume = length x width x height = 2 x 3 x 4.",
-                    "So the volume is 24 cubic cm."
+                    "A box is 2 by 3 by 7.",
+                    "Volume = length x width x height = 2 x 3 x 7.",
+                    "So the volume is 42 cubic cm."
                 ],
                 "cognition": "knowing"
             },

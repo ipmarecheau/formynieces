@@ -230,7 +230,9 @@ it('freezes every streak for a day with an Anchor, even when behind pace', funct
     expect(seEconomy()->useAnchor($student->id, $today))->toBeTrue()
         ->and(seEconomy()->isFrozenOn($student->id, $today))->toBeTrue()
         // A missed day while frozen holds the streaks rather than resetting.
-        ->and(seEconomy()->registerMiss($student->id, $today))->toBe('frozen');
+        ->and(seEconomy()->registerMiss($student->id, $today))->toBe('frozen')
+        // The freeze is for ONE day only — the next day is no longer frozen.
+        ->and(seEconomy()->isFrozenOn($student->id, $today->copy()->addDay()))->toBeFalse();
 })->group('scenario:SE-08');
 
 it('banks one day ahead when accelerating a subject, capped at one', function () {
@@ -273,6 +275,29 @@ it('revives a just-reset streak with a Lifebuoy, only once', function () {
     expect($streak->count)->toBe(6)
         // The same reset can never be rescued twice.
         ->and(seEconomy()->useLifebuoy($student->id, 'voyage', $today))->toBeFalse();
+})->group('scenario:SE-11');
+
+it('refuses a Lifebuoy once the reset is more than a day old', function () {
+    $student = seEconomyStudent();
+    $resetDay = Carbon::parse('2026-08-18');
+    // A master streak that reset on the 18th from 6.
+    StudentStreak::create([
+        'student_id' => $student->id,
+        'type' => 'voyage',
+        'count' => 0,
+        'previous_count' => 6,
+        'last_activity_date' => $resetDay->toDateString(),
+        'restarted_at' => $resetDay->toDateString(),
+    ]);
+    seEconomy()->grantReward($student->id, 'lifebuoy', 'milestone');
+
+    // Two days later the "just reset" window has passed — the rescue is refused,
+    // and crucially the Lifebuoy is NOT spent.
+    expect(seEconomy()->useLifebuoy($student->id, 'voyage', $resetDay->copy()->addDays(2)))->toBeFalse()
+        ->and(seEconomy()->balance($student->id, 'lifebuoy'))->toBe(1);
+
+    $streak = StudentStreak::where('student_id', $student->id)->where('type', 'voyage')->first();
+    expect($streak->count)->toBe(0); // unchanged — no revival
 })->group('scenario:SE-11');
 
 it('restarts the master streak from zero, kindly, when no protection remains', function () {

@@ -55,6 +55,23 @@ example (`example`) → check (`check`/`fillblank`) → optional same-skill twis
 (`markwords`/`matchpairs`/`ordersteps`) → wrap (`text`). **6–10 blocks, ≥2 interactive.** Interactive
 types GATE: she must answer correctly to advance.
 
+### Distinct problems — the example NEVER pre-answers a question (enforced)
+
+Same *skill*, **different instance** every time. A worked `example` teaches with one problem; every
+`check`, `fillblank`, and `practiceItem` in the SAME lesson must use a **different** problem — a
+different number to operate on (or, for word lessons, a different word/answer). If the example expands
+`526`, no check/fillblank/practiceItem may also be about `526` — the child would just copy the answer
+she was shown. This is the single most common authoring slip; treat it as a non-negotiable.
+
+The signature is the **headline number** the item operates on (numeric lessons) or its **normalized
+answer** (word lessons). Two items that share a headline number *or* an answer within one lesson are a
+repeat — pick fresh operands.
+
+**Verify before you ship:** `php artisan lessons:verify {--file=path}` scans a bundle (or all of
+`database/data/lessons/`) and fails on any within-lesson repeat, naming the colliding blocks. The
+`LessonImporter` runs the same guard, so an offending bundle is rejected at import — a repeat cannot
+reach a learner. Run `lessons:verify` as the last step of authoring; a clean run is required.
+
 ## 2. Re-teach fields on interactive blocks (REQUIRED) — `rule` + `practiceItems`
 
 Every interactive block (`check`, `fillblank`, `markwords`, `matchpairs`, `ordersteps`) MUST carry:
@@ -126,9 +143,11 @@ answer genuinely correct (double-check spelling + math).
 ## 6. Pre-publish checklist
 
 - [ ] Title names ONE exact skill; every block is about it.
-- [ ] 6–10 blocks, ≥2 interactive; worked example + checks use the same kind of problem.
+- [ ] 6–10 blocks, ≥2 interactive; worked example + checks are the same *kind* of problem but **never the same instance** (see §1 — the example must not reuse a number/answer any check, fillblank, or practiceItem uses).
+- [ ] **`php artisan lessons:verify` passes** — no within-lesson problem repeats (example ↔ question ↔ practiceItem).
 - [ ] **Every interactive block has `rule` (one sentence) + ≥4 same-rule `practiceItems` ({prompt, answer}).**
 - [ ] Each `check.answer` / `fillblank.answer` correct; `markwords` marks only targets; `matchpairs`/`ordersteps` correct.
 - [ ] Practice bank has **≥15 questions at each of D1, D3, D5** for the topic.
 - [ ] No `Topic:/Difficulty:` metadata in any `explanation`.
 - [ ] Preview-only import first to catch structural errors (LB-04).
+- [ ] **Walk it in the admin Lesson preview** (LessonResource → *Preview* / *Re-teach*, LE-11): every interaction gates correctly, the re-teach flow reads right, nothing is recorded. This is the ongoing verification path.

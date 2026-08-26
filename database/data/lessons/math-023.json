@@ -24,11 +24,11 @@
             },
             {
                 "type": "example",
-                "content": "Finding 50% of 40.",
+                "content": "Finding 60% of 35.",
                 "steps": [
-                    "50% means one half.",
-                    "Half of 40 is 40 ÷ 2 = 20.",
-                    "So 50% of 40 = 20."
+                    "60% means 60 out of 100.",
+                    "60% of 35 = 0.6 x 35 = 21.",
+                    "So 60% of 35 = 21."
                 ],
                 "cognition": "knowing"
             },

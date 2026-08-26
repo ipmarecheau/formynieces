@@ -21,6 +21,8 @@ use App\Support\LessonBlockSchema;
  */
 class LessonImporter
 {
+    public function __construct(private LessonUniqueness $uniqueness) {}
+
     /**
      * Dry run: parse + validate + resolve modules, report per-lesson outcome, write nothing.
      *
@@ -127,6 +129,11 @@ class LessonImporter
         } else {
             foreach (array_values($blocks) as $bi => $block) {
                 $errors = array_merge($errors, LessonBlockSchema::validateBlock($block, $bi + 1));
+            }
+
+            // A worked example must never pre-answer a question in the same lesson (LessonUniqueness).
+            foreach ($this->uniqueness->collisions(array_values($blocks)) as $c) {
+                $errors[] = "Lesson #{$position}: worked example (block {$c['exampleBlock']}) reuses the number {$c['subject']} in a question (block {$c['questionBlock']}, {$c['where']}) — examples and questions must not overlap";
             }
         }
 

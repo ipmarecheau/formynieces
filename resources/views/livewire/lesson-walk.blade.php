@@ -1,4 +1,10 @@
 <div>
+@if ($previewMode)
+    <div style="position:fixed;top:0;left:0;right:0;z-index:60;background:#7c3aed;color:#fff;font-family:'Nunito',sans-serif;font-size:13.5px;font-weight:800;text-align:center;padding:7px 12px;letter-spacing:.02em;box-shadow:0 2px 8px rgba(0,0,0,.3);">
+        🛠️ ADMIN PREVIEW — {{ $previewMode === 'reteach' ? 're-teach mode' : 'student mode' }}. Nothing is saved. Reload to restart · <a href="{{ url()->previous() }}" style="color:#fde68a;text-decoration:underline;">close</a>
+    </div>
+    <div style="height:34px;"></div>
+@endif
 @if ($guidedLocked)
     @include('partials.guided-locked', ['moduleId' => $moduleId])
 @else

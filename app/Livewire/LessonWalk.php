@@ -65,6 +65,13 @@ class LessonWalk extends Component
     /** True when this lesson is being re-walked as the relearn stage of an AI-assisted re-teach (LL-14/15). */
     public bool $reteach = false;
 
+    /**
+     * Admin preview: 'student' walks the lesson exactly as a student, 'reteach' walks it in the
+     * re-teach flow. In preview nothing is recorded — no guided-time lock, no stage completion,
+     * no student progress — so an admin can verify a lesson repeatedly without side effects (LE-11).
+     */
+    public ?string $previewMode = null;
+
     /** In a re-teach: true once she has missed ANY interaction (kept for record/telemetry). */
     public bool $hadFailure = false;
 
@@ -98,16 +105,22 @@ class LessonWalk extends Component
     /** Same-rule remediation cycles a block gets before the lesson is left "in progress" (LL-27). */
     private const MAX_REMEDIATION_CYCLES = 3;
 
-    public function mount(SyllabusModule $module): void
+    public function mount(SyllabusModule $module, ?string $mode = null): void
     {
+        $this->previewMode = in_array($mode, ['student', 'reteach'], true) ? $mode : null;
+
         $this->moduleId = $module->id;
         $this->topic = $module->topic;
         $this->subject = $module->subject;
         $this->description = $module->description;
         $this->resources = $module->resources ?? [];
-        $this->guidedLocked = app(GuidedTime::class)->isExhausted(auth()->id());
+        // In preview the guided-time cap and remediation-session lookups are bypassed; the re-teach
+        // flow is driven by the chosen mode rather than a real student's active session.
+        $this->guidedLocked = $this->previewMode === null && app(GuidedTime::class)->isExhausted(auth()->id());
         $this->gatedSequence = app(LearningGate::class)->gated($module->id);
-        $this->reteach = app(Remediation::class)->activeSession(auth()->id(), $module->id) !== null;
+        $this->reteach = $this->previewMode !== null
+            ? $this->previewMode === 'reteach'
+            : app(Remediation::class)->activeSession(auth()->id(), $module->id) !== null;
 
         $lesson = Lesson::where('module_id', $module->id)->where('is_published', true)->first();
         $this->lessonTitle = $lesson?->title;
@@ -466,7 +479,7 @@ class LessonWalk extends Component
         // Finishing an authored lesson records the 'lesson' stage — the first gate in the
         // lesson -> worked examples -> practice sequence (LE-03). Placeholder (no authored
         // blocks) never records: an ungated module has nothing to unlock.
-        if ($this->lessonComplete && $this->lessonBlocks !== []) {
+        if ($this->lessonComplete && $this->lessonBlocks !== [] && $this->previewMode === null) {
             app(LearningGate::class)->markCompleted(
                 auth()->id(),
                 $this->moduleId,

@@ -35,9 +35,9 @@
                 "type": "example",
                 "content": "Recognising angles.",
                 "steps": [
-                    "The corner of a book is a right angle: 90 degrees.",
-                    "A narrow, sharp angle like 45 degrees is smaller than 90.",
-                    "So 45 degrees is an acute angle."
+                    "An angle of 30 degrees is sharp and narrow.",
+                    "It is smaller than a right angle, which is 90 degrees.",
+                    "So 30 degrees is an acute angle."
                 ],
                 "cognition": "knowing"
             },

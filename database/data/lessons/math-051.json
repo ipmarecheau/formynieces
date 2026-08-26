@@ -26,8 +26,8 @@
                 "type": "example",
                 "content": "Finding a total.",
                 "steps": [
-                    "Three test scores are 6, 8 and 10.",
-                    "Add them: 6 + 8 + 10 = 24.",
+                    "Three test scores are 7, 9 and 11.",
+                    "Add them: 7 + 9 + 11 = 27.",
                     "Now the total is ready for the next step."
                 ],
                 "cognition": "knowing"

@@ -71,7 +71,7 @@
                 "content": "Hours to minutes.",
                 "steps": [
                     "There are 60 minutes in 1 hour.",
-                    "So 2 hours has 2 x 60 = 120 minutes.",
+                    "So 3 hours has 3 x 60 = 180 minutes.",
                     "Multiply hours by 60 to get minutes."
                 ],
                 "cognition": "knowing"

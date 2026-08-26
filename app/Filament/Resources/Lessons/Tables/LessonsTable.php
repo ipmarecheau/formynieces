@@ -35,6 +35,18 @@ class LessonsTable
                 //
             ])
             ->recordActions([
+                Action::make('preview')
+                    ->label('Preview')
+                    ->icon(Heroicon::Play)
+                    ->color('primary')
+                    ->url(fn (Lesson $record): string => route('admin.lessons.preview', $record->module_id))
+                    ->openUrlInNewTab(),
+                Action::make('previewReteach')
+                    ->label('Re-teach')
+                    ->icon(Heroicon::ArrowPath)
+                    ->color('warning')
+                    ->url(fn (Lesson $record): string => route('admin.lessons.preview-reteach', $record->module_id))
+                    ->openUrlInNewTab(),
                 EditAction::make(),
                 Action::make('export')
                     ->label('Export')
