@@ -187,3 +187,4 @@ Fill once per module, as the first step of authoring it:
 - [ ] No difficulty/pacing baked into content.
 - [ ] Language kind and age-appropriate; no `Topic:/Difficulty:` leakage.
 - [ ] Practice bank has ≥15 questions at each of D1/D3/D5 for the module.
+- [ ] **Walked in the admin Lesson preview** (LessonResource → *Preview* / *Re-teach*, LE-11): interactions gate, the re-teach flow reads right, nothing recorded — the ongoing verification path.

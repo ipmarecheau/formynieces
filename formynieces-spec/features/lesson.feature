@@ -91,3 +91,14 @@ Feature: Interactive module lesson
     When her order is wrong
     Then the block is not satisfied
     And when her order matches the intended sequence the block is satisfied and she can go on
+
+  # ------------------------------------------------------------ admin verification
+
+  @scenario:LE-11 @admin
+  Scenario: An admin can preview and edit each lesson to verify it on an ongoing basis
+    Given an admin is on the Lessons admin page
+    When the admin opens a lesson's "Preview" in student mode
+    Then the lesson opens in the real student renderer with all its interactions
+    And nothing about the walk is recorded — no stage completion, no guided-time lock
+    And the admin can also open the lesson in "Re-teach" preview mode
+    And the admin can edit the lesson's blocks from the same page

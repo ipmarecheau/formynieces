@@ -150,3 +150,4 @@ answer genuinely correct (double-check spelling + math).
 - [ ] Practice bank has **≥15 questions at each of D1, D3, D5** for the topic.
 - [ ] No `Topic:/Difficulty:` metadata in any `explanation`.
 - [ ] Preview-only import first to catch structural errors (LB-04).
+- [ ] **Walk it in the admin Lesson preview** (LessonResource → *Preview* / *Re-teach*, LE-11): every interaction gates correctly, the re-teach flow reads right, nothing is recorded. This is the ongoing verification path.

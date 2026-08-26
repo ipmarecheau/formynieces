@@ -3,8 +3,11 @@
 namespace App\Filament\Resources\Lessons\Pages;
 
 use App\Filament\Resources\Lessons\LessonResource;
+use App\Models\Lesson;
+use Filament\Actions\Action;
 use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
+use Filament\Support\Icons\Heroicon;
 
 class EditLesson extends EditRecord
 {
@@ -13,6 +16,18 @@ class EditLesson extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
+            Action::make('preview')
+                ->label('Preview as student')
+                ->icon(Heroicon::Play)
+                ->color('primary')
+                ->url(fn (Lesson $record): string => route('admin.lessons.preview', $record->module_id))
+                ->openUrlInNewTab(),
+            Action::make('previewReteach')
+                ->label('Preview re-teach')
+                ->icon(Heroicon::ArrowPath)
+                ->color('warning')
+                ->url(fn (Lesson $record): string => route('admin.lessons.preview-reteach', $record->module_id))
+                ->openUrlInNewTab(),
             DeleteAction::make(),
         ];
     }

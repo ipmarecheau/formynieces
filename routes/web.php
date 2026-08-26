@@ -188,4 +188,16 @@ Route::middleware('auth')->group(function () {
     });
 });
 
+// Admin lesson verification (LE-11): walk any lesson in the real student renderer — as a student,
+// or in the re-teach flow — with nothing recorded, so lessons can be checked on an ongoing basis.
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/admin/lessons/{module}/preview', LessonWalk::class)
+        ->defaults('mode', 'student')
+        ->name('admin.lessons.preview');
+
+    Route::get('/admin/lessons/{module}/preview-reteach', LessonWalk::class)
+        ->defaults('mode', 'reteach')
+        ->name('admin.lessons.preview-reteach');
+});
+
 require __DIR__.'/auth.php';
