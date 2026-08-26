@@ -19,8 +19,17 @@
                 "cognition": "knowing"
             },
             {
+                "type": "tile-grid",
+                "cognition": "knowing",
+                "width": 5,
+                "height": 5,
+                "unit": "cm",
+                "perimeter": true,
+                "content": "The bold orange line is the perimeter — the path all the way around the edge. Walk it: 5 + 5 + 5 + 5 = 20 cm. The squares inside are the area; the perimeter is only the border."
+            },
+            {
                 "type": "key",
-                "content": "The perimeter of a square is 4 x the side length, because all four sides are equal.",
+                "content": "Because all four sides of a square are equal, walking around it is the same side four times: perimeter = 4 x the side length.",
                 "cognition": "knowing"
             },
             {

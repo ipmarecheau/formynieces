@@ -26,6 +26,7 @@ class LessonBlockSchema
         'example' => ['content'],
         'visual' => ['content'],
         'numberline' => ['low', 'high'],
+        'tile-grid' => ['width', 'height'],
         'check' => ['question', 'options', 'answer'],
         'fillblank' => ['prompt', 'answer'],
         'markwords' => ['instruction', 'text'],
@@ -45,6 +46,7 @@ class LessonBlockSchema
         'example' => ['steps'],
         'visual' => [],
         'numberline' => ['value', 'value2', 'marks', 'halfway', 'question', 'content'],
+        'tile-grid' => ['unit', 'perimeter', 'question', 'content'],
         'check' => ['explain', 'rule', 'practiceItems'],
         'fillblank' => ['options', 'explain', 'rule', 'practiceItems'],
         'markwords' => ['explain', 'rule', 'practiceItems'],
@@ -82,7 +84,8 @@ class LessonBlockSchema
             'key' => ['Remember-this rule', 'One rule or idea to remember, called out from the flow.', 'Rendered as a highlighted callout. Not interactive.'],
             'example' => ['Worked example', 'A worked example: a set-up plus optional step-by-step lines.', 'Shows the set-up, then each step in "steps". "steps" is an optional list of strings. Not interactive.'],
             'visual' => ['Image', 'An on-platform image, given by URL.', 'Renders the image at "content". Use a full https URL. Not interactive.'],
-            'numberline' => ['Number line', 'A number line showing one value between two round numbers, with the halfway mark drawn.', 'Draws "value" between "low" and "high" with the halfway mark. If "question" is set she taps which end the value is closer to (illustrative feedback — does NOT gate the lesson). Optional "content" is a caption shown under the line.'],
+            'numberline' => ['Number line', 'A number line showing one value between two round numbers, with the halfway mark drawn.', 'Draws "value" between "low" and "high" with the halfway mark. If "question" is set she taps which end the value is closer to (illustrative feedback — does NOT gate the lesson). Optional "value2" adds a second dot for comparing; "marks" is a list of labelled ticks; "halfway": false hides the midpoint. Optional "content" is a caption.'],
+            'tile-grid' => ['Tile grid', 'A rectangle drawn as a grid of unit squares — the concrete picture of area (and perimeter).', 'Draws a "width" by "height" grid of unit squares so area is visibly the count of squares. Optional "unit" labels the sides (e.g. m); "perimeter": true adds a bold outline to highlight the distance around; "content" is a caption. Not interactive.'],
             'check' => ['Inline check', 'A multiple-choice question she answers inline.', 'GATES the lesson: she cannot move on until she picks the right option. "options" is the list of choices; "answer" is the 0-based index of the correct one (0 = first). Optional "explain" shows after a correct answer.'],
             'fillblank' => ['Fill in the blank', 'A sentence with a blank she completes.', 'GATES until correct. Put ___ in "prompt" where the blank goes. If "options" (a word bank) is given she taps a word; if omitted she types the answer. Matching is case-insensitive and trims spaces. Optional "explain" shows after a correct answer.'],
             'markwords' => ['Mark the words', 'She taps the target word(s) inside a sentence.', 'GATES until correct. In "text", wrap each target word in *asterisks* (e.g. The dog *runs* home). She must tap exactly the marked words — no more, no fewer. Optional "explain" shows after a correct answer.'],
@@ -153,6 +156,14 @@ class LessonBlockSchema
             }
         }
 
+        if ($type === 'tile-grid') {
+            foreach (['width', 'height'] as $field) {
+                if (isset($block[$field]) && (! is_numeric($block[$field]) || (int) $block[$field] < 1)) {
+                    $errors[] = "{$where} (tile-grid): '{$field}' must be a whole number of at least 1";
+                }
+            }
+        }
+
         if ($type === 'matchpairs') {
             foreach ((array) ($block['pairs'] ?? []) as $pi => $pair) {
                 if (! is_array($pair) || ($pair['left'] ?? '') === '' || ($pair['right'] ?? '') === '') {
@@ -185,6 +196,7 @@ class LessonBlockSchema
             ['type' => 'example', 'content' => 'A worked example set-up.', 'steps' => ['Step one', 'Step two', 'The answer']],
             ['type' => 'visual', 'content' => 'https://example.com/diagram.png'],
             ['type' => 'numberline', 'low' => 6000, 'high' => 7000, 'value' => 6432, 'question' => 'Which thousand is 6,432 closer to?', 'content' => '6,432 is before halfway (6,500), so it rounds to 6,000.'],
+            ['type' => 'tile-grid', 'width' => 4, 'height' => 3, 'unit' => 'm', 'content' => 'A 4 by 3 rectangle is 4 x 3 = 12 unit squares, so its area is 12 m².'],
             ['type' => 'check', 'question' => 'Which is correct?', 'options' => ['Wrong', 'Right'], 'answer' => 1, 'explain' => 'Why the second is right.'],
             ['type' => 'fillblank', 'prompt' => 'The cat ___ on the mat.', 'answer' => 'sat', 'options' => ['sat', 'sit'], 'explain' => 'Past tense of sit.'],
             ['type' => 'markwords', 'instruction' => 'Tap the verb', 'text' => 'The dog *runs* home', 'explain' => 'Runs is the action word.'],

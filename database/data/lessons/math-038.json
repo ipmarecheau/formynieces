@@ -21,7 +21,15 @@
             {
                 "type": "key",
                 "cognition": "knowing",
-                "content": "Area of a rectangle = length x width. We measure it in square units (like square metres, m²) — each unit is one tile."
+                "content": "Area is the number of unit squares that cover a shape. For a rectangle you do not have to count them one by one: length x width gives the same total, because the length is how many squares fit in each row and the width is how many rows there are."
+            },
+            {
+                "type": "tile-grid",
+                "cognition": "knowing",
+                "width": 5,
+                "height": 3,
+                "unit": "m",
+                "content": "Count the squares: 5 in each row, 3 rows, so 5 x 3 = 15 squares. That is why area = length x width — you are really just counting the unit squares that cover the shape. We measure it in square units (m²)."
             },
             {
                 "type": "example",

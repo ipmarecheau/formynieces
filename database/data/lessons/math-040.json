@@ -20,18 +20,22 @@
             },
             {
                 "type": "key",
-                "content": "Split a compound shape into rectangles, find each rectangle's area, then add the areas together.",
+                "content": "A compound shape is just simple rectangles joined together. Split it into rectangles, find each one's area, then add the areas — because the whole is made of those parts.",
                 "cognition": "knowing"
             },
             {
-                "type": "example",
-                "content": "Splitting a shape.",
-                "steps": [
-                    "An L-shape splits into two rectangles.",
-                    "One has area 6, the other has area 4.",
-                    "Total area = 6 + 4 = 10 square units."
-                ],
-                "cognition": "knowing"
+                "type": "tile-grid",
+                "cognition": "knowing",
+                "width": 3,
+                "height": 2,
+                "content": "First rectangle: 3 across, 2 down = 3 x 2 = 6 squares."
+            },
+            {
+                "type": "tile-grid",
+                "cognition": "knowing",
+                "width": 2,
+                "height": 2,
+                "content": "Second rectangle: 2 x 2 = 4 squares. Now add the two parts: 6 + 4 = 10 squares in total. That is the area of the whole compound shape."
             },
             {
                 "type": "fillblank",

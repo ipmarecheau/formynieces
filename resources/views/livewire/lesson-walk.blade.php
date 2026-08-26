@@ -214,6 +214,36 @@
                                     @if ($content !== '')<p class="lw-para" style="margin-top:.4rem">{{ $content }}</p>@endif
                                 </div>
                                 @break
+                            @case('tile-grid')
+                                @php
+                                    $gw = min(14, max(1, (int) ($block['width'] ?? 1)));
+                                    $gh = min(14, max(1, (int) ($block['height'] ?? 1)));
+                                    $cell = 30;
+                                    $pad = 34;
+                                    $peri = ! empty($block['perimeter']);
+                                    $svgW = $gw * $cell + $pad * 2;
+                                    $svgH = $gh * $cell + $pad * 2;
+                                @endphp
+                                <div class="lw-numberline">
+                                    <p class="lw-example-tag">See it as squares</p>
+                                    <svg viewBox="0 0 {{ $svgW }} {{ $svgH }}" style="width:100%;max-width:{{ min(420, $svgW) }}px;height:auto;display:block;margin:.25rem auto" role="img"
+                                         aria-label="A {{ $gw }} by {{ $gh }} grid of unit squares.">
+                                        @for ($ry = 0; $ry < $gh; $ry++)
+                                            @for ($rx = 0; $rx < $gw; $rx++)
+                                                <rect x="{{ $pad + $rx * $cell }}" y="{{ $pad + $ry * $cell }}" width="{{ $cell }}" height="{{ $cell }}"
+                                                      fill="rgba(13,148,136,0.12)" stroke="#0d9488" stroke-width="1" />
+                                            @endfor
+                                        @endfor
+                                        @if ($peri)
+                                            <rect x="{{ $pad }}" y="{{ $pad }}" width="{{ $gw * $cell }}" height="{{ $gh * $cell }}" fill="none" stroke="#d97706" stroke-width="4" />
+                                        @endif
+                                        <text x="{{ $pad + $gw * $cell / 2 }}" y="{{ $svgH - 10 }}" text-anchor="middle" font-size="14" fill="currentColor">{{ $gw }}{{ ! empty($block['unit']) ? ' '.$block['unit'] : '' }}</text>
+                                        <text x="14" y="{{ $pad + $gh * $cell / 2 }}" text-anchor="middle" font-size="14" fill="currentColor" transform="rotate(-90 14 {{ $pad + $gh * $cell / 2 }})">{{ $gh }}{{ ! empty($block['unit']) ? ' '.$block['unit'] : '' }}</text>
+                                    </svg>
+                                    @if (! empty($block['question']))<p class="lw-para" style="margin:.35rem 0">{{ $block['question'] }}</p>@endif
+                                    @if (($block['content'] ?? '') !== '')<p class="lw-para" style="margin-top:.4rem">{{ $block['content'] }}</p>@endif
+                                </div>
+                                @break
                             @case('check')
                                 @php $answered = array_key_exists($i, $checkResults); $correct = $checkResults[$i] ?? false; @endphp
                                 <div class="lw-checkq">
