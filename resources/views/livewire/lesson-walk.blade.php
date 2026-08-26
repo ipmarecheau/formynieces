@@ -158,6 +158,43 @@
                                 </div>
                                 @break
                             @case('visual') <img class="lw-visual" src="{{ $content }}" alt="Lesson diagram"> @break
+                            @case('numberline')
+                                @php
+                                    $low = (int) ($block['low'] ?? 0);
+                                    $high = (int) ($block['high'] ?? 0);
+                                    $val = (int) ($block['value'] ?? $low);
+                                    $mid = ($low + $high) / 2;
+                                    $span = max(1, $high - $low);
+                                    $px = fn ($v) => 45 + ($v - $low) / $span * 430;
+                                    $nearer = $val < $mid ? $low : $high;
+                                @endphp
+                                <div class="lw-numberline" x-data="{ picked: null }">
+                                    <p class="lw-example-tag">See it on the line</p>
+                                    <svg viewBox="0 0 520 120" style="width:100%;max-width:520px;height:auto;display:block;margin:.25rem auto" role="img"
+                                         aria-label="Number line from {{ number_format($low) }} to {{ number_format($high) }} with {{ number_format($val) }} marked.">
+                                        <line x1="45" y1="74" x2="475" y2="74" stroke="currentColor" stroke-width="2" />
+                                        <line x1="{{ $px($mid) }}" y1="44" x2="{{ $px($mid) }}" y2="84" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 3" />
+                                        <text x="{{ $px($mid) }}" y="36" text-anchor="middle" font-size="11" fill="#94a3b8">halfway ({{ number_format($mid) }})</text>
+                                        @foreach ([$low, $high] as $tv)
+                                            <line x1="{{ $px($tv) }}" y1="66" x2="{{ $px($tv) }}" y2="84" stroke="currentColor" stroke-width="2" />
+                                            <text x="{{ $px($tv) }}" y="102" text-anchor="middle" font-size="14" fill="currentColor">{{ number_format($tv) }}</text>
+                                        @endforeach
+                                        <line x1="{{ $px($val) }}" y1="74" x2="{{ $px($val) }}" y2="60" stroke="#0d9488" stroke-width="2" />
+                                        <circle cx="{{ $px($val) }}" cy="74" r="7" fill="#0d9488" />
+                                        <text x="{{ $px($val) }}" y="54" text-anchor="middle" font-size="14" font-weight="700" fill="#0d9488">{{ number_format($val) }}</text>
+                                    </svg>
+                                    @if (! empty($block['question']))
+                                        <p class="lw-para" style="margin:.35rem 0 .5rem">{{ $block['question'] }}</p>
+                                        <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+                                            <button type="button" class="lw-opt" @click="picked = {{ $low }}" :class="picked === {{ $low }} ? 'is-picked' : ''">{{ number_format($low) }}</button>
+                                            <button type="button" class="lw-opt" @click="picked = {{ $high }}" :class="picked === {{ $high }} ? 'is-picked' : ''">{{ number_format($high) }}</button>
+                                        </div>
+                                        <template x-if="picked === {{ $nearer }}"><p class="lw-para" style="margin-top:.4rem;color:#0d9488">Yes! The dot is on that side of the halfway line, so it is closer. 🐢</p></template>
+                                        <template x-if="picked !== null && picked !== {{ $nearer }}"><p class="lw-para" style="margin-top:.4rem">Not yet — look which side of the halfway line the dot sits on.</p></template>
+                                    @endif
+                                    @if ($content !== '')<p class="lw-para" style="margin-top:.4rem">{{ $content }}</p>@endif
+                                </div>
+                                @break
                             @case('check')
                                 @php $answered = array_key_exists($i, $checkResults); $correct = $checkResults[$i] ?? false; @endphp
                                 <div class="lw-checkq">

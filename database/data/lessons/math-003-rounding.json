@@ -1,170 +1,113 @@
 [
-    {
-        "module": "MATH-003",
-        "title": "Rounding to the nearest thousand",
-        "is_published": true,
-        "objectives_direct": [
-            "M-NUM-03"
-        ],
-        "objectives_indirect": [
-            "M-NUM-01",
-            "M-NUM-02",
-            "M-NUM-04"
-        ],
-        "canonical_examples_source": "Arithmetic self-verified; method ref: NCERT Class 5/6 Maths; format ref: bank uk-ks2-2024 maths.",
-        "blocks": [
-            {
-                "type": "text",
-                "content": "Rounding gives a number that is close enough but much easier to use. Rounding to the nearest thousand smooths a number to the nearest 1,000. Quick words: digit means a single number symbol like 0, 1, 2, 3, 4, 5, 6, 7, 8, or 9. hundreds digit means the third number from the right in a whole number.",
-                "cognition": "knowing"
-            },
-            {
-                "type": "key",
-                "content": "To round to the nearest thousand, look at the hundreds digit: 5 or more rounds up, 4 or less rounds down.",
-                "cognition": "knowing"
-            },
-            {
-                "type": "example",
-                "content": "Round 6,432 to the nearest thousand.",
-                "steps": [
-                    "The hundreds digit is 4.",
-                    "4 is less than 5, so we round down.",
-                    "6,432 rounds to 6,000."
-                ],
-                "cognition": "knowing"
-            },
-            {
-                "type": "fillblank",
-                "prompt": "4,700 rounds to the nearest thousand: ___",
-                "answer": "5000",
-                "options": [
-                    "4000",
-                    "5000"
-                ],
-                "explain": "The hundreds digit is 7, which is 5 or more, so round up to 5,000.",
-                "rule": "To round to the nearest thousand, look at the hundreds digit: 5 or more rounds up, 4 or less rounds down.",
-                "practiceItems": [
-                    {
-                        "prompt": "4,700 rounded to the nearest thousand",
-                        "answer": "5000"
-                    },
-                    {
-                        "prompt": "6,432 rounded to the nearest thousand",
-                        "answer": "6000"
-                    },
-                    {
-                        "prompt": "3,500 rounded to the nearest thousand",
-                        "answer": "4000"
-                    },
-                    {
-                        "prompt": "8,200 rounded to the nearest thousand",
-                        "answer": "8000"
-                    }
-                ],
-                "cognition": "applying"
-            },
-            {
-                "type": "key",
-                "content": "The hundreds digit is the only one you need to check — the tens and ones do not change the rounding.",
-                "cognition": "knowing"
-            },
-            {
-                "type": "check",
-                "question": "Round 8,512 to the nearest thousand.",
-                "options": [
-                    "8,000",
-                    "9,000"
-                ],
-                "answer": 1,
-                "explain": "The hundreds digit is 5, which is 5 or more, so round up to 9,000.",
-                "rule": "Check the hundreds digit only: 5 or more rounds up to the next thousand, 4 or less rounds down.",
-                "practiceItems": [
-                    {
-                        "prompt": "8,512 rounded to the nearest thousand",
-                        "answer": "9000"
-                    },
-                    {
-                        "prompt": "2,400 rounded to the nearest thousand",
-                        "answer": "2000"
-                    },
-                    {
-                        "prompt": "7,800 rounded to the nearest thousand",
-                        "answer": "8000"
-                    },
-                    {
-                        "prompt": "1,500 rounded to the nearest thousand",
-                        "answer": "2000"
-                    }
-                ],
-                "cognition": "applying"
-            },
-            {
-                "type": "check",
-                "cognition": "reasoning",
-                "question": "Kavi says 4,500 rounds down to 4,000 because 5 is a small digit. Is he right?",
-                "options": [
-                    "No — 4,500 is exactly halfway, so it rounds UP to 5,000",
-                    "Yes, it rounds to 4,000",
-                    "It rounds to 4,500"
-                ],
-                "answer": 0,
-                "explain": "4,500 sits exactly halfway between 4,000 and 5,000. The rule is that a halfway number rounds up, so 4,500 rounds to 5,000.",
-                "rule": "When the hundreds digit is 5 or more, round the thousands up.",
-                "principle": "At the halfway point (500) we round up, not down.",
-                "canonical_solution": [
-                    "4,500 is between 4,000 and 5,000",
-                    "The hundreds digit is 5 (exactly halfway)",
-                    "The rule rounds halfway up",
-                    "So 4,500 rounds to 5,000"
-                ],
-                "rubric": [
-                    {
-                        "dimension": "method",
-                        "look_for": "checks the hundreds digit to decide the rounding"
-                    },
-                    {
-                        "dimension": "reasoning",
-                        "look_for": "recognises 4,500 is halfway and rounds up"
-                    },
-                    {
-                        "dimension": "principle",
-                        "look_for": "states that halfway rounds up"
-                    }
-                ],
-                "misconceptions": [
-                    {
-                        "if": "rounds 4,500 down to 4,000",
-                        "coach": "A 5 in the hundreds means halfway, and halfway rounds up to 5,000."
-                    },
-                    {
-                        "if": "keeps it as 4,500",
-                        "coach": "Rounding to the nearest thousand must land on a thousand, like 4,000 or 5,000."
-                    }
-                ],
-                "practiceItems": [
-                    {
-                        "prompt": "4,500 rounded to the nearest thousand",
-                        "answer": "5000"
-                    },
-                    {
-                        "prompt": "3,500 rounded to the nearest thousand",
-                        "answer": "4000"
-                    },
-                    {
-                        "prompt": "6,400 rounded to the nearest thousand",
-                        "answer": "6000"
-                    },
-                    {
-                        "prompt": "7,500 rounded to the nearest thousand",
-                        "answer": "8000"
-                    }
-                ]
-            },
-            {
-                "type": "text",
-                "content": "Check the hundreds digit: 5 or more rounds up, 4 or less rounds down. That is all there is to it. Let's practise!",
-                "cognition": "knowing"
-            }
+  {
+    "module": "MATH-003",
+    "title": "Rounding to the nearest thousand",
+    "is_published": true,
+    "objectives_direct": ["M-NUM-03"],
+    "objectives_indirect": ["M-NUM-01", "M-NUM-02", "M-NUM-05"],
+    "canonical_examples_source": "Number-line rounding method + round-half-up convention: NCERT Class 5 Maths (Maths Mela, large numbers) and Illustrative Mathematics Grade 5 (rounding on the number line); format ref: bank uk-ks2-2024 maths. Arithmetic self-verified.",
+    "blocks": [
+      {
+        "type": "text",
+        "cognition": "knowing",
+        "content": "Maya is counting the beads in a big jar. She counts 8,214 beads! That is a hard number to say out loud, so we round it — we swap it for a close, tidy number. Rounding to the nearest thousand asks one thing: which thousand is the number closest to? Quick words: digit means a single number symbol like 0, 1, 2 up to 9. round means swap a number for a close, tidier one."
+      },
+      {
+        "type": "key",
+        "cognition": "knowing",
+        "content": "Every number sits between two thousands. To round to the nearest thousand, find those two thousands, then pick the one the number is CLOSER to."
+      },
+      {
+        "type": "numberline",
+        "cognition": "knowing",
+        "low": 6000,
+        "high": 7000,
+        "value": 6432,
+        "question": "Look at the dot for 6,432. Which thousand is it closer to? Tap to check.",
+        "content": "6,432 comes before the halfway mark (6,500), so it is closer to 6,000. It rounds to 6,000."
+      },
+      {
+        "type": "numberline",
+        "cognition": "knowing",
+        "low": 4000,
+        "high": 5000,
+        "value": 4500,
+        "content": "4,500 sits EXACTLY on the halfway line — the same distance from both thousands. That is called a tie. Everyone agrees on one rule: a number exactly halfway rounds UP. So 4,500 rounds to 5,000."
+      },
+      {
+        "type": "fillblank",
+        "cognition": "applying",
+        "prompt": "The halfway mark between 4,000 and 5,000 is ___.",
+        "answer": "4500",
+        "explain": "Halfway between 4,000 and 5,000 is 4,500. Numbers below it round down to 4,000; 4,500 and above round up to 5,000.",
+        "rule": "Compare the number to the halfway mark: below it rounds down, at or above it rounds up.",
+        "practiceItems": [
+          { "prompt": "the halfway mark between 4,000 and 5,000", "answer": "4500" },
+          { "prompt": "is 4,300 closer to 4,000 or 5,000?", "answer": "4000" },
+          { "prompt": "4,300 rounded to the nearest thousand", "answer": "4000" },
+          { "prompt": "is 4,800 closer to 4,000 or 5,000?", "answer": "5000" }
         ]
-    }
+      },
+      {
+        "type": "key",
+        "cognition": "knowing",
+        "content": "You do not have to draw the line every time. To know which side of halfway you are on, look at the digit JUST TO THE RIGHT of the place you are rounding. For the nearest thousand that is the hundreds digit: 0 to 4 is below halfway (round down), 5 to 9 is halfway or above (round up). The same idea rounds to any place — nearest ten? look at the ones; nearest hundred? look at the tens."
+      },
+      {
+        "type": "check",
+        "cognition": "applying",
+        "question": "Round 8,512 to the nearest thousand.",
+        "options": ["8,000", "9,000"],
+        "answer": 1,
+        "explain": "The digit right of the thousands is the hundreds digit, 5. A 5 means 8,512 is at or past the 8,500 halfway mark, so it is closer to 9,000. It rounds to 9,000.",
+        "rule": "To round to the nearest thousand, check the hundreds digit: 5 to 9 rounds up, 0 to 4 rounds down.",
+        "practiceItems": [
+          { "prompt": "8,512 rounded to the nearest thousand", "answer": "9000" },
+          { "prompt": "the hundreds digit of 8,512", "answer": "5" },
+          { "prompt": "2,300 rounded to the nearest thousand", "answer": "2000" },
+          { "prompt": "the place you check when rounding to the nearest thousand", "answer": "hundreds" }
+        ]
+      },
+      {
+        "type": "check",
+        "cognition": "reasoning",
+        "question": "Now round 6,432 to the nearest HUNDRED instead. Sian says to check the hundreds digit again. Which digit should she really check, and what is the answer?",
+        "options": [
+          "The tens digit (3) — it is just right of the hundreds place; 3 is under 5, so 6,400",
+          "The hundreds digit (4), so the answer is 6,000",
+          "You cannot round to the nearest hundred"
+        ],
+        "answer": 0,
+        "explain": "The rule is always the same: look at the digit just to the RIGHT of the place you are rounding to. For the nearest hundred, that is the tens digit. In 6,432 the tens digit is 3, which is under 5, so it rounds down to 6,400. The hundreds digit is only for rounding to the nearest thousand.",
+        "rule": "To round to ANY place, look at the digit immediately to the right of that place.",
+        "principle": "The digit you check is always the one just to the right of the place you are rounding to; the same idea works for tens, hundreds and thousands.",
+        "canonical_solution": [
+          "Rounding to the nearest hundred, the rounding place is the hundreds",
+          "Check the digit just to its right: the tens digit",
+          "In 6,432 the tens digit is 3",
+          "3 is under 5, so round down to 6,400"
+        ],
+        "rubric": [
+          { "dimension": "method", "look_for": "identifies the digit just right of the rounding place (the tens)" },
+          { "dimension": "reasoning", "look_for": "uses the tens digit 3 to round to 6,400, not 6,000" },
+          { "dimension": "principle", "look_for": "states the general rule — check the digit just right of the place" }
+        ],
+        "misconceptions": [
+          { "if": "always checks the hundreds digit", "coach": "The hundreds digit is only for the nearest thousand. Check the digit just right of whatever place you are rounding to." },
+          { "if": "rounds to 6,000", "coach": "That is rounding to the nearest thousand. For the nearest hundred, look at the tens digit." }
+        ],
+        "practiceItems": [
+          { "prompt": "to round to the nearest ten, which digit do you check?", "answer": "ones" },
+          { "prompt": "to round to the nearest hundred, which digit do you check?", "answer": "tens" },
+          { "prompt": "6,432 rounded to the nearest hundred", "answer": "6400" },
+          { "prompt": "6,432 rounded to the nearest ten", "answer": "6430" }
+        ]
+      },
+      {
+        "type": "text",
+        "cognition": "knowing",
+        "content": "So rounding is really one idea: which mark is the number closest to, with a halfway tie going up. The shortcut — check the digit just right of the place you are rounding — works for tens, hundreds and thousands alike. Let's practise!"
+      }
+    ]
+  }
 ]
