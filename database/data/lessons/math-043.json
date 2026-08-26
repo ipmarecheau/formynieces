@@ -31,6 +31,37 @@
                 "content": "The short hand shows the hour, the long hand the minutes. In the afternoon we add 12 to the hour for 24-hour time, so 3:45 pm is 15:45."
             },
             {
+                "type": "check",
+                "cognition": "knowing",
+                "question": "On a clock, which hand shows the HOUR?",
+                "options": [
+                    "The short hand",
+                    "The long hand",
+                    "Both hands together"
+                ],
+                "answer": 0,
+                "explain": "The short hand points to the hour; the long hand counts the minutes around the face.",
+                "rule": "The short hand shows the hour; the long hand shows the minutes.",
+                "practiceItems": [
+                    {
+                        "prompt": "the hand that shows the hour (short or long)",
+                        "answer": "short"
+                    },
+                    {
+                        "prompt": "the hand that shows the minutes (short or long)",
+                        "answer": "long"
+                    },
+                    {
+                        "prompt": "minutes in a quarter of an hour",
+                        "answer": "15"
+                    },
+                    {
+                        "prompt": "minutes when the long hand points to 6",
+                        "answer": "30"
+                    }
+                ]
+            },
+            {
                 "type": "key",
                 "content": "1 hour = 60 minutes, 1 minute = 60 seconds, and 1 day = 24 hours. Because an hour is split into 60 minutes, we count time in 60s — never in tens.",
                 "cognition": "knowing"

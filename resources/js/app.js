@@ -162,42 +162,9 @@ document.addEventListener('alpine:init', () => {
         },
     }));
 
-    // ── Angle: drag the ray; reads degrees and names the turn (right angle at 90°). ──
-    A.data('angleWidget', (cfg = {}) => ({
-        deg: cfg.start ?? 45, readout: '',
-        init() {
-            const svg = this.$refs.ang, V = { x: 130, y: 130 }, L = 100;
-            svg.appendChild(el('line', { x1: V.x, y1: V.y, x2: V.x + L, y2: V.y, class: 'ang-base' }));
-            [[90, '¼'], [180, '½'], [270, '¾']].forEach(([d, t]) => {
-                const a = d * Math.PI / 180, r1 = L * 0.55, r2 = L * 0.55 + 9;
-                svg.appendChild(el('line', { x1: V.x + r1 * Math.cos(a), y1: V.y - r1 * Math.sin(a), x2: V.x + r2 * Math.cos(a), y2: V.y - r2 * Math.sin(a), stroke: '#7d8a97', 'stroke-width': 2, 'stroke-dasharray': '2 3' }));
-                const lt = el('text', { x: V.x + (L * 0.55 + 20) * Math.cos(a), y: V.y - (L * 0.55 + 20) * Math.sin(a) + 5, class: 'clk-num' }); lt.textContent = t; svg.appendChild(lt);
-            });
-            this.arc = el('path', { class: 'ang-arc' });
-            this.ray = el('line', { class: 'ang-ray' });
-            this.grab = el('circle', { r: 9, class: 'clk-grab' });
-            this.lab = el('text', { class: 'ang-lab' });
-            svg.append(this.arc, this.ray, el('circle', { cx: V.x, cy: V.y, r: 5, class: 'clk-cap' }), this.grab, this.lab);
-            this.V = V; this.L = L;
-            draggable(this.grab, (cx, cy) => { const p = svgPoint(svg, cx, cy); let a = Math.atan2(V.y - p.y, p.x - V.x) * 180 / Math.PI; if (a < 0) a += 360; this.deg = (Math.round(a / 5) * 5) % 360; this.draw(); });
-            this.draw();
-        },
-        draw() {
-            const V = this.V, L = this.L, a = this.deg * Math.PI / 180;
-            const ex = V.x + L * Math.cos(a), ey = V.y - L * Math.sin(a);
-            this.ray.setAttribute('x1', V.x); this.ray.setAttribute('y1', V.y); this.ray.setAttribute('x2', ex); this.ray.setAttribute('y2', ey);
-            this.grab.setAttribute('cx', ex); this.grab.setAttribute('cy', ey);
-            const ar = 34, bx = V.x + ar, ax2 = V.x + ar * Math.cos(a), ay2 = V.y - ar * Math.sin(a);
-            this.arc.setAttribute('d', `M ${bx} ${V.y} A ${ar} ${ar} 0 ${this.deg > 180 ? 1 : 0} 0 ${ax2} ${ay2}`);
-            this.lab.setAttribute('x', V.x + 50 * Math.cos(a / 2)); this.lab.setAttribute('y', V.y - 50 * Math.sin(a / 2) + 5); this.lab.textContent = this.deg + '°';
-            const name = this.deg === 0 ? 'no turn yet' : this.deg < 90 ? 'acute — less than a right angle (under a ¼ turn)' : this.deg === 90 ? 'a RIGHT angle — a quarter turn' : this.deg < 180 ? 'obtuse — more than a right angle' : this.deg === 180 ? 'a straight angle — a half turn' : 'a reflex angle — more than a half turn';
-            this.readout = `turn: ${this.deg}° — ${name}`;
-        },
-    }));
-
-    // ── Ruler: drag the handle; reads cm, mm and m. ──
+    // ── Ruler: drag the handle; reads cm, mm and m; Check against a target. ──
     A.data('rulerWidget', (cfg = {}) => ({
-        len: cfg.start ?? 3.0, cm: cfg.cm ?? 15, readout: '',
+        len: cfg.start ?? 3.0, cm: cfg.cm ?? 15, readout: '', result: '', hasTarget: cfg.target != null,
         init() {
             const rul = this.$refs.rul, PX = 30;
             for (let mmi = 0; mmi <= this.cm * 10; mmi++) {
@@ -207,9 +174,10 @@ document.addEventListener('alpine:init', () => {
             }
             this.rib = document.createElement('div'); this.rib.className = 'rul-ribbon'; rul.appendChild(this.rib);
             this.h = document.createElement('div'); this.h.className = 'rul-handle'; rul.appendChild(this.h);
-            draggable(this.h, (cx) => { const r = rul.getBoundingClientRect(); let px = cx - r.left; px = Math.max(0, Math.min(this.cm * PX, px)); this.len = Math.round(px / PX * 10) / 10; this.draw(); });
+            draggable(this.h, (cx) => { const r = rul.getBoundingClientRect(); let px = cx - r.left; px = Math.max(0, Math.min(this.cm * PX, px)); this.len = Math.round(px / PX * 10) / 10; this.result = ''; this.draw(); });
             this.draw();
         },
+        check() { if (this.hasTarget) { this.result = Math.abs(this.len - cfg.target) < 0.05 ? 'yes' : 'no'; } },
         draw() {
             const PX = 30, px = this.len * PX;
             this.rib.style.width = px + 'px'; this.h.style.left = px + 'px';
@@ -217,9 +185,52 @@ document.addEventListener('alpine:init', () => {
         },
     }));
 
-    // ── Solids: tap a solid to see its faces, edges and vertices. ──
+    // ── Angle: drag the ray to a target angle in a real context; Check. ──
+    A.data('angleWidget', (cfg = {}) => ({
+        deg: cfg.start ?? 45, readout: '', result: '', hasTarget: cfg.target != null,
+        init() {
+            const svg = this.$refs.ang, V = { x: 130, y: 130 }, L = 100;
+            svg.appendChild(el('line', { x1: V.x, y1: V.y, x2: V.x + L, y2: V.y, class: 'ang-base' }));
+            [[90, '¼'], [180, '½'], [270, '¾']].forEach(([d, t]) => {
+                const a = d * Math.PI / 180, r1 = L * 0.55, r2 = L * 0.55 + 9;
+                svg.appendChild(el('line', { x1: V.x + r1 * Math.cos(a), y1: V.y - r1 * Math.sin(a), x2: V.x + r2 * Math.cos(a), y2: V.y - r2 * Math.sin(a), stroke: '#7d8a97', 'stroke-width': 2, 'stroke-dasharray': '2 3' }));
+                const lt = el('text', { x: V.x + (L * 0.55 + 20) * Math.cos(a), y: V.y - (L * 0.55 + 20) * Math.sin(a) + 5, class: 'ang-num' }); lt.textContent = t; svg.appendChild(lt);
+            });
+            this.arc = el('path', { class: 'ang-arc' });
+            this.ray = el('line', { class: 'ang-ray' });
+            this.grab = el('circle', { r: 9, class: 'clk-grab' });
+            this.lab = el('text', { class: 'ang-lab' });
+            svg.append(this.arc, this.ray, el('circle', { cx: V.x, cy: V.y, r: 5, class: 'clk-cap' }), this.grab, this.lab);
+            this.V = V; this.L = L;
+            draggable(this.grab, (cx, cy) => { const p = svgPoint(svg, cx, cy); let a = Math.atan2(V.y - p.y, p.x - V.x) * 180 / Math.PI; if (a < 0) a += 360; this.deg = (Math.round(a / 5) * 5) % 360; this.result = ''; this.draw(); });
+            this.draw();
+        },
+        check() { if (this.hasTarget) { this.result = this.deg === cfg.target ? 'yes' : 'no'; } },
+        draw() {
+            const V = this.V, L = this.L, a = this.deg * Math.PI / 180;
+            const ex = V.x + L * Math.cos(a), ey = V.y - L * Math.sin(a);
+            this.ray.setAttribute('x1', V.x); this.ray.setAttribute('y1', V.y); this.ray.setAttribute('x2', ex); this.ray.setAttribute('y2', ey);
+            this.grab.setAttribute('cx', ex); this.grab.setAttribute('cy', ey);
+            const ar = 34, bx = V.x + ar, ax2 = V.x + ar * Math.cos(a), ay2 = V.y - ar * Math.sin(a);
+            this.arc.setAttribute('d', `M ${bx} ${V.y} A ${ar} ${ar} 0 ${this.deg > 180 ? 1 : 0} 0 ${ax2} ${ay2}`);
+            this.lab.setAttribute('x', V.x + 50 * Math.cos(a / 2)); this.lab.setAttribute('y', V.y - 50 * Math.sin(a / 2) + 5); this.lab.textContent = this.deg + '°';
+            const name = this.deg === 0 ? 'no turn yet' : this.deg < 90 ? 'acute — less than a right angle' : this.deg === 90 ? 'a RIGHT angle — a quarter turn' : this.deg < 180 ? 'obtuse — more than a right angle' : this.deg === 180 ? 'a straight angle — a half turn' : 'a reflex angle';
+            this.readout = `turn: ${this.deg}° — ${name}`;
+        },
+    }));
+
+    // ── Solids: tap a solid to SEE it and read its faces, edges and vertices. ──
     A.data('solidsWidget', () => ({
         sel: null, readout: '',
+        icons: {
+            cube: '<svg width="72" height="66" viewBox="0 0 48 44"><g class="solid-ic"><rect x="8" y="14" width="24" height="24"/><path class="b" d="M8 14 L16 6 L40 6 L32 14"/><path class="b" d="M32 14 L40 6 L40 30 L32 38"/></g></svg>',
+            cuboid: '<svg width="72" height="66" viewBox="0 0 48 44"><g class="solid-ic"><rect x="6" y="18" width="30" height="18"/><path class="b" d="M6 18 L14 10 L44 10 L36 18"/><path class="b" d="M36 18 L44 10 L44 28 L36 36"/></g></svg>',
+            cylinder: '<svg width="72" height="66" viewBox="0 0 48 44"><g class="solid-ic"><ellipse cx="24" cy="10" rx="12" ry="5"/><path d="M12 10 V34 a12 5 0 0 0 24 0 V10"/></g></svg>',
+            cone: '<svg width="72" height="66" viewBox="0 0 48 44"><g class="solid-ic"><path d="M24 6 L36 34 a12 5 0 0 1 -24 0 Z"/><ellipse class="b" cx="24" cy="34" rx="12" ry="5"/></g></svg>',
+            sphere: '<svg width="72" height="66" viewBox="0 0 48 44"><g class="solid-ic"><circle cx="24" cy="22" r="14"/><ellipse class="b" cx="24" cy="22" rx="14" ry="5"/></g></svg>',
+            pyramid: '<svg width="72" height="66" viewBox="0 0 48 44"><g class="solid-ic"><path d="M24 6 L40 36 L8 36 Z"/><path class="b" d="M8 36 L18 30 L44 30 L40 36"/><path class="b" d="M24 6 L44 30"/></g></svg>',
+            prism: '<svg width="72" height="66" viewBox="0 0 48 44"><g class="solid-ic"><path d="M14 34 L24 12 L34 34 Z"/><path class="b" d="M14 34 L22 40 L42 40 L34 34"/><path class="b" d="M24 12 L32 18 L42 40"/><path class="b" d="M34 34 L42 40"/></g></svg>',
+        },
         solids: [
             { id: 'cube', n: 'Cube', f: 6, e: 12, v: 8, note: '6 square faces' },
             { id: 'cuboid', n: 'Cuboid', f: 6, e: 12, v: 8, note: '6 rectangular faces' },
@@ -229,32 +240,40 @@ document.addEventListener('alpine:init', () => {
             { id: 'pyramid', n: 'Square pyramid', f: 5, e: 8, v: 5, note: 'a square base + 4 triangles' },
             { id: 'prism', n: 'Triangular prism', f: 5, e: 9, v: 6, note: '2 triangles + 3 rectangles' },
         ],
+        iconFor(id) { return this.icons[id] ?? ''; },
+        selIcon() { return this.sel ? this.icons[this.sel] : ''; },
         pick(s) { this.sel = s.id; this.readout = `${s.n} — ${s.f} faces, ${s.e} edges, ${s.v} vertices. ${s.note}.`; },
     }));
 
-    // ── Lines of symmetry: tap each dashed fold line that mirrors the shape, then Check. ──
-    A.data('symmetryWidget', (cfg = {}) => ({
-        shape: cfg.shape ?? 'square', chosen: [], readout: '',
+    // ── Lines of symmetry: GUIDED, one shape at a time. Tap the fold lines, Check, advance. ──
+    A.data('symmetryWidget', () => ({
+        order: ['square', 'rectangle', 'triangleEq'],
+        idx: 0, chosen: [], readout: '', prompt: '',
         shapes: {
-            square: { name: 'Square', correct: ['V', 'H', 'D1', 'D2'] },
-            rectangle: { name: 'Rectangle', correct: ['V', 'H'] },
-            triangleEq: { name: 'Equilateral triangle', correct: ['V'] },
+            square: { name: 'square', correct: ['V', 'H', 'D1', 'D2'] },
+            rectangle: { name: 'rectangle', correct: ['V', 'H'] },
+            triangleEq: { name: 'triangle', correct: ['V'] },
         },
         lines: { V: [80, 12, 80, 148], H: [12, 80, 148, 80], D1: [24, 24, 136, 136], D2: [136, 24, 24, 136] },
-        init() { this.draw(); },
-        setShape(k) { this.shape = k; this.chosen = []; this.readout = ''; this.draw(); },
+        init() { this.setPrompt(); this.draw(); },
+        cur() { return this.order[this.idx]; },
+        setPrompt() { this.prompt = `Shape ${this.idx + 1} of ${this.order.length}: tap every fold line that makes a mirror image of the ${this.shapes[this.cur()].name}, then Check.`; },
         toggle(dir) { const i = this.chosen.indexOf(dir); if (i >= 0) { this.chosen.splice(i, 1); } else { this.chosen.push(dir); } this.readout = ''; this.draw(); },
         check() {
-            const S = this.shapes[this.shape];
+            const S = this.shapes[this.cur()];
             const a = [...this.chosen].sort().join(','), b = [...S.correct].sort().join(',');
-            this.readout = a === b ? `yes:${S.name} has ${S.correct.length} line${S.correct.length > 1 ? 's' : ''} of symmetry.` : 'no:Not quite — for each dashed line, would the two halves match if you folded on it?';
+            if (a !== b) { this.readout = 'no:Not quite — for each dashed line, would the two halves match if you folded on it? Try again.'; return; }
+            const done = this.idx === this.order.length - 1;
+            this.readout = `yes:The ${S.name} has ${S.correct.length} line${S.correct.length > 1 ? 's' : ''} of symmetry.` + (done ? ' You found them all!' : ' Now the next shape…');
+            if (!done) { setTimeout(() => { this.idx++; this.chosen = []; this.readout = ''; this.setPrompt(); this.draw(); }, 1400); }
         },
         draw() {
             const svg = this.$refs.sym; svg.innerHTML = '';
-            if (this.shape === 'triangleEq') { svg.appendChild(el('polygon', { points: '80,20 140,140 20,140', class: 'los-shape' })); }
-            else if (this.shape === 'rectangle') { svg.appendChild(el('rect', { x: 26, y: 54, width: 108, height: 52, rx: 6, class: 'los-shape' })); }
+            const shape = this.cur();
+            if (shape === 'triangleEq') { svg.appendChild(el('polygon', { points: '80,20 140,140 20,140', class: 'los-shape' })); }
+            else if (shape === 'rectangle') { svg.appendChild(el('rect', { x: 26, y: 54, width: 108, height: 52, rx: 6, class: 'los-shape' })); }
             else { svg.appendChild(el('rect', { x: 40, y: 40, width: 80, height: 80, rx: 6, class: 'los-shape' })); }
-            const dirs = this.shape === 'triangleEq' ? ['V'] : ['V', 'H', 'D1', 'D2'];
+            const dirs = shape === 'triangleEq' ? ['V'] : ['V', 'H', 'D1', 'D2'];
             dirs.forEach((dir) => {
                 const c = this.lines[dir];
                 svg.appendChild(el('line', { x1: c[0], y1: c[1], x2: c[2], y2: c[3], class: 'los-cand' + (this.chosen.includes(dir) ? ' on' : '') }));
