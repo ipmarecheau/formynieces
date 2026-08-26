@@ -53334,6 +53334,17 @@ questions:
 - module: 69
   difficulty: easy
   sea_section: Section II
+  prompt: The main problem a character faces is called the…
+  options:
+  - rhyme
+  - conflict
+  - heading
+  - caption
+  correct_index: 1
+  explanation: 'In a narrative, the answer is: conflict.'
+- module: 69
+  difficulty: easy
+  sea_section: Section II
   prompt: The part of a story where you meet the characters is the?
   options:
   - beginning
@@ -53365,6 +53376,50 @@ questions:
   correct_index: 0
   explanation: The problem is solved at the end.
 - module: 69
+  difficulty: easy
+  sea_section: Section II
+  prompt: The sequence of events in a story is called the…
+  options:
+  - caption
+  - margin
+  - font
+  - plot
+  correct_index: 3
+  explanation: 'In a narrative, the answer is: plot.'
+- module: 69
+  difficulty: easy
+  sea_section: Section II
+  prompt: Where in a story do we meet the characters and setting?
+  options:
+  - the index
+  - the climax
+  - the beginning
+  - the ending
+  correct_index: 2
+  explanation: 'In a narrative, the answer is: the beginning.'
+- module: 69
+  difficulty: easy
+  sea_section: Section II
+  prompt: Which belongs in the MIDDLE of a story?
+  options:
+  - the character faces a problem
+  - the glossary
+  - the title page
+  - the author biography
+  correct_index: 0
+  explanation: 'In a narrative, the answer is: the character faces a problem.'
+- module: 69
+  difficulty: easy
+  sea_section: Section II
+  prompt: Which is the best OPENING sentence for a story?
+  options:
+  - In conclusion, it was fun.
+  - The end.
+  - There are five points.
+  - The old house groaned as Maya pushed open its creaking door.
+  correct_index: 3
+  explanation: 'In a narrative, the answer is: The old house groaned as Maya pushed open its creaking door..'
+- module: 69
   difficulty: medium
   sea_section: Section II
   prompt: A story is told in what order?
@@ -53375,6 +53430,17 @@ questions:
   - no order
   correct_index: 0
   explanation: 'In order: beginning, middle, end.'
+- module: 69
+  difficulty: medium
+  sea_section: Section II
+  prompt: A story written to entertain is a…
+  options:
+  - advertisement
+  - narrative
+  - recipe
+  - report
+  correct_index: 1
+  explanation: 'In a narrative, the answer is: narrative.'
 - module: 69
   difficulty: medium
   sea_section: Section II
@@ -53411,6 +53477,39 @@ questions:
 - module: 69
   difficulty: medium
   sea_section: Section II
+  prompt: What is a 'narrator'?
+  options:
+  - the voice telling the story
+  - a kind of poem
+  - a punctuation mark
+  - a type of food
+  correct_index: 0
+  explanation: 'In a narrative, the answer is: the voice telling the story.'
+- module: 69
+  difficulty: medium
+  sea_section: Section II
+  prompt: What is the most exciting turning point of a story called?
+  options:
+  - the setting
+  - the caption
+  - the climax
+  - the title
+  correct_index: 2
+  explanation: 'In a narrative, the answer is: the climax.'
+- module: 69
+  difficulty: medium
+  sea_section: Section II
+  prompt: What usually happens at the END of a story?
+  options:
+  - a new problem starts and stops
+  - the problem is solved
+  - nothing is described
+  - the characters are introduced
+  correct_index: 1
+  explanation: 'In a narrative, the answer is: the problem is solved.'
+- module: 69
+  difficulty: medium
+  sea_section: Section II
   prompt: Which sentence paints a clearer picture?
   options:
   - The muddy dog raced across the wet yard.
@@ -53419,6 +53518,28 @@ questions:
   - It ran away.
   correct_index: 0
   explanation: It uses exact, sensory words.
+- module: 69
+  difficulty: medium
+  sea_section: Section II
+  prompt: Which word signals the ORDER of events in a story?
+  options:
+  - Very
+  - Because
+  - Finally,
+  - Green
+  correct_index: 2
+  explanation: 'In a narrative, the answer is: Finally,.'
+- module: 69
+  difficulty: hard
+  sea_section: Section II
+  prompt: A good story ending should…
+  options:
+  - give a recipe
+  - start a new topic
+  - tie up the story
+  - list prices
+  correct_index: 2
+  explanation: 'In a narrative, the answer is: tie up the story.'
 - module: 69
   difficulty: hard
   sea_section: Section II
@@ -53455,6 +53576,17 @@ questions:
 - module: 69
   difficulty: hard
   sea_section: Section II
+  prompt: The people or animals in a story are the…
+  options:
+  - captions
+  - characters
+  - facts
+  - setting
+  correct_index: 1
+  explanation: 'In a narrative, the answer is: characters.'
+- module: 69
+  difficulty: hard
+  sea_section: Section II
   prompt: The setting of a story is the?
   options:
   - time and place
@@ -53463,6 +53595,39 @@ questions:
   - title
   correct_index: 0
   explanation: The setting is when and where it happens.
+- module: 69
+  difficulty: hard
+  sea_section: Section II
+  prompt: What is the 'setting' of a story?
+  options:
+  - the author's name
+  - the fastest part
+  - where and when it happens
+  - the last line
+  correct_index: 2
+  explanation: 'In a narrative, the answer is: where and when it happens.'
+- module: 69
+  difficulty: hard
+  sea_section: Section II
+  prompt: Which opening best 'hooks' a reader?
+  options:
+  - The weather report is next.
+  - Chapter facts follow.
+  - A scream echoed through the empty school.
+  - This is a story.
+  correct_index: 2
+  explanation: 'In a narrative, the answer is: A scream echoed through the empty school..'
+- module: 69
+  difficulty: hard
+  sea_section: Section II
+  prompt: Which sentence best describes a SETTING?
+  options:
+  - The answer is 5.
+  - Buy now!
+  - He was happy.
+  - It was a stormy night on a lonely beach.
+  correct_index: 3
+  explanation: 'In a narrative, the answer is: It was a stormy night on a lonely beach..'
 - module: 69
   difficulty: hard
   sea_section: Section II
@@ -53521,6 +53686,39 @@ questions:
 - module: 70
   difficulty: easy
   sea_section: Section II
+  prompt: A glossary in a report explains…
+  options:
+  - the author's feelings
+  - the price
+  - the meanings of key words
+  - the weather
+  correct_index: 2
+  explanation: 'In an expository text, the answer is: the meanings of key words.'
+- module: 70
+  difficulty: easy
+  sea_section: Section II
+  prompt: A heading in a report helps the reader to…
+  options:
+  - pay money
+  - fall asleep
+  - find information quickly
+  - draw a cat
+  correct_index: 2
+  explanation: 'In an expository text, the answer is: find information quickly.'
+- module: 70
+  difficulty: easy
+  sea_section: Section II
+  prompt: An expository text is organised by…
+  options:
+  - rhyme and rhythm
+  - main ideas and supporting facts
+  - jokes
+  - dialogue and drama
+  correct_index: 1
+  explanation: 'In an expository text, the answer is: main ideas and supporting facts.'
+- module: 70
+  difficulty: easy
+  sea_section: Section II
   prompt: Expository writing gives the reader?
   options:
   - facts
@@ -53529,6 +53727,28 @@ questions:
   - poems
   correct_index: 0
   explanation: Expository writing informs with facts.
+- module: 70
+  difficulty: easy
+  sea_section: Section II
+  prompt: What is the purpose of an expository (report) text?
+  options:
+  - to sell a toy
+  - to tell a made-up story
+  - to give facts and information
+  - to write a poem
+  correct_index: 2
+  explanation: 'In an expository text, the answer is: to give facts and information.'
+- module: 70
+  difficulty: easy
+  sea_section: Section II
+  prompt: Which is an OPINION that should NOT be in a factual report?
+  options:
+  - Bats eat insects.
+  - Bats are mammals.
+  - Bats are the scariest animals.
+  - Bats sleep upside down.
+  correct_index: 2
+  explanation: 'In an expository text, the answer is: Bats are the scariest animals..'
 - module: 70
   difficulty: medium
   sea_section: Section II
@@ -53554,6 +53774,17 @@ questions:
 - module: 70
   difficulty: medium
   sea_section: Section II
+  prompt: The final part of a report usually…
+  options:
+  - sums up the main points
+  - gives a punchline
+  - introduces new characters
+  - starts a poem
+  correct_index: 0
+  explanation: 'In an expository text, the answer is: sums up the main points.'
+- module: 70
+  difficulty: medium
+  sea_section: Section II
   prompt: The part of a report that names the topic is the?
   options:
   - opening
@@ -53562,6 +53793,28 @@ questions:
   - title only
   correct_index: 0
   explanation: The opening names the topic.
+- module: 70
+  difficulty: medium
+  sea_section: Section II
+  prompt: Which is a FACT suitable for a report?
+  options:
+  - Water is the nicest drink.
+  - I hate cold water.
+  - Water is boring.
+  - Water boils at 100°C.
+  correct_index: 3
+  explanation: 'In an expository text, the answer is: Water boils at 100°C..'
+- module: 70
+  difficulty: medium
+  sea_section: Section II
+  prompt: Which is the best TOPIC SENTENCE for a report about volcanoes?
+  options:
+  - The end of volcanoes.
+  - Buy a volcano today!
+  - I like volcanoes.
+  - A volcano is an opening in the Earth that releases hot lava.
+  correct_index: 3
+  explanation: 'In an expository text, the answer is: A volcano is an opening in the Earth that releases hot lava..'
 - module: 70
   difficulty: medium
   sea_section: Section II
@@ -53585,6 +53838,28 @@ questions:
   correct_index: 0
   explanation: '''taste amazing'' is a feeling, so an opinion.'
 - module: 70
+  difficulty: medium
+  sea_section: Section II
+  prompt: Which sentence gives clear information?
+  options:
+  - Hearts, wow!
+  - The heart pumps blood around the body.
+  - Hearts are lovely.
+  - I love my heart.
+  correct_index: 1
+  explanation: 'In an expository text, the answer is: The heart pumps blood around the body..'
+- module: 70
+  difficulty: medium
+  sea_section: Section II
+  prompt: Which word helps ADD information in a report?
+  options:
+  - Suddenly,
+  - Furthermore,
+  - Boom!
+  - Once,
+  correct_index: 1
+  explanation: 'In an expository text, the answer is: Furthermore,.'
+- module: 70
   difficulty: hard
   sea_section: Section II
   prompt: '''The Earth orbits the Sun'' is a?'
@@ -53595,6 +53870,17 @@ questions:
   - joke
   correct_index: 0
   explanation: It can be checked, so it is a fact.
+- module: 70
+  difficulty: hard
+  sea_section: Section II
+  prompt: A diagram in a report is used to…
+  options:
+  - show how something works
+  - tell a joke
+  - rhyme words
+  - end the story
+  correct_index: 0
+  explanation: 'In an expository text, the answer is: show how something works.'
 - module: 70
   difficulty: hard
   sea_section: Section II
@@ -53609,6 +53895,17 @@ questions:
 - module: 70
   difficulty: hard
   sea_section: Section II
+  prompt: Reports are usually written in which person?
+  options:
+  - only 'I'
+  - the third person (it, they)
+  - no words
+  - only 'you'
+  correct_index: 1
+  explanation: 'In an expository text, the answer is: the third person (it, they).'
+- module: 70
+  difficulty: hard
+  sea_section: Section II
   prompt: The closing of a report should?
   options:
   - sum up
@@ -53617,6 +53914,28 @@ questions:
   - tell a story
   correct_index: 0
   explanation: The closing sums up the report.
+- module: 70
+  difficulty: hard
+  sea_section: Section II
+  prompt: What text feature shows what a picture means?
+  options:
+  - a caption
+  - a slogan
+  - a climax
+  - a rhyme
+  correct_index: 0
+  explanation: 'In an expository text, the answer is: a caption.'
+- module: 70
+  difficulty: hard
+  sea_section: Section II
+  prompt: Which belongs in a report about dolphins?
+  options:
+  - Dolphins for sale!
+  - Once upon a time a dolphin sang.
+  - I think dolphins are cute.
+  - Dolphins are mammals that breathe air.
+  correct_index: 3
+  explanation: 'In an expository text, the answer is: Dolphins are mammals that breathe air..'
 - module: 70
   difficulty: hard
   sea_section: Section II
@@ -53639,6 +53958,17 @@ questions:
   - Frogs are boring.
   correct_index: 0
   explanation: It is a checkable fact.
+- module: 70
+  difficulty: hard
+  sea_section: Section II
+  prompt: Which title suits a report?
+  options:
+  - The Life Cycle of a Butterfly
+  - The Talking Frog
+  - My Scary Dream
+  - Buy Butterflies Now!
+  correct_index: 0
+  explanation: 'In an expository text, the answer is: The Life Cycle of a Butterfly.'
 - module: 71
   difficulty: easy
   sea_section: Section II
@@ -53695,6 +54025,94 @@ questions:
   correct_index: 0
   explanation: A simile uses 'like' or 'as'.
 - module: 71
+  difficulty: easy
+  sea_section: Section II
+  prompt: 'Complete the simile: ''as brave as a ___''.'
+  options:
+  - cloud
+  - spoon
+  - lion
+  - chair
+  correct_index: 2
+  explanation: 'A simile compares using ''as'' or ''like'': as brave as a lion.'
+- module: 71
+  difficulty: easy
+  sea_section: Section II
+  prompt: 'Complete the simile: ''as quiet as a ___''.'
+  options:
+  - storm
+  - mouse
+  - drum
+  - crowd
+  correct_index: 1
+  explanation: 'A simile compares using ''as'' or ''like'': as quiet as a mouse.'
+- module: 71
+  difficulty: easy
+  sea_section: Section II
+  prompt: 'Complete the simile: ''as strong as an ___''.'
+  options:
+  - egg
+  - leaf
+  - straw
+  - ox
+  correct_index: 3
+  explanation: 'A simile compares using ''as'' or ''like'': as strong as an ox.'
+- module: 71
+  difficulty: easy
+  sea_section: Section II
+  prompt: 'Complete the simile: ''as tall as a ___''.'
+  options:
+  - ant
+  - tree
+  - coin
+  - cup
+  correct_index: 1
+  explanation: 'A simile compares using ''as'' or ''like'': as tall as a tree.'
+- module: 71
+  difficulty: easy
+  sea_section: Section II
+  prompt: 'What figure of speech is used: "Her eyes were deep pools."?'
+  options:
+  - onomatopoeia
+  - personification
+  - metaphor
+  - simile
+  correct_index: 2
+  explanation: '"Her eyes were deep pools." is an example of metaphor.'
+- module: 71
+  difficulty: easy
+  sea_section: Section II
+  prompt: 'What figure of speech is used: "The classroom was a zoo."?'
+  options:
+  - personification
+  - simile
+  - metaphor
+  - rhyme
+  correct_index: 2
+  explanation: '"The classroom was a zoo." is an example of metaphor.'
+- module: 71
+  difficulty: easy
+  sea_section: Section II
+  prompt: 'What figure of speech is used: "The leaves crunched and crackled."?'
+  options:
+  - metaphor
+  - onomatopoeia
+  - personification
+  - simile
+  correct_index: 1
+  explanation: '"The leaves crunched and crackled." is an example of onomatopoeia.'
+- module: 71
+  difficulty: easy
+  sea_section: Section II
+  prompt: 'What figure of speech is used: "Time is a thief."?'
+  options:
+  - simile
+  - onomatopoeia
+  - personification
+  - metaphor
+  correct_index: 3
+  explanation: '"Time is a thief." is an example of metaphor.'
+- module: 71
   difficulty: medium
   sea_section: Section II
   prompt: '''as white as ___'''
@@ -53730,6 +54148,39 @@ questions:
 - module: 71
   difficulty: medium
   sea_section: Section II
+  prompt: 'Complete the simile: ''as busy as a ___''.'
+  options:
+  - rock
+  - door
+  - bee
+  - lamp
+  correct_index: 2
+  explanation: 'A simile compares using ''as'' or ''like'': as busy as a bee.'
+- module: 71
+  difficulty: medium
+  sea_section: Section II
+  prompt: 'Complete the simile: ''as cold as ___''.'
+  options:
+  - soup
+  - fire
+  - ice
+  - sand
+  correct_index: 2
+  explanation: 'A simile compares using ''as'' or ''like'': as cold as ice.'
+- module: 71
+  difficulty: medium
+  sea_section: Section II
+  prompt: 'Complete the simile: ''as sweet as ___''.'
+  options:
+  - salt
+  - honey
+  - stone
+  - smoke
+  correct_index: 1
+  explanation: 'A simile compares using ''as'' or ''like'': as sweet as honey.'
+- module: 71
+  difficulty: medium
+  sea_section: Section II
   prompt: Is 'Time is money' a simile or a metaphor?
   options:
   - metaphor
@@ -53738,6 +54189,50 @@ questions:
   - list
   correct_index: 0
   explanation: It says one thing IS another, so a metaphor.
+- module: 71
+  difficulty: medium
+  sea_section: Section II
+  prompt: 'What figure of speech is used: "Peter picked a peck of peppers."?'
+  options:
+  - onomatopoeia
+  - simile
+  - metaphor
+  - alliteration
+  correct_index: 3
+  explanation: '"Peter picked a peck of peppers." is an example of alliteration.'
+- module: 71
+  difficulty: medium
+  sea_section: Section II
+  prompt: 'What figure of speech is used: "The bees buzzed by the busy bushes."?'
+  options:
+  - personification
+  - alliteration
+  - metaphor
+  - simile
+  correct_index: 1
+  explanation: '"The bees buzzed by the busy bushes." is an example of alliteration.'
+- module: 71
+  difficulty: medium
+  sea_section: Section II
+  prompt: 'What figure of speech is used: "The stars danced in the sky."?'
+  options:
+  - simile
+  - personification
+  - metaphor
+  - onomatopoeia
+  correct_index: 1
+  explanation: '"The stars danced in the sky." is an example of personification.'
+- module: 71
+  difficulty: medium
+  sea_section: Section II
+  prompt: 'What figure of speech is used: "The wind whispered through the trees."?'
+  options:
+  - simile
+  - metaphor
+  - alliteration
+  - personification
+  correct_index: 3
+  explanation: '"The wind whispered through the trees." is an example of personification.'
 - module: 71
   difficulty: medium
   sea_section: Section II
@@ -53774,6 +54269,39 @@ questions:
 - module: 71
   difficulty: hard
   sea_section: Section II
+  prompt: 'Complete the simile: ''as fast as ___''.'
+  options:
+  - glue
+  - lightning
+  - a rock
+  - a snail
+  correct_index: 1
+  explanation: 'A simile compares using ''as'' or ''like'': as fast as lightning.'
+- module: 71
+  difficulty: hard
+  sea_section: Section II
+  prompt: 'Complete the simile: ''as light as a ___''.'
+  options:
+  - feather
+  - brick
+  - car
+  - stone
+  correct_index: 0
+  explanation: 'A simile compares using ''as'' or ''like'': as light as a feather.'
+- module: 71
+  difficulty: hard
+  sea_section: Section II
+  prompt: 'Complete the simile: ''as white as ___''.'
+  options:
+  - grass
+  - snow
+  - coal
+  - mud
+  correct_index: 1
+  explanation: 'A simile compares using ''as'' or ''like'': as white as snow.'
+- module: 71
+  difficulty: hard
+  sea_section: Section II
   prompt: Giving human actions to a thing (the wind whispered) is called?
   options:
   - personification
@@ -53782,6 +54310,50 @@ questions:
   - fact
   correct_index: 0
   explanation: That is personification.
+- module: 71
+  difficulty: hard
+  sea_section: Section II
+  prompt: 'What figure of speech is used: "Bang! went the door."?'
+  options:
+  - personification
+  - simile
+  - onomatopoeia
+  - metaphor
+  correct_index: 2
+  explanation: '"Bang! went the door." is an example of onomatopoeia.'
+- module: 71
+  difficulty: hard
+  sea_section: Section II
+  prompt: 'What figure of speech is used: "He ran like the wind."?'
+  options:
+  - personification
+  - alliteration
+  - metaphor
+  - simile
+  correct_index: 3
+  explanation: '"He ran like the wind." is an example of simile.'
+- module: 71
+  difficulty: hard
+  sea_section: Section II
+  prompt: 'What figure of speech is used: "Her smile was as bright as the sun."?'
+  options:
+  - onomatopoeia
+  - personification
+  - simile
+  - metaphor
+  correct_index: 2
+  explanation: '"Her smile was as bright as the sun." is an example of simile.'
+- module: 71
+  difficulty: hard
+  sea_section: Section II
+  prompt: 'What figure of speech is used: "The moon smiled down on us."?'
+  options:
+  - simile
+  - onomatopoeia
+  - personification
+  - metaphor
+  correct_index: 2
+  explanation: '"The moon smiled down on us." is an example of personification.'
 - module: 71
   difficulty: hard
   sea_section: Section II
@@ -53804,6 +54376,17 @@ questions:
   - A tree.
   correct_index: 0
   explanation: It uses 'as', so it is a simile.
+- module: 72
+  difficulty: easy
+  sea_section: Section II
+  prompt: A concluding sentence should…
+  options:
+  - sum up the paragraph
+  - list prices
+  - ask a riddle
+  - start a new topic
+  correct_index: 0
+  explanation: 'For good organisation, the answer is: sum up the paragraph.'
 - module: 72
   difficulty: easy
   sea_section: Section II
@@ -53848,6 +54431,50 @@ questions:
   - title
   correct_index: 0
   explanation: One paragraph, one main idea.
+- module: 72
+  difficulty: easy
+  sea_section: Section II
+  prompt: A paragraph should keep to…
+  options:
+  - only questions
+  - many random topics
+  - one main idea
+  - no topic
+  correct_index: 2
+  explanation: 'For good organisation, the answer is: one main idea.'
+- module: 72
+  difficulty: easy
+  sea_section: Section II
+  prompt: Which is the best TOPIC SENTENCE for a paragraph about exercise?
+  options:
+  - I ran once.
+  - The end.
+  - Buy shoes!
+  - Exercise keeps our bodies strong and healthy.
+  correct_index: 3
+  explanation: 'For good organisation, the answer is: Exercise keeps our bodies strong and healthy..'
+- module: 72
+  difficulty: easy
+  sea_section: Section II
+  prompt: Which linking word shows CONTRAST?
+  options:
+  - and
+  - however
+  - because
+  - firstly
+  correct_index: 1
+  explanation: 'For good organisation, the answer is: however.'
+- module: 72
+  difficulty: easy
+  sea_section: Section II
+  prompt: Which sentence does NOT belong in a paragraph about dogs?
+  options:
+  - Dogs need daily walks.
+  - Dogs are loyal pets.
+  - Dogs come in many breeds.
+  - Cars are fast and shiny.
+  correct_index: 3
+  explanation: 'For good organisation, the answer is: Cars are fast and shiny..'
 - module: 72
   difficulty: easy
   sea_section: Section II
@@ -53915,6 +54542,61 @@ questions:
   correct_index: 0
   explanation: Start a new paragraph for a new idea.
 - module: 72
+  difficulty: medium
+  sea_section: Section II
+  prompt: Which order is correct for instructions?
+  options:
+  - First, next, then, finally
+  - Finally, first, then, next
+  - Next finally first then
+  - .Then first next
+  correct_index: 0
+  explanation: 'For good organisation, the answer is: First, next, then, finally.'
+- module: 72
+  difficulty: medium
+  sea_section: Section II
+  prompt: Which word ADDS an idea?
+  options:
+  - instead
+  - but
+  - however
+  - also
+  correct_index: 3
+  explanation: 'For good organisation, the answer is: also.'
+- module: 72
+  difficulty: medium
+  sea_section: Section II
+  prompt: Which word helps SEQUENCE a recount?
+  options:
+  - loud
+  - tall
+  - green
+  - then
+  correct_index: 3
+  explanation: 'For good organisation, the answer is: then.'
+- module: 72
+  difficulty: medium
+  sea_section: Section II
+  prompt: Which word shows a RESULT?
+  options:
+  - meanwhile
+  - therefore
+  - or
+  - although
+  correct_index: 1
+  explanation: 'For good organisation, the answer is: therefore.'
+- module: 72
+  difficulty: medium
+  sea_section: Section II
+  prompt: Which word signals an EXAMPLE?
+  options:
+  - for instance
+  - therefore
+  - however
+  - although
+  correct_index: 0
+  explanation: 'For good organisation, the answer is: for instance.'
+- module: 72
   difficulty: hard
   sea_section: Section II
   prompt: A well-organised text guides the reader?
@@ -53925,6 +54607,17 @@ questions:
   - randomly
   correct_index: 0
   explanation: Good organisation guides the reader smoothly.
+- module: 72
+  difficulty: hard
+  sea_section: Section II
+  prompt: To make writing flow, we use…
+  options:
+  - no punctuation
+  - linking words
+  - numbers only
+  - capital letters only
+  correct_index: 1
+  explanation: 'For good organisation, the answer is: linking words.'
 - module: 72
   difficulty: hard
   sea_section: Section II
@@ -53969,6 +54662,116 @@ questions:
   - and
   correct_index: 0
   explanation: '''however'' shows a contrast.'
+- module: 72
+  difficulty: hard
+  sea_section: Section II
+  prompt: Which linking word shows SIMILARITY?
+  options:
+  - however
+  - although
+  - likewise
+  - but
+  correct_index: 2
+  explanation: 'For good organisation, the answer is: likewise.'
+- module: 72
+  difficulty: hard
+  sea_section: Section II
+  prompt: 'Which sentence best follows: ''First, gather your tools.''?'
+  options:
+  - The end.
+  - Next, lay them out neatly.
+  - I like cake.
+  - The sky is blue.
+  correct_index: 1
+  explanation: 'For good organisation, the answer is: Next, lay them out neatly..'
+- module: 72
+  difficulty: hard
+  sea_section: Section II
+  prompt: Which word shows a REASON?
+  options:
+  - finally
+  - because
+  - meanwhile
+  - however
+  correct_index: 1
+  explanation: 'For good organisation, the answer is: because.'
+- module: 72
+  difficulty: hard
+  sea_section: Section II
+  prompt: Which word shows TIME ORDER?
+  options:
+  - afterwards
+  - however
+  - but
+  - because
+  correct_index: 0
+  explanation: 'For good organisation, the answer is: afterwards.'
+- module: 73
+  difficulty: easy
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Caught in the Rain</strong><br>Priya forgot her umbrella, so when the sky opened she ran home splashing through puddles. By the time she reached her door she was soaked, but she was laughing all the way.</div></p><p><strong>What is the passage mostly about?</strong></p>'
+  options:
+  - A girl gets soaked in the rain but enjoys it
+  - The writer's favourite food
+  - A football match
+  - How to build a house
+  correct_index: 0
+  explanation: The main idea is the overall point of the passage.
+- module: 73
+  difficulty: easy
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Devon''s Garden</strong><br>Devon planted tomato seeds in old paint tins. He watered them every morning before school. In a few weeks, tiny green shoots pushed up towards the sun, and Devon smiled with pride.</div></p><p><strong>What is the passage mostly about?</strong></p>'
+  options:
+  - A football match
+  - The writer's favourite food
+  - A boy grows tomatoes and feels proud
+  - How to build a house
+  correct_index: 2
+  explanation: The main idea is the overall point of the passage.
+- module: 73
+  difficulty: easy
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Market Morning</strong><br>The Saturday market buzzed with noise. Vendors called out prices, ripe mangoes glowed golden, and the smell of fresh bread drifted through the air. Kiran held his grandmother''s hand tightly in the busy crowd.</div></p><p><strong>What is the passage mostly about?</strong></p>'
+  options:
+  - A football match
+  - The writer's favourite food
+  - How to build a house
+  - A busy Saturday market scene
+  correct_index: 3
+  explanation: The main idea is the overall point of the passage.
+- module: 73
+  difficulty: easy
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Lost Kite</strong><br>Amara chased her red kite as the wind tugged it higher and higher. Suddenly the string snapped, and the kite sailed over the coconut trees. She felt her heart sink as it disappeared.</div></p><p><strong>What is the passage mostly about?</strong></p>'
+  options:
+  - How to build a house
+  - A football match
+  - The writer's favourite food
+  - A girl loses her kite in the wind
+  correct_index: 3
+  explanation: The main idea is the overall point of the passage.
+- module: 73
+  difficulty: easy
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Stray Dog</strong><br>A thin brown dog appeared at the school gate every lunchtime. The children shared their bread with it, and soon it wagged its tail whenever the bell rang. One day a kind teacher took it home.</div></p><p><strong>What is the passage mostly about?</strong></p>'
+  options:
+  - A football match
+  - The writer's favourite food
+  - How to build a house
+  - Children befriend a stray dog that finds a home
+  correct_index: 3
+  explanation: The main idea is the overall point of the passage.
+- module: 73
+  difficulty: easy
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Turtles of Matura</strong><br>Every year, giant leatherback turtles come to Matura Beach to lay their eggs at night. Volunteers guard the nests so the baby turtles can reach the sea safely. Fewer turtles come now than before.</div></p><p><strong>What is the passage mostly about?</strong></p>'
+  options:
+  - The writer's favourite food
+  - A football match
+  - Volunteers protect turtles nesting at Matura Beach
+  - How to build a house
+  correct_index: 2
+  explanation: The main idea is the overall point of the passage.
 - module: 73
   difficulty: easy
   sea_section: Section II
@@ -54170,6 +54973,50 @@ questions:
 - module: 73
   difficulty: hard
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Blackout Night</strong><br>The lights went out during the storm. Kiran''s family lit candles and told stories in the flickering glow. For once, no one watched television, and the little house was full of laughter.</div></p><p><strong>What is the passage mostly about?</strong></p>'
+  options:
+  - How to build a house
+  - A football match
+  - The writer's favourite food
+  - A family enjoys togetherness during a blackout
+  correct_index: 3
+  explanation: The main idea is the overall point of the passage.
+- module: 73
+  difficulty: hard
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Broken Bridge</strong><br>Heavy rain fell for three days. The little wooden bridge over the river cracked and washed away. Now the children of the village had to walk the long way round to reach their school.</div></p><p><strong>What is the passage mostly about?</strong></p>'
+  options:
+  - The writer's favourite food
+  - How to build a house
+  - A football match
+  - Rain destroys a bridge and lengthens the children's walk
+  correct_index: 3
+  explanation: The main idea is the overall point of the passage.
+- module: 73
+  difficulty: hard
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Night Sky</strong><br>On clear nights far from the city, thousands of stars sparkle overhead. Long ago, sailors used these stars to find their way across the dark ocean when they had no maps.</div></p><p><strong>What is the passage mostly about?</strong></p>'
+  options:
+  - Stars help sailors find their way at night
+  - How to build a house
+  - The writer's favourite food
+  - A football match
+  correct_index: 0
+  explanation: The main idea is the overall point of the passage.
+- module: 73
+  difficulty: hard
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Steel Pan</strong><br>Old Mr Job hammered the steel drum for hours, tuning each dent until it sang. When he finally struck it, a bright, ringing note filled the yard, and the neighbours gathered to listen.</div></p><p><strong>What is the passage mostly about?</strong></p>'
+  options:
+  - The writer's favourite food
+  - A football match
+  - How to build a house
+  - A man makes and tunes a steel pan
+  correct_index: 3
+  explanation: The main idea is the overall point of the passage.
+- module: 73
+  difficulty: hard
+  sea_section: Section II
   prompt: <p><em>&ldquo;Late again!&rdquo; I exclaimed as Nicholas and I arrived panting at the library. Our classmates had already grabbed the last of the adventure books, so we drifted into the empty nonfiction aisle instead.</em><br><strong>What can you infer about how often the narrator is late?</strong></p>
   options:
   - It happens regularly.
@@ -54258,6 +55105,39 @@ questions:
 - module: 74
   difficulty: easy
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Blackout Night</strong><br>The lights went out during the storm. Kiran''s family lit candles and told stories in the flickering glow. For once, no one watched television, and the little house was full of laughter.</div></p><p><strong>What went out?</strong></p>'
+  options:
+  - The fire
+  - The water
+  - The lights
+  - The radio
+  correct_index: 2
+  explanation: The detail is stated in the passage.
+- module: 74
+  difficulty: easy
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Caught in the Rain</strong><br>Priya forgot her umbrella, so when the sky opened she ran home splashing through puddles. By the time she reached her door she was soaked, but she was laughing all the way.</div></p><p><strong>What did Priya forget?</strong></p>'
+  options:
+  - Her shoes
+  - Her umbrella
+  - Her bag
+  - Her lunch
+  correct_index: 1
+  explanation: The detail is stated in the passage.
+- module: 74
+  difficulty: easy
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Broken Bridge</strong><br>Heavy rain fell for three days. The little wooden bridge over the river cracked and washed away. Now the children of the village had to walk the long way round to reach their school.</div></p><p><strong>How long did the rain fall?</strong></p>'
+  options:
+  - A month
+  - Three days
+  - One hour
+  - A week
+  correct_index: 1
+  explanation: The detail is stated in the passage.
+- module: 74
+  difficulty: easy
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Clean-up</strong><br>When Marcus first saw the beach, he wanted to cry. Plastic bottles bobbed in the shallows and bags clung to the rocks like tired jellyfish. &lsquo;We can fix this,&rsquo; said his sister, Kira. The next Saturday, thirty neighbours arrived with gloves and sacks. They worked all morning under the hot sun, filling sack after sack. By noon the sand gleamed, and a pair of pelicans returned to fish in the clear water. Marcus felt a glow of pride. That evening the group agreed to meet on the first Saturday of every month. &lsquo;One beach today,&rsquo; Kira said, &lsquo;the whole coast tomorrow.&rsquo; Marcus grinned. He had learned that a big problem shrinks when many hands share the work.</div><p>How many neighbours arrived to help?</p></p>'
   options:
   - A hundred
@@ -54277,6 +55157,17 @@ questions:
   - Tents and food
   correct_index: 1
   explanation: <p>Read the text, then choose the best answer.</p><p><strong>Why:</strong> They arrived &ldquo;with gloves and sacks&rdquo;.</p><p><strong>Answer:</strong> <strong>Gloves and sacks</strong></p>
+- module: 74
+  difficulty: easy
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Lost Kite</strong><br>Amara chased her red kite as the wind tugged it higher and higher. Suddenly the string snapped, and the kite sailed over the coconut trees. She felt her heart sink as it disappeared.</div></p><p><strong>What snapped?</strong></p>'
+  options:
+  - The kite
+  - The tree
+  - The string
+  - Her arm
+  correct_index: 2
+  explanation: The detail is stated in the passage.
 - module: 74
   difficulty: easy
   sea_section: Section II
@@ -54379,6 +55270,17 @@ questions:
 - module: 74
   difficulty: medium
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Devon''s Garden</strong><br>Devon planted tomato seeds in old paint tins. He watered them every morning before school. In a few weeks, tiny green shoots pushed up towards the sun, and Devon smiled with pride.</div></p><p><strong>What did Devon plant?</strong></p>'
+  options:
+  - Corn
+  - Trees
+  - Flowers
+  - Tomato seeds
+  correct_index: 3
+  explanation: The detail is stated in the passage.
+- module: 74
+  difficulty: medium
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Clean-up</strong><br>When Marcus first saw the beach, he wanted to cry. Plastic bottles bobbed in the shallows and bags clung to the rocks like tired jellyfish. &lsquo;We can fix this,&rsquo; said his sister, Kira. The next Saturday, thirty neighbours arrived with gloves and sacks. They worked all morning under the hot sun, filling sack after sack. By noon the sand gleamed, and a pair of pelicans returned to fish in the clear water. Marcus felt a glow of pride. That evening the group agreed to meet on the first Saturday of every month. &lsquo;One beach today,&rsquo; Kira said, &lsquo;the whole coast tomorrow.&rsquo; Marcus grinned. He had learned that a big problem shrinks when many hands share the work.</div><p>How often did the group agree to meet?</p></p>'
   options:
   - Once a year
@@ -54401,6 +55303,17 @@ questions:
 - module: 74
   difficulty: medium
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Night Sky</strong><br>On clear nights far from the city, thousands of stars sparkle overhead. Long ago, sailors used these stars to find their way across the dark ocean when they had no maps.</div></p><p><strong>Who used the stars to navigate?</strong></p>'
+  options:
+  - Sailors
+  - Bakers
+  - Farmers
+  - Teachers
+  correct_index: 0
+  explanation: The detail is stated in the passage.
+- module: 74
+  difficulty: medium
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Storm</strong><br>Aria pressed her face to the window as the storm howled outside. Rain lashed the glass and the wind bent the coconut trees almost to the ground. Suddenly she heard a whimper &mdash; her puppy, Biscuit, had slipped out into the yard! Without thinking, Aria pulled on her boots and dashed into the rain. The cold water stung her cheeks, but she pushed on, calling his name. She found Biscuit trembling beside the fence, his paw caught under a fallen branch. Aria heaved the branch aside and scooped him up. Back inside, she wrapped him in a warm towel. Her mother frowned at Aria&rsquo;s soaked clothes, then softened. &lsquo;That was brave,&rsquo; she said, &lsquo;but next time, call me first.&rsquo; Aria hugged Biscuit close, grateful he was safe.</div><p>According to the passage, what did the wind do to the coconut trees?</p></p>'
   options:
   - Snapped them in two
@@ -54420,6 +55333,17 @@ questions:
   - Her mother’s coat
   correct_index: 1
   explanation: <p>Read the text, then choose the best answer.</p><p><strong>Why:</strong> &ldquo;She wrapped him in a warm towel.&rdquo;</p><p><strong>Answer:</strong> <strong>A warm towel</strong></p>
+- module: 74
+  difficulty: medium
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Turtles of Matura</strong><br>Every year, giant leatherback turtles come to Matura Beach to lay their eggs at night. Volunteers guard the nests so the baby turtles can reach the sea safely. Fewer turtles come now than before.</div></p><p><strong>Where do the turtles lay eggs?</strong></p>'
+  options:
+  - In a river
+  - On a boat
+  - Matura Beach
+  - In the forest
+  correct_index: 2
+  explanation: The detail is stated in the passage.
 - module: 74
   difficulty: medium
   sea_section: Section II
@@ -54500,6 +55424,17 @@ questions:
 - module: 74
   difficulty: hard
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Market Morning</strong><br>The Saturday market buzzed with noise. Vendors called out prices, ripe mangoes glowed golden, and the smell of fresh bread drifted through the air. Kiran held his grandmother''s hand tightly in the busy crowd.</div></p><p><strong>What glowed golden?</strong></p>'
+  options:
+  - The coins
+  - The bread
+  - The mangoes
+  - The sky
+  correct_index: 2
+  explanation: The detail is stated in the passage.
+- module: 74
+  difficulty: hard
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Clean-up</strong><br>When Marcus first saw the beach, he wanted to cry. Plastic bottles bobbed in the shallows and bags clung to the rocks like tired jellyfish. &lsquo;We can fix this,&rsquo; said his sister, Kira. The next Saturday, thirty neighbours arrived with gloves and sacks. They worked all morning under the hot sun, filling sack after sack. By noon the sand gleamed, and a pair of pelicans returned to fish in the clear water. Marcus felt a glow of pride. That evening the group agreed to meet on the first Saturday of every month. &lsquo;One beach today,&rsquo; Kira said, &lsquo;the whole coast tomorrow.&rsquo; Marcus grinned. He had learned that a big problem shrinks when many hands share the work.</div><p>By what time of day had the sand begun to gleam?</p></p>'
   options:
   - By dawn
@@ -54522,6 +55457,17 @@ questions:
 - module: 74
   difficulty: hard
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Steel Pan</strong><br>Old Mr Job hammered the steel drum for hours, tuning each dent until it sang. When he finally struck it, a bright, ringing note filled the yard, and the neighbours gathered to listen.</div></p><p><strong>What did Mr Job hammer?</strong></p>'
+  options:
+  - A guitar
+  - A nail box
+  - A door
+  - A steel drum
+  correct_index: 3
+  explanation: The detail is stated in the passage.
+- module: 74
+  difficulty: hard
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Storm</strong><br>Aria pressed her face to the window as the storm howled outside. Rain lashed the glass and the wind bent the coconut trees almost to the ground. Suddenly she heard a whimper &mdash; her puppy, Biscuit, had slipped out into the yard! Without thinking, Aria pulled on her boots and dashed into the rain. The cold water stung her cheeks, but she pushed on, calling his name. She found Biscuit trembling beside the fence, his paw caught under a fallen branch. Aria heaved the branch aside and scooped him up. Back inside, she wrapped him in a warm towel. Her mother frowned at Aria&rsquo;s soaked clothes, then softened. &lsquo;That was brave,&rsquo; she said, &lsquo;but next time, call me first.&rsquo; Aria hugged Biscuit close, grateful he was safe.</div><p>What did Aria&rsquo;s mother tell her to do next time?</p></p>'
   options:
   - Wear a raincoat
@@ -54541,6 +55487,17 @@ questions:
   - Aria pulled on her boots
   correct_index: 2
   explanation: <p>Read the text, then choose the best answer.</p><p><strong>Why:</strong> Only the lashing rain and bending trees describe the storm&rsquo;s strength.</p><p><strong>Answer:</strong> <strong>Rain lashed the glass and the wind bent the trees</strong></p>
+- module: 74
+  difficulty: hard
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Stray Dog</strong><br>A thin brown dog appeared at the school gate every lunchtime. The children shared their bread with it, and soon it wagged its tail whenever the bell rang. One day a kind teacher took it home.</div></p><p><strong>When did the dog appear?</strong></p>'
+  options:
+  - At lunchtime
+  - At midnight
+  - Before dawn
+  - On Sundays
+  correct_index: 0
+  explanation: The detail is stated in the passage.
 - module: 74
   difficulty: hard
   sea_section: Section II
@@ -54632,6 +55589,39 @@ questions:
 - module: 75
   difficulty: easy
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Blackout Night</strong><br>The lights went out during the storm. Kiran''s family lit candles and told stories in the flickering glow. For once, no one watched television, and the little house was full of laughter.</div></p><p><strong>''flickering'' means the light was?</strong></p>'
+  options:
+  - shaky and unsteady
+  - green
+  - steady
+  - gone
+  correct_index: 0
+  explanation: Use the sentence around the word to find its meaning.
+- module: 75
+  difficulty: easy
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Caught in the Rain</strong><br>Priya forgot her umbrella, so when the sky opened she ran home splashing through puddles. By the time she reached her door she was soaked, but she was laughing all the way.</div></p><p><strong>''soaked'' means very?</strong></p>'
+  options:
+  - dry
+  - tired
+  - wet
+  - tall
+  correct_index: 2
+  explanation: Use the sentence around the word to find its meaning.
+- module: 75
+  difficulty: easy
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Broken Bridge</strong><br>Heavy rain fell for three days. The little wooden bridge over the river cracked and washed away. Now the children of the village had to walk the long way round to reach their school.</div></p><p><strong>''washed away'' means it was?</strong></p>'
+  options:
+  - repaired
+  - hidden
+  - painted
+  - carried off by water
+  correct_index: 3
+  explanation: Use the sentence around the word to find its meaning.
+- module: 75
+  difficulty: easy
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Clean-up</strong><br>When Marcus first saw the beach, he wanted to cry. Plastic bottles bobbed in the shallows and bags clung to the rocks like tired jellyfish. &lsquo;We can fix this,&rsquo; said his sister, Kira. The next Saturday, thirty neighbours arrived with gloves and sacks. They worked all morning under the hot sun, filling sack after sack. By noon the sand gleamed, and a pair of pelicans returned to fish in the clear water. Marcus felt a glow of pride. That evening the group agreed to meet on the first Saturday of every month. &lsquo;One beach today,&rsquo; Kira said, &lsquo;the whole coast tomorrow.&rsquo; Marcus grinned. He had learned that a big problem shrinks when many hands share the work.</div><p>&ldquo;gleamed&rdquo; (the sand gleamed) means&hellip;</p></p>'
   options:
   - cracked
@@ -54651,6 +55641,17 @@ questions:
   - ashamed
   correct_index: 2
   explanation: <p>Read the text, then choose the best answer.</p><p><strong>Why:</strong> Marcus felt pleased about their good work.</p><p><strong>Answer:</strong> <strong>pleased with something done well</strong></p>
+- module: 75
+  difficulty: easy
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Lost Kite</strong><br>Amara chased her red kite as the wind tugged it higher and higher. Suddenly the string snapped, and the kite sailed over the coconut trees. She felt her heart sink as it disappeared.</div></p><p><strong>''sank'' — ''her heart sank'' means she felt?</strong></p>'
+  options:
+  - hungry
+  - sad
+  - excited
+  - proud
+  correct_index: 1
+  explanation: Use the sentence around the word to find its meaning.
 - module: 75
   difficulty: easy
   sea_section: Section II
@@ -54786,6 +55787,17 @@ questions:
 - module: 75
   difficulty: medium
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Devon''s Garden</strong><br>Devon planted tomato seeds in old paint tins. He watered them every morning before school. In a few weeks, tiny green shoots pushed up towards the sun, and Devon smiled with pride.</div></p><p><strong>''shoots'' here means young?</strong></p>'
+  options:
+  - plants
+  - guns
+  - photos
+  - stars
+  correct_index: 0
+  explanation: Use the sentence around the word to find its meaning.
+- module: 75
+  difficulty: medium
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Clean-up</strong><br>When Marcus first saw the beach, he wanted to cry. Plastic bottles bobbed in the shallows and bags clung to the rocks like tired jellyfish. &lsquo;We can fix this,&rsquo; said his sister, Kira. The next Saturday, thirty neighbours arrived with gloves and sacks. They worked all morning under the hot sun, filling sack after sack. By noon the sand gleamed, and a pair of pelicans returned to fish in the clear water. Marcus felt a glow of pride. That evening the group agreed to meet on the first Saturday of every month. &lsquo;One beach today,&rsquo; Kira said, &lsquo;the whole coast tomorrow.&rsquo; Marcus grinned. He had learned that a big problem shrinks when many hands share the work.</div><p>&ldquo;bags clung to the rocks like tired jellyfish&rdquo;. &ldquo;clung&rdquo; means&hellip;</p></p>'
   options:
   - floated away
@@ -54808,6 +55820,17 @@ questions:
 - module: 75
   difficulty: medium
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Night Sky</strong><br>On clear nights far from the city, thousands of stars sparkle overhead. Long ago, sailors used these stars to find their way across the dark ocean when they had no maps.</div></p><p><strong>''navigate'' / ''find their way'' means to?</strong></p>'
+  options:
+  - travel and steer
+  - cook
+  - paint
+  - sleep
+  correct_index: 0
+  explanation: Use the sentence around the word to find its meaning.
+- module: 75
+  difficulty: medium
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Storm</strong><br>Aria pressed her face to the window as the storm howled outside. Rain lashed the glass and the wind bent the coconut trees almost to the ground. Suddenly she heard a whimper &mdash; her puppy, Biscuit, had slipped out into the yard! Without thinking, Aria pulled on her boots and dashed into the rain. The cold water stung her cheeks, but she pushed on, calling his name. She found Biscuit trembling beside the fence, his paw caught under a fallen branch. Aria heaved the branch aside and scooped him up. Back inside, she wrapped him in a warm towel. Her mother frowned at Aria&rsquo;s soaked clothes, then softened. &lsquo;That was brave,&rsquo; she said, &lsquo;but next time, call me first.&rsquo; Aria hugged Biscuit close, grateful he was safe.</div><p>&ldquo;heaved the branch aside&rdquo;. &ldquo;heaved&rdquo; means&hellip;</p></p>'
   options:
   - kicked lightly
@@ -54827,6 +55850,17 @@ questions:
   - cleaned it gently
   correct_index: 0
   explanation: <p>Read the text, then choose the best answer.</p><p><strong>Why:</strong> The storm was fierce, so the rain struck the glass hard.</p><p><strong>Answer:</strong> <strong>struck it hard</strong></p>
+- module: 75
+  difficulty: medium
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Turtles of Matura</strong><br>Every year, giant leatherback turtles come to Matura Beach to lay their eggs at night. Volunteers guard the nests so the baby turtles can reach the sea safely. Fewer turtles come now than before.</div></p><p><strong>''guard'' means to?</strong></p>'
+  options:
+  - protect
+  - chase
+  - paint
+  - sell
+  correct_index: 0
+  explanation: Use the sentence around the word to find its meaning.
 - module: 75
   difficulty: medium
   sea_section: Section II
@@ -54918,6 +55952,17 @@ questions:
 - module: 75
   difficulty: hard
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Market Morning</strong><br>The Saturday market buzzed with noise. Vendors called out prices, ripe mangoes glowed golden, and the smell of fresh bread drifted through the air. Kiran held his grandmother''s hand tightly in the busy crowd.</div></p><p><strong>''drifted'' means moved?</strong></p>'
+  options:
+  - angrily
+  - loudly
+  - gently
+  - never
+  correct_index: 2
+  explanation: Use the sentence around the word to find its meaning.
+- module: 75
+  difficulty: hard
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Clean-up</strong><br>When Marcus first saw the beach, he wanted to cry. Plastic bottles bobbed in the shallows and bags clung to the rocks like tired jellyfish. &lsquo;We can fix this,&rsquo; said his sister, Kira. The next Saturday, thirty neighbours arrived with gloves and sacks. They worked all morning under the hot sun, filling sack after sack. By noon the sand gleamed, and a pair of pelicans returned to fish in the clear water. Marcus felt a glow of pride. That evening the group agreed to meet on the first Saturday of every month. &lsquo;One beach today,&rsquo; Kira said, &lsquo;the whole coast tomorrow.&rsquo; Marcus grinned. He had learned that a big problem shrinks when many hands share the work.</div><p>&ldquo;a glow of pride&rdquo;. Here &ldquo;glow&rdquo; means a&hellip;</p></p>'
   options:
   - sunburn
@@ -54937,6 +55982,17 @@ questions:
   - clean far more beaches in future
   correct_index: 3
   explanation: <p>Read the text, then choose the best answer.</p><p><strong>Why:</strong> She means they will do much more in the future.</p><p><strong>Answer:</strong> <strong>clean far more beaches in future</strong></p>
+- module: 75
+  difficulty: hard
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Steel Pan</strong><br>Old Mr Job hammered the steel drum for hours, tuning each dent until it sang. When he finally struck it, a bright, ringing note filled the yard, and the neighbours gathered to listen.</div></p><p><strong>''tuning'' means adjusting the?</strong></p>'
+  options:
+  - sound
+  - price
+  - size
+  - colour
+  correct_index: 0
+  explanation: Use the sentence around the word to find its meaning.
 - module: 75
   difficulty: hard
   sea_section: Section II
@@ -54962,6 +56018,17 @@ questions:
 - module: 75
   difficulty: hard
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Stray Dog</strong><br>A thin brown dog appeared at the school gate every lunchtime. The children shared their bread with it, and soon it wagged its tail whenever the bell rang. One day a kind teacher took it home.</div></p><p><strong>''stray'' means a dog with no?</strong></p>'
+  options:
+  - colour
+  - home
+  - name
+  - tail
+  correct_index: 1
+  explanation: Use the sentence around the word to find its meaning.
+- module: 75
+  difficulty: hard
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Why Bees Matter</strong><br>Bees are small, but they do a big job. As they move from flower to flower collecting nectar, they carry pollen with them. This pollen helps plants make seeds and fruit. In fact, about one out of every three bites of food we eat depends on bees. Without them, many crops &mdash; such as mangoes, melons and pumpkins &mdash; would not grow well. Sadly, bee numbers are falling because of pesticides and the loss of wild flowers. There is good news, however. We can help by planting flowers, avoiding harmful sprays, and leaving patches of the garden to grow wild. If we protect bees, we protect our own food supply. The next time you see a bee, remember: it is working hard for you.</div><p>&ldquo;bee numbers are falling&rdquo;. &ldquo;falling&rdquo; here means&hellip;</p></p>'
   options:
   - dropping to the floor
@@ -54984,6 +56051,39 @@ questions:
 - module: 76
   difficulty: easy
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Blackout Night</strong><br>The lights went out during the storm. Kiran''s family lit candles and told stories in the flickering glow. For once, no one watched television, and the little house was full of laughter.</div></p><p><strong>Why did they light candles?</strong></p>'
+  options:
+  - To cook
+  - It was a party
+  - The lights went out
+  - It was daytime
+  correct_index: 2
+  explanation: Look for the reason given in the passage.
+- module: 76
+  difficulty: easy
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Caught in the Rain</strong><br>Priya forgot her umbrella, so when the sky opened she ran home splashing through puddles. By the time she reached her door she was soaked, but she was laughing all the way.</div></p><p><strong>Why did she get wet?</strong></p>'
+  options:
+  - She washed
+  - She had no umbrella
+  - She cried
+  - She swam
+  correct_index: 1
+  explanation: Look for the reason given in the passage.
+- module: 76
+  difficulty: easy
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Broken Bridge</strong><br>Heavy rain fell for three days. The little wooden bridge over the river cracked and washed away. Now the children of the village had to walk the long way round to reach their school.</div></p><p><strong>Why must the children walk the long way?</strong></p>'
+  options:
+  - The bridge washed away
+  - The road is new
+  - They like walking
+  - School moved
+  correct_index: 0
+  explanation: Look for the reason given in the passage.
+- module: 76
+  difficulty: easy
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Clean-up</strong><br>When Marcus first saw the beach, he wanted to cry. Plastic bottles bobbed in the shallows and bags clung to the rocks like tired jellyfish. &lsquo;We can fix this,&rsquo; said his sister, Kira. The next Saturday, thirty neighbours arrived with gloves and sacks. They worked all morning under the hot sun, filling sack after sack. By noon the sand gleamed, and a pair of pelicans returned to fish in the clear water. Marcus felt a glow of pride. That evening the group agreed to meet on the first Saturday of every month. &lsquo;One beach today,&rsquo; Kira said, &lsquo;the whole coast tomorrow.&rsquo; Marcus grinned. He had learned that a big problem shrinks when many hands share the work.</div><p>Why did Marcus want to cry when he first saw the beach?</p></p>'
   options:
   - Because it was too sunny
@@ -55003,6 +56103,17 @@ questions:
   - Because it started to rain
   correct_index: 2
   explanation: <p>Read the text, then choose the best answer.</p><p><strong>Why:</strong> Clean water brought the pelicans back to fish.</p><p><strong>Answer:</strong> <strong>Because the water was clean again</strong></p>
+- module: 76
+  difficulty: easy
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Lost Kite</strong><br>Amara chased her red kite as the wind tugged it higher and higher. Suddenly the string snapped, and the kite sailed over the coconut trees. She felt her heart sink as it disappeared.</div></p><p><strong>Why did the kite fly away?</strong></p>'
+  options:
+  - The string snapped
+  - A bird took it
+  - It was raining
+  - She let it go
+  correct_index: 0
+  explanation: Look for the reason given in the passage.
 - module: 76
   difficulty: easy
   sea_section: Section II
@@ -55105,6 +56216,17 @@ questions:
 - module: 76
   difficulty: medium
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Devon''s Garden</strong><br>Devon planted tomato seeds in old paint tins. He watered them every morning before school. In a few weeks, tiny green shoots pushed up towards the sun, and Devon smiled with pride.</div></p><p><strong>Why did the shoots grow?</strong></p>'
+  options:
+  - He sang to them
+  - He watered them
+  - He bought them
+  - It snowed
+  correct_index: 1
+  explanation: Look for the reason given in the passage.
+- module: 76
+  difficulty: medium
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Clean-up</strong><br>When Marcus first saw the beach, he wanted to cry. Plastic bottles bobbed in the shallows and bags clung to the rocks like tired jellyfish. &lsquo;We can fix this,&rsquo; said his sister, Kira. The next Saturday, thirty neighbours arrived with gloves and sacks. They worked all morning under the hot sun, filling sack after sack. By noon the sand gleamed, and a pair of pelicans returned to fish in the clear water. Marcus felt a glow of pride. That evening the group agreed to meet on the first Saturday of every month. &lsquo;One beach today,&rsquo; Kira said, &lsquo;the whole coast tomorrow.&rsquo; Marcus grinned. He had learned that a big problem shrinks when many hands share the work.</div><p>What was the effect of thirty neighbours working together?</p></p>'
   options:
   - The tide rose
@@ -55127,6 +56249,17 @@ questions:
 - module: 76
   difficulty: medium
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Night Sky</strong><br>On clear nights far from the city, thousands of stars sparkle overhead. Long ago, sailors used these stars to find their way across the dark ocean when they had no maps.</div></p><p><strong>Why did sailors watch the stars?</strong></p>'
+  options:
+  - For fun only
+  - They had no maps
+  - To catch them
+  - The stars were warm
+  correct_index: 1
+  explanation: Look for the reason given in the passage.
+- module: 76
+  difficulty: medium
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Storm</strong><br>Aria pressed her face to the window as the storm howled outside. Rain lashed the glass and the wind bent the coconut trees almost to the ground. Suddenly she heard a whimper &mdash; her puppy, Biscuit, had slipped out into the yard! Without thinking, Aria pulled on her boots and dashed into the rain. The cold water stung her cheeks, but she pushed on, calling his name. She found Biscuit trembling beside the fence, his paw caught under a fallen branch. Aria heaved the branch aside and scooped him up. Back inside, she wrapped him in a warm towel. Her mother frowned at Aria&rsquo;s soaked clothes, then softened. &lsquo;That was brave,&rsquo; she said, &lsquo;but next time, call me first.&rsquo; Aria hugged Biscuit close, grateful he was safe.</div><p>What caused Biscuit to be trapped?</p></p>'
   options:
   - A fallen branch on his paw
@@ -55146,6 +56279,17 @@ questions:
   - Because Aria’s clothes were soaking wet
   correct_index: 3
   explanation: <p>Read the text, then choose the best answer.</p><p><strong>Why:</strong> She frowned at Aria&rsquo;s soaked clothes / going out in the storm.</p><p><strong>Answer:</strong> <strong>Because Aria&rsquo;s clothes were soaking wet</strong></p>
+- module: 76
+  difficulty: medium
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Turtles of Matura</strong><br>Every year, giant leatherback turtles come to Matura Beach to lay their eggs at night. Volunteers guard the nests so the baby turtles can reach the sea safely. Fewer turtles come now than before.</div></p><p><strong>Why do volunteers watch the nests?</strong></p>'
+  options:
+  - So baby turtles reach the sea safely
+  - To take eggs
+  - To swim
+  - To catch fish
+  correct_index: 0
+  explanation: Look for the reason given in the passage.
 - module: 76
   difficulty: medium
   sea_section: Section II
@@ -55237,6 +56381,17 @@ questions:
 - module: 76
   difficulty: hard
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Market Morning</strong><br>The Saturday market buzzed with noise. Vendors called out prices, ripe mangoes glowed golden, and the smell of fresh bread drifted through the air. Kiran held his grandmother''s hand tightly in the busy crowd.</div></p><p><strong>Why did Kiran hold on tightly?</strong></p>'
+  options:
+  - He was sleepy
+  - The crowd was busy
+  - He was lost
+  - He was cold
+  correct_index: 1
+  explanation: Look for the reason given in the passage.
+- module: 76
+  difficulty: hard
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Clean-up</strong><br>When Marcus first saw the beach, he wanted to cry. Plastic bottles bobbed in the shallows and bags clung to the rocks like tired jellyfish. &lsquo;We can fix this,&rsquo; said his sister, Kira. The next Saturday, thirty neighbours arrived with gloves and sacks. They worked all morning under the hot sun, filling sack after sack. By noon the sand gleamed, and a pair of pelicans returned to fish in the clear water. Marcus felt a glow of pride. That evening the group agreed to meet on the first Saturday of every month. &lsquo;One beach today,&rsquo; Kira said, &lsquo;the whole coast tomorrow.&rsquo; Marcus grinned. He had learned that a big problem shrinks when many hands share the work.</div><p>What caused the group to plan monthly meetings?</p></p>'
   options:
   - Their success made them want to keep going
@@ -55259,6 +56414,17 @@ questions:
 - module: 76
   difficulty: hard
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Steel Pan</strong><br>Old Mr Job hammered the steel drum for hours, tuning each dent until it sang. When he finally struck it, a bright, ringing note filled the yard, and the neighbours gathered to listen.</div></p><p><strong>Why did the neighbours gather?</strong></p>'
+  options:
+  - To sleep
+  - To argue
+  - To eat
+  - To listen to the pan
+  correct_index: 3
+  explanation: Look for the reason given in the passage.
+- module: 76
+  difficulty: hard
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Storm</strong><br>Aria pressed her face to the window as the storm howled outside. Rain lashed the glass and the wind bent the coconut trees almost to the ground. Suddenly she heard a whimper &mdash; her puppy, Biscuit, had slipped out into the yard! Without thinking, Aria pulled on her boots and dashed into the rain. The cold water stung her cheeks, but she pushed on, calling his name. She found Biscuit trembling beside the fence, his paw caught under a fallen branch. Aria heaved the branch aside and scooped him up. Back inside, she wrapped him in a warm towel. Her mother frowned at Aria&rsquo;s soaked clothes, then softened. &lsquo;That was brave,&rsquo; she said, &lsquo;but next time, call me first.&rsquo; Aria hugged Biscuit close, grateful he was safe.</div><p>What was the effect of Aria heaving the branch aside?</p></p>'
   options:
   - The fence fell down
@@ -55278,6 +56444,17 @@ questions:
   - Aria promised a gift
   correct_index: 0
   explanation: <p>Read the text, then choose the best answer.</p><p><strong>Why:</strong> She &ldquo;softened&rdquo; and called it brave once she understood.</p><p><strong>Answer:</strong> <strong>She realised Aria had been brave</strong></p>
+- module: 76
+  difficulty: hard
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Stray Dog</strong><br>A thin brown dog appeared at the school gate every lunchtime. The children shared their bread with it, and soon it wagged its tail whenever the bell rang. One day a kind teacher took it home.</div></p><p><strong>Why did the dog wag its tail at the bell?</strong></p>'
+  options:
+  - It was cold
+  - It wanted to leave
+  - It learned it meant food
+  - It was scared
+  correct_index: 2
+  explanation: Look for the reason given in the passage.
 - module: 76
   difficulty: hard
   sea_section: Section II
@@ -55347,6 +56524,39 @@ questions:
 - module: 77
   difficulty: easy
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Blackout Night</strong><br>The lights went out during the storm. Kiran''s family lit candles and told stories in the flickering glow. For once, no one watched television, and the little house was full of laughter.</div></p><p><strong>What is the message of the story?</strong></p>'
+  options:
+  - Candles are dangerous
+  - Television is best
+  - Storms are fun
+  - Families can enjoy simple time together
+  correct_index: 3
+  explanation: An inference uses clues in the text, not stated words.
+- module: 77
+  difficulty: easy
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Caught in the Rain</strong><br>Priya forgot her umbrella, so when the sky opened she ran home splashing through puddles. By the time she reached her door she was soaked, but she was laughing all the way.</div></p><p><strong>What is Priya''s mood?</strong></p>'
+  options:
+  - Bored
+  - Miserable
+  - Cheerful
+  - Afraid
+  correct_index: 2
+  explanation: An inference uses clues in the text, not stated words.
+- module: 77
+  difficulty: easy
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Broken Bridge</strong><br>Heavy rain fell for three days. The little wooden bridge over the river cracked and washed away. Now the children of the village had to walk the long way round to reach their school.</div></p><p><strong>What season is it likely to be?</strong></p>'
+  options:
+  - Winter snow
+  - The rainy season
+  - Harvest time
+  - The dry season
+  correct_index: 1
+  explanation: An inference uses clues in the text, not stated words.
+- module: 77
+  difficulty: easy
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Clean-up</strong><br>When Marcus first saw the beach, he wanted to cry. Plastic bottles bobbed in the shallows and bags clung to the rocks like tired jellyfish. &lsquo;We can fix this,&rsquo; said his sister, Kira. The next Saturday, thirty neighbours arrived with gloves and sacks. They worked all morning under the hot sun, filling sack after sack. By noon the sand gleamed, and a pair of pelicans returned to fish in the clear water. Marcus felt a glow of pride. That evening the group agreed to meet on the first Saturday of every month. &lsquo;One beach today,&rsquo; Kira said, &lsquo;the whole coast tomorrow.&rsquo; Marcus grinned. He had learned that a big problem shrinks when many hands share the work.</div><p>The neighbours&rsquo; turnout shows the community is&hellip;</p></p>'
   options:
   - afraid
@@ -55366,6 +56576,17 @@ questions:
   - fearful
   correct_index: 0
   explanation: <p>Read the text, then choose the best answer.</p><p><strong>Why:</strong> She says &ldquo;We can fix this&rdquo; and plans ahead &mdash; hopeful and determined.</p><p><strong>Answer:</strong> <strong>hopeful and determined</strong></p>
+- module: 77
+  difficulty: easy
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Lost Kite</strong><br>Amara chased her red kite as the wind tugged it higher and higher. Suddenly the string snapped, and the kite sailed over the coconut trees. She felt her heart sink as it disappeared.</div></p><p><strong>How did Amara most likely feel at the end?</strong></p>'
+  options:
+  - Angry
+  - Bored
+  - Delighted
+  - Disappointed
+  correct_index: 3
+  explanation: An inference uses clues in the text, not stated words.
 - module: 77
   difficulty: easy
   sea_section: Section II
@@ -55479,6 +56700,17 @@ questions:
 - module: 77
   difficulty: medium
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Devon''s Garden</strong><br>Devon planted tomato seeds in old paint tins. He watered them every morning before school. In a few weeks, tiny green shoots pushed up towards the sun, and Devon smiled with pride.</div></p><p><strong>What kind of person is Devon?</strong></p>'
+  options:
+  - Caring and patient
+  - Unkind
+  - Careless
+  - Lazy
+  correct_index: 0
+  explanation: An inference uses clues in the text, not stated words.
+- module: 77
+  difficulty: medium
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Clean-up</strong><br>When Marcus first saw the beach, he wanted to cry. Plastic bottles bobbed in the shallows and bags clung to the rocks like tired jellyfish. &lsquo;We can fix this,&rsquo; said his sister, Kira. The next Saturday, thirty neighbours arrived with gloves and sacks. They worked all morning under the hot sun, filling sack after sack. By noon the sand gleamed, and a pair of pelicans returned to fish in the clear water. Marcus felt a glow of pride. That evening the group agreed to meet on the first Saturday of every month. &lsquo;One beach today,&rsquo; Kira said, &lsquo;the whole coast tomorrow.&rsquo; Marcus grinned. He had learned that a big problem shrinks when many hands share the work.</div><p>&ldquo;One beach today, the whole coast tomorrow&rdquo; suggests Kira is&hellip;</p></p>'
   options:
   - joking only
@@ -55501,6 +56733,17 @@ questions:
 - module: 77
   difficulty: medium
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Night Sky</strong><br>On clear nights far from the city, thousands of stars sparkle overhead. Long ago, sailors used these stars to find their way across the dark ocean when they had no maps.</div></p><p><strong>Where are the most stars seen?</strong></p>'
+  options:
+  - In the city centre
+  - Away from the city
+  - In a cave
+  - Under the sea
+  correct_index: 1
+  explanation: An inference uses clues in the text, not stated words.
+- module: 77
+  difficulty: medium
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Storm</strong><br>Aria pressed her face to the window as the storm howled outside. Rain lashed the glass and the wind bent the coconut trees almost to the ground. Suddenly she heard a whimper &mdash; her puppy, Biscuit, had slipped out into the yard! Without thinking, Aria pulled on her boots and dashed into the rain. The cold water stung her cheeks, but she pushed on, calling his name. She found Biscuit trembling beside the fence, his paw caught under a fallen branch. Aria heaved the branch aside and scooped him up. Back inside, she wrapped him in a warm towel. Her mother frowned at Aria&rsquo;s soaked clothes, then softened. &lsquo;That was brave,&rsquo; she said, &lsquo;but next time, call me first.&rsquo; Aria hugged Biscuit close, grateful he was safe.</div><p>&ldquo;Without thinking&rdquo; suggests Aria acted&hellip;</p></p>'
   options:
   - unwillingly
@@ -55520,6 +56763,17 @@ questions:
   - lazy and careless
   correct_index: 0
   explanation: <p>Read the text, then choose the best answer.</p><p><strong>Why:</strong> Her quick, risky rescue shows she is caring and brave.</p><p><strong>Answer:</strong> <strong>caring and brave</strong></p>
+- module: 77
+  difficulty: medium
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Turtles of Matura</strong><br>Every year, giant leatherback turtles come to Matura Beach to lay their eggs at night. Volunteers guard the nests so the baby turtles can reach the sea safely. Fewer turtles come now than before.</div></p><p><strong>What can you tell about the turtles'' future?</strong></p>'
+  options:
+  - They are increasing
+  - They live in trees
+  - They eat volunteers
+  - They may be in danger
+  correct_index: 3
+  explanation: An inference uses clues in the text, not stated words.
 - module: 77
   difficulty: medium
   sea_section: Section II
@@ -55633,6 +56887,17 @@ questions:
 - module: 77
   difficulty: hard
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Market Morning</strong><br>The Saturday market buzzed with noise. Vendors called out prices, ripe mangoes glowed golden, and the smell of fresh bread drifted through the air. Kiran held his grandmother''s hand tightly in the busy crowd.</div></p><p><strong>What time of day is it?</strong></p>'
+  options:
+  - Morning
+  - Midnight
+  - Late evening
+  - Noon exactly
+  correct_index: 0
+  explanation: An inference uses clues in the text, not stated words.
+- module: 77
+  difficulty: hard
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Clean-up</strong><br>When Marcus first saw the beach, he wanted to cry. Plastic bottles bobbed in the shallows and bags clung to the rocks like tired jellyfish. &lsquo;We can fix this,&rsquo; said his sister, Kira. The next Saturday, thirty neighbours arrived with gloves and sacks. They worked all morning under the hot sun, filling sack after sack. By noon the sand gleamed, and a pair of pelicans returned to fish in the clear water. Marcus felt a glow of pride. That evening the group agreed to meet on the first Saturday of every month. &lsquo;One beach today,&rsquo; Kira said, &lsquo;the whole coast tomorrow.&rsquo; Marcus grinned. He had learned that a big problem shrinks when many hands share the work.</div><p>This passage connects best to a real-life situation where&hellip;</p></p>'
   options:
   - a community joins to solve a shared problem
@@ -55655,6 +56920,17 @@ questions:
 - module: 77
   difficulty: hard
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Steel Pan</strong><br>Old Mr Job hammered the steel drum for hours, tuning each dent until it sang. When he finally struck it, a bright, ringing note filled the yard, and the neighbours gathered to listen.</div></p><p><strong>How did Mr Job feel about his work?</strong></p>'
+  options:
+  - He was bored
+  - He hated it
+  - He rushed it
+  - He cared about it deeply
+  correct_index: 3
+  explanation: An inference uses clues in the text, not stated words.
+- module: 77
+  difficulty: hard
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Storm</strong><br>Aria pressed her face to the window as the storm howled outside. Rain lashed the glass and the wind bent the coconut trees almost to the ground. Suddenly she heard a whimper &mdash; her puppy, Biscuit, had slipped out into the yard! Without thinking, Aria pulled on her boots and dashed into the rain. The cold water stung her cheeks, but she pushed on, calling his name. She found Biscuit trembling beside the fence, his paw caught under a fallen branch. Aria heaved the branch aside and scooped him up. Back inside, she wrapped him in a warm towel. Her mother frowned at Aria&rsquo;s soaked clothes, then softened. &lsquo;That was brave,&rsquo; she said, &lsquo;but next time, call me first.&rsquo; Aria hugged Biscuit close, grateful he was safe.</div><p>What can we infer the mother values most?</p></p>'
   options:
   - Winning prizes
@@ -55674,6 +56950,17 @@ questions:
   - Someone choosing a new pet
   correct_index: 2
   explanation: <p>Read the text, then choose the best answer.</p><p><strong>Why:</strong> The story is about bravely helping a pet in danger.</p><p><strong>Answer:</strong> <strong>Someone rushing to help a pet in danger</strong></p>
+- module: 77
+  difficulty: hard
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Stray Dog</strong><br>A thin brown dog appeared at the school gate every lunchtime. The children shared their bread with it, and soon it wagged its tail whenever the bell rang. One day a kind teacher took it home.</div></p><p><strong>What can you tell about the children?</strong></p>'
+  options:
+  - They are lazy
+  - They are rich
+  - They are kind
+  - They are cruel
+  correct_index: 2
+  explanation: An inference uses clues in the text, not stated words.
 - module: 77
   difficulty: hard
   sea_section: Section II
@@ -55710,6 +56997,39 @@ questions:
 - module: 78
   difficulty: easy
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Blackout Night</strong><br>The lights went out during the storm. Kiran''s family lit candles and told stories in the flickering glow. For once, no one watched television, and the little house was full of laughter.</div></p><p><strong>Why did the writer most likely write this?</strong></p>'
+  options:
+  - to sell a product
+  - to give a recipe
+  - to teach spelling
+  - to tell a story
+  correct_index: 3
+  explanation: Think about the writer's purpose.
+- module: 78
+  difficulty: easy
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Caught in the Rain</strong><br>Priya forgot her umbrella, so when the sky opened she ran home splashing through puddles. By the time she reached her door she was soaked, but she was laughing all the way.</div></p><p><strong>Why did the writer most likely write this?</strong></p>'
+  options:
+  - to tell a story
+  - to sell a product
+  - to teach spelling
+  - to give a recipe
+  correct_index: 0
+  explanation: Think about the writer's purpose.
+- module: 78
+  difficulty: easy
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Broken Bridge</strong><br>Heavy rain fell for three days. The little wooden bridge over the river cracked and washed away. Now the children of the village had to walk the long way round to reach their school.</div></p><p><strong>Why did the writer most likely write this?</strong></p>'
+  options:
+  - to teach spelling
+  - to give a recipe
+  - to sell a product
+  - to explain what happened
+  correct_index: 3
+  explanation: Think about the writer's purpose.
+- module: 78
+  difficulty: easy
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Clean-up</strong><br>When Marcus first saw the beach, he wanted to cry. Plastic bottles bobbed in the shallows and bags clung to the rocks like tired jellyfish. &lsquo;We can fix this,&rsquo; said his sister, Kira. The next Saturday, thirty neighbours arrived with gloves and sacks. They worked all morning under the hot sun, filling sack after sack. By noon the sand gleamed, and a pair of pelicans returned to fish in the clear water. Marcus felt a glow of pride. That evening the group agreed to meet on the first Saturday of every month. &lsquo;One beach today,&rsquo; Kira said, &lsquo;the whole coast tomorrow.&rsquo; Marcus grinned. He had learned that a big problem shrinks when many hands share the work.</div><p>The writer&rsquo;s main purpose is to&hellip;</p></p>'
   options:
   - list rules
@@ -55729,6 +57049,17 @@ questions:
   - advertise a beach hotel
   correct_index: 2
   explanation: <p>Read the text, then choose the best answer.</p><p><strong>Why:</strong> It inspires environmental care through a story.</p><p><strong>Answer:</strong> <strong>encourage readers to care for their environment</strong></p>
+- module: 78
+  difficulty: easy
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Lost Kite</strong><br>Amara chased her red kite as the wind tugged it higher and higher. Suddenly the string snapped, and the kite sailed over the coconut trees. She felt her heart sink as it disappeared.</div></p><p><strong>Why did the writer most likely write this?</strong></p>'
+  options:
+  - to teach spelling
+  - to sell a product
+  - to tell a story
+  - to give a recipe
+  correct_index: 2
+  explanation: Think about the writer's purpose.
 - module: 78
   difficulty: easy
   sea_section: Section II
@@ -55831,6 +57162,17 @@ questions:
 - module: 78
   difficulty: medium
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Devon''s Garden</strong><br>Devon planted tomato seeds in old paint tins. He watered them every morning before school. In a few weeks, tiny green shoots pushed up towards the sun, and Devon smiled with pride.</div></p><p><strong>Why did the writer most likely write this?</strong></p>'
+  options:
+  - to tell a story
+  - to teach spelling
+  - to give a recipe
+  - to sell a product
+  correct_index: 0
+  explanation: Think about the writer's purpose.
+- module: 78
+  difficulty: medium
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Clean-up</strong><br>When Marcus first saw the beach, he wanted to cry. Plastic bottles bobbed in the shallows and bags clung to the rocks like tired jellyfish. &lsquo;We can fix this,&rsquo; said his sister, Kira. The next Saturday, thirty neighbours arrived with gloves and sacks. They worked all morning under the hot sun, filling sack after sack. By noon the sand gleamed, and a pair of pelicans returned to fish in the clear water. Marcus felt a glow of pride. That evening the group agreed to meet on the first Saturday of every month. &lsquo;One beach today,&rsquo; Kira said, &lsquo;the whole coast tomorrow.&rsquo; Marcus grinned. He had learned that a big problem shrinks when many hands share the work.</div><p>Kira&rsquo;s closing line is included mainly to&hellip;</p></p>'
   options:
   - end the story sadly
@@ -55853,6 +57195,17 @@ questions:
 - module: 78
   difficulty: medium
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Night Sky</strong><br>On clear nights far from the city, thousands of stars sparkle overhead. Long ago, sailors used these stars to find their way across the dark ocean when they had no maps.</div></p><p><strong>Why did the writer most likely write this?</strong></p>'
+  options:
+  - to give a recipe
+  - to sell a product
+  - to give information
+  - to teach spelling
+  correct_index: 2
+  explanation: Think about the writer's purpose.
+- module: 78
+  difficulty: medium
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Storm</strong><br>Aria pressed her face to the window as the storm howled outside. Rain lashed the glass and the wind bent the coconut trees almost to the ground. Suddenly she heard a whimper &mdash; her puppy, Biscuit, had slipped out into the yard! Without thinking, Aria pulled on her boots and dashed into the rain. The cold water stung her cheeks, but she pushed on, calling his name. She found Biscuit trembling beside the fence, his paw caught under a fallen branch. Aria heaved the branch aside and scooped him up. Back inside, she wrapped him in a warm towel. Her mother frowned at Aria&rsquo;s soaked clothes, then softened. &lsquo;That was brave,&rsquo; she said, &lsquo;but next time, call me first.&rsquo; Aria hugged Biscuit close, grateful he was safe.</div><p>Besides entertaining, the writer also wants to&hellip;</p></p>'
   options:
   - describe the weather only
@@ -55872,6 +57225,17 @@ questions:
   - Scientists
   correct_index: 2
   explanation: <p>Read the text, then choose the best answer.</p><p><strong>Why:</strong> A simple, exciting animal-rescue tale suits young readers.</p><p><strong>Answer:</strong> <strong>Young readers</strong></p>
+- module: 78
+  difficulty: medium
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Turtles of Matura</strong><br>Every year, giant leatherback turtles come to Matura Beach to lay their eggs at night. Volunteers guard the nests so the baby turtles can reach the sea safely. Fewer turtles come now than before.</div></p><p><strong>Why did the writer most likely write this?</strong></p>'
+  options:
+  - to give a recipe
+  - to sell a product
+  - to give information
+  - to teach spelling
+  correct_index: 2
+  explanation: Think about the writer's purpose.
 - module: 78
   difficulty: medium
   sea_section: Section II
@@ -55952,6 +57316,17 @@ questions:
 - module: 78
   difficulty: hard
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Market Morning</strong><br>The Saturday market buzzed with noise. Vendors called out prices, ripe mangoes glowed golden, and the smell of fresh bread drifted through the air. Kiran held his grandmother''s hand tightly in the busy crowd.</div></p><p><strong>Why did the writer most likely write this?</strong></p>'
+  options:
+  - to sell a product
+  - to give a recipe
+  - to teach spelling
+  - to describe a scene
+  correct_index: 3
+  explanation: Think about the writer's purpose.
+- module: 78
+  difficulty: hard
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Clean-up</strong><br>When Marcus first saw the beach, he wanted to cry. Plastic bottles bobbed in the shallows and bags clung to the rocks like tired jellyfish. &lsquo;We can fix this,&rsquo; said his sister, Kira. The next Saturday, thirty neighbours arrived with gloves and sacks. They worked all morning under the hot sun, filling sack after sack. By noon the sand gleamed, and a pair of pelicans returned to fish in the clear water. Marcus felt a glow of pride. That evening the group agreed to meet on the first Saturday of every month. &lsquo;One beach today,&rsquo; Kira said, &lsquo;the whole coast tomorrow.&rsquo; Marcus grinned. He had learned that a big problem shrinks when many hands share the work.</div><p>The writer chooses a hopeful ending in order to&hellip;</p></p>'
   options:
   - warn readers to give up
@@ -55974,6 +57349,17 @@ questions:
 - module: 78
   difficulty: hard
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Steel Pan</strong><br>Old Mr Job hammered the steel drum for hours, tuning each dent until it sang. When he finally struck it, a bright, ringing note filled the yard, and the neighbours gathered to listen.</div></p><p><strong>Why did the writer most likely write this?</strong></p>'
+  options:
+  - to give a recipe
+  - to sell a product
+  - to teach spelling
+  - to describe a craft
+  correct_index: 3
+  explanation: Think about the writer's purpose.
+- module: 78
+  difficulty: hard
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Storm</strong><br>Aria pressed her face to the window as the storm howled outside. Rain lashed the glass and the wind bent the coconut trees almost to the ground. Suddenly she heard a whimper &mdash; her puppy, Biscuit, had slipped out into the yard! Without thinking, Aria pulled on her boots and dashed into the rain. The cold water stung her cheeks, but she pushed on, calling his name. She found Biscuit trembling beside the fence, his paw caught under a fallen branch. Aria heaved the branch aside and scooped him up. Back inside, she wrapped him in a warm towel. Her mother frowned at Aria&rsquo;s soaked clothes, then softened. &lsquo;That was brave,&rsquo; she said, &lsquo;but next time, call me first.&rsquo; Aria hugged Biscuit close, grateful he was safe.</div><p>The mother&rsquo;s last words mainly serve to&hellip;</p></p>'
   options:
   - introduce a new character
@@ -55993,6 +57379,17 @@ questions:
   - “Her mother frowned…then softened.”
   correct_index: 1
   explanation: <p>Read the text, then choose the best answer.</p><p><strong>Why:</strong> The sudden dash into the storm creates the most tension.</p><p><strong>Answer:</strong> <strong>&ldquo;Without thinking, Aria&hellip;dashed into the rain.&rdquo;</strong></p>
+- module: 78
+  difficulty: hard
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Stray Dog</strong><br>A thin brown dog appeared at the school gate every lunchtime. The children shared their bread with it, and soon it wagged its tail whenever the bell rang. One day a kind teacher took it home.</div></p><p><strong>Why did the writer most likely write this?</strong></p>'
+  options:
+  - to give a recipe
+  - to teach spelling
+  - to tell a story
+  - to sell a product
+  correct_index: 2
+  explanation: Think about the writer's purpose.
 - module: 78
   difficulty: hard
   sea_section: Section II
@@ -56084,6 +57481,39 @@ questions:
 - module: 79
   difficulty: easy
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Blackout Night</strong><br>The lights went out during the storm. Kiran''s family lit candles and told stories in the flickering glow. For once, no one watched television, and the little house was full of laughter.</div></p><p><strong>Which is a FACT?</strong></p>'
+  options:
+  - The family lit candles
+  - Stories are boring
+  - Blackouts are wonderful
+  - Candles are ugly
+  correct_index: 0
+  explanation: An opinion tells a feeling or belief; a fact can be checked.
+- module: 79
+  difficulty: easy
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Caught in the Rain</strong><br>Priya forgot her umbrella, so when the sky opened she ran home splashing through puddles. By the time she reached her door she was soaked, but she was laughing all the way.</div></p><p><strong>Which is an OPINION?</strong></p>'
+  options:
+  - Priya ran home
+  - She had no umbrella
+  - She splashed in puddles
+  - Rain is the worst weather
+  correct_index: 3
+  explanation: An opinion tells a feeling or belief; a fact can be checked.
+- module: 79
+  difficulty: easy
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Broken Bridge</strong><br>Heavy rain fell for three days. The little wooden bridge over the river cracked and washed away. Now the children of the village had to walk the long way round to reach their school.</div></p><p><strong>Which is an OPINION?</strong></p>'
+  options:
+  - Walking the long way is terrible
+  - The bridge cracked
+  - Rain fell for three days
+  - The river is deep
+  correct_index: 0
+  explanation: An opinion tells a feeling or belief; a fact can be checked.
+- module: 79
+  difficulty: easy
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Clean-up</strong><br>When Marcus first saw the beach, he wanted to cry. Plastic bottles bobbed in the shallows and bags clung to the rocks like tired jellyfish. &lsquo;We can fix this,&rsquo; said his sister, Kira. The next Saturday, thirty neighbours arrived with gloves and sacks. They worked all morning under the hot sun, filling sack after sack. By noon the sand gleamed, and a pair of pelicans returned to fish in the clear water. Marcus felt a glow of pride. That evening the group agreed to meet on the first Saturday of every month. &lsquo;One beach today,&rsquo; Kira said, &lsquo;the whole coast tomorrow.&rsquo; Marcus grinned. He had learned that a big problem shrinks when many hands share the work.</div><p>A good title for this passage is&hellip;</p></p>'
   options:
   - Many Hands, One Clean Beach
@@ -56103,6 +57533,17 @@ questions:
   - No — it wasted a Saturday
   correct_index: 2
   explanation: <p>Read the text, then choose the best answer.</p><p><strong>Why:</strong> Cleaning made the beach safe and welcoming again.</p><p><strong>Answer:</strong> <strong>Yes &mdash; it made the beach safe and clean</strong></p>
+- module: 79
+  difficulty: easy
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Lost Kite</strong><br>Amara chased her red kite as the wind tugged it higher and higher. Suddenly the string snapped, and the kite sailed over the coconut trees. She felt her heart sink as it disappeared.</div></p><p><strong>Which is an OPINION?</strong></p>'
+  options:
+  - The kite flew over the trees
+  - Amara chased the kite
+  - The string snapped
+  - Kites are the best toys
+  correct_index: 3
+  explanation: An opinion tells a feeling or belief; a fact can be checked.
 - module: 79
   difficulty: easy
   sea_section: Section II
@@ -56194,6 +57635,17 @@ questions:
 - module: 79
   difficulty: medium
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Devon''s Garden</strong><br>Devon planted tomato seeds in old paint tins. He watered them every morning before school. In a few weeks, tiny green shoots pushed up towards the sun, and Devon smiled with pride.</div></p><p><strong>Which is a FACT?</strong></p>'
+  options:
+  - Gardening is the best hobby
+  - Devon watered the seeds each morning
+  - Everyone should garden
+  - Tomatoes taste nasty
+  correct_index: 1
+  explanation: An opinion tells a feeling or belief; a fact can be checked.
+- module: 79
+  difficulty: medium
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Clean-up</strong><br>When Marcus first saw the beach, he wanted to cry. Plastic bottles bobbed in the shallows and bags clung to the rocks like tired jellyfish. &lsquo;We can fix this,&rsquo; said his sister, Kira. The next Saturday, thirty neighbours arrived with gloves and sacks. They worked all morning under the hot sun, filling sack after sack. By noon the sand gleamed, and a pair of pelicans returned to fish in the clear water. Marcus felt a glow of pride. That evening the group agreed to meet on the first Saturday of every month. &lsquo;One beach today,&rsquo; Kira said, &lsquo;the whole coast tomorrow.&rsquo; Marcus grinned. He had learned that a big problem shrinks when many hands share the work.</div><p>Is Kira&rsquo;s plan to meet monthly sensible? Best answer:</p></p>'
   options:
   - Yes — regular effort keeps the coast clean
@@ -56216,6 +57668,17 @@ questions:
 - module: 79
   difficulty: medium
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Night Sky</strong><br>On clear nights far from the city, thousands of stars sparkle overhead. Long ago, sailors used these stars to find their way across the dark ocean when they had no maps.</div></p><p><strong>Which is a FACT?</strong></p>'
+  options:
+  - Stars are prettier than the sun
+  - Everyone loves the night
+  - Cities are boring
+  - Sailors once used stars to navigate
+  correct_index: 3
+  explanation: An opinion tells a feeling or belief; a fact can be checked.
+- module: 79
+  difficulty: medium
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Storm</strong><br>Aria pressed her face to the window as the storm howled outside. Rain lashed the glass and the wind bent the coconut trees almost to the ground. Suddenly she heard a whimper &mdash; her puppy, Biscuit, had slipped out into the yard! Without thinking, Aria pulled on her boots and dashed into the rain. The cold water stung her cheeks, but she pushed on, calling his name. She found Biscuit trembling beside the fence, his paw caught under a fallen branch. Aria heaved the branch aside and scooped him up. Back inside, she wrapped him in a warm towel. Her mother frowned at Aria&rsquo;s soaked clothes, then softened. &lsquo;That was brave,&rsquo; she said, &lsquo;but next time, call me first.&rsquo; Aria hugged Biscuit close, grateful he was safe.</div><p>Was the mother&rsquo;s reaction fair? Best answer:</p></p>'
   options:
   - No — she should have punished Aria
@@ -56235,6 +57698,17 @@ questions:
   - Cruel — she left the puppy
   correct_index: 0
   explanation: <p>Read the text, then choose the best answer.</p><p><strong>Why:</strong> Running into the storm to help shows bravery.</p><p><strong>Answer:</strong> <strong>Brave &mdash; she ran into a storm to help</strong></p>
+- module: 79
+  difficulty: medium
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Turtles of Matura</strong><br>Every year, giant leatherback turtles come to Matura Beach to lay their eggs at night. Volunteers guard the nests so the baby turtles can reach the sea safely. Fewer turtles come now than before.</div></p><p><strong>Which is a FACT?</strong></p>'
+  options:
+  - The beach is boring
+  - Turtles are the nicest animals
+  - Turtles lay eggs at Matura
+  - Everyone should love turtles
+  correct_index: 2
+  explanation: An opinion tells a feeling or belief; a fact can be checked.
 - module: 79
   difficulty: medium
   sea_section: Section II
@@ -56315,6 +57789,17 @@ questions:
 - module: 79
   difficulty: hard
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Market Morning</strong><br>The Saturday market buzzed with noise. Vendors called out prices, ripe mangoes glowed golden, and the smell of fresh bread drifted through the air. Kiran held his grandmother''s hand tightly in the busy crowd.</div></p><p><strong>Which appeals to SMELL?</strong></p>'
+  options:
+  - vendors called out
+  - the market buzzed
+  - ripe mangoes glowed
+  - the smell of fresh bread
+  correct_index: 3
+  explanation: An opinion tells a feeling or belief; a fact can be checked.
+- module: 79
+  difficulty: hard
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Clean-up</strong><br>When Marcus first saw the beach, he wanted to cry. Plastic bottles bobbed in the shallows and bags clung to the rocks like tired jellyfish. &lsquo;We can fix this,&rsquo; said his sister, Kira. The next Saturday, thirty neighbours arrived with gloves and sacks. They worked all morning under the hot sun, filling sack after sack. By noon the sand gleamed, and a pair of pelicans returned to fish in the clear water. Marcus felt a glow of pride. That evening the group agreed to meet on the first Saturday of every month. &lsquo;One beach today,&rsquo; Kira said, &lsquo;the whole coast tomorrow.&rsquo; Marcus grinned. He had learned that a big problem shrinks when many hands share the work.</div><p>If your class wanted to copy this, the best first step would be to&hellip;</p></p>'
   options:
   - organise a group and gather gloves and sacks
@@ -56337,6 +57822,17 @@ questions:
 - module: 79
   difficulty: hard
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Steel Pan</strong><br>Old Mr Job hammered the steel drum for hours, tuning each dent until it sang. When he finally struck it, a bright, ringing note filled the yard, and the neighbours gathered to listen.</div></p><p><strong>Which appeals to SOUND?</strong></p>'
+  options:
+  - the yard
+  - for hours
+  - the steel drum
+  - a bright, ringing note
+  correct_index: 3
+  explanation: An opinion tells a feeling or belief; a fact can be checked.
+- module: 79
+  difficulty: hard
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Storm</strong><br>Aria pressed her face to the window as the storm howled outside. Rain lashed the glass and the wind bent the coconut trees almost to the ground. Suddenly she heard a whimper &mdash; her puppy, Biscuit, had slipped out into the yard! Without thinking, Aria pulled on her boots and dashed into the rain. The cold water stung her cheeks, but she pushed on, calling his name. She found Biscuit trembling beside the fence, his paw caught under a fallen branch. Aria heaved the branch aside and scooped him up. Back inside, she wrapped him in a warm towel. Her mother frowned at Aria&rsquo;s soaked clothes, then softened. &lsquo;That was brave,&rsquo; she said, &lsquo;but next time, call me first.&rsquo; Aria hugged Biscuit close, grateful he was safe.</div><p>If you were Aria, a wiser choice would be to&hellip;</p></p>'
   options:
   - tell an adult before going into the storm
@@ -56356,6 +57852,17 @@ questions:
   - Biscuit runs away again
   correct_index: 0
   explanation: <p>Read the text, then choose the best answer.</p><p><strong>Why:</strong> Safety plus a lesson gives a satisfying close.</p><p><strong>Answer:</strong> <strong>Biscuit is safe and Aria learns a lesson</strong></p>
+- module: 79
+  difficulty: hard
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Stray Dog</strong><br>A thin brown dog appeared at the school gate every lunchtime. The children shared their bread with it, and soon it wagged its tail whenever the bell rang. One day a kind teacher took it home.</div></p><p><strong>Which is an OPINION?</strong></p>'
+  options:
+  - A teacher took it home
+  - The dog was thin
+  - Children shared bread
+  - Stray dogs are the sweetest animals
+  correct_index: 3
+  explanation: An opinion tells a feeling or belief; a fact can be checked.
 - module: 79
   difficulty: hard
   sea_section: Section II
@@ -56480,6 +57987,39 @@ questions:
 - module: 80
   difficulty: easy
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Old Fisherman</strong><br>He rows his boat at break of day,<br>His hands are rough, his hair is grey.<br>The nets come up both full and light,<br>He thanks the sea and sails from sight.</div></p><p><strong>Which phrase appears in the poem?</strong></p>'
+  options:
+  - rows his boat
+  - a speeding car
+  - a barking dog
+  - a birthday cake
+  correct_index: 0
+  explanation: Retrieve information stated directly in the poem.
+- module: 80
+  difficulty: easy
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Rain</strong><br>The rain taps softly on the pane,<br>Like tiny feet along the lane.<br>It sings a cool and silver tune,<br>Then slips away too soon.</div></p><p><strong>Which phrase appears in the poem?</strong></p>'
+  options:
+  - a barking dog
+  - a birthday cake
+  - a speeding car
+  - taps softly
+  correct_index: 3
+  explanation: Retrieve information stated directly in the poem.
+- module: 80
+  difficulty: easy
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Sea at Night</strong><br>The sea is black and hums a song,<br>It rolls the pebbles all night long.<br>The moon lays down a silver road,<br>Where quiet waves have softly flowed.</div></p><p><strong>Which phrase appears in the poem?</strong></p>'
+  options:
+  - a speeding car
+  - a birthday cake
+  - silver road
+  - a barking dog
+  correct_index: 2
+  explanation: Retrieve information stated directly in the poem.
+- module: 80
+  difficulty: easy
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Sea</strong><br>1&nbsp;&nbsp;The sea is a restless, roaring beast,<br>2&nbsp;&nbsp;It gnaws the rocks and will not rest.<br>3&nbsp;&nbsp;Its silver spray leaps to the sky,<br>4&nbsp;&nbsp;Then hisses back with a whispered sigh.<br>5&nbsp;&nbsp;By day it sparkles, blue and wide,<br>6&nbsp;&nbsp;By night it hums a lonely tide.<br>7&nbsp;&nbsp;It gives us fish, it gives us play,<br>8&nbsp;&nbsp;Yet swallows ships that lose their way.</div><p>In the poem, what does the sea give us?</p></p>'
   options:
   - Wood and stone
@@ -56557,6 +58097,17 @@ questions:
 - module: 80
   difficulty: medium
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Carnival</strong><br>A rush of colour fills the street,<br>With glitter, drums, and dancing feet.<br>The costumes flash like living flame,<br>And no two masqueraders same.</div></p><p><strong>Which phrase appears in the poem?</strong></p>'
+  options:
+  - a barking dog
+  - a birthday cake
+  - dancing feet
+  - a speeding car
+  correct_index: 2
+  explanation: Retrieve information stated directly in the poem.
+- module: 80
+  difficulty: medium
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Grandma&rsquo;s Kitchen</strong><br>1&nbsp;&nbsp;In Grandma&rsquo;s kitchen, warm and bright,<br>2&nbsp;&nbsp;The kettle sings from morn to night.<br>3&nbsp;&nbsp;Sweet cinnamon and ginger fill the air,<br>4&nbsp;&nbsp;And laughter bubbles everywhere.<br>5&nbsp;&nbsp;Her busy hands are never still,<br>6&nbsp;&nbsp;They knead and stir with love and skill.<br>7&nbsp;&nbsp;And though my grandma&rsquo;s hair is grey,<br>8&nbsp;&nbsp;Her heart is young and bright as day.</div><p>What colour is Grandma&rsquo;s hair?</p></p>'
   options:
   - Grey
@@ -56576,6 +58127,28 @@ questions:
   - Sew and knit
   correct_index: 1
   explanation: '<p>Read the text, then choose the best answer.</p><p><strong>Why:</strong> Line 6: &ldquo;They knead and stir with love and skill.&rdquo;</p><p><strong>Answer:</strong> <strong>Knead and stir</strong></p>'
+- module: 80
+  difficulty: medium
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Hurricane</strong><br>The wind screams wild across the bay,<br>It rips the roofs and tears away.<br>The palm trees bow, the shutters slam,<br>The whole town trembles where I am.</div></p><p><strong>Which phrase appears in the poem?</strong></p>'
+  options:
+  - screams wild
+  - a speeding car
+  - a birthday cake
+  - a barking dog
+  correct_index: 0
+  explanation: Retrieve information stated directly in the poem.
+- module: 80
+  difficulty: medium
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>My Shadow</strong><br>My shadow stretches long and tall,<br>It climbs the fence and scales the wall.<br>It copies everything I do,<br>A silent friend who follows true.</div></p><p><strong>Which phrase appears in the poem?</strong></p>'
+  options:
+  - a barking dog
+  - climbs the wall
+  - a birthday cake
+  - a speeding car
+  correct_index: 1
+  explanation: Retrieve information stated directly in the poem.
 - module: 80
   difficulty: medium
   sea_section: Section II
@@ -56697,6 +58270,28 @@ questions:
   - “The kettle sings…”
   correct_index: 0
   explanation: <p>Read the text, then choose the best answer.</p><p><strong>Why:</strong> &ldquo;never still&rdquo; shows she is always busy.</p><p><strong>Answer:</strong> <strong>&ldquo;Her busy hands are never still&hellip;&rdquo;</strong></p>
+- module: 80
+  difficulty: hard
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Mango Tree</strong><br>The mango tree stands old and wide,<br>With golden treasure hid inside.<br>The parrots quarrel in its hair,<br>And sweetness fills the sticky air.</div></p><p><strong>Which phrase appears in the poem?</strong></p>'
+  options:
+  - a barking dog
+  - a birthday cake
+  - a speeding car
+  - golden treasure
+  correct_index: 3
+  explanation: Retrieve information stated directly in the poem.
+- module: 80
+  difficulty: hard
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Morning</strong><br>The rooster crows to wake the sun,<br>The dew like diamonds, one by one.<br>The kettle sings, the day begins,<br>And light comes creeping through the tins.</div></p><p><strong>Which phrase appears in the poem?</strong></p>'
+  options:
+  - a birthday cake
+  - a speeding car
+  - dew like diamonds
+  - a barking dog
+  correct_index: 2
+  explanation: Retrieve information stated directly in the poem.
 - module: 80
   difficulty: hard
   sea_section: Section II
@@ -57162,6 +58757,50 @@ questions:
 - module: 81
   difficulty: medium
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Carnival</strong><br>A rush of colour fills the street,<br>With glitter, drums, and dancing feet.<br>The costumes flash like living flame,<br>And no two masqueraders same.</div></p><p><strong>''flash like living flame'' is a</strong></p>'
+  options:
+  - fact
+  - list
+  - question
+  - simile
+  correct_index: 3
+  explanation: Identify the figure of speech.
+- module: 81
+  difficulty: medium
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Morning</strong><br>The rooster crows to wake the sun,<br>The dew like diamonds, one by one.<br>The kettle sings, the day begins,<br>And light comes creeping through the tins.</div></p><p><strong>''The dew like diamonds'' is a</strong></p>'
+  options:
+  - simile
+  - fact
+  - personification
+  - metaphor
+  correct_index: 0
+  explanation: Identify the figure of speech.
+- module: 81
+  difficulty: medium
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>My Shadow</strong><br>My shadow stretches long and tall,<br>It climbs the fence and scales the wall.<br>It copies everything I do,<br>A silent friend who follows true.</div></p><p><strong>Which shows PERSONIFICATION (the shadow acting human)?</strong></p>'
+  options:
+  - My shadow stretches long and tall,
+  - It copies everything I do,
+  - It climbs the fence and scales the wall.
+  - A silent friend who follows true.
+  correct_index: 2
+  explanation: Identify the figure of speech.
+- module: 81
+  difficulty: medium
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Sea at Night</strong><br>The sea is black and hums a song,<br>It rolls the pebbles all night long.<br>The moon lays down a silver road,<br>Where quiet waves have softly flowed.</div></p><p><strong>The ''silver road'' is a METAPHOR for the moon''s</strong></p>'
+  options:
+  - light on the water
+  - a real road
+  - a boat
+  - a fish
+  correct_index: 0
+  explanation: Identify the figure of speech.
+- module: 81
+  difficulty: medium
+  sea_section: Section II
   prompt: <p>Which technique is used?<br><em>&ldquo;He is a four-legged clown, king of the yard.&rdquo;</em></p>
   options:
   - Hyperbole
@@ -57291,6 +58930,50 @@ questions:
   - a metaphor
   correct_index: 0
   explanation: Flowers are given a human action.
+- module: 81
+  difficulty: hard
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Hurricane</strong><br>The wind screams wild across the bay,<br>It rips the roofs and tears away.<br>The palm trees bow, the shutters slam,<br>The whole town trembles where I am.</div></p><p><strong>''The wind screams'' is an example of</strong></p>'
+  options:
+  - rhyme only
+  - personification
+  - a simile
+  - alliteration only
+  correct_index: 1
+  explanation: Identify the figure of speech.
+- module: 81
+  difficulty: hard
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Mango Tree</strong><br>The mango tree stands old and wide,<br>With golden treasure hid inside.<br>The parrots quarrel in its hair,<br>And sweetness fills the sticky air.</div></p><p><strong>What is the ''golden treasure'' a METAPHOR for?</strong></p>'
+  options:
+  - leaves
+  - the sun
+  - mangoes
+  - coins
+  correct_index: 2
+  explanation: Identify the figure of speech.
+- module: 81
+  difficulty: hard
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Old Fisherman</strong><br>He rows his boat at break of day,<br>His hands are rough, his hair is grey.<br>The nets come up both full and light,<br>He thanks the sea and sails from sight.</div></p><p><strong>What can you conclude about the fisherman?</strong></p>'
+  options:
+  - He hates the sea
+  - He is experienced and hardworking
+  - He is a child
+  - He never works
+  correct_index: 1
+  explanation: Identify the figure of speech.
+- module: 81
+  difficulty: hard
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Rain</strong><br>The rain taps softly on the pane,<br>Like tiny feet along the lane.<br>It sings a cool and silver tune,<br>Then slips away too soon.</div></p><p><strong>Which line has a SIMILE?</strong></p>'
+  options:
+  - The rain taps softly on the pane,
+  - Then slips away too soon.
+  - It sings a cool and silver tune,
+  - Like tiny feet along the lane.
+  correct_index: 3
+  explanation: Identify the figure of speech.
 - module: 81
   difficulty: hard
   sea_section: Section II
@@ -57470,6 +59153,39 @@ questions:
 - module: 82
   difficulty: easy
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Old Fisherman</strong><br>He rows his boat at break of day,<br>His hands are rough, his hair is grey.<br>The nets come up both full and light,<br>He thanks the sea and sails from sight.</div></p><p><strong>Which word appeals to TOUCH?</strong></p>'
+  options:
+  - full
+  - rough
+  - grey
+  - sight
+  correct_index: 1
+  explanation: Sensory words appeal to sight, sound, touch, taste or smell.
+- module: 82
+  difficulty: easy
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Rain</strong><br>The rain taps softly on the pane,<br>Like tiny feet along the lane.<br>It sings a cool and silver tune,<br>Then slips away too soon.</div></p><p><strong>What word appeals to SOUND?</strong></p>'
+  options:
+  - cool
+  - lane
+  - silver
+  - taps
+  correct_index: 3
+  explanation: Sensory words appeal to sight, sound, touch, taste or smell.
+- module: 82
+  difficulty: easy
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Sea at Night</strong><br>The sea is black and hums a song,<br>It rolls the pebbles all night long.<br>The moon lays down a silver road,<br>Where quiet waves have softly flowed.</div></p><p><strong>Which word appeals to SOUND?</strong></p>'
+  options:
+  - hums
+  - silver
+  - quiet
+  - black
+  correct_index: 0
+  explanation: Sensory words appeal to sight, sound, touch, taste or smell.
+- module: 82
+  difficulty: easy
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Sea</strong><br>1&nbsp;&nbsp;The sea is a restless, roaring beast,<br>2&nbsp;&nbsp;It gnaws the rocks and will not rest.<br>3&nbsp;&nbsp;Its silver spray leaps to the sky,<br>4&nbsp;&nbsp;Then hisses back with a whispered sigh.<br>5&nbsp;&nbsp;By day it sparkles, blue and wide,<br>6&nbsp;&nbsp;By night it hums a lonely tide.<br>7&nbsp;&nbsp;It gives us fish, it gives us play,<br>8&nbsp;&nbsp;Yet swallows ships that lose their way.</div><p>&ldquo;roaring&rdquo; sea appeals to our sense of&hellip;</p></p>'
   options:
   - smell
@@ -57547,6 +59263,17 @@ questions:
 - module: 82
   difficulty: medium
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Carnival</strong><br>A rush of colour fills the street,<br>With glitter, drums, and dancing feet.<br>The costumes flash like living flame,<br>And no two masqueraders same.</div></p><p><strong>Which word appeals to SIGHT?</strong></p>'
+  options:
+  - feet
+  - drums
+  - glitter
+  - same
+  correct_index: 2
+  explanation: Sensory words appeal to sight, sound, touch, taste or smell.
+- module: 82
+  difficulty: medium
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Grandma&rsquo;s Kitchen</strong><br>1&nbsp;&nbsp;In Grandma&rsquo;s kitchen, warm and bright,<br>2&nbsp;&nbsp;The kettle sings from morn to night.<br>3&nbsp;&nbsp;Sweet cinnamon and ginger fill the air,<br>4&nbsp;&nbsp;And laughter bubbles everywhere.<br>5&nbsp;&nbsp;Her busy hands are never still,<br>6&nbsp;&nbsp;They knead and stir with love and skill.<br>7&nbsp;&nbsp;And though my grandma&rsquo;s hair is grey,<br>8&nbsp;&nbsp;Her heart is young and bright as day.</div><p>&ldquo;The kettle sings&rdquo; appeals to our sense of&hellip;</p></p>'
   options:
   - touch
@@ -57566,6 +59293,28 @@ questions:
   - “laughter bubbles everywhere”
   correct_index: 3
   explanation: <p>Read the text, then choose the best answer.</p><p><strong>Why:</strong> Bubbling laughter creates a lively, cheerful image.</p><p><strong>Answer:</strong> <strong>&ldquo;laughter bubbles everywhere&rdquo;</strong></p>
+- module: 82
+  difficulty: medium
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Hurricane</strong><br>The wind screams wild across the bay,<br>It rips the roofs and tears away.<br>The palm trees bow, the shutters slam,<br>The whole town trembles where I am.</div></p><p><strong>Which word appeals to SOUND?</strong></p>'
+  options:
+  - bow
+  - away
+  - town
+  - slam
+  correct_index: 3
+  explanation: Sensory words appeal to sight, sound, touch, taste or smell.
+- module: 82
+  difficulty: medium
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>My Shadow</strong><br>My shadow stretches long and tall,<br>It climbs the fence and scales the wall.<br>It copies everything I do,<br>A silent friend who follows true.</div></p><p><strong>Which word appeals to SIGHT?</strong></p>'
+  options:
+  - long and tall
+  - copies
+  - 'true'
+  - silent
+  correct_index: 0
+  explanation: Sensory words appeal to sight, sound, touch, taste or smell.
 - module: 82
   difficulty: medium
   sea_section: Section II
@@ -57701,6 +59450,28 @@ questions:
 - module: 82
   difficulty: hard
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Mango Tree</strong><br>The mango tree stands old and wide,<br>With golden treasure hid inside.<br>The parrots quarrel in its hair,<br>And sweetness fills the sticky air.</div></p><p><strong>Which word appeals to TASTE or SMELL?</strong></p>'
+  options:
+  - sweetness
+  - stands
+  - old
+  - wide
+  correct_index: 0
+  explanation: Sensory words appeal to sight, sound, touch, taste or smell.
+- module: 82
+  difficulty: hard
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Morning</strong><br>The rooster crows to wake the sun,<br>The dew like diamonds, one by one.<br>The kettle sings, the day begins,<br>And light comes creeping through the tins.</div></p><p><strong>Which word appeals to SIGHT?</strong></p>'
+  options:
+  - crows
+  - sings
+  - diamonds
+  - begins
+  correct_index: 2
+  explanation: Sensory words appeal to sight, sound, touch, taste or smell.
+- module: 82
+  difficulty: hard
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Rain</strong><br>1&nbsp;&nbsp;Pitter-patter on the pane,<br>2&nbsp;&nbsp;Here it comes, the drumming rain.<br>3&nbsp;&nbsp;It taps the roof, it floods the street,<br>4&nbsp;&nbsp;A cool grey blanket, soft and neat.<br>5&nbsp;&nbsp;The thirsty gardens drink their fill,<br>6&nbsp;&nbsp;The dusty hills grow green and still.<br>7&nbsp;&nbsp;But children press against the glass,<br>8&nbsp;&nbsp;And wish the sulky clouds would pass.</div><p>&ldquo;The thirsty gardens drink their fill&rdquo; helps us picture the gardens as&hellip;</p></p>'
   options:
   - empty and dry forever
@@ -57800,6 +59571,39 @@ questions:
 - module: 83
   difficulty: easy
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Old Fisherman</strong><br>He rows his boat at break of day,<br>His hands are rough, his hair is grey.<br>The nets come up both full and light,<br>He thanks the sea and sails from sight.</div></p><p><strong>What is the tone toward the fisherman?</strong></p>'
+  options:
+  - respectful
+  - mocking
+  - fearful
+  - angry
+  correct_index: 0
+  explanation: The mood is the feeling the poem creates.
+- module: 83
+  difficulty: easy
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Rain</strong><br>The rain taps softly on the pane,<br>Like tiny feet along the lane.<br>It sings a cool and silver tune,<br>Then slips away too soon.</div></p><p><strong>What is the mood of the poem?</strong></p>'
+  options:
+  - silly
+  - angry
+  - frightening
+  - calm
+  correct_index: 3
+  explanation: The mood is the feeling the poem creates.
+- module: 83
+  difficulty: easy
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Sea at Night</strong><br>The sea is black and hums a song,<br>It rolls the pebbles all night long.<br>The moon lays down a silver road,<br>Where quiet waves have softly flowed.</div></p><p><strong>What is the mood?</strong></p>'
+  options:
+  - funny
+  - tense
+  - furious
+  - peaceful
+  correct_index: 3
+  explanation: The mood is the feeling the poem creates.
+- module: 83
+  difficulty: easy
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Sea</strong><br>1&nbsp;&nbsp;The sea is a restless, roaring beast,<br>2&nbsp;&nbsp;It gnaws the rocks and will not rest.<br>3&nbsp;&nbsp;Its silver spray leaps to the sky,<br>4&nbsp;&nbsp;Then hisses back with a whispered sigh.<br>5&nbsp;&nbsp;By day it sparkles, blue and wide,<br>6&nbsp;&nbsp;By night it hums a lonely tide.<br>7&nbsp;&nbsp;It gives us fish, it gives us play,<br>8&nbsp;&nbsp;Yet swallows ships that lose their way.</div><p>The overall mood of &ldquo;The Sea&rdquo; is&hellip;</p></p>'
   options:
   - powerful and slightly scary
@@ -57877,6 +59681,17 @@ questions:
 - module: 83
   difficulty: medium
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Carnival</strong><br>A rush of colour fills the street,<br>With glitter, drums, and dancing feet.<br>The costumes flash like living flame,<br>And no two masqueraders same.</div></p><p><strong>What is the mood?</strong></p>'
+  options:
+  - sleepy
+  - bored
+  - excited
+  - sad
+  correct_index: 2
+  explanation: The mood is the feeling the poem creates.
+- module: 83
+  difficulty: medium
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Grandma&rsquo;s Kitchen</strong><br>1&nbsp;&nbsp;In Grandma&rsquo;s kitchen, warm and bright,<br>2&nbsp;&nbsp;The kettle sings from morn to night.<br>3&nbsp;&nbsp;Sweet cinnamon and ginger fill the air,<br>4&nbsp;&nbsp;And laughter bubbles everywhere.<br>5&nbsp;&nbsp;Her busy hands are never still,<br>6&nbsp;&nbsp;They knead and stir with love and skill.<br>7&nbsp;&nbsp;And though my grandma&rsquo;s hair is grey,<br>8&nbsp;&nbsp;Her heart is young and bright as day.</div><p>The poet&rsquo;s point of view about growing old is that&hellip;</p></p>'
   options:
   - age does not exist
@@ -57896,6 +59711,28 @@ questions:
   - mocking
   correct_index: 2
   explanation: <p>Read the text, then choose the best answer.</p><p><strong>Why:</strong> &ldquo;love and skill&rdquo; shows an admiring tone.</p><p><strong>Answer:</strong> <strong>admiring</strong></p>
+- module: 83
+  difficulty: medium
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Hurricane</strong><br>The wind screams wild across the bay,<br>It rips the roofs and tears away.<br>The palm trees bow, the shutters slam,<br>The whole town trembles where I am.</div></p><p><strong>What is the mood of this poem?</strong></p>'
+  options:
+  - frightening
+  - cheerful
+  - calm
+  - sleepy
+  correct_index: 0
+  explanation: The mood is the feeling the poem creates.
+- module: 83
+  difficulty: medium
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>My Shadow</strong><br>My shadow stretches long and tall,<br>It climbs the fence and scales the wall.<br>It copies everything I do,<br>A silent friend who follows true.</div></p><p><strong>How does the writer feel about the shadow?</strong></p>'
+  options:
+  - afraid
+  - bored
+  - friendly
+  - angry
+  correct_index: 2
+  explanation: The mood is the feeling the poem creates.
 - module: 83
   difficulty: medium
   sea_section: Section II
@@ -58031,6 +59868,28 @@ questions:
 - module: 83
   difficulty: hard
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Mango Tree</strong><br>The mango tree stands old and wide,<br>With golden treasure hid inside.<br>The parrots quarrel in its hair,<br>And sweetness fills the sticky air.</div></p><p><strong>What is the tone of the poem?</strong></p>'
+  options:
+  - sad
+  - joyful
+  - lonely
+  - scary
+  correct_index: 1
+  explanation: The mood is the feeling the poem creates.
+- module: 83
+  difficulty: hard
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Morning</strong><br>The rooster crows to wake the sun,<br>The dew like diamonds, one by one.<br>The kettle sings, the day begins,<br>And light comes creeping through the tins.</div></p><p><strong>What is the mood?</strong></p>'
+  options:
+  - gloomy
+  - angry
+  - hopeful
+  - afraid
+  correct_index: 2
+  explanation: The mood is the feeling the poem creates.
+- module: 83
+  difficulty: hard
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Rain</strong><br>1&nbsp;&nbsp;Pitter-patter on the pane,<br>2&nbsp;&nbsp;Here it comes, the drumming rain.<br>3&nbsp;&nbsp;It taps the roof, it floods the street,<br>4&nbsp;&nbsp;A cool grey blanket, soft and neat.<br>5&nbsp;&nbsp;The thirsty gardens drink their fill,<br>6&nbsp;&nbsp;The dusty hills grow green and still.<br>7&nbsp;&nbsp;But children press against the glass,<br>8&nbsp;&nbsp;And wish the sulky clouds would pass.</div><p>The shift in the last two lines moves the mood from calm to&hellip;</p></p>'
   options:
   - wild joy
@@ -58163,6 +60022,39 @@ questions:
 - module: 84
   difficulty: easy
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Old Fisherman</strong><br>He rows his boat at break of day,<br>His hands are rough, his hair is grey.<br>The nets come up both full and light,<br>He thanks the sea and sails from sight.</div></p><p><strong>What is the poem mainly about?</strong></p>'
+  options:
+  - an old fisherman
+  - a football game
+  - a shopping list
+  - a maths lesson
+  correct_index: 0
+  explanation: Draw a conclusion from the whole poem.
+- module: 84
+  difficulty: easy
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Rain</strong><br>The rain taps softly on the pane,<br>Like tiny feet along the lane.<br>It sings a cool and silver tune,<br>Then slips away too soon.</div></p><p><strong>What is the poem mainly about?</strong></p>'
+  options:
+  - a football game
+  - a maths lesson
+  - a shopping list
+  - gentle rain
+  correct_index: 3
+  explanation: Draw a conclusion from the whole poem.
+- module: 84
+  difficulty: easy
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Sea at Night</strong><br>The sea is black and hums a song,<br>It rolls the pebbles all night long.<br>The moon lays down a silver road,<br>Where quiet waves have softly flowed.</div></p><p><strong>What is the poem mainly about?</strong></p>'
+  options:
+  - the sea at night
+  - a maths lesson
+  - a football game
+  - a shopping list
+  correct_index: 0
+  explanation: Draw a conclusion from the whole poem.
+- module: 84
+  difficulty: easy
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Sea</strong><br>1&nbsp;&nbsp;The sea is a restless, roaring beast,<br>2&nbsp;&nbsp;It gnaws the rocks and will not rest.<br>3&nbsp;&nbsp;Its silver spray leaps to the sky,<br>4&nbsp;&nbsp;Then hisses back with a whispered sigh.<br>5&nbsp;&nbsp;By day it sparkles, blue and wide,<br>6&nbsp;&nbsp;By night it hums a lonely tide.<br>7&nbsp;&nbsp;It gives us fish, it gives us play,<br>8&nbsp;&nbsp;Yet swallows ships that lose their way.</div><p>From the poem we can conclude the sea is&hellip;</p></p>'
   options:
   - still
@@ -58251,6 +60143,17 @@ questions:
 - module: 84
   difficulty: medium
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Carnival</strong><br>A rush of colour fills the street,<br>With glitter, drums, and dancing feet.<br>The costumes flash like living flame,<br>And no two masqueraders same.</div></p><p><strong>What is the poem mainly about?</strong></p>'
+  options:
+  - a shopping list
+  - a football game
+  - a carnival
+  - a maths lesson
+  correct_index: 2
+  explanation: Draw a conclusion from the whole poem.
+- module: 84
+  difficulty: medium
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Grandma&rsquo;s Kitchen</strong><br>1&nbsp;&nbsp;In Grandma&rsquo;s kitchen, warm and bright,<br>2&nbsp;&nbsp;The kettle sings from morn to night.<br>3&nbsp;&nbsp;Sweet cinnamon and ginger fill the air,<br>4&nbsp;&nbsp;And laughter bubbles everywhere.<br>5&nbsp;&nbsp;Her busy hands are never still,<br>6&nbsp;&nbsp;They knead and stir with love and skill.<br>7&nbsp;&nbsp;And though my grandma&rsquo;s hair is grey,<br>8&nbsp;&nbsp;Her heart is young and bright as day.</div><p>We can conclude the speaker&rsquo;s feelings for Grandma are&hellip;</p></p>'
   options:
   - cold
@@ -58270,6 +60173,28 @@ questions:
   - “They knead and stir with love and skill.”
   correct_index: 3
   explanation: <p>Read the text, then choose the best answer.</p><p><strong>Why:</strong> &ldquo;with&hellip;skill&rdquo; directly supports her skill.</p><p><strong>Answer:</strong> <strong>&ldquo;They knead and stir with love and skill.&rdquo;</strong></p>
+- module: 84
+  difficulty: medium
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Hurricane</strong><br>The wind screams wild across the bay,<br>It rips the roofs and tears away.<br>The palm trees bow, the shutters slam,<br>The whole town trembles where I am.</div></p><p><strong>What is the poem mainly about?</strong></p>'
+  options:
+  - a football game
+  - a maths lesson
+  - a hurricane
+  - a shopping list
+  correct_index: 2
+  explanation: Draw a conclusion from the whole poem.
+- module: 84
+  difficulty: medium
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>My Shadow</strong><br>My shadow stretches long and tall,<br>It climbs the fence and scales the wall.<br>It copies everything I do,<br>A silent friend who follows true.</div></p><p><strong>What is the poem mainly about?</strong></p>'
+  options:
+  - a maths lesson
+  - a shopping list
+  - a shadow
+  - a football game
+  correct_index: 2
+  explanation: Draw a conclusion from the whole poem.
 - module: 84
   difficulty: medium
   sea_section: Section II
@@ -58416,6 +60341,28 @@ questions:
 - module: 84
   difficulty: hard
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Mango Tree</strong><br>The mango tree stands old and wide,<br>With golden treasure hid inside.<br>The parrots quarrel in its hair,<br>And sweetness fills the sticky air.</div></p><p><strong>What is the poem mainly about?</strong></p>'
+  options:
+  - a maths lesson
+  - a football game
+  - a mango tree
+  - a shopping list
+  correct_index: 2
+  explanation: Draw a conclusion from the whole poem.
+- module: 84
+  difficulty: hard
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Morning</strong><br>The rooster crows to wake the sun,<br>The dew like diamonds, one by one.<br>The kettle sings, the day begins,<br>And light comes creeping through the tins.</div></p><p><strong>What is the poem mainly about?</strong></p>'
+  options:
+  - a football game
+  - a shopping list
+  - early morning
+  - a maths lesson
+  correct_index: 2
+  explanation: Draw a conclusion from the whole poem.
+- module: 84
+  difficulty: hard
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Rain</strong><br>1&nbsp;&nbsp;Pitter-patter on the pane,<br>2&nbsp;&nbsp;Here it comes, the drumming rain.<br>3&nbsp;&nbsp;It taps the roof, it floods the street,<br>4&nbsp;&nbsp;A cool grey blanket, soft and neat.<br>5&nbsp;&nbsp;The thirsty gardens drink their fill,<br>6&nbsp;&nbsp;The dusty hills grow green and still.<br>7&nbsp;&nbsp;But children press against the glass,<br>8&nbsp;&nbsp;And wish the sulky clouds would pass.</div><p>The poem lets us judge that rain can be&hellip;</p></p>'
   options:
   - only good
@@ -58526,6 +60473,39 @@ questions:
 - module: 85
   difficulty: easy
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Old Fisherman</strong><br>He rows his boat at break of day,<br>His hands are rough, his hair is grey.<br>The nets come up both full and light,<br>He thanks the sea and sails from sight.</div></p><p><strong>This poem would remind you most of…</strong></p>'
+  options:
+  - counting money
+  - doing homework
+  - seeing an old fisherman
+  - brushing teeth
+  correct_index: 2
+  explanation: Connect the poem to a real-life experience.
+- module: 85
+  difficulty: easy
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Rain</strong><br>The rain taps softly on the pane,<br>Like tiny feet along the lane.<br>It sings a cool and silver tune,<br>Then slips away too soon.</div></p><p><strong>This poem would remind you most of…</strong></p>'
+  options:
+  - counting money
+  - seeing gentle rain
+  - doing homework
+  - brushing teeth
+  correct_index: 1
+  explanation: Connect the poem to a real-life experience.
+- module: 85
+  difficulty: easy
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Sea at Night</strong><br>The sea is black and hums a song,<br>It rolls the pebbles all night long.<br>The moon lays down a silver road,<br>Where quiet waves have softly flowed.</div></p><p><strong>This poem would remind you most of…</strong></p>'
+  options:
+  - seeing the sea at night
+  - doing homework
+  - brushing teeth
+  - counting money
+  correct_index: 0
+  explanation: Connect the poem to a real-life experience.
+- module: 85
+  difficulty: easy
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Sea</strong><br>1&nbsp;&nbsp;The sea is a restless, roaring beast,<br>2&nbsp;&nbsp;It gnaws the rocks and will not rest.<br>3&nbsp;&nbsp;Its silver spray leaps to the sky,<br>4&nbsp;&nbsp;Then hisses back with a whispered sigh.<br>5&nbsp;&nbsp;By day it sparkles, blue and wide,<br>6&nbsp;&nbsp;By night it hums a lonely tide.<br>7&nbsp;&nbsp;It gives us fish, it gives us play,<br>8&nbsp;&nbsp;Yet swallows ships that lose their way.</div><p>The poem connects to real life because the sea really does provide&hellip;</p></p>'
   options:
   - food such as fish
@@ -58603,6 +60583,17 @@ questions:
 - module: 85
   difficulty: medium
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Carnival</strong><br>A rush of colour fills the street,<br>With glitter, drums, and dancing feet.<br>The costumes flash like living flame,<br>And no two masqueraders same.</div></p><p><strong>This poem would remind you most of…</strong></p>'
+  options:
+  - doing homework
+  - seeing a carnival
+  - counting money
+  - brushing teeth
+  correct_index: 1
+  explanation: Connect the poem to a real-life experience.
+- module: 85
+  difficulty: medium
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Grandma&rsquo;s Kitchen</strong><br>1&nbsp;&nbsp;In Grandma&rsquo;s kitchen, warm and bright,<br>2&nbsp;&nbsp;The kettle sings from morn to night.<br>3&nbsp;&nbsp;Sweet cinnamon and ginger fill the air,<br>4&nbsp;&nbsp;And laughter bubbles everywhere.<br>5&nbsp;&nbsp;Her busy hands are never still,<br>6&nbsp;&nbsp;They knead and stir with love and skill.<br>7&nbsp;&nbsp;And though my grandma&rsquo;s hair is grey,<br>8&nbsp;&nbsp;Her heart is young and bright as day.</div><p>The poem&rsquo;s message about older people connects to real life by reminding us to&hellip;</p></p>'
   options:
   - fear old age
@@ -58622,6 +60613,28 @@ questions:
   - Chalk dust
   correct_index: 0
   explanation: <p>Read the text, then choose the best answer.</p><p><strong>Why:</strong> A pleasant baking smell links to warm memories, like the poem&rsquo;s spices.</p><p><strong>Answer:</strong> <strong>Fresh bread baking</strong></p>
+- module: 85
+  difficulty: medium
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Hurricane</strong><br>The wind screams wild across the bay,<br>It rips the roofs and tears away.<br>The palm trees bow, the shutters slam,<br>The whole town trembles where I am.</div></p><p><strong>This poem would remind you most of…</strong></p>'
+  options:
+  - counting money
+  - seeing a hurricane
+  - doing homework
+  - brushing teeth
+  correct_index: 1
+  explanation: Connect the poem to a real-life experience.
+- module: 85
+  difficulty: medium
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>My Shadow</strong><br>My shadow stretches long and tall,<br>It climbs the fence and scales the wall.<br>It copies everything I do,<br>A silent friend who follows true.</div></p><p><strong>This poem would remind you most of…</strong></p>'
+  options:
+  - seeing a shadow
+  - doing homework
+  - counting money
+  - brushing teeth
+  correct_index: 0
+  explanation: Connect the poem to a real-life experience.
 - module: 85
   difficulty: medium
   sea_section: Section II
@@ -58743,6 +60756,28 @@ questions:
   - refuse to grow up
   correct_index: 2
   explanation: <p>Read the text, then choose the best answer.</p><p><strong>Why:</strong> Being young at heart means staying cheerful and lively with age.</p><p><strong>Answer:</strong> <strong>stay cheerful and active as they age</strong></p>
+- module: 85
+  difficulty: hard
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Mango Tree</strong><br>The mango tree stands old and wide,<br>With golden treasure hid inside.<br>The parrots quarrel in its hair,<br>And sweetness fills the sticky air.</div></p><p><strong>This poem would remind you most of…</strong></p>'
+  options:
+  - seeing a mango tree
+  - brushing teeth
+  - doing homework
+  - counting money
+  correct_index: 0
+  explanation: Connect the poem to a real-life experience.
+- module: 85
+  difficulty: hard
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Morning</strong><br>The rooster crows to wake the sun,<br>The dew like diamonds, one by one.<br>The kettle sings, the day begins,<br>And light comes creeping through the tins.</div></p><p><strong>This poem would remind you most of…</strong></p>'
+  options:
+  - counting money
+  - doing homework
+  - seeing early morning
+  - brushing teeth
+  correct_index: 2
+  explanation: Connect the poem to a real-life experience.
 - module: 85
   difficulty: hard
   sea_section: Section II
@@ -58889,6 +60924,39 @@ questions:
 - module: 86
   difficulty: easy
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Old Fisherman</strong><br>He rows his boat at break of day,<br>His hands are rough, his hair is grey.<br>The nets come up both full and light,<br>He thanks the sea and sails from sight.</div></p><p><strong>What does the poem help a reader to do?</strong></p>'
+  options:
+  - cook a meal
+  - spell a word
+  - imagine and feel a scene
+  - solve a sum
+  correct_index: 2
+  explanation: Poems help us imagine and feel.
+- module: 86
+  difficulty: easy
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Rain</strong><br>The rain taps softly on the pane,<br>Like tiny feet along the lane.<br>It sings a cool and silver tune,<br>Then slips away too soon.</div></p><p><strong>What does the poem help a reader to do?</strong></p>'
+  options:
+  - imagine and feel a scene
+  - solve a sum
+  - cook a meal
+  - spell a word
+  correct_index: 0
+  explanation: Poems help us imagine and feel.
+- module: 86
+  difficulty: easy
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Sea at Night</strong><br>The sea is black and hums a song,<br>It rolls the pebbles all night long.<br>The moon lays down a silver road,<br>Where quiet waves have softly flowed.</div></p><p><strong>What does the poem help a reader to do?</strong></p>'
+  options:
+  - spell a word
+  - imagine and feel a scene
+  - solve a sum
+  - cook a meal
+  correct_index: 1
+  explanation: Poems help us imagine and feel.
+- module: 86
+  difficulty: easy
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>The Sea</strong><br>1&nbsp;&nbsp;The sea is a restless, roaring beast,<br>2&nbsp;&nbsp;It gnaws the rocks and will not rest.<br>3&nbsp;&nbsp;Its silver spray leaps to the sky,<br>4&nbsp;&nbsp;Then hisses back with a whispered sigh.<br>5&nbsp;&nbsp;By day it sparkles, blue and wide,<br>6&nbsp;&nbsp;By night it hums a lonely tide.<br>7&nbsp;&nbsp;It gives us fish, it gives us play,<br>8&nbsp;&nbsp;Yet swallows ships that lose their way.</div><p>Do you find the sea well described? Best answer:</p></p>'
   options:
   - No — the sea cannot be described
@@ -58966,6 +61034,17 @@ questions:
 - module: 86
   difficulty: medium
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Carnival</strong><br>A rush of colour fills the street,<br>With glitter, drums, and dancing feet.<br>The costumes flash like living flame,<br>And no two masqueraders same.</div></p><p><strong>What does the poem help a reader to do?</strong></p>'
+  options:
+  - imagine and feel a scene
+  - spell a word
+  - cook a meal
+  - solve a sum
+  correct_index: 0
+  explanation: Poems help us imagine and feel.
+- module: 86
+  difficulty: medium
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Grandma&rsquo;s Kitchen</strong><br>1&nbsp;&nbsp;In Grandma&rsquo;s kitchen, warm and bright,<br>2&nbsp;&nbsp;The kettle sings from morn to night.<br>3&nbsp;&nbsp;Sweet cinnamon and ginger fill the air,<br>4&nbsp;&nbsp;And laughter bubbles everywhere.<br>5&nbsp;&nbsp;Her busy hands are never still,<br>6&nbsp;&nbsp;They knead and stir with love and skill.<br>7&nbsp;&nbsp;And though my grandma&rsquo;s hair is grey,<br>8&nbsp;&nbsp;Her heart is young and bright as day.</div><p>How could a family show the appreciation the poem expresses?</p></p>'
   options:
   - Ignore their cooking
@@ -58985,6 +61064,28 @@ questions:
   - “laughter bubbles everywhere” — it makes the home feel joyful
   correct_index: 3
   explanation: <p>Read the text, then choose the best answer.</p><p><strong>Why:</strong> Bubbling laughter creates a joyful image, a strong reason to appreciate it.</p><p><strong>Answer:</strong> <strong>&ldquo;laughter bubbles everywhere&rdquo; &mdash; it makes the home feel joyful</strong></p>
+- module: 86
+  difficulty: medium
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Hurricane</strong><br>The wind screams wild across the bay,<br>It rips the roofs and tears away.<br>The palm trees bow, the shutters slam,<br>The whole town trembles where I am.</div></p><p><strong>What does the poem help a reader to do?</strong></p>'
+  options:
+  - imagine and feel a scene
+  - cook a meal
+  - spell a word
+  - solve a sum
+  correct_index: 0
+  explanation: Poems help us imagine and feel.
+- module: 86
+  difficulty: medium
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>My Shadow</strong><br>My shadow stretches long and tall,<br>It climbs the fence and scales the wall.<br>It copies everything I do,<br>A silent friend who follows true.</div></p><p><strong>What does the poem help a reader to do?</strong></p>'
+  options:
+  - solve a sum
+  - imagine and feel a scene
+  - spell a word
+  - cook a meal
+  correct_index: 1
+  explanation: Poems help us imagine and feel.
 - module: 86
   difficulty: medium
   sea_section: Section II
@@ -59109,6 +61210,28 @@ questions:
 - module: 86
   difficulty: hard
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Mango Tree</strong><br>The mango tree stands old and wide,<br>With golden treasure hid inside.<br>The parrots quarrel in its hair,<br>And sweetness fills the sticky air.</div></p><p><strong>What does the poem help a reader to do?</strong></p>'
+  options:
+  - imagine and feel a scene
+  - cook a meal
+  - spell a word
+  - solve a sum
+  correct_index: 0
+  explanation: Poems help us imagine and feel.
+- module: 86
+  difficulty: hard
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Morning</strong><br>The rooster crows to wake the sun,<br>The dew like diamonds, one by one.<br>The kettle sings, the day begins,<br>And light comes creeping through the tins.</div></p><p><strong>What does the poem help a reader to do?</strong></p>'
+  options:
+  - solve a sum
+  - cook a meal
+  - imagine and feel a scene
+  - spell a word
+  correct_index: 2
+  explanation: Poems help us imagine and feel.
+- module: 86
+  difficulty: hard
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Rain</strong><br>1&nbsp;&nbsp;Pitter-patter on the pane,<br>2&nbsp;&nbsp;Here it comes, the drumming rain.<br>3&nbsp;&nbsp;It taps the roof, it floods the street,<br>4&nbsp;&nbsp;A cool grey blanket, soft and neat.<br>5&nbsp;&nbsp;The thirsty gardens drink their fill,<br>6&nbsp;&nbsp;The dusty hills grow green and still.<br>7&nbsp;&nbsp;But children press against the glass,<br>8&nbsp;&nbsp;And wish the sulky clouds would pass.</div><p>A reader who appreciates this poem would most likely praise its&hellip;</p></p>'
   options:
   - confusing message
@@ -59219,6 +61342,17 @@ questions:
 - module: 87
   difficulty: easy
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Chart — Rainfall</strong><br>A simple bar chart is titled ''Rainfall this Week''. The tallest bar is Tuesday. A caption reads ''Bring an umbrella on wet days!''</div></p><p><strong>What does the chart show?</strong></p>'
+  options:
+  - Bus times
+  - How much rain fell each day
+  - Test scores
+  - Prices of fruit
+  correct_index: 1
+  explanation: The overt (clear) message is directly shown.
+- module: 87
+  difficulty: easy
+  sea_section: Section II
   prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Media text &mdash; Flyer</strong><br>A bright flyer is headed &ldquo;JUNIOR FARMERS&rsquo; MARKET&rdquo;. Below a photo of smiling children holding vegetables it reads: &ldquo;Saturday 14 October, 7:00 a.m. &ndash; 12 noon, at the School Field. Fresh fruit, vegetables and juices &mdash; all grown by students!&rdquo; A starburst shouts &ldquo;FREE tastings!&rdquo; and the footer says &ldquo;Call 123-4567 or follow us online.&rdquo;</div><p>What event does the flyer advertise?</p></p>'
   options:
   - A school sports day
@@ -59285,6 +61419,17 @@ questions:
 - module: 87
   difficulty: easy
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Poster — Beach Clean-up</strong><br>A bright poster shows children with rubbish bags on a sandy beach. Big green letters read ''SAVE OUR SHORE — Join the Clean-up, Saturday 9am''. A small turtle cartoon smiles in the corner.</div></p><p><strong>What is the poster asking people to do?</strong></p>'
+  options:
+  - Buy fish
+  - Watch a film
+  - Sell turtles
+  - Join a beach clean-up
+  correct_index: 3
+  explanation: The overt (clear) message is directly shown.
+- module: 87
+  difficulty: easy
+  sea_section: Section II
   prompt: A message stated clearly and directly is?
   options:
   - overt
@@ -59326,6 +61471,28 @@ questions:
   - forget
   correct_index: 0
   explanation: An overt message is easy to read.
+- module: 87
+  difficulty: medium
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Advertisement — Juice</strong><br>An ad shows a frosty glass of orange juice with the words ''PURE SUNSHINE IN A GLASS!'' A smiling family sits at breakfast. Small print says ''No added sugar.''</div></p><p><strong>What is being advertised?</strong></p>'
+  options:
+  - A school
+  - A phone
+  - Orange juice
+  - A car
+  correct_index: 2
+  explanation: The overt (clear) message is directly shown.
+- module: 87
+  difficulty: medium
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Label — Cereal Box</strong><br>A cereal box front says ''CRUNCHY OAT STARS — Now with REAL honey!'' A cartoon star wearing sunglasses gives a thumbs-up.</div></p><p><strong>What product is this?</strong></p>'
+  options:
+  - A breakfast cereal
+  - A pencil
+  - A shoe
+  - A toothpaste
+  correct_index: 0
+  explanation: The overt (clear) message is directly shown.
 - module: 87
   difficulty: medium
   sea_section: Section II
@@ -59516,6 +61683,28 @@ questions:
 - module: 87
   difficulty: hard
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Notice — Library</strong><br>A notice on the library wall reads ''STORY TIME! Every Friday at 3pm. Free for all children. Come and listen!''</div></p><p><strong>What is the notice about?</strong></p>'
+  options:
+  - A fine to pay
+  - A story time event
+  - A lost book
+  - A closed door
+  correct_index: 1
+  explanation: The overt (clear) message is directly shown.
+- module: 87
+  difficulty: hard
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Road Sign</strong><br>A red triangular sign by the roadside shows a picture of children and the words ''SCHOOL AHEAD — DRIVE SLOWLY''.</div></p><p><strong>What is the sign telling drivers?</strong></p>'
+  options:
+  - To stop forever
+  - To turn around
+  - To speed up
+  - To slow down near a school
+  correct_index: 3
+  explanation: The overt (clear) message is directly shown.
+- module: 87
+  difficulty: hard
+  sea_section: Section II
   prompt: A poster mixing words and images is a ___ text.
   options:
   - graphic
@@ -59568,6 +61757,17 @@ questions:
   - page number
   correct_index: 0
   explanation: Words plus the main image give the overt message.
+- module: 88
+  difficulty: easy
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Chart — Rainfall</strong><br>A simple bar chart is titled ''Rainfall this Week''. The tallest bar is Tuesday. A caption reads ''Bring an umbrella on wet days!''</div></p><p><strong>Which day was wettest?</strong></p>'
+  options:
+  - Tuesday
+  - Monday
+  - Sunday
+  - Friday
+  correct_index: 0
+  explanation: The implied message is suggested, not stated.
 - module: 88
   difficulty: easy
   sea_section: Section II
@@ -59637,6 +61837,17 @@ questions:
 - module: 88
   difficulty: easy
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Poster — Beach Clean-up</strong><br>A bright poster shows children with rubbish bags on a sandy beach. Big green letters read ''SAVE OUR SHORE — Join the Clean-up, Saturday 9am''. A small turtle cartoon smiles in the corner.</div></p><p><strong>What does the poster suggest about the beach?</strong></p>'
+  options:
+  - It is dangerous
+  - It is perfect
+  - It is closed
+  - It needs cleaning
+  correct_index: 3
+  explanation: The implied message is suggested, not stated.
+- module: 88
+  difficulty: easy
+  sea_section: Section II
   prompt: A message that is suggested, not stated, is?
   options:
   - implied
@@ -59689,6 +61900,28 @@ questions:
   - hand
   correct_index: 0
   explanation: It is meant to catch your eye.
+- module: 88
+  difficulty: medium
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Advertisement — Juice</strong><br>An ad shows a frosty glass of orange juice with the words ''PURE SUNSHINE IN A GLASS!'' A smiling family sits at breakfast. Small print says ''No added sugar.''</div></p><p><strong>What does ''Pure sunshine in a glass'' suggest?</strong></p>'
+  options:
+  - It costs a lot
+  - It is a lamp
+  - It is hot
+  - The juice is fresh and healthy
+  correct_index: 3
+  explanation: The implied message is suggested, not stated.
+- module: 88
+  difficulty: medium
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Label — Cereal Box</strong><br>A cereal box front says ''CRUNCHY OAT STARS — Now with REAL honey!'' A cartoon star wearing sunglasses gives a thumbs-up.</div></p><p><strong>What does ''Now with REAL honey'' suggest?</strong></p>'
+  options:
+  - It is a toy
+  - It is old
+  - The cereal is tasty and improved
+  - It has no taste
+  correct_index: 2
+  explanation: The implied message is suggested, not stated.
 - module: 88
   difficulty: medium
   sea_section: Section II
@@ -59879,6 +62112,28 @@ questions:
 - module: 88
   difficulty: hard
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Notice — Library</strong><br>A notice on the library wall reads ''STORY TIME! Every Friday at 3pm. Free for all children. Come and listen!''</div></p><p><strong>What does ''Free for all children'' imply?</strong></p>'
+  options:
+  - It is very expensive
+  - Anyone can come without paying
+  - It is cancelled
+  - Only members pay double
+  correct_index: 1
+  explanation: The implied message is suggested, not stated.
+- module: 88
+  difficulty: hard
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Road Sign</strong><br>A red triangular sign by the roadside shows a picture of children and the words ''SCHOOL AHEAD — DRIVE SLOWLY''.</div></p><p><strong>What does the sign imply?</strong></p>'
+  options:
+  - It is night
+  - Children may be crossing
+  - There is a shop
+  - The road is closed
+  correct_index: 1
+  explanation: The implied message is suggested, not stated.
+- module: 88
+  difficulty: hard
+  sea_section: Section II
   prompt: An implied message is read from the ___, not the words.
   options:
   - design
@@ -59931,6 +62186,17 @@ questions:
   - to confuse
   correct_index: 0
   explanation: Big, bright text catches the eye.
+- module: 89
+  difficulty: easy
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Chart — Rainfall</strong><br>A simple bar chart is titled ''Rainfall this Week''. The tallest bar is Tuesday. A caption reads ''Bring an umbrella on wet days!''</div></p><p><strong>Why include the caption about an umbrella?</strong></p>'
+  options:
+  - To tell a joke
+  - To confuse readers
+  - To give helpful advice
+  - To sell umbrellas only
+  correct_index: 2
+  explanation: Think about who the text is designed for.
 - module: 89
   difficulty: easy
   sea_section: Section II
@@ -60000,6 +62266,17 @@ questions:
 - module: 89
   difficulty: easy
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Poster — Beach Clean-up</strong><br>A bright poster shows children with rubbish bags on a sandy beach. Big green letters read ''SAVE OUR SHORE — Join the Clean-up, Saturday 9am''. A small turtle cartoon smiles in the corner.</div></p><p><strong>Who is the poster mainly for?</strong></p>'
+  options:
+  - People in the community
+  - Only babies
+  - Only tourists abroad
+  - Only doctors
+  correct_index: 0
+  explanation: Think about who the text is designed for.
+- module: 89
+  difficulty: easy
+  sea_section: Section II
   prompt: A funny comic's purpose is to?
   options:
   - entertain
@@ -60052,6 +62329,28 @@ questions:
   - author
   correct_index: 0
   explanation: Who it is for is the audience.
+- module: 89
+  difficulty: medium
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Advertisement — Juice</strong><br>An ad shows a frosty glass of orange juice with the words ''PURE SUNSHINE IN A GLASS!'' A smiling family sits at breakfast. Small print says ''No added sugar.''</div></p><p><strong>Who is the audience?</strong></p>'
+  options:
+  - Only pilots
+  - Only athletes
+  - Only farmers
+  - Families
+  correct_index: 3
+  explanation: Think about who the text is designed for.
+- module: 89
+  difficulty: medium
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Label — Cereal Box</strong><br>A cereal box front says ''CRUNCHY OAT STARS — Now with REAL honey!'' A cartoon star wearing sunglasses gives a thumbs-up.</div></p><p><strong>Who is the cartoon star meant to attract?</strong></p>'
+  options:
+  - Farmers only
+  - Children
+  - Bankers
+  - Doctors
+  correct_index: 1
+  explanation: Think about who the text is designed for.
 - module: 89
   difficulty: medium
   sea_section: Section II
@@ -60242,6 +62541,28 @@ questions:
 - module: 89
   difficulty: hard
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Notice — Library</strong><br>A notice on the library wall reads ''STORY TIME! Every Friday at 3pm. Free for all children. Come and listen!''</div></p><p><strong>Who is the notice aimed at?</strong></p>'
+  options:
+  - Only staff
+  - Only tourists
+  - Only adults at work
+  - Children and families
+  correct_index: 3
+  explanation: Think about who the text is designed for.
+- module: 89
+  difficulty: hard
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Road Sign</strong><br>A red triangular sign by the roadside shows a picture of children and the words ''SCHOOL AHEAD — DRIVE SLOWLY''.</div></p><p><strong>Who is the sign for?</strong></p>'
+  options:
+  - Sailors
+  - Pilots
+  - Drivers
+  - Swimmers
+  correct_index: 2
+  explanation: Think about who the text is designed for.
+- module: 89
+  difficulty: hard
+  sea_section: Section II
   prompt: 'A ''Danger: High Voltage'' sign aims to?'
   options:
   - warn and inform
@@ -60305,6 +62626,17 @@ questions:
   - title
   correct_index: 0
   explanation: It is a catchy slogan.
+- module: 90
+  difficulty: easy
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Chart — Rainfall</strong><br>A simple bar chart is titled ''Rainfall this Week''. The tallest bar is Tuesday. A caption reads ''Bring an umbrella on wet days!''</div></p><p><strong>Which feature helps you compare days quickly?</strong></p>'
+  options:
+  - The page number
+  - The font name
+  - The colour of the paper
+  - The bars of different heights
+  correct_index: 3
+  explanation: Media makers use techniques like colour, slogans and images.
 - module: 90
   difficulty: easy
   sea_section: Section II
@@ -60374,6 +62706,17 @@ questions:
 - module: 90
   difficulty: easy
   sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Poster — Beach Clean-up</strong><br>A bright poster shows children with rubbish bags on a sandy beach. Big green letters read ''SAVE OUR SHORE — Join the Clean-up, Saturday 9am''. A small turtle cartoon smiles in the corner.</div></p><p><strong>Which technique makes the title stand out?</strong></p>'
+  options:
+  - Big coloured letters
+  - A blank page
+  - Tiny grey text
+  - No words
+  correct_index: 0
+  explanation: Media makers use techniques like colour, slogans and images.
+- module: 90
+  difficulty: easy
+  sea_section: Section II
   prompt: A famous face is used to make you ___ the product.
   options:
   - trust
@@ -60415,6 +62758,28 @@ questions:
   - hide
   correct_index: 0
   explanation: Judging it is evaluating.
+- module: 90
+  difficulty: medium
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Advertisement — Juice</strong><br>An ad shows a frosty glass of orange juice with the words ''PURE SUNSHINE IN A GLASS!'' A smiling family sits at breakfast. Small print says ''No added sugar.''</div></p><p><strong>Which technique persuades the reader?</strong></p>'
+  options:
+  - A catchy slogan
+  - A maths problem
+  - A blank space
+  - A long list of laws
+  correct_index: 0
+  explanation: Media makers use techniques like colour, slogans and images.
+- module: 90
+  difficulty: medium
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Label — Cereal Box</strong><br>A cereal box front says ''CRUNCHY OAT STARS — Now with REAL honey!'' A cartoon star wearing sunglasses gives a thumbs-up.</div></p><p><strong>Which technique is used to appeal to children?</strong></p>'
+  options:
+  - A page of numbers
+  - A fun cartoon character
+  - Tiny plain text
+  - A warning label
+  correct_index: 1
+  explanation: Media makers use techniques like colour, slogans and images.
 - module: 90
   difficulty: medium
   sea_section: Section II
@@ -60602,6 +62967,28 @@ questions:
   - The list format — it is plain
   correct_index: 0
   explanation: <p>Read the text, then choose the best answer.</p><p><strong>Why:</strong> The vivid image makes the problem feel real, persuading the audience.</p><p><strong>Answer:</strong> <strong>The powerful image &mdash; it makes the shortage feel real and urgent</strong></p>
+- module: 90
+  difficulty: hard
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Notice — Library</strong><br>A notice on the library wall reads ''STORY TIME! Every Friday at 3pm. Free for all children. Come and listen!''</div></p><p><strong>Which word makes it sound exciting?</strong></p>'
+  options:
+  - a full stop
+  - a barcode
+  - a page number
+  - '''STORY TIME!'' in capitals'
+  correct_index: 3
+  explanation: Media makers use techniques like colour, slogans and images.
+- module: 90
+  difficulty: hard
+  sea_section: Section II
+  prompt: '<p><div style=''background:#f6f6f6;padding:8px;border-left:3px solid #999''><strong>Road Sign</strong><br>A red triangular sign by the roadside shows a picture of children and the words ''SCHOOL AHEAD — DRIVE SLOWLY''.</div></p><p><strong>Which feature grabs attention first?</strong></p>'
+  options:
+  - Faded ink
+  - The red warning colour
+  - No picture
+  - Small black dots
+  correct_index: 1
+  explanation: Media makers use techniques like colour, slogans and images.
 - module: 90
   difficulty: hard
   sea_section: Section II
