@@ -46,6 +46,8 @@ document.addEventListener('alpine:init', () => {
         mm: cfg.minute ?? 0,
         pm: cfg.pm ?? true,
         readout: '',
+        result: '',
+        hasTarget: cfg.targetH != null,
         init() {
             const svg = this.$refs.clk;
             const C = 100, R = 92;
@@ -67,14 +69,22 @@ document.addEventListener('alpine:init', () => {
             svg.append(this.handH, this.handM, this.grabH, this.grabM);
             svg.appendChild(el('circle', { cx: C, cy: C, r: 5, class: 'clk-cap' }));
             const angleOf = (cx, cy) => { const p = svgPoint(svg, cx, cy); let a = Math.atan2(p.x - C, -(p.y - C)) * 180 / Math.PI; if (a < 0) a += 360; return a; };
-            draggable(this.grabH, (x, y) => { const h = Math.round(angleOf(x, y) / 30) % 12; this.hh = h === 0 ? 12 : h; this.draw(); });
-            draggable(this.grabM, (x, y) => { this.mm = (Math.round(angleOf(x, y) / 6 / 5) * 5) % 60; this.draw(); });
+            // Each hand drags on its own; the minute hand does NOT drive the hour hand.
+            draggable(this.grabH, (x, y) => { const h = Math.round(angleOf(x, y) / 30) % 12; this.hh = h === 0 ? 12 : h; this.result = ''; this.draw(); });
+            draggable(this.grabM, (x, y) => { this.mm = (Math.round(angleOf(x, y) / 6 / 5) * 5) % 60; this.result = ''; this.draw(); });
             this.draw();
         },
-        toggleAmPm() { this.pm = !this.pm; this.draw(); },
+        toggleAmPm() { this.pm = !this.pm; this.result = ''; this.draw(); },
+        check() {
+            if (!this.hasTarget) { return; }
+            const h12 = this.hh % 12 === 0 ? 12 : this.hh % 12;
+            const ok = h12 === cfg.targetH && this.mm === cfg.targetM && (cfg.targetPm == null || this.pm === cfg.targetPm);
+            this.result = ok ? 'yes' : 'no';
+        },
         draw() {
             const C = 100, lh = 48, lm = 72;
-            const ah = ((this.hh % 12) + this.mm / 60) * 30 * Math.PI / 180, am = this.mm * 6 * Math.PI / 180;
+            // Decoupled: the hour hand points at its whole hour, the minute hand at its minute.
+            const ah = (this.hh % 12) * 30 * Math.PI / 180, am = this.mm * 6 * Math.PI / 180;
             this.handH.setAttribute('x1', C); this.handH.setAttribute('y1', C);
             this.handH.setAttribute('x2', C + lh * Math.sin(ah)); this.handH.setAttribute('y2', C - lh * Math.cos(ah));
             this.handM.setAttribute('x1', C); this.handM.setAttribute('y1', C);
@@ -83,8 +93,7 @@ document.addEventListener('alpine:init', () => {
             this.grabM.setAttribute('cx', C + lm * Math.sin(am)); this.grabM.setAttribute('cy', C - lm * Math.cos(am));
             const h12 = this.hh % 12 === 0 ? 12 : this.hh % 12, mmS = String(this.mm).padStart(2, '0');
             const h24 = String((this.pm ? (h12 % 12) + 12 : h12 % 12)).padStart(2, '0');
-            const win = cfg.targetH != null && h12 === cfg.targetH && this.mm === cfg.targetM && (cfg.targetPm == null || this.pm === cfg.targetPm);
-            this.readout = `time: ${h12}:${mmS} ${this.pm ? 'PM' : 'AM'} · 24-hour: ${h24}:${mmS}${win ? '  ✓ that’s it!' : ''}`;
+            this.readout = `${h12}:${mmS} ${this.pm ? 'PM' : 'AM'}  ·  24-hour ${h24}:${mmS}`;
         },
     }));
 });

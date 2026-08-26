@@ -271,8 +271,13 @@
                                     <p class="lw-example-tag">Drive it — drag the gold tips</p>
                                     @if (! empty($block['question']))<p class="lw-para" style="margin:.2rem 0 .5rem">{{ $block['question'] }}</p>@endif
                                     <svg class="lw-clock" x-ref="clk" viewBox="0 0 200 200" role="img" aria-label="Draggable analog clock"></svg>
-                                    <div style="text-align:center"><button type="button" class="lw-clock-btn" @click="toggleAmPm()" x-text="pm ? 'Afternoon (PM)' : 'Morning (AM)'"></button></div>
                                     <p class="lw-clock-out" x-text="readout"></p>
+                                    <div style="text-align:center;display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-top:6px">
+                                        <button type="button" class="lw-clock-btn" @click="toggleAmPm()" x-text="pm ? 'Afternoon (PM)' : 'Morning (AM)'"></button>
+                                        <template x-if="hasTarget"><button type="button" class="lw-clock-btn" style="background:#0d7d8c;color:#fff;border-color:#0d7d8c" @click="check()">Check my time</button></template>
+                                    </div>
+                                    <template x-if="result === 'yes'"><p class="lw-para" style="margin-top:.5rem;color:#0d7d8c;font-weight:700;text-align:center">✓ Yes! That is the right time.</p></template>
+                                    <template x-if="result === 'no'"><p class="lw-para" style="margin-top:.5rem;text-align:center">Not yet — check the short hand (hour) and long hand (minutes), then Check again.</p></template>
                                     @if (($block['content'] ?? '') !== '')<p class="lw-para" style="margin-top:.4rem">{{ $block['content'] }}</p>@endif
                                 </div>
                                 @break
