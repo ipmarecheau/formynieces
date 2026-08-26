@@ -10170,6 +10170,50 @@ questions:
 - module: 16
   difficulty: easy
   sea_section: Section I
+  prompt: Aaliyah has 24 books and gives away 1/3 of them. How many does Aaliyah give away?
+  options:
+  - '11'
+  - '8'
+  - '9'
+  - '16'
+  correct_index: 1
+  explanation: 1/3 of 24 = 8 × 1 = 8.
+- module: 16
+  difficulty: easy
+  sea_section: Section I
+  prompt: Josiah has 12 mangoes and gives away 1/3 of them. How many does Josiah give away?
+  options:
+  - '4'
+  - '5'
+  - '8'
+  - '7'
+  correct_index: 0
+  explanation: 1/3 of 12 = 4 × 1 = 4.
+- module: 16
+  difficulty: easy
+  sea_section: Section I
+  prompt: Josiah has 8 sweets and gives away 3/4 of them. How many does Josiah give away?
+  options:
+  - '6'
+  - '10'
+  - '2'
+  - '7'
+  correct_index: 0
+  explanation: 3/4 of 8 = 2 × 3 = 6.
+- module: 16
+  difficulty: easy
+  sea_section: Section I
+  prompt: Marcus has 42 books and gives away 2/6 of them. How many does Marcus give away?
+  options:
+  - '14'
+  - '20'
+  - '15'
+  - '28'
+  correct_index: 0
+  explanation: 2/6 of 42 = 7 × 2 = 14.
+- module: 16
+  difficulty: easy
+  sea_section: Section I
   prompt: Maya ate 1/4 of a pizza and Jed ate 2/4. How much did they eat together?
   options:
   - 3/4
@@ -10178,6 +10222,39 @@ questions:
   - 2/4
   correct_index: 0
   explanation: 1/4 + 2/4 = 3/4.
+- module: 16
+  difficulty: easy
+  sea_section: Section I
+  prompt: Maya has 12 books and gives away 1/4 of them. How many does Maya give away?
+  options:
+  - '7'
+  - '3'
+  - '4'
+  - '9'
+  correct_index: 1
+  explanation: 1/4 of 12 = 3 × 1 = 3.
+- module: 16
+  difficulty: easy
+  sea_section: Section I
+  prompt: Rohan has 8 marbles and gives away 1/4 of them. How many does Rohan give away?
+  options:
+  - '2'
+  - '3'
+  - '6'
+  - '1'
+  correct_index: 0
+  explanation: 1/4 of 8 = 2 × 1 = 2.
+- module: 16
+  difficulty: easy
+  sea_section: Section I
+  prompt: Theo has 4 stickers and gives away 1/2 of them. How many does Theo give away?
+  options:
+  - '3'
+  - '4'
+  - '2'
+  - '1'
+  correct_index: 2
+  explanation: 1/2 of 4 = 2 × 1 = 2.
 - module: 16
   difficulty: easy
   sea_section: Section I
@@ -10335,6 +10412,17 @@ questions:
 - module: 16
   difficulty: medium
   sea_section: Section I
+  prompt: Aaliyah has 30 stickers and gives away 1/6 of them. How many does Aaliyah give away?
+  options:
+  - '25'
+  - '11'
+  - '6'
+  - '5'
+  correct_index: 3
+  explanation: 1/6 of 30 = 5 × 1 = 5.
+- module: 16
+  difficulty: medium
+  sea_section: Section I
   prompt: In a class of 20, one half are girls. How many girls?
   options:
   - '10'
@@ -10343,6 +10431,50 @@ questions:
   - '2'
   correct_index: 0
   explanation: 1/2 of 20 = 10.
+- module: 16
+  difficulty: medium
+  sea_section: Section I
+  prompt: Josiah has 14 sweets and gives away 1/2 of them. How many does Josiah give away?
+  options:
+  - '9'
+  - '7'
+  - '6'
+  - '8'
+  correct_index: 1
+  explanation: 1/2 of 14 = 7 × 1 = 7.
+- module: 16
+  difficulty: medium
+  sea_section: Section I
+  prompt: Josiah has 48 books and gives away 3/6 of them. How many does Josiah give away?
+  options:
+  - '25'
+  - '24'
+  - '23'
+  - '30'
+  correct_index: 1
+  explanation: 3/6 of 48 = 8 × 3 = 24.
+- module: 16
+  difficulty: medium
+  sea_section: Section I
+  prompt: Kiran has 12 stickers and gives away 1/6 of them. How many does Kiran give away?
+  options:
+  - '3'
+  - '8'
+  - '10'
+  - '2'
+  correct_index: 3
+  explanation: 1/6 of 12 = 2 × 1 = 2.
+- module: 16
+  difficulty: medium
+  sea_section: Section I
+  prompt: Rohan has 48 marbles and gives away 3/6 of them. How many does Rohan give away?
+  options:
+  - '23'
+  - '25'
+  - '30'
+  - '24'
+  correct_index: 3
+  explanation: 3/6 of 48 = 8 × 3 = 24.
 - module: 16
   difficulty: medium
   sea_section: Section I
@@ -10500,6 +10632,50 @@ questions:
 - module: 16
   difficulty: hard
   sea_section: Section I
+  prompt: Aaliyah has 32 mangoes and gives away 1/4 of them. How many does Aaliyah give away?
+  options:
+  - '8'
+  - '24'
+  - '12'
+  - '9'
+  correct_index: 0
+  explanation: 1/4 of 32 = 8 × 1 = 8.
+- module: 16
+  difficulty: hard
+  sea_section: Section I
+  prompt: Devon has 20 shells and gives away 1/5 of them. How many does Devon give away?
+  options:
+  - '9'
+  - '16'
+  - '5'
+  - '4'
+  correct_index: 3
+  explanation: 1/5 of 20 = 4 × 1 = 4.
+- module: 16
+  difficulty: hard
+  sea_section: Section I
+  prompt: Kiran has 78 marbles and gives away 4/6 of them. How many does Kiran give away?
+  options:
+  - '53'
+  - '26'
+  - '58'
+  - '52'
+  correct_index: 3
+  explanation: 4/6 of 78 = 13 × 4 = 52.
+- module: 16
+  difficulty: hard
+  sea_section: Section I
+  prompt: Leela has 9 books and gives away 1/3 of them. How many does Leela give away?
+  options:
+  - '2'
+  - '3'
+  - '4'
+  - '6'
+  correct_index: 1
+  explanation: 1/3 of 9 = 3 × 1 = 3.
+- module: 16
+  difficulty: hard
+  sea_section: Section I
   prompt: One quarter of 40 students walk to school. How many walk?
   options:
   - '10'
@@ -10508,6 +10684,17 @@ questions:
   - '20'
   correct_index: 0
   explanation: 1/4 of 40 = 10.
+- module: 16
+  difficulty: hard
+  sea_section: Section I
+  prompt: Priya has 9 stickers and gives away 1/3 of them. How many does Priya give away?
+  options:
+  - '3'
+  - '4'
+  - '2'
+  - '6'
+  correct_index: 0
+  explanation: 1/3 of 9 = 3 × 1 = 3.
 - module: 16
   difficulty: hard
   sea_section: Section I
@@ -13292,6 +13479,105 @@ questions:
   correct_index: 3
   explanation: <p>Subtract the cost from the money paid to find the change.</p><p><strong>Working</strong></p><ol><li>$10.00 &minus; $6.35 = <strong>$3.65</strong>.</li></ol><p><strong>Answer:</strong> $3.65</p>
 - module: 21
+  difficulty: easy
+  sea_section: Section I
+  prompt: Anya buys a drink for $2.39 and a snack for $4.59. How much altogether?
+  options:
+  - $6.88
+  - $2.20
+  - $7.98
+  - $6.98
+  correct_index: 3
+  explanation: $2.39 + $4.59 = $6.98.
+- module: 21
+  difficulty: easy
+  sea_section: Section I
+  prompt: Devon buys a drink for $3.12 and a snack for $8.95. How much altogether?
+  options:
+  - $11.97
+  - $5.83
+  - $13.07
+  - $12.07
+  correct_index: 3
+  explanation: $3.12 + $8.95 = $12.07.
+- module: 21
+  difficulty: easy
+  sea_section: Section I
+  prompt: Leela buys a drink for $1.20 and a snack for $2.11. How much altogether?
+  options:
+  - $4.31
+  - $0.91
+  - $3.31
+  - $3.21
+  correct_index: 2
+  explanation: $1.20 + $2.11 = $3.31.
+- module: 21
+  difficulty: easy
+  sea_section: Section I
+  prompt: Leela buys a drink for $4.84 and a snack for $6.51. How much altogether?
+  options:
+  - $11.35
+  - $11.25
+  - $1.67
+  - $12.35
+  correct_index: 0
+  explanation: $4.84 + $6.51 = $11.35.
+- module: 21
+  difficulty: easy
+  sea_section: Section I
+  prompt: Leela buys a drink for $8.61 and a snack for $1.63. How much altogether?
+  options:
+  - $6.98
+  - $11.24
+  - $10.14
+  - $10.24
+  correct_index: 3
+  explanation: $8.61 + $1.63 = $10.24.
+- module: 21
+  difficulty: easy
+  sea_section: Section I
+  prompt: Priya buys a drink for $5.37 and a snack for $4.40. How much altogether?
+  options:
+  - $0.97
+  - $9.67
+  - $10.77
+  - $9.77
+  correct_index: 3
+  explanation: $5.37 + $4.40 = $9.77.
+- module: 21
+  difficulty: easy
+  sea_section: Section I
+  prompt: Priya buys a drink for $7.40 and a snack for $8.91. How much altogether?
+  options:
+  - $16.21
+  - $1.51
+  - $17.31
+  - $16.31
+  correct_index: 3
+  explanation: $7.40 + $8.91 = $16.31.
+- module: 21
+  difficulty: easy
+  sea_section: Section I
+  prompt: Theo buys a drink for $1.19 and a snack for $8.65. How much altogether?
+  options:
+  - $10.84
+  - $7.46
+  - $9.84
+  - $9.74
+  correct_index: 2
+  explanation: $1.19 + $8.65 = $9.84.
+- module: 21
+  difficulty: easy
+  sea_section: Section I
+  prompt: Theo buys a drink for $7.51 and a snack for $8.16. How much altogether?
+  options:
+  - $16.67
+  - $0.65
+  - $15.67
+  - $15.57
+  correct_index: 2
+  explanation: $7.51 + $8.16 = $15.67.
+- module: 21
   difficulty: medium
   sea_section: Section I
   prompt: $1.25 + $1.25 = ?
@@ -13404,6 +13690,94 @@ questions:
 - module: 21
   difficulty: medium
   sea_section: Section I
+  prompt: Aaliyah buys a drink for $19.04 and a snack for $23.62. How much altogether?
+  options:
+  - $42.66
+  - $43.66
+  - $4.58
+  - $42.56
+  correct_index: 0
+  explanation: $19.04 + $23.62 = $42.66.
+- module: 21
+  difficulty: medium
+  sea_section: Section I
+  prompt: Anya buys a drink for $16.63 and a snack for $21.04. How much altogether?
+  options:
+  - $4.41
+  - $37.67
+  - $37.57
+  - $38.67
+  correct_index: 1
+  explanation: $16.63 + $21.04 = $37.67.
+- module: 21
+  difficulty: medium
+  sea_section: Section I
+  prompt: Josiah buys a drink for $15.57 and a snack for $4.20. How much altogether?
+  options:
+  - $19.67
+  - $11.37
+  - $20.77
+  - $19.77
+  correct_index: 3
+  explanation: $15.57 + $4.20 = $19.77.
+- module: 21
+  difficulty: medium
+  sea_section: Section I
+  prompt: Kiran buys a drink for $1.22 and a snack for $2.07. How much altogether?
+  options:
+  - $3.29
+  - $3.19
+  - $0.85
+  - $4.29
+  correct_index: 0
+  explanation: $1.22 + $2.07 = $3.29.
+- module: 21
+  difficulty: medium
+  sea_section: Section I
+  prompt: Priya buys a drink for $12.81 and a snack for $24.34. How much altogether?
+  options:
+  - $37.05
+  - $38.15
+  - $37.15
+  - $11.53
+  correct_index: 2
+  explanation: $12.81 + $24.34 = $37.15.
+- module: 21
+  difficulty: medium
+  sea_section: Section I
+  prompt: Priya buys a drink for $2.24 and a snack for $24.41. How much altogether?
+  options:
+  - $22.17
+  - $26.65
+  - $26.55
+  - $27.65
+  correct_index: 1
+  explanation: $2.24 + $24.41 = $26.65.
+- module: 21
+  difficulty: medium
+  sea_section: Section I
+  prompt: Rohan buys a drink for $23.53 and a snack for $20.53. How much altogether?
+  options:
+  - $44.06
+  - $3.00
+  - $45.06
+  - $43.96
+  correct_index: 0
+  explanation: $23.53 + $20.53 = $44.06.
+- module: 21
+  difficulty: medium
+  sea_section: Section I
+  prompt: Theo buys a drink for $9.50 and a snack for $3.27. How much altogether?
+  options:
+  - $12.67
+  - $6.23
+  - $12.77
+  - $13.77
+  correct_index: 2
+  explanation: $9.50 + $3.27 = $12.77.
+- module: 21
+  difficulty: medium
+  sea_section: Section I
   prompt: What is the change from $5 for a $3.25 item?
   options:
   - $1.75
@@ -13412,6 +13786,17 @@ questions:
   - $1.85
   correct_index: 0
   explanation: $5.00 - $3.25 = $1.75.
+- module: 21
+  difficulty: medium
+  sea_section: Section I
+  prompt: Zara buys a drink for $2.24 and a snack for $26.72. How much altogether?
+  options:
+  - $28.96
+  - $29.96
+  - $24.48
+  - $28.86
+  correct_index: 0
+  explanation: $2.24 + $26.72 = $28.96.
 - module: 21
   difficulty: hard
   sea_section: Section I
@@ -13525,6 +13910,94 @@ questions:
 - module: 21
   difficulty: hard
   sea_section: Section I
+  prompt: Devon spends $29.77 and $22.97, paying with $58.54. How much change?
+  options:
+  - $5.80
+  - $6.80
+  - $52.74
+  - $5.30
+  correct_index: 0
+  explanation: Total $52.74; change = $58.54 − $52.74 = $5.80.
+- module: 21
+  difficulty: hard
+  sea_section: Section I
+  prompt: Kiran spends $10.48 and $4.89, paying with $17.81. How much change?
+  options:
+  - $15.37
+  - $1.94
+  - $2.44
+  - $3.44
+  correct_index: 2
+  explanation: Total $15.37; change = $17.81 − $15.37 = $2.44.
+- module: 21
+  difficulty: hard
+  sea_section: Section I
+  prompt: Leela spends $16.42 and $7.36, paying with $33.11. How much change?
+  options:
+  - $8.83
+  - $9.33
+  - $10.33
+  - $23.78
+  correct_index: 1
+  explanation: Total $23.78; change = $33.11 − $23.78 = $9.33.
+- module: 21
+  difficulty: hard
+  sea_section: Section I
+  prompt: Maya spends $11.63 and $28.70, paying with $47.37. How much change?
+  options:
+  - $40.33
+  - $8.04
+  - $7.04
+  - $6.54
+  correct_index: 2
+  explanation: Total $40.33; change = $47.37 − $40.33 = $7.04.
+- module: 21
+  difficulty: hard
+  sea_section: Section I
+  prompt: Maya spends $27.44 and $6.30, paying with $35.96. How much change?
+  options:
+  - $2.22
+  - $1.72
+  - $33.74
+  - $3.22
+  correct_index: 0
+  explanation: Total $33.74; change = $35.96 − $33.74 = $2.22.
+- module: 21
+  difficulty: hard
+  sea_section: Section I
+  prompt: Priya spends $11.34 and $29.48, paying with $49.30. How much change?
+  options:
+  - $7.98
+  - $40.82
+  - $9.48
+  - $8.48
+  correct_index: 3
+  explanation: Total $40.82; change = $49.30 − $40.82 = $8.48.
+- module: 21
+  difficulty: hard
+  sea_section: Section I
+  prompt: Rohan spends $14.60 and $21.56, paying with $44.31. How much change?
+  options:
+  - $9.15
+  - $36.16
+  - $7.65
+  - $8.15
+  correct_index: 3
+  explanation: Total $36.16; change = $44.31 − $36.16 = $8.15.
+- module: 21
+  difficulty: hard
+  sea_section: Section I
+  prompt: Theo spends $13.26 and $2.18, paying with $20.29. How much change?
+  options:
+  - $4.85
+  - $4.35
+  - $15.44
+  - $5.85
+  correct_index: 0
+  explanation: Total $15.44; change = $20.29 − $15.44 = $4.85.
+- module: 21
+  difficulty: hard
+  sea_section: Section I
   prompt: What is the change from $20 for a $13.40 item?
   options:
   - $6.60
@@ -13533,6 +14006,17 @@ questions:
   - $6.40
   correct_index: 0
   explanation: $20.00 - $13.40 = $6.60.
+- module: 21
+  difficulty: hard
+  sea_section: Section I
+  prompt: Zara spends $11.16 and $7.10, paying with $24.08. How much change?
+  options:
+  - $5.82
+  - $18.26
+  - $5.32
+  - $6.82
+  correct_index: 0
+  explanation: Total $18.26; change = $24.08 − $18.26 = $5.82.
 - module: 22
   difficulty: easy
   sea_section: Section I
@@ -15637,6 +16121,61 @@ questions:
 - module: 25
   difficulty: easy
   sea_section: Section I
+  prompt: A shopkeeper buys an item for $63.00 and sells it for $82.00. What is the profit?
+  options:
+  - $17.00
+  - $145.00
+  - $19.00
+  - $24.00
+  correct_index: 2
+  explanation: Profit = selling − cost = $82.00 − $63.00 = $19.00.
+- module: 25
+  difficulty: easy
+  sea_section: Section I
+  prompt: A trader buys goods for $57.00 and sells them for $54.00. What is the loss?
+  options:
+  - $8.00
+  - $3.00
+  - $111.00
+  - $4.00
+  correct_index: 1
+  explanation: Loss = cost − selling = $57.00 − $54.00 = $3.00.
+- module: 25
+  difficulty: easy
+  sea_section: Section I
+  prompt: A trader buys goods for $60.00 and sells them for $42.00. What is the loss?
+  options:
+  - $23.00
+  - $19.00
+  - $102.00
+  - $18.00
+  correct_index: 3
+  explanation: Loss = cost − selling = $60.00 − $42.00 = $18.00.
+- module: 25
+  difficulty: easy
+  sea_section: Section I
+  prompt: A trader buys goods for $66.00 and sells them for $9.00. What is the loss?
+  options:
+  - $75.00
+  - $58.00
+  - $62.00
+  - $57.00
+  correct_index: 3
+  explanation: Loss = cost − selling = $66.00 − $9.00 = $57.00.
+- module: 25
+  difficulty: easy
+  sea_section: Section I
+  prompt: A trader buys goods for $85.00 and sells them for $24.00. What is the loss?
+  options:
+  - $109.00
+  - $66.00
+  - $62.00
+  - $61.00
+  correct_index: 3
+  explanation: Loss = cost − selling = $85.00 − $24.00 = $61.00.
+- module: 25
+  difficulty: easy
+  sea_section: Section I
   prompt: Buy $10, sell $18. The profit is?
   options:
   - $8
@@ -15835,6 +16374,50 @@ questions:
 - module: 25
   difficulty: medium
   sea_section: Section I
+  prompt: A trader buys goods for $44.00 and sells them for $15.00. What is the loss?
+  options:
+  - $29.00
+  - $34.00
+  - $59.00
+  - $30.00
+  correct_index: 0
+  explanation: Loss = cost − selling = $44.00 − $15.00 = $29.00.
+- module: 25
+  difficulty: medium
+  sea_section: Section I
+  prompt: A trader buys goods for $53.00 and sells them for $50.00. What is the loss?
+  options:
+  - $4.00
+  - $3.00
+  - $103.00
+  - $8.00
+  correct_index: 1
+  explanation: Loss = cost − selling = $53.00 − $50.00 = $3.00.
+- module: 25
+  difficulty: medium
+  sea_section: Section I
+  prompt: A trader buys goods for $70.00 and sells them for $29.00. What is the loss?
+  options:
+  - $46.00
+  - $42.00
+  - $99.00
+  - $41.00
+  correct_index: 3
+  explanation: Loss = cost − selling = $70.00 − $29.00 = $41.00.
+- module: 25
+  difficulty: medium
+  sea_section: Section I
+  prompt: A trader buys goods for $76.00 and sells them for $6.00. What is the loss?
+  options:
+  - $70.00
+  - $82.00
+  - $71.00
+  - $75.00
+  correct_index: 0
+  explanation: Loss = cost − selling = $76.00 − $6.00 = $70.00.
+- module: 25
+  difficulty: medium
+  sea_section: Section I
   prompt: Buy at $100, sell at $120. The profit is?
   options:
   - $20
@@ -15997,6 +16580,50 @@ questions:
   - $120
   correct_index: 0
   explanation: $60 + $30 = $90.
+- module: 25
+  difficulty: hard
+  sea_section: Section I
+  prompt: A shopkeeper buys an item for $42.00 and sells it for $81.00. What is the profit?
+  options:
+  - $44.00
+  - $123.00
+  - $37.00
+  - $39.00
+  correct_index: 3
+  explanation: Profit = selling − cost = $81.00 − $42.00 = $39.00.
+- module: 25
+  difficulty: hard
+  sea_section: Section I
+  prompt: A trader buys goods for $10.00 and sells them for $5.00. What is the loss?
+  options:
+  - $10.00
+  - $6.00
+  - $15.00
+  - $5.00
+  correct_index: 3
+  explanation: Loss = cost − selling = $10.00 − $5.00 = $5.00.
+- module: 25
+  difficulty: hard
+  sea_section: Section I
+  prompt: A trader buys goods for $18.00 and sells them for $12.00. What is the loss?
+  options:
+  - $7.00
+  - $11.00
+  - $30.00
+  - $6.00
+  correct_index: 3
+  explanation: Loss = cost − selling = $18.00 − $12.00 = $6.00.
+- module: 25
+  difficulty: hard
+  sea_section: Section I
+  prompt: A trader buys goods for $71.00 and sells them for $65.00. What is the loss?
+  options:
+  - $6.00
+  - $7.00
+  - $11.00
+  - $136.00
+  correct_index: 0
+  explanation: Loss = cost − selling = $71.00 − $65.00 = $6.00.
 - module: 25
   difficulty: hard
   sea_section: Section I
@@ -16165,6 +16792,39 @@ questions:
 - module: 26
   difficulty: easy
   sea_section: Section I
+  prompt: If 3 pens cost $12.00, how much do 5 pens cost (same price each)?
+  options:
+  - $17.00
+  - $16.00
+  - $20.00
+  - $24.00
+  correct_index: 2
+  explanation: Each costs $4.00; 5 × $4.00 = $20.00.
+- module: 26
+  difficulty: easy
+  sea_section: Section I
+  prompt: If 3 pens cost $12.00, how much do 6 pens cost (same price each)?
+  options:
+  - $20.00
+  - $24.00
+  - $18.00
+  - $28.00
+  correct_index: 1
+  explanation: Each costs $4.00; 6 × $4.00 = $24.00.
+- module: 26
+  difficulty: easy
+  sea_section: Section I
+  prompt: If 3 pens cost $12.00, how much do 9 pens cost (same price each)?
+  options:
+  - $36.00
+  - $40.00
+  - $21.00
+  - $32.00
+  correct_index: 0
+  explanation: Each costs $4.00; 9 × $4.00 = $36.00.
+- module: 26
+  difficulty: easy
+  sea_section: Section I
   prompt: If 3 pens cost $6, one pen costs?
   options:
   - $2
@@ -16184,6 +16844,28 @@ questions:
   - $80
   correct_index: 0
   explanation: $20 ÷ 4 = $5.
+- module: 26
+  difficulty: easy
+  sea_section: Section I
+  prompt: If 5 pens cost $55.00, how much do 9 pens cost (same price each)?
+  options:
+  - $110.00
+  - $88.00
+  - $99.00
+  - $64.00
+  correct_index: 2
+  explanation: Each costs $11.00; 9 × $11.00 = $99.00.
+- module: 26
+  difficulty: easy
+  sea_section: Section I
+  prompt: If 5 tickets cost $10.00, how much do 3 tickets cost (same price each)?
+  options:
+  - $13.00
+  - $6.00
+  - $8.00
+  - $4.00
+  correct_index: 1
+  explanation: Each costs $2.00; 3 × $2.00 = $6.00.
 - module: 26
   difficulty: easy
   sea_section: Section I
@@ -16297,6 +16979,72 @@ questions:
 - module: 26
   difficulty: medium
   sea_section: Section I
+  prompt: If 2 sweets cost $14.00, how much do 4 sweets cost (same price each)?
+  options:
+  - $21.00
+  - $28.00
+  - $35.00
+  - $18.00
+  correct_index: 1
+  explanation: Each costs $7.00; 4 × $7.00 = $28.00.
+- module: 26
+  difficulty: medium
+  sea_section: Section I
+  prompt: If 2 tickets cost $22.00, how much do 7 tickets cost (same price each)?
+  options:
+  - $29.00
+  - $66.00
+  - $77.00
+  - $88.00
+  correct_index: 2
+  explanation: Each costs $11.00; 7 × $11.00 = $77.00.
+- module: 26
+  difficulty: medium
+  sea_section: Section I
+  prompt: If 3 tickets cost $15.00, how much do 5 tickets cost (same price each)?
+  options:
+  - $30.00
+  - $20.00
+  - $25.00
+  - $25.00·0
+  correct_index: 2
+  explanation: Each costs $5.00; 5 × $5.00 = $25.00.
+- module: 26
+  difficulty: medium
+  sea_section: Section I
+  prompt: If 4 apples cost $16.00, how much do 5 apples cost (same price each)?
+  options:
+  - $20.00
+  - $24.00
+  - $16.00
+  - $21.00
+  correct_index: 0
+  explanation: Each costs $4.00; 5 × $4.00 = $20.00.
+- module: 26
+  difficulty: medium
+  sea_section: Section I
+  prompt: If 4 pens cost $40.00, how much do 8 pens cost (same price each)?
+  options:
+  - $70.00
+  - $48.00
+  - $90.00
+  - $80.00
+  correct_index: 3
+  explanation: Each costs $10.00; 8 × $10.00 = $80.00.
+- module: 26
+  difficulty: medium
+  sea_section: Section I
+  prompt: If 4 sweets cost $12.00, how much do 8 sweets cost (same price each)?
+  options:
+  - $27.00
+  - $20.00
+  - $21.00
+  - $24.00
+  correct_index: 3
+  explanation: Each costs $3.00; 8 × $3.00 = $24.00.
+- module: 26
+  difficulty: medium
+  sea_section: Section I
   prompt: If 5 sweets cost $10, one costs?
   options:
   - $2
@@ -16305,6 +17053,17 @@ questions:
   - $50
   correct_index: 0
   explanation: $10 ÷ 5 = $2.
+- module: 26
+  difficulty: medium
+  sea_section: Section I
+  prompt: If 6 apples cost $60.00, how much do 9 apples cost (same price each)?
+  options:
+  - $100.00
+  - $69.00
+  - $90.00
+  - $80.00
+  correct_index: 2
+  explanation: Each costs $10.00; 9 × $10.00 = $90.00.
 - module: 26
   difficulty: medium
   sea_section: Section I
@@ -16448,6 +17207,61 @@ questions:
   - $15.00
   correct_index: 1
   explanation: '<p>Work out the cost at each rate, then add them.</p><p><strong>Step-by-step working</strong></p><ol><li>Day: 30 &times; $0.50 = $15.00.</li><li>Night: 50 &times; $0.20 = $10.00.</li><li>Total = $25.00.</li></ol><p><strong>Answer:</strong> <strong>$25.00</strong></p>'
+- module: 26
+  difficulty: hard
+  sea_section: Section I
+  prompt: If 2 books cost $4.00, how much do 9 books cost (same price each)?
+  options:
+  - $16.00
+  - $13.00
+  - $18.00
+  - $20.00
+  correct_index: 2
+  explanation: Each costs $2.00; 9 × $2.00 = $18.00.
+- module: 26
+  difficulty: hard
+  sea_section: Section I
+  prompt: If 2 tickets cost $12.00, how much do 9 tickets cost (same price each)?
+  options:
+  - $48.00
+  - $60.00
+  - $54.00
+  - $21.00
+  correct_index: 2
+  explanation: Each costs $6.00; 9 × $6.00 = $54.00.
+- module: 26
+  difficulty: hard
+  sea_section: Section I
+  prompt: If 3 books cost $24.00, how much do 6 books cost (same price each)?
+  options:
+  - $48.00
+  - $30.00
+  - $40.00
+  - $56.00
+  correct_index: 0
+  explanation: Each costs $8.00; 6 × $8.00 = $48.00.
+- module: 26
+  difficulty: hard
+  sea_section: Section I
+  prompt: If 5 pens cost $50.00, how much do 6 pens cost (same price each)?
+  options:
+  - $56.00
+  - $60.00
+  - $50.00
+  - $70.00
+  correct_index: 1
+  explanation: Each costs $10.00; 6 × $10.00 = $60.00.
+- module: 26
+  difficulty: hard
+  sea_section: Section I
+  prompt: If 6 sweets cost $60.00, how much do 7 sweets cost (same price each)?
+  options:
+  - $80.00
+  - $70.00
+  - $60.00
+  - $67.00
+  correct_index: 1
+  explanation: Each costs $10.00; 7 × $10.00 = $70.00.
 - module: 26
   difficulty: hard
   sea_section: Section I
@@ -16682,6 +17496,28 @@ questions:
 - module: 27
   difficulty: easy
   sea_section: Section I
+  prompt: Priya buys 9 boxes with 2 pencils each, then finds 26 more pencils. How many pencils in total?
+  options:
+  - '53'
+  - '18'
+  - '46'
+  - '44'
+  correct_index: 3
+  explanation: 9 × 2 = 18, plus 26 = 44.
+- module: 27
+  difficulty: easy
+  sea_section: Section I
+  prompt: Theo buys 7 boxes with 6 pencils each, then finds 30 more pencils. How many pencils in total?
+  options:
+  - '78'
+  - '72'
+  - '79'
+  - '42'
+  correct_index: 1
+  explanation: 7 × 6 = 42, plus 30 = 72.
+- module: 27
+  difficulty: easy
+  sea_section: Section I
   prompt: You pay $20 for $12 of goods. Your change is?
   options:
   - $8
@@ -16880,6 +17716,17 @@ questions:
 - module: 27
   difficulty: medium
   sea_section: Section I
+  prompt: Marcus buys 3 boxes with 2 pencils each, then finds 19 more pencils. How many pencils in total?
+  options:
+  - '27'
+  - '6'
+  - '25'
+  - '28'
+  correct_index: 2
+  explanation: 3 × 2 = 6, plus 19 = 25.
+- module: 27
+  difficulty: medium
+  sea_section: Section I
   prompt: You pay $100 for $75 of goods. Your change is?
   options:
   - $25
@@ -16899,6 +17746,17 @@ questions:
   - $25
   correct_index: 0
   explanation: $50 - $35 = $15.
+- module: 27
+  difficulty: medium
+  sea_section: Section I
+  prompt: Zara buys 5 boxes with 2 pencils each, then finds 31 more pencils. How many pencils in total?
+  options:
+  - '10'
+  - '46'
+  - '43'
+  - '41'
+  correct_index: 3
+  explanation: 5 × 2 = 10, plus 31 = 41.
 - module: 27
   difficulty: hard
   sea_section: Section I
@@ -17089,6 +17947,28 @@ questions:
 - module: 27
   difficulty: hard
   sea_section: Section I
+  prompt: Devon buys 9 boxes with 6 pencils each, then finds 21 more pencils. How many pencils in total?
+  options:
+  - '84'
+  - '75'
+  - '54'
+  - '81'
+  correct_index: 1
+  explanation: 9 × 6 = 54, plus 21 = 75.
+- module: 27
+  difficulty: hard
+  sea_section: Section I
+  prompt: Theo buys 7 boxes with 4 pencils each, then finds 36 more pencils. How many pencils in total?
+  options:
+  - '64'
+  - '68'
+  - '71'
+  - '28'
+  correct_index: 0
+  explanation: 7 × 4 = 28, plus 36 = 64.
+- module: 27
+  difficulty: hard
+  sea_section: Section I
   prompt: You pay $100 for 4 items at $18 each. Your change is?
   options:
   - $28
@@ -17198,6 +18078,17 @@ questions:
   explanation: <p>Picture folding the flat net along its lines and see which solid forms.</p><p><strong>Step-by-step working</strong></p><ol><li>Counting the faces in the net matches a cube.</li></ol><p><strong>Answer:</strong> <strong>Cube</strong></p>
 - module: 28
   difficulty: easy
+  sea_section: Section I
+  prompt: How many edges does a cone have?
+  options:
+  - '1'
+  - '3'
+  - '2'
+  - '0'
+  correct_index: 0
+  explanation: A cone has 1 edges.
+- module: 28
+  difficulty: easy
   sea_section: Section III
   prompt: How many edges does a cube have?
   options:
@@ -17209,6 +18100,17 @@ questions:
   explanation: A cube has 12 edges.
 - module: 28
   difficulty: easy
+  sea_section: Section I
+  prompt: How many edges does a square-based pyramid have?
+  options:
+  - '8'
+  - '10'
+  - '7'
+  - '9'
+  correct_index: 0
+  explanation: A square-based pyramid has 8 edges.
+- module: 28
+  difficulty: easy
   sea_section: Section III
   prompt: How many faces does a cube have?
   options:
@@ -17218,6 +18120,17 @@ questions:
   - '12'
   correct_index: 0
   explanation: A cube has 6 square faces.
+- module: 28
+  difficulty: easy
+  sea_section: Section I
+  prompt: How many faces does a square-based pyramid have?
+  options:
+  - '6'
+  - '7'
+  - '5'
+  - '4'
+  correct_index: 2
+  explanation: A square-based pyramid has 5 faces.
 - module: 28
   difficulty: easy
   sea_section: Section III
@@ -17251,6 +18164,39 @@ questions:
   - '6'
   correct_index: 0
   explanation: A triangle has 3 sides.
+- module: 28
+  difficulty: easy
+  sea_section: Section I
+  prompt: How many vertices does a cone have?
+  options:
+  - '1'
+  - '3'
+  - '0'
+  - '2'
+  correct_index: 0
+  explanation: A cone has 1 vertices.
+- module: 28
+  difficulty: easy
+  sea_section: Section I
+  prompt: How many vertices does a cylinder have?
+  options:
+  - '1'
+  - '0'
+  - '2'
+  - '-1'
+  correct_index: 1
+  explanation: A cylinder has 0 vertices.
+- module: 28
+  difficulty: easy
+  sea_section: Section I
+  prompt: How many vertices does a square-based pyramid have?
+  options:
+  - '7'
+  - '6'
+  - '4'
+  - '5'
+  correct_index: 3
+  explanation: A square-based pyramid has 5 vertices.
 - module: 28
   difficulty: medium
   sea_section: Section I
@@ -17297,6 +18243,94 @@ questions:
   explanation: Flat, two-dimensional shapes are plane shapes.
 - module: 28
   difficulty: medium
+  sea_section: Section I
+  prompt: How many edges does a cuboid have?
+  options:
+  - '11'
+  - '14'
+  - '13'
+  - '12'
+  correct_index: 3
+  explanation: A cuboid has 12 edges.
+- module: 28
+  difficulty: medium
+  sea_section: Section I
+  prompt: How many edges does a cylinder have?
+  options:
+  - '1'
+  - '3'
+  - '4'
+  - '2'
+  correct_index: 3
+  explanation: A cylinder has 2 edges.
+- module: 28
+  difficulty: medium
+  sea_section: Section I
+  prompt: How many edges does a hexagonal prism have?
+  options:
+  - '18'
+  - '19'
+  - '17'
+  - '20'
+  correct_index: 0
+  explanation: A hexagonal prism has 18 edges.
+- module: 28
+  difficulty: medium
+  sea_section: Section I
+  prompt: How many edges does a triangular prism have?
+  options:
+  - '10'
+  - '8'
+  - '11'
+  - '9'
+  correct_index: 3
+  explanation: A triangular prism has 9 edges.
+- module: 28
+  difficulty: medium
+  sea_section: Section I
+  prompt: How many faces does a cone have?
+  options:
+  - '1'
+  - '3'
+  - '4'
+  - '2'
+  correct_index: 3
+  explanation: A cone has 2 faces.
+- module: 28
+  difficulty: medium
+  sea_section: Section I
+  prompt: How many faces does a cuboid have?
+  options:
+  - '8'
+  - '6'
+  - '7'
+  - '5'
+  correct_index: 1
+  explanation: A cuboid has 6 faces.
+- module: 28
+  difficulty: medium
+  sea_section: Section I
+  prompt: How many faces does a cylinder have?
+  options:
+  - '5'
+  - '3'
+  - '2'
+  - '4'
+  correct_index: 1
+  explanation: A cylinder has 3 faces.
+- module: 28
+  difficulty: medium
+  sea_section: Section I
+  prompt: How many faces does a triangular prism have?
+  options:
+  - '4'
+  - '5'
+  - '7'
+  - '6'
+  correct_index: 1
+  explanation: A triangular prism has 5 faces.
+- module: 28
+  difficulty: medium
   sea_section: Section III
   prompt: How many sides does a hexagon have?
   options:
@@ -17330,6 +18364,50 @@ questions:
   explanation: A cube has 8 vertices.
 - module: 28
   difficulty: medium
+  sea_section: Section I
+  prompt: How many vertices does a cube have?
+  options:
+  - '8'
+  - '9'
+  - '10'
+  - '7'
+  correct_index: 0
+  explanation: A cube has 8 vertices.
+- module: 28
+  difficulty: medium
+  sea_section: Section I
+  prompt: How many vertices does a cuboid have?
+  options:
+  - '7'
+  - '8'
+  - '9'
+  - '10'
+  correct_index: 1
+  explanation: A cuboid has 8 vertices.
+- module: 28
+  difficulty: medium
+  sea_section: Section I
+  prompt: How many vertices does a pentagonal pyramid have?
+  options:
+  - '7'
+  - '6'
+  - '5'
+  - '8'
+  correct_index: 1
+  explanation: A pentagonal pyramid has 6 vertices.
+- module: 28
+  difficulty: medium
+  sea_section: Section I
+  prompt: How many vertices does a triangular prism have?
+  options:
+  - '6'
+  - '7'
+  - '5'
+  - '8'
+  correct_index: 0
+  explanation: A triangular prism has 6 vertices.
+- module: 28
+  difficulty: medium
   sea_section: Section III
   prompt: The flat surfaces of a solid are called?
   options:
@@ -17350,6 +18428,28 @@ questions:
   - '7'
   correct_index: 2
   explanation: <p>Count the faces of the triangular prism carefully.</p><p><strong>Step-by-step working</strong></p><ol><li>A triangular prism has 5 faces, 9 edges and 6 vertices.</li><li>So it has 5 faces.</li></ol><p><strong>Answer:</strong> <strong>5</strong></p>
+- module: 28
+  difficulty: hard
+  sea_section: Section I
+  prompt: A pentagonal prism has 7 faces and 10 vertices. How many edges does it have?
+  options:
+  - '16'
+  - '17'
+  - '15'
+  - '14'
+  correct_index: 2
+  explanation: By Euler's rule F + V − E = 2, so E = 7 + 10 − 2 = 15.
+- module: 28
+  difficulty: hard
+  sea_section: Section I
+  prompt: A rectangular prism has 6 faces and 8 vertices. How many edges does it have?
+  options:
+  - '14'
+  - '11'
+  - '13'
+  - '12'
+  correct_index: 3
+  explanation: By Euler's rule F + V − E = 2, so E = 6 + 8 − 2 = 12.
 - module: 28
   difficulty: hard
   sea_section: Section III
@@ -17374,6 +18474,17 @@ questions:
   explanation: A cube has 6 square faces.
 - module: 28
   difficulty: hard
+  sea_section: Section I
+  prompt: A square-based pyramid has 5 faces and 5 vertices. How many edges does it have?
+  options:
+  - '8'
+  - '9'
+  - '10'
+  - '7'
+  correct_index: 0
+  explanation: By Euler's rule F + V − E = 2, so E = 5 + 5 − 2 = 8.
+- module: 28
+  difficulty: hard
   sea_section: Section III
   prompt: How many corners does a triangle have?
   options:
@@ -17385,6 +18496,105 @@ questions:
   explanation: A triangle has 3 corners.
 - module: 28
   difficulty: hard
+  sea_section: Section I
+  prompt: How many edges does a cube have?
+  options:
+  - '13'
+  - '12'
+  - '11'
+  - '14'
+  correct_index: 1
+  explanation: A cube has 12 edges.
+- module: 28
+  difficulty: hard
+  sea_section: Section I
+  prompt: How many edges does a hexagonal pyramid have?
+  options:
+  - '14'
+  - '12'
+  - '13'
+  - '11'
+  correct_index: 1
+  explanation: A hexagonal pyramid has 12 edges.
+- module: 28
+  difficulty: hard
+  sea_section: Section I
+  prompt: How many edges does a octagonal prism have?
+  options:
+  - '24'
+  - '23'
+  - '26'
+  - '25'
+  correct_index: 0
+  explanation: A octagonal prism has 24 edges.
+- module: 28
+  difficulty: hard
+  sea_section: Section I
+  prompt: How many edges does a pentagonal prism have?
+  options:
+  - '14'
+  - '16'
+  - '17'
+  - '15'
+  correct_index: 3
+  explanation: A pentagonal prism has 15 edges.
+- module: 28
+  difficulty: hard
+  sea_section: Section I
+  prompt: How many faces does a hexagonal prism have?
+  options:
+  - '10'
+  - '7'
+  - '9'
+  - '8'
+  correct_index: 3
+  explanation: A hexagonal prism has 8 faces.
+- module: 28
+  difficulty: hard
+  sea_section: Section I
+  prompt: How many faces does a pentagonal prism have?
+  options:
+  - '9'
+  - '7'
+  - '6'
+  - '8'
+  correct_index: 1
+  explanation: A pentagonal prism has 7 faces.
+- module: 28
+  difficulty: hard
+  sea_section: Section I
+  prompt: How many faces does a triangular pyramid have?
+  options:
+  - '3'
+  - '4'
+  - '6'
+  - '5'
+  correct_index: 1
+  explanation: A triangular pyramid has 4 faces.
+- module: 28
+  difficulty: hard
+  sea_section: Section I
+  prompt: How many more edges than vertices does a rectangular prism have?
+  options:
+  - '20'
+  - '3'
+  - '5'
+  - '4'
+  correct_index: 3
+  explanation: 12 edges − 8 vertices = 4.
+- module: 28
+  difficulty: hard
+  sea_section: Section I
+  prompt: How many more edges than vertices does a square-based pyramid have?
+  options:
+  - '4'
+  - '3'
+  - '2'
+  - '13'
+  correct_index: 1
+  explanation: 8 edges − 5 vertices = 3.
+- module: 28
+  difficulty: hard
   sea_section: Section III
   prompt: How many sides does an octagon have?
   options:
@@ -17394,6 +18604,28 @@ questions:
   - '10'
   correct_index: 0
   explanation: An octagon has 8 sides.
+- module: 28
+  difficulty: hard
+  sea_section: Section I
+  prompt: How many vertices does a hexagonal prism have?
+  options:
+  - '11'
+  - '14'
+  - '12'
+  - '13'
+  correct_index: 2
+  explanation: A hexagonal prism has 12 vertices.
+- module: 28
+  difficulty: hard
+  sea_section: Section I
+  prompt: How many vertices does a pentagonal prism have?
+  options:
+  - '9'
+  - '10'
+  - '11'
+  - '12'
+  correct_index: 1
+  explanation: A pentagonal prism has 10 vertices.
 - module: 28
   difficulty: hard
   sea_section: Section III
@@ -17495,6 +18727,28 @@ questions:
   explanation: <p>Match the described properties to the correct shape.</p><p><strong>Step-by-step working</strong></p><ol><li>A shape with opposite sides equal and 4 right angles is a rectangle.</li></ol><p><strong>Answer:</strong> <strong>Rectangle</strong></p>
 - module: 29
   difficulty: easy
+  sea_section: Section I
+  prompt: A polygon with 4 equal sides and 4 equal angles is a?
+  options:
+  - rhombus
+  - kite
+  - rectangle
+  - square
+  correct_index: 3
+  explanation: By definition, the answer is square.
+- module: 29
+  difficulty: easy
+  sea_section: Section I
+  prompt: A regular hexagon has how many equal sides?
+  options:
+  - '6'
+  - '5'
+  - '8'
+  - '4'
+  correct_index: 0
+  explanation: By definition, the answer is 6.
+- module: 29
+  difficulty: easy
   sea_section: Section III
   prompt: A shape with 4 equal sides and 4 right angles is a?
   options:
@@ -17528,6 +18782,28 @@ questions:
   explanation: Isosceles means two equal sides.
 - module: 29
   difficulty: easy
+  sea_section: Section I
+  prompt: A triangle with one 90° angle is called?
+  options:
+  - equilateral triangle
+  - right triangle
+  - acute triangle
+  - isosceles triangle
+  correct_index: 1
+  explanation: By definition, the answer is right triangle.
+- module: 29
+  difficulty: easy
+  sea_section: Section I
+  prompt: A triangle with two equal sides is called?
+  options:
+  - scalene triangle
+  - equilateral triangle
+  - isosceles triangle
+  - right triangle
+  correct_index: 2
+  explanation: By definition, the answer is isosceles triangle.
+- module: 29
+  difficulty: easy
   sea_section: Section III
   prompt: How many sides does a quadrilateral have?
   options:
@@ -17548,6 +18824,39 @@ questions:
   - '2'
   correct_index: 0
   explanation: Every triangle has 3 sides.
+- module: 29
+  difficulty: easy
+  sea_section: Section I
+  prompt: How many vertices (corners) does a triangle have?
+  options:
+  - '2'
+  - '4'
+  - '3'
+  - '5'
+  correct_index: 2
+  explanation: By definition, the answer is 3.
+- module: 29
+  difficulty: easy
+  sea_section: Section I
+  prompt: The sum of the angles in a quadrilateral is?
+  options:
+  - 540°
+  - 270°
+  - 180°
+  - 360°
+  correct_index: 3
+  explanation: By definition, the answer is 360°.
+- module: 29
+  difficulty: easy
+  sea_section: Section I
+  prompt: The sum of the angles in a triangle is?
+  options:
+  - 360°
+  - 270°
+  - 180°
+  - 90°
+  correct_index: 2
+  explanation: By definition, the answer is 180°.
 - module: 29
   difficulty: medium
   sea_section: Section I
@@ -17594,6 +18903,72 @@ questions:
   explanation: <p>Match the described properties to the correct shape.</p><p><strong>Step-by-step working</strong></p><ol><li>A shape with 4 equal sides and 4 right angles is a square.</li></ol><p><strong>Answer:</strong> <strong>Square</strong></p>
 - module: 29
   difficulty: medium
+  sea_section: Section I
+  prompt: A closed shape made of straight sides is called a?
+  options:
+  - arc
+  - polygon
+  - curve
+  - circle
+  correct_index: 1
+  explanation: By definition, the answer is polygon.
+- module: 29
+  difficulty: medium
+  sea_section: Section I
+  prompt: A four-sided shape is called a?
+  options:
+  - pentagon
+  - quadrilateral
+  - hexagon
+  - triangle
+  correct_index: 1
+  explanation: By definition, the answer is quadrilateral.
+- module: 29
+  difficulty: medium
+  sea_section: Section I
+  prompt: A parallelogram has how many pairs of parallel sides?
+  options:
+  - '0'
+  - '2'
+  - '1'
+  - '3'
+  correct_index: 1
+  explanation: By definition, the answer is 2.
+- module: 29
+  difficulty: medium
+  sea_section: Section I
+  prompt: A quadrilateral with exactly one pair of parallel sides is a?
+  options:
+  - rhombus
+  - square
+  - parallelogram
+  - trapezium
+  correct_index: 3
+  explanation: By definition, the answer is trapezium.
+- module: 29
+  difficulty: medium
+  sea_section: Section I
+  prompt: A quadrilateral with four equal sides and four right angles is a?
+  options:
+  - rectangle
+  - rhombus
+  - trapezium
+  - square
+  correct_index: 3
+  explanation: By definition, the answer is square.
+- module: 29
+  difficulty: medium
+  sea_section: Section I
+  prompt: A quadrilateral with four equal sides but no right angles is a?
+  options:
+  - rectangle
+  - rhombus
+  - square
+  - trapezium
+  correct_index: 1
+  explanation: By definition, the answer is rhombus.
+- module: 29
+  difficulty: medium
   sea_section: Section III
   prompt: A quadrilateral with opposite sides equal and 4 right angles is a?
   options:
@@ -17603,6 +18978,50 @@ questions:
   - circle
   correct_index: 0
   explanation: A rectangle has opposite sides equal and 4 right angles.
+- module: 29
+  difficulty: medium
+  sea_section: Section I
+  prompt: A quadrilateral with opposite sides equal and four right angles is a?
+  options:
+  - kite
+  - rhombus
+  - rectangle
+  - square
+  correct_index: 2
+  explanation: By definition, the answer is rectangle.
+- module: 29
+  difficulty: medium
+  sea_section: Section I
+  prompt: A shape with 3 sides is a?
+  options:
+  - pentagon
+  - triangle
+  - square
+  - hexagon
+  correct_index: 1
+  explanation: By definition, the answer is triangle.
+- module: 29
+  difficulty: medium
+  sea_section: Section I
+  prompt: A triangle with all three sides equal is called?
+  options:
+  - equilateral triangle
+  - isosceles triangle
+  - scalene triangle
+  - right triangle
+  correct_index: 0
+  explanation: By definition, the answer is equilateral triangle.
+- module: 29
+  difficulty: medium
+  sea_section: Section I
+  prompt: A triangle with no equal sides is called?
+  options:
+  - isosceles triangle
+  - right triangle
+  - equilateral triangle
+  - scalene triangle
+  correct_index: 3
+  explanation: By definition, the answer is scalene triangle.
 - module: 29
   difficulty: medium
   sea_section: Section III
@@ -17636,6 +19055,17 @@ questions:
   - '1'
   correct_index: 0
   explanation: A rectangle has 4 right angles.
+- module: 29
+  difficulty: medium
+  sea_section: Section I
+  prompt: How many sides does a pentagon have?
+  options:
+  - '6'
+  - '7'
+  - '4'
+  - '5'
+  correct_index: 3
+  explanation: By definition, the answer is 5.
 - module: 29
   difficulty: medium
   sea_section: Section III
@@ -17726,6 +19156,127 @@ questions:
   explanation: A square is a rectangle with all sides equal.
 - module: 29
   difficulty: hard
+  sea_section: Section I
+  prompt: A triangle has angles 110°, 41° and 29°. What type is it (by its angles)?
+  options:
+  - acute-angled triangle
+  - right-angled triangle
+  - obtuse-angled triangle~0
+  - obtuse-angled triangle
+  correct_index: 3
+  explanation: Its largest angle is 110°, so it is an obtuse-angled triangle.
+- module: 29
+  difficulty: hard
+  sea_section: Section I
+  prompt: A triangle has angles 110°, 45° and 25°. What type is it (by its angles)?
+  options:
+  - acute-angled triangle
+  - obtuse-angled triangle
+  - right-angled triangle
+  - obtuse-angled triangle~0
+  correct_index: 1
+  explanation: Its largest angle is 110°, so it is an obtuse-angled triangle.
+- module: 29
+  difficulty: hard
+  sea_section: Section I
+  prompt: A triangle has angles 60°, 60° and 60°. What type is it (by its angles)?
+  options:
+  - obtuse-angled triangle
+  - acute-angled triangle
+  - acute-angled triangle~0
+  - right-angled triangle
+  correct_index: 1
+  explanation: Its largest angle is 60°, so it is an acute-angled triangle.
+- module: 29
+  difficulty: hard
+  sea_section: Section I
+  prompt: A triangle has angles 70°, 60° and 50°. What type is it (by its angles)?
+  options:
+  - acute-angled triangle
+  - acute-angled triangle~0
+  - right-angled triangle
+  - obtuse-angled triangle
+  correct_index: 0
+  explanation: Its largest angle is 70°, so it is an acute-angled triangle.
+- module: 29
+  difficulty: hard
+  sea_section: Section I
+  prompt: A triangle has angles 90°, 20° and 70°. What type is it (by its angles)?
+  options:
+  - right-angled triangle~0
+  - obtuse-angled triangle
+  - right-angled triangle
+  - acute-angled triangle
+  correct_index: 2
+  explanation: Its largest angle is 90°, so it is an right-angled triangle.
+- module: 29
+  difficulty: hard
+  sea_section: Section I
+  prompt: A triangle has angles 90°, 25° and 65°. What type is it (by its angles)?
+  options:
+  - acute-angled triangle
+  - obtuse-angled triangle
+  - right-angled triangle
+  - right-angled triangle~0
+  correct_index: 2
+  explanation: Its largest angle is 90°, so it is an right-angled triangle.
+- module: 29
+  difficulty: hard
+  sea_section: Section I
+  prompt: A triangle has sides 5 cm, 9 cm and 4 cm. What type is it (by its sides)?
+  options:
+  - scalene triangle
+  - equilateral triangle
+  - scalene triangle~0
+  - isosceles triangle
+  correct_index: 0
+  explanation: By its side lengths it is a scalene triangle.
+- module: 29
+  difficulty: hard
+  sea_section: Section I
+  prompt: A triangle has sides 6 cm, 6 cm and 6 cm. What type is it (by its sides)?
+  options:
+  - equilateral triangle
+  - isosceles triangle
+  - equilateral triangle~0
+  - scalene triangle
+  correct_index: 0
+  explanation: By its side lengths it is a equilateral triangle.
+- module: 29
+  difficulty: hard
+  sea_section: Section I
+  prompt: A triangle has sides 8 cm, 8 cm and 5 cm. What type is it (by its sides)?
+  options:
+  - scalene triangle
+  - equilateral triangle
+  - isosceles triangle
+  - isosceles triangle~0
+  correct_index: 2
+  explanation: By its side lengths it is a isosceles triangle.
+- module: 29
+  difficulty: hard
+  sea_section: Section I
+  prompt: A triangle has sides 8 cm, 8 cm and 6 cm. What type is it (by its sides)?
+  options:
+  - scalene triangle
+  - equilateral triangle
+  - isosceles triangle
+  - isosceles triangle~0
+  correct_index: 2
+  explanation: By its side lengths it is a isosceles triangle.
+- module: 29
+  difficulty: hard
+  sea_section: Section I
+  prompt: A triangle has sides 9 cm, 9 cm and 4 cm. What type is it (by its sides)?
+  options:
+  - equilateral triangle
+  - scalene triangle
+  - isosceles triangle~0
+  - isosceles triangle
+  correct_index: 3
+  explanation: By its side lengths it is a isosceles triangle.
+- module: 29
+  difficulty: hard
   sea_section: Section III
   prompt: An isosceles triangle has how many equal sides?
   options:
@@ -17803,6 +19354,61 @@ questions:
   explanation: It is called a line of symmetry.
 - module: 30
   difficulty: easy
+  sea_section: Section I
+  prompt: A shape that looks the same on both sides of a line has what kind of symmetry?
+  options:
+  - curved symmetry
+  - rotational only
+  - no symmetry
+  - line symmetry
+  correct_index: 3
+  explanation: The answer is line symmetry.
+- module: 30
+  difficulty: easy
+  sea_section: Section I
+  prompt: How many lines of symmetry does a circle have?
+  options:
+  - '4'
+  - infinitely many
+  - '2'
+  - '1'
+  correct_index: 1
+  explanation: The answer is infinitely many.
+- module: 30
+  difficulty: easy
+  sea_section: Section I
+  prompt: How many lines of symmetry does a kite have?
+  options:
+  - '4'
+  - '0'
+  - '2'
+  - '1'
+  correct_index: 3
+  explanation: The answer is 1.
+- module: 30
+  difficulty: easy
+  sea_section: Section I
+  prompt: How many lines of symmetry does a parallelogram (not rhombus/rectangle) have?
+  options:
+  - '2'
+  - '4'
+  - '1'
+  - '0'
+  correct_index: 3
+  explanation: The answer is 0.
+- module: 30
+  difficulty: easy
+  sea_section: Section I
+  prompt: How many lines of symmetry does a rectangle (not a square) have?
+  options:
+  - '0'
+  - '4'
+  - '1'
+  - '2'
+  correct_index: 3
+  explanation: The answer is 2.
+- module: 30
+  difficulty: easy
   sea_section: Section III
   prompt: How many lines of symmetry does a rectangle have?
   options:
@@ -17812,6 +19418,17 @@ questions:
   - '0'
   correct_index: 0
   explanation: A rectangle has 2 lines of symmetry.
+- module: 30
+  difficulty: easy
+  sea_section: Section I
+  prompt: How many lines of symmetry does a regular octagon have?
+  options:
+  - '8'
+  - '4'
+  - '2'
+  - '6'
+  correct_index: 0
+  explanation: The answer is 8.
 - module: 30
   difficulty: easy
   sea_section: Section III
@@ -17834,6 +19451,61 @@ questions:
   - '4'
   correct_index: 0
   explanation: An equilateral triangle has 3 lines of symmetry.
+- module: 30
+  difficulty: easy
+  sea_section: Section I
+  prompt: How many lines of symmetry does an equilateral triangle's shape share with its sides?
+  options:
+  - '3'
+  - '0'
+  - '2'
+  - '1'
+  correct_index: 0
+  explanation: The answer is 3.
+- module: 30
+  difficulty: easy
+  sea_section: Section I
+  prompt: How many lines of symmetry does an isosceles triangle have?
+  options:
+  - '3'
+  - '0'
+  - '1'
+  - '2'
+  correct_index: 2
+  explanation: The answer is 1.
+- module: 30
+  difficulty: easy
+  sea_section: Section I
+  prompt: How many lines of symmetry does the letter O have?
+  options:
+  - '1'
+  - '2'
+  - '0'
+  - '4'
+  correct_index: 1
+  explanation: The answer is 2.
+- module: 30
+  difficulty: easy
+  sea_section: Section I
+  prompt: How many lines of symmetry does the letter T have?
+  options:
+  - '0'
+  - '2'
+  - '1'
+  - '3'
+  correct_index: 2
+  explanation: The answer is 1.
+- module: 30
+  difficulty: easy
+  sea_section: Section I
+  prompt: How many lines of symmetry does the letter X have?
+  options:
+  - '4'
+  - '0'
+  - '2'
+  - '1'
+  correct_index: 2
+  explanation: The answer is 2.
 - module: 30
   difficulty: easy
   sea_section: Section III
@@ -17880,6 +19552,61 @@ questions:
   explanation: They match exactly.
 - module: 30
   difficulty: medium
+  sea_section: Section I
+  prompt: How many lines of symmetry does a equilateral triangle have?
+  options:
+  - '3'
+  - '4'
+  - '5'
+  - '2'
+  correct_index: 0
+  explanation: A regular 3-sided shape has 3 lines of symmetry.
+- module: 30
+  difficulty: medium
+  sea_section: Section I
+  prompt: How many lines of symmetry does a parallelogram have?
+  options:
+  - '2'
+  - '3'
+  - '0'
+  - '1'
+  correct_index: 2
+  explanation: A parallelogram has 0 line(s) of symmetry.
+- module: 30
+  difficulty: medium
+  sea_section: Section I
+  prompt: How many lines of symmetry does a regular 12-sided polygon have?
+  options:
+  - '12'
+  - '11'
+  - '14'
+  - '13'
+  correct_index: 0
+  explanation: A regular 12-sided shape has 12 lines of symmetry.
+- module: 30
+  difficulty: medium
+  sea_section: Section I
+  prompt: How many lines of symmetry does a regular decagon have?
+  options:
+  - '10'
+  - '9'
+  - '12'
+  - '11'
+  correct_index: 0
+  explanation: A regular 10-sided shape has 10 lines of symmetry.
+- module: 30
+  difficulty: medium
+  sea_section: Section I
+  prompt: How many lines of symmetry does a regular heptagon have?
+  options:
+  - '9'
+  - '7'
+  - '8'
+  - '6'
+  correct_index: 1
+  explanation: A regular 7-sided shape has 7 lines of symmetry.
+- module: 30
+  difficulty: medium
   sea_section: Section III
   prompt: How many lines of symmetry does a regular hexagon have?
   options:
@@ -17891,6 +19618,83 @@ questions:
   explanation: A regular hexagon has 6 lines of symmetry.
 - module: 30
   difficulty: medium
+  sea_section: Section I
+  prompt: How many lines of symmetry does a regular nonagon have?
+  options:
+  - '10'
+  - '11'
+  - '9'
+  - '8'
+  correct_index: 2
+  explanation: A regular 9-sided shape has 9 lines of symmetry.
+- module: 30
+  difficulty: medium
+  sea_section: Section I
+  prompt: How many lines of symmetry does a rhombus have?
+  options:
+  - '0'
+  - '4'
+  - '2'
+  - '1'
+  correct_index: 2
+  explanation: The answer is 2.
+- module: 30
+  difficulty: medium
+  sea_section: Section I
+  prompt: How many lines of symmetry does a semicircle have?
+  options:
+  - infinitely many
+  - '1'
+  - '2'
+  - '0'
+  correct_index: 1
+  explanation: The answer is 1.
+- module: 30
+  difficulty: medium
+  sea_section: Section I
+  prompt: How many lines of symmetry does the capital letter H have?
+  options:
+  - '2'
+  - '1'
+  - '4'
+  - '3'
+  correct_index: 0
+  explanation: The letter H has 2 line(s) of symmetry.
+- module: 30
+  difficulty: medium
+  sea_section: Section I
+  prompt: How many lines of symmetry does the capital letter I have?
+  options:
+  - '1'
+  - '3'
+  - '2'
+  - '4'
+  correct_index: 2
+  explanation: The letter I has 2 line(s) of symmetry.
+- module: 30
+  difficulty: medium
+  sea_section: Section I
+  prompt: How many lines of symmetry does the capital letter T have?
+  options:
+  - '1'
+  - '2'
+  - '3'
+  - '0'
+  correct_index: 0
+  explanation: The letter T has 1 line(s) of symmetry.
+- module: 30
+  difficulty: medium
+  sea_section: Section I
+  prompt: How many lines of symmetry does the capital letter V have?
+  options:
+  - '2'
+  - '0'
+  - '3'
+  - '1'
+  correct_index: 3
+  explanation: The letter V has 1 line(s) of symmetry.
+- module: 30
+  difficulty: medium
   sea_section: Section III
   prompt: How many lines of symmetry does the letter A have?
   options:
@@ -17900,6 +19704,28 @@ questions:
   - '3'
   correct_index: 0
   explanation: The letter A has 1 vertical line of symmetry.
+- module: 30
+  difficulty: medium
+  sea_section: Section I
+  prompt: How many lines of symmetry does the letter M have?
+  options:
+  - '2'
+  - '1'
+  - '0'
+  - '3'
+  correct_index: 1
+  explanation: The answer is 1.
+- module: 30
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is the order of rotational symmetry of a regular octagon?
+  options:
+  - '8'
+  - '9'
+  - '2'
+  - '7'
+  correct_index: 0
+  explanation: A regular 8-gon has rotational symmetry of order 8.
 - module: 30
   difficulty: medium
   sea_section: Section III
@@ -17935,6 +19761,28 @@ questions:
   explanation: Such a rectangle has 2 lines of symmetry.
 - module: 30
   difficulty: hard
+  sea_section: Section I
+  prompt: How many lines of symmetry does a isosceles triangle have?
+  options:
+  - '3'
+  - '2'
+  - '1'
+  - '0'
+  correct_index: 2
+  explanation: A isosceles triangle has 1 line(s) of symmetry.
+- module: 30
+  difficulty: hard
+  sea_section: Section I
+  prompt: How many lines of symmetry does a regular dodecagon have?
+  options:
+  - '14'
+  - '13'
+  - '11'
+  - '12'
+  correct_index: 3
+  explanation: A regular 12-sided shape has 12 lines of symmetry.
+- module: 30
+  difficulty: hard
   sea_section: Section III
   prompt: How many lines of symmetry does a regular pentagon have?
   options:
@@ -17957,6 +19805,72 @@ questions:
   explanation: A scalene triangle has no lines of symmetry.
 - module: 30
   difficulty: hard
+  sea_section: Section I
+  prompt: How many lines of symmetry does the capital letter A have?
+  options:
+  - '1'
+  - '2'
+  - '0'
+  - '3'
+  correct_index: 0
+  explanation: The letter A has 1 line(s) of symmetry.
+- module: 30
+  difficulty: hard
+  sea_section: Section I
+  prompt: How many lines of symmetry does the capital letter C have?
+  options:
+  - '1'
+  - '3'
+  - '0'
+  - '2'
+  correct_index: 0
+  explanation: The letter C has 1 line(s) of symmetry.
+- module: 30
+  difficulty: hard
+  sea_section: Section I
+  prompt: How many lines of symmetry does the capital letter D have?
+  options:
+  - '1'
+  - '2'
+  - '0'
+  - '3'
+  correct_index: 0
+  explanation: The letter D has 1 line(s) of symmetry.
+- module: 30
+  difficulty: hard
+  sea_section: Section I
+  prompt: How many lines of symmetry does the capital letter E have?
+  options:
+  - '2'
+  - '3'
+  - '1'
+  - '0'
+  correct_index: 2
+  explanation: The letter E has 1 line(s) of symmetry.
+- module: 30
+  difficulty: hard
+  sea_section: Section I
+  prompt: How many lines of symmetry does the capital letter X have?
+  options:
+  - '2'
+  - '4'
+  - '1'
+  - '3'
+  correct_index: 0
+  explanation: The letter X has 2 line(s) of symmetry.
+- module: 30
+  difficulty: hard
+  sea_section: Section I
+  prompt: How many lines of symmetry does the capital letter Y have?
+  options:
+  - '1'
+  - '3'
+  - '2'
+  - '0'
+  correct_index: 0
+  explanation: The letter Y has 1 line(s) of symmetry.
+- module: 30
+  difficulty: hard
   sea_section: Section III
   prompt: How many lines of symmetry does the letter H have?
   options:
@@ -17977,6 +19891,72 @@ questions:
   - '3'
   correct_index: 0
   explanation: The letter S has no lines of symmetry.
+- module: 30
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is the order of rotational symmetry of a equilateral triangle?
+  options:
+  - '4'
+  - '3'
+  - '1'
+  - '2'
+  correct_index: 1
+  explanation: A regular 3-gon has rotational symmetry of order 3.
+- module: 30
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is the order of rotational symmetry of a regular decagon?
+  options:
+  - '10'
+  - '11'
+  - '9'
+  - '2'
+  correct_index: 0
+  explanation: A regular 10-gon has rotational symmetry of order 10.
+- module: 30
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is the order of rotational symmetry of a regular dodecagon?
+  options:
+  - '11'
+  - '12'
+  - '2'
+  - '13'
+  correct_index: 1
+  explanation: A regular 12-gon has rotational symmetry of order 12.
+- module: 30
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is the order of rotational symmetry of a regular nonagon?
+  options:
+  - '10'
+  - '2'
+  - '8'
+  - '9'
+  correct_index: 3
+  explanation: A regular 9-gon has rotational symmetry of order 9.
+- module: 30
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is the order of rotational symmetry of a regular pentagon?
+  options:
+  - '2'
+  - '6'
+  - '5'
+  - '4'
+  correct_index: 2
+  explanation: A regular 5-gon has rotational symmetry of order 5.
+- module: 30
+  difficulty: hard
+  sea_section: Section I
+  prompt: What is the order of rotational symmetry of a square?
+  options:
+  - '3'
+  - '4'
+  - '5'
+  - '2'
+  correct_index: 1
+  explanation: A regular 4-gon has rotational symmetry of order 4.
 - module: 31
   difficulty: easy
   sea_section: Section I
@@ -18693,6 +20673,171 @@ questions:
   correct_index: 0
   explanation: The unit triangle-square repeats, so a square comes next.
 - module: 32
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: circle, diamond, circle, diamond, circle, diamond, ___?'
+  options:
+  - square
+  - triangle
+  - star
+  - circle
+  correct_index: 3
+  explanation: The repeating unit is circle, diamond, so next is circle.
+- module: 32
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: circle, star, circle, star, circle, star, ___?'
+  options:
+  - star
+  - circle
+  - triangle
+  - square
+  correct_index: 1
+  explanation: The repeating unit is circle, star, so next is circle.
+- module: 32
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: diamond, circle, diamond, circle, diamond, circle, ___?'
+  options:
+  - triangle
+  - circle
+  - diamond
+  - square
+  correct_index: 2
+  explanation: The repeating unit is diamond, circle, so next is diamond.
+- module: 32
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: diamond, heart, diamond, heart, diamond, heart, ___?'
+  options:
+  - square
+  - triangle
+  - diamond
+  - circle
+  correct_index: 2
+  explanation: The repeating unit is diamond, heart, so next is diamond.
+- module: 32
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: diamond, square, diamond, square, diamond, square, ___?'
+  options:
+  - diamond
+  - triangle
+  - square
+  - circle
+  correct_index: 0
+  explanation: The repeating unit is diamond, square, so next is diamond.
+- module: 32
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: diamond, triangle, diamond, triangle, diamond, triangle, ___?'
+  options:
+  - circle
+  - diamond
+  - square
+  - triangle
+  correct_index: 1
+  explanation: The repeating unit is diamond, triangle, so next is diamond.
+- module: 32
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: heart, circle, heart, circle, heart, circle, ___?'
+  options:
+  - square
+  - triangle
+  - heart
+  - circle
+  correct_index: 2
+  explanation: The repeating unit is heart, circle, so next is heart.
+- module: 32
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: heart, triangle, heart, triangle, heart, triangle, ___?'
+  options:
+  - heart
+  - square
+  - circle
+  - triangle
+  correct_index: 0
+  explanation: The repeating unit is heart, triangle, so next is heart.
+- module: 32
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: square, circle, square, circle, square, circle, ___?'
+  options:
+  - triangle
+  - star
+  - circle
+  - square
+  correct_index: 3
+  explanation: The repeating unit is square, circle, so next is square.
+- module: 32
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: square, diamond, square, diamond, square, diamond, ___?'
+  options:
+  - star
+  - square
+  - circle
+  - triangle
+  correct_index: 1
+  explanation: The repeating unit is square, diamond, so next is square.
+- module: 32
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: star, circle, star, circle, star, circle, ___?'
+  options:
+  - square
+  - triangle
+  - circle
+  - star
+  correct_index: 3
+  explanation: The repeating unit is star, circle, so next is star.
+- module: 32
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: star, diamond, star, diamond, star, diamond, ___?'
+  options:
+  - circle
+  - star
+  - square
+  - triangle
+  correct_index: 1
+  explanation: The repeating unit is star, diamond, so next is star.
+- module: 32
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: star, triangle, star, triangle, star, triangle, ___?'
+  options:
+  - square
+  - circle
+  - triangle
+  - star
+  correct_index: 3
+  explanation: The repeating unit is star, triangle, so next is star.
+- module: 32
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: triangle, diamond, triangle, diamond, triangle, diamond, ___?'
+  options:
+  - triangle
+  - circle
+  - star
+  - square
+  correct_index: 0
+  explanation: The repeating unit is triangle, diamond, so next is triangle.
+- module: 32
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: triangle, heart, triangle, heart, triangle, heart, ___?'
+  options:
+  - triangle
+  - star
+  - circle
+  - square
+  correct_index: 0
+  explanation: The repeating unit is triangle, heart, so next is triangle.
+- module: 32
   difficulty: medium
   sea_section: Section III
   prompt: A pattern that gets bigger each step is a?
@@ -18748,6 +20893,171 @@ questions:
   correct_index: 0
   explanation: 15 + 5 = 20.
 - module: 32
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: circle, heart, star, circle, heart, star, ___?'
+  options:
+  - triangle
+  - square
+  - star
+  - circle
+  correct_index: 3
+  explanation: The repeating unit is circle, heart, star, so next is circle.
+- module: 32
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: circle, star, heart, circle, star, heart, ___?'
+  options:
+  - star
+  - circle
+  - square
+  - triangle
+  correct_index: 1
+  explanation: The repeating unit is circle, star, heart, so next is circle.
+- module: 32
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: circle, star, triangle, circle, star, triangle, ___?'
+  options:
+  - triangle
+  - square
+  - circle
+  - star
+  correct_index: 2
+  explanation: The repeating unit is circle, star, triangle, so next is circle.
+- module: 32
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: diamond, circle, heart, diamond, circle, heart, ___?'
+  options:
+  - diamond
+  - square
+  - circle
+  - triangle
+  correct_index: 0
+  explanation: The repeating unit is diamond, circle, heart, so next is diamond.
+- module: 32
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: diamond, square, star, diamond, square, star, ___?'
+  options:
+  - square
+  - triangle
+  - circle
+  - diamond
+  correct_index: 3
+  explanation: The repeating unit is diamond, square, star, so next is diamond.
+- module: 32
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: heart, diamond, circle, heart, diamond, circle, ___?'
+  options:
+  - heart
+  - triangle
+  - square
+  - circle
+  correct_index: 0
+  explanation: The repeating unit is heart, diamond, circle, so next is heart.
+- module: 32
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: heart, square, diamond, heart, square, diamond, ___?'
+  options:
+  - triangle
+  - heart
+  - square
+  - circle
+  correct_index: 1
+  explanation: The repeating unit is heart, square, diamond, so next is heart.
+- module: 32
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: heart, triangle, star, heart, triangle, star, ___?'
+  options:
+  - heart
+  - triangle
+  - square
+  - circle
+  correct_index: 0
+  explanation: The repeating unit is heart, triangle, star, so next is heart.
+- module: 32
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: square, circle, heart, square, circle, heart, ___?'
+  options:
+  - square
+  - triangle
+  - circle
+  - star
+  correct_index: 0
+  explanation: The repeating unit is square, circle, heart, so next is square.
+- module: 32
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: square, heart, triangle, square, heart, triangle, ___?'
+  options:
+  - square
+  - circle
+  - star
+  - triangle
+  correct_index: 0
+  explanation: The repeating unit is square, heart, triangle, so next is square.
+- module: 32
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: square, star, circle, square, star, circle, ___?'
+  options:
+  - circle
+  - triangle
+  - square
+  - star
+  correct_index: 2
+  explanation: The repeating unit is square, star, circle, so next is square.
+- module: 32
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: triangle, circle, square, triangle, circle, square, ___?'
+  options:
+  - square
+  - circle
+  - triangle
+  - star
+  correct_index: 2
+  explanation: The repeating unit is triangle, circle, square, so next is triangle.
+- module: 32
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: triangle, diamond, circle, triangle, diamond, circle, ___?'
+  options:
+  - circle
+  - square
+  - star
+  - triangle
+  correct_index: 3
+  explanation: The repeating unit is triangle, diamond, circle, so next is triangle.
+- module: 32
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: triangle, heart, star, triangle, heart, star, ___?'
+  options:
+  - triangle
+  - star
+  - square
+  - circle
+  correct_index: 0
+  explanation: The repeating unit is triangle, heart, star, so next is triangle.
+- module: 32
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: triangle, square, circle, triangle, square, circle, ___?'
+  options:
+  - triangle
+  - star
+  - circle
+  - square
+  correct_index: 0
+  explanation: The repeating unit is triangle, square, circle, so next is triangle.
+- module: 32
   difficulty: hard
   sea_section: Section III
   prompt: 'Pattern: 1, 4, 9, 16, ? (square numbers)'
@@ -18802,6 +21112,171 @@ questions:
   - '4'
   correct_index: 0
   explanation: The number of sides increases by 1, so 6 comes next.
+- module: 32
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: circle, diamond, heart, circle, diamond, heart, ___?'
+  options:
+  - triangle
+  - circle
+  - star
+  - square
+  correct_index: 1
+  explanation: The repeating unit is circle, diamond, heart, so next is circle.
+- module: 32
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: circle, heart, diamond, circle, heart, diamond, ___?'
+  options:
+  - star
+  - square
+  - circle
+  - triangle
+  correct_index: 2
+  explanation: The repeating unit is circle, heart, diamond, so next is circle.
+- module: 32
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: circle, square, star, circle, square, star, ___?'
+  options:
+  - square
+  - star
+  - circle
+  - triangle
+  correct_index: 2
+  explanation: The repeating unit is circle, square, star, so next is circle.
+- module: 32
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: circle, triangle, diamond, circle, triangle, diamond, ___?'
+  options:
+  - circle
+  - square
+  - star
+  - triangle
+  correct_index: 0
+  explanation: The repeating unit is circle, triangle, diamond, so next is circle.
+- module: 32
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: diamond, square, triangle, diamond, square, triangle, ___?'
+  options:
+  - diamond
+  - square
+  - circle
+  - triangle
+  correct_index: 0
+  explanation: The repeating unit is diamond, square, triangle, so next is diamond.
+- module: 32
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: diamond, triangle, star, diamond, triangle, star, ___?'
+  options:
+  - square
+  - diamond
+  - circle
+  - triangle
+  correct_index: 1
+  explanation: The repeating unit is diamond, triangle, star, so next is diamond.
+- module: 32
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: heart, diamond, star, heart, diamond, star, ___?'
+  options:
+  - circle
+  - square
+  - triangle
+  - heart
+  correct_index: 3
+  explanation: The repeating unit is heart, diamond, star, so next is heart.
+- module: 32
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: heart, square, star, heart, square, star, ___?'
+  options:
+  - triangle
+  - circle
+  - heart
+  - square
+  correct_index: 2
+  explanation: The repeating unit is heart, square, star, so next is heart.
+- module: 32
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: square, circle, star, square, circle, star, ___?'
+  options:
+  - star
+  - triangle
+  - square
+  - circle
+  correct_index: 2
+  explanation: The repeating unit is square, circle, star, so next is square.
+- module: 32
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: square, triangle, star, square, triangle, star, ___?'
+  options:
+  - circle
+  - star
+  - triangle
+  - square
+  correct_index: 3
+  explanation: The repeating unit is square, triangle, star, so next is square.
+- module: 32
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: star, circle, heart, star, circle, heart, ___?'
+  options:
+  - star
+  - square
+  - circle
+  - triangle
+  correct_index: 0
+  explanation: The repeating unit is star, circle, heart, so next is star.
+- module: 32
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: star, square, heart, star, square, heart, ___?'
+  options:
+  - star
+  - square
+  - circle
+  - triangle
+  correct_index: 0
+  explanation: The repeating unit is star, square, heart, so next is star.
+- module: 32
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: star, triangle, heart, star, triangle, heart, ___?'
+  options:
+  - triangle
+  - square
+  - circle
+  - star
+  correct_index: 3
+  explanation: The repeating unit is star, triangle, heart, so next is star.
+- module: 32
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: triangle, heart, diamond, triangle, heart, diamond, ___?'
+  options:
+  - triangle
+  - circle
+  - square
+  - star
+  correct_index: 0
+  explanation: The repeating unit is triangle, heart, diamond, so next is triangle.
+- module: 32
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'What shape comes next in this repeating pattern: triangle, square, star, triangle, square, star, ___?'
+  options:
+  - circle
+  - triangle
+  - square
+  - star
+  correct_index: 1
+  explanation: The repeating unit is triangle, square, star, so next is triangle.
 - module: 33
   difficulty: easy
   sea_section: Section II
@@ -18903,6 +21378,28 @@ questions:
   explanation: A closed straight-sided shape is a polygon.
 - module: 33
   difficulty: easy
+  sea_section: Section I
+  prompt: A pentagon can be split into how many triangles from one vertex?
+  options:
+  - '5'
+  - '4'
+  - '2'
+  - '3'
+  correct_index: 3
+  explanation: The answer is 3.
+- module: 33
+  difficulty: easy
+  sea_section: Section I
+  prompt: A quarter turn is how many degrees?
+  options:
+  - 180°
+  - 360°
+  - 45°
+  - 90°
+  correct_index: 3
+  explanation: The answer is 90°.
+- module: 33
+  difficulty: easy
   sea_section: Section III
   prompt: A shape made of simpler shapes joined together is a?
   options:
@@ -18912,6 +21409,94 @@ questions:
   - line
   correct_index: 0
   explanation: Joined simpler shapes make a composite shape.
+- module: 33
+  difficulty: easy
+  sea_section: Section I
+  prompt: An equilateral triangle has each angle equal to?
+  options:
+  - 60°
+  - 30°
+  - 45°
+  - 90°
+  correct_index: 0
+  explanation: The answer is 60°.
+- module: 33
+  difficulty: easy
+  sea_section: Section I
+  prompt: Half of a full turn is how many degrees?
+  options:
+  - 360°
+  - 90°
+  - 180°
+  - 45°
+  correct_index: 2
+  explanation: The answer is 180°.
+- module: 33
+  difficulty: easy
+  sea_section: Section I
+  prompt: If two angles of a triangle are 50° and 60°, the third is?
+  options:
+  - 50°
+  - 80°
+  - 70°
+  - 60°
+  correct_index: 2
+  explanation: The answer is 70°.
+- module: 33
+  difficulty: easy
+  sea_section: Section I
+  prompt: If two angles of a triangle are 60° and 70°, the third is?
+  options:
+  - 80°
+  - 70°
+  - 50°
+  - 60°
+  correct_index: 2
+  explanation: The answer is 50°.
+- module: 33
+  difficulty: easy
+  sea_section: Section I
+  prompt: The angles inside a quadrilateral add up to how many degrees?
+  options:
+  - 180°
+  - 540°
+  - 270°
+  - 360°
+  correct_index: 3
+  explanation: The answer is 360°.
+- module: 33
+  difficulty: easy
+  sea_section: Section I
+  prompt: The angles inside a triangle add up to how many degrees?
+  options:
+  - 270°
+  - 180°
+  - 360°
+  - 90°
+  correct_index: 1
+  explanation: The answer is 180°.
+- module: 33
+  difficulty: easy
+  sea_section: Section I
+  prompt: The angles of a triangle are 40°, 40° and what?
+  options:
+  - 90°
+  - 120°
+  - 80°
+  - 100°
+  correct_index: 3
+  explanation: The answer is 100°.
+- module: 33
+  difficulty: easy
+  sea_section: Section I
+  prompt: Three right angles make how many degrees?
+  options:
+  - 90°
+  - 180°
+  - 360°
+  - 270°
+  correct_index: 3
+  explanation: The answer is 270°.
 - module: 33
   difficulty: medium
   sea_section: Section II
@@ -18991,6 +21576,50 @@ questions:
   explanation: 7 sides makes a heptagon.
 - module: 33
   difficulty: medium
+  sea_section: Section I
+  prompt: A full turn is how many degrees?
+  options:
+  - 180°
+  - 90°
+  - 270°
+  - 360°
+  correct_index: 3
+  explanation: The answer is 360°.
+- module: 33
+  difficulty: medium
+  sea_section: Section I
+  prompt: A hexagon can be split into how many triangles from one vertex?
+  options:
+  - '4'
+  - '3'
+  - '5'
+  - '6'
+  correct_index: 0
+  explanation: The answer is 4.
+- module: 33
+  difficulty: medium
+  sea_section: Section I
+  prompt: A quadrilateral with angles 100°, 80°, 100° has a fourth angle of?
+  options:
+  - 80°
+  - 60°
+  - 90°
+  - 100°
+  correct_index: 0
+  explanation: The answer is 80°.
+- module: 33
+  difficulty: medium
+  sea_section: Section I
+  prompt: A right angle is how many degrees?
+  options:
+  - 360°
+  - 45°
+  - 180°
+  - 90°
+  correct_index: 3
+  explanation: The answer is 90°.
+- module: 33
+  difficulty: medium
   sea_section: Section III
   prompt: A square joined to a triangle makes a?
   options:
@@ -19000,6 +21629,17 @@ questions:
   - point
   correct_index: 0
   explanation: Joining two shapes makes a composite shape.
+- module: 33
+  difficulty: medium
+  sea_section: Section I
+  prompt: A straight line makes an angle of how many degrees?
+  options:
+  - 90°
+  - 180°
+  - 270°
+  - 360°
+  correct_index: 1
+  explanation: The answer is 180°.
 - module: 33
   difficulty: medium
   sea_section: Section III
@@ -19013,6 +21653,50 @@ questions:
   explanation: 8 sides makes an octagon.
 - module: 33
   difficulty: medium
+  sea_section: Section I
+  prompt: Angles that add up to 90° are called?
+  options:
+  - vertical
+  - complementary
+  - reflex
+  - supplementary
+  correct_index: 1
+  explanation: The answer is complementary.
+- module: 33
+  difficulty: medium
+  sea_section: Section I
+  prompt: If a triangle has angles 30° and 90°, the third angle is?
+  options:
+  - 90°
+  - 60°
+  - 30°
+  - 45°
+  correct_index: 1
+  explanation: The answer is 60°.
+- module: 33
+  difficulty: medium
+  sea_section: Section I
+  prompt: If three angles of a quadrilateral are 90°, 90° and 90°, the fourth is?
+  options:
+  - 180°
+  - 60°
+  - 90°
+  - 120°
+  correct_index: 2
+  explanation: The answer is 90°.
+- module: 33
+  difficulty: medium
+  sea_section: Section I
+  prompt: If two angles of a triangle are 90° and 45°, the third is?
+  options:
+  - 60°
+  - 90°
+  - 30°
+  - 45°
+  correct_index: 3
+  explanation: The answer is 45°.
+- module: 33
+  difficulty: medium
   sea_section: Section III
   prompt: Is a circle a polygon?
   options:
@@ -19022,6 +21706,17 @@ questions:
   - always
   correct_index: 0
   explanation: A circle has no straight sides, so it is not a polygon.
+- module: 33
+  difficulty: medium
+  sea_section: Section I
+  prompt: Two angles on a straight line are 120° and what?
+  options:
+  - 60°
+  - 30°
+  - 120°
+  - 90°
+  correct_index: 0
+  explanation: The answer is 60°.
 - module: 33
   difficulty: hard
   sea_section: Section II
@@ -19132,6 +21827,116 @@ questions:
   - '7'
   correct_index: 0
   explanation: A nonagon has 9 sides.
+- module: 33
+  difficulty: hard
+  sea_section: Section I
+  prompt: Two angles of a triangle are 101° and 23°. What is the third angle?
+  options:
+  - 56°
+  - 124°
+  - 66°
+  - 46°
+  correct_index: 0
+  explanation: 'Angles in a triangle sum to 180°: 180 − 101 − 23 = 56°.'
+- module: 33
+  difficulty: hard
+  sea_section: Section I
+  prompt: Two angles of a triangle are 104° and 38°. What is the third angle?
+  options:
+  - 48°
+  - 142°
+  - 28°
+  - 38°
+  correct_index: 3
+  explanation: 'Angles in a triangle sum to 180°: 180 − 104 − 38 = 38°.'
+- module: 33
+  difficulty: hard
+  sea_section: Section I
+  prompt: Two angles of a triangle are 109° and 25°. What is the third angle?
+  options:
+  - 56°
+  - 134°
+  - 46°
+  - 36°
+  correct_index: 2
+  explanation: 'Angles in a triangle sum to 180°: 180 − 109 − 25 = 46°.'
+- module: 33
+  difficulty: hard
+  sea_section: Section I
+  prompt: Two angles of a triangle are 27° and 60°. What is the third angle?
+  options:
+  - 83°
+  - 103°
+  - 93°
+  - 87°
+  correct_index: 2
+  explanation: 'Angles in a triangle sum to 180°: 180 − 27 − 60 = 93°.'
+- module: 33
+  difficulty: hard
+  sea_section: Section I
+  prompt: Two angles of a triangle are 45° and 87°. What is the third angle?
+  options:
+  - 48°
+  - 38°
+  - 58°
+  - 132°
+  correct_index: 0
+  explanation: 'Angles in a triangle sum to 180°: 180 − 45 − 87 = 48°.'
+- module: 33
+  difficulty: hard
+  sea_section: Section I
+  prompt: Two angles of a triangle are 48° and 47°. What is the third angle?
+  options:
+  - 132°
+  - 75°
+  - 85°
+  - 95°
+  correct_index: 2
+  explanation: 'Angles in a triangle sum to 180°: 180 − 48 − 47 = 85°.'
+- module: 33
+  difficulty: hard
+  sea_section: Section I
+  prompt: Two angles of a triangle are 60° and 37°. What is the third angle?
+  options:
+  - 73°
+  - 97°
+  - 93°
+  - 83°
+  correct_index: 3
+  explanation: 'Angles in a triangle sum to 180°: 180 − 60 − 37 = 83°.'
+- module: 33
+  difficulty: hard
+  sea_section: Section I
+  prompt: Two angles of a triangle are 85° and 46°. What is the third angle?
+  options:
+  - 59°
+  - 131°
+  - 39°
+  - 49°
+  correct_index: 3
+  explanation: 'Angles in a triangle sum to 180°: 180 − 85 − 46 = 49°.'
+- module: 33
+  difficulty: hard
+  sea_section: Section I
+  prompt: Two angles of a triangle are 99° and 23°. What is the third angle?
+  options:
+  - 122°
+  - 68°
+  - 48°
+  - 58°
+  correct_index: 3
+  explanation: 'Angles in a triangle sum to 180°: 180 − 99 − 23 = 58°.'
+- module: 33
+  difficulty: hard
+  sea_section: Section I
+  prompt: Two right angles together make how many degrees?
+  options:
+  - 360°
+  - 180°
+  - 45°
+  - 90°
+  correct_index: 1
+  explanation: The answer is 180°.
 - module: 34
   difficulty: easy
   sea_section: Section II
@@ -19198,6 +22003,116 @@ questions:
   - cuboid
   correct_index: 2
   explanation: <p>Imagine folding the net. Match the flat faces to the solid they make.</p><p><strong>Answer:</strong> <strong>cube</strong></p>
+- module: 34
+  difficulty: easy
+  sea_section: Section I
+  prompt: A net folds into a cone. How many faces will the solid have?
+  options:
+  - '2'
+  - '3'
+  - 2·0
+  - '1'
+  correct_index: 0
+  explanation: A cone has 2 faces.
+- module: 34
+  difficulty: easy
+  sea_section: Section I
+  prompt: A net folds into a cube. How many faces will the solid have?
+  options:
+  - '5'
+  - '12'
+  - '7'
+  - '6'
+  correct_index: 3
+  explanation: A cube has 6 faces.
+- module: 34
+  difficulty: easy
+  sea_section: Section I
+  prompt: A net folds into a cuboid. How many faces will the solid have?
+  options:
+  - '7'
+  - '6'
+  - '5'
+  - '12'
+  correct_index: 1
+  explanation: A cuboid has 6 faces.
+- module: 34
+  difficulty: easy
+  sea_section: Section I
+  prompt: A net folds into a cylinder. How many faces will the solid have?
+  options:
+  - '0'
+  - '4'
+  - '3'
+  - '2'
+  correct_index: 2
+  explanation: A cylinder has 3 faces.
+- module: 34
+  difficulty: easy
+  sea_section: Section I
+  prompt: A net folds into a square-based pyramid. How many faces will the solid have?
+  options:
+  - '8'
+  - '4'
+  - '5'
+  - '6'
+  correct_index: 2
+  explanation: A square-based pyramid has 5 faces.
+- module: 34
+  difficulty: easy
+  sea_section: Section I
+  prompt: A net folds into a triangular prism. How many faces will the solid have?
+  options:
+  - '4'
+  - '5'
+  - '6'
+  - '9'
+  correct_index: 1
+  explanation: A triangular prism has 5 faces.
+- module: 34
+  difficulty: easy
+  sea_section: Section I
+  prompt: A solid model is a hexagonal prism. How many vertices does it have?
+  options:
+  - '13'
+  - '11'
+  - '12'
+  - '14'
+  correct_index: 2
+  explanation: A hexagonal prism has 12 vertices.
+- module: 34
+  difficulty: easy
+  sea_section: Section I
+  prompt: A solid model is a octagonal prism. How many vertices does it have?
+  options:
+  - '16'
+  - '15'
+  - '18'
+  - '17'
+  correct_index: 0
+  explanation: A octagonal prism has 16 vertices.
+- module: 34
+  difficulty: easy
+  sea_section: Section I
+  prompt: A solid model is a pentagonal pyramid. How many vertices does it have?
+  options:
+  - '6'
+  - '7'
+  - '8'
+  - '5'
+  correct_index: 0
+  explanation: A pentagonal pyramid has 6 vertices.
+- module: 34
+  difficulty: easy
+  sea_section: Section I
+  prompt: A solid model is a triangular prism. How many vertices does it have?
+  options:
+  - '6'
+  - '8'
+  - '5'
+  - '7'
+  correct_index: 0
+  explanation: A triangular prism has 6 vertices.
 - module: 34
   difficulty: easy
   sea_section: Section III
@@ -19321,6 +22236,105 @@ questions:
   explanation: It folds into 6 square faces.
 - module: 34
   difficulty: medium
+  sea_section: Section I
+  prompt: A solid model is a cone. How many edges does it have?
+  options:
+  - '2'
+  - '3'
+  - '0'
+  - '1'
+  correct_index: 3
+  explanation: A cone has 1 edges.
+- module: 34
+  difficulty: medium
+  sea_section: Section I
+  prompt: A solid model is a cylinder. How many edges does it have?
+  options:
+  - '1'
+  - '2'
+  - '4'
+  - '3'
+  correct_index: 1
+  explanation: A cylinder has 2 edges.
+- module: 34
+  difficulty: medium
+  sea_section: Section I
+  prompt: A solid model is a hexagonal pyramid. How many edges does it have?
+  options:
+  - '13'
+  - '14'
+  - '12'
+  - '11'
+  correct_index: 2
+  explanation: A hexagonal pyramid has 12 edges.
+- module: 34
+  difficulty: medium
+  sea_section: Section I
+  prompt: A solid model is a hexagonal pyramid. How many faces does it have?
+  options:
+  - '9'
+  - '8'
+  - '7'
+  - '6'
+  correct_index: 2
+  explanation: A hexagonal pyramid has 7 faces.
+- module: 34
+  difficulty: medium
+  sea_section: Section I
+  prompt: A solid model is a hexagonal pyramid. How many vertices does it have?
+  options:
+  - '9'
+  - '8'
+  - '6'
+  - '7'
+  correct_index: 3
+  explanation: A hexagonal pyramid has 7 vertices.
+- module: 34
+  difficulty: medium
+  sea_section: Section I
+  prompt: A solid model is a pentagonal prism. How many edges does it have?
+  options:
+  - '17'
+  - '15'
+  - '14'
+  - '16'
+  correct_index: 1
+  explanation: A pentagonal prism has 15 edges.
+- module: 34
+  difficulty: medium
+  sea_section: Section I
+  prompt: A solid model is a pentagonal prism. How many vertices does it have?
+  options:
+  - '9'
+  - '11'
+  - '10'
+  - '12'
+  correct_index: 2
+  explanation: A pentagonal prism has 10 vertices.
+- module: 34
+  difficulty: medium
+  sea_section: Section I
+  prompt: A solid model is a triangular prism. How many edges does it have?
+  options:
+  - '11'
+  - '8'
+  - '9'
+  - '10'
+  correct_index: 2
+  explanation: A triangular prism has 9 edges.
+- module: 34
+  difficulty: medium
+  sea_section: Section I
+  prompt: A solid model is a triangular pyramid. How many edges does it have?
+  options:
+  - '8'
+  - '7'
+  - '6'
+  - '5'
+  correct_index: 2
+  explanation: A triangular pyramid has 6 edges.
+- module: 34
+  difficulty: medium
   sea_section: Section III
   prompt: How many corners do 2 triangles have altogether?
   options:
@@ -19440,6 +22454,105 @@ questions:
   - '12'
   correct_index: 0
   explanation: 5 x 3 = 15 sides.
+- module: 34
+  difficulty: hard
+  sea_section: Section I
+  prompt: A solid model is a cone. How many faces does it have?
+  options:
+  - '3'
+  - '2'
+  - '1'
+  - '4'
+  correct_index: 1
+  explanation: A cone has 2 faces.
+- module: 34
+  difficulty: hard
+  sea_section: Section I
+  prompt: A solid model is a cone. How many vertices does it have?
+  options:
+  - '2'
+  - '1'
+  - '3'
+  - '0'
+  correct_index: 1
+  explanation: A cone has 1 vertices.
+- module: 34
+  difficulty: hard
+  sea_section: Section I
+  prompt: A solid model is a cuboid. How many faces does it have?
+  options:
+  - '8'
+  - '6'
+  - '5'
+  - '7'
+  correct_index: 1
+  explanation: A cuboid has 6 faces.
+- module: 34
+  difficulty: hard
+  sea_section: Section I
+  prompt: A solid model is a cuboid. How many vertices does it have?
+  options:
+  - '10'
+  - '9'
+  - '7'
+  - '8'
+  correct_index: 3
+  explanation: A cuboid has 8 vertices.
+- module: 34
+  difficulty: hard
+  sea_section: Section I
+  prompt: A solid model is a hexagonal prism. How many faces does it have?
+  options:
+  - '8'
+  - '10'
+  - '7'
+  - '9'
+  correct_index: 0
+  explanation: A hexagonal prism has 8 faces.
+- module: 34
+  difficulty: hard
+  sea_section: Section I
+  prompt: A solid model is a octagonal prism. How many faces does it have?
+  options:
+  - '11'
+  - '9'
+  - '10'
+  - '12'
+  correct_index: 2
+  explanation: A octagonal prism has 10 faces.
+- module: 34
+  difficulty: hard
+  sea_section: Section I
+  prompt: A solid model is a pentagonal pyramid. How many edges does it have?
+  options:
+  - '9'
+  - '11'
+  - '12'
+  - '10'
+  correct_index: 3
+  explanation: A pentagonal pyramid has 10 edges.
+- module: 34
+  difficulty: hard
+  sea_section: Section I
+  prompt: A solid model is a square-based pyramid. How many edges does it have?
+  options:
+  - '7'
+  - '10'
+  - '9'
+  - '8'
+  correct_index: 3
+  explanation: A square-based pyramid has 8 edges.
+- module: 34
+  difficulty: hard
+  sea_section: Section I
+  prompt: A solid model is a triangular pyramid. How many faces does it have?
+  options:
+  - '3'
+  - '6'
+  - '5'
+  - '4'
+  correct_index: 3
+  explanation: A triangular pyramid has 4 faces.
 - module: 34
   difficulty: hard
   sea_section: Section III
@@ -19585,6 +22698,105 @@ questions:
   explanation: 6 x 3 = 18.
 - module: 35
   difficulty: easy
+  sea_section: Section I
+  prompt: A square has sides of 11 cm. What is its perimeter plus its area (in number value)?
+  options:
+  - '5324'
+  - '165'
+  - '154'
+  - '176'
+  correct_index: 1
+  explanation: Perimeter 44 + area 121 = 165.
+- module: 35
+  difficulty: easy
+  sea_section: Section I
+  prompt: A square has sides of 12 cm. What is its perimeter plus its area (in number value)?
+  options:
+  - '204'
+  - '180'
+  - '192'
+  - '6912'
+  correct_index: 2
+  explanation: Perimeter 48 + area 144 = 192.
+- module: 35
+  difficulty: easy
+  sea_section: Section I
+  prompt: A square has sides of 3 cm. What is its perimeter plus its area (in number value)?
+  options:
+  - '108'
+  - '21'
+  - '18'
+  - '24'
+  correct_index: 1
+  explanation: Perimeter 12 + area 9 = 21.
+- module: 35
+  difficulty: easy
+  sea_section: Section I
+  prompt: A square has sides of 4 cm. What is its perimeter plus its area (in number value)?
+  options:
+  - '28'
+  - '256'
+  - '36'
+  - '32'
+  correct_index: 3
+  explanation: Perimeter 16 + area 16 = 32.
+- module: 35
+  difficulty: easy
+  sea_section: Section I
+  prompt: A square has sides of 5 cm. What is its perimeter plus its area (in number value)?
+  options:
+  - '50'
+  - '40'
+  - '500'
+  - '45'
+  correct_index: 3
+  explanation: Perimeter 20 + area 25 = 45.
+- module: 35
+  difficulty: easy
+  sea_section: Section I
+  prompt: A square has sides of 6 cm. What is its perimeter plus its area (in number value)?
+  options:
+  - '864'
+  - '54'
+  - '66'
+  - '60'
+  correct_index: 3
+  explanation: Perimeter 24 + area 36 = 60.
+- module: 35
+  difficulty: easy
+  sea_section: Section I
+  prompt: A square has sides of 7 cm. What is its perimeter plus its area (in number value)?
+  options:
+  - '70'
+  - '77'
+  - '84'
+  - '1372'
+  correct_index: 1
+  explanation: Perimeter 28 + area 49 = 77.
+- module: 35
+  difficulty: easy
+  sea_section: Section I
+  prompt: A square has sides of 8 cm. What is its perimeter plus its area (in number value)?
+  options:
+  - '88'
+  - '104'
+  - '96'
+  - '2048'
+  correct_index: 2
+  explanation: Perimeter 32 + area 64 = 96.
+- module: 35
+  difficulty: easy
+  sea_section: Section I
+  prompt: A square has sides of 9 cm. What is its perimeter plus its area (in number value)?
+  options:
+  - '117'
+  - '108'
+  - '2916'
+  - '126'
+  correct_index: 0
+  explanation: Perimeter 36 + area 81 = 117.
+- module: 35
+  difficulty: easy
   sea_section: Section III
   prompt: A square with side 4 has area 4 x 4 = ?
   options:
@@ -19706,6 +22918,105 @@ questions:
   explanation: 2 x 9 = 18.
 - module: 35
   difficulty: medium
+  sea_section: Section I
+  prompt: A rectangle 11 cm by 5 cm — what is its perimeter?
+  options:
+  - 30 cm
+  - 34 cm
+  - 32 cm
+  - 55 cm
+  correct_index: 2
+  explanation: Perimeter = 2×(11+5) = 32 cm.
+- module: 35
+  difficulty: medium
+  sea_section: Section I
+  prompt: A rectangle 18 cm by 4 cm — what is its perimeter?
+  options:
+  - 72 cm
+  - 42 cm
+  - 44 cm
+  - 46 cm
+  correct_index: 2
+  explanation: Perimeter = 2×(18+4) = 44 cm.
+- module: 35
+  difficulty: medium
+  sea_section: Section I
+  prompt: A rectangle 4 cm by 3 cm — what is its perimeter?
+  options:
+  - 7 cm
+  - 16 cm
+  - 12 cm
+  - 14 cm
+  correct_index: 3
+  explanation: Perimeter = 2×(4+3) = 14 cm.
+- module: 35
+  difficulty: medium
+  sea_section: Section I
+  prompt: A rectangle is 13 cm by 10 cm. What is its area?
+  options:
+  - 130 cm²
+  - 46 cm²
+  - 143 cm²
+  - 120 cm²
+  correct_index: 0
+  explanation: Area = 13 × 10 = 130 cm².
+- module: 35
+  difficulty: medium
+  sea_section: Section I
+  prompt: A rectangle is 17 cm by 5 cm. What is its area?
+  options:
+  - 44 cm²
+  - 102 cm²
+  - 80 cm²
+  - 85 cm²
+  correct_index: 3
+  explanation: Area = 17 × 5 = 85 cm².
+- module: 35
+  difficulty: medium
+  sea_section: Section I
+  prompt: A rectangle is 20 cm by 6 cm. What is its area minus its perimeter (number value)?
+  options:
+  - '68'
+  - '66'
+  - '70'
+  - '172'
+  correct_index: 0
+  explanation: Area 120 − perimeter 52 = 68.
+- module: 35
+  difficulty: medium
+  sea_section: Section I
+  prompt: A rectangle is 5 cm by 5 cm. What is its area minus its perimeter (number value)?
+  options:
+  - '3'
+  - '5'
+  - '7'
+  - '45'
+  correct_index: 1
+  explanation: Area 25 − perimeter 20 = 5.
+- module: 35
+  difficulty: medium
+  sea_section: Section I
+  prompt: A rectangle is 8 cm by 2 cm. What is its area?
+  options:
+  - 20 cm²
+  - 14 cm²
+  - 16 cm²
+  - 24 cm²
+  correct_index: 2
+  explanation: Area = 8 × 2 = 16 cm².
+- module: 35
+  difficulty: medium
+  sea_section: Section I
+  prompt: A square has sides of 10 cm. What is its perimeter plus its area (in number value)?
+  options:
+  - '140'
+  - '4000'
+  - '130'
+  - '150'
+  correct_index: 0
+  explanation: Perimeter 40 + area 100 = 140.
+- module: 35
+  difficulty: medium
   sea_section: Section III
   prompt: A square with side 3 has perimeter 4 x 3 = ?
   options:
@@ -19825,6 +23136,105 @@ questions:
   - '0'
   correct_index: 0
   explanation: Area 20, perimeter 18, so 20 - 18 = 2.
+- module: 35
+  difficulty: hard
+  sea_section: Section I
+  prompt: A rectangle 15 cm by 13 cm — what is its perimeter?
+  options:
+  - 195 cm
+  - 56 cm
+  - 58 cm
+  - 54 cm
+  correct_index: 1
+  explanation: Perimeter = 2×(15+13) = 56 cm.
+- module: 35
+  difficulty: hard
+  sea_section: Section I
+  prompt: A rectangle 6 cm by 5 cm — what is its perimeter?
+  options:
+  - 30 cm
+  - 22 cm
+  - 24 cm
+  - 20 cm
+  correct_index: 1
+  explanation: Perimeter = 2×(6+5) = 22 cm.
+- module: 35
+  difficulty: hard
+  sea_section: Section I
+  prompt: A rectangle 6 cm by 6 cm — what is its perimeter?
+  options:
+  - 22 cm
+  - 24 cm
+  - 36 cm
+  - 26 cm
+  correct_index: 1
+  explanation: Perimeter = 2×(6+6) = 24 cm.
+- module: 35
+  difficulty: hard
+  sea_section: Section I
+  prompt: A rectangle is 10 cm by 4 cm. What is its area?
+  options:
+  - 40 cm²
+  - 28 cm²
+  - 36 cm²
+  - 50 cm²
+  correct_index: 0
+  explanation: Area = 10 × 4 = 40 cm².
+- module: 35
+  difficulty: hard
+  sea_section: Section I
+  prompt: A rectangle is 13 cm by 5 cm. What is its area minus its perimeter (number value)?
+  options:
+  - '29'
+  - '27'
+  - '101'
+  - '31'
+  correct_index: 0
+  explanation: Area 65 − perimeter 36 = 29.
+- module: 35
+  difficulty: hard
+  sea_section: Section I
+  prompt: A rectangle is 13 cm by 9 cm. What is its area?
+  options:
+  - 108 cm²
+  - 117 cm²
+  - 130 cm²
+  - 44 cm²
+  correct_index: 1
+  explanation: Area = 13 × 9 = 117 cm².
+- module: 35
+  difficulty: hard
+  sea_section: Section I
+  prompt: A rectangle is 15 cm by 10 cm. What is its area?
+  options:
+  - 50 cm²
+  - 150 cm²
+  - 140 cm²
+  - 165 cm²
+  correct_index: 1
+  explanation: Area = 15 × 10 = 150 cm².
+- module: 35
+  difficulty: hard
+  sea_section: Section I
+  prompt: A rectangle is 18 cm by 3 cm. What is its area?
+  options:
+  - 51 cm²
+  - 72 cm²
+  - 42 cm²
+  - 54 cm²
+  correct_index: 3
+  explanation: Area = 18 × 3 = 54 cm².
+- module: 35
+  difficulty: hard
+  sea_section: Section I
+  prompt: A rectangle is 5 cm by 3 cm. What is its area minus its perimeter (number value)?
+  options:
+  - '-1'
+  - '31'
+  - '1'
+  - '-3'
+  correct_index: 0
+  explanation: Area 15 − perimeter 16 = -1.
 - module: 35
   difficulty: hard
   sea_section: Section III
@@ -21972,6 +25382,138 @@ questions:
   explanation: '<p>Trace the OUTSIDE edge of the whole floor. The square gives 3 outer sides (its top edge is hidden inside, where the triangle joins). The equilateral triangle adds its 2 slanting sides (its base is the hidden shared edge). Every side is 8 m.</p><p><strong>Step-by-step working</strong></p><ol><li>Square''s outer sides: 3 &times; 8 = 24 m.</li><li>Triangle''s slanting sides: 2 &times; 8 = 16 m.</li><li>Perimeter = 24 + 16 = 40 m.</li></ol><p><em>Watch out:</em> The join between the square and triangle is inside the shape, so it is NOT counted.</p><p><strong>Answer:</strong> <strong>40 m</strong></p>'
 - module: 39
   difficulty: easy
+  sea_section: Section I
+  prompt: A compound shape has sides measuring 12 cm, 2 cm, 8 cm, 15 cm, 13 cm, 8 cm. What is its perimeter?
+  options:
+  - 56 cm
+  - 60 cm
+  - 58 cm
+  - 64 cm
+  correct_index: 2
+  explanation: Perimeter = sum of all sides = 58 cm.
+- module: 39
+  difficulty: easy
+  sea_section: Section I
+  prompt: A compound shape has sides measuring 15 cm, 10 cm, 8 cm, 10 cm, 7 cm. What is its perimeter?
+  options:
+  - 55 cm
+  - 50 cm
+  - 52 cm
+  - 48 cm
+  correct_index: 1
+  explanation: Perimeter = sum of all sides = 50 cm.
+- module: 39
+  difficulty: easy
+  sea_section: Section I
+  prompt: A compound shape has sides measuring 15 cm, 14 cm, 3 cm, 11 cm, 8 cm, 8 cm. What is its perimeter?
+  options:
+  - 61 cm
+  - 59 cm
+  - 57 cm
+  - 65 cm
+  correct_index: 1
+  explanation: Perimeter = sum of all sides = 59 cm.
+- module: 39
+  difficulty: easy
+  sea_section: Section I
+  prompt: A compound shape has sides measuring 2 cm, 10 cm, 9 cm, 7 cm, 9 cm, 7 cm. What is its perimeter?
+  options:
+  - 50 cm
+  - 46 cm
+  - 42 cm
+  - 44 cm
+  correct_index: 3
+  explanation: Perimeter = sum of all sides = 44 cm.
+- module: 39
+  difficulty: easy
+  sea_section: Section I
+  prompt: A compound shape has sides measuring 2 cm, 3 cm, 6 cm, 11 cm, 8 cm. What is its perimeter?
+  options:
+  - 28 cm
+  - 30 cm
+  - 35 cm
+  - 32 cm
+  correct_index: 1
+  explanation: Perimeter = sum of all sides = 30 cm.
+- module: 39
+  difficulty: easy
+  sea_section: Section I
+  prompt: A compound shape has sides measuring 4 cm, 13 cm, 12 cm, 13 cm, 12 cm, 7 cm. What is its perimeter?
+  options:
+  - 59 cm
+  - 63 cm
+  - 67 cm
+  - 61 cm
+  correct_index: 3
+  explanation: Perimeter = sum of all sides = 61 cm.
+- module: 39
+  difficulty: easy
+  sea_section: Section I
+  prompt: A compound shape has sides measuring 6 cm, 6 cm, 15 cm, 10 cm, 10 cm, 15 cm. What is its perimeter?
+  options:
+  - 62 cm
+  - 60 cm
+  - 64 cm
+  - 68 cm
+  correct_index: 0
+  explanation: Perimeter = sum of all sides = 62 cm.
+- module: 39
+  difficulty: easy
+  sea_section: Section I
+  prompt: A compound shape has sides measuring 7 cm, 3 cm, 5 cm, 9 cm, 11 cm, 11 cm. What is its perimeter?
+  options:
+  - 48 cm
+  - 44 cm
+  - 46 cm
+  - 52 cm
+  correct_index: 2
+  explanation: Perimeter = sum of all sides = 46 cm.
+- module: 39
+  difficulty: easy
+  sea_section: Section I
+  prompt: A compound shape has sides measuring 8 cm, 12 cm, 2 cm, 12 cm, 3 cm, 7 cm. What is its perimeter?
+  options:
+  - 50 cm
+  - 46 cm
+  - 42 cm
+  - 44 cm
+  correct_index: 3
+  explanation: Perimeter = sum of all sides = 44 cm.
+- module: 39
+  difficulty: easy
+  sea_section: Section I
+  prompt: A compound shape has sides measuring 8 cm, 2 cm, 10 cm, 3 cm, 12 cm, 13 cm. What is its perimeter?
+  options:
+  - 48 cm
+  - 46 cm
+  - 50 cm
+  - 54 cm
+  correct_index: 0
+  explanation: Perimeter = sum of all sides = 48 cm.
+- module: 39
+  difficulty: easy
+  sea_section: Section I
+  prompt: A compound shape has sides measuring 9 cm, 5 cm, 8 cm, 8 cm, 8 cm, 15 cm. What is its perimeter?
+  options:
+  - 53 cm
+  - 51 cm
+  - 59 cm
+  - 55 cm
+  correct_index: 0
+  explanation: Perimeter = sum of all sides = 53 cm.
+- module: 39
+  difficulty: easy
+  sea_section: Section I
+  prompt: A compound shape has sides measuring 9 cm, 7 cm, 12 cm, 4 cm, 14 cm, 14 cm. What is its perimeter?
+  options:
+  - 66 cm
+  - 60 cm
+  - 62 cm
+  - 58 cm
+  correct_index: 1
+  explanation: Perimeter = sum of all sides = 60 cm.
+- module: 39
+  difficulty: easy
   sea_section: Section III
   prompt: A shape with outside sides 3, 4, 3, 4 has perimeter?
   options:
@@ -22036,6 +25578,160 @@ questions:
   - 48 m
   correct_index: 1
   explanation: '<p>Trace the OUTSIDE edge of the whole floor. The square gives 3 outer sides (its top edge is hidden inside, where the triangle joins). The equilateral triangle adds its 2 slanting sides (its base is the hidden shared edge). Every side is 12 m.</p><p><strong>Step-by-step working</strong></p><ol><li>Square''s outer sides: 3 &times; 12 = 36 m.</li><li>Triangle''s slanting sides: 2 &times; 12 = 24 m.</li><li>Perimeter = 36 + 24 = 60 m.</li></ol><p><em>Watch out:</em> The join between the square and triangle is inside the shape, so it is NOT counted.</p><p><strong>Answer:</strong> <strong>60 m</strong></p>'
+- module: 39
+  difficulty: medium
+  sea_section: Section I
+  prompt: A compound shape has sides measuring 10 cm, 13 cm, 8 cm, 7 cm, 9 cm. What is its perimeter?
+  options:
+  - 47 cm
+  - 52 cm
+  - 49 cm
+  - 45 cm
+  correct_index: 0
+  explanation: Perimeter = sum of all sides = 47 cm.
+- module: 39
+  difficulty: medium
+  sea_section: Section I
+  prompt: A compound shape has sides measuring 12 cm, 8 cm, 9 cm, 13 cm, 5 cm. What is its perimeter?
+  options:
+  - 47 cm
+  - 52 cm
+  - 49 cm
+  - 45 cm
+  correct_index: 0
+  explanation: Perimeter = sum of all sides = 47 cm.
+- module: 39
+  difficulty: medium
+  sea_section: Section I
+  prompt: A compound shape has sides measuring 14 cm, 11 cm, 11 cm, 14 cm, 13 cm. What is its perimeter?
+  options:
+  - 63 cm
+  - 61 cm
+  - 68 cm
+  - 65 cm
+  correct_index: 0
+  explanation: Perimeter = sum of all sides = 63 cm.
+- module: 39
+  difficulty: medium
+  sea_section: Section I
+  prompt: A compound shape has sides measuring 14 cm, 5 cm, 12 cm, 13 cm, 10 cm, 15 cm. What is its perimeter?
+  options:
+  - 69 cm
+  - 71 cm
+  - 67 cm
+  - 75 cm
+  correct_index: 0
+  explanation: Perimeter = sum of all sides = 69 cm.
+- module: 39
+  difficulty: medium
+  sea_section: Section I
+  prompt: A compound shape has sides measuring 15 cm, 11 cm, 3 cm, 10 cm, 10 cm. What is its perimeter?
+  options:
+  - 54 cm
+  - 47 cm
+  - 51 cm
+  - 49 cm
+  correct_index: 3
+  explanation: Perimeter = sum of all sides = 49 cm.
+- module: 39
+  difficulty: medium
+  sea_section: Section I
+  prompt: A compound shape has sides measuring 15 cm, 4 cm, 12 cm, 6 cm, 4 cm. What is its perimeter?
+  options:
+  - 41 cm
+  - 39 cm
+  - 46 cm
+  - 43 cm
+  correct_index: 0
+  explanation: Perimeter = sum of all sides = 41 cm.
+- module: 39
+  difficulty: medium
+  sea_section: Section I
+  prompt: A compound shape has sides measuring 15 cm, 4 cm, 5 cm, 12 cm, 6 cm, 13 cm. What is its perimeter?
+  options:
+  - 55 cm
+  - 61 cm
+  - 53 cm
+  - 57 cm
+  correct_index: 0
+  explanation: Perimeter = sum of all sides = 55 cm.
+- module: 39
+  difficulty: medium
+  sea_section: Section I
+  prompt: A compound shape has sides measuring 2 cm, 12 cm, 14 cm, 14 cm, 6 cm, 6 cm. What is its perimeter?
+  options:
+  - 60 cm
+  - 54 cm
+  - 52 cm
+  - 56 cm
+  correct_index: 1
+  explanation: Perimeter = sum of all sides = 54 cm.
+- module: 39
+  difficulty: medium
+  sea_section: Section I
+  prompt: A compound shape has sides measuring 3 cm, 12 cm, 2 cm, 6 cm, 5 cm. What is its perimeter?
+  options:
+  - 28 cm
+  - 33 cm
+  - 30 cm
+  - 26 cm
+  correct_index: 0
+  explanation: Perimeter = sum of all sides = 28 cm.
+- module: 39
+  difficulty: medium
+  sea_section: Section I
+  prompt: A compound shape has sides measuring 3 cm, 15 cm, 4 cm, 4 cm, 9 cm. What is its perimeter?
+  options:
+  - 40 cm
+  - 37 cm
+  - 35 cm
+  - 33 cm
+  correct_index: 2
+  explanation: Perimeter = sum of all sides = 35 cm.
+- module: 39
+  difficulty: medium
+  sea_section: Section I
+  prompt: A compound shape has sides measuring 4 cm, 7 cm, 5 cm, 15 cm, 5 cm, 3 cm. What is its perimeter?
+  options:
+  - 39 cm
+  - 45 cm
+  - 37 cm
+  - 41 cm
+  correct_index: 0
+  explanation: Perimeter = sum of all sides = 39 cm.
+- module: 39
+  difficulty: medium
+  sea_section: Section I
+  prompt: A compound shape has sides measuring 5 cm, 2 cm, 6 cm, 13 cm, 6 cm. What is its perimeter?
+  options:
+  - 37 cm
+  - 32 cm
+  - 30 cm
+  - 34 cm
+  correct_index: 1
+  explanation: Perimeter = sum of all sides = 32 cm.
+- module: 39
+  difficulty: medium
+  sea_section: Section I
+  prompt: A compound shape has sides measuring 6 cm, 15 cm, 13 cm, 15 cm, 2 cm. What is its perimeter?
+  options:
+  - 56 cm
+  - 51 cm
+  - 49 cm
+  - 53 cm
+  correct_index: 1
+  explanation: Perimeter = sum of all sides = 51 cm.
+- module: 39
+  difficulty: medium
+  sea_section: Section I
+  prompt: A compound shape has sides measuring 7 cm, 7 cm, 7 cm, 10 cm, 3 cm. What is its perimeter?
+  options:
+  - 34 cm
+  - 39 cm
+  - 32 cm
+  - 36 cm
+  correct_index: 0
+  explanation: Perimeter = sum of all sides = 34 cm.
 - module: 39
   difficulty: medium
   sea_section: Section III
@@ -22124,6 +25820,138 @@ questions:
   - 72 m
   correct_index: 2
   explanation: '<p>Trace the OUTSIDE edge of the whole floor. The square gives 3 outer sides (its top edge is hidden inside, where the triangle joins). The equilateral triangle adds its 2 slanting sides (its base is the hidden shared edge). Every side is 18 m.</p><p><strong>Step-by-step working</strong></p><ol><li>Square''s outer sides: 3 &times; 18 = 54 m.</li><li>Triangle''s slanting sides: 2 &times; 18 = 36 m.</li><li>Perimeter = 54 + 36 = 90 m.</li></ol><p><em>Watch out:</em> The join between the square and triangle is inside the shape, so it is NOT counted.</p><p><strong>Answer:</strong> <strong>90 m</strong></p>'
+- module: 39
+  difficulty: hard
+  sea_section: Section I
+  prompt: A compound shape has sides measuring 11 cm, 13 cm, 10 cm, 5 cm, 6 cm. What is its perimeter?
+  options:
+  - 50 cm
+  - 43 cm
+  - 47 cm
+  - 45 cm
+  correct_index: 3
+  explanation: Perimeter = sum of all sides = 45 cm.
+- module: 39
+  difficulty: hard
+  sea_section: Section I
+  prompt: A compound shape has sides measuring 11 cm, 13 cm, 3 cm, 10 cm, 3 cm, 2 cm. What is its perimeter?
+  options:
+  - 42 cm
+  - 48 cm
+  - 44 cm
+  - 40 cm
+  correct_index: 0
+  explanation: Perimeter = sum of all sides = 42 cm.
+- module: 39
+  difficulty: hard
+  sea_section: Section I
+  prompt: A compound shape has sides measuring 2 cm, 3 cm, 3 cm, 4 cm, 8 cm. What is its perimeter?
+  options:
+  - 22 cm
+  - 18 cm
+  - 20 cm
+  - 25 cm
+  correct_index: 2
+  explanation: Perimeter = sum of all sides = 20 cm.
+- module: 39
+  difficulty: hard
+  sea_section: Section I
+  prompt: A compound shape has sides measuring 2 cm, 3 cm, 7 cm, 13 cm, 12 cm. What is its perimeter?
+  options:
+  - 39 cm
+  - 42 cm
+  - 37 cm
+  - 35 cm
+  correct_index: 2
+  explanation: Perimeter = sum of all sides = 37 cm.
+- module: 39
+  difficulty: hard
+  sea_section: Section I
+  prompt: A compound shape has sides measuring 2 cm, 6 cm, 10 cm, 7 cm, 4 cm. What is its perimeter?
+  options:
+  - 31 cm
+  - 29 cm
+  - 34 cm
+  - 27 cm
+  correct_index: 1
+  explanation: Perimeter = sum of all sides = 29 cm.
+- module: 39
+  difficulty: hard
+  sea_section: Section I
+  prompt: A compound shape has sides measuring 2 cm, 7 cm, 13 cm, 10 cm, 10 cm. What is its perimeter?
+  options:
+  - 40 cm
+  - 44 cm
+  - 42 cm
+  - 47 cm
+  correct_index: 2
+  explanation: Perimeter = sum of all sides = 42 cm.
+- module: 39
+  difficulty: hard
+  sea_section: Section I
+  prompt: A compound shape has sides measuring 3 cm, 11 cm, 6 cm, 3 cm, 2 cm, 2 cm. What is its perimeter?
+  options:
+  - 27 cm
+  - 33 cm
+  - 29 cm
+  - 25 cm
+  correct_index: 0
+  explanation: Perimeter = sum of all sides = 27 cm.
+- module: 39
+  difficulty: hard
+  sea_section: Section I
+  prompt: A compound shape has sides measuring 4 cm, 4 cm, 5 cm, 7 cm, 12 cm. What is its perimeter?
+  options:
+  - 30 cm
+  - 34 cm
+  - 32 cm
+  - 37 cm
+  correct_index: 2
+  explanation: Perimeter = sum of all sides = 32 cm.
+- module: 39
+  difficulty: hard
+  sea_section: Section I
+  prompt: A compound shape has sides measuring 6 cm, 12 cm, 5 cm, 15 cm, 8 cm, 14 cm. What is its perimeter?
+  options:
+  - 66 cm
+  - 60 cm
+  - 62 cm
+  - 58 cm
+  correct_index: 1
+  explanation: Perimeter = sum of all sides = 60 cm.
+- module: 39
+  difficulty: hard
+  sea_section: Section I
+  prompt: A compound shape has sides measuring 7 cm, 2 cm, 9 cm, 11 cm, 12 cm, 14 cm. What is its perimeter?
+  options:
+  - 61 cm
+  - 53 cm
+  - 57 cm
+  - 55 cm
+  correct_index: 3
+  explanation: Perimeter = sum of all sides = 55 cm.
+- module: 39
+  difficulty: hard
+  sea_section: Section I
+  prompt: A compound shape has sides measuring 8 cm, 7 cm, 10 cm, 14 cm, 13 cm. What is its perimeter?
+  options:
+  - 52 cm
+  - 57 cm
+  - 50 cm
+  - 54 cm
+  correct_index: 0
+  explanation: Perimeter = sum of all sides = 52 cm.
+- module: 39
+  difficulty: hard
+  sea_section: Section I
+  prompt: A compound shape has sides measuring 9 cm, 3 cm, 3 cm, 14 cm, 4 cm, 7 cm. What is its perimeter?
+  options:
+  - 38 cm
+  - 42 cm
+  - 40 cm
+  - 46 cm
+  correct_index: 2
+  explanation: Perimeter = sum of all sides = 40 cm.
 - module: 39
   difficulty: hard
   sea_section: Section III
@@ -24942,6 +28770,50 @@ questions:
   explanation: <p>Convert between the units.</p><p><strong>Why:</strong> 1 kg = 1000 g, which is more than 900 g.</p><p><strong>Answer:</strong> <strong>1 kg</strong></p>
 - module: 44
   difficulty: easy
+  sea_section: Section I
+  prompt: A 4 litre jug has 1 litres poured out. How much is left?
+  options:
+  - 4 litres
+  - 3 litres
+  - 5 litres
+  - 1 litres
+  correct_index: 1
+  explanation: 4 − 1 = 3 litres.
+- module: 44
+  difficulty: easy
+  sea_section: Section I
+  prompt: A 4 litre jug has 3 litres poured out. How much is left?
+  options:
+  - 7 litres
+  - 3 litres
+  - 1 litres
+  - 2 litres
+  correct_index: 2
+  explanation: 4 − 3 = 1 litres.
+- module: 44
+  difficulty: easy
+  sea_section: Section I
+  prompt: A 6 litre jug has 3 litres poured out. How much is left?
+  options:
+  - 3 litres
+  - 4 litres
+  - 9 litres
+  - 2 litres
+  correct_index: 0
+  explanation: 6 − 3 = 3 litres.
+- module: 44
+  difficulty: easy
+  sea_section: Section I
+  prompt: A 7 litre jug has 4 litres poured out. How much is left?
+  options:
+  - 2 litres
+  - 11 litres
+  - 3 litres
+  - 4 litres
+  correct_index: 2
+  explanation: 7 − 4 = 3 litres.
+- module: 44
+  difficulty: easy
   sea_section: Section III
   prompt: A jug holds 2 litres = ? ml
   options:
@@ -24951,6 +28823,83 @@ questions:
   - '2'
   correct_index: 0
   explanation: 2 x 1000 = 2000 ml.
+- module: 44
+  difficulty: easy
+  sea_section: Section I
+  prompt: A tank holds 10 litres of water. How many millilitres is that? (1 L = 1000 ml)
+  options:
+  - 10000 ml
+  - 11000 ml
+  - 1000 ml
+  - 10100 ml
+  correct_index: 0
+  explanation: 10 × 1000 = 10000 ml.
+- module: 44
+  difficulty: easy
+  sea_section: Section I
+  prompt: A tank holds 11 litres of water. How many millilitres is that? (1 L = 1000 ml)
+  options:
+  - 11000 ml
+  - 11100 ml
+  - 1100 ml
+  - 12000 ml
+  correct_index: 0
+  explanation: 11 × 1000 = 11000 ml.
+- module: 44
+  difficulty: easy
+  sea_section: Section I
+  prompt: A tank holds 12 litres of water. How many millilitres is that? (1 L = 1000 ml)
+  options:
+  - 12000 ml
+  - 12100 ml
+  - 13000 ml
+  - 1200 ml
+  correct_index: 0
+  explanation: 12 × 1000 = 12000 ml.
+- module: 44
+  difficulty: easy
+  sea_section: Section I
+  prompt: A tank holds 5 litres of water. How many millilitres is that? (1 L = 1000 ml)
+  options:
+  - 500 ml
+  - 6000 ml
+  - 5000 ml
+  - 5100 ml
+  correct_index: 2
+  explanation: 5 × 1000 = 5000 ml.
+- module: 44
+  difficulty: easy
+  sea_section: Section I
+  prompt: A tank holds 7 litres of water. How many millilitres is that? (1 L = 1000 ml)
+  options:
+  - 7000 ml
+  - 8000 ml
+  - 700 ml
+  - 7100 ml
+  correct_index: 0
+  explanation: 7 × 1000 = 7000 ml.
+- module: 44
+  difficulty: easy
+  sea_section: Section I
+  prompt: A tank holds 8 litres of water. How many millilitres is that? (1 L = 1000 ml)
+  options:
+  - 800 ml
+  - 8100 ml
+  - 9000 ml
+  - 8000 ml
+  correct_index: 3
+  explanation: 8 × 1000 = 8000 ml.
+- module: 44
+  difficulty: easy
+  sea_section: Section I
+  prompt: A tank holds 9 litres of water. How many millilitres is that? (1 L = 1000 ml)
+  options:
+  - 10000 ml
+  - 9100 ml
+  - 9000 ml
+  - 900 ml
+  correct_index: 2
+  explanation: 9 × 1000 = 9000 ml.
 - module: 44
   difficulty: easy
   sea_section: Section III
@@ -25074,6 +29023,72 @@ questions:
   explanation: <p>Work in the same unit, then calculate.</p><p><strong>Why:</strong> 800 g = 0.8 kg; 1.2 + 0.8 + 1.5 = 3.5 kg.</p><p><strong>Answer:</strong> <strong>3.5 kg</strong></p>
 - module: 44
   difficulty: medium
+  sea_section: Section I
+  prompt: A 10 litre jug has 3 litres poured out. How much is left?
+  options:
+  - 13 litres
+  - 3 litres
+  - 8 litres
+  - 7 litres
+  correct_index: 3
+  explanation: 10 − 3 = 7 litres.
+- module: 44
+  difficulty: medium
+  sea_section: Section I
+  prompt: A 11 litre jug has 8 litres poured out. How much is left?
+  options:
+  - 3 litres
+  - 4 litres
+  - 19 litres
+  - 8 litres
+  correct_index: 0
+  explanation: 11 − 8 = 3 litres.
+- module: 44
+  difficulty: medium
+  sea_section: Section I
+  prompt: A 5 litre jug has 2 litres poured out. How much is left?
+  options:
+  - 4 litres
+  - 7 litres
+  - 2 litres
+  - 3 litres
+  correct_index: 3
+  explanation: 5 − 2 = 3 litres.
+- module: 44
+  difficulty: medium
+  sea_section: Section I
+  prompt: A 6 litre jug has 4 litres poured out. How much is left?
+  options:
+  - 3 litres
+  - 2 litres
+  - 4 litres
+  - 10 litres
+  correct_index: 1
+  explanation: 6 − 4 = 2 litres.
+- module: 44
+  difficulty: medium
+  sea_section: Section I
+  prompt: A 7 litre jug has 6 litres poured out. How much is left?
+  options:
+  - 13 litres
+  - 2 litres
+  - 1 litres
+  - 6 litres
+  correct_index: 2
+  explanation: 7 − 6 = 1 litres.
+- module: 44
+  difficulty: medium
+  sea_section: Section I
+  prompt: A 8 litre jug has 7 litres poured out. How much is left?
+  options:
+  - 2 litres
+  - 1 litres
+  - 15 litres
+  - 7 litres
+  correct_index: 1
+  explanation: 8 − 7 = 1 litres.
+- module: 44
+  difficulty: medium
   sea_section: Section III
   prompt: A rope is 3 m. You cut off 100 cm. How many cm are left?
   options:
@@ -25083,6 +29098,39 @@ questions:
   - '2'
   correct_index: 0
   explanation: 3 m = 300 cm, and 300 - 100 = 200 cm.
+- module: 44
+  difficulty: medium
+  sea_section: Section I
+  prompt: A tank holds 2 litres of water. How many millilitres is that? (1 L = 1000 ml)
+  options:
+  - 3000 ml
+  - 2000 ml
+  - 2100 ml
+  - 200 ml
+  correct_index: 1
+  explanation: 2 × 1000 = 2000 ml.
+- module: 44
+  difficulty: medium
+  sea_section: Section I
+  prompt: A tank holds 4 litres of water. How many millilitres is that? (1 L = 1000 ml)
+  options:
+  - 4000 ml
+  - 4100 ml
+  - 400 ml
+  - 5000 ml
+  correct_index: 0
+  explanation: 4 × 1000 = 4000 ml.
+- module: 44
+  difficulty: medium
+  sea_section: Section I
+  prompt: A tank holds 6 litres of water. How many millilitres is that? (1 L = 1000 ml)
+  options:
+  - 7000 ml
+  - 6000 ml
+  - 6100 ml
+  - 600 ml
+  correct_index: 1
+  explanation: 6 × 1000 = 6000 ml.
 - module: 44
   difficulty: hard
   sea_section: Section II
@@ -25151,6 +29199,94 @@ questions:
   explanation: <p>Volume of a cuboid = length &times; width &times; height.</p><p><strong>Working</strong></p><ol><li>V = 6 &times; 5 &times; 2 = <strong>60 cm&sup3;</strong>.</li></ol><p><strong>Answer:</strong> <strong>60 cm&sup3;</strong></p>
 - module: 44
   difficulty: hard
+  sea_section: Section I
+  prompt: A 10 litre jug has 8 litres poured out. How much is left?
+  options:
+  - 3 litres
+  - 2 litres
+  - 18 litres
+  - 8 litres
+  correct_index: 1
+  explanation: 10 − 8 = 2 litres.
+- module: 44
+  difficulty: hard
+  sea_section: Section I
+  prompt: A 12 litre jug has 9 litres poured out. How much is left?
+  options:
+  - 21 litres
+  - 3 litres
+  - 9 litres
+  - 4 litres
+  correct_index: 1
+  explanation: 12 − 9 = 3 litres.
+- module: 44
+  difficulty: hard
+  sea_section: Section I
+  prompt: A 2 litre jug has 1 litres poured out. How much is left?
+  options:
+  - 1 litres
+  - 3 litres
+  - 1 litres·0
+  - 2 litres
+  correct_index: 0
+  explanation: 2 − 1 = 1 litres.
+- module: 44
+  difficulty: hard
+  sea_section: Section I
+  prompt: A 3 litre jug has 1 litres poured out. How much is left?
+  options:
+  - 3 litres
+  - 1 litres
+  - 4 litres
+  - 2 litres
+  correct_index: 3
+  explanation: 3 − 1 = 2 litres.
+- module: 44
+  difficulty: hard
+  sea_section: Section I
+  prompt: A 6 litre jug has 2 litres poured out. How much is left?
+  options:
+  - 2 litres
+  - 4 litres
+  - 8 litres
+  - 5 litres
+  correct_index: 1
+  explanation: 6 − 2 = 4 litres.
+- module: 44
+  difficulty: hard
+  sea_section: Section I
+  prompt: A 8 litre jug has 5 litres poured out. How much is left?
+  options:
+  - 3 litres
+  - 5 litres
+  - 4 litres
+  - 13 litres
+  correct_index: 0
+  explanation: 8 − 5 = 3 litres.
+- module: 44
+  difficulty: hard
+  sea_section: Section I
+  prompt: A 8 litre jug has 6 litres poured out. How much is left?
+  options:
+  - 3 litres
+  - 14 litres
+  - 6 litres
+  - 2 litres
+  correct_index: 3
+  explanation: 8 − 6 = 2 litres.
+- module: 44
+  difficulty: hard
+  sea_section: Section I
+  prompt: A 9 litre jug has 7 litres poured out. How much is left?
+  options:
+  - 7 litres
+  - 2 litres
+  - 3 litres
+  - 16 litres
+  correct_index: 1
+  explanation: 9 − 7 = 2 litres.
+- module: 44
+  difficulty: hard
   sea_section: Section III
   prompt: A film is 2 hours. You watch 90 minutes. How many minutes are left?
   options:
@@ -25160,6 +29296,17 @@ questions:
   - '120'
   correct_index: 0
   explanation: 2 hours = 120 min, and 120 - 90 = 30 min.
+- module: 44
+  difficulty: hard
+  sea_section: Section I
+  prompt: A tank holds 3 litres of water. How many millilitres is that? (1 L = 1000 ml)
+  options:
+  - 3100 ml
+  - 3000 ml
+  - 4000 ml
+  - 300 ml
+  correct_index: 1
+  explanation: 3 × 1000 = 3000 ml.
 - module: 44
   difficulty: hard
   sea_section: Section III
@@ -25304,6 +29451,127 @@ questions:
   correct_index: 0
   explanation: 2 x 9 = 18.
 - module: 45
+  difficulty: easy
+  sea_section: Section I
+  prompt: One tile covers 2 × 7 = 14 cm². How many cm² do 2 such tiles cover?
+  options:
+  - 14 cm²
+  - 42 cm²
+  - 16 cm²
+  - 28 cm²
+  correct_index: 3
+  explanation: 14 × 2 = 28 cm².
+- module: 45
+  difficulty: easy
+  sea_section: Section I
+  prompt: One tile covers 2 × 7 = 14 cm². How many cm² do 5 such tiles cover?
+  options:
+  - 19 cm²
+  - 84 cm²
+  - 70 cm²
+  - 56 cm²
+  correct_index: 2
+  explanation: 14 × 5 = 70 cm².
+- module: 45
+  difficulty: easy
+  sea_section: Section I
+  prompt: One tile covers 4 × 5 = 20 cm². How many cm² do 5 such tiles cover?
+  options:
+  - 80 cm²
+  - 25 cm²
+  - 100 cm²
+  - 120 cm²
+  correct_index: 2
+  explanation: 20 × 5 = 100 cm².
+- module: 45
+  difficulty: easy
+  sea_section: Section I
+  prompt: One tile covers 5 × 2 = 10 cm². How many cm² do 3 such tiles cover?
+  options:
+  - 13 cm²
+  - 40 cm²
+  - 20 cm²
+  - 30 cm²
+  correct_index: 3
+  explanation: 10 × 3 = 30 cm².
+- module: 45
+  difficulty: easy
+  sea_section: Section I
+  prompt: One tile covers 6 × 6 = 36 cm². How many cm² do 2 such tiles cover?
+  options:
+  - 108 cm²
+  - 36 cm²
+  - 72 cm²
+  - 38 cm²
+  correct_index: 2
+  explanation: 36 × 2 = 72 cm².
+- module: 45
+  difficulty: easy
+  sea_section: Section I
+  prompt: One tile covers 6 × 8 = 48 cm². How many cm² do 4 such tiles cover?
+  options:
+  - 192 cm²
+  - 240 cm²
+  - 144 cm²
+  - 52 cm²
+  correct_index: 0
+  explanation: 48 × 4 = 192 cm².
+- module: 45
+  difficulty: easy
+  sea_section: Section I
+  prompt: One tile covers 8 × 2 = 16 cm². How many cm² do 3 such tiles cover?
+  options:
+  - 19 cm²
+  - 48 cm²
+  - 32 cm²
+  - 64 cm²
+  correct_index: 1
+  explanation: 16 × 3 = 48 cm².
+- module: 45
+  difficulty: easy
+  sea_section: Section I
+  prompt: One tile covers 8 × 7 = 56 cm². How many cm² do 2 such tiles cover?
+  options:
+  - 58 cm²
+  - 56 cm²
+  - 168 cm²
+  - 112 cm²
+  correct_index: 3
+  explanation: 56 × 2 = 112 cm².
+- module: 45
+  difficulty: easy
+  sea_section: Section I
+  prompt: One tile covers 8 × 7 = 56 cm². How many cm² do 5 such tiles cover?
+  options:
+  - 336 cm²
+  - 224 cm²
+  - 280 cm²
+  - 61 cm²
+  correct_index: 2
+  explanation: 56 × 5 = 280 cm².
+- module: 45
+  difficulty: easy
+  sea_section: Section I
+  prompt: One tile covers 9 × 2 = 18 cm². How many cm² do 3 such tiles cover?
+  options:
+  - 54 cm²
+  - 21 cm²
+  - 36 cm²
+  - 72 cm²
+  correct_index: 0
+  explanation: 18 × 3 = 54 cm².
+- module: 45
+  difficulty: easy
+  sea_section: Section I
+  prompt: One tile covers 9 × 6 = 54 cm². How many cm² do 5 such tiles cover?
+  options:
+  - 324 cm²
+  - 59 cm²
+  - 270 cm²
+  - 216 cm²
+  correct_index: 2
+  explanation: 54 × 5 = 270 cm².
+- module: 45
   difficulty: medium
   sea_section: Section III
   prompt: 10 square m at $8 per square m costs?
@@ -25402,6 +29670,127 @@ questions:
   - '20'
   correct_index: 0
   explanation: Area 8, then 8 x $10 = $80.
+- module: 45
+  difficulty: medium
+  sea_section: Section I
+  prompt: One tile covers 2 × 4 = 8 cm². How many cm² do 4 such tiles cover?
+  options:
+  - 24 cm²
+  - 12 cm²
+  - 40 cm²
+  - 32 cm²
+  correct_index: 3
+  explanation: 8 × 4 = 32 cm².
+- module: 45
+  difficulty: medium
+  sea_section: Section I
+  prompt: One tile covers 2 × 9 = 18 cm². How many cm² do 5 such tiles cover?
+  options:
+  - 72 cm²
+  - 90 cm²
+  - 108 cm²
+  - 23 cm²
+  correct_index: 1
+  explanation: 18 × 5 = 90 cm².
+- module: 45
+  difficulty: medium
+  sea_section: Section I
+  prompt: One tile covers 3 × 4 = 12 cm². How many cm² do 2 such tiles cover?
+  options:
+  - 36 cm²
+  - 14 cm²
+  - 12 cm²
+  - 24 cm²
+  correct_index: 3
+  explanation: 12 × 2 = 24 cm².
+- module: 45
+  difficulty: medium
+  sea_section: Section I
+  prompt: One tile covers 4 × 4 = 16 cm². How many cm² do 4 such tiles cover?
+  options:
+  - 64 cm²
+  - 20 cm²
+  - 48 cm²
+  - 80 cm²
+  correct_index: 0
+  explanation: 16 × 4 = 64 cm².
+- module: 45
+  difficulty: medium
+  sea_section: Section I
+  prompt: One tile covers 4 × 7 = 28 cm². How many cm² do 5 such tiles cover?
+  options:
+  - 168 cm²
+  - 33 cm²
+  - 112 cm²
+  - 140 cm²
+  correct_index: 3
+  explanation: 28 × 5 = 140 cm².
+- module: 45
+  difficulty: medium
+  sea_section: Section I
+  prompt: One tile covers 5 × 2 = 10 cm². How many cm² do 5 such tiles cover?
+  options:
+  - 15 cm²
+  - 60 cm²
+  - 40 cm²
+  - 50 cm²
+  correct_index: 3
+  explanation: 10 × 5 = 50 cm².
+- module: 45
+  difficulty: medium
+  sea_section: Section I
+  prompt: One tile covers 7 × 3 = 21 cm². How many cm² do 2 such tiles cover?
+  options:
+  - 42 cm²
+  - 21 cm²
+  - 63 cm²
+  - 23 cm²
+  correct_index: 0
+  explanation: 21 × 2 = 42 cm².
+- module: 45
+  difficulty: medium
+  sea_section: Section I
+  prompt: One tile covers 7 × 6 = 42 cm². How many cm² do 2 such tiles cover?
+  options:
+  - 84 cm²
+  - 44 cm²
+  - 42 cm²
+  - 126 cm²
+  correct_index: 0
+  explanation: 42 × 2 = 84 cm².
+- module: 45
+  difficulty: medium
+  sea_section: Section I
+  prompt: One tile covers 7 × 9 = 63 cm². How many cm² do 3 such tiles cover?
+  options:
+  - 189 cm²
+  - 66 cm²
+  - 252 cm²
+  - 126 cm²
+  correct_index: 0
+  explanation: 63 × 3 = 189 cm².
+- module: 45
+  difficulty: medium
+  sea_section: Section I
+  prompt: One tile covers 9 × 2 = 18 cm². How many cm² do 2 such tiles cover?
+  options:
+  - 18 cm²
+  - 36 cm²
+  - 54 cm²
+  - 20 cm²
+  correct_index: 1
+  explanation: 18 × 2 = 36 cm².
+- module: 45
+  difficulty: medium
+  sea_section: Section I
+  prompt: One tile covers 9 × 3 = 27 cm². How many cm² do 4 such tiles cover?
+  options:
+  - 108 cm²
+  - 135 cm²
+  - 81 cm²
+  - 31 cm²
+  correct_index: 0
+  explanation: 27 × 4 = 108 cm².
 - module: 45
   difficulty: hard
   sea_section: Section III
@@ -25523,6 +29912,105 @@ questions:
   - '73'
   correct_index: 0
   explanation: 2 x 10 = 20.
+- module: 45
+  difficulty: hard
+  sea_section: Section I
+  prompt: One tile covers 2 × 5 = 10 cm². How many cm² do 3 such tiles cover?
+  options:
+  - 40 cm²
+  - 30 cm²
+  - 13 cm²
+  - 20 cm²
+  correct_index: 1
+  explanation: 10 × 3 = 30 cm².
+- module: 45
+  difficulty: hard
+  sea_section: Section I
+  prompt: One tile covers 3 × 2 = 6 cm². How many cm² do 4 such tiles cover?
+  options:
+  - 24 cm²
+  - 10 cm²
+  - 30 cm²
+  - 18 cm²
+  correct_index: 0
+  explanation: 6 × 4 = 24 cm².
+- module: 45
+  difficulty: hard
+  sea_section: Section I
+  prompt: One tile covers 3 × 6 = 18 cm². How many cm² do 2 such tiles cover?
+  options:
+  - 20 cm²
+  - 18 cm²
+  - 54 cm²
+  - 36 cm²
+  correct_index: 3
+  explanation: 18 × 2 = 36 cm².
+- module: 45
+  difficulty: hard
+  sea_section: Section I
+  prompt: One tile covers 4 × 7 = 28 cm². How many cm² do 3 such tiles cover?
+  options:
+  - 56 cm²
+  - 31 cm²
+  - 112 cm²
+  - 84 cm²
+  correct_index: 3
+  explanation: 28 × 3 = 84 cm².
+- module: 45
+  difficulty: hard
+  sea_section: Section I
+  prompt: One tile covers 6 × 5 = 30 cm². How many cm² do 2 such tiles cover?
+  options:
+  - 90 cm²
+  - 30 cm²
+  - 32 cm²
+  - 60 cm²
+  correct_index: 3
+  explanation: 30 × 2 = 60 cm².
+- module: 45
+  difficulty: hard
+  sea_section: Section I
+  prompt: One tile covers 7 × 2 = 14 cm². How many cm² do 2 such tiles cover?
+  options:
+  - 14 cm²
+  - 42 cm²
+  - 16 cm²
+  - 28 cm²
+  correct_index: 3
+  explanation: 14 × 2 = 28 cm².
+- module: 45
+  difficulty: hard
+  sea_section: Section I
+  prompt: One tile covers 7 × 2 = 14 cm². How many cm² do 3 such tiles cover?
+  options:
+  - 17 cm²
+  - 28 cm²
+  - 56 cm²
+  - 42 cm²
+  correct_index: 3
+  explanation: 14 × 3 = 42 cm².
+- module: 45
+  difficulty: hard
+  sea_section: Section I
+  prompt: One tile covers 7 × 5 = 35 cm². How many cm² do 3 such tiles cover?
+  options:
+  - 140 cm²
+  - 38 cm²
+  - 105 cm²
+  - 70 cm²
+  correct_index: 2
+  explanation: 35 × 3 = 105 cm².
+- module: 45
+  difficulty: hard
+  sea_section: Section I
+  prompt: One tile covers 8 × 4 = 32 cm². How many cm² do 5 such tiles cover?
+  options:
+  - 192 cm²
+  - 160 cm²
+  - 37 cm²
+  - 128 cm²
+  correct_index: 1
+  explanation: 32 × 5 = 160 cm².
 - module: 46
   difficulty: easy
   sea_section: Section III
@@ -26294,6 +30782,116 @@ questions:
   correct_index: 0
   explanation: 2 x 5 = 10.
 - module: 47
+  difficulty: easy
+  sea_section: Section I
+  prompt: On a pictograph, each picture stands for 10. A row has 3 pictures. How many does the row represent?
+  options:
+  - '30'
+  - '20'
+  - '40'
+  - '3'
+  correct_index: 0
+  explanation: 3 × 10 = 30.
+- module: 47
+  difficulty: easy
+  sea_section: Section I
+  prompt: On a pictograph, each picture stands for 10. A row has 4 pictures. How many does the row represent?
+  options:
+  - '50'
+  - '40'
+  - '4'
+  - '30'
+  correct_index: 1
+  explanation: 4 × 10 = 40.
+- module: 47
+  difficulty: easy
+  sea_section: Section I
+  prompt: On a pictograph, each picture stands for 10. A row has 7 pictures. How many does the row represent?
+  options:
+  - '7'
+  - '70'
+  - '80'
+  - '60'
+  correct_index: 1
+  explanation: 7 × 10 = 70.
+- module: 47
+  difficulty: easy
+  sea_section: Section I
+  prompt: On a pictograph, each picture stands for 2. A row has 2 pictures. How many does the row represent?
+  options:
+  - '4'
+  - '6'
+  - 4·0
+  - '2'
+  correct_index: 0
+  explanation: 2 × 2 = 4.
+- module: 47
+  difficulty: easy
+  sea_section: Section I
+  prompt: On a pictograph, each picture stands for 2. A row has 3 pictures. How many does the row represent?
+  options:
+  - '6'
+  - '8'
+  - '3'
+  - '4'
+  correct_index: 0
+  explanation: 3 × 2 = 6.
+- module: 47
+  difficulty: easy
+  sea_section: Section I
+  prompt: On a pictograph, each picture stands for 2. A row has 4 pictures. How many does the row represent?
+  options:
+  - '8'
+  - '6'
+  - '4'
+  - '10'
+  correct_index: 0
+  explanation: 4 × 2 = 8.
+- module: 47
+  difficulty: easy
+  sea_section: Section I
+  prompt: On a pictograph, each picture stands for 2. A row has 5 pictures. How many does the row represent?
+  options:
+  - '8'
+  - '5'
+  - '10'
+  - '12'
+  correct_index: 2
+  explanation: 5 × 2 = 10.
+- module: 47
+  difficulty: easy
+  sea_section: Section I
+  prompt: On a pictograph, each picture stands for 2. A row has 8 pictures. How many does the row represent?
+  options:
+  - '8'
+  - '14'
+  - '18'
+  - '16'
+  correct_index: 3
+  explanation: 8 × 2 = 16.
+- module: 47
+  difficulty: easy
+  sea_section: Section I
+  prompt: On a pictograph, each picture stands for 5. A row has 5 pictures. How many does the row represent?
+  options:
+  - '5'
+  - '30'
+  - '20'
+  - '25'
+  correct_index: 3
+  explanation: 5 × 5 = 25.
+- module: 47
+  difficulty: easy
+  sea_section: Section I
+  prompt: On a pictograph, each picture stands for 5. A row has 6 pictures. How many does the row represent?
+  options:
+  - '25'
+  - '30'
+  - '35'
+  - '6'
+  correct_index: 1
+  explanation: 6 × 5 = 30.
+- module: 47
   difficulty: medium
   sea_section: Section I
   prompt: <p>The pictograph shows favourite brands for 18 students (1 figure = 2 students). How many figures are needed for Brand Z?</p><p><img src="/storage/question-media/3c321ac32e1f5a968311a79b89ae24229690e05f.png" alt="figure" style="max-width:100%"/></p>
@@ -26404,6 +31002,116 @@ questions:
   correct_index: 0
   explanation: 4 x 5 = 20.
 - module: 47
+  difficulty: medium
+  sea_section: Section I
+  prompt: On a pictograph, each picture stands for 10. A row has 2 pictures. How many does the row represent?
+  options:
+  - '20'
+  - '30'
+  - '2'
+  - '10'
+  correct_index: 0
+  explanation: 2 × 10 = 20.
+- module: 47
+  difficulty: medium
+  sea_section: Section I
+  prompt: On a pictograph, each picture stands for 10. A row has 5 pictures. How many does the row represent?
+  options:
+  - '40'
+  - '5'
+  - '50'
+  - '60'
+  correct_index: 2
+  explanation: 5 × 10 = 50.
+- module: 47
+  difficulty: medium
+  sea_section: Section I
+  prompt: On a pictograph, each picture stands for 10. A row has 6 pictures. How many does the row represent?
+  options:
+  - '60'
+  - '50'
+  - '70'
+  - '6'
+  correct_index: 0
+  explanation: 6 × 10 = 60.
+- module: 47
+  difficulty: medium
+  sea_section: Section I
+  prompt: On a pictograph, each picture stands for 10. A row has 8 pictures. How many does the row represent?
+  options:
+  - '80'
+  - '70'
+  - '90'
+  - '8'
+  correct_index: 0
+  explanation: 8 × 10 = 80.
+- module: 47
+  difficulty: medium
+  sea_section: Section I
+  prompt: On a pictograph, each picture stands for 2. A row has 6 pictures. How many does the row represent?
+  options:
+  - '14'
+  - '12'
+  - '6'
+  - '10'
+  correct_index: 1
+  explanation: 6 × 2 = 12.
+- module: 47
+  difficulty: medium
+  sea_section: Section I
+  prompt: On a pictograph, each picture stands for 2. A row has 7 pictures. How many does the row represent?
+  options:
+  - '7'
+  - '16'
+  - '14'
+  - '12'
+  correct_index: 2
+  explanation: 7 × 2 = 14.
+- module: 47
+  difficulty: medium
+  sea_section: Section I
+  prompt: On a pictograph, each picture stands for 5. A row has 2 pictures. How many does the row represent?
+  options:
+  - '10'
+  - '5'
+  - '2'
+  - '15'
+  correct_index: 0
+  explanation: 2 × 5 = 10.
+- module: 47
+  difficulty: medium
+  sea_section: Section I
+  prompt: On a pictograph, each picture stands for 5. A row has 3 pictures. How many does the row represent?
+  options:
+  - '3'
+  - '15'
+  - '20'
+  - '10'
+  correct_index: 1
+  explanation: 3 × 5 = 15.
+- module: 47
+  difficulty: medium
+  sea_section: Section I
+  prompt: On a pictograph, each picture stands for 5. A row has 7 pictures. How many does the row represent?
+  options:
+  - '40'
+  - '7'
+  - '30'
+  - '35'
+  correct_index: 3
+  explanation: 7 × 5 = 35.
+- module: 47
+  difficulty: medium
+  sea_section: Section I
+  prompt: On a pictograph, each picture stands for 5. A row has 8 pictures. How many does the row represent?
+  options:
+  - '40'
+  - '8'
+  - '35'
+  - '45'
+  correct_index: 0
+  explanation: 8 × 5 = 40.
+- module: 47
   difficulty: hard
   sea_section: Section I
   prompt: <p>The pictograph shows favourite brands for 30 students (1 figure = 3 students). How many figures are needed for Brand Z?</p><p><img src="/storage/question-media/579d6dbd2af3fff9202028e5e2c547679583feb1.png" alt="figure" style="max-width:100%"/></p>
@@ -26513,6 +31221,116 @@ questions:
   - '45'
   correct_index: 0
   explanation: 5 x 4 = 20.
+- module: 47
+  difficulty: hard
+  sea_section: Section I
+  prompt: On a bar chart each unit is 10. Two bars show 3 units and 7 units. What is their combined total?
+  options:
+  - '30'
+  - '90'
+  - '100'
+  - '110'
+  correct_index: 2
+  explanation: (3+7) × 10 = 100.
+- module: 47
+  difficulty: hard
+  sea_section: Section I
+  prompt: On a bar chart each unit is 10. Two bars show 5 units and 7 units. What is their combined total?
+  options:
+  - '130'
+  - '110'
+  - '50'
+  - '120'
+  correct_index: 3
+  explanation: (5+7) × 10 = 120.
+- module: 47
+  difficulty: hard
+  sea_section: Section I
+  prompt: On a bar chart each unit is 10. Two bars show 7 units and 6 units. What is their combined total?
+  options:
+  - '140'
+  - '130'
+  - '120'
+  - '70'
+  correct_index: 1
+  explanation: (7+6) × 10 = 130.
+- module: 47
+  difficulty: hard
+  sea_section: Section I
+  prompt: On a bar chart each unit is 2. Two bars show 4 units and 5 units. What is their combined total?
+  options:
+  - '18'
+  - '20'
+  - '8'
+  - '16'
+  correct_index: 0
+  explanation: (4+5) × 2 = 18.
+- module: 47
+  difficulty: hard
+  sea_section: Section I
+  prompt: On a bar chart each unit is 4. Two bars show 3 units and 2 units. What is their combined total?
+  options:
+  - '24'
+  - '20'
+  - '16'
+  - '12'
+  correct_index: 1
+  explanation: (3+2) × 4 = 20.
+- module: 47
+  difficulty: hard
+  sea_section: Section I
+  prompt: On a bar chart each unit is 4. Two bars show 8 units and 4 units. What is their combined total?
+  options:
+  - '32'
+  - '52'
+  - '48'
+  - '44'
+  correct_index: 2
+  explanation: (8+4) × 4 = 48.
+- module: 47
+  difficulty: hard
+  sea_section: Section I
+  prompt: On a bar chart each unit is 5. Two bars show 6 units and 4 units. What is their combined total?
+  options:
+  - '30'
+  - '55'
+  - '45'
+  - '50'
+  correct_index: 3
+  explanation: (6+4) × 5 = 50.
+- module: 47
+  difficulty: hard
+  sea_section: Section I
+  prompt: On a bar chart each unit is 5. Two bars show 6 units and 8 units. What is their combined total?
+  options:
+  - '65'
+  - '30'
+  - '75'
+  - '70'
+  correct_index: 3
+  explanation: (6+8) × 5 = 70.
+- module: 47
+  difficulty: hard
+  sea_section: Section I
+  prompt: On a bar chart each unit is 5. Two bars show 9 units and 7 units. What is their combined total?
+  options:
+  - '85'
+  - '80'
+  - '75'
+  - '45'
+  correct_index: 1
+  explanation: (9+7) × 5 = 80.
+- module: 47
+  difficulty: hard
+  sea_section: Section I
+  prompt: On a pictograph, each picture stands for 5. A row has 4 pictures. How many does the row represent?
+  options:
+  - '25'
+  - '4'
+  - '20'
+  - '15'
+  correct_index: 2
+  explanation: 4 × 5 = 20.
 - module: 48
   difficulty: easy
   sea_section: Section I
@@ -27912,6 +32730,105 @@ questions:
   explanation: 8 (blue) is the largest number.
 - module: 50
   difficulty: easy
+  sea_section: Section I
+  prompt: For the data 1, 3, 13, 10, 18, what is the highest value?
+  options:
+  - '19'
+  - '17'
+  - '20'
+  - '18'
+  correct_index: 3
+  explanation: The highest value = 18.
+- module: 50
+  difficulty: easy
+  sea_section: Section I
+  prompt: For the data 11, 15, 8, 6, what is the lowest value?
+  options:
+  - '5'
+  - '8'
+  - '6'
+  - '7'
+  correct_index: 2
+  explanation: The lowest value = 6.
+- module: 50
+  difficulty: easy
+  sea_section: Section I
+  prompt: For the data 18, 10, 6, 16, 20, 12, what is the highest value?
+  options:
+  - '19'
+  - '21'
+  - '22'
+  - '20'
+  correct_index: 3
+  explanation: The highest value = 20.
+- module: 50
+  difficulty: easy
+  sea_section: Section I
+  prompt: For the data 19, 10, 5, 7, 13, what is the lowest value?
+  options:
+  - '6'
+  - '7'
+  - '5'
+  - '4'
+  correct_index: 2
+  explanation: The lowest value = 5.
+- module: 50
+  difficulty: easy
+  sea_section: Section I
+  prompt: For the data 3, 14, 17, 5, 16, what is the highest value?
+  options:
+  - '16'
+  - '17'
+  - '19'
+  - '18'
+  correct_index: 1
+  explanation: The highest value = 17.
+- module: 50
+  difficulty: easy
+  sea_section: Section I
+  prompt: For the data 4, 4, 18, 9, what is the highest value?
+  options:
+  - '18'
+  - '20'
+  - '17'
+  - '19'
+  correct_index: 0
+  explanation: The highest value = 18.
+- module: 50
+  difficulty: easy
+  sea_section: Section I
+  prompt: For the data 6, 17, 13, 17, what is the range (highest − lowest)?
+  options:
+  - '13'
+  - '11'
+  - '10'
+  - '12'
+  correct_index: 1
+  explanation: The range (highest − lowest) = 11.
+- module: 50
+  difficulty: easy
+  sea_section: Section I
+  prompt: For the data 7, 10, 13, 1, 6, what is the total?
+  options:
+  - '38'
+  - '39'
+  - '37'
+  - '36'
+  correct_index: 2
+  explanation: The total = 37.
+- module: 50
+  difficulty: easy
+  sea_section: Section I
+  prompt: For the data 7, 2, 7, 4, 10, 4, what is the lowest value?
+  options:
+  - '4'
+  - '2'
+  - '3'
+  - '1'
+  correct_index: 1
+  explanation: The lowest value = 2.
+- module: 50
+  difficulty: easy
   sea_section: Section III
   prompt: If blue shirts sell most, the shop should stock more?
   options:
@@ -28033,6 +32950,105 @@ questions:
   explanation: Stock more of the best-selling item.
 - module: 50
   difficulty: medium
+  sea_section: Section I
+  prompt: For the data 12, 19, 14, 16, what is the highest value?
+  options:
+  - '19'
+  - '21'
+  - '18'
+  - '20'
+  correct_index: 0
+  explanation: The highest value = 19.
+- module: 50
+  difficulty: medium
+  sea_section: Section I
+  prompt: For the data 12, 19, 2, 20, 5, what is the total?
+  options:
+  - '58'
+  - '57'
+  - '60'
+  - '59'
+  correct_index: 0
+  explanation: The total = 58.
+- module: 50
+  difficulty: medium
+  sea_section: Section I
+  prompt: For the data 17, 11, 9, 16, what is the total?
+  options:
+  - '54'
+  - '53'
+  - '55'
+  - '52'
+  correct_index: 1
+  explanation: The total = 53.
+- module: 50
+  difficulty: medium
+  sea_section: Section I
+  prompt: For the data 17, 17, 2, 2, 8, what is the total?
+  options:
+  - '45'
+  - '47'
+  - '46'
+  - '48'
+  correct_index: 2
+  explanation: The total = 46.
+- module: 50
+  difficulty: medium
+  sea_section: Section I
+  prompt: For the data 19, 4, 19, 2, 8, what is the lowest value?
+  options:
+  - '3'
+  - '1'
+  - '4'
+  - '2'
+  correct_index: 3
+  explanation: The lowest value = 2.
+- module: 50
+  difficulty: medium
+  sea_section: Section I
+  prompt: For the data 3, 2, 13, 9, 4, what is the total?
+  options:
+  - '32'
+  - '33'
+  - '30'
+  - '31'
+  correct_index: 3
+  explanation: The total = 31.
+- module: 50
+  difficulty: medium
+  sea_section: Section I
+  prompt: For the data 4, 10, 11, 16, what is the total?
+  options:
+  - '42'
+  - '40'
+  - '43'
+  - '41'
+  correct_index: 3
+  explanation: The total = 41.
+- module: 50
+  difficulty: medium
+  sea_section: Section I
+  prompt: For the data 5, 4, 10, 12, 12, 10, what is the lowest value?
+  options:
+  - '5'
+  - '3'
+  - '4'
+  - '6'
+  correct_index: 2
+  explanation: The lowest value = 4.
+- module: 50
+  difficulty: medium
+  sea_section: Section I
+  prompt: For the data 6, 14, 14, 6, 14, 18, what is the lowest value?
+  options:
+  - '8'
+  - '6'
+  - '5'
+  - '7'
+  correct_index: 1
+  explanation: The lowest value = 6.
+- module: 50
+  difficulty: medium
   sea_section: Section III
   prompt: The greatest of 12, 7, 20 is?
   options:
@@ -28141,6 +33157,105 @@ questions:
   - Rainfall increased overall from January to April.
   correct_index: 3
   explanation: '<p>Look at the overall trend across the months.</p><p><strong>Working</strong></p><ol><li>40 &rarr; 20 &rarr; 60 &rarr; 80: the general movement is upward, ending much higher than it began.</li></ol><p><strong>Answer:</strong> Rainfall increased overall.</p>'
+- module: 50
+  difficulty: hard
+  sea_section: Section I
+  prompt: For the data 10, 7, 4, 15, 5, what is the lowest value?
+  options:
+  - '3'
+  - '6'
+  - '4'
+  - '5'
+  correct_index: 2
+  explanation: The lowest value = 4.
+- module: 50
+  difficulty: hard
+  sea_section: Section I
+  prompt: For the data 12, 10, 10, 18, 1, 11, what is the range (highest − lowest)?
+  options:
+  - '19'
+  - '18'
+  - '17'
+  - '16'
+  correct_index: 2
+  explanation: The range (highest − lowest) = 17.
+- module: 50
+  difficulty: hard
+  sea_section: Section I
+  prompt: For the data 13, 16, 19, 10, 14, what is the total?
+  options:
+  - '71'
+  - '74'
+  - '72'
+  - '73'
+  correct_index: 2
+  explanation: The total = 72.
+- module: 50
+  difficulty: hard
+  sea_section: Section I
+  prompt: For the data 13, 6, 18, 19, 6, 18, what is the highest value?
+  options:
+  - '21'
+  - '18'
+  - '19'
+  - '20'
+  correct_index: 2
+  explanation: The highest value = 19.
+- module: 50
+  difficulty: hard
+  sea_section: Section I
+  prompt: For the data 3, 11, 10, 1, what is the range (highest − lowest)?
+  options:
+  - '11'
+  - '9'
+  - '10'
+  - '12'
+  correct_index: 2
+  explanation: The range (highest − lowest) = 10.
+- module: 50
+  difficulty: hard
+  sea_section: Section I
+  prompt: For the data 4, 2, 1, 8, 16, what is the highest value?
+  options:
+  - '17'
+  - '15'
+  - '18'
+  - '16'
+  correct_index: 3
+  explanation: The highest value = 16.
+- module: 50
+  difficulty: hard
+  sea_section: Section I
+  prompt: For the data 5, 6, 14, 16, 9, 9, what is the total?
+  options:
+  - '60'
+  - '61'
+  - '58'
+  - '59'
+  correct_index: 3
+  explanation: The total = 59.
+- module: 50
+  difficulty: hard
+  sea_section: Section I
+  prompt: For the data 6, 19, 15, 18, 18, what is the total?
+  options:
+  - '75'
+  - '76'
+  - '78'
+  - '77'
+  correct_index: 1
+  explanation: The total = 76.
+- module: 50
+  difficulty: hard
+  sea_section: Section I
+  prompt: For the data 7, 1, 7, 5, 2, what is the highest value?
+  options:
+  - '7'
+  - '9'
+  - '6'
+  - '8'
+  correct_index: 0
+  explanation: The highest value = 7.
 - module: 50
   difficulty: hard
   sea_section: Section III
@@ -28262,6 +33377,105 @@ questions:
   - '15'
   correct_index: 1
   explanation: <p>Read the values, then do the operation asked.</p><p><strong>Answer:</strong> <strong>10</strong></p>
+- module: 51
+  difficulty: easy
+  sea_section: Section I
+  prompt: Four scores are 10, 9, 11, 2. What is their total, and their mean? (give the mean)
+  options:
+  - '32'
+  - '7'
+  - '9'
+  - '8'
+  correct_index: 3
+  explanation: Total = 32; mean = 32 ÷ 4 = 8.
+- module: 51
+  difficulty: easy
+  sea_section: Section I
+  prompt: Four scores are 12, 11, 11, 2. What is their total, and their mean? (give the mean)
+  options:
+  - '8'
+  - '36'
+  - '10'
+  - '9'
+  correct_index: 3
+  explanation: Total = 36; mean = 36 ÷ 4 = 9.
+- module: 51
+  difficulty: easy
+  sea_section: Section I
+  prompt: Four scores are 2, 2, 6, 10. What is their total, and their mean? (give the mean)
+  options:
+  - '20'
+  - '6'
+  - '5'
+  - '4'
+  correct_index: 2
+  explanation: Total = 20; mean = 20 ÷ 4 = 5.
+- module: 51
+  difficulty: easy
+  sea_section: Section I
+  prompt: Four scores are 2, 3, 12, 7. What is their total, and their mean? (give the mean)
+  options:
+  - '5'
+  - '7'
+  - '6'
+  - '24'
+  correct_index: 2
+  explanation: Total = 24; mean = 24 ÷ 4 = 6.
+- module: 51
+  difficulty: easy
+  sea_section: Section I
+  prompt: Four scores are 3, 7, 10, 12. What is their total, and their mean? (give the mean)
+  options:
+  - '32'
+  - '8'
+  - '9'
+  - '7'
+  correct_index: 1
+  explanation: Total = 32; mean = 32 ÷ 4 = 8.
+- module: 51
+  difficulty: easy
+  sea_section: Section I
+  prompt: Four scores are 5, 5, 4, 6. What is their total, and their mean? (give the mean)
+  options:
+  - '5'
+  - '6'
+  - '4'
+  - '20'
+  correct_index: 0
+  explanation: Total = 20; mean = 20 ÷ 4 = 5.
+- module: 51
+  difficulty: easy
+  sea_section: Section I
+  prompt: Four scores are 7, 8, 3, 6. What is their total, and their mean? (give the mean)
+  options:
+  - '5'
+  - '24'
+  - '7'
+  - '6'
+  correct_index: 3
+  explanation: Total = 24; mean = 24 ÷ 4 = 6.
+- module: 51
+  difficulty: easy
+  sea_section: Section I
+  prompt: Four scores are 8, 11, 9, 12. What is their total, and their mean? (give the mean)
+  options:
+  - '10'
+  - '11'
+  - '9'
+  - '40'
+  correct_index: 0
+  explanation: Total = 40; mean = 40 ÷ 4 = 10.
+- module: 51
+  difficulty: easy
+  sea_section: Section I
+  prompt: Four scores are 9, 5, 11, 11. What is their total, and their mean? (give the mean)
+  options:
+  - '36'
+  - '10'
+  - '9'
+  - '8'
+  correct_index: 2
+  explanation: Total = 36; mean = 36 ÷ 4 = 9.
 - module: 51
   difficulty: easy
   sea_section: Section III
@@ -28418,6 +33632,105 @@ questions:
   explanation: 30 ÷ 3 = 10.
 - module: 51
   difficulty: medium
+  sea_section: Section I
+  prompt: Four scores are 10, 4, 6, 12. What is their total, and their mean? (give the mean)
+  options:
+  - '7'
+  - '8'
+  - '32'
+  - '9'
+  correct_index: 1
+  explanation: Total = 32; mean = 32 ÷ 4 = 8.
+- module: 51
+  difficulty: medium
+  sea_section: Section I
+  prompt: Four scores are 11, 2, 3, 8. What is their total, and their mean? (give the mean)
+  options:
+  - '24'
+  - '7'
+  - '6'
+  - '5'
+  correct_index: 2
+  explanation: Total = 24; mean = 24 ÷ 4 = 6.
+- module: 51
+  difficulty: medium
+  sea_section: Section I
+  prompt: Four scores are 11, 5, 5, 7. What is their total, and their mean? (give the mean)
+  options:
+  - '7'
+  - '28'
+  - '8'
+  - '6'
+  correct_index: 0
+  explanation: Total = 28; mean = 28 ÷ 4 = 7.
+- module: 51
+  difficulty: medium
+  sea_section: Section I
+  prompt: Four scores are 12, 7, 6, 11. What is their total, and their mean? (give the mean)
+  options:
+  - '36'
+  - '10'
+  - '9'
+  - '8'
+  correct_index: 2
+  explanation: Total = 36; mean = 36 ÷ 4 = 9.
+- module: 51
+  difficulty: medium
+  sea_section: Section I
+  prompt: Four scores are 2, 2, 2, 6. What is their total, and their mean? (give the mean)
+  options:
+  - '12'
+  - '3'
+  - '4'
+  - '2'
+  correct_index: 1
+  explanation: Total = 12; mean = 12 ÷ 4 = 3.
+- module: 51
+  difficulty: medium
+  sea_section: Section I
+  prompt: Four scores are 2, 6, 11, 5. What is their total, and their mean? (give the mean)
+  options:
+  - '6'
+  - '5'
+  - '24'
+  - '7'
+  correct_index: 0
+  explanation: Total = 24; mean = 24 ÷ 4 = 6.
+- module: 51
+  difficulty: medium
+  sea_section: Section I
+  prompt: Four scores are 6, 8, 4, 2. What is their total, and their mean? (give the mean)
+  options:
+  - '20'
+  - '6'
+  - '4'
+  - '5'
+  correct_index: 3
+  explanation: Total = 20; mean = 20 ÷ 4 = 5.
+- module: 51
+  difficulty: medium
+  sea_section: Section I
+  prompt: Four scores are 8, 12, 2, 10. What is their total, and their mean? (give the mean)
+  options:
+  - '9'
+  - '32'
+  - '8'
+  - '7'
+  correct_index: 2
+  explanation: Total = 32; mean = 32 ÷ 4 = 8.
+- module: 51
+  difficulty: medium
+  sea_section: Section I
+  prompt: Four scores are 8, 12, 2, 6. What is their total, and their mean? (give the mean)
+  options:
+  - '8'
+  - '7'
+  - '28'
+  - '6'
+  correct_index: 1
+  explanation: Total = 28; mean = 28 ÷ 4 = 7.
+- module: 51
+  difficulty: medium
   sea_section: Section III
   prompt: Scores 6, 8, 10 total 24. The mean = 24 ÷ 3 = ?
   options:
@@ -28526,6 +33839,105 @@ questions:
   - '10'
   correct_index: 0
   explanation: 40 ÷ 5 = 8.
+- module: 51
+  difficulty: hard
+  sea_section: Section I
+  prompt: Four scores are 10, 10, 12, 4. What is their total, and their mean? (give the mean)
+  options:
+  - '10'
+  - '8'
+  - '36'
+  - '9'
+  correct_index: 3
+  explanation: Total = 36; mean = 36 ÷ 4 = 9.
+- module: 51
+  difficulty: hard
+  sea_section: Section I
+  prompt: Four scores are 10, 7, 6, 9. What is their total, and their mean? (give the mean)
+  options:
+  - '8'
+  - '7'
+  - '9'
+  - '32'
+  correct_index: 0
+  explanation: Total = 32; mean = 32 ÷ 4 = 8.
+- module: 51
+  difficulty: hard
+  sea_section: Section I
+  prompt: Four scores are 11, 5, 12, 12. What is their total, and their mean? (give the mean)
+  options:
+  - '40'
+  - '10'
+  - '9'
+  - '11'
+  correct_index: 1
+  explanation: Total = 40; mean = 40 ÷ 4 = 10.
+- module: 51
+  difficulty: hard
+  sea_section: Section I
+  prompt: Four scores are 12, 3, 8, 9. What is their total, and their mean? (give the mean)
+  options:
+  - '9'
+  - '32'
+  - '8'
+  - '7'
+  correct_index: 2
+  explanation: Total = 32; mean = 32 ÷ 4 = 8.
+- module: 51
+  difficulty: hard
+  sea_section: Section I
+  prompt: Four scores are 12, 6, 2, 12. What is their total, and their mean? (give the mean)
+  options:
+  - '32'
+  - '9'
+  - '8'
+  - '7'
+  correct_index: 2
+  explanation: Total = 32; mean = 32 ÷ 4 = 8.
+- module: 51
+  difficulty: hard
+  sea_section: Section I
+  prompt: Four scores are 12, 7, 10, 11. What is their total, and their mean? (give the mean)
+  options:
+  - '40'
+  - '10'
+  - '9'
+  - '11'
+  correct_index: 1
+  explanation: Total = 40; mean = 40 ÷ 4 = 10.
+- module: 51
+  difficulty: hard
+  sea_section: Section I
+  prompt: Four scores are 3, 10, 4, 7. What is their total, and their mean? (give the mean)
+  options:
+  - '6'
+  - '24'
+  - '5'
+  - '7'
+  correct_index: 0
+  explanation: Total = 24; mean = 24 ÷ 4 = 6.
+- module: 51
+  difficulty: hard
+  sea_section: Section I
+  prompt: Four scores are 4, 4, 2, 6. What is their total, and their mean? (give the mean)
+  options:
+  - '3'
+  - '5'
+  - '16'
+  - '4'
+  correct_index: 3
+  explanation: Total = 16; mean = 16 ÷ 4 = 4.
+- module: 51
+  difficulty: hard
+  sea_section: Section I
+  prompt: Four scores are 9, 3, 2, 10. What is their total, and their mean? (give the mean)
+  options:
+  - '5'
+  - '6'
+  - '24'
+  - '7'
+  correct_index: 1
+  explanation: Total = 24; mean = 24 ÷ 4 = 6.
 - module: 51
   difficulty: hard
   sea_section: Section III
