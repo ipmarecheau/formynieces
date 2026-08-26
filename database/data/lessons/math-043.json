@@ -15,7 +15,7 @@
         "blocks": [
             {
                 "type": "text",
-                "content": "Time has its own units, and they do not go in tens — there are 60 minutes in an hour and 60 seconds in a minute. Knowing these lets you convert time easily.",
+                "content": "Time has its own units, and they do not go in tens — there are 60 minutes in an hour and 60 seconds in a minute. Knowing these lets you convert time easily. Quick words: convert means change a time amount from one unit to another, like hours to minutes.",
                 "cognition": "knowing"
             },
             {

@@ -1,105 +1,222 @@
 [
-  {
-    "module": "MATH-038",
-    "title": "Area of squares and rectangles — tiling Aunty's kitchen",
-    "is_published": true,
-    "objectives_direct": ["MATH-038"],
-    "objectives_indirect": ["MATH-037", "MATH-040", "MATH-045"],
-    "canonical_examples_source": "ground-truth bank: uk-ks2-2024 maths (area items) + Illustrative Mathematics Grade 5 (area/unit squares) — answers verified 2026-08-25",
-    "blocks": [
-      { "type": "text", "cognition": "knowing", "content": "Aunty is tiling her kitchen floor and needs to know how many square tiles to buy. The floor is a rectangle. The amount of flat space it covers is its AREA — and area is exactly what tells her how many tiles fit." },
-      { "type": "key", "cognition": "knowing", "content": "Area of a rectangle = length x width. We measure it in square units (like square metres, m²) — each unit is one tile." },
-      { "type": "example", "cognition": "knowing", "content": "A small mat is 5 tiles long and 3 tiles wide.", "steps": ["Count the rows: 3 rows of 5 tiles.", "That is length x width = 5 x 3.", "5 x 3 = 15, so the mat is covered by 15 tiles = 15 square units."] },
-      {
-        "type": "fillblank",
-        "cognition": "applying",
-        "prompt": "Aunty's kitchen is 4 m long and 3 m wide. Its area = 4 x 3 = ___ m².",
-        "answer": "12",
-        "explain": "Area = length x width = 4 x 3 = 12 m², so she needs 12 one-metre tiles.",
-        "rule": "The area of a rectangle is length x width.",
-        "practiceItems": [
-          { "prompt": "area of a 4 by 2 rectangle", "answer": "8" },
-          { "prompt": "area of a 6 by 3 rectangle", "answer": "18" },
-          { "prompt": "area of a 7 by 2 rectangle", "answer": "14" },
-          { "prompt": "area of a 5 by 4 rectangle", "answer": "20" }
+    {
+        "module": "MATH-038",
+        "title": "Area of squares and rectangles — tiling Aunty's kitchen",
+        "is_published": true,
+        "objectives_direct": [
+            "MATH-038"
+        ],
+        "objectives_indirect": [
+            "MATH-037",
+            "MATH-040",
+            "MATH-045"
+        ],
+        "canonical_examples_source": "ground-truth bank: uk-ks2-2024 maths (area items) + Illustrative Mathematics Grade 5 (area/unit squares) — answers verified 2026-08-25",
+        "blocks": [
+            {
+                "type": "text",
+                "cognition": "knowing",
+                "content": "Aunty is tiling her kitchen floor and needs to know how many square tiles to buy. The floor is a rectangle. The amount of flat space it covers is its AREA — and area is exactly what tells her how many tiles fit. Quick words: tiling means covering a floor with square pieces. flat space means the surface you can walk on."
+            },
+            {
+                "type": "key",
+                "cognition": "knowing",
+                "content": "Area of a rectangle = length x width. We measure it in square units (like square metres, m²) — each unit is one tile."
+            },
+            {
+                "type": "example",
+                "cognition": "knowing",
+                "content": "A small mat is 5 tiles long and 3 tiles wide.",
+                "steps": [
+                    "Count the rows: 3 rows of 5 tiles.",
+                    "That is length x width = 5 x 3.",
+                    "5 x 3 = 15, so the mat is covered by 15 tiles = 15 square units."
+                ]
+            },
+            {
+                "type": "fillblank",
+                "cognition": "applying",
+                "prompt": "Aunty's kitchen is 4 m long and 3 m wide. Its area = 4 x 3 = ___ m².",
+                "answer": "12",
+                "explain": "Area = length x width = 4 x 3 = 12 m², so she needs 12 one-metre tiles.",
+                "rule": "The area of a rectangle is length x width.",
+                "practiceItems": [
+                    {
+                        "prompt": "area of a 4 by 2 rectangle",
+                        "answer": "8"
+                    },
+                    {
+                        "prompt": "area of a 6 by 3 rectangle",
+                        "answer": "18"
+                    },
+                    {
+                        "prompt": "area of a 7 by 2 rectangle",
+                        "answer": "14"
+                    },
+                    {
+                        "prompt": "area of a 5 by 4 rectangle",
+                        "answer": "20"
+                    }
+                ]
+            },
+            {
+                "type": "key",
+                "cognition": "knowing",
+                "content": "A square is just a rectangle whose length and width are equal, so its area = side x side."
+            },
+            {
+                "type": "fillblank",
+                "cognition": "applying",
+                "prompt": "A square patio has sides of 6 m. Its area = 6 x 6 = ___ m².",
+                "answer": "36",
+                "explain": "Area of a square = side x side = 6 x 6 = 36 m².",
+                "rule": "The area of a square is side x side.",
+                "practiceItems": [
+                    {
+                        "prompt": "area of a square with side 4",
+                        "answer": "16"
+                    },
+                    {
+                        "prompt": "area of a square with side 3",
+                        "answer": "9"
+                    },
+                    {
+                        "prompt": "area of a square with side 5",
+                        "answer": "25"
+                    },
+                    {
+                        "prompt": "area of a square with side 8",
+                        "answer": "64"
+                    }
+                ]
+            },
+            {
+                "type": "ordersteps",
+                "cognition": "reasoning",
+                "instruction": "Aunty tiles the 4 m by 3 m kitchen, then adds a 2 m by 2 m pantry. Put the steps to find the TOTAL tiles in order.",
+                "items": [
+                    "Kitchen area = 4 x 3 = 12 m²",
+                    "Pantry area = 2 x 2 = 4 m²",
+                    "Total = 12 + 4 = 16 m²",
+                    "So she needs 16 tiles"
+                ],
+                "rule": "For a compound shape, find each rectangle's area, then add them.",
+                "principle": "A compound area is the sum of the areas of its rectangles.",
+                "canonical_solution": [
+                    "Kitchen area = 4 x 3 = 12 m²",
+                    "Pantry area = 2 x 2 = 4 m²",
+                    "Total = 12 + 4 = 16 m²",
+                    "So she needs 16 tiles"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "finds each rectangle's area before combining"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "adds the two areas to get 16 m²"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "explains a compound area is the sum of its parts"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "adds side lengths instead of areas",
+                        "coach": "Find each rectangle's AREA first (length x width), then add."
+                    },
+                    {
+                        "if": "multiplies the two areas",
+                        "coach": "The parts are added, not multiplied: 12 + 4."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "a 3x3 room plus a 2x1 hall, total area",
+                        "answer": "11"
+                    },
+                    {
+                        "prompt": "a 5x2 room plus a 2x2 nook, total area",
+                        "answer": "14"
+                    },
+                    {
+                        "prompt": "a 4x4 room plus a 1x3 step, total area",
+                        "answer": "19"
+                    },
+                    {
+                        "prompt": "a 6x2 room plus a 2x2 nook, total area",
+                        "answer": "16"
+                    }
+                ]
+            },
+            {
+                "type": "check",
+                "cognition": "reasoning",
+                "question": "Aunty has 24 m of edging. A 6 m x 6 m patio and an 8 m x 4 m patio BOTH use all 24 m. Which gives more floor to tile (more area)?",
+                "options": [
+                    "The 6 x 6 patio (36 m²)",
+                    "The 8 x 4 patio (32 m²)",
+                    "They are the same"
+                ],
+                "answer": 0,
+                "explain": "6 x 6 = 36 m² and 8 x 4 = 32 m². Same perimeter (24 m), but the square has the larger area — 36 > 32.",
+                "rule": "Shapes with the same perimeter can have different areas; a square gives the most area.",
+                "principle": "Area is length x width, and equal perimeters do not mean equal areas.",
+                "canonical_solution": [
+                    "6 x 6 = 36 m²",
+                    "8 x 4 = 32 m²",
+                    "36 > 32, so the 6 x 6 (square) has more area"
+                ],
+                "rubric": [
+                    {
+                        "dimension": "method",
+                        "look_for": "computes BOTH areas (36 and 32)"
+                    },
+                    {
+                        "dimension": "reasoning",
+                        "look_for": "compares the areas and concludes the square is larger"
+                    },
+                    {
+                        "dimension": "principle",
+                        "look_for": "notes same perimeter but different area"
+                    }
+                ],
+                "misconceptions": [
+                    {
+                        "if": "uses perimeter as area / adds the sides",
+                        "coach": "That 24 m is the edging (perimeter). The floor to tile is the area — length x width."
+                    },
+                    {
+                        "if": "only one area computed",
+                        "coach": "Work out BOTH patios before you compare."
+                    }
+                ],
+                "practiceItems": [
+                    {
+                        "prompt": "bigger area: a 5x5 square or a 7x3 rectangle? (side count)",
+                        "answer": "25"
+                    },
+                    {
+                        "prompt": "area of a 5x5 square",
+                        "answer": "25"
+                    },
+                    {
+                        "prompt": "area of a 7x3 rectangle",
+                        "answer": "21"
+                    },
+                    {
+                        "prompt": "area of a 6x6 square",
+                        "answer": "36"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "cognition": "knowing",
+                "content": "So: area is length x width (side x side for a square), you can add rectangles for an odd shape, and the same edging can wrap very different areas. Now help Aunty tile the whole house — let's practise!"
+            }
         ]
-      },
-      { "type": "key", "cognition": "knowing", "content": "A square is just a rectangle whose length and width are equal, so its area = side x side." },
-      {
-        "type": "fillblank",
-        "cognition": "applying",
-        "prompt": "A square patio has sides of 6 m. Its area = 6 x 6 = ___ m².",
-        "answer": "36",
-        "explain": "Area of a square = side x side = 6 x 6 = 36 m².",
-        "rule": "The area of a square is side x side.",
-        "practiceItems": [
-          { "prompt": "area of a square with side 4", "answer": "16" },
-          { "prompt": "area of a square with side 3", "answer": "9" },
-          { "prompt": "area of a square with side 5", "answer": "25" },
-          { "prompt": "area of a square with side 8", "answer": "64" }
-        ]
-      },
-      {
-        "type": "ordersteps",
-        "cognition": "reasoning",
-        "instruction": "Aunty tiles the 4 m by 3 m kitchen, then adds a 2 m by 2 m pantry. Put the steps to find the TOTAL tiles in order.",
-        "items": [
-          "Kitchen area = 4 x 3 = 12 m²",
-          "Pantry area = 2 x 2 = 4 m²",
-          "Total = 12 + 4 = 16 m²",
-          "So she needs 16 tiles"
-        ],
-        "rule": "For a compound shape, find each rectangle's area, then add them.",
-        "principle": "A compound area is the sum of the areas of its rectangles.",
-        "canonical_solution": [
-          "Kitchen area = 4 x 3 = 12 m²",
-          "Pantry area = 2 x 2 = 4 m²",
-          "Total = 12 + 4 = 16 m²",
-          "So she needs 16 tiles"
-        ],
-        "rubric": [
-          { "dimension": "method", "look_for": "finds each rectangle's area before combining" },
-          { "dimension": "reasoning", "look_for": "adds the two areas to get 16 m²" },
-          { "dimension": "principle", "look_for": "explains a compound area is the sum of its parts" }
-        ],
-        "misconceptions": [
-          { "if": "adds side lengths instead of areas", "coach": "Find each rectangle's AREA first (length x width), then add." },
-          { "if": "multiplies the two areas", "coach": "The parts are added, not multiplied: 12 + 4." }
-        ],
-        "practiceItems": [
-          { "prompt": "a 3x3 room plus a 2x1 hall, total area", "answer": "11" },
-          { "prompt": "a 5x2 room plus a 2x2 nook, total area", "answer": "14" },
-          { "prompt": "a 4x4 room plus a 1x3 step, total area", "answer": "19" },
-          { "prompt": "a 6x2 room plus a 2x2 nook, total area", "answer": "16" }
-        ]
-      },
-      {
-        "type": "check",
-        "cognition": "reasoning",
-        "question": "Aunty has 24 m of edging. A 6 m x 6 m patio and an 8 m x 4 m patio BOTH use all 24 m. Which gives more floor to tile (more area)?",
-        "options": ["The 6 x 6 patio (36 m²)", "The 8 x 4 patio (32 m²)", "They are the same"],
-        "answer": 0,
-        "explain": "6 x 6 = 36 m² and 8 x 4 = 32 m². Same perimeter (24 m), but the square has the larger area — 36 > 32.",
-        "rule": "Shapes with the same perimeter can have different areas; a square gives the most area.",
-        "principle": "Area is length x width, and equal perimeters do not mean equal areas.",
-        "canonical_solution": ["6 x 6 = 36 m²", "8 x 4 = 32 m²", "36 > 32, so the 6 x 6 (square) has more area"],
-        "rubric": [
-          { "dimension": "method", "look_for": "computes BOTH areas (36 and 32)" },
-          { "dimension": "reasoning", "look_for": "compares the areas and concludes the square is larger" },
-          { "dimension": "principle", "look_for": "notes same perimeter but different area" }
-        ],
-        "misconceptions": [
-          { "if": "uses perimeter as area / adds the sides", "coach": "That 24 m is the edging (perimeter). The floor to tile is the area — length x width." },
-          { "if": "only one area computed", "coach": "Work out BOTH patios before you compare." }
-        ],
-        "practiceItems": [
-          { "prompt": "bigger area: a 5x5 square or a 7x3 rectangle? (side count)", "answer": "25" },
-          { "prompt": "area of a 5x5 square", "answer": "25" },
-          { "prompt": "area of a 7x3 rectangle", "answer": "21" },
-          { "prompt": "area of a 6x6 square", "answer": "36" }
-        ]
-      },
-      { "type": "text", "cognition": "knowing", "content": "So: area is length x width (side x side for a square), you can add rectangles for an odd shape, and the same edging can wrap very different areas. Now help Aunty tile the whole house — let's practise!" }
-    ]
-  }
+    }
 ]

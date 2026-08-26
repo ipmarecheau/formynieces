@@ -14,7 +14,7 @@
         "blocks": [
             {
                 "type": "text",
-                "content": "Kavi is counting the crowd at the Savannah for a big fete: 5,308 people so far. Where a digit sits decides how much it is worth. The same digit 5 can mean five, fifty, or five hundred — it all depends on its place.",
+                "content": "Kavi is counting the crowd at the Savannah for a big fete: 5,308 people so far. Where a digit sits decides how much it is worth. The same digit 5 can mean five, fifty, or five hundred — it all depends on its place. Quick words: digit means a single number symbol like 0,1,2 up to 9. place means the spot a digit sits in, showing its worth. value means how much the digit is actually worth there. placeholder means zero that keeps the spot open for other numbers.",
                 "cognition": "knowing"
             },
             {

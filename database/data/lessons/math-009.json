@@ -13,7 +13,7 @@
         "blocks": [
             {
                 "type": "text",
-                "content": "A number pattern follows a rule. Once you spot the rule, you can carry the pattern on as far as you like.",
+                "content": "A number pattern follows a rule. Once you spot the rule, you can carry the pattern on as far as you like. Quick words: pattern means a list of numbers that follows a clear rule. increasing means getting bigger by adding the same amount each time. decreasing means getting smaller by taking away the same amount each time. spot means notice or find something clearly.",
                 "cognition": "knowing"
             },
             {

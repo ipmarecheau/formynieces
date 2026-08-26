@@ -15,7 +15,7 @@
         "blocks": [
             {
                 "type": "text",
-                "content": "Rounding gives a number that is close enough but much easier to use. Rounding to the nearest thousand smooths a number to the nearest 1,000.",
+                "content": "Rounding gives a number that is close enough but much easier to use. Rounding to the nearest thousand smooths a number to the nearest 1,000. Quick words: digit means a single number symbol like 0, 1, 2, 3, 4, 5, 6, 7, 8, or 9. hundreds digit means the third number from the right in a whole number.",
                 "cognition": "knowing"
             },
             {

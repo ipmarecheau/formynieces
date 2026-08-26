@@ -15,7 +15,7 @@
         "blocks": [
             {
                 "type": "text",
-                "content": "To find the area of a tricky compound shape, break it into simple rectangles, find the area of each, and add them up.",
+                "content": "To find the area of a tricky compound shape, break it into simple rectangles, find the area of each, and add them up. Quick words: compound shape means a shape made by joining two or more simple shapes together. split lines means lines you draw to cut a big shape into smaller, easy rectangles.",
                 "cognition": "knowing"
             },
             {

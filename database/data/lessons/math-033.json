@@ -15,7 +15,7 @@
         "blocks": [
             {
                 "type": "text",
-                "content": "A polygon is a closed shape made of straight sides. When you join polygons together, you get composite shapes.",
+                "content": "A polygon is a closed shape made of straight sides. When you join polygons together, you get composite shapes. Quick words: composite shape means a big shape made by sticking two or more simple shapes together. polygon means a flat shape with only straight sides that connects back to itself. square units means tiny square tiles used to count how much space a shape covers.",
                 "cognition": "knowing"
             },
             {

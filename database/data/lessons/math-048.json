@@ -15,7 +15,7 @@
         "blocks": [
             {
                 "type": "text",
-                "content": "One useful thing to know about a set of data is which value shows up the most. That value has a special name: the mode.",
+                "content": "One useful thing to know about a set of data is which value shows up the most. That value has a special name: the mode. Quick words: data set means a group of numbers or facts you are looking at. mode means the number that shows up the most times.",
                 "cognition": "knowing"
             },
             {

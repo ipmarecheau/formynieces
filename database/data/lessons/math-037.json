@@ -15,7 +15,7 @@
         "blocks": [
             {
                 "type": "text",
-                "content": "Perimeter is the total distance all the way around the edge of a shape. For a square or rectangle, there is a quick formula.",
+                "content": "Perimeter is the total distance all the way around the edge of a shape. For a square or rectangle, there is a quick formula. Quick words: perimeter means the total distance all the way around the edge of a shape. opposite sides means two sides that are across from each other in a rectangle.",
                 "cognition": "knowing"
             },
             {

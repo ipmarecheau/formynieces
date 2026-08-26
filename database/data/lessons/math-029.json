@@ -15,7 +15,7 @@
         "blocks": [
             {
                 "type": "text",
-                "content": "Not all triangles are the same, and neither are four-sided shapes. We sort them into families by their sides and angles.",
+                "content": "Not all triangles are the same, and neither are four-sided shapes. We sort them into families by their sides and angles. Quick words: scalene means a triangle with no equal sides. rhombus means a four-sided shape with all sides the same length.",
                 "cognition": "knowing"
             },
             {

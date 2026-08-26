@@ -14,7 +14,7 @@
         "blocks": [
             {
                 "type": "text",
-                "content": "Division shares a number into equal groups, or finds how many groups fit. You can always check a division by multiplying back.",
+                "content": "Division shares a number into equal groups, or finds how many groups fit. You can always check a division by multiplying back. Quick words: divisor means the number you are dividing by.",
                 "cognition": "knowing"
             },
             {

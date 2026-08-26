@@ -14,7 +14,7 @@
         "blocks": [
             {
                 "type": "text",
-                "content": "We measure length in millimetres, centimetres, metres and kilometres. Knowing how they relate lets you switch between them easily.",
+                "content": "We measure length in millimetres, centimetres, metres and kilometres. Knowing how they relate lets you switch between them easily. Quick words: millimetre means a very small length, like the thickness of a plastic card. kilometre means a long distance, about ten times walking around a football field. larger unit means a measure that holds more length, so you need fewer of them. smaller unit means a tiny measure, so you need many to cover the same length.",
                 "cognition": "knowing"
             },
             {
