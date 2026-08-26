@@ -34051,6 +34051,28 @@ questions:
 - module: 52
   difficulty: easy
   sea_section: Section I
+  prompt: What is the plural of 'beach'?
+  options:
+  - beachs
+  - beachess
+  - beaches
+  - beacs
+  correct_index: 2
+  explanation: The plural of 'beach' is 'beaches'.
+- module: 52
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is the plural of 'bench'?
+  options:
+  - benchs
+  - benches
+  - benchess
+  - bencs
+  correct_index: 1
+  explanation: The plural of 'bench' is 'benches'.
+- module: 52
+  difficulty: easy
+  sea_section: Section I
   prompt: What is the plural of 'box'?
   options:
   - boxs
@@ -34062,6 +34084,61 @@ questions:
 - module: 52
   difficulty: easy
   sea_section: Section I
+  prompt: What is the plural of 'class'?
+  options:
+  - classes
+  - classess
+  - class
+  - classs
+  correct_index: 0
+  explanation: The plural of 'class' is 'classes'.
+- module: 52
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is the plural of 'dish'?
+  options:
+  - diss
+  - dishes
+  - dishess
+  - dishs
+  correct_index: 1
+  explanation: The plural of 'dish' is 'dishes'.
+- module: 52
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is the plural of 'glass'?
+  options:
+  - glasss
+  - glasses
+  - glassess
+  - glass
+  correct_index: 1
+  explanation: The plural of 'glass' is 'glasses'.
+- module: 52
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is the plural of 'half'?
+  options:
+  - halfes
+  - halvess
+  - halves
+  - halfs
+  correct_index: 2
+  explanation: The plural of 'half' is 'halves'.
+- module: 52
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is the plural of 'kiss'?
+  options:
+  - kissess
+  - kisss
+  - kisses
+  - kiss
+  correct_index: 2
+  explanation: The plural of 'kiss' is 'kisses'.
+- module: 52
+  difficulty: easy
+  sea_section: Section I
   prompt: What is the plural of 'leaf'?
   options:
   - leafs
@@ -34070,6 +34147,50 @@ questions:
   - leeves
   correct_index: 1
   explanation: 'Words ending in -f often change f to v and add -es: leaves.'
+- module: 52
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is the plural of 'shelf'?
+  options:
+  - shelvess
+  - shelves
+  - shelfes
+  - shelfs
+  correct_index: 1
+  explanation: The plural of 'shelf' is 'shelves'.
+- module: 52
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is the plural of 'thief'?
+  options:
+  - thievess
+  - thiefs
+  - thiefes
+  - thieves
+  correct_index: 3
+  explanation: The plural of 'thief' is 'thieves'.
+- module: 52
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is the plural of 'wish'?
+  options:
+  - wishes
+  - wiss
+  - wishs
+  - wishess
+  correct_index: 0
+  explanation: The plural of 'wish' is 'wishes'.
+- module: 52
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is the plural of 'wolf'?
+  options:
+  - wolves
+  - wolvess
+  - wolfs
+  - wolfes
+  correct_index: 0
+  explanation: The plural of 'wolf' is 'wolves'.
 - module: 52
   difficulty: medium
   sea_section: Section I
@@ -34150,6 +34271,72 @@ questions:
 - module: 52
   difficulty: medium
   sea_section: Section I
+  prompt: What is the plural of 'branch'?
+  options:
+  - brancs
+  - branchs
+  - branchess
+  - branches
+  correct_index: 3
+  explanation: The plural of 'branch' is 'branches'.
+- module: 52
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is the plural of 'brush'?
+  options:
+  - brushess
+  - bruss
+  - brushs
+  - brushes
+  correct_index: 3
+  explanation: The plural of 'brush' is 'brushes'.
+- module: 52
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is the plural of 'bus'?
+  options:
+  - busess
+  - bus
+  - buses
+  - buss
+  correct_index: 2
+  explanation: The plural of 'bus' is 'buses'.
+- module: 52
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is the plural of 'calf'?
+  options:
+  - calfs
+  - calfes
+  - calvess
+  - calves
+  correct_index: 3
+  explanation: The plural of 'calf' is 'calves'.
+- module: 52
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is the plural of 'church'?
+  options:
+  - churchs
+  - churchess
+  - churcs
+  - churches
+  correct_index: 3
+  explanation: The plural of 'church' is 'churches'.
+- module: 52
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is the plural of 'fox'?
+  options:
+  - fos
+  - foxes
+  - foxess
+  - foxs
+  correct_index: 1
+  explanation: The plural of 'fox' is 'foxes'.
+- module: 52
+  difficulty: medium
+  sea_section: Section I
   prompt: What is the plural of 'knife'?
   options:
   - knifs
@@ -34158,6 +34345,61 @@ questions:
   - knive
   correct_index: 2
   explanation: 'Words ending in -fe change to -ves: knives.'
+- module: 52
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is the plural of 'life'?
+  options:
+  - lifees
+  - lives
+  - lifes
+  - livess
+  correct_index: 1
+  explanation: The plural of 'life' is 'lives'.
+- module: 52
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is the plural of 'loaf'?
+  options:
+  - loafes
+  - loafs
+  - loavess
+  - loaves
+  correct_index: 3
+  explanation: The plural of 'loaf' is 'loaves'.
+- module: 52
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is the plural of 'tax'?
+  options:
+  - taxs
+  - tas
+  - taxes
+  - taxess
+  correct_index: 2
+  explanation: The plural of 'tax' is 'taxes'.
+- module: 52
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is the plural of 'watch'?
+  options:
+  - watcs
+  - watchs
+  - watches
+  - watchess
+  correct_index: 2
+  explanation: The plural of 'watch' is 'watches'.
+- module: 52
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is the plural of 'wife'?
+  options:
+  - wives
+  - wifees
+  - wifes
+  - wivess
+  correct_index: 0
+  explanation: The plural of 'wife' is 'wives'.
 - module: 52
   difficulty: medium
   sea_section: Section I
@@ -34268,6 +34510,127 @@ questions:
   - The citys had many storys.
   correct_index: 2
   explanation: thieves (f to v) and boxes (-es) are both correct; the other sentences contain errors.
+- module: 52
+  difficulty: hard
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - loavse
+  - louves
+  - loaes
+  - loaves
+  correct_index: 3
+  explanation: The correct spelling is 'loaves'.
+- module: 52
+  difficulty: hard
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - candie
+  - candies
+  - candise
+  - candiess
+  correct_index: 1
+  explanation: The correct spelling is 'candies'.
+- module: 52
+  difficulty: hard
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - shlves
+  - selves
+  - shelves
+  - shelve
+  correct_index: 2
+  explanation: The correct spelling is 'shelves'.
+- module: 52
+  difficulty: hard
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - beerries
+  - berrries
+  - berries
+  - barries
+  correct_index: 2
+  explanation: The correct spelling is 'berries'.
+- module: 52
+  difficulty: hard
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - paarties
+  - patries
+  - prties
+  - parties
+  correct_index: 3
+  explanation: The correct spelling is 'parties'.
+- module: 52
+  difficulty: hard
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - burshes
+  - brushes
+  - brushas
+  - rushes
+  correct_index: 1
+  explanation: The correct spelling is 'brushes'.
+- module: 52
+  difficulty: hard
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - armise
+  - urmies
+  - armies
+  - armiess
+  correct_index: 2
+  explanation: The correct spelling is 'armies'.
+- module: 52
+  difficulty: hard
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - loaves
+  - loave
+  - loavos
+  - loavves
+  correct_index: 0
+  explanation: The correct spelling is 'loaves'.
+- module: 52
+  difficulty: hard
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - beahces
+  - beaches
+  - ebaches
+  - beeches
+  correct_index: 1
+  explanation: The correct spelling is 'beaches'.
+- module: 52
+  difficulty: hard
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - foxs
+  - fxes
+  - foes
+  - foxes
+  correct_index: 3
+  explanation: The correct spelling is 'foxes'.
+- module: 52
+  difficulty: hard
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - halves
+  - hlves
+  - halve
+  - halvse
+  correct_index: 0
+  explanation: The correct spelling is 'halves'.
 - module: 53
   difficulty: easy
   sea_section: Section I
@@ -34390,6 +34753,105 @@ questions:
   correct_index: 0
   explanation: 'Double the m: swimming.'
 - module: 53
+  difficulty: easy
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - ffitting
+  - fitting
+  - ftting
+  - iftting
+  correct_index: 1
+  explanation: The correct spelling is 'fitting'.
+- module: 53
+  difficulty: easy
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - robbed
+  - robbbed
+  - robbde
+  - ribbed
+  correct_index: 0
+  explanation: The correct spelling is 'robbed'.
+- module: 53
+  difficulty: easy
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - sshopping
+  - shpoping
+  - shopping
+  - shupping
+  correct_index: 2
+  explanation: The correct spelling is 'shopping'.
+- module: 53
+  difficulty: easy
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - pinning
+  - ppinning
+  - piinning
+  - pinnning
+  correct_index: 0
+  explanation: The correct spelling is 'pinning'.
+- module: 53
+  difficulty: easy
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - runnning
+  - ronning
+  - unning
+  - running
+  correct_index: 3
+  explanation: The correct spelling is 'running'.
+- module: 53
+  difficulty: easy
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - fiitting
+  - iftting
+  - fittign
+  - fitting
+  correct_index: 3
+  explanation: The correct spelling is 'fitting'.
+- module: 53
+  difficulty: easy
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - hopped
+  - hopepd
+  - hpoped
+  - hoppd
+  correct_index: 0
+  explanation: The correct spelling is 'hopped'.
+- module: 53
+  difficulty: easy
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - begge
+  - begged
+  - bgged
+  - beggd
+  correct_index: 1
+  explanation: The correct spelling is 'begged'.
+- module: 53
+  difficulty: easy
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - tappig
+  - tappng
+  - tpping
+  - tapping
+  correct_index: 3
+  explanation: The correct spelling is 'tapping'.
+- module: 53
   difficulty: medium
   sea_section: Section I
   prompt: <p>Add <strong>-ed</strong> to &ldquo;drop&rdquo;. Which spelling is correct?</p>
@@ -34499,6 +34961,105 @@ questions:
   - help
   correct_index: 0
   explanation: '''run'' ends in one vowel + one consonant, so it doubles: running.'
+- module: 53
+  difficulty: medium
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - robebd
+  - robbad
+  - robbed
+  - robbid
+  correct_index: 2
+  explanation: The correct spelling is 'robbed'.
+- module: 53
+  difficulty: medium
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - shoppping
+  - shoppign
+  - shoppingg
+  - shopping
+  correct_index: 3
+  explanation: The correct spelling is 'shopping'.
+- module: 53
+  difficulty: medium
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - pnning
+  - pinning
+  - pinnning
+  - panning
+  correct_index: 1
+  explanation: The correct spelling is 'pinning'.
+- module: 53
+  difficulty: medium
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - runnong
+  - runnign
+  - running
+  - unning
+  correct_index: 2
+  explanation: The correct spelling is 'running'.
+- module: 53
+  difficulty: medium
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - fittig
+  - fitting
+  - fittingg
+  - fittiing
+  correct_index: 1
+  explanation: The correct spelling is 'fitting'.
+- module: 53
+  difficulty: medium
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - hoppped
+  - hoped
+  - hhopped
+  - hopped
+  correct_index: 3
+  explanation: The correct spelling is 'hopped'.
+- module: 53
+  difficulty: medium
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - beggde
+  - begged
+  - bugged
+  - bigged
+  correct_index: 1
+  explanation: The correct spelling is 'begged'.
+- module: 53
+  difficulty: medium
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - tapping
+  - tapipng
+  - tappinng
+  - taping
+  correct_index: 0
+  explanation: The correct spelling is 'tapping'.
+- module: 53
+  difficulty: medium
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - joggging
+  - jogging
+  - joggingg
+  - jjogging
+  correct_index: 1
+  explanation: The correct spelling is 'jogging'.
 - module: 53
   difficulty: medium
   sea_section: Section I
@@ -34631,6 +35192,105 @@ questions:
   - sit
   correct_index: 0
   explanation: '''rain'' has two vowels before the n, so it does not double: raining.'
+- module: 53
+  difficulty: hard
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - robbad
+  - robbed
+  - rbobed
+  - robbd
+  correct_index: 1
+  explanation: The correct spelling is 'robbed'.
+- module: 53
+  difficulty: hard
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - sopping
+  - shoppiing
+  - shoppng
+  - shopping
+  correct_index: 3
+  explanation: The correct spelling is 'shopping'.
+- module: 53
+  difficulty: hard
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - pinningg
+  - ppinning
+  - pinnign
+  - pinning
+  correct_index: 3
+  explanation: The correct spelling is 'pinning'.
+- module: 53
+  difficulty: hard
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - ronning
+  - running
+  - runniing
+  - runnign
+  correct_index: 1
+  explanation: The correct spelling is 'running'.
+- module: 53
+  difficulty: hard
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - fittinng
+  - fittting
+  - iftting
+  - fitting
+  correct_index: 3
+  explanation: The correct spelling is 'fitting'.
+- module: 53
+  difficulty: hard
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - hoped
+  - hoppod
+  - hopped
+  - opped
+  correct_index: 2
+  explanation: The correct spelling is 'hopped'.
+- module: 53
+  difficulty: hard
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - bgged
+  - beggd
+  - begged
+  - ebgged
+  correct_index: 2
+  explanation: The correct spelling is 'begged'.
+- module: 53
+  difficulty: hard
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - taping
+  - tapping
+  - tappign
+  - tpaping
+  correct_index: 1
+  explanation: The correct spelling is 'tapping'.
+- module: 53
+  difficulty: hard
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - jogging
+  - jgging
+  - joggign
+  - joggig
+  correct_index: 0
+  explanation: The correct spelling is 'jogging'.
 - module: 54
   difficulty: easy
   sea_section: Section I
@@ -34753,6 +35413,105 @@ questions:
   correct_index: 0
   explanation: 'Drop the e: riding.'
 - module: 54
+  difficulty: easy
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - shiningg
+  - shinung
+  - shinning
+  - shining
+  correct_index: 3
+  explanation: The correct spelling is 'shining'.
+- module: 54
+  difficulty: easy
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - sharing
+  - sharnig
+  - shraing
+  - shring
+  correct_index: 0
+  explanation: The correct spelling is 'sharing'.
+- module: 54
+  difficulty: easy
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - nting
+  - notting
+  - ntoing
+  - noting
+  correct_index: 3
+  explanation: The correct spelling is 'noting'.
+- module: 54
+  difficulty: easy
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - tracing
+  - tracin
+  - trucing
+  - tarcing
+  correct_index: 0
+  explanation: The correct spelling is 'tracing'.
+- module: 54
+  difficulty: easy
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - skating
+  - skatin
+  - sskating
+  - skaating
+  correct_index: 0
+  explanation: The correct spelling is 'skating'.
+- module: 54
+  difficulty: easy
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - rading
+  - trading
+  - tradin
+  - trrading
+  correct_index: 1
+  explanation: The correct spelling is 'trading'.
+- module: 54
+  difficulty: easy
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - daancing
+  - dancig
+  - dancing
+  - adncing
+  correct_index: 2
+  explanation: The correct spelling is 'dancing'.
+- module: 54
+  difficulty: easy
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - decidinng
+  - deciidng
+  - deicding
+  - deciding
+  correct_index: 3
+  explanation: The correct spelling is 'deciding'.
+- module: 54
+  difficulty: easy
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - meisuring
+  - measuriing
+  - measuring
+  - meassuring
+  correct_index: 2
+  explanation: The correct spelling is 'measuring'.
+- module: 54
   difficulty: medium
   sea_section: Section I
   prompt: <p>Add <strong>-ing</strong> to &ldquo;close&rdquo;. Which spelling is correct?</p>
@@ -34862,6 +35621,105 @@ questions:
   - hoping
   correct_index: 0
   explanation: '-ful starts with a consonant, so keep the e: hopeful.'
+- module: 54
+  difficulty: medium
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - sharing
+  - sharng
+  - sharig
+  - haring
+  correct_index: 0
+  explanation: The correct spelling is 'sharing'.
+- module: 54
+  difficulty: medium
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - notinng
+  - noting
+  - notnig
+  - onting
+  correct_index: 1
+  explanation: The correct spelling is 'noting'.
+- module: 54
+  difficulty: medium
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - tracnig
+  - traacing
+  - tracing
+  - tracin
+  correct_index: 2
+  explanation: The correct spelling is 'tracing'.
+- module: 54
+  difficulty: medium
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - skating
+  - skuting
+  - skatin
+  - skatiing
+  correct_index: 0
+  explanation: The correct spelling is 'skating'.
+- module: 54
+  difficulty: medium
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - trding
+  - trading
+  - tradign
+  - tradnig
+  correct_index: 1
+  explanation: The correct spelling is 'trading'.
+- module: 54
+  difficulty: medium
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - dancnig
+  - dancinng
+  - adncing
+  - dancing
+  correct_index: 3
+  explanation: The correct spelling is 'dancing'.
+- module: 54
+  difficulty: medium
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - deciiding
+  - decidingg
+  - deciding
+  - ddeciding
+  correct_index: 2
+  explanation: The correct spelling is 'deciding'.
+- module: 54
+  difficulty: medium
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - measuring
+  - meassuring
+  - measurng
+  - meauring
+  correct_index: 0
+  explanation: The correct spelling is 'measuring'.
+- module: 54
+  difficulty: medium
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - arrivingg
+  - arriving
+  - orriving
+  - arriivng
+  correct_index: 1
+  explanation: The correct spelling is 'arriving'.
 - module: 54
   difficulty: medium
   sea_section: Section I
@@ -34983,6 +35841,105 @@ questions:
   - careful
   correct_index: 0
   explanation: -ing starts with a vowel, so 'making' drops the e.
+- module: 54
+  difficulty: hard
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - saring
+  - sharingg
+  - sharang
+  - sharing
+  correct_index: 3
+  explanation: The correct spelling is 'sharing'.
+- module: 54
+  difficulty: hard
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - oting
+  - noitng
+  - noting
+  - notting
+  correct_index: 2
+  explanation: The correct spelling is 'noting'.
+- module: 54
+  difficulty: hard
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - tracnig
+  - trcing
+  - tracing
+  - traicng
+  correct_index: 2
+  explanation: The correct spelling is 'tracing'.
+- module: 54
+  difficulty: hard
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - skatingg
+  - skkating
+  - skating
+  - sktaing
+  correct_index: 2
+  explanation: The correct spelling is 'skating'.
+- module: 54
+  difficulty: hard
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - trding
+  - rading
+  - trading
+  - traading
+  correct_index: 2
+  explanation: The correct spelling is 'trading'.
+- module: 54
+  difficulty: hard
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - danciing
+  - dnacing
+  - dancing
+  - dancingg
+  correct_index: 2
+  explanation: The correct spelling is 'dancing'.
+- module: 54
+  difficulty: hard
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - ddeciding
+  - deciidng
+  - deciding
+  - dciding
+  correct_index: 2
+  explanation: The correct spelling is 'deciding'.
+- module: 54
+  difficulty: hard
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - measuring
+  - mesauring
+  - measurign
+  - measuriing
+  correct_index: 0
+  explanation: The correct spelling is 'measuring'.
+- module: 54
+  difficulty: hard
+  sea_section: Section I
+  prompt: Which word is spelt correctly?
+  options:
+  - arrivig
+  - arriving
+  - rariving
+  - arriing
+  correct_index: 1
+  explanation: The correct spelling is 'arriving'.
 - module: 54
   difficulty: hard
   sea_section: Section I
@@ -41366,6 +42323,72 @@ questions:
 - module: 56
   difficulty: easy
   sea_section: Section I
+  prompt: 'Add the suffix: ''help'' + ''ful'' = ?'
+  options:
+  - helpfull
+  - helpful
+  - helpul
+  - help ful
+  correct_index: 1
+  explanation: '''help'' + ''ful'' = ''helpful''.'
+- module: 56
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Add the suffix: ''hope'' + ''ful'' = ?'
+  options:
+  - hopefull
+  - hopeful
+  - hope ful
+  - hopeul
+  correct_index: 1
+  explanation: '''hope'' + ''ful'' = ''hopeful''.'
+- module: 56
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Add the suffix: ''kind'' + ''ness'' = ?'
+  options:
+  - kindess
+  - kindnesss
+  - kind ness
+  - kindness
+  correct_index: 3
+  explanation: '''kind'' + ''ness'' = ''kindness''.'
+- module: 56
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Add the suffix: ''paint'' + ''er'' = ?'
+  options:
+  - painter
+  - paintr
+  - painterr
+  - paint er
+  correct_index: 0
+  explanation: '''paint'' + ''er'' = ''painter''.'
+- module: 56
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Add the suffix: ''slow'' + ''ly'' = ?'
+  options:
+  - slowly
+  - slow ly
+  - slowlyy
+  - slowy
+  correct_index: 0
+  explanation: '''slow'' + ''ly'' = ''slowly''.'
+- module: 56
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Add the suffix: ''soft'' + ''ly'' = ?'
+  options:
+  - soft ly
+  - softlyy
+  - softy
+  - softly
+  correct_index: 3
+  explanation: '''soft'' + ''ly'' = ''softly''.'
+- module: 56
+  difficulty: easy
+  sea_section: Section I
   prompt: care + ful = ?
   options:
   - careful
@@ -41374,6 +42397,39 @@ questions:
   - caring
   correct_index: 0
   explanation: care + ful = careful.
+- module: 56
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Join the prefix and root: ''dis'' + ''agree'' = ?'
+  options:
+  - disagreee
+  - disgree
+  - disagree
+  - dis agree
+  correct_index: 2
+  explanation: '''dis'' + ''agree'' = ''disagree''.'
+- module: 56
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Join the prefix and root: ''re'' + ''fill'' = ?'
+  options:
+  - refill
+  - reill
+  - re fill
+  - refilll
+  correct_index: 0
+  explanation: '''re'' + ''fill'' = ''refill''.'
+- module: 56
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Join the prefix and root: ''un'' + ''happy'' = ?'
+  options:
+  - un happy
+  - unhappy
+  - unappy
+  - unhappyy
+  correct_index: 1
+  explanation: '''un'' + ''happy'' = ''unhappy''.'
 - module: 56
   difficulty: easy
   sea_section: Section I
@@ -41487,6 +42543,61 @@ questions:
 - module: 56
   difficulty: medium
   sea_section: Section I
+  prompt: 'Add the suffix: ''bright'' + ''ness'' = ?'
+  options:
+  - brightnesss
+  - brightness
+  - brightess
+  - bright ness
+  correct_index: 1
+  explanation: '''bright'' + ''ness'' = ''brightness''.'
+- module: 56
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Add the suffix: ''dark'' + ''ness'' = ?'
+  options:
+  - darkness
+  - darkess
+  - dark ness
+  - darknesss
+  correct_index: 0
+  explanation: '''dark'' + ''ness'' = ''darkness''.'
+- module: 56
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Add the suffix: ''friend'' + ''ship'' = ?'
+  options:
+  - friendshipp
+  - friendhip
+  - friend ship
+  - friendship
+  correct_index: 3
+  explanation: '''friend'' + ''ship'' = ''friendship''.'
+- module: 56
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Add the suffix: ''joy'' + ''ful'' = ?'
+  options:
+  - joy ful
+  - joyfull
+  - joyful
+  - joyul
+  correct_index: 2
+  explanation: '''joy'' + ''ful'' = ''joyful''.'
+- module: 56
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Add the suffix: ''quick'' + ''ly'' = ?'
+  options:
+  - quickly
+  - quicklyy
+  - quick ly
+  - quicky
+  correct_index: 0
+  explanation: '''quick'' + ''ly'' = ''quickly''.'
+- module: 56
+  difficulty: medium
+  sea_section: Section I
   prompt: help + ful = ?
   options:
   - helpful
@@ -41506,6 +42617,50 @@ questions:
   - hoping
   correct_index: 0
   explanation: hope + ful = hopeful.
+- module: 56
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Join the prefix and root: ''over'' + ''cook'' = ?'
+  options:
+  - overook
+  - overcook
+  - over cook
+  - overcookk
+  correct_index: 1
+  explanation: '''over'' + ''cook'' = ''overcook''.'
+- module: 56
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Join the prefix and root: ''pre'' + ''pay'' = ?'
+  options:
+  - prepay
+  - preay
+  - prepayy
+  - pre pay
+  correct_index: 0
+  explanation: '''pre'' + ''pay'' = ''prepay''.'
+- module: 56
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Join the prefix and root: ''un'' + ''fair'' = ?'
+  options:
+  - unair
+  - unfairr
+  - un fair
+  - unfair
+  correct_index: 3
+  explanation: '''un'' + ''fair'' = ''unfair''.'
+- module: 56
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Join the prefix and root: ''un'' + ''kind'' = ?'
+  options:
+  - unkind
+  - unind
+  - unkindd
+  - un kind
+  correct_index: 0
+  explanation: '''un'' + ''kind'' = ''unkind''.'
 - module: 56
   difficulty: medium
   sea_section: Section I
@@ -41583,6 +42738,105 @@ questions:
   - kind
   correct_index: 3
   explanation: <p>Remove the prefix and suffix to find the base (root) word.</p><p><strong>Why:</strong> Take off the prefix and suffix of &ldquo;unkindly&rdquo; to get <strong>kind</strong>.</p><p><strong>Answer:</strong> <strong>kind</strong></p>
+- module: 56
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Add the suffix: ''care'' + ''less'' = ?'
+  options:
+  - careess
+  - carelesss
+  - care less
+  - careless
+  correct_index: 3
+  explanation: '''care'' + ''less'' = ''careless''.'
+- module: 56
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Add the suffix: ''sad'' + ''ness'' = ?'
+  options:
+  - sadess
+  - sadnesss
+  - sad ness
+  - sadness
+  correct_index: 3
+  explanation: '''sad'' + ''ness'' = ''sadness''.'
+- module: 56
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Add the suffix: ''teach'' + ''er'' = ?'
+  options:
+  - teacherr
+  - teacher
+  - teachr
+  - teach er
+  correct_index: 1
+  explanation: '''teach'' + ''er'' = ''teacher''.'
+- module: 56
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Add the suffix: ''use'' + ''less'' = ?'
+  options:
+  - useess
+  - useless
+  - uselesss
+  - use less
+  correct_index: 1
+  explanation: '''use'' + ''less'' = ''useless''.'
+- module: 56
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Join the prefix and root: ''dis'' + ''obey'' = ?'
+  options:
+  - disobey
+  - disbey
+  - dis obey
+  - disobeyy
+  correct_index: 0
+  explanation: '''dis'' + ''obey'' = ''disobey''.'
+- module: 56
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Join the prefix and root: ''pre'' + ''view'' = ?'
+  options:
+  - preview
+  - pre view
+  - preiew
+  - previeww
+  correct_index: 0
+  explanation: '''pre'' + ''view'' = ''preview''.'
+- module: 56
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Join the prefix and root: ''re'' + ''build'' = ?'
+  options:
+  - re build
+  - reuild
+  - rebuildd
+  - rebuild
+  correct_index: 3
+  explanation: '''re'' + ''build'' = ''rebuild''.'
+- module: 56
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Join the prefix and root: ''re'' + ''tell'' = ?'
+  options:
+  - re tell
+  - retell
+  - retelll
+  - reell
+  correct_index: 1
+  explanation: '''re'' + ''tell'' = ''retell''.'
+- module: 56
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Join the prefix and root: ''un'' + ''lock'' = ?'
+  options:
+  - un lock
+  - unock
+  - unlock
+  - unlockk
+  correct_index: 2
+  explanation: '''un'' + ''lock'' = ''unlock''.'
 - module: 56
   difficulty: hard
   sea_section: Section I
@@ -43170,6 +44424,105 @@ questions:
 - module: 58
   difficulty: easy
   sea_section: Section I
+  prompt: 'Which end mark best completes: "Are you sure ___"?'
+  options:
+  - a question mark (?)
+  - a comma (,)
+  - a full stop (.)
+  - an exclamation mark (!)
+  correct_index: 0
+  explanation: '''Are you sure'' needs a question mark (?).'
+- module: 58
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Which end mark best completes: "Careful it is hot ___"?'
+  options:
+  - a comma (,)
+  - a question mark (?)
+  - a full stop (.)
+  - an exclamation mark (!)
+  correct_index: 3
+  explanation: '''Careful it is hot'' needs an exclamation mark (!).'
+- module: 58
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Which end mark best completes: "Close the gate ___"?'
+  options:
+  - an exclamation mark (!)
+  - a comma (,)
+  - a question mark (?)
+  - a full stop (.)
+  correct_index: 3
+  explanation: '''Close the gate'' needs a full stop (.).'
+- module: 58
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Which end mark best completes: "Have you eaten ___"?'
+  options:
+  - a full stop (.)
+  - a comma (,)
+  - an exclamation mark (!)
+  - a question mark (?)
+  correct_index: 3
+  explanation: '''Have you eaten'' needs a question mark (?).'
+- module: 58
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Which end mark best completes: "Snails move slowly ___"?'
+  options:
+  - a comma (,)
+  - an exclamation mark (!)
+  - a full stop (.)
+  - a question mark (?)
+  correct_index: 2
+  explanation: '''Snails move slowly'' needs a full stop (.).'
+- module: 58
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Which end mark best completes: "The kettle is boiling ___"?'
+  options:
+  - an exclamation mark (!)
+  - a question mark (?)
+  - a comma (,)
+  - a full stop (.)
+  correct_index: 3
+  explanation: '''The kettle is boiling'' needs a full stop (.).'
+- module: 58
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Which end mark best completes: "Well done ___"?'
+  options:
+  - a comma (,)
+  - an exclamation mark (!)
+  - a question mark (?)
+  - a full stop (.)
+  correct_index: 1
+  explanation: '''Well done'' needs an exclamation mark (!).'
+- module: 58
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Which end mark best completes: "What a goal ___"?'
+  options:
+  - a comma (,)
+  - a full stop (.)
+  - an exclamation mark (!)
+  - a question mark (?)
+  correct_index: 2
+  explanation: '''What a goal'' needs an exclamation mark (!).'
+- module: 58
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Which end mark best completes: "Which way is home ___"?'
+  options:
+  - a full stop (.)
+  - a comma (,)
+  - an exclamation mark (!)
+  - a question mark (?)
+  correct_index: 3
+  explanation: '''Which way is home'' needs a question mark (?).'
+- module: 58
+  difficulty: easy
+  sea_section: Section I
   prompt: Which mark best ends 'Watch out'?
   options:
   - '!'
@@ -43322,6 +44675,105 @@ questions:
   correct_index: 0
   explanation: A question ends with a question mark.
 - module: 58
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Which end mark best completes: "Bees make honey ___"?'
+  options:
+  - an exclamation mark (!)
+  - a full stop (.)
+  - a question mark (?)
+  - a comma (,)
+  correct_index: 1
+  explanation: '''Bees make honey'' needs a full stop (.).'
+- module: 58
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Which end mark best completes: "Can I come too ___"?'
+  options:
+  - a full stop (.)
+  - a question mark (?)
+  - a comma (,)
+  - an exclamation mark (!)
+  correct_index: 1
+  explanation: '''Can I come too'' needs a question mark (?).'
+- module: 58
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Which end mark best completes: "Did they arrive ___"?'
+  options:
+  - an exclamation mark (!)
+  - a question mark (?)
+  - a comma (,)
+  - a full stop (.)
+  correct_index: 1
+  explanation: '''Did they arrive'' needs a question mark (?).'
+- module: 58
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Which end mark best completes: "Happy birthday to you ___"?'
+  options:
+  - a full stop (.)
+  - a comma (,)
+  - a question mark (?)
+  - an exclamation mark (!)
+  correct_index: 3
+  explanation: '''Happy birthday to you'' needs an exclamation mark (!).'
+- module: 58
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Which end mark best completes: "Is this seat free ___"?'
+  options:
+  - a full stop (.)
+  - an exclamation mark (!)
+  - a question mark (?)
+  - a comma (,)
+  correct_index: 2
+  explanation: '''Is this seat free'' needs a question mark (?).'
+- module: 58
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Which end mark best completes: "Look out below ___"?'
+  options:
+  - an exclamation mark (!)
+  - a full stop (.)
+  - a comma (,)
+  - a question mark (?)
+  correct_index: 0
+  explanation: '''Look out below'' needs an exclamation mark (!).'
+- module: 58
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Which end mark best completes: "The market is busy ___"?'
+  options:
+  - a comma (,)
+  - a full stop (.)
+  - an exclamation mark (!)
+  - a question mark (?)
+  correct_index: 1
+  explanation: '''The market is busy'' needs a full stop (.).'
+- module: 58
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Which end mark best completes: "Turtles swim well ___"?'
+  options:
+  - a question mark (?)
+  - an exclamation mark (!)
+  - a full stop (.)
+  - a comma (,)
+  correct_index: 2
+  explanation: '''Turtles swim well'' needs a full stop (.).'
+- module: 58
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Which end mark best completes: "What a beautiful day ___"?'
+  options:
+  - a question mark (?)
+  - a full stop (.)
+  - an exclamation mark (!)
+  - a comma (,)
+  correct_index: 2
+  explanation: '''What a beautiful day'' needs an exclamation mark (!).'
+- module: 58
   difficulty: hard
   sea_section: Section I
   prompt: '''Are you ready'' ends with?'
@@ -43442,6 +44894,105 @@ questions:
   - comma
   correct_index: 0
   explanation: Strong feeling takes an exclamation mark.
+- module: 58
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Which end mark best completes: "Cats like to sleep ___"?'
+  options:
+  - a full stop (.)
+  - an exclamation mark (!)
+  - a question mark (?)
+  - a comma (,)
+  correct_index: 0
+  explanation: '''Cats like to sleep'' needs a full stop (.).'
+- module: 58
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Which end mark best completes: "How old are you ___"?'
+  options:
+  - a full stop (.)
+  - a comma (,)
+  - an exclamation mark (!)
+  - a question mark (?)
+  correct_index: 3
+  explanation: '''How old are you'' needs a question mark (?).'
+- module: 58
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Which end mark best completes: "Is dinner ready ___"?'
+  options:
+  - a comma (,)
+  - an exclamation mark (!)
+  - a question mark (?)
+  - a full stop (.)
+  correct_index: 2
+  explanation: '''Is dinner ready'' needs a question mark (?).'
+- module: 58
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Which end mark best completes: "The lesson has ended ___"?'
+  options:
+  - a question mark (?)
+  - a full stop (.)
+  - a comma (,)
+  - an exclamation mark (!)
+  correct_index: 1
+  explanation: '''The lesson has ended'' needs a full stop (.).'
+- module: 58
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Which end mark best completes: "The river flows fast ___"?'
+  options:
+  - a question mark (?)
+  - a full stop (.)
+  - an exclamation mark (!)
+  - a comma (,)
+  correct_index: 1
+  explanation: '''The river flows fast'' needs a full stop (.).'
+- module: 58
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Which end mark best completes: "The stars are bright ___"?'
+  options:
+  - a comma (,)
+  - an exclamation mark (!)
+  - a full stop (.)
+  - a question mark (?)
+  correct_index: 2
+  explanation: '''The stars are bright'' needs a full stop (.).'
+- module: 58
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Which end mark best completes: "Watch your step ___"?'
+  options:
+  - a full stop (.)
+  - an exclamation mark (!)
+  - a question mark (?)
+  - a comma (,)
+  correct_index: 1
+  explanation: '''Watch your step'' needs an exclamation mark (!).'
+- module: 58
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Which end mark best completes: "What fun we had ___"?'
+  options:
+  - a full stop (.)
+  - a comma (,)
+  - an exclamation mark (!)
+  - a question mark (?)
+  correct_index: 2
+  explanation: '''What fun we had'' needs an exclamation mark (!).'
+- module: 58
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Which end mark best completes: "Would you like more ___"?'
+  options:
+  - a full stop (.)
+  - a comma (,)
+  - an exclamation mark (!)
+  - a question mark (?)
+  correct_index: 3
+  explanation: '''Would you like more'' needs a question mark (?).'
 - module: 59
   difficulty: easy
   sea_section: Section I
@@ -43608,6 +45159,61 @@ questions:
   correct_index: 0
   explanation: 'The apostrophe replaces the missing i: it''s.'
 - module: 59
+  difficulty: easy
+  sea_section: Section I
+  prompt: Write the contraction for 'did not'.
+  options:
+  - didn't
+  - didnt'
+  - didnot
+  - didnt
+  correct_index: 0
+  explanation: '''did not'' shortens to ''didn''t'' with an apostrophe.'
+- module: 59
+  difficulty: easy
+  sea_section: Section I
+  prompt: Write the contraction for 'have not'.
+  options:
+  - havent
+  - havenot
+  - havent'
+  - haven't
+  correct_index: 3
+  explanation: '''have not'' shortens to ''haven''t'' with an apostrophe.'
+- module: 59
+  difficulty: easy
+  sea_section: Section I
+  prompt: Write the contraction for 'was not'.
+  options:
+  - wasnt
+  - wasnot
+  - wasn't
+  - wasnt'
+  correct_index: 2
+  explanation: '''was not'' shortens to ''wasn''t'' with an apostrophe.'
+- module: 59
+  difficulty: easy
+  sea_section: Section I
+  prompt: Write the contraction for 'were not'.
+  options:
+  - weren't
+  - werent'
+  - werenot
+  - werent
+  correct_index: 0
+  explanation: '''were not'' shortens to ''weren''t'' with an apostrophe.'
+- module: 59
+  difficulty: easy
+  sea_section: Section I
+  prompt: Write the contraction for 'will not'.
+  options:
+  - wont
+  - wont'
+  - won't
+  - willnot
+  correct_index: 2
+  explanation: '''will not'' shortens to ''won''t'' with an apostrophe.'
+- module: 59
   difficulty: medium
   sea_section: Section I
   prompt: <p>Read the line. Which correction is needed?<br><em>I borrowed Aishas pencil yesterday afternoon.</em></p>
@@ -43773,6 +45379,61 @@ questions:
   correct_index: 0
   explanation: Add an apostrophe then s.
 - module: 59
+  difficulty: medium
+  sea_section: Section I
+  prompt: Write the contraction for 'do not'.
+  options:
+  - dont
+  - don't
+  - donot
+  - dont'
+  correct_index: 1
+  explanation: '''do not'' shortens to ''don''t'' with an apostrophe.'
+- module: 59
+  difficulty: medium
+  sea_section: Section I
+  prompt: Write the contraction for 'has not'.
+  options:
+  - hasn't
+  - hasnot
+  - hasnt'
+  - hasnt
+  correct_index: 0
+  explanation: '''has not'' shortens to ''hasn''t'' with an apostrophe.'
+- module: 59
+  difficulty: medium
+  sea_section: Section I
+  prompt: Write the contraction for 'is not'.
+  options:
+  - isnt'
+  - isnot
+  - isnt
+  - isn't
+  correct_index: 3
+  explanation: '''is not'' shortens to ''isn''t'' with an apostrophe.'
+- module: 59
+  difficulty: medium
+  sea_section: Section I
+  prompt: Write the contraction for 'should not'.
+  options:
+  - shouldnt'
+  - shouldn't
+  - shouldnt
+  - shouldnot
+  correct_index: 1
+  explanation: '''should not'' shortens to ''shouldn''t'' with an apostrophe.'
+- module: 59
+  difficulty: medium
+  sea_section: Section I
+  prompt: Write the contraction for 'would not'.
+  options:
+  - wouldnot
+  - wouldnt'
+  - wouldn't
+  - wouldnt
+  correct_index: 2
+  explanation: '''would not'' shortens to ''wouldn''t'' with an apostrophe.'
+- module: 59
   difficulty: hard
   sea_section: Section I
   prompt: <p>Read the line. Which correction is needed?<br><em>Cant have believed how quickly the fierce storm finally passed.</em></p>
@@ -43937,6 +45598,94 @@ questions:
   - wewill
   correct_index: 0
   explanation: we'll replaces the missing 'wi'.
+- module: 59
+  difficulty: hard
+  sea_section: Section II
+  prompt: Which is the correct contraction of 'cannot'?
+  options:
+  - can't
+  - cannt
+  - cann't
+  - ca'nt
+  correct_index: 0
+  explanation: '''cannot'' is written ''can''t''.'
+- module: 59
+  difficulty: hard
+  sea_section: Section II
+  prompt: Which is the correct contraction of 'of the clock'?
+  options:
+  - oclok
+  - o'clok
+  - oclock
+  - o'clock
+  correct_index: 3
+  explanation: '''of the clock'' is written ''o''clock''.'
+- module: 59
+  difficulty: hard
+  sea_section: Section II
+  prompt: Which is the correct contraction of 'shall not'?
+  options:
+  - shan't
+  - shalln't
+  - shallnt
+  - sha'nt
+  correct_index: 0
+  explanation: '''shall not'' is written ''shan''t''.'
+- module: 59
+  difficulty: hard
+  sea_section: Section II
+  prompt: Which is the correct contraction of 'will not'?
+  options:
+  - won't
+  - wo'nt
+  - willnot
+  - willn't
+  correct_index: 0
+  explanation: '''will not'' is written ''won''t''.'
+- module: 59
+  difficulty: hard
+  sea_section: Section I
+  prompt: Write the contraction for 'are not'.
+  options:
+  - arent'
+  - arenot
+  - aren't
+  - arent
+  correct_index: 2
+  explanation: '''are not'' shortens to ''aren''t''.'
+- module: 59
+  difficulty: hard
+  sea_section: Section I
+  prompt: Write the contraction for 'cannot'.
+  options:
+  - cannot
+  - cant
+  - can't
+  - cant'
+  correct_index: 2
+  explanation: '''cannot'' shortens to ''can''t'' with an apostrophe.'
+- module: 59
+  difficulty: hard
+  sea_section: Section I
+  prompt: Write the contraction for 'could not'.
+  options:
+  - couldnot
+  - couldn't
+  - couldnt'
+  - couldnt
+  correct_index: 1
+  explanation: '''could not'' shortens to ''couldn''t''.'
+- module: 59
+  difficulty: hard
+  sea_section: Section I
+  prompt: Write the contraction for 'does not'.
+  options:
+  - doesn't
+  - doesnt'
+  - doesnt
+  - doesnot
+  correct_index: 0
+  explanation: '''does not'' shortens to ''doesn''t''.'
 - module: 60
   difficulty: easy
   sea_section: Section I
@@ -44028,6 +45777,28 @@ questions:
 - module: 60
   difficulty: easy
   sea_section: Section I
+  prompt: 'Comma after an opening word:'
+  options:
+  - Yes, I will come.
+  - Yes I will come.
+  - 'Yes: I will come.'
+  - Yes; I will come.
+  correct_index: 0
+  explanation: This choice places the punctuation marks correctly.
+- module: 60
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Comma separating a name (address):'
+  options:
+  - Thank you Kiran, for helping.
+  - Thank you, Kiran, for helping.
+  - Thank you Kiran for helping.
+  - Thank you, Kiran for helping.
+  correct_index: 1
+  explanation: This choice places the punctuation marks correctly.
+- module: 60
+  difficulty: easy
+  sea_section: Section I
   prompt: Commas are used to separate items in a?
   options:
   - list
@@ -44036,6 +45807,83 @@ questions:
   - word
   correct_index: 0
   explanation: Use commas in a list.
+- module: 60
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Correct greeting punctuation in a letter:'
+  options:
+  - Dear Sir
+  - Dear Sir,
+  - Dear, Sir
+  - Dear Sir.
+  correct_index: 1
+  explanation: This choice places the punctuation marks correctly.
+- module: 60
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Correct list with a colon:'
+  options:
+  - Bring the following, water, a hat and shoes.
+  - 'Bring: the following water, a hat and shoes.'
+  - 'Bring the following: water, a hat and shoes.'
+  - Bring the following water a hat and shoes.
+  correct_index: 2
+  explanation: This choice places the punctuation marks correctly.
+- module: 60
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Correct use of a colon:'
+  options:
+  - 'You will need: a pen, a book and a ruler.'
+  - 'You will: need a pen, a book and a ruler.'
+  - 'You will need a pen, a book and a ruler:'
+  - You will need; a pen, a book and a ruler.
+  correct_index: 0
+  explanation: This choice places the punctuation marks correctly.
+- module: 60
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Correct use of a comma in a list:'
+  options:
+  - I bought, apples mangoes and bread.
+  - I bought apples, mangoes and bread.
+  - I bought apples, mangoes, and, bread.
+  - I bought apples mangoes and bread.
+  correct_index: 1
+  explanation: This choice places the punctuation marks correctly.
+- module: 60
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Correctly punctuated direct speech:'
+  options:
+  - Come here, said Mum.
+  - '"Come here," said Mum'
+  - '"Come here" said Mum.'
+  - '"Come here," said Mum.'
+  correct_index: 3
+  explanation: This choice places the punctuation marks correctly.
+- module: 60
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Correctly punctuated speech:'
+  options:
+  - '"Stop!," he shouted.'
+  - Stop! he shouted.
+  - '"Stop! "he shouted.'
+  - '"Stop!" he shouted.'
+  correct_index: 3
+  explanation: This choice places the punctuation marks correctly.
+- module: 60
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Correctly punctuated:'
+  options:
+  - She asked, "Are you ready?
+  - She asked, "Are you ready?"
+  - She asked "Are you ready?"
+  - She asked, Are you ready?
+  correct_index: 1
+  explanation: This choice places the punctuation marks correctly.
 - module: 60
   difficulty: easy
   sea_section: Section I
@@ -44146,6 +45994,105 @@ questions:
   - ask
   correct_index: 0
   explanation: A comma is a short pause.
+- module: 60
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Correct address comma:'
+  options:
+  - Come here, Sam, and help.
+  - Come here, Sam and help.
+  - Come here Sam, and help.
+  - Come here Sam and help.
+  correct_index: 0
+  explanation: This option punctuates the sentence correctly.
+- module: 60
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Correct colon before a list:'
+  options:
+  - We packed three things, a map, water and snacks.
+  - 'We packed three things: a map, water and snacks.'
+  - We packed three things; a map, water and snacks.
+  - 'We packed: three things a map, water and snacks.'
+  correct_index: 1
+  explanation: This option punctuates the sentence correctly.
+- module: 60
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Correct comma before "and" is not needed:'
+  options:
+  - I like tea juice and milk
+  - I like, tea juice and milk.
+  - I like tea, juice, and, milk.
+  - I like tea, juice and milk.
+  correct_index: 3
+  explanation: This option punctuates the sentence correctly.
+- module: 60
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Correct comma to separate a clause:'
+  options:
+  - After, the rain the sun came out.
+  - After the rain, the sun came out.
+  - After the rain the sun came out.
+  - After the rain the sun, came out.
+  correct_index: 1
+  explanation: This option punctuates the sentence correctly.
+- module: 60
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Correct list punctuation:'
+  options:
+  - She grows, roses, lilies and daisies.
+  - She grows roses, lilies and daisies.
+  - She grows roses; lilies; and daisies.
+  - She grows roses lilies and daisies.
+  correct_index: 1
+  explanation: This option punctuates the sentence correctly.
+- module: 60
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Correct question in quotation marks:'
+  options:
+  - Are we there yet? asked the child.
+  - '"Are we there yet"? asked the child.'
+  - '"Are we there yet?", asked the child.'
+  - '"Are we there yet?" asked the child.'
+  correct_index: 3
+  explanation: This option punctuates the sentence correctly.
+- module: 60
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Correct use of a comma with "however":'
+  options:
+  - It was late, however we continued
+  - It was late however we continued.
+  - It was late; however, we continued.
+  - It was late however, we continued.
+  correct_index: 2
+  explanation: This option punctuates the sentence correctly.
+- module: 60
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Correctly punctuated question in speech:'
+  options:
+  - '"Where is it" she asked?'
+  - '"Where is it?" she asked.'
+  - '"Where is it?," she asked.'
+  - Where is it? she asked.
+  correct_index: 1
+  explanation: This choice places the punctuation marks correctly.
+- module: 60
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Correctly punctuated speech at the end:'
+  options:
+  - He said, "I am ready".
+  - He said "I am ready."
+  - He said, "I am ready."
+  - He said "I am ready".
+  correct_index: 2
+  explanation: This option punctuates the sentence correctly.
 - module: 60
   difficulty: medium
   sea_section: Section I
@@ -44270,6 +46217,17 @@ questions:
 - module: 60
   difficulty: hard
   sea_section: Section I
+  prompt: 'Correct comma after "Yes":'
+  options:
+  - Yes, we can help you.
+  - Yes; we can help you.
+  - Yes we can help you.
+  - 'Yes: we can help you.'
+  correct_index: 0
+  explanation: This option punctuates the sentence correctly.
+- module: 60
+  difficulty: hard
+  sea_section: Section I
   prompt: In a list of three or more items you use?
   options:
   - commas
@@ -44278,6 +46236,61 @@ questions:
   - capitals
   correct_index: 0
   explanation: Use commas to separate list items.
+- module: 60
+  difficulty: hard
+  sea_section: Section I
+  prompt: Which list is correct?
+  options:
+  - I need, pens, books and a bag.
+  - I need pens books and a bag.
+  - I need pens, books and a bag.
+  - I need pens; books; a bag.
+  correct_index: 2
+  explanation: This option punctuates the sentence correctly.
+- module: 60
+  difficulty: hard
+  sea_section: Section I
+  prompt: Which question is punctuated correctly?
+  options:
+  - '"Is it far"? he asked.'
+  - Is it far? he asked.
+  - '"Is it far?", he asked.'
+  - '"Is it far?" he asked.'
+  correct_index: 3
+  explanation: This option punctuates the sentence correctly.
+- module: 60
+  difficulty: hard
+  sea_section: Section I
+  prompt: Which quotation is correct?
+  options:
+  - Mum said "Time for bed".
+  - Mum said "Time for bed."
+  - Mum said, "Time for bed."
+  - Mum said, "Time for bed".
+  correct_index: 2
+  explanation: This option punctuates the sentence correctly.
+- module: 60
+  difficulty: hard
+  sea_section: Section I
+  prompt: Which sentence is punctuated correctly?
+  options:
+  - After lunch we, played outside.
+  - After, lunch we played outside.
+  - After lunch, we played outside.
+  - After lunch we played outside.
+  correct_index: 2
+  explanation: This option punctuates the sentence correctly.
+- module: 60
+  difficulty: hard
+  sea_section: Section I
+  prompt: Which sentence uses a comma correctly?
+  options:
+  - We ate rice peas and fish.
+  - We ate rice, peas and fish.
+  - We, ate rice peas and fish.
+  - We ate rice, peas, and, fish.
+  correct_index: 1
+  explanation: This option punctuates the sentence correctly.
 - module: 60
   difficulty: hard
   sea_section: Section I
@@ -44300,6 +46313,39 @@ questions:
   - Maya said "I am ready"
   correct_index: 0
   explanation: A comma before the speech, and the end mark inside the quotes.
+- module: 60
+  difficulty: hard
+  sea_section: Section I
+  prompt: Which shows correct speech punctuation?
+  options:
+  - '"Run!" she cried.'
+  - '"Run !" she cried.'
+  - '"Run"! she cried.'
+  - Run! she cried.
+  correct_index: 0
+  explanation: This option punctuates the sentence correctly.
+- module: 60
+  difficulty: hard
+  sea_section: Section I
+  prompt: Which uses a colon correctly?
+  options:
+  - 'Bring these: a pen, paper and glue.'
+  - 'Bring: these a pen, paper and glue.'
+  - Bring these; a pen, paper and glue.
+  - Bring these, a pen, paper and glue.
+  correct_index: 0
+  explanation: This option punctuates the sentence correctly.
+- module: 60
+  difficulty: hard
+  sea_section: Section I
+  prompt: Which uses commas to address someone?
+  options:
+  - Thank you Rita for coming.
+  - Thank you, Rita, for coming.
+  - Thank you Rita, for coming.
+  - Thank you, Rita for coming.
+  correct_index: 1
+  explanation: This option punctuates the sentence correctly.
 - module: 61
   difficulty: easy
   sea_section: Section I
@@ -44465,6 +46511,17 @@ questions:
   - small letter
   correct_index: 0
   explanation: Sentences begin with a capital letter.
+- module: 61
+  difficulty: easy
+  sea_section: Section I
+  prompt: In the sentence "I read a story about queen isabella." — Which name needs capitals (besides 'I')?
+  options:
+  - Isabella
+  - about
+  - story
+  - read
+  correct_index: 0
+  explanation: 'Proper nouns and names take a capital letter: Isabella.'
 - module: 61
   difficulty: easy
   sea_section: Section I
@@ -44652,6 +46709,28 @@ questions:
   - Capitalise the following word
   correct_index: 1
   explanation: '<p>One punctuation or capitalisation error appears in the line.</p><p><strong>Why:</strong> Days of the week are proper nouns: &ldquo;tuesday&rdquo; &rarr; &ldquo;Tuesday&rdquo;.</p><p><strong>Answer:</strong> Capitalise the day: <strong>Tuesday</strong></p>'
+- module: 61
+  difficulty: medium
+  sea_section: Section I
+  prompt: In the sentence "The book is called charlotte's web." — Which title word needs a capital?
+  options:
+  - is
+  - called
+  - book
+  - Charlotte's
+  correct_index: 3
+  explanation: 'Proper nouns and names take a capital letter: Charlotte''s.'
+- module: 61
+  difficulty: medium
+  sea_section: Section I
+  prompt: In the sentence "We visited paris in june." — Which word needs a capital letter besides 'We'?
+  options:
+  - Paris
+  - in
+  - month
+  - visited
+  correct_index: 0
+  explanation: 'Proper nouns and names take a capital letter: Paris.'
 - module: 61
   difficulty: medium
   sea_section: Section I
@@ -44850,6 +46929,39 @@ questions:
   - none
   correct_index: 0
   explanation: The word I and the place name Tobago both need capitals.
+- module: 61
+  difficulty: hard
+  sea_section: Section I
+  prompt: In the sentence "My friend rohan lives in trinidad." — Which word must be capitalised (besides 'My')?
+  options:
+  - in
+  - Rohan
+  - lives
+  - friend
+  correct_index: 1
+  explanation: 'Proper nouns and names take a capital letter: Rohan.'
+- module: 61
+  difficulty: hard
+  sea_section: Section I
+  prompt: In the sentence "She speaks english and spanish." — Which language words need capitals?
+  options:
+  - she
+  - English and Spanish
+  - and
+  - speaks
+  correct_index: 1
+  explanation: 'Proper nouns and names take a capital letter: English and Spanish.'
+- module: 61
+  difficulty: hard
+  sea_section: Section I
+  prompt: In the sentence "We celebrate christmas in december." — Which two words need capitals (choose the festival)?
+  options:
+  - in
+  - Christmas
+  - celebrate
+  - we
+  correct_index: 1
+  explanation: 'Proper nouns and names take a capital letter: Christmas.'
 - module: 61
   difficulty: hard
   sea_section: Section I
@@ -48525,6 +50637,138 @@ questions:
   correct_index: 0
   explanation: A preposition shows position.
 - module: 65
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Choose the best word to fill the blank: He ran fast ___ he still lost.'
+  options:
+  - onto
+  - but
+  - into
+  - beside
+  correct_index: 1
+  explanation: '''but'' fits correctly in: He ran fast but he still lost.'
+- module: 65
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Choose the best word to fill the blank: I waited ___ the bus stop.'
+  options:
+  - slow
+  - at
+  - but
+  - and
+  correct_index: 1
+  explanation: '''at'' fits correctly in: I waited at the bus stop.'
+- module: 65
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Choose the best word to fill the blank: I was tired ___ I kept going.'
+  options:
+  - 'on'
+  - under
+  - over
+  - but
+  correct_index: 3
+  explanation: '''but'' fits correctly in: I was tired but I kept going.'
+- module: 65
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Choose the best word to fill the blank: Put the milk ___ the fridge.'
+  options:
+  - in
+  - or
+  - and
+  - but
+  correct_index: 0
+  explanation: '''in'' fits correctly in: Put the milk in the fridge.'
+- module: 65
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Choose the best word to fill the blank: She smiled ___ she was happy.'
+  options:
+  - under
+  - because
+  - across
+  - above
+  correct_index: 1
+  explanation: '''because'' fits correctly in: She smiled because she was happy.'
+- module: 65
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Choose the best word to fill the blank: The ball rolled ___ the hill.'
+  options:
+  - nice
+  - so
+  - and
+  - down
+  correct_index: 3
+  explanation: '''down'' fits correctly in: The ball rolled down the hill.'
+- module: 65
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Choose the best word to fill the blank: The bird flew ___ the tree.'
+  options:
+  - or
+  - and
+  - over
+  - soft
+  correct_index: 2
+  explanation: '''over'' fits correctly in: The bird flew over the tree.'
+- module: 65
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Choose the best word to fill the blank: The cat sat ___ the mat.'
+  options:
+  - and
+  - quickly
+  - 'on'
+  - but
+  correct_index: 2
+  explanation: '''on'' fits correctly in: The cat sat on the mat.'
+- module: 65
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Choose the best word to fill the blank: The fish swam ___ the water.'
+  options:
+  - so
+  - warm
+  - in
+  - and
+  correct_index: 2
+  explanation: '''in'' fits correctly in: The fish swam in the water.'
+- module: 65
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Choose the best word to fill the blank: The keys are ___ the sofa.'
+  options:
+  - under
+  - but
+  - and
+  - so
+  correct_index: 0
+  explanation: '''under'' fits correctly in: The keys are under the sofa.'
+- module: 65
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Choose the best word to fill the blank: We can play ___ we finish our work.'
+  options:
+  - under
+  - after
+  - between
+  - along
+  correct_index: 1
+  explanation: '''after'' fits correctly in: We can play after we finish our work.'
+- module: 65
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Choose the best word to fill the blank: We walked ___ the park.'
+  options:
+  - and
+  - very
+  - through
+  - but
+  correct_index: 2
+  explanation: '''through'' fits correctly in: We walked through the park.'
+- module: 65
   difficulty: medium
   sea_section: Section I
   prompt: '''I ran ___ I was late.'' (to give a reason)'
@@ -48613,6 +50857,138 @@ questions:
   correct_index: 1
   explanation: <p>Pick the conjunction that links the ideas correctly.</p><p><strong>Why:</strong> The choice is between the two, so use &ldquo;or&rdquo;.</p><p><strong>Answer:</strong> <strong>or</strong></p>
 - module: 65
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Choose the best word to fill the blank: He hid ___ the door.'
+  options:
+  - but
+  - and
+  - behind
+  - fast
+  correct_index: 2
+  explanation: '''behind'' fits correctly in: He hid behind the door.'
+- module: 65
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Choose the best word to fill the blank: I like mango ___ I love pineapple.'
+  options:
+  - and
+  - beneath
+  - onto
+  - above
+  correct_index: 0
+  explanation: '''and'' fits correctly in: I like mango and I love pineapple.'
+- module: 65
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Choose the best word to fill the blank: It rained, ___ we stayed inside.'
+  options:
+  - under
+  - so
+  - beside
+  - above
+  correct_index: 1
+  explanation: '''so'' fits correctly in: It rained, so we stayed inside.'
+- module: 65
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Choose the best word to fill the blank: Meet me ___ noon.'
+  options:
+  - and
+  - at
+  - or
+  - but
+  correct_index: 1
+  explanation: '''at'' fits: Meet me at noon.'
+- module: 65
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Choose the best word to fill the blank: She put the book ___ the table.'
+  options:
+  - or
+  - 'on'
+  - and
+  - under is
+  correct_index: 1
+  explanation: '''on'' fits correctly in: She put the book on the table.'
+- module: 65
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Choose the best word to fill the blank: The cat jumped ___ the fence.'
+  options:
+  - but
+  - so
+  - over
+  - and
+  correct_index: 2
+  explanation: '''over'' fits: The cat jumped over the fence.'
+- module: 65
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Choose the best word to fill the blank: The picture hangs ___ the wall.'
+  options:
+  - 'on'
+  - and
+  - but
+  - so
+  correct_index: 0
+  explanation: '''on'' fits: The picture hangs on the wall.'
+- module: 65
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Choose the best word to fill the blank: The shop is ___ the school.'
+  options:
+  - but
+  - or
+  - near
+  - and
+  correct_index: 2
+  explanation: '''near'' fits correctly in: The shop is near the school.'
+- module: 65
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Choose the best word to fill the blank: We drove ___ the tunnel.'
+  options:
+  - through
+  - or
+  - but
+  - and
+  correct_index: 0
+  explanation: '''through'' fits: We drove through the tunnel.'
+- module: 65
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Choose the best word to fill the blank: We sat ___ the shade.'
+  options:
+  - in
+  - so
+  - but
+  - and
+  correct_index: 0
+  explanation: '''in'' fits correctly in: We sat in the shade.'
+- module: 65
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Choose the best word to fill the blank: We waited ___ the rain stopped.'
+  options:
+  - until
+  - above
+  - beside
+  - onto
+  correct_index: 0
+  explanation: '''until'' fits correctly in: We waited until the rain stopped.'
+- module: 65
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Choose the best word to fill the blank: You can have tea ___ coffee.'
+  options:
+  - into
+  - under
+  - or
+  - beside
+  correct_index: 2
+  explanation: '''or'' fits correctly in: You can have tea or coffee.'
+- module: 65
   difficulty: hard
   sea_section: Section I
   prompt: '''She hid ___ the door.'' (at the back of)'
@@ -48667,6 +51043,149 @@ questions:
   - because
   correct_index: 0
   explanation: <p>Pick the conjunction that links the ideas correctly.</p><p><strong>Why:</strong> &ldquo;in case it might rain&rdquo; fits the precaution better than &ldquo;because&rdquo;.</p><p><strong>Answer:</strong> <strong>in case</strong></p>
+- module: 65
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Choose the best word to fill the blank: He was tired ___ he rested.'
+  options:
+  - but
+  - or
+  - although
+  - so
+  correct_index: 3
+  explanation: '''so'' fits: He was tired so he rested.'
+- module: 65
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Choose the best word to fill the blank: I will call you ___ I arrive.'
+  options:
+  - but then
+  - when
+  - and so
+  - or else
+  correct_index: 1
+  explanation: '''when'' fits: I will call you when I arrive.'
+- module: 65
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Choose the best word to fill the blank: Put your shoes ___ the mat.'
+  options:
+  - or
+  - but
+  - 'on'
+  - and
+  correct_index: 2
+  explanation: '''on'' fits: Put your shoes on the mat.'
+- module: 65
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Choose the best word to fill the blank: She reads ___ her brother draws.'
+  options:
+  - but
+  - while
+  - however
+  - or
+  correct_index: 1
+  explanation: '''while'' fits: She reads while her brother draws.'
+- module: 65
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Choose the best word to fill the blank: She sat ___ her two friends.'
+  options:
+  - between
+  - but
+  - and
+  - or
+  correct_index: 0
+  explanation: '''between'' fits: She sat between her two friends.'
+- module: 65
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Choose the best word to fill the blank: Take a torch ___ the lights fail.'
+  options:
+  - or
+  - but
+  - in case
+  - however
+  correct_index: 2
+  explanation: '''in case'' fits: Take a torch in case the lights fail.'
+- module: 65
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Choose the best word to fill the blank: The dog ran ___ the garden.'
+  options:
+  - so
+  - around
+  - and
+  - but
+  correct_index: 1
+  explanation: '''around'' fits: The dog ran around the garden.'
+- module: 65
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Choose the best word to fill the blank: The plane flew ___ the clouds.'
+  options:
+  - so
+  - and
+  - above
+  - but
+  correct_index: 2
+  explanation: '''above'' fits: The plane flew above the clouds.'
+- module: 65
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Choose the best word to fill the blank: The treasure was hidden ___ the ground.'
+  options:
+  - so
+  - and
+  - but
+  - beneath
+  correct_index: 3
+  explanation: '''beneath'' fits: The treasure was hidden beneath the ground.'
+- module: 65
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Choose the best word to fill the blank: Wait ___ I get back.'
+  options:
+  - until
+  - or
+  - but
+  - however
+  correct_index: 0
+  explanation: '''until'' fits: Wait until I get back.'
+- module: 65
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Choose the best word to fill the blank: Walk ___ the road carefully.'
+  options:
+  - across
+  - or
+  - and
+  - but
+  correct_index: 0
+  explanation: '''across'' fits: Walk across the road carefully.'
+- module: 65
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Choose the best word to fill the blank: We can win ___ we work together.'
+  options:
+  - but
+  - if
+  - however
+  - or
+  correct_index: 1
+  explanation: '''if'' fits: We can win if we work together.'
+- module: 65
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Choose the best word to fill the blank: We left early ___ we would not be late.'
+  options:
+  - however
+  - or
+  - but
+  - so that
+  correct_index: 3
+  explanation: '''so that'' fits: We left early so that we would not be late.'
 - module: 65
   difficulty: hard
   sea_section: Section I
@@ -48791,6 +51310,105 @@ questions:
 - module: 66
   difficulty: easy
   sea_section: Section I
+  prompt: 'Choose the best joining word: Bring a coat ___ it gets cold.'
+  options:
+  - however
+  - in case
+  - but
+  - or
+  correct_index: 1
+  explanation: '''in case'' correctly joins the two ideas.'
+- module: 66
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Choose the best joining word: Eat your food ___ it gets cold.'
+  options:
+  - or
+  - before
+  - however
+  - but
+  correct_index: 1
+  explanation: '''before'' correctly joins the two ideas.'
+- module: 66
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Choose the best joining word: He is small ___ he is strong.'
+  options:
+  - so
+  - because
+  - but
+  - or
+  correct_index: 2
+  explanation: '''but'' correctly joins the two ideas.'
+- module: 66
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Choose the best joining word: He whispered ___ no one would hear.'
+  options:
+  - however
+  - but
+  - so that
+  - or
+  correct_index: 2
+  explanation: '''so that'' correctly joins the two ideas.'
+- module: 66
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Choose the best joining word: She was late ___ she missed the train.'
+  options:
+  - or
+  - and so that
+  - because
+  - but
+  correct_index: 2
+  explanation: '''because'' correctly joins the two ideas.'
+- module: 66
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Choose the best joining word: Study hard ___ you will pass.'
+  options:
+  - but
+  - or
+  - because of
+  - and
+  correct_index: 3
+  explanation: '''and'' correctly joins the two ideas.'
+- module: 66
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Choose the best joining word: Take an umbrella ___ it rains.'
+  options:
+  - although
+  - in case
+  - but
+  - or
+  correct_index: 1
+  explanation: '''in case'' correctly joins the two ideas.'
+- module: 66
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Choose the best joining word: We can walk ___ take the bus.'
+  options:
+  - but
+  - or
+  - so
+  - although
+  correct_index: 1
+  explanation: '''or'' correctly joins the two ideas.'
+- module: 66
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Choose the best joining word: We were hungry, ___ we cooked dinner.'
+  options:
+  - so
+  - or
+  - but
+  - although
+  correct_index: 0
+  explanation: '''so'' correctly joins the two ideas.'
+- module: 66
+  difficulty: easy
+  sea_section: Section I
   prompt: 'Join with ''and'': ''She sang. He danced.'''
   options:
   - She sang and he danced.
@@ -48887,6 +51505,105 @@ questions:
   - Command
   correct_index: 0
   explanation: <p>A complex sentence has one main idea plus a dependent clause (because, although, when, if, while, that).</p><p><strong>Why:</strong> &ldquo;When&hellip;&rdquo; is a dependent clause &mdash; complex.</p><p><strong>Answer:</strong> <strong>Complex</strong></p>
+- module: 66
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Choose the best joining word: I like tea ___ I prefer coffee.'
+  options:
+  - because
+  - but
+  - so
+  - and so
+  correct_index: 1
+  explanation: '''but'' correctly joins the two ideas.'
+- module: 66
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Choose the best joining word: I wanted to play ___ it was raining.'
+  options:
+  - or
+  - so
+  - but
+  - and then
+  correct_index: 2
+  explanation: '''but'' correctly joins the two ideas.'
+- module: 66
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Choose the best joining word: I will help ___ you ask nicely.'
+  options:
+  - but
+  - or
+  - so that
+  - if
+  correct_index: 3
+  explanation: '''if'' correctly joins the two ideas.'
+- module: 66
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Choose the best joining word: She sang ___ she danced.'
+  options:
+  - or
+  - but
+  - unless
+  - and
+  correct_index: 3
+  explanation: '''and'' correctly joins the two ideas.'
+- module: 66
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Choose the best joining word: The dog barked ___ the cat ran.'
+  options:
+  - unless
+  - or
+  - but
+  - and
+  correct_index: 3
+  explanation: '''and'' correctly joins the two ideas.'
+- module: 66
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Choose the best joining word: They cheered ___ their team scored.'
+  options:
+  - however
+  - when
+  - but
+  - or
+  correct_index: 1
+  explanation: '''when'' correctly joins the two ideas.'
+- module: 66
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Choose the best joining word: We laughed ___ the show was funny.'
+  options:
+  - or
+  - however
+  - but
+  - because
+  correct_index: 3
+  explanation: '''because'' correctly joins the two ideas.'
+- module: 66
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Choose the best joining word: We stayed inside ___ it was storming.'
+  options:
+  - either
+  - or
+  - but
+  - since
+  correct_index: 3
+  explanation: '''since'' correctly joins the two ideas.'
+- module: 66
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Choose the best joining word: You may go ___ you finish first.'
+  options:
+  - provided
+  - however
+  - or
+  - but
+  correct_index: 0
+  explanation: '''provided'' correctly joins the two ideas.'
 - module: 66
   difficulty: medium
   sea_section: Section I
@@ -49019,6 +51736,105 @@ questions:
   - When I cooked dinner.
   correct_index: 0
   explanation: <p>Think about how the two ideas relate.</p><p><strong>Why:</strong> Two complete ideas joined by &ldquo;and&rdquo; make it compound.</p><p><strong>Answer:</strong> <strong>I cooked dinner and she washed the dishes.</strong></p>
+- module: 66
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Choose the best joining word: Finish your chores ___ you may play.'
+  options:
+  - but
+  - however
+  - or
+  - before
+  correct_index: 3
+  explanation: '''before'' correctly joins the ideas.'
+- module: 66
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Choose the best joining word: He apologised ___ he was sorry.'
+  options:
+  - however
+  - or
+  - but
+  - because
+  correct_index: 3
+  explanation: '''because'' correctly joins the ideas.'
+- module: 66
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Choose the best joining word: I was scared ___ I went in anyway.'
+  options:
+  - because
+  - but
+  - so
+  - therefore
+  correct_index: 1
+  explanation: '''but'' correctly joins the ideas.'
+- module: 66
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Choose the best joining word: She stayed calm ___ everyone panicked.'
+  options:
+  - but
+  - either
+  - or
+  - while
+  correct_index: 3
+  explanation: '''while'' correctly joins the ideas.'
+- module: 66
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Choose the best joining word: They waited ___ the doors opened.'
+  options:
+  - until
+  - however
+  - but
+  - or
+  correct_index: 0
+  explanation: '''until'' correctly joins the ideas.'
+- module: 66
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Choose the best joining word: Wait here ___ I return.'
+  options:
+  - or
+  - but
+  - until
+  - however
+  correct_index: 2
+  explanation: '''until'' correctly joins the two ideas.'
+- module: 66
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Choose the best joining word: We hurried ___ we would catch the bus.'
+  options:
+  - or
+  - however
+  - so that
+  - but
+  correct_index: 2
+  explanation: '''so that'' correctly joins the ideas.'
+- module: 66
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Choose the best joining word: We planted seeds ___ they would grow.'
+  options:
+  - so that
+  - or
+  - however
+  - but
+  correct_index: 0
+  explanation: '''so that'' correctly joins the ideas.'
+- module: 66
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Choose the best joining word: You can win ___ you try hard.'
+  options:
+  - if
+  - however
+  - but
+  - or
+  correct_index: 0
+  explanation: '''if'' correctly joins the ideas.'
 - module: 66
   difficulty: hard
   sea_section: Section I
@@ -49165,6 +51981,105 @@ questions:
 - module: 67
   difficulty: easy
   sea_section: Section I
+  prompt: 'Choose the best modal verb: ___ you like some tea?'
+  options:
+  - Ought
+  - Would
+  - Shall
+  - Must
+  correct_index: 1
+  explanation: '''Would'' fits: Would you like some tea?'
+- module: 67
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Choose the best modal verb: ___ you please pass the salt?'
+  options:
+  - Must
+  - Could
+  - Shall
+  - Ought
+  correct_index: 1
+  explanation: '''Could'' fits: Could you please pass the salt?'
+- module: 67
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Choose the best modal verb: It ___ rain later, so take a coat.'
+  options:
+  - must
+  - might
+  - ought
+  - shall
+  correct_index: 1
+  explanation: '''might'' fits: It might rain later, so take a coat.'
+- module: 67
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Choose the best modal verb: She ___ finish her homework before playing.'
+  options:
+  - should
+  - may
+  - could
+  - might
+  correct_index: 0
+  explanation: '''should'' fits: She should finish her homework before playing.'
+- module: 67
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Choose the best modal verb: Students ___ respect their teachers.'
+  options:
+  - dare
+  - might
+  - could
+  - should
+  correct_index: 3
+  explanation: '''should'' fits: Students should respect their teachers.'
+- module: 67
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Choose the best modal verb: We ___ be quiet in the library.'
+  options:
+  - would
+  - must
+  - might
+  - could
+  correct_index: 1
+  explanation: '''must'' fits: We must be quiet in the library.'
+- module: 67
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Choose the best modal verb: You ___ eat your vegetables to grow strong.'
+  options:
+  - should
+  - could
+  - would
+  - might
+  correct_index: 0
+  explanation: '''should'' fits: You should eat your vegetables to grow strong.'
+- module: 67
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Choose the best modal verb: You ___ have told me earlier.'
+  options:
+  - should
+  - could
+  - would
+  - might
+  correct_index: 0
+  explanation: '''should'' fits: You should have told me earlier.'
+- module: 67
+  difficulty: easy
+  sea_section: Section I
+  prompt: 'Choose the best modal verb: You ___ not touch the hot stove.'
+  options:
+  - may
+  - could
+  - would
+  - must
+  correct_index: 3
+  explanation: '''must'' fits: You must not touch the hot stove.'
+- module: 67
+  difficulty: easy
+  sea_section: Section I
   prompt: Which modal asks for permission?
   options:
   - may
@@ -49272,6 +52187,105 @@ questions:
   - might
   correct_index: 1
   explanation: <p>Pick the modal that matches the job shown in brackets.</p><p><strong>Why:</strong> Advice uses &ldquo;should&rdquo;.</p><p><strong>Answer:</strong> <strong>should</strong></p>
+- module: 67
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Choose the best modal verb: ___ I open the window?'
+  options:
+  - Ought
+  - May
+  - Shall
+  - Must
+  correct_index: 1
+  explanation: '''May'' fits: May I open the window?'
+- module: 67
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Choose the best modal verb: Children ___ play near the road.'
+  options:
+  - ought
+  - dare to
+  - should not
+  - must to
+  correct_index: 2
+  explanation: '''should not'' fits: Children should not play near the road.'
+- module: 67
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Choose the best modal verb: He ___ lift the heavy box alone.'
+  options:
+  - ought not to be
+  - might not have
+  - shall not
+  - cannot
+  correct_index: 3
+  explanation: '''cannot'' fits: He cannot lift the heavy box alone.'
+- module: 67
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Choose the best modal verb: I ___ help you if you like.'
+  options:
+  - can
+  - must
+  - ought
+  - shall
+  correct_index: 0
+  explanation: '''can'' fits: I can help you if you like.'
+- module: 67
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Choose the best modal verb: I ___ swim when I was five.'
+  options:
+  - could
+  - must
+  - shall
+  - ought
+  correct_index: 0
+  explanation: '''could'' fits: I could swim when I was five.'
+- module: 67
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Choose the best modal verb: It ___ be true, but I doubt it.'
+  options:
+  - ought
+  - could
+  - shall
+  - must
+  correct_index: 1
+  explanation: '''could'' fits: It could be true, but I doubt it.'
+- module: 67
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Choose the best modal verb: They ___ arrive by noon if the road is clear.'
+  options:
+  - dare not
+  - should
+  - ought not
+  - must not
+  correct_index: 1
+  explanation: '''should'' fits: They should arrive by noon if the road is clear.'
+- module: 67
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Choose the best modal verb: We ___ visit Granny this weekend.'
+  options:
+  - might
+  - must
+  - shall
+  - ought
+  correct_index: 0
+  explanation: '''might'' fits: We might visit Granny this weekend.'
+- module: 67
+  difficulty: medium
+  sea_section: Section I
+  prompt: 'Choose the best modal verb: You ___ wear a helmet for safety.'
+  options:
+  - would
+  - could
+  - might
+  - must
+  correct_index: 3
+  explanation: '''must'' fits: You must wear a helmet for safety.'
 - module: 67
   difficulty: medium
   sea_section: Section I
@@ -49393,6 +52407,105 @@ questions:
   - should
   correct_index: 3
   explanation: <p>Pick the modal that matches the job shown in brackets.</p><p><strong>Why:</strong> &ldquo;should have&rdquo; expresses reproach about the past.</p><p><strong>Answer:</strong> <strong>should</strong></p>
+- module: 67
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Choose the best modal verb: ___ I borrow your pen, please?'
+  options:
+  - Must
+  - Dare
+  - May
+  - Ought
+  correct_index: 2
+  explanation: '''May'' fits: May I borrow your pen, please?'
+- module: 67
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Choose the best modal verb: ___ we begin the meeting now?'
+  options:
+  - Might
+  - Dare
+  - Shall
+  - Ought
+  correct_index: 2
+  explanation: '''Shall'' fits: Shall we begin the meeting now?'
+- module: 67
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Choose the best modal verb: ___ you help me carry this?'
+  options:
+  - Ought
+  - Could
+  - Must
+  - Dare
+  correct_index: 1
+  explanation: '''Could'' fits: Could you help me carry this?'
+- module: 67
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Choose the best modal verb: Drivers ___ obey the traffic lights.'
+  options:
+  - might
+  - could
+  - must
+  - would
+  correct_index: 2
+  explanation: '''must'' fits: Drivers must obey the traffic lights.'
+- module: 67
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Choose the best modal verb: Drivers ___ stop at a red light.'
+  options:
+  - would
+  - might
+  - must
+  - could
+  correct_index: 2
+  explanation: '''must'' fits: Drivers must stop at a red light.'
+- module: 67
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Choose the best modal verb: It ___ snow on the mountain tonight.'
+  options:
+  - ought
+  - must
+  - shall
+  - might
+  correct_index: 3
+  explanation: '''might'' fits: It might snow on the mountain tonight.'
+- module: 67
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Choose the best modal verb: She ___ speak three languages.'
+  options:
+  - must
+  - can
+  - shall
+  - ought
+  correct_index: 1
+  explanation: '''can'' fits: She can speak three languages.'
+- module: 67
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Choose the best modal verb: We ___ leave now or we''ll be late.'
+  options:
+  - might
+  - would
+  - could
+  - must
+  correct_index: 3
+  explanation: '''must'' fits: We must leave now or we''ll be late.'
+- module: 67
+  difficulty: hard
+  sea_section: Section I
+  prompt: 'Choose the best modal verb: You ___ always tell the truth.'
+  options:
+  - would
+  - should
+  - might
+  - could
+  correct_index: 1
+  explanation: '''should'' fits: You should always tell the truth.'
 - module: 67
   difficulty: hard
   sea_section: Section I
@@ -49548,6 +52661,94 @@ questions:
   correct_index: 0
   explanation: Add -er to compare two things.
 - module: 68
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is the comparative form of 'bad'? (e.g. bigger)
+  options:
+  - badest
+  - bader
+  - more bad
+  - worse
+  correct_index: 3
+  explanation: The comparative of 'bad' is 'worse'.
+- module: 68
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is the comparative form of 'big'? (e.g. bigger)
+  options:
+  - biger
+  - more big
+  - bigest
+  - bigger
+  correct_index: 3
+  explanation: The comparative of 'big' is 'bigger'.
+- module: 68
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is the comparative form of 'far'? (e.g. bigger)
+  options:
+  - farer
+  - farther
+  - farest
+  - more far
+  correct_index: 1
+  explanation: The comparative of 'far' is 'farther'.
+- module: 68
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is the comparative form of 'good'? (e.g. bigger)
+  options:
+  - more good
+  - gooder
+  - goodest
+  - better
+  correct_index: 3
+  explanation: The comparative of 'good' is 'better'.
+- module: 68
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is the comparative form of 'large'? (e.g. bigger)
+  options:
+  - largeer
+  - larger
+  - more large
+  - largeest
+  correct_index: 1
+  explanation: The comparative of 'large' is 'larger'.
+- module: 68
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is the comparative form of 'little'? (e.g. bigger)
+  options:
+  - less
+  - littleer
+  - more little
+  - littleest
+  correct_index: 0
+  explanation: The comparative of 'little' is 'less'.
+- module: 68
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is the comparative form of 'nice'? (e.g. bigger)
+  options:
+  - nicer
+  - niceest
+  - niceer
+  - more nice
+  correct_index: 0
+  explanation: The comparative of 'nice' is 'nicer'.
+- module: 68
+  difficulty: easy
+  sea_section: Section I
+  prompt: What is the superlative form of 'busy'? (e.g. biggest)
+  options:
+  - busiest
+  - most busy
+  - busier
+  - busyest
+  correct_index: 0
+  explanation: The superlative of 'busy' is 'busiest'.
+- module: 68
   difficulty: medium
   sea_section: Section I
   prompt: '''A giraffe is ___ than a horse.'' (tall)'
@@ -49679,6 +52880,94 @@ questions:
   - -ly
   correct_index: 0
   explanation: Add -est for the most of all.
+- module: 68
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is the comparative form of 'hot'? (e.g. bigger)
+  options:
+  - hoter
+  - hotter
+  - hotest
+  - more hot
+  correct_index: 1
+  explanation: The comparative of 'hot' is 'hotter'.
+- module: 68
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is the superlative form of 'bad'? (e.g. biggest)
+  options:
+  - badest
+  - worse
+  - most bad
+  - worst
+  correct_index: 3
+  explanation: The superlative of 'bad' is 'worst'.
+- module: 68
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is the superlative form of 'far'? (e.g. biggest)
+  options:
+  - farther
+  - farest
+  - most far
+  - farthest
+  correct_index: 3
+  explanation: The superlative of 'far' is 'farthest'.
+- module: 68
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is the superlative form of 'funny'? (e.g. biggest)
+  options:
+  - funnyest
+  - funniest
+  - funnier
+  - most funny
+  correct_index: 1
+  explanation: The superlative of 'funny' is 'funniest'.
+- module: 68
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is the superlative form of 'happy'? (e.g. biggest)
+  options:
+  - most happy
+  - happiest
+  - happier
+  - happyest
+  correct_index: 1
+  explanation: The superlative of 'happy' is 'happiest'.
+- module: 68
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is the superlative form of 'large'? (e.g. biggest)
+  options:
+  - most large
+  - largeest
+  - largest
+  - larger
+  correct_index: 2
+  explanation: The superlative of 'large' is 'largest'.
+- module: 68
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is the superlative form of 'nice'? (e.g. biggest)
+  options:
+  - nicest
+  - niceest
+  - most nice
+  - nicer
+  correct_index: 0
+  explanation: The superlative of 'nice' is 'nicest'.
+- module: 68
+  difficulty: medium
+  sea_section: Section I
+  prompt: What is the superlative form of 'safe'? (e.g. biggest)
+  options:
+  - safer
+  - safeest
+  - most safe
+  - safest
+  correct_index: 3
+  explanation: The superlative of 'safe' is 'safest'.
 - module: 68
   difficulty: hard
   sea_section: Section I
