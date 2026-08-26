@@ -93,6 +93,18 @@
     .lw-obj-tip b { color: #67e8f9; }
     .lw-obj:hover .lw-obj-tip, .lw-obj:focus .lw-obj-tip { opacity: 1; visibility: visible; }
     @media (prefers-reduced-motion: reduce) { .lw-card, .lw-block, .lw-complete, .lw-complete img { animation: none; } }
+    /* Clock widget (ported from Measurement Studio) */
+    .lw-clock { width: 100%; max-width: 240px; height: auto; display: block; margin: 4px auto; touch-action: none; }
+    .clk-face { fill: #fffdf8; stroke: #d6c9b1; stroke-width: 3; }
+    .clk-tick { stroke: #7d8a97; stroke-width: 2; }
+    .clk-tick.big { stroke: #16242e; stroke-width: 3.5; }
+    .clk-hand-h { stroke: #16242e; stroke-width: 6; stroke-linecap: round; }
+    .clk-hand-m { stroke: #0d7d8c; stroke-width: 4; stroke-linecap: round; }
+    .clk-grab { fill: #f2a900; stroke: #fffdf8; stroke-width: 2; cursor: grab; }
+    .clk-cap { fill: #16242e; }
+    .clk-num { fill: #495b6a; font: 600 13px 'IBM Plex Mono', monospace; text-anchor: middle; dominant-baseline: middle; }
+    .lw-clock-out { text-align: center; font-weight: 700; color: var(--lw-ink, #16242e); margin-top: 6px; }
+    .lw-clock-btn { display: inline-block; margin: 6px auto 0; padding: 6px 14px; border-radius: 999px; border: 1px solid #d6c9b1; background: #fbeecd; color: #8a5a00; font-weight: 700; cursor: pointer; }
 </style>
 
 <div class="lw-wrap">
@@ -241,6 +253,26 @@
                                         <text x="14" y="{{ $pad + $gh * $cell / 2 }}" text-anchor="middle" font-size="14" fill="currentColor" transform="rotate(-90 14 {{ $pad + $gh * $cell / 2 }})">{{ $gh }}{{ ! empty($block['unit']) ? ' '.$block['unit'] : '' }}</text>
                                     </svg>
                                     @if (! empty($block['question']))<p class="lw-para" style="margin:.35rem 0">{{ $block['question'] }}</p>@endif
+                                    @if (($block['content'] ?? '') !== '')<p class="lw-para" style="margin-top:.4rem">{{ $block['content'] }}</p>@endif
+                                </div>
+                                @break
+                            @case('clock')
+                                @php
+                                    $cfg = [
+                                        'hour' => $block['hour'] ?? 12,
+                                        'minute' => $block['minute'] ?? 0,
+                                        'pm' => (bool) ($block['pm'] ?? true),
+                                        'targetH' => $block['targetH'] ?? null,
+                                        'targetM' => $block['targetM'] ?? null,
+                                        'targetPm' => $block['targetPm'] ?? null,
+                                    ];
+                                @endphp
+                                <div class="lw-numberline" x-data="clockWidget({{ Illuminate\Support\Js::from($cfg) }})" wire:ignore>
+                                    <p class="lw-example-tag">Drive it — drag the gold tips</p>
+                                    @if (! empty($block['question']))<p class="lw-para" style="margin:.2rem 0 .5rem">{{ $block['question'] }}</p>@endif
+                                    <svg class="lw-clock" x-ref="clk" viewBox="0 0 200 200" role="img" aria-label="Draggable analog clock"></svg>
+                                    <div style="text-align:center"><button type="button" class="lw-clock-btn" @click="toggleAmPm()" x-text="pm ? 'Afternoon (PM)' : 'Morning (AM)'"></button></div>
+                                    <p class="lw-clock-out" x-text="readout"></p>
                                     @if (($block['content'] ?? '') !== '')<p class="lw-para" style="margin-top:.4rem">{{ $block['content'] }}</p>@endif
                                 </div>
                                 @break

@@ -15,12 +15,24 @@
         "blocks": [
             {
                 "type": "text",
-                "content": "Time has its own units, and they do not go in tens — there are 60 minutes in an hour and 60 seconds in a minute. Knowing these lets you convert time easily. Quick words: convert means change a time amount from one unit to another, like hours to minutes.",
+                "content": "Maya reads the clock to know when cricket practice starts. Time has its own units, and they do not go in tens — there are 60 minutes in an hour and 60 seconds in a minute. First let's read a clock, then learn to convert. Quick words: convert means change a time amount from one unit to another, like hours to minutes.",
                 "cognition": "knowing"
             },
             {
+                "type": "clock",
+                "cognition": "knowing",
+                "hour": 12,
+                "minute": 0,
+                "pm": true,
+                "targetH": 3,
+                "targetM": 45,
+                "targetPm": true,
+                "question": "Practice starts at quarter to four in the afternoon. Drag the gold tips to show 3:45, then read it in 24-hour time.",
+                "content": "The short hand shows the hour, the long hand the minutes. In the afternoon we add 12 to the hour for 24-hour time, so 3:45 pm is 15:45."
+            },
+            {
                 "type": "key",
-                "content": "1 hour = 60 minutes, 1 minute = 60 seconds, and 1 day = 24 hours.",
+                "content": "1 hour = 60 minutes, 1 minute = 60 seconds, and 1 day = 24 hours. Because an hour is split into 60 minutes, we count time in 60s — never in tens.",
                 "cognition": "knowing"
             },
             {
