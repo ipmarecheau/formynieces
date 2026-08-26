@@ -19,8 +19,19 @@
                 "cognition": "knowing"
             },
             {
+                "type": "numberline",
+                "cognition": "knowing",
+                "low": 0,
+                "high": 1,
+                "halfway": false,
+                "marks": [0, 0.5, 1],
+                "value": 0.5,
+                "value2": 0.45,
+                "content": "0.45 sits just to the LEFT of 0.5 on the line, so 0.5 is greater — even though 0.45 has more digits. On the line, position tells the truth, not how many digits a number has."
+            },
+            {
                 "type": "key",
-                "content": "To compare decimals, line up the points and compare place by place from the left. More tenths means a bigger number.",
+                "content": "To compare decimals without a line, line up the decimal points and compare place by place from the left. The tenths place is worth the most, so more tenths means a bigger number — extra digits further right do not make a number bigger.",
                 "cognition": "knowing"
             },
             {

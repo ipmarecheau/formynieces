@@ -160,37 +160,56 @@
                             @case('visual') <img class="lw-visual" src="{{ $content }}" alt="Lesson diagram"> @break
                             @case('numberline')
                                 @php
-                                    $low = (int) ($block['low'] ?? 0);
-                                    $high = (int) ($block['high'] ?? 0);
-                                    $val = (int) ($block['value'] ?? $low);
+                                    $low = (float) ($block['low'] ?? 0);
+                                    $high = (float) ($block['high'] ?? 0);
+                                    $hasVal = array_key_exists('value', $block);
+                                    $val = (float) ($block['value'] ?? $low);
+                                    $val2 = array_key_exists('value2', $block) ? (float) $block['value2'] : null;
+                                    $marks = is_array($block['marks'] ?? null) ? $block['marks'] : null;
+                                    // Halfway only in single-value rounding mode (no second value, no custom marks).
+                                    $showHalf = ($block['halfway'] ?? true) && $val2 === null && $marks === null;
                                     $mid = ($low + $high) / 2;
-                                    $span = max(1, $high - $low);
+                                    $span = max(1e-9, $high - $low);
                                     $px = fn ($v) => 45 + ($v - $low) / $span * 430;
+                                    $fmt = fn ($v) => rtrim(rtrim(number_format((float) $v, 2), '0'), '.');
+                                    $ticks = $marks ?: [$low, $high];
                                     $nearer = $val < $mid ? $low : $high;
+                                    $tapMode = $showHalf && ! empty($block['question']);
                                 @endphp
                                 <div class="lw-numberline" x-data="{ picked: null }">
                                     <p class="lw-example-tag">See it on the line</p>
                                     <svg viewBox="0 0 520 120" style="width:100%;max-width:520px;height:auto;display:block;margin:.25rem auto" role="img"
-                                         aria-label="Number line from {{ number_format($low) }} to {{ number_format($high) }} with {{ number_format($val) }} marked.">
+                                         aria-label="Number line from {{ $fmt($low) }} to {{ $fmt($high) }}.">
                                         <line x1="45" y1="74" x2="475" y2="74" stroke="currentColor" stroke-width="2" />
-                                        <line x1="{{ $px($mid) }}" y1="44" x2="{{ $px($mid) }}" y2="84" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 3" />
-                                        <text x="{{ $px($mid) }}" y="36" text-anchor="middle" font-size="11" fill="#94a3b8">halfway ({{ number_format($mid) }})</text>
-                                        @foreach ([$low, $high] as $tv)
+                                        @if ($showHalf)
+                                            <line x1="{{ $px($mid) }}" y1="44" x2="{{ $px($mid) }}" y2="84" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 3" />
+                                            <text x="{{ $px($mid) }}" y="36" text-anchor="middle" font-size="11" fill="#94a3b8">halfway ({{ $fmt($mid) }})</text>
+                                        @endif
+                                        @foreach ($ticks as $tv)
                                             <line x1="{{ $px($tv) }}" y1="66" x2="{{ $px($tv) }}" y2="84" stroke="currentColor" stroke-width="2" />
-                                            <text x="{{ $px($tv) }}" y="102" text-anchor="middle" font-size="14" fill="currentColor">{{ number_format($tv) }}</text>
+                                            <text x="{{ $px($tv) }}" y="102" text-anchor="middle" font-size="13" fill="currentColor">{{ $fmt($tv) }}</text>
                                         @endforeach
-                                        <line x1="{{ $px($val) }}" y1="74" x2="{{ $px($val) }}" y2="60" stroke="#0d9488" stroke-width="2" />
-                                        <circle cx="{{ $px($val) }}" cy="74" r="7" fill="#0d9488" />
-                                        <text x="{{ $px($val) }}" y="54" text-anchor="middle" font-size="14" font-weight="700" fill="#0d9488">{{ number_format($val) }}</text>
+                                        @if ($hasVal)
+                                            <line x1="{{ $px($val) }}" y1="74" x2="{{ $px($val) }}" y2="60" stroke="#0d9488" stroke-width="2" />
+                                            <circle cx="{{ $px($val) }}" cy="74" r="7" fill="#0d9488" />
+                                            <text x="{{ $px($val) }}" y="54" text-anchor="middle" font-size="14" font-weight="700" fill="#0d9488">{{ $fmt($val) }}</text>
+                                        @endif
+                                        @if ($val2 !== null)
+                                            <line x1="{{ $px($val2) }}" y1="74" x2="{{ $px($val2) }}" y2="60" stroke="#d97706" stroke-width="2" />
+                                            <circle cx="{{ $px($val2) }}" cy="74" r="7" fill="#d97706" />
+                                            <text x="{{ $px($val2) }}" y="54" text-anchor="middle" font-size="14" font-weight="700" fill="#d97706">{{ $fmt($val2) }}</text>
+                                        @endif
                                     </svg>
-                                    @if (! empty($block['question']))
+                                    @if ($tapMode)
                                         <p class="lw-para" style="margin:.35rem 0 .5rem">{{ $block['question'] }}</p>
                                         <div style="display:flex;gap:.5rem;flex-wrap:wrap">
-                                            <button type="button" class="lw-opt" @click="picked = {{ $low }}" :class="picked === {{ $low }} ? 'is-picked' : ''">{{ number_format($low) }}</button>
-                                            <button type="button" class="lw-opt" @click="picked = {{ $high }}" :class="picked === {{ $high }} ? 'is-picked' : ''">{{ number_format($high) }}</button>
+                                            <button type="button" class="lw-opt" @click="picked = {{ $low }}" :class="picked === {{ $low }} ? 'is-picked' : ''">{{ $fmt($low) }}</button>
+                                            <button type="button" class="lw-opt" @click="picked = {{ $high }}" :class="picked === {{ $high }} ? 'is-picked' : ''">{{ $fmt($high) }}</button>
                                         </div>
                                         <template x-if="picked === {{ $nearer }}"><p class="lw-para" style="margin-top:.4rem;color:#0d9488">Yes! The dot is on that side of the halfway line, so it is closer. 🐢</p></template>
                                         <template x-if="picked !== null && picked !== {{ $nearer }}"><p class="lw-para" style="margin-top:.4rem">Not yet — look which side of the halfway line the dot sits on.</p></template>
+                                    @elseif (! empty($block['question']))
+                                        <p class="lw-para" style="margin:.35rem 0">{{ $block['question'] }}</p>
                                     @endif
                                     @if ($content !== '')<p class="lw-para" style="margin-top:.4rem">{{ $content }}</p>@endif
                                 </div>
