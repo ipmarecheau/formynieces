@@ -973,6 +973,26 @@
   note: "Service logic green in Pest (DailyPlanComposer / StreakEconomy); underlies the Captain's Orders sidebar Isaac browser-approved."
 - scenario: SE-15
   verified_at: 2026-08-15
-  commit: 7158e95
+  commit: 7.158E+98
   spec_hash: 57be7b15cfe2
   note: "Service logic green in Pest (DailyPlanComposer / StreakEconomy); underlies the Captain's Orders sidebar Isaac browser-approved."
+- scenario: GD-12
+  verified_at: 2026-08-27
+  commit: 4d64ab3
+  spec_hash: 74bceb9fc206
+  note: "Estimator: avg score/subject + composite + placement tier (verify-guardian/Amara)"
+- scenario: GD-13
+  verified_at: 2026-08-27
+  commit: 4d64ab3
+  spec_hash: ce0d200a040f
+  note: "Sidebar app sections switch correctly; reconciliation pinned"
+- scenario: GD-14
+  verified_at: 2026-08-27
+  commit: 4d64ab3
+  spec_hash: db4eb85a9a53
+  note: "Weekly recalc + 'Progress updated' dated on header"
+- scenario: GD-15
+  verified_at: 2026-08-27
+  commit: 4d64ab3
+  spec_hash: 0ed0892524c9
+  note: "Pace anchored on student's own journey; not behind by whole syllabus"
