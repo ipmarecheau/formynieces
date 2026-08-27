@@ -35,7 +35,7 @@ docker run -d \
   --restart unless-stopped \
   --log-opt max-size=10m \
   --log-opt max-file=3 \
-  -p 8080:8080 \
+  -p 127.0.0.1:8080:8080 \
   -v /opt/formynieces-data/db:/var/www/html/db \
   -v /opt/formynieces-data/storage:/var/www/html/storage \
   formynieces:latest
