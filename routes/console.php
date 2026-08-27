@@ -20,3 +20,8 @@ Schedule::command('questions:backup')->dailyAt('02:00');
 // its maintenance window + grace passed without a re-mastery, making it eligible
 // for a future weekly target again.
 Schedule::command('practice:decay-maintenance')->weekly();
+
+// WT-03: the once-a-week recalculation of every active student's pace and
+// progress. Runs Sunday at 01:00 — the start of the pacing week — so the
+// guardian dashboard opens Monday on a freshly recalculated, stably-dated report.
+Schedule::command('pace:weekly-recalculation')->weeklyOn(0, '01:00');

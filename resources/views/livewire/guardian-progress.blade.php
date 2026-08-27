@@ -1,51 +1,42 @@
 <div>
     <style>
-        .gd-header { margin-bottom: 1.5rem; }
-        .gd-title {
-            font-family: 'Fredoka One', cursive;
-            font-size: 1.5rem; color: #0e7490; margin: 0 0 0.25rem;
-        }
-        .gd-subtitle { font-size: 0.9rem; color: #9ca3af; margin: 0; font-weight: 700; }
-        .gd-card {
-            background: white; border: 1.5px solid #e6f2fb;
-            border-radius: 18px; padding: 1.1rem 1.25rem; margin-bottom: 1rem;
-        }
-        .gd-eyebrow {
-            font-size: 0.68rem; font-weight: 800; color: #93b2cc;
-            text-transform: uppercase; letter-spacing: 0.07em; margin: 0 0 0.6rem;
-        }
-        .gd-subject {
-            font-family: 'Fredoka One', cursive; font-size: 1.1rem; color: #0e7490; margin: 0 0 0.9rem;
-            display: flex; align-items: baseline; justify-content: space-between; gap: 8px;
-        }
-        .gd-summary { font-family: 'Nunito', sans-serif; font-size: 0.78rem; font-weight: 700; color: #16a34a; }
-        .gd-upcoming { margin-top: 0.7rem; border-top: 1px solid #f1f5f9; padding-top: 0.6rem; }
-        .gd-upcoming > summary {
-            cursor: pointer; font-size: 0.8rem; font-weight: 800; color: #93b2cc; list-style: none;
-        }
-        .gd-upcoming > summary::-webkit-details-marker { display: none; }
-        .gd-upcoming > summary::before { content: '▸ '; }
-        .gd-upcoming[open] > summary::before { content: '▾ '; }
-        .gd-bucket { margin-bottom: 0.9rem; }
-        .gd-bucket:last-child { margin-bottom: 0; }
-        .gd-bucket-name {
-            font-size: 0.8rem; font-weight: 800; color: #374151;
-            margin: 0 0 0.35rem; display: flex; align-items: baseline; gap: 8px;
-        }
-        .gd-bucket-count { font-size: 0.72rem; font-weight: 700; color: #93b2cc; }
-        .gd-mod-list { list-style: none; margin: 0; padding: 0; }
-        .gd-mod {
-            font-size: 0.82rem; color: #4b5563; padding: 3px 0;
-            border-bottom: 1px solid #f9f5ff;
-        }
-        .gd-mod:last-child { border-bottom: none; }
-        .gd-empty { font-size: 0.78rem; color: #9ca3af; font-style: italic; }
-        .gd-unassessed { font-size: 0.82rem; color: #9ca3af; font-weight: 600; font-style: italic; }
+        /* Progress drill-down — same light editorial tokens as the dashboard */
+        .pg-head { margin-bottom: 20px; }
+        .pg-title { font-family: 'Fredoka','Nunito',sans-serif; font-weight: 600; font-size: 28px; color: var(--ink); margin: 0 0 3px; }
+        .pg-sub { font-size: 14px; color: var(--ink-faint); font-weight: 700; margin: 0; }
+
+        .pg-card { background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; box-shadow: var(--shadow-sm); margin-bottom: 14px; }
+        .pg-eyebrow { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--teal); margin: 0 0 12px; }
+
+        .pg-subject { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin: 0 0 4px; }
+        .pg-subject h2 { font-family: 'Fredoka','Nunito',sans-serif; font-weight: 600; font-size: 18px; color: var(--ink); }
+        .pg-summary { font-size: 12.5px; font-weight: 800; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+        .pg-bar { height: 7px; background: var(--paper); border: 1px solid var(--line); border-radius: 999px; overflow: hidden; margin: 8px 0 16px; }
+        .pg-bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--teal), var(--teal-deep)); border-radius: 999px; }
+
+        .pg-bucket { margin-bottom: 14px; padding-left: 12px; border-left: 3px solid var(--line); }
+        .pg-bucket:last-child { margin-bottom: 0; }
+        .pg-bucket.working_on { border-left-color: var(--amber); }
+        .pg-bucket.in_review  { border-left-color: #7cc3cc; }
+        .pg-bucket.mastered   { border-left-color: var(--teal); }
+        .pg-bucket-name { font-size: 12.5px; font-weight: 800; color: var(--ink); margin: 0 0 6px; display: flex; align-items: baseline; gap: 8px; text-transform: uppercase; letter-spacing: .04em; }
+        .pg-bucket-count { font-size: 11.5px; font-weight: 800; color: var(--ink-faint); font-variant-numeric: tabular-nums; }
+        .pg-mods { list-style: none; margin: 0; padding: 0; }
+        .pg-mod { font-size: 13.5px; color: var(--ink-soft); padding: 5px 0; border-bottom: 1px solid var(--line); }
+        .pg-mod:last-child { border-bottom: none; }
+        .pg-empty { font-size: 13px; color: var(--ink-faint); font-style: italic; margin: 0; }
+
+        .pg-upcoming { margin-top: 12px; border-top: 1px solid var(--line); padding-top: 12px; }
+        .pg-upcoming > summary { cursor: pointer; font-size: 12.5px; font-weight: 800; color: var(--teal); list-style: none; }
+        .pg-upcoming > summary::-webkit-details-marker { display: none; }
+        .pg-upcoming > summary::before { content: '▸ '; }
+        .pg-upcoming[open] > summary::before { content: '▾ '; }
+        .pg-unassessed { font-size: 13.5px; color: var(--ink-faint); font-style: italic; margin: 0; }
     </style>
 
-    <div class="gd-header">
-        <h1 class="gd-title">Progress drill-down</h1>
-        <p class="gd-subtitle">What needs attention first — the whole syllabus is here too.</p>
+    <div class="pg-head">
+        <h1 class="pg-title">Progress drill-down</h1>
+        <p class="pg-sub">What needs attention first — the whole syllabus is here too.</p>
     </div>
 
     @php
@@ -58,38 +49,35 @@
     @endphp
 
     @foreach ($buckets as $subject => $subjectBuckets)
-        <div class="gd-card">
-            <p class="gd-subject">
-                {{ $subject }}
-                <span class="gd-summary">{{ $summaries[$subject]['mastered'] }} of {{ $summaries[$subject]['total'] }} mastered</span>
-            </p>
+        <div class="pg-card">
+            <div class="pg-subject">
+                <h2>{{ $subject === 'Math' ? 'Mathematics' : $subject }}</h2>
+                <span class="pg-summary">{{ $summaries[$subject]['mastered'] }} of {{ $summaries[$subject]['total'] }} mastered</span>
+            </div>
+            <div class="pg-bar"><i style="width: {{ $summaries[$subject]['total'] > 0 ? (int) round(($summaries[$subject]['mastered'] / $summaries[$subject]['total']) * 100) : 0 }}%;"></i></div>
 
             @foreach ($actionableLabels as $key => $label)
-                <div class="gd-bucket">
-                    <p class="gd-bucket-name">
-                        {{ $label }}
-                        <span class="gd-bucket-count">{{ count($subjectBuckets[$key]) }}</span>
-                    </p>
-
+                <div class="pg-bucket {{ $key }}">
+                    <p class="pg-bucket-name">{{ $label }} <span class="pg-bucket-count">{{ count($subjectBuckets[$key]) }}</span></p>
                     @if (count($subjectBuckets[$key]) > 0)
-                        <ul class="gd-mod-list">
+                        <ul class="pg-mods">
                             @foreach ($subjectBuckets[$key] as $module)
-                                <li class="gd-mod">{{ $module['topic'] }}</li>
+                                <li class="pg-mod">{{ $module['topic'] }}</li>
                             @endforeach
                         </ul>
                     @else
-                        <p class="gd-empty">None here yet.</p>
+                        <p class="pg-empty">None here yet.</p>
                     @endif
                 </div>
             @endforeach
 
             {{-- Upcoming: the long tail, collapsed so it never buries the actionable buckets --}}
             @if (count($subjectBuckets['upcoming']) > 0)
-                <details class="gd-upcoming">
+                <details class="pg-upcoming">
                     <summary>Upcoming ({{ count($subjectBuckets['upcoming']) }}) — Show all</summary>
-                    <ul class="gd-mod-list">
+                    <ul class="pg-mods" style="margin-top:8px;">
                         @foreach ($subjectBuckets['upcoming'] as $module)
-                            <li class="gd-mod">{{ $module['topic'] }}</li>
+                            <li class="pg-mod">{{ $module['topic'] }}</li>
                         @endforeach
                     </ul>
                 </details>
@@ -98,8 +86,8 @@
     @endforeach
 
     {{-- Writing is a parallel track (WR-01–05): no module buckets, honest awaiting state. --}}
-    <div class="gd-card">
-        <p class="gd-eyebrow">Writing</p>
-        <p class="gd-unassessed">Writing is a paper awaiting its own assessment track.</p>
+    <div class="pg-card">
+        <p class="pg-eyebrow">Writing</p>
+        <p class="pg-unassessed">Writing is a paper awaiting its own assessment track.</p>
     </div>
 </div>

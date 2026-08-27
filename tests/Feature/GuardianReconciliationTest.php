@@ -62,9 +62,14 @@ function makePendingReconciliation(): array
 it('shows the reconciliation prompt on the parent portal for a pending child', function () {
     [$guardian] = makePendingReconciliation();
 
+    // A guardian is routed from /dashboard to the canonical Guardian Bridge,
+    // where the reconciliation prompt now lives.
     $this->actingAs($guardian)
         ->get(route('dashboard'))
-        ->assertOk()
+        ->assertRedirect(route('guardian.dashboard'));
+
+    Livewire::actingAs($guardian)
+        ->test(GuardianDashboard::class)
         ->assertSee('Fractions')
         ->assertSee('Use the diagnostic result')
         ->assertSee('Keep my')

@@ -2,9 +2,11 @@
 
 namespace App\Services;
 
+use App\Models\StudentJourney;
 use App\Models\StudentProgress;
 use App\Models\SyllabusModule;
 use App\Models\User;
+use App\Services\Pacing\PacingClock;
 use Carbon\Carbon;
 
 class ExamAgentService
@@ -54,8 +56,9 @@ class ExamAgentService
     of primary school students preparing for the SEA exam in Trinidad and Tobago.
     Write in plain English a parent or guardian can understand easily.
     Never use jargon. Be specific. Be encouraging but honest.
-    Always end with exactly 3 numbered actions the guardian can take this week.
-    Maximum 150 words.
+    Write ONE short flowing paragraph — no lists, no numbered actions, no headings, no line breaks.
+    Name the child's clear strength, the one thing to work on, and the single most useful next step,
+    woven into the paragraph. Maximum 80 words.
     PROMPT;
 
             $user = "Student is in week {$week} of 30. SEA is in {$weeks} weeks. "
@@ -113,9 +116,17 @@ class ExamAgentService
 
     public function analyse(User $student): array
     {
-        $currentWeek = $this->getCurrentTeachingWeek();
-        $examDate = Carbon::parse(self::EXAM_DATE);
-        $weeksToExam = max(0, Carbon::now()->diffInWeeks($examDate, false));
+        // Pace is measured against the STUDENT's own journey (journey_start via
+        // PacingClock), not a global calendar — otherwise a student whose cycle
+        // sits outside the hard-coded term constants is scored against week 36
+        // (revision), which marks the whole syllabus "expected" and reports her
+        // as behind by the entire module count.
+        $journey = StudentJourney::where('student_id', $student->id)->first();
+        $currentWeek = $this->resolveCurrentWeek($student, $journey);
+        $examDate = $journey?->exam_date
+            ? Carbon::parse($journey->exam_date)
+            : Carbon::parse(self::EXAM_DATE);
+        $weeksToExam = (int) max(0, Carbon::now()->diffInWeeks($examDate, false));
         $inRevision = $currentWeek > self::TOTAL_WEEKS;
 
         // All modules ordered by pacing week
@@ -206,6 +217,23 @@ class ExamAgentService
             'overall_status' => $totalBehind === 0 ? 'on_track' :
                                  ($totalBehind <= 3 ? 'slight_risk' : 'at_risk'),
         ];
+    }
+
+    /**
+     * The student's current pacing week. When she has an onboarded journey the
+     * per-student PacingClock (anchored at journey_start, pause-aware) is the
+     * source of truth; only a student with no journey falls back to the global
+     * teaching calendar.
+     */
+    private function resolveCurrentWeek(User $student, ?StudentJourney $journey): int
+    {
+        if ($journey === null || $journey->journey_start === null) {
+            return $this->getCurrentTeachingWeek();
+        }
+
+        $week = app(PacingClock::class)->currentPacingWeek($student);
+
+        return max(0, min($week, self::TOTAL_WEEKS + self::REVISION_WEEKS));
     }
 
     private function getCurrentTeachingWeek(): int

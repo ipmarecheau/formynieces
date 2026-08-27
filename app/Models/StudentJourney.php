@@ -15,6 +15,7 @@ class StudentJourney extends Model
         'weeks_behind',
         'cap_review_required',
         'required_pace',
+        'pace_recalculated_at',
     ];
 
     protected $casts = [
@@ -23,6 +24,7 @@ class StudentJourney extends Model
         'weeks_behind' => 'integer',
         'cap_review_required' => 'boolean',
         'required_pace' => 'integer',
+        'pace_recalculated_at' => 'datetime',
     ];
 
     public function student(): BelongsTo

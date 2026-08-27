@@ -1,10 +1,12 @@
 <?php
 
+use App\Models\StudentJourney;
 use App\Models\StudentProgress;
 use App\Models\SyllabusModule;
 use App\Models\User;
 use App\Services\ExamAgentService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Carbon;
 
 uses(RefreshDatabase::class);
 
@@ -19,8 +21,8 @@ it('analyses the live Math and ELA subjects only', function () {
     // Two modules per subject, all in week 1 so both are "expected" now.
     $mathA = SyllabusModule::factory()->create(['subject' => 'Math', 'pacing_week' => 1]);
     $mathB = SyllabusModule::factory()->create(['subject' => 'Math', 'pacing_week' => 1]);
-    $elaA  = SyllabusModule::factory()->create(['subject' => 'ELA',  'pacing_week' => 1]);
-    $elaB  = SyllabusModule::factory()->create(['subject' => 'ELA',  'pacing_week' => 1]);
+    $elaA = SyllabusModule::factory()->create(['subject' => 'ELA',  'pacing_week' => 1]);
+    $elaB = SyllabusModule::factory()->create(['subject' => 'ELA',  'pacing_week' => 1]);
 
     // Master one of each subject; leave the other behind.
     StudentProgress::create(['student_id' => $student->id, 'module_id' => $mathA->id, 'status' => 'mastered']);
@@ -40,3 +42,33 @@ it('analyses the live Math and ELA subjects only', function () {
     expect($subjects['Math']['expected'])->toBe(2)
         ->and($subjects['Math']['behind_count'])->toBe(1);
 });
+
+/**
+ * Regression: a student a few weeks into her OWN journey must be paced against
+ * her journey_start (via PacingClock), not the global term calendar. Before the
+ * fix, a cycle sitting outside the hard-coded constants scored her at week 36
+ * (revision), marking every module "expected" and reporting her behind by the
+ * entire syllabus.
+ */
+it('paces a mid-journey student against her journey, not the whole syllabus', function () {
+    $student = User::factory()->create(['role' => 'student']);
+
+    StudentJourney::create([
+        'student_id' => $student->id,
+        'journey_start' => Carbon::today()->subWeeks(3)->toDateString(),
+        'exam_date' => Carbon::today()->addWeeks(28)->toDateString(),
+    ]);
+
+    // 20 modules spread across weeks 1..20; only weeks 1..3 are "expected" now.
+    for ($week = 1; $week <= 20; $week++) {
+        SyllabusModule::factory()->create(['subject' => 'Math', 'pacing_week' => $week]);
+    }
+
+    $result = app(ExamAgentService::class)->analyse($student);
+    $math = $result['subject_analysis']['Math'];
+
+    expect($result['current_week'])->toBe(4)              // 3 whole weeks elapsed + 1
+        ->and($math['expected'])->toBeLessThan(20)        // NOT the whole syllabus
+        ->and($math['behind_count'])->toBeLessThanOrEqual($math['expected'])
+        ->and($math['total'])->toBe(20);
+})->group('scenario:GD-15');

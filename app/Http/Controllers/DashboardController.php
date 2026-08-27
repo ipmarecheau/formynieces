@@ -7,17 +7,20 @@ use App\Models\StudentProgress;
 use App\Models\StudentStreak;
 use App\Models\WeeklyTarget;
 use App\Services\Diagnostic\DiagnosticReconciliation;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class DashboardController extends Controller
 {
-    public function index(Request $request): View
+    public function index(Request $request): View|RedirectResponse
     {
         $user = $request->user();
 
-        if ($user->isParent()) {
-            return $this->parentDashboard($user);
+        // The honest layer has its own home — a guardian is always routed to the
+        // Guardian Bridge, never the student dashboard, from /dashboard.
+        if ($user->isGuardian()) {
+            return redirect()->route('guardian.dashboard');
         }
 
         return $this->studentDashboard($user);

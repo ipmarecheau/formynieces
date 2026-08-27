@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\GuardianDashboard;
 use App\Models\StudentJourney;
 use App\Models\StudentPause;
 use App\Models\StudentStreak;
@@ -10,6 +11,7 @@ use App\Services\Motivation\StreakService;
 use App\Services\Pacing\PacingClock;
 use App\Services\Pacing\PauseService;
 use App\Services\Pacing\WeeklyRollover;
+use Livewire\Livewire;
 
 /**
  * Pause / resume — a guardian can pause a student. While paused, no weekly
@@ -127,8 +129,9 @@ it('lets a guardian pause and resume her own student from the Parent Portal', fu
     $student = makePausableStudent();
     $student->forceFill(['parent_id' => $guardian->id])->save();
 
-    // The portal offers a Pause control for an active student.
-    $this->actingAs($guardian)->get(route('dashboard'))->assertOk()->assertSee('Pause');
+    // /dashboard routes the guardian to the Guardian Bridge, which offers a Pause control.
+    $this->actingAs($guardian)->get(route('dashboard'))->assertRedirect(route('guardian.dashboard'));
+    Livewire::actingAs($guardian)->test(GuardianDashboard::class)->assertSee('Pause');
 
     $this->actingAs($guardian)->post(route('guardian.pause', $student))->assertRedirect();
     expect($student->refresh()->isPaused())->toBeTrue();
@@ -162,5 +165,5 @@ it('shows a pause history on the parent portal', function () {
 
     StudentPause::create(['student_id' => $student->id, 'paused_at' => now()->subDays(13), 'resumed_at' => now()->subDays(3)]);
 
-    $this->actingAs($guardian)->get(route('dashboard'))->assertOk()->assertSee('Pause history');
+    Livewire::actingAs($guardian)->test(GuardianDashboard::class)->assertSee('Pause history');
 })->group('scenario:WT-04');

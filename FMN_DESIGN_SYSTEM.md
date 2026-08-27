@@ -397,3 +397,21 @@ Uses inline styles directly — same track/fill pattern as hero card but with pu
 | Use `fmn-alert` for empty states | Show blank white space with no message |
 | Keep stat grids to 2 or 4 columns only | Use 3-column stat grids |
 
+
+---
+
+## Appendix — The Guardian Bridge (honest layer) is a DIFFERENT system
+
+The child-facing rules above are for the student's playful world. The **guardian dashboard**
+(the "honest layer" / Guardian Bridge, rebuilt 2026-08-27) deliberately does **not** use the
+cozy/magical treatment — it is an adult control panel and reads as one.
+
+- **Theme:** the light **editorial** system from the landing page (`welcome.blade.php`), not the
+  student ocean theme. Tokens: `--ink #12222e`, `--ink-soft`, `--ink-faint`, `--paper #fbf8f2`,
+  `--paper-2 #fff`, `--line #e7ddcd`, `--teal #0d7d8c`, `--amber #f2a900`, semantic
+  `--good/--warn` kept separate from the teal accent. Type: **Fredoka** headings + **Nunito** body,
+  one shared scale; `tabular-nums` for aligned figures.
+- **Structure:** a **sidebar app** (`layouts/guardian.blade.php` + `GuardianDashboard` sections),
+  summary-before-detail, honest data over celebration. No streak counters/celebration styling in
+  pace/readiness (GD-05).
+- Do not import `fmn-*` student components here; the guardian views carry their own scoped styles.

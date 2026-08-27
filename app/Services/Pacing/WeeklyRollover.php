@@ -108,6 +108,11 @@ class WeeklyRollover
             return $baseCap;
         }
 
+        // Stamp when this student's pace/progress was last recalculated — the
+        // guardian dashboard shows this as "Progress updated". Both save paths
+        // below persist it.
+        $journey->pace_recalculated_at = $now;
+
         $currentWeek = $this->pacingClock->currentPacingWeek($student, $now);
         $weeksToExam = max(1, $this->pacingClock->weeksToExam($student, $now));
 

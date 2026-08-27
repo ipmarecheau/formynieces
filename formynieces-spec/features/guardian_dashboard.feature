@@ -1,12 +1,17 @@
 @mvp @guardian
 Feature: Guardian dashboard — the honest layer
-  One weekly screen, headed by the child's name and the week it covers, answers
-  exactly four questions honestly: was the target completed, where is she against
-  pace, what does the exam agent recommend, and what did her writing feedback say.
-  Every figure is labelled so it cannot be misread, and this screen is also where
-  the guardian acts — pausing, granting a reward, requesting a retake, and deciding
-  a pending reconciliation. The honest layer never borrows the student's
-  motivational styling.
+  The Guardian Bridge — a sidebar app on the light editorial brand system. Its
+  Overview is a high-level summary answering the four Sunday questions honestly
+  (target completed, position against pace, the exam agent's recommendation, and
+  the latest writing feedback), and the heavier functions live in their own
+  sidebar sections: This week (topics + reading + writing), Pace (per-subject
+  bars, trajectory, and a collapsible year → month → week calendar), Progress
+  (the drill-down buckets), Estimator (projected SEA placement), and Rewards &
+  controls (perks, granting a reward, pause/resume, retake, pause history).
+  Pace is measured against the STUDENT's own journey (PacingClock, journey_start),
+  never a global calendar, and is recalculated once a week and dated on screen.
+  Every figure is labelled so it cannot be misread; the honest layer never
+  borrows the student's motivational styling.
 
   @scenario:GD-01
   Scenario: The dashboard answers the four Sunday questions
@@ -98,3 +103,37 @@ Feature: Guardian dashboard — the honest layer
     When the weekly digest job runs
     Then the digest email includes the four answers inline
     And its nudge tone escalates gently and without guilt
+
+  @scenario:GD-12
+  Scenario: The estimator projects placement from her own history
+    Given a guardian whose student has answered practice questions
+    When she opens the Estimator section
+    Then she sees the student's average score per subject over covered material
+    And a projected SEA composite weighted 50/30/20
+    And an indicative placement tier drawn from public SEA cut-off ranges
+    And a confidence signal so a thin evidence base is never shown as a firm projection
+
+  @scenario:GD-13
+  Scenario: The dashboard is a sidebar app, not one long page
+    Given a guardian whose student has an active roadmap
+    When she opens the guardian dashboard
+    Then the Overview shows a high-level summary and cards that jump into each function
+    And the sidebar carries This week, Pace, Progress, Estimator, and Rewards & controls
+    And selecting a section shows only that function's content
+    And a pending reconciliation stays surfaced across every section
+
+  @scenario:GD-14
+  Scenario: Pace and progress are recalculated weekly and dated on screen
+    Given a guardian whose student has an active journey
+    When the weekly pace recalculation runs for every active student
+    Then the student's weeks_behind, pace_status and required_pace are refreshed
+    And the recalculation time is stamped on her journey
+    And the dashboard shows when progress was last updated
+
+  @scenario:GD-15
+  Scenario: Pace is measured against the student's own journey, not a global calendar
+    Given a student a few weeks into her own journey
+    When the exam agent analyses her pace
+    Then only the modules due by her current journey week are expected of her
+    And she is never reported behind by the whole syllabus when her cycle sits
+      outside the global term calendar
