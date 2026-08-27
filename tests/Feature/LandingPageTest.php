@@ -120,3 +120,19 @@ it('prices plainly — $200/month with the 14-day money-back and improvement gua
         ->assertSee('14 days or less')
         ->assertSee('Math, ELA, Writing and Vocabulary');
 })->group('scenario:LP-13');
+
+it('shows a real gameplay reel — an autoplaying, looping, muted demo video with a poster', function () {
+    $this->get('/')
+        ->assertOk()
+        ->assertSee('See it in action')
+        ->assertSee('A real sail through the Voyage')
+        ->assertSee('reels/child-reel.mp4')                             // Safari/iOS + smaller primary source
+        ->assertSee('reels/child-reel.webm')                            // the actual demo footage, not a mock
+        ->assertSee('reels/child-reel-poster.png')                      // poster + reduced-motion static fallback
+        ->assertSee('autoplay')
+        ->assertSee('loop')
+        ->assertSee('playsinline')
+        ->assertSee('Turn sound on')                                   // narration is reachable via the unmute control
+        ->assertSee('For your child')                                  // hero jumbotron tab — the child reel
+        ->assertSee('For you (parent)');                               // hero jumbotron tab — parent portal (mock for now)
+})->group('scenario:LP-14');

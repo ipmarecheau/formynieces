@@ -435,24 +435,49 @@
             </div>
 
             <div class="hero-figure" data-reveal style="--rd:.12s">
-                <div class="hero-panel" id="heroPanel">
-                    <div class="hero-panel-top">
-                        <div class="hero-avatar"><img src="{{ asset('images/voyage/companion/smooth.webp') }}" alt="Smooth the turtle"></div>
-                        <div>
-                            <h3>Maya's week 6 report</h3>
-                            <p>Delivered to your Parent Portal</p>
-                        </div>
+                <div class="hero-demo">
+                    <div class="hero-tabs" role="tablist" aria-label="Choose a demo">
+                        <button type="button" class="hero-tab is-active" id="tab-child" role="tab"
+                                aria-selected="true" aria-controls="pane-child">▶ For your child</button>
+                        <button type="button" class="hero-tab" id="tab-parent" role="tab"
+                                aria-selected="false" aria-controls="pane-parent">For you (parent)</button>
                     </div>
-                    <div class="bar-row"><span>🔢 Math</span><div class="bar"><i style="--w:74%"></i></div><b>74%</b></div>
-                    <div class="bar-row"><span>📖 Reading</span><div class="bar"><i style="--w:82%"></i></div><b>82%</b></div>
-                    <div class="bar-row"><span>✏️ Grammar</span><div class="bar"><i style="--w:64%"></i></div><b>64%</b></div>
-                    <div class="bar-row"><span>🗣️ Vocab</span><div class="bar"><i style="--w:91%"></i></div><b>91%</b></div>
-                    <div class="hero-panel-note">
-                        <span>🔁</span>
-                        <span>Re-taught gently this week: plurals (y → ies) — then mastered.</span>
+
+                    <div class="hero-pane is-active" id="pane-child" role="tabpanel" aria-labelledby="tab-child">
+                        <figure class="reel-figure">
+                            <video class="reel-video" autoplay muted loop playsinline preload="metadata"
+                                   poster="{{ asset('reels/child-reel-poster.png') }}"
+                                   aria-label="A narrated walkthrough of a child's voyage: the daily warm-up and writing, the island map, rewards locker, and the three ways to master a lesson.">
+                                <source src="{{ asset('reels/child-reel.mp4') }}" type="video/mp4">
+                                <source src="{{ asset('reels/child-reel.webm') }}" type="video/webm">
+                            </video>
+                            <button type="button" class="reel-sound" aria-label="Turn sound on">🔇 <span>Sound off</span></button>
+                            <img class="reel-static" src="{{ asset('reels/child-reel-poster.png') }}"
+                                 alt="A child's Voyage map with illustrated islands, the Captain's Orders panel, and Smooth the turtle welcoming them back.">
+                        </figure>
+                    </div>
+
+                    <div class="hero-pane" id="pane-parent" role="tabpanel" aria-labelledby="tab-parent" hidden>
+                        <div class="hero-panel in" id="heroPanel">
+                            <div class="hero-panel-top">
+                                <div class="hero-avatar"><img src="{{ asset('images/voyage/companion/smooth.webp') }}" alt="Smooth the turtle"></div>
+                                <div>
+                                    <h3>Maya's week 6 report</h3>
+                                    <p>Delivered to your Parent Portal</p>
+                                </div>
+                            </div>
+                            <div class="bar-row"><span>🔢 Math</span><div class="bar"><i style="--w:74%"></i></div><b>74%</b></div>
+                            <div class="bar-row"><span>📖 Reading</span><div class="bar"><i style="--w:82%"></i></div><b>82%</b></div>
+                            <div class="bar-row"><span>✏️ Grammar</span><div class="bar"><i style="--w:64%"></i></div><b>64%</b></div>
+                            <div class="bar-row"><span>🗣️ Vocab</span><div class="bar"><i style="--w:91%"></i></div><b>91%</b></div>
+                            <div class="hero-panel-note">
+                                <span>🔁</span>
+                                <span>Re-taught gently this week: plurals (y → ies) — then mastered.</span>
+                            </div>
+                        </div>
+                        <span class="hero-parent-soon">🎬 A live parent-portal walkthrough is on the way</span>
                     </div>
                 </div>
-                <div class="hero-float">✅ Voyage on pace</div>
             </div>
         </div>
     </div>
@@ -602,6 +627,143 @@
         </div>
     </div>
 </section>
+
+<!-- SEE IT IN ACTION (child gameplay reel) -->
+<style>
+    .reel-figure {
+        position: relative;
+        max-width: 900px;
+        margin: 28px auto 0;
+        border-radius: 18px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        box-shadow: 0 24px 60px rgba(10, 30, 60, .28);
+        background: #0d1b34;
+        aspect-ratio: 16 / 10;
+    }
+    .reel-figure video,
+    .reel-figure img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .reel-figure .reel-static { display: none; }
+    .reel-sound {
+        position: absolute;
+        left: 14px;
+        bottom: 14px;
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 8px 13px;
+        border: 0;
+        border-radius: 999px;
+        background: rgba(8, 20, 40, .78);
+        color: #fff;
+        font: inherit;
+        font-size: 13px;
+        font-weight: 700;
+        cursor: pointer;
+        -webkit-backdrop-filter: blur(6px);
+        backdrop-filter: blur(6px);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, .3);
+    }
+    .reel-sound:hover { background: rgba(8, 20, 40, .92); }
+    .reel-sound:focus-visible { outline: 2px solid #f5b544; outline-offset: 2px; }
+    /* Hero jumbotron demo: Child video / Parent portal tabs */
+    .hero-demo { width: 100%; max-width: 500px; }
+    .hero-tabs {
+        display: inline-flex; gap: 5px; margin-bottom: 14px;
+        background: var(--paper); border: 1px solid var(--line);
+        border-radius: 999px; padding: 5px;
+    }
+    .hero-tab {
+        border: 0; background: transparent; font: inherit; cursor: pointer;
+        font-weight: 800; font-size: 13px; color: var(--ink-soft);
+        padding: 8px 15px; border-radius: 999px; transition: background .18s, color .18s;
+    }
+    .hero-tab.is-active { background: var(--teal); color: #fff; box-shadow: 0 4px 12px rgba(20, 120, 140, .3); }
+    .hero-tab:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+    .hero-pane[hidden] { display: none; }
+    .hero-demo .reel-figure { margin: 0; max-width: none; border-radius: 20px; }
+    .hero-parent-soon {
+        display: inline-flex; align-items: center; gap: 6px; margin-top: 14px;
+        font-size: 12px; font-weight: 800; color: #8a5a00;
+        background: var(--amber-tint); border: 1px solid #f2d69a;
+        border-radius: 999px; padding: 6px 13px;
+    }
+    .reel-caption {
+        text-align: center;
+        margin: 14px auto 0;
+        max-width: 640px;
+        color: var(--ink-2, #5b6b82);
+        font-size: 14px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .reel-figure video,
+        .reel-sound { display: none; }
+        .reel-figure .reel-static { display: block; }
+    }
+</style>
+<section class="band" id="see-it" style="background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="wrap">
+        <div class="section-head" data-reveal>
+            <span class="eyebrow">See it in action</span>
+            <h2>A real sail through the Voyage.</h2>
+            <p>A guided, sped-up tour of a real school day: the daily warm-up, the writing stop, the island map, the Captain's Locker, and the three ways to master a lesson — no slideshow, just the app.</p>
+        </div>
+        <figure class="reel-figure" data-reveal>
+            <video class="reel-video" autoplay muted loop playsinline preload="metadata"
+                   poster="{{ asset('reels/child-reel-poster.png') }}"
+                   aria-label="A sped-up, narrated walkthrough of a child's voyage: the daily warm-up and writing, the island map, rewards locker, and the three ways to master a lesson.">
+                <source src="{{ asset('reels/child-reel.mp4') }}" type="video/mp4">
+                <source src="{{ asset('reels/child-reel.webm') }}" type="video/webm">
+            </video>
+            <button type="button" class="reel-sound" aria-label="Turn sound on">🔇 <span>Sound off</span></button>
+            <img class="reel-static" src="{{ asset('reels/child-reel-poster.png') }}"
+                 alt="A child's Voyage map with illustrated islands, the Captain's Orders panel, and Smooth the turtle welcoming them back.">
+        </figure>
+        <p class="reel-caption">A real recording of the app, sped up and narrated. This is the child's view — parents get their own dashboard below.</p>
+    </div>
+</section>
+<script>
+    (function () {
+        // Sound toggles — each button controls the video in its own figure.
+        document.querySelectorAll('.reel-sound').forEach(function (btn) {
+            var fig = btn.closest('.reel-figure');
+            var v = fig && fig.querySelector('video');
+            if (!v) { return; }
+            var label = btn.querySelector('span');
+            btn.addEventListener('click', function () {
+                v.muted = !v.muted;
+                if (!v.muted) { v.play().catch(function () {}); }
+                btn.firstChild.textContent = (v.muted ? '🔇 ' : '🔊 ');
+                label.textContent = v.muted ? 'Sound off' : 'Sound on';
+                btn.setAttribute('aria-label', v.muted ? 'Turn sound on' : 'Turn sound off');
+            });
+        });
+
+        // Hero jumbotron tabs — swap Child video / Parent portal.
+        var tabs = Array.prototype.slice.call(document.querySelectorAll('.hero-tab'));
+        tabs.forEach(function (tab) {
+            tab.addEventListener('click', function () {
+                tabs.forEach(function (t) {
+                    var on = t === tab;
+                    t.classList.toggle('is-active', on);
+                    t.setAttribute('aria-selected', on ? 'true' : 'false');
+                });
+                document.querySelectorAll('.hero-pane').forEach(function (pane) {
+                    var on = pane.id === tab.getAttribute('aria-controls');
+                    pane.hidden = !on;
+                    pane.classList.toggle('is-active', on);
+                    var vid = pane.querySelector('video');
+                    if (vid) { on ? vid.play().catch(function () {}) : vid.pause(); }
+                });
+            });
+        });
+    })();
+</script>
 
 <!-- PRICING -->
 <section class="band" id="pricing" style="background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">

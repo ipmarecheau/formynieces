@@ -94,3 +94,10 @@ Feature: Landing page — speak to Caribbean parents
     Then it states the price plainly — $200 per month for everything
     And it offers a 14-day money-back guarantee — a full refund if unsatisfied for any reason, no questions asked
     And it guarantees measurable improvement in Math, ELA, Writing and Vocabulary in 14 days or less
+
+  @scenario:LP-14
+  Scenario: A real gameplay reel shows the child's voyage in action
+    Given a visitor reaches the "see it in action" section
+    Then a short demo video plays automatically, muted and looping, of a real child's voyage
+    And it shows the island map, the rewards locker, a lesson, the quick check, and Smooth re-teaching a missed rule
+    And a poster frame stands in before it loads and for visitors who prefer reduced motion
