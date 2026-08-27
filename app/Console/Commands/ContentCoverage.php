@@ -67,7 +67,7 @@ class ContentCoverage extends Command
 
     private function row(string $label, int $have, int $need, int $pct, ?string $note = null): void
     {
-        $bars = (int) round($pct / 10);
+        $bars = max(0, min(10, (int) round($pct / 10)));
         $bar = str_repeat('▓', $bars).str_repeat('░', 10 - $bars);
         $colour = $pct >= 90 ? 'green' : ($pct >= 50 ? 'yellow' : 'red');
         $gap = $need - $have;
@@ -75,7 +75,7 @@ class ContentCoverage extends Command
 
         $this->line(sprintf('  %-24s <fg=%s>%s</> %3d%%  %d / %d   %s', $label, $colour, $bar, $pct, $have, $need, $gapText));
         if ($note !== null) {
-            $this->line("  <fg=gray>".str_repeat(' ', 24).$note.'</>');
+            $this->line('  <fg=gray>'.str_repeat(' ', 24).$note.'</>');
         }
     }
 
