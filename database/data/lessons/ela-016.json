@@ -158,6 +158,32 @@
                 ]
             },
             {
+                "type": "markwords",
+                "cognition": "applying",
+                "instruction": "Tap the modal verb in the sentence.",
+                "text": "You *should* wear a helmet when you ride.",
+                "explain": "\"should\" is a modal — it gives advice about the main verb \"wear\".",
+                "rule": "A modal (can, may, should, could, might) sits before the main verb and changes its strength.",
+                "practiceItems": [
+                    {
+                        "prompt": "the modal that gives advice",
+                        "answer": "should"
+                    },
+                    {
+                        "prompt": "the modal that shows possibility",
+                        "answer": "might"
+                    },
+                    {
+                        "prompt": "the modal that shows ability",
+                        "answer": "can"
+                    },
+                    {
+                        "prompt": "\"you ___ be tired\" (maybe)",
+                        "answer": "might"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Can for ability, may for permission, should for advice, might and could for possibility. Pick the modal that fits your meaning. Let's practise!",
                 "cognition": "knowing"

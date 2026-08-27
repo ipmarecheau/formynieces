@@ -152,6 +152,32 @@
                 ]
             },
             {
+                "type": "markwords",
+                "cognition": "applying",
+                "instruction": "Tap the comparing word in the sentence.",
+                "text": "This mango is *sweeter* than that one.",
+                "explain": "\"sweeter\" compares two things — the comparative form adds -er.",
+                "rule": "Comparing two things uses -er (or more); the superlative for three or more uses -est (or most).",
+                "practiceItems": [
+                    {
+                        "prompt": "the comparative of \"sweet\"",
+                        "answer": "sweeter"
+                    },
+                    {
+                        "prompt": "the superlative of \"sweet\"",
+                        "answer": "sweetest"
+                    },
+                    {
+                        "prompt": "the comparative of \"tall\"",
+                        "answer": "taller"
+                    },
+                    {
+                        "prompt": "the superlative of \"big\"",
+                        "answer": "biggest"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Use -er to compare two, and -est for the most of all. For long words, use 'more' and 'most' instead. Let's practise!",
                 "cognition": "knowing"

@@ -153,6 +153,32 @@
                 ]
             },
             {
+                "type": "markwords",
+                "cognition": "applying",
+                "instruction": "Tap the verb (the action word) in the sentence.",
+                "text": "Yesterday Maya *walked* to the shop.",
+                "explain": "\"walked\" is the action, and -ed shows it already happened (past tense).",
+                "rule": "The verb is the action word; add -ed for a simple past action.",
+                "practiceItems": [
+                    {
+                        "prompt": "the action word in \"she runs home\"",
+                        "answer": "runs"
+                    },
+                    {
+                        "prompt": "the past tense of \"play\"",
+                        "answer": "played"
+                    },
+                    {
+                        "prompt": "the action word in \"they jumped\"",
+                        "answer": "jumped"
+                    },
+                    {
+                        "prompt": "the past tense of \"walk\"",
+                        "answer": "walked"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Past adds -ed, the continuous adds -ing, and the future uses 'will'. Match the tense to the time. Let's practise!",
                 "cognition": "knowing"

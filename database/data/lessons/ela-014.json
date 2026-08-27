@@ -158,6 +158,32 @@
                 ]
             },
             {
+                "type": "markwords",
+                "cognition": "applying",
+                "instruction": "Tap the preposition (the position word) in the sentence.",
+                "text": "The cat is sleeping *under* the table.",
+                "explain": "\"under\" tells you WHERE the cat is — that is a preposition.",
+                "rule": "A preposition shows position or direction, like on, in, under, over.",
+                "practiceItems": [
+                    {
+                        "prompt": "the position word in \"the ball is in the box\"",
+                        "answer": "in"
+                    },
+                    {
+                        "prompt": "the position word in \"she sat on the chair\"",
+                        "answer": "on"
+                    },
+                    {
+                        "prompt": "a word that shows position (under/quickly)",
+                        "answer": "under"
+                    },
+                    {
+                        "prompt": "the position word in \"the bird flew over the roof\"",
+                        "answer": "over"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Prepositions place things; conjunctions join ideas. Small words, big jobs. Let's practise!",
                 "cognition": "knowing"

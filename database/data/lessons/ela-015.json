@@ -152,6 +152,32 @@
                 ]
             },
             {
+                "type": "markwords",
+                "cognition": "applying",
+                "instruction": "Tap the joining word that links the two ideas.",
+                "text": "I was tired, *but* I finished my homework.",
+                "explain": "\"but\" joins two ideas that go against each other — a conjunction.",
+                "rule": "A conjunction joins ideas: and adds, but contrasts, because gives a reason.",
+                "practiceItems": [
+                    {
+                        "prompt": "the joining word for opposite ideas",
+                        "answer": "but"
+                    },
+                    {
+                        "prompt": "the joining word for adding ideas",
+                        "answer": "and"
+                    },
+                    {
+                        "prompt": "the joining word that gives a reason",
+                        "answer": "because"
+                    },
+                    {
+                        "prompt": "a joining word is called a",
+                        "answer": "conjunction"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Compound joins two whole ideas with and/but/or; complex adds a because/when/if part. Both make your writing flow. Let's practise!",
                 "cognition": "knowing"

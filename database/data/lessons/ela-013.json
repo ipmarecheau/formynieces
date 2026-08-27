@@ -157,6 +157,32 @@
                 ]
             },
             {
+                "type": "markwords",
+                "cognition": "applying",
+                "instruction": "Tap the verb that matches the subject \"The dogs\".",
+                "text": "The dogs *bark* at the gate.",
+                "explain": "\"dogs\" is plural, so it takes the plain verb \"bark\" (one dog would \"barks\").",
+                "rule": "A plural subject takes the plain verb; a singular subject adds -s.",
+                "practiceItems": [
+                    {
+                        "prompt": "\"the dog ___\" (bark)",
+                        "answer": "barks"
+                    },
+                    {
+                        "prompt": "\"the dogs ___\" (bark)",
+                        "answer": "bark"
+                    },
+                    {
+                        "prompt": "\"she ___\" (run)",
+                        "answer": "runs"
+                    },
+                    {
+                        "prompt": "\"they ___\" (run)",
+                        "answer": "run"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "One thing takes a verb with s; more than one takes a verb without s. Check they agree every time. Let's practise!",
                 "cognition": "knowing"
