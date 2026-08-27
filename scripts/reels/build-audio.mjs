@@ -13,31 +13,66 @@ import { fileURLToPath } from 'node:url';
 
 const dir = dirname(fileURLToPath(import.meta.url));
 const OUT = join(dir, 'out');
-const AUDIO = join(OUT, 'audio');
+const PUBLIC = join(dir, '../../public/reels');
+const REEL = process.env.REEL ?? 'child'; // 'child' | 'parent'
+
+const CONFIGS = {
+  child: {
+    speed: 0.52,
+    beats: join(OUT, 'beats.json'),
+    base: join(OUT, 'child-reel-base.webm'),
+    audio: join(OUT, 'audio'),
+    outWebm: join(PUBLIC, 'child-reel.webm'),
+    outMp4: join(PUBLIC, 'child-reel.mp4'),
+    narration: {
+      1: 'Sign in, and pick up right where you left off!',
+      2: 'Every day starts warm — a quick read, and today’s new words!',
+      3: 'Then a daily writing stop, with kind, specific feedback!',
+      4: 'Your whole curriculum is a map — and every skill is an island to conquer!',
+      5: 'Earn perks as you sail!',
+      6: 'Life happens — take a day off, or rescue a streak!',
+      7: 'Master any island one of three ways!',
+      8: 'Ace the quick check — six right, and it’s mastered on the spot!',
+      9: 'Or learn it, hands on, one idea at a time!',
+      10: 'Or let Smooth re-teach it — then prove you’ve got it!',
+      0: 'SmoothSeas. They always know where they’re going!',
+    },
+  },
+  parent: {
+    speed: 0.66,
+    beats: join(OUT, 'parent', 'parent-beats.json'),
+    base: join(OUT, 'parent', 'parent-reel-base.webm'),
+    audio: join(OUT, 'parent', 'audio'),
+    outWebm: join(PUBLIC, 'parent-reel.webm'),
+    outMp4: join(PUBLIC, 'parent-reel.mp4'),
+    narration: {
+      1: 'This is your parent portal — the honest layer.',
+      2: 'Four honest answers, every week.',
+      3: 'One clear thing to focus on next.',
+      4: 'Exactly what she’s working on this week.',
+      5: 'Her pace against her own plan — labelled, never alarming.',
+      6: 'The whole year, month by month.',
+      7: 'A projected placement, with an honest confidence signal.',
+      8: 'You’re in control — pause, grant a reward, or request a retake.',
+      9: 'Add graded school papers, kept beside our own picture.',
+      0: 'SmoothSeas — so you never have to guess.',
+    },
+  },
+};
+
+const CFG = CONFIGS[REEL];
+const SPEED = CFG.speed;
+const VIDEO = CFG.base;
+const AUDIO = CFG.audio;
+const NARRATION = CFG.narration;
 mkdirSync(AUDIO, { recursive: true });
 
-const SPEED = 0.52; // MUST match the -itsscale used to encode the video-only base
-const VIDEO = join(OUT, 'child-reel-base.webm'); // video-only source (build artifact)
 const VOICE = process.env.PIPER_VOICE ??
   join(process.env.SCRATCH ?? '/tmp/claude-0/-root-dev-formynieces/94033ef5-0d34-4bf7-800c-4a9632257575/scratchpad',
     'piper-voices/en_US-amy-medium.onnx');
 
-const NARRATION = {
-  1: 'Sign in, and pick up right where you left off!',
-  2: 'Every day starts warm — a quick read, and today’s new words!',
-  3: 'Then a daily writing stop, with kind, specific feedback!',
-  4: 'Your whole curriculum is a map — and every skill is an island to conquer!',
-  5: 'Earn perks as you sail!',
-  6: 'Life happens — take a day off, or rescue a streak!',
-  7: 'Master any island one of three ways!',
-  8: 'Ace the quick check — six right, and it’s mastered on the spot!',
-  9: 'Or learn it, hands on, one idea at a time!',
-  10: 'Or let Smooth re-teach it — then prove you’ve got it!',
-  0: 'SmoothSeas. They always know where they’re going!',
-};
-
 // --- beat times (first occurrence per step), scaled to the sped timeline -----
-const beats = JSON.parse(readFileSync(join(OUT, 'beats.json'), 'utf8'));
+const beats = JSON.parse(readFileSync(CFG.beats, 'utf8'));
 const seen = new Set();
 const timeline = [];
 for (const b of beats) {
@@ -125,10 +160,10 @@ function mux(outFile, vcodec, acodec) {
     { stdio: 'inherit' });
 }
 // webm keeps the VP8 video as-is, opus audio
-mux(join(dir, '../../public/reels/child-reel.webm'), ['copy'], ['libopus', '-b:a', '96k']);
+mux(CFG.outWebm, ['copy'], ['libopus', '-b:a', '96k']);
 // mp4 for Safari / iOS + sharing
-mux(join(dir, '../../public/reels/child-reel.mp4'),
+mux(CFG.outMp4,
   ['libx264', '-pix_fmt', 'yuv420p', '-crf', '26', '-preset', 'veryfast'],
   ['aac', '-b:a', '128k']);
 
-console.log('\nMuxed narration + music into public/reels/child-reel.webm and .mp4');
+console.log(`\nMuxed narration + music into ${CFG.outWebm} and ${CFG.outMp4}`);

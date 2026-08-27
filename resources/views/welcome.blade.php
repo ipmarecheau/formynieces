@@ -458,24 +458,17 @@
                     </div>
 
                     <div class="hero-pane" id="pane-parent" role="tabpanel" aria-labelledby="tab-parent" hidden>
-                        <div class="hero-panel in" id="heroPanel">
-                            <div class="hero-panel-top">
-                                <div class="hero-avatar"><img src="{{ asset('images/voyage/companion/smooth.webp') }}" alt="Smooth the turtle"></div>
-                                <div>
-                                    <h3>Maya's week 6 report</h3>
-                                    <p>Delivered to your Parent Portal</p>
-                                </div>
-                            </div>
-                            <div class="bar-row"><span>🔢 Math</span><div class="bar"><i style="--w:74%"></i></div><b>74%</b></div>
-                            <div class="bar-row"><span>📖 Reading</span><div class="bar"><i style="--w:82%"></i></div><b>82%</b></div>
-                            <div class="bar-row"><span>✏️ Grammar</span><div class="bar"><i style="--w:64%"></i></div><b>64%</b></div>
-                            <div class="bar-row"><span>🗣️ Vocab</span><div class="bar"><i style="--w:91%"></i></div><b>91%</b></div>
-                            <div class="hero-panel-note">
-                                <span>🔁</span>
-                                <span>Re-taught gently this week: plurals (y → ies) — then mastered.</span>
-                            </div>
-                        </div>
-                        <span class="hero-parent-soon">🎬 A live parent-portal walkthrough is on the way</span>
+                        <figure class="reel-figure">
+                            <video class="reel-video" muted loop playsinline preload="none"
+                                   poster="{{ asset('reels/parent-reel-poster.png') }}"
+                                   aria-label="A narrated walkthrough of the guardian portal: the four honest answers, the pace calendar, the SEA placement estimator, parent controls, and the school journal.">
+                                <source src="{{ asset('reels/parent-reel.mp4') }}" type="video/mp4">
+                                <source src="{{ asset('reels/parent-reel.webm') }}" type="video/webm">
+                            </video>
+                            <button type="button" class="reel-sound" aria-label="Turn sound on">🔇 <span>Sound off</span></button>
+                            <img class="reel-static" src="{{ asset('reels/parent-reel-poster.png') }}"
+                                 alt="The guardian dashboard — the honest layer — showing a student's readiness, pace and projected SEA placement.">
+                        </figure>
                     </div>
                 </div>
             </div>

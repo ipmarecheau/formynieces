@@ -134,5 +134,7 @@ it('shows a real gameplay reel — an autoplaying, looping, muted demo video wit
         ->assertSee('playsinline')
         ->assertSee('Turn sound on')                                   // narration is reachable via the unmute control
         ->assertSee('For your child')                                  // hero jumbotron tab — the child reel
-        ->assertSee('For you (parent)');                               // hero jumbotron tab — parent portal (mock for now)
+        ->assertSee('For you (parent)')                                // hero jumbotron tab — the parent portal reel
+        ->assertSee('reels/parent-reel.mp4')                           // the guardian-portal walkthrough video
+        ->assertSee('reels/parent-reel.webm');
 })->group('scenario:LP-14');

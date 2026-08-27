@@ -1,0 +1,16 @@
+import { chromium } from 'playwright-core';
+const BASE = 'http://127.0.0.1:8000';
+const SID = process.argv[2] || '36';
+const browser = await chromium.launch({ executablePath: '/root/.cache/ms-playwright/chromium-1223/chrome-linux64/chrome', headless: true });
+const page = await (await browser.newContext({ viewport: { width: 1280, height: 800 } })).newPage();
+let status = 0;
+page.on('response', (r) => { if (r.url().includes('/journal')) status = r.status(); });
+await page.goto(`${BASE}/login`, { waitUntil: 'networkidle' });
+await page.fill('#email', 'demo-guardian@smoothseas.test');
+await page.fill('#password', 'smoothseas');
+await Promise.all([page.waitForLoadState('networkidle'), page.click('button[type="submit"]')]);
+await page.goto(`${BASE}/guardian/students/${SID}/journal`, { waitUntil: 'networkidle' });
+await new Promise((r) => setTimeout(r, 1500));
+await page.screenshot({ path: 'scripts/reels/out/parent/frames/journal-check.png' });
+console.log('guardian journal HTTP:', status);
+await browser.close();
