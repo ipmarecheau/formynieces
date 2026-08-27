@@ -154,6 +154,32 @@
                 ]
             },
             {
+                "type": "markwords",
+                "cognition": "applying",
+                "instruction": "Tap the two words that need a capital letter.",
+                "text": "we visited *trinidad* last *july* for the holidays.",
+                "explain": "\"Trinidad\" (a place) and \"July\" (a month) are proper nouns, so both take a capital.",
+                "rule": "Proper nouns — names of places, days and months — always take a capital letter.",
+                "practiceItems": [
+                    {
+                        "prompt": "does \"trinidad\" take a capital? (yes/no)",
+                        "answer": "yes"
+                    },
+                    {
+                        "prompt": "does \"july\" take a capital? (yes/no)",
+                        "answer": "yes"
+                    },
+                    {
+                        "prompt": "does \"dog\" take a capital? (yes/no)",
+                        "answer": "no"
+                    },
+                    {
+                        "prompt": "the name for words like Trinidad",
+                        "answer": "proper noun"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Capitals start sentences, name people and places, and mark the word I. Look out for them every time you write. Let's practise!",
                 "cognition": "knowing"

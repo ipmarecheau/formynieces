@@ -152,6 +152,32 @@
                 ]
             },
             {
+                "type": "markwords",
+                "cognition": "applying",
+                "instruction": "Tap the word that needs an apostrophe to show belonging.",
+                "text": "The *dogs* bone was buried in the yard.",
+                "explain": "The bone belongs to the dog, so it needs an apostrophe: dog’s bone.",
+                "rule": "Add ’s to show one owner: the dog’s bone.",
+                "practiceItems": [
+                    {
+                        "prompt": "the bone of the dog: the ___ bone",
+                        "answer": "dog's"
+                    },
+                    {
+                        "prompt": "the bag of Mary: ___ bag",
+                        "answer": "Mary's"
+                    },
+                    {
+                        "prompt": "'do not' as a contraction",
+                        "answer": "don't"
+                    },
+                    {
+                        "prompt": "'it is' as a contraction",
+                        "answer": "it's"
+                    }
+                ]
+            },
+            {
                 "type": "text",
                 "content": "Two jobs: the apostrophe fills in for missing letters, and it shows belonging with an added s. Let's practise!",
                 "cognition": "knowing"
