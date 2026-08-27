@@ -1,7 +1,7 @@
 [
     {
         "module": "MATH-001",
-        "title": "Place value up to one million",
+        "title": "Digit Value and Place Names in Thousands",
         "is_published": true,
         "objectives_direct": [
             "M-NUM-01"

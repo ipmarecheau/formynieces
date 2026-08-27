@@ -1,7 +1,7 @@
 [
     {
         "module": "MATH-034",
-        "title": "Solving problems with solids and plane shapes",
+        "title": "Counting Faces, Edges, and Vertices of Solids",
         "is_published": true,
         "objectives_direct": [
             "M-GEO-34"
