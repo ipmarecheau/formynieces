@@ -134,6 +134,88 @@
         .hero-cta { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
         .hero-reassure { margin-top: 18px; font-size: 14px; color: var(--ink-faint); font-weight: 600; display: flex; align-items: center; gap: 8px; }
         .hero-reassure svg { flex-shrink: 0; }
+        .hero-captain {
+            margin-top: 22px; display: inline-flex; align-items: center; gap: 12px;
+            background: var(--teal-tint); border: 1px solid #cfe6e8; border-radius: 999px;
+            padding: 8px 16px 8px 8px; font-size: 14px; color: var(--ink-soft); max-width: 100%;
+        }
+        .hero-captain img { width: 44px; height: 44px; border-radius: 50%; background: #fff; flex-shrink: 0; }
+        .hero-captain strong { color: var(--teal-deep); }
+
+        /* ── TWO ENGINES (the differentiator) ── */
+        .engine-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 22px; align-items: stretch; }
+        .engine-card {
+            border-radius: 22px; padding: 30px 28px; box-shadow: var(--shadow-md);
+            border: 1px solid var(--line); position: relative; overflow: hidden;
+        }
+        .engine-card.game { background: linear-gradient(165deg, #073a52, #0a5c68); color: #eaf6f8; border-color: transparent; }
+        .engine-card.ai   { background: linear-gradient(165deg, #4a3410, #7a5510); color: #fdf3dd; border-color: transparent; }
+        .engine-tag {
+            display: inline-flex; align-items: center; gap: 7px; font-size: 11.5px; font-weight: 800;
+            letter-spacing: .12em; text-transform: uppercase; padding: 5px 12px; border-radius: 999px;
+            background: rgba(255,255,255,.14); margin-bottom: 16px;
+        }
+        .engine-card h3 { font-size: clamp(20px, 3vw, 25px); margin-bottom: 12px; color: inherit; }
+        .engine-card p { font-size: 15.5px; line-height: 1.6; color: inherit; opacity: .95; }
+        .engine-card p strong { color: #fff; }
+        .engine-card.ai p strong { color: #fff; }
+        .engine-list { list-style: none; margin-top: 18px; display: flex; flex-wrap: wrap; gap: 8px; }
+        .engine-list li { font-size: 12.5px; font-weight: 700; padding: 6px 12px; border-radius: 999px; background: rgba(255,255,255,.14); }
+        .engine-icon { font-size: 30px; margin-bottom: 6px; }
+        .engine-fuse {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            gap: 8px; width: 132px; text-align: center;
+        }
+        .engine-fuse img { width: 84px; height: 84px; border-radius: 50%; background: var(--teal-tint); box-shadow: var(--shadow-md); }
+        .engine-fuse .fuse-arrow { font-size: 22px; color: var(--teal); line-height: 1; }
+        .engine-fuse .fuse-label { font-size: 12px; font-weight: 800; color: var(--ink-faint); text-transform: uppercase; letter-spacing: .08em; }
+        .engine-fuse-line {
+            text-align: center; margin: 34px auto 0; max-width: 640px;
+            font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: clamp(18px, 2.6vw, 24px); color: var(--ink);
+        }
+        .engine-fuse-line b { color: var(--teal); }
+
+        /* the tandem loop — how the two layers hand off to each other */
+        .tandem { margin-top: 56px; }
+        .tandem-head { text-align: center; margin-bottom: 28px; }
+        .tandem-head h3 { font-size: clamp(20px, 3vw, 26px); color: var(--ink); }
+        .tandem-head p { font-size: 15.5px; color: var(--ink-soft); margin-top: 6px; }
+        .tandem-flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; align-items: stretch; }
+        .tandem-step {
+            position: relative; background: var(--paper-2); border: 1px solid var(--line);
+            border-radius: 18px; padding: 22px 20px; box-shadow: var(--shadow-sm);
+        }
+        .tandem-step[data-layer="game"] { border-top: 3px solid var(--teal); }
+        .tandem-step[data-layer="ai"]   { border-top: 3px solid var(--amber); }
+        .tandem-badge {
+            display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 800;
+            letter-spacing: .1em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; margin-bottom: 12px;
+        }
+        .tandem-step[data-layer="game"] .tandem-badge { background: var(--teal-tint); color: var(--teal-deep); }
+        .tandem-step[data-layer="ai"] .tandem-badge   { background: var(--amber-tint); color: #8a5a00; }
+        .tandem-step .tn { font-family: 'Fredoka', sans-serif; font-weight: 700; color: var(--ink-faint); font-size: 13px; }
+        .tandem-step h4 { font-size: 16px; color: var(--ink); margin: 4px 0 7px; }
+        .tandem-step p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.5; }
+        .tandem-step:not(:last-child)::after {
+            content: '→'; position: absolute; right: -12px; top: 50%; transform: translateY(-50%);
+            font-size: 20px; color: var(--teal); font-weight: 900; z-index: 2;
+        }
+        .tandem-loop {
+            text-align: center; margin-top: 20px; font-weight: 800; font-size: 14px; color: var(--teal-deep);
+        }
+        @media (max-width: 940px) {
+            .tandem-flow { grid-template-columns: 1fr 1fr; gap: 22px 26px; }
+            .tandem-step:not(:last-child)::after { display: none; }
+        }
+        @media (max-width: 560px) {
+            .tandem-flow { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 940px) {
+            .engine-grid { grid-template-columns: 1fr; gap: 16px; }
+            .engine-fuse { width: auto; flex-direction: row; }
+            .engine-fuse img { width: 56px; height: 56px; }
+            .engine-fuse .fuse-arrow { transform: rotate(90deg); }
+        }
 
         /* hero figure */
         .hero-figure { position: relative; display: flex; justify-content: center; }
@@ -361,7 +443,7 @@
             </div>
         @else
             <nav class="nav-menu" aria-label="Primary">
-                <a class="nav-link" href="{{ route('about') }}">About</a>
+                <a class="nav-link" href="#why-it-works">Why us</a>
                 <a class="nav-link" href="#meet-smooth">Meet Smooth</a>
                 <a class="nav-link" href="#for-parents">For parents</a>
                 <a class="nav-link" href="#pricing">Pricing</a>
@@ -392,7 +474,7 @@
                 </form>
             </div>
         @else
-            <a class="nav-link" href="{{ route('about') }}">About</a>
+            <a class="nav-link" href="#why-it-works">Why us</a>
             <a class="nav-link" href="#meet-smooth">Meet Smooth</a>
             <a class="nav-link" href="#for-parents">For parents</a>
             <a class="nav-link" href="#pricing">Pricing</a>
@@ -411,12 +493,13 @@
     <div class="wrap">
         <div class="hero-grid">
             <div data-reveal>
-                <span class="hero-badge">🇹🇹 Now charting: SEA 2027 · for Caribbean families</span>
-                <h1>Stop guessing how your child is doing on the <span class="accent">SEA</span>.</h1>
+                <span class="hero-badge">🇹🇹 SEA 2027 · built for Caribbean families</span>
+                <h1>They'll think it's a <span class="accent">game</span>. It's <span class="accent">AI-assisted</span> learning for the whole SEA.</h1>
                 <p class="hero-lede">
-                    SmoothSeas plans the whole exam journey — Math, ELA and Writing — adjusts it
-                    <strong>every day</strong> to your child, and shows you <strong>every week</strong> exactly
-                    where they stand. You'll <strong>never have to guess</strong> how they're doing again.
+                    SmoothSeas turns Math, ELA and Writing into a voyage your child <strong>begs to sail</strong> —
+                    while an AI plans every day around them, <strong>re-teaches</strong> whatever they miss,
+                    and shows you exactly where they stand. They stay hooked, they truly learn, and you'll
+                    <strong>never have to guess</strong>.
                 </p>
                 <div class="hero-cta">
                     @auth
@@ -425,6 +508,10 @@
                         <a class="btn btn-primary btn-lg" href="{{ route('book.call') }}">Book a free 15-minute call</a>
                         <a class="link-quiet" href="{{ route('register') }}">Create an account</a>
                     @endauth
+                </div>
+                <div class="hero-captain">
+                    <img src="{{ asset('images/voyage/companion/smooth.webp') }}" alt="Smooth the turtle" width="44" height="44">
+                    <span><strong>Meet Smooth</strong> — your child's AI captain, patient on every miss.</span>
                 </div>
                 @guest
                     <p class="hero-reassure">
@@ -488,6 +575,81 @@
     </div>
 </div>
 
+<!-- WHY IT WORKS — the two engines -->
+<section class="band" id="why-it-works">
+    <div class="wrap">
+        <div class="section-head" data-reveal>
+            <span class="eyebrow">Why it works</span>
+            <h2>Most apps make you choose. We fused both.</h2>
+            <p>Learning apps are usually one or the other — a game they abandon in a week, or a tutor they dread opening. SmoothSeas runs on two engines that need each other.</p>
+        </div>
+        <div class="engine-grid">
+            <div class="engine-card game" data-reveal>
+                <div class="engine-icon">🗺️</div>
+                <span class="engine-tag">🎮 Gamification</span>
+                <h3>The game they want to play</h3>
+                <p>Lessons live on a gamified <strong>voyage map</strong> — glowing islands to conquer, <strong>streaks</strong> to protect, a Captain's Locker of rewards, and a celebration on every win. The fun is the fuel: it's why they show up, every single day.</p>
+                <ul class="engine-list">
+                    <li>Voyage map</li><li>Streaks</li><li>Captain's Locker</li><li>Mastery stars</li>
+                </ul>
+            </div>
+
+            <div class="engine-fuse" data-reveal aria-hidden="true">
+                <span class="fuse-label">drives</span>
+                <span class="fuse-arrow">→</span>
+                <img src="{{ asset('images/voyage/companion/smooth.webp') }}" alt="">
+                <span class="fuse-arrow">←</span>
+                <span class="fuse-label">powers</span>
+            </div>
+
+            <div class="engine-card ai" data-reveal style="--rd:.08s">
+                <div class="engine-icon">🧠</div>
+                <span class="engine-tag">🤖 AI-assisted learning</span>
+                <h3>The AI that makes it teach</h3>
+                <p>Under the fun, an AI charts the whole SEA to your child, re-plans it every day to their pace, and <strong>re-teaches</strong> any rule they miss — patiently, until it clicks. It tracks real mastery, never just points, and hands you the honest picture.</p>
+                <ul class="engine-list">
+                    <li>Adaptive daily plan</li><li>AI re-teach</li><li>True mastery</li><li>Honest tracking</li>
+                </ul>
+            </div>
+        </div>
+        <p class="engine-fuse-line" data-reveal>The game drives the effort. <b>The AI makes the effort count.</b></p>
+
+        <div class="tandem">
+            <div class="tandem-head" data-reveal>
+                <h3>How the two layers work in tandem</h3>
+                <p>Every lesson is one turn of the same loop — the game pulls them in, the AI makes sure they learn.</p>
+            </div>
+            <div class="tandem-flow">
+                <div class="tandem-step" data-layer="game" data-reveal>
+                    <span class="tandem-badge">🎮 Game</span>
+                    <div class="tn">01</div>
+                    <h4>They set sail</h4>
+                    <p>A glowing island on the voyage map pulls them in. They start because it's fun — not because they're told to.</p>
+                </div>
+                <div class="tandem-step" data-layer="ai" data-reveal style="--rd:.06s">
+                    <span class="tandem-badge">🤖 AI-assisted</span>
+                    <div class="tn">02</div>
+                    <h4>The AI reads every answer</h4>
+                    <p>As they play, it adapts the plan in real time to exactly where they are — easing off or circling back.</p>
+                </div>
+                <div class="tandem-step" data-layer="ai" data-reveal style="--rd:.12s">
+                    <span class="tandem-badge">🤖 AI-assisted</span>
+                    <div class="tn">03</div>
+                    <h4>It re-teaches misses</h4>
+                    <p>Miss a rule and Smooth takes it again, patiently, until it clicks — while the game keeps their streak safe.</p>
+                </div>
+                <div class="tandem-step" data-layer="game" data-reveal style="--rd:.18s">
+                    <span class="tandem-badge">🎮 Game</span>
+                    <div class="tn">04</div>
+                    <h4>They conquer the island</h4>
+                    <p>A celebration, a mastery star, the next island unlocks. Effort rewarded — learning locked in.</p>
+                </div>
+            </div>
+            <p class="tandem-loop" data-reveal>↻ …and the loop begins again, one island at a time.</p>
+        </div>
+    </div>
+</section>
+
 <!-- MEET SMOOTH -->
 <section class="band" id="meet-smooth">
     <div class="wrap">
@@ -496,11 +658,11 @@
                 <img src="{{ asset('images/voyage/companion/smooth-cheer.webp') }}" alt="Smooth the turtle, cheering">
             </div>
             <div data-reveal style="--rd:.1s">
-                <span class="eyebrow">Meet the captain</span>
+                <span class="eyebrow">Meet the AI captain</span>
                 <h2 style="font-size:clamp(24px,3.8vw,34px); margin:12px 0 18px;">Your child's study buddy is a turtle named Smooth.</h2>
                 <div class="meet-quote">
-                    <strong>“Ahoy! I'm Smooth.”</strong> I sail with your child through every lesson. Miss a rule?
-                    We take it again together, word by word, until it clicks — and I never make anyone feel small.
+                    <strong>“Ahoy! I'm Smooth.”</strong> I'm the friendly face of the AI. I sail with your child through every lesson —
+                    miss a rule and we take it again together, word by word, until it clicks. I never make anyone feel small.
                 </div>
                 <div class="meet-cards">
                     <div class="meet-card">
@@ -704,7 +866,7 @@
         <div class="section-head" data-reveal>
             <span class="eyebrow">See it in action</span>
             <h2>A real sail through the Voyage.</h2>
-            <p>A guided, sped-up tour of a real school day: the daily warm-up, the writing stop, the island map, the Captain's Locker, and the three ways to master a lesson — no slideshow, just the app.</p>
+            <p>Watch both engines at once: the game your child plays — island map, Captain's Locker, streaks — and the AI teaching underneath, right down to the moment Smooth re-teaches a missed rule. No slideshow, just the app.</p>
         </div>
         <figure class="reel-figure" data-reveal>
             <video class="reel-video" autoplay muted loop playsinline preload="metadata"

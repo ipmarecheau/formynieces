@@ -1,0 +1,11 @@
+import { chromium } from 'playwright-core';
+const browser = await chromium.launch({ executablePath: '/root/.cache/ms-playwright/chromium-1223/chrome-linux64/chrome', headless: true });
+const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+await page.goto('http://127.0.0.1:8000/', { waitUntil: 'networkidle' });
+await new Promise((r) => setTimeout(r, 1200));
+await page.screenshot({ path: 'scripts/reels/out/page-hero.png' });
+await page.locator('#why-it-works').scrollIntoViewIfNeeded();
+await new Promise((r) => setTimeout(r, 800));
+await page.locator('#why-it-works').screenshot({ path: 'scripts/reels/out/page-engines.png' });
+await browser.close();
+console.log('done');
