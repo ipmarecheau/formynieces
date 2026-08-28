@@ -86,4 +86,27 @@ return [
         'notify_email' => env('CHAT_NOTIFY_EMAIL', 'admin@formynieces.com'),
     ],
 
+    // Cloudflare Turnstile — registration CAPTCHA. Without a secret key the
+    // TurnstileService passes (dev/test) so the form is never blocked locally.
+    'turnstile' => [
+        'site_key' => env('TURNSTILE_SITE_KEY'),
+        'secret_key' => env('TURNSTILE_SECRET_KEY'),
+        'verify_url' => env('TURNSTILE_VERIFY_URL', 'https://challenges.cloudflare.com/turnstile/v0/siteverify'),
+    ],
+
+    // Twilio Verify — phone verification, WhatsApp-first with SMS fallback.
+    // Without credentials the stub phone-verification driver is used (dev/test).
+    'twilio' => [
+        'account_sid' => env('TWILIO_ACCOUNT_SID'),
+        'auth_token' => env('TWILIO_AUTH_TOKEN'),
+        'verify_service_sid' => env('TWILIO_VERIFY_SERVICE_SID'),
+    ],
+
+    // Phone verification is OFF at launch (free): the phone number is captured
+    // at registration but not verified, and email verification alone opens
+    // onboarding. Flip on (and set TWILIO_* above) to require the phone OTP.
+    'phone_verification' => [
+        'enabled' => env('PHONE_VERIFICATION_ENABLED', false),
+    ],
+
 ];

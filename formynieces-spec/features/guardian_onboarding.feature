@@ -84,3 +84,37 @@ Feature: Guardian account and child setup
       When she opens the student's guardian dashboard
       Then she sees the same dashboard as the primary guardian
       And no settings, pause, or profile controls are available to her
+
+  @scenario:GO-12
+  Scenario: Registration is protected and captures a reachable phone
+    Given a guardian on the registration form
+    When she submits the form
+    Then she must pass a Cloudflare Turnstile CAPTCHA (when configured)
+    And she must provide a phone number in full international format
+    And a missing or malformed phone number is rejected
+
+  @scenario:GO-13
+  Scenario: Phone is verified by WhatsApp with an SMS fallback
+    Given a newly-registered guardian with a phone on file
+    When registration completes
+    Then a verification code is sent to her phone on WhatsApp first
+    And she can request the code by SMS instead if WhatsApp does not arrive
+    And entering the correct code marks her phone verified
+
+  @scenario:GO-14
+  Scenario: Email is verified by link or by code, then onboarding begins
+    Given a newly-registered guardian on the verification screen
+    When she either taps the emailed link or types the 6-digit code
+    Then her email is marked verified
+    And once both email and phone are verified she is taken straight to child setup
+    And a "Need help" path to a real person is offered throughout
+
+  @scenario:GO-15
+  Scenario: At the free launch the phone is captured but not verified
+    Given phone verification is switched off (the free-launch default)
+    When a guardian registers with a phone number
+    Then her phone number is captured on her account
+    And no phone verification code is sent
+    And verifying her email alone opens child setup
+    # Flipping services.phone_verification.enabled on (with Twilio keys) restores
+    # the required WhatsApp/SMS OTP step described in GO-13/GO-14.

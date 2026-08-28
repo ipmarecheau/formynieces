@@ -28,7 +28,8 @@ test('email can be verified', function () {
 
     Event::assertDispatched(Verified::class);
     expect($user->fresh()->hasVerifiedEmail())->toBeTrue();
-    $response->assertRedirect(route('dashboard', absolute: false).'?verified=1');
+    // No phone on file → straight into onboarding after email verification.
+    $response->assertRedirect(route('child.setup', absolute: false));
 });
 
 test('email is not verified with invalid hash', function () {

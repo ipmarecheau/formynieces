@@ -1,7 +1,11 @@
 <?php
 
 use App\Models\User;
-use function Pest\Laravel\{post, get, assertDatabaseHas, assertDatabaseMissing};
+
+use function Pest\Laravel\assertDatabaseHas;
+use function Pest\Laravel\assertDatabaseMissing;
+use function Pest\Laravel\get;
+use function Pest\Laravel\post;
 
 it('a guardian can register with an 18+ attestation', function () {
     $email = 'guardian@example.com';
@@ -9,6 +13,7 @@ it('a guardian can register with an 18+ attestation', function () {
     $response = post(route('register'), [
         'name' => 'Jane Guardian',
         'email' => $email,
+        'phone' => '+18685551234',
         'password' => 'password123!',
         'password_confirmation' => 'password123!',
         'age_attestation' => '1',

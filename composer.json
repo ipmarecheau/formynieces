@@ -11,7 +11,8 @@
         "laravel/framework": "^13.8",
         "laravel/tinker": "^3.0",
         "resend/resend-php": "^1.11",
-        "symfony/yaml": "^7.0"
+        "symfony/yaml": "^7.0",
+        "twilio/sdk": "^8.12"
     },
     "require-dev": {
         "behat/gherkin": "^4.17",

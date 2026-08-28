@@ -1,10 +1,39 @@
-# Session Handoff — 2026-08-27 · Guardian Bridge (dashboard) rebuild
+# Session Handoff — 2026-08-27 · Guardian Bridge + registration verification
 
 Durable note so the context window can be cleared. Readable by both Claude agents on this
 repo. Delete/replace when the open items below are done.
 
+## Registration security & verification (2026-08-27, LATER — UNCOMMITTED, held at gate)
+New sign-up flow: **CAPTCHA + phone + email link-or-code + auto-advance to onboarding**.
+- **Cloudflare Turnstile** on `/register` (`TurnstileService` + `App\Rules\Turnstile`); passes
+  automatically when unconfigured (dev/test), enforced when `TURNSTILE_*` set.
+- **Phone captured** at registration (E.164, required, `regex:/^\+[1-9]\d{7,14}$/`).
+- **Twilio Verify** phone OTP, **WhatsApp-first with SMS fallback**: `PhoneVerifier` interface →
+  `TwilioPhoneVerifier` (prod) / `StubPhoneVerifier` (dev/test, accepts code `123456`), bound in
+  `AppServiceProvider` by whether `TWILIO_*` is configured.
+- **Email verify by link OR 6-digit code** — `VerifyEmailWithCode` notification carries both;
+  `User::generateEmailVerificationCode()` / `verifyEmailCode()` (hashed + 30-min expiry).
+- **`VerifyAccount` Livewire** (`/verify-email`, replaces the Breeze prompt controller): two panels
+  (email + phone), resend, "Send by SMS", polls so a link click in another tab advances the page.
+  Both verified → **redirect to `/child-setup`** (onboarding). `VerifyEmailController` and
+  `ChildSetupController` gate on `User::needsPhoneVerification()` (phone-on-file only, so
+  pre-existing phone-less accounts are unaffected).
+- Migration adds `users.phone`, `phone_verified_at`, `email_verification_code[_expires_at]`.
+- New dep: **`twilio/sdk`** (approved). Env keys added to `.env.example` (TURNSTILE_*, TWILIO_*,
+  PHONE_VERIFICATION_ENABLED).
+- Specs **GO-12/13/14/15**; tests `AccountVerificationTest` + updated legacy auth tests. All green.
+- **LAUNCH DECISION (Isaac): phone verification is OFF by default (free launch).**
+  `config('services.phone_verification.enabled')` = `PHONE_VERIFICATION_ENABLED` (default false).
+  Off → the phone is **captured but not verified** and email verification alone opens onboarding
+  (`User::needsPhoneVerification()` returns false, the phone panel hides, no Twilio call). Flip the
+  env to true + set `TWILIO_*` later to require the WhatsApp/SMS OTP (all built, tested via stub).
+- **GO-LIVE on prod:** optionally set `TURNSTILE_SITE_KEY/SECRET_KEY` to turn the CAPTCHA on (free).
+  Twilio keys are NOT needed for the free launch. Safe to ship as-is: with the toggle off, no phone
+  is ever "verified" against the stub — the stub path only runs when the feature is explicitly on.
+
 ## Standing state
-- Branch `main`. **Tree is DIRTY — this session's work is NOT committed** (held at Isaac's gate).
+- Branch `main`. **Tree is DIRTY — the registration-verification work above is NOT committed**
+  (the earlier Guardian Bridge rebuild WAS committed + pushed: commits `4d64ab3`, `37ac013`).
 - Full suite: green (guardian/pace/estimator groups all passing; one `SpecsTraceMvpFilterTest`
   can time out under full-suite load — it passes in isolation, a git-subprocess flake, not code).
 - Dev server: `php artisan serve` on :8000 (dev SQLite DB). Prod Docker on :8080 — never touch.

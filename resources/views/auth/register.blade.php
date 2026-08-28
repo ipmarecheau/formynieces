@@ -139,6 +139,9 @@
         }
         .errors ul { padding-left: 16px; }
     </style>
+    @if (config('services.turnstile.site_key'))
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    @endif
 </head>
 <body>
 
@@ -186,6 +189,15 @@
         </div>
 
         <div class="field">
+            <label for="phone">Mobile Number (WhatsApp)</label>
+            <input type="tel" id="phone" name="phone"
+                   value="{{ old('phone') }}"
+                   placeholder="+1 868 555 1234"
+                   required autocomplete="tel">
+            <p class="field-hint">Full international format, e.g. +18685551234. We'll send a code by WhatsApp (or SMS).</p>
+        </div>
+
+        <div class="field">
             <label for="password">Password</label>
             <input type="password" id="password" name="password"
                    placeholder="At least 8 characters"
@@ -206,6 +218,12 @@
                 <span>I confirm that I am 18 years of age or older and am the parent or legal guardian setting up this account.</span>
             </label>
         </div>
+
+        @if (config('services.turnstile.site_key'))
+            <div class="field">
+                <div class="cf-turnstile" data-sitekey="{{ config('services.turnstile.site_key') }}" data-theme="dark"></div>
+            </div>
+        @endif
 
         <button type="submit" id="submit" class="btn-submit">Create Account 🌟</button>
     </form>

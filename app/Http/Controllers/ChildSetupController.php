@@ -13,15 +13,36 @@ class ChildSetupController extends Controller
 {
     private const STUDENT_EMAIL_DOMAIN = '@students.formynieces.com';
 
-    public function create(): View
+    public function create(): View|RedirectResponse
     {
+        if ($guard = $this->requirePhoneVerification()) {
+            return $guard;
+        }
+
         return view('guardian.child-setup', [
             'strandsBySubject' => SyllabusModule::strandsBySubject(),
         ]);
     }
 
+    /**
+     * A guardian who registered with a phone must verify it before onboarding.
+     * Users with no phone on file (pre-existing accounts) are unaffected.
+     */
+    private function requirePhoneVerification(): ?RedirectResponse
+    {
+        if (auth()->user()->needsPhoneVerification()) {
+            return redirect()->route('verification.notice');
+        }
+
+        return null;
+    }
+
     public function store(Request $request): RedirectResponse
     {
+        if ($guard = $this->requirePhoneVerification()) {
+            return $guard;
+        }
+
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'alpha_dash', 'max:50'],
@@ -31,7 +52,7 @@ class ChildSetupController extends Controller
             'known_weak_areas.*' => ['string', 'max:100'],
         ]);
 
-        $email = strtolower($validated['username']) . self::STUDENT_EMAIL_DOMAIN;
+        $email = strtolower($validated['username']).self::STUDENT_EMAIL_DOMAIN;
 
         // Username must be globally unique because it becomes a unique email.
         if (User::where('email', $email)->exists()) {

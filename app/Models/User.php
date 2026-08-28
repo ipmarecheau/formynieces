@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Notifications\VerifyEmailWithCode;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -11,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable implements FilamentUser, MustVerifyEmail
 {
@@ -19,6 +21,8 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
     protected $fillable = [
         'name',
         'email',
+        'phone',
+        'phone_verified_at',
         'password',
         'role',
         'parent_id',
@@ -44,6 +48,8 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
     {
         return [
             'email_verified_at' => 'datetime',
+            'phone_verified_at' => 'datetime',
+            'email_verification_code_expires_at' => 'datetime',
             'password' => 'hashed',
             'onboarding_completed_at' => 'datetime', // Slice 1
             'welcomed_at' => 'datetime', // TR-01: first welcome + joining bonus
@@ -55,6 +61,93 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
             'weekly_module_cap_override' => 'integer',
             'seen_guides' => 'array',
         ];
+    }
+
+    /**
+     * Send the verification email with a fresh code alongside the signed link.
+     * Fired by the Registered event and by "resend" requests.
+     */
+    public function sendEmailVerificationNotification(): void
+    {
+        $code = $this->generateEmailVerificationCode();
+        $this->notify(new VerifyEmailWithCode($code));
+    }
+
+    public function hasVerifiedPhone(): bool
+    {
+        return $this->phone_verified_at !== null;
+    }
+
+    public function markPhoneAsVerified(): bool
+    {
+        return $this->forceFill(['phone_verified_at' => now()])->save();
+    }
+
+    /**
+     * A phone is on file, verification is switched on, and it is not yet
+     * confirmed. When phone verification is off (the free launch default) this
+     * is always false — the number is captured but never gates onboarding.
+     */
+    public function needsPhoneVerification(): bool
+    {
+        return config('services.phone_verification.enabled')
+            && $this->phone !== null
+            && ! $this->hasVerifiedPhone();
+    }
+
+    /**
+     * Email confirmed and no outstanding phone verification — the gate into
+     * onboarding. Accounts with no phone on file (pre-existing) are not held for
+     * a phone step.
+     */
+    public function isFullyVerified(): bool
+    {
+        return $this->hasVerifiedEmail() && ! $this->needsPhoneVerification();
+    }
+
+    /**
+     * Generate a fresh 6-digit email verification code, store it hashed with a
+     * short expiry, and return the plaintext to send. The companion to Breeze's
+     * signed link — either verifies the email.
+     */
+    public function generateEmailVerificationCode(int $ttlMinutes = 30): string
+    {
+        $code = str_pad((string) random_int(0, 999999), 6, '0', STR_PAD_LEFT);
+
+        $this->forceFill([
+            'email_verification_code' => Hash::make($code),
+            'email_verification_code_expires_at' => now()->addMinutes($ttlMinutes),
+        ])->save();
+
+        return $code;
+    }
+
+    /**
+     * Verify a submitted email code. On success, marks the email verified and
+     * clears the stored code. Returns false when missing, expired, or wrong.
+     */
+    public function verifyEmailCode(string $code): bool
+    {
+        if ($this->email_verification_code === null
+            || $this->email_verification_code_expires_at === null
+            || $this->email_verification_code_expires_at->isPast()) {
+            return false;
+        }
+
+        if (! Hash::check($code, $this->email_verification_code)) {
+            return false;
+        }
+
+        $this->forceFill([
+            'email_verification_code' => null,
+            'email_verification_code_expires_at' => null,
+        ])->save();
+
+        if (! $this->hasVerifiedEmail()) {
+            $this->markEmailAsVerified();
+        }
+
+        return true;
     }
 
     /** Has this student already been welcomed aboard (welcome + joining bonus)? (TR-01) */

@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;
+
 test('registration screen can be rendered', function () {
     $response = $this->get('/register');
 
@@ -10,9 +12,11 @@ test('new users can register', function () {
     $response = $this->post('/register', [
         'name' => 'Test User',
         'email' => 'test@example.com',
+        'phone' => '+18685551234',
         'password' => 'password',
         'password_confirmation' => 'password',
         'age_attestation' => true,
+        // Turnstile passes automatically when unconfigured (test env).
     ]);
 
     // Registration logs the new guardian in, then sends them to verify their email.
@@ -24,7 +28,7 @@ test('new users can register', function () {
         'email' => 'test@example.com',
         'role' => 'guardian',
     ]);
-    $user = App\Models\User::where('email', 'test@example.com')->first();
+    $user = User::where('email', 'test@example.com')->first();
     expect($user->age_attested_at)->not->toBeNull();
     expect($user->hasVerifiedEmail())->toBeFalse();
 });

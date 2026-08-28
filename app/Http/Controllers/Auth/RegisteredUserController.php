@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Rules\Turnstile;
+use App\Services\Verification\PhoneVerifier;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -28,24 +30,41 @@ class RegisteredUserController extends Controller
      *
      * @throws ValidationException
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request, PhoneVerifier $phoneVerifier): RedirectResponse
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'phone' => ['required', 'string', 'regex:/^\+[1-9]\d{7,14}$/'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'age_attestation' => ['accepted'],
+            'cf-turnstile-response' => [new Turnstile($request->ip())],
+        ], [
+            'phone.regex' => 'Enter your phone number in full international format, e.g. +18685551234.',
         ]);
 
         $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'phone' => $validated['phone'],
+            'password' => Hash::make($validated['password']),
             'role' => 'guardian',
             'age_attested_at' => now(),
         ]);
 
+        // Fires the email verification (link + code) via the Registered event.
         event(new Registered($user));
+
+        // Start phone verification WhatsApp-first — only when the feature is on.
+        // At the free launch the number is captured but not verified. A provider
+        // hiccup must not block sign-up; she can resend / use SMS on the screen.
+        if (config('services.phone_verification.enabled')) {
+            try {
+                $phoneVerifier->start($user->phone, 'whatsapp');
+            } catch (\Throwable) {
+                // swallowed — the verification screen offers resend / SMS fallback
+            }
+        }
 
         Auth::login($user);
 
