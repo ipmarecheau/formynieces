@@ -898,6 +898,18 @@
         color: var(--ink-2, #5b6b82);
         font-size: 14px;
     }
+    /* Full-bleed demo reel: break the "See it in action" video out of the wrap
+       so it spans the whole screen width, edge to edge. */
+    #see-it .reel-figure {
+        max-width: none;
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
+        margin-right: calc(50% - 50vw);
+        margin-top: 34px;
+        border-radius: 0;
+        border-left: 0;
+        border-right: 0;
+    }
     @media (prefers-reduced-motion: reduce) {
         .reel-figure video,
         .reel-sound { display: none; }
