@@ -8,8 +8,9 @@ it('shows a hero that names the parent pain, with Smooth beside it', function ()
         ->assertOk()
         ->assertSee('never have to guess')                              // the core worry, in the headline
         ->assertSee('/images/voyage/companion/smooth.webp')             // Smooth in the hero
-        ->assertSee('Book a free 15-minute call')                       // primary conversion CTA
-        ->assertSee('Create an account')                                // direct signup path
+        ->assertSee('Sign up free')                                     // primary conversion CTA — sign-ups
+        ->assertSee(route('register'))                                  // the sign-up path is linked
+        ->assertSee('Book a free call')                                 // secondary "talk first" path
         ->assertSee('Sign In');                                         // guest can reach login
 })->group('scenario:LP-01');
 
@@ -95,8 +96,8 @@ it('leads with a single clear hero — the core worry and one primary CTA, no au
     $this->get('/')
         ->assertOk()
         ->assertSee('never have to guess')                              // the core worry, stated once and plainly
-        ->assertSee('Book a free 15-minute call')                       // the one primary conversion CTA
-        ->assertSee('Create an account')                                // the quiet secondary path
+        ->assertSee('Sign up free')                                     // the one primary conversion CTA — sign-ups
+        ->assertSee('Book a free call')                                 // the quiet secondary "talk first" path
         ->assertDontSee('jumbo-dot');                                   // the old auto-rotating jumbotron is gone
 })->group('scenario:LP-11');
 

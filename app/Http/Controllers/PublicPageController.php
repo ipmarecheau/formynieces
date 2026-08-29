@@ -30,6 +30,16 @@ class PublicPageController extends Controller
         return view('contact');
     }
 
+    public function terms(): View
+    {
+        return view('legal.terms');
+    }
+
+    public function privacy(): View
+    {
+        return view('legal.privacy');
+    }
+
     public function sendContact(Request $request): RedirectResponse
     {
         $validated = $request->validate([

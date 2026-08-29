@@ -18,6 +18,7 @@ it('requires a phone number to register', function () {
         'password' => 'password123!',
         'password_confirmation' => 'password123!',
         'age_attestation' => '1',
+        'terms' => '1',
     ])->assertSessionHasErrors('phone');
 })->group('scenario:GO-12');
 
@@ -29,6 +30,7 @@ it('rejects a non international phone number', function () {
         'password' => 'password123!',
         'password_confirmation' => 'password123!',
         'age_attestation' => '1',
+        'terms' => '1',
     ])->assertSessionHasErrors('phone');
 })->group('scenario:GO-12');
 
@@ -45,6 +47,7 @@ it('rejects registration when the configured Turnstile token fails', function ()
         'password' => 'password123!',
         'password_confirmation' => 'password123!',
         'age_attestation' => '1',
+        'terms' => '1',
         'cf-turnstile-response' => 'bad-token',
     ])->assertSessionHasErrors('cf-turnstile-response');
 })->group('scenario:GO-12');
@@ -59,6 +62,7 @@ it('starts phone verification WhatsApp-first on registration', function () {
         'password' => 'password123!',
         'password_confirmation' => 'password123!',
         'age_attestation' => '1',
+        'terms' => '1',
     ])->assertRedirect(route('verification.notice'));
 
     expect(app(StubPhoneVerifier::class)->lastChannel('+18685551234'))->toBe('whatsapp');
@@ -135,6 +139,7 @@ it('at the free launch captures the phone but does not verify it', function () {
         'password' => 'password123!',
         'password_confirmation' => 'password123!',
         'age_attestation' => '1',
+        'terms' => '1',
     ])->assertRedirect(route('verification.notice'));
 
     expect(app(StubPhoneVerifier::class)->lastChannel('+18685551234'))->toBeNull();

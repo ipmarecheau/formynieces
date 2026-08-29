@@ -3,7 +3,27 @@
 Durable note so the context window can be cleared. Readable by both Claude agents on this
 repo. Delete/replace when the open items below are done.
 
-## Registration security & verification (2026-08-27, LATER — UNCOMMITTED, held at gate)
+## Cosmetic economy spec + Terms & Conditions (2026-08-28 — UNCOMMITTED, held at gate)
+- **`cosmetic_rewards.feature` promoted @roadmap → @mvp** and rewritten as **Smooth's Chest**: a
+  spendable currency **Doubloons** earned by mastery (module mastery / on-pace week / streak
+  milestone — never grind), spent on Smooth outfits/ship/island cosmetics; Captain's rank; items
+  achievement-gated; purely visual; **no real money, no loot boxes**; kept OUT of the guardian
+  honest layer (CR-01…10). Feature index updated. **Spec only — NOT built yet.**
+- **Terms & Conditions** — thorough good-faith draft in `resources/views/legal/_terms-body.blade.php`
+  (**needs attorney review**; T&T governing law; `[BRACKETED]` placeholders to fill). Public page
+  `/terms` (`route('terms')`). Registration now **requires acceptance**: a scroll-gated terms box +
+  required checkbox (JS gates the box until scrolled; server always requires `terms:accepted`).
+  Migration adds `users.terms_accepted_at` + `terms_version`; version from `config/legal.php`
+  (`TERMS_VERSION`). Spec **GO-16**; `TermsAcceptanceTest`. All green.
+- **Legal entity filled:** 64-Bit Software Solutions, 180 Upper 7th Avenue, Malick, Barataria, T&T.
+- **Privacy Policy** at `/privacy` (`route('privacy')`), `resources/views/legal/privacy.blade.php` —
+  strong children's-data commitments (data-minimisation, no sale, no ads/profiling to children,
+  guardian control/rights, AI-processing disclosure, breach notice). Linked from the terms and the
+  registration acceptance line (both terms + privacy). `config/legal.php` adds `privacy_version`.
+  Still **NEEDS attorney review** (maintainer note in both files); a Data Protection Act reference is
+  included but jurisdiction-specific review is required.
+
+## Registration security & verification (2026-08-27, EARLIER — SHIPPED: commit d789b4a, pushed)
 New sign-up flow: **CAPTCHA + phone + email link-or-code + auto-advance to onboarding**.
 - **Cloudflare Turnstile** on `/register` (`TurnstileService` + `App\Rules\Turnstile`); passes
   automatically when unconfigured (dev/test), enforced when `TURNSTILE_*` set.

@@ -16,6 +16,7 @@ test('new users can register', function () {
         'password' => 'password',
         'password_confirmation' => 'password',
         'age_attestation' => true,
+        'terms' => '1',
         // Turnstile passes automatically when unconfigured (test env).
     ]);
 

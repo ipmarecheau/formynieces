@@ -38,9 +38,11 @@ class RegisteredUserController extends Controller
             'phone' => ['required', 'string', 'regex:/^\+[1-9]\d{7,14}$/'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'age_attestation' => ['accepted'],
+            'terms' => ['accepted'],
             'cf-turnstile-response' => [new Turnstile($request->ip())],
         ], [
             'phone.regex' => 'Enter your phone number in full international format, e.g. +18685551234.',
+            'terms.accepted' => 'You must read and accept the Terms & Conditions to create an account.',
         ]);
 
         $user = User::create([
@@ -50,6 +52,8 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($validated['password']),
             'role' => 'guardian',
             'age_attested_at' => now(),
+            'terms_accepted_at' => now(),
+            'terms_version' => config('legal.terms_version'),
         ]);
 
         // Fires the email verification (link + code) via the Registered event.

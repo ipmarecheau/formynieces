@@ -37,6 +37,8 @@ Route::get('/', function () {
 Route::get('/about', [PublicPageController::class, 'about'])->name('about');
 Route::get('/faq', [PublicPageController::class, 'faq'])->name('faq');
 Route::get('/contact', [PublicPageController::class, 'contact'])->name('contact');
+Route::get('/terms', [PublicPageController::class, 'terms'])->name('terms');
+Route::get('/privacy', [PublicPageController::class, 'privacy'])->name('privacy');
 Route::post('/contact', [PublicPageController::class, 'sendContact'])->name('contact.send');
 Route::get('/book-a-call', [PublicPageController::class, 'book'])->name('book.call');
 Route::post('/book-a-call', [PublicPageController::class, 'bookCall'])->name('book.store');

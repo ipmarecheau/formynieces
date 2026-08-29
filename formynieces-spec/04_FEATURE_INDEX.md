@@ -32,7 +32,7 @@
 | `captains_orders.feature` | @mvp | — | student, system |
 | `ship_log.feature` | @mvp | — | student |
 | `streak_economy.feature` | @mvp | XP-bought rewards @roadmap | student, system |
-| `cosmetic_rewards.feature` | @roadmap | — | student |
+| `cosmetic_rewards.feature` | @mvp | Smooth's Chest marketplace: Doubloons earned by mastery (not grind), spent on outfits/ship/island cosmetics; Captain's rank; achievement-gated, purely visual, no real money / loot boxes, out of the honest layer (CR-01…10) | student |
 | `exam_readiness.feature` | @roadmap | — | student |
 | `admin_content.feature` | mixed | modules @mvp · anchors, monitor @v1.1 | admin |
 | `question_bank.feature` | @v1.1 | — | admin |

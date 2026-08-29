@@ -118,3 +118,11 @@ Feature: Guardian account and child setup
     And verifying her email alone opens child setup
     # Flipping services.phone_verification.enabled on (with Twilio keys) restores
     # the required WhatsApp/SMS OTP step described in GO-13/GO-14.
+
+  @scenario:GO-16
+  Scenario: The guardian must read and accept the Terms & Conditions
+    Given a guardian on the registration form
+    When she submits without accepting the Terms & Conditions
+    Then registration is rejected and no account is created
+    And when she accepts, the acceptance time and terms version are recorded on her account
+    And the full terms are shown on the form (scroll-gated) and on a public /terms page

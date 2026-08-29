@@ -87,7 +87,7 @@
         }
         .nav-inner {
             max-width: 1120px; margin: 0 auto; padding: 0 24px; height: 68px;
-            display: flex; align-items: center; justify-content: space-between; gap: 16px;
+            display: flex; align-items: center; gap: 16px;
         }
         .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
         .brand-mark {
@@ -97,13 +97,18 @@
             box-shadow: var(--shadow-sm);
         }
         .brand-name { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 21px; color: var(--ink); }
-        .nav-menu { display: flex; align-items: center; gap: 4px; }
+        .nav-menu { display: flex; align-items: center; gap: 2px; margin-left: auto; }
         .nav-link {
+            display: inline-flex; align-items: center; line-height: 1;
             color: var(--ink-soft); font-weight: 700; font-size: 15px; text-decoration: none;
-            padding: 8px 14px; border-radius: 999px; transition: color .2s, background .2s;
+            padding: 9px 14px; border-radius: 999px; transition: color .2s, background .2s;
         }
         .nav-link:hover { color: var(--teal); background: var(--teal-tint); }
-        .nav-actions { display: flex; align-items: center; gap: 10px; margin-left: 6px; }
+        .nav-actions {
+            display: flex; align-items: center; gap: 14px;
+            margin-left: 18px; padding-left: 18px; border-left: 1px solid var(--line);
+        }
+        .nav-actions .link-quiet { border-bottom: none; padding-bottom: 0; }
         .nav-user { font-weight: 800; font-size: 15px; color: var(--ink); }
         .nav-logout { display: inline; margin: 0; }
 
@@ -402,8 +407,45 @@
             .feature.wide { grid-column: span 1; grid-template-columns: 1fr; gap: 22px; }
             .meet-cards { grid-template-columns: 1fr; }
             .final-cta { padding: 44px 26px; }
-            .hero-cta { width: 100%; }
-            .hero-cta .btn { flex: 1 1 auto; }
+            .hero-cta { width: 100%; flex-direction: column; align-items: stretch; gap: 12px; }
+            .hero-cta .btn { width: 100%; }
+        }
+
+        /* Small phones — keep the headline + Sign-up above the fold and comfy taps */
+        @media (max-width: 560px) {
+            .nav-inner { height: 60px; padding: 0 16px; }
+            .brand-name { font-size: 19px; }
+            .wrap { padding: 0 18px; }
+            .hero { padding: 30px 0 22px; }
+            .hero-grid { gap: 26px; }
+            .hero-figure { order: 0; }                 /* text + CTA first, preview after */
+            .hero-badge { font-size: 12px; padding: 5px 12px; margin-bottom: 16px; }
+            .hero h1 { font-size: clamp(28px, 8.5vw, 34px); line-height: 1.12; }
+            .hero-lede { font-size: 16px; margin-bottom: 22px; }
+            .btn-lg { font-size: 16px; padding: 15px 22px; }
+            .btn { min-height: 48px; }                  /* accessible tap target */
+            .hero-reassure { font-size: 13px; }
+            .hero-panel { padding: 20px 18px 18px; border-radius: 22px; }
+            section.band { padding: 46px 0; }
+            .final-cta { padding: 34px 20px; }
+            .final-cta h2 { font-size: clamp(24px, 7.5vw, 30px); }
+            .trust-row { grid-template-columns: 1fr 1fr; gap: 20px 14px; }
+            .footer-inner { flex-direction: column; text-align: center; gap: 12px; }
+            body { padding-bottom: 76px; }              /* room for the sticky CTA */
+        }
+
+        /* Sticky mobile sign-up bar (guests only) */
+        .mobile-cta { display: none; }
+        @media (max-width: 760px) {
+            .mobile-cta {
+                display: flex; gap: 12px; align-items: center;
+                position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+                padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+                background: rgba(251,248,242,.94); backdrop-filter: blur(10px);
+                border-top: 1px solid var(--line); box-shadow: 0 -6px 20px rgba(18,34,46,.08);
+            }
+            .mobile-cta .btn { flex: 1 1 auto; min-height: 48px; }
+            .mobile-cta .mc-signin { flex: 0 0 auto; font-size: 14px; font-weight: 800; color: var(--teal); text-decoration: none; padding: 0 4px; }
         }
 
         @media (min-width: 761px) { #nav-open, .nav-toggle, .nav-drawer { display: none; } }
@@ -451,7 +493,7 @@
             </nav>
             <div class="nav-actions desktop">
                 <a class="link-quiet" href="{{ route('login') }}">Sign In</a>
-                <a class="btn btn-primary" href="{{ route('book.call') }}">Book a free call</a>
+                <a class="btn btn-primary" href="{{ route('register') }}">Sign up free</a>
             </div>
         @endauth
 
@@ -481,8 +523,9 @@
             <a class="nav-link" href="{{ route('faq') }}">FAQ</a>
             <a class="nav-link" href="{{ route('contact') }}">Contact</a>
             <div class="drawer-actions">
-                <a class="btn btn-primary" href="{{ route('book.call') }}">Book a free call</a>
+                <a class="btn btn-primary" href="{{ route('register') }}">Sign up free</a>
                 <a class="btn btn-secondary" href="{{ route('login') }}">Sign In</a>
+                <a class="nav-link" href="{{ route('book.call') }}" style="text-align:center;">or book a free call</a>
             </div>
         @endauth
     </div>
@@ -505,8 +548,8 @@
                     @auth
                         <a class="btn btn-primary btn-lg" href="{{ $homeUrl }}">Go to your dashboard →</a>
                     @else
-                        <a class="btn btn-primary btn-lg" href="{{ route('book.call') }}">Book a free 15-minute call</a>
-                        <a class="link-quiet" href="{{ route('register') }}">Create an account</a>
+                        <a class="btn btn-primary btn-lg" href="{{ route('register') }}">Sign up free →</a>
+                        <a class="btn btn-secondary btn-lg" href="{{ route('book.call') }}">Book a free call</a>
                     @endauth
                 </div>
                 <div class="hero-captain">
@@ -943,8 +986,8 @@
                 @auth
                     <a class="btn btn-primary btn-lg" href="{{ $homeUrl }}">Go to your dashboard →</a>
                 @else
-                    <a class="btn btn-primary btn-lg" href="{{ route('book.call') }}">Book a free call</a>
-                    <p class="price-note" style="margin-top:14px; text-align:center;">or <a class="link-quiet" href="{{ route('register') }}">create an account</a> and start today</p>
+                    <a class="btn btn-primary btn-lg" href="{{ route('register') }}">Sign up free →</a>
+                    <p class="price-note" style="margin-top:14px; text-align:center;">Prefer to talk first? <a class="link-quiet" href="{{ route('book.call') }}">Book a free call</a></p>
                 @endauth
             </div>
             <div class="guarantees">
@@ -973,9 +1016,9 @@
                 <a class="btn btn-primary btn-lg" href="{{ $homeUrl }}">Go to your dashboard →</a>
             @else
                 <h2>Give your child a smoother SEA.</h2>
-                <p>Book fifteen minutes with us — free, no pressure. And when you start, you're covered by the 14-day money-back promise. You risk nothing.</p>
-                <a class="btn btn-primary btn-lg" href="{{ route('book.call') }}">Book a free 15-minute call</a>
-                <div style="margin-top:18px;"><a class="link-quiet" href="{{ route('register') }}">or create an account and start today</a></div>
+                <p>Create your free account and start today — no credit card, covered by the 14-day money-back promise. You risk nothing.</p>
+                <a class="btn btn-primary btn-lg" href="{{ route('register') }}">Sign up free →</a>
+                <div style="margin-top:18px;"><a class="link-quiet" href="{{ route('book.call') }}">or book a free 15-minute call</a></div>
             @endauth
         </div>
     </div>
@@ -998,6 +1041,13 @@
         </div>
     </div>
 </footer>
+
+@guest
+    <div class="mobile-cta">
+        <a class="btn btn-primary" href="{{ route('register') }}">Sign up free →</a>
+        <a class="mc-signin" href="{{ route('login') }}">Sign in</a>
+    </div>
+@endguest
 
 <script>
     (function () {

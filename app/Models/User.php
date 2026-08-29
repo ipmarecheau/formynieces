@@ -32,6 +32,8 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
         'guardian_reconciled_at', // RR-04 reconciliation decision
         'paused_at', // Pause/resume: null = active
         'age_attested_at',
+        'terms_accepted_at',
+        'terms_version',
         'target_sea_year',
         'known_weak_areas',
         'learning_profile', // AG-08: compact derived tags for AI tutor tailoring
@@ -56,6 +58,7 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
             'guardian_reconciled_at' => 'datetime', // RR-04 reconciliation decision
             'paused_at' => 'datetime', // Pause/resume
             'age_attested_at' => 'datetime',
+            'terms_accepted_at' => 'datetime',
             'known_weak_areas' => 'array',
             'learning_profile' => 'array',
             'weekly_module_cap_override' => 'integer',

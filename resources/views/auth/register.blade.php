@@ -138,6 +138,23 @@
             font-size: 13px; color: #fca5a5;
         }
         .errors ul { padding-left: 16px; }
+
+        .terms-scroll {
+            max-height: 190px; overflow-y: auto; margin-top: 6px;
+            background: rgba(6,24,46,0.55); border: 1.5px solid rgba(34,211,238,0.35);
+            border-radius: 12px; padding: 14px 16px;
+            font-size: 12.5px; line-height: 1.55; color: #cde3f5;
+        }
+        .terms-scroll h2 { font-size: 13.5px; color: #e6f2fb; margin: 14px 0 4px; font-weight: 800; }
+        .terms-scroll h2:first-child { margin-top: 0; }
+        .terms-scroll p, .terms-scroll li { color: #a9c6de; margin-bottom: 6px; }
+        .terms-scroll ul { margin: 0 0 8px 18px; }
+        .terms-scroll strong { color: #e6f2fb; }
+        .terms-scroll a { color: #67e8f9; }
+        .terms-scroll .terms-meta { color: #7fa0bb; font-size: 11px; }
+        .terms-scroll.is-read { border-color: rgba(16,185,129,0.55); }
+        .terms-scroll-hint { font-size: 11.5px; font-weight: 700; color: #93b2cc; margin-top: 6px; }
+        .terms-scroll-hint.is-done { color: #6ee7b7; }
     </style>
     @if (config('services.turnstile.site_key'))
         <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
@@ -219,6 +236,20 @@
             </label>
         </div>
 
+        <div class="field">
+            <label>Terms &amp; Conditions</label>
+            <div class="terms-scroll" id="terms-scroll" tabindex="0">
+                @include('legal._terms-body')
+            </div>
+            <p class="terms-scroll-hint" id="terms-scroll-hint">Please scroll to the end of the terms to continue.</p>
+            <label class="attestation-label" for="terms" style="margin-top:10px;">
+                <input type="checkbox" id="terms" name="terms" value="1" {{ old('terms') ? 'checked' : '' }}>
+                <span>I have read and agree to the
+                    <a href="{{ route('terms') }}" target="_blank" rel="noopener">Terms &amp; Conditions</a>
+                    and <a href="{{ route('privacy') }}" target="_blank" rel="noopener">Privacy Policy</a>.</span>
+            </label>
+        </div>
+
         @if (config('services.turnstile.site_key'))
             <div class="field">
                 <div class="cf-turnstile" data-sitekey="{{ config('services.turnstile.site_key') }}" data-theme="dark"></div>
@@ -248,6 +279,36 @@
         `;
         container.appendChild(s);
     }
+</script>
+<script>
+    // Progressive enhancement: require the guardian to scroll through the terms
+    // before the acceptance box can be ticked. With JS off, the box stays usable
+    // and the server still requires acceptance.
+    (function () {
+        const box = document.getElementById('terms-scroll');
+        const check = document.getElementById('terms');
+        const hint = document.getElementById('terms-scroll-hint');
+        if (!box || !check || !hint) return;
+
+        function markRead() {
+            check.disabled = false;
+            box.classList.add('is-read');
+            hint.textContent = 'Thanks for reading. You can now accept below.';
+            hint.classList.add('is-done');
+        }
+
+        // Only gate when the terms actually overflow (otherwise it's all visible).
+        if (box.scrollHeight - box.clientHeight > 8 && !check.checked) {
+            check.disabled = true;
+            const onScroll = function () {
+                if (box.scrollTop + box.clientHeight >= box.scrollHeight - 12) {
+                    markRead();
+                    box.removeEventListener('scroll', onScroll);
+                }
+            };
+            box.addEventListener('scroll', onScroll);
+        }
+    })();
 </script>
 </body>
 </html>

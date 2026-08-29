@@ -83,7 +83,7 @@ it('refuses a taken slot and hides it from availability', function () {
 it('funnels the landing hero to the booking page', function () {
     $this->get('/')
         ->assertOk()
-        ->assertSee('Book a free 15-minute call')
+        ->assertSee('Book a free call')       // the secondary "talk first" CTA still funnels to booking
         ->assertSee(route('book.call'));
 })->group('scenario:OC-04');
 

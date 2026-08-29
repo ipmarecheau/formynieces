@@ -17,6 +17,7 @@ it('a guardian can register with an 18+ attestation', function () {
         'password' => 'password123!',
         'password_confirmation' => 'password123!',
         'age_attestation' => '1',
+        'terms' => '1',
     ]);
 
     $response->assertRedirect(route('verification.notice'));
