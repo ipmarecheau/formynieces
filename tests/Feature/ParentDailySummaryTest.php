@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Notification;
 
 uses(RefreshDatabase::class);
 
+// PN summaries depend on the day's required duties, which differ at weekends
+// (shore leave = no duties). Freeze the clock to a fixed non-writing weekday so
+// these tests are deterministic whatever day they actually run.
+beforeEach(fn () => Carbon::setTestNow(Carbon::parse('2026-09-01 09:00:00'))); // a Tuesday
+afterEach(fn () => Carbon::setTestNow());
+
 function pdsPair(): array
 {
     $guardian = User::factory()->create(['role' => 'guardian', 'email_verified_at' => now()]);
