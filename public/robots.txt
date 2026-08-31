@@ -1,2 +1,14 @@
 User-agent: *
-Disallow:
+Allow: /
+
+# Private / app areas — no SEO value, keep them out of the index.
+Disallow: /dashboard
+Disallow: /guardian
+Disallow: /admin
+Disallow: /child-setup
+Disallow: /verify-email
+Disallow: /morning-tide
+Disallow: /journal
+Disallow: /awaiting-guardian
+
+Sitemap: https://smoothseas.org/sitemap.xml

@@ -1,13 +1,69 @@
-@auth
-    @php($homeUrl = auth()->user()->isStudent() ? route('student.voyage') : route('dashboard'))
-@endauth
+@php
+    $homeUrl = auth()->check()
+        ? (auth()->user()->isStudent() ? route('student.voyage') : route('dashboard'))
+        : route('login');
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmoothSeas — SEA exam prep, sailed with a turtle named Smooth</title>
-    <meta name="description" content="The SEA companion for Caribbean primary-school children: Math, ELA and Writing in one adaptive daily plan — weekly reports for parents, and Smooth the turtle at the helm.">
+    @php
+        $seoTitle = 'SmoothSeas — SEA exam prep, sailed with a turtle named Smooth';
+        $seoDesc = 'SmoothSeas turns SEA prep into a voyage Caribbean children love: Math, ELA and Writing in one adaptive daily plan, with an AI that re-teaches what they miss and weekly reports for parents.';
+        $seoImage = asset('reels/child-reel-poster.png');
+        $canonical = url()->current();
+    @endphp
+    <title>{{ $seoTitle }}</title>
+    <meta name="description" content="{{ $seoDesc }}">
+    <link rel="canonical" href="{{ $canonical }}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SmoothSeas">
+    <meta property="og:title" content="{{ $seoTitle }}">
+    <meta property="og:description" content="{{ $seoDesc }}">
+    <meta property="og:url" content="{{ $canonical }}">
+    <meta property="og:image" content="{{ $seoImage }}">
+    <meta property="og:locale" content="en_TT">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $seoTitle }}">
+    <meta name="twitter:description" content="{{ $seoDesc }}">
+    <meta name="twitter:image" content="{{ $seoImage }}">
+        @php
+            // Build @-prefixed schema.org keys via a variable so Blade never sees
+            // a literal "@context"/"@type" token (it would treat them as directives).
+            $k = '@';
+            $home = url('/');
+            $ld = [
+                $k.'context' => 'https://schema.org',
+                $k.'graph' => [
+                    [
+                        $k.'type' => 'Organization',
+                        $k.'id' => $home.'#organization',
+                        'name' => 'SmoothSeas',
+                        'url' => $home,
+                        'logo' => asset('images/voyage/companion/smooth.webp'),
+                        'description' => 'SEA exam preparation for Caribbean primary-school children.',
+                        'areaServed' => 'TT',
+                        'email' => config('legal.contact_email'),
+                    ],
+                    [
+                        $k.'type' => 'WebSite',
+                        $k.'id' => $home.'#website',
+                        'name' => 'SmoothSeas',
+                        'url' => $home,
+                        'publisher' => [$k.'id' => $home.'#organization'],
+                        'inLanguage' => 'en',
+                    ],
+                    [
+                        $k.'type' => 'EducationalOrganization',
+                        'name' => 'SmoothSeas',
+                        'url' => $home,
+                        'description' => 'An adaptive SEA (Secondary Entrance Assessment) preparation platform for Trinidad and Tobago, covering Mathematics, English Language Arts and Creative Writing.',
+                    ],
+                ],
+            ];
+        @endphp
+        <script type="application/ld+json">{!! json_encode($ld, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">

@@ -7,6 +7,7 @@ use App\Models\OnboardingCall;
 use App\Services\Onboarding\CallSlotGenerator;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\View\View;
 
 /**
@@ -38,6 +39,32 @@ class PublicPageController extends Controller
     public function privacy(): View
     {
         return view('legal.privacy');
+    }
+
+    /**
+     * XML sitemap of the public, indexable pages — submitted to Google Search
+     * Console so every marketing page is discovered and crawled.
+     */
+    public function sitemap(): Response
+    {
+        $urls = [
+            url('/'),
+            route('about'),
+            route('faq'),
+            route('contact'),
+            route('book.call'),
+            route('terms'),
+            route('privacy'),
+        ];
+
+        $xml = '<?xml version="1.0" encoding="UTF-8"?>'."\n";
+        $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'."\n";
+        foreach ($urls as $url) {
+            $xml .= '  <url><loc>'.e($url).'</loc></url>'."\n";
+        }
+        $xml .= '</urlset>'."\n";
+
+        return response($xml, 200, ['Content-Type' => 'application/xml']);
     }
 
     public function sendContact(Request $request): RedirectResponse

@@ -1,6 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'About — SmoothSeas')
+@section('title', 'About SmoothSeas — SEA prep built for Caribbean families')
+@section('description', 'Why we built SmoothSeas: a calmer, kinder way to prepare Caribbean children for the SEA exam, with Smooth the turtle guiding every day and honest weekly reports for parents.')
 
 @section('styles')
 <style>

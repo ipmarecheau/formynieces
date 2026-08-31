@@ -1,6 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'FAQ — SmoothSeas')
+@section('title', 'SmoothSeas FAQ — SEA exam prep questions, answered')
+@section('description', 'Answers to the questions Caribbean parents ask about SEA preparation with SmoothSeas — how the daily plan works, what it costs, and how your child stays on pace.')
 
 @section('styles')
 <style>

@@ -1,6 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Book a call — SmoothSeas')
+@section('title', 'Book a free SmoothSeas call — SEA prep for your child')
+@section('description', 'Book a free 15-minute call with the SmoothSeas founder to see how the SEA voyage can help your child in Math, ELA and Writing — no pressure, no obligation.')
 
 @section('styles')
 <style>
