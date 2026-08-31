@@ -15,7 +15,7 @@ class TestAccountSeeder extends Seeder
 
         // Admin — Filament panel access only
         User::updateOrCreate(
-            ['email' => 'admin@formynieces.com'],
+            ['email' => 'admin@smoothseas.org'],
             [
                 'name' => 'Admin',
                 'password' => Hash::make('password'),
@@ -38,7 +38,7 @@ class TestAccountSeeder extends Seeder
 
         // Student — synthetic email, never verifies, onboarding complete
         $student = User::updateOrCreate(
-            ['email' => 'aaliyah@students.formynieces.com'],
+            ['email' => 'aaliyah@smoothseas.org'],
             [
                 'name' => 'Aaliyah',
                 'password' => Hash::make('password'),

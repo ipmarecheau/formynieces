@@ -98,7 +98,7 @@
 
         <p class="ag-support">
             Having trouble? Contact support at
-            <a href="mailto:support@formynieces.com">support@formynieces.com</a>
+            <a href="mailto:support@smoothseas.org">support@smoothseas.org</a>
             or +1 (868) 555-0100.
         </p>
 

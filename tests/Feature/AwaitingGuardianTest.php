@@ -131,7 +131,7 @@ it('shows the guardian login and support details on the waiting page', function 
         ->get(route('student.awaiting-guardian'))
         ->assertOk()
         ->assertSee($guardian->email)
-        ->assertSee('support@formynieces.com')
+        ->assertSee('support@smoothseas.org')
         ->assertSee('Log Out');
 })->group('scenario:RR-11');
 

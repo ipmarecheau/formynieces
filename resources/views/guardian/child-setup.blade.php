@@ -223,7 +223,7 @@
                 <div class="username-row">
                     <input type="text" id="username" name="username" value="{{ old('username') }}"
                            placeholder="aaliyah" required>
-                    <span class="username-suffix">@students.formynieces.com</span>
+                    <span class="username-suffix">@smoothseas.org</span>
                 </div>
                 <p class="hint">Letters, numbers, dashes and underscores only. She'll use this to log in.</p>
             </div>

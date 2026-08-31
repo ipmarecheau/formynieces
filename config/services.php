@@ -83,7 +83,7 @@ return [
     ],
 
     'chat' => [
-        'notify_email' => env('CHAT_NOTIFY_EMAIL', 'admin@formynieces.com'),
+        'notify_email' => env('CHAT_NOTIFY_EMAIL', 'admin@smoothseas.org'),
     ],
 
     // Cloudflare Turnstile — registration CAPTCHA. Without a secret key the
