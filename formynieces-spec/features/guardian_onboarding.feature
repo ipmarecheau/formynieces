@@ -19,10 +19,14 @@ Feature: Guardian account and child setup
     Then she is redirected to the email verification notice
 
   @scenario:GO-03
-  Scenario: A verified guardian without a child is routed to child setup
+  Scenario: A verified guardian without a child lands on her dashboard
     Given a verified guardian with no linked student
     When she logs in
-    Then she is taken to the child setup screen
+    Then she is taken to her guardian dashboard
+    And the dashboard shows an "Add child" empty state that opens child setup
+    And she is not asked to verify her email again
+    # First-run onboarding still funnels through child setup straight after email
+    # verification (GO-14); this is the returning-login path for a no-child guardian.
 
   @scenario:GO-04
   Scenario: A guardian creates a child profile
@@ -139,12 +143,14 @@ Feature: Guardian account and child setup
     # sign-in guidance for the JS-off case.
 
   @scenario:GO-18
-  Scenario: Login routes a guardian by how far she has got
-    Given a guardian whose email is verified
-    When she logs in
-    Then a guardian with no linked student is taken to child setup
-    And a guardian who already has a student is taken to her dashboard
-    # There is no phone-verification step in the login path (GO-15).
+  Scenario: A verified guardian adds a child from her dashboard
+    Given a verified guardian on her dashboard
+    When she has no linked student
+    Then the dashboard shows an "Add child" empty state
+    And opening it takes her to child setup where she creates the child
+    And no email-verification step is required at any point
+    # Login sends every verified guardian to the dashboard (GO-03); there is no
+    # phone-verification step in the path (GO-15).
 
   @scenario:GO-16
   Scenario: The guardian must read and accept the Terms & Conditions

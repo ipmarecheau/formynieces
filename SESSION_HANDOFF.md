@@ -26,9 +26,11 @@ The registration → verification → child-setup journey as it stands after tod
    No duplicate account is ever created.
 3. **Email verification only (GO-14/GO-15)**: registration fires the `Registered` event → email with a
    signed link AND a 6-digit code. `VerifyAccount` accepts either. **There is NO phone step.**
-4. **Login routing (GO-18)**: verified guardian with no student → `/child-setup`; with a student →
-   dashboard. New student (onboarding incomplete) → diagnostic. `child-setup` sits behind the
-   `verified` (email) middleware.
+4. **Login routing (GO-03/GO-18)**: every verified guardian → her dashboard (Guardian Bridge). With
+   no child yet, the dashboard shows an **"Add child" empty state** → `/child-setup` (she is never
+   re-asked to verify email). New student (onboarding incomplete) → diagnostic. First-run onboarding
+   still funnels through `/child-setup` straight after email verification (VerifyAccount/VerifyEmail).
+   `child-setup` sits behind the `verified` (email) middleware.
 5. **Phone verification is PERMANENTLY OFF (GO-15)**: `config/services.php` hardcodes
    `services.phone_verification.enabled = false`; the `PHONE_VERIFICATION_ENABLED` env var is ignored,
    so no environment can re-gate onboarding on a phone OTP. The `PhoneVerifier`/Twilio code and its

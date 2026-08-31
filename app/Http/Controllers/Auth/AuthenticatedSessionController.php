@@ -77,9 +77,13 @@ class AuthenticatedSessionController extends Controller
             }
         }
 
-        // A guardian with no linked students goes to child setup.
-        if ($user->isGuardian() && $user->students()->doesntExist()) {
-            return route('child.setup');
+        // A guardian goes to her dashboard (the Guardian Bridge). With no child
+        // yet, the dashboard shows an "Add child" empty state rather than forcing
+        // the child-setup screen — she is never re-asked to verify her email.
+        // (First-run onboarding still funnels through child-setup straight after
+        // email verification; see VerifyAccount / VerifyEmailController.)
+        if ($user->isGuardian()) {
+            return route('dashboard');
         }
 
         // An onboarded student lands on a streak-celebration splash when she has

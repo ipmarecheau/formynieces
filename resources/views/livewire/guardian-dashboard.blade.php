@@ -149,6 +149,30 @@
         $perkTotal = collect($perks ?? [])->sum('count');
     @endphp
 
+    @if ($students->isEmpty())
+        {{-- GO-18: a verified guardian with no child lands here (not forced into
+             child setup) and adds her first child from the dashboard. No email
+             re-verification — her email is already confirmed. --}}
+        <div class="g-head">
+            <div>
+                <h1 class="g-h1">Guardian Bridge</h1>
+                <p class="g-sub">Welcome aboard — let's add your child to begin.</p>
+            </div>
+        </div>
+        <div class="card" style="text-align:center; padding:40px 24px;">
+            <p style="font-size:44px; margin-bottom:8px;">👧</p>
+            <h2 class="lead-h" style="margin-bottom:8px;">Add your first child</h2>
+            <p class="p soft" style="max-width:440px; margin:0 auto 20px;">
+                Set up your child's profile to unlock her personalised SEA preparation
+                journey. It only takes a minute.
+            </p>
+            <a href="{{ route('child.setup') }}" class="btn-gold"
+               style="display:inline-block; text-decoration:none; padding:12px 24px; font-size:15px;">
+                ➕ Add child
+            </a>
+        </div>
+    @else
+
     {{-- Header (always) --}}
     <div class="g-head">
         <div>
@@ -569,4 +593,5 @@
         </div>
     @endif
     </div>{{-- /rewards section --}}
+    @endif{{-- /students empty-state --}}
 </div>
