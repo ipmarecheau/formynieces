@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\ContactMessage;
 use App\Models\OnboardingCall;
 use App\Services\Onboarding\CallSlotGenerator;
@@ -55,7 +56,12 @@ class PublicPageController extends Controller
             route('book.call'),
             route('terms'),
             route('privacy'),
+            route('blog.index'),
         ];
+
+        foreach (Article::published()->orderByDesc('published_at')->pluck('slug') as $slug) {
+            $urls[] = route('blog.show', $slug);
+        }
 
         $xml = '<?xml version="1.0" encoding="UTF-8"?>'."\n";
         $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'."\n";

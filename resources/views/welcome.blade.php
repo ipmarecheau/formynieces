@@ -545,6 +545,7 @@
                 <a class="nav-link" href="#meet-smooth">Meet Smooth</a>
                 <a class="nav-link" href="#for-parents">For parents</a>
                 <a class="nav-link" href="#pricing">Pricing</a>
+                <a class="nav-link" href="{{ route('blog.index') }}">Resources</a>
                 <a class="nav-link" href="{{ route('faq') }}">FAQ</a>
             </nav>
             <div class="nav-actions desktop">
@@ -576,6 +577,7 @@
             <a class="nav-link" href="#meet-smooth">Meet Smooth</a>
             <a class="nav-link" href="#for-parents">For parents</a>
             <a class="nav-link" href="#pricing">Pricing</a>
+            <a class="nav-link" href="{{ route('blog.index') }}">Resources</a>
             <a class="nav-link" href="{{ route('faq') }}">FAQ</a>
             <a class="nav-link" href="{{ route('contact') }}">Contact</a>
             <div class="drawer-actions">
@@ -1098,6 +1100,7 @@
         <div>© {{ date('Y') }} SmoothSeas · Built with ❤️ in Trinidad &amp; Tobago</div>
         <div class="footer-links">
             <a href="{{ route('about') }}">About</a>
+            <a href="{{ route('blog.index') }}">Resources</a>
             <a href="{{ route('faq') }}">FAQ</a>
             <a href="{{ route('contact') }}">Contact</a>
             <a href="{{ route('book.call') }}">Book a call</a>

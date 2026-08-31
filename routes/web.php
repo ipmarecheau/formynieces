@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ChildSetupController;
 use App\Http\Controllers\DashboardController;
@@ -40,6 +41,10 @@ Route::get('/contact', [PublicPageController::class, 'contact'])->name('contact'
 Route::get('/terms', [PublicPageController::class, 'terms'])->name('terms');
 Route::get('/privacy', [PublicPageController::class, 'privacy'])->name('privacy');
 Route::get('/sitemap.xml', [PublicPageController::class, 'sitemap'])->name('sitemap');
+
+// Public blog / resources library (BLOG).
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+Route::get('/blog/{article}', [BlogController::class, 'show'])->name('blog.show');
 Route::post('/contact', [PublicPageController::class, 'sendContact'])->name('contact.send');
 Route::get('/book-a-call', [PublicPageController::class, 'book'])->name('book.call');
 Route::post('/book-a-call', [PublicPageController::class, 'bookCall'])->name('book.store');

@@ -34,6 +34,7 @@
 | `streak_economy.feature` | @mvp | XP-bought rewards @roadmap | student, system |
 | `cosmetic_rewards.feature` | @mvp | Smooth's Chest marketplace: Doubloons earned by mastery (not grind), spent on outfits/ship/island cosmetics; Captain's rank; achievement-gated, purely visual, no real money / loot boxes, out of the honest layer (CR-01…10) | student |
 | `seo.feature` | @mvp | technical/on-page SEO: per-page titles+meta, canonical, OG/Twitter, JSON-LD, sitemap.xml, robots (SEO-01…05); strategy in SEO_STRATEGY.md | system |
+| `blog.feature` | @mvp | public blog/resources: markdown articles (database/data/blog) seeded to an articles table, category filter, per-article SEO + Article JSON-LD, future-dated drafts hidden, in sitemap (BLOG-01…05) | system |
 | `exam_readiness.feature` | @roadmap | — | student |
 | `admin_content.feature` | mixed | modules @mvp · anchors, monitor @v1.1 | admin |
 | `question_bank.feature` | @v1.1 | — | admin |
