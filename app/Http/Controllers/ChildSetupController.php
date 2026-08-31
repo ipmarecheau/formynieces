@@ -11,7 +11,7 @@ use Illuminate\View\View;
 
 class ChildSetupController extends Controller
 {
-    private const STUDENT_EMAIL_DOMAIN = '@students.formynieces.com';
+    private const STUDENT_EMAIL_DOMAIN = '@smoothseas.org';
 
     public function create(): View|RedirectResponse
     {

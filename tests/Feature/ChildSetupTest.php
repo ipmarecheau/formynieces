@@ -21,7 +21,7 @@ it('lets a verified guardian create a linked student profile', function () {
 
     expect($student)->not->toBeNull()
         ->and($student->name)->toBe('Aaliyah')
-        ->and($student->email)->toBe('aaliyah@students.formynieces.com')
+        ->and($student->email)->toBe('aaliyah@smoothseas.org')
         ->and($student->parent_id)->toBe($guardian->id)
         ->and($student->target_sea_year)->toBe(2027)
         ->and($student->known_weak_areas)->toBe(['Fractions', 'Reading Comprehension'])
