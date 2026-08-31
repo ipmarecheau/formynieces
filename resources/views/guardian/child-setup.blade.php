@@ -216,7 +216,9 @@
                 <label class="lbl" for="name">Her Full Name</label>
                 <input type="text" id="name" name="name" value="{{ old('name') }}"
                        placeholder="e.g. Aaliyah Thomas" required autofocus>
-                <p class="hint">We'll create her login automatically from her name (her first initial + last name). You'll see it on the next screen.</p>
+                <p class="hint">Her login will be
+                    <strong id="username-preview" class="username-preview">…</strong><span class="username-suffix">@smoothseas.org</span>
+                    — made from her first initial + last name. A number is added if it's already taken.</p>
             </div>
 
             <div class="field">
@@ -279,6 +281,32 @@
         `;
         container.appendChild(s);
     }
+
+    // Live username preview — mirrors the server rule (first initial + first 4 of
+    // last name, lowercased, a–z0–9). The final login may gain a number if taken.
+    (function () {
+        const nameInput = document.getElementById('name');
+        const preview = document.getElementById('username-preview');
+        if (!nameInput || !preview) { return; }
+
+        function derive(name) {
+            const parts = name.trim().split(/\s+/).filter(Boolean);
+            if (parts.length === 0) { return ''; }
+            const first = parts[0];
+            const last = parts.length > 1 ? parts[parts.length - 1] : first;
+            return (first.charAt(0) + last.slice(0, 4))
+                .toLowerCase()
+                .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+                .replace(/[^a-z0-9]/g, '');
+        }
+
+        function update() {
+            preview.textContent = derive(nameInput.value) || '…';
+        }
+
+        nameInput.addEventListener('input', update);
+        update();
+    })();
 </script>
 </body>
 </html>
