@@ -213,19 +213,10 @@
             @csrf
 
             <div class="field">
-                <label class="lbl" for="name">Her Name</label>
+                <label class="lbl" for="name">Her Full Name</label>
                 <input type="text" id="name" name="name" value="{{ old('name') }}"
-                       placeholder="e.g. Aaliyah" required autofocus>
-            </div>
-
-            <div class="field">
-                <label class="lbl" for="username">Choose a Username</label>
-                <div class="username-row">
-                    <input type="text" id="username" name="username" value="{{ old('username') }}"
-                           placeholder="aaliyah" required>
-                    <span class="username-suffix">@smoothseas.org</span>
-                </div>
-                <p class="hint">Letters, numbers, dashes and underscores only. She'll use this to log in.</p>
+                       placeholder="e.g. Aaliyah Thomas" required autofocus>
+                <p class="hint">We'll create her login automatically from her name (her first initial + last name). You'll see it on the next screen.</p>
             </div>
 
             <div class="field">
