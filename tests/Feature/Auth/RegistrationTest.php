@@ -33,3 +33,39 @@ test('new users can register', function () {
     expect($user->age_attested_at)->not->toBeNull();
     expect($user->hasVerifiedEmail())->toBeFalse();
 });
+
+test('check-email reports whether an account already exists', function () {
+    User::factory()->create(['email' => 'taken@example.com']);
+
+    $this->postJson(route('register.check-email'), ['email' => 'taken@example.com'])
+        ->assertOk()
+        ->assertJson(['exists' => true]);
+
+    // Case-insensitive: the stored email is matched regardless of casing.
+    $this->postJson(route('register.check-email'), ['email' => 'TAKEN@example.com'])
+        ->assertOk()
+        ->assertJson(['exists' => true]);
+
+    $this->postJson(route('register.check-email'), ['email' => 'free@example.com'])
+        ->assertOk()
+        ->assertJson(['exists' => false]);
+});
+
+test('registering with an existing email is rejected with a sign-in message', function () {
+    User::factory()->create(['email' => 'taken@example.com']);
+
+    $response = $this->post('/register', [
+        'name' => 'Test User',
+        'email' => 'taken@example.com',
+        'phone' => '+18685551234',
+        'password' => 'password',
+        'password_confirmation' => 'password',
+        'age_attestation' => true,
+        'terms' => '1',
+    ]);
+
+    $response->assertSessionHasErrors([
+        'email' => 'An account with this email already exists. Please sign in to your dashboard instead.',
+    ]);
+    $this->assertGuest();
+});

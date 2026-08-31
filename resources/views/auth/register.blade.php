@@ -155,6 +155,25 @@
         .terms-scroll.is-read { border-color: rgba(16,185,129,0.55); }
         .terms-scroll-hint { font-size: 11.5px; font-weight: 700; color: #93b2cc; margin-top: 6px; }
         .terms-scroll-hint.is-done { color: #6ee7b7; }
+
+        /* Existing-account notice — shown when the typed email already has an account. */
+        .exists-notice {
+            display: none;
+            background: rgba(34,211,238,0.10);
+            border: 1.5px solid rgba(34,211,238,0.45);
+            border-radius: 12px; padding: 14px 16px; margin-bottom: 20px;
+            font-size: 13.5px; line-height: 1.5; color: #cde3f5;
+        }
+        .exists-notice.is-shown { display: block; }
+        .exists-notice strong { color: #e6f2fb; }
+        .exists-notice a {
+            display: inline-block; margin-top: 10px;
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+            color: #fff; font-weight: 700; text-decoration: none;
+            padding: 9px 18px; border-radius: 999px; font-size: 13.5px;
+        }
+        .exists-notice a:hover { opacity: 0.9; }
+        form.is-locked { opacity: 0.45; pointer-events: none; }
     </style>
     @if (config('services.turnstile.site_key'))
         <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
@@ -185,7 +204,13 @@
         </div>
     @endif
 
-    <form method="POST" action="{{ route('register') }}">
+    <div class="exists-notice" id="exists-notice" role="alert" aria-live="polite">
+        <strong>You already have an account.</strong><br>
+        An account with this email already exists. Please sign in to your dashboard to continue.
+        <br><a href="{{ route('login') }}" id="exists-login-link">Sign in to your dashboard →</a>
+    </div>
+
+    <form method="POST" action="{{ route('register') }}" id="register-form">
         @csrf
 
         <div class="field">
@@ -308,6 +333,58 @@
             };
             box.addEventListener('scroll', onScroll);
         }
+    })();
+</script>
+<script>
+    // When the typed email already has an account, stop here and point the
+    // guardian at sign-in — they shouldn't fill out the whole form again.
+    (function () {
+        const emailInput = document.getElementById('email');
+        const form = document.getElementById('register-form');
+        const notice = document.getElementById('exists-notice');
+        const loginLink = document.getElementById('exists-login-link');
+        if (!emailInput || !form || !notice) return;
+
+        const checkUrl = @json(route('register.check-email'));
+        const loginUrl = @json(route('login'));
+        const token = document.querySelector('input[name="_token"]').value;
+        let lastChecked = null;
+
+        function lock() {
+            notice.classList.add('is-shown');
+            form.classList.add('is-locked');
+            notice.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        function unlock() {
+            notice.classList.remove('is-shown');
+            form.classList.remove('is-locked');
+        }
+
+        async function checkEmail() {
+            const email = emailInput.value.trim();
+            if (!email || !emailInput.checkValidity() || email === lastChecked) return;
+            lastChecked = email;
+            try {
+                const res = await fetch(checkUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', 'X-CSRF-TOKEN': token },
+                    body: JSON.stringify({ email }),
+                });
+                if (!res.ok) { return; }
+                const data = await res.json();
+                if (data.exists) {
+                    loginLink.href = loginUrl + '?email=' + encodeURIComponent(email);
+                    lock();
+                } else {
+                    unlock();
+                }
+            } catch (e) { /* network error — the server-side unique rule still catches it */ }
+        }
+
+        emailInput.addEventListener('blur', checkEmail);
+        emailInput.addEventListener('input', function () {
+            if (emailInput.value.trim() !== lastChecked) { unlock(); }
+        });
     })();
 </script>
 </body>

@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Rules\Turnstile;
 use App\Services\Verification\PhoneVerifier;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,6 +27,23 @@ class RegisteredUserController extends Controller
     }
 
     /**
+     * Report whether an email already has an account, so the registration form
+     * can redirect the guardian to sign in before they fill anything else out.
+     *
+     * @return JsonResponse{exists: bool}
+     */
+    public function checkEmail(Request $request): JsonResponse
+    {
+        $validated = $request->validate([
+            'email' => ['required', 'string', 'email', 'max:255'],
+        ]);
+
+        return response()->json([
+            'exists' => User::whereRaw('LOWER(email) = ?', [mb_strtolower($validated['email'])])->exists(),
+        ]);
+    }
+
+    /**
      * Handle an incoming registration request.
      *
      * @throws ValidationException
@@ -41,6 +59,7 @@ class RegisteredUserController extends Controller
             'terms' => ['accepted'],
             'cf-turnstile-response' => [new Turnstile($request->ip())],
         ], [
+            'email.unique' => 'An account with this email already exists. Please sign in to your dashboard instead.',
             'phone.regex' => 'Enter your phone number in full international format, e.g. +18685551234.',
             'terms.accepted' => 'You must read and accept the Terms & Conditions to create an account.',
         ]);
