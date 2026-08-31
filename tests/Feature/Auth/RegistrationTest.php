@@ -49,7 +49,7 @@ test('check-email reports whether an account already exists', function () {
     $this->postJson(route('register.check-email'), ['email' => 'free@example.com'])
         ->assertOk()
         ->assertJson(['exists' => false]);
-});
+})->group('scenario:GO-17');
 
 test('registering with an existing email is rejected with a sign-in message', function () {
     User::factory()->create(['email' => 'taken@example.com']);
@@ -68,4 +68,4 @@ test('registering with an existing email is rejected with a sign-in message', fu
         'email' => 'An account with this email already exists. Please sign in to your dashboard instead.',
     ]);
     $this->assertGuest();
-});
+})->group('scenario:GO-17');

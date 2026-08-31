@@ -63,8 +63,11 @@ Feature: Guardian account and child setup
     # Verification still gates child setup (GO-02); this removes the dead-end feeling.
     # Fully deferring verification until after child setup is a separate product call.
 
-  @v1.1 @scenario:GO-06
+  @retired @scenario:GO-06
   Scenario: A guardian verifies a phone number
+    # RETIRED (2026-08-31): phone verification was removed from the product.
+    # The number is still captured at registration but never verified, and it
+    # never gates onboarding. Kept for history; superseded by GO-15.
     Given a verified guardian on the phone verification screen
     When she submits her phone number and the confirmation code sent to it
     Then her account is marked phone-verified
@@ -93,8 +96,11 @@ Feature: Guardian account and child setup
     And she must provide a phone number in full international format
     And a missing or malformed phone number is rejected
 
-  @scenario:GO-13
+  @retired @scenario:GO-13
   Scenario: Phone is verified by WhatsApp with an SMS fallback
+    # RETIRED (2026-08-31): phone verification removed. The WhatsApp/SMS OTP
+    # code path (PhoneVerifier / Twilio) remains behind a hardcoded-off switch
+    # but is never invoked in production. Superseded by GO-15.
     Given a newly-registered guardian with a phone on file
     When registration completes
     Then a verification code is sent to her phone on WhatsApp first
@@ -106,18 +112,39 @@ Feature: Guardian account and child setup
     Given a newly-registered guardian on the verification screen
     When she either taps the emailed link or types the 6-digit code
     Then her email is marked verified
-    And once both email and phone are verified she is taken straight to child setup
+    And once her email is verified she is taken straight to child setup
     And a "Need help" path to a real person is offered throughout
+    # Email verification alone opens onboarding — there is no phone step (GO-15).
 
   @scenario:GO-15
-  Scenario: At the free launch the phone is captured but not verified
-    Given phone verification is switched off (the free-launch default)
+  Scenario: The phone is captured but never verified
+    Given phone verification is permanently disabled
     When a guardian registers with a phone number
     Then her phone number is captured on her account
     And no phone verification code is sent
     And verifying her email alone opens child setup
-    # Flipping services.phone_verification.enabled on (with Twilio keys) restores
-    # the required WhatsApp/SMS OTP step described in GO-13/GO-14.
+    And no environment setting can re-gate onboarding on a phone code
+    # services.phone_verification.enabled is hardcoded false; the
+    # PHONE_VERIFICATION_ENABLED env var is intentionally ignored.
+
+  @scenario:GO-17
+  Scenario: A returning guardian who types an existing email is sent to sign in
+    Given a visitor on the registration form
+    When she enters an email address that already has an account
+    Then she is stopped before completing the form
+    And she is shown a notice to sign in to her dashboard, with a link to log in
+    And no second account is created for that email
+    # Enforced two ways: an on-blur check (register/check-email) locks the form,
+    # and the server-side unique rule rejects a submitted duplicate with the same
+    # sign-in guidance for the JS-off case.
+
+  @scenario:GO-18
+  Scenario: Login routes a guardian by how far she has got
+    Given a guardian whose email is verified
+    When she logs in
+    Then a guardian with no linked student is taken to child setup
+    And a guardian who already has a student is taken to her dashboard
+    # There is no phone-verification step in the login path (GO-15).
 
   @scenario:GO-16
   Scenario: The guardian must read and accept the Terms & Conditions

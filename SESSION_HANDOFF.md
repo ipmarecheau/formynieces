@@ -14,6 +14,35 @@ Durable note so the context window can be cleared. Readable by both Claude agent
 - Review accounts (dev DB, pw `Guardian123!`): `verify-guardian@smoothseas.test` → child **Amara**
   (rich data). `demo-guardian@smoothseas.test` → thin. (DemoStudentSeeder may reset the password.)
 
+## Login & onboarding — current behavior (2026-08-31, latest)
+
+The registration → verification → child-setup journey as it stands after today's fixes:
+
+1. **Register** (`/register`, single form): guardian's own name, email, phone (captured, full
+   international format), password, 18+ attestation, scroll-gated T&C. Turnstile when configured.
+2. **Existing email is stopped early (GO-17)**: an on-blur check (`POST register/check-email`) locks
+   the form and shows a "sign in to your dashboard" notice with a prefilled login link when the email
+   already has an account. The server-side `unique` rule gives the same guidance for the JS-off case.
+   No duplicate account is ever created.
+3. **Email verification only (GO-14/GO-15)**: registration fires the `Registered` event → email with a
+   signed link AND a 6-digit code. `VerifyAccount` accepts either. **There is NO phone step.**
+4. **Login routing (GO-18)**: verified guardian with no student → `/child-setup`; with a student →
+   dashboard. New student (onboarding incomplete) → diagnostic. `child-setup` sits behind the
+   `verified` (email) middleware.
+5. **Phone verification is PERMANENTLY OFF (GO-15)**: `config/services.php` hardcodes
+   `services.phone_verification.enabled = false`; the `PHONE_VERIFICATION_ENABLED` env var is ignored,
+   so no environment can re-gate onboarding on a phone OTP. The `PhoneVerifier`/Twilio code and its
+   GO-13 tests remain (tests runtime-toggle the config) but the feature is never invoked in prod.
+   *Why removed:* an env-enabled phone gate in prod was stranding email-verified guardians on the
+   verify screen waiting for a Twilio code that never arrived.
+
+**Prod email (Resend):** delivery is fine *when configured on the account where `smoothseas.org` is
+verified*, sending from a `@smoothseas.org` address (confirmed 2026-08-31 — a real send from
+`noreply@smoothseas.org` reached an arbitrary recipient). If prod stops delivering to non-owner
+addresses, check prod's `RESEND_API_KEY` (right account?) and `MAIL_FROM_ADDRESS` (`@smoothseas.org`?).
+Dev uses `MAIL_MAILER=log` by default; temporarily set `MAIL_MAILER=resend` + `RESEND_API_KEY` +
+`MAIL_FROM_ADDRESS=noreply@smoothseas.org` in dev `.env` (gitignored) for real-email testing.
+
 ## Shipped this session (commit → what)
 - `4d64ab3`,`37ac013` — **Guardian Bridge** dashboard rebuild: sidebar app (Overview/This week/Pace/
   Progress/Estimator/Rewards), light editorial theme, exam-agent estimator, **pace-calc bug fixed**
@@ -21,8 +50,9 @@ Durable note so the context window can be cleared. Readable by both Claude agent
   command + `pace_recalculated_at` "Progress updated" stamp. Specs GD-12..15 (verified).
 - `d789b4a` — **Secure registration**: Cloudflare Turnstile CAPTCHA, phone capture, email verify by
   link OR 6-digit code, `VerifyAccount` Livewire screen, auto-advance to `/child-setup`. Twilio Verify
-  behind `PhoneVerifier` interface (stub off-prod). **Phone verification OFF by default (free launch)**
+  behind `PhoneVerifier` interface (stub off-prod). Phone verification was toggle-able
   via `PHONE_VERIFICATION_ENABLED`. Specs GO-12..15. Dep added: `twilio/sdk`.
+  **SUPERSEDED by the phone-verification removal below (2026-08-31).**
 - `c9b815d` — **T&C + Privacy Policy** (`/terms`, `/privacy`; 64-Bit Software Solutions entity; strong
   children's-data protections) with scroll-gated signup acceptance (`terms_accepted_at`+version).
   **Cosmetic marketplace spec** promoted to @mvp (`cosmetic_rewards.feature` = Smooth's Chest,
