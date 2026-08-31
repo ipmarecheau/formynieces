@@ -130,6 +130,33 @@ it('sends the fully-verified guardian into onboarding', function () {
         ->assertRedirect(route('child.setup'));
 })->group('scenario:GO-13');
 
+it('never gates onboarding on phone verification, even if the env var is set', function () {
+    // The config is hardcoded off — the PHONE_VERIFICATION_ENABLED env is ignored.
+    putenv('PHONE_VERIFICATION_ENABLED=true');
+    $_ENV['PHONE_VERIFICATION_ENABLED'] = 'true';
+
+    expect(config('services.phone_verification.enabled'))->toBeFalse();
+
+    $guardian = User::factory()->create([
+        'role' => 'guardian',
+        'email_verified_at' => now(),
+        'phone' => '+18685551234',
+        'phone_verified_at' => null,
+    ]);
+
+    // A guardian whose phone is unverified is fully verified and not held back.
+    expect($guardian->needsPhoneVerification())->toBeFalse();
+    expect($guardian->isFullyVerified())->toBeTrue();
+
+    // Logging in takes her straight to child setup, not the verification screen.
+    $this->actingAs($guardian)
+        ->get(route('child.setup'))
+        ->assertOk();
+
+    putenv('PHONE_VERIFICATION_ENABLED');
+    unset($_ENV['PHONE_VERIFICATION_ENABLED']);
+})->group('scenario:GO-15');
+
 it('at the free launch captures the phone but does not verify it', function () {
     // Feature off (default): registration must not start phone verification…
     post(route('register'), [

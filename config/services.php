@@ -102,11 +102,14 @@ return [
         'verify_service_sid' => env('TWILIO_VERIFY_SERVICE_SID'),
     ],
 
-    // Phone verification is OFF at launch (free): the phone number is captured
-    // at registration but not verified, and email verification alone opens
-    // onboarding. Flip on (and set TWILIO_* above) to require the phone OTP.
+    // Phone verification is permanently disabled: the phone number is captured
+    // at registration but never verified, and email verification alone opens
+    // onboarding. This is hardcoded off (the PHONE_VERIFICATION_ENABLED env var
+    // is intentionally ignored) so no environment can re-gate onboarding on a
+    // phone OTP. To bring the feature back, restore env('PHONE_VERIFICATION_ENABLED')
+    // and configure the TWILIO_* credentials above.
     'phone_verification' => [
-        'enabled' => env('PHONE_VERIFICATION_ENABLED', false),
+        'enabled' => false,
     ],
 
 ];
