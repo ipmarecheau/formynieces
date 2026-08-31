@@ -1,0 +1,48 @@
+{
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "screens": [
+    {
+      "name": "voyage",
+      "caption": "Sail the map — every skill is an island to conquer",
+      "target": {
+        "x": 269,
+        "y": 359
+      },
+      "scroll": false,
+      "scrollH": 806
+    },
+    {
+      "name": "lesson",
+      "caption": "Learn it — a hands-on lesson with interactive widgets",
+      "target": {
+        "x": 544,
+        "y": 874
+      },
+      "scroll": true,
+      "scrollH": 1067
+    },
+    {
+      "name": "check",
+      "caption": "Ace the six-question check",
+      "target": {
+        "x": 786,
+        "y": 319
+      },
+      "scroll": false,
+      "scrollH": 800
+    },
+    {
+      "name": "chat",
+      "caption": "Stuck? Ask Smooth — the AI re-teaches, right in the chat",
+      "target": {
+        "x": 1223,
+        "y": 737
+      },
+      "scroll": false,
+      "scrollH": 800
+    }
+  ]
+}
