@@ -25,7 +25,8 @@
       "Bash(wc:*)",
       "Bash(free -h)",
       "Bash(df -h)",
-      "Bash(which:*)"
+      "Bash(which:*)",
+      "Bash(docker exec formynieces php artisan:*)"
     ],
     "deny": [
       "Bash(git push --force:*)",
@@ -40,7 +41,10 @@
       "Bash(php artisan db:wipe:*)",
       "Bash(chmod:*)",
       "Bash(chown:*)",
-      "Bash(sudo:*)"
+      "Bash(sudo:*)",
+      "Bash(docker exec formynieces php artisan migrate:fresh:*)",
+      "Bash(docker exec formynieces php artisan migrate:reset:*)",
+      "Bash(docker exec formynieces php artisan db:wipe:*)"
     ]
   }
 }

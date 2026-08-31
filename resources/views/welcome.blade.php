@@ -203,6 +203,54 @@
         .hero-captain img { width: 44px; height: 44px; border-radius: 50%; background: #fff; flex-shrink: 0; }
         .hero-captain strong { color: var(--teal-deep); }
 
+        /* ── HERO: centred, with the animated SVG as the focal point ── */
+        .hero-lead { max-width: 730px; margin: 0 auto; text-align: center; }
+        .hero-lead .hero-lede { margin-left: auto; margin-right: auto; }
+        .hero-lead .hero-cta,
+        .hero-lead .hero-reassure { justify-content: center; }
+        .hero-anim { margin: clamp(30px, 5vw, 48px) auto 0; max-width: 920px; }
+        .hero-anim .stage {
+            border-radius: 22px; overflow: hidden; border: 1px solid var(--line);
+            background: #08152c; aspect-ratio: 16 / 10; box-shadow: var(--shadow-lg);
+        }
+        .hero-anim .screen { display: block; width: 100%; height: 100%; }
+        .hero-anim .dots { display: flex; gap: 9px; justify-content: center; margin: 18px 0 0; }
+        .hero-anim .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--line); position: relative; }
+        .hero-anim .dot i {
+            position: absolute; inset: 0; border-radius: 50%; background: var(--teal);
+            opacity: 0; transform: scale(.6); transform-origin: center; animation-fill-mode: both;
+        }
+        /* scene crossfade timeline (24s loop, 6 scenes) */
+        .hero-anim .scene { opacity: 0; }
+        .hero-anim .s1 { animation: sv-sc1 24s infinite; } .hero-anim .s2 { animation: sv-sc2 24s infinite; }
+        .hero-anim .s3 { animation: sv-sc3 24s infinite; } .hero-anim .s4 { animation: sv-sc4 24s infinite; }
+        .hero-anim .s5 { animation: sv-sc5 24s infinite; } .hero-anim .s6 { animation: sv-sc6 24s infinite; }
+        .hero-anim .d1 i { animation: sv-sc1 24s infinite; } .hero-anim .d2 i { animation: sv-sc2 24s infinite; }
+        .hero-anim .d3 i { animation: sv-sc3 24s infinite; } .hero-anim .d4 i { animation: sv-sc4 24s infinite; }
+        .hero-anim .d5 i { animation: sv-sc5 24s infinite; } .hero-anim .d6 i { animation: sv-sc6 24s infinite; }
+        .hero-anim .boat { animation: sv-boat 24s infinite; }
+        .hero-anim .tick-draw { stroke-dasharray: 46; stroke-dashoffset: 46; animation: sv-draw 24s infinite; }
+        .hero-anim .star { transform-box: fill-box; transform-origin: center; animation: sv-pop 24s infinite; }
+        .hero-anim .wave { animation: sv-bob 5s ease-in-out infinite; }
+        .hero-anim .rt-x { animation: sv-rtx 24s infinite; }
+        .hero-anim .rt-help { animation: sv-rth 24s infinite; }
+        .hero-anim .rt-ok { animation: sv-rtok 24s infinite; }
+        .hero-anim .rt-x, .hero-anim .rt-ok { transform-box: fill-box; transform-origin: center; }
+        @keyframes sv-sc1 { 0%{opacity:1} 14.6%{opacity:1} 16.6%{opacity:0} 97.9%{opacity:0} 100%{opacity:1} }
+        @keyframes sv-sc2 { 0%,16.6%{opacity:0} 18%{opacity:1} 31.5%{opacity:1} 33.3%{opacity:0} 100%{opacity:0} }
+        @keyframes sv-sc3 { 0%,33.3%{opacity:0} 34.7%{opacity:1} 48.2%{opacity:1} 50%{opacity:0} 100%{opacity:0} }
+        @keyframes sv-sc4 { 0%,50%{opacity:0} 51.4%{opacity:1} 64.9%{opacity:1} 66.6%{opacity:0} 100%{opacity:0} }
+        @keyframes sv-sc5 { 0%,66.6%{opacity:0} 68%{opacity:1} 81.5%{opacity:1} 83.3%{opacity:0} 100%{opacity:0} }
+        @keyframes sv-sc6 { 0%,83.3%{opacity:0} 84.7%{opacity:1} 98%{opacity:1} 100%{opacity:0} }
+        @keyframes sv-boat { 0%,18%{transform:translate(0,0)} 30%,100%{transform:translate(348px,-34px)} }
+        @keyframes sv-draw { 0%,52%{stroke-dashoffset:46} 58%,100%{stroke-dashoffset:0} }
+        @keyframes sv-pop { 0%,84.6%{transform:scale(0) rotate(-18deg)} 90%{transform:scale(1.15) rotate(4deg)} 93%,100%{transform:scale(1) rotate(0)} }
+        @keyframes sv-bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+        @keyframes sv-rtx  { 0%,66.6%{opacity:0;transform:scale(.4)} 68.4%{opacity:1;transform:scale(1)} 71.5%{opacity:1} 73%,100%{opacity:0} }
+        @keyframes sv-rth  { 0%,72.5%{opacity:0} 74%{opacity:1} 79%{opacity:1} 80.5%,100%{opacity:0} }
+        @keyframes sv-rtok { 0%,79.5%{opacity:0;transform:scale(.4)} 81%{opacity:1;transform:scale(1.05)} 82%{transform:scale(1)} 83.3%{opacity:1} 83.4%,100%{opacity:0} }
+        @media (prefers-reduced-motion: reduce) { .hero-anim .s2 { opacity: 1; } .hero-anim .tick-draw { stroke-dashoffset: 0; } }
+
         /* ── TWO ENGINES (the differentiator) ── */
         .engine-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 22px; align-items: stretch; }
         .engine-card {
@@ -592,75 +640,130 @@
 <!-- HERO -->
 <section class="hero">
     <div class="wrap">
-        <div class="hero-grid">
-            <div data-reveal>
-                <span class="hero-badge">🇹🇹 SEA 2027 · built for Caribbean families</span>
-                <h1>They'll think it's a <span class="accent">game</span>. It's <span class="accent">AI-assisted</span> learning for the whole SEA.</h1>
-                <p class="hero-lede">
-                    SmoothSeas turns Math, ELA and Writing into a voyage your child <strong>begs to sail</strong> —
-                    while an AI plans every day around them, <strong>re-teaches</strong> whatever they miss,
-                    and shows you exactly where they stand. They stay hooked, they truly learn, and you'll
-                    <strong>never have to guess</strong>.
+        <div class="hero-lead" data-reveal>
+            <span class="hero-badge">🇹🇹 SEA 2027 · built for Caribbean families</span>
+            <h1>They'll think it's a <span class="accent">game</span>. It's <span class="accent">AI-assisted</span> learning for the whole SEA.</h1>
+            <p class="hero-lede">
+                SmoothSeas turns Math, ELA and Writing into a voyage your child <strong>begs to sail</strong> —
+                while an AI plans every day around them, <strong>re-teaches</strong> whatever they miss,
+                and shows you exactly where they stand. They stay hooked, they truly learn, and you'll
+                <strong>never have to guess</strong>.
+            </p>
+            <div class="hero-cta">
+                @auth
+                    <a class="btn btn-primary btn-lg" href="{{ $homeUrl }}">Go to your dashboard →</a>
+                @else
+                    <a class="btn btn-primary btn-lg" href="{{ route('register') }}">Sign up free →</a>
+                    <a class="btn btn-secondary btn-lg" href="{{ route('book.call') }}">Book a free call</a>
+                @endauth
+            </div>
+            <div class="hero-captain">
+                <img src="{{ asset('images/voyage/companion/smooth.webp') }}" alt="Smooth the turtle" width="44" height="44">
+                <span><strong>Meet Smooth</strong> — your child's AI captain, patient on every miss.</span>
+            </div>
+            @guest
+                <p class="hero-reassure">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>
+                    No credit card · 14-day money-back promise · cancel anytime
                 </p>
-                <div class="hero-cta">
-                    @auth
-                        <a class="btn btn-primary btn-lg" href="{{ $homeUrl }}">Go to your dashboard →</a>
-                    @else
-                        <a class="btn btn-primary btn-lg" href="{{ route('register') }}">Sign up free →</a>
-                        <a class="btn btn-secondary btn-lg" href="{{ route('book.call') }}">Book a free call</a>
-                    @endauth
-                </div>
-                <div class="hero-captain">
-                    <img src="{{ asset('images/voyage/companion/smooth.webp') }}" alt="Smooth the turtle" width="44" height="44">
-                    <span><strong>Meet Smooth</strong> — your child's AI captain, patient on every miss.</span>
-                </div>
-                @guest
-                    <p class="hero-reassure">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>
-                        No credit card · 14-day money-back promise · cancel anytime
-                    </p>
-                @endguest
-            </div>
-
-            <div class="hero-figure" data-reveal style="--rd:.12s">
-                <div class="hero-demo">
-                    <div class="hero-tabs" role="tablist" aria-label="Choose a demo">
-                        <button type="button" class="hero-tab is-active" id="tab-child" role="tab"
-                                aria-selected="true" aria-controls="pane-child">▶ For your child</button>
-                        <button type="button" class="hero-tab" id="tab-parent" role="tab"
-                                aria-selected="false" aria-controls="pane-parent">For you (parent)</button>
-                    </div>
-
-                    <div class="hero-pane is-active" id="pane-child" role="tabpanel" aria-labelledby="tab-child">
-                        <figure class="reel-figure">
-                            <video class="reel-video" autoplay muted loop playsinline preload="metadata"
-                                   poster="{{ asset('reels/child-reel-poster.png') }}"
-                                   aria-label="A narrated walkthrough of a child's voyage: the daily warm-up and writing, the island map, rewards locker, and the three ways to master a lesson.">
-                                <source src="{{ asset('reels/child-reel.mp4') }}" type="video/mp4">
-                                <source src="{{ asset('reels/child-reel.webm') }}" type="video/webm">
-                            </video>
-                            <button type="button" class="reel-sound" aria-label="Turn sound on">🔇 <span>Sound off</span></button>
-                            <img class="reel-static" src="{{ asset('reels/child-reel-poster.png') }}"
-                                 alt="A child's Voyage map with illustrated islands, the Captain's Orders panel, and Smooth the turtle welcoming them back.">
-                        </figure>
-                    </div>
-
-                    <div class="hero-pane" id="pane-parent" role="tabpanel" aria-labelledby="tab-parent" hidden>
-                        <figure class="reel-figure">
-                            <video class="reel-video" muted loop playsinline preload="none"
-                                   poster="{{ asset('reels/parent-reel-poster.png') }}"
-                                   aria-label="A narrated walkthrough of the guardian portal: the four honest answers, the pace calendar, the SEA placement estimator, parent controls, and the school journal.">
-                                <source src="{{ asset('reels/parent-reel.mp4') }}" type="video/mp4">
-                                <source src="{{ asset('reels/parent-reel.webm') }}" type="video/webm">
-                            </video>
-                            <button type="button" class="reel-sound" aria-label="Turn sound on">🔇 <span>Sound off</span></button>
-                            <img class="reel-static" src="{{ asset('reels/parent-reel-poster.png') }}"
-                                 alt="The guardian dashboard — the honest layer — showing a student's readiness, pace and projected SEA placement.">
-                        </figure>
-                    </div>
-                </div>
-            </div>
+            @endguest
         </div>
+
+        <figure class="hero-anim" data-reveal style="--rd:.12s">
+            <div class="stage">
+                <svg class="screen" viewBox="0 0 800 500" role="img" aria-label="An animation of a child's SmoothSeas voyage: signing in, sailing the island map, learning a lesson, taking a quick check, being re-taught by Smooth, and mastering the island.">
+                    <defs>
+                        <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0a1730"/><stop offset="1" stop-color="#0e2f4d"/></linearGradient>
+                        <linearGradient id="teal" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#35c0d4"/><stop offset="1" stop-color="#0d7d8c"/></linearGradient>
+                        <radialGradient id="glow" cx="50%" cy="40%" r="60%"><stop offset="0" stop-color="#f5b544" stop-opacity=".35"/><stop offset="1" stop-color="#f5b544" stop-opacity="0"/></radialGradient>
+                        <g id="turtle">
+                            <ellipse cx="0" cy="16" rx="9" ry="6" fill="#3f8f78" transform="rotate(28 0 16)"/>
+                            <ellipse cx="46" cy="16" rx="9" ry="6" fill="#3f8f78" transform="rotate(-28 46 16)"/>
+                            <ellipse cx="23" cy="2" rx="30" ry="23" fill="#4fae8b"/>
+                            <ellipse cx="23" cy="0" rx="21" ry="15" fill="#6fc9a3"/>
+                            <path d="M11,-4 L23,-10 L35,-4 L30,8 L16,8 Z" fill="#4fae8b" opacity=".55"/>
+                            <circle cx="52" cy="-6" r="13" fill="#6fc9a3"/><circle cx="56" cy="-8" r="3.1" fill="#12222e"/><circle cx="57.1" cy="-9" r="1" fill="#fff"/>
+                        </g>
+                        <g id="island">
+                            <ellipse cx="0" cy="24" rx="44" ry="14" fill="#0a253c"/>
+                            <ellipse cx="0" cy="18" rx="40" ry="16" fill="#e8c98a"/>
+                            <ellipse cx="0" cy="12" rx="30" ry="12" fill="#7fc99a"/>
+                            <rect x="-3" y="-14" width="6" height="22" rx="3" fill="#8a6a45"/>
+                            <path d="M0,-14 q-16,-4 -22,4 q14,-2 22,2 q8,-4 22,-2 q-6,-8 -22,-4Z" fill="#3f9d72"/>
+                        </g>
+                    </defs>
+                    <rect width="800" height="500" fill="url(#sea)"/>
+                    <g opacity=".18" stroke="#4a86b8" stroke-width="1" fill="none">
+                        <path class="wave" d="M0,150 q40,-14 80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0"/>
+                        <path class="wave" style="animation-delay:-1.5s" d="M0,360 q40,-14 80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0"/>
+                    </g>
+                    <g class="scene s1">
+                        <ellipse cx="400" cy="230" rx="260" ry="150" fill="url(#glow)"/>
+                        <g transform="translate(354,150) scale(1.5)"><use href="#turtle"/></g>
+                        <text x="400" y="290" text-anchor="middle" font-family="Fredoka, sans-serif" font-weight="700" font-size="44" fill="#eaf6f8">SmoothSeas</text>
+                        <text x="400" y="322" text-anchor="middle" font-family="Nunito, sans-serif" font-weight="700" font-size="18" fill="#9fd0da">Welcome back aboard — your voyage awaits.</text>
+                        <g><rect x="150" y="430" width="500" height="46" rx="14" fill="#f5b544"/><text x="400" y="459" text-anchor="middle" font-family="Fredoka, sans-serif" font-weight="600" font-size="20" fill="#241505">Sign in — pick up where you left off</text></g>
+                    </g>
+                    <g class="scene s2">
+                        <path d="M120,330 C260,300 300,180 470,190 S680,150 700,150" stroke="#5aa0c8" stroke-width="3" stroke-dasharray="4 10" fill="none" opacity=".7"/>
+                        <g transform="translate(120,300)"><use href="#island"/></g>
+                        <g transform="translate(470,160)"><use href="#island"/></g>
+                        <g transform="translate(690,120)"><use href="#island" opacity=".8"/></g>
+                        <circle cx="120" cy="298" r="15" fill="#34d17f"/><path d="M113,298 l5,5 l9,-11" stroke="#04331d" stroke-width="3" fill="none" stroke-linecap="round"/>
+                        <g transform="translate(120,300)"><g class="boat"><path d="M-16,4 L16,4 L11,16 L-11,16 Z" fill="#f6f2e9"/><rect x="-1" y="-20" width="2.4" height="24" fill="#8a6a45"/><path d="M2,-19 L18,-4 L2,-4 Z" fill="#ff6b6b"/></g></g>
+                        <g transform="translate(560,300) scale(1.1)"><g class="wave"><use href="#turtle"/></g></g>
+                        <g><rect x="150" y="430" width="500" height="46" rx="14" fill="#f5b544"/><text x="400" y="459" text-anchor="middle" font-family="Fredoka, sans-serif" font-weight="600" font-size="20" fill="#241505">Sail the map — conquer the islands</text></g>
+                    </g>
+                    <g class="scene s3">
+                        <rect x="150" y="80" width="500" height="300" rx="20" fill="#0c2036" stroke="#22415e"/>
+                        <rect x="176" y="108" width="150" height="14" rx="7" fill="#35c0d4"/>
+                        <text x="176" y="168" font-family="Fredoka, sans-serif" font-weight="600" font-size="26" fill="#eaf6f8">‘i’ before ‘e’…</text>
+                        <text x="176" y="206" font-family="Nunito, sans-serif" font-weight="700" font-size="19" fill="#9fd0da">…except after ‘c’.</text>
+                        <rect x="176" y="238" width="448" height="52" rx="12" fill="#10314a"/>
+                        <text x="196" y="270" font-family="Nunito, sans-serif" font-weight="700" font-size="17" fill="#cfe8ee">Remember: bel<tspan fill="#f5b544">ie</tspan>ve, but rec<tspan fill="#f5b544">ei</tspan>ve.</text>
+                        <rect x="176" y="312" width="150" height="40" rx="20" fill="url(#teal)"/>
+                        <text x="251" y="338" text-anchor="middle" font-family="Fredoka, sans-serif" font-weight="600" font-size="16" fill="#04222a">Got it — next →</text>
+                        <g transform="translate(560,300) scale(.9)"><use href="#turtle"/></g>
+                        <g><rect x="150" y="430" width="500" height="46" rx="14" fill="#f5b544"/><text x="400" y="459" text-anchor="middle" font-family="Fredoka, sans-serif" font-weight="600" font-size="20" fill="#241505">Learn it — a quick, friendly lesson</text></g>
+                    </g>
+                    <g class="scene s4">
+                        <text x="400" y="120" text-anchor="middle" font-family="Fredoka, sans-serif" font-weight="600" font-size="24" fill="#eaf6f8">Which spelling is right?</text>
+                        <rect x="220" y="150" width="360" height="52" rx="12" fill="#10314a" stroke="#22415e"/><text x="248" y="183" font-family="Nunito, sans-serif" font-weight="700" font-size="18" fill="#cfe8ee">recieve</text>
+                        <rect x="220" y="214" width="360" height="52" rx="12" fill="#0f3a2b" stroke="#34d17f" stroke-width="2"/><text x="248" y="247" font-family="Nunito, sans-serif" font-weight="800" font-size="18" fill="#eafff4">receive</text>
+                        <circle cx="548" cy="240" r="17" fill="#34d17f"/><path class="tick-draw" d="M540,240 l6,7 l12,-14" stroke="#04331d" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        <rect x="220" y="278" width="360" height="52" rx="12" fill="#10314a" stroke="#22415e"/><text x="248" y="311" font-family="Nunito, sans-serif" font-weight="700" font-size="18" fill="#cfe8ee">receeve</text>
+                        <g><rect x="150" y="430" width="500" height="46" rx="14" fill="#f5b544"/><text x="400" y="459" text-anchor="middle" font-family="Fredoka, sans-serif" font-weight="600" font-size="20" fill="#241505">Ace the six-question check</text></g>
+                    </g>
+                    <g class="scene s5">
+                        <g transform="translate(400,180)"><g class="rt-x"><circle r="34" fill="#3a1620" stroke="#ff6b6b" stroke-width="2"/><path d="M-13,-13 L13,13 M13,-13 L-13,13" stroke="#ff6b6b" stroke-width="5" stroke-linecap="round"/></g></g>
+                        <g class="rt-help">
+                            <g transform="translate(250,190) scale(1.25)"><use href="#turtle"/></g>
+                            <rect x="360" y="150" width="300" height="72" rx="16" fill="#0c2036" stroke="#22415e"/>
+                            <text x="380" y="184" font-family="Nunito, sans-serif" font-weight="800" font-size="18" fill="#eaf6f8">“No worries — let’s</text>
+                            <text x="380" y="208" font-family="Nunito, sans-serif" font-weight="800" font-size="18" fill="#eaf6f8">take it again together.”</text>
+                        </g>
+                        <g transform="translate(400,190)"><g class="rt-ok"><circle r="36" fill="#0f3a2b" stroke="#34d17f" stroke-width="2"/><path d="M-15,0 l9,11 l20,-24" stroke="#34d17f" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g></g>
+                        <g><rect x="140" y="430" width="520" height="46" rx="14" fill="#f5b544"/><text x="400" y="459" text-anchor="middle" font-family="Fredoka, sans-serif" font-weight="600" font-size="20" fill="#241505">Miss a rule? Smooth re-teaches it</text></g>
+                    </g>
+                    <g class="scene s6">
+                        <ellipse cx="400" cy="220" rx="240" ry="150" fill="url(#glow)"/>
+                        <g transform="translate(400,250) scale(1.4)"><use href="#island"/></g>
+                        <rect x="398" y="176" width="3" height="40" fill="#8a6a45"/><path d="M401,178 l30,8 l-30,8 Z" fill="#35c0d4"/>
+                        <g transform="translate(400,150)"><g class="star"><path d="M0,-46 L13,-14 L47,-14 L20,7 L30,40 L0,20 L-30,40 L-20,7 L-47,-14 L-13,-14 Z" fill="#f5b544" stroke="#ffd783" stroke-width="2"/></g></g>
+                        <circle cx="300" cy="120" r="4" fill="#ffd783" class="wave"/>
+                        <circle cx="512" cy="130" r="5" fill="#ffd783" class="wave" style="animation-delay:-2s"/>
+                        <circle cx="470" cy="90" r="3" fill="#fff" class="wave" style="animation-delay:-1s"/>
+                        <text x="400" y="360" text-anchor="middle" font-family="Fredoka, sans-serif" font-weight="700" font-size="30" fill="#f5b544">Island mastered! ⭐</text>
+                        <g transform="translate(636,60)"><path d="M0,0 c10,8 8,20 0,26 c-8,-6 -10,-18 0,-26Z" fill="#ff8a3d"/><text x="18" y="22" font-family="Fredoka, sans-serif" font-weight="700" font-size="18" fill="#ffd0a3">12</text></g>
+                        <g><rect x="150" y="430" width="500" height="46" rx="14" fill="#f5b544"/><text x="400" y="459" text-anchor="middle" font-family="Fredoka, sans-serif" font-weight="600" font-size="20" fill="#241505">Master it — streaks, stars, celebration</text></g>
+                    </g>
+                </svg>
+            </div>
+            <div class="dots" aria-hidden="true">
+                <span class="dot d1"><i></i></span><span class="dot d2"><i></i></span><span class="dot d3"><i></i></span>
+                <span class="dot d4"><i></i></span><span class="dot d5"><i></i></span><span class="dot d6"><i></i></span>
+            </div>
+        </figure>
     </div>
 </section>
 
@@ -981,18 +1084,41 @@
             <h2>A real sail through the Voyage.</h2>
             <p>Watch both engines at once: the game your child plays — island map, Captain's Locker, streaks — and the AI teaching underneath, right down to the moment Smooth re-teaches a missed rule. No slideshow, just the app.</p>
         </div>
-        <figure class="reel-figure" data-reveal>
-            <video class="reel-video" autoplay muted loop playsinline preload="metadata"
-                   poster="{{ asset('reels/child-reel-poster.png') }}"
-                   aria-label="A sped-up, narrated walkthrough of a child's voyage: the daily warm-up and writing, the island map, rewards locker, and the three ways to master a lesson.">
-                <source src="{{ asset('reels/child-reel.mp4') }}" type="video/mp4">
-                <source src="{{ asset('reels/child-reel.webm') }}" type="video/webm">
-            </video>
-            <button type="button" class="reel-sound" aria-label="Turn sound on">🔇 <span>Sound off</span></button>
-            <img class="reel-static" src="{{ asset('reels/child-reel-poster.png') }}"
-                 alt="A child's Voyage map with illustrated islands, the Captain's Orders panel, and Smooth the turtle welcoming them back.">
-        </figure>
-        <p class="reel-caption">A real recording of the app, sped up and narrated. This is the child's view — parents get their own dashboard below.</p>
+        <div class="hero-demo" data-reveal style="margin:0 auto; max-width:900px;">
+            <div class="hero-tabs" role="tablist" aria-label="Choose a demo">
+                <button type="button" class="hero-tab is-active" id="tab-child" role="tab"
+                        aria-selected="true" aria-controls="pane-child">▶ For your child</button>
+                <button type="button" class="hero-tab" id="tab-parent" role="tab"
+                        aria-selected="false" aria-controls="pane-parent">For you (parent)</button>
+            </div>
+            <div class="hero-pane is-active" id="pane-child" role="tabpanel" aria-labelledby="tab-child">
+                <figure class="reel-figure">
+                    <video class="reel-video" autoplay muted loop playsinline preload="metadata"
+                           poster="{{ asset('reels/child-reel-poster.png') }}"
+                           aria-label="A sped-up, narrated walkthrough of a child's voyage: the daily warm-up and writing, the island map, rewards locker, and the three ways to master a lesson.">
+                        <source src="{{ asset('reels/child-reel.mp4') }}" type="video/mp4">
+                        <source src="{{ asset('reels/child-reel.webm') }}" type="video/webm">
+                    </video>
+                    <button type="button" class="reel-sound" aria-label="Turn sound on">🔇 <span>Sound off</span></button>
+                    <img class="reel-static" src="{{ asset('reels/child-reel-poster.png') }}"
+                         alt="A child's Voyage map with illustrated islands, the Captain's Orders panel, and Smooth the turtle welcoming them back.">
+                </figure>
+            </div>
+            <div class="hero-pane" id="pane-parent" role="tabpanel" aria-labelledby="tab-parent" hidden>
+                <figure class="reel-figure">
+                    <video class="reel-video" muted loop playsinline preload="none"
+                           poster="{{ asset('reels/parent-reel-poster.png') }}"
+                           aria-label="A narrated walkthrough of the guardian portal: the four honest answers, the pace calendar, the SEA placement estimator, parent controls, and the school journal.">
+                        <source src="{{ asset('reels/parent-reel.mp4') }}" type="video/mp4">
+                        <source src="{{ asset('reels/parent-reel.webm') }}" type="video/webm">
+                    </video>
+                    <button type="button" class="reel-sound" aria-label="Turn sound on">🔇 <span>Sound off</span></button>
+                    <img class="reel-static" src="{{ asset('reels/parent-reel-poster.png') }}"
+                         alt="The guardian dashboard — the honest layer — showing a student's readiness, pace and projected SEA placement.">
+                </figure>
+            </div>
+        </div>
+        <p class="reel-caption">Real recordings of the app, sped up and narrated — the child's voyage and the parent portal.</p>
     </div>
 </section>
 <script>
