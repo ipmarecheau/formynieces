@@ -185,7 +185,7 @@
             <div class="lw-hero-text">
                 <p class="lw-hero-tag">Revisiting together 🐢</p>
                 <h1 class="lw-hero-head">Let's relearn this one — no worries, it's not a test!</h1>
-                <p class="lw-hero-sub">We'll walk through the lesson again, one step at a time. Whenever something feels fuzzy, tap <strong>Ask Smooth</strong> — she's right here to help you understand every part.</p>
+                <p class="lw-hero-sub">We'll walk through the lesson again, one step at a time. Whenever something feels fuzzy, tap <strong>Ask Smooth</strong> — it's right here to help you understand every part.</p>
             </div>
         </div>
     @endif

@@ -66,7 +66,7 @@
     <section>
         <div class="container">
             <div class="story" data-reveal>
-                <p class="drop">Like most Caribbean parents, our founder watched the same cycle every year: expensive workbooks abandoned by February, extra lessons that teach to the test, and report cards that arrive too late to change anything. Nobody could answer the only question that mattered — <strong>how is she actually doing, and what should we do tonight?</strong></p>
+                <p class="drop">Like most Caribbean parents, our founder watched the same cycle every year: expensive workbooks abandoned by February, extra lessons that teach to the test, and report cards that arrive too late to change anything. Nobody could answer the only question that mattered — <strong>how is my child actually doing, and what should we do tonight?</strong></p>
                 <p>So he built the answer for his own family first. A platform that plans the whole SEA journey — <strong>Math, English Language Arts and Writing</strong> — re-plans it every single day around each child, reports honestly to the parent each week, and makes the child <strong>want</strong> to log in by putting a warm, patient companion named Smooth at the helm.</p>
                 <p>Everything you see on this site was built for two real children first — our nieces — and only then offered to yours. We are a small, family-run team in Trinidad &amp; Tobago. We make no claims we have not watched happen at our own kitchen table.</p>
             </div>
