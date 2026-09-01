@@ -40,7 +40,7 @@
             <p style="font-size:44px; margin-bottom:8px;">👧</p>
             <h2 style="margin-bottom:8px; font-weight:800;">Add your first child</h2>
             <p style="max-width:440px; margin:0 auto 20px; color:var(--ink-faint,#667);">
-                Set up your child's profile to see her progress here. It only takes a minute.
+                Set up your child's profile to see their progress here. It only takes a minute.
             </p>
             <a href="{{ route('child.setup') }}"
                style="display:inline-block; text-decoration:none; padding:12px 24px; font-size:15px; font-weight:800; color:#5a3d00; background:var(--amber,#f6b71e); border-radius:11px;">

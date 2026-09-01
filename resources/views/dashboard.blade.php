@@ -685,8 +685,8 @@
                             <p style="font-size:0.88rem; color:#1f2937; margin:0 0 10px; line-height:1.5;">
                                 You told us {{ $summary['student']->name }} struggles with
                                 <strong>{{ implode(', ', $summary['clearedStrands']) }}</strong>, but the
-                                diagnostic found she's already got a good handle on
-                                {{ count($summary['clearedStrands']) === 1 ? 'it' : 'them' }}. Her map won't
+                                diagnostic found they've already got a good handle on
+                                {{ count($summary['clearedStrands']) === 1 ? 'it' : 'them' }}. Their map won't
                                 start until you choose.
                             </p>
                             <div style="display:flex; gap:8px; flex-wrap:wrap;">
@@ -761,7 +761,7 @@
                         @else
                             <span style="font-size:0.82rem; color:#9ca3af;">Need a break? You can pause {{ $summary['student']->name }} anytime.</span>
                             <form method="POST" action="{{ route('guardian.pause', $summary['student']) }}"
-                                  onsubmit="return confirm('Pause {{ $summary['student']->name }}? Weekly targets stop and her streak is frozen until you resume.')">
+                                  onsubmit="return confirm('Pause {{ $summary['student']->name }}? Weekly targets stop and their streak is frozen until you resume.')">
                                 @csrf
                                 <button type="submit" style="background:white; color:#0e7490; border:1.5px solid #ddd6fe; border-radius:10px; padding:8px 14px; font-weight:800; cursor:pointer;">Pause</button>
                             </form>

@@ -125,7 +125,7 @@
     <p class="intro">
         Thanks for signing up! We sent a verification link to
         <strong style="color: var(--text);">{{ auth()->user()->email }}</strong>.
-        Click it to confirm your email — then you'll set up your child and start her
+        Click it to confirm your email — then you'll set up your child and start their
         diagnostic. Didn't get it? Resend it below.
     </p>
 

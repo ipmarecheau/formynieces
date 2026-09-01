@@ -55,7 +55,7 @@ Keep it coherent (one rule only) and run the skill's pre-publish checklist.</cod
         <x-slot name="heading">What makes a lesson work with the re-teach</x-slot>
         <div class="prose dark:prose-invert max-w-none">
             <p><strong>Coherence is everything.</strong> One skill per lesson; every block teaches it. When a child is
-            pulled into a re-teach, Smooth remediates the <em>exact block she missed</em> using that block's
+            pulled into a re-teach, Smooth remediates the <em>exact block they missed</em> using that block's
             <code>rule</code> and <code>practiceItems</code> — so those fields must follow the block's own rule, never
             a different one.</p>
             <p>Each interactive block (check, fill-blank, mark-words, match-pairs, order-steps) carries:</p>
@@ -84,7 +84,7 @@ Keep it coherent (one rule only) and run the skill's pre-publish checklist.</cod
             <p>Practice never repeats a question (content-hash no-repeat), so each level needs a deep pool. The floor is
             <strong>{{ $minQuestionsPerLevel }} questions at each of D1, D3 and D5</strong> ({{ $minQuestionsPerLevel * 3 }}+ per
             topic); 20+ per level is better. Too few and a child exhausts the level too soon — when that happens the loop
-            advances her to the next level with content (routing her through a re-teach first if she was struggling), and
+            advances them to the next level with content (routing them through a re-teach first if they were struggling), and
             a thin pool makes that fire far too early.</p>
         </div>
     </x-filament::section>

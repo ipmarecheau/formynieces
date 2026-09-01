@@ -183,7 +183,7 @@
             <h1>{{ $c['name'] }} is all set!</h1>
         </div>
         <div class="creds">
-            <h2>Her Login Details</h2>
+            <h2>Child's Login Details</h2>
             <p class="warn">⚠️ Write these down now — they won't be shown again.</p>
             <div class="cred-row"><span class="k">Username</span><span class="v">{{ $c['username'] }}</span></div>
             <div class="cred-row"><span class="k">Login ID</span><span class="v">{{ $c['login_id'] }}</span></div>
@@ -194,7 +194,7 @@
         <div class="brand">
             <div class="brand-icon">👧</div>
             <h1>Set Up A Child Account</h1>
-            <p>Create her account and start her SEA adventure</p>
+            <p>Create the account and start the SEA adventure</p>
         </div>
 
         @include('partials.setup-stepper', ['current' => 2])
@@ -213,16 +213,16 @@
             @csrf
 
             <div class="field">
-                <label class="lbl" for="name">Her Full Name</label>
+                <label class="lbl" for="name">Child's Full Name</label>
                 <input type="text" id="name" name="name" value="{{ old('name') }}"
                        placeholder="e.g. Aaliyah Thomas" required autofocus>
-                <p class="hint">Her login will be
+                <p class="hint">The login will be
                     <strong id="username-preview" class="username-preview">…</strong><span class="username-suffix">@smoothseas.org</span>
-                    — made from her first initial + last name. A number is added if it's already taken.</p>
+                    — made from the first initial + last name. A number is added if it's already taken.</p>
             </div>
 
             <div class="field">
-                <label class="lbl" for="password">Set a Password for Her</label>
+                <label class="lbl" for="password">Set a Password for the Child</label>
                 <input type="password" id="password" name="password"
                        placeholder="At least 8 characters" required>
             </div>
@@ -242,7 +242,7 @@
 
             <div class="strands">
                 <label class="lbl">Known Weak Areas (optional)</label>
-                <p class="hint" style="margin-bottom:12px;">Pick any you already know she struggles with. The diagnostic will check these too.</p>
+                <p class="hint" style="margin-bottom:12px;">Pick any you already know they struggle with. The diagnostic will check these too.</p>
 
                 @foreach ($strandsBySubject as $subject => $strands)
                     <div class="strand-group">
@@ -260,7 +260,7 @@
                 @endforeach
             </div>
 
-            <button type="submit" class="btn-submit">Create Her Account 🌟</button>
+            <button type="submit" class="btn-submit">Create the Account 🌟</button>
         </form>
     @endif
 

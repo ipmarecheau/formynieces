@@ -163,7 +163,7 @@
             <p style="font-size:44px; margin-bottom:8px;">👧</p>
             <h2 class="lead-h" style="margin-bottom:8px;">Add your first child</h2>
             <p class="p soft" style="max-width:440px; margin:0 auto 20px;">
-                Set up your child's profile to unlock her personalised SEA preparation
+                Set up your child's profile to unlock their personalised SEA preparation
                 journey. It only takes a minute.
             </p>
             <a href="{{ route('child.setup') }}" class="btn-gold"
@@ -208,8 +208,8 @@
             <h3 class="lead-h">{{ $studentName }}'s diagnostic sees things differently</h3>
             <p class="lead-p" style="margin-bottom:12px;">
                 You told us {{ $studentName }} struggles with <strong>{{ implode(', ', $clearedStrands) }}</strong>,
-                but the diagnostic found she's already got a good handle on {{ count($clearedStrands) === 1 ? 'it' : 'them' }}.
-                Her map won't start until you choose. This decision cannot be undone.
+                but the diagnostic found they've already got a good handle on {{ count($clearedStrands) === 1 ? 'it' : 'them' }}.
+                Their map won't start until you choose. This decision cannot be undone.
             </p>
             <div class="btns">
                 <button type="button" wire:click="proceedWithDiagnostic" class="btn-gold">Use the diagnostic result</button>
@@ -248,7 +248,7 @@
 
     {{-- GD-11: plain-language readiness verdict [overview] --}}
     <div class="lead lead-{{ $readiness['tone'] }}" @style(['display:none' => $section !== 'overview'])>
-        <p class="eyebrow">Where {{ $studentName ?? 'she' }} stands</p>
+        <p class="eyebrow">Where {{ $studentName ?? 'your child' }} stands</p>
         <h3 class="lead-h">{{ $readiness['headline'] }}</h3>
         <p class="lead-p">{{ $readiness['detail'] }}</p>
     </div>
@@ -382,7 +382,7 @@
             </div>
             <p class="p soft" style="margin-top:10px;">
                 @if ($trajectory['on_or_ahead'])
-                    The teal fill has reached the on-pace mark — she's where the plan expects her, or ahead.
+                    The teal fill has reached the on-pace mark — they're where the plan expects them, or ahead.
                 @else
                     The teal fill sits left of the amber mark — a little behind the plan; the catch-up steps close the gap.
                 @endif
@@ -468,7 +468,7 @@
                         <p class="p soft" style="margin-top:3px;">{{ $estimate['placement']['note'] }}</p>
                         <p class="p soft" style="margin-top:8px; font-size:12.5px;">Projection confidence: <strong style="text-transform:capitalize;">{{ $estimate['confidence'] }}</strong> — indicative tiers from public SEA cut-off ranges, not a guarantee.</p>
                     @else
-                        <p class="p soft">Not enough assessment activity yet to project placement. It appears once she has practised a few topics.</p>
+                        <p class="p soft">Not enough assessment activity yet to project placement. It appears once they have practised a few topics.</p>
                     @endif
                 </div>
                 @if ($estimate['composite'] !== null)
@@ -506,11 +506,11 @@
     {{-- Excelling + writing feedback [overview] --}}
     <div class="col2" @style(['display:none' => $section !== 'overview'])>
         <div class="card {{ empty($excelling) ? '' : '' }}">
-            <p class="eyebrow">Where {{ $studentName ?? 'she' }} is excelling</p>
+            <p class="eyebrow">Where {{ $studentName ?? 'your child' }} is excelling</p>
             @forelse ($excelling as $item)
                 <div class="excel"><span class="star">★</span><p class="t"><b>{{ $item['facet'] }}</b> — {{ $item['detail'] }}</p></div>
             @empty
-                <p class="p soft">Strengths surface here as she masters modules ahead of pace and scores well on writing.</p>
+                <p class="p soft">Strengths surface here as they master modules ahead of pace and scores well on writing.</p>
             @endforelse
         </div>
 
@@ -553,7 +553,7 @@
         @if ($student)
         <div class="card" style="margin-bottom:14px;">
             <p class="eyebrow">Grant a reward</p>
-            <p class="p soft" style="margin-bottom:12px;">Controls &amp; rewards — never shown to {{ $studentName }}. A granted reward appears in her Captain's Locker.</p>
+            <p class="p soft" style="margin-bottom:12px;">Controls &amp; rewards — never shown to {{ $studentName }}. A granted reward appears in their Captain's Locker.</p>
             <div class="btns" style="margin-bottom:10px;">
                 @foreach ($rewardTypes as $type => $label)
                     <button type="button" class="btn-gold" wire:click="grantReward('{{ $type }}')">Grant {{ $label }}</button>

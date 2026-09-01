@@ -951,20 +951,20 @@ function buildStudentPrompt() {
         }
     }
 
-    return `You are a warm, encouraging SEA exam tutor writing directly to a 10-year-old girl in Trinidad and Tobago.
+    return `You are a warm, encouraging SEA exam tutor writing directly to a 10-year-old child in Trinidad and Tobago.
 
-Write a short, friendly performance summary (3 paragraphs) about her SEA exam preparation this week.
+Write a short, friendly performance summary (3 paragraphs) about their SEA exam preparation this week.
 
 Facts:
 - Current teaching week: ${week} of 30
 - Weeks until exam: ${agentData.weeks_to_exam}
 - Exam date: ${exam}
-- Topics behind: ${behind > 0 ? behindText : 'None — she is on track!'}
+- Topics behind: ${behind > 0 ? behindText : 'None — they are on track!'}
 - Overall status: ${agentData.overall_status}
 
 Guidelines:
 - Write in simple, warm language a 10-year-old can understand
-- Be encouraging and positive even if she is behind
+- Be encouraging and positive even if they are behind
 - Give 1-2 specific actionable tips for next week
 - Use friendly emojis sparingly
 - Do NOT use markdown headers or bullet points — write in natural paragraphs
