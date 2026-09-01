@@ -41,6 +41,8 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
         'seen_guides', // Smooth's guide: dismissed how-to screens (SG-01/02)
         'plan', // Billing: subscription plan (free at launch)
         'first_bill_at', // Billing: when the first charge is scheduled (display-only)
+        'birth_year', // Child metadata (optional)
+        'current_school', // Child metadata (optional)
     ];
 
     protected $hidden = [
@@ -246,6 +248,12 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
     public function invoices(): HasMany
     {
         return $this->hasMany(Invoice::class);
+    }
+
+    // A guardian's co-parents (the other parent(s) invited to the family).
+    public function coParents(): HasMany
+    {
+        return $this->hasMany(CoParent::class, 'guardian_id');
     }
 
     public function progress(): HasMany

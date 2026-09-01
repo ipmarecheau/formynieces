@@ -14,6 +14,7 @@ use App\Http\Controllers\VoyageController;
 use App\Livewire\DiagnosticWalk;
 use App\Livewire\GuardianAccount;
 use App\Livewire\GuardianDashboard;
+use App\Livewire\GuardianFamily;
 use App\Livewire\GuardianProgress;
 use App\Livewire\LessonWalk;
 use App\Livewire\ModuleEntry;
@@ -66,6 +67,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
             ->name('guardian.progress');
         Route::get('/account', GuardianAccount::class)
             ->name('guardian.account');
+        Route::get('/family', GuardianFamily::class)
+            ->name('guardian.family');
         Route::get('/exam-agent', [ExamAgentController::class, 'index'])
             ->name('exam-agent');
         Route::get('/child-setup', [ChildSetupController::class, 'create'])

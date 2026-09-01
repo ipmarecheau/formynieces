@@ -45,7 +45,19 @@ addresses, check prod's `RESEND_API_KEY` (right account?) and `MAIL_FROM_ADDRESS
 Dev uses `MAIL_MAILER=log` by default; temporarily set `MAIL_MAILER=resend` + `RESEND_API_KEY` +
 `MAIL_FROM_ADDRESS=noreply@smoothseas.org` in dev `.env` (gitignored) for real-email testing.
 
-## Guardian Account area (2026-09-01, latest)
+## Guardian Family area (2026-09-01, latest)
+
+`/family` (`guardian.family`, portal nav) — `GuardianFamily` Livewire page. Specs GF-01..06.
+- **Children**: edit each child's details — name (required) plus optional metadata **birth_year**,
+  **current_school**, target_sea_year (new `users.birth_year` + `users.current_school` columns). "Add
+  another child" → child-setup. Edits are scoped to the guardian's own students.
+- **The other parent**: invite a co-parent by name + email (relationship optional) — creates a
+  `co_parents` row (`CoParent` model + factory) and sends a `CoParentInvitation` email (on-demand
+  notification). Duplicate email guarded; remove supported. Full second-guardian *login/acceptance*
+  is still the GO-07/08 roadmap — this captures + invites only.
+- Verified by feature tests + a Playwright end-to-end test (front↔back sync).
+
+## Guardian Account area (2026-09-01)
 
 `/account` (`guardian.account`, in the portal nav) — `GuardianAccount` Livewire page. Specs GA-01..06.
 - **Profile**: edit name / email / phone. Changing email nulls `email_verified_at` and sends a fresh
