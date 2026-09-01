@@ -33,13 +33,23 @@ Feature: Guardian family management
     And an invitation email is sent to that address
 
   @scenario:GF-05
-  Scenario: The same co-parent cannot be invited twice
-    Given a guardian who has already invited a co-parent by email
-    When she invites the same email again
-    Then the second invitation is rejected
+  Scenario: Only one other parent may be added
+    Given a guardian who has already added one other parent
+    When she tries to add a second one
+    Then the second is rejected
+    And the invite form is hidden while an other parent is present
 
   @scenario:GF-06
-  Scenario: A guardian removes a co-parent
-    Given a guardian with an invited co-parent
-    When she removes that co-parent
-    Then the co-parent invitation is deleted from her account
+  Scenario: A guardian removes the other parent
+    Given a guardian with an added other parent
+    When she removes them
+    Then the other parent is deleted from her account
+    And she can add a different one in their place
+
+  @scenario:GF-07
+  Scenario: The family is shown as a tree
+    Given a verified guardian on the Family page
+    When she views the family tree illustration
+    Then she sees herself and the other parent as the two parent nodes
+    And each child appears as a node beneath them
+    And a missing other parent shows as a placeholder to add

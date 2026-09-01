@@ -11,13 +11,13 @@ use Livewire\Livewire;
 
 uses(RefreshDatabase::class);
 
-function familyGuardian(): User
+function familyGuardian(array $attributes = []): User
 {
-    return User::factory()->create([
+    return User::factory()->create(array_merge([
         'role' => 'guardian',
         'age_attested_at' => now(),
         'phone' => '+18685551234',
-    ]);
+    ], $attributes));
 }
 
 function childOf(User $guardian, array $attributes = []): User
@@ -123,19 +123,34 @@ it('invites the other parent and sends an email', function () {
     Notification::assertSentOnDemand(CoParentInvitation::class);
 })->group('scenario:GF-04');
 
-it('rejects inviting the same co-parent twice', function () {
+it('allows only one other parent', function () {
     $guardian = familyGuardian();
-    CoParent::factory()->for($guardian, 'guardian')->create(['email' => 'dupe@example.com']);
+    CoParent::factory()->for($guardian, 'guardian')->create(['email' => 'first@example.com']);
 
+    // A second co-parent — even with a different email — is rejected.
     Livewire::actingAs($guardian)
         ->test(GuardianFamily::class)
-        ->set('coName', 'Dupe Person')
-        ->set('coEmail', 'dupe@example.com')
+        ->set('coName', 'Second Person')
+        ->set('coEmail', 'second@example.com')
         ->call('addCoParent')
         ->assertHasErrors(['coEmail']);
 
-    expect($guardian->coParents()->where('email', 'dupe@example.com')->count())->toBe(1);
+    expect($guardian->coParents()->count())->toBe(1);
 })->group('scenario:GF-05');
+
+it('shows a family tree with the guardian, other parent, and children', function () {
+    $guardian = familyGuardian(['name' => 'Renee Thomas']);
+    childOf($guardian, ['name' => 'Amara', 'birth_year' => 2016]);
+    CoParent::factory()->for($guardian, 'guardian')->create(['name' => 'Marcus Thomas']);
+
+    $this->actingAs($guardian)
+        ->get(route('guardian.family'))
+        ->assertOk()
+        ->assertSee('Renee Thomas')   // the guardian node
+        ->assertSee('Marcus Thomas')  // the other-parent node
+        ->assertSee('Amara')          // the child node
+        ->assertSee('Born 2016');
+})->group('scenario:GF-07');
 
 it('removes a co-parent', function () {
     $guardian = familyGuardian();

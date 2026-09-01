@@ -77,17 +77,18 @@ class GuardianFamily extends Component
     {
         $guardian = Auth::user();
 
+        // Only one other parent/guardian may be added.
+        if ($guardian->coParents()->exists()) {
+            $this->addError('coEmail', 'You can add only one other parent. Remove the current one first.');
+
+            return;
+        }
+
         $validated = $this->validate([
             'coName' => ['required', 'string', 'max:255'],
             'coEmail' => ['required', 'email', 'max:255'],
             'coRelationship' => ['nullable', 'string', 'max:60'],
         ]);
-
-        if ($guardian->coParents()->where('email', $validated['coEmail'])->exists()) {
-            $this->addError('coEmail', 'You have already invited this person.');
-
-            return;
-        }
 
         $coParent = $guardian->coParents()->create([
             'name' => $validated['coName'],
@@ -116,8 +117,9 @@ class GuardianFamily extends Component
         $guardian = Auth::user();
 
         return view('livewire.guardian-family', [
+            'guardian' => $guardian,
             'students' => $guardian->students()->orderBy('name')->get(),
-            'coParents' => $guardian->coParents()->latest()->get(),
+            'coParent' => $guardian->coParents()->latest()->first(),
         ]);
     }
 }

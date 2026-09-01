@@ -32,6 +32,26 @@
         .fm-cp .who span { color:var(--ink-faint); }
         .fm-badge { display:inline-flex; align-items:center; gap:5px; padding:3px 9px; border-radius:999px; font-size:11.5px; font-weight:800; background:var(--amber-tint,#fdf0d5); color:#8a5a00; }
         .fm-empty { font-size:14px; color:var(--ink-faint); font-style:italic; }
+
+        /* Family tree illustration */
+        .fm-tree { overflow-x:auto; padding:8px 0 4px; margin-bottom:16px; }
+        .fm-tree-inner { min-width:max-content; margin:0 auto; text-align:center; }
+        .fm-parents { display:inline-flex; align-items:center; gap:16px; }
+        .fm-amp { color:var(--ink-faint); font-weight:800; font-size:16px; }
+        .fm-node { border:1.5px solid var(--line); border-radius:12px; padding:9px 14px; background:var(--paper-2); min-width:118px; box-shadow:var(--shadow-sm); }
+        .fm-node .role { display:block; font-size:9.5px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; color:var(--teal-deep); }
+        .fm-node .nm { display:block; font-weight:800; color:var(--ink); font-size:14px; margin-top:2px; }
+        .fm-node .meta { display:block; font-size:11px; color:var(--ink-faint); margin-top:1px; }
+        .fm-node.is-guardian { border-color:var(--teal); }
+        .fm-node.is-child { border-color:var(--amber); }
+        .fm-node.is-placeholder { border-style:dashed; background:transparent; }
+        .fm-node.is-placeholder .nm { color:var(--ink-faint); font-weight:700; }
+        .fm-trunk { width:2px; height:20px; background:var(--line); margin:2px auto 0; }
+        .fm-branch { position:relative; display:inline-flex; gap:16px; padding-top:20px; }
+        .fm-branch::before { content:''; position:absolute; top:0; left:24px; right:24px; height:2px; background:var(--line); }
+        .fm-branch.solo::before { display:none; }
+        .fm-kid { position:relative; }
+        .fm-kid::before { content:''; position:absolute; top:-20px; left:50%; width:2px; height:20px; background:var(--line); transform:translateX(-50%); }
     </style>
 
     <div class="fm-head">
@@ -42,6 +62,48 @@
     @if ($flash)
         <div class="fm-flash" role="status">{{ $flash }}</div>
     @endif
+
+    {{-- Family tree illustration --}}
+    <div class="fm-card">
+        <div class="fm-tree">
+            <div class="fm-tree-inner">
+                <div class="fm-parents">
+                    <div class="fm-node is-guardian">
+                        <span class="role">You</span>
+                        <span class="nm">{{ $guardian->name }}</span>
+                    </div>
+                    <span class="fm-amp">&amp;</span>
+                    @if ($coParent)
+                        <div class="fm-node is-guardian">
+                            <span class="role">{{ $coParent->relationship ?: 'Other parent' }}</span>
+                            <span class="nm">{{ $coParent->name }}</span>
+                            <span class="meta">{{ ucfirst($coParent->status) }}</span>
+                        </div>
+                    @else
+                        <div class="fm-node is-placeholder">
+                            <span class="role">Other parent</span>
+                            <span class="nm">Not added yet</span>
+                        </div>
+                    @endif
+                </div>
+
+                @if ($students->isNotEmpty())
+                    <div class="fm-trunk"></div>
+                    <div class="fm-branch {{ $students->count() === 1 ? 'solo' : '' }}">
+                        @foreach ($students as $child)
+                            <div class="fm-kid">
+                                <div class="fm-node is-child">
+                                    <span class="role">Child</span>
+                                    <span class="nm">{{ $child->name }}</span>
+                                    @if ($child->birth_year)<span class="meta">Born {{ $child->birth_year }}</span>@endif
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
+            </div>
+        </div>
+    </div>
 
     {{-- Children --}}
     <div class="fm-card">
@@ -87,25 +149,20 @@
     {{-- Co-parent --}}
     <div class="fm-card">
         <h2>The other parent</h2>
-        <p class="fm-note">Invite your child's other parent or guardian. They'll get an email to join with this address.</p>
+        <p class="fm-note">You can add one other parent or guardian. They'll get an email to join with this address.</p>
 
-        @if ($coParents->isNotEmpty())
-            <div style="margin-bottom:16px;">
-                @foreach ($coParents as $coParent)
-                    <div class="fm-cp" wire:key="cp-{{ $coParent->id }}">
-                        <div class="who">
-                            <b>{{ $coParent->name }}</b> <span>· {{ $coParent->email }}</span>
-                            @if ($coParent->relationship)<span>· {{ $coParent->relationship }}</span>@endif
-                            <div style="margin-top:4px;"><span class="fm-badge">{{ ucfirst($coParent->status) }}</span></div>
-                        </div>
-                        <button type="button" class="fm-btn fm-btn-danger"
-                                wire:click="removeCoParent({{ $coParent->id }})"
-                                wire:confirm="Remove {{ $coParent->name }} as a co-parent?">Remove</button>
-                    </div>
-                @endforeach
+        @if ($coParent)
+            <div class="fm-cp" wire:key="cp-{{ $coParent->id }}">
+                <div class="who">
+                    <b>{{ $coParent->name }}</b> <span>· {{ $coParent->email }}</span>
+                    @if ($coParent->relationship)<span>· {{ $coParent->relationship }}</span>@endif
+                    <div style="margin-top:4px;"><span class="fm-badge">{{ ucfirst($coParent->status) }}</span></div>
+                </div>
+                <button type="button" class="fm-btn fm-btn-danger"
+                        wire:click="removeCoParent({{ $coParent->id }})"
+                        wire:confirm="Remove {{ $coParent->name }} as the other parent?">Remove</button>
             </div>
-        @endif
-
+        @else
         <form wire:submit="addCoParent">
             <div class="fm-grid">
                 <div class="fm-field">
@@ -126,5 +183,6 @@
             </div>
             <button type="submit" class="fm-btn">Send invitation</button>
         </form>
+        @endif
     </div>
 </div>
