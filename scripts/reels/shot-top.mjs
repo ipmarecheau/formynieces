@@ -1,0 +1,11 @@
+import { chromium } from 'playwright-core';
+const SP='/tmp/claude-0/-root-dev-formynieces/94033ef5-0d34-4bf7-800c-4a9632257575/scratchpad';
+const b=await chromium.launch({executablePath:'/root/.cache/ms-playwright/chromium-1223/chrome-linux64/chrome',headless:true});
+const p=await b.newPage({viewport:{width:1200,height:1000}});
+const errs=[];p.on('pageerror',e=>errs.push(e.message));
+await p.goto('http://127.0.0.1:8000/?x='+Date.now(),{waitUntil:'domcontentloaded'});
+await new Promise(r=>setTimeout(r,3200));
+const cd=await p.evaluate(()=>{const g=id=>document.getElementById(id)?.textContent; return {mon:g('scMonths'),wk:g('scWeeks'),dy:g('scDays'),hr:g('scHours'),mn:g('scMins'),sc:g('scSecs')};});
+console.log('countdown:',JSON.stringify(cd),'err:',errs[0]||'none');
+await p.screenshot({path:SP+'/top.png',animations:'disabled',timeout:45000});
+await b.close();

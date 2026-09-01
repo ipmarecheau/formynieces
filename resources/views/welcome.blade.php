@@ -643,14 +643,13 @@
     </div>
 </header>
 
+@include('partials.sea-countdown')
+
 <!-- HERO -->
 <section class="hero">
     <div class="wrap">
-        <span class="hero-badge hero-badge-center" data-reveal>🇹🇹 SEA 2027 · built for Caribbean families</span>
-
-        @include('partials.sim-demo')
-
-        <div class="hero-lead hero-lead-complement" data-reveal style="--rd:.12s">
+        <div class="hero-lead" data-reveal>
+            <span class="hero-badge hero-badge-center">🇹🇹 SEA 2027 · built for Caribbean families</span>
             <h1>They'll think it's a <span class="accent">game</span>. It's <span class="accent">AI-assisted</span> learning for the whole SEA.</h1>
             <p class="hero-lede">
                 SmoothSeas turns Math, ELA and Writing into a voyage your child <strong>begs to sail</strong> —
@@ -676,6 +675,8 @@
                 </p>
             @endguest
         </div>
+
+        @include('partials.sim-demo')
     </div>
 </section>
 
@@ -766,41 +767,6 @@
     </div>
 </section>
 
-<!-- MEET SMOOTH -->
-<section class="band" id="meet-smooth">
-    <div class="wrap">
-        <div class="meet-grid">
-            <div class="meet-figure" data-reveal>
-                <img src="{{ asset('images/voyage/companion/smooth-cheer.webp') }}" alt="Smooth the turtle, cheering">
-            </div>
-            <div data-reveal style="--rd:.1s">
-                <span class="eyebrow">Meet the AI captain</span>
-                <h2 style="font-size:clamp(24px,3.8vw,34px); margin:12px 0 18px;">Your child's study buddy is a turtle named Smooth.</h2>
-                <div class="meet-quote">
-                    <strong>“Ahoy! I'm Smooth.”</strong> I'm the friendly face of the AI. I sail with your child through every lesson —
-                    miss a rule and we take it again together, word by word, until it clicks. I never make anyone feel small.
-                </div>
-                <div class="meet-cards">
-                    <div class="meet-card">
-                        <span class="m-icon">🧭</span>
-                        <h4>He shows them the way</h4>
-                        <p>A friendly how-to the first time they open any screen — then never nags.</p>
-                    </div>
-                    <div class="meet-card">
-                        <span class="m-icon">💛</span>
-                        <h4>Explains, never scolds</h4>
-                        <p>Miss a rule twice? He re-teaches that exact rule until it sticks.</p>
-                    </div>
-                    <div class="meet-card">
-                        <span class="m-icon">🎉</span>
-                        <h4>He celebrates every win</h4>
-                        <p>Streaks, mastery stars and end-of-lesson victories, big and small.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- FOR PARENTS -->
 <section class="band" id="for-parents" style="background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
@@ -1071,6 +1037,42 @@
         });
     })();
 </script>
+
+<!-- MEET SMOOTH -->
+<section class="band" id="meet-smooth">
+    <div class="wrap">
+        <div class="meet-grid">
+            <div class="meet-figure" data-reveal>
+                <img src="{{ asset('images/voyage/companion/smooth-cheer.webp') }}" alt="Smooth the turtle, cheering">
+            </div>
+            <div data-reveal style="--rd:.1s">
+                <span class="eyebrow">Meet the AI captain</span>
+                <h2 style="font-size:clamp(24px,3.8vw,34px); margin:12px 0 18px;">Your child's study buddy is a turtle named Smooth.</h2>
+                <div class="meet-quote">
+                    <strong>“Ahoy! I'm Smooth.”</strong> I'm the friendly face of the AI. I sail with your child through every lesson —
+                    miss a rule and we take it again together, word by word, until it clicks. I never make anyone feel small.
+                </div>
+                <div class="meet-cards">
+                    <div class="meet-card">
+                        <span class="m-icon">🧭</span>
+                        <h4>He shows them the way</h4>
+                        <p>A friendly how-to the first time they open any screen — then never nags.</p>
+                    </div>
+                    <div class="meet-card">
+                        <span class="m-icon">💛</span>
+                        <h4>Explains, never scolds</h4>
+                        <p>Miss a rule twice? He re-teaches that exact rule until it sticks.</p>
+                    </div>
+                    <div class="meet-card">
+                        <span class="m-icon">🎉</span>
+                        <h4>He celebrates every win</h4>
+                        <p>Streaks, mastery stars and end-of-lesson victories, big and small.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- PRICING -->
 <section class="band" id="pricing" style="background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
