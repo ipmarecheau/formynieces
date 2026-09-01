@@ -8,11 +8,32 @@ it('routes a verified guardian with no student to her dashboard', function () {
         'age_attested_at' => now(),
     ]);
 
+    // She reaches the dashboard, not the verify-email screen (email is verified).
     $this->post('/login', [
         'email' => $guardian->email,
         'password' => 'password',
     ])->assertRedirect(route('dashboard'));
+
+    $this->actingAs($guardian)->get(route('guardian.dashboard'))->assertOk();
 })->group('scenario:GO-03');
+
+it('sends an existing guardian with an UNVERIFIED email to verify-email on login', function () {
+    $guardian = User::factory()->unverified()->create([
+        'role' => 'guardian',
+        'age_attested_at' => now(),
+    ]);
+
+    // Login itself routes toward the dashboard, but the `verified` middleware on
+    // the dashboard bounces an unverified email to the verification notice.
+    $this->post('/login', [
+        'email' => $guardian->email,
+        'password' => 'password',
+    ]);
+
+    $this->actingAs($guardian)
+        ->get(route('guardian.dashboard'))
+        ->assertRedirect(route('verification.notice'));
+})->group('scenario:GO-02');
 
 it('routes a verified guardian who already has a student to the dashboard', function () {
     $guardian = User::factory()->create([
