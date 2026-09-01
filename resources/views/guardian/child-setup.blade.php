@@ -100,6 +100,26 @@
         input::placeholder { color: rgba(196,181,253,0.4); }
         .hint { font-size: 12px; color: rgba(196,181,253,0.7); margin-top: 5px; }
 
+        /* Generated-login highlight — the focal point of the form */
+        .login-preview {
+            position: relative; text-align: center; margin: 6px 0 22px;
+            background: linear-gradient(160deg, rgba(34,211,238,0.12), rgba(246,183,30,0.10));
+            border: 1.5px solid rgba(34,211,238,0.55); border-radius: 16px;
+            padding: 18px 20px 16px; box-shadow: 0 0 34px rgba(34,211,238,0.18);
+        }
+        .login-preview .lp-label {
+            display: inline-block; font-size: 11.5px; font-weight: 700; letter-spacing: 0.1em;
+            text-transform: uppercase; color: #86efac; margin-bottom: 8px;
+        }
+        .login-preview .lp-email {
+            font-family: 'Fredoka One', cursive; font-size: clamp(20px, 5.4vw, 27px);
+            line-height: 1.1; word-break: break-all;
+        }
+        .login-preview .lp-email #username-preview { color: #fcd34d; }
+        .login-preview .lp-email .lp-suffix { color: #67e8f9; }
+        .login-preview .lp-note { font-size: 12px; color: var(--muted); margin-top: 9px; }
+        .login-preview .lp-note strong { color: #cbe4f0; }
+
         .username-row { display: flex; align-items: center; gap: 0; }
         .username-row input { border-radius: 12px 0 0 12px; }
         .username-suffix {
@@ -161,6 +181,20 @@
         }
         .cred-row .k { color: var(--muted); }
         .cred-row .v { color: var(--text); font-weight: 700; font-family: monospace; }
+        .cred-hero {
+            text-align: left; margin-bottom: 14px; padding: 16px 18px;
+            background: linear-gradient(160deg, rgba(34,211,238,0.16), rgba(246,183,30,0.10));
+            border: 1.5px solid rgba(34,211,238,0.6); border-radius: 14px;
+            box-shadow: 0 0 30px rgba(34,211,238,0.2);
+        }
+        .cred-hero .k {
+            display: block; font-size: 11.5px; font-weight: 700; letter-spacing: 0.1em;
+            text-transform: uppercase; color: #86efac; margin-bottom: 6px;
+        }
+        .cred-hero .v {
+            font-family: 'Fredoka One', cursive; font-size: clamp(18px, 4.8vw, 25px);
+            color: #fcd34d; word-break: break-all; line-height: 1.15;
+        }
         .creds a {
             display: inline-block; margin-top: 12px;
             color: #67e8f9; font-weight: 700; text-decoration: none; font-size: 14px;
@@ -185,8 +219,8 @@
         <div class="creds">
             <h2>Child's Login Details</h2>
             <p class="warn">⚠️ Write these down now — they won't be shown again.</p>
+            <div class="cred-hero"><span class="k">Login ID (email)</span><span class="v">{{ $c['login_id'] }}</span></div>
             <div class="cred-row"><span class="k">Username</span><span class="v">{{ $c['username'] }}</span></div>
-            <div class="cred-row"><span class="k">Login ID</span><span class="v">{{ $c['login_id'] }}</span></div>
             <div class="cred-row"><span class="k">Password</span><span class="v">{{ $c['password'] }}</span></div>
             <a href="{{ route('child.setup') }}">Set up another child →</a>
         </div>
@@ -216,9 +250,12 @@
                 <label class="lbl" for="name">Child's Full Name</label>
                 <input type="text" id="name" name="name" value="{{ old('name') }}"
                        placeholder="e.g. Aaliyah Thomas" required autofocus>
-                <p class="hint">The login will be
-                    <strong id="username-preview" class="username-preview">…</strong><span class="username-suffix">@smoothseas.org</span>
-                    — made from the first initial + last name. A number is added if it's already taken.</p>
+            </div>
+
+            <div class="login-preview" aria-live="polite">
+                <span class="lp-label">✨ Your child's login</span>
+                <div class="lp-email"><span id="username-preview">…</span><span class="lp-suffix">@smoothseas.org</span></div>
+                <p class="lp-note">Auto-created from the first initial + last name — <strong>save it, it's how they sign in</strong>. A number is added if it's already taken.</p>
             </div>
 
             <div class="field">

@@ -1,0 +1,14 @@
+import { chromium } from 'playwright-core';
+const SP='/tmp/claude-0/-root-dev-formynieces/94033ef5-0d34-4bf7-800c-4a9632257575/scratchpad';
+const b=await chromium.launch({executablePath:'/root/.cache/ms-playwright/chromium-1223/chrome-linux64/chrome',headless:true});
+const p=await b.newPage({viewport:{width:600,height:1100}});
+await p.goto('http://127.0.0.1:8000/login',{waitUntil:'networkidle'});
+await p.fill('#email','demo-guardian@smoothseas.test'); await p.fill('#password','smoothseas');
+await Promise.all([p.waitForLoadState('networkidle'),p.click('button[type=submit]')]);
+await p.goto('http://127.0.0.1:8000/child-setup',{waitUntil:'networkidle'});
+const code=p.url();
+await p.fill('#name','Aaliyah Thomas').catch(()=>{});
+await new Promise(r=>setTimeout(r,400));
+await p.screenshot({path:SP+'/childsetup.png',timeout:20000});
+console.log('url:',code);
+await b.close();
