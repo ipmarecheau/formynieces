@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Services\Verification\PhoneVerifier;
 use App\Services\Verification\StubPhoneVerifier;
 use App\Services\Verification\TwilioPhoneVerifier;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -34,6 +35,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Allow Blade views in resources/views/layouts to be used as components,
+        // so controller-returned pages can wrap themselves in <x-layouts.guardian>
+        // (the same chrome Livewire pages get via #[Layout('layouts.guardian')]).
+        Blade::anonymousComponentPath(resource_path('views/layouts'), 'layouts');
     }
 }
