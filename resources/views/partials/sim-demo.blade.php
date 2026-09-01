@@ -35,10 +35,10 @@
 <div class="sim-wrap">
     <div class="sim-stage" id="simStage">
         <div class="sim-scaler" id="simScaler">
-            <iframe class="sim-frame" data-src="{{ asset('demo/voyage.html') }}" data-cap="Sail the map — every skill is an island to conquer" data-tx="269" data-ty="359" data-scroll="0" data-sh="806" scrolling="no" tabindex="-1" aria-hidden="true" title="Voyage map"></iframe>
-            <iframe class="sim-frame" data-src="{{ asset('demo/lesson.html') }}" data-cap="Learn it — a hands-on lesson with interactive widgets" data-tx="544" data-ty="874" data-scroll="1" data-sh="1067" scrolling="no" tabindex="-1" aria-hidden="true" title="Lesson"></iframe>
-            <iframe class="sim-frame" data-src="{{ asset('demo/check.html') }}" data-cap="Ace the six-question check" data-tx="786" data-ty="319" data-scroll="0" data-sh="800" scrolling="no" tabindex="-1" aria-hidden="true" title="Quick check"></iframe>
-            <iframe class="sim-frame" data-src="{{ asset('demo/chat.html') }}" data-cap="Stuck? Ask Smooth — the AI re-teaches, right in the chat" data-tx="1223" data-ty="737" data-scroll="0" data-sh="800" scrolling="no" tabindex="-1" aria-hidden="true" title="Ask Smooth chat"></iframe>
+            <iframe class="sim-frame" data-src="/demo/voyage.html" data-cap="Sail the map — every skill is an island to conquer" data-tx="269" data-ty="359" data-scroll="0" data-sh="806" scrolling="no" tabindex="-1" aria-hidden="true" title="Voyage map"></iframe>
+            <iframe class="sim-frame" data-src="/demo/lesson.html" data-cap="Learn it — a hands-on lesson with interactive widgets" data-tx="544" data-ty="874" data-scroll="1" data-sh="1067" scrolling="no" tabindex="-1" aria-hidden="true" title="Lesson"></iframe>
+            <iframe class="sim-frame" data-src="/demo/check.html" data-cap="Ace the six-question check" data-tx="786" data-ty="319" data-scroll="0" data-sh="800" scrolling="no" tabindex="-1" aria-hidden="true" title="Quick check"></iframe>
+            <iframe class="sim-frame" data-src="/demo/chat.html" data-cap="Stuck? Ask Smooth — the AI re-teaches, right in the chat" data-tx="1223" data-ty="737" data-scroll="0" data-sh="800" scrolling="no" tabindex="-1" aria-hidden="true" title="Ask Smooth chat"></iframe>
             <div class="sim-flash" id="simFlash"></div>
             <div class="sim-ring sim-ring1" id="simRing1"></div>
             <div class="sim-ring sim-ring2" id="simRing2"></div>

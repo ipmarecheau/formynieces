@@ -1,0 +1,11 @@
+import { chromium } from 'playwright-core';
+const SP='/tmp/claude-0/-root-dev-formynieces/94033ef5-0d34-4bf7-800c-4a9632257575/scratchpad';
+const b=await chromium.launch({executablePath:'/root/.cache/ms-playwright/chromium-1223/chrome-linux64/chrome',headless:true});
+const p=await b.newPage({viewport:{width:1200,height:1050}});
+const errs=[];p.on('pageerror',e=>errs.push('PE:'+e.message));
+await p.goto('http://127.0.0.1:8000/?x='+Date.now(),{waitUntil:'networkidle'});
+await new Promise(r=>setTimeout(r,2200));
+const info=await p.evaluate(()=>{const f=document.querySelector('.sim-frame'); return {sim:!!document.querySelector('.sim-stage'), firstFrame:f&&f.src?f.src.split('/').pop():'none'};});
+console.log(JSON.stringify(info),'err:',errs[0]||'none');
+await p.screenshot({path:SP+'/herotop2.png',timeout:40000});
+await b.close();
