@@ -2,11 +2,11 @@
 
 namespace App\Livewire;
 
-use App\Models\User;
 use App\Models\StudentProgress;
 use App\Models\SyllabusModule;
-use Livewire\Component;
+use App\Models\User;
 use Livewire\Attributes\Layout;
+use Livewire\Component;
 
 class GuardianProgress extends Component
 {
@@ -15,23 +15,24 @@ class GuardianProgress extends Component
 
     /** student_progress.status → drill-down bucket key. */
     private const STATUS_BUCKET = [
-        'mastered'          => 'mastered',
+        'mastered' => 'mastered',
         'inferred_mastered' => 'in_review',
-        'needs_work'        => 'working_on',
-        'not_started'       => 'upcoming',
+        'needs_work' => 'working_on',
+        'not_started' => 'upcoming',
     ];
 
     #[Layout('layouts.guardian')]
     public function render()
     {
         $guardian = auth()->user();
-        $student  = $guardian->students()->first();
+        $student = $guardian->students()->first();
 
         $buckets = $this->buildBuckets($student);
 
         return view('livewire.guardian-progress', [
             'buckets' => $buckets,
             'summaries' => $this->summarise($buckets),
+            'hasChild' => $student !== null,
         ]);
     }
 
@@ -57,7 +58,7 @@ class GuardianProgress extends Component
 
     /**
      * @return array<string, array<string, array<int, array{id:int, topic:string}>>>
-     *         subject => bucket => list of {id, topic}
+     *                                                                               subject => bucket => list of {id, topic}
      */
     private function buildBuckets(?User $student): array
     {
@@ -69,10 +70,10 @@ class GuardianProgress extends Component
 
         foreach (self::MODULE_SUBJECTS as $subject) {
             $buckets[$subject] = [
-                'mastered'   => [],
-                'in_review'  => [],
+                'mastered' => [],
+                'in_review' => [],
                 'working_on' => [],
-                'upcoming'   => [],
+                'upcoming' => [],
             ];
 
             $modules = SyllabusModule::where('subject', $subject)
@@ -85,7 +86,7 @@ class GuardianProgress extends Component
                 $bucket = self::STATUS_BUCKET[$status] ?? 'upcoming';
 
                 $buckets[$subject][$bucket][] = [
-                    'id'    => $module->id,
+                    'id' => $module->id,
                     'topic' => $module->topic,
                 ];
             }

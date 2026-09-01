@@ -62,6 +62,23 @@ it('shows an Add child empty state on the dashboard for a guardian with no child
         ->assertSee(route('child.setup'));
 })->group('scenario:GO-18');
 
+it('shows the Add child empty state on every guardian page while she has no child', function () {
+    $guardian = User::factory()->create([
+        'role' => 'guardian',
+        'age_attested_at' => now(),
+    ]);
+
+    // Progress is a separate page from the dashboard sections — it must also
+    // show the empty state, not a blank/broken drill-down.
+    foreach ([route('guardian.dashboard'), route('guardian.progress')] as $url) {
+        $this->actingAs($guardian)
+            ->get($url)
+            ->assertOk()
+            ->assertSee('Add child')
+            ->assertSee(route('child.setup'));
+    }
+})->group('scenario:GO-18');
+
 it('lets a no-child guardian add a child without any email verification step', function () {
     $guardian = User::factory()->create([
         'role' => 'guardian',

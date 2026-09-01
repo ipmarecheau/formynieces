@@ -34,6 +34,21 @@
         .pg-unassessed { font-size: 13.5px; color: var(--ink-faint); font-style: italic; margin: 0; }
     </style>
 
+    @unless ($hasChild)
+        {{-- No child yet: mirror the dashboard's Add child empty state (GO-18). --}}
+        <div style="text-align:center; padding:40px 24px; background:var(--paper-2,#fff); border:1px solid var(--line,#e6e6e6); border-radius:16px; box-shadow:0 1px 3px rgba(0,0,0,.05);">
+            <p style="font-size:44px; margin-bottom:8px;">👧</p>
+            <h2 style="margin-bottom:8px; font-weight:800;">Add your first child</h2>
+            <p style="max-width:440px; margin:0 auto 20px; color:var(--ink-faint,#667);">
+                Set up your child's profile to see her progress here. It only takes a minute.
+            </p>
+            <a href="{{ route('child.setup') }}"
+               style="display:inline-block; text-decoration:none; padding:12px 24px; font-size:15px; font-weight:800; color:#5a3d00; background:var(--amber,#f6b71e); border-radius:11px;">
+                ➕ Add child
+            </a>
+        </div>
+    @else
+
     <div class="pg-head">
         <h1 class="pg-title">Progress drill-down</h1>
         <p class="pg-sub">What needs attention first — the whole syllabus is here too.</p>
@@ -90,4 +105,5 @@
         <p class="pg-eyebrow">Writing</p>
         <p class="pg-unassessed">Writing is a paper awaiting its own assessment track.</p>
     </div>
+    @endunless
 </div>
