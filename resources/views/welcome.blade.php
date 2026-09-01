@@ -136,7 +136,7 @@
 
         /* ── NAV ── */
         header.nav {
-            position: sticky; top: 0; z-index: 100;
+            position: sticky; top: 42px; z-index: 100;
             background: rgba(251,248,242,.85);
             backdrop-filter: saturate(140%) blur(12px);
             border-bottom: 1px solid var(--line);
@@ -570,6 +570,8 @@
 </head>
 <body>
 
+@include('partials.sea-countdown')
+
 <!-- NAV -->
 <header class="nav">
     <input type="checkbox" id="nav-open" hidden>
@@ -642,8 +644,6 @@
         @endauth
     </div>
 </header>
-
-@include('partials.sea-countdown')
 
 <!-- HERO -->
 <section class="hero">
