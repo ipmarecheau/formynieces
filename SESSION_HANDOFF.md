@@ -45,7 +45,20 @@ addresses, check prod's `RESEND_API_KEY` (right account?) and `MAIL_FROM_ADDRESS
 Dev uses `MAIL_MAILER=log` by default; temporarily set `MAIL_MAILER=resend` + `RESEND_API_KEY` +
 `MAIL_FROM_ADDRESS=noreply@smoothseas.org` in dev `.env` (gitignored) for real-email testing.
 
-## Guardian Family area (2026-09-01, latest)
+## Child login management (2026-09-01, latest)
+
+Child-setup now **generates** the child's password (ocean-word style, e.g. `CoralTide48`) instead of the
+guardian choosing it — password fields replaced by a year-chip picker for the target SEA year. The
+password is stored hashed (auth) AND encrypted (`users.child_password_enc`, `encrypted` cast) so the
+guardian can recover it. On creation the guardian is emailed the **login ID** (never the password) via
+the `ChildAccountCreated` mailable. New Parent-Portal page `/guardian/children` (`guardian.children`,
+nav "Children's logins" 🔑) — reveal or reset each child's password (`GuardianChildrenController`,
+authorised to own students only). Note: this page uses the dark child-setup theme, not the light portal
+chrome. Tests in `ChildSetupTest` (generate + reveal/reset) and `GuardianChildrenTest` (index + nav).
+Built by the parallel session; completed here (nav link, index/nav tests, browser-test fix for the new
+form).
+
+## Guardian Family area (2026-09-01)
 
 `/family` (`guardian.family`, portal nav) — `GuardianFamily` Livewire page. Specs GF-01..06.
 - **Children**: edit each child's details — name (required) plus optional metadata **birth_year**,

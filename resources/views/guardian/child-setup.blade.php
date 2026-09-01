@@ -129,6 +129,22 @@
             padding: 12px 14px; font-size: 13px; color: var(--muted); white-space: nowrap;
         }
 
+        .year-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+        .year-chip { position: relative; cursor: pointer; }
+        .year-chip input { position: absolute; opacity: 0; pointer-events: none; }
+        .year-chip span {
+            display: block; min-width: 76px; text-align: center;
+            background: rgba(255,255,255,0.06); border: 1.5px solid rgba(34,211,238,0.3);
+            border-radius: 12px; padding: 12px 16px; color: var(--text);
+            font-family: 'Fredoka One', cursive; font-size: 17px; transition: all 0.15s;
+        }
+        .year-chip:hover span { border-color: rgba(34,211,238,0.6); }
+        .year-chip input:checked + span {
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+            border-color: transparent; color: #fff; box-shadow: 0 0 20px rgba(34,211,238,0.35);
+        }
+        .year-chip input:focus-visible + span { outline: 2px solid #67e8f9; outline-offset: 2px; }
+
         .strands { margin-bottom: 18px; }
         .strand-group { margin-bottom: 14px; }
         .strand-group h3 {
@@ -222,6 +238,8 @@
             <div class="cred-hero"><span class="k">Login ID (email)</span><span class="v">{{ $c['login_id'] }}</span></div>
             <div class="cred-row"><span class="k">Username</span><span class="v">{{ $c['username'] }}</span></div>
             <div class="cred-row"><span class="k">Password</span><span class="v">{{ $c['password'] }}</span></div>
+            <p class="warn" style="color:#93b2cc;margin-top:14px;">📧 We've emailed you the login ID as a record. You can reveal or reset the password anytime in your Parent Portal.</p>
+            <a href="{{ route('guardian.children') }}">Manage children's logins →</a><br>
             <a href="{{ route('child.setup') }}">Set up another child →</a>
         </div>
     @else
@@ -259,22 +277,18 @@
             </div>
 
             <div class="field">
-                <label class="lbl" for="password">Set a Password for the Child</label>
-                <input type="password" id="password" name="password"
-                       placeholder="At least 8 characters" required>
-            </div>
-
-            <div class="field">
-                <label class="lbl" for="password_confirmation">Confirm Password</label>
-                <input type="password" id="password_confirmation" name="password_confirmation"
-                       placeholder="Repeat the password" required>
-            </div>
-
-            <div class="field">
-                <label class="lbl" for="target_sea_year">Target SEA Year</label>
-                <input type="number" id="target_sea_year" name="target_sea_year"
-                       value="{{ old('target_sea_year') }}"
-                       min="2025" max="2035" placeholder="e.g. 2027" required>
+                <label class="lbl">Target SEA Year</label>
+                @php($years = range(now()->year, now()->year + 4))
+                <div class="year-chips">
+                    @foreach ($years as $y)
+                        <label class="year-chip">
+                            <input type="radio" name="target_sea_year" value="{{ $y }}"
+                                   {{ (int) old('target_sea_year') === $y ? 'checked' : '' }} required>
+                            <span>{{ $y }}</span>
+                        </label>
+                    @endforeach
+                </div>
+                <p class="hint" style="margin-top:8px;">A strong password is generated automatically — you can reveal or reset it anytime in your Parent Portal.</p>
             </div>
 
             <div class="strands">

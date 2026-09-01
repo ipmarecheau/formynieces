@@ -26,11 +26,11 @@ it('lets a verified guardian with no child log in, land on the dashboard, and ad
     $page->click('a[href*="child-setup"]')
         ->assertPathContains('child-setup');
 
-    // Create her first child.
+    // Create her first child. The password is generated (no password fields);
+    // the target SEA year is picked from the year chips.
+    $currentYear = now()->year;
     $page->type('#name', 'Amara')
-        ->type('#password', 'ChildPass123!')
-        ->type('#password_confirmation', 'ChildPass123!')
-        ->type('#target_sea_year', '2027')
+        ->click("label.year-chip:has(input[value=\"{$currentYear}\"])")
         ->click('button[type=submit]');
 
     // The student is created and linked to the guardian, with no verification step.

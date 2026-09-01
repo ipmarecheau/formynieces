@@ -5,6 +5,7 @@ use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ChildSetupController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExamAgentController;
+use App\Http\Controllers\GuardianChildrenController;
 use App\Http\Controllers\GuardianPauseController;
 use App\Http\Controllers\GuardianReconciliationController;
 use App\Http\Controllers\LessonExportController;
@@ -75,6 +76,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
             ->name('child.setup');
         Route::post('/child-setup', [ChildSetupController::class, 'store'])
             ->name('child.store');
+
+        // Parent Portal — manage children's logins (reveal / reset password on demand).
+        Route::get('/guardian/children', [GuardianChildrenController::class, 'index'])
+            ->name('guardian.children');
+        Route::post('/guardian/children/{child}/reveal', [GuardianChildrenController::class, 'reveal'])
+            ->name('guardian.children.reveal');
+        Route::post('/guardian/children/{child}/reset', [GuardianChildrenController::class, 'reset'])
+            ->name('guardian.children.reset');
 
         // RR-04: a guardian resolves a pending reconciliation from the Parent Portal.
         Route::post('/guardian/reconciliation/{student}/proceed', [GuardianReconciliationController::class, 'proceed'])

@@ -47,6 +47,7 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
 
     protected $hidden = [
         'password',
+        'child_password_enc',
         'remember_token',
     ];
 
@@ -57,6 +58,7 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
             'phone_verified_at' => 'datetime',
             'email_verification_code_expires_at' => 'datetime',
             'password' => 'hashed',
+            'child_password_enc' => 'encrypted', // recoverable copy of a child's generated password (guardian reveal/reset)
             'onboarding_completed_at' => 'datetime', // Slice 1
             'welcomed_at' => 'datetime', // TR-01: first welcome + joining bonus
             'guardian_reconciled_at' => 'datetime', // RR-04 reconciliation decision
