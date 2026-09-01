@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Set Up Your Niece — SmoothSeas</title>
+    <title>Set Up Your Child — SmoothSeas</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -188,12 +188,12 @@
             <div class="cred-row"><span class="k">Username</span><span class="v">{{ $c['username'] }}</span></div>
             <div class="cred-row"><span class="k">Login ID</span><span class="v">{{ $c['login_id'] }}</span></div>
             <div class="cred-row"><span class="k">Password</span><span class="v">{{ $c['password'] }}</span></div>
-            <a href="{{ route('child.setup') }}">Set up another niece →</a>
+            <a href="{{ route('child.setup') }}">Set up another child →</a>
         </div>
     @else
         <div class="brand">
             <div class="brand-icon">👧</div>
-            <h1>Set Up A Niece Account</h1>
+            <h1>Set Up A Child Account</h1>
             <p>Create her account and start her SEA adventure</p>
         </div>
 
