@@ -234,11 +234,11 @@
         </div>
         <div class="creds">
             <h2>Child's Login Details</h2>
-            <p class="warn">⚠️ Write these down now — they won't be shown again.</p>
+            <p class="warn">✅ All set! We've emailed these credentials to you for your records.</p>
             <div class="cred-hero"><span class="k">Login ID (email)</span><span class="v">{{ $c['login_id'] }}</span></div>
             <div class="cred-row"><span class="k">Username</span><span class="v">{{ $c['username'] }}</span></div>
             <div class="cred-row"><span class="k">Password</span><span class="v">{{ $c['password'] }}</span></div>
-            <p class="warn" style="color:#93b2cc;margin-top:14px;">📧 We've emailed you the login ID as a record. You can reveal or reset the password anytime in your Parent Portal.</p>
+            <p class="warn" style="color:#93b2cc;margin-top:14px;">🔑 You can view or reset the password anytime from <strong>Children's logins</strong> in your dashboard — no need to write it down.</p>
             <a href="{{ route('guardian.children') }}">Manage children's logins →</a><br>
             <a href="{{ route('child.setup') }}">Set up another child →</a>
         </div>

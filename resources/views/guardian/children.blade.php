@@ -46,7 +46,11 @@
             @if ($revealed && $revealed['id'] === $child->id)
                 <div class="cl-pw">
                     <span class="cl-k">Password</span>
-                    <span class="v">{{ $revealed['password'] ?? '— set a new one below —' }}</span>
+                    @if ($revealed['password'])
+                        <span class="v">{{ $revealed['password'] }}</span>
+                    @else
+                        <span class="v" style="font-size:14px;">No saved password yet — tap <strong>Reset password</strong> to generate one you can reveal.</span>
+                    @endif
                 </div>
             @endif
 
