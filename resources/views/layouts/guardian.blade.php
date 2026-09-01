@@ -85,6 +85,7 @@
                 <a href="{{ route('guardian.progress') }}" wire:navigate class="gb-nav-link {{ request()->routeIs('guardian.progress') ? 'is-active' : '' }}"><span class="ic">📈</span> Progress</a>
                 <a href="{{ $dash('estimator') }}" wire:navigate class="gb-nav-link {{ $sec === 'estimator' ? 'is-active' : '' }}"><span class="ic">🎯</span> Estimator</a>
                 <a href="{{ $dash('rewards') }}" wire:navigate class="gb-nav-link {{ $sec === 'rewards' ? 'is-active' : '' }}"><span class="ic">🎁</span> Rewards &amp; controls</a>
+                <a href="{{ route('guardian.account') }}" wire:navigate class="gb-nav-link {{ request()->routeIs('guardian.account') ? 'is-active' : '' }}"><span class="ic">⚙️</span> Account</a>
                 <span class="gb-nav-link is-soon"><span class="ic">⚙️</span> Account <span class="soon">soon</span></span>
             </nav>
             <div class="gb-side-foot">
@@ -105,6 +106,7 @@
                 <a href="{{ route('guardian.progress') }}" wire:navigate class="{{ request()->routeIs('guardian.progress') ? 'is-active' : '' }}">Progress</a>
                 <a href="{{ $dash('estimator') }}" wire:navigate class="{{ $sec === 'estimator' ? 'is-active' : '' }}">Estimator</a>
                 <a href="{{ $dash('rewards') }}" wire:navigate class="{{ $sec === 'rewards' ? 'is-active' : '' }}">Rewards</a>
+                <a href="{{ route('guardian.account') }}" wire:navigate class="{{ request()->routeIs('guardian.account') ? 'is-active' : '' }}">Account</a>
             </nav>
 
             {{ $slot }}

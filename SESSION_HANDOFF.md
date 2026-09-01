@@ -45,6 +45,17 @@ addresses, check prod's `RESEND_API_KEY` (right account?) and `MAIL_FROM_ADDRESS
 Dev uses `MAIL_MAILER=log` by default; temporarily set `MAIL_MAILER=resend` + `RESEND_API_KEY` +
 `MAIL_FROM_ADDRESS=noreply@smoothseas.org` in dev `.env` (gitignored) for real-email testing.
 
+## Guardian Account area (2026-09-01, latest)
+
+`/account` (`guardian.account`, in the portal nav) — `GuardianAccount` Livewire page. Specs GA-01..06.
+- **Profile**: edit name / email / phone. Changing email nulls `email_verified_at` and sends a fresh
+  verification email. **Password**: current-password-gated change. **Delete account**: password-gated,
+  removes the guardian and every linked child.
+- **Billing is display-only** (no payment processor at the free launch): `users.plan` +
+  `users.first_bill_at` columns, and an `invoices` table (`Invoice` model + factory). The page shows
+  plan, status ("no charges yet"), first bill date, and a billing-history table with an honest empty
+  state. Stripe/Cashier can slot in later. Dev `purnell07` is seeded with a plan + 2 invoices to verify.
+
 ## Shipped this session (commit → what)
 - `4d64ab3`,`37ac013` — **Guardian Bridge** dashboard rebuild: sidebar app (Overview/This week/Pace/
   Progress/Estimator/Rewards), light editorial theme, exam-agent estimator, **pace-calc bug fixed**

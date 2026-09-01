@@ -39,6 +39,8 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
         'learning_profile', // AG-08: compact derived tags for AI tutor tailoring
         'weekly_module_cap_override', // Weekly targets: per-student cap override
         'seen_guides', // Smooth's guide: dismissed how-to screens (SG-01/02)
+        'plan', // Billing: subscription plan (free at launch)
+        'first_bill_at', // Billing: when the first charge is scheduled (display-only)
     ];
 
     protected $hidden = [
@@ -63,6 +65,7 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
             'learning_profile' => 'array',
             'weekly_module_cap_override' => 'integer',
             'seen_guides' => 'array',
+            'first_bill_at' => 'datetime',
         ];
     }
 
@@ -237,6 +240,12 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
     public function students(): HasMany
     {
         return $this->hasMany(User::class, 'parent_id');
+    }
+
+    // A guardian's billing history.
+    public function invoices(): HasMany
+    {
+        return $this->hasMany(Invoice::class);
     }
 
     public function progress(): HasMany
