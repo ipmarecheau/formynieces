@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Services\Verification\PhoneVerifier;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\RateLimiter;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -24,7 +25,45 @@ class VerifyAccount extends Component
 
     public function mount(): RedirectResponse|Redirector|null
     {
-        return $this->redirectIfDone();
+        if ($redirect = $this->redirectIfDone()) {
+            return $redirect;
+        }
+
+        $this->sendEmailCodeIfNeeded();
+
+        return null;
+    }
+
+    /**
+     * When an unverified guardian lands here (e.g. redirected from the dashboard
+     * on login), proactively send a fresh code — unless she already holds a valid
+     * unexpired one (just registered). Rate-limited so page reloads don't spam.
+     */
+    private function sendEmailCodeIfNeeded(): void
+    {
+        $user = auth()->user();
+
+        if ($user->hasVerifiedEmail()) {
+            return;
+        }
+
+        $hasValidCode = $user->email_verification_code !== null
+            && $user->email_verification_code_expires_at !== null
+            && $user->email_verification_code_expires_at->isFuture();
+
+        if ($hasValidCode) {
+            return;
+        }
+
+        $throttleKey = 'verify-email-autosend:'.$user->id;
+
+        if (RateLimiter::tooManyAttempts($throttleKey, 1)) {
+            return;
+        }
+
+        RateLimiter::hit($throttleKey, 120);
+        $user->sendEmailVerificationNotification();
+        $this->status = 'email-sent';
     }
 
     /** Polled: advances the page when the email was verified via the link elsewhere. */

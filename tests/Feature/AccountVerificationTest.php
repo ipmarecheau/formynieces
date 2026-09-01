@@ -2,9 +2,12 @@
 
 use App\Livewire\VerifyAccount;
 use App\Models\User;
+use App\Notifications\VerifyEmailWithCode;
 use App\Services\Verification\StubPhoneVerifier;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\RateLimiter;
 use Livewire\Livewire;
 
 use function Pest\Laravel\post;
@@ -129,6 +132,39 @@ it('sends the fully-verified guardian into onboarding', function () {
         ->call('submitPhoneCode')
         ->assertRedirect(route('child.setup'));
 })->group('scenario:GO-13');
+
+it('auto-sends a fresh email code when an unverified guardian lands on the verify screen', function () {
+    Notification::fake();
+    RateLimiter::clear('verify-email-autosend:');
+
+    $user = User::factory()->unverified()->create([
+        'role' => 'guardian',
+        'phone' => null,
+        'email_verification_code' => null,
+        'email_verification_code_expires_at' => null,
+    ]);
+
+    Livewire::actingAs($user)->test(VerifyAccount::class);
+
+    Notification::assertSentTo(
+        $user,
+        VerifyEmailWithCode::class,
+    );
+});
+
+it('does not auto-send when the guardian already holds a valid unexpired code', function () {
+    $user = User::factory()->unverified()->create([
+        'role' => 'guardian',
+        'phone' => null,
+    ]);
+    $user->generateEmailVerificationCode(); // a fresh, valid code (e.g. just registered)
+
+    Notification::fake();
+
+    Livewire::actingAs($user)->test(VerifyAccount::class);
+
+    Notification::assertNothingSent();
+});
 
 it('never gates onboarding on phone verification, even if the env var is set', function () {
     // The config is hardcoded off — the PHONE_VERIFICATION_ENABLED env is ignored.
