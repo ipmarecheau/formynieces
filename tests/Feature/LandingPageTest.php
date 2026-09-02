@@ -117,6 +117,11 @@ it('prices plainly — free forever vs $150/month, with the 14-day guarantees', 
         ->assertSee('$0')                                              // free plan price
         ->assertSee('$150')                                           // the full plan
         ->assertSee('1st month free')                                 // the trial hook, beating rivals' 7 days
+        ->assertSee('every topic in the SEA syllabus')                // free = test the whole syllabus
+        ->assertSee('AI tutor that teaches every topic')              // paid = taught, not just tested
+        ->assertSee('Pacing guarantee')                              // always ahead of where they need to be
+        ->assertSee('gamification engine')                           // motivation
+        ->assertSee('roadmap')                                       // future features included
         ->assertSee('14-day money-back guarantee')
         ->assertSee('no questions asked')
         ->assertSee('measurable')

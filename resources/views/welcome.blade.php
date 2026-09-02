@@ -450,8 +450,8 @@
         .price span { font-family: 'Nunito', sans-serif; font-size: 18px; font-weight: 700; color: var(--ink-faint); }
         .price-note { font-size: 14px; color: var(--ink-faint); font-weight: 700; }
         .price-feats { list-style: none; margin: 24px 0 28px; display: flex; flex-direction: column; gap: 12px; }
-        .price-feats li { display: flex; gap: 11px; align-items: baseline; font-size: 15px; font-weight: 700; color: var(--ink); }
-        .price-feats li::before { content: '✓'; color: var(--teal); font-weight: 900; }
+        .price-feats li { position: relative; padding-left: 24px; font-size: 15px; font-weight: 700; color: var(--ink); line-height: 1.45; }
+        .price-feats li::before { content: '✓'; position: absolute; left: 0; top: 0; color: var(--teal); font-weight: 900; }
         .price-card .btn { width: 100%; }
         .guarantees { display: flex; flex-direction: column; gap: 20px; }
         .guarantee { background: var(--paper-2); border: 1px solid var(--line); border-radius: 20px; padding: 26px 26px; box-shadow: var(--shadow-sm); flex: 1; }
@@ -462,9 +462,8 @@
         /* Two-tier plans: Free forever vs the full voyage */
         .plans-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: stretch; }
         .price-card.free { border-color: var(--line); box-shadow: var(--shadow-sm); }
-        .price-card.free .price-feats li::before { color: var(--ink-faint); }
         .price-feats li.off { color: var(--ink-faint); font-weight: 600; }
-        .price-feats li.off::before { content: '—'; color: var(--ink-faint); }
+        .price-feats li.off::before { content: '✗'; color: var(--ink-faint); font-weight: 900; }
         .plan-guarantees { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 24px; }
         @media (max-width: 760px) {
             .plans-grid, .plan-guarantees { grid-template-columns: 1fr; }
@@ -1145,21 +1144,22 @@
     <div class="wrap">
         <div class="section-head" data-reveal>
             <span class="eyebrow">Simple pricing</span>
-            <h2>Start free. Go all-in when you're ready.</h2>
-            <p>Explore the whole voyage map and test what your child knows — <strong>free, forever</strong>. Unlock the teaching, the daily plan and the honest reports on the full plan. And your first month is free.</p>
+            <h2>Free to test every topic. Paid to master them.</h2>
+            <p>The free plan lets your child <strong>test themselves on every topic in the whole SEA syllabus</strong> — so you can see exactly where they stand. The full plan is where they actually <strong>get taught, get ahead, and stay motivated</strong>. And your first month is free.</p>
         </div>
         <div class="plans-grid">
             <div class="price-card free" data-reveal>
                 <span class="price-flag" style="background:var(--line); color:var(--ink-soft);">Free forever</span>
                 <div class="price">$0<span> / month</span></div>
                 <p class="price-note">no card, ever · start in 2 minutes</p>
+                <p class="price-note" style="color:var(--ink-soft); margin:10px 0 0;">A self-test tool for the whole syllabus — it shows you the gaps.</p>
                 <ul class="price-feats">
-                    <li>The full Voyage map to explore</li>
-                    <li>Unlimited mastery quizzes — test what they know</li>
+                    <li>Test yourself on <strong>every topic in the SEA syllabus</strong></li>
+                    <li>Unlimited mastery quizzes across Math &amp; ELA</li>
                     <li>Earn mastery stars by testing out</li>
-                    <li class="off">Lessons &amp; Smooth's AI re-teach</li>
-                    <li class="off">Daily writing, vocabulary &amp; reading</li>
-                    <li class="off">Pace &amp; the Parent Portal report</li>
+                    <li>See which topics they've truly locked in</li>
+                    <li class="off">No teaching — quizzes show what they know, not how to fix it</li>
+                    <li class="off">No AI tutor, daily plan, writing/vocabulary or parent insights</li>
                 </ul>
                 @auth
                     <a class="btn btn-secondary btn-lg" href="{{ $homeUrl }}">Go to your dashboard →</a>
@@ -1171,13 +1171,15 @@
                 <span class="price-flag">Everything · 1st month free</span>
                 <div class="price">$150<span> / month</span></div>
                 <p class="price-note">per family · cancel anytime</p>
+                <p class="price-note" style="color:var(--teal-deep); margin:10px 0 0;">Every topic taught, paced and rewarded — the whole voyage.</p>
                 <ul class="price-feats">
                     <li><strong>Everything in Free</strong>, plus…</li>
-                    <li>Every lesson, taught step by step</li>
-                    <li>Smooth re-teaches whatever they miss</li>
-                    <li>Adaptive daily plan: 20 minutes to 2 hours</li>
-                    <li>Daily writing, vocabulary &amp; reading</li>
-                    <li>Pace, placement &amp; the weekly Parent Portal report</li>
+                    <li>An <strong>AI tutor that teaches every topic</strong> step by step — and re-teaches whatever they miss until it clicks</li>
+                    <li><strong>Pacing guarantee</strong> — the plan keeps them <em>ahead</em> of where they need to be for SEA</li>
+                    <li><strong>Writing &amp; Vocabulary grown every day</strong> — with kind, specific feedback</li>
+                    <li><strong>Parent insights</strong> — pace, projected first-choice placement &amp; weekly reports</li>
+                    <li><strong>Full gamification engine</strong> — islands, streaks &amp; rewards that keep them coming back</li>
+                    <li>Every new feature on the roadmap, <strong>included as it ships</strong></li>
                 </ul>
                 @auth
                     <a class="btn btn-primary btn-lg" href="{{ $homeUrl }}">Go to your dashboard →</a>
