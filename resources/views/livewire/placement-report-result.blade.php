@@ -41,7 +41,10 @@
         <p class="rr-sec">Your one next step</p>
         <p class="rr-next">{{ $lead->next_step }}</p>
 
-        <a class="rr-cta" href="{{ route('register') }}">Start your free month + get the practice pack →</a>
+        <button type="button" class="rr-cta" wire:click="claimTrial" wire:loading.attr="disabled">
+            <span wire:loading.remove wire:target="claimTrial">Start your free month + get the practice pack →</span>
+            <span wire:loading wire:target="claimTrial">Starting your free month…</span>
+        </button>
 
         <div style="text-align:center;">
             <button type="button" class="rr-share"
@@ -49,6 +52,11 @@
                 📤 Share our SEA-Ready score
             </button>
         </div>
+
+        <label style="display:flex; gap:9px; align-items:flex-start; margin-top:18px; font-size:13.5px; color:var(--ink-soft); cursor:pointer;">
+            <input type="checkbox" wire:model.live="weeklyOptIn" style="margin-top:3px;">
+            <span>Email me a free <strong>SEA Question of the Week</strong> with a worked solution — until SEA 2027.</span>
+        </label>
 
         <p class="rr-mailed">📧 We've emailed this report to {{ $lead->email }}.</p>
     @endif

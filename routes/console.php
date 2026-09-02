@@ -16,6 +16,12 @@ Schedule::command('reconciliation:auto-proceed')->daily();
 // than 30 days so the last month is always restorable.
 Schedule::command('questions:backup')->dailyAt('02:00');
 
+// LG-08: fall lapsed funnel trials back to the free plan, daily.
+Schedule::command('trials:expire')->dailyAt('03:00');
+
+// LG-10: the weekly "SEA Question of the Week" nurture email to opted-in leads.
+Schedule::command('funnel:weekly-question')->weeklyOn(1, '08:00');
+
 // LL-17: the weekly review that slips a mastered level to "mastered_review" when
 // its maintenance window + grace passed without a re-mastery, making it eligible
 // for a future weekly target again.

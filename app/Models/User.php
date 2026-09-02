@@ -41,6 +41,7 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
         'weekly_module_cap_override', // Weekly targets: per-student cap override
         'seen_guides', // Smooth's guide: dismissed how-to screens (SG-01/02)
         'plan', // Billing: subscription plan (free at launch)
+        'trial_ends_at', // Funnel: when a claimed trial lapses back to free (LG-08)
         'first_bill_at', // Billing: when the first charge is scheduled (display-only)
         'birth_year', // Child metadata (optional)
         'current_school', // Child metadata (optional)
@@ -70,6 +71,7 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
             'learning_profile' => 'array',
             'weekly_module_cap_override' => 'integer',
             'seen_guides' => 'array',
+            'trial_ends_at' => 'datetime',
             'first_bill_at' => 'datetime',
         ];
     }
@@ -276,7 +278,16 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
             return true;
         }
 
-        return Plan::fromValue($this->billingAccount()->plan)->grantsFullAccess();
+        $account = $this->billingAccount();
+        $plan = Plan::fromValue($account->plan);
+
+        // A lapsed trial has already fallen back to free (LG-08), even before the
+        // sweep command flips the column.
+        if ($plan === Plan::Trial && $account->trial_ends_at !== null && $account->trial_ends_at->isPast()) {
+            return false;
+        }
+
+        return $plan->grantsFullAccess();
     }
 
     /** Whether this user is limited to the free tier (map + mastery quizzes only). */
