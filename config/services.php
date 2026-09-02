@@ -18,7 +18,7 @@ return [
     // OpenAI-compatible chat API — default is OpenRouter serving a Qwen model.
     'llm' => [
         'key' => env('LLM_API_KEY'),
-        'model' => env('LLM_MODEL', 'qwen/qwen-2.5-72b-instruct'),
+        'model' => env('LLM_MODEL', 'z-ai/glm-5'),
         'base_url' => env('LLM_BASE_URL', 'https://openrouter.ai/api/v1'),
         'referer' => env('LLM_REFERER'), // optional OpenRouter attribution
         'title' => env('LLM_TITLE', 'SmoothSeas'),
@@ -26,7 +26,7 @@ return [
         // Fallback routing (OpenRouter). When the primary model's provider is rate-limited or down
         // (e.g. the qwen shared-pool 429), OpenRouter tries these OTHER models in order instead of
         // erroring. Comma-separated model ids, e.g. "qwen/qwen-2.5-72b-instruct,meta-llama/llama-3.1-70b-instruct".
-        'fallback_models' => array_values(array_filter(array_map('trim', explode(',', (string) env('LLM_FALLBACK_MODELS', ''))))),
+        'fallback_models' => array_values(array_filter(array_map('trim', explode(',', (string) env('LLM_FALLBACK_MODELS', 'qwen/qwen3-max,anthropic/claude-haiku-4.5'))))),
         // Optional preferred provider order for the primary model (comma-separated), e.g. "Alibaba,DeepInfra".
         'provider_order' => array_values(array_filter(array_map('trim', explode(',', (string) env('LLM_PROVIDER_ORDER', ''))))),
 
@@ -43,9 +43,10 @@ return [
         'monthly_cap_usd' => (float) env('LLM_MONTHLY_CAP_USD', 1.50),
         'monthly_soft_cap_usd' => (float) env('LLM_MONTHLY_SOFT_CAP_USD', 1.00),
         // Cost fallback ONLY when the provider omits usage.cost — the real charged cost
-        // (OpenRouter usage.cost) is preferred. Defaults are Qwen3.7 Flash's real rates.
-        'price_input_per_mtok' => (float) env('LLM_PRICE_INPUT_PER_MTOK', 0.03),
-        'price_output_per_mtok' => (float) env('LLM_PRICE_OUTPUT_PER_MTOK', 0.13),
+        // (OpenRouter usage.cost) is preferred. Defaults are z-ai/glm-5's real rates
+        // (chosen by the teaching-model eval: top Socratic quality that stays under the cap).
+        'price_input_per_mtok' => (float) env('LLM_PRICE_INPUT_PER_MTOK', 0.60),
+        'price_output_per_mtok' => (float) env('LLM_PRICE_OUTPUT_PER_MTOK', 1.92),
 
         // AG-05..07: daily ACTIVE guided-learning cap (lessons/tutorials/chat/re-teach).
         // Practice is unlimited and never counts. Default 2 hours (the Alpha model).
