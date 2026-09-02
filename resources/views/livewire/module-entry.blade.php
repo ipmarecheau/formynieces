@@ -94,7 +94,23 @@
             @endif
 
         @else
-            @if (! $mastered)
+            @if (! $mastered && $freePlan)
+                {{-- Free plan: an honest "not yet" and a single upgrade nudge — no
+                     scaffolding, no second chance. The teaching is the paywall (FP-07). --}}
+                <img class="me-smooth" src="{{ asset('images/voyage/companion/smooth.webp') }}" alt="Smooth the turtle">
+                <p class="me-head">Not yet — and that's okay!</p>
+                <p class="me-lead">This one needs teaching, not just testing. <b>Smooth can re-teach {{ $topic }}</b> step by step on the full voyage — then you'll have it for good.</p>
+                <div class="me-choices">
+                    <a href="{{ route('upgrade', ['unlock' => 'reteach']) }}" class="me-choice" wire:navigate>
+                        <span class="me-choice-emoji">🐢</span>
+                        <span class="me-choice-text"><b>Let Smooth teach me</b><small>Unlock the full voyage</small></span>
+                    </a>
+                    <a href="{{ route('student.voyage') }}" class="me-choice" wire:navigate>
+                        <span class="me-choice-emoji">🗺️</span>
+                        <span class="me-choice-text"><b>Back to the map</b><small>Try another island</small></span>
+                    </a>
+                </div>
+            @elseif (! $mastered)
                 <img class="me-smooth" src="{{ asset('images/voyage/companion/smooth.webp') }}" alt="Smooth the turtle">
                 <p class="me-head">That's okay — let's learn it together!</p>
                 @if ($workedExamplesLocked || $practiceLocked)

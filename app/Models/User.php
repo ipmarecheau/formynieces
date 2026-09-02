@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\Plan;
 use App\Notifications\VerifyEmailWithCode;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
@@ -250,6 +251,38 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
     public function invoices(): HasMany
     {
         return $this->hasMany(Invoice::class);
+    }
+
+    /**
+     * The account that carries billing for this user — a student's guardian pays for
+     * them, so a child's plan access follows their parent. Guardians answer for themselves.
+     */
+    public function billingAccount(): self
+    {
+        if ($this->role === 'student' && $this->parent_id !== null) {
+            return $this->relationLoaded('parent')
+                ? ($this->parent ?? $this)
+                : ($this->parent()->first() ?? $this);
+        }
+
+        return $this;
+    }
+
+    /** Whether this user's billing account is on a plan that unlocks the full product. */
+    public function hasPaidAccess(): bool
+    {
+        // Free-tier gating is dormant until launched: everyone has full access (free launch).
+        if (! config('features.free_tier', false)) {
+            return true;
+        }
+
+        return Plan::fromValue($this->billingAccount()->plan)->grantsFullAccess();
+    }
+
+    /** Whether this user is limited to the free tier (map + mastery quizzes only). */
+    public function onFreePlan(): bool
+    {
+        return ! $this->hasPaidAccess();
     }
 
     // A guardian's co-parents (the other parent(s) invited to the family).

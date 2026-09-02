@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Livewire\Concerns\GatesFreePlan;
 use App\Models\Lesson;
 use App\Models\ModuleStageCompletion;
 use App\Models\SyllabusModule;
@@ -24,6 +25,8 @@ use Livewire\Component;
 #[Layout('components.layouts.diagnostic')]
 class LessonWalk extends Component
 {
+    use GatesFreePlan;
+
     /** Block types she must answer correctly before "next" reveals the following block (gating). */
     public const INTERACTIVE_TYPES = ['check', 'fillblank', 'markwords', 'matchpairs', 'ordersteps'];
 
@@ -108,6 +111,11 @@ class LessonWalk extends Component
     public function mount(SyllabusModule $module, ?string $mode = null): void
     {
         $this->previewMode = in_array($mode, ['student', 'reteach'], true) ? $mode : null;
+
+        // Free plan: teaching is behind the wall (FP-04). Admin preview is exempt.
+        if ($this->previewMode === null && $this->gateFreePlan('lesson')) {
+            return;
+        }
 
         $this->moduleId = $module->id;
         $this->topic = $module->topic;

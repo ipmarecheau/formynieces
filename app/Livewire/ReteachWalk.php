@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Livewire\Concerns\GatesFreePlan;
 use App\Models\Lesson;
 use App\Models\ReteachSession;
 use App\Models\SyllabusModule;
@@ -19,6 +20,8 @@ use Livewire\Component;
 #[Layout('components.layouts.diagnostic')]
 class ReteachWalk extends Component
 {
+    use GatesFreePlan;
+
     public int $moduleId;
 
     public string $topic;
@@ -39,6 +42,11 @@ class ReteachWalk extends Component
 
     public function mount(SyllabusModule $module): void
     {
+        // Free plan: Smooth's re-teach is behind the wall (FP-08).
+        if ($this->gateFreePlan('reteach')) {
+            return;
+        }
+
         $session = app(Remediation::class)->activeSession(auth()->id(), $module->id);
 
         // Only reachable inside an open re-teach; otherwise back to the module entry.

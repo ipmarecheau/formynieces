@@ -26,6 +26,7 @@ use App\Livewire\SchoolJournal;
 use App\Livewire\StudentSchoolJournal;
 use App\Livewire\SyllabusMap;
 use App\Livewire\TutorialWalk;
+use App\Livewire\Upgrade;
 use App\Livewire\WelcomeAboard;
 use App\Livewire\WritingStop;
 use App\Services\Diagnostic\DiagnosticReconciliation;
@@ -170,6 +171,10 @@ Route::middleware('auth')->group(function () {
         // Tier 2 — an island's own mini-voyage: a walkable interior path of levels.
         Route::get('/voyage/{island}', [VoyageController::class, 'island'])
             ->name('student.voyage.island');
+
+        // The upgrade wall — where every free-plan lock leads. [free_tier.feature]
+        Route::get('/upgrade', Upgrade::class)
+            ->name('upgrade');
 
         // The Morning Tide — the daily reading + vocabulary ritual. [DR/DV]
         Route::get('/morning-tide', MorningTide::class)

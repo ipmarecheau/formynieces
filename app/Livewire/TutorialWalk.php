@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Livewire\Concerns\GatesFreePlan;
 use App\Models\ModuleStageCompletion;
 use App\Models\PracticeQuestion;
 use App\Models\SyllabusModule;
@@ -26,6 +27,8 @@ use Livewire\Component;
 #[Layout('components.layouts.diagnostic')]
 class TutorialWalk extends Component
 {
+    use GatesFreePlan;
+
     /** How many worked examples make up the tutorial. */
     private const EXAMPLE_COUNT = 3;
 
@@ -57,6 +60,11 @@ class TutorialWalk extends Component
 
     public function mount(SyllabusModule $module): void
     {
+        // Free plan: the worked examples are behind the wall (FP-05).
+        if ($this->gateFreePlan('tutorial')) {
+            return;
+        }
+
         $this->moduleId = $module->id;
         $this->topic = $module->topic;
 

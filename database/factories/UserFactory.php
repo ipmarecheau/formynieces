@@ -30,7 +30,28 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
+            // Default test accounts to a paying plan so the full product is exercised;
+            // free-tier gating specs (free_tier.feature) opt in explicitly via ->free().
+            'plan' => 'premium',
         ];
+    }
+
+    /** A permanently-free (top-of-funnel) account: map + mastery quizzes only. */
+    public function free(): static
+    {
+        return $this->state(fn (array $attributes) => ['plan' => 'free']);
+    }
+
+    /** A one-month full-access trial account (falls back to free when it lapses). */
+    public function trial(): static
+    {
+        return $this->state(fn (array $attributes) => ['plan' => 'trial']);
+    }
+
+    /** A paying subscriber. */
+    public function premium(): static
+    {
+        return $this->state(fn (array $attributes) => ['plan' => 'premium']);
     }
 
     /**

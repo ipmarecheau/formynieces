@@ -42,6 +42,9 @@ class ModuleEntry extends Component
     /** True when the check being run is a maintenance re-check (3× D5), not a test-out. */
     public bool $isMaintenance = false;
 
+    /** Free plan: the explainer/lesson/tutorial are walled — she gets the quiz only (FP-02/06/07). */
+    public bool $freePlan = false;
+
     /** The island this level lives on, so outcomes send her back to that map, not the overworld. */
     public ?string $islandSlug = null;
 
@@ -127,6 +130,13 @@ class ModuleEntry extends Component
                 $this->phase = 'maintenance_due';
                 $this->isMaintenance = true;
             }
+        }
+
+        // Free plan: skip the explainer (teaching) and go straight to the mastery quiz.
+        // The lesson/tutorial ways-in are replaced by an upgrade nudge in the outcome (FP-06).
+        $this->freePlan = auth()->user()?->onFreePlan() ?? false;
+        if ($this->freePlan && $this->phase === 'explainer') {
+            $this->beginCheck();
         }
     }
 
