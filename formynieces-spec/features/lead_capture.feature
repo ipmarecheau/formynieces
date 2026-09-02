@@ -7,20 +7,24 @@ Feature: Lead magnet — the free SEA Mock and First-Choice Placement Report
   a child will make their first-choice school.
 
   A visitor is offered a FREE SEA MOCK for their child plus a personalised PLACEMENT
-  REPORT, in exchange for their email (and, optionally, a WhatsApp number for higher-open
-  delivery). The child sits a short, AI-graded mock assembled from the practice/diagnostic
-  bank. On completion a report is generated: a projected first-choice readiness band, the
-  three weakest strands, and the single next step — the honest-layer value, delivered
-  before they ever pay. The report ends with a shareable "SEA-Ready" score card built for
-  WhatsApp, so the funnel spreads parent-to-parent, and with a call to action offering a
-  FULL MONTH FREE (double the category-norm seven-day trial) plus a downloadable AI
-  Practice Pack — 30 fresh, past-paper-style questions with worked solutions.
+  REPORT, in exchange for their email (a WhatsApp number is captured optionally, as a
+  contact for the team — we do not message parents on WhatsApp). The child sits a short,
+  AI-graded mock assembled from the practice/diagnostic bank. On completion a report is
+  generated: a projected first-choice readiness band, the three weakest strands, and the
+  single next step — the honest-layer value, delivered before they ever pay. Delivery to
+  the parent is by EMAIL. The report ends with a shareable "SEA-Ready" score card the
+  PARENT can share (e.g. to WhatsApp status), so the funnel spreads parent-to-parent at no
+  send cost, and with a call to action offering a FULL MONTH FREE (double the category-norm
+  seven-day trial) plus a downloadable AI Practice Pack — 30 fresh, past-paper-style
+  questions with worked solutions, as a PDF.
 
   Every captured lead lands in an admin-visible list with its placement snapshot, is
   segmented by the child's weak strands for targeted follow-up, and may opt in to a weekly
-  "SEA Question of the Week" nurture message that keeps the list warm until conversion.
-  This feature specifies capture, the mock, the report, delivery, the offer and nurture;
-  the free plan a non-converting lead falls back to is specified in free_tier.feature.
+  "SEA Question of the Week" nurture EMAIL that keeps the list warm until conversion. A
+  single admin WhatsApp/notification (to the team's own number, config-gated) fires on
+  key events. This feature specifies capture, the mock, the report, email delivery, the
+  offer and nurture; the free plan a non-converting lead falls back to is specified in
+  free_tier.feature.
 
   Background:
     Given a marketing visitor arrives on the placement-report landing page
@@ -32,7 +36,7 @@ Feature: Lead magnet — the free SEA Mock and First-Choice Placement Report
     When the visitor reads the offer
     Then it promises a free SEA mock and a personalised first-choice placement report
     And it asks for the parent's email to begin
-    And it offers an optional WhatsApp number for delivery
+    And it offers an optional WhatsApp number as a contact (not for messaging)
     And its copy uses "first-choice school" and "built for the T&T SEA syllabus"
 
   @scenario:LG-02
@@ -75,13 +79,20 @@ Feature: Lead magnet — the free SEA Mock and First-Choice Placement Report
     When the report is ready
     Then it is displayed to the parent immediately
     And a copy is emailed to the captured address
-    And, when a WhatsApp number was given, it is also sent via WhatsApp
 
   @scenario:LG-06
   Scenario: The report ends with a shareable SEA-Ready score card
     When the parent reaches the end of the report
-    Then they are offered a shareable "SEA-Ready" score card sized for WhatsApp and status
+    Then they are offered a shareable "SEA-Ready" score card sized for status/WhatsApp
+    And the parent can share it themselves (we never send it for them)
     And sharing it links back to the placement-report landing page
+
+  @scenario:LG-12
+  Scenario: A single admin notification fires on a captured lead
+    Given the admin notification channel is configured to the team's own number
+    When a new lead is captured
+    Then one notification is sent to the team's own number (never to the parent)
+    And when the channel is not configured, nothing is sent and nothing errors
 
   # --------------------------------------------------- the offer
 
@@ -104,7 +115,7 @@ Feature: Lead magnet — the free SEA Mock and First-Choice Placement Report
     When the parent claims the practice pack
     Then 30 fresh past-paper-style questions with worked solutions are assembled
     And they are rendered as a branded PDF booklet
-    And the booklet is delivered by email (and WhatsApp when available)
+    And the booklet is delivered by email
 
   # --------------------------------------------------- nurture and admin
 
@@ -112,9 +123,9 @@ Feature: Lead magnet — the free SEA Mock and First-Choice Placement Report
   Scenario: A lead can opt in to the weekly SEA Question of the Week
     When the parent opts in to the weekly question
     Then the lead is added to the weekly nurture list
-    And each week they receive one AI past-paper-style question with a worked solution
-      and the SEA countdown
-    And every message offers a one-tap path to start the free month
+    And each week they receive one AI past-paper-style question EMAIL with a worked
+      solution and the SEA countdown
+    And every email offers a one-tap path to start the free month
 
   @scenario:LG-11
   Scenario: Leads are segmented by the child's weak strands

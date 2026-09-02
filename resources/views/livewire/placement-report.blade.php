@@ -74,13 +74,13 @@
         <p class="pr-eyebrow">Step 2 of 3 · the mock</p>
         <h1 class="pr-h1">Let's see where they stand.</h1>
         <p class="pr-lede">A short, timed SEA mock. Answer honestly — this is what powers the placement report.</p>
-        <div class="pr-card" data-mock-placeholder>
-            <p class="pr-lede" style="margin:0;">Your mock is being prepared…</p>
+        <div class="pr-card">
+            @livewire('placement-mock', ['leadId' => $leadId], key('mock-'.$leadId))
         </div>
 
     @elseif ($phase === 'report')
-        <div class="pr-card" data-report-placeholder>
-            <p class="pr-lede" style="margin:0;">Your placement report is ready.</p>
+        <div class="pr-card">
+            @livewire('placement-report-result', ['leadId' => $leadId], key('report-'.$leadId))
         </div>
     @endif
 </div>

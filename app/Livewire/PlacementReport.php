@@ -3,7 +3,9 @@
 namespace App\Livewire;
 
 use App\Models\Lead;
+use App\Services\Funnel\AdminNotifier;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
@@ -56,9 +58,18 @@ class PlacementReport extends Component
             'source' => 'placement-report',
         ]);
 
+        app(AdminNotifier::class)->leadCaptured($lead);
+
         session(['lead_id' => $lead->id]);
         $this->leadId = $lead->id;
         $this->phase = 'mock';
+    }
+
+    /** The mock child reports completion — move the parent to the report (LG-04). */
+    #[On('mock-complete')]
+    public function showReport(): void
+    {
+        $this->phase = 'report';
     }
 
     public function render()
