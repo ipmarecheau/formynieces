@@ -3,8 +3,11 @@
 namespace App\Livewire;
 
 use App\Jobs\ScoreWritingSubmission;
+use App\Livewire\Concerns\GatesFreePlan;
 use App\Models\WritingPrompt;
 use App\Models\WritingSubmission;
+use App\Services\Motivation\DailyPlanComposer;
+use App\Services\Motivation\StreakService;
 use App\Services\Writing\WritingScorer;
 use App\Services\Writing\WritingScoringUnavailable;
 use Livewire\Attributes\Layout;
@@ -19,6 +22,8 @@ use Livewire\Component;
 #[Layout('components.layouts.diagnostic')]
 class WritingStop extends Component
 {
+    use GatesFreePlan;
+
     public ?WritingPrompt $prompt = null;
 
     public string $body = '';
@@ -30,6 +35,10 @@ class WritingStop extends Component
 
     public function mount(): void
     {
+        if ($this->gateFreePlan('writing')) {
+            return;
+        }
+
         $this->prompt = WritingPrompt::forWeek();
 
         // Show her most recent submission for this week's prompt, if any.
@@ -64,8 +73,8 @@ class WritingStop extends Component
 
         // WR-06 — a completed day's writing checks off the writing duty and advances
         // the writing sub-streak, regardless of how scoring resolves (WR-03).
-        app(\App\Services\Motivation\DailyPlanComposer::class)->markDuty(auth()->id(), 'writing');
-        app(\App\Services\Motivation\StreakService::class)->recordActivity(auth()->id(), 'writing');
+        app(DailyPlanComposer::class)->markDuty(auth()->id(), 'writing');
+        app(StreakService::class)->recordActivity(auth()->id(), 'writing');
 
         try {
             $submission->applyRubric($scorer->score($submission));

@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Livewire\Concerns\GatesFreePlan;
 use App\Models\DailyReadingAssignment;
 use App\Models\VocabularyWord;
 use App\Services\Motivation\DailyPlanComposer;
@@ -22,6 +23,8 @@ use Livewire\Component;
 #[Layout('components.layouts.diagnostic')]
 class MorningTide extends Component
 {
+    use GatesFreePlan;
+
     /** read | check | pick | vocab | done */
     public string $phase = 'read';
 
@@ -67,6 +70,10 @@ class MorningTide extends Component
 
     public function mount(): void
     {
+        if ($this->gateFreePlan('rituals')) {
+            return;
+        }
+
         $assignment = app(DailyReadingService::class)->serve(auth()->user());
 
         if ($assignment === null) {

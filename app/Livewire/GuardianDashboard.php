@@ -43,6 +43,9 @@ class GuardianDashboard extends Component
     #[Url]
     public string $section = 'overview';
 
+    /** Free plan: paid sections (pace, estimator, this-week, rewards) are walled (FP-11/15). */
+    public bool $freePlan = false;
+
     /**
      * GD-01 — the exam agent's plain-English guardian briefing. Loaded lazily
      * (wire:init) so the LLM round-trip never blocks first paint, and cached
@@ -56,10 +59,33 @@ class GuardianDashboard extends Component
 
     private const TOTAL_TEACHING_WEEKS = 30;
 
+    /** Locked sections a free-plan guardian is redirected to the upgrade wall for (FP-11/15). */
+    private const FREE_LOCKED_SECTIONS = ['this-week', 'pace', 'estimator', 'rewards'];
+
+    public function mount(): void
+    {
+        $this->gateLockedSection();
+    }
+
+    public function updatedSection(): void
+    {
+        $this->gateLockedSection();
+    }
+
+    /** Send a free-plan guardian to the upgrade wall when they open a paid section. */
+    private function gateLockedSection(): void
+    {
+        if (auth()->user()?->onFreePlan() && in_array($this->section, self::FREE_LOCKED_SECTIONS, true)) {
+            $unlock = in_array($this->section, ['pace', 'estimator'], true) ? $this->section : 'reporting';
+            $this->redirect(route('upgrade', ['unlock' => $unlock]), navigate: true);
+        }
+    }
+
     #[Layout('layouts.guardian')]
     public function render(ExamAgentService $examAgent)
     {
         $guardian = auth()->user();
+        $this->freePlan = $guardian->onFreePlan();
 
         $students = $guardian->students()->orderBy('name')->get();
         $student = $this->studentId
@@ -135,6 +161,13 @@ class GuardianDashboard extends Component
     public function loadAiSummary(ExamAgentService $examAgent): void
     {
         $this->aiSummaryLoaded = true;
+
+        // The AI briefing is a paid feature — never call the model for a free plan (FP-12).
+        if (auth()->user()?->onFreePlan()) {
+            $this->aiSummary = null;
+
+            return;
+        }
 
         $student = $this->resolveStudent();
         if ($student === null) {

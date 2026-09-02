@@ -116,6 +116,9 @@ Route::middleware('auth')->group(function () {
     // (their own) and guardians (their child). Lessons open from the Voyage, never from here.
     Route::get('/syllabus', SyllabusMap::class)->name('syllabus');
 
+    // The upgrade wall — where every free-plan lock leads, for students and guardians alike.
+    Route::get('/upgrade', Upgrade::class)->name('upgrade');
+
     // Student-only — the learning loop.
     Route::middleware('role:student')->group(function () {
         Route::get('/diagnostic', function () {
@@ -171,10 +174,6 @@ Route::middleware('auth')->group(function () {
         // Tier 2 — an island's own mini-voyage: a walkable interior path of levels.
         Route::get('/voyage/{island}', [VoyageController::class, 'island'])
             ->name('student.voyage.island');
-
-        // The upgrade wall — where every free-plan lock leads. [free_tier.feature]
-        Route::get('/upgrade', Upgrade::class)
-            ->name('upgrade');
 
         // The Morning Tide — the daily reading + vocabulary ritual. [DR/DV]
         Route::get('/morning-tide', MorningTide::class)
