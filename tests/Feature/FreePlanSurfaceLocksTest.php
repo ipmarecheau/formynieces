@@ -3,6 +3,7 @@
 use App\Livewire\GuardianDashboard;
 use App\Livewire\MorningTide;
 use App\Livewire\WritingStop;
+use App\Models\StudentJourney;
 use App\Models\User;
 use Livewire\Livewire;
 
@@ -104,3 +105,21 @@ it('a free student can also load the upgrade wall', function () {
         ->get(route('upgrade', ['unlock' => 'lesson']))
         ->assertOk();
 })->group('scenario:FP-17');
+
+it('a free guardian overview shows only the bare mastery, not the honest-layer panels (FP-15)', function () {
+    [$guardian, $child] = freeChildAndGuardian();
+    StudentJourney::create([
+        'student_id' => $child->id,
+        'journey_start' => now()->toDateString(),
+        'exam_date' => now()->addYear()->toDateString(),
+    ]);
+
+    Livewire::actingAs($guardian)
+        ->test(GuardianDashboard::class)
+        ->assertSet('freePlan', true)
+        ->assertSee('Overall mastery')
+        ->assertSee('On the free plan')
+        ->assertSee('Unlock the full report')
+        ->assertDontSee('Strengths & what to work on', false)  // the AI exam-agent card
+        ->assertDontSee('Where '.$child->name.' stands', false); // the readiness verdict
+})->group('scenario:FP-15');

@@ -218,27 +218,29 @@
         </div>
     @endif
 
-    {{-- KPI band [overview] --}}
+    {{-- KPI band [overview] — the free plan sees only the bare mastery count (FP-15). --}}
     <div class="kpis" @style(['display:none' => $section !== 'overview'])>
-        <div class="kpi">
-            <p class="kpi-l">Readiness</p>
-            <p class="kpi-v" style="font-size:16px; line-height:1.25; margin-top:8px;">{{ $readiness['headline'] }}</p>
-        </div>
-        <div class="kpi">
-            <p class="kpi-l">SEA exam in</p>
-            @if ($daysToExam !== null)
-                <p class="kpi-v">{{ $daysToExam }}<span class="kpi-u"> days</span></p>
-                <p class="kpi-n">{{ $examDate }}</p>
-            @else
-                <p class="kpi-v" style="font-size:18px;">—</p>
-            @endif
-        </div>
-        <div class="kpi">
-            <p class="kpi-l">This week's target</p>
-            <p class="kpi-v" style="font-size:16px; margin-top:10px;">
-                @if ($targetCompleted)<span class="badge badge-good">Completed</span>@else<span class="badge badge-warn">In progress</span>@endif
-            </p>
-        </div>
+        @unless ($freePlan)
+            <div class="kpi">
+                <p class="kpi-l">Readiness</p>
+                <p class="kpi-v" style="font-size:16px; line-height:1.25; margin-top:8px;">{{ $readiness['headline'] }}</p>
+            </div>
+            <div class="kpi">
+                <p class="kpi-l">SEA exam in</p>
+                @if ($daysToExam !== null)
+                    <p class="kpi-v">{{ $daysToExam }}<span class="kpi-u"> days</span></p>
+                    <p class="kpi-n">{{ $examDate }}</p>
+                @else
+                    <p class="kpi-v" style="font-size:18px;">—</p>
+                @endif
+            </div>
+            <div class="kpi">
+                <p class="kpi-l">This week's target</p>
+                <p class="kpi-v" style="font-size:16px; margin-top:10px;">
+                    @if ($targetCompleted)<span class="badge badge-good">Completed</span>@else<span class="badge badge-warn">In progress</span>@endif
+                </p>
+            </div>
+        @endunless
         <div class="kpi accent">
             <p class="kpi-l">Overall mastery</p>
             <p class="kpi-v">{{ $trajectory['actual_pct'] }}<span class="kpi-u">%</span></p>
@@ -246,12 +248,24 @@
         </div>
     </div>
 
-    {{-- GD-11: plain-language readiness verdict [overview] --}}
-    <div class="lead lead-{{ $readiness['tone'] }}" @style(['display:none' => $section !== 'overview'])>
-        <p class="eyebrow">Where {{ $studentName ?? 'your child' }} stands</p>
-        <h3 class="lead-h">{{ $readiness['headline'] }}</h3>
-        <p class="lead-p">{{ $readiness['detail'] }}</p>
-    </div>
+    {{-- Free plan: a single honest line + the upgrade, in place of the honest-layer panels (FP-15). --}}
+    @if ($freePlan && $section === 'overview')
+        <div class="lead lead-neutral" style="margin-top:14px;">
+            <p class="eyebrow">On the free plan</p>
+            <h3 class="lead-h">You’re seeing {{ $studentName ?? 'your child' }}’s mastery count.</h3>
+            <p class="lead-p">The weekly readiness picture, pace, projected first-choice placement and Smooth’s briefing open up on the full plan.</p>
+            <a href="{{ route('upgrade', ['unlock' => 'reporting']) }}" class="btn-gold" style="display:inline-block; margin-top:10px;" wire:navigate>Unlock the full report →</a>
+        </div>
+    @endif
+
+    {{-- GD-11: plain-language readiness verdict [overview] — paid only (FP-15). --}}
+    @unless ($freePlan)
+        <div class="lead lead-{{ $readiness['tone'] }}" @style(['display:none' => $section !== 'overview'])>
+            <p class="eyebrow">Where {{ $studentName ?? 'your child' }} stands</p>
+            <h3 class="lead-h">{{ $readiness['headline'] }}</h3>
+            <p class="lead-p">{{ $readiness['detail'] }}</p>
+        </div>
+    @endunless
 
     {{-- This week's plan — topics, writing and reading [this-week] --}}
     @if ($student)
@@ -297,8 +311,8 @@
         </div>
     @endif
 
-    {{-- Overview → jump into detail [overview] --}}
-    @if ($student)
+    {{-- Overview → jump into detail [overview] — paid only; free peeks lead nowhere (FP-15). --}}
+    @if ($student && ! $freePlan)
         <div class="peeks" @style(['display:none' => $section !== 'overview'])>
             <button class="peek" wire:click="$set('section', 'this-week')">
                 <span class="peek-k">🗓️ This week</span>
@@ -323,8 +337,8 @@
         </div>
     @endif
 
-    {{-- GD-04: catch-up triage [overview] --}}
-    @if ($triage)
+    {{-- GD-04: catch-up triage [overview] — paid only (FP-15). --}}
+    @if ($triage && ! $freePlan)
         <div class="lead lead-warn" @style(['display:none' => $section !== 'overview'])>
             <p class="eyebrow" style="color:var(--warn);">Catch-up plan</p>
             <p class="warn-line">{{ $triage['priority'] }}</p>
@@ -390,7 +404,8 @@
         </div>
     </div>
 
-    {{-- Exam-agent read [overview] --}}
+    {{-- Exam-agent read [overview] — the AI briefing is paid only (FP-12/FP-15). --}}
+    @unless ($freePlan)
     <div class="card" @style(['margin-bottom:14px;', 'display:none' => $section !== 'overview'])>
             <p class="eyebrow">Exam agent</p>
             <h3 class="h-sec">Strengths &amp; what to work on</h3>
@@ -402,6 +417,7 @@
             <p class="eyebrow" style="margin:18px 0 8px;">Recommendation</p>
             <p class="p ink">{{ $recommendation }}</p>
     </div>
+    @endunless
 
     {{-- Pace calendar — collapsible year → month → week drill-down [pace] --}}
     @if (! empty($paceCalendar))
@@ -504,7 +520,7 @@
     @endif
 
     {{-- Excelling + writing feedback [overview] --}}
-    <div class="col2" @style(['display:none' => $section !== 'overview'])>
+    <div class="col2" @style(['display:none' => $section !== 'overview' || $freePlan])>
         <div class="card {{ empty($excelling) ? '' : '' }}">
             <p class="eyebrow">Where {{ $studentName ?? 'your child' }} is excelling</p>
             @forelse ($excelling as $item)

@@ -2,10 +2,12 @@
 
 use App\Livewire\LessonWalk;
 use App\Livewire\ModuleEntry;
+use App\Livewire\ReteachWalk;
 use App\Livewire\TutorialWalk;
 use App\Livewire\Upgrade;
 use App\Models\Lesson;
 use App\Models\PracticeQuestion;
+use App\Models\StudentProgress;
 use App\Models\SyllabusModule;
 use App\Models\User;
 use Livewire\Livewire;
@@ -124,3 +126,86 @@ it('with the flag OFF, a free-plan child is not gated (free-launch default)', fu
         ->test(LessonWalk::class, ['module' => $module])
         ->assertNoRedirect();
 })->group('scenario:FP-04');
+
+it('a free child can open the Voyage map — it is never walled (FP-01)', function () {
+    [$child] = freePlanChild();
+
+    $this->actingAs($child)
+        ->get(route('student.voyage'))
+        ->assertOk();
+})->group('scenario:FP-01');
+
+it('a free child can test out of a module and earn mastery, no lesson needed (FP-03)', function () {
+    [$child, $module] = freePlanChild();
+
+    $t = Livewire::actingAs($child)->test(ModuleEntry::class, ['module' => $module])
+        ->assertSet('phase', 'check');
+
+    // Every seeded question has correct_index 0 — answer 0 six times to test out.
+    foreach (range(1, 6) as $ignored) {
+        $t->call('answerCheck', 0);
+    }
+
+    $t->assertSet('mastered', true)->assertSet('phase', 'outcome');
+
+    expect(StudentProgress::where('student_id', $child->id)
+        ->where('module_id', $module->id)->value('status'))->toBe('mastered');
+})->group('scenario:FP-03');
+
+it('a free child who misses sees a single upgrade nudge, no scaffolding (FP-07)', function () {
+    [$child, $module] = freePlanChild();
+
+    $t = Livewire::actingAs($child)->test(ModuleEntry::class, ['module' => $module]);
+    $t->call('answerCheck', 1); // first answer wrong → cannot test out
+    foreach (range(1, 5) as $ignored) {
+        $t->call('answerCheck', 0);
+    }
+
+    $t->assertSet('mastered', false)
+        ->assertSet('phase', 'outcome')
+        ->assertSee('Let Smooth teach me')
+        ->assertDontSee('Learn it step by step'); // the paid lesson/tutorial choices are gone
+})->group('scenario:FP-07');
+
+it('locks Smooth’s re-teach behind the wall for a free child (FP-08)', function () {
+    [$child, $module] = freePlanChild();
+
+    Livewire::actingAs($child)
+        ->test(ReteachWalk::class, ['module' => $module])
+        ->assertRedirect(route('upgrade', ['unlock' => 'reteach']));
+})->group('scenario:FP-08');
+
+it('never caps a free child’s mastery quizzes (FP-13)', function () {
+    [$child, $module] = freePlanChild();
+
+    // Open the quiz repeatedly — no daily cap, no "come back tomorrow".
+    foreach (range(1, 3) as $ignored) {
+        Livewire::actingAs($child)->test(ModuleEntry::class, ['module' => $module])
+            ->assertSet('phase', 'check')
+            ->assertDontSee('come back tomorrow');
+    }
+})->group('scenario:FP-13');
+
+it('upgrading unlocks teaching and keeps mastery earned on the free plan (FP-16)', function () {
+    [$child, $module] = freePlanChild();
+    $guardian = $child->parent;
+
+    // Earn a star while free.
+    StudentProgress::create([
+        'student_id' => $child->id, 'module_id' => $module->id,
+        'status' => 'mastered', 'score' => 100, 'current_rung' => 5,
+    ]);
+
+    // While free, the lesson is walled.
+    Livewire::actingAs($child)->test(LessonWalk::class, ['module' => $module])
+        ->assertRedirect(route('upgrade', ['unlock' => 'lesson']));
+
+    // Guardian upgrades.
+    $guardian->update(['plan' => 'premium']);
+
+    // Now the lesson opens, and the star is still there.
+    Livewire::actingAs($child->fresh())->test(LessonWalk::class, ['module' => $module])
+        ->assertNoRedirect();
+    expect(StudentProgress::where('student_id', $child->id)
+        ->where('module_id', $module->id)->value('status'))->toBe('mastered');
+})->group('scenario:FP-16');

@@ -66,7 +66,32 @@ class SessionLifecycle
 
         $this->planner->planForSession($sessionId);
 
+        // Free plan: a SHORT diagnostic (FP-14) — enough to seed a live map, without
+        // the full paid assessment. Truncate the planned items to a light set.
+        if (User::find($studentId)?->onFreePlan()) {
+            $this->truncatePlanForFreePlan($sessionId);
+        }
+
         return $sessionId;
+    }
+
+    /** How many items a free-plan seed diagnostic serves (short, just to seed the map). */
+    public const FREE_PLAN_ITEMS = 12;
+
+    /** Trim a session's planned items to the short free-plan set, preserving order. */
+    private function truncatePlanForFreePlan(int $sessionId): void
+    {
+        $session = DB::table('diagnostic_sessions')->find($sessionId);
+        $plan = json_decode($session->item_plan ?? '[]', true) ?: [];
+
+        if (count($plan) <= self::FREE_PLAN_ITEMS) {
+            return;
+        }
+
+        DB::table('diagnostic_sessions')->where('id', $sessionId)->update([
+            'item_plan' => json_encode(array_slice($plan, 0, self::FREE_PLAN_ITEMS)),
+            'updated_at' => now(),
+        ]);
     }
 
     /**
