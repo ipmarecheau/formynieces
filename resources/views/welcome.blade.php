@@ -459,6 +459,16 @@
         .guarantee h3 { font-size: 17px; color: var(--teal-deep); margin: 10px 0 8px; }
         .guarantee p { font-size: 14.5px; color: var(--ink-soft); }
         .guarantee strong { color: var(--ink); }
+        /* Two-tier plans: Free forever vs the full voyage */
+        .plans-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: stretch; }
+        .price-card.free { border-color: var(--line); box-shadow: var(--shadow-sm); }
+        .price-card.free .price-feats li::before { color: var(--ink-faint); }
+        .price-feats li.off { color: var(--ink-faint); font-weight: 600; }
+        .price-feats li.off::before { content: '—'; color: var(--ink-faint); }
+        .plan-guarantees { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 24px; }
+        @media (max-width: 760px) {
+            .plans-grid, .plan-guarantees { grid-template-columns: 1fr; }
+        }
 
         /* ── FINAL CTA ── */
         .final-cta {
@@ -676,7 +686,63 @@
             @endguest
         </div>
 
-        @include('partials.sim-demo')
+        {{-- Hero demo: an animated simulation, switchable between the child's voyage
+             and the parent portal — both are looping vector/real-screen sims. --}}
+        <style>
+            .demo-switch { margin-top: clamp(24px, 4vw, 40px); text-align: center; }
+            .demo-tabs {
+                display: inline-flex; gap: 5px; margin: 0 auto 4px;
+                background: var(--paper); border: 1px solid var(--line);
+                border-radius: 999px; padding: 5px;
+            }
+            .demo-tab {
+                border: 0; background: transparent; font: inherit; cursor: pointer;
+                font-weight: 800; font-size: 13px; color: var(--ink-soft);
+                padding: 8px 16px; border-radius: 999px; transition: background .18s, color .18s;
+            }
+            .demo-tab.is-active { background: var(--teal); color: #fff; box-shadow: 0 4px 12px rgba(20, 120, 140, .3); }
+            .demo-tab:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+            .demo-pane[hidden] { display: none; }
+            .demo-pane .sim-wrap, .demo-pane .psim-wrap { margin-top: clamp(14px, 2.4vw, 22px); }
+        </style>
+        <div class="demo-switch" data-reveal>
+            <div class="demo-tabs" role="tablist" aria-label="Choose an animated demo">
+                <button type="button" class="demo-tab is-active" id="dtab-child" role="tab"
+                        aria-selected="true" aria-controls="demo-pane-child">▶ For your child</button>
+                <button type="button" class="demo-tab" id="dtab-parent" role="tab"
+                        aria-selected="false" aria-controls="demo-pane-parent">For parents</button>
+            </div>
+            <div class="demo-pane is-active" id="demo-pane-child" role="tabpanel" aria-labelledby="dtab-child">
+                @include('partials.sim-demo')
+            </div>
+            <div class="demo-pane" id="demo-pane-parent" role="tabpanel" aria-labelledby="dtab-parent" hidden>
+                @include('partials.parent-sim')
+            </div>
+        </div>
+        <script>
+            (function () {
+                var root = document.querySelector('.demo-switch');
+                if (!root) { return; }
+                var tabs = Array.prototype.slice.call(root.querySelectorAll('.demo-tab'));
+                var panes = Array.prototype.slice.call(root.querySelectorAll('.demo-pane'));
+                tabs.forEach(function (tab) {
+                    tab.addEventListener('click', function () {
+                        tabs.forEach(function (t) {
+                            var on = t === tab;
+                            t.classList.toggle('is-active', on);
+                            t.setAttribute('aria-selected', on ? 'true' : 'false');
+                        });
+                        panes.forEach(function (pane) {
+                            var on = pane.id === tab.getAttribute('aria-controls');
+                            pane.hidden = !on;
+                            pane.classList.toggle('is-active', on);
+                        });
+                        // let the newly-shown sim recompute its scale/cursor against real size
+                        window.dispatchEvent(new Event('resize'));
+                    });
+                });
+            })();
+        </script>
     </div>
 </section>
 
@@ -1078,40 +1144,59 @@
 <section class="band" id="pricing" style="background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
     <div class="wrap">
         <div class="section-head" data-reveal>
-            <span class="eyebrow">One simple fare</span>
-            <h2>$200 a month. Everything included.</h2>
-            <p>Every component of the SEA, the adaptive daily plans, the weekly reports and Smooth himself — one price, backed by two promises in writing.</p>
+            <span class="eyebrow">Simple pricing</span>
+            <h2>Start free. Go all-in when you're ready.</h2>
+            <p>Explore the whole voyage map and test what your child knows — <strong>free, forever</strong>. Unlock the teaching, the daily plan and the honest reports on the full plan. And your first month is free.</p>
         </div>
-        <div class="pricing-grid">
-            <div class="price-card" data-reveal>
-                <span class="price-flag">All-inclusive</span>
-                <div class="price">$200<span> / month</span></div>
+        <div class="plans-grid">
+            <div class="price-card free" data-reveal>
+                <span class="price-flag" style="background:var(--line); color:var(--ink-soft);">Free forever</span>
+                <div class="price">$0<span> / month</span></div>
+                <p class="price-note">no card, ever · start in 2 minutes</p>
+                <ul class="price-feats">
+                    <li>The full Voyage map to explore</li>
+                    <li>Unlimited mastery quizzes — test what they know</li>
+                    <li>Earn mastery stars by testing out</li>
+                    <li class="off">Lessons &amp; Smooth's AI re-teach</li>
+                    <li class="off">Daily writing, vocabulary &amp; reading</li>
+                    <li class="off">Pace &amp; the Parent Portal report</li>
+                </ul>
+                @auth
+                    <a class="btn btn-secondary btn-lg" href="{{ $homeUrl }}">Go to your dashboard →</a>
+                @else
+                    <a class="btn btn-secondary btn-lg" href="{{ route('register') }}">Start free →</a>
+                @endauth
+            </div>
+            <div class="price-card full" data-reveal style="--rd:.08s">
+                <span class="price-flag">Everything · 1st month free</span>
+                <div class="price">$150<span> / month</span></div>
                 <p class="price-note">per family · cancel anytime</p>
                 <ul class="price-feats">
-                    <li>All three SEA components — Math, ELA &amp; Writing</li>
-                    <li>Adaptive daily plans: 20 minutes to 2 hours</li>
-                    <li>Unlimited practice time</li>
-                    <li>Weekly parent reports + the Parent Portal</li>
-                    <li>Smooth the turtle, at the helm every day</li>
+                    <li><strong>Everything in Free</strong>, plus…</li>
+                    <li>Every lesson, taught step by step</li>
+                    <li>Smooth re-teaches whatever they miss</li>
+                    <li>Adaptive daily plan: 20 minutes to 2 hours</li>
+                    <li>Daily writing, vocabulary &amp; reading</li>
+                    <li>Pace, placement &amp; the weekly Parent Portal report</li>
                 </ul>
                 @auth
                     <a class="btn btn-primary btn-lg" href="{{ $homeUrl }}">Go to your dashboard →</a>
                 @else
-                    <a class="btn btn-primary btn-lg" href="{{ route('register') }}">Sign up free →</a>
+                    <a class="btn btn-primary btn-lg" href="{{ route('register') }}">Start your free month →</a>
                     <p class="price-note" style="margin-top:14px; text-align:center;">Prefer to talk first? <a class="link-quiet" href="{{ route('book.call') }}">Book a free call</a></p>
                 @endauth
             </div>
-            <div class="guarantees">
-                <div class="guarantee" data-reveal style="--rd:.08s">
-                    <span class="g-icon">🛟</span>
-                    <h3>14-day money-back guarantee</h3>
-                    <p>Your child logs in and uses the platform. Unsatisfied for <em>any</em> reason? We refund every cent — <strong>no questions asked</strong>.</p>
-                </div>
-                <div class="guarantee" data-reveal style="--rd:.16s">
-                    <span class="g-icon">📈</span>
-                    <h3>Measurable improvement in 14 days</h3>
-                    <p>Use SmoothSeas for two weeks and we guarantee you'll see <strong>measurable improvement</strong> in their Math, ELA, Writing and Vocabulary — in 14 days or less.</p>
-                </div>
+        </div>
+        <div class="plan-guarantees">
+            <div class="guarantee" data-reveal style="--rd:.08s">
+                <span class="g-icon">🛟</span>
+                <h3>14-day money-back guarantee</h3>
+                <p>Your child logs in and uses the platform. Unsatisfied for <em>any</em> reason? We refund every cent — <strong>no questions asked</strong>.</p>
+            </div>
+            <div class="guarantee" data-reveal style="--rd:.16s">
+                <span class="g-icon">📈</span>
+                <h3>Measurable improvement in 14 days</h3>
+                <p>Use SmoothSeas for two weeks and we guarantee you'll see <strong>measurable improvement</strong> in their Math, ELA, Writing and Vocabulary — in 14 days or less.</p>
             </div>
         </div>
     </div>

@@ -110,10 +110,13 @@ it('speaks to parents of both boys and girls, as SmoothSeas', function () {
         ->assertDontSee(' girls');
 })->group('scenario:LP-12');
 
-it('prices plainly — $200/month with the 14-day money-back and improvement guarantees', function () {
+it('prices plainly — free forever vs $150/month, with the 14-day guarantees', function () {
     $this->get('/')
         ->assertOk()
-        ->assertSee('$200')
+        ->assertSee('Free forever')                                     // the permanently-free tier
+        ->assertSee('$0')                                              // free plan price
+        ->assertSee('$150')                                           // the full plan
+        ->assertSee('1st month free')                                 // the trial hook, beating rivals' 7 days
         ->assertSee('14-day money-back guarantee')
         ->assertSee('no questions asked')
         ->assertSee('measurable')
@@ -138,4 +141,15 @@ it('shows a real gameplay reel — an autoplaying, looping, muted demo video wit
         ->assertSee('For you (parent)')                                // hero jumbotron tab — the parent portal reel
         ->assertSee('reels/parent-reel.mp4')                           // the guardian-portal walkthrough video
         ->assertSee('reels/parent-reel.webm');
+})->group('scenario:LP-14');
+
+it('offers the hero demo as a Child / Parent animation toggle, with the guardian portal behind its own tab', function () {
+    $this->get('/')
+        ->assertOk()
+        ->assertSee('demo-pane-parent')                                        // the parent animation shares the hero demo, behind a tab
+        ->assertSee('demo-pane-child')                                         // the child voyage sim is the other tab
+        ->assertSee('psim-stage')                                              // the animated Guardian Bridge stage renders
+        ->assertSee('Four honest answers — where they really stand', false)    // opening caption, below the stage
+        ->assertSee('The whole family — invite the other parent', false)       // the co-parent scene (post-buildout feature)
+        ->assertSee("Their logins in hand — and you're in control", false);    // the child-login + controls scene
 })->group('scenario:LP-14');
