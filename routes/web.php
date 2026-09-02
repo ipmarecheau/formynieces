@@ -20,6 +20,7 @@ use App\Livewire\GuardianProgress;
 use App\Livewire\LessonWalk;
 use App\Livewire\ModuleEntry;
 use App\Livewire\MorningTide;
+use App\Livewire\PlacementReport;
 use App\Livewire\PracticeWalk;
 use App\Livewire\ReteachWalk;
 use App\Livewire\SchoolJournal;
@@ -52,6 +53,9 @@ Route::get('/blog/{article}', [BlogController::class, 'show'])->name('blog.show'
 Route::post('/contact', [PublicPageController::class, 'sendContact'])->name('contact.send');
 Route::get('/book-a-call', [PublicPageController::class, 'book'])->name('book.call');
 Route::post('/book-a-call', [PublicPageController::class, 'bookCall'])->name('book.store');
+
+// Lead-magnet funnel — free SEA mock + first-choice placement report (lead_capture.feature).
+Route::get('/placement-report', PlacementReport::class)->name('placement-report');
 
 // Smooth chat widget (LC-01..06) — public, throttled.
 Route::post('/chat/session', [ChatController::class, 'start'])->middleware('throttle:10,1')->name('chat.start');
