@@ -149,6 +149,11 @@
         $perkTotal = collect($perks ?? [])->sum('count');
     @endphp
 
+    {{-- WZ-01/02: the guided getting-started wizard, above everything, until the family is set up. --}}
+    <div style="margin-bottom:22px;">
+        <livewire:onboarding-wizard />
+    </div>
+
     @if ($students->isEmpty())
         {{-- GO-18: a verified guardian with no child lands here (not forced into
              child setup) and adds her first child from the dashboard. No email
