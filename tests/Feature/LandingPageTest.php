@@ -172,6 +172,7 @@ it('lists an exhaustive feature set with hover-for-detail explanations', functio
         ->assertSee('Daily vocabulary')
         ->assertSee('Data-driven parent insights')
         ->assertSee('Roadmap features included')
-        ->assertSee('feat-detail', false)                              // the hover detail popovers exist
+        ->assertSee('feat-back', false)                                // the flip-card back with the detail
+        ->assertSee('Hover to flip', false)                            // the flip affordance
         ->assertSee('never built before');                            // a detail explanation is present
 })->group('scenario:LP-05');

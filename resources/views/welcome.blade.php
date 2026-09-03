@@ -837,33 +837,32 @@
 <section class="band" id="features" style="background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
     <style>
         .feat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; margin-top: 8px; }
-        .feat-card {
-            position: relative; background: var(--paper); border: 1px solid var(--line); border-radius: 16px;
-            padding: 18px 18px 16px; cursor: help; transition: border-color .15s, transform .1s, box-shadow .15s;
-            outline: none;
+        .feat-card { position: relative; height: 208px; perspective: 1200px; background: transparent; border: 0; cursor: pointer; outline: none; }
+        .feat-inner {
+            position: relative; width: 100%; height: 100%; transform-style: preserve-3d;
+            transition: transform .55s cubic-bezier(.2,.7,.2,1);
         }
-        .feat-card:hover, .feat-card:focus-visible { border-color: var(--teal); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .feat-card:hover .feat-inner, .feat-card:focus-visible .feat-inner, .feat-card:focus-within .feat-inner { transform: rotateY(180deg); }
+        .feat-face {
+            position: absolute; inset: 0; -webkit-backface-visibility: hidden; backface-visibility: hidden;
+            border-radius: 16px; border: 1px solid var(--line); padding: 18px; display: flex; flex-direction: column;
+            box-shadow: var(--shadow-sm);
+        }
+        .feat-front { background: var(--paper); }
+        .feat-card:hover .feat-front, .feat-card:focus-within .feat-front { border-color: var(--teal); }
+        .feat-back { background: var(--ink); transform: rotateY(180deg); overflow: auto; }
         .feat-ico { font-size: 24px; line-height: 1; }
         .feat-title { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 16px; color: var(--ink); margin: 10px 0 4px; }
         .feat-line { font-size: 13px; font-weight: 700; color: var(--ink-soft); margin: 0; }
-        .feat-more { display: inline-flex; align-items: center; gap: 5px; margin-top: 10px; font-size: 11.5px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: var(--teal); }
-        .feat-detail {
-            position: absolute; left: 0; right: 0; top: calc(100% + 8px); z-index: 30;
-            background: var(--ink); color: #eef4ff; border-radius: 14px; padding: 15px 17px;
-            font-size: 13.5px; line-height: 1.55; font-weight: 600;
-            box-shadow: 0 20px 44px rgba(10,30,45,.34);
-            opacity: 0; visibility: hidden; transform: translateY(-6px); transition: opacity .18s ease, transform .18s ease, visibility .18s;
-            pointer-events: none;
-        }
-        .feat-detail::before { content: ''; position: absolute; top: -6px; left: 26px; width: 12px; height: 12px; background: var(--ink); transform: rotate(45deg); border-radius: 2px; }
-        .feat-card:hover .feat-detail, .feat-card:focus-visible .feat-detail, .feat-card:focus-within .feat-detail { opacity: 1; visibility: visible; transform: none; }
-        @media (max-width: 560px) { .feat-detail { position: static; opacity: 1; visibility: visible; transform: none; margin-top: 10px; box-shadow: none; } .feat-detail::before { display: none; } .feat-card { cursor: default; } .feat-more { display: none; } }
+        .feat-more { margin-top: auto; font-size: 11px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; color: var(--teal); }
+        .feat-back-title { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 14.5px; color: #ffd44d; margin: 0 0 7px; }
+        .feat-back p { font-size: 12.7px; line-height: 1.5; font-weight: 600; color: #dbe9f7; margin: 0; }
     </style>
     <div class="wrap">
         <div class="section-head" data-reveal>
             <span class="eyebrow">Everything on board</span>
             <h2>One platform. Every advantage.</h2>
-            <p>Years of work, distilled into one voyage. Hover any card for the detail — there's more under the surface of each.</p>
+            <p>Years of work, distilled into one voyage. Hover any card to flip it — there's more under the surface of each.</p>
         </div>
 
         @php
@@ -894,11 +893,18 @@
         <div class="feat-grid">
             @foreach ($features as $f)
                 <div class="feat-card" tabindex="0" role="button" aria-label="{{ $f[1] }} — {{ $f[3] }}">
-                    <span class="feat-ico">{{ $f[0] }}</span>
-                    <h3 class="feat-title">{{ $f[1] }}</h3>
-                    <p class="feat-line">{{ $f[2] }}</p>
-                    <span class="feat-more">ⓘ Hover for detail</span>
-                    <div class="feat-detail">{{ $f[3] }}</div>
+                    <div class="feat-inner">
+                        <div class="feat-face feat-front">
+                            <span class="feat-ico">{{ $f[0] }}</span>
+                            <h3 class="feat-title">{{ $f[1] }}</h3>
+                            <p class="feat-line">{{ $f[2] }}</p>
+                            <span class="feat-more">↻ Hover to flip</span>
+                        </div>
+                        <div class="feat-face feat-back">
+                            <h3 class="feat-back-title">{{ $f[1] }}</h3>
+                            <p>{{ $f[3] }}</p>
+                        </div>
+                    </div>
                 </div>
             @endforeach
         </div>
