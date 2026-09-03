@@ -158,3 +158,20 @@ it('offers the hero demo as a Child / Parent animation toggle, with the guardian
         ->assertSee('The whole family — invite the other parent', false)       // the co-parent scene (post-buildout feature)
         ->assertSee("Their logins in hand — and you're in control", false);    // the child-login + controls scene
 })->group('scenario:LP-14');
+
+it('lists an exhaustive feature set with hover-for-detail explanations', function () {
+    $this->get('/')
+        ->assertOk()
+        ->assertSee('Everything on board')
+        ->assertSee('Gamified Voyage map')
+        ->assertSee('10,000+ question bank')
+        ->assertSee('Built testing 50+ AI models')
+        ->assertSee('A novel learning loop')
+        ->assertSee('Adaptive learning with AI')
+        ->assertSee('Daily writing exercises')
+        ->assertSee('Daily vocabulary')
+        ->assertSee('Data-driven parent insights')
+        ->assertSee('Roadmap features included')
+        ->assertSee('feat-detail', false)                              // the hover detail popovers exist
+        ->assertSee('never built before');                            // a detail explanation is present
+})->group('scenario:LP-05');

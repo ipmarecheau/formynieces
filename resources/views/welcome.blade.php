@@ -833,6 +833,79 @@
 </section>
 
 
+<!-- EVERYTHING INSIDE — the exhaustive feature list, hover for detail -->
+<section class="band" id="features" style="background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <style>
+        .feat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; margin-top: 8px; }
+        .feat-card {
+            position: relative; background: var(--paper); border: 1px solid var(--line); border-radius: 16px;
+            padding: 18px 18px 16px; cursor: help; transition: border-color .15s, transform .1s, box-shadow .15s;
+            outline: none;
+        }
+        .feat-card:hover, .feat-card:focus-visible { border-color: var(--teal); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .feat-ico { font-size: 24px; line-height: 1; }
+        .feat-title { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 16px; color: var(--ink); margin: 10px 0 4px; }
+        .feat-line { font-size: 13px; font-weight: 700; color: var(--ink-soft); margin: 0; }
+        .feat-more { display: inline-flex; align-items: center; gap: 5px; margin-top: 10px; font-size: 11.5px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: var(--teal); }
+        .feat-detail {
+            position: absolute; left: 0; right: 0; top: calc(100% + 8px); z-index: 30;
+            background: var(--ink); color: #eef4ff; border-radius: 14px; padding: 15px 17px;
+            font-size: 13.5px; line-height: 1.55; font-weight: 600;
+            box-shadow: 0 20px 44px rgba(10,30,45,.34);
+            opacity: 0; visibility: hidden; transform: translateY(-6px); transition: opacity .18s ease, transform .18s ease, visibility .18s;
+            pointer-events: none;
+        }
+        .feat-detail::before { content: ''; position: absolute; top: -6px; left: 26px; width: 12px; height: 12px; background: var(--ink); transform: rotate(45deg); border-radius: 2px; }
+        .feat-card:hover .feat-detail, .feat-card:focus-visible .feat-detail, .feat-card:focus-within .feat-detail { opacity: 1; visibility: visible; transform: none; }
+        @media (max-width: 560px) { .feat-detail { position: static; opacity: 1; visibility: visible; transform: none; margin-top: 10px; box-shadow: none; } .feat-detail::before { display: none; } .feat-card { cursor: default; } .feat-more { display: none; } }
+    </style>
+    <div class="wrap">
+        <div class="section-head" data-reveal>
+            <span class="eyebrow">Everything on board</span>
+            <h2>One platform. Every advantage.</h2>
+            <p>Years of work, distilled into one voyage. Hover any card for the detail — there's more under the surface of each.</p>
+        </div>
+
+        @php
+            $features = [
+                ['🗺️', 'Gamified Voyage map', 'Every skill is an island to conquer.', 'The whole SEA syllabus laid out as an explorable map of illustrated islands. Children sail from one to the next, unlocking each as they master it — turning revision into a game they actually want to play.'],
+                ['📚', '10,000+ question bank', 'A vast, SEA-aligned bank.', 'Over ten thousand questions across Math and ELA, tagged by topic and difficulty, so practice never runs dry and every skill has fresh questions at three real difficulty levels.'],
+                ['🤖', 'Adaptive learning with AI', 'The plan bends to your child.', 'The system reads how your child answers and adapts in real time — breeze through and they advance; struggle and it circles back — so not a minute is wasted on what they already know.'],
+                ['🧪', 'Built testing 50+ AI models', 'The best model for each job.', 'We benchmarked more than fifty AI models to find the ones that teach, grade and give feedback most reliably for the SEA — with automatic fallbacks so it never stalls mid-lesson.'],
+                ['🔁', 'A novel learning loop', 'A way of learning never built before.', 'Our test-out-first loop lets a child prove mastery instantly — or choose their own way in: lesson, worked examples, or straight to practice — and pulls them into an AI re-teach the moment they slip. A genuinely new approach to mastery learning.'],
+                ['🐢', 'Smooth, the AI captain', 'A patient tutor, never a scold.', 'Smooth greets your child, celebrates every win and re-teaches every miss without judgement — the encouraging voice that keeps them coming back to sail.'],
+                ['🧠', 'AI re-teach that names the rule', 'Misses become mastery.', "When your child slips, Smooth doesn't just mark it wrong — it re-teaches the underlying rule, has them say it back in their own words, and only moves on once they've truly got it."],
+                ['✍️', 'Daily writing exercises', 'Composition every day, with feedback.', 'A daily writing stop with kind, specific AI feedback on structure, imagery and technique — the SEA paper most programs quietly ignore.'],
+                ['🔤', 'Daily vocabulary', 'A morning word ritual.', 'Every day opens with a short vocabulary warm-up — Morning Tide — building the word power the SEA rewards, one tide at a time.'],
+                ['📖', 'Daily reading', 'Comprehension, built daily.', 'Fresh reading passages with comprehension questions each day, growing the stamina and inference skills the Language paper demands.'],
+                ['📊', 'Data-driven parent insights', 'The honest layer.', 'A weekly Parent Portal with no spin: readiness, pace, every re-teach with the rule named, and exactly what to focus on next — so you never have to guess.'],
+                ['🎯', 'First-choice placement projection', 'Know if they’ll make it.', 'An honest, weighted projection of their SEA placement — so you can see whether they’re on course for their first-choice school, long before exam day.'],
+                ['🧭', 'Pacing engine', 'Always ahead of the calendar.', 'The daily plan is paced against the SEA calendar to keep your child ahead of where they need to be — and quietly re-plans when life gets in the way.'],
+                ['🩺', 'Adaptive diagnostic', 'Charts the whole voyage.', 'A friendly diagnostic finds where your child truly is — not where the syllabus assumes — and plans the entire curriculum from that real starting point.'],
+                ['🏆', 'Rewards & streak economy', 'Effort pays off at home.', 'Streaks, mastery stars and a Captain’s Locker of perks you control — turn consistency into the real-world rewards you choose.'],
+                ['🧩', 'All three SEA components', 'Math, ELA & Writing as one.', 'Not disconnected drills — the whole SEA taught as one connected journey, including the writing and vocabulary most tools skip entirely.'],
+                ['🏫', 'School journal', 'Works with their school.', 'Add graded classroom papers, and what their teacher sees weighs into the daily plan — one honest picture of your child, home and school together.'],
+                ['⏸️', 'Pause & resume', 'Fits your family.', 'Life happens — pause the journey and resume with one tap. The plan re-paces itself around the break so nothing is lost.'],
+                ['⏱️', 'Healthy usage caps', '20 minutes to 2 hours.', 'A guided daily time budget keeps sessions healthy and focused — from a quick sail to a two-hour deep dive — never endless screen time.'],
+                ['🚀', 'Roadmap features included', 'It only gets better.', 'Every new feature we ship lands in your plan at no extra cost — pseudonymous leagues, new tools and more are already on the way.'],
+            ];
+        @endphp
+
+        <div class="feat-grid">
+            @foreach ($features as $f)
+                <div class="feat-card" tabindex="0" role="button" aria-label="{{ $f[1] }} — {{ $f[3] }}">
+                    <span class="feat-ico">{{ $f[0] }}</span>
+                    <h3 class="feat-title">{{ $f[1] }}</h3>
+                    <p class="feat-line">{{ $f[2] }}</p>
+                    <span class="feat-more">ⓘ Hover for detail</span>
+                    <div class="feat-detail">{{ $f[3] }}</div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
+
 <!-- FOR PARENTS -->
 <section class="band" id="for-parents" style="background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
     <div class="wrap">
