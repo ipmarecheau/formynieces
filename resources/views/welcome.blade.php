@@ -156,9 +156,16 @@
         .brand-name { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 21px; color: var(--ink); }
         .nav-menu { display: flex; align-items: center; gap: 2px; margin-left: auto; }
         .nav-link {
-            display: inline-flex; align-items: center; line-height: 1;
+            display: inline-flex; align-items: center; line-height: 1; white-space: nowrap;
             color: var(--ink-soft); font-weight: 700; font-size: 15px; text-decoration: none;
-            padding: 9px 14px; border-radius: 999px; transition: color .2s, background .2s;
+            padding: 9px 13px; border-radius: 999px; transition: color .2s, background .2s;
+        }
+        /* Tighten the desktop menu on mid widths so links never wrap. */
+        @media (min-width: 761px) and (max-width: 1040px) {
+            .nav-inner { gap: 8px; }
+            .nav-menu { gap: 0; }
+            .nav-link { padding: 8px 9px; font-size: 14px; }
+            .nav-actions { margin-left: 10px; padding-left: 10px; gap: 8px; }
         }
         .nav-link:hover { color: var(--teal); background: var(--teal-tint); }
         .nav-actions {
@@ -166,6 +173,7 @@
             margin-left: 18px; padding-left: 18px; border-left: 1px solid var(--line);
         }
         .nav-actions .link-quiet { border-bottom: none; padding-bottom: 0; }
+        .nav-actions a, .nav-user { white-space: nowrap; }
         .nav-user { font-weight: 800; font-size: 15px; color: var(--ink); }
         .nav-logout { display: inline; margin: 0; }
 
@@ -607,8 +615,6 @@
             </div>
         @else
             <nav class="nav-menu" aria-label="Primary">
-                <a class="nav-link" href="#why-it-works">Why us</a>
-                <a class="nav-link" href="#meet-smooth">Meet Smooth</a>
                 <a class="nav-link" href="#for-parents">For parents</a>
                 <a class="nav-link" href="#pricing">Pricing</a>
                 <a class="nav-link" href="{{ route('blog.index') }}">Resources</a>
@@ -1306,32 +1312,45 @@
 <!-- SIDE NAV — scrollspy rail for this long page (desktop only) -->
 <style>
     .side-nav {
-        position: fixed; right: 22px; top: 50%; transform: translateY(-50%); z-index: 60;
-        display: flex; flex-direction: column; gap: 4px; padding: 10px 8px;
-        background: rgba(251, 248, 242, .82); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
-        border: 1px solid var(--line); border-radius: 999px; box-shadow: var(--shadow-md);
+        position: fixed; right: 20px; top: 50%; transform: translateY(-50%); z-index: 60;
+        display: flex; flex-direction: column; gap: 2px; padding: 12px 12px;
+        background: rgba(251, 248, 242, .9); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+        border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow-md);
+        transition: box-shadow .2s ease;
+        align-items: flex-start;
     }
+    .side-nav:hover, .side-nav:focus-within { box-shadow: var(--shadow-lg); }
+    .side-nav .sn-head {
+        font-size: 9.5px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint);
+        max-width: 0; overflow: hidden; white-space: nowrap; opacity: 0; height: 0;
+        transition: max-width .28s ease, opacity .2s ease, height .2s ease, margin .2s ease;
+    }
+    .side-nav:hover .sn-head, .side-nav:focus-within .sn-head { max-width: 200px; opacity: 1; height: 14px; margin: 0 0 6px 8px; }
     .side-nav a {
-        display: flex; align-items: center; gap: 10px; text-decoration: none;
-        padding: 6px; border-radius: 999px; color: var(--ink-soft);
+        display: flex; align-items: center; gap: 11px; text-decoration: none;
+        padding: 7px 6px; border-radius: 999px; color: var(--ink-soft); width: 100%;
     }
     .side-nav .sn-dot {
         width: 11px; height: 11px; border-radius: 50%; flex: none;
         background: transparent; border: 2px solid var(--line); transition: background .2s, border-color .2s, transform .2s;
     }
     .side-nav .sn-lbl {
-        max-width: 0; overflow: hidden; white-space: nowrap; font-size: 13px; font-weight: 800;
-        color: var(--ink); opacity: 0; transition: max-width .28s ease, opacity .2s ease, padding .28s ease;
+        max-width: 0; overflow: hidden; white-space: nowrap; font-size: 13.5px; font-weight: 800;
+        color: var(--ink); opacity: 0; transition: max-width .3s ease, opacity .2s ease;
     }
-    .side-nav a:hover .sn-lbl, .side-nav a:focus-visible .sn-lbl { max-width: 180px; opacity: 1; padding-right: 6px; }
-    .side-nav a:hover .sn-dot { border-color: var(--teal); }
+    /* Approaching the rail reveals the whole menu, so every section is discoverable. */
+    .side-nav:hover .sn-lbl, .side-nav:focus-within .sn-lbl { max-width: 190px; opacity: 1; }
+    .side-nav a:hover .sn-dot, .side-nav a:focus-visible .sn-dot { border-color: var(--teal); }
+    .side-nav a:hover, .side-nav a:focus-visible { background: var(--teal-tint); }
+    .side-nav a:hover .sn-lbl { color: var(--teal-deep); }
     .side-nav a.active .sn-dot { background: var(--teal); border-color: var(--teal); transform: scale(1.18); }
     .side-nav a.active .sn-lbl { color: var(--teal-deep); }
     .side-nav a:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
     @media (max-width: 1180px) { .side-nav { display: none; } }
-    @media (prefers-reduced-motion: reduce) { .side-nav .sn-dot, .side-nav .sn-lbl { transition: none; } }
+    @media (prefers-reduced-motion: reduce) { .side-nav *, .side-nav .sn-dot, .side-nav .sn-lbl, .side-nav .sn-head { transition: none; } }
 </style>
 <nav class="side-nav" aria-label="Page sections">
+    <span class="sn-head">On this page</span>
     @php
         $sideNav = [
             ['top', 'Top'],
