@@ -91,6 +91,7 @@
         }
 
         html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+        section[id], #top { scroll-margin-top: 96px; }
         body {
             background: var(--paper);
             font-family: 'Nunito', system-ui, sans-serif;
@@ -655,6 +656,7 @@
 </header>
 
 <!-- HERO -->
+<span id="top"></span>
 <section class="hero">
     <div class="wrap">
         <div class="hero-lead" data-reveal>
@@ -1300,6 +1302,79 @@
         </div>
     </div>
 </section>
+
+<!-- SIDE NAV — scrollspy rail for this long page (desktop only) -->
+<style>
+    .side-nav {
+        position: fixed; right: 22px; top: 50%; transform: translateY(-50%); z-index: 60;
+        display: flex; flex-direction: column; gap: 4px; padding: 10px 8px;
+        background: rgba(251, 248, 242, .82); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+        border: 1px solid var(--line); border-radius: 999px; box-shadow: var(--shadow-md);
+    }
+    .side-nav a {
+        display: flex; align-items: center; gap: 10px; text-decoration: none;
+        padding: 6px; border-radius: 999px; color: var(--ink-soft);
+    }
+    .side-nav .sn-dot {
+        width: 11px; height: 11px; border-radius: 50%; flex: none;
+        background: transparent; border: 2px solid var(--line); transition: background .2s, border-color .2s, transform .2s;
+    }
+    .side-nav .sn-lbl {
+        max-width: 0; overflow: hidden; white-space: nowrap; font-size: 13px; font-weight: 800;
+        color: var(--ink); opacity: 0; transition: max-width .28s ease, opacity .2s ease, padding .28s ease;
+    }
+    .side-nav a:hover .sn-lbl, .side-nav a:focus-visible .sn-lbl { max-width: 180px; opacity: 1; padding-right: 6px; }
+    .side-nav a:hover .sn-dot { border-color: var(--teal); }
+    .side-nav a.active .sn-dot { background: var(--teal); border-color: var(--teal); transform: scale(1.18); }
+    .side-nav a.active .sn-lbl { color: var(--teal-deep); }
+    .side-nav a:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+    @media (max-width: 1180px) { .side-nav { display: none; } }
+    @media (prefers-reduced-motion: reduce) { .side-nav .sn-dot, .side-nav .sn-lbl { transition: none; } }
+</style>
+<nav class="side-nav" aria-label="Page sections">
+    @php
+        $sideNav = [
+            ['top', 'Top'],
+            ['why-it-works', 'Why it works'],
+            ['features', 'Features'],
+            ['for-parents', 'For parents'],
+            ['how-it-works', 'How it works'],
+            ['see-it', 'See it in action'],
+            ['meet-smooth', 'Meet Smooth'],
+            ['pricing', 'Pricing'],
+        ];
+    @endphp
+    @foreach ($sideNav as $s)
+        <a href="#{{ $s[0] }}" data-sec="{{ $s[0] }}" aria-label="{{ $s[1] }}">
+            <span class="sn-dot"></span><span class="sn-lbl">{{ $s[1] }}</span>
+        </a>
+    @endforeach
+</nav>
+<script>
+    (function () {
+        var links = Array.prototype.slice.call(document.querySelectorAll('.side-nav a'));
+        if (!links.length) { return; }
+        var byId = {};
+        links.forEach(function (a) { byId[a.getAttribute('data-sec')] = a; });
+        var targets = links.map(function (a) { return document.getElementById(a.getAttribute('data-sec')); }).filter(Boolean);
+
+        function setActive(id) {
+            links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('data-sec') === id); });
+        }
+
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) { setActive(e.target.id); }
+            });
+        }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+        targets.forEach(function (t) { io.observe(t); });
+
+        // Reflect a clicked link immediately.
+        links.forEach(function (a) {
+            a.addEventListener('click', function () { setActive(a.getAttribute('data-sec')); });
+        });
+    })();
+</script>
 
 <!-- FOOTER -->
 <footer class="site">

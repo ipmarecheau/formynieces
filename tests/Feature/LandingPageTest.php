@@ -176,3 +176,12 @@ it('lists an exhaustive feature set with hover-for-detail explanations', functio
         ->assertSee('Hover to flip', false)                            // the flip affordance
         ->assertSee('never built before');                            // a detail explanation is present
 })->group('scenario:LP-05');
+
+it('offers a scrollspy side-nav for the long page', function () {
+    $this->get('/')
+        ->assertOk()
+        ->assertSee('side-nav', false)
+        ->assertSee('Page sections')          // aria-label on the nav
+        ->assertSee('data-sec="features"', false)
+        ->assertSee('data-sec="pricing"', false);
+})->group('scenario:LP-01');
