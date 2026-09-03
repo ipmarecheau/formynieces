@@ -5,6 +5,7 @@ namespace App\Services\Practice;
 use App\Models\PracticeAttempt;
 use App\Models\ReteachSession;
 use App\Models\StudentProgress;
+use App\Support\LearningEvent;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 
@@ -68,13 +69,26 @@ class Remediation
     /** Begin (or return the open) re-teach session. */
     public function start(int $studentId, int $moduleId, string $trigger): ReteachSession
     {
-        return $this->activeSession($studentId, $moduleId)
-            ?? ReteachSession::create([
-                'student_id' => $studentId,
-                'module_id' => $moduleId,
-                'trigger' => $trigger,
-                'started_at' => now(),
-            ]);
+        if (($existing = $this->activeSession($studentId, $moduleId)) !== null) {
+            return $existing;
+        }
+
+        $session = ReteachSession::create([
+            'student_id' => $studentId,
+            'module_id' => $moduleId,
+            'trigger' => $trigger,
+            'started_at' => now(),
+        ]);
+
+        // QC-01: a re-teach starting realises LL-14 (two hard misses) or LL-22 (5-of-7).
+        LearningEvent::record(
+            $trigger === ReteachSession::TRIGGER_WINDOW ? 'LL-22' : 'LL-14',
+            'reteach.started',
+            ['module_id' => $moduleId, 'trigger' => $trigger],
+            $studentId,
+        );
+
+        return $session;
     }
 
     /**

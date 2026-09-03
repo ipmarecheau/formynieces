@@ -1,5 +1,6 @@
 <?php
 
+use Monolog\Formatter\JsonFormatter;
 use Monolog\Handler\NullHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Handler\SyslogUdpHandler;
@@ -70,6 +71,17 @@ return [
             'path' => storage_path('logs/laravel.log'),
             'level' => env('LOG_LEVEL', 'debug'),
             'days' => env('LOG_DAILY_DAYS', 14),
+            'replace_placeholders' => true,
+        ],
+
+        // Scenario-tagged learning events (QC-01). One JSON object per line — greppable by
+        // scenario id to detect BDD-spec deviations in production. Written by App\Support\LearningEvent.
+        'learning' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/learning.log'),
+            'level' => 'info',
+            'days' => (int) env('LOG_LEARNING_DAYS', 30),
+            'formatter' => JsonFormatter::class,
             'replace_placeholders' => true,
         ],
 
