@@ -1309,89 +1309,82 @@
     </div>
 </section>
 
-<!-- SIDE NAV — scrollspy rail for this long page (desktop only) -->
+<!-- PAGE NAV — collapsible "On this page" menu, works on every screen -->
 <style>
-    .side-nav {
-        position: fixed; right: 20px; top: 50%; transform: translateY(-50%); z-index: 60;
-        display: flex; flex-direction: column; gap: 2px; padding: 12px 12px;
-        background: rgba(251, 248, 242, .9); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
-        border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow-md);
-        transition: box-shadow .2s ease;
-        align-items: flex-start;
+    .page-nav { position: fixed; right: 16px; top: 50%; transform: translateY(-50%); z-index: 70; }
+    .pnav-btn {
+        width: 52px; height: 52px; border-radius: 50%; border: 0; cursor: pointer;
+        background: linear-gradient(155deg, var(--teal), var(--teal-deep)); color: #fff;
+        display: grid; place-items: center; box-shadow: 0 10px 26px rgba(10,60,72,.42);
+        transition: transform .18s ease, opacity .18s ease, visibility .18s;
     }
-    .side-nav:hover, .side-nav:focus-within { box-shadow: var(--shadow-lg); }
-    .side-nav .sn-head {
-        font-size: 9.5px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint);
-        max-width: 0; overflow: hidden; white-space: nowrap; opacity: 0; height: 0;
-        transition: max-width .28s ease, opacity .2s ease, height .2s ease, margin .2s ease;
+    .pnav-btn:hover { transform: scale(1.06); }
+    .pnav-btn:focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
+    .pnav-btn svg { width: 23px; height: 23px; }
+    .pnav-panel {
+        position: absolute; right: 0; top: 50%; transform: translateY(-50%) translateX(14px);
+        width: 234px; max-height: 76vh; overflow: auto;
+        background: var(--paper-2); border: 1px solid var(--line); border-radius: 18px;
+        box-shadow: 0 26px 60px rgba(10,40,55,.3); padding: 12px;
+        opacity: 0; visibility: hidden; pointer-events: none;
+        transition: opacity .2s ease, transform .2s ease, visibility .2s;
     }
-    .side-nav:hover .sn-head, .side-nav:focus-within .sn-head { max-width: 200px; opacity: 1; height: 14px; margin: 0 0 6px 8px; }
-    .side-nav a {
-        display: flex; align-items: center; gap: 11px; text-decoration: none;
-        padding: 7px 6px; border-radius: 999px; color: var(--ink-soft); width: 100%;
-    }
-    .side-nav .sn-dot {
-        width: 11px; height: 11px; border-radius: 50%; flex: none;
-        background: transparent; border: 2px solid var(--line); transition: background .2s, border-color .2s, transform .2s;
-    }
-    .side-nav .sn-lbl {
-        max-width: 0; overflow: hidden; white-space: nowrap; font-size: 13.5px; font-weight: 800;
-        color: var(--ink); opacity: 0; transition: max-width .3s ease, opacity .2s ease;
-    }
-    /* Approaching the rail reveals the whole menu, so every section is discoverable. */
-    .side-nav:hover .sn-lbl, .side-nav:focus-within .sn-lbl { max-width: 190px; opacity: 1; }
-    .side-nav a:hover .sn-dot, .side-nav a:focus-visible .sn-dot { border-color: var(--teal); }
-    .side-nav a:hover, .side-nav a:focus-visible { background: var(--teal-tint); }
-    .side-nav a:hover .sn-lbl { color: var(--teal-deep); }
-    .side-nav a.active .sn-dot { background: var(--teal); border-color: var(--teal); transform: scale(1.18); }
-    .side-nav a.active .sn-lbl { color: var(--teal-deep); }
-    .side-nav a:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
-    @media (max-width: 1180px) { .side-nav { display: none; } }
-    @media (prefers-reduced-motion: reduce) { .side-nav *, .side-nav .sn-dot, .side-nav .sn-lbl, .side-nav .sn-head { transition: none; } }
+    .pnav-head { display: flex; align-items: center; justify-content: space-between; margin: 2px 4px 8px; }
+    .pnav-head span { font-size: 10.5px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); }
+    .pnav-close { background: none; border: 0; cursor: pointer; color: var(--ink-soft); font-size: 16px; line-height: 1; padding: 5px 7px; border-radius: 8px; }
+    .pnav-close:hover { color: var(--teal); background: var(--teal-tint); }
+    .pnav-panel a { display: flex; align-items: center; gap: 11px; text-decoration: none; padding: 9px 10px; border-radius: 10px; color: var(--ink); font-weight: 700; font-size: 14px; }
+    .pnav-panel a:hover { background: var(--teal-tint); color: var(--teal-deep); }
+    .pnav-panel a .pn-dot { width: 9px; height: 9px; border-radius: 50%; flex: none; background: transparent; border: 2px solid var(--line); transition: background .2s, border-color .2s; }
+    .pnav-panel a.active { background: var(--teal-tint); color: var(--teal-deep); }
+    .pnav-panel a.active .pn-dot { background: var(--teal); border-color: var(--teal); }
+    .page-nav.open .pnav-btn { opacity: 0; visibility: hidden; }
+    .page-nav.open .pnav-panel { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(-50%) translateX(0); }
+    @media (max-width: 560px) { .page-nav { right: 12px; } .pnav-panel { width: 212px; } }
+    @media (prefers-reduced-motion: reduce) { .pnav-btn, .pnav-panel { transition: none; } }
 </style>
-<nav class="side-nav" aria-label="Page sections">
-    <span class="sn-head">On this page</span>
-    @php
-        $sideNav = [
-            ['top', 'Top'],
-            ['why-it-works', 'Why it works'],
-            ['features', 'Features'],
-            ['for-parents', 'For parents'],
-            ['how-it-works', 'How it works'],
-            ['see-it', 'See it in action'],
-            ['meet-smooth', 'Meet Smooth'],
-            ['pricing', 'Pricing'],
-        ];
-    @endphp
-    @foreach ($sideNav as $s)
-        <a href="#{{ $s[0] }}" data-sec="{{ $s[0] }}" aria-label="{{ $s[1] }}">
-            <span class="sn-dot"></span><span class="sn-lbl">{{ $s[1] }}</span>
-        </a>
-    @endforeach
-</nav>
+@php
+    $sideNav = [
+        ['top', 'Top'],
+        ['why-it-works', 'Why it works'],
+        ['features', 'Features'],
+        ['for-parents', 'For parents'],
+        ['how-it-works', 'How it works'],
+        ['see-it', 'See it in action'],
+        ['meet-smooth', 'Meet Smooth'],
+        ['pricing', 'Pricing'],
+    ];
+@endphp
+<div class="page-nav" id="pageNav">
+    <button class="pnav-btn" type="button" aria-label="On this page" aria-expanded="false" aria-controls="pnavPanel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <circle cx="5" cy="6" r="1.5" fill="currentColor" stroke="none"/><circle cx="5" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="5" cy="18" r="1.5" fill="currentColor" stroke="none"/>
+            <line x1="10" y1="6" x2="20" y2="6"/><line x1="10" y1="12" x2="20" y2="12"/><line x1="10" y1="18" x2="20" y2="18"/>
+        </svg>
+    </button>
+    <nav class="pnav-panel" id="pnavPanel" aria-label="Page sections">
+        <div class="pnav-head"><span>On this page</span><button class="pnav-close" type="button" aria-label="Close menu">✕</button></div>
+        @foreach ($sideNav as $s)
+            <a href="#{{ $s[0] }}" data-sec="{{ $s[0] }}"><span class="pn-dot"></span>{{ $s[1] }}</a>
+        @endforeach
+    </nav>
+</div>
 <script>
     (function () {
-        var links = Array.prototype.slice.call(document.querySelectorAll('.side-nav a'));
-        if (!links.length) { return; }
-        var byId = {};
-        links.forEach(function (a) { byId[a.getAttribute('data-sec')] = a; });
+        var wrap = document.getElementById('pageNav'); if (!wrap) { return; }
+        var btn = wrap.querySelector('.pnav-btn');
+        var closeBtn = wrap.querySelector('.pnav-close');
+        var links = Array.prototype.slice.call(wrap.querySelectorAll('.pnav-panel a'));
+        function setOpen(on) { wrap.classList.toggle('open', on); btn.setAttribute('aria-expanded', on ? 'true' : 'false'); }
+        btn.addEventListener('click', function (e) { e.stopPropagation(); setOpen(!wrap.classList.contains('open')); });
+        closeBtn.addEventListener('click', function () { setOpen(false); btn.focus(); });
+        document.addEventListener('click', function (e) { if (wrap.classList.contains('open') && !wrap.contains(e.target)) { setOpen(false); } });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { setOpen(false); } });
+        function setActive(id) { links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('data-sec') === id); }); }
+        links.forEach(function (a) { a.addEventListener('click', function () { setActive(a.getAttribute('data-sec')); setOpen(false); }); });
         var targets = links.map(function (a) { return document.getElementById(a.getAttribute('data-sec')); }).filter(Boolean);
-
-        function setActive(id) {
-            links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('data-sec') === id); });
-        }
-
-        var io = new IntersectionObserver(function (entries) {
-            entries.forEach(function (e) {
-                if (e.isIntersecting) { setActive(e.target.id); }
-            });
-        }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+        var io = new IntersectionObserver(function (entries) { entries.forEach(function (e) { if (e.isIntersecting) { setActive(e.target.id); } }); }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
         targets.forEach(function (t) { io.observe(t); });
-
-        // Reflect a clicked link immediately.
-        links.forEach(function (a) {
-            a.addEventListener('click', function () { setActive(a.getAttribute('data-sec')); });
-        });
     })();
 </script>
 

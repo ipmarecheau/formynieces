@@ -177,11 +177,12 @@ it('lists an exhaustive feature set with hover-for-detail explanations', functio
         ->assertSee('never built before');                            // a detail explanation is present
 })->group('scenario:LP-05');
 
-it('offers a scrollspy side-nav for the long page', function () {
+it('offers a collapsible "On this page" section menu for the long page', function () {
     $this->get('/')
         ->assertOk()
-        ->assertSee('side-nav', false)
-        ->assertSee('Page sections')          // aria-label on the nav
+        ->assertSee('page-nav', false)
+        ->assertSee('On this page')            // the collapsible menu header
+        ->assertSee('Page sections')           // aria-label on the panel
         ->assertSee('data-sec="features"', false)
         ->assertSee('data-sec="pricing"', false);
 })->group('scenario:LP-01');
