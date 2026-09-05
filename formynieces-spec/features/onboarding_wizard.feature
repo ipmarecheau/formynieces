@@ -42,7 +42,7 @@ Feature: Guided onboarding wizard
     Given the "add a child" step is not yet done
     When she creates a child profile
     Then that step is marked complete on the wizard
-    And the next step, "set her exam date", becomes the highlighted one
+    And the next step, "take the diagnostic", becomes the highlighted one
 
   @scenario:WZ-04
   Scenario: The wizard resumes where she left off, on any device
@@ -52,10 +52,10 @@ Feature: Guided onboarding wizard
     And her progress was never lost between sessions
 
   @scenario:WZ-05
-  Scenario: Setting the child's exam date unlocks pacing
-    Given her child has no SEA exam date set
-    When the wizard's "set her exam date" step is completed
-    Then the exam date is saved for that child
+  Scenario: Adding the child captures her exam date and unlocks pacing
+    Given adding a child asks for her SEA exam year as part of setup
+    When the guardian completes the "add a child" step
+    Then that child's exam year is saved without a separate wizard step
     And pacing can now keep her ahead of where she needs to be
 
   # --------------------------------------------------------- the child's progress, reflected

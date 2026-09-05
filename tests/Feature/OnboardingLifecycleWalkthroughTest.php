@@ -30,10 +30,9 @@ it('walks the full parent + child onboarding lifecycle end to end', function () 
     $child = $guardian->students()->firstOrFail();
     expect($child->target_sea_year)->toBe(2027);
 
-    // Wizard now reflects the child + exam date; next is the diagnostic (WZ-03/05).
+    // Wizard now reflects the child (exam year captured at setup); next is the diagnostic (WZ-03/05).
     $steps = collect(App\Services\Onboarding\OnboardingWizard::for($guardian->refresh())->steps())->keyBy('key');
     expect($steps['child']['done'])->toBeTrue()
-        ->and($steps['exam_date']['done'])->toBeTrue()
         ->and(App\Services\Onboarding\OnboardingWizard::for($guardian)->nextStep()['key'])->toBe('diagnostic');
 
     // ---- Child: logs in for the first time and is sent into her diagnostic (WZ-07) ------
@@ -65,5 +64,5 @@ it('a returning guardian resumes the same progress on a fresh session (WZ-04)', 
     // A brand-new component instance (a different device/session) shows the same DB-derived progress.
     Livewire::test(OnboardingWizard::class)->assertSee('Take the diagnostic');
     $progress = App\Services\Onboarding\OnboardingWizard::for($guardian)->progress();
-    expect($progress['done'])->toBe(3); // account + child + exam date
+    expect($progress['done'])->toBe(2); // account + child (exam year captured at child setup)
 });

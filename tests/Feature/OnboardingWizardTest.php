@@ -23,10 +23,10 @@ it('greets a verified guardian with no child: account done, next step is add-chi
     expect($steps['account']['done'])->toBeTrue()
         ->and($steps['child']['done'])->toBeFalse()
         ->and($wiz->nextStep()['key'])->toBe('child')
-        ->and($wiz->progress())->toMatchArray(['done' => 1, 'total' => 5]);
+        ->and($wiz->progress())->toMatchArray(['done' => 1, 'total' => 4]);
 });
 
-it('ticks off add-child only once a child exists, then points at exam date (WZ-03)', function () {
+it('ticks off add-child only once a child exists, then points at the diagnostic (WZ-03)', function () {
     $g = wizGuardian();
     wizChild($g);
 
@@ -34,14 +34,7 @@ it('ticks off add-child only once a child exists, then points at exam date (WZ-0
     $steps = collect($wiz->steps())->keyBy('key');
 
     expect($steps['child']['done'])->toBeTrue()
-        ->and($wiz->nextStep()['key'])->toBe('exam_date');
-});
-
-it('completes the exam-date step when the child has a SEA year (WZ-05)', function () {
-    $g = wizGuardian();
-    wizChild($g, ['target_sea_year' => 2027]);
-
-    expect(collect(OnboardingWizard::for($g)->steps())->keyBy('key')['exam_date']['done'])->toBeTrue();
+        ->and($wiz->nextStep()['key'])->toBe('diagnostic');
 });
 
 it('reflects what the child did: diagnostic + first lesson (WZ-06)', function () {

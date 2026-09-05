@@ -53,18 +53,10 @@ class OnboardingWizard
             [
                 'key' => 'child',
                 'label' => 'Add your child',
-                'why' => 'Set up her profile so lessons and practice are pitched at her level.',
+                'why' => 'Set up her profile and SEA exam year — that pitches lessons at her level and lets pacing keep her ahead.',
                 'done' => $child !== null,
                 'actor' => 'guardian',
                 'route' => 'child.setup',
-            ],
-            [
-                'key' => 'exam_date',
-                'label' => 'Set her exam date',
-                'why' => 'Her SEA year is what lets pacing keep her ahead of where she needs to be.',
-                'done' => $child !== null && $child->target_sea_year !== null,
-                'actor' => 'guardian',
-                'route' => 'guardian.family',
             ],
             [
                 'key' => 'diagnostic',
