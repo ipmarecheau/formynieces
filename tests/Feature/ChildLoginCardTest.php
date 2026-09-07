@@ -22,6 +22,20 @@ it('shows the child login id and hides the password until revealed', function ()
         ->assertSee('CoralTide48');              // revealed on tap
 });
 
+it('reveals the other-device sign-in instructions with the /go url on tap', function () {
+    $guardian = User::factory()->create(['role' => 'guardian', 'email_verified_at' => now()]);
+    $child = User::factory()->create(['role' => 'student', 'parent_id' => $guardian->id]);
+
+    $this->actingAs($guardian);
+
+    Livewire::test(ChildLoginCard::class, ['childId' => $child->id])
+        ->assertDontSee('Open that link')                // panel hidden by default
+        ->call('toggleOtherDevice')
+        ->assertSet('showOtherDevice', true)
+        ->assertSee('Open that link')                    // instructions now shown
+        ->assertSee(route('student.login'), false);      // the /go url they type on the child's device
+});
+
 it('refuses to render a child that is not the guardian\'s own', function () {
     $guardian = User::factory()->create(['role' => 'guardian', 'email_verified_at' => now()]);
     $otherChild = User::factory()->create(['role' => 'student', 'parent_id' => User::factory()->create()->id]);

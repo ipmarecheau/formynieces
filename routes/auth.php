@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
+use App\Http\Controllers\Auth\DeviceHandoffController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordController;
@@ -42,6 +43,14 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
+    // A guardian hands their shared device over to a child: a countdown interstitial,
+    // then sign the guardian out and land on /go with the child's login ID prefilled.
+    Route::get('go/handoff/{child}', [DeviceHandoffController::class, 'show'])
+        ->name('student.handoff');
+
+    Route::post('go/handoff/{child}', [DeviceHandoffController::class, 'commit'])
+        ->name('student.handoff.commit');
+
     Route::get('verify-email', VerifyAccount::class)
         ->name('verification.notice');
 

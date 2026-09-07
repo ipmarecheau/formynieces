@@ -43,7 +43,7 @@
             @csrf
             <div>
                 <label for="email">Your login</label>
-                <input type="text" id="email" name="email" value="{{ old('email') }}"
+                <input type="text" id="email" name="email" value="{{ old('email', request('login')) }}"
                        required autofocus autocomplete="username" autocapitalize="none" spellcheck="false"
                        placeholder="name@smoothseas.org">
             </div>

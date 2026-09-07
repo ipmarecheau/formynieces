@@ -18,6 +18,8 @@ class ChildLoginCard extends Component
 
     public bool $revealed = false;
 
+    public bool $showOtherDevice = false;
+
     public function mount(int $childId): void
     {
         $this->childId = $childId;
@@ -26,6 +28,11 @@ class ChildLoginCard extends Component
     public function toggleReveal(): void
     {
         $this->revealed = ! $this->revealed;
+    }
+
+    public function toggleOtherDevice(): void
+    {
+        $this->showOtherDevice = ! $this->showOtherDevice;
     }
 
     public function render()

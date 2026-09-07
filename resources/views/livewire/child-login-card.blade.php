@@ -11,9 +11,14 @@
         .clc-reveal{color:var(--teal-deep);background:var(--teal-tint);}
         .clc-copy{color:var(--ink-faint);background:none;}
         .clc-hint{font-size:11.5px;color:var(--ink-soft);font-weight:700;background:var(--teal-tint);border-radius:10px;padding:9px 11px;margin:12px 0 0;}
-        .clc-foot{display:flex;gap:8px;margin-top:11px;}
-        .clc-foot a{flex:1;text-align:center;text-decoration:none;font-size:12.5px;font-weight:800;border-radius:11px;padding:10px;border:1px solid var(--line);color:var(--teal-deep);background:var(--paper-2);}
+        .clc-foot{display:flex;flex-direction:column;gap:8px;margin-top:11px;}
+        .clc-foot a,.clc-foot button{display:block;width:100%;text-align:center;text-decoration:none;font-size:13.5px;font-weight:800;border-radius:11px;padding:12px 10px;border:1px solid var(--line);color:var(--teal-deep);background:var(--paper-2);cursor:pointer;}
         .clc-foot a.clc-solid{background:var(--teal);color:#fff;border-color:var(--teal);}
+        .clc-od{margin-top:11px;border:1px solid var(--line);border-radius:12px;background:var(--teal-tint);padding:12px 13px;}
+        .clc-od p{margin:0;}
+        .clc-od-t{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-deep);margin:0 0 7px;}
+        .clc-od-url{font-size:15px;font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums;word-break:break-all;background:var(--paper-2);border:1px solid var(--line);border-radius:9px;padding:8px 10px;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+        .clc-od ol{margin:9px 0 0;padding-left:18px;font-size:12.5px;color:var(--ink-soft);font-weight:700;line-height:1.6;}
     </style>
 
     <section class="clc" aria-label="Your child's login">
@@ -46,12 +51,28 @@
             @endif
         </div>
 
-        <p class="clc-hint">🧭 The student signs in with this — not you. Give it to {{ $child->name }} on their own device.</p>
+        <p class="clc-hint">🧭 {{ $child->name }} signs in with this — not you. On their own device, go to <strong>smoothseas.org/go</strong>. Sharing this device? Hand it over below.</p>
 
         <div class="clc-foot">
-            <a href="{{ route('student.login') }}" target="_blank" rel="noopener" class="clc-solid">Open student sign-in ↗</a>
-            <a href="{{ route('guardian.children') }}">Reset</a>
+            <a href="{{ route('student.handoff', $child) }}" class="clc-solid">📱 Log in {{ $child->name }} on this device</a>
+            <button type="button" wire:click="toggleOtherDevice">🖥 Log in {{ $child->name }} on another device</button>
         </div>
+        <p style="text-align:center;margin:9px 0 0;"><a href="{{ route('guardian.children') }}" style="font-size:11.5px;font-weight:800;color:var(--ink-faint);text-decoration:none;">Reset login</a></p>
+
+        @if ($showOtherDevice)
+            <div class="clc-od">
+                <p class="clc-od-t">On {{ $child->name }}'s own device</p>
+                <div class="clc-od-url">
+                    <span>{{ route('student.login') }}</span>
+                    <button type="button" class="clc-btn clc-copy" onclick="clcCopy(this,'{{ route('student.login') }}')">Copy</button>
+                </div>
+                <ol>
+                    <li>Open that link on {{ $child->name }}'s device.</li>
+                    <li>Enter the Login ID and Password above.</li>
+                    <li>Tap <strong>Set sail →</strong>.</li>
+                </ol>
+            </div>
+        @endif
     </section>
 
     <script>
