@@ -216,6 +216,18 @@
             color: #67e8f9; font-weight: 700; text-decoration: none; font-size: 14px;
         }
         .creds a:hover { color: #fcd34d; }
+
+        /* Step-by-step child setup — progressive enhancement (mirrors the parent signup). */
+        .rw-progress { display: none; }
+        .rw-step-nav { display: none; align-items: center; gap: 12px; margin-top: 16px; }
+        .rw-back { background: none; border: 0; color: #93b2cc; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 14px; cursor: pointer; padding: 6px 4px; }
+        .rw-back:hover { color: #cfe6ea; }
+        form.stepper .rw-progress { display: flex; gap: 6px; margin-bottom: 22px; }
+        form.stepper .rw-progress i { height: 5px; flex: 1; border-radius: 99px; background: rgba(255,255,255,0.16); transition: background .2s; }
+        form.stepper .rw-progress i.on { background: #fcd34d; }
+        form.stepper .rw-step-nav { display: flex; }
+        form.stepper .rw-step:not(.rw-active) { display: none; }
+        form.stepper .rw-next { flex: 1; }
     </style>
 </head>
 <body>
@@ -245,8 +257,8 @@
     @else
         <div class="brand">
             <div class="brand-icon">👧</div>
-            <h1>Set Up A Child Account</h1>
-            <p>Create the account and start the SEA adventure</p>
+            <h1>Add your first child</h1>
+            <p>You can add others later from your dashboard.</p>
         </div>
 
         @include('partials.setup-stepper', ['current' => 2])
@@ -261,57 +273,73 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ route('child.store') }}">
+        <form method="POST" action="{{ route('child.store') }}" id="child-form">
             @csrf
 
-            <div class="field">
-                <label class="lbl" for="name">Child's Full Name</label>
-                <input type="text" id="name" name="name" value="{{ old('name') }}"
-                       placeholder="e.g. Aaliyah Thomas" required autofocus>
+            {{-- Progress (shown only when the JS stepper is active). --}}
+            <div class="rw-progress" aria-hidden="true"><i></i><i></i><i></i></div>
+
+            {{-- Step 1 — name --}}
+            <div class="rw-step" data-step="1">
+                <div class="field">
+                    <label class="lbl" for="name">Child's Full Name</label>
+                    <input type="text" id="name" name="name" value="{{ old('name') }}"
+                           placeholder="e.g. Aaliyah Thomas" required autofocus>
+                </div>
+
+                <div class="login-preview" aria-live="polite">
+                    <span class="lp-label">✨ Your child's login</span>
+                    <div class="lp-email"><span id="username-preview">…</span><span class="lp-suffix">@smoothseas.org</span></div>
+                    <p class="lp-note">Auto-created from the first initial + last name — <strong>save it, it's how they sign in</strong>. A number is added if it's already taken.</p>
+                </div>
+
+                <div class="rw-step-nav"><button type="button" class="btn-submit rw-next">Next →</button></div>
             </div>
 
-            <div class="login-preview" aria-live="polite">
-                <span class="lp-label">✨ Your child's login</span>
-                <div class="lp-email"><span id="username-preview">…</span><span class="lp-suffix">@smoothseas.org</span></div>
-                <p class="lp-note">Auto-created from the first initial + last name — <strong>save it, it's how they sign in</strong>. A number is added if it's already taken.</p>
+            {{-- Step 2 — SEA year --}}
+            <div class="rw-step" data-step="2">
+                <div class="field">
+                    <label class="lbl">Target SEA Year</label>
+                    @php($years = range(now()->year, now()->year + 4))
+                    <div class="year-chips">
+                        @foreach ($years as $y)
+                            <label class="year-chip">
+                                <input type="radio" name="target_sea_year" value="{{ $y }}"
+                                       {{ (int) old('target_sea_year') === $y ? 'checked' : '' }} required>
+                                <span>{{ $y }}</span>
+                            </label>
+                        @endforeach
+                    </div>
+                    <p class="hint" style="margin-top:8px;">A strong password is generated automatically — you can reveal or reset it anytime in your Parent Portal.</p>
+                </div>
+                <div class="rw-step-nav"><button type="button" class="rw-back">← Back</button><button type="button" class="btn-submit rw-next">Next →</button></div>
             </div>
 
-            <div class="field">
-                <label class="lbl">Target SEA Year</label>
-                @php($years = range(now()->year, now()->year + 4))
-                <div class="year-chips">
-                    @foreach ($years as $y)
-                        <label class="year-chip">
-                            <input type="radio" name="target_sea_year" value="{{ $y }}"
-                                   {{ (int) old('target_sea_year') === $y ? 'checked' : '' }} required>
-                            <span>{{ $y }}</span>
-                        </label>
+            {{-- Step 3 — known weak areas (optional) + submit --}}
+            <div class="rw-step" data-step="3">
+                <div class="strands">
+                    <label class="lbl">Known Weak Areas (optional)</label>
+                    <p class="hint" style="margin-bottom:12px;">Pick any you already know they struggle with. The diagnostic will check these too.</p>
+
+                    @foreach ($strandsBySubject as $subject => $strands)
+                        <div class="strand-group">
+                            <h3>{{ $subject }}</h3>
+                            <div class="strand-grid">
+                                @foreach ($strands as $strand)
+                                    <label class="strand-check">
+                                        <input type="checkbox" name="known_weak_areas[]" value="{{ $strand }}"
+                                            {{ in_array($strand, old('known_weak_areas', [])) ? 'checked' : '' }}>
+                                        {{ $strand }}
+                                    </label>
+                                @endforeach
+                            </div>
+                        </div>
                     @endforeach
                 </div>
-                <p class="hint" style="margin-top:8px;">A strong password is generated automatically — you can reveal or reset it anytime in your Parent Portal.</p>
+
+                <div class="rw-step-nav" style="margin-bottom:12px;"><button type="button" class="rw-back">← Back</button></div>
+                <button type="submit" class="btn-submit">Create the Account 🌟</button>
             </div>
-
-            <div class="strands">
-                <label class="lbl">Known Weak Areas (optional)</label>
-                <p class="hint" style="margin-bottom:12px;">Pick any you already know they struggle with. The diagnostic will check these too.</p>
-
-                @foreach ($strandsBySubject as $subject => $strands)
-                    <div class="strand-group">
-                        <h3>{{ $subject }}</h3>
-                        <div class="strand-grid">
-                            @foreach ($strands as $strand)
-                                <label class="strand-check">
-                                    <input type="checkbox" name="known_weak_areas[]" value="{{ $strand }}"
-                                        {{ in_array($strand, old('known_weak_areas', [])) ? 'checked' : '' }}>
-                                    {{ $strand }}
-                                </label>
-                            @endforeach
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-
-            <button type="submit" class="btn-submit">Create the Account 🌟</button>
         </form>
     @endif
 
@@ -357,6 +385,44 @@
 
         nameInput.addEventListener('input', update);
         update();
+    })();
+
+    // Step-by-step stepper (progressive enhancement — without JS every step is visible).
+    (function () {
+        const form = document.getElementById('child-form');
+        if (!form) return;
+        const steps = Array.prototype.slice.call(form.querySelectorAll('.rw-step'));
+        if (steps.length < 2) return;
+
+        const dots = Array.prototype.slice.call(form.querySelectorAll('.rw-progress i'));
+        let cur = 0;
+
+        function show(i) {
+            steps.forEach((s, n) => s.classList.toggle('rw-active', n === i));
+            dots.forEach((d, n) => d.classList.toggle('on', n <= i));
+            cur = i;
+            const firstInput = steps[i].querySelector('input:not([type=checkbox]):not([type=radio])');
+            if (firstInput) { try { firstInput.focus(); } catch (e) {} }
+        }
+
+        function stepValid(i) {
+            let ok = true;
+            steps[i].querySelectorAll('input').forEach(function (inp) {
+                if (ok && !inp.checkValidity()) { inp.reportValidity(); ok = false; }
+            });
+            return ok;
+        }
+
+        form.classList.add('stepper');
+        form.querySelectorAll('.rw-next').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                if (stepValid(cur) && cur < steps.length - 1) show(cur + 1);
+            });
+        });
+        form.querySelectorAll('.rw-back').forEach(function (btn) {
+            btn.addEventListener('click', function () { if (cur > 0) show(cur - 1); });
+        });
+        show(0);
     })();
 </script>
 </body>
