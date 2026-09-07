@@ -10,13 +10,13 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
-            --purple: #0e7490;
-            --pink:   #f6b71e;
-            --bg:     #06182e;
-            --card:   #0c2440;
-            --border: rgba(34,211,238,0.35);
-            --text:   #e6f2fb;
-            --muted:  #93b2cc;
+            --purple: #0d7d8c;
+            --pink:   #f2a900;
+            --bg:     #fbf8f2;
+            --card:   #ffffff;
+            --border: #e7ddcd;
+            --text:   #12222e;
+            --muted:  #40566a;
         }
 
         body {
@@ -41,8 +41,8 @@
             0%,100% { opacity: 0.15; transform: scale(1); }
             50%      { opacity: 0.9;  transform: scale(1.4); }
         }
-        .orb { position: fixed; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: 0; }
-        .orb-1 { width: 400px; height: 400px; background: rgba(34,211,238,0.25); top: -100px; left: -100px; }
+        .orb { display:none; position: fixed; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: 0; }
+        .orb-1 { width: 400px; height: 400px; background: rgba(13,125,140,0.25); top: -100px; left: -100px; }
         .orb-2 { width: 300px; height: 300px; background: rgba(246,183,30,0.2);  bottom: -80px; right: -80px; }
 
         .card {
@@ -67,11 +67,11 @@
             border-radius: 18px;
             display: inline-flex; align-items: center; justify-content: center;
             font-size: 30px; margin-bottom: 14px;
-            box-shadow: 0 0 30px rgba(34,211,238,0.5);
+            box-shadow: 0 0 30px rgba(13,125,140,0.5);
         }
         .brand h1 {
             font-family: 'Fredoka One', cursive; font-size: 26px;
-            background: linear-gradient(135deg, #67e8f9, #fcd34d);
+            background: linear-gradient(135deg, #0d7d8c, #f2a900);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
         .brand p { color: var(--muted); font-size: 14px; margin-top: 4px; }
@@ -87,8 +87,8 @@
         input[type="tel"],
         input[type="text"] {
             width: 100%;
-            background: rgba(255,255,255,0.06);
-            border: 1.5px solid rgba(34,211,238,0.3);
+            background: #f6faf9;
+            border: 1.5px solid rgba(13,125,140,0.3);
             border-radius: 12px;
             padding: 12px 16px;
             color: var(--text); font-family: 'Nunito', sans-serif; font-size: 15px;
@@ -96,9 +96,9 @@
         }
         input:focus {
             border-color: var(--purple);
-            box-shadow: 0 0 0 3px rgba(34,211,238,0.2);
+            box-shadow: 0 0 0 3px rgba(13,125,140,0.2);
         }
-        input::placeholder { color: rgba(196,181,253,0.4); }
+        input::placeholder { color: #9aabb5; }
         .field-hint {
             margin-top: 6px; font-size: 12px; color: var(--muted);
             text-transform: none; letter-spacing: 0; font-weight: 500;
@@ -129,8 +129,8 @@
         .btn-submit:active { transform: scale(0.98); }
 
         .foot { text-align: center; margin-top: 24px; font-size: 14px; color: var(--muted); }
-        .foot a { color: #67e8f9; font-weight: 700; text-decoration: none; }
-        .foot a:hover { color: #fcd34d; }
+        .foot a { color: #0d7d8c; font-weight: 700; text-decoration: none; }
+        .foot a:hover { color: #f2a900; }
 
         .errors {
             background: rgba(239,68,68,0.12);
@@ -142,16 +142,16 @@
 
         .terms-scroll {
             max-height: 190px; overflow-y: auto; margin-top: 6px;
-            background: rgba(6,24,46,0.55); border: 1.5px solid rgba(34,211,238,0.35);
+            background: rgba(6,24,46,0.55); border: 1.5px solid rgba(13,125,140,0.35);
             border-radius: 12px; padding: 14px 16px;
-            font-size: 12.5px; line-height: 1.55; color: #cde3f5;
+            font-size: 12.5px; line-height: 1.55; color: #40566a;
         }
         .terms-scroll h2 { font-size: 13.5px; color: #e6f2fb; margin: 14px 0 4px; font-weight: 800; }
         .terms-scroll h2:first-child { margin-top: 0; }
         .terms-scroll p, .terms-scroll li { color: #a9c6de; margin-bottom: 6px; }
         .terms-scroll ul { margin: 0 0 8px 18px; }
         .terms-scroll strong { color: #e6f2fb; }
-        .terms-scroll a { color: #67e8f9; }
+        .terms-scroll a { color: #0d7d8c; }
         .terms-scroll .terms-meta { color: #7fa0bb; font-size: 11px; }
         .terms-scroll.is-read { border-color: rgba(16,185,129,0.55); }
         .terms-scroll-hint { font-size: 11.5px; font-weight: 700; color: #93b2cc; margin-top: 6px; }
@@ -160,13 +160,13 @@
         /* Existing-account notice — shown when the typed email already has an account. */
         .exists-notice {
             display: none;
-            background: rgba(34,211,238,0.10);
-            border: 1.5px solid rgba(34,211,238,0.45);
+            background: rgba(13,125,140,0.10);
+            border: 1.5px solid rgba(13,125,140,0.45);
             border-radius: 12px; padding: 14px 16px; margin-bottom: 20px;
-            font-size: 13.5px; line-height: 1.5; color: #cde3f5;
+            font-size: 13.5px; line-height: 1.5; color: #40566a;
         }
         .exists-notice.is-shown { display: block; }
-        .exists-notice strong { color: #e6f2fb; }
+        .exists-notice strong { color: #12222e; }
         .exists-notice a {
             display: inline-block; margin-top: 10px;
             background: linear-gradient(135deg, var(--purple), var(--pink));
@@ -184,7 +184,7 @@
         .rw-back:hover { color: #cfe6ea; }
         form.stepper .rw-progress { display: flex; gap: 6px; margin-bottom: 22px; }
         form.stepper .rw-progress i { height: 5px; flex: 1; border-radius: 99px; background: rgba(255,255,255,0.16); transition: background .2s; }
-        form.stepper .rw-progress i.on { background: #67e8f9; }
+        form.stepper .rw-progress i.on { background: #0d7d8c; }
         form.stepper .rw-step-nav { display: flex; }
         form.stepper .rw-step:not(.rw-active) { display: none; }
         form.stepper .rw-next { flex: 1; }

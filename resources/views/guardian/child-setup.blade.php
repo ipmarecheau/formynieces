@@ -10,13 +10,13 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
-            --purple: #0e7490;
-            --pink:   #f6b71e;
-            --bg:     #06182e;
-            --card:   #0c2440;
-            --border: rgba(34,211,238,0.35);
-            --text:   #e6f2fb;
-            --muted:  #93b2cc;
+            --purple: #0d7d8c;
+            --pink:   #f2a900;
+            --bg:     #fbf8f2;
+            --card:   #ffffff;
+            --border: #e7ddcd;
+            --text:   #12222e;
+            --muted:  #40566a;
         }
 
         body {
@@ -41,8 +41,8 @@
             0%,100% { opacity: 0.15; transform: scale(1); }
             50%      { opacity: 0.9;  transform: scale(1.4); }
         }
-        .orb { position: fixed; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: 0; }
-        .orb-1 { width: 400px; height: 400px; background: rgba(34,211,238,0.25); top: -100px; left: -100px; }
+        .orb { display:none; position: fixed; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: 0; }
+        .orb-1 { width: 400px; height: 400px; background: rgba(13,125,140,0.25); top: -100px; left: -100px; }
         .orb-2 { width: 300px; height: 300px; background: rgba(246,183,30,0.2);  bottom: -80px; right: -80px; }
 
         .card {
@@ -67,11 +67,11 @@
             border-radius: 18px;
             display: inline-flex; align-items: center; justify-content: center;
             font-size: 30px; margin-bottom: 14px;
-            box-shadow: 0 0 30px rgba(34,211,238,0.5);
+            box-shadow: 0 0 30px rgba(13,125,140,0.5);
         }
         .brand h1 {
             font-family: 'Fredoka One', cursive; font-size: 24px;
-            background: linear-gradient(135deg, #67e8f9, #fcd34d);
+            background: linear-gradient(135deg, #0d7d8c, #f2a900);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
         .brand p { color: var(--muted); font-size: 14px; margin-top: 4px; }
@@ -86,8 +86,8 @@
         input[type="password"],
         input[type="number"] {
             width: 100%;
-            background: rgba(255,255,255,0.06);
-            border: 1.5px solid rgba(34,211,238,0.3);
+            background: #f6faf9;
+            border: 1.5px solid rgba(13,125,140,0.3);
             border-radius: 12px;
             padding: 12px 16px;
             color: var(--text); font-family: 'Nunito', sans-serif; font-size: 15px;
@@ -95,36 +95,36 @@
         }
         input:focus {
             border-color: var(--purple);
-            box-shadow: 0 0 0 3px rgba(34,211,238,0.2);
+            box-shadow: 0 0 0 3px rgba(13,125,140,0.2);
         }
-        input::placeholder { color: rgba(196,181,253,0.4); }
-        .hint { font-size: 12px; color: rgba(196,181,253,0.7); margin-top: 5px; }
+        input::placeholder { color: #9aabb5; }
+        .hint { font-size: 12px; color: #6b8199; margin-top: 5px; }
 
         /* Generated-login highlight — the focal point of the form */
         .login-preview {
             position: relative; text-align: center; margin: 6px 0 22px;
-            background: linear-gradient(160deg, rgba(34,211,238,0.12), rgba(246,183,30,0.10));
-            border: 1.5px solid rgba(34,211,238,0.55); border-radius: 16px;
-            padding: 18px 20px 16px; box-shadow: 0 0 34px rgba(34,211,238,0.18);
+            background: linear-gradient(160deg, rgba(13,125,140,0.12), rgba(246,183,30,0.10));
+            border: 1.5px solid rgba(13,125,140,0.55); border-radius: 16px;
+            padding: 18px 20px 16px; box-shadow: 0 0 34px rgba(13,125,140,0.18);
         }
         .login-preview .lp-label {
             display: inline-block; font-size: 11.5px; font-weight: 700; letter-spacing: 0.1em;
-            text-transform: uppercase; color: #86efac; margin-bottom: 8px;
+            text-transform: uppercase; color: #0a6e60; margin-bottom: 8px;
         }
         .login-preview .lp-email {
             font-family: 'Fredoka One', cursive; font-size: clamp(20px, 5.4vw, 27px);
             line-height: 1.1; word-break: break-all;
         }
-        .login-preview .lp-email #username-preview { color: #fcd34d; }
-        .login-preview .lp-email .lp-suffix { color: #67e8f9; }
+        .login-preview .lp-email #username-preview { color: #f2a900; }
+        .login-preview .lp-email .lp-suffix { color: #0d7d8c; }
         .login-preview .lp-note { font-size: 12px; color: var(--muted); margin-top: 9px; }
-        .login-preview .lp-note strong { color: #cbe4f0; }
+        .login-preview .lp-note strong { color: #12222e; }
 
         .username-row { display: flex; align-items: center; gap: 0; }
         .username-row input { border-radius: 12px 0 0 12px; }
         .username-suffix {
-            background: rgba(34,211,238,0.18);
-            border: 1.5px solid rgba(34,211,238,0.3); border-left: none;
+            background: rgba(13,125,140,0.18);
+            border: 1.5px solid rgba(13,125,140,0.3); border-left: none;
             border-radius: 0 12px 12px 0;
             padding: 12px 14px; font-size: 13px; color: var(--muted); white-space: nowrap;
         }
@@ -134,33 +134,33 @@
         .year-chip input { position: absolute; opacity: 0; pointer-events: none; }
         .year-chip span {
             display: block; min-width: 76px; text-align: center;
-            background: rgba(255,255,255,0.06); border: 1.5px solid rgba(34,211,238,0.3);
+            background: #f6faf9; border: 1.5px solid rgba(13,125,140,0.3);
             border-radius: 12px; padding: 12px 16px; color: var(--text);
             font-family: 'Fredoka One', cursive; font-size: 17px; transition: all 0.15s;
         }
-        .year-chip:hover span { border-color: rgba(34,211,238,0.6); }
+        .year-chip:hover span { border-color: rgba(13,125,140,0.6); }
         .year-chip input:checked + span {
             background: linear-gradient(135deg, var(--purple), var(--pink));
-            border-color: transparent; color: #fff; box-shadow: 0 0 20px rgba(34,211,238,0.35);
+            border-color: transparent; color: #fff; box-shadow: 0 0 20px rgba(13,125,140,0.35);
         }
-        .year-chip input:focus-visible + span { outline: 2px solid #67e8f9; outline-offset: 2px; }
+        .year-chip input:focus-visible + span { outline: 2px solid #0d7d8c; outline-offset: 2px; }
 
         .strands { margin-bottom: 18px; }
         .strand-group { margin-bottom: 14px; }
         .strand-group h3 {
-            font-family: 'Fredoka One', cursive; font-size: 14px; color: #cbe4f0;
+            font-family: 'Fredoka One', cursive; font-size: 14px; color: #12222e;
             margin-bottom: 8px;
         }
         .strand-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
         .strand-check {
             display: flex; align-items: center; gap: 8px;
-            background: rgba(255,255,255,0.04);
-            border: 1.5px solid rgba(34,211,238,0.2);
+            background: #f6faf9;
+            border: 1.5px solid rgba(13,125,140,0.2);
             border-radius: 10px; padding: 9px 12px;
             font-size: 13px; color: var(--muted); cursor: pointer;
             transition: all 0.15s;
         }
-        .strand-check:hover { border-color: rgba(34,211,238,0.5); }
+        .strand-check:hover { border-color: rgba(13,125,140,0.5); }
         .strand-check input { accent-color: var(--purple); width: 16px; height: 16px; cursor: pointer; }
 
         .btn-submit {
@@ -188,34 +188,34 @@
             border: 1.5px solid rgba(34,197,94,0.4);
             border-radius: 16px; padding: 24px; text-align: center;
         }
-        .creds h2 { font-family: 'Fredoka One', cursive; font-size: 20px; color: #86efac; margin-bottom: 8px; }
+        .creds h2 { font-family: 'Fredoka One', cursive; font-size: 20px; color: #0a6e60; margin-bottom: 8px; }
         .creds .warn { font-size: 13px; color: #fde68a; margin-bottom: 18px; }
         .cred-row {
             display: flex; justify-content: space-between;
-            background: rgba(0,0,0,0.25); border-radius: 10px;
+            background: #f1f6f5; border-radius: 10px;
             padding: 12px 16px; margin-bottom: 10px; font-size: 15px;
         }
         .cred-row .k { color: var(--muted); }
         .cred-row .v { color: var(--text); font-weight: 700; font-family: monospace; }
         .cred-hero {
             text-align: left; margin-bottom: 14px; padding: 16px 18px;
-            background: linear-gradient(160deg, rgba(34,211,238,0.16), rgba(246,183,30,0.10));
-            border: 1.5px solid rgba(34,211,238,0.6); border-radius: 14px;
-            box-shadow: 0 0 30px rgba(34,211,238,0.2);
+            background: linear-gradient(160deg, rgba(13,125,140,0.16), rgba(246,183,30,0.10));
+            border: 1.5px solid rgba(13,125,140,0.6); border-radius: 14px;
+            box-shadow: 0 0 30px rgba(13,125,140,0.2);
         }
         .cred-hero .k {
             display: block; font-size: 11.5px; font-weight: 700; letter-spacing: 0.1em;
-            text-transform: uppercase; color: #86efac; margin-bottom: 6px;
+            text-transform: uppercase; color: #0a6e60; margin-bottom: 6px;
         }
         .cred-hero .v {
             font-family: 'Fredoka One', cursive; font-size: clamp(18px, 4.8vw, 25px);
-            color: #fcd34d; word-break: break-all; line-height: 1.15;
+            color: #f2a900; word-break: break-all; line-height: 1.15;
         }
         .creds a {
             display: inline-block; margin-top: 12px;
-            color: #67e8f9; font-weight: 700; text-decoration: none; font-size: 14px;
+            color: #0d7d8c; font-weight: 700; text-decoration: none; font-size: 14px;
         }
-        .creds a:hover { color: #fcd34d; }
+        .creds a:hover { color: #f2a900; }
 
         /* Step-by-step child setup — progressive enhancement (mirrors the parent signup). */
         .rw-progress { display: none; }
@@ -224,7 +224,7 @@
         .rw-back:hover { color: #cfe6ea; }
         form.stepper .rw-progress { display: flex; gap: 6px; margin-bottom: 22px; }
         form.stepper .rw-progress i { height: 5px; flex: 1; border-radius: 99px; background: rgba(255,255,255,0.16); transition: background .2s; }
-        form.stepper .rw-progress i.on { background: #fcd34d; }
+        form.stepper .rw-progress i.on { background: #f2a900; }
         form.stepper .rw-step-nav { display: flex; }
         form.stepper .rw-step:not(.rw-active) { display: none; }
         form.stepper .rw-next { flex: 1; }
@@ -235,7 +235,7 @@
         a.ack-btn { display: block; margin-top: 12px; text-align: center; opacity: 0.45; pointer-events: none; transition: opacity .2s; }
         a.ack-btn.on { opacity: 1; pointer-events: auto; }
         .creds-secondary { display: inline-block; margin-top: 14px; color: #93b2cc; font-weight: 700; text-decoration: none; font-size: 14px; }
-        .creds-secondary:hover { color: #67e8f9; }
+        .creds-secondary:hover { color: #0d7d8c; }
     </style>
 </head>
 <body>

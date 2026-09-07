@@ -18,6 +18,20 @@
         .va-note { font-size:12px; color:var(--ss-muted); margin-top:10px; }
         .va-status { background:rgba(16,185,129,0.14); border:1.5px solid rgba(16,185,129,0.35); color:#6ee7b7; border-radius:10px; padding:9px 12px; font-size:12.5px; font-weight:700; margin-bottom:6px; }
         .va-progress { text-align:center; font-size:13px; font-weight:800; color:var(--ss-muted); margin-top:18px; }
+        /* Parent verify screen — light landing palette (dark sea theme is for students). */
+        .ss-sea { display:none !important; }
+        body.ss-body { background:#fbf8f2; color:#12222e; }
+        .ss-card { background:#fff; border-color:#e7ddcd; box-shadow:0 18px 40px -22px rgba(18,34,46,.26); }
+        .ss-input { background:#f6faf9; border-color:rgba(13,125,140,.35); color:#12222e; }
+        .ss-input::placeholder { color:#9aabb5; }
+        .ss-input:focus { border-color:#0d7d8c; box-shadow:0 0 0 3px rgba(13,125,140,.2); }
+        .va-title, .va-panel-name { color:#12222e; }
+        .va-lede, .va-target, .va-note, .va-progress { color:#40566a; }
+        .va-panel { background:#fbfdfc; border-color:#e7ddcd; }
+        .va-link { color:#0d7d8c; }
+        .va-link:hover { color:#f2a900; }
+        .va-err { color:#9a2b1e; }
+
     </style>
 
     <div class="va-brand">

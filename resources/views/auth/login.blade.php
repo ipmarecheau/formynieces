@@ -21,6 +21,20 @@
         .foot { text-align: center; margin-top: 24px; font-size: 14px; color: var(--ss-muted); }
         .foot a { color: var(--ss-cyan); font-weight: 800; text-decoration: none; }
         .foot a:hover { color: var(--ss-aqua); }
+
+        /* Parent login wears the light landing palette (the dark sea theme is for students). */
+        .ss-sea { display: none !important; }
+        body.ss-body { background: #fbf8f2; color: #12222e; }
+        .ss-card { background: #ffffff; border-color: #e7ddcd;
+            box-shadow: 0 1px 2px rgba(18,34,46,.05), 0 18px 40px -22px rgba(18,34,46,.26); }
+        .ss-logo-word { color: #12222e; }
+        .ss-label { color: #40566a; }
+        .ss-input { background: #f6faf9; border-color: rgba(13,125,140,.35); color: #12222e; }
+        .ss-input::placeholder { color: #9aabb5; }
+        .ss-input:focus { border-color: #0d7d8c; box-shadow: 0 0 0 3px rgba(13,125,140,.2); }
+        .login-tag, .remember, .foot { color: #40566a; }
+        .forgot, .foot a { color: #0d7d8c; }
+        .forgot:hover, .foot a:hover { color: #f2a900; }
     </style>
 </head>
 <body class="ss-body">
