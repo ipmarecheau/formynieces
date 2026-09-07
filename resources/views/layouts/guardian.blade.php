@@ -54,15 +54,17 @@
         .gb-main { flex:1; min-width:0; padding:26px 30px 64px; max-width:1120px; }
 
         /* Mobile */
-        .gb-topbar,.gb-mobnav { display:none; }
+        .gb-topbar { display:none; }
+        .gb-botnav { display:none; }
         @media (max-width:860px) {
             .gb-shell { flex-direction:column; }
             .gb-side { display:none; }
-            .gb-main { padding:14px 16px 56px; max-width:100%; }
-            .gb-topbar { display:flex; align-items:center; justify-content:space-between; gap:12px; position:sticky; top:0; z-index:100; height:58px; padding:0 16px; margin:-14px -16px 0; background:rgba(251,248,242,.9); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
-            .gb-mobnav { display:flex; gap:7px; overflow-x:auto; padding:12px 0 2px; }
-            .gb-mobnav a { white-space:nowrap; font-size:13.5px; font-weight:800; text-decoration:none; color:var(--ink-soft); padding:7px 14px; border-radius:999px; border:1px solid var(--line); background:var(--paper-2); }
-            .gb-mobnav a.is-active { color:#fff; background:var(--teal); border-color:var(--teal); }
+            .gb-main { padding:14px 16px 88px; max-width:100%; }
+            .gb-topbar { display:flex; align-items:center; justify-content:space-between; gap:12px; position:sticky; top:0; z-index:100; height:58px; padding:0 16px; margin:-14px -16px 14px; background:rgba(251,248,242,.9); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+            .gb-botnav { display:flex; position:fixed; left:0; right:0; bottom:0; z-index:200; height:64px; padding-bottom:env(safe-area-inset-bottom); background:var(--paper-2); border-top:1px solid var(--line); box-shadow:0 -4px 20px -12px rgba(18,34,46,.25); }
+            .gb-botnav a { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px; text-decoration:none; color:var(--ink-faint); font-size:10.5px; font-weight:800; }
+            .gb-botnav a .bi { font-size:20px; line-height:1; }
+            .gb-botnav a.is-active { color:var(--teal); }
         }
     </style>
 </head>
@@ -73,20 +75,10 @@
                 <span class="gb-brand-mark">⚓</span>
                 <span><span class="gb-brand-name">SmoothSeas</span><span class="gb-brand-tag">Guardian Bridge</span></span>
             </a>
-            @php
-                $sec = request()->routeIs('guardian.dashboard') ? request()->query('section', 'overview') : null;
-                $dash = fn (string $s) => route('guardian.dashboard').'?section='.$s;
-            @endphp
             <nav class="gb-nav">
-                <p class="gb-nav-eyebrow">The honest layer</p>
-                <a href="{{ $dash('overview') }}" wire:navigate class="gb-nav-link {{ $sec === 'overview' ? 'is-active' : '' }}"><span class="ic">🧭</span> Overview</a>
-                <a href="{{ $dash('this-week') }}" wire:navigate class="gb-nav-link {{ $sec === 'this-week' ? 'is-active' : '' }}"><span class="ic">🗓️</span> This week</a>
-                <a href="{{ $dash('pace') }}" wire:navigate class="gb-nav-link {{ $sec === 'pace' ? 'is-active' : '' }}"><span class="ic">🧭</span> Pace</a>
+                <a href="{{ route('guardian.dashboard') }}" wire:navigate class="gb-nav-link {{ request()->routeIs('guardian.dashboard') ? 'is-active' : '' }}"><span class="ic">🏠</span> Home</a>
                 <a href="{{ route('guardian.progress') }}" wire:navigate class="gb-nav-link {{ request()->routeIs('guardian.progress') ? 'is-active' : '' }}"><span class="ic">📈</span> Progress</a>
-                <a href="{{ $dash('estimator') }}" wire:navigate class="gb-nav-link {{ $sec === 'estimator' ? 'is-active' : '' }}"><span class="ic">🎯</span> Estimator</a>
-                <a href="{{ $dash('rewards') }}" wire:navigate class="gb-nav-link {{ $sec === 'rewards' ? 'is-active' : '' }}"><span class="ic">🎁</span> Rewards &amp; controls</a>
-                <a href="{{ route('guardian.family') }}" wire:navigate class="gb-nav-link {{ request()->routeIs('guardian.family') ? 'is-active' : '' }}"><span class="ic">👪</span> Family</a>
-                <a href="{{ route('guardian.children') }}" class="gb-nav-link {{ request()->routeIs('guardian.children') ? 'is-active' : '' }}"><span class="ic">🔑</span> Children's logins</a>
+                <a href="{{ route('guardian.family') }}" wire:navigate class="gb-nav-link {{ request()->routeIs('guardian.family') || request()->routeIs('guardian.children') ? 'is-active' : '' }}"><span class="ic">👪</span> Family</a>
                 <a href="{{ route('guardian.account') }}" wire:navigate class="gb-nav-link {{ request()->routeIs('guardian.account') ? 'is-active' : '' }}"><span class="ic">⚙️</span> Account</a>
             </nav>
             <div class="gb-side-foot">
@@ -100,20 +92,16 @@
                 <a href="{{ route('guardian.dashboard') }}" class="gb-brand"><span class="gb-brand-mark">⚓</span><span class="gb-brand-name">SmoothSeas</span></a>
                 <form method="POST" action="{{ route('logout') }}">@csrf<button class="gb-logout" style="width:auto; padding:7px 16px; border-radius:999px;">Log out</button></form>
             </div>
-            <nav class="gb-mobnav">
-                <a href="{{ $dash('overview') }}" wire:navigate class="{{ $sec === 'overview' ? 'is-active' : '' }}">Overview</a>
-                <a href="{{ $dash('this-week') }}" wire:navigate class="{{ $sec === 'this-week' ? 'is-active' : '' }}">This week</a>
-                <a href="{{ $dash('pace') }}" wire:navigate class="{{ $sec === 'pace' ? 'is-active' : '' }}">Pace</a>
-                <a href="{{ route('guardian.progress') }}" wire:navigate class="{{ request()->routeIs('guardian.progress') ? 'is-active' : '' }}">Progress</a>
-                <a href="{{ $dash('estimator') }}" wire:navigate class="{{ $sec === 'estimator' ? 'is-active' : '' }}">Estimator</a>
-                <a href="{{ $dash('rewards') }}" wire:navigate class="{{ $sec === 'rewards' ? 'is-active' : '' }}">Rewards</a>
-                <a href="{{ route('guardian.family') }}" wire:navigate class="{{ request()->routeIs('guardian.family') ? 'is-active' : '' }}">Family</a>
-                <a href="{{ route('guardian.children') }}" class="{{ request()->routeIs('guardian.children') ? 'is-active' : '' }}">Logins</a>
-                <a href="{{ route('guardian.account') }}" wire:navigate class="{{ request()->routeIs('guardian.account') ? 'is-active' : '' }}">Account</a>
-            </nav>
-
             {{ $slot }}
         </div>
     </div>
+
+    {{-- Mobile: a fixed 4-item bottom bar replaces the old horizontal scroll strip. --}}
+    <nav class="gb-botnav">
+        <a href="{{ route('guardian.dashboard') }}" wire:navigate class="{{ request()->routeIs('guardian.dashboard') ? 'is-active' : '' }}"><span class="bi">🏠</span>Home</a>
+        <a href="{{ route('guardian.progress') }}" wire:navigate class="{{ request()->routeIs('guardian.progress') ? 'is-active' : '' }}"><span class="bi">📈</span>Progress</a>
+        <a href="{{ route('guardian.family') }}" wire:navigate class="{{ request()->routeIs('guardian.family') || request()->routeIs('guardian.children') ? 'is-active' : '' }}"><span class="bi">👪</span>Family</a>
+        <a href="{{ route('guardian.account') }}" wire:navigate class="{{ request()->routeIs('guardian.account') ? 'is-active' : '' }}"><span class="bi">⚙️</span>Account</a>
+    </nav>
 </body>
 </html>

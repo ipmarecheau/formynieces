@@ -217,6 +217,20 @@
         @endif
     </div>
 
+    {{-- Dashboard sub-sections, moved out of the global nav into in-page pills (wrap, no scroll). --}}
+    @if ($student)
+        <style>
+            .g-sectionnav { display:flex; flex-wrap:wrap; gap:7px; margin:0 0 18px; }
+            .g-sectionnav a { font-size:13px; font-weight:800; text-decoration:none; color:var(--ink-soft); padding:7px 14px; border-radius:999px; border:1px solid var(--line); background:var(--paper-2); }
+            .g-sectionnav a.is-on { color:#fff; background:var(--teal); border-color:var(--teal); }
+        </style>
+        <nav class="g-sectionnav" aria-label="Dashboard sections">
+            @foreach (['overview' => 'Overview', 'this-week' => 'This week', 'pace' => 'Pace', 'estimator' => 'Estimator', 'rewards' => 'Rewards'] as $key => $label)
+                <a href="{{ route('guardian.dashboard') }}?section={{ $key }}" wire:navigate class="{{ $section === $key ? 'is-on' : '' }}">{{ $label }}</a>
+            @endforeach
+        </nav>
+    @endif
+
     {{-- GD-10: pending reconciliation (always surfaced — it blocks her map) --}}
     @if ($reconciliationPending)
         <div class="lead lead-warn">
