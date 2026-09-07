@@ -84,6 +84,7 @@
         }
         input[type="email"],
         input[type="password"],
+        input[type="tel"],
         input[type="text"] {
             width: 100%;
             background: rgba(255,255,255,0.06);
