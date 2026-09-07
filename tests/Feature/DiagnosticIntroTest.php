@@ -1,4 +1,5 @@
 <?php
+
 // tests/Feature/DiagnosticIntroTest.php
 
 use App\Models\User;
@@ -10,14 +11,15 @@ test('the diagnostic intro frames the start as an expedition with a single begin
     ]);
 
     $response = $this->actingAs($student)->get(route('diagnostic.intro'));
-    $html = $response->getContent();
-    $pos = stripos($html, 'timer');
-    dump(substr($html, max(0, $pos - 150), 300));
     $response->assertOk();
 
     // Expedition framing is present and personalised
     $response->assertSee('expedition', false);
     $response->assertSee(explode(' ', $student->name)[0]);
+
+    // Smooth introduces himself as the guide the child can always ask
+    $response->assertSee('Smooth', false);
+    $response->assertSee('images/voyage/companion/smooth.webp', false);
 
     // The child-facing diagnostic uses no test/score/timer language
     $response->assertDontSee('score', false);

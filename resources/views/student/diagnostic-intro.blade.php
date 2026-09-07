@@ -64,18 +64,27 @@
             to   { opacity: 1; transform: translateY(0); }
         }
 
-        .crest {
-            width: 76px; height: 76px;
-            background: linear-gradient(135deg, var(--purple), var(--pink));
-            border-radius: 22px;
-            display: inline-flex; align-items: center; justify-content: center;
-            font-size: 36px; margin-bottom: 20px;
-            box-shadow: 0 0 36px rgba(34,211,238,0.5);
-            animation: bob 4s ease-in-out infinite;
+        .smooth-intro {
+            width: 132px; height: 132px; object-fit: contain;
+            margin: 0 auto 6px; display: block;
+            filter: drop-shadow(0 10px 22px rgba(0,0,0,0.45));
+            animation: swimIn 0.9s cubic-bezier(.2,.8,.2,1) both, bob 4s ease-in-out 0.9s infinite;
+        }
+        @keyframes swimIn {
+            from { opacity: 0; transform: translateX(-60px) translateY(10px) rotate(-8deg); }
+            to   { opacity: 1; transform: translateX(0) translateY(0) rotate(0); }
         }
         @keyframes bob {
-            0%,100% { transform: translateY(0) rotate(-3deg); }
-            50%      { transform: translateY(-8px) rotate(3deg); }
+            0%,100% { transform: translateY(0) rotate(-2deg); }
+            50%      { transform: translateY(-9px) rotate(2deg); }
+        }
+        .smooth-says {
+            font-size: 12px; font-weight: 800; letter-spacing: 0.12em;
+            text-transform: uppercase; color: #67e8f9; margin-bottom: 6px;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .smooth-intro { animation: none; }
+            .card { animation: none; }
         }
 
         .eyebrow {
@@ -141,17 +150,23 @@
 <div class="orb orb-3"></div>
 
 <div class="card">
-    <div class="crest">🧭</div>
+    <img class="smooth-intro" src="{{ asset('images/voyage/companion/smooth.webp') }}" alt="Smooth the turtle, waving hello">
 
+    <p class="smooth-says">Smooth says hi 👋</p>
     <p class="eyebrow">Your expedition awaits</p>
 
-    <h1>Ready to explore, {{ explode(' ', auth()->user()->name)[0] }}? 🌊</h1>
+    <h1>Ahoy, {{ explode(' ', auth()->user()->name)[0] }}! I'm Smooth 🐢</h1>
 
     <p class="lead">
-        This isn't a test to pass or fail — it's how we find out everything you
-        already know. Some questions will feel easy, and some will really make
-        you think. The tricky ones mean you're doing brilliantly, and we're
-        seeing how far you can go. 🌟
+        I'm your guide on every voyage from here on — and any time you're stuck,
+        just tap me to ask <em>anything</em>. But first, let's explore together so
+        I can build your very own map. 🗺️
+    </p>
+
+    <p class="lead" style="margin-bottom:22px;">
+        This isn't a test to pass or fail — it's how I find out everything you
+        already know. Some questions feel easy; some really make you think. The
+        tricky ones mean you're doing brilliantly, and I'm seeing how far you can go. 🌟
     </p>
 
     <div class="islands">

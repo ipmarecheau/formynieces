@@ -7,6 +7,7 @@ use App\Models\StudentJourney;
 use App\Models\SyllabusModule;
 use App\Models\User;
 use App\Models\WeeklyTarget;
+use App\Notifications\ReconciliationPendingNotification;
 use App\Services\Diagnostic\DiagnosticReconciliation;
 use App\Services\Diagnostic\ItemWalk;
 use App\Services\Diagnostic\SessionLifecycle;
@@ -17,6 +18,7 @@ use Database\Seeders\ModulePrerequisiteSeeder;
 use Database\Seeders\SyllabusModuleSeeder;
 use Database\Seeders\WritingAnchorQuestionSeeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Notification;
 use Livewire\Livewire;
 
 beforeEach(function () {
@@ -86,7 +88,9 @@ it('shows a way forward on the completion screen', function () {
 
     Livewire::actingAs($this->student)
         ->test(DiagnosticWalk::class)
-        ->assertSee('See your map');
+        ->assertSee('Set sail')
+        ->assertSee(route('student.welcome'), false)   // on to the Voyage via welcome — never /my-map
+        ->assertDontSee(route('student.map'), false);
 })->group('scenario:RR-08');
 
 it('holds onboarding and defers the roadmap when the diagnostic clears a strand the guardian flagged', function () {
@@ -207,7 +211,7 @@ it('generates the roadmap (journey + first weekly target) when an onboarded stud
 
 // RR-13 — the guardian is told when a reconciliation is waiting on her.
 it('notifies the guardian when a reconciliation is left pending', function () {
-    Illuminate\Support\Facades\Notification::fake();
+    Notification::fake();
 
     $flaggedStrand = collect(SyllabusModule::strandsBySubject())->flatten()->first();
     $guardian = User::factory()->create(['role' => 'guardian']);
@@ -229,8 +233,8 @@ it('notifies the guardian when a reconciliation is left pending', function () {
     // Precondition: a decision really is due.
     expect(app(DiagnosticReconciliation::class)->requiresGuardianDecision($student->refresh()))->toBeTrue();
 
-    Illuminate\Support\Facades\Notification::assertSentTo(
+    Notification::assertSentTo(
         $guardian,
-        App\Notifications\ReconciliationPendingNotification::class,
+        ReconciliationPendingNotification::class,
     );
 })->group('scenario:RR-13');

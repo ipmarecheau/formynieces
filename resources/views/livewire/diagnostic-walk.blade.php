@@ -137,10 +137,10 @@
     <div class="dw-card">
         <p class="dw-done">You've completed the diagnostic! 🎉</p>
         <p style="text-align:center; color:rgba(196,181,253,0.8); font-size:15px; line-height:1.6; margin:14px 0 24px;">
-            Your map is ready — let's see everything you explored.
+            Your map is ready — let's meet your guide and set sail on your Voyage.
         </p>
-        <a href="{{ route('student.map') }}" class="dw-continue" style="text-decoration:none; text-align:center;">
-            See your map →
+        <a href="{{ route('student.welcome') }}" class="dw-continue" style="text-decoration:none; text-align:center;">
+            Set sail →
         </a>
     </div>
 
