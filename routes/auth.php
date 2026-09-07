@@ -23,6 +23,9 @@ Route::middleware('guest')->group(function () {
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
         ->name('login');
 
+    // A separate, kid-branded sign-in page for students (posts to the same /login).
+    Route::view('go', 'auth.student-login')->name('student.login');
+
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])

@@ -49,7 +49,7 @@
         <p class="clc-hint">🧭 The student signs in with this — not you. Give it to {{ $child->name }} on their own device.</p>
 
         <div class="clc-foot">
-            <a href="{{ route('login') }}" target="_blank" rel="noopener" class="clc-solid">Open sign-in page ↗</a>
+            <a href="{{ route('student.login') }}" target="_blank" rel="noopener" class="clc-solid">Open student sign-in ↗</a>
             <a href="{{ route('guardian.children') }}">Reset</a>
         </div>
     </section>

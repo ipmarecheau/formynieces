@@ -81,6 +81,9 @@
             New here? <a href="{{ route('register') }}">Create an account</a>
         </p>
     @endif
+    <p class="foot" style="margin-top:10px;">
+        Are you a student? <a href="{{ route('student.login') }}">Sign in here 🐢</a>
+    </p>
 </div>
 
 </body>
