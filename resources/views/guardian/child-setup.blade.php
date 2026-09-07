@@ -228,6 +228,14 @@
         form.stepper .rw-step-nav { display: flex; }
         form.stepper .rw-step:not(.rw-active) { display: none; }
         form.stepper .rw-next { flex: 1; }
+
+        /* Confirmation: "I've saved it" acknowledgement gating the dashboard CTA. */
+        .ack { display: flex; gap: 10px; align-items: flex-start; text-align: left; margin: 18px 0 4px; font-size: 13.5px; font-weight: 700; color: #cbd5e1; cursor: pointer; }
+        .ack input { width: 18px; height: 18px; margin-top: 2px; flex: none; accent-color: #34d399; }
+        a.ack-btn { display: block; margin-top: 12px; text-align: center; opacity: 0.45; pointer-events: none; transition: opacity .2s; }
+        a.ack-btn.on { opacity: 1; pointer-events: auto; }
+        .creds-secondary { display: inline-block; margin-top: 14px; color: #93b2cc; font-weight: 700; text-decoration: none; font-size: 14px; }
+        .creds-secondary:hover { color: #67e8f9; }
     </style>
 </head>
 <body>
@@ -245,14 +253,19 @@
             <h1>{{ $c['name'] }} is all set!</h1>
         </div>
         <div class="creds">
-            <h2>Child's Login Details</h2>
-            <p class="warn">✅ All set! We've emailed these credentials to you for your records.</p>
+            <h2>{{ $c['name'] }}'s login</h2>
+            <p class="warn">✅ Save this now. We've also emailed the <strong>login ID</strong> to your inbox for your records — for safety, the password is only ever shown here and on your dashboard.</p>
             <div class="cred-hero"><span class="k">Login ID (email)</span><span class="v">{{ $c['login_id'] }}</span></div>
             <div class="cred-row"><span class="k">Username</span><span class="v">{{ $c['username'] }}</span></div>
             <div class="cred-row"><span class="k">Password</span><span class="v">{{ $c['password'] }}</span></div>
-            <p class="warn" style="color:#93b2cc;margin-top:14px;">🔑 You can view or reset the password anytime from <strong>Children's logins</strong> in your dashboard — no need to write it down.</p>
-            <a href="{{ route('guardian.children') }}">Manage children's logins →</a><br>
-            <a href="{{ route('child.setup') }}">Set up another child →</a>
+            <p class="warn" style="color:#93b2cc;margin-top:14px;">🔑 You can reveal or reset the password anytime from your dashboard — no need to write it down.</p>
+
+            <label class="ack" for="saved-ack">
+                <input type="checkbox" id="saved-ack">
+                <span>I've saved {{ $c['name'] }}'s login (or I know it's on my dashboard).</span>
+            </label>
+            <a href="{{ route('guardian.dashboard') }}" id="to-dashboard" class="btn-submit ack-btn">Go to my dashboard →</a>
+            <a href="{{ route('child.setup') }}" class="creds-secondary">Set up another child →</a>
         </div>
     @else
         <div class="brand">
@@ -423,6 +436,14 @@
             btn.addEventListener('click', function () { if (cur > 0) show(cur - 1); });
         });
         show(0);
+    })();
+
+    // Confirmation: the "Go to my dashboard" CTA unlocks once the parent acknowledges they've saved the login.
+    (function () {
+        const ack = document.getElementById('saved-ack');
+        const cta = document.getElementById('to-dashboard');
+        if (!ack || !cta) return;
+        ack.addEventListener('change', function () { cta.classList.toggle('on', ack.checked); });
     })();
 </script>
 </body>
