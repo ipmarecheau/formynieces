@@ -17,7 +17,7 @@
     .setup-steps { margin: 0 0 24px; }
     .setup-steps__count {
         text-align: center; font-size: 12px; font-weight: 700;
-        letter-spacing: 0.06em; text-transform: uppercase; color: #93b2cc; margin-bottom: 10px;
+        letter-spacing: 0.06em; text-transform: uppercase; color: #0d9488; margin-bottom: 10px;
     }
     .setup-steps__list {
         list-style: none; padding: 0; margin: 0;
@@ -30,12 +30,13 @@
         width: 28px; height: 28px; border-radius: 50%;
         display: inline-flex; align-items: center; justify-content: center;
         font-size: 13px; font-weight: 700; font-family: 'Nunito', sans-serif;
-        background: rgba(255,255,255,0.06); border: 1.5px solid rgba(34,211,238,0.3); color: #93b2cc;
+        background: #f0f4f2; border: 1.5px solid rgba(13,125,140,0.35); color: #475569;
     }
-    .setup-steps__label { font-size: 11px; line-height: 1.3; color: #93b2cc; }
+    .setup-steps__label { font-size: 11px; line-height: 1.3; color: #475569; }
     .setup-steps__item.is-current .setup-steps__dot {
-        background: linear-gradient(135deg, #0e7490, #f6b71e); border-color: transparent; color: #fff;
+        background: #0d9488; border-color: transparent; color: #fff;
+        box-shadow: 0 0 0 4px rgba(13,125,140,0.14);
     }
-    .setup-steps__item.is-current .setup-steps__label { color: #e6f2fb; font-weight: 700; }
-    .setup-steps__item.is-done .setup-steps__dot { border-color: rgba(34,197,94,0.5); color: #86efac; }
+    .setup-steps__item.is-current .setup-steps__label { color: #0f172a; font-weight: 700; }
+    .setup-steps__item.is-done .setup-steps__dot { border-color: rgba(21,128,61,0.5); color: #15803d; }
 </style>

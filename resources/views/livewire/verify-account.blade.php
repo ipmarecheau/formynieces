@@ -20,23 +20,24 @@
         .va-progress { text-align:center; font-size:13px; font-weight:800; color:var(--ss-muted); margin-top:18px; }
         /* Parent verify screen — light landing palette (dark sea theme is for students). */
         .ss-sea { display:none !important; }
-        body.ss-body { background:#fbf8f2; color:#12222e; }
+        body.ss-body { background:#fbf8f2; color:#0f172a; }
         .ss-card { background:#fff; border-color:#e7ddcd; box-shadow:0 18px 40px -22px rgba(18,34,46,.26); }
-        .ss-input { background:#f6faf9; border-color:rgba(13,125,140,.35); color:#12222e; }
+        .ss-input { background:#f6faf9; border-color:rgba(13,125,140,.35); color:#0f172a; }
         .ss-input::placeholder { color:#9aabb5; }
-        .ss-input:focus { border-color:#0d7d8c; box-shadow:0 0 0 3px rgba(13,125,140,.2); }
-        .va-title, .va-panel-name { color:#12222e; }
-        .va-lede, .va-target, .va-note, .va-progress { color:#40566a; }
+        .ss-input:focus { border-color:#0d9488; box-shadow:0 0 0 3px rgba(13,125,140,.2); }
+        .va-title, .va-panel-name { color:#0f172a; }
+        .va-lede, .va-target, .va-note, .va-progress { color:#475569; }
         .va-panel { background:#fbfdfc; border-color:#e7ddcd; }
-        .va-link { color:#0d7d8c; }
-        .va-link:hover { color:#f2a900; }
+        .va-link { color:#0d9488; }
+        .va-link:hover { color:#b45309; }
         .va-err { color:#9a2b1e; }
-
+        /* Status colours — readable green / amber on the light card. */
+        .va-check, .va-status { color:#15803d; background:rgba(21,128,61,0.10); border-color:rgba(21,128,61,0.35); }
+        .va-pending { color:#a05a00; }
     </style>
 
     <div class="va-brand">
-        <x-brand.logo />
-        <h1 class="va-title" style="margin-top:14px;">Confirm it's you</h1>
+        <h1 class="va-title">Confirm it's you</h1>
         <p class="va-lede">Two quick checks, then you'll set up your child's voyage.</p>
     </div>
 
@@ -114,7 +115,7 @@
     </p>
 
     <p class="va-note" style="text-align:center;">
-        Need help? <a href="{{ route('contact') }}" style="color:var(--ss-cyan); font-weight:800;">Contact us</a>
+        Need help? <a href="{{ route('contact') }}" style="color:#0d9488; font-weight:800;">Contact us</a>
         and a real person will sort it out.
     </p>
 

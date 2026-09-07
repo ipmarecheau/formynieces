@@ -10,13 +10,13 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
-            --purple: #0d7d8c;
-            --pink:   #f2a900;
+            --purple: #0d9488;
+            --pink:   #b45309;
             --bg:     #fbf8f2;
             --card:   #ffffff;
             --border: #e7ddcd;
-            --text:   #12222e;
-            --muted:  #40566a;
+            --text:   #0f172a;
+            --muted:  #475569;
         }
 
         body {
@@ -63,16 +63,15 @@
         .brand { text-align: center; margin-bottom: 28px; }
         .brand-icon {
             width: 64px; height: 64px;
-            background: linear-gradient(135deg, var(--purple), var(--pink));
+            background: var(--purple);
             border-radius: 18px;
             display: inline-flex; align-items: center; justify-content: center;
             font-size: 30px; margin-bottom: 14px;
-            box-shadow: 0 0 30px rgba(13,125,140,0.5);
+            box-shadow: 0 8px 20px rgba(13,125,140,0.28);
         }
         .brand h1 {
             font-family: 'Fredoka One', cursive; font-size: 26px;
-            background: linear-gradient(135deg, #0d7d8c, #f2a900);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            color: var(--purple);
         }
         .brand p { color: var(--muted); font-size: 14px; margin-top: 4px; }
 
@@ -115,28 +114,31 @@
             width: 18px; height: 18px; margin-top: 1px; flex-shrink: 0;
             accent-color: var(--purple); cursor: pointer;
         }
+        .attestation-label a { color: var(--purple); font-weight: 700; text-decoration: underline; }
+        .attestation-label a:hover { color: #0f766e; }
 
         .btn-submit {
             width: 100%;
-            background: linear-gradient(135deg, var(--purple), var(--pink));
+            background: var(--purple);
             border: none; border-radius: 999px; padding: 14px;
             color: white; font-family: 'Fredoka One', cursive; font-size: 17px;
             cursor: pointer; letter-spacing: 0.03em;
-            transition: opacity 0.2s, transform 0.1s;
+            box-shadow: 0 6px 16px rgba(13,125,140,0.25);
+            transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
             margin-top: 6px;
         }
-        .btn-submit:hover  { opacity: 0.9; }
+        .btn-submit:hover  { background: #0f766e; box-shadow: 0 8px 20px rgba(13,125,140,0.32); }
         .btn-submit:active { transform: scale(0.98); }
 
         .foot { text-align: center; margin-top: 24px; font-size: 14px; color: var(--muted); }
-        .foot a { color: #0d7d8c; font-weight: 700; text-decoration: none; }
-        .foot a:hover { color: #f2a900; }
+        .foot a { color: #0d9488; font-weight: 700; text-decoration: none; }
+        .foot a:hover { color: #b45309; }
 
         .errors {
             background: rgba(239,68,68,0.12);
             border: 1.5px solid rgba(239,68,68,0.35);
             border-radius: 12px; padding: 12px 16px; margin-bottom: 20px;
-            font-size: 13px; color: #fca5a5;
+            font-size: 13px; color: #b91c1c;
         }
         .errors ul { padding-left: 16px; }
 
@@ -144,17 +146,17 @@
             max-height: 190px; overflow-y: auto; margin-top: 6px;
             background: rgba(6,24,46,0.55); border: 1.5px solid rgba(13,125,140,0.35);
             border-radius: 12px; padding: 14px 16px;
-            font-size: 12.5px; line-height: 1.55; color: #40566a;
+            font-size: 12.5px; line-height: 1.55; color: #475569;
         }
         .terms-scroll h2 { font-size: 13.5px; color: #e6f2fb; margin: 14px 0 4px; font-weight: 800; }
         .terms-scroll h2:first-child { margin-top: 0; }
         .terms-scroll p, .terms-scroll li { color: #a9c6de; margin-bottom: 6px; }
         .terms-scroll ul { margin: 0 0 8px 18px; }
         .terms-scroll strong { color: #e6f2fb; }
-        .terms-scroll a { color: #0d7d8c; }
+        .terms-scroll a { color: #0d9488; }
         .terms-scroll .terms-meta { color: #7fa0bb; font-size: 11px; }
         .terms-scroll.is-read { border-color: rgba(16,185,129,0.55); }
-        .terms-scroll-hint { font-size: 11.5px; font-weight: 700; color: #93b2cc; margin-top: 6px; }
+        .terms-scroll-hint { font-size: 11.5px; font-weight: 700; color: #475569; margin-top: 6px; }
         .terms-scroll-hint.is-done { color: #6ee7b7; }
 
         /* Existing-account notice — shown when the typed email already has an account. */
@@ -163,28 +165,28 @@
             background: rgba(13,125,140,0.10);
             border: 1.5px solid rgba(13,125,140,0.45);
             border-radius: 12px; padding: 14px 16px; margin-bottom: 20px;
-            font-size: 13.5px; line-height: 1.5; color: #40566a;
+            font-size: 13.5px; line-height: 1.5; color: #475569;
         }
         .exists-notice.is-shown { display: block; }
-        .exists-notice strong { color: #12222e; }
+        .exists-notice strong { color: #0f172a; }
         .exists-notice a {
             display: inline-block; margin-top: 10px;
-            background: linear-gradient(135deg, var(--purple), var(--pink));
+            background: var(--purple);
             color: #fff; font-weight: 700; text-decoration: none;
             padding: 9px 18px; border-radius: 999px; font-size: 13.5px;
         }
-        .exists-notice a:hover { opacity: 0.9; }
+        .exists-notice a:hover { background: #0f766e; }
         form.is-locked { opacity: 0.45; pointer-events: none; }
 
         /* Signup stepper — progressive enhancement. Without JS every step is visible (a normal
            single-page form); the JS reveals one step at a time with Next/Back. */
         .rw-progress { display: none; }
         .rw-step-nav { display: none; align-items: center; gap: 12px; margin-top: 16px; }
-        .rw-back { background: none; border: 0; color: #93b2cc; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 14px; cursor: pointer; padding: 6px 4px; }
-        .rw-back:hover { color: #cfe6ea; }
+        .rw-back { background: none; border: 0; color: #475569; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 14px; cursor: pointer; padding: 6px 4px; }
+        .rw-back:hover { color: #0d9488; }
         form.stepper .rw-progress { display: flex; gap: 6px; margin-bottom: 22px; }
-        form.stepper .rw-progress i { height: 5px; flex: 1; border-radius: 99px; background: rgba(255,255,255,0.16); transition: background .2s; }
-        form.stepper .rw-progress i.on { background: #0d7d8c; }
+        form.stepper .rw-progress i { height: 5px; flex: 1; border-radius: 99px; background: rgba(13,125,140,0.15); transition: background .2s; }
+        form.stepper .rw-progress i.on { background: #0d9488; }
         form.stepper .rw-step-nav { display: flex; }
         form.stepper .rw-step:not(.rw-active) { display: none; }
         form.stepper .rw-next { flex: 1; }

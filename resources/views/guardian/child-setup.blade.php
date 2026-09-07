@@ -10,13 +10,21 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
-            --purple: #0d7d8c;
-            --pink:   #f2a900;
+            /* Tailwind palette — teal-600 / amber-500 / slate, on a warm cream. */
+            --teal:        #0d9488; /* teal-600 */
+            --teal-strong: #0f766e; /* teal-700 */
+            --amber:       #f59e0b; /* amber-500 */
+            --amber-text:  #b45309; /* amber-700 — readable amber on light */
+            --purple: var(--teal);  /* legacy alias */
+            --pink:   var(--amber); /* legacy alias */
             --bg:     #fbf8f2;
             --card:   #ffffff;
             --border: #e7ddcd;
-            --text:   #12222e;
-            --muted:  #40566a;
+            --ink:    #0f172a;      /* slate-900 — headings */
+            --text:   #1e293b;      /* slate-800 — body */
+            --muted:  #475569;      /* slate-600 — labels/secondary */
+            --success: #15803d;     /* green-700 */
+            --danger:  #b91c1c;     /* red-700 */
         }
 
         body {
@@ -63,16 +71,15 @@
         .brand { text-align: center; margin-bottom: 28px; }
         .brand-icon {
             width: 64px; height: 64px;
-            background: linear-gradient(135deg, var(--purple), var(--pink));
+            background: var(--teal);
             border-radius: 18px;
             display: inline-flex; align-items: center; justify-content: center;
             font-size: 30px; margin-bottom: 14px;
-            box-shadow: 0 0 30px rgba(13,125,140,0.5);
+            box-shadow: 0 8px 20px rgba(13,148,136,0.28);
         }
         .brand h1 {
             font-family: 'Fredoka One', cursive; font-size: 24px;
-            background: linear-gradient(135deg, #0d7d8c, #f2a900);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            color: var(--teal);
         }
         .brand p { color: var(--muted); font-size: 14px; margin-top: 4px; }
 
@@ -98,7 +105,7 @@
             box-shadow: 0 0 0 3px rgba(13,125,140,0.2);
         }
         input::placeholder { color: #9aabb5; }
-        .hint { font-size: 12px; color: #6b8199; margin-top: 5px; }
+        .hint { font-size: 12px; color: var(--muted); margin-top: 5px; }
 
         /* Generated-login highlight — the focal point of the form */
         .login-preview {
@@ -115,10 +122,10 @@
             font-family: 'Fredoka One', cursive; font-size: clamp(20px, 5.4vw, 27px);
             line-height: 1.1; word-break: break-all;
         }
-        .login-preview .lp-email #username-preview { color: #f2a900; }
-        .login-preview .lp-email .lp-suffix { color: #0d7d8c; }
+        .login-preview .lp-email #username-preview { color: var(--amber-text); }
+        .login-preview .lp-email .lp-suffix { color: var(--teal); }
         .login-preview .lp-note { font-size: 12px; color: var(--muted); margin-top: 9px; }
-        .login-preview .lp-note strong { color: #12222e; }
+        .login-preview .lp-note strong { color: var(--ink); }
 
         .username-row { display: flex; align-items: center; gap: 0; }
         .username-row input { border-radius: 12px 0 0 12px; }
@@ -140,10 +147,10 @@
         }
         .year-chip:hover span { border-color: rgba(13,125,140,0.6); }
         .year-chip input:checked + span {
-            background: linear-gradient(135deg, var(--purple), var(--pink));
-            border-color: transparent; color: #fff; box-shadow: 0 0 20px rgba(13,125,140,0.35);
+            background: var(--teal);
+            border-color: transparent; color: #fff; box-shadow: 0 6px 16px rgba(13,148,136,0.28);
         }
-        .year-chip input:focus-visible + span { outline: 2px solid #0d7d8c; outline-offset: 2px; }
+        .year-chip input:focus-visible + span { outline: 2px solid var(--teal); outline-offset: 2px; }
 
         .strands { margin-bottom: 18px; }
         .strand-group { margin-bottom: 14px; }
@@ -165,20 +172,21 @@
 
         .btn-submit {
             width: 100%;
-            background: linear-gradient(135deg, var(--purple), var(--pink));
+            background: var(--teal);
             border: none; border-radius: 999px; padding: 14px;
             color: white; font-family: 'Fredoka One', cursive; font-size: 16px;
             cursor: pointer; letter-spacing: 0.03em;
-            transition: opacity 0.2s, transform 0.1s; margin-top: 6px;
+            box-shadow: 0 6px 16px rgba(13,148,136,0.25);
+            transition: background 0.2s, transform 0.1s, box-shadow 0.2s; margin-top: 6px;
         }
-        .btn-submit:hover  { opacity: 0.9; }
+        .btn-submit:hover  { background: var(--teal-strong); box-shadow: 0 8px 20px rgba(13,148,136,0.32); }
         .btn-submit:active { transform: scale(0.98); }
 
         .errors {
-            background: rgba(239,68,68,0.12);
-            border: 1.5px solid rgba(239,68,68,0.35);
+            background: rgba(185,28,28,0.10);
+            border: 1.5px solid rgba(185,28,28,0.35);
             border-radius: 12px; padding: 12px 16px; margin-bottom: 20px;
-            font-size: 13px; color: #fca5a5;
+            font-size: 13px; color: var(--danger);
         }
         .errors ul { padding-left: 16px; }
 
@@ -188,8 +196,8 @@
             border: 1.5px solid rgba(34,197,94,0.4);
             border-radius: 16px; padding: 24px; text-align: center;
         }
-        .creds h2 { font-family: 'Fredoka One', cursive; font-size: 20px; color: #0a6e60; margin-bottom: 8px; }
-        .creds .warn { font-size: 13px; color: #fde68a; margin-bottom: 18px; }
+        .creds h2 { font-family: 'Fredoka One', cursive; font-size: 20px; color: var(--teal-strong); margin-bottom: 8px; }
+        .creds .warn { font-size: 13px; color: var(--amber-text); margin-bottom: 18px; }
         .cred-row {
             display: flex; justify-content: space-between;
             background: #f1f6f5; border-radius: 10px;
@@ -205,37 +213,42 @@
         }
         .cred-hero .k {
             display: block; font-size: 11.5px; font-weight: 700; letter-spacing: 0.1em;
-            text-transform: uppercase; color: #0a6e60; margin-bottom: 6px;
+            text-transform: uppercase; color: var(--teal-strong); margin-bottom: 6px;
         }
         .cred-hero .v {
             font-family: 'Fredoka One', cursive; font-size: clamp(18px, 4.8vw, 25px);
-            color: #f2a900; word-break: break-all; line-height: 1.15;
+            color: var(--teal-strong); word-break: break-all; line-height: 1.15;
         }
         .creds a {
             display: inline-block; margin-top: 12px;
-            color: #0d7d8c; font-weight: 700; text-decoration: none; font-size: 14px;
+            color: var(--teal); font-weight: 700; text-decoration: none; font-size: 14px;
         }
-        .creds a:hover { color: #f2a900; }
+        .creds a:hover { color: var(--teal-strong); }
 
         /* Step-by-step child setup — progressive enhancement (mirrors the parent signup). */
         .rw-progress { display: none; }
         .rw-step-nav { display: none; align-items: center; gap: 12px; margin-top: 16px; }
-        .rw-back { background: none; border: 0; color: #93b2cc; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 14px; cursor: pointer; padding: 6px 4px; }
-        .rw-back:hover { color: #cfe6ea; }
+        .rw-back { background: none; border: 0; color: var(--muted); font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 14px; cursor: pointer; padding: 6px 4px; }
+        .rw-back:hover { color: var(--teal); }
         form.stepper .rw-progress { display: flex; gap: 6px; margin-bottom: 22px; }
-        form.stepper .rw-progress i { height: 5px; flex: 1; border-radius: 99px; background: rgba(255,255,255,0.16); transition: background .2s; }
-        form.stepper .rw-progress i.on { background: #f2a900; }
+        form.stepper .rw-progress i { height: 5px; flex: 1; border-radius: 99px; background: rgba(13,148,136,0.15); transition: background .2s; }
+        form.stepper .rw-progress i.on { background: var(--teal); }
         form.stepper .rw-step-nav { display: flex; }
         form.stepper .rw-step:not(.rw-active) { display: none; }
         form.stepper .rw-next { flex: 1; }
 
         /* Confirmation: "I've saved it" acknowledgement gating the dashboard CTA. */
-        .ack { display: flex; gap: 10px; align-items: flex-start; text-align: left; margin: 18px 0 4px; font-size: 13.5px; font-weight: 700; color: #cbd5e1; cursor: pointer; }
-        .ack input { width: 18px; height: 18px; margin-top: 2px; flex: none; accent-color: #34d399; }
-        a.ack-btn { display: block; margin-top: 12px; text-align: center; opacity: 0.45; pointer-events: none; transition: opacity .2s; }
-        a.ack-btn.on { opacity: 1; pointer-events: auto; }
-        .creds-secondary { display: inline-block; margin-top: 14px; color: #93b2cc; font-weight: 700; text-decoration: none; font-size: 14px; }
-        .creds-secondary:hover { color: #0d7d8c; }
+        .ack { display: flex; gap: 10px; align-items: flex-start; text-align: left; margin: 18px 0 4px; font-size: 13.5px; font-weight: 700; color: var(--text); cursor: pointer; }
+        .ack input { width: 18px; height: 18px; margin-top: 2px; flex: none; accent-color: var(--teal); }
+        /* Gated dashboard CTA: readable disabled state (grey), turns teal once acknowledged.
+           Overrides .btn-submit's teal bg/white text so the label stays legible while disabled. */
+        a.ack-btn { display: block; margin-top: 12px; text-align: center;
+            background: #e2e8f0; color: #64748b; box-shadow: none; cursor: not-allowed;
+            pointer-events: none; transition: background .2s, color .2s, box-shadow .2s; }
+        a.ack-btn.on { background: var(--teal); color: #fff; cursor: pointer;
+            box-shadow: 0 6px 16px rgba(13,148,136,0.25); pointer-events: auto; }
+        .creds-secondary { display: inline-block; margin-top: 14px; color: var(--teal); font-weight: 700; text-decoration: none; font-size: 14px; }
+        .creds-secondary:hover { color: var(--teal-strong); }
     </style>
 </head>
 <body>
@@ -258,7 +271,7 @@
             <div class="cred-hero"><span class="k">Login ID (email)</span><span class="v">{{ $c['login_id'] }}</span></div>
             <div class="cred-row"><span class="k">Username</span><span class="v">{{ $c['username'] }}</span></div>
             <div class="cred-row"><span class="k">Password</span><span class="v">{{ $c['password'] }}</span></div>
-            <p class="warn" style="color:#93b2cc;margin-top:14px;">🔑 You can reveal or reset the password anytime from your dashboard — no need to write it down.</p>
+            <p class="warn" style="color:var(--muted);margin-top:14px;">🔑 You can reveal or reset the password anytime from your dashboard — no need to write it down.</p>
 
             <label class="ack" for="saved-ack">
                 <input type="checkbox" id="saved-ack">
