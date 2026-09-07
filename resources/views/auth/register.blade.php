@@ -262,12 +262,7 @@
         </div>
 
         <div class="field">
-            <label>Terms &amp; Conditions</label>
-            <div class="terms-scroll" id="terms-scroll" tabindex="0">
-                @include('legal._terms-body')
-            </div>
-            <p class="terms-scroll-hint" id="terms-scroll-hint">Please scroll to the end of the terms to continue.</p>
-            <label class="attestation-label" for="terms" style="margin-top:10px;">
+            <label class="attestation-label" for="terms">
                 <input type="checkbox" id="terms" name="terms" value="1" {{ old('terms') ? 'checked' : '' }}>
                 <span>I have read and agree to the
                     <a href="{{ route('terms') }}" target="_blank" rel="noopener">Terms &amp; Conditions</a>
@@ -304,36 +299,6 @@
         `;
         container.appendChild(s);
     }
-</script>
-<script>
-    // Progressive enhancement: require the guardian to scroll through the terms
-    // before the acceptance box can be ticked. With JS off, the box stays usable
-    // and the server still requires acceptance.
-    (function () {
-        const box = document.getElementById('terms-scroll');
-        const check = document.getElementById('terms');
-        const hint = document.getElementById('terms-scroll-hint');
-        if (!box || !check || !hint) return;
-
-        function markRead() {
-            check.disabled = false;
-            box.classList.add('is-read');
-            hint.textContent = 'Thanks for reading. You can now accept below.';
-            hint.classList.add('is-done');
-        }
-
-        // Only gate when the terms actually overflow (otherwise it's all visible).
-        if (box.scrollHeight - box.clientHeight > 8 && !check.checked) {
-            check.disabled = true;
-            const onScroll = function () {
-                if (box.scrollTop + box.clientHeight >= box.scrollHeight - 12) {
-                    markRead();
-                    box.removeEventListener('scroll', onScroll);
-                }
-            };
-            box.addEventListener('scroll', onScroll);
-        }
-    })();
 </script>
 <script>
     // When the typed email already has an account, stop here and point the

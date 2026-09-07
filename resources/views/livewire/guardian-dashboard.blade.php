@@ -149,11 +149,6 @@
         $perkTotal = collect($perks ?? [])->sum('count');
     @endphp
 
-    {{-- WZ-01/02: the guided getting-started wizard, above everything, until the family is set up. --}}
-    <div style="margin-bottom:22px;">
-        <livewire:onboarding-wizard />
-    </div>
-
     @if ($students->isEmpty())
         {{-- GO-18: a verified guardian with no child lands here (not forced into
              child setup) and adds her first child from the dashboard. No email
@@ -177,6 +172,22 @@
             </a>
         </div>
     @else
+
+    {{-- Redesign: the single next step + the always-findable student login, at the top of Home. --}}
+    @php $obNext = \App\Services\Onboarding\OnboardingWizard::for(auth()->user())->nextStep(); @endphp
+    @if ($student && $obNext && in_array($obNext['key'], ['diagnostic', 'first_lesson'], true))
+        <div style="background:linear-gradient(155deg,var(--teal),var(--teal-deep));color:#fff;border-radius:16px;padding:16px 18px;margin-bottom:16px;">
+            <p style="font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;opacity:.82;margin:0;">Next step</p>
+            <h2 style="font-size:18px;margin:5px 0 4px;color:#fff;">{{ $student->name }} is set up — help them sign in to begin</h2>
+            <p style="font-size:13px;margin:0;opacity:.92;">Give {{ $student->name }} the login below on their own device so they can sign in and start their placement check.</p>
+        </div>
+    @endif
+
+    @if ($student)
+        <div style="margin-bottom:18px;">
+            <livewire:child-login-card :child-id="$student->id" :key="'clc-'.$student->id" />
+        </div>
+    @endif
 
     {{-- Header (always) --}}
     <div class="g-head">

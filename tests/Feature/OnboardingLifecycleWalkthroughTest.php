@@ -1,9 +1,10 @@
 <?php
 
-use App\Livewire\OnboardingWizard;
+use App\Livewire\ChildLoginCard;
 use App\Models\ModuleStageCompletion;
 use App\Models\SyllabusModule;
 use App\Models\User;
+use App\Services\Onboarding\OnboardingWizard;
 use Livewire\Livewire;
 
 /**
@@ -12,57 +13,52 @@ use Livewire\Livewire;
  * Starts from a verified guardian (registration + email verification are covered by GO-01..14).
  */
 it('walks the full parent + child onboarding lifecycle end to end', function () {
-    // ---- Parent: verified guardian, no child yet (WZ-01) -------------------------------
+    // ---- Parent: verified guardian, no child yet — next step is "add child" -------------
     $guardian = User::factory()->create(['role' => 'guardian', 'email_verified_at' => now()]);
     $this->actingAs($guardian);
+    expect(OnboardingWizard::for($guardian)->nextStep()['key'])->toBe('child');
 
-    Livewire::test(OnboardingWizard::class)
-        ->assertSee('Add your child')
-        ->assertSet('minimised', false);
-    expect(App\Services\Onboarding\OnboardingWizard::for($guardian)->nextStep()['key'])->toBe('child');
-
-    // ---- Parent adds a child through the real route (sets the SEA year too) -------------
+    // ---- Parent adds a child through the real route (captures the SEA year too) ----------
     $this->post(route('child.store'), [
-        'name' => 'Maya',
+        'name' => 'Jordan',
         'target_sea_year' => 2027,
     ])->assertRedirect();
 
     $child = $guardian->students()->firstOrFail();
     expect($child->target_sea_year)->toBe(2027);
 
-    // Wizard now reflects the child (exam year captured at setup); next is the diagnostic (WZ-03/05).
-    $steps = collect(App\Services\Onboarding\OnboardingWizard::for($guardian->refresh())->steps())->keyBy('key');
-    expect($steps['child']['done'])->toBeTrue()
-        ->and(App\Services\Onboarding\OnboardingWizard::for($guardian)->nextStep()['key'])->toBe('diagnostic');
+    // Next step is now the diagnostic; the child's login is findable on the dashboard card.
+    expect(OnboardingWizard::for($guardian->refresh())->nextStep()['key'])->toBe('diagnostic');
+    Livewire::test(ChildLoginCard::class, ['childId' => $child->id])
+        ->assertSee($child->email)
+        ->call('toggleReveal')
+        ->assertSee($child->child_password_enc);
 
-    // ---- Child: logs in for the first time and is sent into her diagnostic (WZ-07) ------
+    // ---- Child logs in for the first time and is sent into the diagnostic (WZ-07) --------
     auth()->logout();
-    $plainPassword = $child->child_password_enc; // encrypted cast → decrypts on read
     $this->post(route('login'), [
         'email' => $child->email,
-        'password' => $plainPassword,
+        'password' => $child->child_password_enc, // encrypted cast → decrypts on read
     ])->assertRedirect(route('diagnostic.intro'));
 
-    // ---- Child completes the diagnostic and opens her first lesson ----------------------
+    // ---- Child completes the diagnostic and opens the first lesson -----------------------
     $child->diagnosticSessions()->create(['status' => 'completed', 'completed_at' => now()]);
     $module = SyllabusModule::factory()->create();
     ModuleStageCompletion::create([
         'student_id' => $child->id, 'module_id' => $module->id, 'stage' => 'lesson', 'completed_at' => now(),
     ]);
 
-    // ---- Parent side: the wizard reflects the child's progress, then retires (WZ-06/09) -
-    $this->actingAs($guardian);
-    Livewire::test(OnboardingWizard::class)->assertSee('all set up');
-    expect($guardian->fresh()->onboarding_completed_at)->not->toBeNull();
+    // ---- Onboarding is complete: the next-step banner has nothing left to show -----------
+    expect(OnboardingWizard::for($guardian->fresh())->isComplete())->toBeTrue()
+        ->and(OnboardingWizard::for($guardian)->nextStep())->toBeNull();
 });
 
-it('a returning guardian resumes the same progress on a fresh session (WZ-04)', function () {
+it('a returning guardian sees the same progress on a fresh session (WZ-04)', function () {
     $guardian = User::factory()->create(['role' => 'guardian', 'email_verified_at' => now()]);
     User::factory()->create(['role' => 'student', 'parent_id' => $guardian->id, 'target_sea_year' => 2027]);
     $this->actingAs($guardian);
 
-    // A brand-new component instance (a different device/session) shows the same DB-derived progress.
-    Livewire::test(OnboardingWizard::class)->assertSee('Take the diagnostic');
-    $progress = App\Services\Onboarding\OnboardingWizard::for($guardian)->progress();
-    expect($progress['done'])->toBe(2); // account + child (exam year captured at child setup)
+    // Progress is DB-derived, so a fresh session/device shows the same state.
+    expect(OnboardingWizard::for($guardian)->progress()['done'])->toBe(2) // account + child
+        ->and(OnboardingWizard::for($guardian)->nextStep()['key'])->toBe('diagnostic');
 });
