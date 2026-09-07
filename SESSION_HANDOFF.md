@@ -1,3 +1,77 @@
+# Session Handoff — 2026-09-07 · Parent onboarding redesign, teaching-model eval, observability spec
+
+Latest session on top. The older sections below (2026-08-31 / 09-01) still describe most of the app,
+but where they CONFLICT with this section, THIS wins — notably the T&C scroll gate and the single-page
+register form described below are GONE.
+
+## Standing state (2026-09-07)
+- Branch `main`; all our work COMMITTED + PUSHED (HEAD `5327d62`). Prod auto-deploys on push.
+- Working tree has UNRELATED uncommitted changes from the OTHER agent session (`welcome.blade.php`,
+  `PlacementReportResult`, `User.php`, `LandingPageTest`, funnel services, a trial migration, reels/pdf) —
+  NOT ours; leave them. The single red test in a full run (`WelcomePageTest`) comes from that welcome edit.
+- Dev DB = SQLite `database/database.sqlite`. Reset (destructive, G7, run via `!`): `php artisan
+  migrate:fresh --seed --force`. Seeded logins all pw `password`: guardian `mummy1@test.com` (verified,
+  has a student) or `guardian@test.com`; student `student@test.com`; admin `admin@smoothseas.org`.
+  Demo pair `demo-guardian@smoothseas.test` / `demo-student@…` pw `smoothseas`.
+- `php artisan onboard:demo --state=fresh|added|mid-diagnostic|diagnostic-done|complete` provisions a
+  demo guardian+child at any lifecycle state and PRINTS the credentials.
+
+## TEACHING-MODEL DECISION (committed `c1efca6`; prod `.env` NOT yet set)
+- 35-model + 5-frontier hand-judged eval (scratchpad, now retired). Quality ceiling ≈ 9.7–9.8; frontier
+  flagships (opus/gpt-5/grok) NOT worth 3–10× the cost on short Socratic turns.
+- Chain set as `config/services.php` DEFAULTS: primary **`z-ai/glm-5`** (9.7, 0 empties, ~2.2s, ~$0.60/mo
+  worst-case, under the $1 soft cap) → fallback `qwen/qwen3-max` → `anthropic/claude-haiku-4.5`.
+- **ACTION PENDING (Isaac/ops):** repo defaults don't override prod `.env`. Set on prod:
+  `LLM_MODEL=z-ai/glm-5`, `LLM_FALLBACK_MODELS=qwen/qwen3-max,anthropic/claude-haiku-4.5`,
+  `LLM_PRICE_INPUT_PER_MTOK=0.60`, `LLM_PRICE_OUTPUT_PER_MTOK=1.92`, then `php artisan config:clear`.
+- Alt: `qwen3.8-flash` (9.2/$0.15) best value but flaky (~50% empty) unless provider-pinned;
+  `glm-5.3-flash` great quality but ~80–100% empty (unusable); gpt-5-mini/nano empty via chat/completions.
+
+## PARENT ONBOARDING REDESIGN (this session's main work — all shipped)
+Driven by real parent feedback (confusing wizard, hidden child login, scroll-gated T&C) + a "≤3-min guided
+signup" goal. Mockups first (2 private artifacts: parent-portal redesign + Free-vs-Full "SmoothSeas Plans").
+- **T&C scroll gate REMOVED** (`27eacec`): `/register` now a plain tickable checkbox + Terms/Privacy links.
+- **Child login is now findable** (`27eacec`): `App\Livewire\ChildLoginCard` = reveal-on-tap password card
+  on the guardian dashboard (own-child-only). The old getting-started checklist WIZARD was REMOVED and
+  replaced by a **hand-off next-step banner** ("[Child] is set up — help them sign in to begin"). The WZ
+  spec (`onboarding_wizard.feature`) + `App\Services\Onboarding\OnboardingWizard` service are KEPT (the
+  banner uses `nextStep()`); only the Livewire wizard component/view/test were deleted.
+- **Nav 9→4** (`4711d9f`): Home · Progress · Family · Account; fixed mobile BOTTOM BAR replaces the
+  horizontal overflow scroll strip; the 5 dashboard sub-sections became in-page wrap pills; Children's-
+  logins left the nav (now the Home card). Layout: `resources/views/layouts/guardian.blade.php`.
+- **Separate student sign-in `/go`** (`4780857`): kid-branded turtle page, POSTs to the shared `/login`
+  (auth unchanged). Parent login ↔ student page cross-link. STAYS DARK (child surface).
+- **Signup is a STEP WIZARD** (`cea7fff`): register split into 4 steps (name / contact / password /
+  agreements) — pure progressive enhancement (a normal single-page form without JS, same server POST).
+  Phone `tel` input styling fixed (`c971196`).
+- **Child-setup** (`fd95b84`, `b6c42da`): copy "Add your first child" (others added later from the
+  dashboard); 3-step wizard; an "I've saved [Child]'s login" checkbox gating a "Go to my dashboard" CTA;
+  email is a login-ID-only POINTER (password never emailed — `mail/child-account-created` already did this;
+  we chose this over a two-digit email-code gate).
+- **Parent pages RECOLORED to the light landing palette** (`5327d62`): register, child-setup, login,
+  verify-account → cream `#fbf8f2` / teal `#0d7d8c` / amber `#f2a900`. login + verify-account override the
+  shared `--ss` dark brand LOCALLY, so child surfaces (student-splash, `/go`) STAY DARK. The shared
+  `components/brand/head.blade.php` is UNTOUCHED.
+- **E2E lifecycle walkthrough** (`b8a75d4`): `OnboardingLifecycleWalkthroughTest` drives parent+child
+  through the REAL routes (add child → real child login → diagnostic → completion). Doubles as QC-08.
+
+## OBSERVABILITY (spec + QC-01 only) — `149b6a0`
+- `quality_observability.feature` (QC-01..09). QC-01 LIVE: `App\Support\LearningEvent::record()` writes a
+  scenario-tagged JSON `learning` log channel; first emission in `Remediation::start` (`reteach.started`,
+  LL-14/LL-22). QC-02..09 (deviation guards, analytics, children's-data consent, probes, Sentry) SPEC-ONLY.
+- PostHog decision: do NOT co-locate its heavy stack with the prod container; recommend PostHog **Cloud EU**
+  or a separate host (children's-data duty of care). Not started.
+
+## PENDING / NEXT
+- Set prod `.env` for glm-5 (above) so the teaching-model decision actually takes effect.
+- Deep dashboard CONTENT calming + full landing-palette reskin of the PORTAL cards (the dashboard/portal
+  still uses the teal Guardian-Bridge tokens; only the AUTH pages were recolored this session).
+- QC-02..09 observability build; the LLM-driven Socratic RE-TEACH redesign (spec'd 2026-09-01 in
+  learning_loop, NOT built — tethered-pool, I-do/we-do, JSON turn contract, harness-referee).
+- Isaac was about to test the real-Gmail parent signup on dev (email sends via Resend; phone verify OFF).
+
+---
+
 # Session Handoff — 2026-08-31 · Guardian Bridge, registration, legal, SEO, blog
 
 Durable note so the context window can be cleared. Readable by both Claude agents on this repo.
