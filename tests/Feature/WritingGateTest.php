@@ -58,3 +58,14 @@ it('sails a new level back to the map when writing is pending', function () {
         ->test(ModuleEntry::class, ['module' => $module])
         ->assertRedirect();
 })->group('scenario:CO-05');
+
+// TR-07 — the guided tour must be able to open the first lesson, so the writing gate is bypassed on tour.
+it('does not gate the first lesson while a student is on the guided tour', function () {
+    [$student, $module] = wgSetup();
+    $student->setTourStage('island');   // mid-tour, about to open the first stop
+
+    Livewire::actingAs($student->fresh())
+        ->test(ModuleEntry::class, ['module' => $module])
+        ->assertNoRedirect()
+        ->assertSet('tourMode', true);
+})->group('scenario:TR-07');

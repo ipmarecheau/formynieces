@@ -126,9 +126,9 @@
         .vy-stop.is-locked { cursor: not-allowed; }
 
         .vy-badge {
-            width: 9cqw; height: 9cqw;
+            width: min(9cqw, 54px); height: min(9cqw, 54px);
             display: grid; place-items: center;
-            font-size: 5cqw; line-height: 1;
+            font-size: min(5cqw, 27px); line-height: 1;
             border-radius: 50%;
             background: rgba(20, 30, 66, 0.72);
             border: 2.5px solid rgba(147, 197, 253, 0.6);
@@ -153,10 +153,10 @@
 
         .vy-label {
             font-family: 'Fredoka One', cursive;
-            font-size: 2.6cqw;
+            font-size: min(2.6cqw, 15px);
             color: #f8fafc;
             text-shadow: 0 1px 2px rgba(0,0,0,0.9);
-            max-width: 24cqw;
+            max-width: min(24cqw, 160px);
             text-align: center; line-height: 1.15;
             padding: 0.4cqw 1.4cqw; border-radius: 12px;
             background: rgba(9, 14, 34, 0.72);

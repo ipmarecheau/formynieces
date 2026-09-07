@@ -93,8 +93,9 @@ class ModuleEntry extends Component
 
         // CO-05 / WR-07 / AM-11 — on a writing day, opening a NEW level waits for the
         // day's writing. A kind nudge, not a wall: she is sailed back to the map
-        // (still explorable); already-started levels are never gated.
-        if (app(WritingGate::class)->blocksNewLevel(auth()->id(), $module->id)) {
+        // (still explorable); already-started levels are never gated. The guided tour
+        // is exempt — it must be able to open this first lesson, or the tour dead-ends.
+        if (! $this->tourMode && app(WritingGate::class)->blocksNewLevel(auth()->id(), $module->id)) {
             session()->flash('writingGate', "Finish today's writing first, Captain — then this new level opens. ✍️");
             $this->redirect($this->islandSlug
                 ? route('student.voyage.island', $this->islandSlug)

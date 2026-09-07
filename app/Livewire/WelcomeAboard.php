@@ -24,6 +24,25 @@ class WelcomeAboard extends Component
      */
     public array $perks = [];
 
+    /**
+     * The click-through step: 0 = greeting, 1..N = each joining perk revealed one at a
+     * time, N+1 = the send-off that introduces the tour before she sets sail (TR-01/05).
+     */
+    public int $step = 0;
+
+    public function next(): void
+    {
+        if ($this->step < $this->lastStep()) {
+            $this->step++;
+        }
+    }
+
+    /** The final step index (the tour send-off). */
+    public function lastStep(): int
+    {
+        return count($this->perks) + 1;
+    }
+
     public function mount(StreakEconomyService $economy): void
     {
         $user = auth()->user();

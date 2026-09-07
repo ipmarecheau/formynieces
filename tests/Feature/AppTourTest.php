@@ -41,6 +41,24 @@ it('greets the student aboard by name on the welcome page', function () {
         ->assertSee('Amara');
 })->group('scenario:TR-01');
 
+/** TR-01/05 — the welcome steps through the perks one at a time and ends by introducing the tour. */
+it('steps through the joining perks and hands off to the tour before setting sail', function () {
+    $student = tourStudent();
+
+    $page = Livewire::actingAs($student)->test(WelcomeAboard::class)
+        ->assertSet('step', 0)
+        ->assertSee('Welcome aboard')
+        ->assertDontSee('Set sail');   // the send-off is gated behind the steps
+
+    // Walk every step: greeting → each perk → the tour send-off. next() caps at the last step.
+    for ($i = 0; $i < 8; $i++) {
+        $page->call('next');
+    }
+
+    $page->assertSee('show me around')                    // the tour is introduced here
+        ->assertSee(route('student.voyage'), false);      // then she sails to the Voyage (tour auto-opens)
+})->group('scenario:TR-01');
+
 /** TR-05 — being welcomed grants one of every perk, exactly once. */
 it('grants one of each perk as a joining bonus, only once', function () {
     $student = tourStudent();

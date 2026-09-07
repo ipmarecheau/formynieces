@@ -72,6 +72,9 @@
             <div class="va-actions">
                 <button type="button" class="va-link" wire:click="resendEmail">Resend email</button>
             </div>
+            <p class="va-note" style="margin-top:8px; font-size:0.82rem; opacity:0.85;">
+                Can't find it? Check your spam or junk folder — the code sometimes lands there.
+            </p>
         @endunless
     </div>
 

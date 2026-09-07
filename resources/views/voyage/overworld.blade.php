@@ -153,9 +153,9 @@
         .vy-island.is-locked { cursor: not-allowed; }
 
         .vy-badge {
-            width: 6.5cqw; height: 6.5cqw;
+            width: min(6.5cqw, 52px); height: min(6.5cqw, 52px);
             display: grid; place-items: center;
-            font-size: 3.6cqw; line-height: 1;
+            font-size: min(3.6cqw, 28px); line-height: 1;
             border-radius: 50%;
             background: rgba(20, 30, 66, 0.72);
             border: 2.5px solid rgba(147, 197, 253, 0.6);
@@ -173,7 +173,7 @@
         /* AM-08: a compact number chip under each island badge, keyed to the legend. */
         .vy-num {
             font-family: 'Fredoka One', cursive;
-            font-size: 2.6cqw; line-height: 1; color: #f8fafc;
+            font-size: min(2.6cqw, 15px); line-height: 1; color: #f8fafc;
             padding: 0.4cqw 1.4cqw; border-radius: 999px;
             background: rgba(9, 14, 34, 0.82);
             box-shadow: 0 2px 8px rgba(0,0,0,0.5);

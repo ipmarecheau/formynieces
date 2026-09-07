@@ -140,6 +140,23 @@
         }
         .btn-sail:hover  { opacity: 0.92; }
         .btn-sail:active { transform: scale(0.98); }
+
+        /* Click-through steps: only one shows at a time, so no wall of text on mobile. */
+        .di-step { display: none; animation: fadeUp 0.4s ease both; }
+        .di-step.is-active { display: block; }
+        .di-dots { display: flex; gap: 8px; justify-content: center; margin: 0 0 22px; }
+        .di-dot { width: 9px; height: 9px; border-radius: 999px; background: rgba(147,178,204,0.3); transition: background 0.2s; }
+        .di-dot.is-on { background: #f6b71e; }
+        .btn-next {
+            display: inline-block; cursor: pointer;
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+            border: none; border-radius: 999px; padding: 14px 38px;
+            color: white; font-family: 'Fredoka One', cursive; font-size: 17px;
+            letter-spacing: 0.03em; box-shadow: 0 0 28px rgba(34,211,238,0.4);
+            transition: opacity 0.2s, transform 0.1s;
+        }
+        .btn-next:hover { opacity: 0.92; }
+        .btn-next:active { transform: scale(0.98); }
     </style>
 </head>
 <body>
@@ -150,39 +167,62 @@
 <div class="orb orb-3"></div>
 
 <div class="card">
-    <img class="smooth-intro" src="{{ asset('images/voyage/companion/smooth.webp') }}" alt="Smooth the turtle, waving hello">
-
-    <p class="smooth-says">Smooth says hi 👋</p>
-    <p class="eyebrow">Your expedition awaits</p>
-
-    <h1>Ahoy, {{ explode(' ', auth()->user()->name)[0] }}! I'm Smooth 🐢</h1>
-
-    <p class="lead">
-        I'm your guide on every voyage from here on — and any time you're stuck,
-        just tap me to ask <em>anything</em>. But first, let's explore together so
-        I can build your very own map. 🗺️
-    </p>
-
-    <p class="lead" style="margin-bottom:22px;">
-        This isn't a test to pass or fail — it's how I find out everything you
-        already know. Some questions feel easy; some really make you think. The
-        tricky ones mean you're doing brilliantly, and I'm seeing how far you can go. 🌟
-    </p>
-
-    <div class="islands">
-        <span class="island island-1">🔢 Number Isle</span>
-        <span class="island island-2">✏️ Word Harbour</span>
-        <span class="island island-3">📖 Story Cove</span>
+    <div class="di-dots" aria-hidden="true">
+        <span class="di-dot is-on" data-dot="0"></span>
+        <span class="di-dot" data-dot="1"></span>
+        <span class="di-dot" data-dot="2"></span>
+        <span class="di-dot" data-dot="3"></span>
     </div>
 
+    {{-- Step 1 — Smooth says hi --}}
+    <div class="di-step is-active" data-step="0">
+        <img class="smooth-intro" src="{{ asset('images/voyage/companion/smooth.webp') }}" alt="Smooth the turtle, waving hello">
+        <p class="smooth-says">Smooth says hi 👋</p>
+        <p class="eyebrow">Your expedition awaits</p>
+        <h1>Ahoy, {{ explode(' ', auth()->user()->name)[0] }}! I'm Smooth 🐢</h1>
+        <p class="lead" style="margin-bottom:24px;">
+            I'm your guide on every voyage from here on — and any time you're stuck,
+            just tap me to ask <em>anything</em>. 🐢
+        </p>
+        <button type="button" class="btn-next" data-next>Nice to meet you →</button>
+    </div>
 
+    {{-- Step 2 — what this is --}}
+    <div class="di-step" data-step="1">
+        <h1>Let's build your map 🗺️</h1>
+        <p class="lead" style="margin-bottom:24px;">
+            First, we'll explore together so I can build your very own map. This isn't
+            a test to pass or fail — no grades, no wrong answers. It's just how I find
+            out everything you already know. 🌟
+        </p>
+        <button type="button" class="btn-next" data-next>Okay! →</button>
+    </div>
 
-    <p class="reassure">
-        Just pick the answer you think is best. The questions climb as you go —
-        that's exactly what's meant to happen. Take all the time you like. 🌊
-    </p>
+    {{-- Step 3 — the islands --}}
+    <div class="di-step" data-step="2">
+        <h1>Three places to explore 🌊</h1>
+        <div class="islands" style="margin-bottom:24px;">
+            <span class="island island-1">🔢 Number Isle</span>
+            <span class="island island-2">✏️ Word Harbour</span>
+            <span class="island island-3">📖 Story Cove</span>
+        </div>
+        <p class="lead" style="margin-bottom:24px;">
+            We'll visit each one together. Some questions feel easy; some really make
+            you think — the tricky ones mean you're doing brilliantly, and I'm seeing
+            how far you can go. 🌟
+        </p>
+        <button type="button" class="btn-next" data-next>Got it →</button>
+    </div>
 
-    <a href="{{ route('diagnostic.start') }}" class="btn-sail">Set sail ⛵</a>
+    {{-- Step 4 — how it works + start --}}
+    <div class="di-step" data-step="3">
+        <h1>Ready when you are ⛵</h1>
+        <p class="reassure" style="margin-bottom:26px;">
+            Just pick the answer you think is best. The questions climb as you go —
+            that's exactly what's meant to happen. Take all the time you like. 🌊
+        </p>
+        <a href="{{ route('diagnostic.start') }}" class="btn-sail">Set sail ⛵</a>
+    </div>
 </div>
 
 <script>
@@ -200,6 +240,22 @@
         `;
         container.appendChild(s);
     }
+
+    // Click-through stepper — one panel at a time, kind on small screens.
+    (function () {
+        const steps = Array.from(document.querySelectorAll('.di-step'));
+        const dots  = Array.from(document.querySelectorAll('.di-dot'));
+        let current = 0;
+        function show(i) {
+            steps.forEach((s, n) => s.classList.toggle('is-active', n === i));
+            dots.forEach((d, n) => d.classList.toggle('is-on', n <= i));
+            current = i;
+            window.scrollTo({ top: 0, behavior: 'auto' });
+        }
+        document.querySelectorAll('[data-next]').forEach((btn) => {
+            btn.addEventListener('click', () => { if (current < steps.length - 1) { show(current + 1); } });
+        });
+    })();
 </script>
 </body>
 </html>
