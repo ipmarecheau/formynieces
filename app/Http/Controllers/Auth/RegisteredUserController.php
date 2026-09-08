@@ -53,7 +53,7 @@ class RegisteredUserController extends Controller
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'phone' => ['required', 'string', 'regex:/^\+[1-9]\d{7,14}$/'],
+            'phone' => ['nullable', 'string', 'regex:/^\+[1-9]\d{7,14}$/'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'age_attestation' => ['accepted'],
             'terms' => ['accepted'],
@@ -67,7 +67,7 @@ class RegisteredUserController extends Controller
         $user = User::create([
             'name' => $validated['name'],
             'email' => $validated['email'],
-            'phone' => $validated['phone'],
+            'phone' => $validated['phone'] ?? null,
             'password' => Hash::make($validated['password']),
             'role' => 'guardian',
             'age_attested_at' => now(),

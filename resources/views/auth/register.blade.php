@@ -255,12 +255,12 @@
                        required autocomplete="username">
             </div>
             <div class="field">
-                <label for="phone">Mobile Number (WhatsApp)</label>
+                <label for="phone">Mobile Number (WhatsApp) <span style="font-weight:400;opacity:.7;">— optional</span></label>
                 <input type="tel" id="phone" name="phone"
                        value="{{ old('phone') }}"
                        placeholder="+1 868 555 1234"
-                       required autocomplete="tel">
-                <p class="field-hint">Full international format, e.g. +18685551234. We'll send a code by WhatsApp (or SMS).</p>
+                       autocomplete="tel">
+                <p class="field-hint">Optional — add it now or later. Full international format, e.g. +18685551234.</p>
             </div>
             <div class="rw-step-nav"><button type="button" class="rw-back">← Back</button><button type="button" class="btn-submit rw-next">Next →</button></div>
         </div>

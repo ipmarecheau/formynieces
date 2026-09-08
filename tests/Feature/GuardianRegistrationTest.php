@@ -31,6 +31,21 @@ it('a guardian can register with an 18+ attestation', function () {
         ->not->toBeNull();
 })->group('scenario:GO-01');
 
+it('a guardian can register without a phone number (deferred to the wizard)', function () {
+    $email = 'nophone@example.com';
+
+    post(route('register'), [
+        'name' => 'No Phone',
+        'email' => $email,
+        'password' => 'password123!',
+        'password_confirmation' => 'password123!',
+        'age_attestation' => '1',
+        'terms' => '1',
+    ])->assertRedirect(route('verification.notice'));
+
+    assertDatabaseHas(User::class, ['email' => $email, 'role' => 'guardian', 'phone' => null]);
+})->group('scenario:GO-01');
+
 it('registration is rejected without the 18+ attestation', function () {
     $email = 'noattest@example.com';
 

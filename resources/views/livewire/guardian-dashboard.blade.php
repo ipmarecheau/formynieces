@@ -187,6 +187,9 @@
         <div style="margin-bottom:18px;">
             <livewire:child-login-card :child-id="$student->id" :key="'clc-'.$student->id" />
         </div>
+
+        {{-- Phase 2: the skippable, just-in-time "finish your profile" wizard. --}}
+        <livewire:family-profile-wizard :key="'fpw-'.$student->id" />
     @endif
 
     {{-- Header (always) --}}

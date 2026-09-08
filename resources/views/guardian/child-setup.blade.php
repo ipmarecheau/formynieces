@@ -336,33 +336,8 @@
                             </label>
                         @endforeach
                     </div>
-                    <p class="hint" style="margin-top:8px;">A strong password is generated automatically — you can reveal or reset it anytime in your Parent Portal.</p>
+                    <p class="hint" style="margin-top:8px;">A strong password is generated automatically — you can reveal or reset it anytime in your Parent Portal. You can add anything else (like areas they find tricky) right after, on your dashboard.</p>
                 </div>
-                <div class="rw-step-nav"><button type="button" class="rw-back">← Back</button><button type="button" class="btn-submit rw-next">Next →</button></div>
-            </div>
-
-            {{-- Step 3 — known weak areas (optional) + submit --}}
-            <div class="rw-step" data-step="3">
-                <div class="strands">
-                    <label class="lbl">Known Weak Areas (optional)</label>
-                    <p class="hint" style="margin-bottom:12px;">Pick any you already know they struggle with. The diagnostic will check these too.</p>
-
-                    @foreach ($strandsBySubject as $subject => $strands)
-                        <div class="strand-group">
-                            <h3>{{ $subject }}</h3>
-                            <div class="strand-grid">
-                                @foreach ($strands as $strand)
-                                    <label class="strand-check">
-                                        <input type="checkbox" name="known_weak_areas[]" value="{{ $strand }}"
-                                            {{ in_array($strand, old('known_weak_areas', [])) ? 'checked' : '' }}>
-                                        {{ $strand }}
-                                    </label>
-                                @endforeach
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-
                 <div class="rw-step-nav" style="margin-bottom:12px;"><button type="button" class="rw-back">← Back</button></div>
                 <button type="submit" class="btn-submit">Create the Account 🌟</button>
             </div>
