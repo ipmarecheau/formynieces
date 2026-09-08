@@ -95,6 +95,14 @@ return [
         'verify_url' => env('TURNSTILE_VERIFY_URL', 'https://challenges.cloudflare.com/turnstile/v0/siteverify'),
     ],
 
+    // Social login (Laravel Socialite). Each provider lights up only when its
+    // credentials are present; absent creds simply hide that provider's button.
+    'google' => [
+        'client_id' => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+        'redirect' => env('GOOGLE_REDIRECT_URI'),
+    ],
+
     // Twilio Verify — phone verification, WhatsApp-first with SMS fallback.
     // Without credentials the stub phone-verification driver is used (dev/test).
     'twilio' => [

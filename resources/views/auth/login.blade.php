@@ -90,6 +90,8 @@
         <button type="submit" class="ss-btn" style="width: 100%;">Set sail ⛵</button>
     </form>
 
+    @include('auth.partials.social-buttons', ['consent' => false])
+
     @if (Route::has('register'))
         <p class="foot">
             New here? <a href="{{ route('register') }}">Create an account</a>

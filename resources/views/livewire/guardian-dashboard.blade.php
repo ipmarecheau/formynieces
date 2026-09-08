@@ -175,7 +175,7 @@
 
     {{-- Redesign: the single next step + the always-findable student login, at the top of Home. --}}
     @php $obNext = \App\Services\Onboarding\OnboardingWizard::for(auth()->user())->nextStep(); @endphp
-    @if ($student && $obNext && in_array($obNext['key'], ['diagnostic', 'first_lesson'], true))
+    @if ($student && $obNext && $obNext['key'] === 'credentials')
         <div style="background:linear-gradient(155deg,var(--teal),var(--teal-deep));color:#fff;border-radius:16px;padding:16px 18px;margin-bottom:16px;">
             <p style="font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;opacity:.82;margin:0;">Next step</p>
             <h2 style="font-size:18px;margin:5px 0 4px;color:#fff;">{{ $student->name }} is set up — help them sign in to begin</h2>

@@ -312,6 +312,8 @@
         </div>
     </form>
 
+    @include('auth.partials.social-buttons', ['consent' => true])
+
     <p class="foot">
         Already have an account? <a href="{{ route('login') }}">Sign in</a>
     </p>
