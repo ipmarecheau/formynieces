@@ -1,6 +1,13 @@
 <div wire:poll.6s="poll">
     <style>
         .va-brand { text-align:center; margin-bottom:22px; }
+        .va-mail { position:relative; display:inline-flex; align-items:center; justify-content:center; width:88px; height:88px; margin-bottom:12px; }
+        .va-mail::before { content:""; position:absolute; inset:0; border-radius:50%; background:rgba(13,125,140,0.12); animation:vaPulse 2.4s ease-in-out infinite; }
+        .va-mail-icon { position:relative; font-size:52px; line-height:1; animation:vaBob 2.4s ease-in-out infinite; }
+        @keyframes vaBob { 0%,100%{ transform:translateY(0) rotate(-3deg); } 50%{ transform:translateY(-8px) rotate(3deg); } }
+        @keyframes vaPulse { 0%,100%{ transform:scale(0.82); opacity:0.55; } 50%{ transform:scale(1.12); opacity:0.15; } }
+        .va-spam { font-size:12.5px; color:var(--ss-muted); font-weight:600; margin:10px 0 0; }
+        @media (prefers-reduced-motion: reduce) { .va-mail-icon, .va-mail::before { animation:none; } }
         .va-title { font-family:var(--ss-font-head); font-size:24px; color:var(--ss-foam); margin:0 0 6px; }
         .va-lede { font-size:14px; color:var(--ss-muted); font-weight:600; margin:0; }
         .va-panel { border:1.5px solid var(--ss-border); border-radius:16px; padding:18px; margin-top:16px; background:rgba(6,24,46,0.4); }
@@ -37,8 +44,10 @@
     </style>
 
     <div class="va-brand">
-        <h1 class="va-title">Confirm it's you</h1>
-        <p class="va-lede">Two quick checks, then you'll set up your child's voyage.</p>
+        <div class="va-mail" aria-hidden="true"><span class="va-mail-icon">📬</span></div>
+        <h1 class="va-title">Check your email 📬</h1>
+        <p class="va-lede">We just sent you a link — tap it to confirm, then set up your child.</p>
+        <p class="va-spam">Don't see it? Have a peek in your <strong>spam</strong> or <strong>junk</strong> folder.</p>
     </div>
 
     @if ($status === 'email-sent')
@@ -72,9 +81,6 @@
             <div class="va-actions">
                 <button type="button" class="va-link" wire:click="resendEmail">Resend email</button>
             </div>
-            <p class="va-note" style="margin-top:8px; font-size:0.82rem; opacity:0.85;">
-                Can't find it? Check your spam or junk folder — the code sometimes lands there.
-            </p>
         @endunless
     </div>
 

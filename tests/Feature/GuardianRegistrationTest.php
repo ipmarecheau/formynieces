@@ -106,5 +106,5 @@ it('shows the guardian where she is in the setup journey', function () {
         ->assertOk()
         ->assertSee('Step 2 of 3')          // where she is / how many remain
         ->assertSee('Set up your child')     // step named in plain language
-        ->assertSee('Start the diagnostic');
+        ->assertSee('Get their login');      // final guardian step (diagnostic is the child's, not onboarding)
 })->group('scenario:GO-10');

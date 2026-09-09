@@ -1,6 +1,6 @@
 {{-- GO-10 — where the guardian is in the account-setup journey.
      Pass $current (1-based) for the active step. --}}
-@php($steps = ['Create account', 'Set up your child', 'Start the diagnostic'])
+@php($steps = ['Create account', 'Set up your child', 'Get their login'])
 <div class="setup-steps" aria-label="Setup progress">
     <p class="setup-steps__count">Step {{ $current }} of {{ count($steps) }}</p>
     <ol class="setup-steps__list">
