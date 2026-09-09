@@ -44,10 +44,10 @@ class AppServiceProvider extends ServiceProvider
         Blade::anonymousComponentPath(resource_path('views/layouts'), 'layouts');
 
         // Register the community Socialite drivers (Microsoft covers Hotmail/Outlook/Live;
-        // Yahoo). Google, Facebook and LinkedIn (OpenID) are built into Socialite core.
+        // TikTok). Google and Facebook are built into Socialite core.
         Event::listen(function (SocialiteWasCalled $event) {
             $event->extendSocialite('microsoft', Provider::class);
-            $event->extendSocialite('yahoo', \SocialiteProviders\Yahoo\Provider::class);
+            $event->extendSocialite('tiktok', \SocialiteProviders\TikTok\Provider::class);
         });
     }
 }

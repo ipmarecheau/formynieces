@@ -15,8 +15,6 @@
         .soc-consent a { font-weight:800; text-decoration:underline; }
     </style>
 
-    <div class="soc-divider">or</div>
-
     @if ($consent)
         <label class="soc-consent">
             <input type="checkbox" id="soc-agree">
@@ -41,6 +39,8 @@
                     <svg viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="6" fill="#0A66C2"/><path fill="#fff" d="M14.6 18.9h-5.2V38h5.2V18.9zM12 10.5a3 3 0 100 6 3 3 0 000-6zM38.6 38h-5.2v-9.3c0-2.2-.8-3.7-2.8-3.7-1.5 0-2.4 1-2.8 2-.1.3-.2.8-.2 1.3V38h-5.2s.1-16.4 0-19.1h5.2v2.7c.7-1.1 1.9-2.6 4.7-2.6 3.4 0 6.1 2.2 6.1 7.1V38z"/></svg>
                 @elseif ($provider['icon'] === 'yahoo')
                     <svg viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="6" fill="#6001D2"/><text x="24" y="34" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#fff" text-anchor="middle">Y!</text></svg>
+                @elseif ($provider['icon'] === 'tiktok')
+                    <svg viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="10" fill="#010101"/><path fill="#25F4EE" d="M33.5 12.6c-1.9-1.2-3.1-3.2-3.4-5.4h.02-3.9v20.6c0 2.3-1.9 4.2-4.2 4.2-1.4 0-2.6-.7-3.4-1.7 1.2.6 2.6.6 3.9-.1a4.2 4.2 0 002.1-3.6V6.1h3.9c0 .3 0 .7.1 1 .3 2.2 1.5 4.2 3.4 5.4 0 0-.1 0-.1.1z"/><path fill="#FE2C55" d="M35.9 16.6v3.9c-2.6 0-5-.8-7-2.2v10c0 5-4.1 9.1-9.1 9.1-1.9 0-3.7-.6-5.2-1.6a9.1 9.1 0 0015.8-6.1v-10c2 1.4 4.4 2.2 7 2.2v-3.9c-.5 0-1-.1-1.5-.2z"/><path fill="#fff" d="M28.9 18.3c-2-1.4-3.2-3.4-3.5-5.6h.01v-.6h-3.9v20.6a4.2 4.2 0 01-4.2 4.2c-.6 0-1.2-.1-1.7-.4a4.2 4.2 0 01-2.5-3.8c0-2.3 1.9-4.2 4.2-4.2.5 0 .9.1 1.3.2v-4a9.1 9.1 0 00-8 9c0 2.7 1.2 5.2 3.1 6.9a9.1 9.1 0 0014.3-7.5v-10c2 1.4 4.4 2.2 7 2.2v-3.9c-1.5 0-2.9-.4-4.2-1.1z"/></svg>
                 @endif
                 <span>Continue with {{ $provider['label'] }}</span>
             </a>

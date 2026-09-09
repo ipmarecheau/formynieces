@@ -24,7 +24,7 @@ function fakeSocialUser(string $email, string $name = 'Parent Name', string $id 
 
 function enableAllSocialProviders(): void
 {
-    foreach (['google', 'microsoft', 'yahoo', 'facebook', 'linkedin-openid'] as $p) {
+    foreach (['google', 'microsoft', 'facebook', 'tiktok'] as $p) {
         config(["services.{$p}.client_id" => 'test-id', "services.{$p}.client_secret" => 'test-secret']);
     }
 }
@@ -95,10 +95,11 @@ it('renders every configured provider button on the register page', function () 
     $this->get(route('register'))
         ->assertOk()
         ->assertSee('Continue with Google')
-        ->assertSee('Continue with Microsoft (Hotmail/Outlook)')
-        ->assertSee('Continue with Yahoo')
+        ->assertSee('Continue with Microsoft')
         ->assertSee('Continue with Facebook')
-        ->assertSee('Continue with LinkedIn');
+        ->assertSee('Continue with TikTok')
+        ->assertDontSee('Continue with Yahoo')
+        ->assertDontSee('Continue with LinkedIn');
 });
 
 it('creates a verified guardian via a non-Google provider (Microsoft / Hotmail)', function () {

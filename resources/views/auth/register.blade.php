@@ -213,17 +213,61 @@
         <br><a href="{{ route('login') }}" id="exists-login-link">Sign in to your dashboard →</a>
     </div>
 
-    {{-- One simple screen: sign up with email up top, providers below. Everything
-         else (name, phone, your child) is gathered afterwards by the onboarding wizard. --}}
-    <form method="POST" action="{{ route('register') }}" id="register-form">
+    <style>
+        .reg-lead { text-align:center; font-size:14.5px; color:var(--muted); margin:-8px 0 18px; line-height:1.5; }
+        /* One clear consent that gates every path (social + email). */
+        .consent { display:flex; gap:11px; align-items:flex-start; text-align:left;
+            background:#f6faf9; border:1.5px solid rgba(13,125,140,0.3); border-radius:14px;
+            padding:13px 15px; margin-bottom:16px; cursor:pointer; transition:border-color .15s, background .15s; }
+        .consent input { width:20px; height:20px; margin-top:1px; flex:none; accent-color:var(--purple); cursor:pointer; }
+        .consent span { font-size:13px; line-height:1.5; color:var(--text); font-weight:600; text-transform:none; letter-spacing:normal; }
+        .consent a { color:var(--purple); font-weight:700; text-decoration:underline; }
+        .consent.needs { border-color:#e11d48; background:#fef2f2; animation:regShake .3s; }
+        .consent-hint { display:none; color:#e11d48; font-size:12.5px; font-weight:700; margin:-8px 0 14px; text-align:center; }
+        .consent-hint.show { display:block; }
+        @keyframes regShake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
+        .or-line { display:flex; align-items:center; gap:12px; margin:18px 0; color:var(--muted); font-size:13px; font-weight:700; }
+        .or-line::before, .or-line::after { content:""; flex:1; height:1px; background:currentColor; opacity:.25; }
+        .email-toggle { display:block; width:100%; text-align:center; background:none; border:0; cursor:pointer;
+            color:var(--purple); font-weight:800; font-size:14.5px; padding:6px; }
+        .email-toggle:hover { color:#0f766e; }
+        .email-form[hidden] { display:none; }
+        .email-form { margin-top:8px; }
+    </style>
+
+    <p class="reg-lead">Create your parent account. The quickest way in is an account you already have.</p>
+
+    {{-- One clear consent, gating BOTH the providers and the email form. Kept as two
+         hidden fields (age + terms) so the server contract is unchanged. --}}
+    <label class="consent" id="consent-label" for="consent">
+        <input type="checkbox" id="consent" {{ old('age_attestation') && old('terms') ? 'checked' : '' }}>
+        <span>I'm 18 or older and the parent or legal guardian, and I agree to the
+            <a href="{{ route('terms') }}" target="_blank" rel="noopener">Terms</a>
+            &amp; <a href="{{ route('privacy') }}" target="_blank" rel="noopener">Privacy Policy</a>.</span>
+    </label>
+    <p class="consent-hint" id="consent-hint">Please confirm the box above to continue.</p>
+
+    {{-- Social-first: continue with an existing account. Gated on the consent above. --}}
+    @include('auth.partials.social-buttons', ['consent' => false])
+
+    <div class="or-line">or</div>
+
+    <button type="button" class="email-toggle" id="email-toggle" aria-expanded="false" aria-controls="register-form">
+        Sign up with an email address instead
+    </button>
+
+    <form method="POST" action="{{ route('register') }}" id="register-form" class="email-form" hidden>
         @csrf
+        {{-- The single consent above drives these (kept for the unchanged server contract). --}}
+        <input type="hidden" name="age_attestation" id="hid-age" value="{{ old('age_attestation') }}">
+        <input type="hidden" name="terms" id="hid-terms" value="{{ old('terms') }}">
 
         <div class="field">
             <label for="email">Email Address</label>
             <input type="email" id="email" name="email"
                    value="{{ old('email') }}"
                    placeholder="you@example.com"
-                   required autofocus autocomplete="username">
+                   required autocomplete="username">
         </div>
 
         <div class="field">
@@ -240,35 +284,14 @@
                    required autocomplete="new-password">
         </div>
 
-        <div class="field attestation">
-            <label class="attestation-label" for="age_attestation">
-                <input type="checkbox" id="age_attestation" name="age_attestation" value="1"
-                       {{ old('age_attestation') ? 'checked' : '' }}>
-                <span>I confirm that I am 18 years of age or older and am the parent or legal guardian setting up this account.</span>
-            </label>
-        </div>
-
-        <div class="field">
-            <label class="attestation-label" for="terms">
-                <input type="checkbox" id="terms" name="terms" value="1" {{ old('terms') ? 'checked' : '' }}>
-                <span>I have read and agree to the
-                    <a href="{{ route('terms') }}" target="_blank" rel="noopener">Terms &amp; Conditions</a>
-                    and <a href="{{ route('privacy') }}" target="_blank" rel="noopener">Privacy Policy</a>.</span>
-            </label>
-        </div>
-
         @if (config('services.turnstile.site_key'))
             <div class="field">
                 <div class="cf-turnstile" data-sitekey="{{ config('services.turnstile.site_key') }}" data-theme="dark"></div>
             </div>
         @endif
 
-        <button type="submit" id="submit" class="btn-submit">Sign up with email ✉️</button>
+        <button type="submit" id="submit" class="btn-submit">Create account</button>
     </form>
-
-    {{-- Providers share the SAME 18+/terms consent as the email form (gated by JS below),
-         so consent is asked once. The partial renders no checkbox of its own here. --}}
-    @include('auth.partials.social-buttons', ['consent' => false])
 
     <p class="foot">
         Already have an account? <a href="{{ route('login') }}">Sign in</a>
@@ -344,23 +367,57 @@
     })();
 </script>
 <script>
-    // Provider buttons share the email form's 18+/terms consent: they stay disabled
-    // until BOTH boxes are ticked, then carry agree=1 across the OAuth round-trip.
+    // One consent drives every path. Provider buttons stay clickable but only proceed
+    // once consent is given (a gentle nudge otherwise, never a dead greyed button); the
+    // email form mirrors consent into its two hidden fields so the server contract holds.
     (function () {
-        const age = document.getElementById('age_attestation');
-        const terms = document.getElementById('terms');
+        const consent = document.getElementById('consent');
+        const label = document.getElementById('consent-label');
+        const hint = document.getElementById('consent-hint');
+        const hidAge = document.getElementById('hid-age');
+        const hidTerms = document.getElementById('hid-terms');
         const btns = document.querySelectorAll('.soc-btn[data-base]');
-        if (!age || !terms || !btns.length) return;
+        const form = document.getElementById('register-form');
+        const toggle = document.getElementById('email-toggle');
+        if (!consent) return;
+
         function sync() {
-            const ok = age.checked && terms.checked;
+            const ok = consent.checked;
+            if (hidAge) { hidAge.value = ok ? '1' : ''; }
+            if (hidTerms) { hidTerms.value = ok ? '1' : ''; }
             btns.forEach(function (b) {
-                if (ok) { b.setAttribute('href', b.dataset.base + '?agree=1'); b.removeAttribute('aria-disabled'); }
-                else { b.setAttribute('href', b.dataset.base); b.setAttribute('aria-disabled', 'true'); }
+                b.setAttribute('href', ok ? b.dataset.base + '?agree=1' : b.dataset.base);
+            });
+            if (ok && hint) { hint.classList.remove('show'); label.classList.remove('needs'); }
+        }
+        function nudge() {
+            hint.classList.add('show');
+            label.classList.add('needs');
+            label.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(function () { label.classList.remove('needs'); }, 500);
+        }
+
+        consent.addEventListener('change', sync);
+        sync();
+
+        // Providers: block navigation until consent is given.
+        btns.forEach(function (b) {
+            b.addEventListener('click', function (e) {
+                if (!consent.checked) { e.preventDefault(); nudge(); }
+            });
+        });
+
+        // Reveal the email form on demand (social-first keeps it tucked away).
+        if (toggle && form) {
+            toggle.addEventListener('click', function () {
+                const show = form.hasAttribute('hidden');
+                if (show) { form.removeAttribute('hidden'); toggle.setAttribute('aria-expanded', 'true'); toggle.textContent = 'Hide the email form'; document.getElementById('email').focus(); }
+                else { form.setAttribute('hidden', ''); toggle.setAttribute('aria-expanded', 'false'); toggle.textContent = 'Sign up with an email address instead'; }
+            });
+            form.addEventListener('submit', function (e) {
+                if (!consent.checked) { e.preventDefault(); nudge(); }
             });
         }
-        age.addEventListener('change', sync);
-        terms.addEventListener('change', sync);
-        sync();
     })();
 </script>
 </body>

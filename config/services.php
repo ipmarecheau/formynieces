@@ -122,11 +122,10 @@ return [
         'redirect' => env('FACEBOOK_REDIRECT_URI'),
     ],
 
-    // LinkedIn via OpenID Connect (Socialite's 'linkedin-openid' driver returns email).
-    'linkedin-openid' => [
-        'client_id' => env('LINKEDIN_CLIENT_ID'),
-        'client_secret' => env('LINKEDIN_CLIENT_SECRET'),
-        'redirect' => env('LINKEDIN_REDIRECT_URI'),
+    'tiktok' => [
+        'client_id' => env('TIKTOK_CLIENT_ID'),
+        'client_secret' => env('TIKTOK_CLIENT_SECRET'),
+        'redirect' => env('TIKTOK_REDIRECT_URI'),
     ],
 
     // Twilio Verify — phone verification, WhatsApp-first with SMS fallback.

@@ -90,6 +90,8 @@
         <button type="submit" class="ss-btn" style="width: 100%;">Set sail ⛵</button>
     </form>
 
+    <div class="soc-divider">or</div>
+
     @include('auth.partials.social-buttons', ['consent' => false])
 
     @if (Route::has('register'))

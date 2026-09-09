@@ -67,7 +67,8 @@ it('the registration screen is reachable', function () {
 it('keeps sign-up minimal: email + password, no name field (name is gathered later by the wizard)', function () {
     get(route('register'))
         ->assertOk()
-        ->assertSee('Sign up with email')      // the minimal email sign-up
+        ->assertSee('account you already have')              // social-first framing
+        ->assertSee('Sign up with an email address instead') // email is the secondary path
         ->assertSee('name="email"', false)
         ->assertSee('name="password"', false)
         ->assertDontSee('name="name"', false)  // no name field on sign-up

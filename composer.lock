@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1ba2ef9c1c673b6b253c60105b19b341",
+    "content-hash": "84c842c3913bcec4cd933697d9cd6e65",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -5929,6 +5929,55 @@
                 "source": "https://github.com/socialiteproviders/providers"
             },
             "time": "2026-07-21T22:20:53+00:00"
+        },
+        {
+            "name": "socialiteproviders/tiktok",
+            "version": "5.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SocialiteProviders/TikTok.git",
+                "reference": "b8d9d4e86137bd19761a527e566965155e3893d7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SocialiteProviders/TikTok/zipball/b8d9d4e86137bd19761a527e566965155e3893d7",
+                "reference": "b8d9d4e86137bd19761a527e566965155e3893d7",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.0",
+                "socialiteproviders/manager": "^4.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SocialiteProviders\\TikTok\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Thomas Banks",
+                    "email": "thomas@tombanks.me"
+                }
+            ],
+            "description": "TikTok (tiktok.com) OAuth2 Provider for Laravel Socialite",
+            "keywords": [
+                "TikTok ",
+                "laravel",
+                "oauth",
+                "provider",
+                "socialite"
+            ],
+            "support": {
+                "docs": "https://socialiteproviders.com/tiktok",
+                "issues": "https://github.com/socialiteproviders/providers/issues",
+                "source": "https://github.com/socialiteproviders/providers"
+            },
+            "time": "2024-04-29T01:40:44+00:00"
         },
         {
             "name": "socialiteproviders/yahoo",
