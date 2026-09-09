@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Models\StudentStreak;
-use App\Services\Diagnostic\DiagnosticReconciliation;
-use App\Services\Diagnostic\ReconciliationResolver;
 use App\Services\Motivation\StreakService;
 use Filament\Facades\Filament;
 use Illuminate\Http\RedirectResponse;
@@ -57,24 +55,11 @@ class AuthenticatedSessionController extends Controller
      */
     private function redirectTo($user): string
     {
-        // A student who hasn't finished onboarding goes to the diagnostic —
-        // unless her guardian's reconciliation decision is pending. Then she is
-        // held on the waiting page (RR-11), except once the 3-day hold has
-        // elapsed, when we proceed her with the diagnostic result right now so
-        // she isn't stuck waiting (RR-10 resolved lazily on login).
+        // A student who hasn't finished onboarding goes to the diagnostic. She is
+        // never held waiting on a guardian decision — the child always proceeds, and
+        // any guardian disagreement is reconciled later from the guardian's dashboard.
         if ($user->isStudent() && ! $user->hasCompletedOnboarding()) {
-            $reconciliation = app(DiagnosticReconciliation::class);
-
-            if ($reconciliation->isPending($user)) {
-                if ($reconciliation->hasTimedOut($user)) {
-                    app(ReconciliationResolver::class)->proceedWithDiagnostic($user);
-                    $user->refresh();
-                } else {
-                    return route('student.awaiting-guardian');
-                }
-            } else {
-                return route('diagnostic.intro');
-            }
+            return route('diagnostic.intro');
         }
 
         // A guardian goes to her dashboard (the Guardian Bridge). With no child

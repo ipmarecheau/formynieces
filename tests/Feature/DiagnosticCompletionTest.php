@@ -93,17 +93,22 @@ it('shows a way forward on the completion screen', function () {
         ->assertDontSee(route('student.map'), false);
 })->group('scenario:RR-08');
 
-it('holds onboarding and defers the roadmap when the diagnostic clears a strand the guardian flagged', function () {
+it('proceeds the child (roadmap + onboarding) even when the diagnostic clears a flagged strand, and notifies the guardian', function () {
+    Notification::fake();
+
     // The guardian flagged a real strand the diagnostic assesses. Answering the
     // whole walk correctly masters that strand, so the diagnostic CLEARS it —
-    // disagreeing with the guardian and requiring her decision (RR-04).
+    // disagreeing with the guardian. The child is NOT held: she proceeds, and the
+    // guardian gets a non-blocking review on her dashboard (RR-04, non-blocking).
     $flaggedStrand = collect(SyllabusModule::strandsBySubject())->flatten()->first();
 
+    $guardian = User::factory()->create(['role' => 'guardian', 'email_verified_at' => now()]);
     $student = User::create([
         'name' => 'Aaliyah',
         'email' => 'rr04-gate-'.uniqid().'@students.formynieces.com',
         'password' => bcrypt('secret'),
         'role' => 'student',
+        'parent_id' => $guardian->id,
         'target_sea_year' => 2027,
         'onboarding_completed_at' => null,
         'known_weak_areas' => [$flaggedStrand],
@@ -117,16 +122,19 @@ it('holds onboarding and defers the roadmap when the diagnostic clears a strand 
 
     $student->refresh();
 
-    // Precondition: the flagged strand really was cleared, so a decision is due.
+    // Precondition: the flagged strand really was cleared, so the guardian may still reconcile.
     expect(app(DiagnosticReconciliation::class)->requiresGuardianDecision($student))->toBeTrue();
 
-    // The gate: onboarding stays pending and no roadmap is generated until she chooses.
-    expect($student->onboarding_completed_at)->toBeNull()
-        ->and(StudentJourney::where('student_id', $student->id)->exists())->toBeFalse()
-        ->and(WeeklyTarget::where('student_id', $student->id)->exists())->toBeFalse();
+    // Non-blocking: onboarding completes and the roadmap is generated right away.
+    expect($student->onboarding_completed_at)->not->toBeNull()
+        ->and(StudentJourney::where('student_id', $student->id)->exists())->toBeTrue()
+        ->and(WeeklyTarget::where('student_id', $student->id)->exists())->toBeTrue();
+
+    // The guardian is told a review is waiting (dashboard decision, applied later).
+    Notification::assertSentTo($guardian, ReconciliationPendingNotification::class);
 })->group('scenario:RR-04');
 
-it('shows a holding reveal instead of the map link when a guardian decision is pending', function () {
+it('shows the normal completion (Set sail to the Voyage) with no guardian hold', function () {
     $flaggedStrand = collect(SyllabusModule::strandsBySubject())->flatten()->first();
 
     $student = User::create([
@@ -144,10 +152,12 @@ it('shows a holding reveal instead of the map link when a guardian decision is p
 
     Livewire::actingAs($student)
         ->test(DiagnosticWalk::class)
-        ->assertRedirect(route('student.awaiting-guardian'));
+        ->assertSet('awaitingGuardian', false)
+        ->assertSee('Set sail')
+        ->assertNoRedirect();
 })->group('scenario:RR-04');
 
-it('redirects to the waiting page when the final answer completes a diagnostic needing a decision', function () {
+it('does not redirect the child to a waiting page when the final answer completes a reviewable diagnostic', function () {
     $flaggedStrand = collect(SyllabusModule::strandsBySubject())->flatten()->first();
 
     $student = User::create([
@@ -175,10 +185,13 @@ it('redirects to the waiting page when the final answer completes a diagnostic n
             break;
         }
         $anchor = DB::table('anchor_questions')->find($question['anchor_id']);
-        $component->call('choose', $anchor->correct_index);
+        // Options are shuffled for display — tap the position the correct answer landed in.
+        $displayIndex = array_search((int) $anchor->correct_index, $component->get('optionOrder'), true);
+        $component->call('choose', $displayIndex);
     }
 
-    $component->assertRedirect(route('student.awaiting-guardian'));
+    // The child is never sent to a waiting page — she completes and sails on.
+    $component->assertSet('isComplete', true)->assertNoRedirect();
 })->group('scenario:RR-04');
 
 it('generates the roadmap (journey + first weekly target) when an onboarded student completes', function () {

@@ -187,17 +187,14 @@ class SessionLifecycle
         // future logins route her to her map rather than back to the diagnostic.
         // Only the first completion sets it (idempotent re-completes leave it).
         //
-        // RR-04 gate: if the diagnostic CLEARED a strand the guardian flagged, her
-        // onboarding stays pending until the guardian reconciles (or the 3-day
-        // auto-proceed resolves it). The mastery map is still written above; only
-        // the onboarding hand-off waits on the guardian's decision.
-        $student = User::find($studentId);
-        if ($student !== null && ! $this->reconciliation->requiresGuardianDecision($student)) {
-            DB::table('users')
-                ->where('id', $studentId)
-                ->whereNull('onboarding_completed_at')
-                ->update(['onboarding_completed_at' => $now, 'updated_at' => $now]);
-        }
+        // The child is never held: even when the diagnostic CLEARED a strand the
+        // guardian flagged, onboarding completes and she sails straight on. Any
+        // guardian disagreement becomes a non-blocking review on the guardian's
+        // dashboard (see DiagnosticWalk) that is applied in the background later.
+        DB::table('users')
+            ->where('id', $studentId)
+            ->whereNull('onboarding_completed_at')
+            ->update(['onboarding_completed_at' => $now, 'updated_at' => $now]);
 
         return $map;
     }
