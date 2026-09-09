@@ -177,19 +177,6 @@
         }
         .exists-notice a:hover { background: #0f766e; }
         form.is-locked { opacity: 0.45; pointer-events: none; }
-
-        /* Signup stepper — progressive enhancement. Without JS every step is visible (a normal
-           single-page form); the JS reveals one step at a time with Next/Back. */
-        .rw-progress { display: none; }
-        .rw-step-nav { display: none; align-items: center; gap: 12px; margin-top: 16px; }
-        .rw-back { background: none; border: 0; color: #475569; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 14px; cursor: pointer; padding: 6px 4px; }
-        .rw-back:hover { color: #0d9488; }
-        form.stepper .rw-progress { display: flex; gap: 6px; margin-bottom: 22px; }
-        form.stepper .rw-progress i { height: 5px; flex: 1; border-radius: 99px; background: rgba(13,125,140,0.15); transition: background .2s; }
-        form.stepper .rw-progress i.on { background: #0d9488; }
-        form.stepper .rw-step-nav { display: flex; }
-        form.stepper .rw-step:not(.rw-active) { display: none; }
-        form.stepper .rw-next { flex: 1; }
     </style>
     @if (config('services.turnstile.site_key'))
         <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
@@ -226,93 +213,62 @@
         <br><a href="{{ route('login') }}" id="exists-login-link">Sign in to your dashboard →</a>
     </div>
 
+    {{-- One simple screen: sign up with email up top, providers below. Everything
+         else (name, phone, your child) is gathered afterwards by the onboarding wizard. --}}
     <form method="POST" action="{{ route('register') }}" id="register-form">
         @csrf
 
-        {{-- Progress (shown only when the JS stepper is active). --}}
-        <div class="rw-progress" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-
-        {{-- Step 1 — name --}}
-        <div class="rw-step" data-step="1">
-            <div class="field">
-                <label for="name">Your Name (Parent / Guardian)</label>
-                <input type="text" id="name" name="name"
-                       value="{{ old('name') }}"
-                       placeholder="e.g. Maria Thomas"
-                       required autofocus autocomplete="name">
-                <p class="field-hint">This is your account. You'll add your child in the next step.</p>
-            </div>
-            <div class="rw-step-nav"><button type="button" class="btn-submit rw-next">Next →</button></div>
+        <div class="field">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email"
+                   value="{{ old('email') }}"
+                   placeholder="you@example.com"
+                   required autofocus autocomplete="username">
         </div>
 
-        {{-- Step 2 — contact --}}
-        <div class="rw-step" data-step="2">
-            <div class="field">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email"
-                       value="{{ old('email') }}"
-                       placeholder="you@example.com"
-                       required autocomplete="username">
-            </div>
-            <div class="field">
-                <label for="phone">Mobile Number (WhatsApp) <span style="font-weight:400;opacity:.7;">— optional</span></label>
-                <input type="tel" id="phone" name="phone"
-                       value="{{ old('phone') }}"
-                       placeholder="+1 868 555 1234"
-                       autocomplete="tel">
-                <p class="field-hint">Optional — add it now or later. Full international format, e.g. +18685551234.</p>
-            </div>
-            <div class="rw-step-nav"><button type="button" class="rw-back">← Back</button><button type="button" class="btn-submit rw-next">Next →</button></div>
+        <div class="field">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password"
+                   placeholder="At least 8 characters"
+                   required autocomplete="new-password">
         </div>
 
-        {{-- Step 3 — password --}}
-        <div class="rw-step" data-step="3">
-            <div class="field">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password"
-                       placeholder="At least 8 characters"
-                       required autocomplete="new-password">
-            </div>
-            <div class="field">
-                <label for="password_confirmation">Confirm Password</label>
-                <input type="password" id="password_confirmation" name="password_confirmation"
-                       placeholder="Repeat your password"
-                       required autocomplete="new-password">
-            </div>
-            <div class="rw-step-nav"><button type="button" class="rw-back">← Back</button><button type="button" class="btn-submit rw-next">Next →</button></div>
+        <div class="field">
+            <label for="password_confirmation">Confirm Password</label>
+            <input type="password" id="password_confirmation" name="password_confirmation"
+                   placeholder="Repeat your password"
+                   required autocomplete="new-password">
         </div>
 
-        {{-- Step 4 — agreements + submit --}}
-        <div class="rw-step" data-step="4">
-            <div class="field attestation">
-                <label class="attestation-label" for="age_attestation">
-                    <input type="checkbox" id="age_attestation" name="age_attestation" value="1"
-                           {{ old('age_attestation') ? 'checked' : '' }}>
-                    <span>I confirm that I am 18 years of age or older and am the parent or legal guardian setting up this account.</span>
-                </label>
-            </div>
-
-            <div class="field">
-                <label class="attestation-label" for="terms">
-                    <input type="checkbox" id="terms" name="terms" value="1" {{ old('terms') ? 'checked' : '' }}>
-                    <span>I have read and agree to the
-                        <a href="{{ route('terms') }}" target="_blank" rel="noopener">Terms &amp; Conditions</a>
-                        and <a href="{{ route('privacy') }}" target="_blank" rel="noopener">Privacy Policy</a>.</span>
-                </label>
-            </div>
-
-            @if (config('services.turnstile.site_key'))
-                <div class="field">
-                    <div class="cf-turnstile" data-sitekey="{{ config('services.turnstile.site_key') }}" data-theme="dark"></div>
-                </div>
-            @endif
-
-            <div class="rw-step-nav" style="margin-bottom:12px;"><button type="button" class="rw-back">← Back</button></div>
-            <button type="submit" id="submit" class="btn-submit">Create Account 🌟</button>
+        <div class="field attestation">
+            <label class="attestation-label" for="age_attestation">
+                <input type="checkbox" id="age_attestation" name="age_attestation" value="1"
+                       {{ old('age_attestation') ? 'checked' : '' }}>
+                <span>I confirm that I am 18 years of age or older and am the parent or legal guardian setting up this account.</span>
+            </label>
         </div>
+
+        <div class="field">
+            <label class="attestation-label" for="terms">
+                <input type="checkbox" id="terms" name="terms" value="1" {{ old('terms') ? 'checked' : '' }}>
+                <span>I have read and agree to the
+                    <a href="{{ route('terms') }}" target="_blank" rel="noopener">Terms &amp; Conditions</a>
+                    and <a href="{{ route('privacy') }}" target="_blank" rel="noopener">Privacy Policy</a>.</span>
+            </label>
+        </div>
+
+        @if (config('services.turnstile.site_key'))
+            <div class="field">
+                <div class="cf-turnstile" data-sitekey="{{ config('services.turnstile.site_key') }}" data-theme="dark"></div>
+            </div>
+        @endif
+
+        <button type="submit" id="submit" class="btn-submit">Sign up with email ✉️</button>
     </form>
 
-    @include('auth.partials.social-buttons', ['consent' => true])
+    {{-- Providers share the SAME 18+/terms consent as the email form (gated by JS below),
+         so consent is asked once. The partial renders no checkbox of its own here. --}}
+    @include('auth.partials.social-buttons', ['consent' => false])
 
     <p class="foot">
         Already have an account? <a href="{{ route('login') }}">Sign in</a>
@@ -388,43 +344,23 @@
     })();
 </script>
 <script>
-    // Signup stepper: reveal one step at a time. Progressive enhancement — if this doesn't run,
-    // the form is a normal single-page form and still submits.
+    // Provider buttons share the email form's 18+/terms consent: they stay disabled
+    // until BOTH boxes are ticked, then carry agree=1 across the OAuth round-trip.
     (function () {
-        const form = document.getElementById('register-form');
-        if (!form) return;
-        const steps = Array.prototype.slice.call(form.querySelectorAll('.rw-step'));
-        if (steps.length < 2) return;
-
-        const dots = Array.prototype.slice.call(form.querySelectorAll('.rw-progress i'));
-        let cur = 0;
-
-        function show(i) {
-            steps.forEach((s, n) => s.classList.toggle('rw-active', n === i));
-            dots.forEach((d, n) => d.classList.toggle('on', n <= i));
-            cur = i;
-            const firstInput = steps[i].querySelector('input:not([type=checkbox])');
-            if (firstInput) { try { firstInput.focus(); } catch (e) {} }
-        }
-
-        function stepValid(i) {
-            let ok = true;
-            steps[i].querySelectorAll('input').forEach(function (inp) {
-                if (ok && !inp.checkValidity()) { inp.reportValidity(); ok = false; }
+        const age = document.getElementById('age_attestation');
+        const terms = document.getElementById('terms');
+        const btns = document.querySelectorAll('.soc-btn[data-base]');
+        if (!age || !terms || !btns.length) return;
+        function sync() {
+            const ok = age.checked && terms.checked;
+            btns.forEach(function (b) {
+                if (ok) { b.setAttribute('href', b.dataset.base + '?agree=1'); b.removeAttribute('aria-disabled'); }
+                else { b.setAttribute('href', b.dataset.base); b.setAttribute('aria-disabled', 'true'); }
             });
-            return ok;
         }
-
-        form.classList.add('stepper');
-        form.querySelectorAll('.rw-next').forEach(function (btn) {
-            btn.addEventListener('click', function () {
-                if (stepValid(cur) && cur < steps.length - 1) show(cur + 1);
-            });
-        });
-        form.querySelectorAll('.rw-back').forEach(function (btn) {
-            btn.addEventListener('click', function () { if (cur > 0) show(cur - 1); });
-        });
-        show(0);
+        age.addEventListener('change', sync);
+        terms.addEventListener('change', sync);
+        sync();
     })();
 </script>
 </body>

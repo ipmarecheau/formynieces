@@ -13,13 +13,20 @@ beforeEach(function () {
     ]);
 });
 
-function fakeSocialUser(string $email, string $name = 'Parent Name', string $id = 'oauth-123'): void
+function fakeSocialUser(string $email, string $name = 'Parent Name', string $id = 'oauth-123', string $providerName = 'google'): void
 {
     $social = (new SocialiteUser)->map(['id' => $id, 'name' => $name, 'email' => $email]);
 
     $provider = Mockery::mock(Provider::class);
     $provider->shouldReceive('user')->andReturn($social);
-    Socialite::shouldReceive('driver')->with('google')->andReturn($provider);
+    Socialite::shouldReceive('driver')->with($providerName)->andReturn($provider);
+}
+
+function enableAllSocialProviders(): void
+{
+    foreach (['google', 'microsoft', 'yahoo', 'facebook', 'linkedin-openid'] as $p) {
+        config(["services.{$p}.client_id" => 'test-id', "services.{$p}.client_secret" => 'test-secret']);
+    }
 }
 
 it('creates a verified guardian on first Google sign-in when consent is given', function () {
@@ -80,4 +87,30 @@ it('shows the Google button on the register page when configured', function () {
     $this->get(route('register'))
         ->assertOk()
         ->assertSee('Continue with Google');
+});
+
+it('renders every configured provider button on the register page', function () {
+    enableAllSocialProviders();
+
+    $this->get(route('register'))
+        ->assertOk()
+        ->assertSee('Continue with Google')
+        ->assertSee('Continue with Microsoft (Hotmail/Outlook)')
+        ->assertSee('Continue with Yahoo')
+        ->assertSee('Continue with Facebook')
+        ->assertSee('Continue with LinkedIn');
+});
+
+it('creates a verified guardian via a non-Google provider (Microsoft / Hotmail)', function () {
+    enableAllSocialProviders();
+    fakeSocialUser('hotmailparent@hotmail.com', 'Sam Parent', 'ms-1', 'microsoft');
+
+    $this->withSession(['social_consent' => true])
+        ->get(route('social.callback', 'microsoft'))
+        ->assertRedirect(route('dashboard'));
+
+    $user = User::whereRaw('LOWER(email) = ?', ['hotmailparent@hotmail.com'])->first();
+    expect($user)->not->toBeNull()
+        ->and($user->social_provider)->toBe('microsoft')
+        ->and($user->email_verified_at)->not->toBeNull();
 });

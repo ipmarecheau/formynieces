@@ -73,3 +73,34 @@ it('does not open when the guardian has no child yet', function () {
         ->test(FamilyProfileWizard::class)
         ->assertSet('open', false);
 });
+
+it('opens for an email sign-up whose name is still the email placeholder, even before a child, and saves the real name', function () {
+    // Mirrors the email sign-up path: name defaults to the email's local part.
+    $guardian = User::factory()->create([
+        'role' => 'guardian',
+        'email' => 'maria.thomas@example.com',
+        'name' => 'maria.thomas',   // the placeholder RegisteredUserController sets
+        'email_verified_at' => now(),
+    ]);
+
+    Livewire::actingAs($guardian)
+        ->test(FamilyProfileWizard::class)
+        ->assertSet('open', true)            // opens to gather the real name
+        ->set('name', 'Maria Thomas')
+        ->call('save')
+        ->assertSet('open', false)
+        ->assertHasNoErrors();
+
+    expect($guardian->fresh()->name)->toBe('Maria Thomas');
+});
+
+it('requires a name to save', function () {
+    [$guardian] = fpwGuardianWithChild();
+
+    Livewire::actingAs($guardian)
+        ->test(FamilyProfileWizard::class)
+        ->set('name', '')
+        ->call('save')
+        ->assertHasErrors('name')
+        ->assertSet('open', true);
+});

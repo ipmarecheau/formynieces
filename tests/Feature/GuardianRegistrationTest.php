@@ -64,12 +64,14 @@ it('the registration screen is reachable', function () {
 })->group('scenario:GO-01');
 
 // GO-09 — the name field is clearly the guardian's own, not the child's.
-it('asks for the guardian own name, not the child name', function () {
+it('keeps sign-up minimal: email + password, no name field (name is gathered later by the wizard)', function () {
     get(route('register'))
         ->assertOk()
-        ->assertSee('Parent / Guardian')      // label names whose name this is
-        ->assertSee('add your child')          // helper points to the next step
-        ->assertDontSee('Aaliyah Thomas');     // the child-like example is gone
+        ->assertSee('Sign up with email')      // the minimal email sign-up
+        ->assertSee('name="email"', false)
+        ->assertSee('name="password"', false)
+        ->assertDontSee('name="name"', false)  // no name field on sign-up
+        ->assertDontSee('Parent / Guardian');
 })->group('scenario:GO-09');
 
 // GO-11 — the verification notice tells her exactly what to do next.

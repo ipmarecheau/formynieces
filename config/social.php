@@ -26,6 +26,26 @@ return [
             'icon' => 'google',
             'services_key' => 'google',
         ],
+        'microsoft' => [
+            'label' => 'Microsoft (Hotmail/Outlook)',
+            'icon' => 'microsoft',
+            'services_key' => 'microsoft',
+        ],
+        'yahoo' => [
+            'label' => 'Yahoo',
+            'icon' => 'yahoo',
+            'services_key' => 'yahoo',
+        ],
+        'facebook' => [
+            'label' => 'Facebook',
+            'icon' => 'facebook',
+            'services_key' => 'facebook',
+        ],
+        'linkedin-openid' => [
+            'label' => 'LinkedIn',
+            'icon' => 'linkedin',
+            'services_key' => 'linkedin-openid',
+        ],
     ],
 
 ];

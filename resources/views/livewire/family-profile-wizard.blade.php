@@ -25,6 +25,12 @@
             <h2 class="fpw-h">A couple of quick extras</h2>
             <p class="fpw-sub">Both logins are ready — this just helps us tailor things. You can skip it and do it anytime.</p>
 
+            <div style="margin-bottom:14px;">
+                <label class="fpw-label" for="fpw-name">Your name (parent / guardian)</label>
+                <input type="text" id="fpw-name" class="fpw-input" wire:model="name" placeholder="e.g. Maria Thomas" autocomplete="name">
+                @error('name') <p class="fpw-err">{{ $message }}</p> @enderror
+            </div>
+
             <div>
                 <label class="fpw-label" for="fpw-phone">Your mobile (WhatsApp) — optional</label>
                 <input type="tel" id="fpw-phone" class="fpw-input" wire:model="phone" placeholder="+1 868 555 1234" autocomplete="tel">
