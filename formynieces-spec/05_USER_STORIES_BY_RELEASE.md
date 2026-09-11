@@ -171,6 +171,27 @@ Same shape, more honest and more human once the core is lived-in.
 Motivation and exam-craft layers — only after the honest core is rock-solid, so play
 never outruns learning.
 
+## 4. 📱 Mobile MVP — *"The daily voyage"* (`@mvp`)
+
+The first native release is a focused Flutter shell around the existing learning model.
+It does not create a second set of learning rules: the Laravel API remains authoritative,
+and the child and guardian apps expose the two emotional layers through role-specific homes.
+
+### 🌊 Maya — student
+> I open the child app and immediately see today's one small mission. I can complete a
+> short practice, understand a miss through Smooth's hint, and finish with a kind result
+> that keeps my voyage moving. My streak and map make returning feel like sailing, while
+> the app never shows me the grown-up readiness numbers.
+
+### 🧭 Maya's aunt — guardian
+> I open the parent app and see the one action that matters this week. I can switch
+> between children, understand weak topics in plain language, review writing progress,
+> and see readiness without chasing scattered browser pages. The app gives me enough
+> visibility to help, without turning my child's motivation into a scoreboard.
+
+**Covers:** `mobile_child_app.feature` (MC-01…MC-07), `mobile_parent_app.feature`
+(MP-01…MP-08), `07_MOBILE_APP_ROADMAP.md`, and `MOBILE_API_CONTRACT.md`.
+
 ### 🌊 Maya — student
 > **XP** rewards the *whole* loop — showing up, reading, focusing, answering — and
 > **only ever rises**; a mistake costs a **combo multiplier**, never my banked points

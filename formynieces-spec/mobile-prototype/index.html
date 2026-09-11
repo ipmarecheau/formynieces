@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SmoothSeas Mobile App Prototype</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@500;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#12222e; --muted:#5f7486; --faint:#8ca0b0; --paper:#fbf8f2; --card:#fff;
+      --line:#e7ddcd; --teal:#0d7d8c; --deep:#073a52; --aqua:#dff5f6; --amber:#f2a900;
+      --amber-soft:#fff0c7; --green:#28a86b; --red:#e05a47; --purple:#8067dc; --shadow:0 24px 70px rgba(7,58,82,.18);
+    }
+    *{box-sizing:border-box} body{margin:0;background:radial-gradient(circle at 10% 0%,#fff7dc 0,#fbf8f2 32%,#e8f7f8 100%);font-family:Nunito,system-ui,sans-serif;color:var(--ink)}
+    .page{min-height:100vh;padding:28px;display:grid;grid-template-columns:330px 1fr;gap:28px;align-items:start}.brief{position:sticky;top:28px;background:rgba(255,255,255,.76);border:1px solid var(--line);border-radius:28px;padding:24px;box-shadow:0 12px 40px rgba(18,34,46,.08);backdrop-filter:blur(12px)}
+    h1,h2,h3{font-family:Fredoka,Nunito,sans-serif;line-height:1.08;margin:0}.brief h1{font-size:34px;letter-spacing:-.03em}.brief p{color:var(--muted);font-weight:700;line-height:1.55}.tag{display:inline-flex;gap:8px;align-items:center;border-radius:999px;background:var(--amber-soft);border:1px solid #f4d789;color:#8a5a00;padding:7px 12px;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px}.mode{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0 12px}.mode button,.mini-btn{border:0;border-radius:999px;padding:12px 14px;font:900 14px Nunito;background:#eaf3f4;color:var(--deep);cursor:pointer}.mode button.active,.mini-btn.primary{background:var(--teal);color:white;box-shadow:0 10px 22px rgba(13,125,140,.25)}.device-picker{display:grid;gap:7px;margin:0 0 18px;font-weight:900;color:var(--muted);font-size:13px}.device-picker select{width:100%;border:1px solid var(--line);border-radius:16px;background:white;color:var(--deep);font:900 14px Nunito;padding:12px 14px;outline:none;box-shadow:0 8px 20px rgba(18,34,46,.05)}.device-picker select:focus{border-color:var(--teal);box-shadow:0 0 0 4px rgba(13,125,140,.12)}.legend{display:grid;gap:10px;margin-top:20px}.legend div{display:flex;gap:10px;align-items:flex-start;color:var(--muted);font-weight:800;font-size:14px}.dot{width:11px;height:11px;border-radius:50%;background:var(--teal);margin-top:5px;flex:none}.dot.amber{background:var(--amber)}.dot.purple{background:var(--purple)}
+    .stage{display:grid;grid-template-columns:max-content minmax(220px,260px);gap:28px;align-items:start;overflow:auto;padding-bottom:20px}.stage.tablet-preview,.stage.small-tablet-preview{grid-template-columns:max-content}.stage.tablet-preview .screen-note,.stage.small-tablet-preview .screen-note{width:min(100%,820px)}.device-frame{display:flex;flex-direction:column;align-items:center;gap:12px;flex:none;min-width:max-content}.device-label{font-weight:900;color:var(--muted);font-size:13px;background:rgba(255,255,255,.7);border:1px solid var(--line);padding:7px 12px;border-radius:999px}.phone{width:390px;height:820px;flex:none;border-radius:48px;background:#081525;padding:14px;box-shadow:var(--shadow);position:relative;transition:none}.phone.size-small-phone{width:320px;height:690px;border-radius:42px;padding:12px}.phone.size-small-tablet{width:600px;height:820px;border-radius:42px;padding:16px;flex:none}.phone.size-tablet{width:820px;height:1080px;border-radius:44px;padding:18px;flex:none}.screen{height:100%;border-radius:38px;overflow:hidden;background:var(--paper);position:relative}.size-small-phone .screen{border-radius:32px}.size-small-tablet .screen,.size-tablet .screen{border-radius:32px}.size-small-phone .content{padding:12px 12px 92px}.size-small-phone .top{margin-bottom:10px}.size-small-phone .hello b{font-size:20px}.size-small-phone .hello small{font-size:12px}.size-small-phone .avatar{width:42px;height:42px;border-radius:14px}.size-small-phone .avatar img{width:38px;height:38px}.size-small-phone .hero-card{border-radius:24px;padding:17px}.size-small-phone .hero-card h2{font-size:25px}.size-small-phone .hero-card p{font-size:13.5px;margin:8px 0 14px}.size-small-phone .cta{min-height:48px;padding:12px 14px;font-size:13px}.size-small-phone .row{gap:8px;margin:10px 0}.size-small-phone .tile{padding:12px;border-radius:18px}.size-small-phone .tile b{font-size:21px}.size-small-phone .tile span{font-size:11.5px}.size-small-phone .section-title{margin:15px 0 8px}.size-small-phone .section-title h3{font-size:18px}.size-small-phone .chip{font-size:11px;padding:6px 8px}.size-small-phone .lesson{padding:10px;border-radius:17px}.size-small-phone .lesson-icon{width:36px;height:36px;border-radius:12px;font-size:18px}.size-small-phone .lesson small{font-size:11.5px}.size-small-phone .tabbar{height:70px;border-radius:25px;padding:7px}.size-small-phone .tab span{font-size:19px}.size-small-phone .tab{font-size:10px} .size-small-tablet .screen,.size-tablet .screen{border-radius:32px}.status{height:34px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;font-size:12px;font-weight:900;color:rgba(18,34,46,.75)}.app{height:calc(100% - 34px);display:flex;flex-direction:column}.content{flex:1;overflow:auto;padding:18px 18px 96px;scrollbar-width:none}.content::-webkit-scrollbar{display:none}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}.avatar{width:50px;height:50px;border-radius:18px;background:#fff;display:grid;place-items:center;box-shadow:0 8px 20px rgba(7,58,82,.08);overflow:hidden}.avatar img{width:46px;height:46px;object-fit:contain}.hello small{display:block;color:var(--muted);font-weight:900}.hello b{font-family:Fredoka;font-size:22px}.chip{display:inline-flex;align-items:center;gap:6px;border-radius:999px;background:#fff;border:1px solid var(--line);padding:8px 10px;font-weight:900;font-size:12px;color:var(--deep)}.hero-card{background:linear-gradient(155deg,#073a52,#0d7d8c);color:white;border-radius:30px;padding:22px;box-shadow:0 18px 40px rgba(7,58,82,.2);position:relative;overflow:hidden}.hero-card:after{content:"";position:absolute;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.09);right:-52px;top:-50px}.hero-card h2{font-size:30px;letter-spacing:-.02em}.hero-card p{color:#d8f2f5;font-weight:800;margin:10px 0 18px}.cta{border:0;background:#fff;color:var(--deep);border-radius:999px;padding:14px 18px;font:900 15px Nunito;cursor:pointer;width:100%;box-shadow:0 12px 26px rgba(0,0,0,.12)}.cta.teal{background:var(--teal);color:white}.cta.amber{background:var(--amber);color:#3b2600}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}.size-tablet .row,.size-small-tablet .row{grid-template-columns:repeat(4,1fr)}.tile,.card{background:white;border:1px solid var(--line);border-radius:24px;padding:16px;box-shadow:0 8px 20px rgba(18,34,46,.05)}.tile b{display:block;font-family:Fredoka;font-size:24px;color:var(--teal)}.tile span,.card p{color:var(--muted);font-weight:800;font-size:13px}.section-title{display:flex;align-items:center;justify-content:space-between;margin:22px 0 10px}.section-title h3{font-size:21px}.lesson{display:flex;gap:12px;align-items:center;background:white;border:1px solid var(--line);border-radius:22px;padding:13px;margin-bottom:10px}.size-tablet .lesson,.size-small-tablet .lesson{padding:16px}.size-tablet .lesson-grid,.size-small-tablet .lesson-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.lesson-icon{width:44px;height:44px;border-radius:15px;display:grid;place-items:center;background:var(--aqua);font-size:22px;flex:none}.lesson b{display:block}.lesson small{color:var(--muted);font-weight:800}.tabbar{position:absolute;left:14px;right:14px;bottom:14px;height:76px;border-radius:30px;background:rgba(255,255,255,.94);border:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);padding:8px;box-shadow:0 -14px 34px rgba(18,34,46,.12);backdrop-filter:blur(12px)}.tab{border:0;background:transparent;border-radius:22px;color:var(--faint);font:900 11px Nunito;display:grid;place-items:center;cursor:pointer}.tab span{font-size:22px}.tab.active{background:var(--aqua);color:var(--deep)}.view{display:none}.view.active{display:block}.map{height:360px;border-radius:30px;background:linear-gradient(#9ee5ef,#e3fbff 52%,#ffe3a3);position:relative;overflow:hidden;border:1px solid #c9edf1}.size-small-tablet .map{height:470px}.size-tablet .map{height:650px}.island{position:absolute;width:86px;height:62px;border-radius:50%;background:#44b979;box-shadow:inset 0 -12px #26965b,0 10px 20px rgba(7,58,82,.16);display:grid;place-items:center;color:white;font-size:24px;border:5px solid rgba(255,255,255,.7)}.i1{left:34px;top:230px}.i2{left:142px;top:154px}.i3{right:42px;top:74px;background:#f2a900;box-shadow:inset 0 -12px #bd7f00,0 10px 20px rgba(7,58,82,.16)}.path{position:absolute;left:75px;top:120px;width:230px;height:170px;border:5px dashed rgba(7,58,82,.22);border-left:0;border-bottom:0;border-radius:0 130px 0 0;transform:rotate(-18deg)}.smooth-ship{position:absolute;left:154px;top:220px;font-size:38px;filter:drop-shadow(0 10px 10px rgba(7,58,82,.2))}.question{background:white;border-radius:28px;border:1px solid var(--line);padding:20px}.size-small-tablet .question,.size-tablet .question{max-width:620px;margin:0 auto}.size-tablet .question h2{font-size:40px}.progress{height:12px;border-radius:999px;background:#e9eee9;overflow:hidden;margin:8px 0 18px}.progress i{display:block;height:100%;background:var(--green);border-radius:999px;width:var(--w,40%)}.choice{width:100%;text-align:left;border:2px solid var(--line);background:white;border-radius:18px;padding:15px;margin:9px 0;font:900 16px Nunito;color:var(--ink);cursor:pointer}.choice.correct{border-color:var(--green);background:#e9f8f0}.choice.wrong{border-color:var(--red);background:#ffede9}.feedback{padding:16px;border-radius:22px;background:var(--aqua);border:1px solid #b7e4e8;margin-top:14px;color:var(--deep);font-weight:800}.big-celebrate{text-align:center;padding:40px 10px}.big-celebrate .emoji{font-size:78px}.big-celebrate h2{font-size:38px}.parent-card h3{font-size:24px}.alert{background:#fff5d8;border:1px solid #f4d789;border-radius:22px;padding:15px;margin:12px 0;font-weight:900;color:#664300}.bars{display:grid;gap:13px}.barline{display:grid;grid-template-columns:92px 1fr 42px;gap:10px;align-items:center;font-weight:900;font-size:13px}.barline .track{height:12px;border-radius:999px;background:#edf1f1;overflow:hidden}.barline i{display:block;height:100%;width:var(--w);background:var(--teal);border-radius:999px}.topic{display:flex;gap:12px;align-items:flex-start;padding:14px;border-radius:20px;background:white;border:1px solid var(--line);margin-bottom:10px}.severity{width:12px;height:54px;border-radius:999px;background:var(--red);flex:none}.severity.mid{background:var(--amber)}.topic b{display:block}.topic small{color:var(--muted);font-weight:800}.notify{background:#eef8ff;border:1px solid #cce8ff;border-radius:20px;padding:14px;color:#23455c;font-weight:800;margin-top:12px}.screen-note{width:260px;flex:none;background:rgba(255,255,255,.72);border:1px solid var(--line);border-radius:24px;padding:18px;color:var(--muted);font-weight:800;line-height:1.45}.screen-note h3{color:var(--ink);font-size:22px;margin-bottom:8px}.flow-buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.flow-buttons button{border:0;border-radius:999px;background:white;border:1px solid var(--line);padding:10px 14px;font-weight:900;color:var(--deep);cursor:pointer}.flow-buttons button:hover{background:var(--aqua)}.parent-app,.child-app{display:none}.child-app.active-app,.parent-app.active-app{display:flex}.app:not(.active-app) [data-jump]{pointer-events:none}
+    @media(max-width:900px){.page{grid-template-columns:1fr;padding:14px}.brief{position:static}.phone{width:min(100%,390px);height:790px}.phone.size-small-phone{width:320px;height:690px}.phone.size-small-tablet{width:600px;height:820px}.phone.size-tablet{width:820px;height:940px}.screen-note{width:min(100%,390px)}}
+  </style>
+</head>
+<body>
+  <div class="page">
+    <aside class="brief">
+      <span class="tag">Interactive prototype</span>
+      <h1>SmoothSeas mobile app direction</h1>
+      <p>A clickable mockup for the child habit app and parent control room. It keeps the SmoothSeas colors, turtle guide, voyage theme and SEA-specific messaging, while moving toward a Duolingo-style daily loop.</p>
+      <div class="mode" role="tablist" aria-label="Prototype mode">
+        <button class="active" data-mode="child">Child app</button>
+        <button data-mode="parent">Parent app</button>
+      </div>
+      <label class="device-picker" for="deviceSelect">
+        <span>Preview size</span>
+        <select id="deviceSelect" aria-label="Device size">
+          <option value="small-phone">Small phone · 320 × 690</option>
+          <option value="phone" selected>Phone · 390 × 820</option>
+          <option value="small-tablet">Small tablet · 600 × 820</option>
+          <option value="tablet">Tablet · 820 × 1080</option>
+        </select>
+      </label>
+      <div class="flow-buttons">
+        <button data-jump="child-today">Child Today</button><button data-jump="child-practice">Practice</button><button data-jump="child-result">Result</button><button data-jump="parent-overview">Parent</button><button data-jump="parent-topics">Weak topics</button><button data-jump="parent-readiness">Readiness</button>
+      </div>
+      <div class="legend">
+        <div><span class="dot"></span><span>Child UX: one next mission, immediate feedback, streak and voyage progress.</span></div>
+        <div><span class="dot amber"></span><span>Parent UX: one action, one reason, calm readiness signals.</span></div>
+        <div><span class="dot purple"></span><span>Two-week MVP: prototype the feeling before building every web feature in Flutter.</span></div>
+      </div>
+    </aside>
+
+    <main class="stage">
+      <div class="device-frame">
+        <div class="device-label" id="deviceLabel">Phone · 390 × 820</div>
+        <div class="phone size-phone" id="phoneFrame" aria-label="Mobile device prototype">
+        <div class="screen">
+          <div class="status"><span>9:41</span><span>SmoothSeas</span><span>●●●</span></div>
+          <div class="app child-app active-app">
+            <div class="content">
+              <section class="view active" id="child-today">
+                <div class="top"><div class="hello"><small>Good afternoon, Aaliyah</small><b>Ready to sail?</b></div><div class="avatar"><img src="/images/voyage/companion/smooth.webp" alt="Smooth"></div></div>
+                <div class="hero-card"><h2>Today’s mission: fix fractions</h2><p>Smooth spotted equivalent fractions as the best next SEA move. Start with 5 questions.</p><button class="cta amber" data-jump="child-practice">Start 10-minute mission →</button></div>
+                <div class="row"><div class="tile"><b>5 days</b><span>current streak</span></div><div class="tile"><b>+120 XP</b><span>to next island</span></div></div>
+                <div class="section-title"><h3>Captain’s brief</h3><span class="chip">SEA · Std 5</span></div>
+                <div class="lesson-grid"><div class="lesson"><div class="lesson-icon">🧮</div><div><b>Fractions</b><small>Practise today · 10 min</small></div></div>
+                <div class="lesson"><div class="lesson-icon">📖</div><div><b>Inference</b><small>Review after Math</small></div></div>
+                <div class="lesson"><div class="lesson-icon">✍️</div><div><b>Story ending</b><small>Writing feedback ready</small></div></div></div>
+              </section>
+
+              <section class="view" id="child-voyage">
+                <div class="top"><div class="hello"><small>Voyage map</small><b>Number Cove</b></div><span class="chip">3/5 stars</span></div>
+                <div class="map"><div class="path"></div><div class="island i1">✓</div><div class="island i2">🧮</div><div class="island i3">🔒</div><div class="smooth-ship">⛵</div></div>
+                <div class="card" style="margin-top:14px"><h3>Next island skill</h3><p>Equivalent fractions unlocks the next Math bridge. Keep the streak and earn your mastery star.</p></div>
+              </section>
+
+              <section class="view" id="child-practice">
+                <div class="top"><button class="mini-btn" data-jump="child-today">← Today</button><span class="chip">Question 2 of 5</span></div>
+                <div class="question"><div class="progress"><i style="--w:40%"></i></div><h2>Which fraction is equivalent to 1/2?</h2><p style="color:var(--muted);font-weight:800">Tap an answer. Smooth will explain if you miss.</p><button class="choice">1/4</button><button class="choice correct">2/4</button><button class="choice">3/4</button><button class="choice">4/4</button><div class="feedback">Nice. 2/4 simplifies to 1/2 because both parts divide by 2.</div><button class="cta teal" style="margin-top:14px" data-jump="child-feedback">Continue →</button></div>
+              </section>
+
+              <section class="view" id="child-feedback">
+                <div class="top"><button class="mini-btn" data-jump="child-practice">← Back</button><span class="chip">Re-teach</span></div>
+                <div class="hero-card"><h2>Smooth’s hint</h2><p>When fractions are equivalent, they name the same amount. Try dividing the top and bottom by the same number.</p><button class="cta amber" data-jump="child-result">Finish mission →</button></div>
+                <div class="section-title"><h3>Why this matters</h3></div><div class="card"><p>Equivalent fractions show up in SEA word problems, measurement and comparison questions. Smooth will bring this back until it sticks.</p></div>
+              </section>
+
+              <section class="view" id="child-result">
+                <div class="big-celebrate"><div class="emoji">🌟</div><h2>Mission complete!</h2><p style="color:var(--muted);font-weight:900">You got 4 of 5 correct and kept your 5-day streak.</p><button class="cta amber" data-jump="child-voyage">See voyage progress →</button><button class="cta" style="margin-top:12px" data-jump="child-today">Back to Today</button></div>
+              </section>
+            </div>
+            <nav class="tabbar"><button class="tab active" data-jump="child-today"><span>🏠</span>Today</button><button class="tab" data-jump="child-voyage"><span>🗺️</span>Voyage</button><button class="tab" data-jump="child-practice"><span>🧠</span>Practice</button><button class="tab" data-jump="child-result"><span>🎁</span>Rewards</button></nav>
+          </div>
+
+          <div class="app parent-app">
+            <div class="content">
+              <section class="view active" id="parent-overview">
+                <div class="top"><div class="hello"><small>Parent control room</small><b>Aaliyah’s week</b></div><span class="chip">Std 5</span></div>
+                <div class="alert">Practise equivalent fractions next. She missed this twice, and it blocks measurement word problems.</div>
+                <div class="hero-card"><h2>One action today</h2><p>Ask Aaliyah to complete the 10-minute Fractions mission before screen time. Smooth will re-teach misses.</p><button class="cta amber" data-jump="parent-topics">See weak topics →</button></div>
+                <div class="row"><div class="tile"><b>48 min</b><span>practice this week</span></div><div class="tile"><b>5 days</b><span>current streak</span></div></div>
+                <div class="section-title"><h3>Status cards</h3></div>
+                <div class="lesson-grid"><div class="lesson"><div class="lesson-icon">✍️</div><div><b>Writing feedback ready</b><small>Ending needs more development</small></div></div>
+                <div class="lesson"><div class="lesson-icon">🎯</div><div><b>Readiness building</b><small>Needs one timed mixed practice</small></div></div></div>
+              </section>
+
+              <section class="view" id="parent-children">
+                <div class="top"><div class="hello"><small>Your children</small><b>Who needs attention?</b></div></div>
+                <div class="lesson" data-jump="parent-overview"><div class="lesson-icon">👧</div><div><b>Aaliyah</b><small>Practise fractions next · 5-day streak</small></div></div>
+                <div class="lesson"><div class="lesson-icon">👦</div><div><b>Malik</b><small>On track · reading completed</small></div></div>
+                <div class="notify">Child cards should lead with action, not full reports. Parents are tired; the app decides what needs attention first.</div>
+              </section>
+
+              <section class="view" id="parent-topics">
+                <div class="top"><button class="mini-btn" data-jump="parent-overview">← Overview</button><span class="chip">Weak topics</span></div>
+                <div class="topic"><span class="severity"></span><div><b>Equivalent fractions</b><small>Mathematics · 2 misses in last 3 attempts · do one 10-minute set today</small></div></div>
+                <div class="topic"><span class="severity mid"></span><div><b>Inference from evidence</b><small>ELA · chooses answer without text evidence · review one passage</small></div></div>
+                <div class="topic"><span class="severity mid"></span><div><b>Story endings</b><small>Writing · clear middle, rushed ending · practise final paragraph</small></div></div>
+                <button class="cta teal" data-jump="parent-overview">Send today’s mission reminder</button>
+              </section>
+
+              <section class="view" id="parent-readiness">
+                <div class="top"><button class="mini-btn" data-jump="parent-overview">← Overview</button><span class="chip">Readiness</span></div>
+                <div class="card parent-card"><h3>Building evidence</h3><p>Aaliyah is practising consistently, but SmoothSeas needs one timed mixed practice before estimating exam readiness.</p><div class="bars"><div class="barline"><span>Math</span><span class="track"><i style="--w:58%"></i></span><b>Build</b></div><div class="barline"><span>ELA</span><span class="track"><i style="--w:72%"></i></span><b>Good</b></div><div class="barline"><span>Writing</span><span class="track"><i style="--w:64%"></i></span><b>Build</b></div></div></div>
+                <div class="notify">Next step: complete one timed mixed practice this weekend. No placement estimate yet because the evidence is still thin.</div>
+              </section>
+
+              <section class="view" id="parent-writing">
+                <div class="top"><button class="mini-btn" data-jump="parent-overview">← Overview</button><span class="chip">Writing</span></div>
+                <div class="hero-card"><h2>Feedback ready</h2><p>Prompt: A surprise at the beach. Clear beginning and middle; ending needs more development.</p><button class="cta amber">Open feedback</button></div>
+                <div class="row"><div class="tile"><b>Structure</b><span>improving</span></div><div class="tile"><b>Ending</b><span>needs work</span></div></div>
+              </section>
+            </div>
+            <nav class="tabbar"><button class="tab active" data-jump="parent-overview"><span>🏠</span>Today</button><button class="tab" data-jump="parent-children"><span>👨‍👩‍👧‍👦</span>Children</button><button class="tab" data-jump="parent-topics"><span>📌</span>Topics</button><button class="tab" data-jump="parent-readiness"><span>🎯</span>Ready</button></nav>
+          </div>
+        </div>
+        </div>
+      </div>
+      <aside class="screen-note" id="note"><h3>Child Today</h3><p>The child opens to one next mission. This should be the core sticky loop: Smooth, a short task, a streak, and a clear start button.</p></aside>
+    </main>
+  </div>
+<script>
+const notes={
+ 'child-today':['Child Today','The child opens to one next mission. This should be the core sticky loop: Smooth, a short task, a streak, and a clear start button.'],
+ 'child-voyage':['Voyage','The full map can come later. MVP only needs enough progress visualization to make practice feel like a journey.'],
+ 'child-practice':['Practice','Touch-first question flow: large answers, visible progress, short sessions, no browser chrome feeling.'],
+ 'child-feedback':['Re-teach','Misses become teaching moments. The differentiator is verified SEA explanation, not generic AI answer text.'],
+ 'child-result':['Reward moment','The end of a session should feel complete and rewarding, then point back to Today or Voyage.'],
+ 'parent-overview':['Parent overview','A calm control room: one action, one reason, recent activity, and status cards. No dashboard overload.'],
+ 'parent-children':['Children','For families with more than one child, the app flags who needs attention first.'],
+ 'parent-topics':['Weak topics','Parents need top actionable topics, not the whole syllabus. Each topic must answer why and what to do.'],
+ 'parent-readiness':['Readiness','Readiness must be labelled and calm. If evidence is thin, the app says so and gives the next step.'],
+ 'parent-writing':['Writing','Writing is a parent pain point. Summaries should be plain and mapped to SEA writing skills.']
+};
+function showMode(mode){
+ document.querySelectorAll('.mode button').forEach(b=>b.classList.toggle('active',b.dataset.mode===mode));
+ document.querySelector('.child-app').classList.toggle('active-app',mode==='child');
+ document.querySelector('.parent-app').classList.toggle('active-app',mode==='parent');
+ const first=mode==='child'?'child-today':'parent-overview'; showView(first);
+}
+function showView(id){
+ const mode=id.startsWith('parent')?'parent':'child';
+ document.querySelectorAll('.mode button').forEach(b=>b.classList.toggle('active',b.dataset.mode===mode));
+ document.querySelector('.child-app').classList.toggle('active-app',mode==='child');
+ document.querySelector('.parent-app').classList.toggle('active-app',mode==='parent');
+ const app=document.querySelector(mode==='child'?'.child-app':'.parent-app');
+ app.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===id));
+ app.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.jump===id));
+ const n=notes[id]||notes[mode==='child'?'child-today':'parent-overview'];
+ document.getElementById('note').innerHTML='<h3>'+n[0]+'</h3><p>'+n[1]+'</p>';
+}
+const deviceLabels={
+ 'small-phone':'Small phone · 320 × 690',
+ 'phone':'Phone · 390 × 820',
+ 'small-tablet':'Small tablet · 600 × 820',
+ 'tablet':'Tablet · 820 × 1080'
+};
+function setDevice(device){
+ const frame=document.getElementById('phoneFrame');
+ const stage=document.querySelector('.stage');
+ frame.classList.remove('size-small-phone','size-phone','size-small-tablet','size-tablet');
+ frame.classList.add('size-' + device);
+ stage.classList.remove('small-phone-preview','phone-preview','small-tablet-preview','tablet-preview');
+ stage.classList.add(device+'-preview');
+ document.getElementById('deviceLabel').textContent=deviceLabels[device]||deviceLabels.phone;
+ const select=document.getElementById('deviceSelect');
+ if(select && select.value!==device) select.value=device;
+}
+const deviceSelect=document.getElementById('deviceSelect');
+if(deviceSelect){deviceSelect.addEventListener('change',e=>setDevice(e.target.value));}
+window.__ssShowViewForTest=showView;
+document.addEventListener('click',e=>{const mode=e.target.closest('[data-mode]'); if(mode) showMode(mode.dataset.mode); const jump=e.target.closest('[data-jump]'); if(jump) showView(jump.dataset.jump);});
+</script>
+</body>
+</html>

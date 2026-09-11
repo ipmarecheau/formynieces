@@ -97,6 +97,25 @@ Cross-check: every Gherkin `When/Then` in `features/` must land on a screen here
 | F5 | Book a call — the 15-minute onboarding-call booking: two weeks of days, weekday 5:00–7:45pm + Saturday 8:00am–4:45pm slot starts (TT time), Sundays closed; parent details form; confirmation screen; admin calendar in the panel | `/book-a-call` | @mvp ✅ | OC-01…05 — "Onboarding Calls" resource (Website group); no double-booking (unique slot) |
 | F6 | Smooth chat widget — proactive popup (guests only, once per 30 days, after ~35s or half-scroll), scripted bot qualification (name, standard, worry, contact) → `chat_conversations`/`chat_messages`, Slack webhook + email notify, WhatsApp (`wa.me` click-to-chat) + book-a-call handoffs, honest "within a few hours" reply promise; admin "Chats" inbox with transcript + close | (widget on all public pages) | @mvp ✅ | LC-01…06 — set `SLACK_CHAT_WEBHOOK_URL` to light up Slack; email fallback always on |
 
+### G. Native mobile surfaces (Flutter MVP)
+
+The mobile apps reuse the same child/guardian separation as the web experience. They are
+documented as app surfaces rather than alternate product rules; the API contract is in
+`MOBILE_API_CONTRACT.md` and the implementation sequence is in `07_MOBILE_APP_ROADMAP.md`.
+
+| # | Screen | App | Priority | Frequency | Justifying feature |
+|---|---|---|---|---|---|
+| G1 | Today's mission | Child | @mvp | daily — home | `mobile_child_app.feature` MC-01…03 |
+| G2 | Voyage map / streak | Child | @mvp | daily | `mobile_child_app.feature` MC-04 |
+| G3 | Short practice | Child | @mvp | daily | `mobile_child_app.feature` MC-02…03 |
+| G4 | Feedback / re-teach | Child | @mvp | after a miss | `mobile_child_app.feature` MC-03 |
+| G5 | Mission result | Child | @mvp | after practice | `mobile_child_app.feature` MC-05 |
+| G6 | Child list / overview | Guardian | @mvp | weekly — home | `mobile_parent_app.feature` MP-01…03 |
+| G7 | Weak topics | Guardian | @mvp | weekly | `mobile_parent_app.feature` MP-04 |
+| G8 | Writing summary | Guardian | @mvp | weekly | `mobile_parent_app.feature` MP-05 |
+| G9 | Readiness | Guardian | @mvp | weekly | `mobile_parent_app.feature` MP-06 |
+| G10 | Notifications / action detail | Guardian | @mvp | weekly | `mobile_parent_app.feature` MP-07…08 |
+
 ---
 
 ## 2. Navigation map

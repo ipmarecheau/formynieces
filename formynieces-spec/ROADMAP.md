@@ -1,5 +1,11 @@
 # ForMyNieces — Roadmap
 
+> **Mobile delivery note (2026-09-11):** The native Flutter track is documented in
+> `07_MOBILE_APP_ROADMAP.md`. It delivers role-specific child and guardian apps in a
+> two-week MVP using three coding agents, backed by the shared Laravel contract in
+> `MOBILE_API_CONTRACT.md`. The interactive responsive prototype is in
+> `mobile-prototype/`.
+
 **Anchor date:** SEA 2027 sits in late April / early May 2027 (exact date set annually by MoE — confirm when published). Working backwards with the 6-week revision buffer, **new-content learning must start by late September 2026** for a full 24 teaching weeks + 6 revision weeks; later starts use the S4 late-joiner compression.
 
 ---

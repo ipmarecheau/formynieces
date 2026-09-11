@@ -23,6 +23,8 @@ GOAL (why the product exists)
                                       └── PEST TESTS (TDD, 1:1 by tag)   → tests/**
                                             └── VERIFICATION (ledger)    → verifications.yml
                                                   └── ROADMAP (delivery) → ROADMAP.md
+                                                        ├── Mobile delivery → 07_MOBILE_APP_ROADMAP.md
+                                                        └── API contract → MOBILE_API_CONTRACT.md
 ```
 
 **How a feature is built (document-first → BDD → TDD → verify):** the chain above is not
@@ -92,6 +94,9 @@ Secondary tags: `@student`, `@guardian`, `@admin`, `@system` (actor), and `@scen
 | `06_DEVELOPMENT_WORKFLOW.md` | The build process: document-first → BDD → TDD → verification. |
 | `verifications.yml` | Manual verification ledger (written by `specs:verify`, read by `specs:trace`). |
 | `ROADMAP.md` | Phased delivery plan against the SEA 2027 calendar. |
+| `07_MOBILE_APP_ROADMAP.md` | Two-week Flutter delivery plan for the child and guardian apps, with three-agent ownership. |
+| `MOBILE_API_CONTRACT.md` | Shared Laravel mobile API contract used by both Flutter apps. |
+| `mobile-prototype/` | Interactive child/guardian prototype with phone and tablet previews. |
 
 ---
 
@@ -99,6 +104,8 @@ Secondary tags: `@student`, `@guardian`, `@admin`, `@system` (actor), and `@scen
 
 - Boys / co-ed positioning (name says it all for now; revisit only if the platform opens up).
 - Peer features, leaderboards, or any child-to-child interaction (safety + scope).
-- Native mobile apps. Responsive web only.
+- Native mobile apps were previously out of scope. The current roadmap now covers a Flutter
+  child app and guardian app as a focused MVP; the responsive web app remains the source of
+  truth while the mobile API is built.
 - Payments. This is a gift.
 - AI-generated learning resources (human-vetted only; AI is used for summaries and writing feedback exclusively).

@@ -9,6 +9,8 @@
 | `roadmap_reveal.feature` | @mvp | reveal animation @roadmap | student, system |
 | `adventure_map.feature` | @mvp | revision mode @roadmap | student |
 | `student_home.feature` | @mvp | — | student |
+| `mobile_child_app.feature` | @mvp | two-week Flutter MVP: Today, short practice, feedback, streak/voyage habit, child-safe navigation | student |
+| `mobile_parent_app.feature` | @mvp | two-week Flutter MVP: child cards, overview, weak topics, readiness, writing summary, notifications | guardian |
 | `voyage_companion.feature` | @v1.1 | AI voice @roadmap | student |
 | `smooth_guide.feature` | @mvp | — | student |
 | `celebrations.feature` | @mvp | maintenance ack @v1.1 | student |
