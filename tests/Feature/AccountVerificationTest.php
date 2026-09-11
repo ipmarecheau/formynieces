@@ -14,7 +14,7 @@ use function Pest\Laravel\post;
 
 uses(RefreshDatabase::class);
 
-it('requires a phone number to register', function () {
+it('allows registration without a phone number (now optional, deferred to the wizard)', function () {
     post(route('register'), [
         'name' => 'No Phone',
         'email' => 'nophone@example.com',
@@ -22,7 +22,8 @@ it('requires a phone number to register', function () {
         'password_confirmation' => 'password123!',
         'age_attestation' => '1',
         'terms' => '1',
-    ])->assertSessionHasErrors('phone');
+    ])->assertSessionHasNoErrors()
+        ->assertRedirect(route('verification.notice'));
 })->group('scenario:GO-12');
 
 it('rejects a non international phone number', function () {

@@ -17,6 +17,7 @@ use App\Services\Diagnostic\SessionLifecycle;
 use App\Services\Estimator\PerformanceEstimator;
 use App\Services\ExamAgentService;
 use App\Services\Motivation\StreakEconomyService;
+use App\Services\Pacing\ExamDateResolver;
 use App\Services\Pacing\PauseService;
 use App\Services\SchoolJournal\SchoolEvidenceService;
 use Illuminate\Support\Carbon;
@@ -123,8 +124,8 @@ class GuardianDashboard extends Component
             'student' => $student,
             'students' => $students,
             'weekLabel' => 'Week of '.Carbon::today()->startOfWeek()->format('j M Y'),
-            'examDate' => $this->resolveExamDate($journey, $analysis),
-            'daysToExam' => $this->daysToExam($journey, $analysis),
+            'examDate' => $this->resolveExamDate($journey, $analysis, $student),
+            'daysToExam' => $this->daysToExam($journey, $analysis, $student),
             'currentWeek' => (int) ($analysis['current_week'] ?? 0),
             'readiness' => $this->buildReadiness($analysis),
             'trajectory' => $this->buildTrajectory($subjectAnalysis, (int) ($analysis['current_week'] ?? 0)),
@@ -329,24 +330,41 @@ class GuardianDashboard extends Component
      * The exam date shown in the header — the student's own journey date when
      * seeded, otherwise the syllabus-wide date the exam agent computes against.
      */
-    private function resolveExamDate($journey, array $analysis): ?string
+    private function resolveExamDate($journey, array $analysis, $student = null): ?string
     {
-        $date = $journey?->exam_date;
-        if ($date) {
-            return Carbon::parse($date)->format('j M Y');
-        }
+        $date = $this->examDateFor($journey, $analysis, $student);
 
-        return $analysis['exam_date'] ?? null;
+        return $date ? Carbon::parse($date)->format('j M Y') : null;
     }
 
-    private function daysToExam($journey, array $analysis): ?int
+    private function daysToExam($journey, array $analysis, $student = null): ?int
     {
-        $date = $journey?->exam_date ?? ($analysis['exam_date'] ?? null);
+        $date = $this->examDateFor($journey, $analysis, $student);
         if (! $date) {
             return null;
         }
 
         return max(0, (int) Carbon::today()->diffInDays(Carbon::parse($date), false));
+    }
+
+    /**
+     * The exam date to show: the student's own journey date once seeded, otherwise
+     * derived from HER chosen target SEA year (not a global default), and only then
+     * the syllabus-wide fallback. This keeps the header year consistent with the
+     * year the guardian picked at setup, even before the diagnostic is done.
+     */
+    private function examDateFor($journey, array $analysis, $student = null): mixed
+    {
+        if ($journey?->exam_date) {
+            return $journey->exam_date;
+        }
+
+        if ($student?->target_sea_year) {
+            return app(ExamDateResolver::class)
+                ->resolve((int) $student->target_sea_year);
+        }
+
+        return $analysis['exam_date'] ?? null;
     }
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services\Onboarding;
 
-use App\Models\ModuleStageCompletion;
+use App\Models\StudentStreak;
 use App\Models\User;
 
 /**
@@ -59,20 +59,17 @@ class OnboardingWizard
                 'route' => 'child.setup',
             ],
             [
-                'key' => 'diagnostic',
-                'label' => 'Take the diagnostic',
-                'why' => 'A short check finds her starting level so nothing is too easy or too hard.',
-                'done' => $child !== null && $child->diagnosticSessions()->whereNotNull('completed_at')->exists(),
-                'actor' => 'child',
-                'route' => null,
-            ],
-            [
-                'key' => 'first_lesson',
-                'label' => 'See her first lesson',
-                'why' => 'Watch how SmoothSeas teaches — an interactive lesson, then practice.',
-                'done' => $child !== null && ModuleStageCompletion::query()->where('student_id', $child->id)->exists(),
-                'actor' => 'child',
-                'route' => null,
+                'key' => 'credentials',
+                'label' => $child !== null ? "Get {$child->name}'s login" : 'Get your child’s login',
+                'why' => 'Hand your child their login so they can sign in on their own device and start their voyage.',
+                // Done once the child has actually signed in at least once — proof the hand-off worked.
+                'done' => $child !== null && StudentStreak::query()
+                    ->where('student_id', $child->id)
+                    ->where('type', 'login')
+                    ->where('count', '>', 0)
+                    ->exists(),
+                'actor' => 'guardian',
+                'route' => 'guardian.dashboard',
             ],
         ];
     }

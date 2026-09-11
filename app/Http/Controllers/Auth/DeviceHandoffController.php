@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\URL;
 use Illuminate\View\View;
 
 /**
@@ -27,7 +28,16 @@ class DeviceHandoffController extends Controller
     {
         $this->authorizeGuardianOf($child);
 
-        return view('auth.device-handoff', ['child' => $child]);
+        // A signed, time-limited GET link performs the hand-off — robust against CSRF/session
+        // expiry (no 419). Valid for 15 minutes; the view shows this deadline.
+        $expiresAt = now()->addMinutes(15);
+        $commitUrl = URL::temporarySignedRoute('student.handoff.commit', $expiresAt, ['child' => $child->id]);
+
+        return view('auth.device-handoff', [
+            'child' => $child,
+            'commitUrl' => $commitUrl,
+            'expiresAt' => $expiresAt,
+        ]);
     }
 
     /**

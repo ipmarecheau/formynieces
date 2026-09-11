@@ -1,7 +1,7 @@
 <div>
     @if ($open)
         <style>
-            .it-hole { position: fixed; z-index: 2000; border-radius: 12px; pointer-events: none; box-shadow: 0 0 0 9999px rgba(6,20,34,0.55); outline: 3px solid #f6b71e; outline-offset: 3px; transition: all .25s ease; }
+            .it-hole { position: fixed; z-index: 2000; border-radius: 12px; pointer-events: none; box-shadow: 0 0 0 9999px rgba(6,20,34,0.38); outline: 3px solid #f6b71e; outline-offset: 3px; transition: all .25s ease; }
             .it-card { position: fixed; left: 50%; transform: translateX(-50%); bottom: 16px; z-index: 2002; width: min(92vw, 360px); background: linear-gradient(160deg, #0e2438, #14324a); border: 1.5px solid rgba(246,183,30,0.55); border-radius: 18px; box-shadow: 0 14px 40px rgba(0,0,0,0.5); padding: 14px 16px 13px; color: #e6f2fb; }
             .it-head { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
             .it-avatar { width: 46px; height: 46px; object-fit: contain; flex: none; }

@@ -25,6 +25,15 @@ class DiagnosticWalk extends Component
 
     public array $options = [];
 
+    /**
+     * Display order for the current item's options: display position => original index.
+     * Options are shuffled so the correct answer is never fixed in its authored position;
+     * choose() uses this to translate the tapped position back to the anchor's index.
+     *
+     * @var array<int, int>
+     */
+    public array $optionOrder = [];
+
     public bool $showInterstitial = false;
 
     public bool $isComplete = false;
@@ -102,24 +111,23 @@ class DiagnosticWalk extends Component
                 // she reconciles (or the 3-day auto-proceed resolves it). [RR-04]
                 $student = User::find($session->student_id);
                 if ($student !== null && $student->target_sea_year !== null) {
+                    // The child never waits: build her roadmap now so she sails straight on.
+                    app(RoadmapGenerator::class)->generate($student);
+
+                    // If the diagnostic disagreed with a guardian-flagged weak area, let the
+                    // guardian know a review is waiting on their dashboard — non-blocking.
                     if (app(DiagnosticReconciliation::class)->requiresGuardianDecision($student)) {
-                        // RR-13: the child is held pending the guardian's decision —
-                        // tell the guardian a decision is waiting so she isn't silently stuck.
                         $guardian = $student->parent_id ? User::find($student->parent_id) : null;
                         $guardian?->notify(new ReconciliationPendingNotification($student));
-                    } else {
-                        app(RoadmapGenerator::class)->generate($student);
                     }
                 }
             }
 
             $this->isComplete = true;
 
-            // Hold the reveal when the diagnostic cleared a strand the guardian
-            // flagged: her map waits on the guardian's decision. [RR-04]
-            $revealStudent = $session !== null ? User::find($session->student_id) : null;
-            $this->awaitingGuardian = $revealStudent !== null
-                && app(DiagnosticReconciliation::class)->isPending($revealStudent);
+            // The child is never held on the diagnostic — any guardian disagreement is
+            // reconciled later, in the background, from the guardian's dashboard.
+            $this->awaitingGuardian = false;
 
             $this->prompt = '';
             $this->options = [];
@@ -132,7 +140,13 @@ class DiagnosticWalk extends Component
 
         $anchor = DB::table('anchor_questions')->find($this->question['anchor_id']);
         $this->prompt = $anchor->prompt;
-        $this->options = json_decode($anchor->options, true);
+
+        // Shuffle the options for display (correct answer must not sit in a fixed
+        // position), keeping the display->original map so choose() scores correctly.
+        // Deterministic per (session, anchor) so a re-render never reshuffles.
+        $options = json_decode($anchor->options, true);
+        $this->optionOrder = $this->shuffledOptionOrder((int) $this->question['anchor_id'], count($options));
+        $this->options = array_map(fn (int $i) => $options[$i], $this->optionOrder);
 
         $this->strand = $this->question['strand'] ?? '';
         $this->itemNumber = $this->question['item_number'] ?? 0;
@@ -150,14 +164,38 @@ class DiagnosticWalk extends Component
             return;
         }
 
+        // Map the tapped display position back to the anchor's original option index.
+        $originalIndex = $this->optionOrder[$index] ?? $index;
+
         $this->walk()->submitAnswer(
             $this->sessionId,
             $this->question['anchor_id'],
-            $index,
+            $originalIndex,
         );
 
         $this->loadCurrent();
         $this->redirectIfAwaitingGuardian();
+    }
+
+    /**
+     * A deterministic shuffle of an item's option positions, seeded by (session, anchor)
+     * so the same item always renders the same order (stable across Livewire re-renders)
+     * while different items — and different children — vary. Returns display->original.
+     *
+     * @return array<int, int>
+     */
+    private function shuffledOptionOrder(int $anchorId, int $count): array
+    {
+        $order = range(0, max(0, $count - 1));
+
+        mt_srand(crc32("{$this->sessionId}:{$anchorId}"));
+        for ($i = $count - 1; $i > 0; $i--) {
+            $j = mt_rand(0, $i);
+            [$order[$i], $order[$j]] = [$order[$j], $order[$i]];
+        }
+        mt_srand();
+
+        return $order;
     }
 
     public function continueFromInterstitial(): void

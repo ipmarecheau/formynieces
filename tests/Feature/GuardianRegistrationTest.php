@@ -31,6 +31,21 @@ it('a guardian can register with an 18+ attestation', function () {
         ->not->toBeNull();
 })->group('scenario:GO-01');
 
+it('a guardian can register without a phone number (deferred to the wizard)', function () {
+    $email = 'nophone@example.com';
+
+    post(route('register'), [
+        'name' => 'No Phone',
+        'email' => $email,
+        'password' => 'password123!',
+        'password_confirmation' => 'password123!',
+        'age_attestation' => '1',
+        'terms' => '1',
+    ])->assertRedirect(route('verification.notice'));
+
+    assertDatabaseHas(User::class, ['email' => $email, 'role' => 'guardian', 'phone' => null]);
+})->group('scenario:GO-01');
+
 it('registration is rejected without the 18+ attestation', function () {
     $email = 'noattest@example.com';
 
@@ -49,12 +64,15 @@ it('the registration screen is reachable', function () {
 })->group('scenario:GO-01');
 
 // GO-09 — the name field is clearly the guardian's own, not the child's.
-it('asks for the guardian own name, not the child name', function () {
+it('keeps sign-up minimal: email + password, no name field (name is gathered later by the wizard)', function () {
     get(route('register'))
         ->assertOk()
-        ->assertSee('Parent / Guardian')      // label names whose name this is
-        ->assertSee('add your child')          // helper points to the next step
-        ->assertDontSee('Aaliyah Thomas');     // the child-like example is gone
+        ->assertSee('account you already have')              // social-first framing
+        ->assertSee('Sign up with an email address instead') // email is the secondary path
+        ->assertSee('name="email"', false)
+        ->assertSee('name="password"', false)
+        ->assertDontSee('name="name"', false)  // no name field on sign-up
+        ->assertDontSee('Parent / Guardian');
 })->group('scenario:GO-09');
 
 // GO-11 — the verification notice tells her exactly what to do next.
@@ -88,5 +106,5 @@ it('shows the guardian where she is in the setup journey', function () {
         ->assertOk()
         ->assertSee('Step 2 of 3')          // where she is / how many remain
         ->assertSee('Set up your child')     // step named in plain language
-        ->assertSee('Start the diagnostic');
+        ->assertSee('Get their login');      // final guardian step (diagnostic is the child's, not onboarding)
 })->group('scenario:GO-10');

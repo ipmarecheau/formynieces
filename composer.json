@@ -10,8 +10,12 @@
         "barryvdh/laravel-dompdf": "^3.1",
         "filament/filament": "^4.0",
         "laravel/framework": "^13.8",
+        "laravel/socialite": "^5.31",
         "laravel/tinker": "^3.0",
         "resend/resend-php": "^1.11",
+        "socialiteproviders/microsoft": "^4.10",
+        "socialiteproviders/tiktok": "^5.2",
+        "socialiteproviders/yahoo": "^4.1",
         "symfony/yaml": "^7.0",
         "twilio/sdk": "^8.12"
     },

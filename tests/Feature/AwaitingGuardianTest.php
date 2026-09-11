@@ -1,16 +1,15 @@
 <?php
 
-use App\Models\StudentJourney;
 use App\Models\StudentProgress;
 use App\Models\SyllabusModule;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 /**
- * RR-11 — a student whose guardian decision is pending is held on a waiting
- * page across logins (naming the guardian's login + support), never sent back
- * into the diagnostic, until the guardian decides or the 3-day hold times out —
- * at which point her next login proceeds her to the map.
+ * RR-11 (non-blocking) — the child is NEVER held. Even when the diagnostic cleared a
+ * strand the guardian flagged (a decision the guardian may still make on her dashboard),
+ * the child completes onboarding and logs straight into her own experience — never a
+ * waiting page. The guardian's review is applied later, in the background.
  */
 function seedLoginPendingStudent(int $completedDaysAgo, string $password = 'secret'): array
 {
@@ -29,13 +28,13 @@ function seedLoginPendingStudent(int $completedDaysAgo, string $password = 'secr
         'role' => 'student',
         'parent_id' => $guardian->id,
         'target_sea_year' => 2027,
-        'onboarding_completed_at' => null,
+        'onboarding_completed_at' => now(),   // completing the diagnostic finishes onboarding — child is never held
         'guardian_reconciled_at' => null,
         'known_weak_areas' => ['Fractions'],
         'email_verified_at' => now(),
     ]);
 
-    // The diagnostic cleared the flagged Fractions strand — a decision is pending.
+    // The diagnostic cleared the flagged Fractions strand — a decision is available to the guardian.
     $fractions = SyllabusModule::create(['subject' => 'Math', 'topic' => 'Fractions: Adding', 'sea_section' => 'Section I', 'sequence_order' => 1, 'pacing_week' => 1]);
     StudentProgress::create(['student_id' => $student->id, 'module_id' => $fractions->id, 'status' => 'mastered', 'score' => 3]);
     SyllabusModule::create(['subject' => 'Math', 'topic' => 'Geometry: Angles', 'sea_section' => 'Section I', 'sequence_order' => 2, 'pacing_week' => 1]);
@@ -54,11 +53,13 @@ function seedLoginPendingStudent(int $completedDaysAgo, string $password = 'secr
     return [$guardian, $student];
 }
 
-it('routes a pending student to the waiting page on login, not back into the diagnostic', function () {
+it('logs a reviewable student straight into her own experience, never a waiting page', function () {
     [, $student] = seedLoginPendingStudent(1);
 
-    $this->post('/login', ['email' => $student->email, 'password' => 'secret'])
-        ->assertRedirect(route('student.awaiting-guardian'));
+    $response = $this->post('/login', ['email' => $student->email, 'password' => 'secret']);
+
+    $response->assertRedirect();
+    expect($response->headers->get('Location'))->not->toContain('awaiting-guardian');
 })->group('scenario:RR-11');
 
 it('sends a freshly flagged student into the diagnostic, not the waiting page', function () {
@@ -116,12 +117,13 @@ it('gates a fresh student to the diagnostic even with a stale intended url', fun
         ->assertRedirect(route('diagnostic.intro'));
 })->group('scenario:RR-11');
 
-it('holds a pending student on the waiting page even with a stale intended url', function () {
+it('never holds a reviewable student, even with a stale intended url', function () {
     [, $student] = seedLoginPendingStudent(1);
 
-    $this->withSession(['url.intended' => url('/my-map')])
-        ->post('/login', ['email' => $student->email, 'password' => 'secret'])
-        ->assertRedirect(route('student.awaiting-guardian'));
+    $response = $this->withSession(['url.intended' => url('/my-map')])
+        ->post('/login', ['email' => $student->email, 'password' => 'secret']);
+
+    expect($response->headers->get('Location'))->not->toContain('awaiting-guardian');
 })->group('scenario:RR-11');
 
 it('shows the guardian login and support details on the waiting page', function () {
@@ -135,18 +137,15 @@ it('shows the guardian login and support details on the waiting page', function 
         ->assertSee('Log Out');
 })->group('scenario:RR-11');
 
-it('proceeds a student past the waiting page when the hold has already timed out', function () {
+it('logs an onboarded student into her experience regardless of any pending guardian review', function () {
     [, $student] = seedLoginPendingStudent(4);
 
     $response = $this->post('/login', ['email' => $student->email, 'password' => 'secret']);
 
-    // She is proceeded into her onboarded experience, not held on the waiting page.
+    // She is in her onboarded experience, not held on the waiting page.
     $response->assertRedirect();
     expect($response->headers->get('Location'))->not->toContain('awaiting-guardian');
 
     $student->refresh();
-
-    expect($student->onboarding_completed_at)->not->toBeNull()
-        ->and($student->guardian_reconciled_at)->not->toBeNull()
-        ->and(StudentJourney::where('student_id', $student->id)->exists())->toBeTrue();
+    expect($student->onboarding_completed_at)->not->toBeNull();
 })->group('scenario:RR-11');

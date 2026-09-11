@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Console\Commands;
 
 use App\Models\ModuleStageCompletion;
+use App\Models\StudentStreak;
 use App\Models\SyllabusModule;
 use App\Models\User;
 use Illuminate\Console\Command;
@@ -75,6 +76,11 @@ class OnboardDemoCommand extends Command
             ModuleStageCompletion::create([
                 'student_id' => $child->id, 'module_id' => $module->id, 'stage' => 'lesson', 'completed_at' => now(),
             ]);
+            // The child has signed in — this closes the onboarding "get the login" step (WZ).
+            StudentStreak::firstOrCreate(
+                ['student_id' => $child->id, 'type' => 'login'],
+                ['count' => 1],
+            );
             $guardian->forceFill(['onboarding_completed_at' => now()])->save();
         }
 

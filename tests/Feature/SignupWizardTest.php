@@ -1,13 +1,13 @@
 <?php
 
-it('renders the signup form as a step-by-step wizard (progressively enhanced)', function () {
+it('renders sign-up as one minimal screen: email + password + consent, no name/phone/stepper', function () {
     $this->get(route('register'))
         ->assertOk()
-        ->assertSee('rw-progress', false)          // step progress bar
-        ->assertSee('data-step="1"', false)
-        ->assertSee('data-step="4"', false)        // four steps
-        ->assertSee('name="name"', false)          // all fields still present for the single POST
         ->assertSee('name="email"', false)
         ->assertSee('name="password"', false)
-        ->assertSee('name="terms"', false);
+        ->assertSee('name="terms"', false)
+        ->assertSee('name="age_attestation"', false)
+        ->assertDontSee('name="name"', false)      // name deferred to the onboarding wizard
+        ->assertDontSee('name="phone"', false)     // phone deferred to the onboarding wizard
+        ->assertDontSee('rw-progress', false);     // the multi-step signup stepper is gone
 });

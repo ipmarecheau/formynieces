@@ -12,6 +12,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rules;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
@@ -51,9 +52,9 @@ class RegisteredUserController extends Controller
     public function store(Request $request, PhoneVerifier $phoneVerifier): RedirectResponse
     {
         $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['nullable', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'phone' => ['required', 'string', 'regex:/^\+[1-9]\d{7,14}$/'],
+            'phone' => ['nullable', 'string', 'regex:/^\+[1-9]\d{7,14}$/'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'age_attestation' => ['accepted'],
             'terms' => ['accepted'],
@@ -65,9 +66,11 @@ class RegisteredUserController extends Controller
         ]);
 
         $user = User::create([
-            'name' => $validated['name'],
+            // Name is gathered later in the onboarding wizard (social sign-ups get it
+            // from the provider); until then fall back to the email's local part.
+            'name' => $validated['name'] ?? Str::before($validated['email'], '@'),
             'email' => $validated['email'],
-            'phone' => $validated['phone'],
+            'phone' => $validated['phone'] ?? null,
             'password' => Hash::make($validated['password']),
             'role' => 'guardian',
             'age_attested_at' => now(),

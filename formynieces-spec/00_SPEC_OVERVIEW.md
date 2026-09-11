@@ -58,7 +58,7 @@ verification. That workflow is specified in `06_DEVELOPMENT_WORKFLOW.md`.
 - Week-based adventure map (each stop = one study week), not topic clusters.
 - **Two-layer model:** the map is motivational and always kind; the AI exam agent panel is honest and adaptive. The two never contradict each other but serve different emotional jobs.
 - Writing is a **parallel track** — rubric profiles, never a mastered/not-mastered status.
-- All syllabus resources are human-vetted, never AI-generated.
+- All syllabus resources are human-vetted. **Revised 2026-09-08 (see `past_paper_bank.feature`, PP):** lessons/reading/vocabulary remain **never AI-generated**; the one exception is **practice past-paper questions**, which AI may *draft as skill-preserving variants* of existing items — but they are **answer-verified in code and human-approved in a QC queue before any child sits them** ("AI-drafted, human-approved," never served raw).
 - 30-week pacing calendar with a 6-week revision buffer before exam day.
 - Eight student-guardian scenarios are the acceptance bar (see 01 §4).
 
@@ -108,4 +108,4 @@ Secondary tags: `@student`, `@guardian`, `@admin`, `@system` (actor), and `@scen
   child app and guardian app as a focused MVP; the responsive web app remains the source of
   truth while the mobile API is built.
 - Payments. This is a gift.
-- AI-generated learning resources (human-vetted only; AI is used for summaries and writing feedback exclusively).
+- AI-generated learning resources (human-vetted only; AI is used for summaries and writing feedback — **and, from the `@roadmap` past-paper bank, for drafting practice-question variants that a human approves before use**; see 00 §2 and `past_paper_bank.feature`).

@@ -206,17 +206,34 @@ and the child and guardian apps expose the two emotional layers through role-spe
 > **reveal becomes an animation** — I watch my map paint itself and my flag plant at my
 > starting stop (RR-12). My
 > companion's voice gets **richer with AI** — but only ever from what's true on my
-> map, and never keeping me waiting for my sea (VC-04, VC-05).
+> map, and never keeping me waiting for my sea (VC-04, VC-05). At the weekend my aunt
+> prints me a **real paper** — proper exam pages with room to show my working — and I
+> sit it at the table like the real thing. It only ever asks about **things I've already
+> learned**. When I'm done I snap the pages and it marks itself; I just get a little
+> "you sat a real paper!" — never a score to feel bad about (PP-11…24).
 
 ### 🧭 Maya's aunt — guardian
 > The **league is my opt-in** — nothing social turns on without me (XP-09). Mock
 > results feed my **readiness view**, never Maya's map. I can **invite a second
-> guardian** who can **view but not change** anything (GO-07/08).
+> guardian** who can **view but not change** anything (GO-07/08). Every weekend I can
+> **print Maya a real past paper** — I pick the subject and length (a short one by
+> default), and it only tests **what she's already covered** (PP-09…13). She sits it on
+> paper; I upload the photos and it **grades itself against the real mark scheme** —
+> because the platform wrote the paper, it *knows* the answers — and I can **fix anything
+> the camera misread** (PP-16…19). I see her **score, a per-topic breakdown, and the
+> trend over the weeks** in my calm room; a weak topic quietly gets gentle priority on
+> her voyage, but it never becomes a mark she's shamed by (PP-22…24).
 
 ### ⚙️ Admin — me
 > I gain the **exam-readiness machinery** (mock structures, timing, the revision
 > buffer window) and the **league engine** (grouping, promotion/relegation, nickname
-> pool). All behind the curtain; the child only ever meets it as *her* sea.
+> pool). I also **seed real past papers** as the gold reference and grow the bank with
+> **AI-generated variants** — same objective, same difficulty, new numbers and context —
+> which are **answer-verified automatically and then wait in a QC queue for my approval**
+> before any child can sit them (PP-01…07). Nothing un-taught is ever put on a paper, and
+> a **parent-reported question is pulled** for me to review (PP-08). This is the one place
+> AI drafts learning content — always **human-approved before use**, never served raw. All
+> behind the curtain; the child only ever meets it as *her* sea.
 
 ---
 
@@ -333,5 +350,16 @@ the parts not yet delivered, by band.
 - **V2 (`@roadmap`) unbuilt (expected):** XP/leagues (`XP-01…09`), focus timer
   (`FT-01…05`), exam readiness (`ER-01…03`), starred/revision map (`AM-05/07`), richer
   loop (`LL-08…11`), AI companion voice (`VC-04/05`), reveal animation (`RR-12`).
+- **V2 — past paper bank (`past_paper_bank.feature` PP-01…25, DRAFT 2026-09-07).** A
+  weekend of real, printed practice: seeded genuine past papers plus **AI-generated
+  skill-preserving variants** (answer-verified in code, then QC-approved by the admin
+  before a child sits them), papers composed **only from covered topics**, printed as a
+  PDF traceable to its own mark scheme, then uploaded and graded through the school-journal
+  vision pipeline — authoritatively, because the mark scheme is known. Results live in the
+  honest layer and gently steer the plan; the child's world stays mark-free. **Revises a
+  settled constraint** ("never AI-generated" → "AI-drafted, human-approved"; see 00 §2/§5)
+  and depends on `school_journal` (SJ pipeline), `question_bank` (source items + QC),
+  `writing_track` (writing tasks), and `weekly_targets`/`learning_loop` ("covered"
+  definition). Seven open decisions are recorded at the foot of the feature file.
 - **Writing bank serving/grading** (`WB-03/04`) — deferred pending a decision on how
   prompts reach students; the bank itself is populated (see the admin story, §2).

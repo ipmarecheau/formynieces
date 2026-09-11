@@ -59,3 +59,29 @@ it('never serves the same question twice in practice', function () {
 
     expect(StudentQuestionExposure::where('student_id', $student->id)->count())->toBe(2);
 })->group('scenario:LL-18');
+
+it('does not burn a question on serve — only once it is answered', function () {
+    // Regression for the production dead-end: a student was SERVED every D1 question of a
+    // topic (each serve recorded an exposure) but never answered one, so the global no-repeat
+    // rule excluded them all and practice showed "more practice coming soon" with 20 available.
+    $student = User::factory()->create(['role' => 'student']);
+    $module = SyllabusModule::factory()->create();
+    PracticeQuestion::factory()->create([
+        'module_id' => $module->id, 'difficulty' => 1,
+        'prompt' => 'Only D1', 'options' => ['A', 'B', 'C', 'D'], 'correct_index' => 1, 'explanation' => 'x',
+    ]);
+
+    $c = Livewire::actingAs($student)->test(PracticeWalk::class, ['module' => $module]);
+
+    // Served — but NOT answered — records nothing, and re-loading still serves it.
+    expect($c->get('question'))->not->toBeNull();
+    expect(StudentQuestionExposure::where('student_id', $student->id)->count())->toBe(0);
+
+    $c->call('next'); // navigate away / re-mount without answering
+    expect($c->get('question'))->not->toBeNull();
+    expect(StudentQuestionExposure::where('student_id', $student->id)->count())->toBe(0);
+
+    // Answering it is what marks it seen.
+    $c->call('choose', 1);
+    expect(StudentQuestionExposure::where('student_id', $student->id)->count())->toBe(1);
+})->group('scenario:LL-18');

@@ -177,19 +177,6 @@
         }
         .exists-notice a:hover { background: #0f766e; }
         form.is-locked { opacity: 0.45; pointer-events: none; }
-
-        /* Signup stepper — progressive enhancement. Without JS every step is visible (a normal
-           single-page form); the JS reveals one step at a time with Next/Back. */
-        .rw-progress { display: none; }
-        .rw-step-nav { display: none; align-items: center; gap: 12px; margin-top: 16px; }
-        .rw-back { background: none; border: 0; color: #475569; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 14px; cursor: pointer; padding: 6px 4px; }
-        .rw-back:hover { color: #0d9488; }
-        form.stepper .rw-progress { display: flex; gap: 6px; margin-bottom: 22px; }
-        form.stepper .rw-progress i { height: 5px; flex: 1; border-radius: 99px; background: rgba(13,125,140,0.15); transition: background .2s; }
-        form.stepper .rw-progress i.on { background: #0d9488; }
-        form.stepper .rw-step-nav { display: flex; }
-        form.stepper .rw-step:not(.rw-active) { display: none; }
-        form.stepper .rw-next { flex: 1; }
     </style>
     @if (config('services.turnstile.site_key'))
         <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
@@ -226,90 +213,84 @@
         <br><a href="{{ route('login') }}" id="exists-login-link">Sign in to your dashboard →</a>
     </div>
 
-    <form method="POST" action="{{ route('register') }}" id="register-form">
+    <style>
+        .reg-lead { text-align:center; font-size:14.5px; color:var(--muted); margin:-8px 0 18px; line-height:1.5; }
+        /* One clear consent that gates every path (social + email). */
+        .consent { display:flex; gap:11px; align-items:flex-start; text-align:left;
+            background:#f6faf9; border:1.5px solid rgba(13,125,140,0.3); border-radius:14px;
+            padding:13px 15px; margin-bottom:16px; cursor:pointer; transition:border-color .15s, background .15s; }
+        .consent input { width:20px; height:20px; margin-top:1px; flex:none; accent-color:var(--purple); cursor:pointer; }
+        .consent span { font-size:13px; line-height:1.5; color:var(--text); font-weight:600; text-transform:none; letter-spacing:normal; }
+        .consent a { color:var(--purple); font-weight:700; text-decoration:underline; }
+        .consent.needs { border-color:#e11d48; background:#fef2f2; animation:regShake .3s; }
+        .consent-hint { display:none; color:#e11d48; font-size:12.5px; font-weight:700; margin:-8px 0 14px; text-align:center; }
+        .consent-hint.show { display:block; }
+        @keyframes regShake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
+        .or-line { display:flex; align-items:center; gap:12px; margin:18px 0; color:var(--muted); font-size:13px; font-weight:700; }
+        .or-line::before, .or-line::after { content:""; flex:1; height:1px; background:currentColor; opacity:.25; }
+        .email-toggle { display:block; width:100%; text-align:center; background:none; border:0; cursor:pointer;
+            color:var(--purple); font-weight:800; font-size:14.5px; padding:6px; }
+        .email-toggle:hover { color:#0f766e; }
+        .email-form[hidden] { display:none; }
+        .email-form { margin-top:8px; }
+    </style>
+
+    <p class="reg-lead">Create your parent account. The quickest way in is an account you already have.</p>
+
+    {{-- One clear consent, gating BOTH the providers and the email form. Kept as two
+         hidden fields (age + terms) so the server contract is unchanged. --}}
+    <label class="consent" id="consent-label" for="consent">
+        <input type="checkbox" id="consent" {{ old('age_attestation') && old('terms') ? 'checked' : '' }}>
+        <span>I'm 18 or older and the parent or legal guardian, and I agree to the
+            <a href="{{ route('terms') }}" target="_blank" rel="noopener">Terms</a>
+            &amp; <a href="{{ route('privacy') }}" target="_blank" rel="noopener">Privacy Policy</a>.</span>
+    </label>
+    <p class="consent-hint" id="consent-hint">Please confirm the box above to continue.</p>
+
+    {{-- Social-first: continue with an existing account. Gated on the consent above. --}}
+    @include('auth.partials.social-buttons', ['consent' => false])
+
+    <div class="or-line">or</div>
+
+    <button type="button" class="email-toggle" id="email-toggle" aria-expanded="false" aria-controls="register-form">
+        Sign up with an email address instead
+    </button>
+
+    <form method="POST" action="{{ route('register') }}" id="register-form" class="email-form" hidden>
         @csrf
+        {{-- The single consent above drives these (kept for the unchanged server contract). --}}
+        <input type="hidden" name="age_attestation" id="hid-age" value="{{ old('age_attestation') }}">
+        <input type="hidden" name="terms" id="hid-terms" value="{{ old('terms') }}">
 
-        {{-- Progress (shown only when the JS stepper is active). --}}
-        <div class="rw-progress" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-
-        {{-- Step 1 — name --}}
-        <div class="rw-step" data-step="1">
-            <div class="field">
-                <label for="name">Your Name (Parent / Guardian)</label>
-                <input type="text" id="name" name="name"
-                       value="{{ old('name') }}"
-                       placeholder="e.g. Maria Thomas"
-                       required autofocus autocomplete="name">
-                <p class="field-hint">This is your account. You'll add your child in the next step.</p>
-            </div>
-            <div class="rw-step-nav"><button type="button" class="btn-submit rw-next">Next →</button></div>
+        <div class="field">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email"
+                   value="{{ old('email') }}"
+                   placeholder="you@example.com"
+                   required autocomplete="username">
         </div>
 
-        {{-- Step 2 — contact --}}
-        <div class="rw-step" data-step="2">
-            <div class="field">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email"
-                       value="{{ old('email') }}"
-                       placeholder="you@example.com"
-                       required autocomplete="username">
-            </div>
-            <div class="field">
-                <label for="phone">Mobile Number (WhatsApp)</label>
-                <input type="tel" id="phone" name="phone"
-                       value="{{ old('phone') }}"
-                       placeholder="+1 868 555 1234"
-                       required autocomplete="tel">
-                <p class="field-hint">Full international format, e.g. +18685551234. We'll send a code by WhatsApp (or SMS).</p>
-            </div>
-            <div class="rw-step-nav"><button type="button" class="rw-back">← Back</button><button type="button" class="btn-submit rw-next">Next →</button></div>
+        <div class="field">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password"
+                   placeholder="At least 8 characters"
+                   required autocomplete="new-password">
         </div>
 
-        {{-- Step 3 — password --}}
-        <div class="rw-step" data-step="3">
-            <div class="field">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password"
-                       placeholder="At least 8 characters"
-                       required autocomplete="new-password">
-            </div>
-            <div class="field">
-                <label for="password_confirmation">Confirm Password</label>
-                <input type="password" id="password_confirmation" name="password_confirmation"
-                       placeholder="Repeat your password"
-                       required autocomplete="new-password">
-            </div>
-            <div class="rw-step-nav"><button type="button" class="rw-back">← Back</button><button type="button" class="btn-submit rw-next">Next →</button></div>
+        <div class="field">
+            <label for="password_confirmation">Confirm Password</label>
+            <input type="password" id="password_confirmation" name="password_confirmation"
+                   placeholder="Repeat your password"
+                   required autocomplete="new-password">
         </div>
 
-        {{-- Step 4 — agreements + submit --}}
-        <div class="rw-step" data-step="4">
-            <div class="field attestation">
-                <label class="attestation-label" for="age_attestation">
-                    <input type="checkbox" id="age_attestation" name="age_attestation" value="1"
-                           {{ old('age_attestation') ? 'checked' : '' }}>
-                    <span>I confirm that I am 18 years of age or older and am the parent or legal guardian setting up this account.</span>
-                </label>
-            </div>
-
+        @if (config('services.turnstile.site_key'))
             <div class="field">
-                <label class="attestation-label" for="terms">
-                    <input type="checkbox" id="terms" name="terms" value="1" {{ old('terms') ? 'checked' : '' }}>
-                    <span>I have read and agree to the
-                        <a href="{{ route('terms') }}" target="_blank" rel="noopener">Terms &amp; Conditions</a>
-                        and <a href="{{ route('privacy') }}" target="_blank" rel="noopener">Privacy Policy</a>.</span>
-                </label>
+                <div class="cf-turnstile" data-sitekey="{{ config('services.turnstile.site_key') }}" data-theme="dark"></div>
             </div>
+        @endif
 
-            @if (config('services.turnstile.site_key'))
-                <div class="field">
-                    <div class="cf-turnstile" data-sitekey="{{ config('services.turnstile.site_key') }}" data-theme="dark"></div>
-                </div>
-            @endif
-
-            <div class="rw-step-nav" style="margin-bottom:12px;"><button type="button" class="rw-back">← Back</button></div>
-            <button type="submit" id="submit" class="btn-submit">Create Account 🌟</button>
-        </div>
+        <button type="submit" id="submit" class="btn-submit">Create account</button>
     </form>
 
     <p class="foot">
@@ -386,43 +367,57 @@
     })();
 </script>
 <script>
-    // Signup stepper: reveal one step at a time. Progressive enhancement — if this doesn't run,
-    // the form is a normal single-page form and still submits.
+    // One consent drives every path. Provider buttons stay clickable but only proceed
+    // once consent is given (a gentle nudge otherwise, never a dead greyed button); the
+    // email form mirrors consent into its two hidden fields so the server contract holds.
     (function () {
+        const consent = document.getElementById('consent');
+        const label = document.getElementById('consent-label');
+        const hint = document.getElementById('consent-hint');
+        const hidAge = document.getElementById('hid-age');
+        const hidTerms = document.getElementById('hid-terms');
+        const btns = document.querySelectorAll('.soc-btn[data-base]');
         const form = document.getElementById('register-form');
-        if (!form) return;
-        const steps = Array.prototype.slice.call(form.querySelectorAll('.rw-step'));
-        if (steps.length < 2) return;
+        const toggle = document.getElementById('email-toggle');
+        if (!consent) return;
 
-        const dots = Array.prototype.slice.call(form.querySelectorAll('.rw-progress i'));
-        let cur = 0;
-
-        function show(i) {
-            steps.forEach((s, n) => s.classList.toggle('rw-active', n === i));
-            dots.forEach((d, n) => d.classList.toggle('on', n <= i));
-            cur = i;
-            const firstInput = steps[i].querySelector('input:not([type=checkbox])');
-            if (firstInput) { try { firstInput.focus(); } catch (e) {} }
+        function sync() {
+            const ok = consent.checked;
+            if (hidAge) { hidAge.value = ok ? '1' : ''; }
+            if (hidTerms) { hidTerms.value = ok ? '1' : ''; }
+            btns.forEach(function (b) {
+                b.setAttribute('href', ok ? b.dataset.base + '?agree=1' : b.dataset.base);
+            });
+            if (ok && hint) { hint.classList.remove('show'); label.classList.remove('needs'); }
+        }
+        function nudge() {
+            hint.classList.add('show');
+            label.classList.add('needs');
+            label.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(function () { label.classList.remove('needs'); }, 500);
         }
 
-        function stepValid(i) {
-            let ok = true;
-            steps[i].querySelectorAll('input').forEach(function (inp) {
-                if (ok && !inp.checkValidity()) { inp.reportValidity(); ok = false; }
-            });
-            return ok;
-        }
+        consent.addEventListener('change', sync);
+        sync();
 
-        form.classList.add('stepper');
-        form.querySelectorAll('.rw-next').forEach(function (btn) {
-            btn.addEventListener('click', function () {
-                if (stepValid(cur) && cur < steps.length - 1) show(cur + 1);
+        // Providers: block navigation until consent is given.
+        btns.forEach(function (b) {
+            b.addEventListener('click', function (e) {
+                if (!consent.checked) { e.preventDefault(); nudge(); }
             });
         });
-        form.querySelectorAll('.rw-back').forEach(function (btn) {
-            btn.addEventListener('click', function () { if (cur > 0) show(cur - 1); });
-        });
-        show(0);
+
+        // Reveal the email form on demand (social-first keeps it tucked away).
+        if (toggle && form) {
+            toggle.addEventListener('click', function () {
+                const show = form.hasAttribute('hidden');
+                if (show) { form.removeAttribute('hidden'); toggle.setAttribute('aria-expanded', 'true'); toggle.textContent = 'Hide the email form'; document.getElementById('email').focus(); }
+                else { form.setAttribute('hidden', ''); toggle.setAttribute('aria-expanded', 'false'); toggle.textContent = 'Sign up with an email address instead'; }
+            });
+            form.addEventListener('submit', function (e) {
+                if (!consent.checked) { e.preventDefault(); nudge(); }
+            });
+        }
     })();
 </script>
 </body>

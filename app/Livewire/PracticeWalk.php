@@ -102,22 +102,23 @@ class PracticeWalk extends Component
             $usedInStreak = json_decode($usedInStreak, true) ?: [];
         }
 
-        // Global no-repeat: never serve a question this student has already seen
-        // anywhere in the loop (LL-18), on top of the within-streak distinctness.
-        $exposure = app(QuestionExposure::class);
-        $seenHashes = $exposure->seenHashes(auth()->id());
-
-        $atRung = $questions
+        // Candidates at the current rung, minus the ones already used in this mastery
+        // streak (within-streak distinctness).
+        $candidates = $questions
             ->where('difficulty', $this->currentRung)
-            ->first(fn ($q) => ! in_array($q->id, $usedInStreak, true)
-                && ! in_array($q->content_hash, $seenHashes, true));
+            ->reject(fn ($q) => in_array($q->id, $usedInStreak, true))
+            ->values();
 
-        if ($atRung !== null) {
-            $exposure->record(auth()->id(), $atRung->content_hash, 'practice');
-        }
+        // Global no-repeat (LL-18): serve a question she has not yet SEEN. A question is
+        // marked seen only when she ANSWERS it (recorded in choose()), never on mere serve
+        // — otherwise viewing, refreshing, or re-mounting the page silently burns questions
+        // and dead-ends practice on "coming soon" without any learning (the bug Cayla hit).
+        $atRung = app(QuestionExposure::class)
+            ->pickUnseen(auth()->id(), $candidates, allowRecycle: false);
 
         $this->question = $atRung === null ? null : [
             'id' => $atRung->id,
+            'content_hash' => $atRung->content_hash,
             'prompt' => $atRung->prompt,
             'options' => $atRung->options,
             'correct_index' => $atRung->correct_index,
@@ -129,6 +130,13 @@ class PracticeWalk extends Component
     {
         if ($this->question === null || $this->feedback !== null) {
             return;
+        }
+
+        // Mark the question SEEN now that she has actually engaged with it (LL-18 no-repeat).
+        // Recording here — on answer — not at serve time is what stops a served-but-unanswered
+        // question from being permanently burned. Idempotent, so a second-try call is harmless.
+        if (! empty($this->question['content_hash'])) {
+            app(QuestionExposure::class)->record(auth()->id(), $this->question['content_hash'], 'practice');
         }
 
         $this->attemptsUsed++;

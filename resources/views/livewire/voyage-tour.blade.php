@@ -3,10 +3,10 @@
         /* The dim is a single ring cut around the spotlighted element (hole-punch via
            box-shadow), so the highlighted area stays fully crisp — no heavy overlay,
            no blur. A plain scrim covers the no-target intro/outro chapters. */
-        .tour-scrim { position: fixed; inset: 0; z-index: 2000; background: rgba(6,20,34,0.55); }
+        .tour-scrim { position: fixed; inset: 0; z-index: 2000; background: rgba(6,20,34,0.38); }
         .tour-hole {
             position: fixed; z-index: 2000; border-radius: 14px; pointer-events: none;
-            box-shadow: 0 0 0 9999px rgba(6,20,34,0.55);
+            box-shadow: 0 0 0 9999px rgba(6,20,34,0.38);
             outline: 3px solid #f6b71e; outline-offset: 3px;
             transition: top .25s ease, left .25s ease, width .25s ease, height .25s ease;
         }
@@ -118,10 +118,15 @@
                         </template>
                     </div>
 
-                    {{-- Interactive hand-off: no Next — she taps the highlighted island. --}}
+                    {{-- Interactive hand-off: she can tap the highlighted thing, OR just tap
+                         Next — so the tour never dead-ends if the tap target doesn't fire. --}}
                     <template x-if="current.interactive">
                         <div>
                             <p class="tour-handoff" x-text="current.hint"></p>
+                            <div class="tour-nav">
+                                <button type="button" class="tour-btn tour-back" x-show="i > 0" @click="back()">← Back</button>
+                                <button type="button" class="tour-btn tour-next" @click="next()">Next →</button>
+                            </div>
                             <button type="button" class="tour-skip" @click="done()">Skip the tour</button>
                         </div>
                     </template>

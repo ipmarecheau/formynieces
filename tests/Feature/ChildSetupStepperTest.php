@@ -12,7 +12,8 @@ it('shows a step-by-step "add your first child" form', function () {
         ->assertSee('add others later')          // note that more children come from the dashboard
         ->assertSee('rw-progress', false)         // stepper present
         ->assertSee('data-step="1"', false)
-        ->assertSee('data-step="3"', false)
+        ->assertSee('data-step="2"', false)          // trimmed to two steps: name, then SEA year
+        ->assertDontSee('data-step="3"', false)       // weak areas moved to the post-login profile wizard
         ->assertSee('name="target_sea_year"', false); // all fields still in the single POST
 });
 

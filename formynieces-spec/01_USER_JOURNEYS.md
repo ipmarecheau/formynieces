@@ -62,6 +62,12 @@ Daily objects: dashboard, adventure map (current stop only), module, competency 
 
 Weekly objects: writing prompt, writing submission, writing feedback, rubric profile.
 
+### 2.3a Weekend — a printed past paper (`@roadmap`, PP)
+
+> At the weekend Marsha opens **Past papers**, picks a subject and a short length, and downloads a **printable PDF** — real exam-style pages, working space, a cover with Amara's name and the time allowed. It only draws on **topics Amara has already covered**. Amara sits it at the table like the real thing. When she's done, Marsha (or Amara) **photographs the pages**; the school-journal vision pipeline digitises them and — because the platform generated the paper and **knows the mark scheme** — grades each question authoritatively, flagging only what the camera couldn't read for a quick correction. Marsha sees the **score, a per-topic breakdown, and the week-over-week trend** in her calm room; a weak topic gets gentle priority on Amara's voyage. Amara's world only ever gets a warm "you sat a real paper!" — never a mark to fear. *(The bank grows by AI-drafting skill-preserving variants of real questions, each answer-verified and admin-approved before any child sits them.)*
+
+Weekend objects: past paper, paper question, paper sitting, paper submission (per-question grade + working clip).
+
 ### 2.4 Student — Sunday (week rollover)
 
 > Sunday evening the **pacing engine** closes the week: completed targets are archived, missed modules roll into next week's target (capped so the week never becomes a wall), the next stop on the map unlocks, and a one-line encouragement is generated. If she finished early, the map offers — never forces — a peek at next week.

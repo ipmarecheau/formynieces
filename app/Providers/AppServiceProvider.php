@@ -6,7 +6,10 @@ use App\Services\Verification\PhoneVerifier;
 use App\Services\Verification\StubPhoneVerifier;
 use App\Services\Verification\TwilioPhoneVerifier;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
+use SocialiteProviders\Manager\SocialiteWasCalled;
+use SocialiteProviders\Microsoft\Provider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -39,5 +42,11 @@ class AppServiceProvider extends ServiceProvider
         // so controller-returned pages can wrap themselves in <x-layouts.guardian>
         // (the same chrome Livewire pages get via #[Layout('layouts.guardian')]).
         Blade::anonymousComponentPath(resource_path('views/layouts'), 'layouts');
+
+        // Register the community Socialite driver (Microsoft covers Hotmail/Outlook/Live).
+        // Google, Facebook and LinkedIn (OpenID) are built into Socialite core.
+        Event::listen(function (SocialiteWasCalled $event) {
+            $event->extendSocialite('microsoft', Provider::class);
+        });
     }
 }

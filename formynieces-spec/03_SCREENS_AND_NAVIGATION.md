@@ -54,6 +54,7 @@ Cross-check: every Gherkin `When/Then` in `features/` must land on a screen here
 | C10 | Exam-week calm state | (state of C1) | @roadmap | once |
 | C11 | Captain's Orders — collapsible Voyage sidebar; **Captain's Brief** tab = today's minimum checklist (morning + evening brief), writing on M/W/F, weekend rest/catch-up | sidebar on the Voyage (`/map`) | @mvp | daily — persistent on the Voyage |
 | C12 | Ship's Log — sidebar tab: master + sub streaks, history/milestones, and the **Captain's Locker** reward inventory (spend Shore Leave/Anchor/Tailwind/Lifebuoy) | sidebar on the Voyage (`/map`) | @mvp | daily/occasional |
+| C13 | Sit-a-real-paper upload — child-layer, mark-free: snap/upload the completed pages, warm "you sat a real paper!" acknowledgement, never a score | `/paper/{sitting}/upload` | @roadmap | PP-16/PP-24 — weekend; same digitiser as the journal, child layer clean |
 
 ### D. Guardian (weekly loop)
 
@@ -68,6 +69,7 @@ Cross-check: every Gherkin `When/Then` in `features/` must land on a screen here
 | D7 | Weekly email digest (S7) | (email, not screen) | @v1.1 | weekly push |
 | D8 | School journal — file a graded paper (upload photo/PDF + structured entry) | `/guardian/students/{id}/journal` | @mvp ✅ | SJ-01..13 — nova-lite OCR chain + confirm/correct + per-question breakdown (syllabus-aligned topics, question clips, reasoning notes) + term timeline + trend; dashboard "From school" section (SJ-04) |
 | D9 | School journal — term timeline (entries grouped by term, strand/score/comment at a glance) | same page as D8 | @mvp ✅ | SJ-03/09 — one page serves both |
+| D10 | Past papers — compose this weekend's paper (subject + length, covered topics only), download the printable PDF, upload the finished pages, review the graded result (score, per-topic breakdown, week-over-week trend) + confirm/correct low-confidence reads | `/guardian/students/{id}/past-papers` | @roadmap | PP-09…24 — grades against the known mark scheme via the SJ pipeline; honest-layer results, child world untouched |
 
 ### E. Admin (Filament — already scaffolded)
 
@@ -83,6 +85,7 @@ Cross-check: every Gherkin `When/Then` in `features/` must land on a screen here
 | E8 | Lesson Import Guide — navigable, exhaustive reference (per block type) + downloadable template | @mvp ✅ | LB-04 — generated from `LessonBlockSchema` |
 | E9 | Create Lessons with Claude — workflow guide: generate a lesson + question bank with Claude Code from a textbook/past-paper upload; states the re-teach block fields (`rule`/`practiceItems`) and the ≥15-questions-per-level minimum | ✅ | LB-05 — pairs the `lesson-authoring` skill |
 | E10 | Lesson preview — from LessonResource, open any lesson in the real student renderer as **Preview** (student mode) or **Re-teach** (relearn flow), with all interactions and NOTHING recorded (no stage completion / guided-time lock); Edit blocks from the same row. For ongoing lesson verification | @mvp ✅ | LE-11 — `admin.lessons.preview` / `admin.lessons.preview-reteach`, admin-guarded |
+| E11 | Past paper bank — seed/import real papers + mark schemes, generate AI variants, and the **QC approval queue** (approve/edit/discard verified variants before any child sits them) + reported-question review | @roadmap | PP-01…08 — "AI-drafted, human-approved"; portable + daily backup like the question bank |
 
 **Count:** MVP = 18 screens/states (A:3, B:7, C:7 incl. states, D:3 minus states… effectively ~16 distinct routes), plus the daily morning ritual (C5a reading, C5b vocabulary) and its admin authoring screen (E6), and the lesson authoring + bulk-import screens (E7 LessonResource, E8 Import Guide). Close to the 21-screen sitemap from the 09 June session — the deltas are the additions B7 (resume) and C8 (history, deferred), the daily-reading/vocabulary ritual (C5a/C5b/E6), the lesson authoring/import (E7/E8), the deferral of D4–D7, the school journal (D8/D9), and the public landing page (F1).
 

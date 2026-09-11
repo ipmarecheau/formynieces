@@ -32,23 +32,25 @@
 
         <p class="count">Signing you out in <span id="handoff-count">5</span>s…</p>
 
-        <form method="POST" action="{{ route('student.handoff.commit', $child) }}" id="handoff-form">
-            @csrf
-            <button type="submit" class="btn">Hand it over now →</button>
-        </form>
+        <a href="{{ $commitUrl }}" class="btn" id="handoff-go">Hand it over now →</a>
 
-        <p class="foot"><a href="{{ route('guardian.dashboard') }}">← Not now, take me back</a></p>
+        <p class="foot" style="margin-top:14px;">This hand-off link works until {{ $expiresAt->timezone(config('app.timezone'))->format('g:i A') }}. If it expires, just come back and tap the button again.</p>
+
+        <div class="foot" style="margin-top:16px; display:flex; gap:16px; justify-content:center;">
+            <a href="{{ route('guardian.dashboard') }}">← Back to dashboard</a>
+            <a href="{{ route('guardian.children') }}">Use child login manually</a>
+        </div>
     </div>
 
     <script>
         (function () {
             var n = 5;
             var el = document.getElementById('handoff-count');
-            var form = document.getElementById('handoff-form');
+            var go = document.getElementById('handoff-go');
             var tick = setInterval(function () {
                 n -= 1;
                 if (el) { el.textContent = n; }
-                if (n <= 0) { clearInterval(tick); form.submit(); }
+                if (n <= 0) { clearInterval(tick); window.location.assign(go.href); }
             }, 1000);
         })();
     </script>

@@ -48,8 +48,9 @@ it('serves a public terms page', function () {
 it('shows the terms and an acceptance box on the registration screen', function () {
     get(route('register'))
         ->assertOk()
-        ->assertSee('I have read and agree')
-        ->assertSee('Governing law');   // the terms body is embedded for viewing
+        ->assertSee('I agree to the')         // the single consent checkbox
+        ->assertSee(route('terms'), false)    // links out to the full terms (not embedded)
+        ->assertSee(route('privacy'), false);
 })->group('scenario:GO-16');
 
 it('serves a public privacy policy that centres children data', function () {

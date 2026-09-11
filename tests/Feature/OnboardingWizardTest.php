@@ -1,8 +1,6 @@
 <?php
 
-use App\Models\DiagnosticSession;
-use App\Models\ModuleStageCompletion;
-use App\Models\SyllabusModule;
+use App\Models\StudentStreak;
 use App\Models\User;
 use App\Services\Onboarding\OnboardingWizard;
 
@@ -23,10 +21,10 @@ it('greets a verified guardian with no child: account done, next step is add-chi
     expect($steps['account']['done'])->toBeTrue()
         ->and($steps['child']['done'])->toBeFalse()
         ->and($wiz->nextStep()['key'])->toBe('child')
-        ->and($wiz->progress())->toMatchArray(['done' => 1, 'total' => 4]);
+        ->and($wiz->progress())->toMatchArray(['done' => 1, 'total' => 3]);
 });
 
-it('ticks off add-child only once a child exists, then points at the diagnostic (WZ-03)', function () {
+it('ticks off add-child only once a child exists, then points at getting the login (WZ-03)', function () {
     $g = wizGuardian();
     wizChild($g);
 
@@ -34,35 +32,29 @@ it('ticks off add-child only once a child exists, then points at the diagnostic 
     $steps = collect($wiz->steps())->keyBy('key');
 
     expect($steps['child']['done'])->toBeTrue()
-        ->and($wiz->nextStep()['key'])->toBe('diagnostic');
+        ->and($wiz->nextStep()['key'])->toBe('credentials');
 });
 
-it('reflects what the child did: diagnostic + first lesson (WZ-06)', function () {
+it('completes the credentials step once the child has signed in (WZ-06)', function () {
     $g = wizGuardian();
     $child = wizChild($g, ['target_sea_year' => 2027]);
-    DiagnosticSession::create(['student_id' => $child->id, 'status' => 'completed', 'completed_at' => now()]);
-    $module = SyllabusModule::factory()->create();
-    ModuleStageCompletion::create(['student_id' => $child->id, 'module_id' => $module->id, 'stage' => 'lesson', 'completed_at' => now()]);
+    StudentStreak::create(['student_id' => $child->id, 'type' => 'login', 'count' => 1]);
 
     $steps = collect(OnboardingWizard::for($g)->steps())->keyBy('key');
-    expect($steps['diagnostic']['done'])->toBeTrue()
-        ->and($steps['first_lesson']['done'])->toBeTrue();
+    expect($steps['credentials']['done'])->toBeTrue();
 });
 
-it('an incomplete diagnostic does not count (WZ-03 real-state)', function () {
+it('the credentials step is not done until the child actually signs in (WZ-03 real-state)', function () {
     $g = wizGuardian();
-    $child = wizChild($g);
-    DiagnosticSession::create(['student_id' => $child->id, 'status' => 'in_progress', 'completed_at' => null]);
+    wizChild($g);   // child exists, but has never signed in
 
-    expect(collect(OnboardingWizard::for($g)->steps())->keyBy('key')['diagnostic']['done'])->toBeFalse();
+    expect(collect(OnboardingWizard::for($g)->steps())->keyBy('key')['credentials']['done'])->toBeFalse();
 });
 
 it('is complete only when every step is done, then retires idempotently (WZ-09)', function () {
     $g = wizGuardian();
     $child = wizChild($g, ['target_sea_year' => 2027]);
-    DiagnosticSession::create(['student_id' => $child->id, 'status' => 'completed', 'completed_at' => now()]);
-    $module = SyllabusModule::factory()->create();
-    ModuleStageCompletion::create(['student_id' => $child->id, 'module_id' => $module->id, 'stage' => 'lesson', 'completed_at' => now()]);
+    StudentStreak::create(['student_id' => $child->id, 'type' => 'login', 'count' => 1]);
 
     $wiz = OnboardingWizard::for($g);
     expect($wiz->isComplete())->toBeTrue()

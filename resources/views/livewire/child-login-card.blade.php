@@ -51,13 +51,20 @@
             @endif
         </div>
 
+        @if ($password !== null)
+            <button type="button" class="clc-btn clc-copy" style="width:100%;margin-top:10px;border:1px solid var(--line);border-radius:9px;"
+                onclick="clcDownload(@js($child->name), @js($child->email), @js($password), @js(route('student.login')))">
+                ⬇ Download {{ $child->name }}'s login (.txt)
+            </button>
+        @endif
+
         <p class="clc-hint">🧭 {{ $child->name }} signs in with this — not you. On their own device, go to <strong>smoothseas.org/go</strong>. Sharing this device? Hand it over below.</p>
 
         <div class="clc-foot">
             <a href="{{ route('student.handoff', $child) }}" class="clc-solid">📱 Log in {{ $child->name }} on this device</a>
             <button type="button" wire:click="toggleOtherDevice">🖥 Log in {{ $child->name }} on another device</button>
         </div>
-        <p style="text-align:center;margin:9px 0 0;"><a href="{{ route('guardian.children') }}" style="font-size:11.5px;font-weight:800;color:var(--ink-faint);text-decoration:none;">Reset login</a></p>
+        <p style="text-align:center;margin:9px 0 0;"><a href="{{ route('guardian.children') }}" style="font-size:11.5px;font-weight:800;color:var(--ink-faint);text-decoration:none;">Reset password</a></p>
 
         @if ($showOtherDevice)
             <div class="clc-od">
@@ -76,6 +83,19 @@
     </section>
 
     <script>
+        function clcDownload(name, loginId, password, url){
+            var body = "SmoothSeas login for " + name + "\n\n" +
+                "Sign in at: " + url + "\n" +
+                "Login ID:   " + loginId + "\n" +
+                "Password:   " + password + "\n\n" +
+                "Keep this safe. You can also see it anytime on your SmoothSeas dashboard, or reset the password there.";
+            var blob = new Blob([body], { type: 'text/plain' });
+            var a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = name.replace(/[^a-z0-9]+/gi, '-').toLowerCase() + '-smoothseas-login.txt';
+            document.body.appendChild(a); a.click();
+            setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 500);
+        }
         function clcCopy(btn, txt){
             try { navigator.clipboard.writeText(txt); } catch (e) {}
             const o = btn.textContent; btn.textContent = 'Copied ✓';

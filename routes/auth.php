@@ -8,9 +8,15 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Auth\SocialAuthController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Livewire\VerifyAccount;
 use Illuminate\Support\Facades\Route;
+
+// The kid-branded child sign-in (/go) is reachable whether or not someone is signed
+// in — so an authenticated parent on a shared device is NOT bounced to their dashboard;
+// the page itself explains the parent-vs-child options. It posts to the shared /login.
+Route::view('go', 'auth.student-login')->name('student.login');
 
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
@@ -24,8 +30,13 @@ Route::middleware('guest')->group(function () {
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
         ->name('login');
 
-    // A separate, kid-branded sign-in page for students (posts to the same /login).
-    Route::view('go', 'auth.student-login')->name('student.login');
+    // Social login (one-tap guardian sign-up / sign-in). Provider-agnostic; each
+    // provider is active only when its credentials are configured.
+    Route::get('auth/{provider}/redirect', [SocialAuthController::class, 'redirect'])
+        ->name('social.redirect');
+
+    Route::get('auth/{provider}/callback', [SocialAuthController::class, 'callback'])
+        ->name('social.callback');
 
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
@@ -48,8 +59,11 @@ Route::middleware('auth')->group(function () {
     Route::get('go/handoff/{child}', [DeviceHandoffController::class, 'show'])
         ->name('student.handoff');
 
-    Route::post('go/handoff/{child}', [DeviceHandoffController::class, 'commit'])
-        ->name('student.handoff.commit');
+    // The commit is a SIGNED GET (no CSRF/session-token dependency, so it can't 419);
+    // the signature is minted while the guardian is authenticated and expires in 15 min.
+    Route::get('go/handoff/{child}/commit', [DeviceHandoffController::class, 'commit'])
+        ->name('student.handoff.commit')
+        ->middleware('signed');
 
     Route::get('verify-email', VerifyAccount::class)
         ->name('verification.notice');
