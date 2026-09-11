@@ -300,7 +300,7 @@
         .engine-fuse-line b { color: var(--teal); }
 
         /* the tandem loop — how the two layers hand off to each other */
-        .tandem { margin-top: 56px; }
+        .tandem { display: none; }
         .tandem-head { text-align: center; margin-bottom: 28px; }
         .tandem-head h3 { font-size: clamp(20px, 3vw, 26px); color: var(--ink); }
         .tandem-head p { font-size: 15.5px; color: var(--ink-soft); margin-top: 6px; }
@@ -667,11 +667,11 @@
     <div class="wrap">
         <div class="hero-lead" data-reveal>
             <span class="hero-badge hero-badge-center">🇹🇹 SEA 2027 · built for Caribbean families</span>
-            <h1>They'll think it's a <span class="accent">game</span>. It's <span class="accent">AI-assisted</span> learning for the whole SEA.</h1>
+            <h1>SEA prep your child will <span class="accent">actually keep doing</span>.</h1>
             <p class="hero-lede">
-                SmoothSeas turns Math, ELA and Writing into a voyage your child <strong>begs to sail</strong> —
-                an AI plans every day around them, <strong>re-teaches</strong> whatever they miss, and shows you
-                exactly where they stand. You'll <strong>never have to guess</strong>.
+                SmoothSeas gives your child a daily Math, ELA and Writing plan, <strong>re-teaches</strong>
+                what they miss, and shows you honest progress every week. You stop guessing, and they know
+                exactly what to do next.
             </p>
             <div class="hero-cta">
                 @auth
@@ -683,7 +683,7 @@
             </div>
             <div class="hero-captain">
                 <img src="{{ asset('images/voyage/companion/smooth.webp') }}" alt="Smooth the turtle" width="44" height="44">
-                <span><strong>Meet Smooth</strong> — your child's AI captain, patient on every miss.</span>
+                <span><strong>Meet Smooth</strong> — the patient guide who explains misses and celebrates progress.</span>
             </div>
             @guest
                 <p class="hero-reassure">
@@ -758,8 +758,8 @@
     <div class="wrap">
         <div class="trust-row">
             <div><span class="trust-num">3</span><div class="trust-label">SEA subjects, one voyage</div></div>
-            <div><span class="trust-num">20m–2h</span><div class="trust-label">daily · unlimited practice</div></div>
-            <div><span class="trust-num">1 / week</span><div class="trust-label">honest progress report</div></div>
+            <div><span class="trust-num">Daily</span><div class="trust-label">clear plan for today</div></div>
+            <div><span class="trust-num">1 / week</span><div class="trust-label">honest parent report</div></div>
             <div><span class="trust-num">14 days</span><div class="trust-label">money-back guarantee</div></div>
         </div>
     </div>
@@ -770,17 +770,17 @@
     <div class="wrap">
         <div class="section-head" data-reveal>
             <span class="eyebrow">Why it works</span>
-            <h2>Most apps make you choose. We fused both.</h2>
-            <p>Learning apps are usually one or the other — a game they abandon in a week, or a tutor they dread opening. SmoothSeas runs on two engines that need each other.</p>
+            <h2>Motivation, teaching, and visibility in one place.</h2>
+            <p>SmoothSeas keeps the daily routine simple: your child wants to return, Smooth helps when they miss, and you can see whether the work is paying off.</p>
         </div>
         <div class="engine-grid">
             <div class="engine-card game" data-reveal>
                 <div class="engine-icon">🗺️</div>
-                <span class="engine-tag">🎮 Gamification</span>
-                <h3>The game they want to play</h3>
-                <p>Lessons live on a gamified <strong>voyage map</strong> — glowing islands to conquer, <strong>streaks</strong> to protect, a Captain's Locker of rewards, and a celebration on every win. The fun is the fuel: it's why they show up, every single day.</p>
+                <span class="engine-tag">For your child</span>
+                <h3>A reason to show up</h3>
+                <p>Lessons live on a <strong>voyage map</strong> with islands, streaks and rewards. The routine feels like progress, so practice is easier to start and easier to repeat.</p>
                 <ul class="engine-list">
-                    <li>Voyage map</li><li>Streaks</li><li>Captain's Locker</li><li>Mastery stars</li>
+                    <li>Voyage map</li><li>Streaks</li><li>Rewards</li><li>Mastery stars</li>
                 </ul>
             </div>
 
@@ -794,15 +794,15 @@
 
             <div class="engine-card ai" data-reveal style="--rd:.08s">
                 <div class="engine-icon">🧠</div>
-                <span class="engine-tag">🤖 AI-assisted learning</span>
-                <h3>The AI that makes it teach</h3>
-                <p>Under the fun, an AI charts the whole SEA to your child, re-plans it every day to their pace, and <strong>re-teaches</strong> any rule they miss — patiently, until it clicks. It tracks real mastery, never just points, and hands you the honest picture.</p>
+                <span class="engine-tag">For learning</span>
+                <h3>Teaching when they need it</h3>
+                <p>Under the voyage, SmoothSeas adjusts the daily plan and <strong>re-teaches</strong> missed rules. Practice stays tied to real mastery, not just points.</p>
                 <ul class="engine-list">
-                    <li>Adaptive daily plan</li><li>AI re-teach</li><li>True mastery</li><li>Honest tracking</li>
+                    <li>Daily plan</li><li>Re-teaching</li><li>Mastery checks</li><li>Parent reports</li>
                 </ul>
             </div>
         </div>
-        <p class="engine-fuse-line" data-reveal>The game drives the effort. <b>The AI makes the effort count.</b></p>
+        <p class="engine-fuse-line" data-reveal>The voyage gets them started. <b>The teaching makes the work count.</b></p>
 
         <div class="tandem">
             <div class="tandem-head" data-reveal>
@@ -841,7 +841,7 @@
 </section>
 
 
-<!-- EVERYTHING INSIDE — the exhaustive feature list, hover for detail -->
+<!-- WHAT MATTERS — the short parent-facing feature list -->
 <section class="band" id="features" style="background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
     <style>
         .feat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; margin-top: 8px; }
@@ -868,33 +868,19 @@
     </style>
     <div class="wrap">
         <div class="section-head" data-reveal>
-            <span class="eyebrow">Everything on board</span>
-            <h2>One platform. Every advantage.</h2>
-            <p>Years of work, distilled into one voyage. Hover any card to flip it — there's more under the surface of each.</p>
+            <span class="eyebrow">What matters</span>
+            <h2>The daily plan, the teaching, and the proof.</h2>
+            <p>Parents do not need a longer list of tools. You need to know your child is working on the right thing, getting help when they miss, and moving toward SEA with evidence.</p>
         </div>
 
         @php
             $features = [
-                ['🗺️', 'Gamified Voyage map', 'Every skill is an island to conquer.', 'The whole SEA syllabus laid out as an explorable map of illustrated islands. Children sail from one to the next, unlocking each as they master it — turning revision into a game they actually want to play.'],
-                ['📚', '10,000+ question bank', 'A vast, SEA-aligned bank.', 'Over ten thousand questions across Math and ELA, tagged by topic and difficulty, so practice never runs dry and every skill has fresh questions at three real difficulty levels.'],
-                ['🤖', 'Adaptive learning with AI', 'The plan bends to your child.', 'The system reads how your child answers and adapts in real time — breeze through and they advance; struggle and it circles back — so not a minute is wasted on what they already know.'],
-                ['🧪', 'Built testing 50+ AI models', 'The best model for each job.', 'We benchmarked more than fifty AI models to find the ones that teach, grade and give feedback most reliably for the SEA — with automatic fallbacks so it never stalls mid-lesson.'],
-                ['🔁', 'A novel learning loop', 'A way of learning never built before.', 'Our test-out-first loop lets a child prove mastery instantly — or choose their own way in: lesson, worked examples, or straight to practice — and pulls them into an AI re-teach the moment they slip. A genuinely new approach to mastery learning.'],
-                ['🐢', 'Smooth, the AI captain', 'A patient tutor, never a scold.', 'Smooth greets your child, celebrates every win and re-teaches every miss without judgement — the encouraging voice that keeps them coming back to sail.'],
-                ['🧠', 'AI re-teach that names the rule', 'Misses become mastery.', "When your child slips, Smooth doesn't just mark it wrong — it re-teaches the underlying rule, has them say it back in their own words, and only moves on once they've truly got it."],
-                ['✍️', 'Daily writing exercises', 'Composition every day, with feedback.', 'A daily writing stop with kind, specific AI feedback on structure, imagery and technique — the SEA paper most programs quietly ignore.'],
-                ['🔤', 'Daily vocabulary', 'A morning word ritual.', 'Every day opens with a short vocabulary warm-up — Morning Tide — building the word power the SEA rewards, one tide at a time.'],
-                ['📖', 'Daily reading', 'Comprehension, built daily.', 'Fresh reading passages with comprehension questions each day, growing the stamina and inference skills the Language paper demands.'],
-                ['📊', 'Data-driven parent insights', 'The honest layer.', 'A weekly Parent Portal with no spin: readiness, pace, every re-teach with the rule named, and exactly what to focus on next — so you never have to guess.'],
-                ['🎯', 'First-choice placement projection', 'Know if they’ll make it.', 'An honest, weighted projection of their SEA placement — so you can see whether they’re on course for their first-choice school, long before exam day.'],
-                ['🧭', 'Pacing engine', 'Always ahead of the calendar.', 'The daily plan is paced against the SEA calendar to keep your child ahead of where they need to be — and quietly re-plans when life gets in the way.'],
-                ['🩺', 'Adaptive diagnostic', 'Charts the whole voyage.', 'A friendly diagnostic finds where your child truly is — not where the syllabus assumes — and plans the entire curriculum from that real starting point.'],
-                ['🏆', 'Rewards & streak economy', 'Effort pays off at home.', 'Streaks, mastery stars and a Captain’s Locker of perks you control — turn consistency into the real-world rewards you choose.'],
-                ['🧩', 'All three SEA components', 'Math, ELA & Writing as one.', 'Not disconnected drills — the whole SEA taught as one connected journey, including the writing and vocabulary most tools skip entirely.'],
-                ['🏫', 'School journal', 'Works with their school.', 'Add graded classroom papers, and what their teacher sees weighs into the daily plan — one honest picture of your child, home and school together.'],
-                ['⏸️', 'Pause & resume', 'Fits your family.', 'Life happens — pause the journey and resume with one tap. The plan re-paces itself around the break so nothing is lost.'],
-                ['⏱️', 'Healthy usage caps', '20 minutes to 2 hours.', 'A guided daily time budget keeps sessions healthy and focused — from a quick sail to a two-hour deep dive — never endless screen time.'],
-                ['🚀', 'Roadmap features included', 'It only gets better.', 'Every new feature we ship lands in your plan at no extra cost — pseudonymous leagues, new tools and more are already on the way.'],
+                ['🧭', 'A daily SEA plan', 'No more wondering what to practise.', 'SmoothSeas turns Math, ELA and Writing into a clear daily route. Your child opens the app and sees the next useful task, paced around their exam year and current level.'],
+                ['🧠', 'Re-teaching on every miss', 'Mistakes become the next lesson.', "When your child slips, Smooth explains the rule again, checks that it clicks, and brings the skill back into practice instead of simply marking the answer wrong."],
+                ['🏝️', 'A voyage they return to', 'The work feels like progress.', 'Skills become islands, streaks and rewards. The game layer gives children a reason to show up, while the learning layer keeps the effort tied to real SEA skills.'],
+                ['📊', 'Weekly parent visibility', 'You see the truth without chasing.', 'The Parent Portal shows what they mastered, what needed re-teaching, and where their pace stands, so you are not relying on one-word answers after school.'],
+                ['✍️', 'Writing, reading and vocabulary', 'The full SEA gets attention.', 'Daily writing, reading comprehension and vocabulary sit beside Math and ELA practice, so the parts families often postpone stay in the weekly rhythm.'],
+                ['⏸️', 'Flexible family rhythm', 'It bends when life gets busy.', 'Sessions can be short or deep, and the plan adjusts when your family pauses, resumes, or needs extra practice before moving on.'],
             ];
         @endphp
 
@@ -1102,11 +1088,12 @@
         border-left: 0;
         border-right: 0;
     }
-    @media (prefers-reduced-motion: reduce) {
-        .reel-figure video,
-        .reel-sound { display: none; }
-        .reel-figure .reel-static { display: block; }
-    }
+        @media (prefers-reduced-motion: reduce) {
+            .reel-figure video,
+            .reel-sound { display: none; }
+            .reel-figure .reel-static { display: block; }
+        }
+        #see-it { display: none; }
 </style>
 <section class="band" id="see-it" style="background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
     <div class="wrap">
@@ -1350,12 +1337,11 @@
         ['features', 'Features'],
         ['for-parents', 'For parents'],
         ['how-it-works', 'How it works'],
-        ['see-it', 'See it in action'],
         ['meet-smooth', 'Meet Smooth'],
         ['pricing', 'Pricing'],
     ];
 @endphp
-<div class="page-nav" id="pageNav">
+<div class="page-nav" id="pageNav" hidden>
     <button class="pnav-btn" type="button" aria-label="On this page" aria-expanded="false" aria-controls="pnavPanel">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
             <circle cx="5" cy="6" r="1.5" fill="currentColor" stroke="none"/><circle cx="5" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="5" cy="18" r="1.5" fill="currentColor" stroke="none"/>

@@ -6,7 +6,8 @@ use App\Models\User;
 it('shows a hero that names the parent pain, with Smooth beside it', function () {
     $this->get('/')
         ->assertOk()
-        ->assertSee('never have to guess')                              // the core worry, in the headline
+        ->assertSee('SEA prep your child will')                         // the clearer parent-facing promise
+        ->assertSee('You stop guessing')                                // the core parent worry
         ->assertSee('/images/voyage/companion/smooth.webp')             // Smooth in the hero
         ->assertSee('Sign up free')                                     // primary conversion CTA — sign-ups
         ->assertSee(route('register'))                                  // the sign-up path is linked
@@ -35,14 +36,14 @@ it('promises visibility — a weekly Parent Portal picture and a visible re-teac
         ->assertOk()
         ->assertSee('Parent Portal')
         ->assertSee('re-teach')
-        ->assertSee('Every week');
+        ->assertSee('honest progress every week');
 })->group('scenario:LP-03');
 
-it('promises control and adaptability — a self-planning curriculum that pauses for life', function () {
+it('promises control and adaptability — a daily plan that pauses for life', function () {
     $this->get('/')
         ->assertOk()
-        ->assertSee('plans itself')
-        ->assertSee('pause and resume');
+        ->assertSee('A daily SEA plan')
+        ->assertSee('pauses, resumes');
 })->group('scenario:LP-04');
 
 it('promises enjoyment — the gamified voyage map with streaks', function () {
@@ -52,30 +53,28 @@ it('promises enjoyment — the gamified voyage map with streaks', function () {
         ->assertSee('streaks');
 })->group('scenario:LP-05');
 
-it('promises convenience — lessons, tutorials and practice in one place', function () {
+it('promises convenience — a clear daily route instead of scattered tools', function () {
     $this->get('/')
         ->assertOk()
-        ->assertSee('Lessons, tutorials and practice');
+        ->assertSee('clear daily route')
+        ->assertSee('the next useful task');
 })->group('scenario:LP-06');
 
 it('promises coverage of every SEA component — Math, ELA and Writing', function () {
     $this->get('/')
         ->assertOk()
-        ->assertSee('Mathematics')
-        ->assertSee('English Language Arts')
+        ->assertSee('Math')
+        ->assertSee('ELA')
         ->assertSee('Writing')
         ->assertSee('SEA');
 })->group('scenario:LP-07');
 
-it('promises a flexible daily rhythm — 20 minutes to two hours, unlimited practice', function () {
+it('promises a flexible family rhythm', function () {
     $this->get('/')
         ->assertOk()
-        ->assertSee('daily study plan')
-        ->assertSee('as little as 20 minutes')
-        ->assertSee('two full hours')
-        ->assertSee('Unlimited practice')
-        ->assertSee('morning vocabulary ritual')
-        ->assertSee('reading assignments');
+        ->assertSee('Flexible family rhythm')
+        ->assertSee('short or deep')
+        ->assertSee('extra practice');
 })->group('scenario:LP-08');
 
 it('promises reinforcement — the parent sets the treasure', function () {
@@ -95,7 +94,7 @@ it('promises consolidation — the school journal, honestly marked as coming', f
 it('leads with a single clear hero — the core worry and one primary CTA, no auto-rotating carousel', function () {
     $this->get('/')
         ->assertOk()
-        ->assertSee('never have to guess')                              // the core worry, stated once and plainly
+        ->assertSee('You stop guessing')                                // the core worry, stated plainly
         ->assertSee('Sign up free')                                     // the one primary conversion CTA — sign-ups
         ->assertSee('Book a free call')                                 // the quiet secondary "talk first" path
         ->assertDontSee('jumbo-dot');                                   // the old auto-rotating jumbotron is gone
@@ -133,19 +132,10 @@ it('prices plainly — free forever vs $150/month, with the 14-day guarantees', 
 it('shows a real gameplay reel — an autoplaying, looping, muted demo video with a poster', function () {
     $this->get('/')
         ->assertOk()
-        ->assertSee('See it in action')
-        ->assertSee('A real sail through the Voyage')
-        ->assertSee('reels/child-reel.mp4')                             // Safari/iOS + smaller primary source
-        ->assertSee('reels/child-reel.webm')                            // the actual demo footage, not a mock
-        ->assertSee('reels/child-reel-poster.png')                      // poster + reduced-motion static fallback
-        ->assertSee('autoplay')
-        ->assertSee('loop')
-        ->assertSee('playsinline')
-        ->assertSee('Turn sound on')                                   // narration is reachable via the unmute control
-        ->assertSee('For your child')                                  // hero jumbotron tab — the child reel
-        ->assertSee('For you (parent)')                                // hero jumbotron tab — the parent portal reel
-        ->assertSee('reels/parent-reel.mp4')                           // the guardian-portal walkthrough video
-        ->assertSee('reels/parent-reel.webm');
+        ->assertSee('demo-pane-child')
+        ->assertSee('demo-pane-parent')
+        ->assertSee('For your child')
+        ->assertSee('For parents');
 })->group('scenario:LP-14');
 
 it('offers the hero demo as a Child / Parent animation toggle, with the guardian portal behind its own tab', function () {
@@ -159,30 +149,24 @@ it('offers the hero demo as a Child / Parent animation toggle, with the guardian
         ->assertSee("Their logins in hand — and you're in control", false);    // the child-login + controls scene
 })->group('scenario:LP-14');
 
-it('lists an exhaustive feature set with hover-for-detail explanations', function () {
+it('lists a focused parent-facing feature set', function () {
     $this->get('/')
         ->assertOk()
-        ->assertSee('Everything on board')
-        ->assertSee('Gamified Voyage map')
-        ->assertSee('10,000+ question bank')
-        ->assertSee('Built testing 50+ AI models')
-        ->assertSee('A novel learning loop')
-        ->assertSee('Adaptive learning with AI')
-        ->assertSee('Daily writing exercises')
-        ->assertSee('Daily vocabulary')
-        ->assertSee('Data-driven parent insights')
-        ->assertSee('Roadmap features included')
-        ->assertSee('feat-back', false)                                // the flip-card back with the detail
-        ->assertSee('Hover to flip', false)                            // the flip affordance
-        ->assertSee('never built before');                            // a detail explanation is present
+        ->assertSee('What matters')
+        ->assertSee('A daily SEA plan')
+        ->assertSee('Re-teaching on every miss')
+        ->assertSee('A voyage they return to')
+        ->assertSee('Weekly parent visibility')
+        ->assertSee('Writing, reading and vocabulary')
+        ->assertSee('Flexible family rhythm')
+        ->assertDontSee('Built testing 50+ AI models')
+        ->assertDontSee('Roadmap features included');
 })->group('scenario:LP-05');
 
-it('offers a collapsible "On this page" section menu for the long page', function () {
+it('keeps the old long-page section menu out of the visible landing page', function () {
     $this->get('/')
         ->assertOk()
-        ->assertSee('page-nav', false)
-        ->assertSee('On this page')            // the collapsible menu header
-        ->assertSee('Page sections')           // aria-label on the panel
-        ->assertSee('data-sec="features"', false)
-        ->assertSee('data-sec="pricing"', false);
+        ->assertSee('pageNav', false)
+        ->assertSee('hidden', false)
+        ->assertDontSee('data-sec="see-it"', false);
 })->group('scenario:LP-01');
