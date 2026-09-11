@@ -36,6 +36,11 @@ return [
             'icon' => 'facebook',
             'services_key' => 'facebook',
         ],
+        'linkedin-openid' => [
+            'label' => 'LinkedIn',
+            'icon' => 'linkedin',
+            'services_key' => 'linkedin-openid',
+        ],
         'tiktok' => [
             'label' => 'TikTok',
             'icon' => 'tiktok',
