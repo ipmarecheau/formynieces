@@ -13,6 +13,11 @@
         .soc-consent { display:flex; gap:9px; align-items:flex-start; margin:16px 0 4px; font-size:13px; line-height:1.4; color:var(--muted,#475569); font-weight:600; text-align:left; }
         .soc-consent input { width:18px; height:18px; margin-top:1px; flex:none; }
         .soc-consent a { font-weight:800; text-decoration:underline; }
+        /* Coming-soon provider — greyed, not clickable, reveals a hint on hover. */
+        .soc-soon { position:relative; opacity:.55; cursor:not-allowed; filter:grayscale(.4); }
+        .soc-soon .soc-soon-badge { position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+            gap:6px; background:rgba(15,23,42,.86); color:#fff; font-weight:800; font-size:13.5px; border-radius:12px; opacity:0; transition:opacity .15s; }
+        .soc-soon:hover .soc-soon-badge { opacity:1; }
     </style>
 
     @if ($consent)
@@ -44,6 +49,17 @@
                 @endif
                 <span>Continue with {{ $provider['label'] }}</span>
             </a>
+        @endforeach
+
+        {{-- Coming-soon providers: greyed out, "Coming soon!" on hover, not clickable. --}}
+        @foreach (\App\Services\Auth\SocialProviders::comingSoon() as $key => $soon)
+            <span class="soc-btn soc-soon" role="button" aria-disabled="true" title="Coming soon!">
+                @if ($soon['icon'] === 'apple')
+                    <svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#111" d="M33.5 25.4c-.05-4.1 3.35-6.06 3.5-6.16-1.9-2.79-4.87-3.17-5.93-3.21-2.52-.26-4.92 1.48-6.2 1.48-1.28 0-3.25-1.44-5.34-1.4-2.75.04-5.28 1.6-6.7 4.06-2.85 4.95-.73 12.28 2.05 16.3 1.36 1.97 2.98 4.18 5.11 4.1 2.05-.08 2.82-1.33 5.3-1.33 2.48 0 3.17 1.33 5.34 1.29 2.2-.04 3.6-2.01 4.95-3.99 1.56-2.29 2.2-4.51 2.24-4.62-.05-.02-4.3-1.65-4.35-6.52zM29.4 13.2c1.13-1.37 1.9-3.28 1.69-5.2-1.63.07-3.61 1.09-4.78 2.46-1.05 1.21-1.97 3.15-1.72 5 1.82.14 3.68-.92 4.81-2.26z"/></svg>
+                @endif
+                <span>Continue with {{ $soon['label'] }}</span>
+                <span class="soc-soon-badge">Coming soon! ⏳</span>
+            </span>
         @endforeach
     </div>
 

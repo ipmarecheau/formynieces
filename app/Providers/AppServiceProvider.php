@@ -43,11 +43,10 @@ class AppServiceProvider extends ServiceProvider
         // (the same chrome Livewire pages get via #[Layout('layouts.guardian')]).
         Blade::anonymousComponentPath(resource_path('views/layouts'), 'layouts');
 
-        // Register the community Socialite drivers (Microsoft covers Hotmail/Outlook/Live;
-        // TikTok). Google and Facebook are built into Socialite core.
+        // Register the community Socialite driver (Microsoft covers Hotmail/Outlook/Live).
+        // Google, Facebook and LinkedIn (OpenID) are built into Socialite core.
         Event::listen(function (SocialiteWasCalled $event) {
             $event->extendSocialite('microsoft', Provider::class);
-            $event->extendSocialite('tiktok', \SocialiteProviders\TikTok\Provider::class);
         });
     }
 }

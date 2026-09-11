@@ -47,6 +47,9 @@ Route::get('/terms', [PublicPageController::class, 'terms'])->name('terms');
 Route::get('/privacy', [PublicPageController::class, 'privacy'])->name('privacy');
 Route::get('/sitemap.xml', [PublicPageController::class, 'sitemap'])->name('sitemap');
 
+// Brand assets gallery (SVG + PNG logo, banner, social card, favicon).
+Route::get('/brand', fn () => response()->file(public_path('brand.html')))->name('brand');
+
 // Public blog / resources library (BLOG).
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/{article}', [BlogController::class, 'show'])->name('blog.show');

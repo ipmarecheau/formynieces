@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SmoothSeas — Brand Assets</title>
+<style>
+  :root { --teal:#0d9488; --deep:#0a5c68; --ink:#0f172a; --muted:#5b6b73; --line:#e3ddcf; --sand:#fbf8f2; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--sand); color:var(--ink); font-family:'Trebuchet MS','Segoe UI',system-ui,sans-serif; }
+  header { text-align:center; padding:40px 20px 10px; }
+  header h1 { margin:0 0 6px; color:var(--teal); font-size:30px; }
+  header p { margin:0; color:var(--muted); font-size:15px; }
+  .wrap { max-width:980px; margin:0 auto; padding:24px 18px 60px; display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:20px; }
+  .card { background:#fff; border:1px solid var(--line); border-radius:16px; overflow:hidden; box-shadow:0 10px 26px -18px rgba(18,34,46,.3); }
+  .preview { display:flex; align-items:center; justify-content:center; min-height:180px; padding:18px;
+    background-color:#eef2f1;
+    background-image:linear-gradient(45deg,#e2e8e6 25%,transparent 25%),linear-gradient(-45deg,#e2e8e6 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#e2e8e6 75%),linear-gradient(-45deg,transparent 75%,#e2e8e6 75%);
+    background-size:20px 20px; background-position:0 0,0 10px,10px -10px,-10px 0; }
+  .preview img { max-width:100%; max-height:220px; }
+  .meta { padding:14px 16px; }
+  .meta h2 { margin:0 0 3px; font-size:16px; color:var(--ink); }
+  .meta .dim { font-size:12.5px; color:var(--muted); margin:0 0 10px; }
+  .urlrow { display:flex; gap:8px; align-items:center; }
+  .urlrow input { flex:1; font-size:12px; padding:8px 10px; border:1px solid var(--line); border-radius:9px; background:#f6faf9; color:var(--ink); }
+  .btn { text-decoration:none; font-size:12.5px; font-weight:700; padding:8px 12px; border-radius:9px; border:1px solid var(--teal); color:var(--teal); background:#fff; white-space:nowrap; }
+  .btn.solid { background:var(--teal); color:#fff; }
+  footer { text-align:center; color:var(--muted); font-size:12.5px; padding:0 20px 40px; }
+</style>
+</head>
+<body>
+  <header>
+    <h1>SmoothSeas — Brand Assets</h1>
+    <p>Vector (SVG) assets, generated for the app. Scale to any size with no quality loss.</p>
+  </header>
+  <div class="wrap" id="grid"></div>
+  <footer>All assets are SVG. Right-click → “Save image as…”, use the Download button, or open the raw URL. Colours: teal #0d9488 · deep #0a5c68 · gold #f6b71e.</footer>
+
+  <script>
+    const assets = [
+      { name: 'Logo (horizontal)', file: 'brand-kit/logo', dim: 'SVG · PNG 1040 × 320' },
+      { name: 'Logo mark (icon)',  file: 'brand-kit/logo-mark', dim: 'SVG · PNG 512 × 512' },
+      { name: 'Banner',            file: 'brand-kit/banner', dim: 'SVG · PNG 1200 × 400' },
+      { name: 'Social card (OG)',  file: 'brand-kit/social-card', dim: 'SVG · PNG 1200 × 630' },
+      { name: 'Favicon',           file: 'brand-kit/favicon', dim: 'SVG · PNG 256 × 256' },
+    ];
+    const grid = document.getElementById('grid');
+    const base = location.origin + '/';
+    assets.forEach(a => {
+      const el = document.createElement('div');
+      el.className = 'card';
+      el.innerHTML = `
+        <div class="preview"><img src="${a.file}.png" alt="${a.name}"></div>
+        <div class="meta">
+          <h2>${a.name}</h2>
+          <p class="dim">${a.dim}</p>
+          <div class="urlrow">
+            <input value="${base + a.file}.png" readonly onclick="this.select()">
+            <a class="btn solid" href="${a.file}.png" download>PNG</a>
+            <a class="btn" href="${a.file}.svg" download>SVG</a>
+          </div>
+        </div>`;
+      grid.appendChild(el);
+    });
+  </script>
+</body>
+</html>

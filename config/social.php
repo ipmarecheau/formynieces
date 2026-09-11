@@ -41,10 +41,22 @@ return [
             'icon' => 'linkedin',
             'services_key' => 'linkedin-openid',
         ],
-        'tiktok' => [
-            'label' => 'TikTok',
-            'icon' => 'tiktok',
-            'services_key' => 'tiktok',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Coming soon
+    |--------------------------------------------------------------------------
+    |
+    | Providers advertised but not yet live — rendered as greyed-out buttons with
+    | a "Coming soon!" hint, regardless of credentials. Move a row up into
+    | `providers` (and add its driver + creds) to switch it on.
+    |
+    */
+    'coming_soon' => [
+        'apple' => [
+            'label' => 'Apple',
+            'icon' => 'apple',
         ],
     ],
 

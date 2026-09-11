@@ -27,4 +27,14 @@ class SocialProviders
     {
         return array_key_exists($provider, self::enabled());
     }
+
+    /**
+     * Providers advertised as "coming soon" — shown greyed-out, not yet usable.
+     *
+     * @return array<string, array{label:string, icon:string}>
+     */
+    public static function comingSoon(): array
+    {
+        return config('social.coming_soon', []);
+    }
 }

@@ -1,0 +1,35 @@
+<svg width="1200" height="400" viewBox="0 0 1200 400" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SmoothSeas banner">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1aa7c0"/>
+      <stop offset="0.55" stop-color="#0d7d8c"/>
+      <stop offset="1" stop-color="#0a5c68"/>
+    </linearGradient>
+    <linearGradient id="bshell" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6b71e"/>
+      <stop offset="1" stop-color="#e08a0b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="400" fill="url(#sky)"/>
+  <!-- sun -->
+  <circle cx="1010" cy="96" r="52" fill="#f6b71e" opacity="0.9"/>
+  <!-- waves -->
+  <path d="M0 300c80 0 80-26 160-26s80 26 160 26 80-26 160-26 80 26 160 26 80-26 160-26 80 26 160 26 80-26 160-26v126H0z" fill="#0a5c68" opacity="0.55"/>
+  <path d="M0 330c80 0 80-24 160-24s80 24 160 24 80-24 160-24 80 24 160 24 80-24 160-24 80 24 160 24 80-24 160-24v96H0z" fill="#083f49" opacity="0.7"/>
+  <!-- turtle mark -->
+  <g transform="translate(96,120) scale(0.62)">
+    <ellipse cx="70" cy="86" rx="20" ry="12" fill="#0d9488" transform="rotate(-35 70 86)"/>
+    <ellipse cx="186" cy="86" rx="20" ry="12" fill="#0d9488" transform="rotate(35 186 86)"/>
+    <ellipse cx="74" cy="150" rx="18" ry="11" fill="#0d9488" transform="rotate(30 74 150)"/>
+    <ellipse cx="182" cy="150" rx="18" ry="11" fill="#0d9488" transform="rotate(-30 182 150)"/>
+    <circle cx="128" cy="70" r="20" fill="#0d9488"/>
+    <circle cx="121" cy="66" r="3.4" fill="#06242e"/>
+    <circle cx="135" cy="66" r="3.4" fill="#06242e"/>
+    <ellipse cx="128" cy="128" rx="58" ry="50" fill="url(#bshell)" stroke="#b4700a" stroke-width="3"/>
+    <path d="M128 82v92M78 110l100 36M178 110L78 146" stroke="#b4700a" stroke-opacity="0.55" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="128" cy="128" r="15" fill="#fff6df" stroke="#b4700a" stroke-width="3"/>
+  </g>
+  <!-- text -->
+  <text x="320" y="180" font-family="'Trebuchet MS','Segoe UI',Verdana,sans-serif" font-size="76" font-weight="800" fill="#ffffff" letter-spacing="-1">SmoothSeas</text>
+  <text x="322" y="228" font-family="'Trebuchet MS','Segoe UI',Verdana,sans-serif" font-size="30" font-weight="600" fill="#cdeef2">Confident, joyful SEA preparation — one voyage at a time.</text>
+</svg>
