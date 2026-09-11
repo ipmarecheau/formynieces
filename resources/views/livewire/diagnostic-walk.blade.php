@@ -67,7 +67,8 @@
     }
     /* Accessible "unknown number" box, CSS-drawn so it always renders. */
     .dw-unknown { display:inline-block; width:0.95em; height:0.95em; border:2.5px solid currentColor; border-radius:5px; vertical-align:-0.12em; margin:0 0.08em; }
-    .dw-progress-text { text-align:center; font-size:12.5px; font-weight:700; color:#93b2cc; margin:10px 0 4px; line-height:1.5; }
+    .dw-progress-text { text-align:center; font-size:12.5px; font-weight:700; color:#93b2cc; margin:10px 0 2px; line-height:1.5; }
+    .dw-reassure-text { text-align:center; font-size:12px; font-weight:700; color:#67e8f9; margin:0 0 4px; }
     .dw-options { display: flex; flex-direction: column; gap: 14px; }
     .dw-option {
         background: rgba(255,255,255,0.05);
@@ -138,9 +139,12 @@
 
     @elseif ($question === null)
     <div class="dw-card">
-        <p class="dw-done">You've completed the diagnostic! 🎉</p>
-        <p style="text-align:center; color:rgba(196,181,253,0.8); font-size:15px; line-height:1.6; margin:14px 0 24px;">
-            Your map is ready — let's meet your guide and set sail on your Voyage.
+        <p class="dw-done">Nice sailing! 🎉</p>
+        <p style="text-align:center; color:rgba(196,181,253,0.9); font-size:15px; line-height:1.6; margin:14px 0 8px;">
+            That wasn't a test — it just showed me where to start. 🌟
+        </p>
+        <p style="text-align:center; color:rgba(196,181,253,0.8); font-size:15px; line-height:1.6; margin:0 0 24px;">
+            I've drawn your very own map 🗺️ — let's set sail and begin your Voyage.
         </p>
         <a href="{{ route('student.welcome') }}" class="dw-continue" style="text-decoration:none; text-align:center;">
             Set sail →
@@ -168,6 +172,7 @@
             Question {{ $itemNumber }} of {{ $planTotal }} · about {{ $minsLeft }} min left ·
             you can stop and come back anytime — your progress is saved 🐢
         </p>
+        <p class="dw-reassure-text">This isn't a test — I'm just finding the right place to start your map. 🌊</p>
 
         {{-- Question card --}}
         <div class="dw-card" wire:key="item-{{ $itemNumber }}">
