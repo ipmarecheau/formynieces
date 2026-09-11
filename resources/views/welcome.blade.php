@@ -558,6 +558,11 @@
             .final-cta { padding: 34px 20px; }
             .final-cta h2 { font-size: clamp(24px, 7.5vw, 30px); }
             .trust-row { grid-template-columns: 1fr 1fr; gap: 20px 14px; }
+            .feat-card { height: auto; min-height: 168px; cursor: default; }
+            .feat-inner { transform: none !important; transition: none; }
+            .feat-face { position: static; }
+            .feat-back { display: none; }
+            .feat-more { display: none; }
             .footer-inner { flex-direction: column; text-align: center; gap: 12px; }
             body { padding-bottom: 76px; }              /* room for the sticky CTA */
         }
@@ -666,12 +671,12 @@
 <section class="hero">
     <div class="wrap">
         <div class="hero-lead" data-reveal>
-            <span class="hero-badge hero-badge-center">🇹🇹 SEA 2027 · built for Caribbean families</span>
-            <h1>SEA prep your child will <span class="accent">actually keep doing</span>.</h1>
+            <span class="hero-badge hero-badge-center">🇹🇹 SEA for Standards 3-5 · Math, ELA and Writing</span>
+            <h1>The SEA prep coach that tells you <span class="accent">what to practise next</span>.</h1>
             <p class="hero-lede">
-                SmoothSeas gives your child a daily Math, ELA and Writing plan, <strong>re-teaches</strong>
-                what they miss, and shows you honest progress every week. You stop guessing, and they know
-                exactly what to do next.
+                SmoothSeas finds your child's weak topics, gives them a short daily SEA plan, checks writing
+                against the SEA rubric, and shows you whether they are getting ready for exam day. No worksheet
+                hunting. No guessing. No AI answers you have to blindly trust.
             </p>
             <div class="hero-cta">
                 @auth
@@ -683,7 +688,7 @@
             </div>
             <div class="hero-captain">
                 <img src="{{ asset('images/voyage/companion/smooth.webp') }}" alt="Smooth the turtle" width="44" height="44">
-                <span><strong>Meet Smooth</strong> — the patient guide who explains misses and celebrates progress.</span>
+                <span><strong>Meet Smooth</strong> — the coach who explains missed rules using verified SEA practice.</span>
             </div>
             @guest
                 <p class="hero-reassure">
@@ -757,10 +762,10 @@
 <div class="trust">
     <div class="wrap">
         <div class="trust-row">
-            <div><span class="trust-num">3</span><div class="trust-label">SEA subjects, one voyage</div></div>
-            <div><span class="trust-num">Daily</span><div class="trust-label">clear plan for today</div></div>
-            <div><span class="trust-num">1 / week</span><div class="trust-label">honest parent report</div></div>
-            <div><span class="trust-num">14 days</span><div class="trust-label">money-back guarantee</div></div>
+            <div><span class="trust-num">10 min</span><div class="trust-label">daily plan to start</div></div>
+            <div><span class="trust-num">3</span><div class="trust-label">Math, ELA and Writing</div></div>
+            <div><span class="trust-num">SEA</span><div class="trust-label">rubric-based feedback</div></div>
+            <div><span class="trust-num">Weekly</span><div class="trust-label">plain parent actions</div></div>
         </div>
     </div>
 </div>
@@ -769,18 +774,18 @@
 <section class="band" id="why-it-works">
     <div class="wrap">
         <div class="section-head" data-reveal>
-            <span class="eyebrow">Why it works</span>
-            <h2>Motivation, teaching, and visibility in one place.</h2>
-            <p>SmoothSeas keeps the daily routine simple: your child wants to return, Smooth helps when they miss, and you can see whether the work is paying off.</p>
+            <span class="eyebrow">The gap in SEA prep</span>
+            <h2>Free papers and lessons are everywhere. Direction is the hard part.</h2>
+            <p>Most parents can find worksheets, classes or apps. The harder question is what your child should do today, what the mistake means, and whether the work is improving readiness.</p>
         </div>
         <div class="engine-grid">
             <div class="engine-card game" data-reveal>
                 <div class="engine-icon">🗺️</div>
                 <span class="engine-tag">For your child</span>
-                <h3>A reason to show up</h3>
-                <p>Lessons live on a <strong>voyage map</strong> with islands, streaks and rewards. The routine feels like progress, so practice is easier to start and easier to repeat.</p>
+                <h3>A short plan they can finish</h3>
+                <p>SmoothSeas turns the SEA syllabus into a daily route. Your child sees the next useful task, earns progress on the voyage map, and keeps moving without facing a pile of random practice.</p>
                 <ul class="engine-list">
-                    <li>Voyage map</li><li>Streaks</li><li>Rewards</li><li>Mastery stars</li>
+                    <li>Daily plan</li><li>Voyage map</li><li>Streaks</li><li>Mastery checks</li>
                 </ul>
             </div>
 
@@ -794,15 +799,15 @@
 
             <div class="engine-card ai" data-reveal style="--rd:.08s">
                 <div class="engine-icon">🧠</div>
-                <span class="engine-tag">For learning</span>
-                <h3>Teaching when they need it</h3>
-                <p>Under the voyage, SmoothSeas adjusts the daily plan and <strong>re-teaches</strong> missed rules. Practice stays tied to real mastery, not just points.</p>
+                <span class="engine-tag">For parents</span>
+                <h3>Plain answers, not more tabs</h3>
+                <p>The parent view explains weak topics, writing growth, readiness, and the action to take this week. You see why the plan changed and what still needs attention.</p>
                 <ul class="engine-list">
-                    <li>Daily plan</li><li>Re-teaching</li><li>Mastery checks</li><li>Parent reports</li>
+                    <li>Weak topics</li><li>Writing feedback</li><li>Readiness</li><li>Next actions</li>
                 </ul>
             </div>
         </div>
-        <p class="engine-fuse-line" data-reveal>The voyage gets them started. <b>The teaching makes the work count.</b></p>
+        <p class="engine-fuse-line" data-reveal>The child gets a doable next step. <b>The parent gets the reason behind it.</b></p>
 
         <div class="tandem">
             <div class="tandem-head" data-reveal>
@@ -868,19 +873,19 @@
     </style>
     <div class="wrap">
         <div class="section-head" data-reveal>
-            <span class="eyebrow">What matters</span>
-            <h2>The daily plan, the teaching, and the proof.</h2>
-            <p>Parents do not need a longer list of tools. You need to know your child is working on the right thing, getting help when they miss, and moving toward SEA with evidence.</p>
+            <span class="eyebrow">What SmoothSeas owns</span>
+            <h2>The operating system for SEA preparation.</h2>
+            <p>SmoothSeas is built around the decisions parents make every week: what to practise, how to fix mistakes, whether writing is improving, and when timed exam practice is realistic.</p>
         </div>
 
         @php
             $features = [
-                ['🧭', 'A daily SEA plan', 'No more wondering what to practise.', 'SmoothSeas turns Math, ELA and Writing into a clear daily route. Your child opens the app and sees the next useful task, paced around their exam year and current level.'],
-                ['🧠', 'Re-teaching on every miss', 'Mistakes become the next lesson.', "When your child slips, Smooth explains the rule again, checks that it clicks, and brings the skill back into practice instead of simply marking the answer wrong."],
-                ['🏝️', 'A voyage they return to', 'The work feels like progress.', 'Skills become islands, streaks and rewards. The game layer gives children a reason to show up, while the learning layer keeps the effort tied to real SEA skills.'],
-                ['📊', 'Weekly parent visibility', 'You see the truth without chasing.', 'The Parent Portal shows what they mastered, what needed re-teaching, and where their pace stands, so you are not relying on one-word answers after school.'],
-                ['✍️', 'Writing, reading and vocabulary', 'The full SEA gets attention.', 'Daily writing, reading comprehension and vocabulary sit beside Math and ELA practice, so the parts families often postpone stay in the weekly rhythm.'],
-                ['⏸️', 'Flexible family rhythm', 'It bends when life gets busy.', 'Sessions can be short or deep, and the plan adjusts when your family pauses, resumes, or needs extra practice before moving on.'],
+                ['🩺', 'Diagnostic first', 'Start with the real gaps.', 'SmoothSeas begins by finding the topics your child has actually mastered and the ones that need work, then builds the route from that starting point.'],
+                ['🧭', 'Daily 10-minute plan', 'A clear next step every day.', 'The home screen answers the question parents keep asking: what should we practise today? Children can start small, then continue into deeper practice when they have time.'],
+                ['🧠', 'Verified explanations', 'AI help without blind trust.', 'Smooth re-teaches missed rules using SEA-aligned explanations and practice, so the feedback is structured around the syllabus instead of a generic chatbot guess.'],
+                ['✍️', 'SEA writing feedback', 'Composition gets measured.', 'Writing practice is checked against the skills the SEA rewards: structure, clarity, vocabulary, development and control. Parents can see whether writing is actually improving.'],
+                ['📊', 'Parent action dashboard', 'Know what to do this week.', 'The Parent Portal turns progress into plain-English actions: weak topics, recent re-teaches, readiness signals and what to review next.'],
+                ['🎯', 'Readiness and school planning', 'Prep connects to the goal.', 'Timed practice and readiness signals help families understand whether their child is moving toward exam conditions and realistic school-choice planning.'],
             ];
         @endphp
 
@@ -910,9 +915,9 @@
 <section class="band" id="for-parents" style="background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
     <div class="wrap">
         <div class="section-head" data-reveal>
-            <span class="eyebrow">For parents</span>
-            <h2>The worries you carry — handled.</h2>
-            <p>You don't need another app to police. You need to stop guessing. Here's what SmoothSeas takes off your plate.</p>
+            <span class="eyebrow">Positioned against the market</span>
+            <h2>Not another lesson centre. A prep coach between everything else.</h2>
+            <p>SmoothSeas does not win by having more content than the internet. It wins by turning content, practice and feedback into a plan parents can trust.</p>
         </div>
 
         <div class="features">
@@ -980,8 +985,8 @@
     <div class="wrap">
         <div class="section-head" data-reveal>
             <span class="eyebrow">How it works</span>
-            <h2>From sign-up to SEA day, in three steps.</h2>
-            <p>You set the compass once. Smooth handles the sailing.</p>
+            <h2>One weekly loop for Standards 3-5.</h2>
+            <p>Start with the gaps, practise the right thing, then use the report to decide what comes next.</p>
         </div>
         <div class="steps">
             <div class="step" data-reveal>
@@ -1217,8 +1222,8 @@
 <section class="band" id="pricing" style="background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
     <div class="wrap">
         <div class="section-head" data-reveal>
-            <span class="eyebrow">Simple pricing</span>
-            <h2>Free to test every topic. Paid to master them.</h2>
+            <span class="eyebrow">Pricing built for SEA season</span>
+            <h2>Start free. Upgrade when the plan becomes part of the routine.</h2>
             <p>The free plan lets your child <strong>test themselves on every topic in the whole SEA syllabus</strong> — so you can see exactly where they stand. The full plan is where they actually <strong>get taught, get ahead, and stay motivated</strong>. And your first month is free.</p>
         </div>
         <div class="plans-grid">
@@ -1242,8 +1247,8 @@
                 @endauth
             </div>
             <div class="price-card full" data-reveal style="--rd:.08s">
-                <span class="price-flag">Everything · 1st month free</span>
-                <div class="price">$150<span> / month</span></div>
+                <span class="price-flag">Core · suggested launch price</span>
+                <div class="price">$79<span> / month</span></div>
                 <p class="price-note">per family · cancel anytime</p>
                 <p class="price-note" style="color:var(--teal-deep); margin:10px 0 0;">Every topic taught, paced and rewarded — the whole voyage.</p>
                 <ul class="price-feats">
@@ -1287,8 +1292,8 @@
                 <p>Pick up right where you left off — the tide is waiting.</p>
                 <a class="btn btn-primary btn-lg" href="{{ $homeUrl }}">Go to your dashboard →</a>
             @else
-                <h2>Give your child a smoother SEA.</h2>
-                <p>Create your free account and start today — no credit card, covered by the 14-day money-back promise. You risk nothing.</p>
+                <h2>Know what to practise next.</h2>
+                <p>Create your free account and see whether SmoothSeas gives your family the clarity your current SEA prep is missing.</p>
                 <a class="btn btn-primary btn-lg" href="{{ route('register') }}">Sign up free →</a>
                 <div style="margin-top:18px;"><a class="link-quiet" href="{{ route('book.call') }}">or book a free 15-minute call</a></div>
             @endauth

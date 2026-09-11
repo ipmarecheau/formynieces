@@ -48,6 +48,7 @@
 
 - [ ] Fill-in answer input mode for Math practice (real SEA format).
 - [ ] Timed past-paper mocks feeding the agent readiness view (never the map).
+- [ ] **Past paper bank** (`past_paper_bank.feature` PP-01…25, DRAFT): seed real papers as the gold reference + generate **AI variants** (same objective/difficulty, answer-verified in code, **QC-approved before a child sits them**); compose weekend papers **only from covered topics**; print a PDF traceable to its mark scheme; upload → reuse the school-journal OCR pipeline → grade against the known mark scheme; honest-layer results that corroborate/steer, child world stays mark-free. **Note:** this revises the standing "never AI-generated" constraint to "AI-drafted, human-approved" (00 §2/§5). Depends on `school_journal` (SJ pipeline, Phase 1) and `question_bank` (Phase 2). *Open design: the 7 decisions at the foot of the feature file.*
 - [ ] Deeper ELA Section II practice (fiction/non-fiction/poetry/graphic passages per the 13/13/8 mark split).
 - [ ] Adaptive layer v2: agent quietly routes weekly targets at weak strands (S5 refinement).
 - [ ] Performance + Groq quota review under real usage (cache insights per student-week).

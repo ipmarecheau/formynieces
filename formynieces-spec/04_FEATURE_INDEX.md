@@ -38,6 +38,7 @@
 | `exam_readiness.feature` | @roadmap | — | student |
 | `admin_content.feature` | mixed | modules @mvp · anchors, monitor @v1.1 | admin |
 | `question_bank.feature` | @v1.1 | — | admin |
+| `past_paper_bank.feature` | @roadmap | DRAFT (PP-01…25): seeded real papers + AI-generated skill-preserving variants (answer-verified + QC-gated), weekly papers scoped to covered topics, printable PDF traceable to its mark scheme, upload → SJ vision pipeline → authoritative grading, honest-layer results that corroborate/steer but never shame. Revises the "never AI-generated" constraint to "AI-drafted, human-approved" (see 00 §2/§5) | guardian, student, admin, system |
 | `writing_bank.feature` | @v1.1 | import/populate @v1.1 (WB-01/02 built) · serving, grading deferred (WB-03/04) | admin, student |
 | `essay_word_bank.feature` | @roadmap | curated, syllabus-aligned essay + word banks (EW-01…05) — durable successor to the LLM-carried reading pool | admin, system |
 | `progression.feature` | @roadmap | XP, multipliers, weekly leagues | student |

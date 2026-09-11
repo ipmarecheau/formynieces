@@ -130,6 +130,34 @@ prompt, options(json), correct_index, difficulty, strand, distractor_notes. Admi
 |---|---|---|
 | image, assessment_date, term, subject, strand, type, score, comment, ocr_text, confidence, status | upload (student/guardian), digitise (system OCR), confirm/correct (guardian), weigh (engine) | Strong performance on a covered strand records a **corroborating confidence signal** (SJ-08) — supports inferred understanding in the honest layer, never auto-masters or overrides platform mastery, never a gate. Feeds the weekly summary (SJ-04), the daily plan's gentle focus (SJ-05), and per-strand trends across terms (SJ-09). Guardian/system layer; never a judgement in the child's world (SJ-06). |
 
+### PastPaper 📄 🆕 (a printable practice paper — a template — PP)
+*Backed by (proposed):* `past_papers` (title, subject, provenance ∈ {real, generated}, source_ref, is_published, created_at) with an ordered `past_paper_questions` set. A real paper is seeded whole with its mark scheme as the **gold reference** (PP-01/02); the bank is portable and backed up on the question-bank's daily schedule (PP-03).
+
+| Attributes | Verbs | Relationships |
+|---|---|---|
+| title, subject, provenance, mark scheme | admin: seed, import/export, back up · system: compose a sitting from approved questions | has many PaperQuestions; is the source for PaperSittings |
+
+### PaperQuestion 📝 🆕 (one item on a paper — PP)
+*Backed by (proposed):* `past_paper_questions` (past_paper_id, number, item_type ∈ {mcq, numeric, extended, writing}, prompt, options json, correct_answer, mark_scheme json, marks, `syllabus_module_id` FK, objective, difficulty_band, provenance ∈ {real, generated}, `seed_question_id` self-FK, `qc_status` ∈ {unapproved, approved, discarded}, is_withdrawn).
+
+| Attributes | Verbs (system/admin) | Notes |
+|---|---|---|
+| item_type, prompt, answer/mark_scheme, objective, difficulty, provenance, seed ref, qc_status | generate a skill-preserving variant, self-verify the answer, queue for QC, approve/edit/discard, withdraw on report | A generated variant keeps the seed's **objective + difficulty band**, changing only surface numbers/names/context (PP-04). Its answer is **independently recomputed and must agree** before it enters the bank (PP-05); off-skill/ambiguous/unsolvable variants are rejected (PP-06). Generated items are **unapproved until an admin approves them** — only approved questions reach a child (PP-07); a parent-reported question is withdrawn pending review (PP-08). Every question maps to a covered syllabus module (PP-09). |
+
+### PaperSitting 🗓️ 🆕 (a specific child's issued paper instance — PP)
+*Backed by (proposed):* `paper_sittings` (student_id, past_paper_id or composed question_ids json, `paper_code` (unique, printed on the page), status ∈ {issued, printed, sat, uploaded, graded}, subject, length, issued_at, graded_at, score). Composed only from modules the student has **covered** (PP-09), optionally revisiting earlier covered topics (PP-10); parent chooses subject/length, default a short paper (PP-11); each week's paper is unique to the child (PP-12).
+
+| Attributes | Verbs (guardian/student/system) | Notes |
+|---|---|---|
+| paper_code, status, subject, length, score | compose, download as PDF, print, sit (on paper), upload, grade | The printable **PDF** carries a cover (name, date, time allowed, instructions) + working space (PP-13); the **mark scheme is stored separately, never on the child's copy** (PP-14); the `paper_code` uniquely ties an upload back to this sitting and its mark scheme, and a mismatched code is refused rather than mis-graded (PP-15). |
+
+### PaperSubmission 📥 🆕 (the uploaded, graded pages of a sitting — PP)
+*Backed by (proposed):* `paper_submissions` (paper_sitting_id, image_paths json, digitisation_status, created_at) **plus `paper_answers`** (sitting_id, question_id, read_answer, student_working_clip, is_correct, marks_awarded, confidence, reasoning_note). Reuses the school-journal **`OcrService` / `JournalDigitiser` / `TopicMatcher`** pipeline (SJ-07/11/12/13) — the difference is the **mark scheme is known**, so grading is authoritative, not inferred.
+
+| Attributes | Verbs (student/guardian/system) | Notes |
+|---|---|---|
+| image_paths, per-question read answer + marks + clip + confidence | upload pages, digitise, align to question by code+layout, grade against mark scheme, guardian confirm/correct | MCQ/numeric graded **deterministically** against the stored answer; extended-response against the stored **rubric** with marks shown (PP-18); low-confidence reads flagged for guardian correction, whose call takes precedence (PP-19/25); writing tasks route to the **writing track**, not a numeric mark (PP-20); each answer keeps a clipped image of the working + likely misconception in the honest layer (PP-21). Results **corroborate/steer** learning signals but never gate or master a module (PP-23), and stay **mark-free in the child's world** (PP-24). |
+
 ### ExamAgentInsight 🤖 (computed, optionally cached)
 Honest layer: pace vs 30-week calendar, weighted readiness (50/30/20), next-week recommendation, weak strands. Groq `generateSummary()`. Cache per student×week to respect free-tier limits (30 req/min, 14.4k/day).
 
@@ -194,3 +222,6 @@ Guardian 1──* Student 1──* ProgressRecord *──1 SyllabusModule 1─�
 | `student_streaks` table (master Voyage + per-stream sub-streaks, ML/SE) | `@mvp` |
 | `streak_rewards` table (Captain's Locker: shore_leave/anchor/tailwind/lifebuoy, SE) | `@mvp` |
 | cosmetics (Smooth wardrobe, Captain's rank) | `@roadmap` (CR) |
+| `past_papers` + `past_paper_questions` tables (seeded real papers + AI-generated variants with objective/difficulty/provenance/qc_status, PP) | `@roadmap` (PP) |
+| `paper_sittings` table (a child's issued paper: paper_code, status issued→graded, subject/length/score, PP) | `@roadmap` (PP) |
+| `paper_submissions` + `paper_answers` tables (uploaded pages + per-question grade against known mark scheme, reuses the SJ OCR pipeline, PP) | `@roadmap` (PP) |
