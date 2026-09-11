@@ -65,6 +65,8 @@
         line-height: 1.45; margin-bottom: 26px; text-align: center;
         color: #e6f2fb;
     }
+    /* Accessible "unknown number" box, CSS-drawn so it always renders. */
+    .dw-unknown { display:inline-block; width:0.95em; height:0.95em; border:2.5px solid currentColor; border-radius:5px; vertical-align:-0.12em; margin:0 0.08em; }
     .dw-options { display: flex; flex-direction: column; gap: 14px; }
     .dw-option {
         background: rgba(255,255,255,0.05);
@@ -163,7 +165,7 @@
 
         {{-- Question card --}}
         <div class="dw-card" wire:key="item-{{ $itemNumber }}">
-            <p class="dw-prompt">{{ $prompt }}</p>
+            <p class="dw-prompt">{!! \App\Support\MathGlyphs::render($prompt) !!}</p>
             <div class="dw-options">
                 @foreach ($options as $index => $optionText)
                     <button
@@ -171,7 +173,7 @@
                         class="dw-option"
                         wire:click="choose({{ $index }})"
                         wire:loading.attr="disabled"
-                    >{{ $optionText }}</button>
+                    >{!! \App\Support\MathGlyphs::render((string) $optionText) !!}</button>
                 @endforeach
             </div>
         </div>

@@ -57,8 +57,11 @@ Route::middleware('auth')->group(function () {
     Route::get('go/handoff/{child}', [DeviceHandoffController::class, 'show'])
         ->name('student.handoff');
 
-    Route::post('go/handoff/{child}', [DeviceHandoffController::class, 'commit'])
-        ->name('student.handoff.commit');
+    // The commit is a SIGNED GET (no CSRF/session-token dependency, so it can't 419);
+    // the signature is minted while the guardian is authenticated and expires in 15 min.
+    Route::get('go/handoff/{child}/commit', [DeviceHandoffController::class, 'commit'])
+        ->name('student.handoff.commit')
+        ->middleware('signed');
 
     Route::get('verify-email', VerifyAccount::class)
         ->name('verification.notice');
