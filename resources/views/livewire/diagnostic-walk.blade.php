@@ -67,6 +67,7 @@
     }
     /* Accessible "unknown number" box, CSS-drawn so it always renders. */
     .dw-unknown { display:inline-block; width:0.95em; height:0.95em; border:2.5px solid currentColor; border-radius:5px; vertical-align:-0.12em; margin:0 0.08em; }
+    .dw-progress-text { text-align:center; font-size:12.5px; font-weight:700; color:#93b2cc; margin:10px 0 4px; line-height:1.5; }
     .dw-options { display: flex; flex-direction: column; gap: 14px; }
     .dw-option {
         background: rgba(255,255,255,0.05);
@@ -162,6 +163,11 @@
             <div class="dw-trail-fill" style="width: {{ $pct }}%;"></div>
             <div class="dw-boat" style="left: {{ $pct }}%;">⛵</div>
         </div>
+        @php($minsLeft = max(1, (int) ceil(($planTotal - $itemNumber + 1) * 0.4)))
+        <p class="dw-progress-text" aria-live="polite">
+            Question {{ $itemNumber }} of {{ $planTotal }} · about {{ $minsLeft }} min left ·
+            you can stop and come back anytime — your progress is saved 🐢
+        </p>
 
         {{-- Question card --}}
         <div class="dw-card" wire:key="item-{{ $itemNumber }}">

@@ -15,6 +15,14 @@
             .fpw-chips { display:flex; flex-wrap:wrap; gap:7px; }
             .fpw-chip { display:inline-flex; align-items:center; gap:6px; font-size:12.5px; font-weight:700; color:var(--ink-soft); background:var(--paper); border:1px solid var(--line); border-radius:999px; padding:7px 12px; cursor:pointer; }
             .fpw-chip input { accent-color:var(--teal); }
+            .fpw-acc { border:1px solid var(--line); border-radius:11px; padding:0; margin-top:8px; background:var(--paper); }
+            .fpw-acc[open] { padding-bottom:10px; }
+            .fpw-acc-sum { cursor:pointer; list-style:none; padding:11px 13px; font-size:13px; font-weight:800; color:var(--ink); display:flex; justify-content:space-between; align-items:center; gap:8px; }
+            .fpw-acc-sum::-webkit-details-marker { display:none; }
+            .fpw-acc-sum::after { content:"▸"; color:var(--ink-faint); font-size:12px; }
+            .fpw-acc[open] > .fpw-acc-sum::after { content:"▾"; }
+            .fpw-acc-sum span { font-size:11px; font-weight:700; color:var(--ink-faint); }
+            .fpw-acc-sub { margin:0 13px; }
             .fpw-actions { display:flex; gap:10px; margin-top:18px; }
             .fpw-save { flex:1; text-align:center; background:var(--teal); color:#fff; border:0; border-radius:11px; padding:12px; font-size:14px; font-weight:800; cursor:pointer; }
             .fpw-skip { background:none; border:0; color:var(--ink-faint); font-size:13px; font-weight:800; cursor:pointer; padding:12px; }
@@ -40,12 +48,13 @@
 
             @php ($strands = $this->strandsBySubject())
             @if (! empty($strands))
-                <div class="fpw-group">
-                    <label class="fpw-label">Any areas your child already finds tricky? (optional)</label>
+                <details class="fpw-acc" style="margin-top:16px;">
+                    <summary class="fpw-acc-sum">Areas your child finds tricky? <span>optional — tap to add</span></summary>
+                    <p class="fpw-hint" style="margin:8px 0 4px;">Leave this closed if nothing stands out — the diagnostic finds the rest, and you can add these anytime.</p>
                     @foreach ($strands as $subject => $subjectStrands)
-                        <div class="fpw-group" style="margin-top:10px;">
-                            <p class="fpw-group-h">{{ $subject }}</p>
-                            <div class="fpw-chips">
+                        <details class="fpw-acc fpw-acc-sub">
+                            <summary class="fpw-acc-sum">{{ $subject }}</summary>
+                            <div class="fpw-chips" style="margin-top:8px;">
                                 @foreach ($subjectStrands as $strand)
                                     <label class="fpw-chip">
                                         <input type="checkbox" wire:model="weakAreas" value="{{ $strand }}">
@@ -53,11 +62,12 @@
                                     </label>
                                 @endforeach
                             </div>
-                        </div>
+                        </details>
                     @endforeach
-                </div>
+                </details>
             @endif
 
+            {{-- Primary actions stay directly in view — the checklist above is collapsed so it never pushes them below the fold. --}}
             <div class="fpw-actions">
                 <button type="button" class="fpw-save" wire:click="save">Save</button>
                 <button type="button" class="fpw-skip" wire:click="skip">Skip for now</button>

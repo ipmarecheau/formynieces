@@ -33,7 +33,21 @@
     <div class="card">
         <div class="turtle">🐢</div>
         <h1>Sign in to your voyage</h1>
-        <p class="sub">Enter the login your parent gave you.</p>
+        <p class="sub">Child sign-in — enter the login your parent gave you.</p>
+
+        @auth
+            @if (auth()->user()->isGuardian())
+                @php($firstChild = auth()->user()->students()->orderBy('id')->first())
+                <div style="background:#fff7ed;border:1.5px solid #f6b71e;border-radius:14px;padding:12px 14px;margin-bottom:18px;text-align:left;font-size:13px;color:#7a4b00;font-weight:700;line-height:1.5;">
+                    You're signed in as a parent.
+                    @if ($firstChild)
+                        To let {{ $firstChild->name }} sign in on this device,
+                        <a href="{{ route('student.handoff', $firstChild) }}" style="color:#0d7d8c;font-weight:800;">hand it over →</a>, or
+                    @endif
+                    <a href="{{ route('dashboard') }}" style="color:#0d7d8c;font-weight:800;">go to your dashboard</a>.
+                </div>
+            @endif
+        @endauth
 
         @if ($errors->any())
             <div class="err">Hmm, that login didn't work. Check it with your parent and try again.</div>

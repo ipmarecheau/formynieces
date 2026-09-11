@@ -13,6 +13,11 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Livewire\VerifyAccount;
 use Illuminate\Support\Facades\Route;
 
+// The kid-branded child sign-in (/go) is reachable whether or not someone is signed
+// in — so an authenticated parent on a shared device is NOT bounced to their dashboard;
+// the page itself explains the parent-vs-child options. It posts to the shared /login.
+Route::view('go', 'auth.student-login')->name('student.login');
+
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
         ->name('register');
@@ -32,9 +37,6 @@ Route::middleware('guest')->group(function () {
 
     Route::get('auth/{provider}/callback', [SocialAuthController::class, 'callback'])
         ->name('social.callback');
-
-    // A separate, kid-branded sign-in page for students (posts to the same /login).
-    Route::view('go', 'auth.student-login')->name('student.login');
 
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
