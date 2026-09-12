@@ -14,6 +14,8 @@ The first repeatable command is `python3 scripts/past_paper_inventory.py storage
 
 After the key and a PDF model are configured, an admin can extract one paper with `php artisan past-papers:extract past-paper-source/Past Papers/SEA-MATHEMATICS-2025.pdf --write`. This sends one PDF to the configured OpenRouter model's native file input and saves an unapproved JSON draft under `past-paper-source/extractions/`. It is intentionally one paper per action so cost, output, and review remain visible.
 
+V1 has been smoke-tested against `CW-2025.pdf` (3 Creative Writing prompts) and `sea_2001_mathematics.pdf` (44 Mathematics questions). The Mathematics source did not contain an answer key, so all 44 answers remain null and require answer-key or editor confirmation. This is expected and is a release gate: extraction success never means answer-key success.
+
 ## Cost-conscious implementation
 
 The first pass should use local tools for deterministic work: PDF inspection, rasterisation, deskewing, and text OCR. OCRmyPDF can add a searchable layer and uses Tesseract; its documented processing includes page rotation, deskewing, cleanup, and oversampling. Tesseract can emit TSV or hOCR with word confidence and bounding boxes. PaddleOCR PP-Structure is the next local option when layout, tables, or multi-column reading order need better handling.
