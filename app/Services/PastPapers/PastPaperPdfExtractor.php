@@ -17,7 +17,7 @@ class PastPaperPdfExtractor
         $data = @file_get_contents($absolutePath);
         if ($data === false) return null;
         $models = array_slice(array_values(array_unique(array_merge([$model], (array) config('services.llm.past_paper_fallback_models', [])))), 0, 3);
-        $prompt = 'Extract this SEA source paper into draft questions. Return JSON only: {"paper":{"subject":"Math|ELA","year":null,"paper_type":"multiple_choice|creative_writing"},"questions":[{"number":1,"prompt":"","options":[],"correct_answer":null,"marks":1,"topic":null,"difficulty":null,"source_page":1,"confidence":0.0,"needs_review":true}]}. Preserve wording and do not invent answer keys. If an answer key is absent, use null and needs_review true. Every question is a draft for human QC.';
+        $prompt = 'Extract this SEA source paper into draft questions. Return JSON only: {"paper":{"subject":"Math|ELA","year":null,"paper_type":"multiple_choice|creative_writing"},"questions":[{"number":1,"prompt":"","options":[],"correct_answer":null,"marks":1,"topic":null,"module_code":null,"objective":null,"difficulty":null,"source_page":1,"illustration_svg":null,"confidence":0.0,"needs_review":true}]}. Preserve wording and do not invent answer keys. If an answer key is absent, use null and needs_review true. For diagrams, geometry, number lines, tables, or charts, recreate only simple visual information as valid self-contained SVG using basic shapes and text; use null for photographs or complex illustrations. Every question is a draft for human QC.';
         foreach ($models as $candidate) {
             try {
                 $response = Http::withToken($key)->timeout(120)->post($base.'/chat/completions', [
