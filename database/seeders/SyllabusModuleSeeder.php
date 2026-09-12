@@ -20,7 +20,7 @@ class SyllabusModuleSeeder extends Seeder
             [
                 'subject' => 'Math', 'sea_section' => 'Section I',
                 'sequence_order' => 1, 'pacing_week' => 1,
-                'topic' => 'Number Concepts: Place Value up to One Million',
+                'topic' => 'Number Concepts: Place Value to Millions',
                 'description' => 'Tests the student\'s ability to read, write and identify the place value of digits in whole numbers up to 1,000,000. Students must understand ones, tens, hundreds, thousands, ten-thousands, hundred-thousands and millions.',
                 'resources' => [
                     ['title' => 'Place Value Chart — Math is Fun', 'url' => 'https://www.mathsisfun.com/place-value.html'],

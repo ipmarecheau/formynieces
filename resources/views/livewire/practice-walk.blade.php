@@ -4,7 +4,8 @@
 <style>
     .pw-wrap { min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 32px 20px 48px; }
     .pw-topic { font-family: 'Fredoka One', cursive; font-size: 20px; color: #e6f2fb; text-align: center; margin-bottom: 8px; }
-    .pw-rung { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(196,181,253,0.7); margin-bottom: 14px; }
+    .pw-rung { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(196,181,253,0.7); margin-bottom: 8px; }
+    .pw-rules { font-size: 11.5px; font-weight: 600; color: rgba(196,181,253,0.6); margin: 0 auto 14px; max-width: 420px; line-height: 1.5; }
     .pw-ladder { display: flex; gap: 10px; margin-bottom: 14px; }
     .pw-rung-pip { width: 46px; height: 8px; border-radius: 999px; background: rgba(34,211,238,0.25); transition: background 0.4s ease; }
     .pw-rung-pip.done { background: linear-gradient(90deg,#67e8f9,#fcd34d); }
@@ -49,6 +50,9 @@
 <div class="pw-wrap">
     <p class="pw-topic">{{ $topic }}</p>
     <p class="pw-rung">{{ $isMastered ? 'Mastered!' : 'Level ' . $rungOrdinal . ' of 3' }}</p>
+    @unless ($isMastered)
+        <p class="pw-rules">Two tries per question · miss both and Smooth reteaches · three <b>first-try</b> wins at Level 3 masters this.</p>
+    @endunless
 
     <div class="pw-ladder" aria-label="{{ $isMastered ? 'Mastered' : 'Level ' . $rungOrdinal . ' of 3' }}">
         @for ($r = 1; $r <= 3; $r++)
