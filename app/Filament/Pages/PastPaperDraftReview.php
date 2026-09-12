@@ -30,7 +30,9 @@ class PastPaperDraftReview extends Page
     public function mount(): void
     {
         $this->refreshFiles();
-        $this->selectedDraft = $this->draftFiles[0] ?? null;
+        $this->selectedDraft = collect($this->draftFiles)
+            ->sortByDesc(fn (string $file) => Storage::disk('local')->lastModified('past-paper-source/extractions/'.$file))
+            ->first();
         $this->loadDraft();
     }
 
