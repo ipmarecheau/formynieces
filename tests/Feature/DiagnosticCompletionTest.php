@@ -64,6 +64,18 @@ it('marks the session completed when the walk ends', function () {
     expect($session->completed_at)->not->toBeNull();
 })->group('scenario:RR-01');
 
+it('shows a warm, non-quantitative result summary on completion', function () {
+    walkSessionToEnd($this->sessionId);
+
+    Livewire::actingAs($this->student)
+        ->test(DiagnosticWalk::class)
+        ->assertSet('isComplete', true)
+        ->assertSee('what I found')
+        ->assertSee('already strong in')       // names strengths (all mastered in this walk)
+        ->assertDontSee('% correct')           // no scores/percentages
+        ->assertDontSee('out of');
+})->group('scenario:RR-08');
+
 it('writes a mastery map into student_progress on completion', function () {
     walkSessionToEnd($this->sessionId);
 
