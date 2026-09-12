@@ -11,6 +11,7 @@ use App\Http\Controllers\GuardianReconciliationController;
 use App\Http\Controllers\LessonExportController;
 use App\Http\Controllers\PublicPageController;
 use App\Http\Controllers\PastPaperController;
+use App\Http\Controllers\PastPaperDraftController;
 use App\Http\Controllers\SchoolJournalClipController;
 use App\Http\Controllers\VoyageController;
 use App\Livewire\DiagnosticWalk;
@@ -243,6 +244,8 @@ Route::middleware('auth')->group(function () {
 // Admin lesson verification (LE-11): walk any lesson in the real student renderer — as a student,
 // or in the re-teach flow — with nothing recorded, so lessons can be checked on an ongoing basis.
 Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/admin/past-paper-drafts/source/{draft}', [PastPaperDraftController::class, 'source'])
+        ->name('admin.past-paper-drafts.source');
     Route::get('/admin/lessons/{module}/preview', LessonWalk::class)
         ->defaults('mode', 'student')
         ->name('admin.lessons.preview');
