@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../api.dart';
 import '../theme.dart';
-import 'practice_screen.dart';
+import 'lesson_screen.dart';
 
 /// An island's levels (its mini-voyage). Tap a level to practise it.
 class IslandScreen extends StatefulWidget {
@@ -26,14 +26,15 @@ class _IslandScreenState extends State<IslandScreen> {
   Future<Map<String, dynamic>> _load() async => (await api.getJson('/child/island/${widget.slug}')) as Map<String, dynamic>;
 
   Future<void> _play(Map<String, dynamic> level) async {
-    try {
-      final session = await api.postJson('/child/practice/start', {'mission_id': level['mission_id']}) as Map<String, dynamic>;
-      if (!mounted) return;
-      await Navigator.of(context).push(MaterialPageRoute(builder: (_) => PracticeScreen(session: session)));
-      if (mounted) setState(() => _future = _load());
-    } on ApiException catch (e) {
-      if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message)));
-    }
+    // Level → lesson (teaching) → practice, mirroring the web's gated sequence.
+    await Navigator.of(context).push(MaterialPageRoute(
+      builder: (_) => LessonScreen(
+        moduleId: level['id'] as int,
+        missionId: level['mission_id'] as String,
+        topic: level['topic'] as String,
+      ),
+    ));
+    if (mounted) setState(() => _future = _load());
   }
 
   @override

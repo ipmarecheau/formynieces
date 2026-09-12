@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Api\Mobile;
 
 use App\Http\Controllers\Controller;
+use App\Models\Lesson;
 use App\Models\MobilePracticeSession;
 use App\Models\PracticeQuestion;
 use App\Models\StudentProgress;
@@ -256,6 +257,40 @@ class ChildController extends Controller
             'duties' => $duties,
             'streak' => $this->streak($child),
         ]);
+    }
+
+    /** A module's lesson — the teaching stage before practice (LE-01/LE-03 gated sequence). */
+    public function lesson(Request $request, SyllabusModule $module): JsonResponse
+    {
+        $lesson = Lesson::where('module_id', $module->id)->where('is_published', true)->first();
+
+        return response()->json([
+            'module' => ['id' => $module->id, 'topic' => $module->topic, 'subject' => $module->subject],
+            'has_lesson' => $lesson !== null,
+            'title' => $lesson?->title,
+            'mission_id' => "m{$module->id}",
+            'blocks' => $lesson ? $this->renderableBlocks($lesson->blocks ?? []) : [],
+        ]);
+    }
+
+    /**
+     * Trim authored blocks to the fields the mobile renderer shows (drops heavy
+     * authoring-only data like practiceItems). Keeps the block order.
+     *
+     * @param  array<int, array<string, mixed>>  $blocks
+     * @return array<int, array<string, mixed>>
+     */
+    private function renderableBlocks(array $blocks): array
+    {
+        $keep = ['type', 'content', 'steps', 'question', 'options', 'answer', 'prompt', 'instruction', 'text', 'items', 'pairs'];
+
+        return array_values(array_map(
+            fn (array $b) => array_filter(
+                array_intersect_key($b, array_flip($keep)),
+                fn ($v) => $v !== null,
+            ),
+            $blocks,
+        ));
     }
 
     // --- helpers -------------------------------------------------------------

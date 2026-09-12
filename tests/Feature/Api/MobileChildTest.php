@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Lesson;
 use App\Models\MobilePracticeSession;
 use App\Models\PracticeQuestion;
 use App\Models\StudentProgress;
@@ -106,6 +107,33 @@ it('returns the Voyage overworld with islands + streak', function () {
         ]);
     expect($res->json('islands.0.slug'))->toBe('feather-isle');
     expect($res->json('islands.0.state'))->toBe('playable'); // first island reachable
+});
+
+it('returns a module lesson with renderable blocks, and flags modules without one', function () {
+    $child = User::factory()->create(['role' => 'student']);
+    $token = $child->createToken('t', ['child'])->plainTextToken;
+
+    $withLesson = SyllabusModule::factory()->create(['topic' => 'Plurals', 'subject' => 'ELA']);
+    Lesson::create([
+        'module_id' => $withLesson->id, 'title' => 'Tricky plurals', 'is_published' => true,
+        'blocks' => [
+            ['type' => 'text', 'content' => 'Most words just add -s.'],
+            ['type' => 'example', 'content' => 'baby', 'steps' => ['change y to i', 'add es']],
+            ['type' => 'check', 'question' => 'plural of city?', 'options' => ['citys', 'cities'], 'answer' => 'cities'],
+        ],
+    ]);
+
+    $this->withToken($token)->getJson("/api/mobile/child/module/{$withLesson->id}/lesson")
+        ->assertOk()
+        ->assertJsonPath('has_lesson', true)
+        ->assertJsonPath('title', 'Tricky plurals')
+        ->assertJsonPath('blocks.0.type', 'text')
+        ->assertJsonPath('blocks.1.steps.0', 'change y to i');
+
+    $noLesson = SyllabusModule::factory()->create();
+    $this->withToken($token)->getJson("/api/mobile/child/module/{$noLesson->id}/lesson")
+        ->assertOk()
+        ->assertJsonPath('has_lesson', false);
 });
 
 it('returns Captain’s Orders (brief or shore leave)', function () {
