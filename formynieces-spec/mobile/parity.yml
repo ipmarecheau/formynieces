@@ -1,0 +1,205 @@
+# Mobile Parity Matrix — the authoritative list of web surfaces and their mobile status.
+#
+# Drives `php artisan mobile:parity-audit`, which checks each item for:
+#   - api:     the /api/mobile route exists (by route name)
+#   - flutter: the Flutter screen file exists (path under mobile/)
+#   - tests:   a Pest test file exists (tests/Feature/Api/<tests>.php)
+# and renders PARITY_MATRIX.md. Add a row per web feature/screen so nothing is missed.
+#
+# status is advisory (what we intend); the audit computes the REAL state from the checks.
+
+child:
+  - key: login
+    title: Child sign-in (parent-created creds / handoff)
+    web_route: /login
+    backend: AuthController (Sanctum)
+    api: api.mobile.login
+    flutter: smoothseas_child/lib/screens/login_screen.dart
+    tests: MobileAuthTest
+
+  - key: voyage
+    title: Voyage overworld — painted map + islands list + streak + Smooth
+    web_route: /voyage
+    backend: VoyageController@overworld, AdventureMapBuilder
+    api: api.mobile.child.voyage
+    flutter: smoothseas_child/lib/screens/voyage_screen.dart
+    tests: MobileChildTest
+
+  - key: island
+    title: Island interior — painted map + gated level stops
+    web_route: /voyage/{island}
+    backend: VoyageController@island, VoyageInteriors
+    api: api.mobile.child.island
+    flutter: smoothseas_child/lib/screens/island_screen.dart
+    tests: MobileChildTest
+
+  - key: lesson
+    title: Lesson stage — interactive teaching blocks (LE-01/07..10)
+    web_route: /practice/{module}/lesson
+    backend: LessonWalk, LessonBlockSchema
+    api: api.mobile.child.lesson
+    flutter: smoothseas_child/lib/screens/lesson_screen.dart
+    tests: MobileChildTest
+
+  - key: practice
+    title: Practice session — D1→D3→D5 climb, two tries, feedback (LL/PR)
+    web_route: /practice/{module}
+    backend: PracticeWalk, RecordPracticeAttempt
+    api: api.mobile.child.practice.start
+    flutter: smoothseas_child/lib/screens/practice_screen.dart
+    tests: MobileChildTest
+
+  - key: result
+    title: Practice result — accuracy, celebration, streak (CE-02/03/05)
+    web_route: (state of practice)
+    backend: PracticeWalk celebrations
+    api: api.mobile.child.practice.finish
+    flutter: smoothseas_child/lib/screens/result_screen.dart
+    tests: MobileChildTest
+
+  - key: captains_orders
+    title: Captain's Orders — Orders/Locker/Logs/Journal (CO/SE/SL)
+    web_route: (sidebar on /voyage)
+    backend: DailyPlanComposer, StreakEconomyService
+    api: api.mobile.child.captains-orders
+    flutter: smoothseas_child/lib/screens/captains_orders_sheet.dart
+    tests: MobileChildTest
+
+  # ---- not yet built ----
+  - key: competency_check
+    title: Competency check / test-out (D1/D3/D5) before the lesson (LL-19/20/21)
+    web_route: /practice/{module}/enter
+    backend: CompetencyCheck
+    api: null
+    flutter: null
+    tests: null
+
+  - key: reteach
+    title: AI-assisted re-teach on the miss triggers (LL-14/15/16)
+    web_route: /practice/{module}/lesson (reteach)
+    backend: Remediation, ReteachSession
+    api: null
+    flutter: null
+    tests: null
+
+  - key: morning_reading
+    title: Morning reading ritual — passage + comprehension (DR-01..)
+    web_route: /morning/reading
+    backend: Reading service, DailyReadingAssignment
+    api: null
+    flutter: null
+    tests: null
+
+  - key: morning_vocabulary
+    title: Daily vocabulary — words from the passage, spaced repetition (DV)
+    web_route: /morning/vocabulary
+    backend: Vocabulary service
+    api: null
+    flutter: null
+    tests: null
+
+  - key: writing
+    title: Writer's Log — weekly prompt + rubric feedback (WR)
+    web_route: /writing
+    backend: WritingSubmission, ExamAgentService
+    api: null
+    flutter: null
+    tests: null
+
+  - key: welcome_back
+    title: Welcome-back streak splash flowing into the Voyage (SH-06/CE-04)
+    web_route: /welcome-back
+    backend: DashboardController@studentSplash
+    api: null
+    flutter: null
+    tests: null
+
+parent:
+  - key: login
+    title: Parent sign-in
+    web_route: /login
+    backend: AuthController (Sanctum)
+    api: api.mobile.login
+    flutter: smoothseas_parent/lib/screens/login_screen.dart
+    tests: MobileAuthTest
+
+  - key: children
+    title: Home — child cards, needs-attention (MP-01)
+    web_route: /guardian/dashboard
+    backend: GuardianDashboard
+    api: api.mobile.children
+    flutter: smoothseas_parent/lib/screens/children_screen.dart
+    tests: MobileParentTest
+
+  - key: overview
+    title: Child overview — next action + why + cards (MP-02)
+    web_route: /guardian/dashboard
+    backend: GuardianDashboard, ExamAgentService
+    api: api.mobile.child.overview
+    flutter: smoothseas_parent/lib/screens/child_overview_screen.dart
+    tests: MobileParentTest
+
+  - key: weak_topics
+    title: Weak topics, worst first (MP-03)
+    web_route: /guardian/progress
+    backend: StudentProgress needs_work
+    api: api.mobile.child.weak-topics
+    flutter: smoothseas_parent/lib/screens/child_overview_screen.dart
+    tests: MobileParentTest
+
+  - key: writing
+    title: Writing status + feedback (MP-06)
+    web_route: /guardian/writing
+    backend: WritingSubmission
+    api: api.mobile.child.writing
+    flutter: smoothseas_parent/lib/screens/child_overview_screen.dart
+    tests: MobileParentTest
+
+  - key: readiness
+    title: Readiness with context, honest on thin evidence (MP-04/05)
+    web_route: /guardian/agent
+    backend: ExamAgentService
+    api: api.mobile.child.readiness
+    flutter: smoothseas_parent/lib/screens/child_overview_screen.dart
+    tests: MobileParentTest
+
+  # ---- not yet built ----
+  - key: child_login_card
+    title: Child login reveal card (login id + password reveal/reset)
+    web_route: /guardian/dashboard (ChildLoginCard)
+    backend: ChildLoginCard
+    api: null
+    flutter: null
+    tests: null
+
+  - key: school_journal
+    title: School journal — upload + term timeline + per-question breakdown (SJ)
+    web_route: /guardian/students/{id}/journal
+    backend: GuardianChildrenController, JournalDigitiser
+    api: null
+    flutter: null
+    tests: null
+
+  - key: pace_estimator_rewards
+    title: Dashboard tabs — Pace / Estimator / Rewards
+    web_route: /guardian/dashboard
+    backend: GuardianDashboard, PerformanceEstimator
+    api: null
+    flutter: null
+    tests: null
+
+  - key: notifications
+    title: Push nudges — mission done / stuck (MP-08)
+    web_route: (push)
+    backend: (FCM/APNs — not built)
+    api: null
+    flutter: null
+    tests: null
+
+  - key: account
+    title: Account — logout, support; billing via web/store (MP-07)
+    web_route: /guardian/account
+    backend: (settings)
+    api: api.mobile.logout
+    flutter: smoothseas_parent/lib/screens/children_screen.dart
+    tests: MobileAuthTest
