@@ -15,6 +15,15 @@ class PastPaperQuestion extends Model
 
     protected $casts = ['options' => 'array', 'mark_scheme' => 'array', 'is_withdrawn' => 'boolean'];
 
+    public function getSafeIllustrationSvgAttribute(): ?string
+    {
+        $svg = $this->illustration_svg;
+        if (! is_string($svg) || ! str_starts_with(trim($svg), '<svg')) return null;
+        $svg = preg_replace('/<\/?(script|iframe|object|embed|foreignObject)[^>]*>/i', '', $svg) ?? '';
+        $svg = preg_replace('/\s(?:on[a-z]+|href|xlink:href)\s*=\s*(["\']).*?\1/i', '', $svg) ?? '';
+        return strlen($svg) <= 20000 ? trim($svg) : null;
+    }
+
     public function paper(): BelongsTo { return $this->belongsTo(PastPaper::class, 'past_paper_id'); }
 
     public function module(): BelongsTo { return $this->belongsTo(SyllabusModule::class, 'syllabus_module_id'); }
