@@ -30,6 +30,7 @@ class PastPaperQuestionResource extends Resource
             Select::make('item_type')->options(['mcq' => 'Multiple choice', 'numeric' => 'Numeric', 'extended' => 'Extended response'])->required(),
             Textarea::make('prompt')->required()->rows(3),
             Textarea::make('options')->label('Options JSON')->helperText('["3","4","5","6"]'),
+            Textarea::make('illustration_svg')->label('Illustration SVG')->rows(6)->helperText('Optional safe SVG for diagrams, tables, or geometry.'),
             TextInput::make('correct_answer')->required(),
             TextInput::make('marks')->numeric()->required()->default(1),
             TextInput::make('objective'),

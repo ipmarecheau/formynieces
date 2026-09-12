@@ -11,6 +11,7 @@ use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 use Filament\Support\Icons\Heroicon;
 use Illuminate\Support\Facades\Storage;
+use App\Services\PastPapers\PastPaperTopicMapper;
 
 class PastPaperDraftReview extends Page
 {
@@ -22,6 +23,7 @@ class PastPaperDraftReview extends Page
     public array $draftFiles = [];
     public ?string $selectedDraft = null;
     public int $sourcePage = 1;
+    public int $sourcePageCount = 1;
     /** @var array<string, mixed> */
     public array $draft = [];
 
@@ -45,6 +47,7 @@ class PastPaperDraftReview extends Page
                 $this->refreshFiles(); $this->loadDraft();
             }),
             Action::make('save')->label('Save draft')->icon(Heroicon::Check)->action(fn () => $this->saveDraft()),
+            Action::make('map')->label('Map SEA metadata')->icon(Heroicon::OutlinedTag)->action(fn (PastPaperTopicMapper $mapper) => $this->mapTopics($mapper)),
             Action::make('import')->label('Import as unapproved')->icon(Heroicon::ArrowDownTray)->requiresConfirmation()->action(fn () => $this->importDraft()),
         ];
     }
@@ -60,6 +63,10 @@ class PastPaperDraftReview extends Page
         if (! $this->selectedDraft || ! in_array($this->selectedDraft, $this->draftFiles, true)) { $this->draft = []; return; }
         $path = 'past-paper-source/extractions/'.$this->selectedDraft;
         $this->draft = json_decode(Storage::disk('local')->get($path), true) ?: [];
+        $manifest = 'past-paper-source/manifest.json';
+        $manifestData = $manifest && Storage::disk('local')->exists($manifest) ? json_decode(Storage::disk('local')->get($manifest), true) : [];
+        $source = collect($manifestData['files'] ?? [])->firstWhere('filename', $this->draft['filename'] ?? '');
+        $this->sourcePageCount = (int) ($source['pages'] ?? $this->draft['pages'] ?? 1);
     }
 
     public function saveDraft(): void
@@ -68,6 +75,16 @@ class PastPaperDraftReview extends Page
         Storage::disk('local')->put('past-paper-source/extractions/'.$this->selectedDraft, json_encode($this->draft, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR));
         Notification::make()->title('Draft saved')->success()->send();
     }
+
+    public function mapTopics(PastPaperTopicMapper $mapper): void
+    {
+        $this->draft = $mapper->map($this->draft);
+        $this->saveDraft();
+        Notification::make()->title('SEA metadata mapped')->body('Questions remain unapproved until final QC.')->success()->send();
+    }
+
+    public function previousPage(): void { $this->sourcePage = max(1, $this->sourcePage - 1); }
+    public function nextPage(): void { $this->sourcePage = min($this->sourcePageCount, $this->sourcePage + 1); }
 
     public function importDraft(): void
     {
@@ -84,7 +101,7 @@ class PastPaperDraftReview extends Page
             $number = (int) ($row['number'] ?? ($count + 1));
             PastPaperQuestion::updateOrCreate(['past_paper_id' => $paper->id, 'number' => $number], [
                 'syllabus_module_id' => $module?->id, 'item_type' => empty($row['options']) ? 'extended' : 'mcq', 'prompt' => (string) ($row['prompt'] ?? ''),
-                'options' => $row['options'] ?? null, 'correct_answer' => $row['correct_answer'] ?? null, 'marks' => (int) ($row['marks'] ?? 1),
+                'options' => $row['options'] ?? null, 'illustration_svg' => $this->safeSvg($row['illustration_svg'] ?? null), 'correct_answer' => $row['correct_answer'] ?? null, 'marks' => (int) ($row['marks'] ?? 1),
                 'difficulty' => (int) ($row['difficulty'] ?? 3), 'provenance' => 'real', 'qc_status' => $needsReview ? 'unapproved' : 'approved',
                 'qc_reason' => $needsReview ? 'Imported draft requires answer/topic/editor review.' : null,
             ]);
@@ -98,6 +115,14 @@ class PastPaperDraftReview extends Page
         if (! empty($row['module_code'])) return SyllabusModule::where('code', $row['module_code'])->first();
         $topic = trim((string) ($row['topic'] ?? ''));
         return $topic === '' ? null : SyllabusModule::where('topic', 'like', '%'.$topic.'%')->first();
+    }
+
+    private function safeSvg(mixed $svg): ?string
+    {
+        if (! is_string($svg) || trim($svg) === '' || ! str_starts_with(trim($svg), '<svg')) return null;
+        $svg = preg_replace('/<\/?(script|iframe|object|embed|foreignObject)[^>]*>/i', '', $svg) ?? '';
+        $svg = preg_replace('/\s(?:on[a-z]+|href|xlink:href)\s*=\s*(["\']).*?\1/i', '', $svg) ?? '';
+        return strlen($svg) <= 20000 ? trim($svg) : null;
     }
 
     public function sourceUrl(): ?string
