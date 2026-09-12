@@ -10,6 +10,7 @@ use App\Http\Controllers\GuardianPauseController;
 use App\Http\Controllers\GuardianReconciliationController;
 use App\Http\Controllers\LessonExportController;
 use App\Http\Controllers\PublicPageController;
+use App\Http\Controllers\PastPaperController;
 use App\Http\Controllers\SchoolJournalClipController;
 use App\Http\Controllers\VoyageController;
 use App\Livewire\DiagnosticWalk;
@@ -108,6 +109,23 @@ Route::middleware(['auth', 'verified'])->group(function () {
         // School journal (SJ-01..09) — the guardian's honest-layer view.
         Route::get('/guardian/students/{student}/journal', SchoolJournal::class)
             ->name('guardian.journal');
+
+        // Past paper vertical slice: compose only from covered topics, print, upload,
+        // then let the guardian confirm answers against the stored mark scheme.
+        Route::get('/guardian/students/{student}/past-papers', [PastPaperController::class, 'index'])
+            ->name('guardian.past-papers');
+        Route::post('/guardian/students/{student}/past-papers', [PastPaperController::class, 'store'])
+            ->name('guardian.past-papers.store');
+        Route::get('/guardian/students/{student}/past-papers/{sitting}', [PastPaperController::class, 'show'])
+            ->name('guardian.past-papers.show');
+        Route::get('/guardian/students/{student}/past-papers/{sitting}/download', [PastPaperController::class, 'download'])
+            ->name('guardian.past-papers.download');
+        Route::post('/guardian/students/{student}/past-papers/{sitting}/upload', [PastPaperController::class, 'upload'])
+            ->name('guardian.past-papers.upload');
+        Route::get('/guardian/students/{student}/past-papers/{sitting}/review', [PastPaperController::class, 'review'])
+            ->name('guardian.past-papers.review');
+        Route::post('/guardian/students/{student}/past-papers/{sitting}/grade', [PastPaperController::class, 'grade'])
+            ->name('guardian.past-papers.grade');
 
         // SJ-12 — question clips (photo of the question + its marked solution).
         Route::get('/guardian/journal-question/{question}/clip', [SchoolJournalClipController::class, 'show'])

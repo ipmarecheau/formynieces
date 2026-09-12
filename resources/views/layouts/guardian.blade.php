@@ -79,6 +79,9 @@
                 <a href="{{ route('guardian.dashboard') }}" wire:navigate class="gb-nav-link {{ request()->routeIs('guardian.dashboard') ? 'is-active' : '' }}"><span class="ic">🏠</span> Home</a>
                 <a href="{{ route('guardian.progress') }}" wire:navigate class="gb-nav-link {{ request()->routeIs('guardian.progress') ? 'is-active' : '' }}"><span class="ic">📈</span> Progress</a>
                 <a href="{{ route('guardian.family') }}" wire:navigate class="gb-nav-link {{ request()->routeIs('guardian.family') || request()->routeIs('guardian.children') ? 'is-active' : '' }}"><span class="ic">👪</span> Family</a>
+                @if (auth()->user()?->students()->exists())
+                    <a href="{{ route('guardian.past-papers', auth()->user()->students()->first()) }}" class="gb-nav-link {{ request()->routeIs('guardian.past-papers*') ? 'is-active' : '' }}"><span class="ic">📝</span> Past papers</a>
+                @endif
                 <a href="{{ route('guardian.account') }}" wire:navigate class="gb-nav-link {{ request()->routeIs('guardian.account') ? 'is-active' : '' }}"><span class="ic">⚙️</span> Account</a>
             </nav>
             <div class="gb-side-foot">
@@ -101,6 +104,9 @@
         <a href="{{ route('guardian.dashboard') }}" wire:navigate class="{{ request()->routeIs('guardian.dashboard') ? 'is-active' : '' }}"><span class="bi">🏠</span>Home</a>
         <a href="{{ route('guardian.progress') }}" wire:navigate class="{{ request()->routeIs('guardian.progress') ? 'is-active' : '' }}"><span class="bi">📈</span>Progress</a>
         <a href="{{ route('guardian.family') }}" wire:navigate class="{{ request()->routeIs('guardian.family') || request()->routeIs('guardian.children') ? 'is-active' : '' }}"><span class="bi">👪</span>Family</a>
+        @if (auth()->user()?->students()->exists())
+            <a href="{{ route('guardian.past-papers', auth()->user()->students()->first()) }}" class="{{ request()->routeIs('guardian.past-papers*') ? 'is-active' : '' }}"><span class="bi">📝</span>Papers</a>
+        @endif
         <a href="{{ route('guardian.account') }}" wire:navigate class="{{ request()->routeIs('guardian.account') ? 'is-active' : '' }}"><span class="bi">⚙️</span>Account</a>
     </nav>
 </body>
