@@ -21,6 +21,7 @@ class PastPaperDraftReview extends Page
 
     public array $draftFiles = [];
     public ?string $selectedDraft = null;
+    public int $sourcePage = 1;
     /** @var array<string, mixed> */
     public array $draft = [];
 
@@ -33,6 +34,7 @@ class PastPaperDraftReview extends Page
 
     public function updatedSelectedDraft(): void
     {
+        $this->sourcePage = 1;
         $this->loadDraft();
     }
 
@@ -101,5 +103,10 @@ class PastPaperDraftReview extends Page
     public function sourceUrl(): ?string
     {
         return $this->selectedDraft ? route('admin.past-paper-drafts.source', ['draft' => $this->selectedDraft]) : null;
+    }
+
+    public function sourcePageUrl(): ?string
+    {
+        return $this->selectedDraft ? route('admin.past-paper-drafts.page', ['draft' => $this->selectedDraft, 'page' => $this->sourcePage]) : null;
     }
 }
