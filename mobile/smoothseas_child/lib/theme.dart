@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 /// SmoothSeas "Voyage" palette — mirrors the web ss-* tokens (brand/head.blade.php).
 class Sea {
@@ -30,7 +29,8 @@ class Sea {
 /// App-wide theme: Fredoka display + Nunito body, on the sea palette.
 ThemeData buildSeaTheme() {
   final base = ThemeData(brightness: Brightness.dark, useMaterial3: true);
-  final textTheme = GoogleFonts.nunitoTextTheme(base.textTheme).apply(
+  final textTheme = base.textTheme.apply(
+    fontFamily: 'Nunito',
     bodyColor: Sea.ink,
     displayColor: Sea.foam,
   );
@@ -57,7 +57,7 @@ ThemeData buildSeaTheme() {
 
 /// A Fredoka display heading.
 TextStyle head(double size, {Color color = Sea.foam, FontWeight weight = FontWeight.w600}) =>
-    GoogleFonts.fredoka(fontSize: size, fontWeight: weight, color: color);
+    TextStyle(fontFamily: 'Fredoka', fontSize: size, fontWeight: weight, color: color);
 
 /// Deep-ocean gradient background wrapper.
 class SeaBackground extends StatelessWidget {

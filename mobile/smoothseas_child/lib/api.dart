@@ -6,7 +6,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'config.dart';
 
 /// Thin client for the SmoothSeas mobile API (child app). One shared instance ([api]).
+/// Accepts an [http.Client] so tests can inject a mock (for golden/widget tests).
 class ApiClient {
+  ApiClient({http.Client? client}) : _client = client ?? http.Client();
+
+  final http.Client _client;
   String? _token;
 
   Future<void> loadToken() async {
@@ -35,7 +39,7 @@ class ApiClient {
       };
 
   Future<Map<String, dynamic>> login(String email, String password) async {
-    final res = await http.post(
+    final res = await _client.post(
       Uri.parse('${AppConfig.apiBase}/login'),
       headers: _headers,
       body: jsonEncode({'email': email, 'password': password, 'device_name': 'flutter-child'}),
@@ -50,13 +54,13 @@ class ApiClient {
 
   Future<void> logout() async {
     try {
-      await http.post(Uri.parse('${AppConfig.apiBase}/logout'), headers: _headers);
+      await _client.post(Uri.parse('${AppConfig.apiBase}/logout'), headers: _headers);
     } catch (_) {}
     await clearToken();
   }
 
   Future<dynamic> getJson(String path) async {
-    final res = await http.get(Uri.parse('${AppConfig.apiBase}$path'), headers: _headers);
+    final res = await _client.get(Uri.parse('${AppConfig.apiBase}$path'), headers: _headers);
     if (res.statusCode >= 400) {
       throw ApiException(_message(res), status: res.statusCode);
     }
@@ -64,7 +68,7 @@ class ApiClient {
   }
 
   Future<dynamic> postJson(String path, [Map<String, dynamic>? body]) async {
-    final res = await http.post(Uri.parse('${AppConfig.apiBase}$path'), headers: _headers, body: jsonEncode(body ?? {}));
+    final res = await _client.post(Uri.parse('${AppConfig.apiBase}$path'), headers: _headers, body: jsonEncode(body ?? {}));
     if (res.statusCode >= 400) {
       throw ApiException(_message(res), status: res.statusCode);
     }
@@ -89,4 +93,4 @@ class ApiException implements Exception {
   String toString() => message;
 }
 
-final ApiClient api = ApiClient();
+ApiClient api = ApiClient();
