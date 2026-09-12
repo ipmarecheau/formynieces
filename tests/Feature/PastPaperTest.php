@@ -6,6 +6,8 @@ use App\Models\StudentProgress;
 use App\Models\SyllabusModule;
 use App\Models\User;
 use App\Services\PastPapers\PastPaperService;
+use App\Services\PastPapers\PastPaperBankService;
+use App\Services\PastPapers\PastPaperVariantService;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 
@@ -69,3 +71,24 @@ it('does not allow another guardian to view a child paper', function () {
 
     $this->actingAs($other)->get(route('guardian.past-papers.show', [$family['student'], $sitting]))->assertForbidden();
 })->group('scenario:PP-15');
+
+it('keeps generated variants out of the live bank until QC approval', function () {
+    $family = paperFamily();
+    $variants = app(PastPaperVariantService::class)->generate($family['question'], 2);
+
+    expect($variants)->toHaveCount(2)
+        ->and($variants[0]->provenance)->toBe('generated')
+        ->and($variants[0]->qc_status)->toBe('unapproved')
+        ->and($variants[0]->correct_answer)->toBe('6');
+})->group('scenario:PP-04');
+
+it('exports and backs up the paper bank as a portable JSON snapshot', function () {
+    Storage::fake('local');
+    paperFamily();
+    $service = app(PastPaperBankService::class);
+    $payload = $service->export();
+    $path = $service->backup();
+
+    expect($payload['version'])->toBe(1)->and($payload['papers'])->toHaveCount(1);
+    Storage::disk('local')->assertExists($path);
+})->group('scenario:PP-01');
