@@ -1,0 +1,27 @@
+<x-filament-panels::page>
+    <style>
+        .ppd-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1rem;align-items:start}
+        .ppd-paper{position:sticky;top:1rem;height:calc(100vh - 11rem);min-height:520px;border:1px solid rgba(148,163,184,.35);border-radius:.75rem;overflow:hidden;background:#f8fafc}
+        .ppd-paper iframe{width:100%;height:100%;border:0}.ppd-card{border:1px solid rgba(148,163,184,.35);border-radius:.75rem;padding:1rem;margin-bottom:.75rem;background:rgba(255,255,255,.65)}
+        .dark .ppd-card{background:rgba(15,23,42,.45)}.ppd-card textarea,.ppd-card input,.ppd-select{width:100%;border:1px solid rgb(203 213 225);border-radius:.45rem;padding:.55rem;background:transparent;margin-top:.3rem}.ppd-card textarea{min-height:100px}.ppd-label{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;font-weight:700;color:#64748b;display:block;margin-top:.75rem}.ppd-toolbar{display:flex;gap:.75rem;align-items:center;margin-bottom:1rem}.ppd-count{font-size:.85rem;color:#64748b}@media(max-width:900px){.ppd-grid{grid-template-columns:1fr}.ppd-paper{position:relative;top:auto;height:65vh;min-height:400px}}
+    </style>
+    @if($draftFiles === [])
+        <x-filament::section><p>No extraction drafts are available yet. Run <code>past-papers:extract ... --write</code> first.</p></x-filament::section>
+    @else
+        <div class="ppd-toolbar"><label for="draft-select" class="ppd-label" style="margin:0;min-width:120px">Source draft</label><select id="draft-select" wire:model.live="selectedDraft" class="ppd-select" style="max-width:520px">@foreach($draftFiles as $file)<option value="{{ $file }}">{{ $file }}</option>@endforeach</select><span class="ppd-count">{{ count($draft['draft']['questions'] ?? []) }} extracted questions</span></div>
+        <div class="ppd-grid">
+            <div class="ppd-paper"><iframe title="Source paper preview" src="{{ $this->sourceUrl() }}"></iframe></div>
+            <div>
+                <x-filament::section class="mb-4"><x-slot name="heading">Review extracted draft</x-slot><p class="text-sm text-gray-500">Compare every card with the source page. Save corrections here, then import as unapproved for final QC in Paper Questions.</p><p class="text-sm"><strong>Model:</strong> {{ $draft['model'] ?? 'unknown' }} · <strong>Source:</strong> {{ $draft['filename'] ?? 'unknown' }}</p></x-filament::section>
+                @foreach(($draft['draft']['questions'] ?? []) as $index => $question)
+                    <div class="ppd-card"><div class="flex items-center justify-between"><strong>Question {{ $question['number'] ?? $index + 1 }}</strong><span class="text-xs text-amber-600">{{ ($question['needs_review'] ?? true) ? 'Needs review' : 'Ready for QC' }}</span></div>
+                        <label class="ppd-label" for="q-{{ $index }}-prompt">Prompt</label><textarea id="q-{{ $index }}-prompt" wire:model.defer="draft.draft.questions.{{ $index }}.prompt"></textarea>
+                        <div class="grid grid-cols-2 gap-2"><div><label class="ppd-label">Topic</label><input wire:model.defer="draft.draft.questions.{{ $index }}.topic"></div><div><label class="ppd-label">Difficulty</label><input type="number" min="1" max="5" wire:model.defer="draft.draft.questions.{{ $index }}.difficulty"></div></div>
+                        <div class="grid grid-cols-2 gap-2"><div><label class="ppd-label">Answer</label><input wire:model.defer="draft.draft.questions.{{ $index }}.correct_answer"></div><div><label class="ppd-label">Source page</label><input type="number" wire:model.defer="draft.draft.questions.{{ $index }}.source_page"></div></div>
+                        <label class="mt-3 flex items-center gap-2 text-sm"><input type="checkbox" wire:model.defer="draft.draft.questions.{{ $index }}.needs_review"> Keep in review queue</label>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    @endif
+</x-filament-panels::page>
