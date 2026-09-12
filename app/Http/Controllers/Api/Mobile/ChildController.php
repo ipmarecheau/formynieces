@@ -207,14 +207,31 @@ class ChildController extends Controller
         // Per-level stop coordinates along the island's painted interior path.
         $stops = VoyageInteriors::stopsFor($island['slug'], count($island['levels']));
 
+        // Levels are sequential within an island: mastered ones are done, the first
+        // not-yet-mastered is "current" (playable), and the rest wait (locked).
+        $currentAssigned = false;
         $levels = [];
         foreach ($island['levels'] as $i => $l) {
+            $mastered = (bool) $l['mastered'];
+            $current = false;
+            $locked = false;
+            if ($mastered) {
+                // done
+            } elseif (! $currentAssigned) {
+                $current = true;
+                $currentAssigned = true;
+            } else {
+                $locked = true;
+            }
+
             $levels[] = [
                 'id' => $l['id'],
                 'topic' => $l['topic'],
                 'subject' => $l['subject'],
-                'mastered' => $l['mastered'],
+                'mastered' => $mastered,
                 'review' => $l['review'],
+                'current' => $current,
+                'locked' => $locked,
                 'mission_id' => "m{$l['id']}",
                 'x' => $stops[$i]['x'] ?? null,
                 'y' => $stops[$i]['y'] ?? null,
