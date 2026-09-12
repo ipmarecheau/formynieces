@@ -22,4 +22,18 @@ class PastPaperDraftController extends Controller
 
         return response()->file($disk->path($path), ['Content-Type' => 'application/pdf', 'Content-Disposition' => 'inline; filename="'.$filename.'"']);
     }
+
+    public function page(Request $request, string $draft, int $page = 1)
+    {
+        abort_unless($request->user()?->isAdmin(), 403);
+        abort_unless(preg_match('/^[A-Za-z0-9._-]+\.json$/', $draft) === 1 && $page > 0 && $page < 1000, 404);
+        $disk = Storage::disk('local');
+        $draftPath = 'past-paper-source/extractions/'.$draft;
+        abort_unless($disk->exists($draftPath), 404);
+        $data = json_decode($disk->get($draftPath), true);
+        $filename = basename((string) ($data['filename'] ?? ''));
+        $render = 'past-paper-source/rendered/'.sha1($filename).'/page-'.str_pad((string) $page, 3, '0', STR_PAD_LEFT).'.png';
+        abort_unless($disk->exists($render), 404);
+        return response()->file($disk->path($render), ['Content-Type' => 'image/png']);
+    }
 }

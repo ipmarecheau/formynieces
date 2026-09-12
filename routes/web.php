@@ -246,6 +246,8 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/past-paper-drafts/source/{draft}', [PastPaperDraftController::class, 'source'])
         ->name('admin.past-paper-drafts.source');
+    Route::get('/admin/past-paper-drafts/source/{draft}/page/{page}', [PastPaperDraftController::class, 'page'])
+        ->name('admin.past-paper-drafts.page');
     Route::get('/admin/lessons/{module}/preview', LessonWalk::class)
         ->defaults('mode', 'student')
         ->name('admin.lessons.preview');
