@@ -99,7 +99,7 @@ class _LessonScreenState extends State<LessonScreen> {
       );
 }
 
-String _strip(String? raw) => (raw ?? '').replaceAll(RegExp(r'<[^>]+>'), '').replaceAll('&nbsp;', ' ').trim();
+String _strip(dynamic raw) => (raw == null ? '' : raw.toString()).replaceAll(RegExp(r'<[^>]+>'), '').replaceAll('&nbsp;', ' ').trim();
 
 class _Block extends StatelessWidget {
   const _Block({required this.block});
@@ -116,7 +116,7 @@ class _Block extends StatelessWidget {
       case 'example':
         return _example();
       case 'check':
-        return _reveal('✅ Quick check', _strip(block['question']), _optionsText(), _strip(block['answer']));
+        return _reveal('✅ Quick check', _strip(block['question']), _optionsText(), _checkAnswer());
       case 'fillblank':
         return _reveal('✏️ Fill the blank', _strip(block['prompt']), null, _strip(block['answer']));
       case 'markwords':
@@ -127,6 +127,16 @@ class _Block extends StatelessWidget {
         final content = _strip(block['content'] ?? block['question'] ?? block['prompt']);
         return content.isEmpty ? const SizedBox.shrink() : Padding(padding: const EdgeInsets.symmetric(vertical: 8), child: Text(content, style: const TextStyle(color: Sea.ink, fontSize: 16, height: 1.4)));
     }
+  }
+
+  /// A check's answer may be the option text or a numeric index into options.
+  String _checkAnswer() {
+    final ans = block['answer'];
+    final opts = block['options'];
+    if (ans is int && opts is List && ans >= 0 && ans < opts.length) {
+      return _strip(opts[ans]);
+    }
+    return _strip(ans);
   }
 
   String? _optionsText() {

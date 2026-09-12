@@ -66,12 +66,87 @@ class _IslandScreenState extends State<IslandScreen> {
                     padding: const EdgeInsets.only(left: 12),
                     child: Text('${island['conquered']} / ${island['total']} conquered', style: const TextStyle(color: Sea.muted)),
                   ),
-                  const SizedBox(height: 14),
+                  const SizedBox(height: 12),
+                  _InteriorMap(slug: widget.slug, levels: levels, onPlay: _play),
+                  const SizedBox(height: 16),
+                  Text('Levels', style: head(18)),
+                  const SizedBox(height: 8),
                   for (final l in levels) _LevelCard(level: l as Map<String, dynamic>, onPlay: _play),
                 ],
               );
             },
           ),
+        ),
+      ),
+    );
+  }
+}
+
+/// The island's painted interior with level stops placed by x/y% (mirrors web tier-2).
+class _InteriorMap extends StatelessWidget {
+  const _InteriorMap({required this.slug, required this.levels, required this.onPlay});
+  final String slug;
+  final List<dynamic> levels;
+  final void Function(Map<String, dynamic>) onPlay;
+
+  @override
+  Widget build(BuildContext context) {
+    final firstUnmastered = levels.indexWhere((l) => (l as Map)['mastered'] != true);
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(20),
+      child: Container(
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), border: Border.all(color: Sea.cardBorder, width: 1.5)),
+        child: InteractiveViewer(
+          minScale: 1,
+          maxScale: 4,
+          boundaryMargin: const EdgeInsets.all(40),
+          child: AspectRatio(
+            aspectRatio: 2752 / 1536,
+            child: LayoutBuilder(
+              builder: (context, c) {
+                final w = c.maxWidth, h = c.maxHeight;
+                return Stack(children: [
+                  Positioned.fill(
+                    child: Image.asset(
+                      'assets/images/voyage/interiors/$slug.webp',
+                      fit: BoxFit.cover,
+                      errorBuilder: (_, _, _) => Container(color: Sea.ocean),
+                    ),
+                  ),
+                  for (var i = 0; i < levels.length; i++)
+                    _stop(levels[i] as Map<String, dynamic>, i, i == firstUnmastered, w, h),
+                ]);
+              },
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _stop(Map<String, dynamic> level, int i, bool current, double w, double h) {
+    final xv = level['x'], yv = level['y'];
+    if (xv == null || yv == null) return const SizedBox.shrink();
+    final x = (xv as num).toDouble() / 100 * w;
+    final y = (yv as num).toDouble() / 100 * h;
+    final mastered = level['mastered'] == true;
+    final review = level['review'] == true;
+    return Positioned(
+      left: x - 16,
+      top: y - 16,
+      child: GestureDetector(
+        onTap: () => onPlay(level),
+        child: Container(
+          width: 32,
+          height: 32,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: mastered ? const Color(0xCC15803D) : (review ? const Color(0xCCB45309) : const Color(0xCC0E7490)),
+            border: Border.all(color: current ? Sea.gold : Sea.aqua, width: current ? 2.5 : 1.5),
+            boxShadow: current ? const [BoxShadow(color: Sea.gold, blurRadius: 9)] : null,
+          ),
+          alignment: Alignment.center,
+          child: mastered ? const Icon(Icons.check, size: 16, color: Sea.foam) : Text('${i + 1}', style: head(13, color: Sea.foam)),
         ),
       ),
     );

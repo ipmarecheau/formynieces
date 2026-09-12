@@ -141,7 +141,14 @@ it('returns Captain’s Orders (brief or shore leave)', function () {
 
     $this->withToken($token)->getJson('/api/mobile/child/captains-orders')
         ->assertOk()
-        ->assertJsonStructure(['title', 'is_writing_day', 'minimum_met', 'rest', 'message', 'duties', 'streak' => ['days', 'label']]);
+        ->assertJsonStructure([
+            'orders' => ['title', 'is_writing_day', 'minimum_met', 'rest', 'message', 'duties', 'lesson_tasks'],
+            'locker' => [['type', 'icon', 'label', 'blurb', 'earn', 'held']],
+            'logs',
+            'journal',
+            'streak' => ['days', 'label'],
+        ])
+        ->assertJsonCount(4, 'locker');
 });
 
 it('opens a playable island’s levels, blocks a locked one, 404s unknown', function () {

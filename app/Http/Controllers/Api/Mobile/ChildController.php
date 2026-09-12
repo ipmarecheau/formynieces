@@ -8,15 +8,18 @@ use App\Http\Controllers\Controller;
 use App\Models\Lesson;
 use App\Models\MobilePracticeSession;
 use App\Models\PracticeQuestion;
+use App\Models\StreakReward;
 use App\Models\StudentProgress;
 use App\Models\StudentStreak;
 use App\Models\SyllabusModule;
 use App\Models\User;
 use App\Services\Motivation\DailyPlanComposer;
+use App\Services\Motivation\StreakEconomyService;
 use App\Services\Pacing\AdventureMapBuilder;
 use App\Services\Practice\PracticeQuestions;
 use App\Services\Practice\QuestionExposure;
 use App\Services\Practice\RecordPracticeAttempt;
+use App\Support\VoyageInteriors;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -201,14 +204,22 @@ class ChildController extends Controller
         abort_if($island === null, Response::HTTP_NOT_FOUND, 'Unknown island.');
         abort_if($island['state'] === 'locked', Response::HTTP_FORBIDDEN, 'This island is still locked.');
 
-        $levels = array_map(fn (array $l) => [
-            'id' => $l['id'],
-            'topic' => $l['topic'],
-            'subject' => $l['subject'],
-            'mastered' => $l['mastered'],
-            'review' => $l['review'],
-            'mission_id' => "m{$l['id']}",
-        ], $island['levels']);
+        // Per-level stop coordinates along the island's painted interior path.
+        $stops = VoyageInteriors::stopsFor($island['slug'], count($island['levels']));
+
+        $levels = [];
+        foreach ($island['levels'] as $i => $l) {
+            $levels[] = [
+                'id' => $l['id'],
+                'topic' => $l['topic'],
+                'subject' => $l['subject'],
+                'mastered' => $l['mastered'],
+                'review' => $l['review'],
+                'mission_id' => "m{$l['id']}",
+                'x' => $stops[$i]['x'] ?? null,
+                'y' => $stops[$i]['y'] ?? null,
+            ];
+        }
 
         return response()->json([
             'island' => [
@@ -227,36 +238,96 @@ class ChildController extends Controller
     public function captainsOrders(Request $request): JsonResponse
     {
         $child = $request->user();
-        $plan = app(DailyPlanComposer::class)->forDay($child->id);
 
-        $labels = [
-            'practice' => 'Practice a topic',
-            'reading' => 'Morning reading',
-            'vocabulary' => 'Daily vocabulary',
-            'writing' => 'Writer’s Log',
-        ];
+        return response()->json([
+            'orders' => $this->ordersTab($child),
+            'locker' => $this->lockerTab($child),
+            'logs' => $this->logsTab($child),
+            'journal' => $this->journalTab($child),
+            'streak' => $this->streak($child),
+        ]);
+    }
+
+    /** @return array<string, mixed> */
+    private function ordersTab(User $child): array
+    {
+        $plan = app(DailyPlanComposer::class)->forDay($child->id);
+        $labels = ['practice' => 'Practice a topic', 'reading' => 'Morning reading', 'vocabulary' => 'Daily vocabulary', 'writing' => 'Writer’s Log', 'map' => 'Sail the map'];
 
         $duties = [];
         foreach (($plan->duties ?? []) as $key => $done) {
             if ($done === null) {
-                continue; // not required today
+                continue;
             }
-            $duties[] = ['key' => $key, 'label' => $labels[$key] ?? ucfirst($key), 'done' => (bool) $done];
+            $duties[] = ['key' => $key, 'label' => $labels[$key] ?? ucfirst((string) $key), 'done' => (bool) $done];
         }
-
         $rest = $duties === [];
 
-        return response()->json([
+        $tasks = array_map(fn (array $t) => [
+            'subject' => $t['subject'] ?? '',
+            'topic' => $t['topic'] ?? '',
+            'done' => (bool) ($t['done'] ?? false),
+            'mission_id' => isset($t['module_id']) ? 'm'.$t['module_id'] : null,
+        ], app(DailyPlanComposer::class)->todaysLessonTasks($child->id));
+
+        return [
             'title' => $rest ? 'Shore Leave' : 'Captain’s Brief',
             'is_writing_day' => (bool) $plan->is_writing_day,
             'minimum_met' => $plan->isMinimumMet(),
             'rest' => $rest,
             'message' => $rest
                 ? 'Shore leave, first mate! The seas are calm — rest and enjoy your weekend. Your streak sails on.'
-                : 'Here are today’s duties, Captain. Finish them all to keep your streak.',
+                : 'Today’s orders, Captain. Clear them to keep the Voyage sailing.',
             'duties' => $duties,
-            'streak' => $this->streak($child),
-        ]);
+            'lesson_tasks' => $tasks,
+        ];
+    }
+
+    /** @return array<int, array<string, mixed>> */
+    private function lockerTab(User $child): array
+    {
+        $economy = app(StreakEconomyService::class);
+        $meta = [
+            'shore_leave' => ['icon' => '🏝️', 'label' => 'Shore Leave', 'blurb' => 'Skip one duty without breaking your streak.', 'earn' => 'Reach a 7-day streak.'],
+            'anchor' => ['icon' => '⚓', 'label' => 'Anchor', 'blurb' => 'Freeze your streak for a day off.', 'earn' => 'Master three islands.'],
+            'tailwind' => ['icon' => '🌬️', 'label' => 'Tailwind', 'blurb' => 'Bank extra progress in a subject.', 'earn' => 'Get ahead of pace.'],
+            'lifebuoy' => ['icon' => '🛟', 'label' => 'Lifebuoy', 'blurb' => 'Save a streak after a miss.', 'earn' => 'Finish a full week.'],
+        ];
+
+        $rewards = [];
+        foreach (StreakReward::TYPES as $type) {
+            $m = $meta[$type];
+            $rewards[] = ['type' => $type, 'icon' => $m['icon'], 'label' => $m['label'], 'blurb' => $m['blurb'], 'earn' => $m['earn'], 'held' => $economy->balance($child->id, $type)];
+        }
+
+        return $rewards;
+    }
+
+    /** @return array<int, array<string, mixed>> */
+    private function logsTab(User $child): array
+    {
+        $labels = ['voyage' => 'Voyage streak', 'login' => 'Daily login', 'practice' => 'Practice', 'reading' => 'Reading', 'vocabulary' => 'Vocabulary', 'writing' => 'Writing', 'mastery' => 'Mastery', 'pace_weeks' => 'On-pace weeks'];
+
+        return StudentStreak::where('student_id', $child->id)
+            ->orderByDesc('count')->get()
+            ->map(fn (StudentStreak $s) => ['label' => $labels[$s->type] ?? ucfirst($s->type), 'count' => (int) $s->count])
+            ->all();
+    }
+
+    /** @return array<int, array<string, mixed>> Recent conquests (mastered topics). */
+    private function journalTab(User $child): array
+    {
+        return StudentProgress::where('student_id', $child->id)
+            ->where('status', 'mastered')
+            ->whereNotNull('mastered_at')
+            ->orderByDesc('mastered_at')
+            ->with('module:id,topic,subject')
+            ->limit(15)->get()
+            ->map(fn (StudentProgress $p) => [
+                'topic' => $p->module?->topic ?? 'A topic',
+                'subject' => $p->module?->subject ?? '',
+                'at' => $p->mastered_at?->toIso8601String(),
+            ])->all();
     }
 
     /** A module's lesson — the teaching stage before practice (LE-01/LE-03 gated sequence). */
