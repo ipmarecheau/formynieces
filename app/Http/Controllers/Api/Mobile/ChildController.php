@@ -174,6 +174,8 @@ class ChildController extends Controller
             'slug' => $i['slug'],
             'name' => $i['name'],
             'icon' => $i['icon'],
+            'x' => $i['x'],           // marker centre as % of the map image
+            'y' => $i['y'],
             'conquered' => $i['conquered'],
             'total' => $i['total'],
             'state' => $i['state'],   // locked | playable | mastered

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../api.dart';
 import '../theme.dart';
+import '../widgets/voyage_map.dart';
 import 'island_screen.dart';
 import 'login_screen.dart';
 
@@ -56,6 +57,8 @@ class _VoyageScreenState extends State<VoyageScreen> {
                   padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
                   children: [
                     _topBar(streak),
+                    const SizedBox(height: 14),
+                    VoyageMap(islands: islands, onOpen: _openIsland),
                     const SizedBox(height: 16),
                     _smoothCard(name, streak),
                     const SizedBox(height: 18),
@@ -102,7 +105,7 @@ class _VoyageScreenState extends State<VoyageScreen> {
 
   Widget _smoothCard(String name, Map<String, dynamic> streak) => GlassCard(
         child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          const Text('🐢', style: TextStyle(fontSize: 44)),
+          ClipOval(child: Image.asset('assets/images/voyage/smooth.webp', width: 56, height: 56, fit: BoxFit.cover)),
           const SizedBox(width: 14),
           Expanded(
             child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
