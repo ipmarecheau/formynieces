@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../api.dart';
+import '../theme.dart';
 import 'result_screen.dart';
 
 /// MC-03/04 — one short session: a question, touch choices, immediate feedback.
@@ -16,7 +17,7 @@ class _PracticeScreenState extends State<PracticeScreen> {
   late int _sessionId;
   late int _total;
   Map<String, dynamic>? _question;
-  Map<String, dynamic>? _feedback; // {correct, feedback, next_question, progress}
+  Map<String, dynamic>? _feedback;
   bool _busy = false;
 
   @override
@@ -52,7 +53,6 @@ class _PracticeScreenState extends State<PracticeScreen> {
       });
       return;
     }
-    // No more questions — finish.
     setState(() => _busy = true);
     try {
       final result = await api.postJson('/child/practice/$_sessionId/finish') as Map<String, dynamic>;
@@ -73,92 +73,104 @@ class _PracticeScreenState extends State<PracticeScreen> {
     final answered = progress?['answered'] as int? ?? 0;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Question ${answered + (fb == null ? 1 : 0)} of $_total'),
-        // MC-07: home control back to Today
-        leading: IconButton(icon: const Icon(Icons.home), onPressed: () => Navigator.of(context).pop()),
-      ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              LinearProgressIndicator(value: _total == 0 ? 0 : answered / _total),
-              const SizedBox(height: 20),
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      _HtmlishText(q['prompt'] as String),
-                      const SizedBox(height: 20),
-                      for (final c in choices)
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 10),
-                          child: OutlinedButton(
-                            onPressed: fb == null ? () => _choose(c['id'] as String) : null,
-                            style: OutlinedButton.styleFrom(
-                              alignment: Alignment.centerLeft,
-                              padding: const EdgeInsets.all(16),
-                            ),
-                            child: Text('${c['id']}.  ${c['text']}', style: const TextStyle(fontSize: 16)),
-                          ),
-                        ),
-                    ],
+      body: SeaBackground(
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(18),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Row(children: [
+                  IconButton(icon: const Icon(Icons.home, color: Sea.foam), onPressed: () => Navigator.of(context).pop()),
+                  Expanded(child: Text('Question ${answered + (fb == null ? 1 : 0)} of $_total', style: head(16))),
+                ]),
+                const SizedBox(height: 8),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(999),
+                  child: LinearProgressIndicator(
+                    value: _total == 0 ? 0 : answered / _total,
+                    minHeight: 8,
+                    backgroundColor: const Color(0x3322D3EE),
+                    valueColor: const AlwaysStoppedAnimation(Sea.gold),
                   ),
                 ),
-              ),
-              if (fb != null) _FeedbackPanel(feedback: fb, onContinue: _busy ? null : _continue),
-            ],
+                const SizedBox(height: 18),
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        GlassCard(child: Text(_strip(q['prompt'] as String), style: head(18, weight: FontWeight.w500))),
+                        const SizedBox(height: 16),
+                        for (final c in choices)
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: _ChoiceButton(
+                              label: '${c['id']}.  ${_strip(c['text'] as String)}',
+                              enabled: fb == null,
+                              onTap: () => _choose(c['id'] as String),
+                            ),
+                          ),
+                      ],
+                    ),
+                  ),
+                ),
+                if (fb != null) _feedbackPanel(fb),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
-}
 
-class _FeedbackPanel extends StatelessWidget {
-  const _FeedbackPanel({required this.feedback, required this.onContinue});
-  final Map<String, dynamic> feedback;
-  final VoidCallback? onContinue;
-
-  @override
-  Widget build(BuildContext context) {
-    final correct = feedback['correct'] == true;
+  Widget _feedbackPanel(Map<String, dynamic> fb) {
+    final correct = fb['correct'] == true;
     return Container(
+      margin: const EdgeInsets.only(top: 8),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: correct ? const Color(0xFFE3F5E9) : const Color(0xFFFDEBEB),
-        borderRadius: BorderRadius.circular(12),
+        color: correct ? const Color(0x3315803D) : const Color(0x33B45309),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: correct ? const Color(0xFF6EE7B7) : Sea.gold, width: 1.2),
       ),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Text(correct ? 'Nice work! ⭐' : 'Not yet 🌱',
-            style: TextStyle(fontWeight: FontWeight.bold, color: correct ? const Color(0xFF15803D) : const Color(0xFFB45309))),
+        Text(correct ? 'Nice work! ⭐' : 'Not yet 🌱', style: head(16, color: correct ? const Color(0xFF6EE7B7) : Sea.gold)),
         const SizedBox(height: 6),
-        _HtmlishText('${feedback['feedback']}'),
+        Text(_strip('${fb['feedback']}'), style: const TextStyle(color: Sea.ink)),
         const SizedBox(height: 12),
-        SizedBox(
-          width: double.infinity,
-          child: FilledButton(
-            onPressed: onContinue,
-            child: Text(feedback['next_question'] == null ? 'Finish' : 'Continue'),
-          ),
-        ),
+        GoldButton(label: fb['next_question'] == null ? 'Finish' : 'Continue', onPressed: _busy ? null : _continue),
       ]),
     );
   }
+
+  String _strip(String raw) => raw.replaceAll(RegExp(r'<[^>]+>'), '').replaceAll('&nbsp;', ' ').trim();
 }
 
-/// The question bank stores prompts with light HTML (<p>, <sup>…). Strip tags for a
-/// clean mobile read (a full HTML renderer can come later).
-class _HtmlishText extends StatelessWidget {
-  const _HtmlishText(this.raw);
-  final String raw;
+class _ChoiceButton extends StatelessWidget {
+  const _ChoiceButton({required this.label, required this.enabled, required this.onTap});
+  final String label;
+  final bool enabled;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
-    final text = raw.replaceAll(RegExp(r'<[^>]+>'), '').replaceAll('&nbsp;', ' ').trim();
-    return Text(text, style: const TextStyle(fontSize: 17));
+    return Material(
+      color: const Color(0x2267E8F9),
+      borderRadius: BorderRadius.circular(14),
+      child: InkWell(
+        onTap: enabled ? onTap : null,
+        borderRadius: BorderRadius.circular(14),
+        child: Container(
+          width: double.infinity,
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(14),
+            border: Border.all(color: Sea.cardBorder),
+          ),
+          child: Text(label, style: const TextStyle(color: Sea.foam, fontSize: 16)),
+        ),
+      ),
+    );
   }
 }
