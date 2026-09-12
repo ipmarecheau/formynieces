@@ -10,7 +10,7 @@ class PastPaperQuestion extends Model
     protected $fillable = [
         'past_paper_id', 'syllabus_module_id', 'seed_question_id', 'number', 'item_type',
         'prompt', 'options', 'correct_answer', 'mark_scheme', 'marks', 'objective',
-        'difficulty', 'provenance', 'qc_status', 'is_withdrawn',
+        'difficulty', 'provenance', 'qc_status', 'qc_reason', 'is_withdrawn',
     ];
 
     protected $casts = ['options' => 'array', 'mark_scheme' => 'array', 'is_withdrawn' => 'boolean'];

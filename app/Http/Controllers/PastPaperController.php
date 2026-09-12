@@ -6,6 +6,7 @@ use App\Models\PaperSitting;
 use App\Models\PastPaperQuestion;
 use App\Models\User;
 use App\Services\PastPapers\PastPaperService;
+use App\Services\PastPapers\PaperDigitiser;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -41,7 +42,10 @@ class PastPaperController extends Controller
         $sitting->load(['paper', 'answers.question']);
         $questions = PastPaperQuestion::whereIn('id', $sitting->question_ids)->orderBy('number')->get();
 
-        return view('guardian.past-paper-show', compact('student', 'sitting', 'questions'));
+        $graded = PaperSitting::where('student_id', $student->id)->where('status', 'graded')->where('id', '<=', $sitting->id)->latest('graded_at')->get();
+        $trend = $graded->map(fn ($item) => ['date' => optional($item->graded_at)->format('j M'), 'score' => $item->total_marks ? round($item->score / $item->total_marks * 100) : 0])->values();
+        $byTopic = $sitting->answers->load('question.module')->groupBy(fn ($answer) => $answer->question->module?->topic ?? 'General')->map(fn ($answers, $topic) => ['topic' => $topic, 'correct' => $answers->where('is_correct', true)->count(), 'total' => $answers->count()])->values();
+        return view('guardian.past-paper-show', compact('student', 'sitting', 'questions', 'trend', 'byTopic'));
     }
 
     public function download(Request $request, User $student, PaperSitting $sitting)
@@ -55,13 +59,15 @@ class PastPaperController extends Controller
             ->setPaper('a4')->download($sitting->paper_code.'.pdf');
     }
 
-    public function upload(Request $request, User $student, PaperSitting $sitting): RedirectResponse
+    public function upload(Request $request, User $student, PaperSitting $sitting, PaperDigitiser $digitiser): RedirectResponse
     {
         $this->guardStudent($request, $student);
         abort_unless($sitting->student_id === $student->id, 404);
         $request->validate(['pages' => ['required', 'array', 'min:1'], 'pages.*' => ['file', 'mimes:jpg,jpeg,png,webp,pdf', 'max:10240']]);
         $paths = collect($request->file('pages'))->map(fn ($file) => $file->store("past-papers/{$student->id}/{$sitting->id}", 'local'))->all();
-        $sitting->submissions()->create(['image_paths' => $paths, 'digitisation_status' => 'needs_review']);
+        $submission = $sitting->submissions()->create(['image_paths' => $paths, 'digitisation_status' => 'pending']);
+        $sitting->load('paper');
+        $digitiser->digitise($sitting);
         $sitting->update(['status' => 'uploaded']);
 
         return redirect()->route('guardian.past-papers.review', [$student, $sitting])->with('upload_saved', true);

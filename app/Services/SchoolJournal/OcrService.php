@@ -71,6 +71,7 @@ class OcrService
             'text' => is_string($payload['text'] ?? null) ? $payload['text'] : '',
             'confidence' => $confidence,
             'review' => $review,
+            'questions' => array_values(array_filter((array) ($payload['questions'] ?? []), 'is_array')),
         ];
     }
 
