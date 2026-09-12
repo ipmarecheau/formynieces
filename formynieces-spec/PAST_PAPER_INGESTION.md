@@ -10,6 +10,8 @@ Past papers are source material. They are never published directly into the stud
 6. Controlled variants are generated only from approved originals. Each variant keeps a `seed_question_id`, source reference, objective, marks, module, and QC status. Generated content remains unpublished until checked.
 7. The content audit reports original, generated, approved, pending, rejected, and unmapped counts by subject and topic. It is the operational queue for growing the bank over time.
 
+The first repeatable command is `python3 scripts/past_paper_inventory.py storage/app/past-paper-source/'Past Papers' --output storage/app/past-paper-source/manifest.json`. It creates a manifest keyed by SHA-256, extracts available text into a sibling `text/` directory, and marks scanned pages as `needs_ocr`. Re-running it is safe and makes new source files visible without duplicating questions.
+
 ## Cost-conscious implementation
 
 The first pass should use local tools for deterministic work: PDF inspection, rasterisation, deskewing, and text OCR. OCRmyPDF can add a searchable layer and uses Tesseract; its documented processing includes page rotation, deskewing, cleanup, and oversampling. Tesseract can emit TSV or hOCR with word confidence and bounding boxes. PaddleOCR PP-Structure is the next local option when layout, tables, or multi-column reading order need better handling.
