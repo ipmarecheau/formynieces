@@ -84,7 +84,7 @@ child:
 
   - key: morning_reading
     title: Morning reading ritual — passage + comprehension (DR-01..)
-    web_route: /morning/reading
+    web_route: /morning-tide
     backend: Reading service, DailyReadingAssignment
     api: null
     flutter: null
@@ -92,7 +92,7 @@ child:
 
   - key: morning_vocabulary
     title: Daily vocabulary — words from the passage, spaced repetition (DV)
-    web_route: /morning/vocabulary
+    web_route: /morning-tide (same MorningTide flow)
     backend: Vocabulary service
     api: null
     flutter: null
