@@ -108,6 +108,14 @@ it('returns the Voyage overworld with islands + streak', function () {
     expect($res->json('islands.0.state'))->toBe('playable'); // first island reachable
 });
 
+it('returns Captain’s Orders (brief or shore leave)', function () {
+    [$child, $module, $token] = childWithMission();
+
+    $this->withToken($token)->getJson('/api/mobile/child/captains-orders')
+        ->assertOk()
+        ->assertJsonStructure(['title', 'is_writing_day', 'minimum_met', 'rest', 'message', 'duties', 'streak' => ['days', 'label']]);
+});
+
 it('opens a playable island’s levels, blocks a locked one, 404s unknown', function () {
     $child = User::factory()->create(['role' => 'student']);
     SyllabusModule::factory()->count(13)->create();

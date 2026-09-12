@@ -11,6 +11,7 @@ use App\Models\StudentProgress;
 use App\Models\StudentStreak;
 use App\Models\SyllabusModule;
 use App\Models\User;
+use App\Services\Motivation\DailyPlanComposer;
 use App\Services\Pacing\AdventureMapBuilder;
 use App\Services\Practice\PracticeQuestions;
 use App\Services\Practice\QuestionExposure;
@@ -218,6 +219,42 @@ class ChildController extends Controller
                 'total' => $island['total'],
             ],
             'levels' => $levels,
+        ]);
+    }
+
+    /** Captain's Orders — today's minimum duties (Captain's Brief), or shore leave on a rest day (CO). */
+    public function captainsOrders(Request $request): JsonResponse
+    {
+        $child = $request->user();
+        $plan = app(DailyPlanComposer::class)->forDay($child->id);
+
+        $labels = [
+            'practice' => 'Practice a topic',
+            'reading' => 'Morning reading',
+            'vocabulary' => 'Daily vocabulary',
+            'writing' => 'Writer’s Log',
+        ];
+
+        $duties = [];
+        foreach (($plan->duties ?? []) as $key => $done) {
+            if ($done === null) {
+                continue; // not required today
+            }
+            $duties[] = ['key' => $key, 'label' => $labels[$key] ?? ucfirst($key), 'done' => (bool) $done];
+        }
+
+        $rest = $duties === [];
+
+        return response()->json([
+            'title' => $rest ? 'Shore Leave' : 'Captain’s Brief',
+            'is_writing_day' => (bool) $plan->is_writing_day,
+            'minimum_met' => $plan->isMinimumMet(),
+            'rest' => $rest,
+            'message' => $rest
+                ? 'Shore leave, first mate! The seas are calm — rest and enjoy your weekend. Your streak sails on.'
+                : 'Here are today’s duties, Captain. Finish them all to keep your streak.',
+            'duties' => $duties,
+            'streak' => $this->streak($child),
         ]);
     }
 

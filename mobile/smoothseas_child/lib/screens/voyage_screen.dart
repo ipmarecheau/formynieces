@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../api.dart';
 import '../theme.dart';
 import '../widgets/voyage_map.dart';
+import 'captains_orders_sheet.dart';
 import 'island_screen.dart';
 import 'login_screen.dart';
 
@@ -34,6 +35,13 @@ class _VoyageScreenState extends State<VoyageScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton.extended(
+        backgroundColor: const Color(0xFFF3E7C8),
+        foregroundColor: const Color(0xFF5B4420),
+        icon: const Text('🐢', style: TextStyle(fontSize: 18)),
+        label: Text("Captain’s Orders", style: head(14, color: const Color(0xFF5B4420))),
+        onPressed: () => showCaptainsOrders(context),
+      ),
       body: SeaBackground(
         child: SafeArea(
           child: FutureBuilder<Map<String, dynamic>>(
