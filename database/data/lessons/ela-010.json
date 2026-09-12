@@ -151,7 +151,28 @@
                         "prompt": "does the common word 'dog' take a capital? (yes/no)",
                         "answer": "no"
                     }
-                ]
+                ],
+                "sample_answers": {
+                    "strong": [
+                        "No — 'Trinidad' is a place name, a proper noun, so it always takes a capital, even in the middle of a sentence.",
+                        "Capitals aren't only for sentence starts; they also mark specific names. Trinidad names a particular place, so it must be capitalised.",
+                        "Proper nouns like Trinidad always take a capital wherever they appear, so 'trinidad' with a small t is wrong."
+                    ],
+                    "partial": [
+                        "No, Trinidad needs a capital.",
+                        "It's a place name so it's capitalised."
+                    ],
+                    "misconception": [
+                        {
+                            "answer": "Yes, only the first word of a sentence gets a capital.",
+                            "flags": "capitalises only sentence starts"
+                        },
+                        {
+                            "answer": "Only people's names need capitals.",
+                            "flags": "limits capitals to people"
+                        }
+                    ]
+                }
             },
             {
                 "type": "markwords",

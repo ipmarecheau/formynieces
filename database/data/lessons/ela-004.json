@@ -149,7 +149,28 @@
                         "prompt": "the word for the dog's tail: ___ tail",
                         "answer": "their"
                     }
-                ]
+                ],
+                "sample_answers": {
+                    "strong": [
+                        "'their' is right. The tail belongs to the dog, and 'their' shows belonging. 'there' is a place and 'they're' means 'they are'.",
+                        "You choose by meaning, not sound. The sentence is about the tail belonging to the dog, so the belonging word 'their' fits.",
+                        "Swap-test it: 'they are tail' and the place word 'there tail' both make no sense, so the possessive 'their' is correct."
+                    ],
+                    "partial": [
+                        "It's 'their'.",
+                        "Their, because it belongs to the dog."
+                    ],
+                    "misconception": [
+                        {
+                            "answer": "'there', it's about a place.",
+                            "flags": "picks there or they're"
+                        },
+                        {
+                            "answer": "They all sound the same so any is okay.",
+                            "flags": "chooses by sound"
+                        }
+                    ]
+                }
             },
             {
                 "type": "text",

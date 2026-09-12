@@ -148,7 +148,28 @@
                         "prompt": "do quotation marks go around what a person says? (yes/no)",
                         "answer": "yes"
                     }
-                ]
+                ],
+                "sample_answers": {
+                    "strong": [
+                        "Around the spoken words: Mum said, \"Come inside.\" 'Mum said' tells who speaks and 'Come inside' is the speech, so only the speech gets quotation marks.",
+                        "Quotation marks show where speech starts and ends. The spoken part is 'Come inside', so the marks wrap just that: Mum said, \"Come inside.\"",
+                        "'Mum said' is outside the speech, so it stays out of the marks; the words she actually says go inside them."
+                    ],
+                    "partial": [
+                        "Around 'Come inside'.",
+                        "The marks go on the spoken words."
+                    ],
+                    "misconception": [
+                        {
+                            "answer": "Around the whole sentence, including Mum said.",
+                            "flags": "quotes the whole sentence"
+                        },
+                        {
+                            "answer": "No quotation marks are needed.",
+                            "flags": "uses no marks"
+                        }
+                    ]
+                }
             },
             {
                 "type": "text",

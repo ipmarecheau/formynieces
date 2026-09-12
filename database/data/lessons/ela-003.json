@@ -159,7 +159,28 @@
                         "prompt": "use + ful",
                         "answer": "useful"
                     }
-                ]
+                ],
+                "sample_answers": {
+                    "strong": [
+                        "It's 'making'. 'make' ends in a silent e and -ing starts with a vowel, so you drop the e before adding -ing.",
+                        "The rule is drop the silent e when a vowel ending takes over. make → drop e → making, so 'makeing' keeps an e it shouldn't.",
+                        "The -ing does the e's job of keeping the vowel long, so the e is dropped: make + ing = making. No doubling is needed here."
+                    ],
+                    "partial": [
+                        "It should be making, not makeing.",
+                        "You drop the e before ing."
+                    ],
+                    "misconception": [
+                        {
+                            "answer": "Keep the e: makeing.",
+                            "flags": "keeps the e"
+                        },
+                        {
+                            "answer": "Double a letter: makking.",
+                            "flags": "doubles a letter"
+                        }
+                    ]
+                }
             },
             {
                 "type": "text",

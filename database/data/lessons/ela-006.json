@@ -181,7 +181,28 @@
                         "prompt": "a synonym of 'big'",
                         "answer": "large"
                     }
-                ]
+                ],
+                "sample_answers": {
+                    "strong": [
+                        "Antonyms — 'happy' and 'sad' mean the opposite. Words with opposite meanings are antonyms.",
+                        "I check the meaning: happy and sad are opposite feelings, so they are antonyms, not synonyms.",
+                        "Synonyms mean the same and homophones sound the same; happy and sad differ in meaning in an opposite way, so they're antonyms."
+                    ],
+                    "partial": [
+                        "They're antonyms.",
+                        "Antonyms, because they're opposite."
+                    ],
+                    "misconception": [
+                        {
+                            "answer": "Synonyms, they're both feeling words.",
+                            "flags": "says synonyms"
+                        },
+                        {
+                            "answer": "Homophones, they sound alike.",
+                            "flags": "says homophones"
+                        }
+                    ]
+                }
             },
             {
                 "type": "text",

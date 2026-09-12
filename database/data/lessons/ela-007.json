@@ -159,7 +159,28 @@
                         "prompt": "the mark that ends 'Where is my bag'",
                         "answer": "?"
                     }
-                ]
+                ],
+                "sample_answers": {
+                    "strong": [
+                        "No — it needs a question mark. 'Where is my bag' asks something, and questions end with ?, so a full stop is wrong.",
+                        "The end mark has to match what the sentence does. This one asks a question, so it should end with a question mark, not a full stop.",
+                        "It starts with 'Where' and is asking, not telling, so the correct end mark is ?, giving 'Where is my bag?'"
+                    ],
+                    "partial": [
+                        "No, it should have a question mark.",
+                        "It needs a ?."
+                    ],
+                    "misconception": [
+                        {
+                            "answer": "Yes, a full stop is fine.",
+                            "flags": "keeps the full stop"
+                        },
+                        {
+                            "answer": "It needs an exclamation mark!",
+                            "flags": "uses an exclamation mark"
+                        }
+                    ]
+                }
             },
             {
                 "type": "text",

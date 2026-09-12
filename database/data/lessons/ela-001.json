@@ -190,7 +190,28 @@
                         "prompt": "the plural of 'mango'",
                         "answer": "mangoes"
                     }
-                ]
+                ],
+                "sample_answers": {
+                    "strong": [
+                        "It needs 'es' — potatoes. 'potato' doesn't end in y or f, so tricks 1 and 2 don't fit. It ends in o, which acts like the hissing group, so add es.",
+                        "First I check the ending: potato ends in o, not y, not f. So I rule out y→i and f→v. Words like potato, tomato and hero take es, so potatoes is right.",
+                        "Because you pick the trick by the ending. The o ending behaves like s, x, ch, sh and takes es, so 'potatos' with a plain -s is wrong — it should be potatoes."
+                    ],
+                    "partial": [
+                        "It should be potatoes, not potatos.",
+                        "You add es because it ends in o."
+                    ],
+                    "misconception": [
+                        {
+                            "answer": "Change the y to i, so it's potaties.",
+                            "flags": "picks the y-to-i trick"
+                        },
+                        {
+                            "answer": "Every plural just adds s, so potatos is fine.",
+                            "flags": "thinks every plural just adds -s"
+                        }
+                    ]
+                }
             },
             {
                 "type": "text",

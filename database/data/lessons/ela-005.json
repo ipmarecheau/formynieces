@@ -155,7 +155,28 @@
                         "prompt": "the prefix 're' means",
                         "answer": "again"
                     }
-                ]
+                ],
+                "sample_answers": {
+                    "strong": [
+                        "'unkind' means 'not kind'. The prefix 'un' means 'not', and the root is 'kind', so un + kind = not kind.",
+                        "A prefix changes the root's meaning in a set way. 'un' reverses it to the opposite, so unkind is the opposite of kind — not kind.",
+                        "Break it up: un + kind. 'un' = not, 'kind' = the root, so the whole word means not kind."
+                    ],
+                    "partial": [
+                        "It means not kind.",
+                        "un means not, so unkind is not kind."
+                    ],
+                    "misconception": [
+                        {
+                            "answer": "It means very kind, 'un' makes it stronger.",
+                            "flags": "thinks un makes it stronger"
+                        },
+                        {
+                            "answer": "It means kind again, like redo.",
+                            "flags": "confuses un with re"
+                        }
+                    ]
+                }
             },
             {
                 "type": "text",

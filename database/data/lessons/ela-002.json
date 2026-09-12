@@ -159,7 +159,28 @@
                         "prompt": "big + est",
                         "answer": "biggest"
                     }
-                ]
+                ],
+                "sample_answers": {
+                    "strong": [
+                        "It's 'running'. 'run' has a short vowel u and one final consonant n, and -ing starts with a vowel, so you double the n before adding -ing.",
+                        "The rule is: short vowel + one consonant means double before a vowel ending. run → double the n → running, so 'runing' is missing a letter.",
+                        "You double once to protect the short u sound. run + n + ing = running. 'runing' would make the u say its long name, which is wrong."
+                    ],
+                    "partial": [
+                        "It should be running, not runing.",
+                        "You double the n."
+                    ],
+                    "misconception": [
+                        {
+                            "answer": "'runing' is fine, one n is enough.",
+                            "flags": "does not double"
+                        },
+                        {
+                            "answer": "You double it a lot: runnning.",
+                            "flags": "doubles too many"
+                        }
+                    ]
+                }
             },
             {
                 "type": "text",

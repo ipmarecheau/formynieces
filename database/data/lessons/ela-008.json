@@ -149,7 +149,28 @@
                         "prompt": "'it is' as a contraction",
                         "answer": "it's"
                     }
-                ]
+                ],
+                "sample_answers": {
+                    "strong": [
+                        "The apostrophe replaces the missing o from 'not'. 'do not' becomes 'don't', and the apostrophe marks where the o was removed.",
+                        "It's a contraction: two words squeezed into one. The o in 'not' is dropped and the apostrophe stands in for it, so don't is correct.",
+                        "The apostrophe here isn't for ownership — it marks a missing letter. do not → don't, with the apostrophe where the o used to be."
+                    ],
+                    "partial": [
+                        "It stands for the missing o.",
+                        "Because a letter was taken out."
+                    ],
+                    "misconception": [
+                        {
+                            "answer": "It shows the word belongs to someone.",
+                            "flags": "thinks it shows possession here"
+                        },
+                        {
+                            "answer": "It goes in the middle: do'nt.",
+                            "flags": "places it wrongly (do'nt)"
+                        }
+                    ]
+                }
             },
             {
                 "type": "markwords",
