@@ -72,6 +72,22 @@ it('does not allow another guardian to view a child paper', function () {
     $this->actingAs($other)->get(route('guardian.past-papers.show', [$family['student'], $sitting]))->assertForbidden();
 })->group('scenario:PP-15');
 
+it('requires a clearer rewrite when image OCR cannot read the page', function () {
+    Storage::fake('local');
+    $family = paperFamily();
+    $sitting = app(PastPaperService::class)->compose($family['student'], 'Math');
+
+    $this->actingAs($family['guardian'])
+        ->post(route('guardian.past-papers.upload', [$family['student'], $sitting]), ['pages' => [UploadedFile::fake()->create('handwriting.jpg', 20, 'image/jpeg')]])
+        ->assertRedirect(route('guardian.past-papers.review', [$family['student'], $sitting]));
+
+    expect($sitting->submissions()->latest()->value('digitisation_status'))->toBe('rewrite_required');
+
+    $this->actingAs($family['guardian'])
+        ->post(route('guardian.past-papers.grade', [$family['student'], $sitting]), ['answers' => [$family['question']->id => '4']])
+        ->assertRedirect(route('guardian.past-papers.review', [$family['student'], $sitting]));
+})->group('scenario:PP-18');
+
 it('keeps generated variants out of the live bank until QC approval', function () {
     $family = paperFamily();
     $variants = app(PastPaperVariantService::class)->generate($family['question'], 2);

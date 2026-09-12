@@ -87,6 +87,9 @@ class PastPaperController extends Controller
     {
         $this->guardStudent($request, $student);
         abort_unless($sitting->student_id === $student->id, 404);
+        if ($sitting->submissions()->latest()->value('digitisation_status') === 'rewrite_required') {
+            return redirect()->route('guardian.past-papers.review', [$student, $sitting])->with('rewrite_required', true);
+        }
         $questions = PastPaperQuestion::whereIn('id', $sitting->question_ids)->get();
         $answers = $request->validate(collect($questions)->mapWithKeys(fn ($q) => ["answers.{$q->id}" => ['nullable', 'string', 'max:500']])->all());
         $service->grade($sitting, $answers['answers'] ?? []);
