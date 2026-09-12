@@ -40,7 +40,7 @@
 | `exam_readiness.feature` | @roadmap | — | student |
 | `admin_content.feature` | mixed | modules @mvp · anchors, monitor @v1.1 | admin |
 | `question_bank.feature` | @v1.1 | — | admin |
-| `past_paper_bank.feature` | @roadmap | PP-09/11/13/14/15/16/19 foundation built: approved-paper composition from covered topics, printable PDF, traceable code, upload storage, guardian answer confirmation and deterministic grading. AI variants, OCR, trends, and QC workflow remain next slices. | guardian, student, admin, system |
+| `past_paper_bank.feature` | @roadmap | PP-01/04/09/11/13/14/15/16/19/22-25 slices built: approved composition, portable JSON export/backup, deterministic arithmetic variants held for QC, printable PDF, traceable code, upload storage, OCR handoff with confidence review, guardian confirmation, deterministic grading, topic snapshots and practice trends. Full document OCR and richer learning signals remain next. | guardian, student, admin, system |
 | `writing_bank.feature` | @v1.1 | import/populate @v1.1 (WB-01/02 built) · serving, grading deferred (WB-03/04) | admin, student |
 | `essay_word_bank.feature` | @roadmap | curated, syllabus-aligned essay + word banks (EW-01…05) — durable successor to the LLM-carried reading pool | admin, system |
 | `progression.feature` | @roadmap | XP, multipliers, weekly leagues | student |

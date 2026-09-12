@@ -54,7 +54,7 @@
 
 - [ ] Fill-in answer input mode for Math practice (real SEA format).
 - [ ] Timed past-paper mocks feeding the agent readiness view (never the map).
-- [ ] **Past paper bank** (`past_paper_bank.feature` PP-01…25): foundation built for approved-paper composition from covered topics, printable PDF, traceable code, upload storage, guardian answer confirmation, and deterministic grading (PP-09/11/13/14/15/16/19). Next slices: real-paper seeding/export, AI-drafted variants with QC, OCR, trends, and learning-signal steering. Depends on `school_journal` and `question_bank`. *Open design: the remaining decisions at the foot of the feature file.*
+- [ ] **Past paper bank** (`past_paper_bank.feature` PP-01…25): approved composition, portable JSON export/backup, deterministic arithmetic variants held for QC, printable PDF, traceable code, upload storage, OCR handoff with confidence review, guardian confirmation, deterministic grading, topic snapshots and practice trends are built. Remaining work is broader real-paper seeding, document/PDF OCR, and richer learning-signal steering. Depends on `school_journal` and `question_bank`. *Open design: the remaining decisions at the foot of the feature file.*
 - [ ] Deeper ELA Section II practice (fiction/non-fiction/poetry/graphic passages per the 13/13/8 mark split).
 - [ ] Adaptive layer v2: agent quietly routes weekly targets at weak strands (S5 refinement).
 - [ ] Performance + Groq quota review under real usage (cache insights per student-week).
