@@ -14,10 +14,11 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable implements FilamentUser, MustVerifyEmail
 {
-    use HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable;
 
     protected $fillable = [
         'name',
@@ -366,5 +367,20 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
     public function isPaused(): bool
     {
         return $this->paused_at !== null;
+    }
+
+    /**
+     * A plain SEA standard label for a student, derived from her target SEA year.
+     * SEA is sat (≈ April/May) in the target year while she is in Standard 5; the
+     * school year before that is Standard 4. Used by the mobile parent app.
+     */
+    public function seaStandardLabel(): string
+    {
+        $year = $this->target_sea_year;
+        if ($year === null) {
+            return 'Standard 4/5';
+        }
+
+        return $year <= now()->year ? 'Standard 5' : 'Standard 4';
     }
 }
