@@ -1,3 +1,44 @@
+# Session Handoff — 2026-09-11 · Branch integration, practice-exposure fix, mobile & past-paper specs
+
+Latest session on top. This section supersedes older ones where they conflict.
+
+## Branch state (2026-09-11) — READ THIS FIRST
+- **Everything is integrated into `main` (`b342baf` = `origin/main`).** All local branches were folded in;
+  there is no unmerged/uncommitted work except the ONE landing fork below.
+- `main` now contains: the **codex mobile docs** (`07_MOBILE_APP_ROADMAP.md`, `MOBILE_API_CONTRACT.md`,
+  `features/mobile_{child,parent}_app.feature` = MC-01..07 / MP-01..08, `mobile-prototype/`) — **plan +
+  static prototype only, no Flutter app, no tests**; the **past-paper spec** (`past_paper_bank.feature`
+  PP-01..25 + object/screens/roadmap edits, "AI-drafted, human-approved" constraint change); the
+  **homepage restore + social-first register**; onboarding/tour/diagnostic fixes.
+- **Three git worktrees are live — one per agent** (all currently 0-ahead of `main` for COMMITTED work,
+  but each may hold its own UNCOMMITTED changes only visible in that dir):
+    - `/root/dev/formynieces` → branch **`main`** (orchestrator / this session; dev server serves this)
+    - `/root/dev/formynieces-claude2` → branch **`parallel-task`** (claude2 agent)
+    - `/root/dev/formynieces-codex` → branch **`codex-work`** (codex agent)
+  Redundant branch `fix/practice-exposure` was deleted (fully merged). Do NOT delete `parallel-task` or
+  `codex-work` — they are checked-out worktrees in active use.
+- **Landing fork PARKED (decision: keep main's homepage).** `origin/codex/simplify-homepage-messaging`
+  (1 commit, "Simplify landing page messaging") CONFLICTS with main's `welcome.blade.php` — NOT merged,
+  left on the remote for reference. Do not merge without a fresh decision.
+
+## Practice-exposure bug — FIXED (on `main` + deployed) 
+- **Bug:** `PracticeWalk` recorded a question exposure on SERVE, so the global no-repeat rule (LL-18)
+  permanently burned questions a student merely viewed and never answered — dead-ending practice on
+  "More practice coming soon" with a fully-stocked bank. Hit in prod by student Cayla (#16) on MATH-006 D1
+  (seen 20/20, answered 0).
+- **Fix (`ffd5cfb`):** record the exposure in `choose()` (on answer), not on serve; strict no-repeat kept.
+  Regression test in `QuestionExposureTest`. Full suite green (804).
+- **Repair command (`b304d4e`):** `php artisan practice:heal-exposures` (dry-run default, `--apply`)
+  deletes only serve-only PRACTICE exposures (never-answered); never touches check/tutorial exposures,
+  `student_progress`, or `practice_attempts`.
+- **Prod:** Cayla manually unblocked 2026-09-11 (41 stale `context=practice` rows deleted via tinker;
+  progress untouched). Fix + command are now on `origin/main` and deployed, so it won't recur.
+- Left in the prod container `/tmp/`: throwaway diag scripts `cc.php cc2.php hd.php ha.php` (harmless).
+
+## Prod content gap (open)
+- Production **reading passages + vocabulary are essentially empty** (L3–L7 ≈ 0/30; ~2 vocab words) —
+  the daily morning ritual has no content on prod. Practice/lessons/writing ARE stocked. Needs a seed/deploy.
+
 # Session Handoff — 2026-09-07 · Parent onboarding redesign, teaching-model eval, observability spec
 
 Latest session on top. The older sections below (2026-08-31 / 09-01) still describe most of the app,
