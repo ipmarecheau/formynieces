@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\Mobile\AuthController;
+use App\Http\Controllers\Api\Mobile\ChildController;
 use App\Http\Controllers\Api\Mobile\ParentController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,6 +38,14 @@ Route::prefix('mobile')->group(function () {
             Route::get('/children/{child}/weak-topics', [ParentController::class, 'weakTopics'])->name('api.mobile.child.weak-topics');
             Route::get('/children/{child}/writing', [ParentController::class, 'writing'])->name('api.mobile.child.writing');
             Route::get('/children/{child}/readiness', [ParentController::class, 'readiness'])->name('api.mobile.child.readiness');
+        });
+
+        // Child app (MC-01..07) — child-scoped tokens only.
+        Route::middleware('ability:child')->group(function () {
+            Route::get('/child/today', [ChildController::class, 'today'])->name('api.mobile.child.today');
+            Route::post('/child/practice/start', [ChildController::class, 'start'])->name('api.mobile.child.practice.start');
+            Route::post('/child/practice/{session}/answer', [ChildController::class, 'answer'])->name('api.mobile.child.practice.answer');
+            Route::post('/child/practice/{session}/finish', [ChildController::class, 'finish'])->name('api.mobile.child.practice.finish');
         });
     });
 });
