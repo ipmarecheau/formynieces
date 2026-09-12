@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../api.dart';
 import '../theme.dart';
-import 'today_screen.dart';
+import 'voyage_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -29,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
         throw ApiException("That's a parent login — please use your child login.");
       }
       if (!mounted) return;
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => const TodayScreen()));
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => const VoyageScreen()));
     } on ApiException catch (e) {
       setState(() => _error = e.message);
     } catch (_) {

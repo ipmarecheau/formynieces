@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\MobilePracticeSession;
 use App\Models\PracticeQuestion;
 use App\Models\StudentProgress;
 use App\Models\SyllabusModule;
@@ -77,7 +78,7 @@ it('forbids using another child’s session (403)', function () {
     // Build childA's session directly (no API auth first) so the guard resolves childB's
     // token cleanly on the request under test (avoids Sanctum's in-process user caching).
     [$childA, $module] = childWithMission();
-    $session = App\Models\MobilePracticeSession::create([
+    $session = MobilePracticeSession::create([
         'student_id' => $childA->id, 'module_id' => $module->id,
         'question_ids' => [1], 'position' => 0, 'answers' => [],
     ]);
@@ -89,4 +90,37 @@ it('forbids using another child’s session (403)', function () {
 it('blocks a parent-scoped token from child endpoints (MP-07/MC-06)', function () {
     $parentToken = User::factory()->create(['role' => 'guardian'])->createToken('t', ['parent'])->plainTextToken;
     $this->withToken($parentToken)->getJson('/api/mobile/child/today')->assertForbidden();
+});
+
+it('returns the Voyage overworld with islands + streak', function () {
+    $child = User::factory()->create(['role' => 'student']);
+    SyllabusModule::factory()->count(13)->create();
+    $token = $child->createToken('t', ['child'])->plainTextToken;
+
+    $res = $this->withToken($token)->getJson('/api/mobile/child/voyage')
+        ->assertOk()
+        ->assertJsonStructure([
+            'child' => ['id', 'name'],
+            'streak' => ['days', 'label'],
+            'islands' => [['slug', 'name', 'icon', 'conquered', 'total', 'state', 'current']],
+        ]);
+    expect($res->json('islands.0.slug'))->toBe('feather-isle');
+    expect($res->json('islands.0.state'))->toBe('playable'); // first island reachable
+});
+
+it('opens a playable island’s levels, blocks a locked one, 404s unknown', function () {
+    $child = User::factory()->create(['role' => 'student']);
+    SyllabusModule::factory()->count(13)->create();
+    $token = $child->createToken('t', ['child'])->plainTextToken;
+
+    $this->withToken($token)->getJson('/api/mobile/child/island/feather-isle')
+        ->assertOk()
+        ->assertJsonStructure([
+            'island' => ['slug', 'name', 'icon', 'state', 'conquered', 'total'],
+            'levels' => [['id', 'topic', 'subject', 'mastered', 'review', 'mission_id']],
+        ]);
+
+    // A later island is locked until the first is conquered.
+    $this->withToken($token)->getJson('/api/mobile/child/island/lantern-rock')->assertForbidden();
+    $this->withToken($token)->getJson('/api/mobile/child/island/no-such-isle')->assertNotFound();
 });

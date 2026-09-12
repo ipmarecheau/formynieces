@@ -11,6 +11,7 @@ use App\Models\StudentProgress;
 use App\Models\StudentStreak;
 use App\Models\SyllabusModule;
 use App\Models\User;
+use App\Services\Pacing\AdventureMapBuilder;
 use App\Services\Practice\PracticeQuestions;
 use App\Services\Practice\QuestionExposure;
 use App\Services\Practice\RecordPracticeAttempt;
@@ -160,6 +161,61 @@ class ChildController extends Controller
                 : "Good effort — every try makes {$module?->topic} easier.",
             'streak' => $this->streak($session->student),
             'next_action' => 'Return tomorrow for your next mission',
+        ]);
+    }
+
+    /** The Voyage overworld — islands with progress + state. Mirrors the web /voyage (AM-01..04). */
+    public function voyage(Request $request): JsonResponse
+    {
+        $child = $request->user();
+        $islands = app(AdventureMapBuilder::class)->buildVoyage($child);
+
+        $summary = array_map(fn (array $i) => [
+            'slug' => $i['slug'],
+            'name' => $i['name'],
+            'icon' => $i['icon'],
+            'conquered' => $i['conquered'],
+            'total' => $i['total'],
+            'state' => $i['state'],   // locked | playable | mastered
+            'current' => $i['current'],
+        ], $islands);
+
+        return response()->json([
+            'child' => ['id' => $child->id, 'name' => $child->name],
+            'streak' => $this->streak($child),
+            'islands' => $summary,
+        ]);
+    }
+
+    /** An island's levels (its mini-voyage). A locked island cannot be entered. */
+    public function island(Request $request, string $slug): JsonResponse
+    {
+        $child = $request->user();
+        $islands = app(AdventureMapBuilder::class)->buildVoyage($child);
+        $island = collect($islands)->firstWhere('slug', $slug);
+
+        abort_if($island === null, Response::HTTP_NOT_FOUND, 'Unknown island.');
+        abort_if($island['state'] === 'locked', Response::HTTP_FORBIDDEN, 'This island is still locked.');
+
+        $levels = array_map(fn (array $l) => [
+            'id' => $l['id'],
+            'topic' => $l['topic'],
+            'subject' => $l['subject'],
+            'mastered' => $l['mastered'],
+            'review' => $l['review'],
+            'mission_id' => "m{$l['id']}",
+        ], $island['levels']);
+
+        return response()->json([
+            'island' => [
+                'slug' => $island['slug'],
+                'name' => $island['name'],
+                'icon' => $island['icon'],
+                'state' => $island['state'],
+                'conquered' => $island['conquered'],
+                'total' => $island['total'],
+            ],
+            'levels' => $levels,
         ]);
     }
 

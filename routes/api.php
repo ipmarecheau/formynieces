@@ -42,6 +42,8 @@ Route::prefix('mobile')->group(function () {
 
         // Child app (MC-01..07) — child-scoped tokens only.
         Route::middleware('ability:child')->group(function () {
+            Route::get('/child/voyage', [ChildController::class, 'voyage'])->name('api.mobile.child.voyage');
+            Route::get('/child/island/{slug}', [ChildController::class, 'island'])->name('api.mobile.child.island');
             Route::get('/child/today', [ChildController::class, 'today'])->name('api.mobile.child.today');
             Route::post('/child/practice/start', [ChildController::class, 'start'])->name('api.mobile.child.practice.start');
             Route::post('/child/practice/{session}/answer', [ChildController::class, 'answer'])->name('api.mobile.child.practice.answer');

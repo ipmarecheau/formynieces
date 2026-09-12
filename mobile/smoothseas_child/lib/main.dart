@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'api.dart';
 import 'screens/login_screen.dart';
-import 'screens/today_screen.dart';
+import 'screens/voyage_screen.dart';
 import 'theme.dart';
 
 Future<void> main() async {
@@ -20,7 +20,7 @@ class ChildApp extends StatelessWidget {
       title: 'SmoothSeas',
       debugShowCheckedModeBanner: false,
       theme: buildSeaTheme(),
-      home: api.isLoggedIn ? const TodayScreen() : const LoginScreen(),
+      home: api.isLoggedIn ? const VoyageScreen() : const LoginScreen(),
     );
   }
 }
