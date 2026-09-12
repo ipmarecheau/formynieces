@@ -18,6 +18,7 @@
     .me-options { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
     .me-option { text-align: left; background: rgba(255,255,255,0.05); border: 1.5px solid rgba(34,211,238,0.3); border-radius: 14px; padding: 14px 18px; color: #e6f2fb; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.15s, border-color 0.15s; }
     .me-option:hover { background: rgba(34,211,238,0.12); border-color: rgba(34,211,238,0.6); }
+    .me-checking { text-align:center; font-size:14px; font-weight:800; color:#67e8f9; margin:14px 0 0; }
     .me-smooth { display: block; width: 96px; height: 96px; object-fit: contain; margin: 0 auto 10px; filter: drop-shadow(0 8px 18px rgba(0,0,0,0.4)); animation: meBob 2.4s ease-in-out infinite; }
     @keyframes meBob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
     .me-choices { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
@@ -90,6 +91,7 @@
                             @if ($tourMode) data-tour-option data-correct="{{ (int) ($i === ($current['correct'] ?? -1)) }}" @endif>{{ $option }}</button>
                     @endforeach
                 </div>
+                <p class="me-checking" wire:loading wire:target="answerCheck">Checking your answer… 🐢</p>
             @else
                 <p class="me-lead">No questions are ready for this level yet — jump into the lesson to get started.</p>
             @endif
