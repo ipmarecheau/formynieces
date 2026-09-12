@@ -17,7 +17,7 @@ class PastPaperDraftController extends Controller
         $data = json_decode($disk->get($draftPath), true);
         $filename = basename((string) ($data['filename'] ?? ''));
         abort_unless($filename !== '' && preg_match('/^[A-Za-z0-9._ -]+\.pdf$/i', $filename) === 1, 404);
-        $path = collect($disk->files('past-paper-source'))->first(fn (string $candidate) => basename($candidate) === $filename);
+        $path = collect($disk->allFiles('past-paper-source'))->first(fn (string $candidate) => basename($candidate) === $filename);
         abort_unless($path !== null, 404);
 
         return response()->file($disk->path($path), ['Content-Type' => 'application/pdf', 'Content-Disposition' => 'inline; filename="'.$filename.'"']);
