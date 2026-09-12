@@ -10,7 +10,9 @@ Past papers are source material. They are never published directly into the stud
 6. Controlled variants are generated only from approved originals. Each variant keeps a `seed_question_id`, source reference, objective, marks, module, and QC status. Generated content remains unpublished until checked.
 7. The content audit reports original, generated, approved, pending, rejected, and unmapped counts by subject and topic. It is the operational queue for growing the bank over time.
 
-The first repeatable command is `python3 scripts/past_paper_inventory.py storage/app/past-paper-source/'Past Papers' --output storage/app/past-paper-source/manifest.json`. It creates a manifest keyed by SHA-256, extracts available text into a sibling `text/` directory, and marks scanned pages as `needs_ocr`. Re-running it is safe and makes new source files visible without duplicating questions.
+The first repeatable command is `python3 scripts/past_paper_inventory.py storage/app/private/past-paper-source/'Past Papers' --output storage/app/private/past-paper-source/manifest.json`. It creates a manifest keyed by SHA-256, extracts available text into a sibling `text/` directory, and marks scanned pages as `needs_ocr`. Re-running it is safe and makes new source files visible without duplicating questions.
+
+After the key and a PDF model are configured, an admin can extract one paper with `php artisan past-papers:extract past-paper-source/Past Papers/SEA-MATHEMATICS-2025.pdf --write`. This sends one PDF to the configured OpenRouter model's native file input and saves an unapproved JSON draft under `past-paper-source/extractions/`. It is intentionally one paper per action so cost, output, and review remain visible.
 
 ## Cost-conscious implementation
 
