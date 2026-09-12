@@ -3,6 +3,7 @@
 namespace App\Services\Content;
 
 use App\Models\SyllabusModule;
+use App\Models\PastPaper;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -52,7 +53,23 @@ class ContentCoverageService
             'reading' => $this->reading(),
             'vocabulary' => $this->vocabulary(),
             'writing' => $this->writing(),
+            'past_papers' => $this->pastPapers(),
         ];
+    }
+
+    /** Past-paper intake and QC coverage, kept beside the other live audit axes. */
+    private function pastPapers(): array
+    {
+        $questions = DB::table('past_paper_questions');
+        $total = (int) $questions->count();
+        $approved = (int) (clone $questions)->where('qc_status', 'approved')->where('is_withdrawn', false)->count();
+        $pending = (int) (clone $questions)->whereIn('qc_status', ['unapproved', 'needs_review'])->where('is_withdrawn', false)->count();
+        $rejected = (int) (clone $questions)->whereIn('qc_status', ['rejected', 'discarded'])->count();
+        $unmapped = (int) (clone $questions)->whereNull('syllabus_module_id')->where('is_withdrawn', false)->count();
+        $bySubject = PastPaper::query()->withCount(['questions as question_count'])->get()->groupBy('subject')->map(fn ($papers) => [
+            'papers' => $papers->count(), 'questions' => (int) $papers->sum('question_count'),
+        ])->all();
+        return compact('total', 'approved', 'pending', 'rejected', 'unmapped', 'bySubject');
     }
 
     /**
