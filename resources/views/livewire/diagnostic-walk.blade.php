@@ -67,6 +67,7 @@
     }
     /* Accessible "unknown number" box, CSS-drawn so it always renders. */
     .dw-unknown { display:inline-block; width:0.95em; height:0.95em; border:2.5px solid currentColor; border-radius:5px; vertical-align:-0.12em; margin:0 0.08em; }
+    .dw-checking { text-align:center; font-size:13px; font-weight:800; color:#67e8f9; margin:12px 0 0; }
     .dw-progress-text { text-align:center; font-size:12.5px; font-weight:700; color:#93b2cc; margin:10px 0 2px; line-height:1.5; }
     .dw-reassure-text { text-align:center; font-size:12px; font-weight:700; color:#67e8f9; margin:0 0 4px; }
     .dw-options { display: flex; flex-direction: column; gap: 14px; }
@@ -140,12 +141,26 @@
     @elseif ($question === null)
     <div class="dw-card">
         <p class="dw-done">Nice sailing! 🎉</p>
-        <p style="text-align:center; color:rgba(196,181,253,0.9); font-size:15px; line-height:1.6; margin:14px 0 8px;">
+        <p style="text-align:center; color:rgba(196,181,253,0.9); font-size:15px; line-height:1.6; margin:14px 0 14px;">
             That wasn't a test — it just showed me where to start. 🌟
         </p>
-        <p style="text-align:center; color:rgba(196,181,253,0.8); font-size:15px; line-height:1.6; margin:0 0 24px;">
-            I've drawn your very own map 🗺️ — let's set sail and begin your Voyage.
-        </p>
+
+        {{-- #1 Result summary: warm + non-quantitative — strengths + where the map begins. --}}
+        <div style="background:rgba(34,211,238,0.08); border:1.5px solid rgba(34,211,238,0.3); border-radius:16px; padding:16px 18px; margin:0 0 22px; text-align:left;">
+            <p style="font-family:'Fredoka One',cursive; color:#67e8f9; font-size:15px; margin:0 0 10px;">Here's what I found 🗺️</p>
+            @if (! empty($resultSummary['strengths']))
+                <p style="color:#e6f2fb; font-size:14.5px; line-height:1.6; margin:0 0 8px;">
+                    💪 You're already strong in <b>{!! implode('</b> and <b>', array_map('e', $resultSummary['strengths'])) !!}</b>.
+                </p>
+            @endif
+            @if (! empty($resultSummary['startWith']))
+                <p style="color:#e6f2fb; font-size:14.5px; line-height:1.6; margin:0;">
+                    🧭 We'll begin your voyage with <b>{{ $resultSummary['startWith'] }}</b> — one stop at a time.
+                </p>
+            @else
+                <p style="color:#e6f2fb; font-size:14.5px; line-height:1.6; margin:0;">Your map is ready — let's set sail! 🌊</p>
+            @endif
+        </div>
         <a href="{{ route('student.welcome') }}" class="dw-continue" style="text-decoration:none; text-align:center;">
             Set sail →
         </a>
@@ -187,6 +202,7 @@
                     >{!! \App\Support\MathGlyphs::render((string) $optionText) !!}</button>
                 @endforeach
             </div>
+            <p class="dw-checking" wire:loading wire:target="choose">Checking your answer… 🐢</p>
         </div>
     @endif
 </div>

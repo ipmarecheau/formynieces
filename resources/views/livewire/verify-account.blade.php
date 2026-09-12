@@ -74,12 +74,19 @@
             <p class="va-note" style="margin-top:0;">Tap the link in the email, <strong>or</strong> enter the 6-digit code:</p>
             <form wire:submit="submitEmailCode" class="va-row" style="margin-top:10px;">
                 <input type="text" inputmode="numeric" maxlength="6" class="ss-input va-code"
-                       wire:model="emailCode" placeholder="••••••" autocomplete="one-time-code">
-                <button type="submit" class="ss-btn-accent" style="padding:12px 18px;">Verify</button>
+                       wire:model="emailCode" placeholder="••••••" autocomplete="one-time-code"
+                       autofocus pattern="[0-9]*">
+                <button type="submit" class="ss-btn-accent" style="padding:12px 18px;">
+                    <span wire:loading.remove wire:target="submitEmailCode">Verify</span>
+                    <span wire:loading wire:target="submitEmailCode">Checking…</span>
+                </button>
             </form>
             @error('emailCode') <p class="va-err">{{ $message }}</p> @enderror
-            <div class="va-actions">
-                <button type="button" class="va-link" wire:click="resendEmail">Resend email</button>
+            <div class="va-actions" x-data="{ left: @js($resendCountdown) }" x-init="if (left > 0) { const t = setInterval(() => { if (--left <= 0) clearInterval(t); }, 1000); }">
+                <button type="button" class="va-link" wire:click="resendEmail" x-bind:disabled="left > 0" x-bind:style="left > 0 ? 'opacity:.5;cursor:default;' : ''">
+                    <span x-show="left <= 0">Resend email</span>
+                    <span x-show="left > 0">Resend in <span x-text="left"></span>s</span>
+                </button>
             </div>
         @endunless
     </div>

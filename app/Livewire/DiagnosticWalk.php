@@ -11,6 +11,7 @@ use App\Services\Diagnostic\SessionPlanner;
 use App\Services\Pacing\RoadmapGenerator;
 use App\Support\IslandTaxonomy;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -37,6 +38,14 @@ class DiagnosticWalk extends Component
     public bool $showInterstitial = false;
 
     public bool $isComplete = false;
+
+    /**
+     * A warm, non-quantitative summary shown on completion (assessment-first): the
+     * strands she already showed strength in, and where her map begins. No scores.
+     *
+     * @var array{strengths:array<int,string>, startWith:?string}
+     */
+    public array $resultSummary = ['strengths' => [], 'startWith' => null];
 
     public bool $awaitingGuardian = false;
 
@@ -129,6 +138,10 @@ class DiagnosticWalk extends Component
             // reconciled later, in the background, from the guardian's dashboard.
             $this->awaitingGuardian = false;
 
+            if (isset($session->student_id)) {
+                $this->resultSummary = $this->summarizeResult((int) $session->student_id);
+            }
+
             $this->prompt = '';
             $this->options = [];
             $this->strand = '';
@@ -156,6 +169,35 @@ class DiagnosticWalk extends Component
     protected function islandFor(string $strand, string $subject): array
     {
         return IslandTaxonomy::resolve($strand, $subject);
+    }
+
+    /**
+     * A warm, non-quantitative completion summary from her mastery map: up to two
+     * strands she already showed strength in, and the strand her map begins with.
+     * Strand = the "Strand: Topic" prefix. No scores or percentages.
+     *
+     * @return array{strengths:array<int,string>, startWith:?string}
+     */
+    protected function summarizeResult(int $studentId): array
+    {
+        $rows = DB::table('student_progress')
+            ->join('syllabus_modules', 'syllabus_modules.id', '=', 'student_progress.module_id')
+            ->where('student_progress.student_id', $studentId)
+            ->orderBy('syllabus_modules.sequence_order')
+            ->get(['student_progress.status', 'syllabus_modules.topic']);
+
+        $strandOf = fn (string $topic): string => trim(Str::before($topic, ':'));
+
+        $strengths = $rows->where('status', 'mastered')
+            ->map(fn ($r) => $strandOf($r->topic))->unique()->take(2)->values()->all();
+
+        $firstToLearn = $rows->firstWhere('status', 'needs_work')
+            ?? $rows->first(fn ($r) => $r->status !== 'mastered');
+
+        return [
+            'strengths' => $strengths,
+            'startWith' => $firstToLearn ? $strandOf($firstToLearn->topic) : null,
+        ];
     }
 
     public function choose(int $index): void

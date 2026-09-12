@@ -26,6 +26,7 @@
     .pw-option:hover { border-color: rgba(192,132,252,0.8); background: rgba(34,211,238,0.14); }
     .pw-option:active { transform: scale(0.985); box-shadow: 0 0 20px rgba(244,114,182,0.4); border-color: #fcd34d; }
     .pw-option:focus-visible { outline: 3px solid #67e8f9; outline-offset: 2px; }
+    .pw-checking { text-align:center; font-size:14px; font-weight:800; color:#67e8f9; margin:16px 0 0; }
     .pw-feedback-head { font-family: 'Fredoka One', cursive; font-size: 22px; text-align: center; margin-bottom: 16px; }
     .pw-feedback-head.good { color: #67e8f9; }
     .pw-feedback-head.notyet { color: #f0abfc; }
@@ -129,6 +130,7 @@
                         @if ($tourMode) data-tour-option data-correct="{{ (int) ($index === $question['correct_index']) }}" @endif>{{ $optionText }}</button>
                 @endforeach
             </div>
+            <p class="pw-checking" wire:loading wire:target="choose">Checking your answer… 🐢</p>
         </div>
     @endif
 </div>

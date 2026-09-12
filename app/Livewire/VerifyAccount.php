@@ -74,10 +74,22 @@ class VerifyAccount extends Component
 
     public function submitEmailCode()
     {
-        $this->validate(['emailCode' => ['required', 'digits:6']]);
+        $this->validate(['emailCode' => ['required', 'digits:6']], [
+            'emailCode.required' => 'Enter the 6-digit code from your email.',
+            'emailCode.digits' => 'The code is 6 digits — check the latest email.',
+        ]);
 
-        if (! auth()->user()->verifyEmailCode($this->emailCode)) {
-            $this->addError('emailCode', 'That code is incorrect or has expired.');
+        $user = auth()->user();
+
+        if (! $user->verifyEmailCode($this->emailCode)) {
+            // Tell her WHICH problem it is, so she knows whether to retry or resend.
+            $expired = $user->email_verification_code_expires_at !== null
+                && $user->email_verification_code_expires_at->isPast();
+
+            $this->addError('emailCode', $expired
+                ? 'That code has expired. Tap “Resend email” below for a fresh one.'
+                : 'That code is incorrect. Check the latest email and try again.');
+            $this->emailCode = '';
 
             return null;
         }
@@ -88,10 +100,26 @@ class VerifyAccount extends Component
         return $this->redirectIfDone();
     }
 
+    /** Seconds a fresh resend must wait, so the button can show a live countdown. */
+    public const RESEND_COOLDOWN = 30;
+
+    public int $resendCountdown = 0;
+
     public function resendEmail(): void
     {
+        $key = 'verify-email-resend:'.auth()->id();
+
+        if (RateLimiter::tooManyAttempts($key, 1)) {
+            $this->resendCountdown = RateLimiter::availableIn($key);
+            $this->addError('emailCode', "Hang on — you can resend in {$this->resendCountdown}s.");
+
+            return;
+        }
+
+        RateLimiter::hit($key, self::RESEND_COOLDOWN);
         auth()->user()->sendEmailVerificationNotification();
         $this->status = 'email-sent';
+        $this->resendCountdown = self::RESEND_COOLDOWN;
     }
 
     public function submitPhoneCode(PhoneVerifier $verifier)
