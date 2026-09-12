@@ -74,8 +74,9 @@
                 <li class="me-step"><span class="me-dot">1</span><span>First, a <b>quick check</b> — six questions, two easy, two medium, two tricky. Ace them all and you've <b>already mastered it</b> — no lesson needed!</span></li>
                 <li class="me-step"><span class="me-dot">2</span><span>If not, that's totally fine. You pick how to learn it: a <b>lesson</b>, some <b>worked examples</b>, or jump into <b>practice</b>.</span></li>
                 <li class="me-step"><span class="me-dot">3</span><span>In practice you climb from easy to tricky. Every question gives you a <b>second try</b>, and nothing is ever "wrong" — just <b>not yet</b>.</span></li>
-                <li class="me-step"><span class="me-dot">4</span><span>Get three tricky ones right in a row and the level is <b>yours</b>. 🎉</span></li>
+                <li class="me-step"><span class="me-dot">4</span><span>Get three tricky ones right <b>first try</b> in a row and the level is <b>yours</b>. 🎉 (Miss both tries on a question and Smooth pauses to <b>reteach</b> it.)</span></li>
             </ul>
+            <p class="me-lead" style="font-weight:700;">It's not a test or a grade — the quick check just helps Smooth start you in the right place. Takes about 2 minutes.</p>
             <button type="button" class="me-start" wire:click="beginCheck">Start the quick check →</button>
 
         @elseif ($phase === 'check')
