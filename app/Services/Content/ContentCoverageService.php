@@ -5,6 +5,7 @@ namespace App\Services\Content;
 use App\Models\SyllabusModule;
 use App\Models\PastPaper;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * A living audit of authored content vs the minimum the app needs to run
@@ -54,6 +55,7 @@ class ContentCoverageService
             'vocabulary' => $this->vocabulary(),
             'writing' => $this->writing(),
             'past_papers' => $this->pastPapers(),
+            'past_paper_sources' => $this->pastPaperSources(),
         ];
     }
 
@@ -70,6 +72,17 @@ class ContentCoverageService
             'papers' => $papers->count(), 'questions' => (int) $papers->sum('question_count'),
         ])->all();
         return compact('total', 'approved', 'pending', 'rejected', 'unmapped', 'bySubject');
+    }
+
+    private function pastPaperSources(): array
+    {
+        $path = 'past-paper-source/manifest.json';
+        if (! Storage::disk('local')->exists($path)) {
+            return ['files' => 0, 'text_extracted' => 0, 'needs_ocr' => 0];
+        }
+        $manifest = json_decode(Storage::disk('local')->get($path), true);
+        $files = collect($manifest['files'] ?? []);
+        return ['files' => $files->count(), 'text_extracted' => $files->where('status', 'text_extracted')->count(), 'needs_ocr' => $files->where('status', 'needs_ocr')->count()];
     }
 
     /**
