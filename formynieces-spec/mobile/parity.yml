@@ -110,9 +110,9 @@ child:
     title: Welcome-back streak splash flowing into the Voyage (SH-06/CE-04)
     web_route: /welcome-back
     backend: DashboardController@studentSplash
-    api: null
-    flutter: null
-    tests: null
+    api: api.mobile.child.welcome-back
+    flutter: smoothseas_child/lib/screens/welcome_back_screen.dart
+    tests: MobileChildTest
 
 parent:
   - key: login

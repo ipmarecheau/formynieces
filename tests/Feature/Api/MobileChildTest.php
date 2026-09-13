@@ -167,3 +167,17 @@ it('opens a playable island’s levels, blocks a locked one, 404s unknown', func
     $this->withToken($token)->getJson('/api/mobile/child/island/lantern-rock')->assertForbidden();
     $this->withToken($token)->getJson('/api/mobile/child/island/no-such-isle')->assertNotFound();
 });
+
+it('returns the welcome-back splash with streaks (SH-06)', function () {
+    $child = User::factory()->create(['role' => 'student', 'name' => 'Ava']);
+    App\Models\StudentStreak::create(['student_id' => $child->id, 'type' => 'practice', 'count' => 3]);
+    App\Models\StudentStreak::create(['student_id' => $child->id, 'type' => 'login', 'count' => 5]);
+    $token = $child->createToken('t', ['child'])->plainTextToken;
+
+    $this->withToken($token)->getJson('/api/mobile/child/welcome-back')
+        ->assertOk()
+        ->assertJsonPath('child.name', 'Ava')
+        ->assertJsonPath('streaks.practice', 3)
+        ->assertJsonPath('streaks.login', 5)
+        ->assertJsonStructure(['child' => ['id', 'name'], 'streaks' => ['voyage', 'practice', 'login', 'mastery', 'pace_weeks'], 'milestone', 'message']);
+});

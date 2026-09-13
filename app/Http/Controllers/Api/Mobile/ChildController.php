@@ -381,6 +381,29 @@ class ChildController extends Controller
         ));
     }
 
+    /** Welcome-back splash — streaks + any claimable milestone, before the Voyage (SH-06/CE-04). */
+    public function welcomeBack(Request $request): JsonResponse
+    {
+        $child = $request->user();
+        $count = fn (string $type): int => (int) (StudentStreak::where('student_id', $child->id)->where('type', $type)->value('count') ?? 0);
+        $milestone = app(StreakEconomyService::class)->claimStreakMilestone($child->id);
+
+        return response()->json([
+            'child' => ['id' => $child->id, 'name' => $child->name],
+            'streaks' => [
+                'voyage' => $this->streak($child)['days'],
+                'practice' => $count('practice'),
+                'login' => $count('login'),
+                'mastery' => $count('mastery'),
+                'pace_weeks' => $count('pace_weeks'),
+            ],
+            'milestone' => $milestone,
+            'message' => $milestone !== null
+                ? "🎉 A {$milestone}-day milestone — you're on fire!"
+                : "Welcome back, {$child->name}! Ready to set sail?",
+        ]);
+    }
+
     // --- helpers -------------------------------------------------------------
 
     private function authorizeSession(Request $request, MobilePracticeSession $session): void
