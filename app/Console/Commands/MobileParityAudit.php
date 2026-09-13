@@ -39,6 +39,8 @@ class MobileParityAudit extends Command
         foreach ($sections as $key => $heading) {
             $rows = [];
             $md = [];
+            $sectionBuilt = 0;
+            $sectionAll = 0;
             foreach ($spec[$key] ?? [] as $item) {
                 $api = $this->check($item['api'] ?? null, fn ($v) => Route::has($v));
                 $ui = $this->check($item['flutter'] ?? null, fn ($v) => is_file(base_path('mobile/'.$v)));
@@ -47,6 +49,10 @@ class MobileParityAudit extends Command
                 $status = $this->status($api, $ui, $test);
                 $totals[$this->bucket($status)]++;
                 $totals['all']++;
+                $sectionAll++;
+                if ($this->bucket($status) === 'built') {
+                    $sectionBuilt++;
+                }
 
                 $rows[] = [$item['key'], $api['mark'], $ui['mark'], $test['mark'], $status, $this->trim($item['title'] ?? '', 46)];
                 $md[] = "| {$item['key']} | {$this->md($api)} | {$this->md($ui)} | {$this->md($test)} | {$status} | ".($item['title'] ?? '').' |';
@@ -59,6 +65,8 @@ class MobileParityAudit extends Command
             $this->newLine();
             $this->info($heading);
             $this->table(['key', 'API', 'UI', 'test', 'status', 'title'], $rows);
+            // Machine-readable per-section summary (parity-gate.sh keys off this).
+            $this->line("SUMMARY {$key}: {$sectionBuilt}/{$sectionAll} built");
             $mdSections[$heading] = $md;
         }
 
