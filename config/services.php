@@ -39,6 +39,10 @@ return [
         // Source-paper extraction is an explicit admin/CLI action, never a runtime dependency.
         'past_paper_model' => env('LLM_PAST_PAPER_MODEL', env('LLM_VISION_MODEL')),
         'past_paper_fallback_models' => array_values(array_filter(array_map('trim', explode(',', (string) env('LLM_PAST_PAPER_FALLBACK_MODELS', env('LLM_VISION_FALLBACK_MODELS', '')))))),
+        // Page-image vectorisation is kept separate from PDF text extraction: it uses a vision
+        // request to recreate diagrams as SVG after questions have been drafted.
+        'past_paper_illustration_model' => env('LLM_PAST_PAPER_ILLUSTRATION_MODEL', env('LLM_PAST_PAPER_MODEL', env('LLM_VISION_MODEL'))),
+        'past_paper_illustration_fallback_models' => array_values(array_filter(array_map('trim', explode(',', (string) env('LLM_PAST_PAPER_ILLUSTRATION_FALLBACK_MODELS', env('LLM_PAST_PAPER_FALLBACK_MODELS', env('LLM_VISION_FALLBACK_MODELS', ''))))))),
 
         // AI governance budget (AG-01..04). Per-student, per-month, in USD.
         // Discretionary AI (clarify chat, re-teach, worked examples) stops at the soft

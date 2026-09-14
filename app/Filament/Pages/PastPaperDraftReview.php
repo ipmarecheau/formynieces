@@ -12,6 +12,8 @@ use Filament\Pages\Page;
 use Filament\Support\Icons\Heroicon;
 use Illuminate\Support\Facades\Storage;
 use App\Services\PastPapers\PastPaperTopicMapper;
+use App\Services\PastPapers\PastPaperIllustrationVectorizer;
+use App\Services\PastPapers\SvgSanitizer;
 
 class PastPaperDraftReview extends Page
 {
@@ -50,6 +52,7 @@ class PastPaperDraftReview extends Page
             }),
             Action::make('save')->label('Save draft')->icon(Heroicon::Check)->action(fn () => $this->saveDraft()),
             Action::make('map')->label('Map SEA metadata')->icon(Heroicon::OutlinedTag)->action(fn (PastPaperTopicMapper $mapper) => $this->mapTopics($mapper)),
+            Action::make('vectorise')->label('Generate SVGs for source page')->icon(Heroicon::OutlinedPhoto)->requiresConfirmation()->action(fn (PastPaperIllustrationVectorizer $vectorizer) => $this->vectorisePage($vectorizer)),
             Action::make('import')->label('Import as unapproved')->icon(Heroicon::ArrowDownTray)->requiresConfirmation()->action(fn () => $this->importDraft()),
         ];
     }
@@ -83,6 +86,16 @@ class PastPaperDraftReview extends Page
         $this->draft = $mapper->map($this->draft);
         $this->saveDraft();
         Notification::make()->title('SEA metadata mapped')->body('Questions remain unapproved until final QC.')->success()->send();
+    }
+
+    public function vectorisePage(PastPaperIllustrationVectorizer $vectorizer): void
+    {
+        $result = $vectorizer->vectorise($this->draft, $this->sourcePage);
+        $this->draft = $result['draft'];
+        $this->saveDraft();
+        Notification::make()->title("{$result['generated']} SVG diagram(s) generated")
+            ->body('Compare each vector diagram with the source before import.')
+            ->success()->send();
     }
 
     public function previousPage(): void { $this->sourcePage = max(1, $this->sourcePage - 1); }
@@ -121,10 +134,12 @@ class PastPaperDraftReview extends Page
 
     private function safeSvg(mixed $svg): ?string
     {
-        if (! is_string($svg) || trim($svg) === '' || ! str_starts_with(trim($svg), '<svg')) return null;
-        $svg = preg_replace('/<\/?(script|iframe|object|embed|foreignObject)[^>]*>/i', '', $svg) ?? '';
-        $svg = preg_replace('/\s(?:on[a-z]+|href|xlink:href)\s*=\s*(["\']).*?\1/i', '', $svg) ?? '';
-        return strlen($svg) <= 20000 ? trim($svg) : null;
+        return SvgSanitizer::clean($svg);
+    }
+
+    public function previewSvg(mixed $svg): ?string
+    {
+        return SvgSanitizer::clean($svg);
     }
 
     public function sourceUrl(): ?string

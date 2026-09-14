@@ -4,6 +4,7 @@ namespace App\Services\Content;
 
 use App\Models\SyllabusModule;
 use App\Models\PastPaper;
+use App\Services\PastPapers\SvgSanitizer;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -78,11 +79,22 @@ class ContentCoverageService
     {
         $path = 'past-paper-source/manifest.json';
         if (! Storage::disk('local')->exists($path)) {
-            return ['files' => 0, 'text_extracted' => 0, 'needs_ocr' => 0];
+            return ['files' => 0, 'text_extracted' => 0, 'needs_ocr' => 0, 'draft_questions' => 0, 'svg_diagrams' => 0];
         }
         $manifest = json_decode(Storage::disk('local')->get($path), true);
         $files = collect($manifest['files'] ?? []);
-        return ['files' => $files->count(), 'text_extracted' => $files->where('status', 'text_extracted')->count(), 'needs_ocr' => $files->where('status', 'needs_ocr')->count()];
+        $drafts = collect(Storage::disk('local')->files('past-paper-source/extractions'))
+            ->filter(fn (string $path) => str_ends_with($path, '.json'))
+            ->map(fn (string $path) => json_decode(Storage::disk('local')->get($path), true) ?: []);
+        $questions = $drafts->flatMap(fn (array $draft) => (array) data_get($draft, 'draft.questions', []));
+
+        return [
+            'files' => $files->count(),
+            'text_extracted' => $files->where('status', 'text_extracted')->count(),
+            'needs_ocr' => $files->where('status', 'needs_ocr')->count(),
+            'draft_questions' => $questions->count(),
+            'svg_diagrams' => $questions->filter(fn (array $question) => SvgSanitizer::clean($question['illustration_svg'] ?? null) !== null)->count(),
+        ];
     }
 
     /**
