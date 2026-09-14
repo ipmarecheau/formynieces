@@ -48,7 +48,7 @@ class _WelcomeBackScreenState extends State<WelcomeBackScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    ClipOval(child: Image.asset('assets/images/voyage/smooth-cheer.webp', width: 92, height: 92, fit: BoxFit.cover)),
+                    Image.asset('assets/images/voyage/smooth-cheer.webp', height: 140, fit: BoxFit.contain),
                     const SizedBox(height: 16),
                     Text('${d['message']}', textAlign: TextAlign.center, style: head(24)),
                     if (milestone != null) ...[
