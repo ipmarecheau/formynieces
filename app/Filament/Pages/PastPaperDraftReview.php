@@ -27,6 +27,7 @@ class PastPaperDraftReview extends Page
     public ?string $selectedDraft = null;
     public int $sourcePage = 1;
     public int $sourcePageCount = 1;
+    public int $reviewIndex = 0;
     /** @var array<string, mixed> */
     public array $draft = [];
 
@@ -41,7 +42,7 @@ class PastPaperDraftReview extends Page
 
     public function updatedSelectedDraft(): void
     {
-        $this->sourcePage = 1;
+        $this->reviewIndex = 0;
         $this->loadDraft();
     }
 
@@ -74,6 +75,8 @@ class PastPaperDraftReview extends Page
         $manifestData = $manifest && Storage::disk('local')->exists($manifest) ? json_decode(Storage::disk('local')->get($manifest), true) : [];
         $source = collect($manifestData['files'] ?? [])->firstWhere('filename', $this->draft['filename'] ?? '');
         $this->sourcePageCount = (int) ($source['pages'] ?? $this->draft['pages'] ?? 1);
+        $this->reviewIndex = min($this->reviewIndex, max(0, count($this->draft['draft']['questions'] ?? []) - 1));
+        $this->syncSourcePage();
     }
 
     public function saveDraft(): void
@@ -110,8 +113,32 @@ class PastPaperDraftReview extends Page
             ->success()->send();
     }
 
-    public function previousPage(): void { $this->sourcePage = max(1, $this->sourcePage - 1); }
-    public function nextPage(): void { $this->sourcePage = min($this->sourcePageCount, $this->sourcePage + 1); }
+    public function previousQuestion(): void
+    {
+        $this->reviewIndex = max(0, $this->reviewIndex - 1);
+        $this->syncSourcePage(dispatch: true);
+    }
+
+    public function nextQuestion(): void
+    {
+        $this->reviewIndex = min(max(0, count($this->draft['draft']['questions'] ?? []) - 1), $this->reviewIndex + 1);
+        $this->syncSourcePage(dispatch: true);
+    }
+
+    public function goToQuestion(int $index): void
+    {
+        $this->reviewIndex = min(max(0, $index), max(0, count($this->draft['draft']['questions'] ?? []) - 1));
+        $this->syncSourcePage(dispatch: true);
+    }
+
+    private function syncSourcePage(bool $dispatch = false): void
+    {
+        $question = $this->draft['draft']['questions'][$this->reviewIndex] ?? [];
+        $this->sourcePage = min($this->sourcePageCount, max(1, (int) ($question['source_page'] ?? 1)));
+        if ($dispatch) {
+            $this->dispatch('past-paper-source-focus', page: $this->sourcePage);
+        }
+    }
 
     public function importDraft(): void
     {
@@ -159,8 +186,8 @@ class PastPaperDraftReview extends Page
         return $this->selectedDraft ? route('admin.past-paper-drafts.source', ['draft' => $this->selectedDraft]) : null;
     }
 
-    public function sourcePageUrl(): ?string
+    public function sourcePageUrl(?int $page = null): ?string
     {
-        return $this->selectedDraft ? route('admin.past-paper-drafts.page', ['draft' => $this->selectedDraft, 'page' => $this->sourcePage]) : null;
+        return $this->selectedDraft ? route('admin.past-paper-drafts.page', ['draft' => $this->selectedDraft, 'page' => $page ?? $this->sourcePage]) : null;
     }
 }
