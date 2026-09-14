@@ -67,6 +67,9 @@ flutter:
     - family: Fredoka
       fonts:
         - asset: assets/fonts/Fredoka.ttf
+    - family: FredokaOne
+      fonts:
+        - asset: assets/fonts/FredokaOne.ttf
     - family: Nunito
       fonts:
         - asset: assets/fonts/Nunito.ttf

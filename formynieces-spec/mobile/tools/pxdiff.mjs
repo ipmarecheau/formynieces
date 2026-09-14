@@ -19,9 +19,16 @@ async function shot(page, path) {
 
 const browser = await chromium.launch();
 
-// --- web ---
-const wc = await browser.newContext({ viewport: VP, deviceScaleFactor: DSF });
+// --- web --- (reduced motion pins the sea scene's animations to their initial frame)
+const wc = await browser.newContext({ viewport: VP, deviceScaleFactor: DSF, reducedMotion: 'reduce' });
 const wp = await wc.newPage();
+if (mode === 'welcome' || mode === 'voyage') {
+  await wp.goto('http://127.0.0.1:8000/go', { waitUntil: 'networkidle', timeout: 30000 });
+  await wp.fill('#email', 'emu-child@smoothseas.test');
+  await wp.fill('#password', 'password');
+  await wp.click('button[type=submit]');
+  await wp.waitForTimeout(1500);
+}
 await wp.goto(webUrl, { waitUntil: 'networkidle', timeout: 30000 });
 await wp.waitForTimeout(1200);
 await shot(wp, `${dir}/${name}-web.png`);
