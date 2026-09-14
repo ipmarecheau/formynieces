@@ -23,6 +23,7 @@
             <x-slot name="heading">Source intake</x-slot>
             <p class="text-2xl font-bold">{{ $sources['files'] }} PDFs</p>
             <p class="text-sm text-gray-500">{{ $sources['text_extracted'] }} with text · {{ $sources['needs_ocr'] }} needing OCR</p>
+            <p class="text-sm text-gray-500">{{ $sources['draft_questions'] }} draft questions · {{ $sources['svg_diagrams'] }} SVG diagrams</p>
         </x-filament::section>
     </div>
     <x-filament::section class="mt-4">

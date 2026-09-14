@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Services\PastPapers\SvgSanitizer;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -17,11 +18,7 @@ class PastPaperQuestion extends Model
 
     public function getSafeIllustrationSvgAttribute(): ?string
     {
-        $svg = $this->illustration_svg;
-        if (! is_string($svg) || ! str_starts_with(trim($svg), '<svg')) return null;
-        $svg = preg_replace('/<\/?(script|iframe|object|embed|foreignObject)[^>]*>/i', '', $svg) ?? '';
-        $svg = preg_replace('/\s(?:on[a-z]+|href|xlink:href)\s*=\s*(["\']).*?\1/i', '', $svg) ?? '';
-        return strlen($svg) <= 20000 ? trim($svg) : null;
+        return SvgSanitizer::clean($this->illustration_svg);
     }
 
     public function paper(): BelongsTo { return $this->belongsTo(PastPaper::class, 'past_paper_id'); }
