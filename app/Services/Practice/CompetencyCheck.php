@@ -57,7 +57,7 @@ class CompetencyCheck
                 $candidates = $pool->where('difficulty', $difficulty)
                     ->reject(fn (PracticeQuestion $q): bool => $served->contains('id', $q->id))
                     ->values();
-                $question = $this->exposure->pickUnseen($studentId, $candidates, allowRecycle: false);
+                $question = $this->exposure->pickUnseen($studentId, $candidates, allowRecycle: false, excludeContexts: ['tutorial']);
 
                 if ($question !== null) {
                     $this->exposure->record($studentId, $question->content_hash, 'check');

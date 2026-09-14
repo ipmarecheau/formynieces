@@ -114,7 +114,7 @@ class PracticeWalk extends Component
         // — otherwise viewing, refreshing, or re-mounting the page silently burns questions
         // and dead-ends practice on "coming soon" without any learning (the bug Cayla hit).
         $atRung = app(QuestionExposure::class)
-            ->pickUnseen(auth()->id(), $candidates, allowRecycle: false);
+            ->pickUnseen(auth()->id(), $candidates, allowRecycle: false, excludeContexts: ['tutorial']);
 
         $this->question = $atRung === null ? null : [
             'id' => $atRung->id,

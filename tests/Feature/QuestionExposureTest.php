@@ -85,3 +85,36 @@ it('does not burn a question on serve — only once it is answered', function ()
     $c->call('choose', 1);
     expect(StudentQuestionExposure::where('student_id', $student->id)->count())->toBe(1);
 })->group('scenario:LL-18');
+
+it('does not let tutorial exposures gate practice selection', function () {
+    // The tutorial shows D1 practice questions as worked examples and records them with
+    // context 'tutorial'. Those teaching views must never consume the practice pool
+    // (the bug that dead-ended a student on "more practice coming soon").
+    $student = User::factory()->create(['role' => 'student']);
+    $module = SyllabusModule::factory()->create();
+
+    $q = PracticeQuestion::factory()->create([
+        'module_id' => $module->id, 'difficulty' => 1,
+        'prompt' => 'Only D1', 'options' => ['A', 'B', 'C', 'D'], 'correct_index' => 1, 'explanation' => 'x',
+    ]);
+
+    // The whole D1 pool has been shown in the tutorial.
+    app(QuestionExposure::class)->record($student->id, $q->content_hash, 'tutorial');
+
+    // Practice must still serve it — a tutorial view is not a practice repeat.
+    $c = Livewire::actingAs($student)->test(PracticeWalk::class, ['module' => $module]);
+    expect($c->get('question'))->not->toBeNull();
+    expect($c->get('question')['id'])->toBe($q->id);
+})->group('scenario:LL-18');
+
+it('seenHashes can exclude a context', function () {
+    $student = User::factory()->create(['role' => 'student']);
+    $exposure = app(QuestionExposure::class);
+
+    $exposure->record($student->id, 'hash-practice', 'practice');
+    $exposure->record($student->id, 'hash-tutorial', 'tutorial');
+
+    expect($exposure->seenHashes($student->id))->toContain('hash-practice', 'hash-tutorial');
+    expect($exposure->seenHashes($student->id, excludeContexts: ['tutorial']))
+        ->toBe(['hash-practice']);
+})->group('scenario:LL-18');
