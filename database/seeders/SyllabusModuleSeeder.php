@@ -9,8 +9,10 @@ class SyllabusModuleSeeder extends Seeder
 {
     public function run(): void
     {
-        SyllabusModule::truncate();
-
+        // Idempotent upsert keyed on the stable module code — NEVER truncate. Truncating
+        // syllabus_modules cascades (ON DELETE CASCADE) into student_progress and
+        // module_stage_completions, which wiped every learner's progress when this seeder
+        // ran on a production deploy. updateOrCreate preserves module IDs, so no cascade.
         $modules = [
 
             // ============================================================
@@ -1029,7 +1031,7 @@ class SyllabusModuleSeeder extends Seeder
             $counters[$prefix] = ($counters[$prefix] ?? 0) + 1;
             $module['code'] = sprintf('%s-%03d', $prefix, $counters[$prefix]);
 
-            SyllabusModule::create($module);
+            SyllabusModule::updateOrCreate(['code' => $module['code']], $module);
         }
     }
 }
