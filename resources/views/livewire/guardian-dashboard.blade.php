@@ -567,7 +567,7 @@
             <p class="eyebrow">Writing feedback</p>
             @if ($writingFeedback)
                 <p class="p ink">Latest essay {{ $writingFeedback['scored_at'] }} — averaging {{ $writingFeedback['average'] }}/10.</p>
-                @if ($writingFeedback['did_well'])<p class="p" style="margin-top:6px;"><strong>Did well:</strong> {{ $writingFeedback['did_well'] }}</p>@endif
+                @if (! empty($writingFeedback['did_well']))<p class="p" style="margin-top:6px;"><strong>Did well:</strong> {{ implode(' ', (array) $writingFeedback['did_well']) }}</p>@endif
                 @if ($writingFeedback['try_next'])<p class="p soft" style="margin-top:3px;"><strong>Try next:</strong> {{ $writingFeedback['try_next'] }}</p>@endif
             @else
                 <p class="p soft">No writing feedback yet.</p>

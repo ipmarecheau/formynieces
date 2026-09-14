@@ -6,6 +6,7 @@ use App\Models\StudentJourney;
 use App\Models\StudentStreak;
 use App\Models\SyllabusModule;
 use App\Models\User;
+use App\Models\WritingSubmission;
 use App\Services\Motivation\StreakEconomyService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Carbon;
@@ -140,3 +141,24 @@ it('shows when progress was last recalculated', function () {
         ->assertViewHas('paceUpdatedAt', fn ($d) => $d !== null)
         ->assertSee('Progress updated');
 })->group('scenario:GD-14');
+
+it('renders the writing feedback when did_well is a list of strengths', function () {
+    // Regression: WritingSubmission casts did_well to an array; the dashboard echoed it
+    // directly, so htmlspecialchars() got an array and the whole page 500'd for any
+    // guardian whose child had a scored essay.
+    ['guardian' => $guardian, 'student' => $student] = gdOverviewGuardian();
+
+    WritingSubmission::factory()->create([
+        'student_id' => $student->id,
+        'did_well' => ['You used a vivid simile.', 'You built real suspense.'],
+        'try_next' => 'Capitalise only proper nouns and sentence starts.',
+        'scored_at' => now(),
+    ]);
+
+    Livewire::actingAs($guardian)
+        ->test(GuardianDashboard::class)
+        ->assertOk()
+        ->assertSee('You used a vivid simile.')
+        ->assertSee('You built real suspense.')
+        ->assertSee('Capitalise only proper nouns');
+})->group('scenario:GD-01');

@@ -584,7 +584,7 @@ class GuardianDashboard extends Component
      * The latest scored writing submission, surfaced as the Q4 pointer and the
      * writing-facet detail.
      *
-     * @return array{did_well: ?string, try_next: ?string, average: float, scored_at: ?string}|null
+     * @return array{did_well: array<int, string>, try_next: ?string, average: float, scored_at: ?string}|null
      */
     /**
      * This week's concrete plan for the parent: the topics set for the week, the
