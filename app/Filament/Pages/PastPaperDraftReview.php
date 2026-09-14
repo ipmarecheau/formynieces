@@ -13,6 +13,7 @@ use Filament\Support\Icons\Heroicon;
 use Illuminate\Support\Facades\Storage;
 use App\Services\PastPapers\PastPaperTopicMapper;
 use App\Services\PastPapers\PastPaperIllustrationVectorizer;
+use App\Services\PastPapers\PastPaperPageVisionExtractor;
 use App\Services\PastPapers\SvgSanitizer;
 
 class PastPaperDraftReview extends Page
@@ -52,6 +53,7 @@ class PastPaperDraftReview extends Page
             }),
             Action::make('save')->label('Save draft')->icon(Heroicon::Check)->action(fn () => $this->saveDraft()),
             Action::make('map')->label('Map SEA metadata')->icon(Heroicon::OutlinedTag)->action(fn (PastPaperTopicMapper $mapper) => $this->mapTopics($mapper)),
+            Action::make('rebuild')->label('Re-extract source page')->icon(Heroicon::OutlinedDocumentArrowDown)->requiresConfirmation()->action(fn (PastPaperPageVisionExtractor $extractor) => $this->rebuildPage($extractor)),
             Action::make('vectorise')->label('Generate SVGs for source page')->icon(Heroicon::OutlinedPhoto)->requiresConfirmation()->action(fn (PastPaperIllustrationVectorizer $vectorizer) => $this->vectorisePage($vectorizer)),
             Action::make('import')->label('Import as unapproved')->icon(Heroicon::ArrowDownTray)->requiresConfirmation()->action(fn () => $this->importDraft()),
         ];
@@ -95,6 +97,16 @@ class PastPaperDraftReview extends Page
         $this->saveDraft();
         Notification::make()->title("{$result['generated']} SVG diagram(s) generated")
             ->body('Compare each vector diagram with the source before import.')
+            ->success()->send();
+    }
+
+    public function rebuildPage(PastPaperPageVisionExtractor $extractor): void
+    {
+        $result = $extractor->rebuild($this->draft, $this->sourcePage);
+        $this->draft = $result['draft'];
+        $this->saveDraft();
+        Notification::make()->title("Source page re-extracted: {$result['questions']} questions")
+            ->body("{$result['diagrams']} SVG diagram(s) found. Map SEA metadata after reviewing the transcription.")
             ->success()->send();
     }
 
