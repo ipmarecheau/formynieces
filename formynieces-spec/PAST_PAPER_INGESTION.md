@@ -14,6 +14,8 @@ The first repeatable command is `python3 scripts/past_paper_inventory.py storage
 
 After the key and a PDF model are configured, an admin can extract one paper with `php artisan past-papers:extract past-paper-source/Past Papers/SEA-MATHEMATICS-2025.pdf --write`. This sends one PDF to the configured OpenRouter model's native file input and saves an unapproved JSON draft under `past-paper-source/extractions/`. It is intentionally one paper per action so cost, output, and review remain visible.
 
+For a paper with diagrams or uncertain page boundaries, render its pages first with `python3 scripts/render_past_paper_pages.py storage/app/private/past-paper-source/'Past Papers' --output storage/app/private/past-paper-source/rendered`, then run `php artisan past-papers:rebuild-from-pages SEA-MATHEMATICS-2025-draft-XXXXXXXX.json`. The page-image vision step records the printed number and source page from each image and creates safe inline SVG only for visuals that are actually visible on that page. It replaces the brittle “ask a PDF model for SVG” shortcut. The admin review page also offers **Re-extract source page** for a targeted correction. All diagrams and questions stay unapproved until a human compares them side-by-side with the source.
+
 V1 has been smoke-tested against `CW-2025.pdf` (3 Creative Writing prompts) and `sea_2001_mathematics.pdf` (44 Mathematics questions). The Mathematics source did not contain an answer key, so all 44 answers remain null and require answer-key or editor confirmation. This is expected and is a release gate: extraction success never means answer-key success.
 
 ## Cost-conscious implementation
