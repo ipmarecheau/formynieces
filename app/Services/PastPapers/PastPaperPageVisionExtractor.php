@@ -47,8 +47,9 @@ class PastPaperPageVisionExtractor
         }
 
         if ($onlyPage !== null) {
+            $rebuiltNumbers = array_keys($fresh);
             foreach ((array) data_get($draft, 'draft.questions', []) as $question) {
-                if ((int) ($question['source_page'] ?? 1) !== $onlyPage) {
+                if ((int) ($question['source_page'] ?? 1) !== $onlyPage && ! in_array((int) ($question['number'] ?? 0), $rebuiltNumbers, true)) {
                     $fresh[(int) ($question['number'] ?? 0)] = $question;
                 }
             }
