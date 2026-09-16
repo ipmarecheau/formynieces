@@ -73,6 +73,38 @@ const SCREENS = {
       return r;
     },
   },
+  voyage: {
+    webUrl: `${WEB}/voyage`, auth: true,
+    state: async (page) => { await loginFlutter(page); await page.mouse.click(195, 611); await page.waitForTimeout(7000); },
+    content: ['Your Voyage', 'Islands', 'Feather Isle', 'Lantern Rock', 'conquered', 'Captain'],
+    layout: [
+      { name: 'companion', web: '.vy-companion-greeting', fl: /welcome back, ava/i },
+    ],
+    async func(page, sem) {
+      const r = [];
+      await loginFlutter(page); await page.mouse.click(195, 611); await page.waitForTimeout(7000);
+      await enableSemantics(page);
+      const nodes = await sem();
+      r.push(['voyage renders after continue', nodes.some(n => /your voyage/i.test(n.label))]);
+      // data parity: island names from API voyage endpoint
+      const api = await (await fetch(`http://127.0.0.1:8011/api/mobile/child/voyage`, { headers: { Authorization: `Bearer ${await token()}`, Accept: 'application/json' } })).json();
+      const first = api.islands?.[0]?.name || 'Feather Isle';
+      r.push(['island list matches API (first island)', nodes.some(n => new RegExp(first, 'i').test(n.label))]);
+      r.push(['shows island count', nodes.some(n => /\d+\s*\/\s*\d+|conquered/i.test(n.label))]);
+      r.push(['captain’s orders available', nodes.some(n => /captain/i.test(n.label))]);
+      // behaviour: opening captain's orders changes the screen
+      const before = await page.screenshot({ clip: { x: 0, y: 0, ...VP } });
+      await page.reload({ waitUntil: 'load' }); await page.waitForTimeout(6500);
+      await loginFlutter(page); await page.mouse.click(195, 611); await page.waitForTimeout(7000);
+      await page.mouse.click(300, 800); await page.waitForTimeout(1500); // Captain's Orders FAB
+      const after = await page.screenshot({ clip: { x: 0, y: 0, ...VP } });
+      const A = PNG.sync.read(before), B = PNG.sync.read(after);
+      const changed = pixelmatch(A.data, B.data, null, A.width, A.height, { threshold: 0.1 }) / (A.width * A.height);
+      if (process.env.DEBUG) console.log('  [orders open change]', (changed * 100).toFixed(1) + '%');
+      r.push(['captain’s orders opens', changed > 0.10]);
+      return r;
+    },
+  },
 };
 
 async function typeLogin(page, email, pass) {
