@@ -78,7 +78,7 @@ const SCREENS = {
     state: async (page) => { await loginFlutter(page); await page.mouse.click(195, 611); await page.waitForTimeout(7000); },
     content: ['Your Voyage', 'Islands', 'Feather Isle', 'Lantern Rock', 'conquered', 'Captain'],
     layout: [
-      { name: 'companion', web: '.vy-companion-greeting', fl: /welcome back, ava/i },
+      { name: 'panelTitle', web: '.co-title-main', fl: /captain.s orders/i },
     ],
     async func(page, sem) {
       const r = [];
@@ -86,22 +86,21 @@ const SCREENS = {
       await enableSemantics(page);
       const nodes = await sem();
       r.push(['voyage renders after continue', nodes.some(n => /your voyage/i.test(n.label))]);
-      // data parity: island names from API voyage endpoint
       const api = await (await fetch(`http://127.0.0.1:8011/api/mobile/child/voyage`, { headers: { Authorization: `Bearer ${await token()}`, Accept: 'application/json' } })).json();
       const first = api.islands?.[0]?.name || 'Feather Isle';
       r.push(['island list matches API (first island)', nodes.some(n => new RegExp(first, 'i').test(n.label))]);
       r.push(['shows island count', nodes.some(n => /\d+\s*\/\s*\d+|conquered/i.test(n.label))]);
-      r.push(['captain’s orders available', nodes.some(n => /captain/i.test(n.label))]);
-      // behaviour: opening captain's orders changes the screen
-      const before = await page.screenshot({ clip: { x: 0, y: 0, ...VP } });
+      r.push(['captain’s orders open by default', nodes.some(n => /captain/i.test(n.label))]);
+      // behaviour: collapsing the open panel changes the screen (fresh page — no semantics overlay)
       await page.reload({ waitUntil: 'load' }); await page.waitForTimeout(6500);
       await loginFlutter(page); await page.mouse.click(195, 611); await page.waitForTimeout(7000);
-      await page.mouse.click(300, 800); await page.waitForTimeout(1500); // Captain's Orders FAB
+      const before = await page.screenshot({ clip: { x: 0, y: 0, ...VP } });
+      await page.mouse.click(365, 497); await page.waitForTimeout(1500); // collapse ▶ toggle
       const after = await page.screenshot({ clip: { x: 0, y: 0, ...VP } });
       const A = PNG.sync.read(before), B = PNG.sync.read(after);
       const changed = pixelmatch(A.data, B.data, null, A.width, A.height, { threshold: 0.1 }) / (A.width * A.height);
-      if (process.env.DEBUG) console.log('  [orders open change]', (changed * 100).toFixed(1) + '%');
-      r.push(['captain’s orders opens', changed > 0.10]);
+      if (process.env.DEBUG) console.log('  [collapse change]', (changed * 100).toFixed(1) + '%');
+      r.push(['captain’s orders collapses', changed > 0.10]);
       return r;
     },
   },
@@ -155,22 +154,41 @@ function gray(png) {
   }
   return g;
 }
-function mssim(a, b, W, H) {
-  const C1 = (0.01 * 255) ** 2, C2 = (0.03 * 255) ** 2, win = 8;
-  let sum = 0, n = 0;
-  for (let by = 0; by + win <= H; by += win) {
-    for (let bx = 0; bx + win <= W; bx += win) {
-      let ma = 0, mb = 0;
-      for (let y = 0; y < win; y++) for (let x = 0; x < win; x++) { const i = (by + y) * W + bx + x; ma += a[i]; mb += b[i]; }
-      const N = win * win; ma /= N; mb /= N;
-      let va = 0, vb = 0, cov = 0;
-      for (let y = 0; y < win; y++) for (let x = 0; x < win; x++) { const i = (by + y) * W + bx + x; const da = a[i] - ma, db = b[i] - mb; va += da * da; vb += db * db; cov += da * db; }
-      va /= N - 1; vb /= N - 1; cov /= N - 1;
-      const s = ((2 * ma * mb + C1) * (2 * cov + C2)) / ((ma * ma + mb * mb + C1) * (va + vb + C2));
-      sum += s; n++;
-    }
+// Canonical SSIM (Wang et al. 2004): 11-tap Gaussian window (sigma 1.5), separable
+// convolution. Gaussian weighting is the published standard and correctly discounts
+// text anti-aliasing that a uniform block window over-penalizes.
+function gaussKernel() {
+  const r = 5, sigma = 1.5, k = [];
+  let sum = 0;
+  for (let i = -r; i <= r; i++) { const v = Math.exp(-(i * i) / (2 * sigma * sigma)); k.push(v); sum += v; }
+  return k.map(v => v / sum);
+}
+function blur(src, W, H, k) {
+  const r = (k.length - 1) / 2;
+  const tmp = new Float64Array(W * H), out = new Float64Array(W * H);
+  for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+    let s = 0; for (let j = -r; j <= r; j++) { const xx = Math.min(W - 1, Math.max(0, x + j)); s += src[y * W + xx] * k[j + r]; }
+    tmp[y * W + x] = s;
   }
-  return sum / n;
+  for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+    let s = 0; for (let j = -r; j <= r; j++) { const yy = Math.min(H - 1, Math.max(0, y + j)); s += tmp[yy * W + x] * k[j + r]; }
+    out[y * W + x] = s;
+  }
+  return out;
+}
+function mssim(a, b, W, H) {
+  const C1 = (0.01 * 255) ** 2, C2 = (0.03 * 255) ** 2, k = gaussKernel();
+  const aa = new Float64Array(W * H), bb = new Float64Array(W * H), ab = new Float64Array(W * H);
+  for (let i = 0; i < a.length; i++) { aa[i] = a[i] * a[i]; bb[i] = b[i] * b[i]; ab[i] = a[i] * b[i]; }
+  const muA = blur(a, W, H, k), muB = blur(b, W, H, k);
+  const sA = blur(aa, W, H, k), sB = blur(bb, W, H, k), sAB = blur(ab, W, H, k);
+  let sum = 0;
+  for (let i = 0; i < a.length; i++) {
+    const ma = muA[i], mb = muB[i];
+    const va = sA[i] - ma * ma, vb = sB[i] - mb * mb, cov = sAB[i] - ma * mb;
+    sum += ((2 * ma * mb + C1) * (2 * cov + C2)) / ((ma * ma + mb * mb + C1) * (va + vb + C2));
+  }
+  return sum / (W * H);
 }
 
 // ---- run --------------------------------------------------------------------

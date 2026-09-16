@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../api.dart';
 import '../theme.dart';
 import '../widgets/voyage_map.dart';
-import 'captains_orders_sheet.dart';
+import 'captains_orders_panel.dart';
 import 'island_screen.dart';
 import 'login_screen.dart';
 
@@ -34,54 +34,61 @@ class _VoyageScreenState extends State<VoyageScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final h = MediaQuery.sizeOf(context).height;
+    final panelHeight = h * 0.448; // web co-frame = 378 of 844
     return Scaffold(
-      floatingActionButton: FloatingActionButton.extended(
-        backgroundColor: const Color(0xFFF3E7C8),
-        foregroundColor: const Color(0xFF5B4420),
-        icon: const Text('🐢', style: TextStyle(fontSize: 18)),
-        label: Text("Captain’s Orders", style: head(14, color: const Color(0xFF5B4420))),
-        onPressed: () => showCaptainsOrders(context),
-      ),
       body: SeaBackground(
-        child: SafeArea(
-          child: FutureBuilder<Map<String, dynamic>>(
-            future: _future,
-            builder: (context, snap) {
-              if (snap.connectionState == ConnectionState.waiting) {
-                return const Center(child: CircularProgressIndicator(color: Sea.gold));
-              }
-              if (snap.hasError) {
-                return _retry(snap.error.toString());
-              }
-              final d = snap.data!;
-              final streak = d['streak'] as Map<String, dynamic>? ?? {};
-              final name = (d['child'] as Map<String, dynamic>?)?['name'] ?? 'explorer';
-              final islands = (d['islands'] as List<dynamic>);
-              return RefreshIndicator(
-                color: Sea.gold,
-                backgroundColor: Sea.navy,
-                onRefresh: () async => setState(() => _future = _load()),
-                child: ListView(
-                  padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
+        child: Stack(
+          children: [
+            FutureBuilder<Map<String, dynamic>>(
+              future: _future,
+              builder: (context, snap) {
+                if (snap.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator(color: Sea.gold));
+                }
+                if (snap.hasError) {
+                  return _retry(snap.error.toString());
+                }
+                final d = snap.data!;
+                final streak = d['streak'] as Map<String, dynamic>? ?? {};
+                final name = (d['child'] as Map<String, dynamic>?)?['name'] ?? 'explorer';
+                final islands = (d['islands'] as List<dynamic>);
+                return Column(
                   children: [
-                    _topBar(streak),
-                    const SizedBox(height: 14),
-                    VoyageMap(islands: islands, onOpen: _openIsland),
-                    const SizedBox(height: 16),
-                    _smoothCard(name, streak),
-                    const SizedBox(height: 18),
-                    Text('Islands', style: head(20)),
-                    const SizedBox(height: 10),
-                    for (var i = 0; i < islands.length; i++)
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 10),
-                        child: _IslandCard(number: i + 1, island: islands[i] as Map<String, dynamic>, onOpen: _openIsland),
+                    _navBar(streak), // fixed 98px, matches web .vy-nav
+                    Expanded(
+                      child: RefreshIndicator(
+                        color: Sea.gold,
+                        backgroundColor: Sea.navy,
+                        onRefresh: () async => setState(() => _future = _load()),
+                        child: ListView(
+                          padding: EdgeInsets.fromLTRB(28, 14, 28, panelHeight),
+                          children: [
+                            VoyageMap(islands: islands, onOpen: _openIsland), // top 112, w334
+                            const SizedBox(height: 16),
+                            _smoothCard(name, streak), // companion top 315
+                            const SizedBox(height: 18),
+                            Text('Islands', style: head(20)),
+                            const SizedBox(height: 10),
+                            for (var i = 0; i < islands.length; i++)
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 10),
+                                child: _IslandCard(number: i + 1, island: islands[i] as Map<String, dynamic>, onOpen: _openIsland),
+                              ),
+                          ],
+                        ),
                       ),
+                    ),
                   ],
-                ),
-              );
-            },
-          ),
+                );
+              },
+            ),
+            // Captain's Orders — open parchment bottom sheet by default (CO-12).
+            Positioned(
+              left: 0, right: 0, bottom: 0,
+              child: SizedBox(height: panelHeight, child: const CaptainsOrdersPanel()),
+            ),
+          ],
         ),
       ),
     );
@@ -98,32 +105,78 @@ class _VoyageScreenState extends State<VoyageScreen> {
     if (mounted) setState(() => _future = _load());
   }
 
-  Widget _topBar(Map<String, dynamic> streak) => Row(children: [
-        const Text('⛵', style: TextStyle(fontSize: 26)),
-        const SizedBox(width: 8),
-        Text('Your Voyage', style: head(22)),
-        const Spacer(),
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
-          decoration: BoxDecoration(gradient: const LinearGradient(colors: [Sea.gold, Sea.goldDeep]), borderRadius: BorderRadius.circular(999)),
-          child: Text('🔥 ${streak['days'] ?? 0}', style: head(14, color: Sea.deep)),
-        ),
-        IconButton(onPressed: _logout, icon: const Icon(Icons.logout, color: Sea.muted)),
-      ]);
-
-  Widget _smoothCard(String name, Map<String, dynamic> streak) => GlassCard(
-        child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          ClipOval(child: Image.asset('assets/images/voyage/smooth.webp', width: 56, height: 56, fit: BoxFit.cover)),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text('Welcome back, $name!', style: head(20)),
-              const SizedBox(height: 6),
-              Text('🔥 ${streak['label'] ?? '0-day streak'} — keep it going!', style: const TextStyle(color: Sea.gold, fontWeight: FontWeight.w700)),
+  /// Sticky nav — mirrors web .vy-nav (height 98, translucent navy backdrop).
+  Widget _navBar(Map<String, dynamic> streak) => Container(
+        height: 98,
+        color: const Color(0x8C0C1432),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Row(mainAxisSize: MainAxisSize.min, children: [
+              const Text('⛵', style: TextStyle(fontSize: 24)),
+              const SizedBox(width: 8),
+              SizedBox(width: 92, child: Text('Your Voyage', style: head(20.8, height: 1.15))),
             ]),
-          ),
-        ]),
+            Row(mainAxisSize: MainAxisSize.min, children: [
+              // Take the tour — gold-outline pill (TR-04).
+              Container(
+                width: 66,
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+                decoration: BoxDecoration(
+                  color: const Color(0x1FF6B71E),
+                  border: Border.all(color: const Color(0x8CF6B71E), width: 1.5),
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: const Text('🧭 Take the tour', textAlign: TextAlign.center, style: TextStyle(color: Color(0xFFFDE68A), fontWeight: FontWeight.w800, fontSize: 11, height: 1.15)),
+              ),
+              const SizedBox(width: 8),
+              // Streak — orange circle.
+              Container(
+                width: 66, height: 66,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  gradient: const LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [Color(0xD9F97316), Color(0xD9F6B71E)]),
+                  boxShadow: const [BoxShadow(color: Color(0x59F6B71E), blurRadius: 12)],
+                ),
+                child: Text('🔥 ${streak['days'] ?? 0}\nday\nstreak', textAlign: TextAlign.center, style: const TextStyle(color: Color(0xFFFFF7ED), fontWeight: FontWeight.w800, fontSize: 11, height: 1.1)),
+              ),
+              const SizedBox(width: 8),
+              // Log out pill.
+              GestureDetector(
+                onTap: _logout,
+                child: Container(
+                  width: 48,
+                  padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 8),
+                  decoration: BoxDecoration(color: const Color(0x14FFFFFF), border: Border.all(color: const Color(0x59FFFFFF), width: 1.5), borderRadius: BorderRadius.circular(16)),
+                  child: const Text('Log out', textAlign: TextAlign.center, style: TextStyle(color: Sea.ink, fontWeight: FontWeight.w800, fontSize: 11, height: 1.15)),
+                ),
+              ),
+            ]),
+          ],
+        ),
       );
+
+  Widget _smoothCard(String name, Map<String, dynamic> streak) {
+    final days = (streak['days'] as num?)?.toInt() ?? 0;
+    return GlassCard(
+      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+      child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
+        Image.asset('assets/images/voyage/smooth.webp', height: 78, fit: BoxFit.contain),
+        const SizedBox(width: 14),
+        Expanded(
+          child: Column(crossAxisAlignment: CrossAxisAlignment.start, mainAxisSize: MainAxisSize.min, children: [
+            Text('Welcome back, $name!', style: head(17.6, height: 1.1)),
+            const SizedBox(height: 4),
+            Text('🔥 $days ${days == 1 ? 'day' : 'days'} in a row — keep it going!',
+                style: const TextStyle(color: Sea.gold, fontWeight: FontWeight.w700, fontSize: 14.7, height: 1.35)),
+          ]),
+        ),
+      ]),
+    );
+  }
 
   Widget _retry(String message) => Center(
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
