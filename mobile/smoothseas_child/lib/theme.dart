@@ -63,20 +63,26 @@ TextStyle head(double size, {Color color = Sea.foam, FontWeight weight = FontWei
 /// Deep-ocean background — mirrors the web `.ss-body`: the sea gradient, a warm
 /// gold horizon glow near the top, and a faint cyan nautical chart grid (64px).
 class SeaBackground extends StatelessWidget {
-  const SeaBackground({super.key, required this.child});
+  const SeaBackground({super.key, required this.child, this.scene = false});
   final Widget child;
+
+  /// When true, adds the decorative sea scene (sun, foam waves, floating boat /
+  /// island / palm) like the web `<x-brand.sea>`. Only splash-style pages use it;
+  /// content pages (voyage/island/lesson) keep just the gradient + glow + grid so
+  /// nothing floats over the text.
+  final bool scene;
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        // Base sea gradient + glow + chart grid + waves (the .ss-body + .ss-sea scene).
         const Positioned.fill(child: DecoratedBox(decoration: BoxDecoration(gradient: Sea.gradient))),
-        Positioned.fill(child: CustomPaint(painter: _SeaScenePainter())),
-        // Floating atmosphere (initial, unanimated positions — matches prefers-reduced-motion).
-        const _Float(emoji: '⛵', size: 30, left: 0.15, top: 0.21),
-        const _Float(emoji: '🏝️', size: 30, right: 0.12, top: 0.27),
-        const _Float(emoji: '🌴', size: 26, left: 0.09, bottom: 0.30),
+        Positioned.fill(child: CustomPaint(painter: _SeaScenePainter(scene: scene))),
+        if (scene) ...[
+          const _Float(emoji: '⛵', size: 30, left: 0.15, top: 0.21),
+          const _Float(emoji: '🏝️', size: 30, right: 0.12, top: 0.27),
+          const _Float(emoji: '🌴', size: 26, left: 0.09, bottom: 0.30),
+        ],
         child,
       ],
     );
@@ -104,6 +110,9 @@ class _Float extends StatelessWidget {
 }
 
 class _SeaScenePainter extends CustomPainter {
+  const _SeaScenePainter({this.scene = false});
+  final bool scene;
+
   @override
   void paint(Canvas canvas, Size size) {
     final w = size.width, h = size.height;
@@ -124,6 +133,8 @@ class _SeaScenePainter extends CustomPainter {
     for (double y = 0; y <= h; y += 64) {
       canvas.drawLine(Offset(0, y), Offset(w, y), line);
     }
+
+    if (!scene) return; // content pages: gradient + glow + grid only
 
     // .ss-sun: 180px circle at top:9%, radial gold 0.5 -> 0 at 70%.
     final sun = Offset(w * 0.5, h * 0.09);
@@ -155,7 +166,7 @@ class _SeaScenePainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+  bool shouldRepaint(covariant _SeaScenePainter oldDelegate) => oldDelegate.scene != scene;
 }
 
 /// A translucent "glass" card, like the web's .ss-card.

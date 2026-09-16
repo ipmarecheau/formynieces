@@ -58,18 +58,45 @@ class _LessonScreenState extends State<LessonScreen> {
               final d = snap.data!;
               final blocks = (d['blocks'] as List<dynamic>);
               final title = d['title'] as String? ?? widget.topic;
+              final subject = (d['subject'] as String? ?? 'Math');
               return Column(
                 children: [
-                  Row(children: [
-                    IconButton(icon: const Icon(Icons.arrow_back, color: Sea.foam), onPressed: () => Navigator.of(context).pop()),
-                    Expanded(child: Text(title, style: head(18))),
-                  ]),
+                  // Nav — ⛵ Back to my Voyage (web .vy-back-gold).
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: GestureDetector(
+                      onTap: () => Navigator.of(context).pop(),
+                      child: const Padding(
+                        padding: EdgeInsets.fromLTRB(20, 14, 20, 14),
+                        child: Text('⛵ Back to my Voyage', style: TextStyle(color: Sea.gold, fontWeight: FontWeight.w800, fontSize: 15)),
+                      ),
+                    ),
+                  ),
                   Expanded(
                     child: blocks.isEmpty
                         ? _noLesson()
                         : ListView(
-                            padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
-                            children: [for (final b in blocks) _block(b as Map<String, dynamic>)],
+                            padding: const EdgeInsets.fromLTRB(20, 0, 20, 16),
+                            children: [
+                              Text(subject.toUpperCase(), style: const TextStyle(color: Color(0xFFA5B4FC), fontWeight: FontWeight.w800, fontSize: 13, letterSpacing: 1)),
+                              const SizedBox(height: 6),
+                              Text(title, style: head(28, height: 1.1)),
+                              const SizedBox(height: 14),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                                  decoration: BoxDecoration(
+                                    color: const Color(0x1FF6B71E),
+                                    border: Border.all(color: const Color(0x8CF6B71E), width: 1.5),
+                                    borderRadius: BorderRadius.circular(999),
+                                  ),
+                                  child: const Text('🎯 Objectives', style: TextStyle(color: Color(0xFFFDE68A), fontWeight: FontWeight.w800, fontSize: 13)),
+                                ),
+                              ),
+                              const SizedBox(height: 14),
+                              for (final b in blocks) _block(b as Map<String, dynamic>),
+                            ],
                           ),
                   ),
                   Padding(

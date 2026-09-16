@@ -28,6 +28,7 @@ class _WelcomeBackScreenState extends State<WelcomeBackScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SeaBackground(
+        scene: true,
         child: FutureBuilder<Map<String, dynamic>>(
             future: _future,
             builder: (context, snap) {
