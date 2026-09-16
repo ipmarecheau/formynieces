@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../api.dart';
 import '../theme.dart';
+import '../widgets/loop_rail.dart';
 import 'practice_screen.dart';
 
 /// The teaching stage: renders lesson blocks (with real interactive widgets) then
@@ -44,11 +45,13 @@ class _LessonScreenState extends State<LessonScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SeaBackground(
-        child: SafeArea(
-          child: FutureBuilder<Map<String, dynamic>>(
-            future: _future,
-            builder: (context, snap) {
+      body: Stack(
+        children: [
+          SeaBackground(
+            child: SafeArea(
+              child: FutureBuilder<Map<String, dynamic>>(
+                future: _future,
+                builder: (context, snap) {
               if (snap.connectionState == ConnectionState.waiting) {
                 return const Center(child: CircularProgressIndicator(color: Sea.gold));
               }
@@ -108,8 +111,11 @@ class _LessonScreenState extends State<LessonScreen> {
                 ],
               );
             },
+              ),
+            ),
           ),
-        ),
+          const LoopRail(stage: 'lesson'),
+        ],
       ),
     );
   }
