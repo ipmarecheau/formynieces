@@ -73,6 +73,38 @@ const SCREENS = {
       return r;
     },
   },
+  island: {
+    webUrl: `${WEB}/voyage/feather-isle`, auth: true,
+    webPrep: async (page) => { try { await page.click('text=Got it!', { timeout: 2500 }); await page.waitForTimeout(700); } catch (e) {} },
+    state: async (page) => { await loginFlutter(page); await page.mouse.click(195, 611); await page.waitForTimeout(7000); await page.mouse.click(80, 262); await page.waitForTimeout(5000); },
+    content: ['Feather Isle', 'levels conquered', 'Stops on this island', 'Place Value', 'Back to the sea'],
+    layout: [{ name: 'title', web: '.vy-title', fl: /^feather isle$/i }],
+    async func(page, sem) {
+      const r = [];
+      await loginFlutter(page); await page.mouse.click(195, 611); await page.waitForTimeout(7000);
+      await page.mouse.click(80, 262); await page.waitForTimeout(5000);
+      await enableSemantics(page);
+      const nodes = await sem();
+      r.push(['island renders', nodes.some(n => /stops on this island/i.test(n.label))]);
+      const api = await (await fetch(`http://127.0.0.1:8011/api/mobile/child/island/feather-isle`, { headers: { Authorization: `Bearer ${await token()}`, Accept: 'application/json' } })).json();
+      const first = (api.levels?.[0]?.topic || 'Place Value').split(':').pop().trim().split(' ').slice(0, 2).join(' ');
+      r.push(['level list matches API', nodes.some(n => new RegExp(first, 'i').test(n.label))]);
+      r.push(['shows conquered count', nodes.some(n => /levels conquered|of \d+ levels/i.test(n.label))]);
+      r.push(['back-to-the-sea present', nodes.some(n => /back to the sea/i.test(n.label))]);
+      // behaviour: back navigates to the voyage
+      await page.reload({ waitUntil: 'load' }); await page.waitForTimeout(6500);
+      await loginFlutter(page); await page.mouse.click(195, 611); await page.waitForTimeout(7000);
+      await page.mouse.click(80, 262); await page.waitForTimeout(5000);
+      const before = await page.screenshot({ clip: { x: 0, y: 0, ...VP } });
+      await page.mouse.click(330, 40); await page.waitForTimeout(4000); // back pill
+      const after = await page.screenshot({ clip: { x: 0, y: 0, ...VP } });
+      const A = PNG.sync.read(before), B = PNG.sync.read(after);
+      const changed = pixelmatch(A.data, B.data, null, A.width, A.height, { threshold: 0.1 }) / (A.width * A.height);
+      if (process.env.DEBUG) console.log('  [back change]', (changed * 100).toFixed(1) + '%');
+      r.push(['back navigates to the sea', changed > 0.15]);
+      return r;
+    },
+  },
   voyage: {
     webUrl: `${WEB}/voyage`, auth: true,
     state: async (page) => { await loginFlutter(page); await page.mouse.click(195, 611); await page.waitForTimeout(7000); },
@@ -208,6 +240,7 @@ if (spec.auth) {
 }
 await wp.goto(spec.webUrl, { waitUntil: 'networkidle' });
 await wp.waitForTimeout(1200);
+if (spec.webPrep) await spec.webPrep(wp);
 await wp.evaluate(() => document.activeElement && document.activeElement.blur());
 await wp.screenshot({ path: `${dir}/${key}-web.png`, clip: { x: 0, y: 0, ...VP } });
 const webBoxes = {};
