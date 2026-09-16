@@ -34,31 +34,6 @@ class _P {
   static const gateBg = Color(0x29C9791F);
 }
 
-/// The parchment texture: faint 1px vertical lines every 7px + an inset vignette,
-/// mirroring the web .co-frame background + inset shadow.
-class _ParchmentTexture extends CustomPainter {
-  const _ParchmentTexture();
-  @override
-  void paint(Canvas canvas, Size size) {
-    final line = Paint()..color = const Color(0x0F5A3D21)..strokeWidth = 1;
-    for (double x = 0; x < size.width; x += 7) {
-      canvas.drawLine(Offset(x, 0), Offset(x, size.height), line);
-    }
-    // inset 0 0 34px rgba(120,84,40,0.28) — darker toward the edges.
-    canvas.drawRect(
-      Offset.zero & size,
-      Paint()
-        ..shader = RadialGradient(
-          colors: const [Color(0x00785428), Color(0x47785428)],
-          stops: const [0.62, 1.0],
-        ).createShader(Rect.fromCenter(center: size.center(Offset.zero), width: size.width * 1.25, height: size.height * 1.25)),
-    );
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
-}
-
 class _CaptainsOrdersPanelState extends State<CaptainsOrdersPanel> {
   late Future<Map<String, dynamic>> _future;
   int _tab = 0; // 0 orders, 1 locker, 2 journal, 3 logs
@@ -97,16 +72,12 @@ class _CaptainsOrdersPanelState extends State<CaptainsOrdersPanel> {
     }
     return DecoratedBox(
       decoration: const BoxDecoration(
-        gradient: LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [_P.parch1, _P.parch2, _P.parch3], stops: [0.0, 0.55, 1.0]),
+        gradient: LinearGradient(begin: Alignment(0.36, -0.93), end: Alignment(-0.36, 0.93), colors: [_P.parch1, _P.parch2, _P.parch3], stops: [0.0, 0.55, 1.0]), // web 160deg
         border: Border(top: BorderSide(color: _P.wood, width: 6), left: BorderSide(color: _P.wood, width: 6), right: BorderSide(color: _P.wood, width: 6)),
         borderRadius: BorderRadius.only(topLeft: Radius.circular(14), topRight: Radius.circular(14)),
         boxShadow: [BoxShadow(color: Color(0x73000000), blurRadius: 18, offset: Offset(0, -4))],
       ),
-      child: ClipRRect(
-        borderRadius: const BorderRadius.only(topLeft: Radius.circular(9), topRight: Radius.circular(9)),
-        child: Stack(children: [
-          const Positioned.fill(child: CustomPaint(painter: _ParchmentTexture())),
-          Column(
+      child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           // Rope band (::before).
@@ -122,12 +93,13 @@ class _CaptainsOrdersPanelState extends State<CaptainsOrdersPanel> {
                   return Padding(padding: const EdgeInsets.all(20), child: Text(snap.error.toString(), style: const TextStyle(color: _P.ink)));
                 }
                 final d = snap.data!;
+                final evening = d['is_evening'] == true;
                 return Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    _header(),
+                    _header(evening),
                     _tabs(),
-                    Flexible(child: _tabBody(d)),
+                    Flexible(child: _tabBody(d, evening)),
                   ],
                 );
               },
@@ -135,13 +107,11 @@ class _CaptainsOrdersPanelState extends State<CaptainsOrdersPanel> {
           ),
         ],
       ),
-        ]),
-      ),
     );
   }
 
-  Widget _header() => Padding(
-        padding: const EdgeInsets.fromLTRB(12, 12, 12, 8),
+  Widget _header(bool evening) => Padding(
+        padding: const EdgeInsets.fromLTRB(12, 10, 12, 4),
         child: Row(children: [
           Container(
             width: 40, height: 40,
@@ -157,7 +127,7 @@ class _CaptainsOrdersPanelState extends State<CaptainsOrdersPanel> {
           Expanded(
             child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Text("Captain's Orders", style: head(18, color: _P.titleInk, height: 1.0)),
-              const Text('MORNING MUSTER', style: TextStyle(fontSize: 11.5, fontWeight: FontWeight.w800, color: _P.subInk, letterSpacing: 1)),
+              Text(evening ? 'EVENING WATCH' : 'MORNING MUSTER', style: const TextStyle(fontSize: 11.5, fontWeight: FontWeight.w800, color: _P.subInk, letterSpacing: 1)),
             ]),
           ),
           GestureDetector(
@@ -174,7 +144,7 @@ class _CaptainsOrdersPanelState extends State<CaptainsOrdersPanel> {
   Widget _tabs() {
     const labels = ['Orders', 'Locker', 'Journal', 'Logs'];
     return Padding(
-      padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+      padding: const EdgeInsets.fromLTRB(10, 0, 10, 6),
       child: Row(children: [
         for (var i = 0; i < 4; i++) ...[
           if (i > 0) const SizedBox(width: 3),
@@ -199,7 +169,7 @@ class _CaptainsOrdersPanelState extends State<CaptainsOrdersPanel> {
     );
   }
 
-  Widget _tabBody(Map<String, dynamic> d) {
+  Widget _tabBody(Map<String, dynamic> d, bool evening) {
     switch (_tab) {
       case 1:
         return _locker((d['locker'] as List<dynamic>?) ?? []);
@@ -208,18 +178,19 @@ class _CaptainsOrdersPanelState extends State<CaptainsOrdersPanel> {
       case 3:
         return _logs((d['logs'] as List<dynamic>?) ?? []);
       default:
-        return _orders(d['orders'] as Map<String, dynamic>? ?? {});
+        return _orders(d['orders'] as Map<String, dynamic>? ?? {}, evening);
     }
   }
 
   Widget _pad(List<Widget> c) => ListView(padding: const EdgeInsets.fromLTRB(14, 0, 14, 14), shrinkWrap: true, children: c);
 
-  Widget _orders(Map<String, dynamic> o) {
+  Widget _orders(Map<String, dynamic> o, bool evening) {
     final rest = o['rest'] == true;
     final duties = (o['duties'] as List<dynamic>?) ?? [];
     final tasks = (o['lesson_tasks'] as List<dynamic>?) ?? [];
     final writingDay = o['is_writing_day'] == true;
     final writingDone = duties.any((x) => (x as Map)['key'] == 'writing' && x['done'] == true);
+    final allDone = duties.isNotEmpty && duties.every((x) => (x as Map)['done'] == true);
     if (rest) {
       return _pad([
         const SizedBox(height: 10),
@@ -229,9 +200,9 @@ class _CaptainsOrdersPanelState extends State<CaptainsOrdersPanel> {
       ]);
     }
     return _pad([
-      Text('${o['message'] ?? "Today's orders, Captain. Clear them to keep the Voyage sailing."}',
-          style: const TextStyle(color: _P.ink, fontSize: 14, fontWeight: FontWeight.w700)),
-      const SizedBox(height: 10),
+      Text(evening ? "Evening watch — here's what's still on your orders." : "Today's orders, Captain. Clear them to keep the Voyage sailing.",
+          style: const TextStyle(color: _P.ink, fontSize: 13.76, fontWeight: FontWeight.w700)),
+      const SizedBox(height: 6),
       for (final duty in duties) _duty(duty as Map<String, dynamic>),
       if (tasks.isNotEmpty) ...[
         const SizedBox(height: 14),
@@ -250,6 +221,22 @@ class _CaptainsOrdersPanelState extends State<CaptainsOrdersPanel> {
           ),
           child: const Text('✍️ Finish today’s writing to open the next island on the map.',
               style: TextStyle(color: Color(0xFF7A4A1A), fontSize: 13, fontWeight: FontWeight.w700)),
+        ),
+      ],
+      if (allDone) ...[
+        const SizedBox(height: 12),
+        Center(child: Text('All orders cleared — a fine day’s sailing! 🌊', style: head(14, color: _P.doneGreen))),
+      ] else if (evening) ...[
+        const SizedBox(height: 12),
+        GestureDetector(
+          onTap: () => setState(() => _tab = 3),
+          child: Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(vertical: 7),
+            alignment: Alignment.center,
+            decoration: BoxDecoration(border: Border.all(color: _P.ropeA, width: 1.5), borderRadius: BorderRadius.circular(8)),
+            child: const Text('Look back on today ›', style: TextStyle(color: _P.tabIdle, fontWeight: FontWeight.w800, fontSize: 13)),
+          ),
         ),
       ],
     ]);

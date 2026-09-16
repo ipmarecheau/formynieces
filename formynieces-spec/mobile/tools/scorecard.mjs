@@ -95,7 +95,7 @@ const SCREENS = {
       await page.reload({ waitUntil: 'load' }); await page.waitForTimeout(6500);
       await loginFlutter(page); await page.mouse.click(195, 611); await page.waitForTimeout(7000);
       const before = await page.screenshot({ clip: { x: 0, y: 0, ...VP } });
-      await page.mouse.click(365, 497); await page.waitForTimeout(1500); // collapse ▶ toggle
+      await page.mouse.click(365, 475); await page.waitForTimeout(1500); // collapse ▶ toggle
       const after = await page.screenshot({ clip: { x: 0, y: 0, ...VP } });
       const A = PNG.sync.read(before), B = PNG.sync.read(after);
       const changed = pixelmatch(A.data, B.data, null, A.width, A.height, { threshold: 0.1 }) / (A.width * A.height);

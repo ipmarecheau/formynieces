@@ -83,10 +83,11 @@ class _VoyageScreenState extends State<VoyageScreen> {
                 );
               },
             ),
-            // Captain's Orders — open parchment bottom sheet by default (CO-12).
+            // Captain's Orders — open parchment bottom sheet by default (CO-12),
+            // content-height up to 56vh like the web .co-frame (max-height 56vh).
             Positioned(
               left: 0, right: 0, bottom: 0,
-              child: SizedBox(height: panelHeight, child: const CaptainsOrdersPanel()),
+              child: ConstrainedBox(constraints: BoxConstraints(maxHeight: h * 0.56), child: const CaptainsOrdersPanel()),
             ),
           ],
         ),

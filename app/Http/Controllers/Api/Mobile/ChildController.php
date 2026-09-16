@@ -257,6 +257,7 @@ class ChildController extends Controller
         $child = $request->user();
 
         return response()->json([
+            'is_evening' => now()->hour >= 17, // mirrors CaptainsOrders::isEvening (AST)
             'orders' => $this->ordersTab($child),
             'locker' => $this->lockerTab($child),
             'logs' => $this->logsTab($child),

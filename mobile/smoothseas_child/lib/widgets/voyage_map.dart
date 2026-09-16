@@ -10,13 +10,15 @@ class VoyageMap extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(20),
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: Sea.cardBorder, width: 1.5),
-        ),
+    // No border — web .vy-map is border-radius + shadow only; a border would inset
+    // and mis-scale the illustration, ghosting every coastline against the web map.
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: const [BoxShadow(color: Color(0x40000000), blurRadius: 24, offset: Offset(0, 10))],
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20),
         child: Stack(
           children: [
             InteractiveViewer(
