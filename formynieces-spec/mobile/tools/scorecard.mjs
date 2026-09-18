@@ -8,6 +8,7 @@
 //
 // Usage: node scorecard.mjs <screen>    (screen key from SCREENS below)
 //        node scorecard.mjs flow         (app-level state-transition / learning-loop parity)
+//        node scorecard.mjs cstate       (component-level STATE parity, e.g. Captain's Orders tabs + collapse)
 import { chromium } from 'playwright';
 import pixelmatch from 'pixelmatch';
 import { PNG } from 'pngjs';
@@ -256,10 +257,11 @@ const key = process.argv[2];
 
 // State-transition (flow) parity is app-level, not per-screen: it drives the API
 // through the learning loop with real correct answers. `scorecard.mjs flow` runs it.
-if (key === 'flow') {
+if (key === 'flow' || key === 'cstate') {
   const { execSync } = await import('node:child_process');
-  const flowPath = new URL('./flowmetric.mjs', import.meta.url).pathname;
-  process.stdout.write(execSync(`node ${flowPath}`).toString());
+  const file = key === 'flow' ? 'flowmetric.mjs' : 'componentstate.mjs';
+  const path = new URL(`./${file}`, import.meta.url).pathname;
+  process.stdout.write(execSync(`node ${path}`).toString());
   process.exit(0);
 }
 

@@ -50,7 +50,10 @@ class _CaptainsOrdersPanelState extends State<CaptainsOrdersPanel> {
     if (_collapsed) {
       return Align(
         alignment: Alignment.bottomLeft,
-        child: GestureDetector(
+        child: Semantics(
+          button: true,
+          label: 'expand-orders',
+          child: GestureDetector(
           onTap: () => setState(() => _collapsed = false),
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
@@ -67,6 +70,7 @@ class _CaptainsOrdersPanelState extends State<CaptainsOrdersPanel> {
               const Text('▸', style: TextStyle(color: Color(0xFFF6B71E), fontWeight: FontWeight.w900)),
             ]),
           ),
+        ),
         ),
       );
     }
@@ -130,13 +134,17 @@ class _CaptainsOrdersPanelState extends State<CaptainsOrdersPanel> {
               Text(evening ? 'EVENING WATCH' : 'MORNING MUSTER', style: const TextStyle(fontSize: 11.5, fontWeight: FontWeight.w800, color: _P.subInk, letterSpacing: 1)),
             ]),
           ),
-          GestureDetector(
+          Semantics(
+            button: true,
+            label: 'collapse-orders',
+            child: GestureDetector(
             onTap: () => setState(() => _collapsed = true),
             child: Container(
               width: 22, height: 44, alignment: Alignment.center,
               decoration: BoxDecoration(color: const Color(0xFF6B4A2B), borderRadius: BorderRadius.circular(8)),
               child: const Text('▶', style: TextStyle(color: Color(0xFFF6B71E), fontSize: 12)),
             ),
+          ),
           ),
         ]),
       );
