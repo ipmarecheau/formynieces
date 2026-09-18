@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../api.dart';
 import '../theme.dart';
-import 'lesson_screen.dart';
+import 'explainer_screen.dart';
 
 /// An island's mini-voyage — mirrors voyage/island.blade.php: nav brand + "Back to
 /// the sea", a big title + progress line, the interior map with numbered stops, and
@@ -33,7 +33,7 @@ class _IslandScreenState extends State<IslandScreen> {
       return;
     }
     await Navigator.of(context).push(MaterialPageRoute(
-      builder: (_) => LessonScreen(
+      builder: (_) => ExplainerScreen(
         moduleId: level['id'] as int,
         missionId: level['mission_id'] as String,
         topic: level['topic'] as String,

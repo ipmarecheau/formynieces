@@ -48,6 +48,8 @@ Route::prefix('mobile')->group(function () {
             Route::get('/child/island/{slug}', [ChildController::class, 'island'])->name('api.mobile.child.island');
             Route::get('/child/module/{module}/lesson', [ChildController::class, 'lesson'])->name('api.mobile.child.lesson');
             Route::get('/child/today', [ChildController::class, 'today'])->name('api.mobile.child.today');
+            Route::post('/child/module/{module}/check/start', [ChildController::class, 'checkStart'])->name('api.mobile.child.check.start');
+            Route::post('/child/check/{session}/answer', [ChildController::class, 'checkAnswer'])->name('api.mobile.child.check.answer');
             Route::post('/child/practice/start', [ChildController::class, 'start'])->name('api.mobile.child.practice.start');
             Route::post('/child/practice/{session}/answer', [ChildController::class, 'answer'])->name('api.mobile.child.practice.answer');
             Route::post('/child/practice/{session}/finish', [ChildController::class, 'finish'])->name('api.mobile.child.practice.finish');

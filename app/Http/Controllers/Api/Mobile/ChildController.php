@@ -16,6 +16,7 @@ use App\Models\User;
 use App\Services\Motivation\DailyPlanComposer;
 use App\Services\Motivation\StreakEconomyService;
 use App\Services\Pacing\AdventureMapBuilder;
+use App\Services\Practice\CompetencyCheck;
 use App\Services\Practice\PracticeQuestions;
 use App\Services\Practice\QuestionExposure;
 use App\Services\Practice\RecordPracticeAttempt;
@@ -167,6 +168,71 @@ class ChildController extends Controller
             'streak' => $this->streak($session->student),
             'next_action' => 'Return tomorrow for your next mission',
         ]);
+    }
+
+    /** LL-20 test-out — serve the D1/D3/D5 competency check (six questions). */
+    public function checkStart(Request $request, SyllabusModule $module): JsonResponse
+    {
+        $child = $request->user();
+        $served = app(CompetencyCheck::class)->serve($child->id, $module->id);
+        abort_if($served->isEmpty(), Response::HTTP_CONFLICT, 'No check questions available yet.');
+
+        $session = MobilePracticeSession::create([
+            'student_id' => $child->id,
+            'module_id' => $module->id,
+            'question_ids' => $served->pluck('id')->all(),
+            'position' => 0,
+            'answers' => [],
+        ]);
+
+        return response()->json([
+            'session_id' => $session->id,
+            'total_questions' => $served->count(),
+            'current_question' => $this->questionPayload($served->first()),
+        ]);
+    }
+
+    /** Record a check answer; on the last, grade the whole check via CompetencyCheck (test-out or miss). */
+    public function checkAnswer(Request $request, MobilePracticeSession $session): JsonResponse
+    {
+        $this->authorizeSession($request, $session);
+        $data = $request->validate([
+            'question_id' => ['required', 'integer'],
+            'choice_id' => ['required', 'string'],
+        ]);
+        abort_unless(
+            ($session->question_ids[$session->position] ?? null) === $data['question_id'],
+            Response::HTTP_UNPROCESSABLE_ENTITY,
+            'That is not the current question for this session.',
+        );
+        $choiceIndex = array_search(strtoupper($data['choice_id']), self::CHOICE_LETTERS, true);
+        abort_if($choiceIndex === false, Response::HTTP_UNPROCESSABLE_ENTITY, 'Invalid choice.');
+
+        $answers = $session->answers;
+        $answers[] = ['question_id' => $data['question_id'], 'choice_index' => $choiceIndex];
+        $session->update(['answers' => $answers, 'position' => $session->position + 1]);
+
+        $nextId = $session->question_ids[$session->position] ?? null;
+        if ($nextId !== null) {
+            return response()->json([
+                'done' => false,
+                'next_question' => $this->questionPayload(PracticeQuestion::findOrFail($nextId)),
+                'progress' => ['answered' => $session->position, 'total' => count($session->question_ids)],
+            ]);
+        }
+
+        // All answered — grade with the same CompetencyCheck seam the web uses.
+        $served = PracticeQuestion::findMany($session->question_ids);
+        $map = [];
+        foreach ($session->answers as $a) {
+            $map[$a['question_id']] = $a['choice_index'];
+        }
+        $mastered = app(CompetencyCheck::class)->grade($session->student_id, $session->module_id, $served, $map);
+        if ($session->finished_at === null) {
+            $session->update(['finished_at' => now()]);
+        }
+
+        return response()->json(['done' => true, 'mastered' => $mastered]);
     }
 
     /** The Voyage overworld — islands with progress + state. Mirrors the web /voyage (AM-01..04). */
