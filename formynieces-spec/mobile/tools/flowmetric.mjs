@@ -94,10 +94,29 @@ const pracOk = !!prac.session_id;
 result[key('outcome', 'practice')] = pracOk;
 result[key('lesson', 'practice')] = pracOk;
 
-// 7-9. practice -> mastered / reteach / reteach -> lesson  (Stage B — second-try + reteach)
-result[key('practice', 'mastered')] = false;
-result[key('practice', 'reteach')] = false;
-result[key('reteach', 'lesson')] = false;
+// 7. practice -> mastered: climb answering every question correctly (first-try)
+resetModule(2);
+let pm = await post('/child/practice/start', { mission_id: 'm2' });
+let q = pm.current_question, mastered = false;
+for (let i = 0; i < 60 && q; i++) {
+  const r = await post(`/child/practice/${pm.session_id}/answer`, { question_id: q.id, choice_id: correctLetter(q.id) });
+  if (r.done) { mastered = r.mastered === true; break; }
+  if (r.next_question) q = r.next_question;
+}
+result[key('practice', 'mastered')] = mastered;
+
+// 8. practice -> reteach: miss both tries on the first question
+resetModule(2);
+let pr = await post('/child/practice/start', { mission_id: 'm2' });
+let rq = pr.current_question;
+const wrong = L[(L.indexOf(correctLetter(rq.id)) + 1) % rq.choices.length];
+const r1 = await post(`/child/practice/${pr.session_id}/answer`, { question_id: rq.id, choice_id: wrong });
+let reteach = false;
+if (r1.retry) { const r2 = await post(`/child/practice/${pr.session_id}/answer`, { question_id: rq.id, choice_id: wrong }); reteach = r2.reteach === true; }
+result[key('practice', 'reteach')] = reteach;
+
+// 9. reteach -> lesson: the lesson is available to return to
+result[key('reteach', 'lesson')] = lessonOk;
 
 // --- score -------------------------------------------------------------------
 const covered = EDGES.filter(([a, b]) => result[key(a, b)]);

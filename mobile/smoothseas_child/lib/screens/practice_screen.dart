@@ -2,12 +2,18 @@ import 'package:flutter/material.dart';
 
 import '../api.dart';
 import '../theme.dart';
+import '../widgets/loop_rail.dart';
+import 'reteach_screen.dart';
 import 'result_screen.dart';
 
-/// MC-03/04 — one short session: a question, touch choices, immediate feedback.
+/// The adaptive practice climb (LL-13/14): a question with a second try, a reteach
+/// loopback on a hard miss, and mastery when the streak clears at the tricky rung.
 class PracticeScreen extends StatefulWidget {
-  const PracticeScreen({super.key, required this.session});
+  const PracticeScreen({super.key, required this.session, this.moduleId, this.missionId, this.topic});
   final Map<String, dynamic> session;
+  final int? moduleId;
+  final String? missionId;
+  final String? topic;
 
   @override
   State<PracticeScreen> createState() => _PracticeScreenState();
@@ -36,6 +42,14 @@ class _PracticeScreenState extends State<PracticeScreen> {
         'question_id': _question!['id'],
         'choice_id': choiceId,
       }) as Map<String, dynamic>;
+      // Hard miss (both tries) → reteach loopback to the lesson.
+      if (res['reteach'] == true) {
+        if (!mounted) return;
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
+          builder: (_) => ReteachScreen(moduleId: widget.moduleId ?? 0, missionId: widget.missionId ?? '', topic: widget.topic ?? 'this topic'),
+        ));
+        return;
+      }
       setState(() => _feedback = res);
     } on ApiException catch (e) {
       if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message)));
@@ -45,6 +59,11 @@ class _PracticeScreenState extends State<PracticeScreen> {
   }
 
   Future<void> _continue() async {
+    // First-try miss → retry the SAME question (do not advance).
+    if (_feedback?['retry'] == true) {
+      setState(() => _feedback = null);
+      return;
+    }
     final next = _feedback?['next_question'] as Map<String, dynamic>?;
     if (next != null) {
       setState(() {
@@ -126,6 +145,8 @@ class _PracticeScreenState extends State<PracticeScreen> {
 
   Widget _feedbackPanel(Map<String, dynamic> fb) {
     final correct = fb['correct'] == true;
+    final retry = fb['retry'] == true;
+    final label = retry ? 'Try again' : (fb['next_question'] == null ? 'Finish' : 'Continue');
     return Container(
       margin: const EdgeInsets.only(top: 8),
       padding: const EdgeInsets.all(16),
@@ -135,11 +156,11 @@ class _PracticeScreenState extends State<PracticeScreen> {
         border: Border.all(color: correct ? const Color(0xFF6EE7B7) : Sea.gold, width: 1.2),
       ),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Text(correct ? 'Nice work! ⭐' : 'Not yet 🌱', style: head(16, color: correct ? const Color(0xFF6EE7B7) : Sea.gold)),
+        Text(correct ? 'Nice work! ⭐' : (retry ? 'Not quite — one more try 🌱' : 'Not yet 🌱'), style: head(16, color: correct ? const Color(0xFF6EE7B7) : Sea.gold)),
         const SizedBox(height: 6),
         Text(_strip('${fb['feedback']}'), style: const TextStyle(color: Sea.ink)),
         const SizedBox(height: 12),
-        GoldButton(label: fb['next_question'] == null ? 'Finish' : 'Continue', onPressed: _busy ? null : _continue),
+        GoldButton(label: label, onPressed: _busy ? null : _continue),
       ]),
     );
   }

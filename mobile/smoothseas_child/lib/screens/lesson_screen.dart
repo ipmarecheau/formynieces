@@ -33,7 +33,7 @@ class _LessonScreenState extends State<LessonScreen> {
     try {
       final session = await api.postJson('/child/practice/start', {'mission_id': widget.missionId}) as Map<String, dynamic>;
       if (!mounted) return;
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => PracticeScreen(session: session)));
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => PracticeScreen(session: session, moduleId: widget.moduleId, missionId: widget.missionId, topic: widget.topic)));
     } on ApiException catch (e) {
       if (mounted) {
         setState(() => _starting = false);

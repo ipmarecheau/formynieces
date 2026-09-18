@@ -108,12 +108,12 @@ class _CheckScreenState extends State<CheckScreen> {
                             TextSpan(text: '${_answered + 1} of $_total', style: const TextStyle(color: Color(0xFFA5B4FC), fontWeight: FontWeight.w800, fontSize: 15)),
                           ])),
                           const SizedBox(height: 12),
-                          Text('${q['prompt']}', style: const TextStyle(color: Sea.foam, fontSize: 17, height: 1.3, fontWeight: FontWeight.w700)),
+                          Text(_strip('${q['prompt']}'), style: const TextStyle(color: Sea.foam, fontSize: 17, height: 1.3, fontWeight: FontWeight.w700)),
                           const SizedBox(height: 14),
                           for (final c in choices)
                             Padding(
                               padding: const EdgeInsets.only(bottom: 10),
-                              child: _ChoiceCard(label: '${(c as Map)['id']}.  ${c['text']}', onTap: _busy ? null : () => _choose(c['id'] as String)),
+                              child: _ChoiceCard(label: '${(c as Map)['id']}.  ${_strip('${c['text']}')}', onTap: _busy ? null : () => _choose(c['id'] as String)),
                             ),
                           if (_busy) const Center(child: Padding(padding: EdgeInsets.only(top: 4), child: Text('Checking your answer… 🐢', style: TextStyle(color: Sea.cyan, fontWeight: FontWeight.w700)))),
                         ]),
@@ -129,6 +129,8 @@ class _CheckScreenState extends State<CheckScreen> {
       ),
     );
   }
+
+  String _strip(String raw) => raw.replaceAll(RegExp(r'<[^>]+>'), '').replaceAll('&nbsp;', ' ').trim();
 }
 
 class _ChoiceCard extends StatelessWidget {

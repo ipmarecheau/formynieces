@@ -82,25 +82,37 @@ class ChildController extends Controller
         $module = SyllabusModule::find($moduleId);
         abort_if($module === null, Response::HTTP_NOT_FOUND, 'Unknown mission.');
 
-        $rung = (int) (StudentProgress::where('student_id', $child->id)
-            ->where('module_id', $module->id)->value('current_rung') ?? 1);
-
-        $questions = $this->pickQuestions($child, $module->id, $rung);
-        abort_if($questions->isEmpty(), Response::HTTP_CONFLICT, 'No questions available for this mission yet.');
+        // Adaptive climb (LL-13): serve one question at a time at her current rung; the
+        // rung advances inside RecordPracticeAttempt as her streak clears, D1 → D3 → D5.
+        $first = $this->nextPracticeQuestion($child, $module->id, []);
+        abort_if($first === null, Response::HTTP_CONFLICT, 'No questions available for this mission yet.');
 
         $session = MobilePracticeSession::create([
             'student_id' => $child->id,
             'module_id' => $module->id,
-            'question_ids' => $questions->pluck('id')->all(),
+            'question_ids' => [$first->id],
             'position' => 0,
             'answers' => [],
         ]);
 
         return response()->json([
             'session_id' => $session->id,
-            'total_questions' => $questions->count(),
-            'current_question' => $this->questionPayload($questions->first()),
+            'total_questions' => self::SESSION_SIZE, // a nominal target; the climb ends on mastery
+            'current_question' => $this->questionPayload($first),
         ]);
+    }
+
+    /** One unseen question at the student's CURRENT rung (reloaded each call, so it climbs). */
+    private function nextPracticeQuestion(User $child, int $moduleId, array $excludeIds): ?PracticeQuestion
+    {
+        $rung = (int) (StudentProgress::where('student_id', $child->id)
+            ->where('module_id', $moduleId)->value('current_rung') ?? 1);
+        $atRung = app(PracticeQuestions::class)->forModule($moduleId)->where('difficulty', $rung)->values();
+        $seen = app(QuestionExposure::class)->seenHashes($child->id);
+        $unseen = $atRung->reject(fn (PracticeQuestion $q) => in_array($q->content_hash, $seen, true) || in_array($q->id, $excludeIds, true))->values();
+        $pool = $unseen->isNotEmpty() ? $unseen : $atRung->reject(fn (PracticeQuestion $q) => in_array($q->id, $excludeIds, true))->values();
+
+        return $pool->first();
     }
 
     /** MC-03/MC-04 — record one answer, give feedback, hand back the next question. */
@@ -122,25 +134,71 @@ class ChildController extends Controller
         $choiceIndex = array_search(strtoupper($data['choice_id']), self::CHOICE_LETTERS, true);
         abort_if($choiceIndex === false, Response::HTTP_UNPROCESSABLE_ENTITY, 'Invalid choice.');
 
-        // Same learning record as the web loop; exposure recorded on ANSWER.
-        app(RecordPracticeAttempt::class)->handle($session->student_id, $question->id, $choiceIndex, 1);
+        // Second try (LL-14): a first-try miss on this same question earns one retry;
+        // attempt 2 is a hard miss that pauses to reteach.
+        $prior = collect($session->answers)->where('question_id', $question->id)->last();
+        $attempt = ($prior !== null && $prior['attempt'] === 1 && $prior['correct'] === false) ? 2 : 1;
+
+        // Same learning record + no-repeat ledger as the web loop.
+        app(RecordPracticeAttempt::class)->handle($session->student_id, $question->id, $choiceIndex, $attempt);
         app(QuestionExposure::class)->record($session->student_id, $question->content_hash, 'practice');
 
         $correct = $choiceIndex === $question->correct_index;
         $answers = $session->answers;
-        $answers[] = ['question_id' => $question->id, 'correct' => $correct];
-        $session->update(['answers' => $answers, 'position' => $session->position + 1]);
+        $answers[] = ['question_id' => $question->id, 'correct' => $correct, 'attempt' => $attempt];
+        $session->answers = $answers;
 
-        $nextId = $session->question_ids[$session->position] ?? null;
-        $next = $nextId ? PracticeQuestion::find($nextId) : null;
+        // First-try miss → keep the same question, let her try once more.
+        if (! $correct && $attempt === 1) {
+            $session->save();
+
+            return response()->json([
+                'correct' => false,
+                'retry' => true,
+                'feedback' => 'Not quite — take another look and try once more.',
+                'next_question' => null,
+            ]);
+        }
+
+        // Missed both tries → reteach (loopback to the lesson).
+        if (! $correct && $attempt === 2) {
+            $session->save();
+
+            return response()->json([
+                'correct' => false,
+                'reteach' => true,
+                'feedback' => 'No worries — let’s revisit this one together.',
+                'next_question' => null,
+            ]);
+        }
+
+        // Correct: has the streak just carried her to mastery?
+        $progress = StudentProgress::where('student_id', $session->student_id)
+            ->where('module_id', $session->module_id)->first();
+        if ($progress?->status === 'mastered') {
+            $session->update(['answers' => $answers, 'finished_at' => now()]);
+
+            return response()->json(['correct' => true, 'done' => true, 'mastered' => true, 'feedback' => $question->explanation ?: 'Mastered! 🎉']);
+        }
+
+        // Serve the next question at her (possibly climbed) rung.
+        $next = $this->nextPracticeQuestion($session->student, $session->module_id, $session->question_ids);
+        if ($next === null) {
+            $session->update(['answers' => $answers, 'finished_at' => now()]);
+
+            return response()->json(['correct' => true, 'done' => true, 'mastered' => false, 'feedback' => $question->explanation ?: 'Nice work!']);
+        }
+
+        $ids = $session->question_ids;
+        $ids[] = $next->id;
+        $session->update(['answers' => $answers, 'question_ids' => $ids, 'position' => $session->position + 1]);
 
         return response()->json([
-            'correct' => $correct,
-            'feedback' => $correct
-                ? ($question->explanation ?: 'Nice work!')
-                : ('Not quite. '.($question->explanation ?: 'Let’s look at this one again.')),
-            'next_question' => $next ? $this->questionPayload($next) : null,
-            'progress' => ['answered' => $session->position, 'total' => count($session->question_ids)],
+            'correct' => true,
+            'feedback' => $question->explanation ?: 'Nice work!',
+            'next_question' => $this->questionPayload($next),
+            'rung' => $progress?->current_rung ?? 1,
+            'streak' => $progress?->current_streak ?? 0,
         ]);
     }
 
