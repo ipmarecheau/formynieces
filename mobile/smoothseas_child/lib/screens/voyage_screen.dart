@@ -35,7 +35,6 @@ class _VoyageScreenState extends State<VoyageScreen> {
   @override
   Widget build(BuildContext context) {
     final h = MediaQuery.sizeOf(context).height;
-    final panelHeight = h * 0.448; // web co-frame = 378 of 844
     return Scaffold(
       body: SeaBackground(
         child: Stack(
@@ -61,8 +60,11 @@ class _VoyageScreenState extends State<VoyageScreen> {
                         color: Sea.gold,
                         backgroundColor: Sea.navy,
                         onRefresh: () async => setState(() => _future = _load()),
+                        // Content scrolls BEHIND the fixed panel (web .vy-wrap has no
+                        // reserved gutter — the sheet overlays; collapse it to see the
+                        // islands). A small tail lets the last row clear the rail edge.
                         child: ListView(
-                          padding: EdgeInsets.fromLTRB(28, 14, 28, panelHeight),
+                          padding: const EdgeInsets.fromLTRB(28, 14, 28, 24),
                           children: [
                             VoyageMap(islands: islands, onOpen: _openIsland), // top 112, w334
                             const SizedBox(height: 16),

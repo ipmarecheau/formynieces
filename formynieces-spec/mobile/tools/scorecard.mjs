@@ -1,9 +1,13 @@
 // Weighted parity scorecard: web (source of truth) vs Flutter replica.
 // Categories & weights (deviation = weighted sum, PASS if <= 5%):
 //   Functionality & Behaviour 45% | Content & Data 20% | Layout 20% | Visual 15%
-// Visual uses MSSIM (structural, glow/AA-tolerant); raw pixel% is a secondary tripwire.
+// Visual is COMPONENT-LEVEL when a screen defines `components`: each region is scored
+//   by MSSIM and the page visual is their importance-weighted mean, so a large well-
+//   matched component can't mask a broken one (per-component MSSIM is printed too).
+//   Falls back to whole-page MSSIM otherwise. raw pixel% is a secondary tripwire.
 //
 // Usage: node scorecard.mjs <screen>    (screen key from SCREENS below)
+//        node scorecard.mjs flow         (app-level state-transition / learning-loop parity)
 import { chromium } from 'playwright';
 import pixelmatch from 'pixelmatch';
 import { PNG } from 'pngjs';
@@ -64,7 +68,7 @@ const SCREENS = {
       await page.reload({ waitUntil: 'load' }); await page.waitForTimeout(6500);
       await loginFlutter(page);
       const before = await page.screenshot({ clip: { x: 0, y: 0, ...VP } });
-      await page.mouse.click(195, 611); await page.waitForTimeout(6500);
+      await continueToVoyage(page); await page.waitForTimeout(6500);
       const after = await page.screenshot({ clip: { x: 0, y: 0, ...VP } });
       const A = PNG.sync.read(before), B = PNG.sync.read(after);
       const changed = pixelmatch(A.data, B.data, null, A.width, A.height, { threshold: 0.1 }) / (A.width * A.height);
@@ -76,12 +80,12 @@ const SCREENS = {
   island: {
     webUrl: `${WEB}/voyage/feather-isle`, auth: true,
     webPrep: async (page) => { try { await page.click('text=Got it!', { timeout: 2500 }); await page.waitForTimeout(700); } catch (e) {} },
-    state: async (page) => { await loginFlutter(page); await page.mouse.click(195, 611); await page.waitForTimeout(7000); await page.mouse.click(80, 262); await page.waitForTimeout(5000); },
+    state: async (page) => { await loginFlutter(page); await continueToVoyage(page); await page.waitForTimeout(7000); await page.mouse.click(80, 262); await page.waitForTimeout(5000); },
     content: ['Feather Isle', 'levels conquered', 'Stops on this island', 'Place Value', 'Back to the sea'],
     layout: [{ name: 'title', web: '.vy-title', fl: /^feather isle$/i }],
     async func(page, sem) {
       const r = [];
-      await loginFlutter(page); await page.mouse.click(195, 611); await page.waitForTimeout(7000);
+      await loginFlutter(page); await continueToVoyage(page); await page.waitForTimeout(7000);
       await page.mouse.click(80, 262); await page.waitForTimeout(5000);
       await enableSemantics(page);
       const nodes = await sem();
@@ -93,7 +97,7 @@ const SCREENS = {
       r.push(['back-to-the-sea present', nodes.some(n => /back to the sea/i.test(n.label))]);
       // behaviour: back navigates to the voyage
       await page.reload({ waitUntil: 'load' }); await page.waitForTimeout(6500);
-      await loginFlutter(page); await page.mouse.click(195, 611); await page.waitForTimeout(7000);
+      await loginFlutter(page); await continueToVoyage(page); await page.waitForTimeout(7000);
       await page.mouse.click(80, 262); await page.waitForTimeout(5000);
       const before = await page.screenshot({ clip: { x: 0, y: 0, ...VP } });
       await page.mouse.click(330, 40); await page.waitForTimeout(4000); // back pill
@@ -107,14 +111,20 @@ const SCREENS = {
   },
   voyage: {
     webUrl: `${WEB}/voyage`, auth: true,
-    state: async (page) => { await loginFlutter(page); await page.mouse.click(195, 611); await page.waitForTimeout(7000); },
+    state: async (page) => { await loginFlutter(page); await continueToVoyage(page); await page.waitForTimeout(7000); },
     content: ['Your Voyage', 'Islands', 'Feather Isle', 'Lantern Rock', 'conquered', 'Captain'],
     layout: [
       { name: 'panelTitle', web: '.co-title-main', fl: /captain.s orders/i },
     ],
+    components: [
+      { name: 'nav', web: '.vy-nav', weight: 1 },
+      { name: 'map', web: '.vy-map', weight: 1.5 },
+      { name: 'companion', web: '.vy-companion', weight: 1 },
+      { name: 'captains-orders', web: '.co-frame', weight: 1.5 },
+    ],
     async func(page, sem) {
       const r = [];
-      await loginFlutter(page); await page.mouse.click(195, 611); await page.waitForTimeout(7000);
+      await loginFlutter(page); await continueToVoyage(page); await page.waitForTimeout(7000);
       await enableSemantics(page);
       const nodes = await sem();
       r.push(['voyage renders after continue', nodes.some(n => /your voyage/i.test(n.label))]);
@@ -125,7 +135,7 @@ const SCREENS = {
       r.push(['captain’s orders open by default', nodes.some(n => /captain/i.test(n.label))]);
       // behaviour: collapsing the open panel changes the screen (fresh page — no semantics overlay)
       await page.reload({ waitUntil: 'load' }); await page.waitForTimeout(6500);
-      await loginFlutter(page); await page.mouse.click(195, 611); await page.waitForTimeout(7000);
+      await loginFlutter(page); await continueToVoyage(page); await page.waitForTimeout(7000);
       const before = await page.screenshot({ clip: { x: 0, y: 0, ...VP } });
       await page.mouse.click(365, 475); await page.waitForTimeout(1500); // collapse ▶ toggle
       const after = await page.screenshot({ clip: { x: 0, y: 0, ...VP } });
@@ -158,6 +168,24 @@ async function loginFlutter(page) {
   await page.mouse.click(195, 516); await page.waitForTimeout(200); await page.keyboard.type(CRED.password, { delay: 8 });
   await page.mouse.click(195, 582); await page.waitForTimeout(5500);
 }
+
+// Robust tap of the primary gold button (its Y shifts with content, e.g. welcome-back
+// streak-pill count) — find the widest band of gold pixels below mid-screen and tap it.
+async function tapGold(page) {
+  const png = PNG.sync.read(await page.screenshot({ clip: { x: 0, y: 0, ...VP } }));
+  let best = -1, bestCount = 0;
+  for (let y = Math.floor(png.height * 0.35); y < png.height - 4; y += 2) {
+    let count = 0;
+    for (let x = 0; x < png.width; x += 4) {
+      const o = (y * png.width + x) * 4;
+      if (png.data[o] > 215 && png.data[o + 1] > 150 && png.data[o + 2] < 95) count++;
+    }
+    if (count > bestCount) { bestCount = count; best = y; }
+  }
+  if (best > 0 && bestCount > 20) { await page.mouse.click(195, best / DSF); return true; }
+  return false;
+}
+async function continueToVoyage(page) { await tapGold(page); }
 
 // Turn on Flutter's semantics tree, then read labelled, positioned nodes.
 async function enableSemantics(page) {
@@ -225,6 +253,16 @@ function mssim(a, b, W, H) {
 
 // ---- run --------------------------------------------------------------------
 const key = process.argv[2];
+
+// State-transition (flow) parity is app-level, not per-screen: it drives the API
+// through the learning loop with real correct answers. `scorecard.mjs flow` runs it.
+if (key === 'flow') {
+  const { execSync } = await import('node:child_process');
+  const flowPath = new URL('./flowmetric.mjs', import.meta.url).pathname;
+  process.stdout.write(execSync(`node ${flowPath}`).toString());
+  process.exit(0);
+}
+
 const spec = SCREENS[key];
 if (!spec) { console.error('unknown screen', key); process.exit(1); }
 
@@ -246,6 +284,11 @@ await wp.screenshot({ path: `${dir}/${key}-web.png`, clip: { x: 0, y: 0, ...VP }
 const webBoxes = {};
 for (const el of spec.layout) {
   webBoxes[el.name] = await wp.$eval(el.web, e => { const r = e.getBoundingClientRect(); return { cx: r.x + r.width / 2, cy: r.y + r.height / 2 }; }).catch(() => null);
+}
+// Component regions (for component-level parity — un-skews the page score).
+const componentBoxes = {};
+for (const c of (spec.components || [])) {
+  componentBoxes[c.name] = await wp.$eval(c.web, e => { const r = e.getBoundingClientRect(); return { x: r.x, y: r.y, w: r.width, h: r.height }; }).catch(() => null);
 }
 await wc.close();
 
@@ -293,11 +336,35 @@ for (const el of spec.layout) {
   else layoutErr.push(1);
 }
 const layoutDev = layoutErr.reduce((a, b) => a + b, 0) / layoutErr.length;
-// Visual: MSSIM + pixel tripwire
+// Visual: component-level MSSIM (weighted by importance, un-skewed) when components
+// are defined, else whole-page. A misplaced/oversized component tanks its own region.
 const wa = PNG.sync.read(readFileSync(`${dir}/${key}-web.png`));
 const fb = PNG.sync.read(readFileSync(`${dir}/${key}-flutter.png`));
 const W = wa.width, H = wa.height;
-const visualDev = Math.max(0, 1 - mssim(gray(wa), gray(fb), W, H));
+const grayA = gray(wa), grayB = gray(fb);
+const regionMSSIM = (box) => {
+  if (!box) return 0;
+  const x0 = Math.max(0, Math.round(box.x * DSF)), y0 = Math.max(0, Math.round(box.y * DSF));
+  const bw = Math.min(W - x0, Math.round(box.w * DSF)), bh = Math.min(H - y0, Math.round(box.h * DSF));
+  if (bw < 8 || bh < 8) return 1;
+  const ca = new Float64Array(bw * bh), cb = new Float64Array(bw * bh);
+  for (let y = 0; y < bh; y++) for (let x = 0; x < bw; x++) { const si = (y0 + y) * W + (x0 + x); const di = y * bw + x; ca[di] = grayA[si]; cb[di] = grayB[si]; }
+  return mssim(ca, cb, bw, bh);
+};
+const componentReport = [];
+let visualDev;
+if (spec.components && spec.components.length) {
+  let wsum = 0, dsum = 0;
+  for (const c of spec.components) {
+    const m = regionMSSIM(componentBoxes[c.name]);
+    const w = c.weight ?? 1;
+    componentReport.push([c.name, m, w]);
+    wsum += w; dsum += w * (1 - Math.max(0, m));
+  }
+  visualDev = dsum / wsum;
+} else {
+  visualDev = Math.max(0, 1 - mssim(grayA, grayB, W, H));
+}
 const diff = new PNG({ width: W, height: H });
 const px = pixelmatch(wa.data, fb.data, diff.data, W, H, { threshold: 0.12 });
 const pixelPct = (px / (W * H) * 100);
@@ -309,6 +376,12 @@ console.log(`Functionality & Behaviour (45%)  dev ${pct(funcDev)}   [${funcPass}
 for (const [name, ok] of funcResults) console.log(`    ${ok ? 'PASS' : 'FAIL'}  ${name}`);
 console.log(`Content & Data parity     (20%)  dev ${pct(contentDev)}   [${contentHit}/${spec.content.length} strings]`);
 console.log(`Layout & Structure        (20%)  dev ${pct(layoutDev)}   [${spec.layout.map((e, i) => e.name + ':' + pct(layoutErr[i])).join(', ')}]`);
-console.log(`Visual appearance         (15%)  dev ${pct(visualDev)}   [MSSIM ${(1 - visualDev).toFixed(3)}; raw pixel ${pixelPct.toFixed(1)}%]`);
+console.log(`Visual appearance         (15%)  dev ${pct(visualDev)}   [${componentReport.length ? 'component-weighted' : 'MSSIM'} ${(1 - visualDev).toFixed(3)}; raw pixel ${pixelPct.toFixed(1)}%]`);
+if (componentReport.length) {
+  console.log('   components (per-region MSSIM):');
+  for (const [name, m, w] of componentReport.sort((a, b) => a[1] - b[1])) {
+    console.log(`     ${m < 0.55 ? 'LOW ' : m < 0.7 ? 'okay' : 'good'}  ${name.padEnd(20)} MSSIM ${m.toFixed(3)}  (w${w})`);
+  }
+}
 console.log(`-----------------------------------------------`);
 console.log(`COMPOSITE DEVIATION: ${composite.toFixed(2)}%   ${composite <= 5 ? 'PASS (<=5%)' : 'FAIL (>5%)'}`);
