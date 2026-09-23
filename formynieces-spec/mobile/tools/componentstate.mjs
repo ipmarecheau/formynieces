@@ -16,10 +16,13 @@ const COMPONENT = {
     { name: 'orders (default)', click: null, sig: /today.?s orders|clear them|morning tide|sail the map/i },
     { name: 'locker', click: 'Locker', sig: /locker is empty|rewards to sail|shore leave|lifebuoy|tailwind|anchor/i },
     { name: 'journal', click: 'Journal', sig: /voyage streak|day voyage|master your first|conquer/i },
-    { name: 'logs', click: 'Logs', sig: /voyage log|log begins|sail on|shore leave|cleared|at sea/i },
+    { name: 'logs', click: 'Logs', sig: /voyage log|log begins|sail on|shore leave|cleared|at sea|voyage streak|daily login|on-pace|mastery|reading|vocabulary|writing|practice/i },
     { name: 'back to orders', click: 'Orders', sig: /today.?s orders|clear them|morning tide/i },
-    { name: 'collapsed', click: '▶', sig: /captain.?s orders/i },
-    { name: 're-expanded', click: '▸', sig: /morning muster|evening watch|today.?s orders/i },
+    // The collapse⇄expand toggles are their own button semantics nodes labelled
+    // 'collapse-orders' / 'expand-orders' (the ▶/▸ glyph is only their textContent, so
+    // clicking the glyph never resolved — click the real semantic label instead).
+    { name: 'collapsed', click: 'collapse-orders', sig: /captain.?s orders|expand-orders/i },
+    { name: 're-expanded', click: 'expand-orders', sig: /morning muster|evening watch|today.?s orders/i },
   ],
 };
 
@@ -31,7 +34,11 @@ async function labels(page) {
   return page.$$eval('flt-semantics', els => els.map(e => (e.getAttribute('aria-label') || e.textContent || '').trim()).filter(Boolean).join(' | '));
 }
 async function domClick(page, label) {
-  return page.evaluate((l) => { const el = [...document.querySelectorAll('flt-semantics')].find(e => new RegExp('^' + l + '$', 'i').test((e.getAttribute('aria-label') || e.textContent || '').trim())); if (el) { el.click(); return true; } return false; }, label);
+  // Match the label against the whole node OR any single line of it: Flutter web renders a
+  // Semantics label as textContent, and a glyph child (▶/▸) lands on its own line, so a
+  // button labelled 'collapse-orders' reads as "collapse-orders\n▶". Line-exact matching
+  // (not contains) keeps 'Orders' from colliding with "Today's orders…".
+  return page.evaluate((l) => { const rx = new RegExp('^' + l + '$', 'i'); const el = [...document.querySelectorAll('flt-semantics')].find(e => { const v = (e.getAttribute('aria-label') || e.textContent || '').trim(); return rx.test(v) || v.split('\n').some(line => rx.test(line.trim())); }); if (el) { el.click(); return true; } return false; }, label);
 }
 async function tapGold(page) {
   const png = PNG.sync.read(await page.screenshot({ clip: { x: 0, y: 0, ...VP } }));
