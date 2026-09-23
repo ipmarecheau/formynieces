@@ -38,6 +38,14 @@ Route::prefix('mobile')->group(function () {
             Route::get('/children/{child}/weak-topics', [ParentController::class, 'weakTopics'])->name('api.mobile.child.weak-topics');
             Route::get('/children/{child}/writing', [ParentController::class, 'writing'])->name('api.mobile.child.writing');
             Route::get('/children/{child}/readiness', [ParentController::class, 'readiness'])->name('api.mobile.child.readiness');
+            Route::get('/children/{child}/login', [ParentController::class, 'childLogin'])->name('api.mobile.child.login');
+            Route::post('/children/{child}/login/reset', [ParentController::class, 'resetChildLogin'])->name('api.mobile.child.login.reset');
+            Route::get('/children/{child}/dashboard', [ParentController::class, 'dashboard'])->name('api.mobile.child.dashboard');
+
+            // School journal — upload graded papers, term timeline + per-question breakdown (SJ).
+            Route::get('/children/{child}/journal', [ParentController::class, 'journal'])->name('api.mobile.child.journal');
+            Route::post('/children/{child}/journal', [ParentController::class, 'uploadJournalPaper'])->name('api.mobile.child.journal.upload');
+            Route::post('/children/{child}/journal/{entry}/confirm', [ParentController::class, 'confirmJournalEntry'])->name('api.mobile.child.journal.confirm');
         });
 
         // Child app (MC-01..07) — child-scoped tokens only.
@@ -53,6 +61,15 @@ Route::prefix('mobile')->group(function () {
             Route::post('/child/practice/start', [ChildController::class, 'start'])->name('api.mobile.child.practice.start');
             Route::post('/child/practice/{session}/answer', [ChildController::class, 'answer'])->name('api.mobile.child.practice.answer');
             Route::post('/child/practice/{session}/finish', [ChildController::class, 'finish'])->name('api.mobile.child.practice.finish');
+
+            // Morning Tide — daily reading (DR) + vocabulary (DV) ritual.
+            Route::get('/child/morning-tide', [ChildController::class, 'morningTide'])->name('api.mobile.child.morning-tide');
+            Route::post('/child/morning-tide/comprehension', [ChildController::class, 'morningTideComprehension'])->name('api.mobile.child.morning-tide.comprehension');
+            Route::post('/child/morning-tide/vocabulary', [ChildController::class, 'morningTideVocabulary'])->name('api.mobile.child.morning-tide.vocabulary');
+
+            // Writer's Log — weekly prompt + rubric feedback (WR).
+            Route::get('/child/writing', [ChildController::class, 'writing'])->name('api.mobile.child.writer-log');
+            Route::post('/child/writing', [ChildController::class, 'submitWriting'])->name('api.mobile.child.writer-log.submit');
         });
     });
 });

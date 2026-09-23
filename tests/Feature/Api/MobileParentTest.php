@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\WritingPrompt;
 use App\Models\WritingSubmission;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Hash;
 
 uses(RefreshDatabase::class);
 
@@ -101,4 +102,62 @@ it('blocks a child-scoped token from parent endpoints (MC-06/MP-07)', function (
 
 it('requires a token for parent endpoints', function () {
     $this->getJson('/api/mobile/children')->assertUnauthorized();
+});
+
+it('reveals the child’s login id and recoverable password (child login card)', function () {
+    [$parent, $child, $token] = parentWithChild();
+    $child->child_password_enc = 'DolphinReef42';
+    $child->save();
+
+    $this->withToken($token)->getJson("/api/mobile/children/{$child->id}/login")
+        ->assertOk()
+        ->assertJsonPath('login_id', $child->email)
+        ->assertJsonPath('password', 'DolphinReef42')
+        ->assertJsonStructure(['child' => ['id', 'name'], 'login_id', 'password']);
+});
+
+it('resets the child’s password to a new recoverable one', function () {
+    [$parent, $child, $token] = parentWithChild();
+    $child->child_password_enc = 'OldPearlWave10';
+    $child->save();
+
+    $res = $this->withToken($token)->postJson("/api/mobile/children/{$child->id}/login/reset")
+        ->assertOk()
+        ->assertJsonStructure(['child' => ['id', 'name'], 'login_id', 'password']);
+
+    $newPassword = $res->json('password');
+    expect($newPassword)->not->toBe('OldPearlWave10');
+
+    // The new password is stored recoverably AND works for auth (hashed cast).
+    $child->refresh();
+    expect($child->child_password_enc)->toBe($newPassword);
+    expect(Hash::check($newPassword, $child->password))->toBeTrue();
+});
+
+it('forbids revealing another parent’s child login (403)', function () {
+    [$parentA, $childA] = parentWithChild();
+    $tokenB = User::factory()->create(['role' => 'guardian'])->createToken('t', ['parent'])->plainTextToken;
+
+    $this->withToken($tokenB)->getJson("/api/mobile/children/{$childA->id}/login")->assertForbidden();
+});
+
+it('returns the dashboard tabs — pace, estimator and rewards (MP dashboard)', function () {
+    [$parent, $child, $token] = parentWithChild();
+
+    $this->withToken($token)->getJson("/api/mobile/children/{$child->id}/dashboard")
+        ->assertOk()
+        ->assertJsonPath('child.id', $child->id)
+        ->assertJsonStructure([
+            'child' => ['id', 'name'],
+            'pace' => ['current_week', 'weeks_to_exam', 'exam_date', 'in_revision', 'total_behind', 'overall_status', 'subjects'],
+            'estimator' => ['has_data', 'subjects', 'confidence'],
+            'rewards' => [['type', 'held']],
+        ]);
+});
+
+it('forbids the dashboard for another parent’s child (403)', function () {
+    [$parentA, $childA] = parentWithChild();
+    $tokenB = User::factory()->create(['role' => 'guardian'])->createToken('t', ['parent'])->plainTextToken;
+
+    $this->withToken($tokenB)->getJson("/api/mobile/children/{$childA->id}/dashboard")->assertForbidden();
 });

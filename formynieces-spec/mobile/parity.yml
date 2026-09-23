@@ -65,46 +65,46 @@ child:
     flutter: smoothseas_child/lib/screens/captains_orders_sheet.dart
     tests: MobileChildTest
 
-  # ---- not yet built ----
   - key: competency_check
     title: Competency check / test-out (D1/D3/D5) before the lesson (LL-19/20/21)
     web_route: /practice/{module}/enter
     backend: CompetencyCheck
-    api: null
-    flutter: null
-    tests: null
+    api: api.mobile.child.check.start
+    flutter: smoothseas_child/lib/screens/check_screen.dart
+    tests: MobileChildTest
 
   - key: reteach
     title: AI-assisted re-teach on the miss triggers (LL-14/15/16)
     web_route: /practice/{module}/lesson (reteach)
     backend: Remediation, ReteachSession
-    api: null
-    flutter: null
-    tests: null
+    api: api.mobile.child.practice.answer
+    flutter: smoothseas_child/lib/screens/reteach_screen.dart
+    tests: MobileChildTest
 
+  # ---- not yet built ----
   - key: morning_reading
     title: Morning reading ritual — passage + comprehension (DR-01..)
     web_route: /morning-tide
     backend: Reading service, DailyReadingAssignment
-    api: null
-    flutter: null
-    tests: null
+    api: api.mobile.child.morning-tide
+    flutter: smoothseas_child/lib/screens/morning_tide_screen.dart
+    tests: MobileMorningTideTest
 
   - key: morning_vocabulary
     title: Daily vocabulary — words from the passage, spaced repetition (DV)
     web_route: /morning-tide (same MorningTide flow)
     backend: Vocabulary service
-    api: null
-    flutter: null
-    tests: null
+    api: api.mobile.child.morning-tide.vocabulary
+    flutter: smoothseas_child/lib/screens/morning_tide_screen.dart
+    tests: MobileMorningTideTest
 
   - key: writing
     title: Writer's Log — weekly prompt + rubric feedback (WR)
     web_route: /writing
     backend: WritingSubmission, ExamAgentService
-    api: null
-    flutter: null
-    tests: null
+    api: api.mobile.child.writer-log
+    flutter: smoothseas_child/lib/screens/writing_screen.dart
+    tests: MobileWritingTest
 
   - key: welcome_back
     title: Welcome-back streak splash flowing into the Voyage (SH-06/CE-04)
@@ -168,25 +168,25 @@ parent:
     title: Child login reveal card (login id + password reveal/reset)
     web_route: /guardian/dashboard (ChildLoginCard)
     backend: ChildLoginCard
-    api: null
-    flutter: null
-    tests: null
+    api: api.mobile.child.login
+    flutter: smoothseas_parent/lib/screens/child_login_card_screen.dart
+    tests: MobileParentTest
 
   - key: school_journal
     title: School journal — upload + term timeline + per-question breakdown (SJ)
     web_route: /guardian/students/{id}/journal
     backend: GuardianChildrenController, JournalDigitiser
-    api: null
-    flutter: null
-    tests: null
+    api: api.mobile.child.journal
+    flutter: smoothseas_parent/lib/screens/school_journal_screen.dart
+    tests: MobileSchoolJournalTest
 
   - key: pace_estimator_rewards
     title: Dashboard tabs — Pace / Estimator / Rewards
     web_route: /guardian/dashboard
     backend: GuardianDashboard, PerformanceEstimator
-    api: null
-    flutter: null
-    tests: null
+    api: api.mobile.child.dashboard
+    flutter: smoothseas_parent/lib/screens/dashboard_tabs_screen.dart
+    tests: MobileParentTest
 
   - key: notifications
     title: Push nudges — mission done / stuck (MP-08)

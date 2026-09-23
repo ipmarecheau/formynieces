@@ -4,14 +4,21 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Api\Mobile;
 
+use App\Http\Controllers\ChildSetupController;
 use App\Http\Controllers\Controller;
 use App\Models\PracticeAttempt;
+use App\Models\SchoolJournalEntry;
+use App\Models\StreakReward;
 use App\Models\StudentProgress;
 use App\Models\StudentStreak;
 use App\Models\SyllabusModule;
 use App\Models\User;
 use App\Models\WritingSubmission;
+use App\Services\Estimator\PerformanceEstimator;
 use App\Services\ExamAgentService;
+use App\Services\Motivation\StreakEconomyService;
+use App\Services\SchoolJournal\JournalDigitiser;
+use App\Services\SchoolJournal\SchoolEvidenceService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -150,6 +157,192 @@ class ParentController extends Controller
             'evidence' => [$readiness['detail'], "{$sessions} practice sessions this week"],
             'next_action' => $analysis['recommendation'] ?? 'Keep to the weekly plan',
         ]);
+    }
+
+    /**
+     * The dashboard detail tabs — Pace (journey vs plan), Estimator (readiness bands over
+     * covered material), and Rewards (streak economy balances). Reuses the same honest-layer
+     * services as the web guardian dashboard (ExamAgentService, PerformanceEstimator).
+     */
+    public function dashboard(Request $request, User $child): JsonResponse
+    {
+        $this->authorizeChild($request, $child);
+
+        $analysis = $this->examAgent->analyse($child);
+        $estimate = app(PerformanceEstimator::class)->estimate($child, $analysis['subject_analysis'] ?? []);
+        $economy = app(StreakEconomyService::class);
+
+        $rewards = array_map(
+            fn (string $type): array => ['type' => $type, 'held' => $economy->balance($child->id, $type)],
+            StreakReward::TYPES,
+        );
+
+        return response()->json([
+            'child' => ['id' => $child->id, 'name' => $child->name],
+            'pace' => [
+                'current_week' => $analysis['current_week'] ?? null,
+                'weeks_to_exam' => $analysis['weeks_to_exam'] ?? null,
+                'exam_date' => $analysis['exam_date'] ?? null,
+                'in_revision' => $analysis['in_revision'] ?? false,
+                'total_behind' => $analysis['total_behind'] ?? 0,
+                'overall_status' => $analysis['overall_status'] ?? 'getting_started',
+                'recommendation' => $analysis['recommendation'] ?? null,
+                'subjects' => array_values(array_map(fn (array $s): array => [
+                    'subject' => $s['subject'] ?? '',
+                    'expected' => $s['expected'] ?? 0,
+                    'completed' => $s['completed'] ?? 0,
+                    'behind_count' => $s['behind_count'] ?? 0,
+                    'status' => $s['status'] ?? 'on_track',
+                ], $analysis['subject_analysis'] ?? [])),
+            ],
+            'estimator' => $estimate,
+            'rewards' => $rewards,
+        ]);
+    }
+
+    /**
+     * The child's login card — login ID plus the recoverable password, so the parent can
+     * hand the device over or help them sign in. Guardian-only, own child (like the web
+     * ChildLoginCard). The password is returned to an already-authorised guardian only.
+     */
+    public function childLogin(Request $request, User $child): JsonResponse
+    {
+        $this->authorizeChild($request, $child);
+
+        return response()->json([
+            'child' => ['id' => $child->id, 'name' => $child->name],
+            'login_id' => $child->email,
+            'password' => $child->child_password_enc ?: null,
+        ]);
+    }
+
+    /** Reset the child's generated password and return the new one (MP-01 login management). */
+    public function resetChildLogin(Request $request, User $child): JsonResponse
+    {
+        $this->authorizeChild($request, $child);
+
+        $password = ChildSetupController::generatePassword();
+        $child->password = $password;           // 'hashed' cast hashes it for auth
+        $child->child_password_enc = $password;  // 'encrypted' cast keeps a recoverable copy
+        $child->save();
+
+        return response()->json([
+            'child' => ['id' => $child->id, 'name' => $child->name],
+            'login_id' => $child->email,
+            'password' => $password,
+        ]);
+    }
+
+    /**
+     * The school journal — the term timeline of graded papers, each broken out into its
+     * per-question breakdown, plus the per-term trend (SJ-03/04/09).
+     */
+    public function journal(Request $request, User $child): JsonResponse
+    {
+        $this->authorizeChild($request, $child);
+
+        $grouped = SchoolJournalEntry::where('student_id', $child->id)
+            ->with('questions')
+            ->orderByDesc('assessment_date')
+            ->get()
+            ->groupBy(fn (SchoolJournalEntry $entry): string => $entry->term ?: 'Unlabelled');
+
+        $terms = [];
+        foreach ($grouped as $term => $entries) {
+            $terms[] = [
+                'term' => $term,
+                'entries' => $entries->map(fn (SchoolJournalEntry $e): array => $this->journalEntryPayload($e))->values(),
+            ];
+        }
+
+        return response()->json([
+            'child' => ['id' => $child->id, 'name' => $child->name],
+            'terms' => $terms,
+            'trend' => app(SchoolEvidenceService::class)->trendByTerm($child->id),
+        ]);
+    }
+
+    /** SJ-01/07 — upload a graded paper (photo or PDF); the OCR seam digitises it when it can. */
+    public function uploadJournalPaper(Request $request, User $child): JsonResponse
+    {
+        $this->authorizeChild($request, $child);
+        $request->validate([
+            'paper' => ['required', 'file', 'mimes:jpg,jpeg,png,webp,pdf', 'max:10240'],
+        ]);
+
+        $file = $request->file('paper');
+        $path = $file->store("school-journal/{$child->id}", 'local');
+
+        $entry = SchoolJournalEntry::create([
+            'student_id' => $child->id,
+            'uploaded_by' => 'guardian',
+            'image_path' => $path,
+            'assessment_date' => now()->toDateString(),
+            'digitisation_status' => SchoolJournalEntry::STATUS_PENDING,
+        ]);
+
+        $digitised = app(JournalDigitiser::class)->digitise($entry, (string) $file->getMimeType());
+
+        return response()->json([
+            'digitised' => $digitised,
+            'note' => $digitised
+                ? 'Filed and read — check each question and confirm.'
+                : 'Filed. I could not read this one automatically — please enter the details by hand.',
+            'entry' => $this->journalEntryPayload($entry->fresh(['questions'])),
+        ], Response::HTTP_CREATED);
+    }
+
+    /** SJ-02 — the guardian corrects whatever the pipeline read wrongly, then confirms. */
+    public function confirmJournalEntry(Request $request, User $child, SchoolJournalEntry $entry): JsonResponse
+    {
+        $this->authorizeChild($request, $child);
+        abort_unless($entry->student_id === $child->id, Response::HTTP_FORBIDDEN, 'This is not your child’s entry.');
+
+        $validated = $request->validate([
+            'assessment_date' => ['required', 'date'],
+            'term' => ['nullable', 'string', 'max:60'],
+            'subject' => ['nullable', 'string', 'max:60'],
+            'strand' => ['nullable', 'string', 'max:60'],
+            'assessment_type' => ['nullable', 'string', 'max:60'],
+            'score' => ['nullable', 'string', 'max:30'],
+            'teacher_comment' => ['nullable', 'string', 'max:1000'],
+        ]);
+
+        $entry->fill($validated);
+        $entry->digitisation_status = SchoolJournalEntry::STATUS_CONFIRMED;
+        $entry->save();
+
+        app(SchoolEvidenceService::class)->recordSignals($entry); // SJ-08 signal
+
+        return response()->json(['entry' => $this->journalEntryPayload($entry->fresh(['questions']))]);
+    }
+
+    /**
+     * A journal entry's display shape: the paper's metadata plus its per-question breakdown.
+     *
+     * @return array<string, mixed>
+     */
+    private function journalEntryPayload(SchoolJournalEntry $entry): array
+    {
+        return [
+            'id' => $entry->id,
+            'date' => $entry->assessment_date?->toDateString(),
+            'term' => $entry->term,
+            'subject' => $entry->subject,
+            'strand' => $entry->strand,
+            'assessment_type' => $entry->assessment_type,
+            'score' => $entry->score,
+            'teacher_comment' => $entry->teacher_comment,
+            'status' => $entry->digitisation_status,
+            'questions' => $entry->questions->map(fn ($q): array => [
+                'number' => $q->number,
+                'prompt' => $q->prompt,
+                'student_answer' => $q->student_answer,
+                'correct_answer' => $q->correct_answer,
+                'is_correct' => $q->is_correct,
+                'topic_label' => $q->topic_label,
+            ])->values(),
+        ];
     }
 
     // --- helpers -------------------------------------------------------------

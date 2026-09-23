@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Api\Mobile;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\ScoreWritingSubmission;
+use App\Models\DailyReadingAssignment;
 use App\Models\Lesson;
 use App\Models\MobilePracticeSession;
 use App\Models\PracticeQuestion;
@@ -13,13 +15,21 @@ use App\Models\StudentProgress;
 use App\Models\StudentStreak;
 use App\Models\SyllabusModule;
 use App\Models\User;
+use App\Models\VocabularyWord;
+use App\Models\WritingPrompt;
+use App\Models\WritingSubmission;
 use App\Services\Motivation\DailyPlanComposer;
 use App\Services\Motivation\StreakEconomyService;
+use App\Services\Motivation\StreakService;
 use App\Services\Pacing\AdventureMapBuilder;
 use App\Services\Practice\CompetencyCheck;
 use App\Services\Practice\PracticeQuestions;
 use App\Services\Practice\QuestionExposure;
 use App\Services\Practice\RecordPracticeAttempt;
+use App\Services\Reading\DailyReadingService;
+use App\Services\Reading\VocabularyService;
+use App\Services\Writing\WritingScorer;
+use App\Services\Writing\WritingScoringUnavailable;
 use App\Support\VoyageInteriors;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -527,6 +537,202 @@ class ChildController extends Controller
                 ? "🎉 A {$milestone}-day milestone — you're on fire!"
                 : "Welcome back, {$child->name}! Ready to set sail?",
         ]);
+    }
+
+    /**
+     * DR/DV — the Morning Tide: today's passage + comprehension questions, or a calm
+     * empty state when the pool near her reading level is exhausted (DR-01).
+     */
+    public function morningTide(Request $request): JsonResponse
+    {
+        $child = $request->user();
+        $assignment = app(DailyReadingService::class)->serve($child);
+
+        if ($assignment === null) {
+            return response()->json([
+                'has_passage' => false,
+                'message' => 'No new passage today — check back tomorrow for your Morning Tide!',
+            ]);
+        }
+
+        $passage = $assignment->passage;
+
+        return response()->json([
+            'has_passage' => true,
+            'assignment_id' => $assignment->id,
+            'completed' => $assignment->completed_at !== null,
+            'score' => $assignment->comprehension_score,
+            'passage' => [
+                'title' => $passage->title,
+                'body' => $passage->body,
+                'reading_level' => $passage->reading_level,
+                'word_count' => $passage->word_count,
+            ],
+            'questions' => array_map(fn (array $q): array => [
+                'prompt' => $q['prompt'] ?? '',
+                'type' => $q['type'] ?? 'mc',
+                'options' => array_values($q['options'] ?? []),
+            ], $passage->questions ?? []),
+        ]);
+    }
+
+    /** Score comprehension (DR-07), then hand back vocabulary candidates to choose from (DV). */
+    public function morningTideComprehension(Request $request): JsonResponse
+    {
+        $data = $request->validate([
+            'assignment_id' => ['required', 'integer'],
+            'answers' => ['present', 'array'],
+        ]);
+        $child = $request->user();
+
+        $assignment = DailyReadingAssignment::with('passage')->findOrFail($data['assignment_id']);
+        abort_unless($assignment->student_id === $child->id, Response::HTTP_FORBIDDEN, 'This is not your reading.');
+
+        $scored = app(DailyReadingService::class)->score($assignment, $data['answers']);
+        $candidates = app(VocabularyService::class)->candidateWords($child->id, $assignment->passage);
+
+        return response()->json([
+            'score' => $scored->comprehension_score,
+            'feedback' => $scored->comprehension_feedback,
+            'words' => $candidates->map(fn (VocabularyWord $w): array => [
+                'id' => $w->id,
+                'word' => $w->word,
+                'definition' => $w->definition,
+                'example' => $w->context_sentence,
+            ])->values(),
+        ]);
+    }
+
+    /** Record her vocabulary sentences (DV), complete the ritual duty, return the breakdown. */
+    public function morningTideVocabulary(Request $request): JsonResponse
+    {
+        $data = $request->validate([
+            'assignment_id' => ['required', 'integer'],
+            'sentences' => ['present', 'array'],
+            'sentences.*.word_id' => ['required', 'integer'],
+            'sentences.*.sentence' => ['required', 'string'],
+        ]);
+        $child = $request->user();
+
+        $assignment = DailyReadingAssignment::findOrFail($data['assignment_id']);
+        abort_unless($assignment->student_id === $child->id, Response::HTTP_FORBIDDEN, 'This is not your reading.');
+
+        $vocab = app(VocabularyService::class);
+        $usage = [];
+        $stored = [];
+        foreach ($data['sentences'] as $entry) {
+            $word = VocabularyWord::find($entry['word_id']);
+            if ($word === null) {
+                continue;
+            }
+            $correct = $vocab->usedCorrectly($word->word, $entry['sentence']);
+            $vocab->recordResult($child->id, $word->id, $correct);
+            $stored[$word->id] = trim($entry['sentence']);
+            $usage[] = [
+                'word' => $word->word,
+                'sentence' => trim($entry['sentence']),
+                'used' => $correct,
+                'example' => $word->context_sentence,
+            ];
+        }
+
+        if ($stored !== []) {
+            $assignment->vocab_sentences = $stored;
+            $assignment->save();
+        }
+
+        app(DailyPlanComposer::class)->markDuty($child->id, 'morning_tide');
+        app(StreakEconomyService::class)->completeDailyMinimumIfMet($child->id);
+
+        return response()->json([
+            'done' => true,
+            'word_usage' => $usage,
+            'message' => 'Morning Tide complete — well sailed! 🌊',
+        ]);
+    }
+
+    /** WR — the Writer's Log: this week's prompt and her latest submission (with rubric). */
+    public function writing(Request $request): JsonResponse
+    {
+        $child = $request->user();
+        $prompt = WritingPrompt::forWeek();
+
+        if ($prompt === null) {
+            return response()->json([
+                'has_prompt' => false,
+                'message' => 'No writing prompt this week — check back soon for your Writer’s Log!',
+            ]);
+        }
+
+        $submission = WritingSubmission::where('student_id', $child->id)
+            ->where('writing_prompt_id', $prompt->id)
+            ->latest()->first();
+
+        return response()->json([
+            'has_prompt' => true,
+            'prompt' => ['id' => $prompt->id, 'title' => $prompt->title, 'prompt' => $prompt->prompt],
+            'submission' => $this->writingSubmissionPayload($submission),
+            'queued' => $submission !== null && ! $submission->isScored(),
+        ]);
+    }
+
+    /** Submit a draft (WR-01/02): save, check off the writing duty, score now or queue (WR-03). */
+    public function submitWriting(Request $request): JsonResponse
+    {
+        $data = $request->validate([
+            'body' => ['required', 'string', 'min:20'],
+        ]);
+        $child = $request->user();
+
+        $prompt = WritingPrompt::forWeek();
+        abort_if($prompt === null, Response::HTTP_NOT_FOUND, 'No writing prompt this week.');
+
+        $submission = WritingSubmission::create([
+            'student_id' => $child->id,
+            'writing_prompt_id' => $prompt->id,
+            'body' => $data['body'],
+            'status' => WritingSubmission::STATUS_PENDING,
+        ]);
+
+        // WR-06 — a completed day's writing checks off the duty and advances the
+        // writing sub-streak, regardless of how scoring resolves.
+        app(DailyPlanComposer::class)->markDuty($child->id, 'writing');
+        app(StreakService::class)->recordActivity($child->id, 'writing');
+
+        $queued = false;
+        try {
+            $submission->applyRubric(app(WritingScorer::class)->score($submission));
+        } catch (WritingScoringUnavailable) {
+            ScoreWritingSubmission::dispatch($submission);
+            $queued = true;
+        }
+
+        return response()->json([
+            'queued' => $queued,
+            'submission' => $this->writingSubmissionPayload($submission->fresh()),
+        ]);
+    }
+
+    /**
+     * The display-ready shape of a writing submission: her draft, whether it is scored,
+     * the four-criterion rubric profile, and the warm feedback.
+     *
+     * @return array<string, mixed>|null
+     */
+    private function writingSubmissionPayload(?WritingSubmission $submission): ?array
+    {
+        if ($submission === null) {
+            return null;
+        }
+
+        return [
+            'body' => $submission->body,
+            'scored' => $submission->isScored(),
+            'rubric' => $submission->rubricProfile(),
+            'did_well' => $submission->did_well ?? [],
+            'try_next' => $submission->try_next,
+            'submitted_at' => $submission->created_at?->toIso8601String(),
+        ];
     }
 
     // --- helpers -------------------------------------------------------------
