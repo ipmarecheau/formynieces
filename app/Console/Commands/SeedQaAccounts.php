@@ -60,12 +60,14 @@ class SeedQaAccounts extends Command
                     'role' => 'student',
                     'parent_id' => $guardian->id,
                     'is_test' => true,
-                    'reading_level' => $c['reading_level'],
                     'target_sea_year' => $c['target_sea_year'],
                     'onboarding_completed_at' => now(),
                     'guardian_reconciled_at' => now(),
                 ],
             );
+            // reading_level is not mass-assignable; set it directly so the child gets
+            // level-appropriate passages.
+            $child->reading_level = $c['reading_level'];
             $child->child_password_enc = $password; // so the guardian's reveal/handoff shows it
             $child->save();
         }
