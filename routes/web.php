@@ -9,9 +9,10 @@ use App\Http\Controllers\GuardianChildrenController;
 use App\Http\Controllers\GuardianPauseController;
 use App\Http\Controllers\GuardianReconciliationController;
 use App\Http\Controllers\LessonExportController;
-use App\Http\Controllers\PublicPageController;
 use App\Http\Controllers\PastPaperController;
 use App\Http\Controllers\PastPaperDraftController;
+use App\Http\Controllers\PublicPageController;
+use App\Http\Controllers\QaController;
 use App\Http\Controllers\SchoolJournalClipController;
 use App\Http\Controllers\VoyageController;
 use App\Livewire\DiagnosticWalk;
@@ -48,6 +49,11 @@ Route::get('/contact', [PublicPageController::class, 'contact'])->name('contact'
 Route::get('/terms', [PublicPageController::class, 'terms'])->name('terms');
 Route::get('/privacy', [PublicPageController::class, 'privacy'])->name('privacy');
 Route::get('/sitemap.xml', [PublicPageController::class, 'sitemap'])->name('sitemap');
+
+// QA walkthrough surface for the autonomous test agent (token-gated; off unless QA_ACCESS_TOKEN is set).
+Route::get('/qa/manifest', [QaController::class, 'manifest'])->name('qa.manifest');
+Route::get('/qa/reports', [QaController::class, 'reports'])->name('qa.reports');
+Route::post('/qa/report', [QaController::class, 'storeReport'])->name('qa.report');
 
 // Brand assets gallery (SVG + PNG logo, banner, social card, favicon).
 Route::get('/brand', fn () => response()->file(public_path('brand.html')))->name('brand');

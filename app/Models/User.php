@@ -7,6 +7,7 @@ use App\Notifications\VerifyEmailWithCode;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -47,6 +48,7 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
         'first_bill_at', // Billing: when the first charge is scheduled (display-only)
         'birth_year', // Child metadata (optional)
         'current_school', // Child metadata (optional)
+        'is_test', // Synthetic QA/agent account — excluded from real analytics
     ];
 
     protected $hidden = [
@@ -75,7 +77,17 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
             'seen_guides' => 'array',
             'trial_ends_at' => 'datetime',
             'first_bill_at' => 'datetime',
+            'is_test' => 'boolean',
         ];
+    }
+
+    /**
+     * Real (non-synthetic) accounts only — use in analytics/reporting so QA and
+     * agent activity never pollutes real family metrics.
+     */
+    public function scopeReal(Builder $query): Builder
+    {
+        return $query->where('is_test', false);
     }
 
     /**

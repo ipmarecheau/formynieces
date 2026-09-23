@@ -160,4 +160,10 @@ return [
         'enabled' => false,
     ],
 
+    // QA walkthrough surface (manifest + report inbox). Token-gated; set QA_ACCESS_TOKEN
+    // in the environment. Empty token disables the QA routes entirely (default).
+    'qa' => [
+        'token' => env('QA_ACCESS_TOKEN'),
+    ],
+
 ];

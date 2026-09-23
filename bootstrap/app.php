@@ -17,6 +17,10 @@ return Application::configure(basePath: dirname(__DIR__))
             'role' => EnsureRole::class,
         ]);
 
+        // The QA report inbox is called by an external agent (token-gated), so it is
+        // exempt from CSRF — it carries no session token.
+        $middleware->validateCsrfTokens(except: ['qa/report']);
+
         // Behind Caddy (TLS terminates at the reverse proxy, app runs on plain HTTP :8080).
         // Trust the proxy's forwarded headers so Laravel knows the original request was HTTPS
         // and generates https:// URLs/redirects instead of http://.
@@ -27,6 +31,6 @@ return Application::configure(basePath: dirname(__DIR__))
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(
-            fn (Request $request) => $request->is('api/*'),
+            fn (Request $request) => $request->is('api/*') || $request->is('qa/*'),
         );
     })->create();
