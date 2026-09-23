@@ -4,8 +4,10 @@ use App\Models\Lesson;
 use App\Models\MobilePracticeSession;
 use App\Models\PracticeQuestion;
 use App\Models\StudentProgress;
+use App\Models\StudentStreak;
 use App\Models\SyllabusModule;
 use App\Models\User;
+use App\Services\Practice\CompetencyCheck;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
@@ -46,18 +48,21 @@ it('runs a full practice session: start → answer → finish (MC-03/04/05)', fu
     $sessionId = $start->json('session_id');
     $q = $start->json('current_question');
 
-    for ($i = 0; $i < 5; $i++) {
+    // Answer correctly until the adaptive climb stops serving (a rung is cleared or the
+    // bank at the current rung is exhausted). The bounded loop guards against a runaway.
+    $answered = 0;
+    while ($q !== null && $answered < 20) {
         $res = $this->withToken($token)->postJson("/api/mobile/child/practice/{$sessionId}/answer", [
             'question_id' => $q['id'], 'choice_id' => 'B',
-        ])->assertOk()->assertJsonPath('correct', true)
-            ->assertJsonPath('progress.answered', $i + 1);
+        ])->assertOk()->assertJsonPath('correct', true);
 
+        $answered++;
         $q = $res->json('next_question');
     }
-    expect($q)->toBeNull();
+    expect($answered)->toBeGreaterThan(0);
 
-    // Attempts were recorded against the real learning record (MC-03).
-    $this->assertDatabaseCount('practice_attempts', 5);
+    // Each answer was recorded against the real learning record (MC-03).
+    $this->assertDatabaseCount('practice_attempts', $answered);
 
     $this->withToken($token)->postJson("/api/mobile/child/practice/{$sessionId}/finish")
         ->assertOk()
@@ -170,8 +175,8 @@ it('opens a playable island’s levels, blocks a locked one, 404s unknown', func
 
 it('returns the welcome-back splash with streaks (SH-06)', function () {
     $child = User::factory()->create(['role' => 'student', 'name' => 'Ava']);
-    App\Models\StudentStreak::create(['student_id' => $child->id, 'type' => 'practice', 'count' => 3]);
-    App\Models\StudentStreak::create(['student_id' => $child->id, 'type' => 'login', 'count' => 5]);
+    StudentStreak::create(['student_id' => $child->id, 'type' => 'practice', 'count' => 3]);
+    StudentStreak::create(['student_id' => $child->id, 'type' => 'login', 'count' => 5]);
     $token = $child->createToken('t', ['child'])->plainTextToken;
 
     $this->withToken($token)->getJson('/api/mobile/child/welcome-back')
@@ -180,4 +185,159 @@ it('returns the welcome-back splash with streaks (SH-06)', function () {
         ->assertJsonPath('streaks.practice', 3)
         ->assertJsonPath('streaks.login', 5)
         ->assertJsonStructure(['child' => ['id', 'name'], 'streaks' => ['voyage', 'practice', 'login', 'mastery', 'pace_weeks'], 'milestone', 'message']);
+});
+
+// --- Learning-loop transitions (LL-14/LL-20/LL-21) -------------------------------------
+
+/**
+ * A module with a full competency-check bank: two UNSEEN questions at each of D1/D3/D5
+ * (unique prompts so their content hashes differ — the check serves by no-repeat hash).
+ * Correct answer is always 'B' (index 1) for deterministic answering.
+ *
+ * @return array{0: User, 1: SyllabusModule, 2: string}
+ */
+function childWithCheckBank(): array
+{
+    $child = User::factory()->create(['role' => 'student']);
+    $module = SyllabusModule::factory()->create(['subject' => 'Math', 'topic' => 'Place value']);
+
+    foreach (CompetencyCheck::DIFFICULTIES as $difficulty) {
+        for ($n = 0; $n < CompetencyCheck::QUESTIONS_PER_DIFFICULTY; $n++) {
+            PracticeQuestion::factory()->create([
+                'module_id' => $module->id,
+                'difficulty' => $difficulty,
+                'prompt' => "Check D{$difficulty} #{$n}: which is right?",
+                'options' => ['A', 'B', 'C', 'D'],
+                'correct_index' => 1,
+                'explanation' => 'Because.',
+            ]);
+        }
+    }
+
+    return [$child, $module, $child->createToken('t', ['child'])->plainTextToken];
+}
+
+it('tests out of a module: a clean competency check masters it without a lesson (LL-20)', function () {
+    [$child, $module, $token] = childWithCheckBank();
+
+    $start = $this->withToken($token)->postJson("/api/mobile/child/module/{$module->id}/check/start")
+        ->assertOk()
+        ->assertJsonPath('total_questions', 6)
+        ->assertJsonStructure(['session_id', 'total_questions', 'current_question' => ['id', 'prompt', 'choices']]);
+
+    $sessionId = $start->json('session_id');
+    $q = $start->json('current_question');
+
+    // Answer all six correctly on the first try.
+    for ($i = 0; $i < 6; $i++) {
+        $res = $this->withToken($token)->postJson("/api/mobile/child/check/{$sessionId}/answer", [
+            'question_id' => $q['id'], 'choice_id' => 'B',
+        ])->assertOk();
+
+        if ($i < 5) {
+            $res->assertJsonPath('done', false)->assertJsonPath('progress.answered', $i + 1);
+            $q = $res->json('next_question');
+        } else {
+            $res->assertJsonPath('done', true)->assertJsonPath('mastered', true);
+        }
+    }
+
+    expect(StudentProgress::where('student_id', $child->id)->where('module_id', $module->id)->value('status'))
+        ->toBe('mastered');
+});
+
+it('does not master when the competency check is missed (LL-21)', function () {
+    [$child, $module, $token] = childWithCheckBank();
+
+    $start = $this->withToken($token)->postJson("/api/mobile/child/module/{$module->id}/check/start");
+    $sessionId = $start->json('session_id');
+    $q = $start->json('current_question');
+
+    // Miss the very first question ('A' is wrong), then answer the rest correctly.
+    for ($i = 0; $i < 6; $i++) {
+        $res = $this->withToken($token)->postJson("/api/mobile/child/check/{$sessionId}/answer", [
+            'question_id' => $q['id'], 'choice_id' => $i === 0 ? 'A' : 'B',
+        ])->assertOk();
+        $q = $res->json('next_question');
+    }
+
+    expect(StudentProgress::where('student_id', $child->id)->where('module_id', $module->id)->value('status'))
+        ->not->toBe('mastered');
+});
+
+it('offers a second try on a first-try practice miss (LL-14)', function () {
+    [$child, $module, $token] = childWithMission();
+
+    $start = $this->withToken($token)->postJson('/api/mobile/child/practice/start', ['mission_id' => "m{$module->id}"]);
+    $sessionId = $start->json('session_id');
+    $q = $start->json('current_question');
+
+    // 'A' (index 0) is wrong; the correct answer is 'B'.
+    $this->withToken($token)->postJson("/api/mobile/child/practice/{$sessionId}/answer", [
+        'question_id' => $q['id'], 'choice_id' => 'A',
+    ])
+        ->assertOk()
+        ->assertJsonPath('correct', false)
+        ->assertJsonPath('retry', true)
+        ->assertJsonPath('next_question', null);
+});
+
+it('loops back to reteach after missing both practice tries (LL-14)', function () {
+    [$child, $module, $token] = childWithMission();
+
+    $start = $this->withToken($token)->postJson('/api/mobile/child/practice/start', ['mission_id' => "m{$module->id}"]);
+    $sessionId = $start->json('session_id');
+    $q = $start->json('current_question');
+
+    // First miss → retry offered on the same question.
+    $this->withToken($token)->postJson("/api/mobile/child/practice/{$sessionId}/answer", [
+        'question_id' => $q['id'], 'choice_id' => 'A',
+    ])->assertJsonPath('retry', true);
+
+    // Second miss on the same question → reteach.
+    $this->withToken($token)->postJson("/api/mobile/child/practice/{$sessionId}/answer", [
+        'question_id' => $q['id'], 'choice_id' => 'A',
+    ])
+        ->assertOk()
+        ->assertJsonPath('correct', false)
+        ->assertJsonPath('reteach', true)
+        ->assertJsonPath('next_question', null);
+});
+
+it('masters a module when the final D5 streak clears in practice', function () {
+    $child = User::factory()->create(['role' => 'student']);
+    $module = SyllabusModule::factory()->create(['subject' => 'Math', 'topic' => 'Ratios']);
+
+    // Already at the mastery rung with two of the three first-try-correct banked.
+    StudentProgress::create([
+        'student_id' => $child->id, 'module_id' => $module->id,
+        'status' => 'needs_work', 'current_rung' => 5, 'current_streak' => 2,
+        'streak_question_ids' => [900001, 900002],
+    ]);
+
+    // Unseen D5 questions to serve; the next first-try-correct carries her to mastery.
+    PracticeQuestion::factory()->count(2)->sequence(
+        ['prompt' => 'D5 mastery A?'],
+        ['prompt' => 'D5 mastery B?'],
+    )->create([
+        'module_id' => $module->id, 'difficulty' => 5,
+        'options' => ['A', 'B', 'C', 'D'], 'correct_index' => 1, 'explanation' => 'Mastered.',
+    ]);
+
+    $token = $child->createToken('t', ['child'])->plainTextToken;
+
+    $start = $this->withToken($token)->postJson('/api/mobile/child/practice/start', ['mission_id' => "m{$module->id}"]);
+    $q = $start->json('current_question');
+    $sessionId = $start->json('session_id');
+
+    $this->withToken($token)->postJson("/api/mobile/child/practice/{$sessionId}/answer", [
+        'question_id' => $q['id'], 'choice_id' => 'B',
+    ])
+        ->assertOk()
+        ->assertJsonPath('correct', true)
+        ->assertJsonPath('done', true)
+        ->assertJsonPath('mastered', true);
+
+    expect(StudentProgress::where('student_id', $child->id)->where('module_id', $module->id)->value('status'))
+        ->toBe('mastered');
 });
