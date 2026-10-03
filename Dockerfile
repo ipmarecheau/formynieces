@@ -32,6 +32,11 @@ RUN composer install --no-dev --optimize-autoloader \
 COPY docker/nginx.conf /etc/nginx/nginx.conf
 COPY docker/supervisord.conf /etc/supervisord.conf
 
+# Bake the deployed commit SHA into the image so each environment can report exactly
+# what code it is running (the /version endpoint). Passed by deploy.sh at build time.
+ARG GIT_SHA=unknown
+RUN echo "$GIT_SHA" > /var/www/html/version.txt
+
 EXPOSE 8080
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]

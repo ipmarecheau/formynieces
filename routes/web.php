@@ -50,6 +50,17 @@ Route::get('/terms', [PublicPageController::class, 'terms'])->name('terms');
 Route::get('/privacy', [PublicPageController::class, 'privacy'])->name('privacy');
 Route::get('/sitemap.xml', [PublicPageController::class, 'sitemap'])->name('sitemap');
 
+// Build-info — the commit SHA baked into the image (version.txt), so prod and staging
+// can be asserted to run identical code. Public + tiny; used by the deploy parity check.
+Route::get('/version', function () {
+    $path = base_path('version.txt');
+
+    return response()->json([
+        'commit' => is_file($path) ? trim((string) file_get_contents($path)) : 'unknown',
+        'env' => app()->environment(),
+    ]);
+})->name('version');
+
 // QA walkthrough surface for the autonomous test agent (token-gated; off unless QA_ACCESS_TOKEN is set).
 Route::get('/qa/manifest', [QaController::class, 'manifest'])->name('qa.manifest');
 Route::get('/qa/reports', [QaController::class, 'reports'])->name('qa.reports');

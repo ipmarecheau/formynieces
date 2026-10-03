@@ -46,13 +46,18 @@ else
   echo "APP_KEY present — skipping generation."
 fi
 
-docker build -t formynieces:latest .
+# Build ONCE, tagged by the immutable commit SHA (+ latest). Prod and staging both run
+# this exact image, so code parity is guaranteed and traceable. The SHA is baked into
+# the image (version.txt) for the parity check below.
+SHA=$(git rev-parse --short HEAD)
+echo "Building image for commit ${SHA}..."
+docker build --build-arg GIT_SHA="${SHA}" -t "formynieces:${SHA}" -t formynieces:latest .
 
 echo "Stopping old container if running..."
 docker stop formynieces 2>/dev/null || true
 docker rm formynieces 2>/dev/null || true
 
-echo "Starting new container..."
+echo "Starting new container (formynieces:${SHA})..."
 docker run -d \
   --name formynieces \
   --restart unless-stopped \
@@ -61,7 +66,7 @@ docker run -d \
   -p 127.0.0.1:8080:8080 \
   -v /opt/formynieces-data/db:/var/www/html/db \
   -v /opt/formynieces-data/storage:/var/www/html/storage \
-  formynieces:latest
+  "formynieces:${SHA}"
 
 echo "Waiting for container to start..."
 sleep 5
@@ -84,17 +89,35 @@ docker exec formynieces php artisan route:cache
 docker exec formynieces php artisan view:cache
 
 # Keep the staging mirror on the SAME image as prod (code parity). Its sanitized data
-# volume persists; the nightly refresh (/opt/refresh-staging.sh) handles data. Only runs
-# if staging has been set up on this host.
-if [ -x /opt/staging-run.sh ] || [ -f /opt/staging-run.sh ]; then
-  if docker ps -a --format '{{.Names}}' | grep -q '^formynieces-staging$'; then
-    echo "Syncing staging to the new image..."
-    bash /opt/staging-run.sh || echo "WARN: staging recreate failed (non-fatal)"
-    docker exec formynieces-staging php artisan migrate --force || true
-  fi
+# volume persists; the nightly refresh (/opt/refresh-staging.sh) handles data.
+STAGING_SYNCED=false
+if [ -f /opt/staging-run.sh ] && docker ps -a --format '{{.Names}}' | grep -q '^formynieces-staging$'; then
+  echo "Syncing staging to formynieces:${SHA}..."
+  bash /opt/staging-run.sh
+  docker exec formynieces-staging php artisan migrate --force
+  STAGING_SYNCED=true
 fi
 
 echo "Pruning old dangling images..."
 docker image prune -f
+
+# PARITY CHECK — assert prod (and staging, when present) actually run this commit.
+# Turns silent drift into a hard deploy failure.
+sleep 3
+PROD_SHA=$(curl -s --max-time 10 http://127.0.0.1:8080/version -H 'Host: smoothseas.org' | grep -oE '"commit":"[^"]*"' | cut -d'"' -f4)
+echo "prod /version reports: ${PROD_SHA} (expected ${SHA})"
+if [ "$PROD_SHA" != "$SHA" ]; then
+  echo "FATAL: prod is not running the deployed commit (${PROD_SHA} != ${SHA})."
+  exit 1
+fi
+if [ "$STAGING_SYNCED" = true ]; then
+  STAGING_SHA=$(curl -s --max-time 10 http://127.0.0.1:8090/version -H 'Host: staging.smoothseas.org' | grep -oE '"commit":"[^"]*"' | cut -d'"' -f4)
+  echo "staging /version reports: ${STAGING_SHA} (expected ${SHA})"
+  if [ "$STAGING_SHA" != "$SHA" ]; then
+    echo "FATAL: staging mirror drifted from prod (${STAGING_SHA} != ${SHA})."
+    exit 1
+  fi
+  echo "PARITY OK — prod and staging both on ${SHA}."
+fi
 
 echo "===== DEPLOY DONE — app running at http://172.233.163.6:8080 ====="
