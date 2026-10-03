@@ -20,8 +20,18 @@ jobs:
           extensions: pdo_sqlite, bcmath, intl, zip
           coverage: none
 
-      - name: Install dependencies
+      - name: Install PHP dependencies
         run: composer install --prefer-dist --no-interaction --no-progress
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Build front-end assets (Vite manifest needed for page-render tests)
+        run: |
+          npm ci
+          npm run build
 
       - name: Prepare app
         run: |
