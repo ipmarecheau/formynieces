@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../api.dart';
 import '../theme.dart';
+import 'morning_tide_screen.dart';
+import 'writing_screen.dart';
 
 /// Captain's Orders — the parchment brief, mirrors livewire/captains-orders.blade.php.
 /// On the Voyage it sits open as a bottom sheet by default (CO-12), collapsible to a rail.
@@ -205,6 +207,12 @@ class _CaptainsOrdersPanelState extends State<CaptainsOrdersPanel> {
         const Center(child: Text('⚓', style: TextStyle(fontSize: 35))),
         const SizedBox(height: 8),
         Text('${o['message']}', textAlign: TextAlign.center, style: const TextStyle(color: _P.ink, fontSize: 14.5, fontWeight: FontWeight.w700)),
+        const SizedBox(height: 14),
+        const Text('Fancy some extra? These are always open:', textAlign: TextAlign.center, style: TextStyle(color: _P.subInk, fontSize: 12.5, fontWeight: FontWeight.w700)),
+        const SizedBox(height: 8),
+        _extraLauncher('🌅  Morning Tide', _dutyLauncher('morning_tide')),
+        const SizedBox(height: 7),
+        _extraLauncher('✍️  Writer’s Log', _dutyLauncher('writing')),
       ]);
     }
     return _pad([
@@ -279,12 +287,8 @@ class _CaptainsOrdersPanelState extends State<CaptainsOrdersPanel> {
         if (!done) ...[
           if (key == 'map')
             const Text('AT SEA', style: TextStyle(color: _P.subInk, fontSize: 11, fontWeight: FontWeight.w800))
-          else if (key == 'writing') ...[
-            _doButton('mark done'),
-            const SizedBox(width: 6),
-            const Text('SOON', style: TextStyle(color: _P.soon, fontSize: 9.6, fontWeight: FontWeight.w800)),
-          ] else
-            _doButton('start'),
+          else
+            _doButton('start', onTap: _dutyLauncher(key)),
         ],
       ]),
     );
@@ -313,11 +317,53 @@ class _CaptainsOrdersPanelState extends State<CaptainsOrdersPanel> {
     );
   }
 
-  Widget _doButton(String label) => Container(
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-        decoration: BoxDecoration(color: const Color(0xFF6B4A2B), borderRadius: BorderRadius.circular(6)),
-        child: Text(label, style: const TextStyle(color: _P.parch1, fontSize: 11.5, fontWeight: FontWeight.w800)),
+  Widget _doButton(String label, {VoidCallback? onTap}) => GestureDetector(
+        onTap: onTap,
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+          decoration: BoxDecoration(color: const Color(0xFF6B4A2B), borderRadius: BorderRadius.circular(6)),
+          child: Text(label, style: const TextStyle(color: _P.parch1, fontSize: 11.5, fontWeight: FontWeight.w800)),
+        ),
       );
+
+  /// A full-width launcher for an always-available ritual (shown on a rest day).
+  Widget _extraLauncher(String label, VoidCallback? onTap) => GestureDetector(
+        onTap: onTap,
+        child: Container(
+          width: double.infinity,
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: const Color(0x66FFFFFF),
+            border: Border.all(color: _P.ropeA, width: 1.5),
+            borderRadius: BorderRadius.circular(9),
+          ),
+          child: Text(label, style: const TextStyle(color: _P.ink, fontSize: 13.76, fontWeight: FontWeight.w800)),
+        ),
+      );
+
+  /// The screen a duty's "start" opens, or null for duties with no in-app stop yet.
+  /// The morning ritual (reading/vocabulary) shares the Morning Tide; writing opens
+  /// the Writer's Log. On return we refresh so a completed duty shows as done.
+  VoidCallback? _dutyLauncher(String key) {
+    final screen = switch (key) {
+      'morning_tide' || 'reading' || 'vocabulary' => const MorningTideScreen(),
+      'writing' => const WritingScreen(),
+      _ => null,
+    };
+    if (screen == null) {
+      return null;
+    }
+
+    return () async {
+      await Navigator.of(context).push(MaterialPageRoute(builder: (_) => screen));
+      if (mounted) {
+        setState(() {
+          _future = api.getJson('/child/captains-orders').then((d) => d as Map<String, dynamic>);
+        });
+      }
+    };
+  }
 
   Widget _locker(List<dynamic> rewards) {
     final empty = rewards.every((r) => ((r as Map)['held'] as int? ?? 0) == 0);
