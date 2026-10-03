@@ -17,7 +17,9 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.3'
-          extensions: pdo_sqlite, bcmath, intl, zip
+          # Match the production image's extension set (Dockerfile). Notably GD is NOT
+          # installed in prod, so disable it here (:gd) — otherwise CI diverges from prod.
+          extensions: pdo_sqlite, bcmath, intl, zip, :gd
           coverage: none
 
       - name: Install PHP dependencies
