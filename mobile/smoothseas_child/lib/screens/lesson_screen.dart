@@ -21,10 +21,20 @@ class _LessonScreenState extends State<LessonScreen> {
   late Future<Map<String, dynamic>> _future;
   bool _starting = false;
 
+  /// How many blocks are revealed so far — the lesson is chunked, one block at a
+  /// time, matching the web LessonWalk (she taps "Got it — next" to move on).
+  int _revealed = 1;
+
   @override
   void initState() {
     super.initState();
     _future = api.getJson('/child/module/${widget.moduleId}/lesson').then((d) => d as Map<String, dynamic>);
+  }
+
+  void _next(int total) {
+    if (_revealed < total) {
+      setState(() => _revealed += 1);
+    }
   }
 
   Future<void> _practise() async {
@@ -60,8 +70,15 @@ class _LessonScreenState extends State<LessonScreen> {
               }
               final d = snap.data!;
               final blocks = (d['blocks'] as List<dynamic>);
+              final total = blocks.length;
               final title = d['title'] as String? ?? widget.topic;
-              final subject = (d['subject'] as String? ?? 'Math');
+              final subject = (d['subject'] as String? ?? widget.topic);
+              final topic = d['topic'] as String? ?? widget.topic;
+              final objectives = (d['objectives'] as Map<String, dynamic>?) ?? const {};
+              final direct = ((objectives['direct'] as List<dynamic>?) ?? []).map((e) => e.toString()).toList();
+              final indirect = ((objectives['indirect'] as List<dynamic>?) ?? []).map((e) => e.toString()).toList();
+              final revealed = _revealed.clamp(1, total == 0 ? 1 : total);
+              final atEnd = revealed >= total;
               return Column(
                 children: [
                   // Nav — ⛵ Back to my Voyage (web .vy-back-gold).
@@ -81,24 +98,25 @@ class _LessonScreenState extends State<LessonScreen> {
                         : ListView(
                             padding: const EdgeInsets.fromLTRB(20, 0, 20, 16),
                             children: [
+                              // Subject + topic (web .lw-subject / .lw-topic).
                               Text(subject.toUpperCase(), style: const TextStyle(color: Color(0xFFA5B4FC), fontWeight: FontWeight.w800, fontSize: 13, letterSpacing: 1)),
-                              const SizedBox(height: 6),
-                              Text(title, style: head(28, height: 1.1)),
+                              const SizedBox(height: 4),
+                              Text(topic, style: head(26, height: 1.1)),
+                              const SizedBox(height: 12),
+                              if (direct.isNotEmpty) _objectives(direct, indirect),
                               const SizedBox(height: 14),
-                              Align(
-                                alignment: Alignment.centerLeft,
-                                child: Container(
-                                  padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-                                  decoration: BoxDecoration(
-                                    color: const Color(0x1FF6B71E),
-                                    border: Border.all(color: const Color(0x8CF6B71E), width: 1.5),
-                                    borderRadius: BorderRadius.circular(999),
-                                  ),
-                                  child: const Text('🎯 Objectives', style: TextStyle(color: Color(0xFFFDE68A), fontWeight: FontWeight.w800, fontSize: 13)),
-                                ),
+                              // Lesson card (web .lw-card): title, progress, revealed blocks.
+                              Container(
+                                padding: const EdgeInsets.fromLTRB(16, 16, 16, 18),
+                                decoration: BoxDecoration(color: Sea.cardFill, borderRadius: BorderRadius.circular(18), border: Border.all(color: Sea.cardBorder)),
+                                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                                  Text(title, style: head(22, height: 1.1)),
+                                  const SizedBox(height: 10),
+                                  _ProgressBar(fraction: total == 0 ? 1 : revealed / total),
+                                  const SizedBox(height: 8),
+                                  for (var i = 0; i < revealed && i < total; i++) _block(blocks[i] as Map<String, dynamic>),
+                                ]),
                               ),
-                              const SizedBox(height: 14),
-                              for (final b in blocks) _block(b as Map<String, dynamic>),
                             ],
                           ),
                   ),
@@ -106,7 +124,9 @@ class _LessonScreenState extends State<LessonScreen> {
                     padding: const EdgeInsets.all(16),
                     child: _starting
                         ? const CircularProgressIndicator(color: Sea.gold)
-                        : GoldButton(label: 'Practise this topic →', onPressed: _practise),
+                        : (blocks.isEmpty || atEnd)
+                            ? GoldButton(label: 'Practise this topic →', onPressed: _practise)
+                            : GoldButton(label: 'Got it — next →', onPressed: () => _next(total)),
                   ),
                 ],
               );
@@ -144,6 +164,33 @@ class _LessonScreenState extends State<LessonScreen> {
     }
   }
 
+  /// The objectives block (web .lw-obj): the 🎯 pill plus the directly-taught and
+  /// reinforced objectives. On the web these sit behind a hover tooltip; on touch we
+  /// show them inline beneath the pill.
+  Widget _objectives(List<String> direct, List<String> indirect) => Container(
+        width: double.infinity,
+        padding: const EdgeInsets.fromLTRB(14, 10, 14, 12),
+        decoration: BoxDecoration(
+          color: const Color(0x1FF6B71E),
+          border: Border.all(color: const Color(0x8CF6B71E), width: 1.5),
+          borderRadius: BorderRadius.circular(14),
+        ),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          const Text('🎯 Objectives', style: TextStyle(color: Color(0xFFFDE68A), fontWeight: FontWeight.w800, fontSize: 13)),
+          const SizedBox(height: 6),
+          RichText(
+            text: TextSpan(style: const TextStyle(color: Sea.ink, fontSize: 13.5, height: 1.4), children: [
+              const TextSpan(text: 'Taught directly: ', style: TextStyle(fontWeight: FontWeight.w800)),
+              TextSpan(text: direct.join(', ')),
+              if (indirect.isNotEmpty) ...[
+                const TextSpan(text: '\nReinforces: ', style: TextStyle(fontWeight: FontWeight.w800)),
+                TextSpan(text: indirect.join(', ')),
+              ],
+            ]),
+          ),
+        ]),
+      );
+
   Widget _noLesson() => Center(
         child: Padding(
           padding: const EdgeInsets.all(28),
@@ -157,6 +204,29 @@ class _LessonScreenState extends State<LessonScreen> {
 }
 
 String strip(dynamic raw) => (raw == null ? '' : raw.toString()).replaceAll(RegExp(r'<[^>]+>'), '').replaceAll('&nbsp;', ' ').trim();
+
+/// The lesson progress bar (web .lw-progress) — teal→gold fill, chunked reveal.
+class _ProgressBar extends StatelessWidget {
+  const _ProgressBar({required this.fraction});
+  final double fraction;
+  @override
+  Widget build(BuildContext context) => ClipRRect(
+        borderRadius: BorderRadius.circular(999),
+        child: Container(
+          height: 7,
+          color: const Color(0x2267E8F9),
+          child: FractionallySizedBox(
+            alignment: Alignment.centerLeft,
+            widthFactor: fraction.clamp(0, 1),
+            child: Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(colors: [Sea.teal, Sea.gold]),
+              ),
+            ),
+          ),
+        ),
+      );
+}
 
 /// A framed interactive card with a coloured accent label.
 class _ActivityFrame extends StatelessWidget {
@@ -183,7 +253,7 @@ class _KeyCard extends StatelessWidget {
   const _KeyCard({required this.text});
   final String text;
   @override
-  Widget build(BuildContext context) => _ActivityFrame(label: '💡 Key idea', child: Text(text, style: const TextStyle(color: Sea.ink, fontSize: 15, height: 1.4)));
+  Widget build(BuildContext context) => _ActivityFrame(label: '💡 Remember this', child: Text(text, style: const TextStyle(color: Sea.ink, fontSize: 15, height: 1.4)));
 }
 
 class _ExampleCard extends StatelessWidget {
@@ -192,7 +262,7 @@ class _ExampleCard extends StatelessWidget {
   final List<String> steps;
   @override
   Widget build(BuildContext context) => _ActivityFrame(
-        label: '📘 Example',
+        label: '📘 Worked example',
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           if (content.isNotEmpty) Text(content, style: const TextStyle(color: Sea.ink, fontSize: 15)),
           for (var i = 0; i < steps.length; i++)

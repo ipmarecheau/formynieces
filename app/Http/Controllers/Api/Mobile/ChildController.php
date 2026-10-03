@@ -489,9 +489,16 @@ class ChildController extends Controller
 
         return response()->json([
             'module' => ['id' => $module->id, 'topic' => $module->topic, 'subject' => $module->subject],
+            'subject' => $module->subject,
+            'topic' => $module->topic,
             'has_lesson' => $lesson !== null,
             'title' => $lesson?->title,
             'mission_id' => "m{$module->id}",
+            // The web lesson shows the direct/indirect objectives (LE-07) above the card.
+            'objectives' => [
+                'direct' => $lesson?->objectives_direct ?? [],
+                'indirect' => $lesson?->objectives_indirect ?? [],
+            ],
             'blocks' => $lesson ? $this->renderableBlocks($lesson->blocks ?? []) : [],
         ]);
     }
@@ -505,7 +512,7 @@ class ChildController extends Controller
      */
     private function renderableBlocks(array $blocks): array
     {
-        $keep = ['type', 'content', 'steps', 'question', 'options', 'answer', 'prompt', 'instruction', 'text', 'items', 'pairs'];
+        $keep = ['type', 'content', 'steps', 'question', 'options', 'answer', 'explain', 'prompt', 'instruction', 'text', 'items', 'pairs'];
 
         return array_values(array_map(
             fn (array $b) => array_filter(

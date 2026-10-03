@@ -121,10 +121,12 @@ it('returns a module lesson with renderable blocks, and flags modules without on
     $withLesson = SyllabusModule::factory()->create(['topic' => 'Plurals', 'subject' => 'ELA']);
     Lesson::create([
         'module_id' => $withLesson->id, 'title' => 'Tricky plurals', 'is_published' => true,
+        'objectives_direct' => ['Form plurals with -es'],
+        'objectives_indirect' => ['Spelling confidence'],
         'blocks' => [
             ['type' => 'text', 'content' => 'Most words just add -s.'],
             ['type' => 'example', 'content' => 'baby', 'steps' => ['change y to i', 'add es']],
-            ['type' => 'check', 'question' => 'plural of city?', 'options' => ['citys', 'cities'], 'answer' => 'cities'],
+            ['type' => 'check', 'question' => 'plural of city?', 'options' => ['citys', 'cities'], 'answer' => 'cities', 'explain' => 'y becomes ies.'],
         ],
     ]);
 
@@ -132,8 +134,12 @@ it('returns a module lesson with renderable blocks, and flags modules without on
         ->assertOk()
         ->assertJsonPath('has_lesson', true)
         ->assertJsonPath('title', 'Tricky plurals')
+        ->assertJsonPath('subject', 'ELA')                       // top-level subject (was missing → mislabelled)
+        ->assertJsonPath('objectives.direct.0', 'Form plurals with -es')
+        ->assertJsonPath('objectives.indirect.0', 'Spelling confidence')
         ->assertJsonPath('blocks.0.type', 'text')
-        ->assertJsonPath('blocks.1.steps.0', 'change y to i');
+        ->assertJsonPath('blocks.1.steps.0', 'change y to i')
+        ->assertJsonPath('blocks.2.explain', 'y becomes ies.'); // explanation now kept for feedback
 
     $noLesson = SyllabusModule::factory()->create();
     $this->withToken($token)->getJson("/api/mobile/child/module/{$noLesson->id}/lesson")
