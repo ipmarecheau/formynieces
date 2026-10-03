@@ -83,6 +83,17 @@ docker exec formynieces php artisan config:cache
 docker exec formynieces php artisan route:cache
 docker exec formynieces php artisan view:cache
 
+# Keep the staging mirror on the SAME image as prod (code parity). Its sanitized data
+# volume persists; the nightly refresh (/opt/refresh-staging.sh) handles data. Only runs
+# if staging has been set up on this host.
+if [ -x /opt/staging-run.sh ] || [ -f /opt/staging-run.sh ]; then
+  if docker ps -a --format '{{.Names}}' | grep -q '^formynieces-staging$'; then
+    echo "Syncing staging to the new image..."
+    bash /opt/staging-run.sh || echo "WARN: staging recreate failed (non-fatal)"
+    docker exec formynieces-staging php artisan migrate --force || true
+  fi
+fi
+
 echo "Pruning old dangling images..."
 docker image prune -f
 
