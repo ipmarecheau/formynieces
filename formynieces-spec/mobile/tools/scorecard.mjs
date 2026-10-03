@@ -110,6 +110,40 @@ const SCREENS = {
       return r;
     },
   },
+  lesson: {
+    // feather-isle level 1 is module 1 (Place Value) — the web lesson is captured at its
+    // direct URL; the Flutter lesson is reached by walking the gated path to the same module.
+    webUrl: `${WEB}/practice/1/lesson`, auth: true,
+    webPrep: async (page) => { try { await page.click('text=Got it!', { timeout: 2000 }); await page.waitForTimeout(500); } catch (e) {} },
+    state: async (page) => { await navToLesson(page); },
+    content: ['Objectives', 'Digit Value', 'M-NUM', 'Place Value'],
+    layout: [{ name: 'subject', web: '.lw-subject', fl: /^math/i }],
+    // Visual region = the lesson card (title + progress + first revealed block). The web's
+    // .lw-obj details sit behind a hover tooltip (hidden in a screenshot) while mobile shows
+    // them inline — not a fair pixel comparison — so objectives are excluded from the score.
+    components: [
+      { name: 'lesson-card', web: '.lw-card', weight: 1 },
+    ],
+    async func(page, sem) {
+      const r = [];
+      await navToLesson(page);
+      await enableSemantics(page);
+      const nodes = await sem();
+      r.push(['lesson renders its title', nodes.some(n => /digit value|place names/i.test(n.label))]);
+      r.push(['objectives are shown (not a bare pill)', nodes.some(n => /taught directly|M-NUM/i.test(n.label))]);
+      r.push(['chunked reveal — a "next" control is present', nodes.some(n => /got it.*next|next/i.test(n.label))]);
+      // Behaviour: tapping "next" reveals the following block (the screen changes).
+      const before = await page.screenshot({ clip: { x: 0, y: 0, ...VP } });
+      await domClickLabel(page, /got it.*next/i);
+      await page.waitForTimeout(1200);
+      const after = await page.screenshot({ clip: { x: 0, y: 0, ...VP } });
+      const A = PNG.sync.read(before), B = PNG.sync.read(after);
+      const changed = pixelmatch(A.data, B.data, null, A.width, A.height, { threshold: 0.1 }) / (A.width * A.height);
+      if (process.env.DEBUG) console.log('  [reveal change]', (changed * 100).toFixed(1) + '%');
+      r.push(['"next" reveals the following block', changed > 0.03]);
+      return r;
+    },
+  },
   voyage: {
     webUrl: `${WEB}/voyage`, auth: true,
     state: async (page) => { await loginFlutter(page); await continueToVoyage(page); await page.waitForTimeout(7000); },
@@ -187,6 +221,54 @@ async function tapGold(page) {
   return false;
 }
 async function continueToVoyage(page) { await tapGold(page); }
+
+// Click a Flutter semantic node by label regex via el.click() — bypasses the semantics
+// overlay's hit-testing (plain taps get swallowed when semantics is on).
+async function domClickLabel(page, rx) {
+  return page.evaluate((src) => {
+    const re = new RegExp(src, 'i');
+    const matches = [...document.querySelectorAll('flt-semantics')]
+      .filter(e => re.test((e.getAttribute('aria-label') || e.textContent || '').trim()));
+    if (!matches.length) return false;
+    // Prefer an actual button node, then the shortest label — i.e. the specific control,
+    // not the outer container that merely contains the matching text.
+    matches.sort((a, b) => {
+      const ba = a.getAttribute('role') === 'button' ? 0 : 1;
+      const bb = b.getAttribute('role') === 'button' ? 0 : 1;
+      if (ba !== bb) return ba - bb;
+      return (a.getAttribute('aria-label') || a.textContent || '').length - (b.getAttribute('aria-label') || b.textContent || '').length;
+    });
+    matches[0].click();
+    return true;
+  }, rx.source);
+}
+
+// Walk the gated path to module 1's lesson: voyage → feather-isle → level 1 →
+// explainer → competency check (answer each so we DON'T test out) → outcome → Lesson.
+async function navToLesson(page) {
+  const dbg = async (tag) => { if (process.env.DEBUG) { await enableSemantics(page); const l = await page.$$eval('flt-semantics', els => els.map(e => (e.getAttribute('aria-label') || e.textContent || '').trim()).filter(Boolean).slice(0, 6)); console.log(`  [nav ${tag}]`, JSON.stringify(l).slice(0, 320)); } };
+  // Phase 1 — pixel taps, semantics OFF (the overlay swallows real pointer taps).
+  await loginFlutter(page);
+  await continueToVoyage(page); await page.waitForTimeout(7000);
+  await page.mouse.click(80, 262); await page.waitForTimeout(5000);   // voyage → feather-isle
+  await page.mouse.click(195, 446); await page.waitForTimeout(4500);  // island → level 1 legend row → explainer
+  await tapGold(page); await page.waitForTimeout(4500);               // explainer "Start the quick check →" → check
+  // Phase 2 — semantics ON; el.click() dispatches directly, unaffected by the overlay.
+  await enableSemantics(page); await dbg('check-q1');
+  // Answer all six by picking option "A" — not all-correct across D1/D3/D5, so she does
+  // NOT test out, and the outcome offers the lesson choice.
+  for (let i = 0; i < 6; i++) {
+    await page.evaluate(() => {
+      const el = [...document.querySelectorAll('flt-semantics')].find(e => /^A[.\s]/.test((e.getAttribute('aria-label') || e.textContent || '').trim()));
+      if (el) el.click();
+    });
+    await page.waitForTimeout(2600);
+  }
+  await page.waitForTimeout(1500); await dbg('outcome');
+  await domClickLabel(page, /learn it step by step|📘\s*Lesson|^Lesson$/i); await page.waitForTimeout(4000); // outcome → Lesson
+  await dbg('lesson');
+  await page.waitForTimeout(1000);
+}
 
 // Turn on Flutter's semantics tree, then read labelled, positioned nodes.
 async function enableSemantics(page) {
