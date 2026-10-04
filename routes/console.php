@@ -31,3 +31,7 @@ Schedule::command('practice:decay-maintenance')->weekly();
 // progress. Runs Sunday at 01:00 — the start of the pacing week — so the
 // guardian dashboard opens Monday on a freshly recalculated, stably-dated report.
 Schedule::command('pace:weekly-recalculation')->weeklyOn(0, '01:00');
+
+// Evening push nudge to students with the app who have not practised today (server-side
+// complement to the on-device daily reminder). No-ops cleanly until FCM is configured.
+Schedule::command('notify:streak-reminders')->dailyAt('18:00');
