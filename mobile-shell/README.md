@@ -12,7 +12,15 @@ in the Laravel codebase — there is no second UI to keep in sync.
 
 ## Prerequisites
 - Node 18+ (installed)
-- **Android build:** JDK 17 + Android SDK (cmdline-tools, platform 34, build-tools). iOS: macOS + Xcode.
+- **Android build:** JDK **21** (Capacitor 7's Android lib targets Java 21) + Android SDK
+  (cmdline-tools, platform 36, build-tools 36). iOS: macOS + Xcode.
+
+On this VPS the toolchain lives at `/opt/jdk/jdk-21.0.12.1+1` and `/opt/android-sdk`:
+```bash
+export JAVA_HOME=/opt/jdk/jdk-21.0.12.1+1
+export ANDROID_HOME=/opt/android-sdk
+export PATH=$JAVA_HOME/bin:$PATH
+```
 
 ## Commands
 ```bash
@@ -20,8 +28,8 @@ npm install                 # restore deps
 npx cap sync                # copy www + config into native projects after changes
 npx cap sync android        # android only
 
-# Android APK (needs JDK + Android SDK; ANDROID_HOME set):
-cd android && ./gradlew assembleDebug
+# Android APK (env above set):
+cd android && ./gradlew assembleDebug --no-daemon
 #   -> android/app/build/outputs/apk/debug/app-debug.apk   (sideload on a phone)
 
 # iOS (needs a Mac):
