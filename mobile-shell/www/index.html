@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>SmoothSeas</title>
+  <style>
+    html, body { margin: 0; height: 100%; font-family: system-ui, -apple-system, sans-serif; }
+    body {
+      display: flex; align-items: center; justify-content: center; text-align: center;
+      color: #eafaf8; padding: 24px;
+      background: radial-gradient(1200px 600px at 50% -10%, #1aa7c0, #0d7d8c 45%, #0a5c68 100%);
+    }
+    .wrap { max-width: 320px; }
+    .turtle { font-size: 64px; line-height: 1; margin-bottom: 8px; }
+    h1 { font-weight: 800; font-size: 22px; margin: 0 0 8px; }
+    p { font-size: 15px; line-height: 1.5; opacity: .9; margin: 0 0 20px; }
+    button {
+      background: linear-gradient(160deg, #f2a900, #d99400); color: #3a2600; border: 0;
+      border-radius: 14px; padding: 14px 24px; font-size: 16px; font-weight: 800; cursor: pointer;
+    }
+    .spin { width: 28px; height: 28px; border: 3px solid rgba(255,255,255,.3); border-top-color: #f2a900;
+      border-radius: 50%; animation: s 1s linear infinite; margin: 0 auto 16px; }
+    @keyframes s { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="turtle">🐢</div>
+    <div class="spin" id="spin"></div>
+    <h1>SmoothSeas</h1>
+    <p id="msg">Setting sail…</p>
+    <button id="retry" style="display:none" onclick="location.reload()">Try again</button>
+  </div>
+  <script>
+    // This page is the offline fallback. When the device is online the Capacitor shell
+    // loads the live site (server.url); if that is unreachable the viewer lands here.
+    function offline() {
+      document.getElementById('spin').style.display = 'none';
+      document.getElementById('msg').textContent = "You're offline. Check your connection and try again.";
+      document.getElementById('retry').style.display = 'inline-block';
+    }
+    if (!navigator.onLine) offline();
+    window.addEventListener('offline', offline);
+  </script>
+</body>
+</html>
