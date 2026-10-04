@@ -120,4 +120,16 @@ if [ "$STAGING_SYNCED" = true ]; then
   echo "PARITY OK — prod and staging both on ${SHA}."
 fi
 
+# Rebuild the engineering wiki (docs.smoothseas.org) from the just-deployed code.
+# Non-fatal: the app is already live and verified, so a docs-build failure is logged
+# loudly (see /opt/formynieces-backups/build-docs.log) but does not fail the deploy.
+if [ -f /opt/build-docs.sh ]; then
+  echo "Rebuilding docs wiki..."
+  if bash /opt/build-docs.sh; then
+    echo "Docs wiki rebuilt."
+  else
+    echo "WARN: docs wiki rebuild failed — see /opt/formynieces-backups/build-docs.log (deploy not affected)."
+  fi
+fi
+
 echo "===== DEPLOY DONE — app running at http://172.233.163.6:8080 ====="
