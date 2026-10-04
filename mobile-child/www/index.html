@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>SmoothSeas Kids</title>
+  <style>
+    html, body { margin: 0; height: 100%; font-family: system-ui, -apple-system, sans-serif; }
+    body {
+      display: flex; align-items: center; justify-content: center; text-align: center;
+      color: #ecfeff; padding: 24px;
+      background: radial-gradient(1200px 700px at 50% -10%, #0e7490, #0b2a4a 50%, #06182e 100%);
+    }
+    .wrap { max-width: 320px; }
+    .turtle { font-size: 72px; line-height: 1; margin-bottom: 8px; }
+    h1 { font-weight: 800; font-size: 24px; margin: 0 0 8px; color: #f6b71e; }
+    p { font-size: 15px; line-height: 1.5; opacity: .9; margin: 0 0 20px; }
+    button {
+      background: linear-gradient(160deg, #f6b71e, #d97706); color: #06182e; border: 0;
+      border-radius: 16px; padding: 14px 26px; font-size: 16px; font-weight: 800; cursor: pointer;
+    }
+    .spin { width: 28px; height: 28px; border: 3px solid rgba(255,255,255,.25); border-top-color: #22d3ee;
+      border-radius: 50%; animation: s 1s linear infinite; margin: 0 auto 16px; }
+    @keyframes s { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="turtle">🐢</div>
+    <div class="spin" id="spin"></div>
+    <h1>Setting sail…</h1>
+    <p id="msg">Getting your voyage ready.</p>
+    <button id="retry" style="display:none" onclick="location.reload()">Try again</button>
+  </div>
+  <script>
+    function offline() {
+      document.getElementById('spin').style.display = 'none';
+      document.getElementById('msg').textContent = "No internet right now. Reconnect and tap Try again.";
+      document.getElementById('retry').style.display = 'inline-block';
+    }
+    if (!navigator.onLine) offline();
+    window.addEventListener('offline', offline);
+  </script>
+</body>
+</html>

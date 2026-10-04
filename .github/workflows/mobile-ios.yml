@@ -1,0 +1,132 @@
+name: iOS build (Capacitor)
+
+# Builds the SmoothSeas parent + child iOS apps on a macOS runner.
+#
+# By default it does an UNSIGNED build — it proves the apps compile on macOS with no
+# Apple account required. To produce a signed .ipa / TestFlight build, add the secrets
+# listed under the "signed-archive" job and flip `SIGN` to "true" (see README-ci.md).
+
+on:
+  push:
+    branches: [capacitor-shell]
+    paths:
+      - 'mobile-parent/**'
+      - 'mobile-child/**'
+      - '.github/workflows/mobile-ios.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Unsigned build (${{ matrix.app }})
+    runs-on: macos-14
+    strategy:
+      fail-fast: false
+      matrix:
+        app: [mobile-parent, mobile-child]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install JS deps
+        working-directory: ${{ matrix.app }}
+        run: npm ci || npm install
+
+      - name: Sync Capacitor (iOS)
+        working-directory: ${{ matrix.app }}
+        run: npx cap sync ios
+
+      - name: Resolve Swift packages
+        working-directory: ${{ matrix.app }}/ios/App
+        run: xcodebuild -resolvePackageDependencies -project App.xcodeproj -scheme App
+
+      - name: Build (unsigned)
+        working-directory: ${{ matrix.app }}/ios/App
+        run: |
+          xcodebuild \
+            -project App.xcodeproj \
+            -scheme App \
+            -configuration Debug \
+            -sdk iphoneos \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO \
+            build
+
+  # Signed TestFlight build — runs only when APPLE_* secrets are configured.
+  # Fill in the secrets and remove the `if: false` to enable.
+  signed-archive:
+    name: Signed archive + TestFlight (${{ matrix.app }})
+    if: false # ← enable once Apple Developer secrets are set (see README-ci.md)
+    runs-on: macos-14
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - app: mobile-parent
+            bundle_id: org.smoothseas.app
+          - app: mobile-child
+            bundle_id: org.smoothseas.child
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install JS deps
+        working-directory: ${{ matrix.app }}
+        run: npm ci || npm install
+      - name: Sync Capacitor (iOS)
+        working-directory: ${{ matrix.app }}
+        run: npx cap sync ios
+      # Import the distribution certificate + provisioning profile from secrets.
+      - name: Install signing assets
+        env:
+          DIST_CERT_P12_BASE64: ${{ secrets.APPLE_DIST_CERT_P12_BASE64 }}
+          DIST_CERT_PASSWORD: ${{ secrets.APPLE_DIST_CERT_PASSWORD }}
+          PROVISIONING_PROFILE_BASE64: ${{ secrets.APPLE_PROVISIONING_PROFILE_BASE64 }}
+        run: |
+          KEYCHAIN=$RUNNER_TEMP/app.keychain-db
+          security create-keychain -p "" "$KEYCHAIN"
+          security set-keychain-settings -lut 21600 "$KEYCHAIN"
+          security unlock-keychain -p "" "$KEYCHAIN"
+          echo "$DIST_CERT_P12_BASE64" | base64 --decode > $RUNNER_TEMP/cert.p12
+          security import $RUNNER_TEMP/cert.p12 -k "$KEYCHAIN" -P "$DIST_CERT_PASSWORD" -T /usr/bin/codesign
+          security list-keychains -d user -s "$KEYCHAIN" $(security list-keychains -d user | tr -d '"')
+          security set-key-partition-list -S apple-tool:,apple: -k "" "$KEYCHAIN"
+          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+          echo "$PROVISIONING_PROFILE_BASE64" | base64 --decode > ~/Library/MobileDevice/Provisioning\ Profiles/profile.mobileprovision
+      - name: Archive + export IPA
+        working-directory: ${{ matrix.app }}/ios/App
+        env:
+          TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        run: |
+          xcodebuild -project App.xcodeproj -scheme App -configuration Release \
+            -sdk iphoneos -archivePath build/App.xcarchive \
+            DEVELOPMENT_TEAM="$TEAM_ID" archive
+          cat > exportOptions.plist <<PLIST
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0"><dict>
+            <key>method</key><string>app-store</string>
+            <key>teamID</key><string>$TEAM_ID</string>
+          </dict></plist>
+          PLIST
+          xcodebuild -exportArchive -archivePath build/App.xcarchive \
+            -exportPath build/ipa -exportOptionsPlist exportOptions.plist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.app }}-ipa
+          path: ${{ matrix.app }}/ios/App/build/ipa/*.ipa
+      # Upload to TestFlight (needs an App Store Connect API key)
+      - name: Upload to TestFlight
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_KEY_P8_BASE64: ${{ secrets.ASC_KEY_P8_BASE64 }}
+        run: |
+          mkdir -p ~/.appstoreconnect/private_keys
+          echo "$ASC_KEY_P8_BASE64" | base64 --decode > ~/.appstoreconnect/private_keys/AuthKey_$ASC_KEY_ID.p8
+          xcrun altool --upload-app -f build/ipa/*.ipa -t ios \
+            --apiKey "$ASC_KEY_ID" --apiIssuer "$ASC_ISSUER_ID"
+        working-directory: ${{ matrix.app }}/ios/App

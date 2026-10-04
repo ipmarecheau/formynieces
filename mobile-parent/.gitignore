@@ -1,0 +1,23 @@
+# Node
+node_modules/
+
+# Capacitor / build artifacts
+android/.gradle/
+android/app/build/
+android/build/
+android/local.properties
+android/.idea/
+android/captures/
+*.apk
+*.aab
+
+# iOS
+ios/App/Pods/
+ios/App/build/
+ios/App/App/public/
+ios/App/DerivedData/
+ios/.build/
+
+# misc
+.DS_Store
+*.log
