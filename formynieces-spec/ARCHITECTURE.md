@@ -1,3 +1,7 @@
+> **⚠️ Superseded.** The current architecture lives in the engineering wiki:
+> [`docs/architecture/overview.md`](../docs/architecture/overview.md) (published at docs.smoothseas.org).
+> This file is retained for its still-accurate domain-model detail but is no longer the source of truth.
+
 # ForMyNieces — System Architecture
 
 **Last updated:** 16 June 2026
