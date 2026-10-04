@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>Guardian Bridge · SmoothSeas</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -109,5 +110,6 @@
         @endif
         <a href="{{ route('guardian.account') }}" wire:navigate class="{{ request()->routeIs('guardian.account') ? 'is-active' : '' }}"><span class="bi">⚙️</span>Account</a>
     </nav>
+    @include('partials.native-bridge', ['nativeApp' => 'parent'])
 </body>
 </html>
