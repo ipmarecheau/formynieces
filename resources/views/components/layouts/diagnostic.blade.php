@@ -73,6 +73,5 @@
         }
     </script>
     @livewireScripts
-    @include('partials.native-bridge', ['nativeApp' => 'child'])
 </body>
 </html>

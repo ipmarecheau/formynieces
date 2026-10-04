@@ -4,7 +4,6 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ChildSetupController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DeviceTokenController;
 use App\Http\Controllers\ExamAgentController;
 use App\Http\Controllers\GuardianChildrenController;
 use App\Http\Controllers\GuardianPauseController;
@@ -153,9 +152,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    // Native app (Capacitor) registers its push token against the signed-in user.
-    Route::post('/device-tokens', [DeviceTokenController::class, 'store'])->name('device-tokens.store');
-
     // Admin/guardian: download a single lesson as a JSON bundle (LB-02). Authorised in the controller.
     Route::get('/lesson-bank/export/{lesson}', LessonExportController::class)->name('lessons.export');
 

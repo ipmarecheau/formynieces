@@ -166,12 +166,4 @@ return [
         'token' => env('QA_ACCESS_TOKEN'),
     ],
 
-    // Firebase Cloud Messaging — native-app push (streak nudges, progress reminders).
-    // Both must be set for server push to send; otherwise on-device local reminders
-    // still work. See App\Services\Push\FcmSender.
-    'fcm' => [
-        'project_id' => env('FCM_PROJECT_ID'),
-        'credentials' => env('FCM_CREDENTIALS'), // absolute path to service-account JSON
-    ],
-
 ];
