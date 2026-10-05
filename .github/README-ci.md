@@ -10,33 +10,53 @@ the Capacitor iOS projects compile on macOS. Triggered on push to `capacitor-she
 `mobile-*/**` changes) or via **Run workflow** (workflow_dispatch).
 
 ## Enabling signed TestFlight builds
-You need an **Apple Developer Program** membership ($99/yr). Then:
 
-1. Register both bundle IDs in the Apple Developer portal:
-   `org.smoothseas.app` and `org.smoothseas.child`.
-2. Create an **App Store Distribution** certificate (`.p12`) and an **App Store provisioning
-   profile** for each bundle id.
-3. Create an **App Store Connect API key** (Users and Access → Integrations → Keys).
-4. Add these GitHub repository secrets:
+The signed job uses **App Store Connect API-key, cloud-managed (automatic) signing** —
+Xcode creates and renews the distribution certificate and both provisioning profiles
+itself on the runner. You never export a `.p12` or `.mobileprovision`. Only **4 secrets**,
+all derived from one API key + your Team ID.
 
-   | Secret | What |
-   |---|---|
-   | `APPLE_TEAM_ID` | Your 10-char Apple Team ID |
-   | `APPLE_DIST_CERT_P12_BASE64` | `base64 -i dist.p12` |
-   | `APPLE_DIST_CERT_PASSWORD` | password for the .p12 |
-   | `APPLE_PROVISIONING_PROFILE_BASE64` | `base64 -i profile.mobileprovision` |
-   | `ASC_KEY_ID` | App Store Connect API Key ID |
-   | `ASC_ISSUER_ID` | App Store Connect Issuer ID |
-   | `ASC_KEY_P8_BASE64` | `base64 -i AuthKey_XXXX.p8` |
+### 1. Enroll (one-time, ~$99/yr)
+Join the **Apple Developer Program** at <https://developer.apple.com/programs/>. Note your
+**Team ID** (Membership details — a 10-char code like `AB12CD34EF`).
 
-5. In `mobile-ios.yml`, remove `if: false` from the **`signed-archive`** job.
+### 2. Register the two apps (App Store Connect → My Apps → +)
+Create two app records, one per bundle id:
+- `org.smoothseas.app`  → "SmoothSeas Parent"
+- `org.smoothseas.child` → "SmoothSeas Kids"
 
-Each app then archives, exports an `.ipa`, and uploads to TestFlight on every push.
+(The first time you create a bundle id here, App Store Connect registers the matching
+Identifier for you — no separate portal step needed for automatic signing.)
 
-> Note: two provisioning profiles are needed (one per bundle id). The signed job's matrix
-> already fans out per app; point each app's profile at its matching bundle id. For
-> simplicity the template imports a single profile — extend it to a per-app profile secret
-> (`..._PARENT` / `..._CHILD`) when you wire real signing.
+### 3. Create an App Store Connect API key
+**Users and Access → Integrations → App Store Connect API → Keys → +**
+- Access role: **App Manager** (needed so it can create signing assets *and* upload builds).
+- Download the **`AuthKey_XXXXXX.p8`** (you can only download it once).
+- Copy the **Key ID** and, at the top of the Keys page, the **Issuer ID**.
+
+### 4. Add 4 GitHub repository secrets
+Repo → **Settings → Secrets and variables → Actions → New repository secret**:
+
+| Secret | What / how |
+|---|---|
+| `APPLE_TEAM_ID` | your 10-char Team ID |
+| `ASC_KEY_ID` | the API Key ID |
+| `ASC_ISSUER_ID` | the API Issuer ID |
+| `ASC_KEY_P8_BASE64` | `base64 -i AuthKey_XXXXXX.p8 | pbcopy` (the whole key, base64) |
+
+### 5. Turn the job on
+In `mobile-ios.yml`, delete the `if: false` line in the **`signed-archive`** job, commit,
+and push to `capacitor-shell`. The job then, for **each** app: archives with automatic
+signing, exports an `app-store` `.ipa` (also uploaded as a build artifact), and ships it to
+**TestFlight**.
+
+### 6. Install on your iPhone
+In App Store Connect the build appears under **TestFlight** (first upload takes a few
+minutes to finish "Processing"). Add yourself as an internal tester, install the
+**TestFlight** app from the App Store, and the build shows up there to install.
+
+> First signed run only: Xcode registers the distribution cert against your team. If it
+> reports the cert limit is reached, revoke an old "Apple Distribution" cert in the portal.
 
 ## No Mac? Alternatives
 [Codemagic](https://codemagic.io) and [Expo EAS-style services] also build Capacitor iOS

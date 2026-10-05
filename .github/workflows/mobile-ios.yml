@@ -54,20 +54,22 @@ jobs:
             CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO \
             build
 
-  # Signed TestFlight build — runs only when APPLE_* secrets are configured.
-  # Fill in the secrets and remove the `if: false` to enable.
+  # Signed TestFlight build — runs only when the 4 Apple secrets are set.
+  # Uses App Store Connect API-key AUTOMATIC (cloud-managed) signing: Xcode creates and
+  # renews the distribution certificate + provisioning profiles itself, for BOTH bundle
+  # ids, so there is no .p12 or .mobileprovision to export. Remove `if: false` to enable.
   signed-archive:
-    name: Signed archive + TestFlight (${{ matrix.app }})
-    if: false # ← enable once Apple Developer secrets are set (see README-ci.md)
+    name: Signed → TestFlight (${{ matrix.app }})
+    if: false # ← enable once ASC_* + APPLE_TEAM_ID secrets are set (see README-ci.md)
     runs-on: macos-14
     strategy:
       fail-fast: false
       matrix:
-        include:
-          - app: mobile-parent
-            bundle_id: org.smoothseas.app
-          - app: mobile-child
-            bundle_id: org.smoothseas.child
+        app: [mobile-parent, mobile-child]
+    env:
+      TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+      ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+      ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -79,54 +81,49 @@ jobs:
       - name: Sync Capacitor (iOS)
         working-directory: ${{ matrix.app }}
         run: npx cap sync ios
-      # Import the distribution certificate + provisioning profile from secrets.
-      - name: Install signing assets
-        env:
-          DIST_CERT_P12_BASE64: ${{ secrets.APPLE_DIST_CERT_P12_BASE64 }}
-          DIST_CERT_PASSWORD: ${{ secrets.APPLE_DIST_CERT_PASSWORD }}
-          PROVISIONING_PROFILE_BASE64: ${{ secrets.APPLE_PROVISIONING_PROFILE_BASE64 }}
+
+      - name: Write App Store Connect API key
         run: |
-          KEYCHAIN=$RUNNER_TEMP/app.keychain-db
-          security create-keychain -p "" "$KEYCHAIN"
-          security set-keychain-settings -lut 21600 "$KEYCHAIN"
-          security unlock-keychain -p "" "$KEYCHAIN"
-          echo "$DIST_CERT_P12_BASE64" | base64 --decode > $RUNNER_TEMP/cert.p12
-          security import $RUNNER_TEMP/cert.p12 -k "$KEYCHAIN" -P "$DIST_CERT_PASSWORD" -T /usr/bin/codesign
-          security list-keychains -d user -s "$KEYCHAIN" $(security list-keychains -d user | tr -d '"')
-          security set-key-partition-list -S apple-tool:,apple: -k "" "$KEYCHAIN"
-          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
-          echo "$PROVISIONING_PROFILE_BASE64" | base64 --decode > ~/Library/MobileDevice/Provisioning\ Profiles/profile.mobileprovision
-      - name: Archive + export IPA
+          mkdir -p ~/private_keys
+          echo "${{ secrets.ASC_KEY_P8_BASE64 }}" | base64 --decode > ~/private_keys/AuthKey_${ASC_KEY_ID}.p8
+
+      - name: Archive (automatic cloud signing)
         working-directory: ${{ matrix.app }}/ios/App
-        env:
-          TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
         run: |
           xcodebuild -project App.xcodeproj -scheme App -configuration Release \
-            -sdk iphoneos -archivePath build/App.xcarchive \
-            DEVELOPMENT_TEAM="$TEAM_ID" archive
-          cat > exportOptions.plist <<PLIST
+            -sdk iphoneos -archivePath "$RUNNER_TEMP/App.xcarchive" \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath ~/private_keys/AuthKey_${ASC_KEY_ID}.p8 \
+            -authenticationKeyID "$ASC_KEY_ID" \
+            -authenticationKeyIssuerID "$ASC_ISSUER_ID" \
+            DEVELOPMENT_TEAM="$TEAM_ID" CODE_SIGN_STYLE=Automatic \
+            archive
+
+      - name: Export IPA (app-store)
+        working-directory: ${{ matrix.app }}/ios/App
+        run: |
+          cat > "$RUNNER_TEMP/exportOptions.plist" <<PLIST
           <?xml version="1.0" encoding="UTF-8"?>
           <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
           <plist version="1.0"><dict>
             <key>method</key><string>app-store</string>
-            <key>teamID</key><string>$TEAM_ID</string>
+            <key>teamID</key><string>${TEAM_ID}</string>
+            <key>signingStyle</key><string>automatic</string>
           </dict></plist>
           PLIST
-          xcodebuild -exportArchive -archivePath build/App.xcarchive \
-            -exportPath build/ipa -exportOptionsPlist exportOptions.plist
+          xcodebuild -exportArchive -archivePath "$RUNNER_TEMP/App.xcarchive" \
+            -exportPath "$RUNNER_TEMP/ipa" -exportOptionsPlist "$RUNNER_TEMP/exportOptions.plist" \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath ~/private_keys/AuthKey_${ASC_KEY_ID}.p8 \
+            -authenticationKeyID "$ASC_KEY_ID" \
+            -authenticationKeyIssuerID "$ASC_ISSUER_ID"
+
       - uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.app }}-ipa
-          path: ${{ matrix.app }}/ios/App/build/ipa/*.ipa
-      # Upload to TestFlight (needs an App Store Connect API key)
+          path: ${{ runner.temp }}/ipa/*.ipa
+
       - name: Upload to TestFlight
-        env:
-          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
-          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
-          ASC_KEY_P8_BASE64: ${{ secrets.ASC_KEY_P8_BASE64 }}
         run: |
-          mkdir -p ~/.appstoreconnect/private_keys
-          echo "$ASC_KEY_P8_BASE64" | base64 --decode > ~/.appstoreconnect/private_keys/AuthKey_$ASC_KEY_ID.p8
-          xcrun altool --upload-app -f build/ipa/*.ipa -t ios \
+          xcrun altool --upload-app -f "$RUNNER_TEMP"/ipa/*.ipa -t ios \
             --apiKey "$ASC_KEY_ID" --apiIssuer "$ASC_ISSUER_ID"
-        working-directory: ${{ matrix.app }}/ios/App
