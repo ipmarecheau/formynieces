@@ -1,0 +1,20 @@
+{
+	"appId": "org.smoothseas.app.dev",
+	"appName": "SmoothSeas Parent (DEV)",
+	"webDir": "www",
+	"server": {
+		"url": "https://dev.smoothseas.org/login",
+		"cleartext": false,
+		"allowNavigation": [
+			"dev.smoothseas.org"
+		]
+	},
+	"backgroundColor": "#0d7d8c",
+	"android": {
+		"backgroundColor": "#0d7d8c"
+	},
+	"ios": {
+		"backgroundColor": "#0d7d8c",
+		"contentInset": "always"
+	}
+}

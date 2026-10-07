@@ -1,0 +1,20 @@
+{
+	"appId": "org.smoothseas.child.dev",
+	"appName": "SmoothSeas Kids (DEV)",
+	"webDir": "www",
+	"server": {
+		"url": "https://dev.smoothseas.org/go",
+		"cleartext": false,
+		"allowNavigation": [
+			"dev.smoothseas.org"
+		]
+	},
+	"backgroundColor": "#06182e",
+	"android": {
+		"backgroundColor": "#06182e"
+	},
+	"ios": {
+		"backgroundColor": "#06182e",
+		"contentInset": "always"
+	}
+}

@@ -22,6 +22,19 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    // Two flavours: prod (store build → smoothseas.org) and dev (test build → dev.smoothseas.org).
+    // The dev flavour gets a .dev applicationId so it installs alongside the prod app, a "(DEV)"
+    // name (src/dev/res), and the dev server.url (src/dev/assets/capacitor.config.json overrides main).
+    flavorDimensions "env"
+    productFlavors {
+        prod {
+            dimension "env"
+        }
+        dev {
+            dimension "env"
+            applicationIdSuffix ".dev"
+        }
+    }
 }
 
 repositories {

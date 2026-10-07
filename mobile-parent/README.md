@@ -28,9 +28,16 @@ npm install                 # restore deps
 npx cap sync                # copy www + config into native projects after changes
 npx cap sync android        # android only
 
-# Android APK (env above set):
-cd android && ./gradlew assembleDebug --no-daemon
-#   -> android/app/build/outputs/apk/debug/app-debug.apk   (sideload on a phone)
+# Android APKs (env above set). Two flavours:
+cd android && ./gradlew assembleProdDebug --no-daemon   # → smoothseas.org
+cd android && ./gradlew assembleDevDebug  --no-daemon   # → dev.smoothseas.org (.dev id, "(DEV)" name)
+#   prod → android/app/build/outputs/apk/prod/debug/app-prod-debug.apk
+#   dev  → android/app/build/outputs/apk/dev/debug/app-dev-debug.apk
+# The dev flavour's overrides live in android/app/src/dev/ (capacitor.config.json + res/strings).
+
+# Publish for the download page (served by Caddy at https://dev.smoothseas.org/apps/):
+cp app/build/outputs/apk/prod/debug/app-prod-debug.apk /opt/smoothseas-apps/smoothseas-parent.apk
+cp app/build/outputs/apk/dev/debug/app-dev-debug.apk   /opt/smoothseas-apps/smoothseas-parent-dev.apk
 
 # iOS (needs a Mac):
 npx cap open ios            # opens Xcode; build/run from there
