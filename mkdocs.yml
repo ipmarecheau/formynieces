@@ -49,6 +49,8 @@ nav:
       - Environments: operations/environments.md
       - Runbooks: operations/runbooks.md
       - QA agent surface: operations/qa-agent.md
+  - Mobile apps:
+      - Native apps (Capacitor): mobile/native-apps.md
   - Reference:
       - Feature status: features/index.md
       - HTTP routes: reference/routes.md
