@@ -11,10 +11,12 @@
 	},
 	"backgroundColor": "#0d7d8c",
 	"android": {
-		"backgroundColor": "#0d7d8c"
+		"backgroundColor": "#0d7d8c",
+		"appendUserAgent": "SmoothSeasDevApp"
 	},
 	"ios": {
 		"backgroundColor": "#0d7d8c",
-		"contentInset": "always"
+		"contentInset": "always",
+		"appendUserAgent": "SmoothSeasDevApp"
 	}
 }
