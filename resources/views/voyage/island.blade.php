@@ -263,6 +263,7 @@
     </style>
 </head>
 <body>
+    @include('partials.voyage-flash')
     <nav class="vy-nav">
         <span class="vy-brand">{{ $island['icon'] }} {{ $island['name'] }}</span>
         <a href="{{ route('student.voyage') }}" class="vy-back">← Back to the sea</a>

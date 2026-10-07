@@ -51,6 +51,11 @@
         <div class="ss-status">{{ session('status') }}</div>
     @endif
 
+    {{-- Lead funnel: the "your free month has started" confirmation lands here on redirect. --}}
+    @if (session('trial_started'))
+        <div class="ss-status">{{ session('trial_started') }}</div>
+    @endif
+
     @if ($errors->any())
         <div class="ss-errors">
             <ul>

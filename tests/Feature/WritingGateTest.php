@@ -59,6 +59,18 @@ it('sails a new level back to the map when writing is pending', function () {
         ->assertRedirect();
 })->group('scenario:CO-05');
 
+it('surfaces the writing-gate message on the voyage map, not a silent bounce', function () {
+    [$student] = wgSetup();
+
+    // The gate flashes writingGate and redirects to the map — the map must SHOW it.
+    $this->actingAs($student)
+        ->withSession(['writingGate' => 'Finish your writing first, then this level opens'])
+        ->get(route('student.voyage'))
+        ->assertOk()
+        ->assertSee('vy-flash', false)
+        ->assertSee('Finish your writing first');
+})->group('scenario:CO-05');
+
 // TR-07 — the guided tour must be able to open the first lesson, so the writing gate is bypassed on tour.
 it('does not gate the first lesson while a student is on the guided tour', function () {
     [$student, $module] = wgSetup();
