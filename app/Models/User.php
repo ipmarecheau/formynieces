@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\Plan;
 use App\Notifications\VerifyEmailWithCode;
+use Carbon\CarbonInterface;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -49,6 +50,9 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
         'birth_year', // Child metadata (optional)
         'current_school', // Child metadata (optional)
         'is_test', // Synthetic QA/agent account — excluded from real analytics
+        'push_opt_out', // PN-03: suppress non-critical pushes
+        'quiet_hours_start', // PN-03: "HH:MM" start of quiet window
+        'quiet_hours_end', // PN-03: "HH:MM" end of quiet window
     ];
 
     protected $hidden = [
@@ -74,6 +78,7 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
             'known_weak_areas' => 'array',
             'learning_profile' => 'array',
             'weekly_module_cap_override' => 'integer',
+            'push_opt_out' => 'boolean', // PN-03
             'seen_guides' => 'array',
             'trial_ends_at' => 'datetime',
             'first_bill_at' => 'datetime',
@@ -267,6 +272,47 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
     public function invoices(): HasMany
     {
         return $this->hasMany(Invoice::class);
+    }
+
+    // Registered push tokens across this user's devices (PN-01).
+    public function deviceTokens(): HasMany
+    {
+        return $this->hasMany(DeviceToken::class);
+    }
+
+    /**
+     * Whether a standard (non-critical) push should be held back right now because the
+     * user opted out or it is inside their quiet hours. Critical pushes ignore this (PN-03/PN-07).
+     */
+    public function suppressesStandardPush(?CarbonInterface $at = null): bool
+    {
+        if ($this->push_opt_out) {
+            return true;
+        }
+
+        return $this->isWithinQuietHours($at ?? now());
+    }
+
+    /**
+     * True when the given moment falls inside the user's quiet-hours window, handling a
+     * window that wraps past midnight (e.g. 20:45–07:00).
+     */
+    public function isWithinQuietHours(CarbonInterface $at): bool
+    {
+        if (empty($this->quiet_hours_start) || empty($this->quiet_hours_end)) {
+            return false;
+        }
+
+        $now = $at->format('H:i');
+        $start = $this->quiet_hours_start;
+        $end = $this->quiet_hours_end;
+
+        if ($start <= $end) {
+            return $now >= $start && $now < $end;
+        }
+
+        // Wraps midnight: inside if after start OR before end.
+        return $now >= $start || $now < $end;
     }
 
     /**

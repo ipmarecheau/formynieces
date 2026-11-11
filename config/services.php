@@ -166,4 +166,19 @@ return [
         'token' => env('QA_ACCESS_TOKEN'),
     ],
 
+    // Self-hosted push: Apple APNs directly via our own .p8 key (no Firebase).
+    'apns' => [
+        'key_id' => env('APNS_KEY_ID'),
+        'team_id' => env('APNS_TEAM_ID'),
+        'bundle_id' => env('APNS_BUNDLE_ID'),
+        'private_key' => env('APNS_PRIVATE_KEY'), // PEM contents or a path to the .p8
+        'production' => (bool) env('APNS_PRODUCTION', false),
+    ],
+
+    // Self-hosted push: Android via the FCM HTTP v1 API directly (no Firebase SDK/console).
+    'fcm' => [
+        'project_id' => env('FCM_PROJECT_ID'),
+        'credentials' => env('FCM_CREDENTIALS'), // service-account JSON contents or a path
+    ],
+
 ];

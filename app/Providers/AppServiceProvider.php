@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Services\Push\PushTransportRegistry;
+use App\Services\Push\Transports\ApnsTransport;
+use App\Services\Push\Transports\FcmTransport;
 use App\Services\Verification\PhoneVerifier;
 use App\Services\Verification\StubPhoneVerifier;
 use App\Services\Verification\TwilioPhoneVerifier;
@@ -30,6 +33,14 @@ class AppServiceProvider extends ServiceProvider
             }
 
             return new StubPhoneVerifier;
+        });
+
+        // Self-hosted push: resolve a transport per platform. Real transports call Apple/
+        // Google directly; tests re-register fakes on this same singleton.
+        $this->app->singleton(PushTransportRegistry::class, function () {
+            return (new PushTransportRegistry)
+                ->register(new ApnsTransport)
+                ->register(new FcmTransport);
         });
     }
 
