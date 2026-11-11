@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Services\Push\Notifications\EssayFeedbackNotifier;
 use Database\Factories\WritingSubmissionFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -77,6 +78,12 @@ class WritingSubmission extends Model
             'status' => self::STATUS_SCORED,
             'scored_at' => now(),
         ]);
+
+        // PN-04: feedback on the essay is now ready — push the parent on their own device.
+        if ($this->student) {
+            app(EssayFeedbackNotifier::class)
+                ->published($this->student, $this->id);
+        }
     }
 
     /**

@@ -18,6 +18,10 @@ class ReEngagementNotifier
 
     public function nudge(User $student, int $cooldownDays = 3): bool
     {
+        if ($student->is_test) {
+            return false;
+        }
+
         $guardian = $student->guardian;
 
         if ($guardian === null) {

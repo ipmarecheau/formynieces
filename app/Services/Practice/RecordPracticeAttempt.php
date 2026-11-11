@@ -5,7 +5,9 @@ namespace App\Services\Practice;
 use App\Models\PracticeAttempt;
 use App\Models\PracticeQuestion;
 use App\Models\StudentProgress;
+use App\Models\User;
 use App\Services\Motivation\StreakService;
+use App\Services\Push\Notifications\MilestoneNotifier;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -143,6 +145,16 @@ class RecordPracticeAttempt
         // mastered in this call.
         if ($progress->status === 'mastered' && ! $wasMasteredBefore) {
             $this->streaks->recordActivity($studentId, 'mastery');
+
+            // PN-05: celebrate the milestone with the parent on their own device.
+            if ($student = User::find($studentId)) {
+                $topic = $progress->module?->topic;
+                app(MilestoneNotifier::class)->reached(
+                    $student,
+                    'Island mastered! 🏆',
+                    $topic ? "just mastered {$topic}." : 'just mastered a new island.',
+                );
+            }
         }
 
         return $progress;

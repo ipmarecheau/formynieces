@@ -17,6 +17,10 @@ class MilestoneNotifier
 
     public function reached(User $student, string $headline, string $detail): void
     {
+        if ($student->is_test) {
+            return;
+        }
+
         $guardian = $student->guardian;
 
         if ($guardian === null) {

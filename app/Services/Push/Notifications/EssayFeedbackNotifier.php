@@ -16,6 +16,10 @@ class EssayFeedbackNotifier
 
     public function published(User $student, int $essayId): void
     {
+        if ($student->is_test) {
+            return;
+        }
+
         $guardian = $student->guardian;
 
         if ($guardian === null) {

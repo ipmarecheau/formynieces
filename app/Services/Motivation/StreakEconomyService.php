@@ -7,6 +7,8 @@ use App\Models\StreakBank;
 use App\Models\StreakReward;
 use App\Models\StreakShield;
 use App\Models\StudentStreak;
+use App\Models\User;
+use App\Services\Push\Notifications\MilestoneNotifier;
 use Illuminate\Support\Carbon;
 use InvalidArgumentException;
 
@@ -116,6 +118,12 @@ class StreakEconomyService
         if ($plan->completed_at === null) {
             $plan->completed_at = $on;
             $plan->save();
+
+            // PN-05: the child finished the whole day's quota — celebrate it with the parent.
+            if ($student = User::find($studentId)) {
+                app(MilestoneNotifier::class)
+                    ->reached($student, "A full day's voyage complete! ⚓", 'finished every mission today.');
+            }
         }
 
         $this->streaks->recordActivity($studentId, self::MASTER_STREAK, $on);
