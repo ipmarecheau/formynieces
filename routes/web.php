@@ -4,6 +4,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ChildSetupController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DeviceTokenController;
 use App\Http\Controllers\ExamAgentController;
 use App\Http\Controllers\GuardianChildrenController;
 use App\Http\Controllers\GuardianPauseController;
@@ -13,7 +14,10 @@ use App\Http\Controllers\PastPaperController;
 use App\Http\Controllers\PastPaperDraftController;
 use App\Http\Controllers\PublicPageController;
 use App\Http\Controllers\QaController;
+use App\Http\Controllers\ReminderFeedController;
 use App\Http\Controllers\SchoolJournalClipController;
+use App\Http\Controllers\SupportTicketController;
+use App\Http\Controllers\UserTestingController;
 use App\Http\Controllers\VoyageController;
 use App\Livewire\DiagnosticWalk;
 use App\Livewire\GuardianAccount;
@@ -31,6 +35,7 @@ use App\Livewire\StudentSchoolJournal;
 use App\Livewire\SyllabusMap;
 use App\Livewire\TutorialWalk;
 use App\Livewire\Upgrade;
+use App\Livewire\UserTesting;
 use App\Livewire\WelcomeAboard;
 use App\Livewire\WritingStop;
 use App\Services\Diagnostic\DiagnosticReconciliation;
@@ -82,6 +87,17 @@ Route::get('/placement-report', PlacementReport::class)->name('placement-report'
 // Smooth chat widget (LC-01..06) — public, throttled.
 Route::post('/chat/session', [ChatController::class, 'start'])->middleware('throttle:10,1')->name('chat.start');
 Route::post('/chat/message', [ChatController::class, 'message'])->middleware('throttle:30,1')->name('chat.message');
+
+// In-app help button — any user, any screen, types a message or leaves a voice note.
+Route::post('/help/ticket', [SupportTicketController::class, 'store'])->middleware('throttle:20,1')->name('support.ticket');
+
+// Native push: a device registers its token on launch (PN-01).
+Route::post('/push/token', [DeviceTokenController::class, 'store'])
+    ->middleware(['auth', 'throttle:30,1'])->name('push.token');
+
+// Native local reminders: the plan the app writes to the device on launch (LR-01).
+Route::get('/reminders/feed', ReminderFeedController::class)
+    ->middleware(['auth', 'throttle:60,1'])->name('reminders.feed');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])
@@ -260,6 +276,10 @@ Route::middleware('auth')->group(function () {
 
 // Admin lesson verification (LE-11): walk any lesson in the real student renderer — as a student,
 // or in the re-teach flow — with nothing recorded, so lessons can be checked on an ongoing basis.
+// Admin-only: stream a support ticket's private voice note into the admin panel.
+Route::get('/admin/support/{ticket}/audio', [SupportTicketController::class, 'audio'])
+    ->middleware(['auth', 'role:admin'])->name('support.audio');
+
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/past-paper-drafts/source/{draft}', [PastPaperDraftController::class, 'source'])
         ->name('admin.past-paper-drafts.source');
@@ -273,5 +293,12 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         ->defaults('mode', 'reteach')
         ->name('admin.lessons.preview-reteach');
 });
+
+// Guided human test-drive (/user-testing): multiple testers walk feature scenarios in plain
+// English and leave a verdict. Open behind the dev site's basic-auth; results are evidence
+// Isaac reviews, never a direct specs:verify.
+Route::get('/user-testing', UserTesting::class)->name('user-testing');
+Route::get('/user-testing/enter/{scenario}', [UserTestingController::class, 'enter'])->name('user-testing.enter');
+Route::get('/user-testing/{feature}', UserTesting::class)->name('user-testing.feature');
 
 require __DIR__.'/auth.php';
