@@ -23,6 +23,14 @@ const config: CapacitorConfig = {
   backgroundColor: '#06182e',
   android: { backgroundColor: '#06182e' },
   ios: { backgroundColor: '#06182e', contentInset: 'always' },
+  plugins: {
+    // Local reminders (LR-01..07): a monochrome status-bar icon + teal accent so Android
+    // shows the anchor, not a gray square. Scheduling itself is driven by the web bridge.
+    LocalNotifications: {
+      smallIcon: 'ic_stat_notify',
+      iconColor: '#0D7D8C',
+    },
+  },
 };
 
 export default config;

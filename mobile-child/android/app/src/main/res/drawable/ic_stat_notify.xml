@@ -1,0 +1,11 @@
+<!-- Monochrome status-bar icon for local reminders (Android renders only the alpha).
+     A simple white anchor — SmoothSeas. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M12,2C10.9,2 10,2.9 10,4C10,4.74 10.4,5.38 11,5.72V7H9V9H11V17.92C8.61,17.56 6.7,15.78 6.15,13.5H8L5,10.5L2,13.5H4.09C4.65,16.89 7.17,19.6 10.5,20.37C11,20.49 11.49,20.56 12,20.56C12.51,20.56 13,20.49 13.5,20.37C16.83,19.6 19.35,16.89 19.91,13.5H22L19,10.5L16,13.5H17.85C17.3,15.78 15.39,17.56 13,17.92V9H15V7H13V5.72C13.6,5.38 14,4.74 14,4C14,2.9 13.1,2 12,2Z" />
+</vector>
