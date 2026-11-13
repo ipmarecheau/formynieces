@@ -126,6 +126,29 @@ it('respects guardian opt-out and never schedules inside quiet hours', function 
     expect($types)->toContain('morning_muster'); // 15:30 is before quiet hours — kept
 })->group('scenario:LR-06');
 
+it('renders a native-gated bridge that reads the feed and schedules on the device', function () {
+    $html = view('partials.reminders-bridge')->render();
+
+    // Native-only and plugin-guarded, so it is a safe no-op on the web.
+    expect($html)->toContain('isNativePlatform');
+    expect($html)->toContain('LocalNotifications');
+    // Reads the plan and replaces the prior set (schedule + cancel).
+    expect($html)->toContain(route('reminders.feed'));
+    expect($html)->toContain('.schedule(');
+    expect($html)->toContain('.cancel(');
+
+    // Wired into the surfaces a child lands on at launch.
+    $surfaces = [
+        'resources/views/student-splash.blade.php',
+        'resources/views/voyage/overworld.blade.php',
+        'resources/views/components/layouts/diagnostic.blade.php',
+    ];
+    foreach ($surfaces as $surface) {
+        expect(file_get_contents(base_path($surface)))
+            ->toContain("@include('partials.reminders-bridge')");
+    }
+})->group('scenario:LR-01', 'scenario:LR-07');
+
 it('each reminder carries its own time and words so it fires offline', function () {
     $student = User::factory()->create(['role' => 'student']);
 
