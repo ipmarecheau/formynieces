@@ -53,6 +53,7 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
         'push_opt_out', // PN-03: suppress non-critical pushes
         'quiet_hours_start', // PN-03: "HH:MM" start of quiet window
         'quiet_hours_end', // PN-03: "HH:MM" end of quiet window
+        'reminders_opt_out', // LR-06: suppress on-device local reminders
     ];
 
     protected $hidden = [
@@ -79,6 +80,7 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
             'learning_profile' => 'array',
             'weekly_module_cap_override' => 'integer',
             'push_opt_out' => 'boolean', // PN-03
+            'reminders_opt_out' => 'boolean', // LR-06
             'seen_guides' => 'array',
             'trial_ends_at' => 'datetime',
             'first_bill_at' => 'datetime',

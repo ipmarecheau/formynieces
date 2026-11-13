@@ -28,7 +28,7 @@ class DailyPlanComposer
     private const WEEKDAY_DUTIES = ['morning_tide', 'map'];
 
     /** ISO weekdays that carry a writing duty: Monday, Wednesday, Friday. */
-    private const WRITING_DAYS = [1, 3, 5];
+    public const WRITING_DAYS = [1, 3, 5];
 
     /**
      * Compose (or refresh) the day's plan for a student, persisting it.
