@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Services\Persona\BrowserPersonaSimulator;
+use App\Services\Persona\Contracts\PersonaSimulator;
 use App\Services\Push\PushTransportRegistry;
 use App\Services\Push\Transports\ApnsTransport;
 use App\Services\Push\Transports\FcmTransport;
@@ -42,6 +44,12 @@ class AppServiceProvider extends ServiceProvider
                 ->register(new ApnsTransport)
                 ->register(new FcmTransport);
         });
+
+        // Persona-simulation agent: the live engine by default; tests bind a fake in its place.
+        $this->app->bind(
+            PersonaSimulator::class,
+            BrowserPersonaSimulator::class,
+        );
     }
 
     /**

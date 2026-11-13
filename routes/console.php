@@ -35,3 +35,7 @@ Schedule::command('pace:weekly-recalculation')->weeklyOn(0, '01:00');
 // PN-06: nightly check that pushes the guardian of any child who has drifted away
 // (no practice for 3+ days), once, subject to the notifier's cooldown and quiet hours.
 Schedule::command('push:re-engage')->dailyAt('18:30');
+
+// PA-01..03: nightly persona simulations (anxious parent + child's full day) within the
+// monthly budget, recording findings for the team to review in the admin panel.
+Schedule::command('personas:run')->dailyAt('02:30');

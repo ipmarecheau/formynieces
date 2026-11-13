@@ -181,4 +181,11 @@ return [
         'credentials' => env('FCM_CREDENTIALS'), // service-account JSON contents or a path
     ],
 
+    // Nightly persona-simulation agent: a separate monthly USD budget (PA-02), independent
+    // of the per-student LLM caps. Runs are skipped once month-to-date spend hits the cap.
+    'persona_agent' => [
+        'monthly_cap_usd' => (float) env('PERSONA_AGENT_MONTHLY_CAP_USD', 5.0),
+        'base_url' => env('PERSONA_AGENT_BASE_URL', 'https://staging.smoothseas.org'),
+    ],
+
 ];
