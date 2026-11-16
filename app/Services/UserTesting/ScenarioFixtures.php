@@ -7,9 +7,11 @@ use App\Models\PracticeAttempt;
 use App\Models\PracticeQuestion;
 use App\Models\StudentJourney;
 use App\Models\StudentProgress;
+use App\Models\StudentStreak;
 use App\Models\SupportTicket;
 use App\Models\SyllabusModule;
 use App\Models\User;
+use App\Models\WeeklyTarget;
 use App\Models\WritingPrompt;
 use App\Models\WritingSubmission;
 
@@ -252,6 +254,23 @@ class ScenarioFixtures
             StudentProgress::updateOrCreate(
                 ['student_id' => $student->id, 'module_id' => $module->id],
                 ['status' => 'mastered', 'score' => 100, 'current_rung' => 5, 'current_streak' => 3],
+            );
+        }
+
+        // A streak so the Voyage's streak celebration has something to show (SH-04).
+        StudentStreak::updateOrCreate(
+            ['student_id' => $student->id, 'type' => 'login'],
+            ['count' => 3, 'last_activity_date' => now()->toDateString()],
+        );
+
+        // This week's focus: name a not-yet-mastered module so the Voyage highlights it (SH-02).
+        $focus = SyllabusModule::orderBy('sequence_order')->skip(6)->first()
+            ?? SyllabusModule::orderBy('sequence_order')->first();
+
+        if ($focus !== null) {
+            WeeklyTarget::updateOrCreate(
+                ['student_id' => $student->id, 'module_id' => $focus->id, 'week_start_date' => now()->startOfWeek()->toDateString()],
+                ['is_completed' => false],
             );
         }
     }

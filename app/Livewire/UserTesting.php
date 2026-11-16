@@ -292,6 +292,7 @@ class UserTesting extends Component
 
         return view('livewire.user-testing', [
             'features' => $features,
+            'groupedFeatures' => TestingCatalog::byGroup(),
             'activeFeature' => $activeFeature,
             'current' => $current,
             'total' => count($scenarios),
@@ -304,6 +305,9 @@ class UserTesting extends Component
             'deviceLogin' => $deviceLogin,
             'qr' => $apkUrl ? $this->qrDataUri($apkUrl) : null,
             'waiting' => $waiting,
+            // Feature codes with at least one deferred check still waiting — the chooser pill
+            // shows these as "waiting" (amber), distinct from done (green) and in-progress.
+            'waitingFeatures' => $waiting->pluck('feature')->flip(),
         ]);
     }
 

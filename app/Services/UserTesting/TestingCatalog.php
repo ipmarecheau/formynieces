@@ -16,6 +16,41 @@ namespace App\Services\UserTesting;
  */
 class TestingCatalog
 {
+    /** The order feature groups appear in on the chooser. */
+    public const GROUP_ORDER = [
+        'For students — the Voyage',
+        'For guardians',
+        'Help & support',
+        'Team / Admin',
+        'Device apps',
+    ];
+
+    /**
+     * Features arranged by their group, in GROUP_ORDER, for the grouped chooser. Any group not
+     * listed above is appended after, so a new feature is never silently dropped.
+     *
+     * @return array<string, array<string, array<string, mixed>>>
+     */
+    public static function byGroup(): array
+    {
+        $features = static::features();
+        $groups = [];
+
+        foreach ($features as $code => $feature) {
+            $groups[$feature['group'] ?? 'Other'][$code] = $feature;
+        }
+
+        $ordered = [];
+        foreach (static::GROUP_ORDER as $name) {
+            if (isset($groups[$name])) {
+                $ordered[$name] = $groups[$name];
+                unset($groups[$name]);
+            }
+        }
+
+        return $ordered + $groups; // any unlisted groups keep their natural order, last
+    }
+
     /**
      * @return array<string, array{code: string, name: string, blurb: string, scenarios: array<int, array{id: string, title: string, goal: string, persona: string, start: string, steps: array<int, string>, expect: string}>}>
      */
@@ -24,6 +59,7 @@ class TestingCatalog
         return [
             'HC' => [
                 'code' => 'HC',
+                'group' => 'Help & support',
                 'name' => 'Asking for help',
                 'blurb' => 'A help button on every screen so anyone — a parent, a child, or a visitor — can report a problem or leave a voice note the moment they hit it.',
                 'scenarios' => [
@@ -100,6 +136,7 @@ class TestingCatalog
 
             'GD' => [
                 'code' => 'GD',
+                'group' => 'For guardians',
                 'name' => 'The parent dashboard',
                 'blurb' => 'The one screen a busy parent checks: is this week done, are we on pace, and what should we focus on next.',
                 'scenarios' => [
@@ -147,8 +184,93 @@ class TestingCatalog
                 ],
             ],
 
+            'SH' => [
+                'code' => 'SH',
+                'group' => 'For students — the Voyage',
+                'name' => 'The student Voyage (home)',
+                'blurb' => 'A child\'s home is a sea map of islands to conquer — never a percentage or score sheet. This is where everything they do each day begins.',
+                'scenarios' => [
+                    [
+                        'id' => 'SH-01',
+                        'title' => 'Arriving lands you on the Voyage',
+                        'goal' => 'Check a signed-in child arrives on their Voyage map, and is never shown a percentage roadmap.',
+                        'persona' => 'child',
+                        'start' => '/voyage',
+                        'steps' => [
+                            'You are signed in as a child, just arriving.',
+                            'Notice where you land — a sea map of islands (the Voyage).',
+                            'Look around the whole screen for any percentage or score roadmap.',
+                        ],
+                        'expect' => 'You landed on the Voyage map, and nowhere were you shown a percentage or score roadmap.',
+                    ],
+                    [
+                        'id' => 'SH-02',
+                        'title' => 'This week\'s focus is highlighted',
+                        'goal' => 'Check the levels to work on this week stand out, without any numbers attached.',
+                        'persona' => 'child',
+                        'start' => '/voyage',
+                        'steps' => [
+                            'You are on your Voyage.',
+                            'Look for the levels highlighted as this week\'s focus.',
+                            'Check that no target count, pace position, or percentage is shown next to them.',
+                        ],
+                        'expect' => 'This week\'s focus levels stood out clearly, with no counts or percentages attached.',
+                    ],
+                    [
+                        'id' => 'SH-03',
+                        'title' => 'Tapping a level starts practice',
+                        'goal' => 'Check practice is entered by tapping a level on an island — not from a separate roadmap.',
+                        'persona' => 'child',
+                        'start' => '/voyage',
+                        'steps' => [
+                            'You are on your Voyage.',
+                            'Find an open island and tap one of its levels.',
+                            'Notice that tapping the level is how you start practising.',
+                        ],
+                        'expect' => 'Tapping a level on an island took you straight into practising that topic.',
+                    ],
+                    [
+                        'id' => 'SH-04',
+                        'title' => 'Your streak lives on the Voyage',
+                        'goal' => 'Check the child\'s streak is shown on the Voyage, not hidden on a separate dashboard.',
+                        'persona' => 'child',
+                        'start' => '/voyage',
+                        'steps' => [
+                            'You are on your Voyage.',
+                            'Look for your streak somewhere on the map.',
+                            'Confirm you did not have to leave for a separate dashboard to see it.',
+                        ],
+                        'expect' => 'Your streak was visible right there on the Voyage.',
+                    ],
+                ],
+            ],
+
+            'AM' => [
+                'code' => 'AM',
+                'group' => 'For students — the Voyage',
+                'name' => 'The adventure map',
+                'blurb' => 'The Voyage is a trail of painted islands, each a chain of levels in curriculum order — progress you can see as places conquered, never a percentage.',
+                'scenarios' => [
+                    [
+                        'id' => 'AM-01',
+                        'title' => 'A trail of islands, each a chain of levels',
+                        'goal' => 'Check the Voyage reads as a trail of islands, each holding levels, showing conquered counts not percentages.',
+                        'persona' => 'child',
+                        'start' => '/voyage',
+                        'steps' => [
+                            'You are on your Voyage.',
+                            'Look at the trail of painted islands along the sea.',
+                            'Notice each island holds a chain of levels (one per topic), in order.',
+                            'Notice each island shows how many levels you\'ve conquered — a count, never a percentage.',
+                        ],
+                        'expect' => 'The Voyage was a trail of islands, each showing a conquered-level count and no percentages.',
+                    ],
+                ],
+            ],
+
             'AL' => [
                 'code' => 'AL',
+                'group' => 'Team / Admin',
                 'name' => 'A child\'s activity log (team view)',
                 'blurb' => 'An admin-only timeline of everything a child has done — practice, mastery, essays, finished days, and help requests — composed from existing records.',
                 'scenarios' => [
@@ -195,6 +317,7 @@ class TestingCatalog
 
             'LR' => [
                 'code' => 'LR',
+                'group' => 'Device apps',
                 'name' => 'Reminders on the kids app',
                 'blurb' => 'The kids app quietly reminds a child to do their work — even offline, with the app closed. This one needs the app installed on a phone or tablet.',
                 'device' => [
@@ -241,6 +364,7 @@ class TestingCatalog
 
             'PN' => [
                 'code' => 'PN',
+                'group' => 'Device apps',
                 'name' => 'Notifications to your phone',
                 'blurb' => 'Push alerts to a parent or child device — e.g. “your child’s essay has been marked”. Needs the app installed and the push server switched on.',
                 'device' => [

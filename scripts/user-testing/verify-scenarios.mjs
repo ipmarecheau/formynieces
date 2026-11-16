@@ -37,6 +37,10 @@ const EXPECT = {
     'GD-01': '/guardian/dashboard', 'GD-02': '/guardian/progress', 'GD-05': '/guardian/dashboard' } },
   AL: { path: '/user-testing/al', scenarios: {
     'AL-01': '/admin/student-logs', 'AL-02': '/admin/student-logs', 'AL-03': '/admin/student-logs' } },
+  SH: { path: '/user-testing/sh', scenarios: {
+    'SH-01': '/voyage', 'SH-02': '/voyage', 'SH-03': '/voyage', 'SH-04': '/voyage' } },
+  AM: { path: '/user-testing/am', scenarios: {
+    'AM-01': '/voyage' } },
 };
 
 const b = await chromium.launch({ headless: true, executablePath: chromiumPath() });

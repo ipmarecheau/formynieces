@@ -112,6 +112,20 @@
         .ut-feature .fblurb { font-size: 0.88rem; color: var(--muted); line-height: 1.4; margin-top: 2px; }
         .ut-pill { font-size: 0.8rem; font-weight: 800; padding: 5px 10px; border-radius: 99px; background: var(--skip-bg); color: var(--skip); white-space: nowrap; }
         .ut-pill.done { background: var(--good-bg); color: var(--good); }
+        .ut-pill.waiting { background: var(--warn-bg); color: var(--warn); }
+        .ut-group:first-child .ut-group-head { margin-top: 6px; }
+        .ut-group-head {
+            display: flex; align-items: center; justify-content: space-between; gap: 10px;
+            width: 100%; background: none; border: 0; border-bottom: 1px solid var(--line);
+            cursor: pointer; text-align: left;
+            font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;
+            color: var(--muted); margin: 22px 2px 8px; padding: 0 0 6px;
+        }
+        .ut-group-head:hover { color: var(--ink); }
+        .ut-group-count { font-weight: 700; opacity: 0.6; }
+        .ut-group-caret { transition: transform 0.15s ease; font-size: 0.9rem; }
+        .ut-group-caret.open { transform: rotate(180deg); }
+        [x-cloak] { display: none !important; }
         .ut-tag { display:inline-block; font-size: 0.72rem; font-weight: 800; letter-spacing: .04em; color: var(--muted); background: #eef4f8; border:1px solid var(--line); padding: 3px 8px; border-radius: 6px; }
         .ut-note-hint { font-size: 0.82rem; color: var(--muted); margin: 4px 2px 0; }
         .ut-done-emoji { font-size: 3rem; text-align: center; margin-bottom: 8px; }

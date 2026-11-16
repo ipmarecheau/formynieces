@@ -111,17 +111,34 @@
             </div>
         @endif
         <div class="ut-narrow">
-            @foreach ($features as $code => $f)
-                @php $count = $done[$code] ?? 0; $tot = count($f['scenarios']); @endphp
-                <a class="ut-feature" href="{{ route('user-testing.feature', ['feature' => strtolower($code)]) }}" wire:navigate>
-                    <div>
-                        <div class="fname">{{ $f['name'] }} @isset($f['device'])<span class="ut-chip">📱 needs the app</span>@endisset</div>
-                        <div class="fblurb">{{ $f['blurb'] }}</div>
+            @foreach ($groupedFeatures as $group => $groupFeatures)
+                @php $key = 'ut_grp_'.\Illuminate\Support\Str::slug($group); @endphp
+                <div class="ut-group"
+                     x-data="{ open: (() => { try { return JSON.parse(localStorage.getItem('{{ $key }}') ?? 'true'); } catch (e) { return true; } })() }"
+                     x-init="$watch('open', v => { try { localStorage.setItem('{{ $key }}', JSON.stringify(v)); } catch (e) {} })">
+                    <button type="button" class="ut-group-head" @click="open = !open" :aria-expanded="open">
+                        <span>{{ $group }} <span class="ut-group-count">({{ count($groupFeatures) }})</span></span>
+                        <span class="ut-group-caret" :class="{ 'open': open }">▾</span>
+                    </button>
+                    <div x-show="open" x-cloak>
+                        @foreach ($groupFeatures as $code => $f)
+                            @php
+                                $count = $done[$code] ?? 0;
+                                $tot = count($f['scenarios']);
+                                $isWaiting = isset($waitingFeatures[$code]);
+                            @endphp
+                            <a class="ut-feature" href="{{ route('user-testing.feature', ['feature' => strtolower($code)]) }}" wire:navigate>
+                                <div>
+                                    <div class="fname">{{ $f['name'] }} @isset($f['device'])<span class="ut-chip">📱 needs the app</span>@endisset</div>
+                                    <div class="fblurb">{{ $f['blurb'] }}</div>
+                                </div>
+                                <div class="ut-pill {{ $isWaiting ? 'waiting' : ($count >= $tot ? 'done' : '') }}">
+                                    {{ $isWaiting ? '⏳ waiting' : ($count >= $tot ? '✓ done' : $count.' / '.$tot) }}
+                                </div>
+                            </a>
+                        @endforeach
                     </div>
-                    <div class="ut-pill {{ $count >= $tot ? 'done' : '' }}">
-                        {{ $count >= $tot ? '✓ done' : $count.' / '.$tot }}
-                    </div>
-                </a>
+                </div>
             @endforeach
         </div>
 
