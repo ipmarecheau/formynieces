@@ -43,3 +43,7 @@ Schedule::command('personas:run')->dailyAt('02:30');
 // /user-testing: send the before/after reminder emails for deferred (waiting) checks on
 // delayed-feedback scenarios, so testers are nudged around the expected notification time.
 Schedule::command('verification:send-reminders')->everyFiveMinutes();
+
+// /user-testing: once a day, email testers to re-test any scenario whose BDD definition or
+// implementation changed since their verdict. Daily, so a busy day of commits never floods them.
+Schedule::command('verification:flag-changes')->dailyAt('09:00');

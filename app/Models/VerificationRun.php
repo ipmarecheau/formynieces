@@ -47,6 +47,10 @@ class VerificationRun extends Model
         'expected_at',
         'first_reminder_sent_at',
         'second_reminder_sent_at',
+        'spec_hash',
+        'impl_hash',
+        'verified_commit',
+        'change_notified_hash',
     ];
 
     protected function casts(): array

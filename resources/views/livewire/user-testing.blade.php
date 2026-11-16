@@ -126,14 +126,15 @@
                                 $count = $done[$code] ?? 0;
                                 $tot = count($f['scenarios']);
                                 $isWaiting = isset($waitingFeatures[$code]);
+                                $isStale = isset($staleFeatures[$code]);
                             @endphp
                             <a class="ut-feature" href="{{ route('user-testing.feature', ['feature' => strtolower($code)]) }}" wire:navigate>
                                 <div>
                                     <div class="fname">{{ $f['name'] }} @isset($f['device'])<span class="ut-chip">📱 needs the app</span>@endisset</div>
                                     <div class="fblurb">{{ $f['blurb'] }}</div>
                                 </div>
-                                <div class="ut-pill {{ $isWaiting ? 'waiting' : ($count >= $tot ? 'done' : '') }}">
-                                    {{ $isWaiting ? '⏳ waiting' : ($count >= $tot ? '✓ done' : $count.' / '.$tot) }}
+                                <div class="ut-pill {{ $isWaiting ? 'waiting' : ($isStale ? 'retest' : ($count >= $tot ? 'done' : '')) }}">
+                                    {{ $isWaiting ? '⏳ waiting' : ($isStale ? '🔄 re-test' : ($count >= $tot ? '✓ done' : $count.' / '.$tot)) }}
                                 </div>
                             </a>
                         @endforeach
@@ -241,6 +242,14 @@
                         </p>
                     @endif
 
+                    @isset($currentStale)
+                        <div class="ut-retest">
+                            🔄 <b>Updated since your answer.</b>
+                            {{ $currentStale['spec'] && $currentStale['impl'] ? 'The steps and the feature both changed.' : ($currentStale['spec'] ? 'The steps for this changed.' : 'The feature was updated.') }}
+                            Please try it again and re-record how it went.
+                        </div>
+                    @endisset
+
                     @if ($isDelayed)
                         <div class="ut-defer">
                             ⏰ This one happens later. We'll email you around the time it should
@@ -301,6 +310,14 @@
                             Your last answer: <b>{{ ['worked' => '✅ It worked', 'issue' => '⚠️ Something was off', 'skipped' => '⏭️ Skipped', 'waiting' => '⏳ Waiting for the reminder'][$currentVerdict] ?? $currentVerdict }}</b> — tap again to change it.
                         </p>
                     @endif
+
+                    @isset($currentStale)
+                        <div class="ut-retest">
+                            🔄 <b>Updated since your answer.</b>
+                            {{ $currentStale['spec'] && $currentStale['impl'] ? 'The steps and the feature both changed.' : ($currentStale['spec'] ? 'The steps for this changed.' : 'The feature was updated.') }}
+                            Please try it again and re-record how it went.
+                        </div>
+                    @endisset
 
                     @if ($isDelayed)
                         <div class="ut-defer">

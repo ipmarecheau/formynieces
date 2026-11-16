@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use App\Services\UserTesting\ScenarioFingerprint;
 use App\Services\UserTesting\ScenarioFixtures;
 use App\Services\UserTesting\TestingCatalog;
 use Illuminate\Support\Facades\Auth;
@@ -62,6 +63,28 @@ it('can seed a gate-passing account for every web scenario', function () {
             expect($user->is_test)->toBeTrue("{$id}: seeded account is not is_test");
             // Verified, or the guardian/student/admin screens bounce to the email-verify gate.
             expect($user->hasVerifiedEmail())->toBeTrue("{$id}: seeded account is not email-verified");
+        }
+    }
+});
+
+/** Every scenario maps to real implementation files and a hashable Gherkin block. */
+it('maps every scenario to existing source files and a fingerprintable spec', function () {
+    $fingerprint = app(ScenarioFingerprint::class);
+
+    foreach (TestingCatalog::features() as $feature) {
+        foreach ($feature['scenarios'] as $scenario) {
+            $id = $scenario['id'];
+
+            $sources = TestingCatalog::sources($id);
+            expect($sources)->not->toBeEmpty("{$id}: no implementation sources mapped");
+
+            foreach ($sources as $path) {
+                expect(is_file(base_path($path)))->toBeTrue("{$id}: source file missing — {$path}");
+            }
+
+            // The change-tracker needs a hashable spec block and impl hash for every scenario.
+            expect($fingerprint->specHash($id))->not->toBeNull("{$id}: no @scenario block to fingerprint");
+            expect($fingerprint->implHash($sources))->not->toBeNull("{$id}: implementation hashed to nothing");
         }
     }
 });

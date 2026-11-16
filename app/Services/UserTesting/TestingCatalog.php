@@ -16,6 +16,36 @@ namespace App\Services\UserTesting;
  */
 class TestingCatalog
 {
+    /**
+     * The files that implement each scenario, per-scenario (precise granularity), repo-relative.
+     * Hashing these tells a tester's verdict when the implementation changed since they tested
+     * (the Gherkin is tracked separately, by the scenario's .feature block). Siblings may share
+     * files; listing each scenario keeps the mapping precise and independently refinable.
+     *
+     * @var array<string, array<int, string>>
+     */
+    private const SCENARIO_SOURCES = [
+        'HC-01' => ['resources/views/partials/help-button.blade.php', 'app/Http/Controllers/SupportTicketController.php', 'app/Models/SupportTicket.php'],
+        'HC-02' => ['resources/views/partials/help-button.blade.php', 'app/Http/Controllers/SupportTicketController.php', 'app/Models/SupportTicket.php'],
+        'HC-03' => ['resources/views/partials/help-button.blade.php', 'app/Http/Controllers/SupportTicketController.php', 'app/Models/SupportTicket.php'],
+        'HC-04' => ['resources/views/partials/help-button.blade.php', 'app/Http/Controllers/SupportTicketController.php'],
+        'HC-05' => ['resources/views/partials/help-button.blade.php', 'app/Http/Controllers/SupportTicketController.php'],
+        'GD-01' => ['app/Livewire/GuardianDashboard.php', 'resources/views/livewire/guardian-dashboard.blade.php'],
+        'GD-02' => ['app/Livewire/GuardianProgress.php', 'resources/views/livewire/guardian-progress.blade.php'],
+        'GD-05' => ['app/Livewire/GuardianDashboard.php', 'resources/views/livewire/guardian-dashboard.blade.php'],
+        'SH-01' => ['app/Http/Controllers/VoyageController.php', 'resources/views/voyage/overworld.blade.php'],
+        'SH-02' => ['app/Http/Controllers/VoyageController.php', 'resources/views/voyage/overworld.blade.php'],
+        'SH-03' => ['app/Http/Controllers/VoyageController.php', 'resources/views/voyage/overworld.blade.php'],
+        'SH-04' => ['app/Http/Controllers/VoyageController.php', 'resources/views/voyage/overworld.blade.php'],
+        'AM-01' => ['app/Http/Controllers/VoyageController.php', 'resources/views/voyage/overworld.blade.php'],
+        'AL-01' => ['app/Filament/Pages/StudentLogs.php', 'resources/views/filament/pages/student-logs.blade.php', 'app/Services/Admin/StudentActivityLog.php'],
+        'AL-02' => ['app/Filament/Pages/StudentLogs.php', 'resources/views/filament/pages/student-logs.blade.php', 'app/Services/Admin/StudentActivityLog.php'],
+        'AL-03' => ['app/Filament/Pages/StudentLogs.php', 'resources/views/filament/pages/student-logs.blade.php'],
+        'LR-01' => ['app/Services/Reminders/ReminderScheduleBuilder.php', 'app/Services/Reminders/ScheduledReminder.php'],
+        'LR-07' => ['app/Services/Reminders/ReminderScheduleBuilder.php', 'app/Services/Reminders/ScheduledReminder.php'],
+        'PN-01' => ['app/Http/Controllers/DeviceTokenController.php', 'app/Models/DeviceToken.php', 'app/Services/Push/PushSender.php'],
+    ];
+
     /** The order feature groups appear in on the chooser. */
     public const GROUP_ORDER = [
         'For students — the Voyage',
@@ -407,6 +437,17 @@ class TestingCatalog
     public static function isDevice(array $feature): bool
     {
         return isset($feature['device']);
+    }
+
+    /**
+     * The repo-relative implementation files for a scenario, used to fingerprint its code so a
+     * tester knows when it changed since they tested.
+     *
+     * @return array<int, string>
+     */
+    public static function sources(string $scenarioId): array
+    {
+        return self::SCENARIO_SOURCES[strtoupper($scenarioId)] ?? [];
     }
 
     /**

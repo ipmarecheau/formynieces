@@ -113,6 +113,13 @@
         .ut-pill { font-size: 0.8rem; font-weight: 800; padding: 5px 10px; border-radius: 99px; background: var(--skip-bg); color: var(--skip); white-space: nowrap; }
         .ut-pill.done { background: var(--good-bg); color: var(--good); }
         .ut-pill.waiting { background: var(--warn-bg); color: var(--warn); }
+        .ut-pill.retest { background: #e0e7ff; color: #4338ca; }
+        /* "Updated since your answer" banner on a scenario that changed — indigo. */
+        .ut-retest {
+            margin-top: 12px; padding: 12px 14px; border-radius: 12px;
+            background: #eef2ff; border: 1px solid #c7d2fe; color: #3730a3;
+            font-size: 0.92rem; line-height: 1.5;
+        }
         .ut-group:first-child .ut-group-head { margin-top: 6px; }
         .ut-group-head {
             display: flex; align-items: center; justify-content: space-between; gap: 10px;
