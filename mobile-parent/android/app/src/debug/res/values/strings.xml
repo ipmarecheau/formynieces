@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!-- Debug overlay: marks the installable test build as a dev app (name + badged icon). -->
+<resources>
+    <string name="app_name">SmoothSeas Parent (Dev)</string>
+    <string name="title_activity_main">SmoothSeas Parent (Dev)</string>
+</resources>
