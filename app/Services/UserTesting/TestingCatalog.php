@@ -160,7 +160,7 @@ class TestingCatalog
                         'start' => '/admin/student-logs',
                         'steps' => [
                             'You are in the team admin area, on the Student Logs page.',
-                            'Use the picker to choose the test child ("Test Explorer").',
+                            'Use the picker to choose the test child named "Test Explorer (AL)".',
                             'Look at the timeline that appears.',
                         ],
                         'expect' => 'The child\'s recent activity appeared with the newest items at the top.',
@@ -172,7 +172,7 @@ class TestingCatalog
                         'persona' => 'admin',
                         'start' => '/admin/student-logs',
                         'steps' => [
-                            'Choose the test child ("Test Explorer") in the picker.',
+                            'Choose the test child named "Test Explorer (AL)" in the picker.',
                             'Scan down the timeline.',
                             'Look for a practice attempt, a mastered module, an essay, a finished day, and a help request.',
                         ],

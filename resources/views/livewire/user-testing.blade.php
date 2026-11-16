@@ -1,14 +1,50 @@
 <div>
+    @script
+    <script>
+        // Mirror the tester's identity into localStorage so it outlives the server session.
+        Livewire.on('tester-identity-saved', (e) => {
+            const d = Array.isArray(e) ? e[0] : e;
+            try {
+                localStorage.setItem('ut_email', d.email ?? '');
+                localStorage.setItem('ut_name', d.name ?? '');
+            } catch (err) {}
+        });
+        Livewire.on('tester-identity-cleared', () => {
+            try {
+                localStorage.removeItem('ut_email');
+                localStorage.removeItem('ut_name');
+            } catch (err) {}
+        });
+    </script>
+    @endscript
+
     <div class="ut-top">
         <div class="ut-brand">Smooth<span>Seas</span> · Test Drive</div>
         @if ($testerEmail !== '')
-            <div class="ut-who">{{ $testerName ?: $testerEmail }} · <a wire:click="signOut">sign out</a></div>
+            <div class="ut-who">{{ $testerName ?: $testerEmail }} ·
+                <a wire:click="signOut"
+                   x-on:click="try { localStorage.removeItem('ut_email'); localStorage.removeItem('ut_name'); } catch (e) {}">sign out</a>
+            </div>
         @endif
     </div>
 
     @if ($testerEmail === '')
         {{-- ── Sign in with email ──────────────────────────────────── --}}
-        <div class="ut-card ut-narrow">
+        {{-- On arrival, if this browser already knows the tester, sign them straight back in so
+             their email (and the progress saved against it) is restored without retyping. --}}
+        <div class="ut-card ut-narrow"
+             x-data
+             x-init="(() => {
+                 // Only on a genuine page load — never after an in-page sign-out (which would
+                 // otherwise re-run this on the Livewire morph and sign the tester straight back in).
+                 if (window.__utIdentityChecked) { return; }
+                 window.__utIdentityChecked = true;
+                 try {
+                     const email = localStorage.getItem('ut_email');
+                     const name = localStorage.getItem('ut_name') || '';
+                     if (email) { $wire.restoreIdentity(email, name); }
+                 } catch (e) {}
+             })()">
             <h1>Welcome — thanks for helping! 🧭</h1>
             <p class="lead" style="margin: 10px 0 18px;">
                 We'll walk you through a few quick things to try, one at a time, with the real

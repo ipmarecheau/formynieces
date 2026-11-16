@@ -36,6 +36,31 @@ it('requires a valid email and a name before testing', function () {
     expect(session('tester_name'))->toBe('Maria');
 });
 
+it('restores a browser-remembered tester (email is the durable key) and reloads their verdicts', function () {
+    VerificationRun::factory()->create([
+        'tester_email' => 'maria@example.com',
+        'scenario_id' => 'HC-01',
+        'feature' => 'HC',
+        'result' => VerificationRun::RESULT_WORKED,
+    ]);
+
+    Livewire::test(UserTesting::class, ['feature' => 'hc'])
+        ->call('restoreIdentity', 'Maria@Example.com', 'Maria') // as the browser would, from localStorage
+        ->assertSet('testerEmail', 'maria@example.com')         // normalised
+        ->assertSet('testerName', 'Maria')
+        ->assertSee('Your last answer'); // their prior verdict is shown again
+
+    expect(session('tester_email'))->toBe('maria@example.com');
+});
+
+it('ignores an invalid remembered identity', function () {
+    Livewire::test(UserTesting::class)
+        ->call('restoreIdentity', 'not-an-email', '')
+        ->assertSet('testerEmail', '');
+
+    expect(session('tester_email'))->toBeNull();
+});
+
 it('records a verdict and advances to the next scenario', function () {
     Livewire::test(UserTesting::class, ['feature' => 'hc'])
         ->set('testerEmail', 'maria@example.com')

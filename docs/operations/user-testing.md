@@ -15,9 +15,11 @@ with layout `components/layouts/testing.blade.php`.
 
 ## How it works
 
-1. **Sign in** — the tester enters an email + name. The email uniquely identifies them, so
-   verdicts persist across sessions and devices (`session('tester_email')`). No password,
-   no real account.
+1. **Sign in** — the tester enters an email + name. The email is the **durable key**: every
+   verdict is stored against it, and the identity is mirrored into the browser's
+   `localStorage`, so when the server session expires (120 min) the tester is auto-restored
+   straight to their progress on their next visit rather than back to a blank sign-in.
+   Signing out clears both. No password, no real account.
 2. **Pick a feature** — the chooser lists each feature with a progress pill.
 3. **Walk scenarios** — plain-English steps on the left; the **real screen embedded in an
    iframe** on the right, already signed in as the right persona, at a **Web / Tablet /
@@ -38,7 +40,7 @@ account**, and redirects to the screen under test. It is refused in production u
 
 Each scenario gets its own stable, idempotent account on the `testdrive.smoothseas.test`
 domain (`td-<scenario>-<persona>@…`). All AL (activity-log) scenarios deliberately share
-**one** child named exactly `Test Explorer`, so the admin picker is unambiguous; every other
+**one** child named `Test Explorer (AL)`, so the admin picker is unambiguous; every other
 scenario's child is name-qualified (`Test Explorer (GD-01)`) to avoid collisions.
 
 ## Gates & blockers audit

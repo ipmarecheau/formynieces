@@ -27,6 +27,9 @@ class ScenarioFixtures
     /** The single shared child all AL (activity-log) scenarios point the admin at. */
     private const AL_LOG_KEY = 'AL-LOG';
 
+    /** The friendly, unambiguous name that child shows under in the admin picker. */
+    private const AL_CHILD_NAME = 'Test Explorer (AL)';
+
     /**
      * Ensure the state for a scenario exists and return the account to sign in as.
      */
@@ -91,7 +94,7 @@ class ScenarioFixtures
      */
     private function seedActiveChild(): User
     {
-        $child = $this->guardianWithChild(self::AL_LOG_KEY, 'Test Explorer')['student'];
+        $child = $this->guardianWithChild(self::AL_LOG_KEY, self::AL_CHILD_NAME)['student'];
 
         // Each kind of activity is seeded only if the child has none of it yet, so re-entering
         // the scenario tops up a partial seed rather than piling up duplicates.

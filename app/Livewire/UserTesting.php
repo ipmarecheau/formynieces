@@ -50,12 +50,35 @@ class UserTesting extends Component
         $this->testerEmail = strtolower(trim($this->testerEmail));
         $this->testerName = trim($this->testerName);
         session(['tester_email' => $this->testerEmail, 'tester_name' => $this->testerName]);
+
+        // Remember the tester in the browser too, so their email (the key their saved verdicts
+        // hang off) survives the server session expiring — they return straight to their progress.
+        $this->dispatch('tester-identity-saved', email: $this->testerEmail, name: $this->testerName);
+    }
+
+    /**
+     * Re-establish a tester from their browser-remembered identity when the server session has
+     * lapsed. The email is the durable key: their verdicts are loaded straight back from it.
+     */
+    public function restoreIdentity(string $email, string $name = ''): void
+    {
+        $email = strtolower(trim($email));
+
+        if ($email === '' || ! filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return;
+        }
+
+        $this->testerEmail = $email;
+        $this->testerName = trim($name);
+        session(['tester_email' => $this->testerEmail, 'tester_name' => $this->testerName]);
+        $this->syncNotesToSavedRun();
     }
 
     public function signOut(): void
     {
         session()->forget(['tester_email', 'tester_name']);
         $this->reset(['testerEmail', 'testerName', 'feature', 'index', 'notes']);
+        $this->dispatch('tester-identity-cleared');
     }
 
     public function goTo(int $i): void
