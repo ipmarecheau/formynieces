@@ -32,6 +32,16 @@ class UserTestingController extends Controller
             // Defence in depth: never impersonate a real account, only seeded test ones.
             abort_unless($user->is_test, Response::HTTP_FORBIDDEN);
             Auth::login($user);
+
+            // The Filament admin panel runs AuthenticateSession, which logs a user straight
+            // back out (→ /admin/login) unless the session carries a password hash matching
+            // the current user. A programmatic Auth::login never sets it, so an embedded
+            // admin scenario would bounce to the login screen. Stamp it ourselves so the
+            // seeded admin stays signed in inside the preview.
+            session()->put(
+                'password_hash_'.Auth::getDefaultDriver(),
+                $user->getAuthPassword(),
+            );
         }
 
         return redirect()->to($definition['start']);

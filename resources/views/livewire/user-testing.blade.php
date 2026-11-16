@@ -210,6 +210,9 @@
                          :style="device==='mobile' ? 'width:390px' : (device==='tablet' ? 'width:834px' : 'width:100%')">
                         <iframe class="ut-frame" src="{{ route('user-testing.enter', $current['id']) }}"
                                 wire:key="frame-{{ $current['id'] }}"
+                                {{-- Scenarios like HC-03 record a voice note; getUserMedia is blocked
+                                     inside an iframe unless the embed explicitly grants it. --}}
+                                allow="microphone; camera; clipboard-write"
                                 title="Live preview of the screen to test"></iframe>
                     </div>
                 </div>

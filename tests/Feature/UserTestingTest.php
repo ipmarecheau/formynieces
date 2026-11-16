@@ -132,6 +132,22 @@ it('signs in as a seeded is_test parent and lands on the dashboard', function ()
     expect($user)->not->toBeNull();
     expect($user->is_test)->toBeTrue();
     expect($user->role)->toBe('guardian');
+    // Must be email-verified, or the dashboard bounces to the verification gate.
+    expect($user->hasVerifiedEmail())->toBeTrue();
+});
+
+it('seeds verified accounts so no feature bounces to the email-verification gate', function () {
+    config()->set('user_testing.impersonation', true);
+
+    // Parent, child, and admin personas must all land verified.
+    $this->get('/user-testing/enter/HC-01');
+    expect(auth()->user()->hasVerifiedEmail())->toBeTrue();
+
+    $this->get('/user-testing/enter/HC-03'); // child persona
+    expect(auth()->user()->hasVerifiedEmail())->toBeTrue();
+
+    $this->get('/user-testing/enter/AL-01'); // admin persona
+    expect(auth()->user()->hasVerifiedEmail())->toBeTrue();
 });
 
 it('signs nobody in for a guest scenario', function () {

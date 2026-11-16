@@ -24,6 +24,9 @@ use App\Models\WritingSubmission;
  */
 class ScenarioFixtures
 {
+    /** The single shared child all AL (activity-log) scenarios point the admin at. */
+    private const AL_LOG_KEY = 'AL-LOG';
+
     /**
      * Ensure the state for a scenario exists and return the account to sign in as.
      */
@@ -36,6 +39,18 @@ class ScenarioFixtures
             'child' => $this->guardianWithChild($scenarioId)['student'],
             default => null,
         };
+    }
+
+    /**
+     * Mark an account's email verified. `email_verified_at` is intentionally not mass-assignable
+     * on the User model, so it must be force-set — otherwise updateOrCreate silently drops it and
+     * the account bounces to the email-verification gate.
+     */
+    private function markVerified(User $user): void
+    {
+        if ($user->email_verified_at === null) {
+            $user->forceFill(['email_verified_at' => now()])->save();
+        }
     }
 
     private function slug(string $scenarioId): string
@@ -56,14 +71,16 @@ class ScenarioFixtures
                 'name' => 'Test Admin',
                 'password' => config('user_testing.password'),
                 'role' => 'admin',
-                'email_verified_at' => now(),
                 'is_test' => true,
             ],
         );
+        $this->markVerified($admin);
 
         // The student log is only worth looking at if some child has a full, varied
-        // history to show, so seed one active child (AL-01/02) the admin can pick.
-        $this->seedActiveChild($scenarioId);
+        // history to show, so seed one active child the admin can pick. All AL scenarios
+        // share this single child (stable key + name) so the picker shows exactly one
+        // unambiguous "Test Explorer", not one per scenario.
+        $this->seedActiveChild();
 
         return $admin;
     }
@@ -72,9 +89,9 @@ class ScenarioFixtures
      * A child with one of every kind of activity — practised, mastered, wrote, finished a
      * day, and asked for help — so the activity log spans the whole journey (AL-02).
      */
-    private function seedActiveChild(string $scenarioId): User
+    private function seedActiveChild(): User
     {
-        $child = $this->guardianWithChild($scenarioId)['student'];
+        $child = $this->guardianWithChild(self::AL_LOG_KEY, 'Test Explorer')['student'];
 
         // Each kind of activity is seeded only if the child has none of it yet, so re-entering
         // the scenario tops up a partial seed rather than piling up duplicates.
@@ -127,7 +144,7 @@ class ScenarioFixtures
      *
      * @return array{guardian: User, student: User}
      */
-    private function guardianWithChild(string $scenarioId): array
+    private function guardianWithChild(string $scenarioId, ?string $childName = null): array
     {
         $guardian = User::updateOrCreate(
             ['email' => $this->email($scenarioId, 'parent')],
@@ -135,25 +152,27 @@ class ScenarioFixtures
                 'name' => 'Test Parent',
                 'password' => config('user_testing.password'),
                 'role' => 'guardian',
-                'email_verified_at' => now(),
                 'age_attested_at' => now(),
                 'is_test' => true,
             ],
         );
+        $this->markVerified($guardian);
 
         $student = User::updateOrCreate(
             ['email' => $this->email($scenarioId, 'child')],
             [
-                'name' => 'Test Explorer',
+                // Non-AL children are scenario-qualified so they never collide with the
+                // one canonical "Test Explorer" the admin picker targets.
+                'name' => $childName ?? 'Test Explorer ('.$scenarioId.')',
                 'password' => config('user_testing.password'),
                 'role' => 'student',
                 'parent_id' => $guardian->id,
                 'onboarding_completed_at' => now(), // routes to the Voyage, not the diagnostic
                 'target_sea_year' => now()->addYear()->year,
-                'email_verified_at' => now(),
                 'is_test' => true,
             ],
         );
+        $this->markVerified($student);
 
         $this->giveStudentAStartingState($student);
 

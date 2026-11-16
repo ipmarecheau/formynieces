@@ -49,8 +49,12 @@ nav:
       - Environments: operations/environments.md
       - Runbooks: operations/runbooks.md
       - QA agent surface: operations/qa-agent.md
+      - In-app help & support inbox: operations/support-inbox.md
+      - Guided user testing: operations/user-testing.md
   - Mobile apps:
       - Native apps (Capacitor): mobile/native-apps.md
+      - Push notifications (self-hosted): operations/push-notifications.md
+      - Local reminders (on-device): operations/local-reminders.md
   - Reference:
       - Feature status: features/index.md
       - HTTP routes: reference/routes.md
