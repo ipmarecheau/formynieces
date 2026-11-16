@@ -217,6 +217,9 @@ class TestingCatalog
                             'Let the app finish loading to the voyage map.',
                         ],
                         'expect' => 'The app installed, you allowed notifications, and it opened to the map without any error.',
+                        // The week of reminders is written on launch, but it is only confirmed
+                        // when one actually fires — so the tester can defer and be reminded.
+                        'delayed' => ['at' => '18:30', 'label' => 'the first scheduled reminder'],
                     ],
                     [
                         'id' => 'LR-07',
