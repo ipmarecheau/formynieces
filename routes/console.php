@@ -39,3 +39,7 @@ Schedule::command('push:re-engage')->dailyAt('18:30');
 // PA-01..03: nightly persona simulations (anxious parent + child's full day) within the
 // monthly budget, recording findings for the team to review in the admin panel.
 Schedule::command('personas:run')->dailyAt('02:30');
+
+// /user-testing: send the before/after reminder emails for deferred (waiting) checks on
+// delayed-feedback scenarios, so testers are nudged around the expected notification time.
+Schedule::command('verification:send-reminders')->everyFiveMinutes();

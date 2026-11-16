@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\VerificationRun;
+use App\Services\UserTesting\ExpectedNotificationTime;
 use App\Services\UserTesting\ScenarioFixtures;
 use App\Services\UserTesting\TestingCatalog;
 use chillerlan\QRCode\Common\EccLevel;
@@ -25,6 +26,9 @@ class UserTesting extends Component
 
     public string $testerName = '';
 
+    /** The tester's IANA timezone (captured from their browser), so reminders land locally. */
+    public ?string $testerTimezone = null;
+
     /** The feature code being walked, or null on the chooser screen. */
     public ?string $feature = null;
 
@@ -37,8 +41,40 @@ class UserTesting extends Component
     {
         $this->testerEmail = (string) session('tester_email', '');
         $this->testerName = (string) session('tester_name', '');
+        $this->testerTimezone = session('tester_timezone') ?: null;
         $this->feature = $feature ? strtoupper($feature) : null;
+
+        // A reminder email can deep-link straight to the scenario it is about, optionally
+        // pre-filling the "it never arrived" note so the tester only has to confirm it.
+        if ($this->feature !== null && ($jump = request()->string('scenario')->toString()) !== '') {
+            $scenarios = collect(TestingCatalog::feature($this->feature)['scenarios'] ?? []);
+            $at = $scenarios->search(fn ($s) => $s['id'] === strtoupper($jump));
+            if ($at !== false) {
+                $this->index = $at;
+            }
+        }
+
         $this->syncNotesToSavedRun();
+
+        if (request()->string('outcome')->toString() === 'missed' && $this->notes === '') {
+            $this->notes = 'Notification not received.';
+        }
+    }
+
+    /**
+     * Remember the tester's browser timezone, so deferred-check reminders are scheduled against
+     * the scenario's notification time in their own local day.
+     */
+    public function setTimezone(string $timezone): void
+    {
+        $timezone = trim($timezone);
+
+        if ($timezone === '' || ! in_array($timezone, timezone_identifiers_list(), true)) {
+            return;
+        }
+
+        $this->testerTimezone = $timezone;
+        session(['tester_timezone' => $timezone]);
     }
 
     public function signIn(): void
@@ -133,6 +169,48 @@ class UserTesting extends Component
         $this->next();
     }
 
+    /**
+     * Defer a delayed-feedback scenario: record a `waiting` check and compute when the
+     * notification is next expected in the tester's timezone. A scheduled sweep then emails
+     * them just before that moment to watch for it, and again after to record the outcome.
+     */
+    public function defer(): void
+    {
+        $feature = TestingCatalog::feature((string) $this->feature);
+
+        if ($feature === null || $this->testerEmail === '') {
+            return;
+        }
+
+        $scenario = $feature['scenarios'][$this->index] ?? null;
+
+        if ($scenario === null || ! TestingCatalog::isDelayed($scenario)) {
+            return;
+        }
+
+        $expectedAt = ExpectedNotificationTime::nextOccurrence(
+            $scenario['delayed']['at'],
+            $this->testerTimezone,
+            VerificationRun::FIRST_REMINDER_LEAD_MINUTES,
+        );
+
+        VerificationRun::updateOrCreate(
+            ['tester_email' => $this->testerEmail, 'scenario_id' => $scenario['id']],
+            [
+                'tester_name' => $this->testerName,
+                'tester_timezone' => $this->testerTimezone,
+                'feature' => $feature['code'],
+                'result' => VerificationRun::RESULT_WAITING,
+                'notes' => trim($this->notes) ?: null,
+                'expected_at' => $expectedAt,
+                'first_reminder_sent_at' => null,
+                'second_reminder_sent_at' => null,
+            ],
+        );
+
+        $this->next();
+    }
+
     private function scenarioCount(): int
     {
         $feature = TestingCatalog::feature((string) $this->feature);
@@ -176,11 +254,12 @@ class UserTesting extends Component
                 ->all();
         }
 
-        // Per-feature completion count for the chooser pills.
+        // Per-feature completion count for the chooser pills. A still-waiting deferred check is
+        // not counted as done — it's pending, and surfaces separately in the "waiting on" list.
         $done = [];
         foreach ($features as $code => $f) {
             $done[$code] = collect($f['scenarios'])
-                ->filter(fn ($s) => isset($verdicts[$s['id']]))
+                ->filter(fn ($s) => isset($verdicts[$s['id']]) && $verdicts[$s['id']] !== VerificationRun::RESULT_WAITING)
                 ->count();
         }
 
@@ -199,6 +278,18 @@ class UserTesting extends Component
             ? app(ScenarioFixtures::class)->deviceLogin($activeFeature['device']['app'])
             : null;
 
+        // Delayed-feedback scenarios (a notification that fires later) can be deferred with an
+        // email reminder instead of forcing the tester to wait in front of the screen.
+        $isDelayed = $current !== null && TestingCatalog::isDelayed($current);
+
+        // Checks this tester is waiting on — shown on the chooser so pending work stays visible.
+        $waiting = ($this->testerEmail !== '')
+            ? VerificationRun::where('tester_email', $this->testerEmail)
+                ->where('result', VerificationRun::RESULT_WAITING)
+                ->orderBy('expected_at')
+                ->get()
+            : collect();
+
         return view('livewire.user-testing', [
             'features' => $features,
             'activeFeature' => $activeFeature,
@@ -208,9 +299,11 @@ class UserTesting extends Component
             'verdicts' => $verdicts,
             'currentVerdict' => $current ? ($verdicts[$current['id']] ?? null) : null,
             'isDevice' => $isDevice,
+            'isDelayed' => $isDelayed,
             'apkUrl' => $apkUrl,
             'deviceLogin' => $deviceLogin,
             'qr' => $apkUrl ? $this->qrDataUri($apkUrl) : null,
+            'waiting' => $waiting,
         ]);
     }
 

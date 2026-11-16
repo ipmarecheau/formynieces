@@ -166,6 +166,43 @@
         }
         .ut-perm { display: flex; gap: 12px; align-items: flex-start; padding: 10px 0; border-top: 1px dashed var(--line); }
         .ut-perm-ic { font-size: 1.5rem; line-height: 1; flex: 0 0 auto; }
+        /* One-time setup laid out as ordered steps: install → sign in → permissions. */
+        .ut-setup-step { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); }
+        .ut-setup-step:first-of-type { margin-top: 14px; }
+        .ut-setup-head { display: flex; align-items: center; gap: 9px; font-weight: 800; margin-bottom: 8px; }
+        .ut-setup-num {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 24px; height: 24px; flex: 0 0 auto; border-radius: 50%;
+            background: var(--teal); color: #fff; font-size: 0.82rem; font-weight: 800;
+        }
+        .ut-cred {
+            display: flex; justify-content: space-between; align-items: center; gap: 10px;
+            padding: 9px 12px; margin-top: 8px; border-radius: 10px; background: var(--bg);
+        }
+        .ut-cred span { font-weight: 700; color: var(--muted); }
+        .ut-cred code { font-weight: 800; user-select: all; word-break: break-all; text-align: right; }
+        /* The test login, framed inside the scenario panel beside its steps. */
+        .ut-login-box {
+            margin-top: 14px; padding: 14px 16px; border-radius: 14px;
+            background: var(--bg); border: 1px solid var(--line);
+        }
+        /* Deferred-check prompt on a delayed scenario, and the "waiting on" list on the chooser. */
+        .ut-defer {
+            margin-top: 14px; padding: 14px 16px; border-radius: 14px;
+            background: var(--warn-bg); border: 1px solid #f6e4b8; color: #7a5b12;
+            font-size: 0.92rem; line-height: 1.5;
+        }
+        .ut-defer .ut-btn { width: 100%; }
+        .ut-waiting {
+            margin: 14px 0 20px; padding: 16px 18px; border-radius: 16px;
+            background: var(--card); border: 1px solid var(--line);
+        }
+        .ut-waiting-head { font-weight: 800; font-size: 1.05rem; margin-bottom: 4px; }
+        .ut-waiting-item {
+            display: flex; align-items: center; justify-content: space-between; gap: 12px;
+            text-decoration: none; color: inherit; padding: 12px 0;
+            border-top: 1px dashed var(--line);
+        }
         .ut-note-box {
             margin-top: 14px; padding: 12px 14px; border-radius: 12px;
             background: #fef9ec; border: 1px solid #f6e4b8; font-size: 0.92rem; color: #7a5b12;

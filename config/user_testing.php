@@ -20,9 +20,9 @@ return [
 
     // Every seeded test account shares this domain and is flagged is_test, so it is
     // isolated from real families and easy to purge.
-    'email_domain' => 'testdrive.smoothseas.test',
+    'email_domain' => 'qa.test',
 
-    'password' => 'testdrive',
+    'password' => 'test',
 
     /*
     |--------------------------------------------------------------------------

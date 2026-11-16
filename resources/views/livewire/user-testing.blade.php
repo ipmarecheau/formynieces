@@ -15,6 +15,13 @@
                 localStorage.removeItem('ut_name');
             } catch (err) {}
         });
+
+        // Tell the server this tester's timezone, so deferred-check reminders are scheduled
+        // against the scenario's notification time in their own local day.
+        try {
+            const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            if (tz) { $wire.setTimezone(tz); }
+        } catch (err) {}
     </script>
     @endscript
 
@@ -73,6 +80,36 @@
             <h1>Pick something to test</h1>
             <p class="lead" style="margin-top:8px;">Each one takes just a few minutes. Start anywhere — your place is saved.</p>
         </div>
+
+        @if ($waiting->isNotEmpty())
+            {{-- Deferred checks this tester is waiting on — kept visible so pending work isn't lost. --}}
+            <div class="ut-narrow">
+                <div class="ut-waiting">
+                    <div class="ut-waiting-head">⏳ Checks you're waiting on</div>
+                    <p class="ut-note-hint" style="margin:0 0 12px;">
+                        We'll email you around the expected time. When you've looked, open the check to record how it went.
+                    </p>
+                    @foreach ($waiting as $w)
+                        @php
+                            $wScenario = \App\Services\UserTesting\TestingCatalog::scenario($w->scenario_id);
+                            $wTz = $w->tester_timezone ?: config('app.timezone');
+                        @endphp
+                        <a class="ut-waiting-item"
+                           href="{{ route('user-testing.feature', ['feature' => strtolower($w->feature)]) }}?scenario={{ $w->scenario_id }}"
+                           wire:navigate>
+                            <div>
+                                <div class="fname">{{ $wScenario['title'] ?? $w->scenario_id }} <span class="ut-chip">{{ $w->scenario_id }}</span></div>
+                                <div class="fblurb">
+                                    Watch from {{ optional($w->firstReminderAt())->setTimezone($wTz)->format('g:ia') }} ·
+                                    call it missed after {{ optional($w->secondReminderAt())->setTimezone($wTz)->format('g:ia') }}
+                                </div>
+                            </div>
+                            <div class="ut-pill">waiting</div>
+                        </a>
+                    @endforeach
+                </div>
+            </div>
+        @endif
         <div class="ut-narrow">
             @foreach ($features as $code => $f)
                 @php $count = $done[$code] ?? 0; $tot = count($f['scenarios']); @endphp
@@ -110,51 +147,57 @@
         </div>
 
         <div class="ut-split" x-data="{ setup: true }">
-            {{-- Left: install + permissions (do once) --}}
+            {{-- Left: the one-time device setup — install the app, then the permissions
+                 it will ask for. The login itself sits with the scenario on the right. --}}
             <div class="ut-pane">
                 <div class="ut-card">
                     <div class="ut-phonebadge">📱 On your phone or tablet</div>
-                    <h2 style="margin:8px 0 6px;">Install the app (once)</h2>
+                    <h2 style="margin:8px 0 6px;">Set up once</h2>
                     <p class="lead">{{ $activeFeature['device']['intro'] }}</p>
-                    <div class="ut-qrbox">
-                        <img class="ut-qr" src="{{ $qr }}" alt="QR code to install the app">
-                        <a class="ut-btn ghost" href="{{ $apkUrl }}" target="_blank" rel="noopener" style="margin-top:12px;">Or tap to download the app</a>
-                    </div>
-                    <div style="font-weight:800; margin:16px 0 8px;">Allow these when asked</div>
-                    @foreach ($activeFeature['device']['permissions'] as $perm)
-                        <div class="ut-perm">
-                            <div class="ut-perm-ic">{{ $perm['icon'] }}</div>
-                            <div>
-                                <div style="font-weight:800;">{{ $perm['title'] }}</div>
-                                <div class="ut-note-hint">{{ $perm['how'] }}</div>
-                            </div>
-                        </div>
-                    @endforeach
 
-                    @isset($deviceLogin)
-                        <div style="font-weight:800; margin:18px 0 6px;">🔑 Sign in with this test login</div>
-                        <p class="ut-note-hint" style="margin-bottom:10px;">
-                            Type these into the app when it asks you to sign in — it's a practice
-                            {{ $deviceLogin['role'] === 'guardian' ? 'parent' : 'child' }} account, not a real family.
-                        </p>
-                        <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; padding:8px 0; border-top:1px solid #eef2f1;">
-                            <span style="font-weight:700;">Email</span>
-                            <code style="font-weight:800; user-select:all;">{{ $deviceLogin['email'] }}</code>
+                    {{-- Step 1 — install --}}
+                    <div class="ut-setup-step">
+                        <div class="ut-setup-head"><span class="ut-setup-num">1</span> Install the app</div>
+                        <div class="ut-qrbox">
+                            <img class="ut-qr" src="{{ $qr }}" alt="QR code to install the app">
+                            <a class="ut-btn ghost" href="{{ $apkUrl }}" target="_blank" rel="noopener" style="margin-top:12px;">Or tap to download the app</a>
                         </div>
-                        <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; padding:8px 0; border-top:1px solid #eef2f1;">
-                            <span style="font-weight:700;">Password</span>
-                            <code style="font-weight:800; user-select:all;">{{ $deviceLogin['password'] }}</code>
-                        </div>
-                    @endisset
+                    </div>
+
+                    {{-- Step 2 — permissions --}}
+                    <div class="ut-setup-step">
+                        <div class="ut-setup-head"><span class="ut-setup-num">2</span> Allow these when asked</div>
+                        @foreach ($activeFeature['device']['permissions'] as $perm)
+                            <div class="ut-perm">
+                                <div class="ut-perm-ic">{{ $perm['icon'] }}</div>
+                                <div>
+                                    <div style="font-weight:800;">{{ $perm['title'] }}</div>
+                                    <div class="ut-note-hint">{{ $perm['how'] }}</div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
             </div>
 
-            {{-- Right: the scenario to try + verdict --}}
+            {{-- Right: the scenario to try — with the test login to sign in with — + verdict --}}
             <div class="ut-pane">
                 <div class="ut-card" wire:key="dscn-{{ $current['id'] }}">
                     <span class="ut-tag">{{ $current['id'] }}</span>
                     <h2 style="margin:10px 0 6px;">{{ $current['title'] }}</h2>
                     <p class="lead">{{ $current['goal'] }}</p>
+
+                    @isset($deviceLogin)
+                        <div class="ut-login-box">
+                            <div style="font-weight:800; margin-bottom:4px;">🔑 Sign in with this test login</div>
+                            <p class="ut-note-hint" style="margin:0 0 10px;">
+                                Type these in when the app asks you to sign in — it's a practice
+                                {{ $deviceLogin['role'] === 'guardian' ? 'parent' : 'child' }} account, not a real family.
+                            </p>
+                            <div class="ut-cred"><span>Email</span><code>{{ $deviceLogin['email'] }}</code></div>
+                            <div class="ut-cred"><span>Password</span><code>{{ $deviceLogin['password'] }}</code></div>
+                        </div>
+                    @endisset
 
                     <div style="font-weight:800; margin:16px 0 4px;">What to do</div>
                     <ol class="ut-steps">
@@ -172,13 +215,21 @@
                     <div style="margin-top:16px;">
                         <label for="dnotes" style="font-weight:700; display:block; margin-bottom:6px;">Anything to add? (optional)</label>
                         <textarea id="dnotes" class="ut-input" wire:model="notes"
-                                  placeholder="e.g. The permission prompt never appeared…"></textarea>
+                                  placeholder="e.g. The permission prompt never appeared…">{{ $notes }}</textarea>
                     </div>
 
                     @if ($currentVerdict)
                         <p class="ut-note-hint" style="margin-top:10px;">
-                            Your last answer: <b>{{ ['worked' => '✅ It worked', 'issue' => '⚠️ Something was off', 'skipped' => '⏭️ Skipped'][$currentVerdict] ?? $currentVerdict }}</b> — tap again to change it.
+                            Your last answer: <b>{{ ['worked' => '✅ It worked', 'issue' => '⚠️ Something was off', 'skipped' => '⏭️ Skipped', 'waiting' => '⏳ Waiting for the reminder'][$currentVerdict] ?? $currentVerdict }}</b> — tap again to change it.
                         </p>
+                    @endif
+
+                    @if ($isDelayed)
+                        <div class="ut-defer">
+                            ⏰ This one happens later. We'll email you around the time it should
+                            arrive — once to watch for it, and once after to record how it went.
+                            <button class="ut-btn" style="margin-top:10px;" wire:click="defer">Remind me to check</button>
+                        </div>
                     @endif
 
                     <div class="ut-verdicts">
@@ -225,13 +276,21 @@
                     <div style="margin-top:16px;">
                         <label for="notes" style="font-weight:700; display:block; margin-bottom:6px;">Anything to add? (optional)</label>
                         <textarea id="notes" class="ut-input" wire:model="notes"
-                                  placeholder="e.g. The button was hard to find, or it felt slow…"></textarea>
+                                  placeholder="e.g. The button was hard to find, or it felt slow…">{{ $notes }}</textarea>
                     </div>
 
                     @if ($currentVerdict)
                         <p class="ut-note-hint" style="margin-top:10px;">
-                            Your last answer: <b>{{ ['worked' => '✅ It worked', 'issue' => '⚠️ Something was off', 'skipped' => '⏭️ Skipped'][$currentVerdict] ?? $currentVerdict }}</b> — tap again to change it.
+                            Your last answer: <b>{{ ['worked' => '✅ It worked', 'issue' => '⚠️ Something was off', 'skipped' => '⏭️ Skipped', 'waiting' => '⏳ Waiting for the reminder'][$currentVerdict] ?? $currentVerdict }}</b> — tap again to change it.
                         </p>
+                    @endif
+
+                    @if ($isDelayed)
+                        <div class="ut-defer">
+                            ⏰ This one happens later. We'll email you around the time it should
+                            arrive — once to watch for it, and once after to record how it went.
+                            <button class="ut-btn" style="margin-top:10px;" wire:click="defer">Remind me to check</button>
+                        </div>
                     @endif
 
                     <div class="ut-verdicts">

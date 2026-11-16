@@ -55,8 +55,36 @@ class ScenarioFixtures
      */
     public function deviceLogin(string $app): array
     {
-        $pair = $this->guardianWithChild('DEVICE', 'Test Explorer (App)');
-        $user = $app === 'parent' ? $pair['guardian'] : $pair['student'];
+        $domain = config('user_testing.email_domain');
+
+        $guardian = User::updateOrCreate(
+            ['email' => 'parent@'.$domain],
+            [
+                'name' => 'Parent',
+                'password' => config('user_testing.password'),
+                'role' => 'guardian',
+                'age_attested_at' => now(),
+                'is_test' => true,
+            ],
+        );
+        $this->markVerified($guardian);
+
+        $child = User::updateOrCreate(
+            ['email' => 'kid@'.$domain],
+            [
+                'name' => 'Kid',
+                'password' => config('user_testing.password'),
+                'role' => 'student',
+                'parent_id' => $guardian->id,
+                'onboarding_completed_at' => now(),
+                'target_sea_year' => now()->addYear()->year,
+                'is_test' => true,
+            ],
+        );
+        $this->markVerified($child);
+        $this->giveStudentAStartingState($child);
+
+        $user = $app === 'parent' ? $guardian : $child;
 
         return [
             'email' => $user->email,

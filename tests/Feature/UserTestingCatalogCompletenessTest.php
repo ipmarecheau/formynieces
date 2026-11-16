@@ -66,6 +66,21 @@ it('can seed a gate-passing account for every web scenario', function () {
     }
 });
 
+/** Each delayed scenario declares a valid clock time so its reminders can be scheduled. */
+it('gives every delayed scenario a well-formed notification time', function () {
+    foreach (TestingCatalog::features() as $code => $feature) {
+        foreach ($feature['scenarios'] as $scenario) {
+            if (! TestingCatalog::isDelayed($scenario)) {
+                continue;
+            }
+
+            $id = $scenario['id'];
+            expect($scenario['delayed']['at'])->toMatch('/^([01]\d|2[0-3]):[0-5]\d$/', "{$id}: notification time is not HH:MM");
+            expect($scenario['delayed']['label'] ?? '')->not->toBe('', "{$id}: missing a human label for the notification");
+        }
+    }
+});
+
 /** Each device scenario has an install URL and a real login the tester can actually use. */
 it('provides a working install URL and test login for every device scenario', function () {
     $fixtures = app(ScenarioFixtures::class);

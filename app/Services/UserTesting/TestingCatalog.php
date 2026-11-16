@@ -211,8 +211,8 @@ class TestingCatalog
                         'title' => 'The app sets up your week of reminders on first open',
                         'goal' => 'Check the kids app installs and starts cleanly with notifications allowed.',
                         'steps' => [
-                            'Scan the code above and install the kids app (allow installing from this source if asked).',
-                            'Open the app and sign in using the test child login shown on the left.',
+                            'Follow the setup panel to install the kids app (allow installing from this source if asked).',
+                            'Open the app and sign in with the test child login shown above.',
                             'When it asks to send notifications, tap Allow.',
                             'Let the app finish loading to the voyage map.',
                         ],
@@ -229,6 +229,9 @@ class TestingCatalog
                             'Tap it to confirm it opens the app.',
                         ],
                         'expect' => 'A reminder notification appeared on its own and opened the app when tapped.',
+                        // Feedback is delayed: the reminder fires in the evening. The tester
+                        // defers and we email them around this local time to check.
+                        'delayed' => ['at' => '18:30', 'label' => 'the evening reminder'],
                     ],
                 ],
             ],
@@ -250,12 +253,15 @@ class TestingCatalog
                         'title' => 'Your device registers for alerts',
                         'goal' => 'Check the parent app installs and registers for notifications when you allow them.',
                         'steps' => [
-                            'Scan the code above and install the parent app.',
-                            'Open it and sign in using the test parent login shown on the left.',
+                            'Follow the setup panel to install the parent app.',
+                            'Open it and sign in with the test parent login shown above.',
                             'When it asks to send notifications, tap Allow.',
                         ],
                         'expect' => 'The app installed and accepted notification permission without error.',
                         'note' => 'Delivery of live alerts (essay marked, milestones) opens for testing once the push server is switched on — this step just confirms the device registers.',
+                        // Push delivery is delayed and out-of-band, so the tester can defer and be
+                        // emailed around the expected alert time to confirm it arrived (or did not).
+                        'delayed' => ['at' => '18:30', 'label' => 'the next push alert'],
                     ],
                 ],
             ],
@@ -274,6 +280,17 @@ class TestingCatalog
     public static function isDevice(array $feature): bool
     {
         return isset($feature['device']);
+    }
+
+    /**
+     * True when a scenario's feedback is delayed (a notification that fires later), so the
+     * tester can defer and be reminded by email around the expected time rather than wait.
+     *
+     * @param  array<string, mixed>  $scenario
+     */
+    public static function isDelayed(array $scenario): bool
+    {
+        return isset($scenario['delayed']['at']);
     }
 
     /**
