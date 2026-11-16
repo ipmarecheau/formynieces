@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\VerificationRun;
+use App\Services\UserTesting\ScenarioFixtures;
 use App\Services\UserTesting\TestingCatalog;
 use chillerlan\QRCode\Common\EccLevel;
 use chillerlan\QRCode\QRCode;
@@ -191,6 +192,13 @@ class UserTesting extends Component
         $isDevice = $activeFeature !== null && TestingCatalog::isDevice($activeFeature);
         $apkUrl = $isDevice ? config('user_testing.apps.'.$activeFeature['device']['app']) : null;
 
+        // A physical device can't be auto-logged-in like the embedded web preview, so show the
+        // tester a real is_test login to type into the installed app. Gated the same way as the
+        // auto-login: only surfaced where impersonation is enabled (i.e. not bare production).
+        $deviceLogin = ($isDevice && config('user_testing.impersonation'))
+            ? app(ScenarioFixtures::class)->deviceLogin($activeFeature['device']['app'])
+            : null;
+
         return view('livewire.user-testing', [
             'features' => $features,
             'activeFeature' => $activeFeature,
@@ -201,6 +209,7 @@ class UserTesting extends Component
             'currentVerdict' => $current ? ($verdicts[$current['id']] ?? null) : null,
             'isDevice' => $isDevice,
             'apkUrl' => $apkUrl,
+            'deviceLogin' => $deviceLogin,
             'qr' => $apkUrl ? $this->qrDataUri($apkUrl) : null,
         ]);
     }

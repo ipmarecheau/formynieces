@@ -212,7 +212,7 @@ class TestingCatalog
                         'goal' => 'Check the kids app installs and starts cleanly with notifications allowed.',
                         'steps' => [
                             'Scan the code above and install the kids app (allow installing from this source if asked).',
-                            'Open the app and sign in as a child (or use a test child login).',
+                            'Open the app and sign in using the test child login shown on the left.',
                             'When it asks to send notifications, tap Allow.',
                             'Let the app finish loading to the voyage map.',
                         ],
@@ -251,7 +251,7 @@ class TestingCatalog
                         'goal' => 'Check the parent app installs and registers for notifications when you allow them.',
                         'steps' => [
                             'Scan the code above and install the parent app.',
-                            'Open it and sign in as a parent (or a test parent login).',
+                            'Open it and sign in using the test parent login shown on the left.',
                             'When it asks to send notifications, tap Allow.',
                         ],
                         'expect' => 'The app installed and accepted notification permission without error.',

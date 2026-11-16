@@ -45,6 +45,27 @@ class ScenarioFixtures
     }
 
     /**
+     * The stable test login a tester types into an installed native app for a device
+     * scenario. A physical device has no in-browser auto-login, so the credentials must be
+     * shown to them. The kids app signs in as the onboarded child; the parent app as the
+     * guardian. Both authenticate with email + the shared test password. Seeded idempotently
+     * and flagged is_test, like every other test-drive account.
+     *
+     * @return array{email: string, password: string, role: string}
+     */
+    public function deviceLogin(string $app): array
+    {
+        $pair = $this->guardianWithChild('DEVICE', 'Test Explorer (App)');
+        $user = $app === 'parent' ? $pair['guardian'] : $pair['student'];
+
+        return [
+            'email' => $user->email,
+            'password' => (string) config('user_testing.password'),
+            'role' => $user->role,
+        ];
+    }
+
+    /**
      * Mark an account's email verified. `email_verified_at` is intentionally not mass-assignable
      * on the User model, so it must be force-set — otherwise updateOrCreate silently drops it and
      * the account bounces to the email-verification gate.

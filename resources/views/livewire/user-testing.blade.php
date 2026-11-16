@@ -130,6 +130,22 @@
                             </div>
                         </div>
                     @endforeach
+
+                    @isset($deviceLogin)
+                        <div style="font-weight:800; margin:18px 0 6px;">🔑 Sign in with this test login</div>
+                        <p class="ut-note-hint" style="margin-bottom:10px;">
+                            Type these into the app when it asks you to sign in — it's a practice
+                            {{ $deviceLogin['role'] === 'guardian' ? 'parent' : 'child' }} account, not a real family.
+                        </p>
+                        <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; padding:8px 0; border-top:1px solid #eef2f1;">
+                            <span style="font-weight:700;">Email</span>
+                            <code style="font-weight:800; user-select:all;">{{ $deviceLogin['email'] }}</code>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; padding:8px 0; border-top:1px solid #eef2f1;">
+                            <span style="font-weight:700;">Password</span>
+                            <code style="font-weight:800; user-select:all;">{{ $deviceLogin['password'] }}</code>
+                        </div>
+                    @endisset
                 </div>
             </div>
 
