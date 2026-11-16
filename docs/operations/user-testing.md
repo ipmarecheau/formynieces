@@ -107,15 +107,64 @@ UT_BASE=https://dev.smoothseas.org node scripts/user-testing/verify-scenarios.mj
 ```
 
 Server-side behaviour (auto-login, verification, fixture seeding, the upsert) is covered by
-`tests/Feature/UserTestingTest.php`.
+`tests/Feature/UserTestingTest.php`, and the catalog's completeness (every scenario
+executable, every source file present) by `tests/Feature/UserTestingCatalogCompletenessTest.php`.
+
+## Deferred checks & email reminders
+
+Some scenarios have **delayed feedback** — a notification that fires later (LR-01/07, PN-01).
+The tester can't stand and wait, so each is flagged in the catalog with
+`'delayed' => ['at' => 'HH:MM', 'label' => '…']` and offers **⏰ Remind me to check**:
+
+1. Deferring records a `waiting` VerificationRun and computes the notification's next
+   occurrence **in the tester's browser timezone** (`ExpectedNotificationTime`).
+2. `verification:send-reminders` (scheduled **every 5 minutes**) emails the tester
+   **5 min before** ("watch your device") and **20 min after** ("did it arrive?"). The
+   "it never arrived" link deep-links back with the missed note pre-filled.
+3. Waiting checks appear in a **"Checks you're waiting on"** panel and show an amber
+   **⏳ waiting** pill on the chooser.
+
+## Change tracking & re-test
+
+A verdict is evidence *about a particular version*. When a scenario changes afterwards, the
+tester is told. On each verdict the row is stamped with three things (migration
+`…add_change_tracking_to_verification_runs_table`):
+
+- **`spec_hash`** — the scenario's Gherkin block, hashed exactly as `specs:trace` /
+  `specs:verify` do (so the pipelines agree). Changes when the **BDD definition** changes.
+- **`impl_hash`** — the content hash of the scenario's **implementation files**, mapped
+  per-scenario in `TestingCatalog::SCENARIO_SOURCES` (precise granularity). Changes when
+  the **implementation** changes, even before a commit.
+- **`verified_commit`** — HEAD at verdict time, so the change can be *explained* from git.
+
+`ScenarioFingerprint` computes the hashes; `ScenarioChangeLog` explains a change from git
+(`git diff`/`git log <verified_commit>..HEAD`). `verification:flag-changes` runs **once a
+day** (so a busy day of commits never floods testers): any answered verdict whose spec or
+impl hash now differs gets the scenario an indigo **🔄 re-test** pill + banner, and the
+tester is emailed **once per distinct change** (`change_notified_hash`) — told whether the
+steps, the code, or both moved, with the implementation commit subjects and a re-test link.
+Re-testing restamps against the current version and clears the flag.
+
+## Specs & scenarios
+
+Although it isn't walked through `/user-testing`, the tool has its own BDD spec —
+`formynieces-spec/features/guided_user_testing.feature` (scenarios **UT-01…UT-10**, with the
+user story in the `Feature:` narrative). Each UT scenario is tagged to a Pest test
+(`->group('scenario:UT-NN')`), so `specs:trace` shows them as automated; manual
+`specs:verify` stays with the maintainer (browser confirmation, G5).
 
 ## Adding a scenario
 
 1. Add it to `App\Services\UserTesting\TestingCatalog::features()` with `id`, `title`,
-   `goal`, `persona`, `start`, `steps`, `expect`.
-2. Ensure `ScenarioFixtures` seeds whatever the `start` screen needs to render as a real
+   `goal`, `persona`, `start`, `steps`, `expect` (and `group`; `delayed` if its feedback
+   is delayed).
+2. Map its implementation files in `TestingCatalog::SCENARIO_SOURCES` (for change tracking).
+3. Ensure `ScenarioFixtures` seeds whatever the `start` screen needs to render as a real
    user would see it.
-3. Confirm the `start` screen's middleware gates are all satisfiable by the seeded persona
+4. Confirm the `start` screen's middleware gates are all satisfiable by the seeded persona
    (consult the table above).
-4. Run `node scripts/user-testing/verify-scenarios.mjs` and confirm it passes **before**
+5. Add it to the Playwright harness `EXPECT` map, and (if it maps to a BDD scenario) a
+   `@scenario` tag + Pest group.
+6. Run `php artisan test --filter=UserTesting` and
+   `node scripts/user-testing/verify-scenarios.mjs` and confirm both pass **before**
    sharing the link.

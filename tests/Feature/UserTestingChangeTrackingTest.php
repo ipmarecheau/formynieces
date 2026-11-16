@@ -26,7 +26,7 @@ it('stamps a verdict with the spec and implementation fingerprints it was given 
     expect($run->spec_hash)->toBe($fingerprint->specHash('SH-01'));
     expect($run->impl_hash)->toBe($fingerprint->implHash(TestingCatalog::sources('SH-01')));
     expect($run->change_notified_hash)->toBeNull();
-});
+})->group('scenario:UT-08');
 
 it('shows an indigo re-test status when the scenario changed since the verdict', function () {
     // A verdict recorded against stale fingerprints — the live scenario has since "changed".
@@ -49,7 +49,7 @@ it('shows an indigo re-test status when the scenario changed since the verdict',
     Livewire::test(UserTesting::class)
         ->set('testerEmail', 'maria@example.com')
         ->assertSee('🔄 re-test', false);
-});
+})->group('scenario:UT-10');
 
 it('does not flag a scenario whose fingerprints still match', function () {
     $fingerprint = app(ScenarioFingerprint::class);
@@ -92,7 +92,7 @@ it('emails the tester once about a changed scenario, then not again for the same
     $fingerprint = app(ScenarioFingerprint::class);
     $run = VerificationRun::where('scenario_id', 'SH-01')->sole();
     expect($run->change_notified_hash)->toBe($fingerprint->specHash('SH-01').'|'.$fingerprint->implHash(TestingCatalog::sources('SH-01')));
-});
+})->group('scenario:UT-09');
 
 it('does not email about scenarios that are unchanged or still waiting', function () {
     Mail::fake();

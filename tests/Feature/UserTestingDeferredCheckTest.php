@@ -27,7 +27,7 @@ it('defers a delayed scenario into a waiting check with the expected time comput
     expect($run->expected_at)->not->toBeNull();
     // 18:30 London is the declared notification time.
     expect($run->expected_at->copy()->setTimezone('Europe/London')->format('H:i'))->toBe('18:30');
-});
+})->group('scenario:UT-06');
 
 it('does not defer a scenario whose feedback is immediate', function () {
     Livewire::test(UserTesting::class, ['feature' => 'hc']) // HC-01 is not delayed
@@ -98,7 +98,7 @@ it('sends the "watch for it" reminder once the lead window opens, exactly once',
     $run->refresh();
     expect($run->first_reminder_sent_at)->not->toBeNull();
     expect($run->second_reminder_sent_at)->toBeNull();
-});
+})->group('scenario:UT-07');
 
 it('sends the "did it arrive?" reminder once the event plus grace has passed', function () {
     Mail::fake();

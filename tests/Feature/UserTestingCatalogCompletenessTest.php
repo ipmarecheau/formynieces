@@ -131,4 +131,4 @@ it('provides a working install URL and test login for every device scenario', fu
             ->toBeTrue("{$code}: device login credentials do not authenticate");
         Auth::logout();
     }
-});
+})->group('scenario:UT-05');

@@ -51,7 +51,7 @@ it('restores a browser-remembered tester (email is the durable key) and reloads 
         ->assertSee('Your last answer'); // their prior verdict is shown again
 
     expect(session('tester_email'))->toBe('maria@example.com');
-});
+})->group('scenario:UT-01');
 
 it('ignores an invalid remembered identity', function () {
     Livewire::test(UserTesting::class)
@@ -74,7 +74,7 @@ it('records a verdict and advances to the next scenario', function () {
     expect($run->scenario_id)->toBe('HC-01');
     expect($run->result)->toBe(VerificationRun::RESULT_WORKED);
     expect($run->notes)->toBe('Button was easy to find');
-});
+})->group('scenario:UT-02');
 
 it('upserts — changing an answer updates the same row, never duplicates', function () {
     $c = Livewire::test(UserTesting::class, ['feature' => 'hc'])
@@ -90,7 +90,7 @@ it('upserts — changing an answer updates the same row, never duplicates', func
     expect($run->result)->toBe(VerificationRun::RESULT_ISSUE);
     expect($run->notes)->toBe('Actually the button was hidden');
     expect(VerificationRun::where('scenario_id', 'HC-01')->count())->toBe(1);
-});
+})->group('scenario:UT-03');
 
 it('shows a tester their saved note when they navigate back', function () {
     VerificationRun::factory()->create([
@@ -140,7 +140,7 @@ it('is refused when impersonation is disabled', function () {
     config()->set('user_testing.impersonation', false);
 
     $this->get('/user-testing/enter/HC-01')->assertForbidden();
-});
+})->group('scenario:UT-04');
 
 it('404s for an unknown scenario', function () {
     config()->set('user_testing.impersonation', true);
